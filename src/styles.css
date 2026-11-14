@@ -2251,27 +2251,83 @@
   background: #fdfaf2;
   border-radius: 18px;
 }
-/* Fixed aspect ratio per breakpoint (plus width/height attributes): the
-   box is sized before the picture loads, so there is no layout shift. */
-.why-learn-hero {
-  display: block;
-  width: 100%;
-  height: auto;
+/* The hero slot: a fixed-aspect box sized before the picture loads,
+   so there is no layout shift. The slot's ratio answers the
+   viewport — the familiar wide strip on short screens, then taller
+   steps as the screen gives height, so a tall screen's hero can
+   carry the portrait film at a size worth watching
+   (fix/why-learn-fill-viewport). Short screens keep today's strip. */
+.why-learn-hero-wrap {
+  position: relative;
   aspect-ratio: 16 / 7;
-  object-fit: cover;
-  object-position: 50% 50%;
+  overflow: hidden;
 }
 @media (min-width: 681px) {
-  .why-learn-hero {
+  .why-learn-hero-wrap {
     aspect-ratio: 32 / 9;
   }
 }
-/* The montage film in the hero slot (feat/why-learn-montage): the
-   <video> carries .why-learn-hero, so it fills the same fixed box
-   the still did; the controls ride its bottom-right corner on the
-   page's frosted-chip recipe (cf. .why-learn-wordmark). */
-.why-learn-hero-wrap {
-  position: relative;
+@media (max-width: 680px) and (min-height: 700px) {
+  .why-learn-hero-wrap {
+    aspect-ratio: 1 / 1;
+  }
+}
+@media (max-width: 680px) and (min-height: 1000px) {
+  .why-learn-hero-wrap {
+    aspect-ratio: 4 / 5;
+  }
+}
+@media (min-width: 681px) and (min-height: 1100px) {
+  .why-learn-hero-wrap {
+    aspect-ratio: 2 / 1;
+  }
+}
+@media (min-width: 681px) and (min-height: 1500px) {
+  .why-learn-hero-wrap {
+    aspect-ratio: 16 / 10;
+  }
+}
+@media (min-width: 681px) and (min-height: 1900px) {
+  .why-learn-hero-wrap {
+    aspect-ratio: 4 / 3;
+  }
+}
+/* Ambient fill behind the film: the montage poster again, blurred
+   and dimmed under the slot, so the space beside the portrait
+   frame reads as atmosphere from the same scene, never as bars. */
+.why-learn-hero-fill {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(28px) brightness(0.82) saturate(1.15);
+  transform: scale(1.12);
+}
+/* The film box: the film's own portrait ratio, centred in the slot
+   at its full height. The controls ride its bottom-right corner on
+   the page's frosted-chip recipe (cf. .why-learn-wordmark) — on the
+   film itself, not on the fill. */
+.why-learn-hero-film {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  aspect-ratio: 608 / 1280;
+}
+/* The montage film in the hero slot (feat/why-learn-montage), and
+   under reduced motion its poster still: object-fit: contain in a
+   box of the frame's own ratio, so the WHOLE frame shows. Under
+   the old strip's cover fit only the middle slice of the portrait
+   frame was visible — about 21% of it on phones, 13% on wide
+   screens — which is the crop this branch removes. */
+.why-learn-hero {
+  display: block;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 608 / 1280;
+  object-fit: contain;
 }
 .why-learn-hero-controls {
   position: absolute;
@@ -2316,6 +2372,30 @@
 .why-learn-screen > p {
   position: relative;
   z-index: 1;
+}
+/* Real-estate scaling (fix/why-learn-fill-viewport): the shell is a
+   min-h-dvh flex column, but nothing in this screen used to grow,
+   so the grid took its natural height and the rest of a tall
+   screen sat empty — on the owner's tall portrait window the
+   content ended at about half the height. The grid now takes the
+   column's leftover height and its rows share it equally; each
+   card already stretches to its row (li + w-full) and its content
+   centres vertically (items-center in the picker), so a taller
+   card reads as roomier, not emptier. On short screens there is
+   no leftover height and nothing changes. */
+.why-learn-screen > ul {
+  flex: 1 1 auto;
+  grid-auto-rows: 1fr;
+}
+@media (min-height: 1100px) {
+  .why-learn-screen > ul {
+    gap: 1.25rem;
+  }
+}
+@media (min-height: 1800px) {
+  .why-learn-screen > ul {
+    gap: 1.5rem;
+  }
 }
 .wl-drift-item {
   position: absolute;

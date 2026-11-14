@@ -10,10 +10,20 @@
  * autoloop governance does not apply here — the brief for this
  * slot orders the controls.
  *
+ * Presentation (fix/why-learn-fill-viewport): the film is
+ * portrait (608×1280) and the slot is a wide strip whose ratio
+ * grows with viewport height (styles.css). The film sits in a
+ * box of its own ratio, object-fit: contain, centred over a
+ * blurred, dimmed copy of its poster — the WHOLE frame shows on
+ * every screen; under the old cover fit only the middle slice
+ * (13–21% of the frame) was visible. The controls ride the film
+ * box's own bottom-right corner.
+ *
  * Gates, mirroring the house rules for moving pictures:
  * - prefers-reduced-motion (the shared hook, live on OS flips):
  *   no film at all — the montage poster (its frame at 1 s) shows
- *   as a still with alt text, and no controls render.
+ *   as a still with alt text, in the same film box over the same
+ *   fill, and no controls render.
  * - A film that fails to load latches to the same poster still.
  * - Sound starts OFF (muted): browsers block audible autoplay,
  *   and a reading page should not burst into song. The toggle
@@ -55,17 +65,24 @@ export function WhyLearnHero() {
 
   if (reducedMotion || failed) {
     // The poster IS the design here — no video element exists in
-    // this branch, so the .mp4 is never requested.
+    // this branch, so the .mp4 is never requested. It fills the
+    // same film box over the same blurred fill as the film does,
+    // so the still and the film present the frame identically.
     return (
-      <img
-        className="why-learn-hero"
-        src={posterUrl}
-        alt={WHY_LEARN_MONTAGE_ALT}
-        width={608}
-        height={1280}
-        loading="eager"
-        decoding="async"
-      />
+      <div className="why-learn-hero-wrap">
+        <img className="why-learn-hero-fill" src={posterUrl} alt="" aria-hidden="true" />
+        <div className="why-learn-hero-film">
+          <img
+            className="why-learn-hero"
+            src={posterUrl}
+            alt={WHY_LEARN_MONTAGE_ALT}
+            width={608}
+            height={1280}
+            loading="eager"
+            decoding="async"
+          />
+        </div>
+      </div>
     );
   }
 
@@ -88,24 +105,26 @@ export function WhyLearnHero() {
 
   return (
     <div className="why-learn-hero-wrap">
-      <video
-        ref={videoRef}
-        className="why-learn-hero"
-        data-testid="why-learn-hero-video"
-        src={videoUrl}
-        poster={posterUrl}
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-        aria-hidden="true"
-        tabIndex={-1}
-        onPlay={() => setPlaying(true)}
-        onPause={() => setPlaying(false)}
-        onError={() => setFailed(true)}
-      />
-      <div className="why-learn-hero-controls">
+      <img className="why-learn-hero-fill" src={posterUrl} alt="" aria-hidden="true" />
+      <div className="why-learn-hero-film">
+        <video
+          ref={videoRef}
+          className="why-learn-hero"
+          data-testid="why-learn-hero-video"
+          src={videoUrl}
+          poster={posterUrl}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          aria-hidden="true"
+          tabIndex={-1}
+          onPlay={() => setPlaying(true)}
+          onPause={() => setPlaying(false)}
+          onError={() => setFailed(true)}
+        />
+        <div className="why-learn-hero-controls">
         <button
           type="button"
           data-testid="why-learn-hero-playpause"
@@ -139,6 +158,7 @@ export function WhyLearnHero() {
             <VolumeX className="size-5" aria-hidden="true" />
           )}
         </button>
+        </div>
       </div>
     </div>
   );

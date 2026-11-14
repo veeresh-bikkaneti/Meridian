@@ -125,6 +125,48 @@ describe("WhyLearnDrift — background texture only", () => {
   });
 });
 
+describe("Fill the viewport + the whole film frame (fix/why-learn-fill-viewport)", () => {
+  it("the grid takes the shell's leftover height and shares it across rows", () => {
+    const block = css.slice(css.indexOf(".why-learn-screen > ul {"), css.indexOf(".wl-drift-item {"));
+    assert.ok(block.includes("flex: 1 1 auto"), "grid grows into the flex column's free height");
+    assert.ok(block.includes("grid-auto-rows: 1fr"), "rows share the free height equally");
+  });
+
+  it("card content centres vertically, so a stretched card reads as roomier, not emptier", () => {
+    assert.ok(
+      picker.includes("why-learn-card flex w-full items-center"),
+      "card content is cross-axis centred (identical at natural height)",
+    );
+  });
+
+  it("the slot's aspect steps up with viewport height, from today's strip", () => {
+    assert.ok(css.includes("aspect-ratio: 16 / 7"), "base strip unchanged (short screens)");
+    assert.ok(css.includes("aspect-ratio: 32 / 9"), "wide strip unchanged (short screens)");
+    assert.ok(css.includes("aspect-ratio: 4 / 3"), "tallest step for very tall screens");
+    const wrap = css.slice(css.indexOf(".why-learn-hero-wrap {"), css.indexOf(".why-learn-hero-fill {"));
+    assert.ok(wrap.includes("overflow: hidden"), "the slot clips its fill to the card");
+  });
+
+  it("the film shows its whole frame: contain in a film-ratio box over a blurred fill", () => {
+    const heroCss = css.slice(css.indexOf(".why-learn-hero {"), css.indexOf(".why-learn-hero-controls {"));
+    assert.ok(heroCss.includes("object-fit: contain"), "contain — the frame is never cropped");
+    assert.ok(heroCss.includes("aspect-ratio: 608 / 1280"), "the box carries the frame's own ratio");
+    assert.ok(!heroCss.includes("object-fit: cover"), "the old cover slice is gone");
+    assert.ok(css.includes(".why-learn-hero-fill"), "a fill layer sits behind the film");
+    assert.ok(css.includes("blur(28px)"), "the fill is the poster, blurred and dimmed");
+    assert.ok(hero.includes('className="why-learn-hero-fill"'), "both hero branches render the fill");
+    assert.ok(hero.includes('className="why-learn-hero-film"'), "both hero branches render the film box");
+  });
+
+  it("the controls ride the film box, not the slot, so they stay on the film", () => {
+    const film = hero.slice(hero.indexOf('className="why-learn-hero-film"'));
+    assert.ok(
+      film.indexOf('data-testid="why-learn-hero-video"') < film.indexOf("why-learn-hero-controls"),
+      "video and controls share the film box",
+    );
+  });
+});
+
 describe("No lyric text ships on the page", () => {
   // The song is audio only (brief: heard, not read). These are the
   // recording script's distinctive phrases; none may appear in the

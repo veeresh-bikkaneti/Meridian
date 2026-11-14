@@ -141,7 +141,7 @@ export default function SubjectPicker({
             <li key={row.id} className="flex">
               <button
                 type="button"
-                className={`why-learn-card flex w-full items-start gap-3.5 p-4 text-left text-fg${ready ? "" : " is-soon"}`}
+                className={`why-learn-card flex w-full items-center gap-3.5 p-4 text-left text-fg${ready ? "" : " is-soon"}`}
                 data-testid={`subject-row-${row.id}`}
                 disabled={!ready}
                 aria-disabled={ready ? undefined : "true"}

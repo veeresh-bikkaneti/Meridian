@@ -19,7 +19,12 @@ import { serveBuiltArtifact } from "./helpers";
  *   the page montage wallpaper is a CSS background (nothing to focus
  *   or announce), and the formula drift is aria-hidden texture;
  * - no sideways scroll at 390/320, nothing clipped at 1280/1440;
- * - reduced motion: no card transition.
+ * - reduced motion: no card transition;
+ * - tall screens (fix/why-learn-fill-viewport): the layout scales
+ *   with the real estate — the grid fills the viewport height
+ *   instead of ending at ~half, and the film shows its WHOLE
+ *   portrait frame (object-fit: contain in its own ratio over a
+ *   blurred fill), not the old cover centre-slice.
  */
 test.setTimeout(180_000);
 
@@ -167,6 +172,45 @@ test("Why Learn: no sideways scroll at 320, nothing clipped at 1440", async ({ b
     expect(clipped, `${vp.width}: elements past the viewport edge`).toEqual([]);
     await context.close();
   }
+});
+
+test("Why Learn on a tall screen: layout fills the height, film shows its whole frame", async ({ browser }) => {
+  const { context, page } = await openPicker(browser, 1080, 2160, "10-18");
+  // The grid distributes through the viewport: the last card ends
+  // near the bottom, not at the old ~halfway point.
+  const end = await page.evaluate(() => {
+    const last = document.querySelector('[data-testid="subject-row-journals"]')!.getBoundingClientRect();
+    return { bottom: last.bottom, ih: innerHeight };
+  });
+  expect(end.bottom, "tall: content ends near the viewport bottom").toBeGreaterThan(0.9 * end.ih);
+  // Cards stretched to fill their rows keep one shared row height
+  // per row and stay fully inside the page.
+  const rows = await page.evaluate(() =>
+    [...document.querySelectorAll('[data-testid^="subject-row-"]')].map((e) => {
+      const b = e.getBoundingClientRect();
+      return { top: b.top, height: b.height };
+    }),
+  );
+  expect(rows[0].height, "tall: cards grow past their natural height").toBeGreaterThan(200);
+  // The whole film frame is visible: contain, in a box of the
+  // frame's own ratio — not the old cover slice (13% at this size).
+  await page.waitForFunction(
+    () => (document.querySelector("video.why-learn-hero") as HTMLVideoElement | null)?.videoWidth === 608,
+    undefined,
+    { timeout: 30_000 },
+  );
+  const film = await page.locator("video.why-learn-hero").evaluate((el) => {
+    const v = el as HTMLVideoElement;
+    const b = v.getBoundingClientRect();
+    return { fit: getComputedStyle(v).objectFit, ratio: b.width / b.height, frame: v.videoWidth / v.videoHeight };
+  });
+  expect(film.fit, "tall: film is contained, never cropped").toBe("contain");
+  expect(Math.abs(film.ratio - film.frame), "tall: film box keeps the frame's ratio").toBeLessThan(0.02);
+  await noSideways(page, "tall");
+  if (SHOTS) {
+    await page.screenshot({ path: `${SHOTS}/why-learn-1080x2160-ages-10-18.png`, fullPage: true });
+  }
+  await context.close();
 });
 
 test("Why Learn under reduced motion: cards do not animate", async ({ browser }) => {
