@@ -5,8 +5,22 @@
  * data file is NEVER edited by this module; the adapter only selects
  * and re-shapes rows.
  *
- * The slice keeps up to 3 items per age band, picked where the row's
- * why / objective yields one unambiguous multiple-choice answer with
+ * The slice holds every playable row: the first 3 per band, plus the
+ * v2 extension (Stream A, 2026-11-13) — every unplayed row that fits
+ * the shared multiple-choice case, in deal order, new rows appended
+ * after the first slice so the first-dealt item per band is unchanged.
+ * One row is held, not played: chemistry:water:where — its skill is
+ * pointing at water bodies on the globe, and as text its question is
+ * ambiguous (the vanished puddle's water vs the lake's). A second row
+ * is held on reviewer verdict (BLOCKED, 2026-11-14):
+ * chemistry:elements:detective — its answer needs the down-column
+ * reactivity trend, which its row never states, and the 18+ explain
+ * item teaches same-column → "similar way", so "They react the same"
+ * is a reasonable pick from the game's own teaching. No chemistry
+ * row has a numeric answer, so no row needs the typed-number kind
+ * (not on main; Stream B's PR #468 is a draft).
+ *
+ * Each played row yields one unambiguous multiple-choice answer with
  * the shared AnswerCard (see answers.ts for each derivation, listed
  * in the PR for educator review). Question wording respects
  * docs/scaling/chemistry/fact-notes.md: road salt is claimed only as
@@ -58,16 +72,29 @@ export function allChemistryRows(): UnitItem[] {
   return out;
 }
 
-/** The live slice: up to 3 items per band, in deal order. */
+/** The live slice: the first 3 per band, then the v2 extension (new rows appended, cross-subject links first, buildsOn order kept). */
 export const CHEMISTRY_ITEM_IDS: readonly string[] = [
   // 7-10
   "chemistry:states:solid-liquid",
   "chemistry:states:melt-freeze",
   "chemistry:materials:sort",
+  // v2: magnet links physics (buildsOn physics:magnet:flip); rebuild links math.
+  "chemistry:materials:magnet",
+  "chemistry:pieces:rebuild",
   // 10-18
   "chemistry:states:road-salt",
   "chemistry:mixtures:dissolve",
   "chemistry:reactions:weight",
+  // v2: particles links physics; water:cycle links geography; new-look
+  // links economics; rust links economics; identify links everyday
+  // dissolving. Detective is HELD (reviewer BLOCKED 2026-11-14): its
+  // answer needs the down-column trend, which its row never states,
+  // and the 18+ explain item teaches "similar way" instead.
+  "chemistry:states:particles",
+  "chemistry:water:cycle",
+  "chemistry:reactions:new-look",
+  "chemistry:reactions:rust",
+  "chemistry:materials:identify",
   // 18+
   "chemistry:reactions:rate",
   "chemistry:reactions:mass",

@@ -105,3 +105,75 @@ test("18+ physics case plays through to the result", async ({ page, context }) =
   await expect(page.getByTestId("physics-result")).toBeVisible();
   expect(errors).toEqual([]);
 });
+
+/** Correct button label for every item on the path to a new item. */
+const CORRECT_BY_ITEM: Record<string, string> = {
+  "physics:push:which-way": "To the right",
+  "physics:push:equal-pushes": "8",
+  "physics:magnet:flip": "They now push apart",
+  "physics:drop:down": "Down into the bucket",
+  "physics:arrive:unit-rate": "The 8 metres in 2 seconds cart",
+  "physics:ramp:slope-ratio": "Ramp B",
+  "physics:magnet:closer": "The closer pair",
+  "physics:push:mass": "The lighter cart",
+};
+
+/**
+ * Answer each dealt case correctly (with "Next case") until the target
+ * item is dealt, then answer it. Caps the walk so a missing target
+ * fails fast instead of wrapping forever.
+ */
+async function playToItem(page: Page, targetId: string) {
+  const physicsCase = page.getByTestId("physics-case");
+  for (let step = 0; step < 6; step++) {
+    const current = await physicsCase.getAttribute("data-item");
+    if (current === targetId) return;
+    const correct = CORRECT_BY_ITEM[current ?? ""];
+    expect(correct, `no correct choice mapped for ${current}`).toBeDefined();
+    await page
+      .getByTestId("physics-answer-card")
+      .getByRole("button", { name: correct!, exact: true })
+      .click();
+    await dismissCelebration(page);
+    await expect(page.getByTestId("physics-result")).toBeVisible();
+    await page.getByRole("button", { name: "Next case" }).click();
+    await expect(physicsCase).not.toHaveAttribute("data-item", current ?? "");
+  }
+  throw new Error(`target item ${targetId} was not dealt within 6 cases`);
+}
+
+test("7-10 new physics item plays through to the result", async ({ page, context }) => {
+  await setup(context, "7-10");
+  const errors = watchErrors(page);
+  await openPhysicsCase(page);
+  const physicsCase = page.getByTestId("physics-case");
+  await expect(physicsCase).toHaveAttribute("data-band", "7-10");
+  await playToItem(page, "physics:drop:down");
+  await expect(physicsCase).toHaveAttribute("data-item", "physics:drop:down");
+  await page
+    .getByTestId("physics-answer-card")
+    .getByRole("button", { name: "Down into the bucket", exact: true })
+    .click();
+  await dismissCelebration(page);
+  await expect(page.getByTestId("physics-result")).toBeVisible();
+  await expect(page.getByTestId("physics-used-in")).toContainText("You just used this in…");
+  expect(errors).toEqual([]);
+});
+
+test("10-18 new physics item plays through to the result", async ({ page, context }) => {
+  await setup(context, "10-18");
+  const errors = watchErrors(page);
+  await openPhysicsCase(page);
+  const physicsCase = page.getByTestId("physics-case");
+  await expect(physicsCase).toHaveAttribute("data-band", "10-18");
+  await playToItem(page, "physics:push:mass");
+  await expect(physicsCase).toHaveAttribute("data-item", "physics:push:mass");
+  await page
+    .getByTestId("physics-answer-card")
+    .getByRole("button", { name: "The lighter cart", exact: true })
+    .click();
+  await dismissCelebration(page);
+  await expect(page.getByTestId("physics-result")).toBeVisible();
+  await expect(page.getByTestId("physics-used-in")).toContainText("You just used this in…");
+  expect(errors).toEqual([]);
+});

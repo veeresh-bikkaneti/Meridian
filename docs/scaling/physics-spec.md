@@ -12,7 +12,7 @@
 
 ## Stage A — predict-then-see scenes
 
-**Count: PROPOSED 24 rows**. The rows are proposed. Pulley and wheel are open items, not rows, so they are not part of that count. The signed definition may drop, split, or close any row.
+**Count: PROPOSED 30 rows**. The rows are proposed. Pulley and wheel are open items, not rows, so they are not part of that count. The signed definition may drop, split, or close any row.
 
 **Groups (standard §1).** `7-10` uses measurement and multiplication only.
 `10-18` and `18+` add rates and trigonometry. No `7-10` row uses algebra or
@@ -256,3 +256,14 @@ Done when: (a) Algebra Detective plays end to end per the GeoDetective contract 
 - Every sub-topic above is structure only; its curriculum anchoring and every physics formula are UNVERIFIED until the signed definition cites them per band and §0 verification is done at build time.
 - Load-budget numbers (250 KB / 500 KB gzip): PROPOSAL, not measured (lens §12 flag 11).
 - No other factual claims are made in this spec.
+
+## Adult (18+) rows, Stream F (PROPOSED)
+
+These 18+ rows are proposed in v2 Stream F. Each is an UNVERIFIED adult round with a Fit note; educator review runs alongside, not as a gate.
+
+- `physics:force:sling-share`
+- `physics:energy:efficiency-share`
+- `physics:sound:echo-distance`
+- `physics:ramp:lift-work`
+- `physics:arrive:two-leg-trip`
+- `physics:push:speed-up`

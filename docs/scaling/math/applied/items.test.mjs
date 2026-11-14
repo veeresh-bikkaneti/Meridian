@@ -90,9 +90,9 @@ test("every item matches contract I2 exactly", () => {
   }
 });
 
-test("ids are unique and the count is the proposed 35", () => {
+test("ids are unique and the count is the proposed 38", () => {
   assert.equal(byId.size, items.length);
-  assert.equal(items.length, 35);
+  assert.equal(items.length, 38);
 });
 
 test("objective has the standard form with an observable verb and a shown-by", () => {

@@ -160,5 +160,59 @@
     "why": "A delivery van can take the toll road or the free road. The toll saves an hour, but is an hour worth the fee and the fuel?",
     "buildsOn": ["social-studies:route:fastest-or-shortest", "social-studies:route:great-circle"],
     "useElsewhere": ["Economics: break-even and comparing costs", "Math: linear models with two variables", "Environment: fuel use per route"]
+  },
+  {
+    "id": "social-studies:route:map-distance-scale",
+    "group": "18+",
+    "objective": "After this, an adult can convert a map distance at a ratio scale into kilometres, shown by entering the kilometres before the route is confirmed.",
+    "standard": "UNVERIFIED",
+    "why": "A walking map is drawn to a scale of 1 to 250,000, so 1 centimetre on the map is 250,000 centimetres in real life. Two points are 3.2 centimetres apart on the map. How many kilometres apart are they? Fit: no school code; adult map scale arithmetic.",
+    "buildsOn": ["social-studies:route:scale-ratio"],
+    "useElsewhere": ["physics: a scale ratio sets the size of a model, the same proportion step used for a drawing"]
+  },
+  {
+    "id": "social-studies:route:fuel-for-trip",
+    "group": "18+",
+    "objective": "After this, an adult can scale a per-distance fuel rate to a whole route, shown by entering the litres before the trip is planned.",
+    "standard": "UNVERIFIED",
+    "why": "A route is 320 kilometres long. The car uses 8 litres of fuel for every 100 kilometres. How many litres does the trip need? Fit: no school code; adult route fuel arithmetic.",
+    "buildsOn": ["social-studies:route:travel-time"],
+    "useElsewhere": ["chemistry: a per-unit amount scaled to a total is the same proportion step used to make up a mix"]
+  },
+  {
+    "id": "social-studies:region:district-area",
+    "group": "18+",
+    "objective": "After this, an adult can divide a total area into equal parts, shown by entering one district's area before the boundaries are drawn.",
+    "standard": "UNVERIFIED",
+    "why": "A region of 600 square kilometres is split into 12 equal districts. What is the area of each district? Fit: no school code; adult area split arithmetic.",
+    "buildsOn": ["social-studies:region:density"],
+    "useElsewhere": ["math: an equal split of a total is the division step used for any share"]
+  },
+  {
+    "id": "social-studies:place:grid-pythagoras",
+    "group": "18+",
+    "objective": "After this, an adult can find a straight-line distance on a grid from two legs, shown by entering the kilometres before the map is checked.",
+    "standard": "UNVERIFIED",
+    "why": "On a city grid, one block is 2 kilometres in each direction. A park is 4 blocks east and 3 blocks north of a station. What is the straight-line distance from the station to the park? Fit: no school code; adult grid distance arithmetic.",
+    "buildsOn": ["social-studies:place:latlon-pin"],
+    "useElsewhere": ["math: the right-triangle step for a diagonal is the same Pythagoras step used to size a rectangle's corner"]
+  },
+  {
+    "id": "social-studies:compare:ferry-or-road",
+    "group": "18+",
+    "objective": "After this, an adult can compare two routes by time, not by distance, shown by entering the faster route before the choice is made.",
+    "standard": "UNVERIFIED",
+    "why": "A ferry route is 18 kilometres and sails at 12 kilometres per hour. A road route is 30 kilometres and drives at 60 kilometres per hour. Which is quicker, and by how many minutes? Fit: no school code; adult route time arithmetic.",
+    "buildsOn": ["social-studies:route:fastest-or-shortest"],
+    "useElsewhere": ["physics: distance over speed gives the time for a moving trip, the same rate step used for a cart"]
+  },
+  {
+    "id": "social-studies:region:wall-map-area",
+    "group": "18+",
+    "objective": "After this, an adult can convert a map area at a ratio scale into ground area, shown by entering the square kilometres before the region is marked.",
+    "standard": "UNVERIFIED",
+    "why": "A wall map is drawn to a scale of 1 to 1,000,000, so 1 centimetre on the map is 10 kilometres on the ground. A rectangle on the map is 2 centimetres by 3 centimetres. What area does it cover in square kilometres? Fit: no school code; adult map area arithmetic.",
+    "buildsOn": ["social-studies:route:scale-ratio"],
+    "useElsewhere": ["math: a rectangle's area on the map is a product of two converted sides"]
   }
 ]
