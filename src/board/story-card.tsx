@@ -1,26 +1,92 @@
-import { PR_URL_BASE, STATUS_LABEL, type LiveStory } from "./board-data";
+import {
+  GAME_STATUS_LABEL,
+  leadCounts,
+  PR_URL_BASE,
+  STATUS_LABEL,
+  type LiveStory,
+} from "./board-data";
+import { CardCharacter } from "./card-characters";
+import { CardThemeChip } from "./card-icons";
 
 /**
- * One story card. Every dynamic string — the snapshot title and, in
- * particular, live PR titles fetched from GitHub — is rendered as a
- * React text child only. React escapes text children, so a PR title
- * containing markup renders as plain text, never as HTML. No raw-HTML
- * injection API is used anywhere on this page.
+ * One story card, styled as a case file. Every dynamic string — the
+ * snapshot title and, in particular, live PR titles fetched from
+ * GitHub — is rendered as a React text child only. React escapes text
+ * children, so a PR title containing markup renders as plain text,
+ * never as HTML. No raw-HTML injection API is used anywhere on this
+ * page.
  */
-export function StoryCard({ story }: { story: LiveStory }) {
+export function StoryCard({
+  story,
+  caseNo,
+  celebrated,
+  blocked,
+  onSelect,
+}: {
+  story: LiveStory;
+  /** 1-based position within the story's lane (see caseNumber in board-data). */
+  caseNo?: number;
+  /** True only for the one case celebrated on this visit (step 12). */
+  celebrated?: boolean;
+  /** True when the case waits on a story that is not done (blockedIndexes). */
+  blocked?: boolean;
+  onSelect?: (story: LiveStory, opener: HTMLElement) => void;
+}) {
+  const leads = leadCounts(story);
   return (
-    <article className="board-card" data-testid="story-card" data-status={story.status}>
+    <article
+      className={celebrated ? "board-card board-card-celebrated" : "board-card"}
+      data-testid="story-card"
+      data-status={story.status}
+      {...(celebrated ? { "data-celebrated": "true" } : {})}
+    >
       <div className="board-card-top">
-        <h4 className="board-card-title">{story.title}</h4>
-        <span className={`board-pill board-pill-${story.status}`}>{STATUS_LABEL[story.status]}</span>
+        <CardCharacter story={story} />
+        {caseNo != null ? <span className="board-case-no">Case {caseNo}</span> : null}
+        <span className="board-region-badge">{story.lane}</span>
+        <span className="board-card-status-group">
+          <CardThemeChip story={story} />
+          {story.status === "done" ? (
+            <>
+              <span className="board-case-stamp" aria-hidden="true">
+                Case closed
+              </span>
+              <span className="sr-only">Case closed (done)</span>
+            </>
+          ) : (
+            <span className={`board-pill board-pill-${story.status} board-card-status`}>
+              {GAME_STATUS_LABEL[story.status]}{" "}
+              <span className="board-plain">({STATUS_LABEL[story.status].toLowerCase()})</span>
+            </span>
+          )}
+        </span>
       </div>
-      <p className="board-card-lane">{story.lane}</p>
+      <h4 className="board-card-title">
+        <button
+          type="button"
+          className="board-card-title-button"
+          onClick={(e) => onSelect?.(story, e.currentTarget)}
+        >
+          {story.title}
+        </button>
+      </h4>
+      <p className="board-card-meta-row">
+        <span className="board-mono">{story.id}</span>
+        {blocked ? (
+          <span className="board-blocked-marker" title="Waits on a case that is not closed yet">
+            Blocked
+          </span>
+        ) : null}
+      </p>
       <p className="board-card-wait">
         {story.status === "done" ? (
-          story.waitsOn
+          <>
+            <strong>Note:</strong> {story.waitsOn}
+          </>
         ) : (
           <>
-            <strong>Waits on:</strong> {story.waitsOn}
+            <strong>Needs a clue from:</strong> <span className="board-plain">(waits on)</span>{" "}
+            {story.waitsOn}
           </>
         )}
       </p>
@@ -31,6 +97,12 @@ export function StoryCard({ story }: { story: LiveStory }) {
           </span>
         ) : null}
         {story.inferred ? <span className="board-inferred">inferred</span> : null}
+        {leads.total > 0 ? (
+          <span className="board-card-leads" title="Leads are pull requests; solved means merged">
+            {leads.total} lead{leads.total === 1 ? "" : "s"}, {leads.solved} solved{" "}
+            <span className="board-plain">(pull requests; solved = merged)</span>
+          </span>
+        ) : null}
       </div>
       {story.prs.length > 0 ? (
         <ul className="board-prs">
