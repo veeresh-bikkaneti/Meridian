@@ -13,7 +13,7 @@ import mathModule from "./index.ts";
 it("adapter reads the rows from both data files", () => {
   const rows = allMathRows();
   // docs/scaling/math/number/items.json (30) + applied/items.json (35).
-  assert.equal(rows.length, 65);
+  assert.equal(rows.length, 71);
   for (const row of rows) {
     assert.equal(typeof row.id, "string");
     assert.ok(row.id.length > 0);

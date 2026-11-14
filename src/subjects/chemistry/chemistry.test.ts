@@ -12,7 +12,7 @@ import chemistryModule from "./index.ts";
 it("adapter reads every curated chemistry row", () => {
   const rows = allChemistryRows();
   // docs/scaling/chemistry/items.json.
-  assert.equal(rows.length, 18);
+  assert.equal(rows.length, 24);
   for (const row of rows) {
     assert.ok(row.id.length > 0);
     assert.ok(["7-10", "10-18", "18+"].includes(row.group));
@@ -45,7 +45,7 @@ it("every curated row is listed except the held one, and the held one stays out"
   const held = new Set(["chemistry:water:where", "chemistry:elements:detective"]);
   const listed = new Set(CHEMISTRY_ITEM_IDS);
   const rows = allChemistryRows();
-  assert.equal(rows.length, 18);
+  assert.equal(rows.length, 24);
   for (const row of rows) {
     if (held.has(row.id)) {
       assert.ok(!listed.has(row.id), `held row must stay out: ${row.id}`);

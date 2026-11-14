@@ -11,7 +11,7 @@ import physicsModule from "./index.ts";
 it("adapter reads every curated physics row", () => {
   const rows = allPhysicsRows();
   // docs/scaling/physics/items.json.
-  assert.equal(rows.length, 24);
+  assert.equal(rows.length, 30);
   for (const row of rows) {
     assert.ok(row.id.length > 0);
     assert.ok(["7-10", "10-18", "18+"].includes(row.group));
