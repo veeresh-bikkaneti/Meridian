@@ -45,6 +45,7 @@ import {
   type DetectiveManifest,
 } from "../game/loop/detective/detective-audio.ts";
 import { soundAudible } from "../game/audio/play-guards.ts";
+import { claimVoice, type VoiceClaim } from "../game/audio/voice-channel.ts";
 import { isSoundEnabled, onSoundChanged } from "../game/audio/sfx.ts";
 
 /** The slice of HTMLAudioElement the player touches. */
@@ -135,12 +136,27 @@ export function createCelebrationLinePlayer(
         0,
       );
       if (!clip) return; // uncovered → silent, by the fallback law
+      // One voice at a time: the celebration is automatic, so it waits
+      // its turn and stays silent if someone else is speaking.
+      let claim: VoiceClaim | null = null;
+      const stopForOtherVoice = () => {
+        try {
+          currentAudio?.pause();
+        } catch {
+          /* element already gone — the line settles via its own path */
+        }
+      };
+      claim = claimVoice("summary-celebration", stopForOtherVoice, {
+        userInitiated: false,
+      });
+      if (!claim) return;
       await new Promise<void>((resolve) => {
         let settled = false;
         const done = () => {
           if (settled) return;
           settled = true;
           currentAudio = null;
+          claim?.release();
           onSpeaking(false);
           resolve();
         };

@@ -110,15 +110,17 @@ export function FeatureRequestForm() {
 
   return (
     <section className="board-section" aria-labelledby="board-feature-heading">
-      <h2 id="board-feature-heading">For parents and teachers: suggest a feature</h2>
+      <h2 id="board-feature-heading">Send a tip to the detectives</h2>
       <p className="board-muted">
-        Ideas from grown-ups go to the project owner. Nothing you send here is shown on this board.
+        This is the feature-request form for grown-ups. Suggest a feature, or tell the detectives
+        what would help your kids learn. Ideas go to the project owner and are never shown on this
+        board.
       </p>
 
       <div role="status" className="empty:-mt-2">
         {result?.status === "sent" ? (
           <p className="board-notice" data-testid="feature-request-sent">
-            Thanks — your idea was sent.
+            Thanks — your tip was sent.
           </p>
         ) : null}
       </div>
@@ -215,7 +217,7 @@ export function FeatureRequestForm() {
         </div>
 
         <button type="submit" className="board-submit" disabled={sending}>
-          {sending ? "Sending…" : "Send idea"}
+          {sending ? "Sending…" : "Send tip"}
         </button>
       </form>
     </section>
