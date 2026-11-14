@@ -39,11 +39,11 @@ export const CHEMISTRY_ANSWERS: Record<string, AnswerEntry> = {
   "chemistry:pieces:rebuild": {
     prompt: "The bridge model is too short. Can the same pieces make a longer one?",
     choices: [
-      "Yes — take it apart and build it longer with the same pieces",
+      "Yes — rebuild it longer with the same pieces",
       "No — short pieces can never make a longer bridge",
       "Only if you add new pieces",
     ],
-    correct: "Yes — take it apart and build it longer with the same pieces",
+    correct: "Yes — rebuild it longer with the same pieces",
     derivation:
       "The same pieces can make a new shape — take the model apart and rebuild it, using every piece and adding none.",
   },
@@ -92,22 +92,22 @@ export const CHEMISTRY_ANSWERS: Record<string, AnswerEntry> = {
     prompt:
       "The puddle disappeared and the sky has a cloud. Where did the water go, and how does it come back?",
     choices: [
-      "Up into the air, into a cloud, and back as rain or snow",
+      "Into the air, a cloud, back as rain or snow",
       "Down into the ground, where it stays for good",
       "It disappeared for good",
     ],
-    correct: "Up into the air, into a cloud, and back as rain or snow",
+    correct: "Into the air, a cloud, back as rain or snow",
     derivation: "The water went up into the air, into a cloud, and comes back as rain or snow.",
   },
   "chemistry:reactions:new-look": {
     prompt:
       "A shop counter stirs two plain substances. The picture may bubble. Is that still the same stuff?",
     choices: [
-      "It might be a new substance — a new look can mean a reaction happened",
+      "It might be a new substance",
       "It is certainly the same stuff",
       "It is certainly a new substance",
     ],
-    correct: "It might be a new substance — a new look can mean a reaction happened",
+    correct: "It might be a new substance",
     derivation:
       "Mixing may make a new substance with different properties — a new look can mean a reaction happened.",
   },
@@ -126,20 +126,12 @@ export const CHEMISTRY_ANSWERS: Record<string, AnswerEntry> = {
     prompt: "Three unmarked blocks could be three different materials. Which test tells them apart?",
     choices: [
       "Whether each block dissolves in water",
-      "Whether each block floats",
+      "How heavy each block is",
       "Which block looks the shiniest",
     ],
     correct: "Whether each block dissolves in water",
     derivation:
       "A material can be told apart by its properties — here, whether it dissolves in water.",
-  },
-  "chemistry:elements:detective": {
-    prompt:
-      "Sodium and potassium are both soft, shiny metals in the same column of the periodic table. Which one reacts more with oxygen?",
-    choices: ["Potassium", "Sodium", "They react the same"],
-    correct: "Potassium",
-    derivation:
-      "Further down the same column, the metal reacts more strongly — potassium reacts more with oxygen than sodium.",
   },
   "chemistry:reactions:rate": {
     prompt:

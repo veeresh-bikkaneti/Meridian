@@ -24,8 +24,8 @@ it("adapter reads every curated chemistry row", () => {
 it("the live slice holds every playable row, each in its own band", () => {
   const units = chemistryUnits();
   assert.equal(units.length, CHEMISTRY_ITEM_IDS.length);
-  assert.equal(units.length, 17);
-  const perBand = { "7-10": 5, "10-18": 9, "18+": 3 } as const;
+  assert.equal(units.length, 16);
+  const perBand = { "7-10": 5, "10-18": 8, "18+": 3 } as const;
   for (const group of ["7-10", "10-18", "18+"] as const) {
     const items = itemsForGroup(group);
     assert.equal(items.length, perBand[group], group);
@@ -35,15 +35,20 @@ it("the live slice holds every playable row, each in its own band", () => {
 
 it("every curated row is listed except the held one, and the held one stays out", () => {
   // Stream A sort (2026-11-13): all 9 unplayed rows fit multiple choice
-  // except chemistry:water:where, held — its skill is pointing at water
-  // bodies on the globe, and as text its question is ambiguous (the
-  // vanished puddle's water vs the lake's).
+  // except two held ones — chemistry:water:where (its skill is
+  // pointing at water bodies on the globe, and as text its question is
+  // ambiguous: the vanished puddle's water vs the lake's) and
+  // chemistry:elements:detective (held on reviewer BLOCKED verdict,
+  // 2026-11-14: its answer needs the down-column reactivity trend,
+  // which its row never states, and the 18+ explain item teaches
+  // same-column → "similar way").
+  const held = new Set(["chemistry:water:where", "chemistry:elements:detective"]);
   const listed = new Set(CHEMISTRY_ITEM_IDS);
   const rows = allChemistryRows();
   assert.equal(rows.length, 18);
   for (const row of rows) {
-    if (row.id === "chemistry:water:where") {
-      assert.ok(!listed.has(row.id), "held row must stay out");
+    if (held.has(row.id)) {
+      assert.ok(!listed.has(row.id), `held row must stay out: ${row.id}`);
     } else {
       assert.ok(listed.has(row.id), `row not listed: ${row.id}`);
     }
@@ -99,6 +104,6 @@ it("the subject module matches contract I1 and is released", () => {
   assert.equal(chemistryModule.id, "chemistry");
   assert.equal(chemistryModule.released, true);
   assert.deepEqual(chemistryModule.groups, ["7-10", "10-18", "18+"]);
-  assert.equal(chemistryModule.units.length, 17);
+  assert.equal(chemistryModule.units.length, 16);
   assert.equal(typeof chemistryModule.load, "function");
 });

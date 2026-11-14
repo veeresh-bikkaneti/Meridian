@@ -10,11 +10,14 @@ screens, routes, pages or audio.
 ## Done
 
 - `src/subjects/chemistry/items.ts`: `CHEMISTRY_ITEM_IDS` extended
-  from 9 to 17 — the first 3 per band unchanged, new rows appended
+  from 9 to 16 — the first 3 per band unchanged, new rows appended
   after them (cross-subject links first, buildsOn order kept):
   7-10 +magnet, +rebuild; 10-18 +particles, +water:cycle, +new-look,
-  +rust, +identify, +detective; 18+ unchanged (no unplayed rows).
-- `src/subjects/chemistry/answers.ts`: 8 new `AnswerEntry` records,
+  +rust, +identify; 18+ unchanged (no unplayed rows).
+  `chemistry:elements:detective` was listed in the first commit and
+  held after the round-1 reviewer verdict (BLOCKED, 2026-11-14) —
+  see Sort.
+- `src/subjects/chemistry/answers.ts`: 7 new `AnswerEntry` records,
   each with a one-line derivation. Wording follows
   `docs/scaling/chemistry/fact-notes.md`: rust is iron exposed to
   oxygen and water (never "air"); new-look says "may", never "always".
@@ -22,13 +25,15 @@ screens, routes, pages or audio.
   answers, so no row needs the typed-number kind (not on main;
   Stream B's PR #468 is a draft, unmerged).
 - `src/subjects/chemistry/chemistry.test.ts`: counts updated
-  (17 total; 5/9/3 per band); new sort-coverage test (every row
-  listed except the held one) and a test pinning that no chemistry
-  answer is numeric or year-based.
+  (16 total; 5/8/3 per band); new sort-coverage test (every row
+  listed except the two held rows) and a test pinning that no
+  chemistry answer is numeric or year-based.
 - `tests/e2e/chemistry-subject.spec.ts`: two new tests — one new
   item per band with new items (7-10 magnet, 10-18 particles),
-  played through to the result via Next case. 18+ has no unplayed
-  rows, so no new 18+ test.
+  played through to the result via Next case; the 10-18 walk is
+  extended through water:cycle and new-look to rust, so 3 new
+  10-18 items play in-app. 18+ has no unplayed rows, so no new
+  18+ test.
 - `playwright.config.ts`: new `chemistry-subject` project (mirrors
   `math-subject`, 1440×900). Deviation from the brief's file list —
   required: the spec had no project at all, so `npx playwright test`
@@ -38,21 +43,26 @@ screens, routes, pages or audio.
 
 ## Sort (all 9 unplayed rows read)
 
-- Fits multiple choice (8): magnet, rebuild (7-10); particles,
-  water:cycle, new-look, rust, identify, detective (10-18).
+- Fits multiple choice (7): magnet, rebuild (7-10); particles,
+  water:cycle, new-look, rust, identify (10-18).
 - Fits a typed number (0): no chemistry row has a numeric answer.
-- Needs a scene / held (1): `chemistry:water:where` (7-10) — its
+- Needs a scene / held (2): `chemistry:water:where` (7-10) — its
   skill is pointing at water bodies on the globe, and as text its
-  question is ambiguous (the vanished puddle's water vs the lake's).
-- Flagged for educator review (not a judgment call, a settled fact
-  the row does not state): `chemistry:elements:detective` — the
-  answer relies on the Group 1 trend (reactivity increases down the
-  column); the row states the column pattern but not the trend
-  direction. Council note #6 also cautions against dealing HS-PS1-1
-  content to grade 5; the row says no electron-counting is required.
+  question is ambiguous (the vanished puddle's water vs the lake's);
+  `chemistry:elements:detective` (10-18) — held on the round-1
+  reviewer verdict (BLOCKED, 2026-11-14): its answer needs the
+  down-column reactivity trend, which its row never states, and the
+  18+ explain item teaches same-column → "similar way", so "They
+  react the same" is a reasonable pick from the game's own teaching.
+  The row needs the trend stated, or a re-band to 18+ per council
+  note #6, before it can ship. Council note #6 also cautions
+  against dealing HS-PS1-1 content to grade 5; the row says no
+  electron-counting is required.
 - Disclosed limit: `chemistry:water:cycle` — the question tests the
   cycle path, not the ordering performance the objective names;
-  ordering still needs a scene.
+  ordering still needs a scene. The correct choice itself lists the
+  path in order, so the reviewer accepted it as shipped — flagged
+  for educator sign-off.
 
 ## Tests (final tree, targeted only)
 
@@ -69,7 +79,37 @@ screens, routes, pages or audio.
 
 ## Reviewer verdict (separate seat)
 
-(To be pasted verbatim in the PR body once the seat reports.)
+**Round 1 (2026-11-14 ~04:29 UTC, on tip `e44e0308`): BLOCKED** —
+`chemistry:elements:detective` — the correct choice is not
+derivable from the row's why/objective; nothing states the
+direction of the Group 1 trend, and the sibling 18+ item
+`chemistry:reactions:explain` teaches same-column → "It reacts in
+a similar way", so a learner applying the game's own teaching
+reasonably picks "They react the same". Exact fix: hold detective
+out of `CHEMISTRY_ITEM_IDS` until the row states the down-column
+trend or is re-banded 18+ per council note #6. Nits: (1)
+water:cycle tests the path, not the ordering its objective names —
+acceptable as shipped, flag for educator sign-off; (2) identify's
+"Whether each block floats" distractor sits uneasily with the
+objective's "Floating is not scored"; (3) longest new choices
+(new-look 69, rebuild 60, water:cycle 55 chars) exceed every
+shipped choice (~45) and the chemistry project runs at 1440×900
+only — shorten or add a 390px check; (4) E2E plays only 2 of the
+8 new items — consider walking the 10-18 case to rust. Playwright
+config deviation ACCEPTED (mirrors math-subject; without it the
+spec runs 0 tests, a pre-existing gap from #439).
+
+**Cure (second commit, tip TBD):** detective held out of
+`CHEMISTRY_ITEM_IDS` and its answer removed (counts 17→16, 10-18
+9→8, held-set test covers both held rows); identify's float
+distractor replaced with "How heavy each block is"; new-look
+correct shortened to "It might be a new substance" (28 chars),
+rebuild to "Yes — rebuild it longer with the same pieces" (44),
+water:cycle to "Into the air, a cloud, back as rain or snow" (43) —
+full reasoning stays in the derivations; 10-18 E2E walk extended
+through water:cycle and new-look to rust (3 new 10-18 items play
+in-app). **Round 2 re-vote owed on the cured tip before the PR
+opens.**
 
 ## Not checked
 
@@ -82,6 +122,9 @@ screens, routes, pages or audio.
 
 - `chemistry:water:where` — needs a scene (globe taps); a follow-up
   if a scene interaction lands for it.
+- `chemistry:elements:detective` — needs its row to state the
+  down-column reactivity trend, or a re-band to 18+ per council
+  note #6; a follow-up once the row is fixed.
 - The `physics-subject.spec.ts` project gap (same as chemistry's
   was) — the Physics stream's call, not this one.
 - Adopting `kind: "number"` / `followUp` in chemistry answers —

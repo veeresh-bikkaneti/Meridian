@@ -138,7 +138,7 @@ test("7-10 new item (magnet) plays through to the result", async ({ page, contex
   expect(errors).toEqual([]);
 });
 
-test("10-18 new item (particles) plays through to the result", async ({ page, context }) => {
+test("10-18 new items (particles, rust) play through to the result", async ({ page, context }) => {
   await setup(context, "10-18");
   const errors = watchErrors(page);
   await openChemistryCase(page);
@@ -152,6 +152,13 @@ test("10-18 new item (particles) plays through to the result", async ({ page, co
   await solve(page, "It stays the same");
   await nextCase(page, "chemistry:states:particles");
   await solve(page, "The water, from solid to liquid to gas");
+  await expect(page.getByTestId("chemistry-result")).toBeVisible();
+  await nextCase(page, "chemistry:water:cycle");
+  await solve(page, "Into the air, a cloud, back as rain or snow");
+  await nextCase(page, "chemistry:reactions:new-look");
+  await solve(page, "It might be a new substance");
+  await nextCase(page, "chemistry:reactions:rust");
+  await solve(page, "Yes — iron exposed to oxygen and water turns to rust");
   await expect(page.getByTestId("chemistry-result")).toBeVisible();
   await expect(page.getByTestId("chemistry-used-in")).toContainText("You just used this in…");
   expect(errors).toEqual([]);
