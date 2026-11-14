@@ -259,7 +259,7 @@
     "group": "18+",
     "objective": "After this, an adult can compute a bill with two kinds of item, shown by entering the total coins before the ticket is printed.",
     "standard": "UNVERIFIED",
-    "why": "A ferry ticket costs 12 coins for each adult. A bicycle costs an extra 3 coins. What does a trip for 4 adults with 2 bicycles cost? Fit: no school code; neutral adult cost arithmetic.",
+    "why": "A ferry ticket costs 12 coins for each adult. Each bicycle costs an extra 3 coins. What does a trip for 4 adults with 2 bicycles cost? Fit: no school code; neutral adult cost arithmetic.",
     "buildsOn": [
       "general-knowledge:mixed:everest-vs-falls",
       "math-number:place:compare"

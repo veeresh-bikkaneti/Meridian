@@ -383,7 +383,7 @@
     "group": "18+",
     "objective": "After this, an adult can compute each sling's share of a total force, shown by entering each sling's force before the load is lowered.",
     "standard": "UNVERIFIED",
-    "why": "A load weighs 500 newtons. Two identical slings share it evenly. How many newtons does each sling carry? Fit: no code fits; this is 18+ enrichment past MS-PS2-2.",
+    "why": "A load weighs 500 newtons. In an ideal case, two identical slings share it evenly. How many newtons does each sling carry? Fit: no code fits; this is 18+ enrichment past MS-PS2-2.",
     "buildsOn": [
       "physics:push:table"
     ],
@@ -409,12 +409,12 @@
     "group": "18+",
     "objective": "After this, an adult can compute a distance from speed and a round-trip time, shown by entering the distance to the wall before the echo is played.",
     "standard": "UNVERIFIED",
-    "why": "A card says sound travels 340 metres each second in air. A shout returns as an echo 2 seconds after it is made. How far away is the wall? Fit: no exact code; MS-PS1-4 is the nearest.",
+    "why": "A card says sound travels 340 metres each second in air. A shout returns as an echo 2 seconds after it is made, having travelled to the wall and back. How far away is the wall? Fit: no exact code; MS-PS1-4 is the nearest.",
     "buildsOn": [
       "physics:sound:medium"
     ],
     "useElsewhere": [
-      "social-studies: a distance found from a timed trip is the same measure a map scale turns into a real route length"
+      "geography: a distance found from a timed trip is the same measure a map scale turns into a real route length"
     ]
   },
   {
@@ -440,7 +440,7 @@
       "physics:arrive:unit-rate"
     ],
     "useElsewhere": [
-      "social-studies: a route with two legs adds the time of each leg, as a map route does with its distances"
+      "everyday life: a planned trip with two legs adds the time of each leg, as it adds up its distances"
     ]
   },
   {
