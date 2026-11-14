@@ -422,6 +422,13 @@ export default defineConfig({
       },
     },
     {
+      name: "chemistry-subject",
+      testMatch: /chemistry-subject\.spec\.ts/,
+      use: {
+        viewport: { width: 1440, height: 900 },
+      },
+    },
+    {
       name: "crash-watchdog",
       testMatch: /crash-watchdog\.spec\.ts/,
     },

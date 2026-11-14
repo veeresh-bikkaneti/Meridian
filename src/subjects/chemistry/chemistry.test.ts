@@ -21,14 +21,42 @@ it("adapter reads every curated chemistry row", () => {
   }
 });
 
-it("the live slice holds up to 3 items per band, each in its own band", () => {
+it("the live slice holds every playable row, each in its own band", () => {
   const units = chemistryUnits();
   assert.equal(units.length, CHEMISTRY_ITEM_IDS.length);
-  assert.equal(units.length, 9);
+  assert.equal(units.length, 17);
+  const perBand = { "7-10": 5, "10-18": 9, "18+": 3 } as const;
   for (const group of ["7-10", "10-18", "18+"] as const) {
     const items = itemsForGroup(group);
-    assert.equal(items.length, 3, group);
+    assert.equal(items.length, perBand[group], group);
     for (const item of items) assert.equal(item.group, group);
+  }
+});
+
+it("every curated row is listed except the held one, and the held one stays out", () => {
+  // Stream A sort (2026-11-13): all 9 unplayed rows fit multiple choice
+  // except chemistry:water:where, held — its skill is pointing at water
+  // bodies on the globe, and as text its question is ambiguous (the
+  // vanished puddle's water vs the lake's).
+  const listed = new Set(CHEMISTRY_ITEM_IDS);
+  const rows = allChemistryRows();
+  assert.equal(rows.length, 18);
+  for (const row of rows) {
+    if (row.id === "chemistry:water:where") {
+      assert.ok(!listed.has(row.id), "held row must stay out");
+    } else {
+      assert.ok(listed.has(row.id), `row not listed: ${row.id}`);
+    }
+  }
+});
+
+it("no chemistry answer is numeric or year-based, so the value/clock clauses are vacuous here", () => {
+  // No chemistry row has a numeric answer (nothing needs the typed-number
+  // kind) and none is year-based, so no entry carries value and no test
+  // needs a pinned clock. If a future row adds either, this test must go.
+  for (const [id, entry] of Object.entries(CHEMISTRY_ANSWERS)) {
+    assert.equal(entry.value, undefined, id);
+    assert.ok(!/\b(19|20)\d\d\b/.test(`${entry.prompt} ${entry.derivation}`), id);
   }
 });
 
@@ -71,6 +99,6 @@ it("the subject module matches contract I1 and is released", () => {
   assert.equal(chemistryModule.id, "chemistry");
   assert.equal(chemistryModule.released, true);
   assert.deepEqual(chemistryModule.groups, ["7-10", "10-18", "18+"]);
-  assert.equal(chemistryModule.units.length, 9);
+  assert.equal(chemistryModule.units.length, 17);
   assert.equal(typeof chemistryModule.load, "function");
 });

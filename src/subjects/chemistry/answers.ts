@@ -30,6 +30,23 @@ export const CHEMISTRY_ANSWERS: Record<string, AnswerEntry> = {
     correct: "Whether it bends",
     derivation: "The spoons were sorted by flexibility — whether the material bends.",
   },
+  "chemistry:materials:magnet": {
+    prompt: "A pile of bits looks the same. Which ones will jump to the magnet?",
+    choices: ["The iron bits", "The wooden bits", "The plastic bits"],
+    correct: "The iron bits",
+    derivation: "A magnet pulls iron, but it does not pull wood or plastic.",
+  },
+  "chemistry:pieces:rebuild": {
+    prompt: "The bridge model is too short. Can the same pieces make a longer one?",
+    choices: [
+      "Yes — take it apart and build it longer with the same pieces",
+      "No — short pieces can never make a longer bridge",
+      "Only if you add new pieces",
+    ],
+    correct: "Yes — take it apart and build it longer with the same pieces",
+    derivation:
+      "The same pieces can make a new shape — take the model apart and rebuild it, using every piece and adding none.",
+  },
   "chemistry:states:road-salt": {
     prompt: "Crews spread salt on an icy road. What does the salt do to the water in the ice?",
     choices: [
@@ -59,6 +76,70 @@ export const CHEMISTRY_ANSWERS: Record<string, AnswerEntry> = {
     correct: "It stays the same",
     derivation:
       "Heating, cooling or mixing does not make matter vanish: the total weight stays the same.",
+  },
+  "chemistry:states:particles": {
+    prompt:
+      "The kettle picture goes from ice, to water, to invisible water vapour above the spout. What did the warmth change?",
+    choices: [
+      "The water, from solid to liquid to gas",
+      "The kettle's colour",
+      "The water, back into ice",
+    ],
+    correct: "The water, from solid to liquid to gas",
+    derivation: "Warmth changes water from solid ice to liquid water to invisible water vapour.",
+  },
+  "chemistry:water:cycle": {
+    prompt:
+      "The puddle disappeared and the sky has a cloud. Where did the water go, and how does it come back?",
+    choices: [
+      "Up into the air, into a cloud, and back as rain or snow",
+      "Down into the ground, where it stays for good",
+      "It disappeared for good",
+    ],
+    correct: "Up into the air, into a cloud, and back as rain or snow",
+    derivation: "The water went up into the air, into a cloud, and comes back as rain or snow.",
+  },
+  "chemistry:reactions:new-look": {
+    prompt:
+      "A shop counter stirs two plain substances. The picture may bubble. Is that still the same stuff?",
+    choices: [
+      "It might be a new substance — a new look can mean a reaction happened",
+      "It is certainly the same stuff",
+      "It is certainly a new substance",
+    ],
+    correct: "It might be a new substance — a new look can mean a reaction happened",
+    derivation:
+      "Mixing may make a new substance with different properties — a new look can mean a reaction happened.",
+  },
+  "chemistry:reactions:rust": {
+    prompt: "A metal bike sat out in the rain. It looks different. Did the material change?",
+    choices: [
+      "Yes — iron exposed to oxygen and water turns to rust",
+      "No — rain only makes it look wet",
+      "No — it only got dirty",
+    ],
+    correct: "Yes — iron exposed to oxygen and water turns to rust",
+    derivation:
+      "Iron becomes rust when it is exposed to oxygen and water — the metal itself changed.",
+  },
+  "chemistry:materials:identify": {
+    prompt: "Three unmarked blocks could be three different materials. Which test tells them apart?",
+    choices: [
+      "Whether each block dissolves in water",
+      "Whether each block floats",
+      "Which block looks the shiniest",
+    ],
+    correct: "Whether each block dissolves in water",
+    derivation:
+      "A material can be told apart by its properties — here, whether it dissolves in water.",
+  },
+  "chemistry:elements:detective": {
+    prompt:
+      "Sodium and potassium are both soft, shiny metals in the same column of the periodic table. Which one reacts more with oxygen?",
+    choices: ["Potassium", "Sodium", "They react the same"],
+    correct: "Potassium",
+    derivation:
+      "Further down the same column, the metal reacts more strongly — potassium reacts more with oxygen than sodium.",
   },
   "chemistry:reactions:rate": {
     prompt:
