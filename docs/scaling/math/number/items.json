@@ -85,7 +85,7 @@
       "code": "3.NBT.A.1",
       "source": "https://www.thecorestandards.org/Math/Content/3/NBT/"
     },
-    "why": "A school fair has 287 visitors and the sign-maker wants a round number for the banner. Is it about 200 or about 300?",
+    "why": "A sign-maker for a school fair wants a round number on the banner, because a round number is easy to read at a glance.",
     "buildsOn": [
       "math-number:place:compare"
     ],
