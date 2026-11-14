@@ -12,19 +12,20 @@
  * comment forbids.
  *
  * DetectiveHost and the detective machine are unchanged and not mounted
- * here. A subject case may report answer-blind case events through
- * onCaseEvent (open / correct / wrong / finished — never an answer
- * value or an item id): the math case uses that, only when the
- * detectivePair flag is on, to let Holmes & Watson speak their fixed
- * manifest clips (see src/subjects/math/case-voice.ts). Subjects that
- * never pass the prop stay text only, exactly as before. The win
- * fires GameApp's existing celebration through onCelebrate, on the
- * same first-win guard LoopScreen uses.
+ * here. The pair itself mounts here exactly once, through
+ * SubjectDetectiveHost (below the header): the host self-gates on
+ * detectivePair, so flag-off this case is text only, exactly as
+ * before; flag-on, the pair speaks its fixed manifest clips for the
+ * case's own flow signals. The host receives ONLY the answer-blind
+ * prop whitelist (subject-host-props.ts) — solved / wrongPick /
+ * finished booleans from this flow's state, never an item, an answer
+ * or a pick's value. The win fires GameApp's existing celebration
+ * through onCelebrate, on the same first-win guard LoopScreen uses.
  *
  * Each subject's own case component is a thin wrapper that passes its
  * title, its test-id prefix, its band items and its answer lookup.
  */
-import { useEffect, useRef, useState } from "react";
+import { Suspense, lazy, useEffect, useRef, useState } from "react";
 import type { AgeGroup, SubjectProps, UnitItem } from "../registry";
 import { getAgeGroup } from "@/game/age-profile";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
@@ -36,9 +37,15 @@ import {
   type CelebrationSpec,
 } from "@/components/celebration-copy";
 import { AnswerCard } from "./AnswerCard";
+import { buildSubjectDetectiveHostProps } from "./subject-host-props";
 import { HomeButton } from "@/components/ui/home-button";
 import { ScreenShell } from "@/components/ui/screen-shell";
 import type { AnswerFor } from "./answer";
+
+// Holmes & Watson in the subject case: lazy, like the other pair
+// hosts, so the pair's chunk is fetched only when a subject case
+// actually mounts. The host self-gates on detectivePair.
+const SubjectDetectiveHost = lazy(() => import("./SubjectDetectiveHost"));
 
 export type SubjectCaseConfig = {
   /** Subject title as kids see it ("Math", "Physics", …). */
@@ -51,9 +58,6 @@ export type SubjectCaseConfig = {
   answerFor: AnswerFor;
 };
 
-/** Answer-blind case events a subject wrapper may listen to. */
-export type SubjectCaseEvent = "open" | "correct" | "wrong" | "finished";
-
 export function SubjectCase({
   title,
   testIdPrefix,
@@ -62,14 +66,10 @@ export function SubjectCase({
   group,
   onExit,
   onCelebrate,
-  onCaseEvent,
 }: SubjectCaseConfig &
   SubjectProps & {
     /** GameApp's celebration trigger (the same one LoopScreen receives). */
     onCelebrate?: (spec: CelebrationSpec) => void;
-    /** Answer-blind case events (see the header). Optional: subjects
-     * that never pass it behave exactly as before. */
-    onCaseEvent?: (event: SubjectCaseEvent) => void;
   }) {
   const reduced = usePrefersReducedMotion();
   // The registry passes the session's group; fall back to the stored
@@ -80,8 +80,6 @@ export function SubjectCase({
   const [picked, setPicked] = useState<string | null>(null);
   const [solved, setSolved] = useState(false);
   const headingRef = useRef<HTMLHeadingElement | null>(null);
-  const openFiredRef = useRef(false);
-  const finishedFiredRef = useRef(false);
 
   // Arrival focus, the LoopScreen pattern: land focus on the heading so
   // it is never stranded on the Home card that opened the case.
@@ -89,14 +87,6 @@ export function SubjectCase({
     const el = headingRef.current;
     if (el && typeof el.focus === "function") el.focus({ preventScroll: true });
   }, []);
-
-  // "open" fires once per mount, and only once a listener exists (the
-  // math wrapper passes one only after its flag resolves on).
-  useEffect(() => {
-    if (!onCaseEvent || openFiredRef.current) return;
-    openFiredRef.current = true;
-    onCaseEvent("open");
-  }, [onCaseEvent]);
 
   const item = items[index] ?? null;
   const answer = item ? answerFor(item.id) : null;
@@ -116,20 +106,12 @@ export function SubjectCase({
     if (choice === answer.correct) {
       setSolved(true);
       setPicked(null);
-      onCaseEvent?.("correct");
-      // "finished": a correct pick on the band's LAST item, first
-      // time per mount only (the Next-case cycle can deal it again).
-      if (index === items.length - 1 && !finishedFiredRef.current) {
-        finishedFiredRef.current = true;
-        onCaseEvent?.("finished");
-      }
       if (onCelebrate && !hasCelebratedFirstWin()) {
         markFirstWinCelebrated();
         onCelebrate(celebrationSpec("mystery-solved", "first-win"));
       }
     } else {
       setPicked(choice);
-      onCaseEvent?.("wrong");
     }
   };
 
@@ -151,6 +133,23 @@ export function SubjectCase({
     >
 
       <div className="mt-6 grid gap-4">
+        {/* Holmes & Watson (flag-gated inside the host, default off =
+            not rendered at all). Props come from the answer-blind
+            whitelist builder ONLY (subject-host-props.ts): the pair
+            never receives the item, the answer, or a pick's value.
+            display:contents keeps this layout identical, mirroring
+            LoopScreen's detective host slot. */}
+        <div style={{ display: "contents" }} data-testid="subject-detective-host-slot">
+          <Suspense fallback={null}>
+            <SubjectDetectiveHost
+              {...buildSubjectDetectiveHostProps({
+                solved,
+                wrongPick: picked !== null && !solved,
+                finished: solved && index === items.length - 1,
+              })}
+            />
+          </Suspense>
+        </div>
         <ClueCard tier={title} index={0} text={item.why} revealed reduced={reduced} />
         {!solved ? (
           <AnswerCard
