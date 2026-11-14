@@ -10,6 +10,11 @@
  * did: area-by-squares (rows of squares) and trip-cost (example
  * prices, labelled as such in the question, per the screened-topics
  * limit for money questions).
+ *
+ * The v2 wave adds three entries, each taken straight from its row's
+ * why: compass-clue (the direction the why's steps land on),
+ * fastest-or-shortest and time-zones (both computed from the numbers
+ * their whys carry).
  */
 import type { AnswerEntry } from "../shared/answer.ts";
 
@@ -81,6 +86,27 @@ export const SOCIAL_STUDIES_ANSWERS: Record<string, AnswerEntry> = {
     correct: "That curved-looking path is the shortest route on the round Earth",
     derivation:
       "The Earth is round: the shortest surface route follows a great circle, which looks curved on a flat map.",
+  },
+  "social-studies:place:compass-clue": {
+    prompt:
+      "A treasure map says: two steps east of the fountain, then one step north. Where is the treasure, compared with the fountain?",
+    choices: ["North-east of the fountain", "South-east of the fountain", "North-west of the fountain"],
+    correct: "North-east of the fountain",
+    derivation: "East moves you to the right on the map and north moves you up, so the steps land north-east of the fountain.",
+  },
+  "social-studies:route:fastest-or-shortest": {
+    prompt:
+      "The mountain pass is 60 km, and you ride it at 20 km/h. The valley road is 90 km, and you ride it at 60 km/h. Which road gets you home first?",
+    choices: ["The valley road", "The mountain pass", "Both take the same time"],
+    correct: "The valley road",
+    derivation: "Pass: 60 ÷ 20 = 3 hours. Valley: 90 ÷ 60 = 1.5 hours, so the longer valley road gets you home first.",
+  },
+  "social-studies:compare:time-zones": {
+    prompt:
+      "Your cousin lives 6 time zones east of you. When it is 8 pm where you are, what time is it where your cousin lives?",
+    choices: ["2 am the next day", "2 pm the same day", "8 am the next day"],
+    correct: "2 am the next day",
+    derivation: "Places east of you are ahead in time: 8 pm + 6 hours = 2 am the next day.",
   },
   "social-studies:compare:trip-cost": {
     prompt:
