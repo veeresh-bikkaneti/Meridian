@@ -105,10 +105,9 @@ test("no flag needed: the card is live and the picker shows the map", async ({
     .click();
   await expect(page.getByTestId("subject-picker")).toBeVisible();
   await expect(page.getByTestId("subject-row-math")).toBeEnabled();
-  // Journals are not built yet: a disabled "Coming soon" row.
+  // Journals is playable for 7-10 (Stream D, PR D1).
   const journals = page.getByTestId("subject-row-journals");
-  await expect(journals).toBeDisabled();
-  await expect(journals).toContainText("Coming soon");
+  await expect(journals).toBeEnabled();
   expect(errors).toEqual([]);
 });
 
