@@ -45,10 +45,28 @@
  *     strip, so the portrait frame is centre-cropped by the
  *     slot's object-fit: cover — a landscape re-cut is the fix if
  *     the owner wants the full scenes.
- *   why-learn-montage-poster.webp — the film's frame at 1 s,
- *     WebP quality 82, 108,616 bytes. It is the <video> poster
+ *   why-learn-montage-poster.webp — the film's frame at 5 s (the
+ *     gravity scene: apple, pendulum, rocket over the chalkboard),
+ *     WebP quality 82, 30,670 bytes. It is the <video> poster
  *     AND the still shown under prefers-reduced-motion or when
- *     the film fails to load, so the slot never sits empty.
+ *     the film fails to load, so the slot never sits empty. It
+ *     replaced the frame at 1 s with feat/why-learn-living-atlas:
+ *     that frame sits inside the film's defective opening (see
+ *     the play window below), so the poster showed the defect
+ *     even where the film itself no longer does.
+ *
+ * ── The play window (feat/why-learn-living-atlas) ──
+ *
+ * The shipped film's first ~2.5 s are not a scene: they are a
+ * picture of the whole picker page itself, and its last ~1.5 s
+ * are a collage card. The real scenes run between them. The hero
+ * player therefore plays only the window below — it starts at
+ * LOOP_START_S and loops back to it at LOOP_END_S — and the
+ * poster's frame comes from inside the window for the same
+ * reason. This is a player-side window, separable from the film:
+ * a re-cut that drops the two defective beats ships by replacing
+ * the public film and widening the window back to the full file
+ * (start 0, end the film's duration) in this one place.
  * The film's audio is the song track (an original, fast,
  * list-driven theme in the TV science-theme style, written for
  * this card). It starts muted — browsers block audible autoplay —
@@ -59,5 +77,11 @@ export const WHY_LEARN_MONTAGE_PATH = "videos/why-learn-montage.mp4";
 
 export const WHY_LEARN_MONTAGE_POSTER_PATH = "videos/why-learn-montage-poster.webp";
 
+/** The montage's play window, in seconds (see the note above): the
+ *  hero starts here and loops back here, skipping the film's
+ *  defective opening and closing beats. */
+export const WHY_LEARN_MONTAGE_LOOP_START_S = 2.8;
+export const WHY_LEARN_MONTAGE_LOOP_END_S = 8.6;
+
 export const WHY_LEARN_MONTAGE_ALT =
-  "Montage still: a red bridge truss in front of a chalkboard reading a² + b² = c², with triangle diagrams headed Stability in Triangles.";
+  "Montage still: a chalkboard gravity scene — a red apple on a branch, a brass pendulum and a rocket lifting off, with Gravity's Pull and g = 9.8 m/s² written in chalk.";

@@ -12,8 +12,15 @@
  *
  * Gates, mirroring the house rules for moving pictures:
  * - prefers-reduced-motion (the shared hook, live on OS flips):
- *   no film at all — the montage poster (its frame at 1 s) shows
+ *   no film at all — the montage poster (its frame at 5 s) shows
  *   as a still with alt text, and no controls render.
+ * - The play window (feat/why-learn-living-atlas): the shipped
+ *   film's first and last beats are a picture of the page itself
+ *   and a collage card, not scenes, so the player starts at the
+ *   window's start and loops back to it at its end (the constants
+ *   and the full note live in why-learn-art.ts). Replay restarts
+ *   at the window's start for the same reason. The window is a
+ *   player setting, separable from the film file.
  * - A film that fails to load latches to the same poster still.
  * - Sound starts OFF (muted): browsers block audible autoplay,
  *   and a reading page should not burst into song. The toggle
@@ -32,6 +39,8 @@ import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 import { assetBase } from "@/components/storyteller-lines";
 import {
   WHY_LEARN_MONTAGE_ALT,
+  WHY_LEARN_MONTAGE_LOOP_END_S,
+  WHY_LEARN_MONTAGE_LOOP_START_S,
   WHY_LEARN_MONTAGE_PATH,
   WHY_LEARN_MONTAGE_POSTER_PATH,
 } from "@/assets/why-learn/why-learn-art";
@@ -79,10 +88,28 @@ export function WhyLearnHero() {
     }
   };
 
+  // The play window: land inside it as soon as the film can seek,
+  // and fold the playhead back to its start when it reaches the
+  // end, so the loop never shows the defective beats. The native
+  // `loop` stays on as the backstop for the file's own end.
+  const enterWindow = () => {
+    const film = videoRef.current;
+    if (film && film.currentTime < WHY_LEARN_MONTAGE_LOOP_START_S) {
+      film.currentTime = WHY_LEARN_MONTAGE_LOOP_START_S;
+    }
+  };
+
+  const keepInWindow = () => {
+    const film = videoRef.current;
+    if (film && film.currentTime >= WHY_LEARN_MONTAGE_LOOP_END_S) {
+      film.currentTime = WHY_LEARN_MONTAGE_LOOP_START_S;
+    }
+  };
+
   const replay = () => {
     const film = videoRef.current;
     if (!film) return;
-    film.currentTime = 0;
+    film.currentTime = WHY_LEARN_MONTAGE_LOOP_START_S;
     film.play().catch(() => {});
   };
 
@@ -103,6 +130,8 @@ export function WhyLearnHero() {
         tabIndex={-1}
         onPlay={() => setPlaying(true)}
         onPause={() => setPlaying(false)}
+        onLoadedMetadata={enterWindow}
+        onTimeUpdate={keepInWindow}
         onError={() => setFailed(true)}
       />
       <div className="why-learn-hero-controls">
