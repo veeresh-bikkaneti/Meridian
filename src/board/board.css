@@ -231,6 +231,9 @@
   .board-card-celebrated .board-case-stamp {
     animation: none;
   }
+  .board-card-character * {
+    animation: none;
+  }
   .board-toast {
     animation: none;
   }
@@ -240,7 +243,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 6px 8px;
-  align-items: baseline;
+  align-items: center;
 }
 
 .board-card-title {
@@ -1647,4 +1650,253 @@
 
 .board-principles span {
   color: var(--atlas-muted);
+}
+
+/* Card characters (card-characters.tsx): one small hand-drawn SVG per
+ * card, symbolizing the story's theme. One hand throughout: ink
+ * stroke, dot-eyes-and-smile faces, atlas-token fills only. Each
+ * character has ONE subtle idle motion on its .cc-anim part —
+ * transform/opacity only, 2–7s, ease-in-out — and every motion stops
+ * under prefers-reduced-motion (final block below). */
+.board-card-character {
+  width: 32px;
+  height: 32px;
+  flex: 0 0 auto;
+  display: block;
+}
+
+.board-card-character .cc-body {
+  fill: var(--surface-2);
+  stroke: var(--atlas-ink);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.board-card-character .cc-line {
+  fill: none;
+  stroke: var(--atlas-ink);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.board-card-character .cc-soft {
+  opacity: 0.55;
+}
+
+.board-card-character .cc-face {
+  fill: var(--atlas-ink);
+}
+
+.board-card-character .cc-brass {
+  fill: var(--atlas-brass);
+  stroke: var(--atlas-ink);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.board-card-character .cc-pale {
+  fill: var(--surface);
+  stroke: var(--atlas-ink);
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+
+.board-card-character .cc-pale-dot {
+  fill: var(--surface);
+}
+
+.board-card-character .cc-handle {
+  stroke: var(--atlas-ink);
+  stroke-width: 5.5;
+  stroke-linecap: round;
+}
+
+/* The one shared animation approach: the moving part carries
+ * .cc-anim, sized to its own box so rotations pivot on the part. */
+.board-card-character .cc-anim {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@keyframes cc-pulse {
+  0%,
+  100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes cc-sway {
+  0%,
+  100% {
+    transform: rotate(-10deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+}
+
+@keyframes cc-slide {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(8px);
+  }
+}
+
+@keyframes cc-wiggle {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-4deg);
+  }
+  75% {
+    transform: rotate(4deg);
+  }
+}
+
+@keyframes cc-blink {
+  0%,
+  90%,
+  100% {
+    transform: scaleY(1);
+  }
+  94% {
+    transform: scaleY(0.08);
+  }
+}
+
+@keyframes cc-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes cc-rock {
+  0%,
+  100% {
+    transform: rotate(-11deg);
+  }
+  50% {
+    transform: rotate(11deg);
+  }
+}
+
+@keyframes cc-page-lift {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-9deg);
+  }
+}
+
+@keyframes cc-rise {
+  0% {
+    transform: translateY(2px);
+    opacity: 0.3;
+  }
+  55% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-4px);
+    opacity: 0.35;
+  }
+}
+
+@keyframes cc-sway-small {
+  0%,
+  100% {
+    transform: rotate(-4deg);
+  }
+  50% {
+    transform: rotate(4deg);
+  }
+}
+
+@keyframes cc-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-1.6px);
+  }
+}
+
+.board-char-mic .cc-arcs {
+  animation: cc-pulse 2.4s ease-in-out infinite;
+}
+
+.board-char-mic .cc-arcs-late {
+  animation: cc-pulse 2.4s ease-in-out 0.35s infinite;
+}
+
+.board-char-compass .cc-needle {
+  animation: cc-sway 3.6s ease-in-out infinite;
+}
+
+.board-char-abacus .cc-bead {
+  fill: var(--atlas-brass);
+  stroke: var(--atlas-ink);
+  stroke-width: 2;
+  animation: cc-slide 3s ease-in-out infinite;
+}
+
+.board-char-wrench .cc-wrench {
+  animation: cc-wiggle 3.4s ease-in-out infinite;
+}
+
+.board-char-eye .cc-blink {
+  animation: cc-blink 4.2s ease-in-out infinite;
+}
+
+.board-char-camera .cc-reel {
+  animation: cc-spin 7s linear infinite;
+}
+
+.board-char-gear .cc-gear {
+  animation: cc-rock 4.4s ease-in-out infinite;
+}
+
+.board-char-book .cc-page {
+  fill: var(--surface);
+  stroke: var(--atlas-ink);
+  stroke-width: 2.2;
+  stroke-linejoin: round;
+  transform-origin: left bottom;
+  animation: cc-page-lift 3.2s ease-in-out infinite;
+}
+
+.board-char-flask .cc-bubbles {
+  animation: cc-rise 2.8s ease-in-out infinite;
+}
+
+.board-char-globe .cc-globe {
+  animation: cc-sway-small 4.6s ease-in-out infinite;
+}
+
+.board-char-magnifier .cc-mag {
+  animation: cc-bob 3.2s ease-in-out infinite;
+}
+
+/* Reduced motion: characters are simply present, never moving. This
+ * selector matches the specificity of the per-character rules above
+ * and comes later in the file, so it wins; the * rule in the shared
+ * reduced-motion block above is the belt to this brace. */
+@media (prefers-reduced-motion: reduce) {
+  .board-card-character .cc-anim {
+    animation: none;
+  }
 }

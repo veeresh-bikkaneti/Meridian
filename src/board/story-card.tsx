@@ -5,6 +5,7 @@ import {
   STATUS_LABEL,
   type LiveStory,
 } from "./board-data";
+import { CardCharacter } from "./card-characters";
 
 /**
  * One story card, styled as a case file. Every dynamic string — the
@@ -39,6 +40,7 @@ export function StoryCard({
       {...(celebrated ? { "data-celebrated": "true" } : {})}
     >
       <div className="board-card-top">
+        <CardCharacter story={story} />
         {caseNo != null ? <span className="board-case-no">Case {caseNo}</span> : null}
         <span className="board-region-badge">{story.lane}</span>
         {story.status === "done" ? (

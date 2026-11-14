@@ -543,6 +543,33 @@ test("board v2 game layer: next to crack is the open case that unblocks the most
   }
 });
 
+test("board card characters: every card carries one, animated live, still under reduced motion", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await openBoard(page);
+
+  const cards = page.getByTestId("story-card");
+  await expect(cards).toHaveCount(46);
+  const characters = page.locator('[data-testid="story-card"] [data-character]');
+  await expect(characters).toHaveCount(46);
+  // A real mix of themes is on show, not one glyph repeated.
+  const kinds = await characters.evaluateAll((els) => [
+    ...new Set(els.map((e) => e.getAttribute("data-character"))),
+  ]);
+  expect(kinds.length).toBeGreaterThanOrEqual(5);
+
+  // Motion is live by default on the animated part…
+  const part = page.locator('[data-testid="story-card"] .cc-anim').first();
+  const liveName = await part.evaluate((el) => getComputedStyle(el).animationName);
+  expect(liveName).not.toBe("none");
+
+  // …and reduced motion stills every character.
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  const stillName = await part.evaluate((el) => getComputedStyle(el).animationName);
+  expect(stillName).toBe("none");
+});
+
 test("board v2 game layer: reduced motion done card stamp is visible with no animation", async ({
   page,
 }) => {

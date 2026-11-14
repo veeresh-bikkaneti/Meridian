@@ -319,3 +319,16 @@ status-move buttons, story points (rationale in REPORT-C, agent-side).
 - tests/e2e/board.desktop.spec.ts 20/20 against the built artifact
   (spec adapted to the adopted views; each change + reason in
   REPORT-C). tsc clean; security-headers 10/10; build:pages green.
+
+### Card characters (2026-11-13, owner's word)
+
+- Every story card carries a small hand-drawn character symbolizing
+  the story's theme (ordered keyword mapping over lane + title in
+  `card-character-map.ts`; inline SVGs in `card-characters.tsx`),
+  each with one subtle CSS idle motion, all still under
+  prefers-reduced-motion. Counts: magnifier 8, gear 7, flask 7,
+  abacus 6, globe 5, mic 4, book 3, compass 3, camera 2, wrench 1,
+  eye 0 — 46/46, pinned by unit tests (75/75 board suites).
+- E2E 21/21 on the built artifact (one new character test); tsc
+  clean; security-headers 10/10; characters ship only in the lazy
+  board chunk. Screenshots: ~/workspace/board-v2/screenshots-D/.
