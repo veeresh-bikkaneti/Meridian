@@ -35,6 +35,9 @@ import { AnswerCard } from "./AnswerCard";
 import { HomeButton } from "@/components/ui/home-button";
 import { ScreenShell } from "@/components/ui/screen-shell";
 import type { AnswerFor } from "./answer";
+import { isEnabled } from "@/lib/flags";
+import SubjectPair from "./SubjectPair";
+import { buildSubjectPairProps, type SubjectPairProps } from "./subject-pair";
 
 export type SubjectCaseConfig = {
   /** Subject title as kids see it ("Math", "Physics", …). */
@@ -68,6 +71,8 @@ export function SubjectCase({
   const [index, setIndex] = useState(0);
   const [picked, setPicked] = useState<string | null>(null);
   const [solved, setSolved] = useState(false);
+  // Holmes and Watson (Stream E) see only this: the state and a nonce.
+  const [pairEvent, setPairEvent] = useState<SubjectPairProps>({ state: "open", nonce: 1 });
   const headingRef = useRef<HTMLHeadingElement | null>(null);
 
   // Arrival focus, the LoopScreen pattern: land focus on the heading so
@@ -95,12 +100,14 @@ export function SubjectCase({
     if (choice === answer.correct) {
       setSolved(true);
       setPicked(null);
+      setPairEvent((e) => ({ state: "correct", nonce: e.nonce + 1 }));
       if (onCelebrate && !hasCelebratedFirstWin()) {
         markFirstWinCelebrated();
         onCelebrate(celebrationSpec("mystery-solved", "first-win"));
       }
     } else {
       setPicked(choice);
+      setPairEvent((e) => ({ state: "wrong", nonce: e.nonce + 1 }));
     }
   };
 
@@ -108,6 +115,7 @@ export function SubjectCase({
     setIndex((i) => (i + 1) % items.length);
     setPicked(null);
     setSolved(false);
+    setPairEvent((e) => ({ state: "open", nonce: e.nonce + 1 }));
   };
 
   return (
@@ -122,6 +130,7 @@ export function SubjectCase({
     >
 
       <div className="mt-6 grid gap-4">
+        {isEnabled("detectivePair") ? <SubjectPair {...buildSubjectPairProps(pairEvent)} /> : null}
         <ClueCard tier={title} index={0} text={item.why} revealed reduced={reduced} />
         {!solved ? (
           <AnswerCard
