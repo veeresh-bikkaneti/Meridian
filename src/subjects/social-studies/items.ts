@@ -1,5 +1,6 @@
 /**
- * Social studies items adapter (contract I2) — first live slice.
+ * Social studies items adapter (contract I2) — first live slice, plus
+ * the v2 wave (feat/v2-social-studies-more-items).
  *
  * Reads the curated rows from docs/scaling/social-studies/items.json.
  * That data file is NEVER edited by this module; the adapter only
@@ -14,6 +15,16 @@
  * religion, no contested politics, no biology. Items that need a map
  * in front of the player (pin drops, sorting pictured places,
  * comparing by eye) are held for a later wave; see the PR body.
+ *
+ * The v2 wave re-screened every unplayed row against the same list
+ * and added the rows whose why yields one unambiguous verbal answer:
+ * compass-clue (7-10, directions H04 — asked in words here; the
+ * pin-drop form stays with the map mode), fastest-or-shortest and
+ * time-zones (10-18, routes H03 — both deferred in v1 only because
+ * travel-time had not shipped yet; time zones follow from longitude).
+ * Per-band counts are now 4 (7-10), 5 (10-18), 3 (18+). Still held:
+ * grid-reference, landform-sort, farther-or-nearer, latlon-pin and
+ * compass-bearing; see the PR body.
  */
 import type { AgeGroup, UnitItem } from "../registry.ts";
 import rows from "../../../docs/scaling/social-studies/items.json" with { type: "json" };
@@ -59,16 +70,19 @@ export function allSocialStudiesRows(): UnitItem[] {
   return out;
 }
 
-/** The live slice: up to 3 items per band, in deal order. */
+/** The live items, in deal order (v1 slice, then the v2 wave). */
 export const SOCIAL_STUDIES_ITEM_IDS: readonly string[] = [
   // 7-10
   "social-studies:region:area-by-squares",
   "social-studies:route:count-the-steps",
   "social-studies:route:trip-clock",
+  "social-studies:place:compass-clue",
   // 10-18
   "social-studies:region:density",
   "social-studies:route:scale-ratio",
   "social-studies:route:travel-time",
+  "social-studies:route:fastest-or-shortest",
+  "social-studies:compare:time-zones",
   // 18+
   "social-studies:region:flat-map-area",
   "social-studies:route:great-circle",

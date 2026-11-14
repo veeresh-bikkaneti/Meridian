@@ -73,6 +73,19 @@ async function dismissCelebration(page: Page) {
   }
 }
 
+async function solve(page: Page, choice: string) {
+  await page
+    .getByTestId("chemistry-answer-card")
+    .getByRole("button", { name: choice, exact: true })
+    .click();
+  await dismissCelebration(page);
+}
+
+async function nextCase(page: Page, itemId: string) {
+  await page.getByRole("button", { name: "Next case" }).click();
+  await expect(page.getByTestId("chemistry-case")).toHaveAttribute("data-item", itemId);
+}
+
 test("7-10 chemistry case plays through to the result", async ({ page, context }) => {
   await setup(context, "7-10");
   const errors = watchErrors(page);
@@ -103,5 +116,50 @@ test("10-18 chemistry case plays through to the result", async ({ page, context 
     .click();
   await dismissCelebration(page);
   await expect(page.getByTestId("chemistry-result")).toBeVisible();
+  expect(errors).toEqual([]);
+});
+
+test("7-10 new item (magnet) plays through to the result", async ({ page, context }) => {
+  await setup(context, "7-10");
+  const errors = watchErrors(page);
+  await openChemistryCase(page);
+  const chemCase = page.getByTestId("chemistry-case");
+  await expect(chemCase).toHaveAttribute("data-band", "7-10");
+  await expect(chemCase).toHaveAttribute("data-item", "chemistry:states:solid-liquid");
+  await solve(page, "Warmth melted it");
+  await nextCase(page, "chemistry:states:melt-freeze");
+  await solve(page, "Ice");
+  await nextCase(page, "chemistry:materials:sort");
+  await solve(page, "Whether it bends");
+  await nextCase(page, "chemistry:materials:magnet");
+  await solve(page, "The iron bits");
+  await expect(page.getByTestId("chemistry-result")).toBeVisible();
+  await expect(page.getByTestId("chemistry-used-in")).toContainText("You just used this in…");
+  expect(errors).toEqual([]);
+});
+
+test("10-18 new items (particles, rust) play through to the result", async ({ page, context }) => {
+  await setup(context, "10-18");
+  const errors = watchErrors(page);
+  await openChemistryCase(page);
+  const chemCase = page.getByTestId("chemistry-case");
+  await expect(chemCase).toHaveAttribute("data-band", "10-18");
+  await expect(chemCase).toHaveAttribute("data-item", "chemistry:states:road-salt");
+  await solve(page, "It lowers the freezing point of the water");
+  await nextCase(page, "chemistry:mixtures:dissolve");
+  await solve(page, "It is still there, as pieces too small to see");
+  await nextCase(page, "chemistry:reactions:weight");
+  await solve(page, "It stays the same");
+  await nextCase(page, "chemistry:states:particles");
+  await solve(page, "The water, from solid to liquid to gas");
+  await expect(page.getByTestId("chemistry-result")).toBeVisible();
+  await nextCase(page, "chemistry:water:cycle");
+  await solve(page, "Into the air, a cloud, back as rain or snow");
+  await nextCase(page, "chemistry:reactions:new-look");
+  await solve(page, "It might be a new substance");
+  await nextCase(page, "chemistry:reactions:rust");
+  await solve(page, "Yes — iron exposed to oxygen and water turns to rust");
+  await expect(page.getByTestId("chemistry-result")).toBeVisible();
+  await expect(page.getByTestId("chemistry-used-in")).toContainText("You just used this in…");
   expect(errors).toEqual([]);
 });

@@ -105,10 +105,9 @@ test("no flag needed: the card is live and the picker shows the map", async ({
     .click();
   await expect(page.getByTestId("subject-picker")).toBeVisible();
   await expect(page.getByTestId("subject-row-math")).toBeEnabled();
-  // Journals are not built yet: a disabled "Coming soon" row.
+  // Journals is playable for 7-10 (Stream D, PR D1).
   const journals = page.getByTestId("subject-row-journals");
-  await expect(journals).toBeDisabled();
-  await expect(journals).toContainText("Coming soon");
+  await expect(journals).toBeEnabled();
   expect(errors).toEqual([]);
 });
 
@@ -119,6 +118,8 @@ test("7-10 case: wrong pick gives kind feedback, right pick reaches the result",
   await setup(context, "7-10");
   const errors = watchErrors(page);
   await openCase(page);
+  // Flag off (setup's interception carries no detectivePair): no pair.
+  await expect(page.getByTestId("subject-detective-pair")).toHaveCount(0);
   const mathCase = page.getByTestId("math-case");
   await expect(mathCase).toHaveAttribute("data-band", "7-10");
   await expect(mathCase).toHaveAttribute("data-item", "math-number:groups:skip-count");
@@ -164,6 +165,338 @@ test("reduced motion: the case still renders and plays", async ({ page, context 
   await solveCase(page, "1,081");
   expect(errors).toEqual([]);
 });
+
+/**
+ * Holmes & Watson in the subject cases (Stream E): the pair mounts
+ * ONCE in the shared SubjectCase, so every subject gets it. With
+ * detectivePair forced ON by a second flags interception (registered
+ * after setup's, so it wins — the detective-flag.spec.ts pattern),
+ * the strip renders inside the case; picks move its signal poses.
+ * Audio is asserted on the page's audio elements (registered by a
+ * play() patch below), never by ear.
+ */
+async function setupPair(context: BrowserContext, band?: Band) {
+  await setup(context, band);
+  await context.route("**/flags.json", (route) =>
+    route.fulfill({
+      status: 200,
+      body: JSON.stringify({
+        version: 1,
+        flags: { pwaUpdateToast: true, detectivePair: true },
+      }),
+      contentType: "application/json; charset=utf-8",
+    }),
+  );
+  // Track every audio element that ever plays, and the maximum
+  // number sounding at once (the one-voice assertion).
+  await context.addInitScript(() => {
+    const w = window as unknown as {
+      __audioEls: HTMLAudioElement[];
+      __maxConcurrentAudio: number;
+    };
+    w.__audioEls = [];
+    w.__maxConcurrentAudio = 0;
+    const orig = HTMLMediaElement.prototype.play;
+    HTMLMediaElement.prototype.play = function (this: HTMLMediaElement) {
+      if (this instanceof HTMLAudioElement && !w.__audioEls.includes(this)) {
+        w.__audioEls.push(this);
+      }
+      return orig.call(this);
+    };
+    window.setInterval(() => {
+      const now = w.__audioEls.filter((a) => !a.paused && !a.ended).length;
+      if (now > w.__maxConcurrentAudio) w.__maxConcurrentAudio = now;
+    }, 25);
+  });
+}
+
+async function openChemistryCase(page: Page) {
+  await page.goto(APP_URL);
+  const card = page.getByTestId("home-card-why-learn");
+  await expect(card).toBeVisible();
+  await card.scrollIntoViewIfNeeded();
+  await card
+    .getByRole("button", { name: "Why Do We Learn This?: Start exploring" })
+    .click();
+  await expect(page.getByTestId("subject-picker")).toBeVisible();
+  await page.getByTestId("subject-row-chemistry").click();
+  await expect(page.getByTestId("chemistry-case")).toBeVisible();
+}
+
+test("detectivePair on (desktop, 7-10): pair mounts, wrong is silent, right celebrates, never two voices", async ({
+  page,
+  context,
+}) => {
+  await setupPair(context, "7-10");
+  const errors = watchErrors(page);
+  await openCase(page);
+  const pair = page.getByTestId("subject-detective-pair");
+  await expect(pair).toBeVisible();
+  const holmes = pair.locator(".detective-holmes");
+  const watson = pair.locator(".detective-watson");
+  await expect(holmes).toBeVisible();
+  await expect(watson).toBeVisible();
+  await expect(pair).toHaveAttribute("data-signal", "open");
+  // Resting poses: Holmes searching, Watson reading.
+  await expect(holmes).toHaveAttribute("data-pose", "search");
+  await expect(watson).toHaveAttribute("data-pose", "read");
+
+  // Wrong pick: the signal lands, the pair stays in resting poses
+  // and requests NO clip (wrong = silence by the clip rules). The
+  // baseline waits for the open clip to have registered AND ended,
+  // so a late-starting open clip cannot masquerade as a wrong-pick
+  // clip in the comparison below. The clip parks in the speech
+  // player's first-gesture wait until the kid's next tap — a click
+  // on the heading supplies that gesture (the U5 smoke pattern).
+  await page
+    .getByRole("heading", { name: "Why Do We Learn This? — Math" })
+    .click();
+  await expect
+    .poll(
+      async () =>
+        page.evaluate(() => {
+          const els = (window as unknown as { __audioEls: HTMLAudioElement[] })
+            .__audioEls;
+          const openClip = els.find((a) =>
+            (a.currentSrc || a.src).endsWith("lets-find-clues.mp3"),
+          );
+          return openClip ? openClip.ended : false;
+        }),
+      { timeout: 10_000 },
+    )
+    .toBe(true);
+  const srcsBefore = await page.evaluate(() =>
+    (
+      window as unknown as { __audioEls: HTMLAudioElement[] }
+    ).__audioEls.map((a) => a.currentSrc || a.src),
+  );
+  await page
+    .getByTestId("math-answer-card")
+    .getByRole("button", { name: "6", exact: true })
+    .click();
+  await expect(pair).toHaveAttribute("data-signal", "wrong");
+  await page.waitForTimeout(600);
+  await expect(holmes).toHaveAttribute("data-pose", "search");
+  const srcsAfterWrong = await page.evaluate(() =>
+    (
+      window as unknown as { __audioEls: HTMLAudioElement[] }
+    ).__audioEls.map((a) => a.currentSrc || a.src),
+  );
+  expect(srcsAfterWrong).toEqual(srcsBefore);
+
+  // Right pick: Holmes celebrates while win-holmes sounds.
+  await page
+    .getByTestId("math-answer-card")
+    .getByRole("button", { name: "8", exact: true })
+    .click();
+  await expect(pair).toHaveAttribute("data-signal", "correct");
+  const seenRight = new Set<string>();
+  await expect
+    .poll(
+      async () => {
+        const cls = await holmes.getAttribute("class");
+        if (cls) seenRight.add(cls);
+        return [...seenRight].some(
+          (c) =>
+            c.includes("detective-pose-celebrate-jump") &&
+            c.includes("detective-speaking"),
+        );
+      },
+      { timeout: 10_000 },
+    )
+    .toBe(true);
+  await dismissCelebration(page);
+  await expect(page.getByTestId("math-result")).toBeVisible();
+
+  // One voice: across the whole case, never two audio elements
+  // sounding at once.
+  const maxConcurrent = await page.evaluate(
+    () => (window as unknown as { __maxConcurrentAudio: number }).__maxConcurrentAudio,
+  );
+  expect(maxConcurrent).toBeLessThanOrEqual(1);
+  expect(errors).toEqual([]);
+});
+
+test("detectivePair on (desktop, 18+): solving the last item finishes — both celebrate, silently", async ({
+  page,
+  context,
+}) => {
+  await setupPair(context, "18+");
+  const errors = watchErrors(page);
+  await openCase(page);
+  const pair = page.getByTestId("subject-detective-pair");
+  await expect(pair).toBeVisible();
+  // 18+ has 3 items, so the third is the last. Items 1 and 2 via the
+  // Next-case cycle, then the last item.
+  await solveCase(page, "360");
+  await page.getByRole("button", { name: "🔎 Next case" }).click();
+  await solveCase(page, "13.5");
+  await page.getByRole("button", { name: "🔎 Next case" }).click();
+  await page
+    .getByTestId("math-answer-card")
+    .getByRole("button", { name: "Measure the beam again", exact: true })
+    .click();
+  await expect(pair).toHaveAttribute("data-signal", "finished");
+  // Finished is visual only: BOTH rigs hold the celebrate pose.
+  await expect(pair.locator(".detective-holmes")).toHaveAttribute(
+    "data-pose",
+    "celebrate-jump",
+  );
+  await expect(pair.locator(".detective-watson")).toHaveAttribute(
+    "data-pose",
+    "celebrate-jump",
+  );
+  await dismissCelebration(page);
+  await expect(page.getByTestId("math-result")).toBeVisible();
+  expect(errors).toEqual([]);
+});
+
+test("detectivePair on (chemistry, 10-18): the shared mount gives chemistry the pair too", async ({
+  page,
+  context,
+}) => {
+  await setupPair(context, "10-18");
+  const errors = watchErrors(page);
+  await openChemistryCase(page);
+  const pair = page.getByTestId("subject-detective-pair");
+  await expect(pair).toBeVisible();
+  await expect(pair.locator(".detective-holmes")).toBeVisible();
+  await expect(pair.locator(".detective-watson")).toBeVisible();
+  await page
+    .getByTestId("chemistry-answer-card")
+    .getByRole("button", {
+      name: "It lowers the freezing point of the water",
+      exact: true,
+    })
+    .click();
+  await dismissCelebration(page);
+  await expect(page.getByTestId("chemistry-result")).toBeVisible();
+  expect(errors).toEqual([]);
+});
+
+test("detectivePair on (18+): pair visible and the case plays to the result", async ({
+  page,
+  context,
+}) => {
+  await setupPair(context, "18+");
+  const errors = watchErrors(page);
+  await openCase(page);
+  const pair = page.getByTestId("subject-detective-pair");
+  await expect(pair).toBeVisible();
+  await expect(pair.locator(".detective-holmes")).toBeVisible();
+  await expect(pair.locator(".detective-watson")).toBeVisible();
+  await solveCase(page, "360");
+  expect(errors).toEqual([]);
+});
+
+test("detectivePair OFF: text-only parity with main — no rigs, no pair audio requests", async ({
+  page,
+  context,
+}) => {
+  await setup(context, "7-10");
+  const errors = watchErrors(page);
+  const pairAudioRequests: string[] = [];
+  page.on("request", (req) => {
+    if (req.url().includes("/audio/detective/")) pairAudioRequests.push(req.url());
+  });
+  await openCase(page);
+  await solveCase(page, "8");
+  await expect(page.getByTestId("subject-detective-pair")).toHaveCount(0);
+  await expect(page.locator("[data-detective]")).toHaveCount(0);
+  expect(pairAudioRequests).toEqual([]);
+  expect(errors).toEqual([]);
+});
+
+test("detectivePair on (390px): pair visible and never covering the answer buttons", async ({
+  page,
+  context,
+}) => {
+  await setupPair(context, "7-10");
+  await page.setViewportSize({ width: 390, height: 844 });
+  const errors = watchErrors(page);
+  await openCase(page);
+  const pair = page.getByTestId("subject-detective-pair");
+  await expect(pair).toBeVisible();
+  await expect(pair.locator(".detective-holmes")).toBeVisible();
+  await expect(pair.locator(".detective-watson")).toBeVisible();
+  const pairBox = await pair.boundingBox();
+  const answersBox = await page.getByTestId("math-answer-card").boundingBox();
+  expect(pairBox).not.toBeNull();
+  expect(answersBox).not.toBeNull();
+  // The strip sits above the answer card in flow: its box ends
+  // before the answer card's box begins, so it can never cover the
+  // buttons.
+  expect(pairBox!.y + pairBox!.height).toBeLessThanOrEqual(answersBox!.y);
+  expect(errors).toEqual([]);
+});
+
+test("detectivePair on (reduced motion): pair visible, still, case still plays", async ({
+  page,
+  context,
+}) => {
+  await setupPair(context, "10-18");
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  const errors = watchErrors(page);
+  await openCase(page);
+  const pair = page.getByTestId("subject-detective-pair");
+  await expect(pair).toBeVisible();
+  await expect(pair.locator(".detective-holmes")).toBeVisible();
+  await expect(pair.locator(".detective-watson")).toBeVisible();
+  // detective.css's reduced-motion block kills every rig animation:
+  // the breathing bob part computes to no animation.
+  const bobAnimation = await pair
+    .locator('.detective-holmes [data-part="bob"]')
+    .evaluate((el) => getComputedStyle(el).animationName);
+  expect(bobAnimation).toBe("none");
+  await solveCase(page, "1,081");
+  expect(errors).toEqual([]);
+});
+
+// ==== STREAM A (wave-2 math items) — BEGIN ====
+// Added by the "more playable items per band" stream. Deals through the
+// wave-1 cases with the Next-case button and plays the FIRST wave-2
+// item of the band through to the result screen. The 18+ band has no
+// unplayed rows left (all 3 were wave 1), so it has no wave-2 test.
+// Keep this block self-contained: a sibling stream edits this spec on
+// its own branch in parallel, and whoever merges second rebases.
+async function solveAndNext(page: Page, correct: string) {
+  await solveCase(page, correct);
+  await page.getByRole("button", { name: /Next case/ }).click();
+  await expect(page.getByTestId("math-answer-card")).toBeVisible();
+}
+
+test("wave 2: first new 7-10 item plays through to the result", async ({ page, context }) => {
+  await setup(context, "7-10");
+  const errors = watchErrors(page);
+  await openCase(page);
+  const mathCase = page.getByTestId("math-case");
+  await expect(mathCase).toHaveAttribute("data-item", "math-number:groups:skip-count");
+  await solveAndNext(page, "8");
+  await expect(mathCase).toHaveAttribute("data-item", "math-number:groups:equal-groups");
+  await solveAndNext(page, "24");
+  await expect(mathCase).toHaveAttribute("data-item", "math-number:tables:buses");
+  await solveAndNext(page, "4");
+  await expect(mathCase).toHaveAttribute("data-item", "math-number:place:hundreds-tens-ones");
+  await solveCase(page, "345");
+  expect(errors).toEqual([]);
+});
+
+test("wave 2: first new 10-18 item plays through to the result", async ({ page, context }) => {
+  await setup(context, "10-18");
+  const errors = watchErrors(page);
+  await openCase(page);
+  const mathCase = page.getByTestId("math-case");
+  await expect(mathCase).toHaveAttribute("data-item", "math-number:tables:multi-digit");
+  await solveAndNext(page, "1,081");
+  await expect(mathCase).toHaveAttribute("data-item", "math-applied:measure:convert-metric");
+  await solveAndNext(page, "2,400");
+  await expect(mathCase).toHaveAttribute("data-item", "math-number:fractions:percent");
+  await solveAndNext(page, "56");
+  await expect(mathCase).toHaveAttribute("data-item", "math-applied:geometry:scale-drawing");
+  await solveCase(page, "8");
+  expect(errors).toEqual([]);
+});
+// ==== STREAM A (wave-2 math items) — END ====
 
 test("390px: Home card, case, answer card and result render on a phone", async ({
   page,

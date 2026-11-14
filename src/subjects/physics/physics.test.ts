@@ -11,7 +11,7 @@ import physicsModule from "./index.ts";
 it("adapter reads every curated physics row", () => {
   const rows = allPhysicsRows();
   // docs/scaling/physics/items.json.
-  assert.equal(rows.length, 24);
+  assert.equal(rows.length, 30);
   for (const row of rows) {
     assert.ok(row.id.length > 0);
     assert.ok(["7-10", "10-18", "18+"].includes(row.group));
@@ -20,15 +20,18 @@ it("adapter reads every curated physics row", () => {
   }
 });
 
-it("the live slice holds up to 3 items per band, each in its own band", () => {
+it("the live slice holds every curated row, each in its own band", () => {
   const units = physicsUnits();
   assert.equal(units.length, PHYSICS_ITEM_IDS.length);
-  assert.equal(units.length, 9);
+  assert.equal(units.length, 24);
+  const perBand = { "7-10": 12, "10-18": 9, "18+": 3 } as const;
   for (const group of ["7-10", "10-18", "18+"] as const) {
     const items = itemsForGroup(group);
-    assert.equal(items.length, 3, group);
+    assert.equal(items.length, perBand[group], group);
     for (const item of items) assert.equal(item.group, group);
   }
+  // The v2 plan item is among the live rows.
+  assert.ok(PHYSICS_ITEM_IDS.includes("physics:arrive:equal-steps"));
 });
 
 it("every live item has an answer, and every answer belongs to an item", () => {
@@ -64,12 +67,18 @@ it("each numeric answer matches its derivation", () => {
   // The slope winners, recomputed: rise/run.
   assert.ok(2 / 2 > 2 / 4);
   assert.ok(4 / 6 > 3 / 6);
+  // The equal-steps winner, recomputed: 3 tiles each step beats 1.
+  assert.ok(3 > 1);
+  // No physics row is year-based, so no pinned-clock year test applies.
+  for (const entry of Object.values(PHYSICS_ANSWERS)) {
+    assert.equal(/\b(19|20)\d\d\b/.test(entry.prompt), false, entry.prompt);
+  }
 });
 
 it("the subject module matches contract I1 and is released", () => {
   assert.equal(physicsModule.id, "physics");
   assert.equal(physicsModule.released, true);
   assert.deepEqual(physicsModule.groups, ["7-10", "10-18", "18+"]);
-  assert.equal(physicsModule.units.length, 9);
+  assert.equal(physicsModule.units.length, 24);
   assert.equal(typeof physicsModule.load, "function");
 });

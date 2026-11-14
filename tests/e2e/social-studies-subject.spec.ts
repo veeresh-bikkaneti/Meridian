@@ -62,10 +62,22 @@ async function openSocialStudiesCase(page: Page) {
   await expect(page.getByTestId("subject-picker")).toBeVisible();
   const row = page.getByTestId("subject-row-social-studies");
   await expect(row).toBeEnabled();
-  // Journals stays a disabled "Coming soon" row — not in this run.
-  await expect(page.getByTestId("subject-row-journals")).toBeDisabled();
+  // Journals is playable since #464.
+  await expect(page.getByTestId("subject-row-journals")).toBeEnabled();
   await row.click();
   await expect(page.getByTestId("social-studies-case")).toBeVisible();
+}
+
+/** Solve the case on screen, then deal the next one (v2 items sit
+ * behind the v1 items in deal order). */
+async function solveAndNext(page: Page, correctLabel: string) {
+  await page
+    .getByTestId("social-studies-answer-card")
+    .getByRole("button", { name: correctLabel, exact: true })
+    .click();
+  await dismissCelebration(page);
+  await expect(page.getByTestId("social-studies-result")).toBeVisible();
+  await page.getByRole("button", { name: /Next case/ }).click();
 }
 
 async function dismissCelebration(page: Page) {
@@ -86,6 +98,52 @@ test("7-10 area-by-squares case plays through to the result", async ({ page, con
   await page
     .getByTestId("social-studies-answer-card")
     .getByRole("button", { name: "The first field, by 4 squares", exact: true })
+    .click();
+  await dismissCelebration(page);
+  await expect(page.getByTestId("social-studies-result")).toBeVisible();
+  await expect(page.getByTestId("social-studies-used-in")).toContainText(
+    "You just used this in…",
+  );
+  expect(errors).toEqual([]);
+});
+
+test("7-10 compass-clue case (v2) plays through to the result", async ({ page, context }) => {
+  await setup(context, "7-10");
+  const errors = watchErrors(page);
+  await openSocialStudiesCase(page);
+  // Walk the band's deal order to the v2 item.
+  await solveAndNext(page, "The first field, by 4 squares");
+  await solveAndNext(page, "40 km");
+  await solveAndNext(page, "3 hours");
+  const ssCase = page.getByTestId("social-studies-case");
+  await expect(ssCase).toHaveAttribute("data-band", "7-10");
+  await expect(ssCase).toHaveAttribute("data-item", "social-studies:place:compass-clue");
+  await page
+    .getByTestId("social-studies-answer-card")
+    .getByRole("button", { name: "North-east of the fountain", exact: true })
+    .click();
+  await dismissCelebration(page);
+  await expect(page.getByTestId("social-studies-result")).toBeVisible();
+  await expect(page.getByTestId("social-studies-used-in")).toContainText(
+    "You just used this in…",
+  );
+  expect(errors).toEqual([]);
+});
+
+test("10-18 fastest-or-shortest case (v2) plays through to the result", async ({ page, context }) => {
+  await setup(context, "10-18");
+  const errors = watchErrors(page);
+  await openSocialStudiesCase(page);
+  // Walk the band's deal order to the first v2 item.
+  await solveAndNext(page, "Town A");
+  await solveAndNext(page, "3.5 km");
+  await solveAndNext(page, "6 hours");
+  const ssCase = page.getByTestId("social-studies-case");
+  await expect(ssCase).toHaveAttribute("data-band", "10-18");
+  await expect(ssCase).toHaveAttribute("data-item", "social-studies:route:fastest-or-shortest");
+  await page
+    .getByTestId("social-studies-answer-card")
+    .getByRole("button", { name: "The valley road", exact: true })
     .click();
   await dismissCelebration(page);
   await expect(page.getByTestId("social-studies-result")).toBeVisible();

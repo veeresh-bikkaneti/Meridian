@@ -12,15 +12,20 @@
  * comment forbids.
  *
  * DetectiveHost and the detective machine are unchanged and not mounted
- * here: the pair ships dark behind detectivePair in prod, and subject
- * items have no voice clips, so the case is text only with no new
- * audio. The win fires GameApp's existing celebration through
- * onCelebrate, on the same first-win guard LoopScreen uses.
+ * here. The pair itself mounts here exactly once, through
+ * SubjectDetectiveHost (below the header): the host self-gates on
+ * detectivePair, so flag-off this case is text only, exactly as
+ * before; flag-on, the pair speaks its fixed manifest clips for the
+ * case's own flow signals. The host receives ONLY the answer-blind
+ * prop whitelist (subject-host-props.ts) — solved / wrongPick /
+ * finished booleans from this flow's state, never an item, an answer
+ * or a pick's value. The win fires GameApp's existing celebration
+ * through onCelebrate, on the same first-win guard LoopScreen uses.
  *
  * Each subject's own case component is a thin wrapper that passes its
  * title, its test-id prefix, its band items and its answer lookup.
  */
-import { useEffect, useRef, useState } from "react";
+import { Suspense, lazy, useEffect, useRef, useState, type ReactNode } from "react";
 import type { AgeGroup, SubjectProps, UnitItem } from "../registry";
 import { getAgeGroup } from "@/game/age-profile";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
@@ -32,9 +37,15 @@ import {
   type CelebrationSpec,
 } from "@/components/celebration-copy";
 import { AnswerCard } from "./AnswerCard";
+import { buildSubjectDetectiveHostProps } from "./subject-host-props";
 import { HomeButton } from "@/components/ui/home-button";
 import { ScreenShell } from "@/components/ui/screen-shell";
-import type { AnswerFor } from "./answer";
+import { advanceCasePhase, type AnswerFor, type CasePhase } from "./answer";
+
+// Holmes & Watson in the subject case: lazy, like the other pair
+// hosts, so the pair's chunk is fetched only when a subject case
+// actually mounts. The host self-gates on detectivePair.
+const SubjectDetectiveHost = lazy(() => import("./SubjectDetectiveHost"));
 
 export type SubjectCaseConfig = {
   /** Subject title as kids see it ("Math", "Physics", …). */
@@ -45,6 +56,9 @@ export type SubjectCaseConfig = {
   itemsForGroup: (group: AgeGroup) => UnitItem[];
   /** The subject's answer lookup, keyed by item id. */
   answerFor: AnswerFor;
+  /** Optional card shown above the question (Journals: the clip's
+   * caption text). Absent for every other subject: no change. */
+  lead?: (item: UnitItem, reduced: boolean) => ReactNode;
 };
 
 export function SubjectCase({
@@ -52,6 +66,7 @@ export function SubjectCase({
   testIdPrefix,
   itemsForGroup,
   answerFor,
+  lead,
   group,
   onExit,
   onCelebrate,
@@ -67,7 +82,10 @@ export function SubjectCase({
   const items = itemsForGroup(band);
   const [index, setIndex] = useState(0);
   const [picked, setPicked] = useState<string | null>(null);
-  const [solved, setSolved] = useState(false);
+  // "main" asks the entry; "followUp" asks its follow-up; "done"
+  // shows the result with both answers.
+  const [phase, setPhase] = useState<CasePhase>("main");
+  const solved = phase === "done";
   const headingRef = useRef<HTMLHeadingElement | null>(null);
 
   // Arrival focus, the LoopScreen pattern: land focus on the heading so
@@ -90,24 +108,45 @@ export function SubjectCase({
     );
   }
 
+  // The entry currently being asked: the follow-up once the main
+  // answer is correct, otherwise the entry itself.
+  const active = phase === "followUp" && answer.followUp ? answer.followUp : answer;
+
+  // Shared correct-answer path for picks and typed numbers: advance
+  // the phase, and celebrate once, on the first correct answer.
+  const onCorrect = () => {
+    setPhase((p) => advanceCasePhase(answer, p, true));
+    setPicked(null);
+    if (phase === "main" && onCelebrate && !hasCelebratedFirstWin()) {
+      markFirstWinCelebrated();
+      onCelebrate(celebrationSpec("mystery-solved", "first-win"));
+    }
+  };
+
   const pick = (choice: string) => {
     if (solved) return;
-    if (choice === answer.correct) {
-      setSolved(true);
-      setPicked(null);
-      if (onCelebrate && !hasCelebratedFirstWin()) {
-        markFirstWinCelebrated();
-        onCelebrate(celebrationSpec("mystery-solved", "first-win"));
-      }
+    if (choice === active.correct) {
+      onCorrect();
     } else {
       setPicked(choice);
+    }
+  };
+
+  const checkNumber = (value: number | null, raw: string) => {
+    if (solved) return;
+    // A number entry carries its value; an unparseable typed answer
+    // is wrong the same way a wrong pick is.
+    if (value === null || active.value === undefined || value !== active.value) {
+      setPicked(raw);
+    } else {
+      onCorrect();
     }
   };
 
   const nextCase = () => {
     setIndex((i) => (i + 1) % items.length);
     setPicked(null);
-    setSolved(false);
+    setPhase("main");
   };
 
   return (
@@ -122,14 +161,36 @@ export function SubjectCase({
     >
 
       <div className="mt-6 grid gap-4">
+        {/* Holmes & Watson (flag-gated inside the host, default off =
+            not rendered at all). Props come from the answer-blind
+            whitelist builder ONLY (subject-host-props.ts): the pair
+            never receives the item, the answer, or a pick's value.
+            display:contents keeps this layout identical, mirroring
+            LoopScreen's detective host slot. */}
+        <div style={{ display: "contents" }} data-testid="subject-detective-host-slot">
+          <Suspense fallback={null}>
+            <SubjectDetectiveHost
+              {...buildSubjectDetectiveHostProps({
+                solved,
+                wrongPick: picked !== null && !solved,
+                finished: solved && index === items.length - 1,
+              })}
+            />
+          </Suspense>
+        </div>
+        {lead ? lead(item, reduced) : null}
         <ClueCard tier={title} index={0} text={item.why} revealed reduced={reduced} />
         {!solved ? (
           <AnswerCard
-            prompt={answer.prompt}
-            choices={answer.choices}
+            key={`${item.id}:${phase}`}
+            prompt={active.prompt}
+            choices={active.choices}
             picked={picked}
             onPick={pick}
             testId={`${testIdPrefix}-answer-card`}
+            kind={active.kind ?? "choice"}
+            onNumber={checkNumber}
+            moveFocus={phase === "followUp"}
           />
         ) : (
           <section
@@ -141,6 +202,12 @@ export function SubjectCase({
             <p className="mt-2 text-fg">
               The answer is <strong>{answer.correct}</strong>. {answer.derivation}
             </p>
+            {answer.followUp ? (
+              <p className="mt-2 text-fg">
+                Follow-up: <strong>{answer.followUp.correct}</strong>.{" "}
+                {answer.followUp.derivation}
+              </p>
+            ) : null}
             <p className="mt-3 text-fg" data-testid={`${testIdPrefix}-used-in`}>
               You just used this in… {item.useElsewhere[0] ?? "everyday life"}.
             </p>

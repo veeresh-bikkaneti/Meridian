@@ -7,12 +7,15 @@
  * only — it is not read here and no spaced-repetition dealing is
  * built; the deal order below simply follows the items file.
  *
- * The slice keeps up to 3 items per age band (18+ has only 2 rows),
- * picked where the row's why / objective yields one unambiguous
- * multiple-choice answer with the shared AnswerCard. Every item was
- * re-screened against the content rules: landmarks appear as
- * architecture and places only, balanced across traditions, with
- * settled facts only.
+ * The slice keeps every row whose why / objective yields one
+ * unambiguous multiple-choice answer with the shared AnswerCard
+ * (v2: the 7-10 band grows from 3 to 5 items; 10-18 keeps its 3 and
+ * 18+ its 2, as every row in those bands already played). One 7-10
+ * row stays out: noon-shadow's objective is comparing three pictures
+ * of a shadow, which needs a scene the shared flow does not have.
+ * Every item was re-screened against the content rules: landmarks
+ * appear as architecture and places only, balanced across
+ * traditions, with settled facts only.
  */
 import type { AgeGroup, UnitItem } from "../registry.ts";
 import rows from "../../../docs/scaling/general-knowledge/items.json" with { type: "json" };
@@ -58,11 +61,13 @@ export function allGeneralKnowledgeRows(): UnitItem[] {
   return out;
 }
 
-/** The live slice: up to 3 items per band, in deal order. */
+/** The live slice: every multiple-choice-ready row, in deal order. */
 export const GENERAL_KNOWLEDGE_ITEM_IDS: readonly string[] = [
   // 7-10
   "general-knowledge:mixed:opera-years-ago",
   "general-knowledge:mixed:eiffel-antennas",
+  "general-knowledge:mixed:older-landmark",
+  "general-knowledge:mixed:falls-in-km",
   "general-knowledge:mixed:trip-buses",
   // 10-18
   "general-knowledge:mixed:everest-vs-falls",
