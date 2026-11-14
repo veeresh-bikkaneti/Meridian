@@ -297,6 +297,53 @@ for (const c of BAND_CASES) {
   });
 }
 
+test("pair on: Watson's case-open line plays, and the win line stops it (one voice)", async ({
+  page,
+  context,
+}) => {
+  await setupPair(context, "7-10");
+  const errors = watchErrors(page);
+  await openCase(page);
+  await solveCase(page, "8");
+  // Let every voice finish (the storyteller's Home line, the first win).
+  const sounding = () =>
+    page.evaluate(() =>
+      (window as unknown as { __audios: HTMLMediaElement[] }).__audios.filter(
+        (a) => !a.muted && (a.currentSrc || a.src).includes("/audio/") && !a.paused && !a.ended,
+      ).length,
+    );
+  await expect.poll(sounding, { timeout: 30_000 }).toBe(0);
+  // Case 2 opens on a quiet channel: Watson's automatic line plays.
+  await page.getByRole("button", { name: /Next case/ }).click();
+  const pair = page.getByTestId("subject-pair");
+  await expect(pair).toHaveAttribute("data-state", "open");
+  await expect
+    .poll(async () => (await voices(page)).starts.at(-1), { timeout: 10_000 })
+    .toBe("detective/fixed/lets-find-clues.mp3");
+  await expect(pair).toHaveAttribute("data-speaking", "watson");
+  await expect(page.getByTestId("subject-pair-bubble")).toHaveText("Let's find some clues.");
+  // The right pick while Watson is still mid-line: Holmes takes the voice.
+  await page.getByTestId("math-answer-card").getByRole("button", { name: "24", exact: true }).click();
+  await expect
+    .poll(async () => (await voices(page)).starts.at(-1), { timeout: 10_000 })
+    .toBe("detective/fixed/win-holmes.mp3");
+  const watsonLine = await page.evaluate(() => {
+    const a = (window as unknown as { __audios: HTMLMediaElement[] }).__audios.find((x) =>
+      (x.currentSrc || x.src).includes("lets-find-clues"),
+    );
+    return a ? { paused: a.paused, ended: a.ended, at: a.currentTime, dur: a.duration } : null;
+  });
+  console.log(`[one-voice] watson line when Holmes spoke: ${JSON.stringify(watsonLine)}`);
+  expect(watsonLine?.paused).toBe(true);
+  await dismissCelebration(page);
+  await expect(page.getByTestId("math-result")).toBeVisible();
+  await page.waitForTimeout(2_000);
+  const v = await voices(page);
+  console.log(`[voices one-voice] max=${v.max} starts=${JSON.stringify(v.starts)}`);
+  expect(v.max).toBeLessThanOrEqual(1);
+  expect(errors).toEqual([]);
+});
+
 test("pair on: Holmes and Watson in the physics case too", async ({ page, context }) => {
   await setupPair(context, "7-10");
   const errors = watchErrors(page);

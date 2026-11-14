@@ -13,6 +13,9 @@
  * Answer-blind: the only inputs are SubjectPairProps (subject-pair.ts) —
  * which case is open and one of open / wrong / correct / finished.
  *
+ * Voice: existing fixed clips only, one voice at a time through the
+ * shared voice channel (subject-pair-voice.ts).
+ *
  * Placement: an in-flow station between the case's clue card and its
  * answer card (the bench/gutter idea — the pair stands beside the case,
  * never over it), with headroom reserved for the speech bubble so a
@@ -22,7 +25,7 @@
  * Reduced motion: still poses, no walk, no jump — the win goes straight
  * to the high-five (detective.css also freezes every rig animation).
  */
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   CELEBRATE_LAYOUT,
   HolmesRig,
@@ -33,6 +36,7 @@ import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 import { isEnabled } from "@/lib/flags";
 import "@/game/loop/detective/detective.css";
 import { lineForState, posesForState, type SubjectPairProps } from "./subject-pair";
+import { createSubjectPairVoice, type SubjectPairVoice } from "./subject-pair-voice";
 
 export default function SubjectPairHost({ caseIndex, state }: SubjectPairProps) {
   const reducedMotion = usePrefersReducedMotion();
@@ -54,6 +58,27 @@ export default function SubjectPairHost({ caseIndex, state }: SubjectPairProps) 
   // Who is speaking right now (null = nobody). Set by the voice below.
   const [speaking, setSpeaking] = useState<"holmes" | "watson" | null>(null);
   const line = lineForState(state);
+
+  // Every line goes through the shared one-voice channel
+  // (subject-pair-voice.ts): the case-open line waits its turn, the win
+  // line (the player's own tap) takes the channel and stops whoever
+  // speaks. Unmount stops the pair's line and gives the channel back.
+  const voiceRef = useRef<SubjectPairVoice | null>(null);
+  useEffect(() => {
+    const voice = createSubjectPairVoice();
+    voiceRef.current = voice;
+    return () => {
+      voice.dispose();
+      if (voiceRef.current === voice) voiceRef.current = null;
+      setSpeaking(null);
+    };
+  }, []);
+  useEffect(() => {
+    const next = lineForState(state);
+    const voice = voiceRef.current;
+    if (!next || !voice) return;
+    void voice.say(next, { userInitiated: state !== "open" }, setSpeaking);
+  }, [caseIndex, state]);
   const caption = speaking && line && line.who === speaking ? line : null;
 
   const poses = posesForState(state, { reducedMotion, jumping });
