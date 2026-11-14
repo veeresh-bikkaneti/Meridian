@@ -1,0 +1,50 @@
+{
+  "note": "Place-story measurements already on main (2026-11-13). The owner flagged these in the PR #464 review. Fixing a clip means re-recording its narration, so each is KNOWN until that change lands; an entry fails as STALE once fixed. Never add an entry to make a new violation pass.",
+  "entries": [
+    {
+      "rule": "MEASUREMENT",
+      "where": "docs/scaling/journals/people-places/clips.json people-places:akashi-span narration",
+      "match": "1,991 meters"
+    },
+    {
+      "rule": "MEASUREMENT",
+      "where": "docs/scaling/journals/people-places/captions/akashi-span.vtt (people-places:akashi-span captions)",
+      "match": "1,991 meters"
+    },
+    {
+      "rule": "MEASUREMENT",
+      "where": "docs/scaling/journals/people-places/clips.json people-places:pont-du-gard narration",
+      "match": "35 arches"
+    },
+    {
+      "rule": "MEASUREMENT",
+      "where": "docs/scaling/journals/people-places/captions/pont-du-gard.vtt (people-places:pont-du-gard captions)",
+      "match": "35 arches"
+    },
+    {
+      "rule": "MEASUREMENT",
+      "where": "docs/scaling/journals/people-places/clips.json people-places:eratosthenes-earth narration",
+      "match": "5,000 stadia"
+    },
+    {
+      "rule": "MEASUREMENT",
+      "where": "docs/scaling/journals/people-places/captions/eratosthenes-earth.vtt (people-places:eratosthenes-earth captions)",
+      "match": "5,000 stadia"
+    },
+    {
+      "rule": "MEASUREMENT",
+      "where": "docs/scaling/journals/people-places/clips.json people-places:andean-roads narration",
+      "match": "30,000 kilometers"
+    },
+    {
+      "rule": "MEASUREMENT",
+      "where": "docs/scaling/journals/people-places/captions/andean-roads.vtt (people-places:andean-roads captions)",
+      "match": "30,000 kilometers"
+    },
+    {
+      "rule": "MEASUREMENT",
+      "where": "docs/scaling/journals/technology/clips.json technology:eniac why",
+      "match": "50 feet"
+    }
+  ]
+}
