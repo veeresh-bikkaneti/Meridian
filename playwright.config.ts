@@ -429,6 +429,20 @@ export default defineConfig({
       },
     },
     {
+      name: "general-knowledge-subject",
+      testMatch: /general-knowledge-subject\.spec\.ts/,
+      use: {
+        viewport: { width: 1440, height: 900 },
+      },
+    },
+    {
+      name: "social-studies-subject",
+      testMatch: /social-studies-subject\.spec\.ts/,
+      use: {
+        viewport: { width: 1440, height: 900 },
+      },
+    },
+    {
       name: "crash-watchdog",
       testMatch: /crash-watchdog\.spec\.ts/,
     },
