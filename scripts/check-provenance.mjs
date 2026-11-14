@@ -5,6 +5,9 @@
  * Owner rules (AGENTS.md "Enforced rules"):
  *   1. Every commit on a branch is authored as
  *      `veeresh bikkaneti <57240576+veeresh-bikkaneti@users.noreply.github.com>`.
+ *      Bot authors (name ending `[bot]`, or email ending
+ *      `[bot]@users.noreply.github.com`) skip this identity check only;
+ *      message and added-line checks still apply.
  *   2. No AI model or vendor name in a commit message (subject, body or
  *      trailers such as Co-Authored-By / *-Session).
  *   3. No AI model or vendor name in a line a branch ADDS. The repo already
@@ -104,11 +107,16 @@ export function addedLines(range) {
   return out;
 }
 
-export function checkRange(range) {
+export function isBotAuthor(name, email) {
+  return String(email).endsWith("[bot]@users.noreply.github.com") || String(name).endsWith("[bot]");
+}
+
+/** Identity and message checks for already-parsed commits. */
+export function checkCommits(commits) {
   const failures = [];
-  for (const c of commitsIn(range)) {
+  for (const c of commits) {
     const short = c.sha.slice(0, 8);
-    if (c.name !== OWNER_NAME || c.email !== OWNER_EMAIL) {
+    if ((c.name !== OWNER_NAME || c.email !== OWNER_EMAIL) && !isBotAuthor(c.name, c.email)) {
       failures.push(
         `IDENTITY ${short} authored as "${c.name} <${c.email}>". Re-author it as the owner: ${FIX_IDENTITY} (new commit; never rewrite a pushed one without the owner's word)`,
       );
@@ -135,6 +143,11 @@ export function checkRange(range) {
       }
     }
   }
+  return failures;
+}
+
+export function checkRange(range) {
+  const failures = checkCommits(commitsIn(range));
   for (const a of addedLines(range)) {
     if (a.file === "scripts/check-provenance.mjs") continue; // the checker's own decode notes
     const hit = findVendorName(a.text);
