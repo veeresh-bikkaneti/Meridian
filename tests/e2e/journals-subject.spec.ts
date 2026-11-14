@@ -74,7 +74,7 @@ async function dismissCelebration(page: Page) {
   }
 }
 
-test("7-10: Lincoln Memorial shows its caption lead, a wrong pick is kind, the right pick reaches the result", async ({
+test("7-10: Lincoln Memorial shows its caption lead, a wrong pick keeps the case open, the right pick reaches the result", async ({
   page,
   context,
 }) => {

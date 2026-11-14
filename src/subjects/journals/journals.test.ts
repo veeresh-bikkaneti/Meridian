@@ -133,6 +133,23 @@ it("caption parse: header, NOTE, cue numbers and timestamps are dropped", () => 
   assert.equal(cueText(vtt), "Hey kids, have you heard about this place? Washington, D.C., 1922.");
 });
 
+it("caption parse keeps cue payloads that look like headers or numbers", () => {
+  const vtt = [
+    "WEBVTT",
+    "",
+    "1",
+    "00:00:00.000 --> 00:00:02.000",
+    "1973",
+    "",
+    "2",
+    "00:00:02.000 --> 00:00:04.000",
+    "NOTE the bell rang",
+    "next line",
+    "",
+  ].join("\n");
+  assert.equal(cueText(vtt), "1973 NOTE the bell rang next line");
+});
+
 it("caption refs: base rows with a caption file resolve, stretch and caption-less rows do not", () => {
   assert.deepEqual(captionRefFor("technology:first-phone"), {
     journal: "technology",

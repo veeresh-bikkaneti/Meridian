@@ -19,17 +19,20 @@ export { currentYear, yearsSince };
 export function journalAnswers(year: number): Record<string, AnswerEntry> {
   const firstPhoneYears = yearsSince(1876, year);
   const liverpoolYears = yearsSince(1830, year);
+  // Fixed-date gaps are computed from the row's dates, not typed.
+  const lincolnYears = 1922 - 1914;
+  const mobileYears = 1973 - 1876;
   return {
     // ---- 7-10 ----
     "great-leaders:lincoln-memorial": {
       prompt: "Work began in 1914 and the memorial was dedicated in 1922. How many years did it take to build?",
-      choices: ["6", "8", "10"],
-      correct: "8",
-      derivation: "1922 − 1914 = 8 years.",
-      value: 8,
+      choices: ["6", String(lincolnYears), "10"],
+      correct: String(lincolnYears),
+      derivation: `1922 − 1914 = ${lincolnYears} years.`,
+      value: lincolnYears,
     },
     "technology:first-phone": {
-      prompt: "In 1876, Bell's phone sent a spoken message. How many years ago was that?",
+      prompt: `In 1876, Bell's phone sent a spoken message. It is ${year} now. How many years ago was that?`,
       choices: [String(firstPhoneYears + 10), String(firstPhoneYears), String(firstPhoneYears - 10)],
       correct: String(firstPhoneYears),
       derivation: `${year} − 1876 = ${firstPhoneYears} years.`,
@@ -49,7 +52,7 @@ export function journalAnswers(year: number): Record<string, AnswerEntry> {
       derivation: "Zero is the line of longitude at the Royal Observatory in Greenwich, England.",
     },
     "modern-world:liverpool-manchester": {
-      prompt: "A steam railway joined Liverpool and Manchester. It opened in 1830. How many years ago was that?",
+      prompt: `A steam railway joined Liverpool and Manchester in 1830. It is ${year} now. How many years ago was that?`,
       choices: [String(liverpoolYears - 10), String(liverpoolYears), String(liverpoolYears + 10)],
       correct: String(liverpoolYears),
       derivation: `${year} − 1830 = ${liverpoolYears} years.`,
@@ -62,7 +65,7 @@ export function journalAnswers(year: number): Record<string, AnswerEntry> {
       derivation: "The 1866 cable came ashore at Heart's Content, Newfoundland.",
     },
     "people-places:pont-du-gard": {
-      prompt: "The top row has 5 groups of 7 arches. How many arches is that?",
+      prompt: "The top row has 5 groups of 7 arches (a practice grouping, not a claim about the builders). How many arches is that?",
       choices: ["12", "35", "30"],
       correct: "35",
       derivation: "5 × 7 = 35 arches (a practice grouping of the sourced count).",
@@ -78,16 +81,16 @@ export function journalAnswers(year: number): Record<string, AnswerEntry> {
     // ---- 10-18 ----
     "technology:mobile-phone": {
       prompt: "Solve 1876 + x = 1973. What is x?",
-      choices: ["107", "97", "87"],
-      correct: "97",
-      derivation: "1973 − 1876 = 97 years.",
-      value: 97,
+      choices: ["107", String(mobileYears), "87"],
+      correct: String(mobileYears),
+      derivation: `1973 − 1876 = ${mobileYears} years.`,
+      value: mobileYears,
     },
     "great-leaders:lincoln-memorial:stretch": {
       prompt: "Each outside column is 44 feet tall. The seated statue is 19 feet tall. Solve 19 + x = 44. How much taller is a column?",
       choices: ["25", "19", "63"],
       correct: "25",
-      derivation: "44 − 19 = 25 feet taller.",
+      derivation: "44 − 19 = 25 feet taller than the statue.",
       value: 25,
     },
     "modern-world:greenwich-zero:stretch": {
@@ -98,7 +101,7 @@ export function journalAnswers(year: number): Record<string, AnswerEntry> {
       value: 15,
     },
     "modern-world:liverpool-manchester:stretch": {
-      prompt: "In an 1829 trial the Rocket went 36 miles in one hour. At that speed, how many miles in 2 hours?",
+      prompt: "In an 1829 trial the Rocket went 36 miles in one hour. That was a trial speed. If it kept that speed for 2 hours, how many miles would it go?",
       choices: ["36", "72", "38"],
       correct: "72",
       derivation: "36 × 2 = 72 miles.",
@@ -112,7 +115,7 @@ export function journalAnswers(year: number): Record<string, AnswerEntry> {
       value: 130,
     },
     "people-places:eratosthenes-earth": {
-      prompt: "The distance is 5,000 stadia, and that is one fiftieth of a full circle. How many stadia is the whole circle?",
+      prompt: "Cleomedes' account says 5,000 stadia is one fiftieth of a full circle. How many stadia is the whole circle, by that account?",
       choices: ["5,000", "100,000", "250,000"],
       correct: "250,000",
       derivation: "50 × 5,000 = 250,000 stadia. No kilometer conversion is given.",
