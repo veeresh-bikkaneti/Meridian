@@ -4,14 +4,18 @@ import path from "node:path";
 import { serveBuiltArtifact, APP_NO_IDLE } from "./helpers";
 
 /**
- * /board — live scrum board + feature map (feat/live-scrum-board).
+ * /board — the story board (feat/board-v2; Sprintbound shell adopted
+ * in Phase C: sidebar views over one story list).
  *
  * Runs against the built Pages artifact. The GitHub API is mocked to
- * FAIL in every test here: the board must render all 8 lanes and all 46
- * stories from the snapshot alone, say it is showing the snapshot, and
- * never depend on the live fetch. The feature-request endpoint is
- * mocked too — the spec proves the form posts to /api/feature-request,
- * not that Discord received anything.
+ * FAIL in every test here (except the celebration block, which fulfils
+ * it): the board must render all 8 regions and all 46 stories from the
+ * snapshot alone, say it is showing the snapshot, and never depend on
+ * the live fetch. The feature-request endpoint is mocked too — the
+ * spec proves the form posts to /api/feature-request, not that Discord
+ * received anything. Live-overlay behaviour against the REAL API is
+ * verified separately (see REPORT-C) with a just-captured payload
+ * replayed byte-for-byte — never by these snapshot tests.
  */
 test.setTimeout(180_000);
 
@@ -38,7 +42,7 @@ async function openBoard(page: import("playwright/test").Page) {
   await expect(page.getByTestId("board-live-line")).toContainText("snapshot");
 }
 
-test("board at 390px: list view renders all 8 lanes from the snapshot, no sideways scroll", async ({
+test("board at 390px: story map renders all 8 regions from the snapshot, no sideways scroll", async ({
   page,
 }) => {
   await page.setViewportSize({ width: 390, height: 844 });
@@ -50,12 +54,15 @@ test("board at 390px: list view renders all 8 lanes from the snapshot, no sidewa
   await expect(page.getByTestId("scrum-column-in-progress").getByTestId("story-card")).toHaveCount(10);
   await expect(page.getByTestId("scrum-column-not-started").getByTestId("story-card")).toHaveCount(18);
 
-  await page.getByTestId("list-view-toggle").click();
-  const list = page.getByTestId("board-list-view");
-  await expect(list.getByTestId("board-lane")).toHaveCount(8);
-  await expect(list.getByTestId("story-card")).toHaveCount(46);
-  await expect(list).toContainText("Detective core");
-  await expect(list).toContainText("Infra and process");
+  // Phase C: the old 3D/list toggle is gone — the lane list is now the
+  // Story map view (Sprintbound system: one row per region, case
+  // slices instead of full cards).
+  await page.getByTestId("board-nav-map").click();
+  const map = page.getByTestId("story-map-view");
+  await expect(map.getByTestId("map-region-row")).toHaveCount(8);
+  await expect(map.locator(".board-slice")).toHaveCount(46);
+  await expect(map).toContainText("Detective core");
+  await expect(map).toContainText("Infra and process");
 
   const overflow = await page.evaluate(() => {
     return document.documentElement.scrollWidth - document.documentElement.clientWidth;
@@ -78,6 +85,8 @@ test("board at desktop: form posts to /api/feature-request (mocked)", async ({ p
   });
   await openBoard(page);
 
+  // Phase C: the form is the shell's Send-a-tip view now.
+  await page.getByTestId("board-nav-intake").click();
   const form = page.getByTestId("feature-request-form");
   await form.locator("textarea").fill("A quiz about famous rivers, please");
   await form.locator("select").first().selectOption("7-10");
@@ -94,66 +103,61 @@ test("board at desktop: form posts to /api/feature-request (mocked)", async ({ p
   expect(Object.keys(payload).sort()).toEqual(["ageGroup", "idea", "subject", "turnstileToken", "website"]);
 });
 
-test("board 3D map: dragging the canvas changes the view, edges are drawn", async ({ page }) => {
+test("board story map: region rows carry computed rollups, a slice opens its inspector", async ({
+  page,
+}) => {
   await page.setViewportSize({ width: 1280, height: 900 });
   await openBoard(page);
 
-  const canvas = page.getByTestId("feature-map-canvas");
-  await expect(canvas).toBeVisible();
-  // The snapshot encodes exactly 8 explicit PR-wait dependency edges.
-  await expect(canvas).toHaveAttribute("data-edge-count", "8");
+  // Phase C replaces the deleted 3D-map tests: the board's map is now
+  // the Sprintbound story map (region rows + case slices). Expected
+  // rollups are computed from the snapshot file, never hardcoded —
+  // GitHub is aborted in this spec, so the page renders this snapshot.
+  const snapshot = JSON.parse(readFileSync("src/board/snapshot.json", "utf8")) as {
+    lanes: { name: string }[];
+    stories: { lane: string; status: string }[];
+  };
+  await page.getByTestId("board-nav-map").click();
+  const map = page.getByTestId("story-map-view");
+  await expect(map.getByTestId("map-region-row")).toHaveCount(snapshot.lanes.length);
+  await expect(map.locator(".board-slice")).toHaveCount(snapshot.stories.length);
+  for (const lane of snapshot.lanes) {
+    const inLane = snapshot.stories.filter((s) => s.lane === lane.name);
+    const closed = inLane.filter((s) => s.status === "done").length;
+    const row = map.getByTestId("map-region-row").filter({ hasText: lane.name });
+    await expect(row).toContainText(`${inLane.length} cases · ${closed} closed`);
+  }
 
-  await canvas.scrollIntoViewIfNeeded();
-  const box = await canvas.boundingBox();
-  if (!box) throw new Error("canvas has no box");
-  const clip = { x: box.x, y: box.y, width: box.width, height: box.height };
-  await page.waitForTimeout(600);
-  const before = await page.screenshot({ clip });
-  await page.mouse.move(box.x + box.width * 0.5, box.y + box.height * 0.5);
-  await page.mouse.down();
-  await page.mouse.move(box.x + box.width * 0.72, box.y + box.height * 0.38, { steps: 12 });
-  await page.mouse.up();
-  await page.waitForTimeout(700);
-  const after = await page.screenshot({ clip });
-  expect(before.equals(after)).toBe(false);
+  // Clicking a slice lands on the Live board with that case inspected.
+  const slice = map.locator(".board-slice").filter({ hasText: "Math subject screen" });
+  await slice.click();
+  const aside = page.locator(".board-inspector");
+  await expect(aside).toBeVisible();
+  await expect(aside).toContainText("Math subject screen, 3 items per age group");
 });
 
-test("board 3D map: clicking a story block highlights its dependency chain", async ({ page }) => {
+test("board dependencies view: graph draws the 8 recorded edges, node opens the inspector", async ({
+  page,
+}) => {
   await page.setViewportSize({ width: 1280, height: 900 });
   await openBoard(page);
 
-  const canvas = page.getByTestId("feature-map-canvas");
-  await expect(canvas).toBeVisible();
-  await canvas.scrollIntoViewIfNeeded();
-  const box = await canvas.boundingBox();
-  if (!box) throw new Error("canvas has no box");
+  await page.getByTestId("board-nav-dependencies").click();
+  const graph = page.getByTestId("dependency-graph");
+  await expect(graph).toBeVisible();
+  // The snapshot encodes exactly 8 explicit PR-wait dependency edges
+  // across 8 cases (locked by the board-data unit tests).
+  await expect(graph.locator(".board-graph-line")).toHaveCount(8);
+  await expect(graph.locator(".board-graph-node")).toHaveCount(8);
+  await expect(page.locator(".board-dep-row")).toHaveCount(8);
 
-  // Aim at the "Holmes and Watson in math" block using the projected
-  // node points the map publishes on the canvas — the story with the
-  // richest recorded chain (it waits on PR 434 + PR 430). A couple of
-  // nearby retries cover a front block shadowing the exact pixel.
-  await page.waitForTimeout(800);
-  const rawPoints = await canvas.getAttribute("data-node-points");
-  if (!rawPoints) throw new Error("map published no node points");
-  const points = JSON.parse(rawPoints) as { t: string; x: number; y: number }[];
-  const target = points.find((p) => p.t === "Holmes and Watson in math");
-  if (!target) throw new Error("node points do not include the math story");
-  const selection = page.getByTestId("map-selection");
-  let found = "";
-  for (const dy of [0, -0.012, 0.012, -0.025, 0.025]) {
-    await page.mouse.click(box.x + box.width * target.x, box.y + box.height * (target.y + dy));
-    await page.waitForTimeout(250);
-    found = await page.evaluate(
-      () => document.querySelector('[data-testid="map-selection"]')?.textContent ?? "",
-    );
-    if (found.startsWith("Selected case: Holmes and Watson in math.")) break;
-  }
-  expect(found).toContain("Needs a clue from (explicit PR waits):");
-  expect(found).toContain("Clue pacing and one voice at a time");
-  expect(found).toContain("Math subject screen, 3 items per age group");
-  expect(found).toContain("Shared voice channel (one speaker at a time)");
-  await expect(canvas).toHaveAttribute("data-selected-story", "Holmes and Watson in math");
-  await expect(selection).toContainText("Needs a clue from (explicit PR waits):");
+  // "Holmes and Watson in math" is the case with the richest recorded
+  // chain (it waits on PR 434 + PR 430 stories).
+  await graph.locator(".board-graph-node").filter({ hasText: "Holmes and Watson in math" }).click();
+  const aside = page.locator(".board-inspector");
+  await expect(aside).toBeVisible();
+  await expect(aside).toContainText("Holmes and Watson in math");
+  await expect(aside).toContainText("Clue pacing and one voice at a time");
 });
 
 test("board issues page at 390px: groups by story, unmapped stays unmapped (network mocked)", async ({
@@ -233,7 +237,7 @@ test("board issues page at 390px: groups by story, unmapped stays unmapped (netw
   expect(overflow).toBeLessThanOrEqual(0);
 });
 
-test("board with reduced motion: lands on the list view, no 3D canvas", async ({ browser }) => {
+test("board with reduced motion: board renders, no canvas anywhere", async ({ browser }) => {
   const context = await browser.newContext({ reducedMotion: "reduce" });
   try {
     await serveBuiltArtifact(context);
@@ -248,9 +252,12 @@ test("board with reduced motion: lands on the list view, no 3D canvas", async ({
     const page = await context.newPage();
     await page.goto(BOARD_URL);
     await expect(page.getByTestId("board-page")).toBeVisible();
-    await expect(page.getByTestId("board-list-view")).toBeVisible();
-    await expect(page.getByTestId("board-list-view").getByTestId("story-card")).toHaveCount(46);
-    await expect(page.getByTestId("feature-map-canvas")).toHaveCount(0);
+    // Phase C: there is no 3D view at all anymore (the expedition map
+    // was retired), so reduced motion changes nothing structural — the
+    // story map carries all 46 cases as plain buttons.
+    await page.getByTestId("board-nav-map").click();
+    await expect(page.getByTestId("story-map-view").locator(".board-slice")).toHaveCount(46);
+    await expect(page.locator("canvas")).toHaveCount(0);
   } finally {
     await context.close();
   }
@@ -379,9 +386,10 @@ test("board v2 at 390px: columns scroll inside their container, inspector stacks
   await page.keyboard.press("Escape");
   await expect(aside).toHaveCount(0);
 
-  await page.getByTestId("list-view-toggle").click();
-  const list = page.getByTestId("board-list-view");
-  await expect(list.getByTestId("board-lane")).toHaveCount(8);
+  // Phase C: the lane list lives on the Story map view now.
+  await page.getByTestId("board-nav-map").click();
+  const map = page.getByTestId("story-map-view");
+  await expect(map.getByTestId("map-region-row")).toHaveCount(8);
 });
 
 test("home loads no board code: no board chunks, feature-map chunk, or Turnstile requests", async ({
@@ -397,8 +405,8 @@ test("home loads no board code: no board chunks, feature-map chunk, or Turnstile
   expect(urls.filter((u) => u.includes("challenges.cloudflare.com"))).toEqual([]);
 });
 
-test("board v2 phase A screenshots (snapshot data, GitHub mocked off)", async ({ page }) => {
-  const dir = path.resolve("..", "screenshots-A");
+test("board phase C screenshots (snapshot data, GitHub mocked off)", async ({ page }) => {
+  const dir = path.resolve("..", "screenshots-C");
   mkdirSync(dir, { recursive: true });
 
   await page.setViewportSize({ width: 1280, height: 1600 });
@@ -406,7 +414,7 @@ test("board v2 phase A screenshots (snapshot data, GitHub mocked off)", async ({
   await page.evaluate(() => window.scrollTo(0, 0));
   await page.screenshot({ path: path.join(dir, "board-desktop.png") });
 
-  // A story with linked PRs (355–358) and a status-why line.
+  // A story with linked PRs (355-358) and a status-why line.
   const doneCard = page
     .getByTestId("scrum-column-done")
     .getByTestId("story-card")
@@ -420,10 +428,23 @@ test("board v2 phase A screenshots (snapshot data, GitHub mocked off)", async ({
   await page.keyboard.press("Escape");
   await expect(aside).toHaveCount(0);
 
-  await page.getByRole("heading", { name: "Dependency trails" }).scrollIntoViewIfNeeded();
-  await expect(page.locator(".board-dep-row").first()).toBeVisible();
-  await page.screenshot({ path: path.join(dir, "dependency-list.png") });
+  await page.getByTestId("board-nav-map").click();
+  await expect(page.getByTestId("story-map-view")).toBeVisible();
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await page.screenshot({ path: path.join(dir, "story-map.png") });
 
+  await page.getByTestId("board-nav-dependencies").click();
+  await expect(page.getByTestId("dependency-graph")).toBeVisible();
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await page.screenshot({ path: path.join(dir, "dependencies.png") });
+
+  await page.getByTestId("board-nav-releases").click();
+  await expect(page.getByTestId("xp-progress")).toBeVisible();
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await page.screenshot({ path: path.join(dir, "releases.png") });
+
+  await page.getByTestId("board-nav-board").click();
+  await expect(page.getByTestId("board-live-line")).toContainText("snapshot");
   // Resize the loaded page instead of re-navigating to the same URL:
   // a second goto lands on the app service worker and serves its 404
   // body in this harness. The responsive rules are pure CSS, so a
@@ -437,10 +458,10 @@ test("board v2 phase A screenshots (snapshot data, GitHub mocked off)", async ({
       }),
     )
     .toBe(true);
-  // Frame the scrum board itself: at 390px the header + Coming next
-  // fill the first screen, so scroll the columns into view — the
-  // second column peeking at the right edge is the scroll cue.
-  await page.getByRole("heading", { name: "Scrum board" }).scrollIntoViewIfNeeded();
+  // Frame the scrum board itself: at 390px the shell header + intro
+  // fill the first screen, so scroll the stage into view — the second
+  // column peeking at the right edge is the scroll cue.
+  await page.getByRole("heading", { name: /Scrum board/ }).scrollIntoViewIfNeeded();
   await page.screenshot({ path: path.join(dir, "board-390.png") });
 });
 
@@ -485,6 +506,8 @@ test("board v2 game layer: XP bar counts cases closed from the snapshot", async 
   const closed = stories.filter((s) => s.status === "done").length;
   const total = stories.length;
 
+  // Phase C: progress is the Releases view's score card now.
+  await page.getByTestId("board-nav-releases").click();
   await expect(page.getByTestId("xp-progress")).toContainText(`Cases closed ${closed} / ${total}`);
 });
 
@@ -508,6 +531,9 @@ test("board v2 game layer: next to crack is the open case that unblocks the most
     }
   }
 
+  // Phase C: Next to crack is the Dependencies view's recommended-
+  // move callout now.
+  await page.getByTestId("board-nav-dependencies").click();
   const chip = page.getByTestId("next-to-crack");
   if (best === null) {
     await expect(chip).toHaveCount(0);
@@ -530,42 +556,6 @@ test("board v2 game layer: reduced motion done card stamp is visible with no ani
   await expect(stamp).toBeVisible();
   const animationName = await stamp.evaluate((el) => getComputedStyle(el).animationName);
   expect(animationName).toBe("none");
-});
-
-test("board v2 game layer: clicking a map block opens its inspector", async ({ page }) => {
-  await page.setViewportSize({ width: 1280, height: 900 });
-  await openBoard(page);
-
-  const canvas = page.getByTestId("feature-map-canvas");
-  await expect(canvas).toBeVisible();
-  await canvas.scrollIntoViewIfNeeded();
-  const box = await canvas.boundingBox();
-  if (!box) throw new Error("canvas has no box");
-
-  // Same aiming pattern as the chain-highlight test above: use the
-  // projected node points the map publishes on the canvas.
-  await page.waitForTimeout(800);
-  const rawPoints = await canvas.getAttribute("data-node-points");
-  if (!rawPoints) throw new Error("map published no node points");
-  const points = JSON.parse(rawPoints) as { t: string; x: number; y: number }[];
-  const target = points.find((p) => p.t === "Holmes and Watson in math");
-  if (!target) throw new Error("node points do not include the math story");
-  const selection = page.getByTestId("map-selection");
-  let found = "";
-  for (const dy of [0, -0.012, 0.012, -0.025, 0.025]) {
-    await page.mouse.click(box.x + box.width * target.x, box.y + box.height * (target.y + dy));
-    await page.waitForTimeout(250);
-    found = await page.evaluate(
-      () => document.querySelector('[data-testid="map-selection"]')?.textContent ?? "",
-    );
-    if (found.startsWith("Selected case: Holmes and Watson in math.")) break;
-  }
-  expect(found.startsWith("Selected case: Holmes and Watson in math.")).toBe(true);
-  await expect(selection).toContainText("Selected case: Holmes and Watson in math.");
-
-  const aside = page.locator(".board-inspector");
-  await expect(aside).toBeVisible();
-  await expect(aside).toContainText("Holmes and Watson in math");
 });
 
 // ---------------------------------------------------------------------------

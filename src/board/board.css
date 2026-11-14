@@ -928,6 +928,7 @@
 .board-sidebar {
   display: grid;
   gap: 14px;
+  align-content: start;
   padding: 16px 14px;
   min-width: 0;
 }
@@ -1450,17 +1451,15 @@
 }
 
 /* Dependencies view: graph panel + link ledger, callout below. */
+/* Graph over ledger, stacked: the graph canvas needs the full row
+ * (three depth columns of nodes), and the ledger rows read better
+ * full-width — the Sprintbound side-by-side split only works with
+ * short ids, which Meridian's story slugs are not. */
 .board-dep-layout {
   display: grid;
   gap: 16px;
   align-items: start;
   min-width: 0;
-}
-
-@media (min-width: 1180px) {
-  .board-dep-layout {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  }
 }
 
 .board-graph,
@@ -1522,10 +1521,20 @@
   overflow: hidden;
 }
 
+.board-graph-node-id {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .board-graph-node strong {
   font-size: 13px;
   line-height: 1.25;
   overflow-wrap: anywhere;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
 }
 
 .board-graph-node small {

@@ -665,8 +665,7 @@ function BoardPage() {
 
           <footer className="board-statusbar">
             <span>
-              Snapshot read {snapshot.asOf} · main{" "}
-              <span className="board-mono">{snapshot.main}</span>
+              {snapshot.asOf} · main <span className="board-mono">{snapshot.main}</span>
             </span>
             <span>Read-only · statuses come from GitHub</span>
           </footer>

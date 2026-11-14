@@ -16,10 +16,10 @@ import {
  * case in the Live board's inspector (the parent switches view).
  */
 
-const NODE_W = 208;
-const NODE_H = 86;
-const GAP_X = 64;
-const GAP_Y = 26;
+const NODE_W = 200;
+const NODE_H = 104;
+const GAP_X = 56;
+const GAP_Y = 22;
 const PAD = 14;
 
 export function DependencyGraph({
@@ -90,7 +90,9 @@ export function DependencyGraph({
                 style={{ left: left(i), top: top(i), width: NODE_W, minHeight: NODE_H }}
                 onClick={(e) => onSelect(s, e.currentTarget)}
               >
-                <span className="board-mono">{s.id}</span>
+                <span className="board-mono board-graph-node-id" title={s.id}>
+                  {s.id}
+                </span>
                 <strong>{s.title}</strong>
                 <small>{GAME_STATUS_LABEL[s.status]}</small>
               </button>
