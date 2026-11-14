@@ -42,7 +42,17 @@ it("every curated row is listed except the held one, and the held one stays out"
   // 2026-11-14: its answer needs the down-column reactivity trend,
   // which its row never states, and the 18+ explain item teaches
   // same-column → "similar way").
-  const held = new Set(["chemistry:water:where", "chemistry:elements:detective"]);
+  const held = new Set([
+    "chemistry:water:where",
+    "chemistry:elements:detective",
+    // 18+ row, playable in the adult-rows follow-up.
+    "chemistry:mixtures:concentrate-dilution",
+    "chemistry:reactions:kit-limit",
+    "chemistry:elements:model-hydrogen",
+    "chemistry:materials:recycle-share",
+    "chemistry:mixtures:two-step-dilution",
+    "chemistry:materials:label-mass",
+  ]);
   const listed = new Set(CHEMISTRY_ITEM_IDS);
   const rows = allChemistryRows();
   assert.equal(rows.length, 24);
