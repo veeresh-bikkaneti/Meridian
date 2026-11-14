@@ -251,6 +251,16 @@ export default defineConfig({
       use: { viewport: { width: 1440, height: 900 } },
     },
     {
+      // PR A (character re-skin): the kid-test GO/NO-GO harness —
+      // automated size-band / face-floor / zero-coverage measures over
+      // the real GeoDetective page + human-trial screen preparation.
+      // The spec drives its own per-width contexts (390/768/1280/1920);
+      // the project viewport is only a default.
+      name: "pair-art-kidtest",
+      testMatch: /pair-art-kidtest\.spec\.ts/,
+      use: { viewport: { width: 1440, height: 900 } },
+    },
+    {
       name: "detective-berth",
       testMatch: /detective-berth\.spec\.ts/,
       use: { viewport: { width: 1440, height: 900 } },

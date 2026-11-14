@@ -72,6 +72,7 @@ const CONTEXT_FILES = Object.freeze([
   "why-learn-page.desktop.spec.ts",
   "home-visual-layout.desktop.spec.ts",
   "loading-orbs.desktop.spec.ts",
+  "pair-art-kidtest.spec.ts",
   "reset-history.desktop.spec.ts",
   "review-card-actions.desktop.spec.ts",
   "scout-switch-note.desktop.spec.ts",

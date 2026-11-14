@@ -1,0 +1,2360 @@
+{
+  "lock_version": 1,
+  "pr": "A \u2014 pair-art model sheets",
+  "base_contract": "src/game/loop/detective/DetectivePair.tsx @ main 9e49da3",
+  "viewBoxes": {
+    "holmes": [
+      120,
+      178
+    ],
+    "watson": [
+      134,
+      140
+    ]
+  },
+  "render_px_per_viewBox_unit": 2,
+  "high_five_contact_vb": {
+    "holmes": [
+      99,
+      25
+    ],
+    "watson": [
+      15,
+      21
+    ]
+  },
+  "pivots_vb": {
+    "holmes": {
+      "frontArm": [
+        78,
+        58
+      ],
+      "swingArm": [
+        44,
+        58
+      ],
+      "head": [
+        62,
+        54
+      ],
+      "torso": [
+        60,
+        132
+      ],
+      "legA": [
+        52,
+        118
+      ],
+      "legB": [
+        64,
+        118
+      ]
+    },
+    "watson": {
+      "frontArm": [
+        36,
+        54
+      ],
+      "noteArm": [
+        82,
+        54
+      ],
+      "head": [
+        60,
+        50
+      ],
+      "torso": [
+        60,
+        110
+      ],
+      "legA": [
+        52,
+        92
+      ],
+      "legB": [
+        66,
+        92
+      ]
+    }
+  },
+  "palm_anchor_error_measured": {
+    "holmes": {
+      "measured_vb": [
+        98.89,
+        25.36
+      ],
+      "contact_vb": [
+        99,
+        25
+      ],
+      "error_px": 0.37,
+      "skin_px": 229
+    },
+    "watson": {
+      "measured_vb": [
+        15.44,
+        20.91
+      ],
+      "contact_vb": [
+        15,
+        21
+      ],
+      "error_px": 0.45,
+      "skin_px": 224
+    }
+  },
+  "palm_gate_px": 3,
+  "palm_pass": true,
+  "budgets": {
+    "runtime_total_bytes": 172414,
+    "runtime_budget_bytes": 500000,
+    "runtime_pass": true,
+    "decoded_total_MB": 2.486,
+    "decoded_budget_MB": 32,
+    "decoded_pass": true,
+    "runtime_file_count": 45,
+    "note": "Pose plates + silhouettes are docs/test assets, excluded from the runtime total."
+  },
+  "scale_lock": {
+    "source": "MOCKUP-NOTES.md staging law",
+    "ratio_watson_per_holmes": 0.76,
+    "in_play_heights_px": {
+      "390": [
+        170,
+        130
+      ],
+      "1280": [
+        150,
+        115
+      ]
+    },
+    "silhouette_widths_at_104px_height": {
+      "holmes": 43,
+      "watson": 63
+    }
+  },
+  "silhouette_gate": {
+    "holmes": "PASS \u2014 tall/thin (43px wide at 104px high), deerstalker crown + brim reads",
+    "watson": "PASS \u2014 short/stout (63px wide at 104px high), bowler dome + flat brim reads",
+    "distinguishable": "PASS \u2014 width ratio 43:63 plus hat profiles differ at a glance"
+  },
+  "transparency_checks": {
+    "holmes-arm-back.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "holmes-arm-front.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "holmes-face-attentive.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "holmes-face-delighted.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "holmes-face-focused.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "holmes-face-hushed.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "holmes-face-marking.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "holmes-face-neutral.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "holmes-face-pout.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "holmes-face-reading.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "holmes-face-surprised.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "holmes-face-thinking.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "holmes-face-wonder.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "holmes-halo.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "holmes-hat.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "holmes-head.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "holmes-leg-a.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "holmes-leg-b.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "holmes-pose-ack.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "holmes-pose-announce.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "holmes-pose-berth-think.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "holmes-pose-card-look.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "holmes-pose-celebrate-jump.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "holmes-pose-clap.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "holmes-pose-dock.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "holmes-pose-gaze-up.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "holmes-pose-high-five.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "holmes-pose-pout.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "holmes-pose-search.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "holmes-pose-walk.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "holmes-torso.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "jolly-standing.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "prop-card.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "prop-cup.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "prop-glass.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "prop-notebook-pencil.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "silhouette-holmes-104.png": {
+      "mode": "RGBA",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "silhouette-watson-104.png": {
+      "mode": "RGBA",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "tracker-standing.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "watson-arm-back.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "watson-arm-front.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "watson-face-attentive.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "watson-face-delighted.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "watson-face-focused.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "watson-face-hushed.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "watson-face-marking.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "watson-face-neutral.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "watson-face-pout.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "watson-face-reading.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "watson-face-surprised.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "watson-face-thinking.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "watson-face-wonder.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "watson-halo.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "watson-hat.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "watson-head.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "watson-leg-a.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "watson-leg-b.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "watson-pose-celebrate-jump.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "watson-pose-clap.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "watson-pose-gasp.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "watson-pose-high-five.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "watson-pose-notebook-mark.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "watson-pose-pout.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "watson-pose-read.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "watson-pose-station-idle.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "watson-pose-think.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "watson-pose-walk.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "watson-torso.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "holmes-arm-raised.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    },
+    "watson-arm-raised.png": {
+      "mode": "P",
+      "alpha_channel": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "corners_transparent": true
+    }
+  },
+  "transparency_all_pass": true,
+  "runtime_files": [
+    {
+      "file": "holmes-hat.png",
+      "bytes": 2495,
+      "width": 73,
+      "height": 54,
+      "decodedMB": 0.0158,
+      "rect_vb": [
+        37.5,
+        -1.0,
+        74.0,
+        26.0
+      ],
+      "character": "holmes",
+      "part": "hat"
+    },
+    {
+      "file": "holmes-leg-a.png",
+      "bytes": 2620,
+      "width": 99,
+      "height": 140,
+      "decodedMB": 0.0554,
+      "rect_vb": [
+        35.5,
+        109,
+        85,
+        179
+      ],
+      "character": "holmes",
+      "part": "leg-a"
+    },
+    {
+      "file": "holmes-leg-b.png",
+      "bytes": 3173,
+      "width": 99,
+      "height": 140,
+      "decodedMB": 0.0554,
+      "rect_vb": [
+        35.5,
+        109,
+        85,
+        179
+      ],
+      "character": "holmes",
+      "part": "leg-b"
+    },
+    {
+      "file": "holmes-arm-back.png",
+      "bytes": 2656,
+      "width": 60,
+      "height": 120,
+      "decodedMB": 0.0288,
+      "rect_vb": [
+        28,
+        47,
+        58,
+        107
+      ],
+      "character": "holmes",
+      "part": "arm-back"
+    },
+    {
+      "file": "holmes-arm-front.png",
+      "bytes": 2335,
+      "width": 64,
+      "height": 92,
+      "decodedMB": 0.0236,
+      "rect_vb": [
+        66,
+        47,
+        98,
+        93
+      ],
+      "character": "holmes",
+      "part": "arm-front"
+    },
+    {
+      "file": "holmes-arm-raised.png",
+      "bytes": 2810,
+      "width": 96,
+      "height": 125,
+      "decodedMB": 0.048,
+      "rect_vb": [
+        66.0,
+        4.0,
+        114.0,
+        66.5
+      ],
+      "character": "holmes",
+      "part": "arm-raised"
+    },
+    {
+      "file": "holmes-torso.png",
+      "bytes": 8289,
+      "width": 112,
+      "height": 194,
+      "decodedMB": 0.0869,
+      "rect_vb": [
+        32.0,
+        42.0,
+        88.0,
+        139.0
+      ],
+      "character": "holmes",
+      "part": "torso"
+    },
+    {
+      "file": "watson-hat.png",
+      "bytes": 2455,
+      "width": 139,
+      "height": 48,
+      "decodedMB": 0.0267,
+      "rect_vb": [
+        27.5,
+        -1.0,
+        97.0,
+        23.0
+      ],
+      "character": "watson",
+      "part": "hat"
+    },
+    {
+      "file": "watson-leg-a.png",
+      "bytes": 3268,
+      "width": 159,
+      "height": 108,
+      "decodedMB": 0.0687,
+      "rect_vb": [
+        27,
+        87,
+        106.5,
+        141
+      ],
+      "character": "watson",
+      "part": "leg-a"
+    },
+    {
+      "file": "watson-leg-b.png",
+      "bytes": 3879,
+      "width": 159,
+      "height": 108,
+      "decodedMB": 0.0687,
+      "rect_vb": [
+        27,
+        87,
+        106.5,
+        141
+      ],
+      "character": "watson",
+      "part": "leg-b"
+    },
+    {
+      "file": "watson-arm-front.png",
+      "bytes": 2381,
+      "width": 72,
+      "height": 112,
+      "decodedMB": 0.0323,
+      "rect_vb": [
+        13,
+        43,
+        49,
+        99
+      ],
+      "character": "watson",
+      "part": "arm-front"
+    },
+    {
+      "file": "watson-arm-raised.png",
+      "bytes": 2749,
+      "width": 77,
+      "height": 118,
+      "decodedMB": 0.0363,
+      "rect_vb": [
+        3.0,
+        3.0,
+        41.5,
+        62.0
+      ],
+      "character": "watson",
+      "part": "arm-raised"
+    },
+    {
+      "file": "watson-arm-back.png",
+      "bytes": 2493,
+      "width": 80,
+      "height": 120,
+      "decodedMB": 0.0384,
+      "rect_vb": [
+        70,
+        43,
+        110,
+        103
+      ],
+      "character": "watson",
+      "part": "arm-back"
+    },
+    {
+      "file": "watson-torso.png",
+      "bytes": 9834,
+      "width": 165,
+      "height": 170,
+      "decodedMB": 0.1122,
+      "rect_vb": [
+        25.5,
+        32.0,
+        108.0,
+        117.0
+      ],
+      "character": "watson",
+      "part": "torso"
+    },
+    {
+      "file": "holmes-face-neutral.png",
+      "bytes": 3946,
+      "width": 102,
+      "height": 86,
+      "decodedMB": 0.0351,
+      "rect_vb": [
+        32.5,
+        21.0,
+        83.5,
+        64.0
+      ],
+      "character": "holmes",
+      "part": "face-neutral"
+    },
+    {
+      "file": "watson-face-neutral.png",
+      "bytes": 5399,
+      "width": 161,
+      "height": 84,
+      "decodedMB": 0.0541,
+      "rect_vb": [
+        27.5,
+        18.0,
+        108.0,
+        60.0
+      ],
+      "character": "watson",
+      "part": "face-neutral"
+    },
+    {
+      "file": "holmes-face-focused.png",
+      "bytes": 3912,
+      "width": 102,
+      "height": 87,
+      "decodedMB": 0.0355,
+      "rect_vb": [
+        32.5,
+        20.5,
+        83.5,
+        64.0
+      ],
+      "character": "holmes",
+      "part": "face-focused"
+    },
+    {
+      "file": "watson-face-focused.png",
+      "bytes": 5015,
+      "width": 161,
+      "height": 85,
+      "decodedMB": 0.0547,
+      "rect_vb": [
+        27.5,
+        17.5,
+        108.0,
+        60.0
+      ],
+      "character": "watson",
+      "part": "face-focused"
+    },
+    {
+      "file": "holmes-face-thinking.png",
+      "bytes": 3976,
+      "width": 102,
+      "height": 89,
+      "decodedMB": 0.0363,
+      "rect_vb": [
+        32.5,
+        19.5,
+        83.5,
+        64.0
+      ],
+      "character": "holmes",
+      "part": "face-thinking"
+    },
+    {
+      "file": "watson-face-thinking.png",
+      "bytes": 5027,
+      "width": 161,
+      "height": 87,
+      "decodedMB": 0.056,
+      "rect_vb": [
+        27.5,
+        16.5,
+        108.0,
+        60.0
+      ],
+      "character": "watson",
+      "part": "face-thinking"
+    },
+    {
+      "file": "holmes-face-attentive.png",
+      "bytes": 3897,
+      "width": 102,
+      "height": 86,
+      "decodedMB": 0.0351,
+      "rect_vb": [
+        32.5,
+        21.0,
+        83.5,
+        64.0
+      ],
+      "character": "holmes",
+      "part": "face-attentive"
+    },
+    {
+      "file": "watson-face-attentive.png",
+      "bytes": 4956,
+      "width": 161,
+      "height": 84,
+      "decodedMB": 0.0541,
+      "rect_vb": [
+        27.5,
+        18.0,
+        108.0,
+        60.0
+      ],
+      "character": "watson",
+      "part": "face-attentive"
+    },
+    {
+      "file": "holmes-face-hushed.png",
+      "bytes": 3702,
+      "width": 102,
+      "height": 86,
+      "decodedMB": 0.0351,
+      "rect_vb": [
+        32.5,
+        21.0,
+        83.5,
+        64.0
+      ],
+      "character": "holmes",
+      "part": "face-hushed"
+    },
+    {
+      "file": "watson-face-hushed.png",
+      "bytes": 5231,
+      "width": 161,
+      "height": 84,
+      "decodedMB": 0.0541,
+      "rect_vb": [
+        27.5,
+        18.0,
+        108.0,
+        60.0
+      ],
+      "character": "watson",
+      "part": "face-hushed"
+    },
+    {
+      "file": "holmes-face-wonder.png",
+      "bytes": 3732,
+      "width": 102,
+      "height": 91,
+      "decodedMB": 0.0371,
+      "rect_vb": [
+        32.5,
+        18.5,
+        83.5,
+        64.0
+      ],
+      "character": "holmes",
+      "part": "face-wonder"
+    },
+    {
+      "file": "watson-face-wonder.png",
+      "bytes": 4982,
+      "width": 161,
+      "height": 89,
+      "decodedMB": 0.0573,
+      "rect_vb": [
+        27.5,
+        15.5,
+        108.0,
+        60.0
+      ],
+      "character": "watson",
+      "part": "face-wonder"
+    },
+    {
+      "file": "holmes-face-reading.png",
+      "bytes": 3891,
+      "width": 102,
+      "height": 86,
+      "decodedMB": 0.0351,
+      "rect_vb": [
+        32.5,
+        21.0,
+        83.5,
+        64.0
+      ],
+      "character": "holmes",
+      "part": "face-reading"
+    },
+    {
+      "file": "watson-face-reading.png",
+      "bytes": 5380,
+      "width": 161,
+      "height": 84,
+      "decodedMB": 0.0541,
+      "rect_vb": [
+        27.5,
+        18.0,
+        108.0,
+        60.0
+      ],
+      "character": "watson",
+      "part": "face-reading"
+    },
+    {
+      "file": "holmes-face-marking.png",
+      "bytes": 3869,
+      "width": 102,
+      "height": 87,
+      "decodedMB": 0.0355,
+      "rect_vb": [
+        32.5,
+        20.5,
+        83.5,
+        64.0
+      ],
+      "character": "holmes",
+      "part": "face-marking"
+    },
+    {
+      "file": "watson-face-marking.png",
+      "bytes": 5349,
+      "width": 161,
+      "height": 85,
+      "decodedMB": 0.0547,
+      "rect_vb": [
+        27.5,
+        17.5,
+        108.0,
+        60.0
+      ],
+      "character": "watson",
+      "part": "face-marking"
+    },
+    {
+      "file": "holmes-face-delighted.png",
+      "bytes": 3822,
+      "width": 102,
+      "height": 86,
+      "decodedMB": 0.0351,
+      "rect_vb": [
+        32.5,
+        21.0,
+        83.5,
+        64.0
+      ],
+      "character": "holmes",
+      "part": "face-delighted"
+    },
+    {
+      "file": "watson-face-delighted.png",
+      "bytes": 5246,
+      "width": 161,
+      "height": 84,
+      "decodedMB": 0.0541,
+      "rect_vb": [
+        27.5,
+        18.0,
+        108.0,
+        60.0
+      ],
+      "character": "watson",
+      "part": "face-delighted"
+    },
+    {
+      "file": "holmes-face-surprised.png",
+      "bytes": 4046,
+      "width": 102,
+      "height": 91,
+      "decodedMB": 0.0371,
+      "rect_vb": [
+        32.5,
+        18.5,
+        83.5,
+        64.0
+      ],
+      "character": "holmes",
+      "part": "face-surprised"
+    },
+    {
+      "file": "watson-face-surprised.png",
+      "bytes": 5519,
+      "width": 161,
+      "height": 89,
+      "decodedMB": 0.0573,
+      "rect_vb": [
+        27.5,
+        15.5,
+        108.0,
+        60.0
+      ],
+      "character": "watson",
+      "part": "face-surprised"
+    },
+    {
+      "file": "holmes-face-pout.png",
+      "bytes": 3972,
+      "width": 102,
+      "height": 87,
+      "decodedMB": 0.0355,
+      "rect_vb": [
+        32.5,
+        20.5,
+        83.5,
+        64.0
+      ],
+      "character": "holmes",
+      "part": "face-pout"
+    },
+    {
+      "file": "watson-face-pout.png",
+      "bytes": 5056,
+      "width": 161,
+      "height": 85,
+      "decodedMB": 0.0547,
+      "rect_vb": [
+        27.5,
+        17.5,
+        108.0,
+        60.0
+      ],
+      "character": "watson",
+      "part": "face-pout"
+    },
+    {
+      "file": "holmes-head.png",
+      "bytes": 3946,
+      "width": 102,
+      "height": 86,
+      "decodedMB": 0.0351,
+      "rect_vb": [
+        32.5,
+        21.0,
+        83.5,
+        64.0
+      ],
+      "character": "holmes",
+      "part": "head"
+    },
+    {
+      "file": "watson-head.png",
+      "bytes": 5399,
+      "width": 161,
+      "height": 84,
+      "decodedMB": 0.0541,
+      "rect_vb": [
+        27.5,
+        18.0,
+        108.0,
+        60.0
+      ],
+      "character": "watson",
+      "part": "head"
+    },
+    {
+      "file": "prop-glass.png",
+      "bytes": 878,
+      "width": 55,
+      "height": 55,
+      "decodedMB": 0.0121,
+      "rect_vb": [
+        2.0,
+        1.0,
+        29.5,
+        28.5
+      ],
+      "character": "prop",
+      "part": "glass"
+    },
+    {
+      "file": "prop-card.png",
+      "bytes": 807,
+      "width": 53,
+      "height": 65,
+      "decodedMB": 0.0138,
+      "rect_vb": [
+        0.0,
+        0.0,
+        26.5,
+        32.5
+      ],
+      "character": "prop",
+      "part": "card"
+    },
+    {
+      "file": "prop-notebook-pencil.png",
+      "bytes": 1220,
+      "width": 60,
+      "height": 65,
+      "decodedMB": 0.0156,
+      "rect_vb": [
+        1.0,
+        2.0,
+        31.0,
+        34.5
+      ],
+      "character": "prop",
+      "part": "notebook-pencil"
+    },
+    {
+      "file": "prop-cup.png",
+      "bytes": 805,
+      "width": 34,
+      "height": 23,
+      "decodedMB": 0.0031,
+      "rect_vb": [
+        0.0,
+        2.0,
+        17.0,
+        13.5
+      ],
+      "character": "prop",
+      "part": "cup"
+    },
+    {
+      "file": "holmes-halo.png",
+      "bytes": 3449,
+      "width": 240,
+      "height": 356,
+      "decodedMB": 0.3418,
+      "rect_vb": [
+        0,
+        0,
+        120,
+        178
+      ],
+      "character": "holmes",
+      "part": "halo"
+    },
+    {
+      "file": "watson-halo.png",
+      "bytes": 3328,
+      "width": 268,
+      "height": 280,
+      "decodedMB": 0.3002,
+      "rect_vb": [
+        0,
+        0,
+        134,
+        140
+      ],
+      "character": "watson",
+      "part": "halo"
+    },
+    {
+      "file": "prop-pencil.png",
+      "bytes": 1220,
+      "width": 60,
+      "height": 65,
+      "decodedMB": 0.0156,
+      "rect_vb": [
+        1.0,
+        2.0,
+        31.0,
+        34.5
+      ],
+      "character": "prop",
+      "part": "pencil"
+    }
+  ],
+  "docs_files": [
+    {
+      "file": "holmes-pose-dock.png",
+      "bytes": 14690,
+      "width": 240,
+      "height": 356,
+      "decodedMB": 0.3418,
+      "kind": "pose-plate",
+      "character": "holmes",
+      "pose": "dock"
+    },
+    {
+      "file": "holmes-pose-walk.png",
+      "bytes": 14699,
+      "width": 240,
+      "height": 356,
+      "decodedMB": 0.3418,
+      "kind": "pose-plate",
+      "character": "holmes",
+      "pose": "walk"
+    },
+    {
+      "file": "holmes-pose-search.png",
+      "bytes": 14574,
+      "width": 240,
+      "height": 356,
+      "decodedMB": 0.3418,
+      "kind": "pose-plate",
+      "character": "holmes",
+      "pose": "search"
+    },
+    {
+      "file": "holmes-pose-berth-think.png",
+      "bytes": 14300,
+      "width": 240,
+      "height": 356,
+      "decodedMB": 0.3418,
+      "kind": "pose-plate",
+      "character": "holmes",
+      "pose": "berth-think"
+    },
+    {
+      "file": "holmes-pose-ack.png",
+      "bytes": 15243,
+      "width": 240,
+      "height": 356,
+      "decodedMB": 0.3418,
+      "kind": "pose-plate",
+      "character": "holmes",
+      "pose": "ack"
+    },
+    {
+      "file": "holmes-pose-announce.png",
+      "bytes": 16150,
+      "width": 240,
+      "height": 356,
+      "decodedMB": 0.3418,
+      "kind": "pose-plate",
+      "character": "holmes",
+      "pose": "announce"
+    },
+    {
+      "file": "holmes-pose-gaze-up.png",
+      "bytes": 15013,
+      "width": 240,
+      "height": 356,
+      "decodedMB": 0.3418,
+      "kind": "pose-plate",
+      "character": "holmes",
+      "pose": "gaze-up"
+    },
+    {
+      "file": "holmes-pose-card-look.png",
+      "bytes": 15076,
+      "width": 240,
+      "height": 356,
+      "decodedMB": 0.3418,
+      "kind": "pose-plate",
+      "character": "holmes",
+      "pose": "card-look"
+    },
+    {
+      "file": "holmes-pose-celebrate-jump.png",
+      "bytes": 16467,
+      "width": 240,
+      "height": 356,
+      "decodedMB": 0.3418,
+      "kind": "pose-plate",
+      "character": "holmes",
+      "pose": "celebrate-jump"
+    },
+    {
+      "file": "holmes-pose-high-five.png",
+      "bytes": 15951,
+      "width": 240,
+      "height": 356,
+      "decodedMB": 0.3418,
+      "kind": "pose-plate",
+      "character": "holmes",
+      "pose": "high-five"
+    },
+    {
+      "file": "holmes-pose-clap.png",
+      "bytes": 13281,
+      "width": 240,
+      "height": 356,
+      "decodedMB": 0.3418,
+      "kind": "pose-plate",
+      "character": "holmes",
+      "pose": "clap"
+    },
+    {
+      "file": "holmes-pose-pout.png",
+      "bytes": 18688,
+      "width": 240,
+      "height": 356,
+      "decodedMB": 0.3418,
+      "kind": "pose-plate",
+      "character": "holmes",
+      "pose": "pout"
+    },
+    {
+      "file": "watson-pose-walk.png",
+      "bytes": 16491,
+      "width": 268,
+      "height": 280,
+      "decodedMB": 0.3002,
+      "kind": "pose-plate",
+      "character": "watson",
+      "pose": "walk"
+    },
+    {
+      "file": "watson-pose-read.png",
+      "bytes": 15877,
+      "width": 268,
+      "height": 280,
+      "decodedMB": 0.3002,
+      "kind": "pose-plate",
+      "character": "watson",
+      "pose": "read"
+    },
+    {
+      "file": "watson-pose-think.png",
+      "bytes": 16241,
+      "width": 268,
+      "height": 280,
+      "decodedMB": 0.3002,
+      "kind": "pose-plate",
+      "character": "watson",
+      "pose": "think"
+    },
+    {
+      "file": "watson-pose-station-idle.png",
+      "bytes": 16651,
+      "width": 268,
+      "height": 280,
+      "decodedMB": 0.3002,
+      "kind": "pose-plate",
+      "character": "watson",
+      "pose": "station-idle"
+    },
+    {
+      "file": "watson-pose-notebook-mark.png",
+      "bytes": 16894,
+      "width": 268,
+      "height": 280,
+      "decodedMB": 0.3002,
+      "kind": "pose-plate",
+      "character": "watson",
+      "pose": "notebook-mark"
+    },
+    {
+      "file": "watson-pose-gasp.png",
+      "bytes": 18324,
+      "width": 268,
+      "height": 280,
+      "decodedMB": 0.3002,
+      "kind": "pose-plate",
+      "character": "watson",
+      "pose": "gasp"
+    },
+    {
+      "file": "watson-pose-celebrate-jump.png",
+      "bytes": 15070,
+      "width": 268,
+      "height": 280,
+      "decodedMB": 0.3002,
+      "kind": "pose-plate",
+      "character": "watson",
+      "pose": "celebrate-jump"
+    },
+    {
+      "file": "watson-pose-high-five.png",
+      "bytes": 17785,
+      "width": 268,
+      "height": 280,
+      "decodedMB": 0.3002,
+      "kind": "pose-plate",
+      "character": "watson",
+      "pose": "high-five"
+    },
+    {
+      "file": "watson-pose-clap.png",
+      "bytes": 15155,
+      "width": 268,
+      "height": 280,
+      "decodedMB": 0.3002,
+      "kind": "pose-plate",
+      "character": "watson",
+      "pose": "clap"
+    },
+    {
+      "file": "watson-pose-pout.png",
+      "bytes": 16834,
+      "width": 268,
+      "height": 280,
+      "decodedMB": 0.3002,
+      "kind": "pose-plate",
+      "character": "watson",
+      "pose": "pout"
+    },
+    {
+      "file": "silhouette-holmes-104.png",
+      "kind": "silhouette",
+      "bytes": 2450,
+      "width": 43,
+      "height": 104,
+      "decodedMB": 0.0179
+    },
+    {
+      "file": "silhouette-watson-104.png",
+      "kind": "silhouette",
+      "bytes": 2647,
+      "width": 63,
+      "height": 104,
+      "decodedMB": 0.0262
+    }
+  ],
+  "notes": [
+    "Parts are cropped to their alpha bbox; rect_vb gives each part's placement rect in rig viewBox units (x0,y0,x1,y1). Assemble in order: halo, legs (leg-a + leg-b), arm-back/note, torso, arm-front, face, hat.",
+    "Faces: holmes-face-<kind>.png / watson-face-<kind>.png are full head parts with the expression drawn in the character's own features; holmes-head.png / watson-head.png are the neutral bases.",
+    "PANEL CURE 2026-11-08 (glass): the earlier claim that the painted magnifier had been cleared was FALSE for the parts and plates as shipped. The baked hand + magnifier has now been inpainted out of holmes-torso.png, the Holmes leg parts and every Holmes pose plate (plaid/trouser clone-tile fill, contained to the original silhouette). Measured with a narrow skin band (see arm_palm_measurements_cure.band): holmes-torso hand-zone skin 165 -> 0 px below y=130 (8 skin px remain at the neck, which is the neck); Holmes leg parts 190 -> 0 / 4 px; pale-lens pixels in the baked-glass box of every Holmes plate -> 0 (<=1). prop-glass.png is now the single glass source: dock/search/berth-think/ack/announce/gaze-up/card-look/walk plates carry exactly one glass (400 pale-lens px, the prop), celebrate-jump/high-five/clap carry zero (glass = null, section 4.2/3.5).",
+    "PANEL CURE 2026-11-08 (arms): all four arm parts were repainted to the rig geometry \u2014 shoulder cap centred on the pivot, sleeve to a cream cuff, painted hand centred on the rig hand point (Holmes front (87,83), Holmes back (37,98), Watson front (26,89), Watson note-arm hand (97,93) measured from the notebook hand in the source painting). See arm_palm_measurements_cure.",
+    "PANEL CURE 2026-11-08 (legs split): holmes-legs.png / watson-legs.png are replaced by leg-a + leg-b parts (complementary masks over the same placement rect; pivots Holmes (52,118)/(64,118), Watson (52,92)/(66,92) recorded in pivots_vb and the manifest, each pivot inside its part's painted hip, alpha 254-255). Watson's book + hand were also inpainted out of his leg parts (coat plaid fill) \u2014 legs carry legs only. The fused holmes-legs.png / watson-legs.png files are removed.",
+    "PANEL CURE 2026-11-08 (seams): the flat keyline rows at the interior cut edges of every face/head/torso/hat part (3 rows of RGB(32,22,14) at the bottom edge) were re-cut \u2014 those rows now carry mirrored source pixels from directly above the cut (coat/collar texture), so no straight bar can appear at the neck/chest junction. Verified on assembled figures from the cured parts: no junction row in either assembly contains a keyline run of 8 px or more, at natural size or at 128 px render.",
+    "PANEL CURE 2026-11-08 (halo): holmes-halo.png / watson-halo.png are new runtime parts \u2014 silhouette-shaped cream halo + dark keyline underlays at full figure size, placed behind the assembled doll (assembly order above). The assembled composites show the cream halo around both figures (1,848 / 1,400 cream px on a mid-tone ground). No live filters.",
+    "PANEL CURE 2026-11-08 (pout): holmes-face-pout.png redrawn to section 6.2 \u2014 brow angled down-in, mouth an inverted arc (measured: dark-stroke top edge at mouth centre y=1.0 vs y=4.0 at the edges of the mouth box), and the chin fist removed (it read as berth-think). watson-face-pout.png likewise (inverted arc below the moustache: centre y=1.0 vs edges y=2.8; brows angled down-in). watson-face-delighted.png strengthened: a wide open smile with teeth now reads below the moustache (mouth-band dark px 91 in neutral -> 177 in delighted). holmes-pose-pout.png now uses the cured pout face and a 3-degree forward slump rotation about the torso pivot \u2014 it no longer reads as thinking.",
+    "DUPLICATES DISCLOSED: holmes-head.png is byte-identical to holmes-face-neutral.png, and watson-head.png is byte-identical to watson-face-neutral.png (the head part IS the neutral face plate; both filenames are kept because the harness expects the inventory). holmes-face-surprised.png is NOT byte-identical to holmes-face-wonder.png, and watson-face-surprised.png is NOT byte-identical to watson-face-wonder.png \u2014 CORRECTED 2026-11-08 (round-4 records): an earlier version of this note claimed both pairs byte-identical; that claim is stale. Measured on the cured tip: md5 distinct (Holmes surprised 4356e7ae936328ea1e3683bfb7a8a29e vs wonder e0fdb69aebdfd79dcf4f2fea42acdbc7; Watson surprised 8b1dc4fb17e442d90730ee35fce57aa0 vs wonder c4d50b8c91827455f7e54a88eab44c64), pixel diff 1,483 px (Holmes) / 2,042 px (Watson), full-frame RGBA. The 656 / 707 px figures in the ba4e213 Silo QA record predate the cure-7c face redraws and are superseded for these files. watson-pose-walk.png is NO LONGER byte-identical to watson-pose-station-idle.png: it is the station figure with a split-leg stride applied below the coat hem (3,527 px differ) \u2014 walk = station figure + leg swing, the same semantics the engine's leg-a/leg-b swing gives the doll.",
+    "Watson's painted notebook remains in his torso/arm region where the source art places it; prop-notebook-pencil.png is also provided for the engine.",
+    "High-five raised arms are drawn explicitly to the anchor (same technique as the SVG rig), sleeve in coat plaid, palm disc centred on HIGH_FIVE_CONTACT; error measured from the assembled plates' skin-cluster centroid.",
+    "Identity distractors (tracker-standing.png, jolly-standing.png) are TEST assets for the identity trial: listed separately, EXCLUDED from the runtime 500 KB total.",
+    "manifest.json (beside the assets) is the harness/engine-shaped export of this lock's geometry \u2014 see manifest_alignment.",
+    "POSE-PLATE REGENERATION 2026-11-08 (high-five geometry cure): the painted pose plates' raised arms disagreed with the rig pose spec (DetectivePair.tsx @ 9e49da3) \u2014 in the old high-five plates the anchor hand was a flat rig-colour disc (242,196,154), not painted skin, the arm rose from the wrong shoulder line, and a duplicate base-position front hand remained. All six arm-pose plates were regenerated as composites of the cured parts at the pose-spec angles (high-five: arm-front rotated about its pivot by the harness angle, hand segment extended along the arm axis so the painted palm lands on HIGH_FIVE_CONTACT; celebrate/clap: parts at CELEBRATE/CLAP spec angles, arms behind/over torso in rig draw order). Measured on the shipped plates (harness skin band, >=40px cluster within 30 vb): Holmes high-five palm (98.89,25.36) vb, 0.37 vb from (99,25), 229 px; Watson (15.44,20.91), 0.45 vb from (15,21), 224 px. Celebrate palms 0.39-0.90 vb from rig targets; clap palms 0.29-0.36 vb. Glass: high-five and Holmes celebrate/clap carry zero pale-lens px (glass = null); Watson celebrate carries the prop glass at the rig position. NOTE: the parts-assembly palm number is bounded by rigid-arm geometry \u2014 the arm-front part's palm radius (26.6 vb Holmes) is shorter than the contact radius (39.1 vb), so a pure rotation assembly lands ~7.3 rig px short regardless of plate content; the rig itself draws a longer explicit arm for high-five. Plates now show the true anchor geometry.",
+    "FOLLOW-UP CURE 2026-11-08 (raised-arm parts): holmes-arm-raised.png / watson-arm-raised.png are new runtime parts \u2014 the dedicated raised arm the rig draws explicitly for pose 'high-five' (DetectivePair.tsx @ 9e49da3 high-five branch: Holmes M78,58 L97,27 + hand at (99,25); Watson M36,54 L17,23 + hand at (15,21); drawn explicitly so the anchor never drifts with a rotation guess). Each part is that same arm isolated from the regenerated high-five plate, placed at its rect with NO rotation; in the high-five assembly it replaces arm-front (kid-test measurer keys on part id 'arm-raised'). Narrow-band self-check, part at rect: Holmes hand cluster 244 px, centroid (98.77,25.50) vb \u2014 0.56 vb from (99,25); Watson 235 px, centroid (15.50,20.96) vb \u2014 0.50 vb from (15,21). Runtime total 168,126 -> 172,431 B of 500,000. See raised_arm_parts_cure."
+  ],
+  "manifest_alignment": "public/assets/detective/pair-art/manifest.json carries the identical geometry (natural sizes, per-face-kind faceBox, per-part placement rects, pivots, palm anchors + measurements) in harness/engine shape. ASSET_LOCK.json remains the audit record; manifest.json is the runtime-shaped contract. Numbers are generated from the same build data \u2014 they cannot drift without a rebuild.",
+  "face_geometry": {
+    "holmes": {
+      "naturalSizePx": [
+        240,
+        356
+      ],
+      "faces": {
+        "neutral": {
+          "file": "holmes-face-neutral.png",
+          "faceBoxPx": {
+            "x": 65.0,
+            "y": 42.0,
+            "width": 102.0,
+            "height": 86.0
+          },
+          "faceBoxViewBox": {
+            "x": 32.5,
+            "y": 21.0,
+            "width": 51.0,
+            "height": 43.0
+          }
+        },
+        "focused": {
+          "file": "holmes-face-focused.png",
+          "faceBoxPx": {
+            "x": 65.0,
+            "y": 41.0,
+            "width": 102.0,
+            "height": 87.0
+          },
+          "faceBoxViewBox": {
+            "x": 32.5,
+            "y": 20.5,
+            "width": 51.0,
+            "height": 43.5
+          }
+        },
+        "thinking": {
+          "file": "holmes-face-thinking.png",
+          "faceBoxPx": {
+            "x": 65.0,
+            "y": 39.0,
+            "width": 102.0,
+            "height": 89.0
+          },
+          "faceBoxViewBox": {
+            "x": 32.5,
+            "y": 19.5,
+            "width": 51.0,
+            "height": 44.5
+          }
+        },
+        "attentive": {
+          "file": "holmes-face-attentive.png",
+          "faceBoxPx": {
+            "x": 65.0,
+            "y": 42.0,
+            "width": 102.0,
+            "height": 86.0
+          },
+          "faceBoxViewBox": {
+            "x": 32.5,
+            "y": 21.0,
+            "width": 51.0,
+            "height": 43.0
+          }
+        },
+        "hushed": {
+          "file": "holmes-face-hushed.png",
+          "faceBoxPx": {
+            "x": 65.0,
+            "y": 42.0,
+            "width": 102.0,
+            "height": 86.0
+          },
+          "faceBoxViewBox": {
+            "x": 32.5,
+            "y": 21.0,
+            "width": 51.0,
+            "height": 43.0
+          }
+        },
+        "wonder": {
+          "file": "holmes-face-wonder.png",
+          "faceBoxPx": {
+            "x": 65.0,
+            "y": 37.0,
+            "width": 102.0,
+            "height": 91.0
+          },
+          "faceBoxViewBox": {
+            "x": 32.5,
+            "y": 18.5,
+            "width": 51.0,
+            "height": 45.5
+          }
+        },
+        "reading": {
+          "file": "holmes-face-reading.png",
+          "faceBoxPx": {
+            "x": 65.0,
+            "y": 42.0,
+            "width": 102.0,
+            "height": 86.0
+          },
+          "faceBoxViewBox": {
+            "x": 32.5,
+            "y": 21.0,
+            "width": 51.0,
+            "height": 43.0
+          }
+        },
+        "marking": {
+          "file": "holmes-face-marking.png",
+          "faceBoxPx": {
+            "x": 65.0,
+            "y": 41.0,
+            "width": 102.0,
+            "height": 87.0
+          },
+          "faceBoxViewBox": {
+            "x": 32.5,
+            "y": 20.5,
+            "width": 51.0,
+            "height": 43.5
+          }
+        },
+        "delighted": {
+          "file": "holmes-face-delighted.png",
+          "faceBoxPx": {
+            "x": 65.0,
+            "y": 42.0,
+            "width": 102.0,
+            "height": 86.0
+          },
+          "faceBoxViewBox": {
+            "x": 32.5,
+            "y": 21.0,
+            "width": 51.0,
+            "height": 43.0
+          }
+        },
+        "surprised": {
+          "file": "holmes-face-surprised.png",
+          "faceBoxPx": {
+            "x": 65.0,
+            "y": 37.0,
+            "width": 102.0,
+            "height": 91.0
+          },
+          "faceBoxViewBox": {
+            "x": 32.5,
+            "y": 18.5,
+            "width": 51.0,
+            "height": 45.5
+          }
+        },
+        "pout": {
+          "file": "holmes-face-pout.png",
+          "faceBoxPx": {
+            "x": 65.0,
+            "y": 41.0,
+            "width": 102.0,
+            "height": 87.0
+          },
+          "faceBoxViewBox": {
+            "x": 32.5,
+            "y": 20.5,
+            "width": 51.0,
+            "height": 43.5
+          }
+        }
+      }
+    },
+    "watson": {
+      "naturalSizePx": [
+        268,
+        280
+      ],
+      "faces": {
+        "neutral": {
+          "file": "watson-face-neutral.png",
+          "faceBoxPx": {
+            "x": 55.0,
+            "y": 36.0,
+            "width": 161.0,
+            "height": 84.0
+          },
+          "faceBoxViewBox": {
+            "x": 27.5,
+            "y": 18.0,
+            "width": 80.5,
+            "height": 42.0
+          }
+        },
+        "focused": {
+          "file": "watson-face-focused.png",
+          "faceBoxPx": {
+            "x": 55.0,
+            "y": 35.0,
+            "width": 161.0,
+            "height": 85.0
+          },
+          "faceBoxViewBox": {
+            "x": 27.5,
+            "y": 17.5,
+            "width": 80.5,
+            "height": 42.5
+          }
+        },
+        "thinking": {
+          "file": "watson-face-thinking.png",
+          "faceBoxPx": {
+            "x": 55.0,
+            "y": 33.0,
+            "width": 161.0,
+            "height": 87.0
+          },
+          "faceBoxViewBox": {
+            "x": 27.5,
+            "y": 16.5,
+            "width": 80.5,
+            "height": 43.5
+          }
+        },
+        "attentive": {
+          "file": "watson-face-attentive.png",
+          "faceBoxPx": {
+            "x": 55.0,
+            "y": 36.0,
+            "width": 161.0,
+            "height": 84.0
+          },
+          "faceBoxViewBox": {
+            "x": 27.5,
+            "y": 18.0,
+            "width": 80.5,
+            "height": 42.0
+          }
+        },
+        "hushed": {
+          "file": "watson-face-hushed.png",
+          "faceBoxPx": {
+            "x": 55.0,
+            "y": 36.0,
+            "width": 161.0,
+            "height": 84.0
+          },
+          "faceBoxViewBox": {
+            "x": 27.5,
+            "y": 18.0,
+            "width": 80.5,
+            "height": 42.0
+          }
+        },
+        "wonder": {
+          "file": "watson-face-wonder.png",
+          "faceBoxPx": {
+            "x": 55.0,
+            "y": 31.0,
+            "width": 161.0,
+            "height": 89.0
+          },
+          "faceBoxViewBox": {
+            "x": 27.5,
+            "y": 15.5,
+            "width": 80.5,
+            "height": 44.5
+          }
+        },
+        "reading": {
+          "file": "watson-face-reading.png",
+          "faceBoxPx": {
+            "x": 55.0,
+            "y": 36.0,
+            "width": 161.0,
+            "height": 84.0
+          },
+          "faceBoxViewBox": {
+            "x": 27.5,
+            "y": 18.0,
+            "width": 80.5,
+            "height": 42.0
+          }
+        },
+        "marking": {
+          "file": "watson-face-marking.png",
+          "faceBoxPx": {
+            "x": 55.0,
+            "y": 35.0,
+            "width": 161.0,
+            "height": 85.0
+          },
+          "faceBoxViewBox": {
+            "x": 27.5,
+            "y": 17.5,
+            "width": 80.5,
+            "height": 42.5
+          }
+        },
+        "delighted": {
+          "file": "watson-face-delighted.png",
+          "faceBoxPx": {
+            "x": 55.0,
+            "y": 36.0,
+            "width": 161.0,
+            "height": 84.0
+          },
+          "faceBoxViewBox": {
+            "x": 27.5,
+            "y": 18.0,
+            "width": 80.5,
+            "height": 42.0
+          }
+        },
+        "surprised": {
+          "file": "watson-face-surprised.png",
+          "faceBoxPx": {
+            "x": 55.0,
+            "y": 31.0,
+            "width": 161.0,
+            "height": 89.0
+          },
+          "faceBoxViewBox": {
+            "x": 27.5,
+            "y": 15.5,
+            "width": 80.5,
+            "height": 44.5
+          }
+        },
+        "pout": {
+          "file": "watson-face-pout.png",
+          "faceBoxPx": {
+            "x": 55.0,
+            "y": 35.0,
+            "width": 161.0,
+            "height": 85.0
+          },
+          "faceBoxViewBox": {
+            "x": 27.5,
+            "y": 17.5,
+            "width": 80.5,
+            "height": 42.5
+          }
+        }
+      }
+    }
+  },
+  "test_assets_distractors": [
+    {
+      "file": "tracker-standing.png",
+      "subject": "Cold Trail tracker child",
+      "bytes": 15949,
+      "widthPx": 173,
+      "heightPx": 338,
+      "kind": "test-asset-identity-distractor",
+      "inRuntimeTotal": false,
+      "cornersTransparent": true,
+      "source": "Cut from the shipped Cold Trail card films (src/assets/home-v5) \u2014 same painted register",
+      "width": 173,
+      "height": 338
+    },
+    {
+      "file": "jolly-standing.png",
+      "subject": "Jolly, cream plush",
+      "bytes": 22945,
+      "widthPx": 261,
+      "heightPx": 338,
+      "kind": "test-asset-identity-distractor",
+      "inRuntimeTotal": false,
+      "cornersTransparent": true,
+      "source": "Cut from the shipped Cold Trail card films (src/assets/home-v5) \u2014 same painted register",
+      "width": 261,
+      "height": 338
+    }
+  ],
+  "arm_palm_measurements_cure": {
+    "band": "skin = alpha>10, R 170-245, G 120-185, B 85-155, R-G 25-70, G-B 10-60",
+    "holmes-arm-front.png": {
+      "skin_px": 229,
+      "palm_vb": [
+        87,
+        83
+      ],
+      "skin_centroid_vb": [
+        86.4,
+        82.7
+      ],
+      "pivot_vb": [
+        78,
+        58
+      ],
+      "pivot_alpha": 249
+    },
+    "holmes-arm-back.png": {
+      "skin_px": 272,
+      "palm_vb": [
+        37,
+        98
+      ],
+      "skin_centroid_vb": [
+        36.4,
+        97.6
+      ],
+      "pivot_vb": [
+        44,
+        58
+      ],
+      "pivot_alpha": 250
+    },
+    "watson-arm-front.png": {
+      "skin_px": 222,
+      "palm_vb": [
+        26,
+        89
+      ],
+      "skin_centroid_vb": [
+        25.5,
+        88.8
+      ],
+      "pivot_vb": [
+        36,
+        54
+      ],
+      "pivot_alpha": 248
+    },
+    "watson-arm-back.png": {
+      "skin_px": 257,
+      "palm_vb": [
+        97,
+        93
+      ],
+      "skin_centroid_vb": [
+        96.5,
+        93.0
+      ],
+      "pivot_vb": [
+        82,
+        54
+      ],
+      "pivot_alpha": 235
+    },
+    "note": "Before the cure: holmes-arm-front/holmes-arm-back/watson-arm-front carried 0 narrow-band skin px and their palms lay outside the crops. After: every arm contains its hand, the palm point is skin (3x3 neighbourhood 8-9/9 skin px), the skin centroid sits within 0.6 vb of the rig hand point, and the shoulder pivot is inside painted pixels (alpha 235-250)."
+  },
+  "raised_arm_parts_cure": {
+    "date": "2026-11-08",
+    "basis": "Rig contract, DetectivePair.tsx @ main 9e49da3 (Holmes lines 347/425-433, Watson 511/598-606): for pose == 'high-five' ONLY the rig does NOT rotate the base arm; it draws a DEDICATED raised arm explicitly \u2014 Holmes stroke path M78,58 L97,27 (strokeWidth 10, round cap, coat colour) + hand circle at HIGH_FIVE_CONTACT (99,25) r=4.6; Watson M36,54 L17,23 + hand circle at (15,21) r=4.6. Rig comment: 'the raised hand IS the contact point, drawn explicitly so the anchor never drifts with a rotation guess.' The base arm-front palm radius (26.6 vb Holmes) cannot reach the anchor radius (39.1 vb) by any rotation, so a parts assembly that rotates arm-front reads ~7.3 rig px short through no plate defect.",
+    "method": "Each part is the raised arm of the regenerated high-five pose plate, isolated (corridor + painted-register colour classes + connected component), palette-lossless (max channel delta 0 vs the plate pixels). Placed at its manifest rect with NO rotation, it replaces arm-front in the high-five assembly.",
+    "harness_detection": "tests/e2e/pair-art-kidtest.spec.ts assembly section: raisedPart = parts.find(p => /high-five|highfive|raised/.test(p.part)) \u2014 the part id 'arm-raised' matches; when found, arm-front is excluded and the raised part is drawn explicitly at its rectPx with rotationDeg 0.",
+    "band": "narrow band of arm_palm_measurements_cure.band for the standalone self-check; harness wide band for the assembled check",
+    "parts": {
+      "holmes-arm-raised.png": {
+        "character": "holmes",
+        "shoulder_vb": [
+          78,
+          58
+        ],
+        "anchor_vb": [
+          99,
+          25
+        ],
+        "rect_vb": [
+          66.0,
+          4.0,
+          114.0,
+          66.5
+        ],
+        "bytes": 2810,
+        "width": 96,
+        "height": 125,
+        "decodedMB": 0.048,
+        "narrow_band_skin_px_total": 278,
+        "hand_cluster_px": 244,
+        "hand_centroid_vb": [
+          98.77,
+          25.5
+        ],
+        "centroid_error_vb": 0.56
+      },
+      "watson-arm-raised.png": {
+        "character": "watson",
+        "shoulder_vb": [
+          36,
+          54
+        ],
+        "anchor_vb": [
+          15,
+          21
+        ],
+        "rect_vb": [
+          3.0,
+          3.0,
+          41.5,
+          62.0
+        ],
+        "bytes": 2749,
+        "width": 77,
+        "height": 118,
+        "decodedMB": 0.0363,
+        "narrow_band_skin_px_total": 264,
+        "hand_cluster_px": 235,
+        "hand_centroid_vb": [
+          15.5,
+          20.96
+        ],
+        "centroid_error_vb": 0.5
+      }
+    },
+    "assembled_check": "Harness assembly on the cured art (kid-test harness, converged cure tip, 2026-11-08; raised part at rect, no rotation, arm-front excluded): palm error Holmes 0.584 rig px, Watson 2.000 rig px (gate \u22643 rig px); assembly-vs-high-five-plate differing fraction Holmes 0.4498, Watson 0.4484 (gate \u22640.60). Assembled hand-zone skin reproduces the plates: Holmes 1220 of 1226 px, Watson 1028 of 1028 px (round-2 re-cut record, below).",
+    "assembled_check_superseded_round1": "Parts assembly simulated in harness draw order (raised part at rect, no rotation, arm-front excluded): wide-band palm cluster Holmes 229 px, centroid (98.89,25.36) vb = 0.37 vb / 0.22 rig px from (99,25); Watson 224 px, centroid (15.44,20.91) vb = 0.45 vb / 0.33 rig px from (15,21) \u2014 identical to the regenerated plates' own measurements. Assembly-vs-high-five-plate differing fraction: Holmes 0.563, Watson 0.520 (gate 0.60). SUPERSEDED by the round-2 re-cut record above: the word 'identical' is retired \u2014 the round-2 record states the measured numbers instead.",
+    "history_note": "Round-1 record (superseded, kept for honesty): the first raised-arm cure's lock entry recorded part bytes 2219 / 2086 against shipped files of 2314 / 2159 B, and claimed the assembly was 'identical to the plates' (panel round 3, Game developer BLOCK). The round-2 re-cut parts measure 2810 / 2749 B at the rects recorded in this subsection; the round-1 byte values survive only in this note.",
+    "round2_recut_2026_11_08": "Cure round 2 (panel re-vote BLOCK, Game developer): previous rects clipped the fingers - plate palm skin reached vb y=16.5 (Holmes) / 13.5 (Watson) vs rect tops 20.5 / 16.0. Parts re-extracted from the finger-redrawn high-five plates (corridor + connected component) with rect tops at vb 4.0 / 3.0, above the new fingertip skin tops (vb 7.0 / 7.0) with halo margin; Holmes rect also widened (105->114 vb) for the thumb. Assembled-part vs plate hand-zone skin: Holmes 1220 of 1226 px reproduced, Watson 1028 of 1028 px."
+  }
+}

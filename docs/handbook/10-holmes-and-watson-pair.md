@@ -716,3 +716,127 @@ checkable by playing, not by reading code.
 - [ ] **Game end, every edition:** end a State, a Country and a
   Globe run — each summary celebrates with the pair around the final
   score, and the frame total matches the card total (Unit B).
+
+---
+
+## PR A addendum — the character re-skin programme (2026-11-07)
+
+*Additive section. Nothing above is rewritten or superseded by
+anything below except where a sentence below says so in so many
+words. The staging sections above remain the record of what
+shipped in PRs #355–#363.*
+
+- **The owner's bar (voice, 2026-11-07):** the shipped pair
+  reads "very flat, very dull — not fun characters children
+  would enjoy." He pointed to the Cold Trail card films as the
+  format he loves and required the pair be built in that
+  format — and that they stay responsive (follow, park, react
+  live).
+- **The study (2026-11-07, multi-seat, unanimous):** the LOOK
+  transfers; the film TECHNIQUE does not (a film plays fixed
+  paths; the pair follows a child's finger to unpredictable
+  places). Full-film ≈9.6 MB with no viable iOS alpha path;
+  sprites 2.0–3.5 MB + 33–50 MB decoded. ONE recommendation:
+  a **painted-parts paper-doll on the existing transform
+  engine**, plus hand-drawn treatment where the frame is
+  composed (bench intro + celebration). Record of record:
+  `STUDY-format-rebuild.md` + `MOCKUP-NOTES.md` in the
+  format-study evidence folder — itself a reconstruction,
+  after the original was lost in a `/var/tmp` wipe; the
+  verdicts and numbers are as recorded in the ruling.
+- **Owner decisions:**
+  - (1) **CONFIRMED** 2026-11-07 ~15:57 CST (voice call):
+    the Cold Trail films ARE the reference. The re-skin is
+    Holmes & Watson redrawn in that painted style — NOT new
+    cards for the state / country / globe editions.
+  - (2)–(4) **ALL RULED YES** 2026-11-07 ~21:24 CST, in chat,
+    verbatim: **"Yes to all three — start PR A"** — given
+    after ❤️ + "Love this version" on the final regenerated
+    mockup. The three: (2) approve the LOOK as a live rig,
+    (3) approve the doll chassis + composed-surface hero
+    moments, (4) approve the per-cell kid test as the
+    go / no-go gate.
+- **Programme shape (4 PRs):** **A** — model sheets + binding
+  spec + measurement harness (sheets/spec/harness only; no
+  `src/` changes — PR A's own harness, scripts, and assets
+  are in scope, per coordinator ruling (a)) →
+  **B** — engine re-skin behind the new flag `pairArt`
+  (the flag does not exist yet; PR B creates it, default
+  off) → **C** — hero moments (bench + celebration,
+  hand-drawn) → **D** — flip + retire the flat rig, gated
+  by the kid test. Each step can fail on its own evidence
+  and stop without wasting the next.
+- **Binding spec:** `docs/pair-art/MODEL_SHEET_SPEC.md`.
+  This addendum summarises its laws; the spec's words
+  govern where the two could be read differently.
+- **The laws, in summary (spec §§7–10):**
+  - **Budgets (hard numbers):** ≤500 KB total runtime pair
+    assets, lazy-loaded · ≤32 MB decoded · palm-anchor
+    error ≤3 px by automated measurement · ZERO live
+    per-frame SVG filters (halo/keyline baked into the art).
+    Degradation ladder: full rig → reduced-motion same rig
+    → Save-Data uncached falls back to today's inline SVG
+    → low-memory static composite ≈20–30 KB/figure.
+    Degradation ends at a figure, never blank.
+  - **Scale law:** Watson ≈0.75× Holmes in every frame
+    (0.97 measured in mockup QA = defect). Bench tableau
+    lock: 390 px → Holmes 170 / Watson 130; 1280 px →
+    Holmes 150 / Watson 115. In-play sizes are governed by
+    the spec §8.3 bands alone (112–128 px at 390, and so
+    on); in-play coverage was proven at 128 px at 390,
+    never at 170 px. Hero moments carry the ratio inside the
+    artwork. Kid-test bands 112–128 / 128–144 / 144–160 /
+    160–176 px with face floors 38 / 44 / 48 / 52 px at
+    390 / 768 / 1280 / 1920.
+  - **Staging law:** figures live in page space (the
+    gutter), never on map tiles / frame / attribution /
+    buttons or any UI chrome; zero clue-text coverage;
+    no bench furniture in walk frames; celebration in
+    page flow (a slot the cards displace around), never
+    over cards.
+  - **Gaze-leak law:** gaze/lean is an answer-leak channel;
+    directed gaze may only use coordinates answer-blind
+    Holmes legitimately receives via
+    `detective-host-props.ts` (the pinned seven keys —
+    `caseIndex`, `cluesRevealed`, `status`, `sheetOpen`,
+    `lastGuessPlaceId`, `freshDeal`, `answerPlaceId`
+    post-solve only). One gaze toward the correct place =
+    BLOCK-class defect. The re-skin changes NO props, NO
+    state machine, NO answer-blindness architecture.
+  - **Verb shortlist (closed):** the engine's 22 poses —
+    Holmes 12, Watson 10 — with their spec face assignments,
+    plus the speaking mouth-flap overlay (a CSS flap on any
+    face, not a 23rd pose) and the degradation static
+    composite (not a pose). New poses need a spec amendment
+    in the same PR, never a drive-by.
+  - **Expressions:** all 11 `FaceKind`s × 2 characters ship
+    in the base re-skin, never deferred; reaction mouths
+    travel ≥3 px at rig scale from neutral.
+  - **Silhouette gate (PR A, crew-internal):** grayscale
+    renders at 104 px approved before colour lock; the
+    renders live with the sheets in
+    `public/assets/detective/pair-art/`.
+  - **Kid test (PR D go / no-go):** per width × background
+    cell — find-Holmes ≥27/30 in ≤2 s in every cell
+    including the static fallback (≤25 = kill), identity
+    ≥27/30, expression ≥26/30, zero clue-text coverage at
+    max in-band size; ~60 fps on a 2 GB-class Android
+    during pan + follow + walk at 390 / 768 / 1280. A
+    failed bar flips `pairArt` off with no re-vote.
+- **Disagreements flagged in the spec (§12), not hidden:**
+  the coffee cup is a host bench element, not a rig prop;
+  the shipped renderers lack distinct faces for Holmes
+  `marking` and Watson `focused` / `attentive` / `hushed` /
+  `wonder` (PR A draws all 22 anyway); `follow.ts` does not
+  exist on `main` @ `9e49da3` (protected by name regardless);
+  the study's scale lock exceeds the shipped
+  `DETECTIVE_RIG_HEIGHT_PX = 104` (PR B owns the
+  reconciliation).
+- **Protected surfaces:** PR A touches no `src/` code
+  (its own kid-test harness + scripts are its deliverables).
+  The
+  pair-behaviour train — `DetectiveHost.tsx`,
+  `detective-state.ts`, `companion.ts`, `follow.ts`,
+  `watson-walk.ts` — is untouched by the whole re-skin
+  programme's PR A, and PR B changes only the rig art
+  surface behind `pairArt`.

@@ -1,0 +1,1377 @@
+{
+  "manifest_version": 1,
+  "kind": "pair-art-harness-contract",
+  "source_of_truth": "docs/pair-art/ASSET_LOCK.json \u2014 same numbers, two readers: ASSET_LOCK.json is the audit record, this manifest.json is the harness/engine contract",
+  "pxPerViewBoxUnit": 2,
+  "characters": {
+    "holmes": {
+      "viewBox": [
+        120,
+        178
+      ],
+      "naturalSizePx": [
+        240,
+        356
+      ],
+      "figureOfRecord": "holmes-pose-dock.png",
+      "pivots": {
+        "frontArm": {
+          "viewBox": [
+            78,
+            58
+          ],
+          "px": [
+            156,
+            116
+          ]
+        },
+        "swingArm": {
+          "viewBox": [
+            44,
+            58
+          ],
+          "px": [
+            88,
+            116
+          ]
+        },
+        "head": {
+          "viewBox": [
+            62,
+            54
+          ],
+          "px": [
+            124,
+            108
+          ]
+        },
+        "torso": {
+          "viewBox": [
+            60,
+            132
+          ],
+          "px": [
+            120,
+            264
+          ]
+        },
+        "legA": {
+          "viewBox": [
+            52,
+            118
+          ],
+          "px": [
+            104,
+            236
+          ]
+        },
+        "legB": {
+          "viewBox": [
+            64,
+            118
+          ],
+          "px": [
+            128,
+            236
+          ]
+        }
+      },
+      "palmAnchor": {
+        "viewBox": [
+          99,
+          25
+        ],
+        "px": [
+          198,
+          50
+        ]
+      },
+      "palmMeasurement": {
+        "measured_vb": [
+          98.89,
+          25.36
+        ],
+        "contact_vb": [
+          99,
+          25
+        ],
+        "error_px": 0.37,
+        "skin_px": 229
+      },
+      "parts": [
+        {
+          "part": "hat",
+          "file": "holmes-hat.png",
+          "bytes": 2495,
+          "widthPx": 73,
+          "heightPx": 54,
+          "rectViewBox": [
+            37.5,
+            -1.0,
+            74.0,
+            26.0
+          ],
+          "rectPx": {
+            "x": 75.0,
+            "y": -2.0,
+            "width": 73,
+            "height": 54
+          }
+        },
+        {
+          "part": "leg-a",
+          "file": "holmes-leg-a.png",
+          "bytes": 2620,
+          "widthPx": 99,
+          "heightPx": 140,
+          "rectViewBox": [
+            35.5,
+            109,
+            85,
+            179
+          ],
+          "rectPx": {
+            "x": 71.0,
+            "y": 218,
+            "width": 99,
+            "height": 140
+          }
+        },
+        {
+          "part": "leg-b",
+          "file": "holmes-leg-b.png",
+          "bytes": 3173,
+          "widthPx": 99,
+          "heightPx": 140,
+          "rectViewBox": [
+            35.5,
+            109,
+            85,
+            179
+          ],
+          "rectPx": {
+            "x": 71.0,
+            "y": 218,
+            "width": 99,
+            "height": 140
+          }
+        },
+        {
+          "part": "arm-back",
+          "file": "holmes-arm-back.png",
+          "bytes": 2656,
+          "widthPx": 60,
+          "heightPx": 120,
+          "rectViewBox": [
+            28,
+            47,
+            58,
+            107
+          ],
+          "rectPx": {
+            "x": 56,
+            "y": 94,
+            "width": 60,
+            "height": 120
+          }
+        },
+        {
+          "part": "arm-front",
+          "file": "holmes-arm-front.png",
+          "bytes": 2335,
+          "widthPx": 64,
+          "heightPx": 92,
+          "rectViewBox": [
+            66,
+            47,
+            98,
+            93
+          ],
+          "rectPx": {
+            "x": 132,
+            "y": 94,
+            "width": 64,
+            "height": 92
+          }
+        },
+        {
+          "part": "arm-raised",
+          "file": "holmes-arm-raised.png",
+          "bytes": 2810,
+          "widthPx": 96,
+          "heightPx": 125,
+          "rectViewBox": [
+            66.0,
+            4.0,
+            114.0,
+            66.5
+          ],
+          "rectPx": {
+            "x": 132.0,
+            "y": 8.0,
+            "width": 96,
+            "height": 125
+          },
+          "pose": "high-five",
+          "drawnExplicitly": true,
+          "note": "Dedicated raised-arm part for pose 'high-five' ONLY. Rig contract (DetectivePair.tsx @ main 9e49da3, high-five branch): the rig does NOT rotate the base arm for high-five \u2014 it draws a dedicated raised arm explicitly (Holmes stroke M78,58 L97,27 + hand circle at HIGH_FIVE_CONTACT (99,25) r=4.6; Watson M36,54 L17,23 + hand circle at (15,21) r=4.6) so the anchor never drifts with a rotation guess. The base arm-front part's palm radius cannot reach the anchor radius by any rotation, so this part is drawn at its manifest rect with NO rotation and replaces arm-front in the high-five assembly (the kid-test measurer detects it by the part id 'arm-raised', matching /raised/ on the part field). Painted by isolating the raised arm of the regenerated high-five pose plate \u2014 same arm, same register, same skin tones."
+        },
+        {
+          "part": "torso",
+          "file": "holmes-torso.png",
+          "bytes": 8289,
+          "widthPx": 112,
+          "heightPx": 194,
+          "rectViewBox": [
+            32.0,
+            42.0,
+            88.0,
+            139.0
+          ],
+          "rectPx": {
+            "x": 64.0,
+            "y": 84.0,
+            "width": 112,
+            "height": 194
+          }
+        },
+        {
+          "part": "head",
+          "file": "holmes-head.png",
+          "bytes": 3946,
+          "widthPx": 102,
+          "heightPx": 86,
+          "rectViewBox": [
+            32.5,
+            21.0,
+            83.5,
+            64.0
+          ],
+          "rectPx": {
+            "x": 65.0,
+            "y": 42.0,
+            "width": 102,
+            "height": 86
+          }
+        },
+        {
+          "part": "halo",
+          "file": "holmes-halo.png",
+          "bytes": 3449,
+          "widthPx": 240,
+          "heightPx": 356,
+          "rectViewBox": [
+            0,
+            0,
+            120,
+            178
+          ],
+          "rectPx": {
+            "x": 0,
+            "y": 0,
+            "width": 240,
+            "height": 356
+          }
+        }
+      ],
+      "faces": {
+        "neutral": {
+          "file": "holmes-face-neutral.png",
+          "bytes": 3946,
+          "faceBox": {
+            "x": 65.0,
+            "y": 42.0,
+            "width": 102.0,
+            "height": 86.0
+          },
+          "faceBoxViewBox": {
+            "x": 32.5,
+            "y": 21.0,
+            "width": 51.0,
+            "height": 43.0
+          },
+          "note": "faceBox = the face/head plate's own placement box in the assembled figure's natural pixels"
+        },
+        "focused": {
+          "file": "holmes-face-focused.png",
+          "bytes": 3912,
+          "faceBox": {
+            "x": 65.0,
+            "y": 41.0,
+            "width": 102.0,
+            "height": 87.0
+          },
+          "faceBoxViewBox": {
+            "x": 32.5,
+            "y": 20.5,
+            "width": 51.0,
+            "height": 43.5
+          },
+          "note": "faceBox = the face/head plate's own placement box in the assembled figure's natural pixels"
+        },
+        "thinking": {
+          "file": "holmes-face-thinking.png",
+          "bytes": 3976,
+          "faceBox": {
+            "x": 65.0,
+            "y": 39.0,
+            "width": 102.0,
+            "height": 89.0
+          },
+          "faceBoxViewBox": {
+            "x": 32.5,
+            "y": 19.5,
+            "width": 51.0,
+            "height": 44.5
+          },
+          "note": "faceBox = the face/head plate's own placement box in the assembled figure's natural pixels"
+        },
+        "attentive": {
+          "file": "holmes-face-attentive.png",
+          "bytes": 3897,
+          "faceBox": {
+            "x": 65.0,
+            "y": 42.0,
+            "width": 102.0,
+            "height": 86.0
+          },
+          "faceBoxViewBox": {
+            "x": 32.5,
+            "y": 21.0,
+            "width": 51.0,
+            "height": 43.0
+          },
+          "note": "faceBox = the face/head plate's own placement box in the assembled figure's natural pixels"
+        },
+        "hushed": {
+          "file": "holmes-face-hushed.png",
+          "bytes": 3702,
+          "faceBox": {
+            "x": 65.0,
+            "y": 42.0,
+            "width": 102.0,
+            "height": 86.0
+          },
+          "faceBoxViewBox": {
+            "x": 32.5,
+            "y": 21.0,
+            "width": 51.0,
+            "height": 43.0
+          },
+          "note": "faceBox = the face/head plate's own placement box in the assembled figure's natural pixels"
+        },
+        "wonder": {
+          "file": "holmes-face-wonder.png",
+          "bytes": 3732,
+          "faceBox": {
+            "x": 65.0,
+            "y": 37.0,
+            "width": 102.0,
+            "height": 91.0
+          },
+          "faceBoxViewBox": {
+            "x": 32.5,
+            "y": 18.5,
+            "width": 51.0,
+            "height": 45.5
+          },
+          "note": "faceBox = the face/head plate's own placement box in the assembled figure's natural pixels"
+        },
+        "reading": {
+          "file": "holmes-face-reading.png",
+          "bytes": 3891,
+          "faceBox": {
+            "x": 65.0,
+            "y": 42.0,
+            "width": 102.0,
+            "height": 86.0
+          },
+          "faceBoxViewBox": {
+            "x": 32.5,
+            "y": 21.0,
+            "width": 51.0,
+            "height": 43.0
+          },
+          "note": "faceBox = the face/head plate's own placement box in the assembled figure's natural pixels"
+        },
+        "marking": {
+          "file": "holmes-face-marking.png",
+          "bytes": 3869,
+          "faceBox": {
+            "x": 65.0,
+            "y": 41.0,
+            "width": 102.0,
+            "height": 87.0
+          },
+          "faceBoxViewBox": {
+            "x": 32.5,
+            "y": 20.5,
+            "width": 51.0,
+            "height": 43.5
+          },
+          "note": "faceBox = the face/head plate's own placement box in the assembled figure's natural pixels"
+        },
+        "delighted": {
+          "file": "holmes-face-delighted.png",
+          "bytes": 3822,
+          "faceBox": {
+            "x": 65.0,
+            "y": 42.0,
+            "width": 102.0,
+            "height": 86.0
+          },
+          "faceBoxViewBox": {
+            "x": 32.5,
+            "y": 21.0,
+            "width": 51.0,
+            "height": 43.0
+          },
+          "note": "faceBox = the face/head plate's own placement box in the assembled figure's natural pixels"
+        },
+        "surprised": {
+          "file": "holmes-face-surprised.png",
+          "bytes": 4046,
+          "faceBox": {
+            "x": 65.0,
+            "y": 37.0,
+            "width": 102.0,
+            "height": 91.0
+          },
+          "faceBoxViewBox": {
+            "x": 32.5,
+            "y": 18.5,
+            "width": 51.0,
+            "height": 45.5
+          },
+          "note": "faceBox = the face/head plate's own placement box in the assembled figure's natural pixels"
+        },
+        "pout": {
+          "file": "holmes-face-pout.png",
+          "bytes": 3972,
+          "faceBox": {
+            "x": 65.0,
+            "y": 41.0,
+            "width": 102.0,
+            "height": 87.0
+          },
+          "faceBoxViewBox": {
+            "x": 32.5,
+            "y": 20.5,
+            "width": 51.0,
+            "height": 43.5
+          },
+          "note": "faceBox = the face/head plate's own placement box in the assembled figure's natural pixels"
+        }
+      },
+      "armPalmMeasurements": {
+        "band": "skin = alpha>10, R 170-245, G 120-185, B 85-155, R-G 25-70, G-B 10-60",
+        "holmes-arm-front.png": {
+          "skin_px": 229,
+          "palm_vb": [
+            87,
+            83
+          ],
+          "skin_centroid_vb": [
+            86.4,
+            82.7
+          ],
+          "pivot_vb": [
+            78,
+            58
+          ],
+          "pivot_alpha": 249
+        },
+        "holmes-arm-back.png": {
+          "skin_px": 272,
+          "palm_vb": [
+            37,
+            98
+          ],
+          "skin_centroid_vb": [
+            36.4,
+            97.6
+          ],
+          "pivot_vb": [
+            44,
+            58
+          ],
+          "pivot_alpha": 250
+        },
+        "watson-arm-front.png": {
+          "skin_px": 222,
+          "palm_vb": [
+            26,
+            89
+          ],
+          "skin_centroid_vb": [
+            25.5,
+            88.8
+          ],
+          "pivot_vb": [
+            36,
+            54
+          ],
+          "pivot_alpha": 248
+        },
+        "watson-arm-back.png": {
+          "skin_px": 257,
+          "palm_vb": [
+            97,
+            93
+          ],
+          "skin_centroid_vb": [
+            96.5,
+            93.0
+          ],
+          "pivot_vb": [
+            82,
+            54
+          ],
+          "pivot_alpha": 235
+        },
+        "note": "Before the cure: holmes-arm-front/holmes-arm-back/watson-arm-front carried 0 narrow-band skin px and their palms lay outside the crops. After: every arm contains its hand, the palm point is skin (3x3 neighbourhood 8-9/9 skin px), the skin centroid sits within 0.6 vb of the rig hand point, and the shoulder pivot is inside painted pixels (alpha 235-250).",
+        "holmes-arm-raised.png": {
+          "skin_px": 278,
+          "hand_cluster_px": 244,
+          "palm_vb": [
+            99,
+            25
+          ],
+          "skin_centroid_vb": [
+            98.77,
+            25.5
+          ],
+          "drawn": "explicit at rect, no rotation (dedicated raised-arm part)",
+          "note": "Hand cluster = largest narrow-band skin cluster in the part placed at its rect; centroid within 0.6 vb of HIGH_FIVE_CONTACT."
+        },
+        "watson-arm-raised.png": {
+          "skin_px": 264,
+          "hand_cluster_px": 235,
+          "palm_vb": [
+            15,
+            21
+          ],
+          "skin_centroid_vb": [
+            15.5,
+            20.96
+          ],
+          "drawn": "explicit at rect, no rotation (dedicated raised-arm part)",
+          "note": "Hand cluster = largest narrow-band skin cluster in the part placed at its rect; centroid within 0.6 vb of HIGH_FIVE_CONTACT."
+        }
+      }
+    },
+    "watson": {
+      "viewBox": [
+        134,
+        140
+      ],
+      "naturalSizePx": [
+        268,
+        280
+      ],
+      "figureOfRecord": "watson-pose-station-idle.png",
+      "pivots": {
+        "frontArm": {
+          "viewBox": [
+            36,
+            54
+          ],
+          "px": [
+            72,
+            108
+          ]
+        },
+        "noteArm": {
+          "viewBox": [
+            82,
+            54
+          ],
+          "px": [
+            164,
+            108
+          ]
+        },
+        "head": {
+          "viewBox": [
+            60,
+            50
+          ],
+          "px": [
+            120,
+            100
+          ]
+        },
+        "torso": {
+          "viewBox": [
+            60,
+            110
+          ],
+          "px": [
+            120,
+            220
+          ]
+        },
+        "legA": {
+          "viewBox": [
+            52,
+            92
+          ],
+          "px": [
+            104,
+            184
+          ]
+        },
+        "legB": {
+          "viewBox": [
+            66,
+            92
+          ],
+          "px": [
+            132,
+            184
+          ]
+        }
+      },
+      "palmAnchor": {
+        "viewBox": [
+          15,
+          21
+        ],
+        "px": [
+          30,
+          42
+        ]
+      },
+      "palmMeasurement": {
+        "measured_vb": [
+          15.44,
+          20.91
+        ],
+        "contact_vb": [
+          15,
+          21
+        ],
+        "error_px": 0.45,
+        "skin_px": 224
+      },
+      "parts": [
+        {
+          "part": "hat",
+          "file": "watson-hat.png",
+          "bytes": 2455,
+          "widthPx": 139,
+          "heightPx": 48,
+          "rectViewBox": [
+            27.5,
+            -1.0,
+            97.0,
+            23.0
+          ],
+          "rectPx": {
+            "x": 55.0,
+            "y": -2.0,
+            "width": 139,
+            "height": 48
+          }
+        },
+        {
+          "part": "leg-a",
+          "file": "watson-leg-a.png",
+          "bytes": 3268,
+          "widthPx": 159,
+          "heightPx": 108,
+          "rectViewBox": [
+            27,
+            87,
+            106.5,
+            141
+          ],
+          "rectPx": {
+            "x": 54,
+            "y": 174,
+            "width": 159,
+            "height": 108
+          }
+        },
+        {
+          "part": "leg-b",
+          "file": "watson-leg-b.png",
+          "bytes": 3879,
+          "widthPx": 159,
+          "heightPx": 108,
+          "rectViewBox": [
+            27,
+            87,
+            106.5,
+            141
+          ],
+          "rectPx": {
+            "x": 54,
+            "y": 174,
+            "width": 159,
+            "height": 108
+          }
+        },
+        {
+          "part": "arm-front",
+          "file": "watson-arm-front.png",
+          "bytes": 2381,
+          "widthPx": 72,
+          "heightPx": 112,
+          "rectViewBox": [
+            13,
+            43,
+            49,
+            99
+          ],
+          "rectPx": {
+            "x": 26,
+            "y": 86,
+            "width": 72,
+            "height": 112
+          }
+        },
+        {
+          "part": "arm-raised",
+          "file": "watson-arm-raised.png",
+          "bytes": 2749,
+          "widthPx": 77,
+          "heightPx": 118,
+          "rectViewBox": [
+            3.0,
+            3.0,
+            41.5,
+            62.0
+          ],
+          "rectPx": {
+            "x": 6.0,
+            "y": 6.0,
+            "width": 77,
+            "height": 118
+          },
+          "pose": "high-five",
+          "drawnExplicitly": true,
+          "note": "Dedicated raised-arm part for pose 'high-five' ONLY. Rig contract (DetectivePair.tsx @ main 9e49da3, high-five branch): the rig does NOT rotate the base arm for high-five \u2014 it draws a dedicated raised arm explicitly (Holmes stroke M78,58 L97,27 + hand circle at HIGH_FIVE_CONTACT (99,25) r=4.6; Watson M36,54 L17,23 + hand circle at (15,21) r=4.6) so the anchor never drifts with a rotation guess. The base arm-front part's palm radius cannot reach the anchor radius by any rotation, so this part is drawn at its manifest rect with NO rotation and replaces arm-front in the high-five assembly (the kid-test measurer detects it by the part id 'arm-raised', matching /raised/ on the part field). Painted by isolating the raised arm of the regenerated high-five pose plate \u2014 same arm, same register, same skin tones."
+        },
+        {
+          "part": "arm-back",
+          "file": "watson-arm-back.png",
+          "bytes": 2493,
+          "widthPx": 80,
+          "heightPx": 120,
+          "rectViewBox": [
+            70,
+            43,
+            110,
+            103
+          ],
+          "rectPx": {
+            "x": 140,
+            "y": 86,
+            "width": 80,
+            "height": 120
+          }
+        },
+        {
+          "part": "torso",
+          "file": "watson-torso.png",
+          "bytes": 9834,
+          "widthPx": 165,
+          "heightPx": 170,
+          "rectViewBox": [
+            25.5,
+            32.0,
+            108.0,
+            117.0
+          ],
+          "rectPx": {
+            "x": 51.0,
+            "y": 64.0,
+            "width": 165,
+            "height": 170
+          }
+        },
+        {
+          "part": "head",
+          "file": "watson-head.png",
+          "bytes": 5399,
+          "widthPx": 161,
+          "heightPx": 84,
+          "rectViewBox": [
+            27.5,
+            18.0,
+            108.0,
+            60.0
+          ],
+          "rectPx": {
+            "x": 55.0,
+            "y": 36.0,
+            "width": 161,
+            "height": 84
+          }
+        },
+        {
+          "part": "halo",
+          "file": "watson-halo.png",
+          "bytes": 3328,
+          "widthPx": 268,
+          "heightPx": 280,
+          "rectViewBox": [
+            0,
+            0,
+            134,
+            140
+          ],
+          "rectPx": {
+            "x": 0,
+            "y": 0,
+            "width": 268,
+            "height": 280
+          }
+        }
+      ],
+      "faces": {
+        "neutral": {
+          "file": "watson-face-neutral.png",
+          "bytes": 5399,
+          "faceBox": {
+            "x": 55.0,
+            "y": 36.0,
+            "width": 161.0,
+            "height": 84.0
+          },
+          "faceBoxViewBox": {
+            "x": 27.5,
+            "y": 18.0,
+            "width": 80.5,
+            "height": 42.0
+          },
+          "note": "faceBox = the face/head plate's own placement box in the assembled figure's natural pixels"
+        },
+        "focused": {
+          "file": "watson-face-focused.png",
+          "bytes": 5015,
+          "faceBox": {
+            "x": 55.0,
+            "y": 35.0,
+            "width": 161.0,
+            "height": 85.0
+          },
+          "faceBoxViewBox": {
+            "x": 27.5,
+            "y": 17.5,
+            "width": 80.5,
+            "height": 42.5
+          },
+          "note": "faceBox = the face/head plate's own placement box in the assembled figure's natural pixels"
+        },
+        "thinking": {
+          "file": "watson-face-thinking.png",
+          "bytes": 5027,
+          "faceBox": {
+            "x": 55.0,
+            "y": 33.0,
+            "width": 161.0,
+            "height": 87.0
+          },
+          "faceBoxViewBox": {
+            "x": 27.5,
+            "y": 16.5,
+            "width": 80.5,
+            "height": 43.5
+          },
+          "note": "faceBox = the face/head plate's own placement box in the assembled figure's natural pixels"
+        },
+        "attentive": {
+          "file": "watson-face-attentive.png",
+          "bytes": 4956,
+          "faceBox": {
+            "x": 55.0,
+            "y": 36.0,
+            "width": 161.0,
+            "height": 84.0
+          },
+          "faceBoxViewBox": {
+            "x": 27.5,
+            "y": 18.0,
+            "width": 80.5,
+            "height": 42.0
+          },
+          "note": "faceBox = the face/head plate's own placement box in the assembled figure's natural pixels"
+        },
+        "hushed": {
+          "file": "watson-face-hushed.png",
+          "bytes": 5231,
+          "faceBox": {
+            "x": 55.0,
+            "y": 36.0,
+            "width": 161.0,
+            "height": 84.0
+          },
+          "faceBoxViewBox": {
+            "x": 27.5,
+            "y": 18.0,
+            "width": 80.5,
+            "height": 42.0
+          },
+          "note": "faceBox = the face/head plate's own placement box in the assembled figure's natural pixels"
+        },
+        "wonder": {
+          "file": "watson-face-wonder.png",
+          "bytes": 4982,
+          "faceBox": {
+            "x": 55.0,
+            "y": 31.0,
+            "width": 161.0,
+            "height": 89.0
+          },
+          "faceBoxViewBox": {
+            "x": 27.5,
+            "y": 15.5,
+            "width": 80.5,
+            "height": 44.5
+          },
+          "note": "faceBox = the face/head plate's own placement box in the assembled figure's natural pixels"
+        },
+        "reading": {
+          "file": "watson-face-reading.png",
+          "bytes": 5380,
+          "faceBox": {
+            "x": 55.0,
+            "y": 36.0,
+            "width": 161.0,
+            "height": 84.0
+          },
+          "faceBoxViewBox": {
+            "x": 27.5,
+            "y": 18.0,
+            "width": 80.5,
+            "height": 42.0
+          },
+          "note": "faceBox = the face/head plate's own placement box in the assembled figure's natural pixels"
+        },
+        "marking": {
+          "file": "watson-face-marking.png",
+          "bytes": 5349,
+          "faceBox": {
+            "x": 55.0,
+            "y": 35.0,
+            "width": 161.0,
+            "height": 85.0
+          },
+          "faceBoxViewBox": {
+            "x": 27.5,
+            "y": 17.5,
+            "width": 80.5,
+            "height": 42.5
+          },
+          "note": "faceBox = the face/head plate's own placement box in the assembled figure's natural pixels"
+        },
+        "delighted": {
+          "file": "watson-face-delighted.png",
+          "bytes": 5246,
+          "faceBox": {
+            "x": 55.0,
+            "y": 36.0,
+            "width": 161.0,
+            "height": 84.0
+          },
+          "faceBoxViewBox": {
+            "x": 27.5,
+            "y": 18.0,
+            "width": 80.5,
+            "height": 42.0
+          },
+          "note": "faceBox = the face/head plate's own placement box in the assembled figure's natural pixels"
+        },
+        "surprised": {
+          "file": "watson-face-surprised.png",
+          "bytes": 5519,
+          "faceBox": {
+            "x": 55.0,
+            "y": 31.0,
+            "width": 161.0,
+            "height": 89.0
+          },
+          "faceBoxViewBox": {
+            "x": 27.5,
+            "y": 15.5,
+            "width": 80.5,
+            "height": 44.5
+          },
+          "note": "faceBox = the face/head plate's own placement box in the assembled figure's natural pixels"
+        },
+        "pout": {
+          "file": "watson-face-pout.png",
+          "bytes": 5056,
+          "faceBox": {
+            "x": 55.0,
+            "y": 35.0,
+            "width": 161.0,
+            "height": 85.0
+          },
+          "faceBoxViewBox": {
+            "x": 27.5,
+            "y": 17.5,
+            "width": 80.5,
+            "height": 42.5
+          },
+          "note": "faceBox = the face/head plate's own placement box in the assembled figure's natural pixels"
+        }
+      }
+    }
+  },
+  "props": [
+    {
+      "part": "glass",
+      "file": "prop-glass.png",
+      "bytes": 878,
+      "widthPx": 55,
+      "heightPx": 55,
+      "rectViewBox": [
+        2.0,
+        1.0,
+        29.5,
+        28.5
+      ],
+      "rectPx": {
+        "x": 4.0,
+        "y": 2.0,
+        "width": 55.0,
+        "height": 55.0
+      }
+    },
+    {
+      "part": "card",
+      "file": "prop-card.png",
+      "bytes": 807,
+      "widthPx": 53,
+      "heightPx": 65,
+      "rectViewBox": [
+        0.0,
+        0.0,
+        26.5,
+        32.5
+      ],
+      "rectPx": {
+        "x": 0.0,
+        "y": 0.0,
+        "width": 53.0,
+        "height": 65.0
+      }
+    },
+    {
+      "part": "notebook-pencil",
+      "file": "prop-notebook-pencil.png",
+      "bytes": 1220,
+      "widthPx": 60,
+      "heightPx": 65,
+      "rectViewBox": [
+        1.0,
+        2.0,
+        31.0,
+        34.5
+      ],
+      "rectPx": {
+        "x": 2.0,
+        "y": 4.0,
+        "width": 60.0,
+        "height": 65.0
+      }
+    },
+    {
+      "part": "cup",
+      "file": "prop-cup.png",
+      "bytes": 805,
+      "widthPx": 34,
+      "heightPx": 23,
+      "rectViewBox": [
+        0.0,
+        2.0,
+        17.0,
+        13.5
+      ],
+      "rectPx": {
+        "x": 0.0,
+        "y": 4.0,
+        "width": 34.0,
+        "height": 23.0
+      }
+    },
+    {
+      "part": "pencil",
+      "file": "prop-pencil.png",
+      "bytes": 1220,
+      "widthPx": 60,
+      "heightPx": 65,
+      "rectViewBox": [
+        1.0,
+        2.0,
+        31.0,
+        34.5
+      ],
+      "rectPx": {
+        "x": 2.0,
+        "y": 4.0,
+        "width": 60.0,
+        "height": 65.0
+      }
+    }
+  ],
+  "budgets": {
+    "runtime_total_bytes": 172414,
+    "runtime_budget_bytes": 500000,
+    "runtime_pass": true,
+    "decoded_total_MB": 2.486,
+    "decoded_budget_MB": 32,
+    "decoded_pass": true,
+    "runtime_file_count": 45,
+    "note": "Pose plates + silhouettes are docs/test assets, excluded from the runtime total."
+  },
+  "scaleLock": {
+    "source": "MOCKUP-NOTES.md staging law",
+    "ratio_watson_per_holmes": 0.76,
+    "in_play_heights_px": {
+      "390": [
+        170,
+        130
+      ],
+      "1280": [
+        150,
+        115
+      ]
+    },
+    "silhouette_widths_at_104px_height": {
+      "holmes": 43,
+      "watson": 63
+    }
+  },
+  "silhouettes": {
+    "holmes": "silhouette-holmes-104.png",
+    "watson": "silhouette-watson-104.png",
+    "gate": {
+      "holmes": "PASS \u2014 tall/thin (43px wide at 104px high), deerstalker crown + brim reads",
+      "watson": "PASS \u2014 short/stout (63px wide at 104px high), bowler dome + flat brim reads",
+      "distinguishable": "PASS \u2014 width ratio 43:63 plus hat profiles differ at a glance"
+    }
+  },
+  "identityDistractors": [
+    {
+      "file": "tracker-standing.png",
+      "subject": "Cold Trail tracker child",
+      "bytes": 15949,
+      "widthPx": 173,
+      "heightPx": 338,
+      "kind": "test-asset-identity-distractor",
+      "inRuntimeTotal": false,
+      "cornersTransparent": true,
+      "source": "Cut from the shipped Cold Trail card films (src/assets/home-v5) \u2014 same painted register"
+    },
+    {
+      "file": "jolly-standing.png",
+      "subject": "Jolly, cream plush",
+      "bytes": 22945,
+      "widthPx": 261,
+      "heightPx": 338,
+      "kind": "test-asset-identity-distractor",
+      "inRuntimeTotal": false,
+      "cornersTransparent": true,
+      "source": "Cut from the shipped Cold Trail card films (src/assets/home-v5) \u2014 same painted register"
+    }
+  ],
+  "plates": {
+    "holmes-pose-dock.png": {
+      "faceBox": {
+        "x": 0.2708,
+        "y": 0.118,
+        "w": 0.425,
+        "h": 0.2416
+      }
+    },
+    "holmes-face-neutral.png": {
+      "faceBox": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 1.0,
+        "h": 1.0
+      }
+    },
+    "holmes-face-focused.png": {
+      "faceBox": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 1.0,
+        "h": 1.0
+      }
+    },
+    "holmes-face-thinking.png": {
+      "faceBox": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 1.0,
+        "h": 1.0
+      }
+    },
+    "holmes-face-attentive.png": {
+      "faceBox": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 1.0,
+        "h": 1.0
+      }
+    },
+    "holmes-face-hushed.png": {
+      "faceBox": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 1.0,
+        "h": 1.0
+      }
+    },
+    "holmes-face-wonder.png": {
+      "faceBox": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 1.0,
+        "h": 1.0
+      }
+    },
+    "holmes-face-reading.png": {
+      "faceBox": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 1.0,
+        "h": 1.0
+      }
+    },
+    "holmes-face-marking.png": {
+      "faceBox": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 1.0,
+        "h": 1.0
+      }
+    },
+    "holmes-face-delighted.png": {
+      "faceBox": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 1.0,
+        "h": 1.0
+      }
+    },
+    "holmes-face-surprised.png": {
+      "faceBox": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 1.0,
+        "h": 1.0
+      }
+    },
+    "holmes-face-pout.png": {
+      "faceBox": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 1.0,
+        "h": 1.0
+      }
+    },
+    "watson-pose-station-idle.png": {
+      "faceBox": {
+        "x": 0.2052,
+        "y": 0.1286,
+        "w": 0.6007,
+        "h": 0.3
+      }
+    },
+    "watson-face-neutral.png": {
+      "faceBox": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 1.0,
+        "h": 1.0
+      }
+    },
+    "watson-face-focused.png": {
+      "faceBox": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 1.0,
+        "h": 1.0
+      }
+    },
+    "watson-face-thinking.png": {
+      "faceBox": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 1.0,
+        "h": 1.0
+      }
+    },
+    "watson-face-attentive.png": {
+      "faceBox": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 1.0,
+        "h": 1.0
+      }
+    },
+    "watson-face-hushed.png": {
+      "faceBox": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 1.0,
+        "h": 1.0
+      }
+    },
+    "watson-face-wonder.png": {
+      "faceBox": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 1.0,
+        "h": 1.0
+      }
+    },
+    "watson-face-reading.png": {
+      "faceBox": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 1.0,
+        "h": 1.0
+      }
+    },
+    "watson-face-marking.png": {
+      "faceBox": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 1.0,
+        "h": 1.0
+      }
+    },
+    "watson-face-delighted.png": {
+      "faceBox": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 1.0,
+        "h": 1.0
+      }
+    },
+    "watson-face-surprised.png": {
+      "faceBox": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 1.0,
+        "h": 1.0
+      }
+    },
+    "watson-face-pout.png": {
+      "faceBox": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 1.0,
+        "h": 1.0
+      }
+    }
+  },
+  "plates_note": "Harness adapter (PR A records cure): keys are plate FILENAMES in this directory; faceBox values are FRACTIONS of that plate ({x,y,w,h} in 0..1), the shape tests/e2e/pair-art-kidtest.spec.ts and scripts/kidtest-smoke.mjs read. Figure-plate entries convert characters.<c>.faces.neutral.faceBox (natural px in figure space) by the figure natural size. Face-plate entries are the plate itself: the crop IS the face region, so the box is the full frame. The per-character faceBox data above remains the source of truth; this map is derived from it."
+}
