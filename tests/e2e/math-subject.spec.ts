@@ -164,6 +164,52 @@ test("reduced motion: the case still renders and plays", async ({ page, context 
   expect(errors).toEqual([]);
 });
 
+// ==== STREAM A (wave-2 math items) — BEGIN ====
+// Added by the "more playable items per band" stream. Deals through the
+// wave-1 cases with the Next-case button and plays the FIRST wave-2
+// item of the band through to the result screen. The 18+ band has no
+// unplayed rows left (all 3 were wave 1), so it has no wave-2 test.
+// Keep this block self-contained: a sibling stream edits this spec on
+// its own branch in parallel, and whoever merges second rebases.
+async function solveAndNext(page: Page, correct: string) {
+  await solveCase(page, correct);
+  await page.getByRole("button", { name: /Next case/ }).click();
+  await expect(page.getByTestId("math-answer-card")).toBeVisible();
+}
+
+test("wave 2: first new 7-10 item plays through to the result", async ({ page, context }) => {
+  await setup(context, "7-10");
+  const errors = watchErrors(page);
+  await openCase(page);
+  const mathCase = page.getByTestId("math-case");
+  await expect(mathCase).toHaveAttribute("data-item", "math-number:groups:skip-count");
+  await solveAndNext(page, "8");
+  await expect(mathCase).toHaveAttribute("data-item", "math-number:groups:equal-groups");
+  await solveAndNext(page, "24");
+  await expect(mathCase).toHaveAttribute("data-item", "math-number:tables:buses");
+  await solveAndNext(page, "4");
+  await expect(mathCase).toHaveAttribute("data-item", "math-number:place:hundreds-tens-ones");
+  await solveCase(page, "345");
+  expect(errors).toEqual([]);
+});
+
+test("wave 2: first new 10-18 item plays through to the result", async ({ page, context }) => {
+  await setup(context, "10-18");
+  const errors = watchErrors(page);
+  await openCase(page);
+  const mathCase = page.getByTestId("math-case");
+  await expect(mathCase).toHaveAttribute("data-item", "math-number:tables:multi-digit");
+  await solveAndNext(page, "1,081");
+  await expect(mathCase).toHaveAttribute("data-item", "math-applied:measure:convert-metric");
+  await solveAndNext(page, "2,400");
+  await expect(mathCase).toHaveAttribute("data-item", "math-number:fractions:percent");
+  await solveAndNext(page, "56");
+  await expect(mathCase).toHaveAttribute("data-item", "math-applied:geometry:scale-drawing");
+  await solveCase(page, "8");
+  expect(errors).toEqual([]);
+});
+// ==== STREAM A (wave-2 math items) — END ====
+
 test("390px: Home card, case, answer card and result render on a phone", async ({
   page,
   context,

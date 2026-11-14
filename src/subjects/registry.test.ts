@@ -256,7 +256,7 @@ it("the picker's released list includes the real math module", async () => {
     ["math"],
   );
   assert.equal(listed[0]?.title, "Math");
-  assert.equal(listed[0]?.units.length, 9);
+  assert.equal(listed[0]?.units.length, 29);
   for (const group of ["7-10", "10-18", "18+"] as const) {
     assert.ok(
       listed[0]?.units.some((unit) => unit.group === group),

@@ -24,13 +24,15 @@ it("adapter reads the rows from both data files", () => {
   }
 });
 
-it("wave-1 slice holds up to 3 items per band", () => {
+it("playable slice: wave 1 plus up to 10 wave-2 items per band", () => {
   const units = mathUnits();
   assert.equal(units.length, WAVE1_ITEM_IDS.length);
-  assert.equal(units.length, 9);
-  for (const group of ["7-10", "10-18", "18+"] as const) {
-    assert.equal(itemsForGroup(group).length, 3, group);
-  }
+  // Wave 1 dealt 3 per band (9 total). Wave 2 adds 10 for 7-10 and 10
+  // for 10-18; 18+ has no unplayed rows left, so it stays at 3.
+  assert.equal(units.length, 29);
+  assert.equal(itemsForGroup("7-10").length, 13);
+  assert.equal(itemsForGroup("10-18").length, 13);
+  assert.equal(itemsForGroup("18+").length, 3);
 });
 
 it("items filter by band — each band deals only its own items", () => {
@@ -44,6 +46,31 @@ it("items filter by band — each band deals only its own items", () => {
     "math-number:groups:skip-count",
     "math-number:groups:equal-groups",
     "math-number:tables:buses",
+    "math-number:place:hundreds-tens-ones",
+    "math-number:place:compare",
+    "math-number:place:round",
+    "math-number:place:ten-times",
+    "math-number:tables:facts",
+    "math-number:tables:big-products",
+    "math-number:division:fair-share",
+    "math-number:division:unknown-factor",
+    "math-number:division:remainders",
+    "math-number:division:big-quotients",
+  ]);
+  assert.deepEqual(ids("10-18"), [
+    "math-number:tables:multi-digit",
+    "math-applied:measure:convert-metric",
+    "math-number:fractions:percent",
+    "math-applied:geometry:scale-drawing",
+    "math-number:division:standard-algorithm",
+    "math-number:fractions:multiply",
+    "math-number:fractions:divide",
+    "math-applied:measure:accuracy",
+    "math-applied:rates:unit-rate",
+    "math-applied:rates:constant-speed",
+    "math-applied:rates:one-step",
+    "math-applied:rates:two-step",
+    "math-applied:trig:bearings",
   ]);
   assert.deepEqual(ids("18+"), [
     "math-number:tables:mental-strategies",
@@ -98,6 +125,75 @@ it("year math uses the current year", () => {
   assert.equal(yearsSince(1973, currentYear()), new Date().getFullYear() - 1973);
 });
 
+it("each wave-2 numeric answer matches its derivation", () => {
+  // id -> [recomputed value, displayed correct choice]
+  const recompute: Record<string, [number, string]> = {
+    "math-number:place:hundreds-tens-ones": [3 * 100 + 4 * 10 + 5, "345"],
+    "math-number:place:compare": [Math.max(358, 385), "385"],
+    "math-number:place:round": [Math.round(287 / 100) * 100, "300"],
+    "math-number:place:ten-times": [70 * 10, "700"],
+    "math-number:tables:facts": [7 * 4, "28"],
+    "math-number:tables:big-products": [126 * 8, "1,008"],
+    "math-number:division:fair-share": [12 / 4, "3"],
+    "math-number:division:unknown-factor": [40 / 8, "5"],
+    "math-number:division:remainders": [Math.ceil(26 / 6), "5"],
+    "math-number:division:big-quotients": [1248 / 8, "156"],
+    "math-applied:geometry:scale-drawing": [4 * 2, "8"],
+    "math-number:division:standard-algorithm": [4368 / 28, "156"],
+    "math-number:fractions:divide": [6 / (3 / 4), "8"],
+    "math-applied:measure:accuracy": [Math.round(2.4837 * 100) / 100, "2.48"],
+    "math-applied:rates:unit-rate": [8 / 5, "1.6"],
+    "math-applied:rates:constant-speed": [20 / (12 / 3), "5"],
+    "math-applied:rates:one-step": [12 - 5, "7"],
+    "math-applied:rates:two-step": [(19 - 4) / 3, "5"],
+  };
+  for (const [id, [expected, shown]] of Object.entries(recompute)) {
+    const entry = answerFor(id);
+    assert.ok(entry, id);
+    assert.equal(entry.value, expected, id);
+    assert.equal(entry.correct, shown, id);
+    assert.ok(entry.choices.includes(entry.correct), id);
+  }
+  // The cheaper stall in unit-rate really is the second one.
+  assert.ok(8 / 5 < 6 / 3);
+  // Fraction product: the displayed choice is the fraction itself.
+  const multiply = answerFor("math-number:fractions:multiply");
+  assert.ok(multiply);
+  assert.equal(multiply.value, (2 / 3) * (1 / 2));
+  assert.equal(multiply.correct, "1/3");
+  // Bearings: the displayed angle is the inverse tangent of east/north,
+  // rounded to the nearest degree (pinned inputs, no clock involved).
+  const bearings = answerFor("math-applied:trig:bearings");
+  assert.ok(bearings);
+  assert.equal(Math.round((Math.atan(6 / 8) * 180) / Math.PI), 37);
+  assert.equal(bearings.correct, "37°");
+});
+
+it("every wave-2 item sits in its own row's band", () => {
+  const rowsById = new Map(allMathRows().map((row) => [row.id, row]));
+  const wave1 = new Set([
+    "math-number:groups:skip-count",
+    "math-number:groups:equal-groups",
+    "math-number:tables:buses",
+    "math-number:tables:multi-digit",
+    "math-applied:measure:convert-metric",
+    "math-number:fractions:percent",
+    "math-number:tables:mental-strategies",
+    "math-number:fractions:combine-shares",
+    "math-applied:measure:survey-check",
+  ]);
+  let added = 0;
+  for (const unit of mathUnits()) {
+    if (wave1.has(unit.id)) continue;
+    added += 1;
+    const row = rowsById.get(unit.id);
+    assert.ok(row, `no row for ${unit.id}`);
+    assert.equal(unit.group, row.group, unit.id);
+    assert.ok(answerFor(unit.id), `no answer for ${unit.id}`);
+  }
+  assert.equal(added, 20);
+});
+
 it("the scalePlay flag itself still defaults off (the card no longer reads it)", () => {
   assert.equal(scaleParamOn(""), false);
   assert.equal(scaleParamOn("?scale=0"), false);
@@ -114,6 +210,6 @@ it("the subject module matches contract I1 and is released", () => {
   // ships; educator review runs alongside, after release.
   assert.equal(mathModule.released, true);
   assert.deepEqual(mathModule.groups, ["7-10", "10-18", "18+"]);
-  assert.equal(mathModule.units.length, 9);
+  assert.equal(mathModule.units.length, 29);
   assert.equal(typeof mathModule.load, "function");
 });
