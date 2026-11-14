@@ -20,6 +20,15 @@
  *                problem and the answer prompt (owner, b60c16ed). Shares
  *                src/game/story-ai.ts's patterns with lint:content, plus the
  *                units those miss.
+ *   YEAR         a literal current year (2020s on) is stored in child-read
+ *                text. Years-ago answers are computed at play time with
+ *                currentYear()/yearsSince() (src/subjects/shared/years.ts);
+ *                clip rows store "currentYear - <event year>" (owner,
+ *                4e454f06, 9a95f663, 94a0d7ef, 7625cac8). Subjects are
+ *                evaluated with the device clock pinned to PIN_YEAR, so a
+ *                year read at play time shows as PIN_YEAR and passes, and a
+ *                typed one shows as itself and fails. Date stamps
+ *                (YYYY-MM-DD) and source/notes fields are not child-read.
  *
  * KNOWN: violations already on main are listed in
  * scripts/lint-subject-leads-baseline.json, printed as KNOWN on every run,
@@ -53,6 +62,55 @@ export function findMeasurement(text) {
   return null;
 }
 
+/** The clock year the walk runs under: far from any real "now". */
+export const PIN_YEAR = 2091;
+
+/** Run `fn` with `new Date()` / `Date.now()` pinned inside PIN_YEAR. */
+async function withPinnedClock(fn) {
+  const Real = globalThis.Date;
+  const pinned = new Real(`${PIN_YEAR}-06-15T12:00:00Z`).getTime();
+  class PinnedDate extends Real {
+    constructor(...args) {
+      if (args.length === 0) super(pinned);
+      else super(...args);
+    }
+    static now() {
+      return pinned;
+    }
+  }
+  globalThis.Date = PinnedDate;
+  try {
+    return await fn();
+  } finally {
+    globalThis.Date = Real;
+  }
+}
+
+/** First literal 2020s-or-later year in a text that is not a date stamp
+ *  and not the pinned play-time year, or null. */
+export function findLiteralYear(text) {
+  const undated = String(text ?? "").replace(/\b\d{4}-\d{2}-\d{2}\b/g, " ");
+  for (const m of undated.matchAll(/(?<![\d.,])20[2-9]\d(?![\d,])/g)) {
+    if (Number(m[0]) !== PIN_YEAR) return m[0];
+  }
+  return null;
+}
+
+/** Keys of a clip row that are provenance for reviewers, not child-read. */
+const NOT_CHILD_READ = /source|note|checked|reason|url|^file$|transcript|captions|screenedOn|standard|^id$|lat|lon/i;
+
+/** Every child-read string in a value, with its key path. */
+function childStrings(value, path = []) {
+  if (typeof value === "string") return [{ path: path.join("."), text: value }];
+  if (Array.isArray(value)) return value.flatMap((v, i) => childStrings(v, [...path, String(i)]));
+  if (value && typeof value === "object") {
+    return Object.entries(value).flatMap(([k, v]) =>
+      NOT_CHILD_READ.test(k) ? [] : childStrings(v, [...path, k]),
+    );
+  }
+  return [];
+}
+
 /** Cue text of a WebVTT file: headers, NOTE blocks, timings and tags dropped. */
 export function vttText(vtt) {
   const out = [];
@@ -76,6 +134,7 @@ function captionPath(journal, file) {
 async function subjectLeads() {
   const leads = [];
   const subjects = [];
+  if (!existsSync(SUBJECTS)) return { leads, subjects };
   for (const id of readdirSync(SUBJECTS).sort()) {
     const dir = join(SUBJECTS, id);
     if (!statSync(dir).isDirectory()) continue;
@@ -89,6 +148,11 @@ async function subjectLeads() {
     for (const group of GROUPS) {
       for (const item of items.itemsForGroup(group)) {
         const answer = answers.answerFor(item.id);
+        if (answer) {
+          for (const { path, text } of childStrings(answer)) {
+            leads.push({ subject: id, itemId: item.id, kind: "answer", where: `src/subjects/${id} ${item.id} answer.${path}`, text, answer });
+          }
+        }
         leads.push({ subject: id, itemId: item.id, kind: "why", where: `src/subjects/${id} ${item.id} why`, text: item.why, answer });
         if (typeof items.captionRefFor === "function") {
           const ref = items.captionRefFor(item.id);
@@ -119,8 +183,19 @@ function journalTexts() {
     if (!existsSync(file)) continue;
     const data = JSON.parse(readFileSync(file, "utf8"));
     const clips = Array.isArray(data) ? data : Array.isArray(data.clips) ? data.clips : [];
+    if (!Array.isArray(data)) {
+      for (const [k, v] of Object.entries(data)) {
+        if (/year$/i.test(k) && typeof v === "number" && v >= 2020 && v <= 2099) {
+          out.push({ kind: "year-only", where: `docs/scaling/journals/${journal}/clips.json ${k}`, text: String(v) });
+        }
+      }
+    }
     for (const clip of clips) {
       if (!clip || typeof clip.id !== "string") continue;
+      for (const { path, text } of childStrings(clip)) {
+        if (path === "why" || path === "narration") continue; // pushed below for both rules
+        out.push({ kind: "year-only", where: `docs/scaling/journals/${journal}/clips.json ${clip.id} ${path}`, text });
+      }
       for (const key of ["why", "narration"]) {
         if (typeof clip[key] === "string") {
           out.push({ where: `docs/scaling/journals/${journal}/clips.json ${clip.id} ${key}`, text: clip[key], clip });
@@ -136,21 +211,27 @@ function journalTexts() {
 }
 
 const FIX = {
+  YEAR:
+    "never store the current year: compute it at play time with currentYear()/yearsSince() from src/subjects/shared/years.ts, or write \"currentYear - <event year>\" in clip rows (owner rule)",
   MEASUREMENT:
     "place stories carry no measurements (owner rule): reword the clip text, or move the number into the math hook (the answer prompt in src/subjects/<id>/answers.ts)",
 };
 
 export async function runLint({ baseline = join(HERE, "lint-subject-leads-baseline.json"), log = console.log } = {}) {
-  const { leads, subjects } = await subjectLeads();
+  const { leads, subjects } = await withPinnedClock(subjectLeads);
   const journal = journalTexts();
   const found = [];
   // A subject's own `why` is its math hook, where numbers belong (owner,
   // b60c16ed: "measurements in math hooks only"). Place stories do not:
   // clip why, narration, captions, and a caption used as a lead.
-  const stories = [...leads.filter((r) => r.kind === "caption"), ...journal];
+  const stories = [...leads.filter((r) => r.kind === "caption"), ...journal.filter((r) => r.kind !== "year-only")];
   for (const r of stories) {
     const m = findMeasurement(r.text);
     if (m) found.push({ rule: "MEASUREMENT", where: r.where, match: m });
+  }
+  for (const r of [...leads, ...journal]) {
+    const y = findLiteralYear(r.text);
+    if (y) found.push({ rule: "YEAR", where: r.where, match: y });
   }
   const key = (v) => `${v.rule} | ${v.where} | ${v.match}`;
   const known = new Set(

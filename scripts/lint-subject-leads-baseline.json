@@ -1,5 +1,5 @@
 {
-  "note": "Place-story measurements already on main (2026-11-13). The owner flagged these in the PR #464 review. Fixing a clip means re-recording its narration, so each is KNOWN until that change lands; an entry fails as STALE once fixed. Never add an entry to make a new violation pass.",
+  "note": "Violations already on main (2026-11-13): place-story measurements and one stored counting year. The owner flagged these in the PR #464 review. Fixing a clip means re-recording its narration, so each is KNOWN until that change lands; an entry fails as STALE once fixed. Never add an entry to make a new violation pass.",
   "entries": [
     {
       "rule": "MEASUREMENT",
@@ -45,6 +45,11 @@
       "rule": "MEASUREMENT",
       "where": "docs/scaling/journals/technology/clips.json technology:eniac why",
       "match": "50 feet"
+    },
+    {
+      "rule": "YEAR",
+      "where": "docs/scaling/journals/people-places/clips.json countingYear",
+      "match": "2026"
     }
   ]
 }
