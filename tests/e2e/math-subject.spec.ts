@@ -243,7 +243,24 @@ test("detectivePair on (desktop, 7-10): pair mounts, wrong is silent, right cele
   await expect(watson).toHaveAttribute("data-pose", "read");
 
   // Wrong pick: the signal lands, the pair stays in resting poses
-  // and requests NO clip (wrong = silence by the clip rules).
+  // and requests NO clip (wrong = silence by the clip rules). The
+  // baseline waits for the open clip to have registered AND ended,
+  // so a late-starting open clip cannot masquerade as a wrong-pick
+  // clip in the comparison below.
+  await expect
+    .poll(
+      async () =>
+        page.evaluate(() => {
+          const els = (window as unknown as { __audioEls: HTMLAudioElement[] })
+            .__audioEls;
+          const openClip = els.find((a) =>
+            (a.currentSrc || a.src).endsWith("lets-find-clues.mp3"),
+          );
+          return openClip ? openClip.ended : false;
+        }),
+      { timeout: 10_000 },
+    )
+    .toBe(true);
   const srcsBefore = await page.evaluate(() =>
     (
       window as unknown as { __audioEls: HTMLAudioElement[] }
