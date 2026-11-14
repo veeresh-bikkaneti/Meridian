@@ -18,7 +18,8 @@ import type { CelebrationSpec } from "@/components/celebration-copy";
 import { pickerRows } from "./picker-rows";
 import { ScreenShell } from "@/components/ui/screen-shell";
 import { ArrowRight, Atom, BookOpen, Calculator, FlaskConical, Globe2, Users, type LucideIcon } from "lucide-react";
-import { WHY_LEARN_HERO_ALT, WHY_LEARN_HERO_URL } from "@/assets/why-learn/why-learn-art";
+import { WhyLearnHero } from "./WhyLearnHero";
+import { WhyLearnDrift } from "./WhyLearnDrift";
 
 /** Decorative card icons by subject id (aria-hidden; the name is the text). */
 const SUBJECT_ICONS: Record<string, LucideIcon> = {
@@ -105,17 +106,7 @@ export default function SubjectPicker({
       onHome={onExit}
       className="why-learn-screen lg:max-w-6xl"
       testId="subject-picker"
-      hero={
-        <img
-          className="why-learn-hero"
-          src={WHY_LEARN_HERO_URL}
-          alt={WHY_LEARN_HERO_ALT}
-          width={1280}
-          height={720}
-          loading="eager"
-          decoding="async"
-        />
-      }
+      hero={<WhyLearnHero />}
       sound={
         <span className="why-learn-wordmark">
           <svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><circle cx="24" cy="24" r="21.5" fill="none" stroke="#8A6D2F" strokeWidth="1.6" /><path d="M24 6 L27.2 20.8 L42 24 L27.2 27.2 L24 42 L20.8 27.2 L6 24 L20.8 20.8 Z" fill="#8A6D2F" /><circle cx="24" cy="24" r="3.4" fill="#F6F1E3" stroke="#8A6D2F" strokeWidth="1.2" /></svg>
@@ -128,6 +119,7 @@ export default function SubjectPicker({
       titleRef={headingRef}
       sub={`Pick a subject · Ages ${band}`}
     >
+      <WhyLearnDrift />
       {released === null && !listFailed ? (
         <p className="mt-6 text-fg">Loading subjects…</p>
       ) : null}
