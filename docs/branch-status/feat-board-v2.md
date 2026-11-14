@@ -277,3 +277,45 @@ Base: origin/main `44d921d7377c8f907fd7211ebff1a9131ba4a603`
 
 ## Graph
 - No graph nodes/edges added by this step.
+
+## Phase C — Sprintbound adoption + live-data fix (2026-11-13, owner-directed redo)
+
+Owner's words: "Go back to the drawing board try again… you need to
+closely adopt to the system… This has to be live data." The Phase B
+expedition map was rejected and is retired. /board now adopts the
+Sprintbound board system closely, in Meridian's own tokens: an app
+shell (sidebar views / topbar with the live-data pill / status bar)
+over ONE story list, with Live board, Story map, Dependencies,
+Releases and Send-a-tip views, plus the Issues & PRs route. The 3D
+feature map is deleted (the story map view is the board's map now).
+Not adopted: council view, hash-link intake, project switcher,
+status-move buttons, story points (rationale in REPORT-C, agent-side).
+
+### The live-data gap (found + fixed first)
+
+- The old overlay fetched ONE page of the pulls API. The repo has
+  394 PRs; every one of the 36 PRs the snapshot stories link to sits
+  on pages 3–4, so a "successful" fetch covered NONE of them and the
+  board rendered snapshot statuses under a "Live from GitHub" label.
+  The issues endpoint had the same hole (issues 344/319, the only
+  issues stories name, sit on page 2).
+- Fix (`board-data: paginate the live overlay…`): the overlay now
+  pages (cap 6) until every linked PR/issue number is covered, a
+  short page ends the list, or the cap is hit; any page failure keeps
+  the whole-fetch cache/snapshot fallback — never a partial payload.
+  The live line now states coverage ("N of 36 linked PRs have live
+  state") whenever the data is not the labelled snapshot.
+- Verified live 2026-11-13 (see REPORT-C): production fetch against
+  the real api.github.com → source "live", 394 PRs, 36/36 covered;
+  live-derived metrics 18 not-started / 8 in-progress / 20 done /
+  7 open PRs / 2 blocked, XP 20/46, next-to-crack "Clue pacing and
+  one voice at a time" — identical to an independent curl capture;
+  a browser run replaying that capture byte-for-byte rendered the
+  same numbers.
+
+### Verification (Phase C)
+
+- board-data unit tests 69/69 (5 new pagination tests).
+- tests/e2e/board.desktop.spec.ts 20/20 against the built artifact
+  (spec adapted to the adopted views; each change + reason in
+  REPORT-C). tsc clean; security-headers 10/10; build:pages green.
