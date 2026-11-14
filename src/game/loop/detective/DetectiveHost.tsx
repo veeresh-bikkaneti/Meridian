@@ -45,6 +45,7 @@ import {
   useState,
   type ReactElement,
 } from "react";
+import { guessPresentTarget } from "../clue-watchdog";
 import { createPortal } from "react-dom";
 import { CELEBRATE_LAYOUT, HolmesRig, WatsonRig } from "./DetectivePair";
 import {
@@ -184,6 +185,9 @@ export interface DetectiveHostCallbacks {
   /** The pair presented clue card `n` (1-based): the screen reveals
    * cards up to the highest n reported (one at a time on a deal). */
   onCluePresented?: (n: number) => void;
+  /** True while a clue read waits for the player's tap (tap speech
+   * mode). The screen's clue watchdog treats that wait as no stall. */
+  onReadHeldChange?: (held: boolean) => void;
 }
 
 export default function DetectiveHost(
@@ -192,6 +196,8 @@ export default function DetectiveHost(
   const { caseIndex, cluesRevealed, status, sheetOpen, lastGuessPlaceId, freshDeal, answerPlaceId, selectedPlaceId } = props;
   const onCluePresentedRef = useRef(props.onCluePresented);
   onCluePresentedRef.current = props.onCluePresented;
+  const onReadHeldChangeRef = useRef(props.onReadHeldChange);
+  onReadHeldChangeRef.current = props.onReadHeldChange;
   /** The highest clue card the pair has presented this case. Anchors
    * (Watson's station, the flank slot) follow it, not the game's raw
    * count, so Watson stands at the card he is actually reading. */
@@ -643,6 +649,10 @@ export default function DetectiveHost(
   useEffect(() => {
     playerRef.current?.setSpeechMode(degradation.speechMode);
   }, [degradation.speechMode]);
+  useEffect(() => {
+    onReadHeldChangeRef.current?.(degradation.speechMode === "tap");
+    return () => onReadHeldChangeRef.current?.(false);
+  }, [degradation.speechMode]);
 
   // Unmount: timers die with the host.
   useEffect(() => {
@@ -743,9 +753,10 @@ export default function DetectiveHost(
     // play for real instead of resolving as skipped; the drain
     // accounting is untouched (this dispatch's read drains through
     // the ordinary onSpeakingChange path like any other).
-    // A pin during the opening shows every card the deal holds —
-    // the clue the guess just unlocked waits for its own read.
-    presentClue(Math.max(1, cluesRevealed - 1));
+    // A pin during the opening opens ONE more starting card, not the
+    // whole deal (owner, 2026-11-11: clues open one at a time). The
+    // clue the guess just unlocked waits for its own read.
+    presentClue(guessPresentTarget(presentedClue, cluesRevealed));
     playerRef.current?.armGuessRead();
     dispatch({ type: "guessConfirmed", placeId: lastGuessPlaceId });
     playerRef.current?.disarmGuessRead();

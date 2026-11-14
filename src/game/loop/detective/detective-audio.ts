@@ -67,6 +67,7 @@ import { assetBase } from "../../../components/storyteller-lines.ts";
 import { decideFirstGesture } from "../../../components/storyteller-audio-guards.ts";
 import { isSoundEnabled } from "../../audio/sfx.ts";
 import { soundAudible } from "../../audio/play-guards.ts";
+import { claimVoice, type VoiceClaim } from "../../audio/voice-channel.ts";
 import {
   getReadAloudPref,
   shouldAutoPlayReadAloud,
@@ -215,7 +216,9 @@ export interface DetectiveSpeechOptions {
   speechMode?: SpeechMode;
   /* Test seams (defaults wire the real environment). */
   loadManifest?: () => Promise<DetectiveManifest | null>;
-  playClip?: (clip: ResolvedClip) => Promise<void>;
+  /** Play one clip. `signal` aborts when something else needs the
+   * voice (a pick, a replay, stopAll): stop sounding and resolve. */
+  playClip?: (clip: ResolvedClip, signal: AbortSignal) => Promise<void>;
   isSoundOn?: () => boolean;
   canAutoPlay?: () => boolean;
 }
@@ -412,32 +415,103 @@ export function createDetectiveSpeech(
   armGestureListener();
 
   /* -- default clip playback: one HTMLAudioElement chain ------------- */
-  let currentStop: (() => void) | null = null;
-  async function defaultPlayClip(clip: ResolvedClip): Promise<void> {
+  /* -- ONE clip at a time (the owner's rule: "if one speak the other
+   * needs to shut up") ---------------------------------------------------
+   * The queue loop and the replay loop used to keep separate state, and
+   * a single `currentStop` slot that the newer clip overwrote — so the
+   * older Audio element was orphaned and played on under the new one.
+   * Now there is exactly one active clip, owned here. Every clip, from
+   * either loop, goes through runClip(), which stops whatever is
+   * sounding before it starts (abort signal → pause + settle), and
+   * stopAll()/dispose() stop that same slot. */
+  let active: {
+    ctrl: AbortController;
+    who: DetectiveSpeaker;
+    claim: VoiceClaim | null;
+  } | null = null;
+  function stopActive(): void {
+    const a = active;
+    active = null;
+    if (!a) return;
+    a.claim?.release();
+    try {
+      a.ctrl.abort();
+    } catch {
+      /* stopping must never throw into game flow */
+    }
+  }
+  async function runClip(clip: ResolvedClip): Promise<void> {
+    stopActive(); // never two clips open at once, from either loop
+    const ctrl = new AbortController();
+    // The app-wide channel: a detective line is part of the kid's own
+    // play (a pick, a confirm, Listen, or the ladder they are driving),
+    // so it takes the channel from any other voice rather than waiting.
+    const claim = claimVoice("detective", () => stopActive(), {
+      userInitiated: true,
+    });
+    const mine = { ctrl, who: clip.who, claim };
+    active = mine;
+    try {
+      await playClip(clip, ctrl.signal);
+    } finally {
+      if (active === mine) {
+        active = null;
+        claim?.release();
+      }
+    }
+  }
+  /** A pick or a confirm while Watson is sounding: Watson shuts up so
+   * Holmes can answer. Stops Watson's clip, abandons a replay that is
+   * mid-chain (its later items would talk over Holmes), and returns the
+   * queue index this gesture read goes in at. When Watson was cut that
+   * is ahead of any queued non-gesture lines (Holmes answers next),
+   * behind gesture reads already waiting (the guess burst keeps its
+   * order). When Watson is quiet it is the end of the queue, exactly
+   * as before: a pick never interrupts anything else. */
+  function cutWatsonForPick(): number {
+    const isGestureItem = (q: SpeakRef) =>
+      selectionItems.has(q) || guessItems.has(q);
+    if (active?.who !== "watson") return queue.length;
+    const firstOther = queue.findIndex((q) => !isGestureItem(q));
+    heldPlaySeq += 1; // a replay mid-chain abandons ship, no drain
+    stopActive();
+    return firstOther === -1 ? queue.length : firstOther;
+  }
+
+  async function defaultPlayClip(
+    clip: ResolvedClip,
+    signal: AbortSignal,
+  ): Promise<void> {
     // Gesture-wait resurrection guard (cure, panel round 1): the
-    // stop handle is registered BEFORE the first-gesture wait, not
-    // after it. Previously currentStop only existed once the Audio
-    // element did — after the wait — so a stopAll landing while the
-    // clip was parked (a mute, a case change, a replay interrupting)
-    // could not reach it, and the parked clip played on the next tap
-    // even though it had been stopped; a mute/unmute cycle in that
-    // window was invisible to it because the sound gate read ON
-    // again by wake time. Now stopAll settles a parked clip exactly
-    // like a playing one (it resolves as skipped — the queue's
-    // existing stopped-item path, drain accounting untouched), and
-    // the sound gate is re-checked at wake for a gate that closed
-    // without a stopAll.
+    // abort listener is registered BEFORE the first-gesture wait, not
+    // after it, so a stop landing while the clip was parked (a mute, a
+    // case change, a replay interrupting) settles it: the parked clip
+    // can never play on the next tap after it was stopped. A stopped
+    // clip resolves as skipped — the queue's existing stopped-item
+    // path, drain accounting untouched — and the sound gate is
+    // re-checked at wake for a gate that closed without a stop.
     await new Promise<void>((resolve) => {
       let settled = false;
+      let audio: HTMLAudioElement | null = null;
       const done = () => {
         if (settled) return;
         settled = true;
-        currentStop = null;
+        signal.removeEventListener("abort", onAbort);
         resolve();
       };
-      // Parked-clip stopper: settling now abandons the clip — the
-      // gesture wake below sees `settled` and never creates Audio.
-      currentStop = done;
+      const onAbort = () => {
+        try {
+          audio?.pause();
+        } catch {
+          /* element already gone — nothing to stop */
+        }
+        done();
+      };
+      if (signal.aborted) {
+        done();
+        return;
+      }
+      signal.addEventListener("abort", onAbort);
       void waitForGesture().then(() => {
         if (settled || disposed) return;
         if (!isSoundOn()) {
@@ -445,15 +519,7 @@ export function createDetectiveSpeech(
           return;
         }
         try {
-          const audio = new Audio(clip.url);
-          currentStop = () => {
-            try {
-              audio.pause();
-            } catch {
-              /* element already gone — nothing to stop */
-            }
-            done();
-          };
+          audio = new Audio(clip.url);
           audio.addEventListener("ended", done, { once: true });
           // An erroring clip (404 / codec) resolves as SKIPPED — the
           // queue must never stall (fallback law).
@@ -516,10 +582,13 @@ export function createDetectiveSpeech(
         if (gen !== generation || disposed) return;
         const clip = resolveDetectiveClip(manifest, ref, caseIndex);
         if (!clip) continue; // uncovered → silent skip
+        // A queued line takes the voice: a replay still sounding is
+        // superseded (it never drains; this loop's drain is the one).
+        heldPlaySeq += 1;
         onSpeakingChange(clip.who);
         playedAny = true;
         try {
-          await playClip(clip);
+          await runClip(clip);
         } catch {
           // A failing clip is a skipped clip — never stall the queue.
         }
@@ -591,14 +660,7 @@ export function createDetectiveSpeech(
     generation += 1;
     const gen = generation;
     queue = [];
-    if (currentStop) {
-      try {
-        currentStop();
-      } catch {
-        /* stopping must never throw into game flow */
-      }
-      currentStop = null;
-    }
+    stopActive();
     let playedAny = false;
     try {
       for (const ref of refs) {
@@ -611,7 +673,7 @@ export function createDetectiveSpeech(
         onSpeakingChange(clip.who);
         playedAny = true;
         try {
-          await playClip(clip);
+          await runClip(clip);
         } catch {
           // A failing clip is a skipped clip — never stall the replay.
         }
@@ -637,7 +699,7 @@ export function createDetectiveSpeech(
         selectionItems.add(item);
         const stale = queue.findIndex((q) => selectionItems.has(q));
         if (stale !== -1) queue.splice(stale, 1);
-        queue.push(item);
+        queue.splice(cutWatsonForPick(), 0, item);
         kick();
         return;
       }
@@ -651,7 +713,8 @@ export function createDetectiveSpeech(
       // them for real (the confirm tap is the kid's gesture). The
       // mark is inert in the other modes (see armGuessRead).
       if (guessReadArmed) guessItems.add(ref);
-      queue.push(ref);
+      if (guessReadArmed) queue.splice(cutWatsonForPick(), 0, ref);
+      else queue.push(ref);
       kick();
     },
     armGuessRead(): void {
@@ -675,28 +738,16 @@ export function createDetectiveSpeech(
     stopAll(): void {
       generation += 1;
       queue = [];
-      if (currentStop) {
-        try {
-          currentStop();
-        } catch {
-          /* stopping must never throw into game flow */
-        }
-        currentStop = null;
-      }
+      heldPlaySeq += 1;
+      stopActive();
       onSpeakingChange(null);
     },
     dispose(): void {
       disposed = true;
       generation += 1;
       queue = [];
-      if (currentStop) {
-        try {
-          currentStop();
-        } catch {
-          /* as above */
-        }
-        currentStop = null;
-      }
+      heldPlaySeq += 1;
+      stopActive();
       gestureWaiters = [];
     },
     setCaseIndex(next: number): void {
