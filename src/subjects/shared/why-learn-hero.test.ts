@@ -65,6 +65,27 @@ describe("WhyLearnHero — the montage in the hero slot", () => {
     );
   });
 
+  it("the whole recorded frame fits the slot: contain over a blurred poster fill, never cover", () => {
+    // Owner, 2026-11-14 (photo of the live picker): the film read
+    // "overly cropped and over zoomed in… that video needs to play
+    // in full size of what we recorded." The film is portrait
+    // (608×1280), the slot a wide strip: cover centre-cropped it.
+    const heroStart = css.indexOf(".why-learn-hero {");
+    const heroRule = css.slice(heroStart, css.indexOf("@media (min-width: 681px)", heroStart));
+    assert.ok(heroRule.includes("object-fit: contain"), "the frame fits whole inside the box");
+    assert.ok(!heroRule.includes("object-fit: cover"), "cover is the cropping defect — it must not return");
+    const fillRule = css.slice(
+      css.indexOf(".why-learn-hero-backdrop {"),
+      css.indexOf(".why-learn-hero-controls {"),
+    );
+    assert.ok(fillRule.includes("object-fit: cover"), "the fill copy covers the box behind the film");
+    assert.ok(fillRule.includes("blur("), "the fill is the poster, blurred and dimmed");
+    assert.ok(
+      hero.split('className="why-learn-hero-backdrop"').length - 1 === 2,
+      "both branches (film and poster still) render the fill behind the frame",
+    );
+  });
+
   it("media URLs are built through the assetBase seam, never bundled imports", () => {
     assert.ok(hero.includes("assetBase()"), "assetBase seam (same as the journal manifest)");
     assert.ok(!hero.includes(".mp4\""), "no hard-coded file path in the component");

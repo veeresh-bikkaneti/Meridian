@@ -21,6 +21,12 @@
  *   and the full note live in why-learn-art.ts). Replay restarts
  *   at the window's start for the same reason. The window is a
  *   player setting, separable from the film file.
+ * - The whole recorded frame fits the slot (fix/why-learn-hero-
+ *   film-fit): the film is portrait and the slot is a wide strip,
+ *   so the fit is contain, never cover — cover showed only a
+ *   centre slice of every frame, zoomed. The bands contain leaves
+ *   are filled by a blurred, dimmed copy of the poster behind the
+ *   film (.why-learn-hero-backdrop), in both branches below.
  * - A film that fails to load latches to the same poster still.
  * - Sound starts OFF (muted): browsers block audible autoplay,
  *   and a reading page should not burst into song. The toggle
@@ -64,17 +70,28 @@ export function WhyLearnHero() {
 
   if (reducedMotion || failed) {
     // The poster IS the design here — no video element exists in
-    // this branch, so the .mp4 is never requested.
+    // this branch, so the .mp4 is never requested. The still gets
+    // the same wrap and blurred fill as the film, so the whole
+    // frame fits the slot the same way in both branches.
     return (
-      <img
-        className="why-learn-hero"
-        src={posterUrl}
-        alt={WHY_LEARN_MONTAGE_ALT}
-        width={608}
-        height={1280}
-        loading="eager"
-        decoding="async"
-      />
+      <div className="why-learn-hero-wrap">
+        <img
+          className="why-learn-hero-backdrop"
+          src={posterUrl}
+          alt=""
+          aria-hidden="true"
+          decoding="async"
+        />
+        <img
+          className="why-learn-hero"
+          src={posterUrl}
+          alt={WHY_LEARN_MONTAGE_ALT}
+          width={608}
+          height={1280}
+          loading="eager"
+          decoding="async"
+        />
+      </div>
     );
   }
 
@@ -115,6 +132,13 @@ export function WhyLearnHero() {
 
   return (
     <div className="why-learn-hero-wrap">
+      <img
+        className="why-learn-hero-backdrop"
+        src={posterUrl}
+        alt=""
+        aria-hidden="true"
+        decoding="async"
+      />
       <video
         ref={videoRef}
         className="why-learn-hero"

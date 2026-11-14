@@ -42,9 +42,14 @@
  * shipped asset, measured on the delivered file:
  *   why-learn-montage.mp4 — 608×1280 (portrait), 10.0 s, 24 fps,
  *     H.264 + AAC audio, 5,153,559 bytes. The hero box is a wide
- *     strip, so the portrait frame is centre-cropped by the
- *     slot's object-fit: cover — a landscape re-cut is the fix if
- *     the owner wants the full scenes.
+ *     strip; the slot's fit is object-fit: contain, so the whole
+ *     portrait frame is always on screen (the owner, 2026-11-14:
+ *     the film must play "in full size of what we recorded" —
+ *     cover centre-cropped it to a zoomed slice). The bands
+ *     contain leaves are filled by a blurred, dimmed copy of the
+ *     poster behind the film (styles.css, .why-learn-hero-
+ *     backdrop). A landscape re-cut would still retire the fill;
+ *     until one ships, nothing of the frame is ever cropped.
  *   why-learn-montage-poster.webp — the film's frame at 5 s (the
  *     gravity scene: apple, pendulum, rocket over the chalkboard),
  *     WebP quality 82, 30,670 bytes. It is the <video> poster

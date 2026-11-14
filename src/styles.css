@@ -2379,13 +2379,21 @@
   }
 }
 /* Fixed aspect ratio per breakpoint (plus width/height attributes): the
-   box is sized before the picture loads, so there is no layout shift. */
+   box is sized before the picture loads, so there is no layout shift.
+   The fit is contain (fix/why-learn-hero-film-fit): the film is
+   portrait (608×1280) and the box is a wide strip, so cover showed
+   only a centre slice of every frame, zoomed — the owner requires
+   the whole recorded frame on screen. Contain fits the full frame
+   inside the box at every step of the ladder below; the bands it
+   leaves are filled by the blurred poster copy behind the film
+   (.why-learn-hero-backdrop), never by cropping the film. */
 .why-learn-hero {
   display: block;
+  position: relative;
   width: 100%;
   height: auto;
   aspect-ratio: 16 / 7;
-  object-fit: cover;
+  object-fit: contain;
   object-position: 50% 50%;
 }
 @media (min-width: 681px) {
@@ -2393,13 +2401,12 @@
     aspect-ratio: 32 / 9;
   }
 }
-/* Taller hero on tall screens (feat/picker-cards-fill-page): the
-   film is portrait (608×1280) under object-fit: cover, so the wide
-   strip shows only a middle slice of each frame — about a fifth of
-   it. As the viewport gives height, the hero box steps taller and
-   more of the frame shows (about half at 1:1, three-fifths at
-   4:5), while the card grid below flexes into whatever height is
-   left. Short screens keep the strip exactly as it is today. */
+/* Taller hero on tall screens (feat/picker-cards-fill-page): as
+   the viewport gives height, the hero box steps taller, so the
+   contained portrait frame (608×1280) renders larger — the whole
+   frame at every step, since the fit is contain (see the base rule
+   above) — while the card grid below flexes into whatever height
+   is left. Short screens keep the strip exactly as it is today. */
 @media (max-width: 680px) and (min-height: 700px) {
   .why-learn-hero {
     aspect-ratio: 1 / 1;
@@ -2426,6 +2433,26 @@
    page's frosted-chip recipe (cf. .why-learn-wordmark). */
 .why-learn-hero-wrap {
   position: relative;
+  overflow: hidden;
+  background: #fdfaf2;
+}
+/* The letterbox fill (fix/why-learn-hero-film-fit): a copy of the
+   poster stretched over the whole box behind the contained film,
+   blurred and dimmed so the bands read as the scene's own soft
+   edges — the standard treatment for a portrait film in a wide
+   slot. Decoration only: aria-hidden, never focusable, and the
+   wrap's art-off rules (high-contrast / prefers-contrast /
+   forced-colors, below) hide the whole wrap with it. The slight
+   scale keeps the blur's soft edge out of the box. */
+.why-learn-hero-backdrop {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(24px) brightness(0.82) saturate(1.05);
+  transform: scale(1.12);
+  pointer-events: none;
 }
 .why-learn-hero-controls {
   position: absolute;
