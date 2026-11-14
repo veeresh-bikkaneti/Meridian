@@ -56,9 +56,31 @@ No shipped item changes except additions; no shared files touched.
   console/page errors (bundled Chromium 1248; /opt/meta-chromium
   will not launch in this VM, as in wave 1 / Stream B).
 
-## Reviewer verdict (separate seat)
+## Reviewer verdict (separate seat, on ed0e7618)
 
-[To be pasted verbatim once the seat reports.]
+VERDICT: APPROVE-WITH-NITS — see the PR body for the full text,
+pasted verbatim. Educator seat: all 15 new answers follow from
+their rows with correct physics and plausible-mistake distractors;
+the two reframed prompts are faithful; no algebra/trig in 7-10,
+nothing under 7, no biology/religion/politics, no judgment-call
+answers. Accessibility seat: shared AnswerCard untouched, native
+buttons at min-h-[44px], keyboard-reachable, reduced-motion path
+unchanged. Unit tests re-run by the reviewer: 5/5 pass.
+Nits, dispositioned: (N3) mirror:three-ways derivation overstated
+"only the mirror reflects" — FIXED in e5528a6f (now "in this
+model, the mirror is the one that reflects the light"). (N4)
+shadow:blocks derivation now says "reflected light" — FIXED in
+e5528a6f. (N1) friction:measure-slide tests only the prediction
+half; the row's "shown by" is entering a centimetre reading
+(typed-number territory) — ACCEPTED as a scope reduction, recorded
+in the PR: the measurement entry belongs to a later typed-number
+wave, the prediction question is what ships here. (N2)
+balance:tug tests only the matching-pushes half; the stronger-push
+direction is already covered by the played
+physics:push:which-way — recorded in the PR. (N5)
+ramp:higher-stored simplifies the row's "cart-and-Earth pair" to
+"the cart" — acceptable for 10-18, noted only. The nit-fix commit
+was re-verified by re-running all gates, not by the reviewer seat.
 
 ## Not checked
 
