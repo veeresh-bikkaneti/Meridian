@@ -119,6 +119,8 @@ test("7-10 case: wrong pick gives kind feedback, right pick reaches the result",
   await setup(context, "7-10");
   const errors = watchErrors(page);
   await openCase(page);
+  // Flag off (setup's interception carries no detectivePair): no pair.
+  await expect(page.getByTestId("math-detective-pair")).toHaveCount(0);
   const mathCase = page.getByTestId("math-case");
   await expect(mathCase).toHaveAttribute("data-band", "7-10");
   await expect(mathCase).toHaveAttribute("data-item", "math-number:groups:skip-count");
@@ -161,6 +163,133 @@ test("reduced motion: the case still renders and plays", async ({ page, context 
   await page.emulateMedia({ reducedMotion: "reduce" });
   const errors = watchErrors(page);
   await openCase(page);
+  await solveCase(page, "1,081");
+  expect(errors).toEqual([]);
+});
+
+/**
+ * Holmes & Watson in the math case (follow-up): with detectivePair
+ * forced ON by a second flags interception (registered after setup's,
+ * so it wins — the detective-flag.spec.ts pattern), the pair's bench
+ * strip mounts above the case, both rigs render, and answer picks
+ * change the pair's poses / speaking classes. Audio itself is not
+ * asserted by ear: the rig classes are the player's speaking output.
+ */
+async function setupPair(context: BrowserContext, band?: Band) {
+  await setup(context, band);
+  await context.route("**/flags.json", (route) =>
+    route.fulfill({
+      status: 200,
+      body: JSON.stringify({
+        version: 1,
+        flags: { pwaUpdateToast: true, detectivePair: true },
+      }),
+      contentType: "application/json; charset=utf-8",
+    }),
+  );
+}
+
+test("detectivePair on (desktop): pair mounts, wrong pick acks, right pick celebrates", async ({
+  page,
+  context,
+}) => {
+  await setupPair(context, "7-10");
+  const errors = watchErrors(page);
+  await openCase(page);
+  const pair = page.getByTestId("math-detective-pair");
+  await expect(pair).toBeVisible();
+  const holmes = pair.locator(".detective-holmes");
+  const watson = pair.locator(".detective-watson");
+  await expect(holmes).toBeVisible();
+  await expect(watson).toBeVisible();
+  // Resting poses: Holmes searching, Watson reading.
+  await expect(holmes).toHaveAttribute("data-pose", "search");
+  await expect(watson).toHaveAttribute("data-pose", "read");
+
+  // Wrong pick: the event lands and Holmes takes the ack pose with
+  // the speaking class while his ack clip sounds (sampled into a set
+  // so a mid-clip poll is enough — the pose reverts when it drains).
+  await page
+    .getByTestId("math-answer-card")
+    .getByRole("button", { name: "6", exact: true })
+    .click();
+  await expect(pair).toHaveAttribute("data-event", "wrong");
+  const seenWrong = new Set<string>();
+  await expect
+    .poll(
+      async () => {
+        const cls = await holmes.getAttribute("class");
+        if (cls) seenWrong.add(cls);
+        return [...seenWrong].some(
+          (c) => c.includes("detective-pose-ack") && c.includes("detective-speaking"),
+        );
+      },
+      { timeout: 10_000 },
+    )
+    .toBe(true);
+
+  // Right pick: Holmes celebrates while win-holmes sounds.
+  await page
+    .getByTestId("math-answer-card")
+    .getByRole("button", { name: "8", exact: true })
+    .click();
+  await expect(pair).toHaveAttribute("data-event", "correct");
+  const seenRight = new Set<string>();
+  await expect
+    .poll(
+      async () => {
+        const cls = await holmes.getAttribute("class");
+        if (cls) seenRight.add(cls);
+        return [...seenRight].some((c) => c.includes("detective-pose-celebrate-jump"));
+      },
+      { timeout: 10_000 },
+    )
+    .toBe(true);
+  await dismissCelebration(page);
+  await expect(page.getByTestId("math-result")).toBeVisible();
+  expect(errors).toEqual([]);
+});
+
+test("detectivePair on (390px): pair visible and never covering the answer buttons", async ({
+  page,
+  context,
+}) => {
+  await setupPair(context, "7-10");
+  await page.setViewportSize({ width: 390, height: 844 });
+  const errors = watchErrors(page);
+  await openCase(page);
+  const pair = page.getByTestId("math-detective-pair");
+  await expect(pair).toBeVisible();
+  await expect(pair.locator(".detective-holmes")).toBeVisible();
+  await expect(pair.locator(".detective-watson")).toBeVisible();
+  const pairBox = await pair.boundingBox();
+  const answersBox = await page.getByTestId("math-answer-card").boundingBox();
+  expect(pairBox).not.toBeNull();
+  expect(answersBox).not.toBeNull();
+  // The strip sits above the case in flow: its box ends before the
+  // answer card's box begins, so it can never cover the buttons.
+  expect(pairBox!.y + pairBox!.height).toBeLessThanOrEqual(answersBox!.y);
+  expect(errors).toEqual([]);
+});
+
+test("detectivePair on (reduced motion): pair visible, still, case still plays", async ({
+  page,
+  context,
+}) => {
+  await setupPair(context, "10-18");
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  const errors = watchErrors(page);
+  await openCase(page);
+  const pair = page.getByTestId("math-detective-pair");
+  await expect(pair).toBeVisible();
+  await expect(pair.locator(".detective-holmes")).toBeVisible();
+  await expect(pair.locator(".detective-watson")).toBeVisible();
+  // detective.css's reduced-motion block kills every rig animation:
+  // the breathing bob part computes to no animation.
+  const bobAnimation = await pair
+    .locator('.detective-holmes [data-part="bob"]')
+    .evaluate((el) => getComputedStyle(el).animationName);
+  expect(bobAnimation).toBe("none");
   await solveCase(page, "1,081");
   expect(errors).toEqual([]);
 });
