@@ -47,7 +47,7 @@ jobs:
     - run: npm run lint:content
     # Subject leads and journal clip text (owner rules, 2026-11-13): no
     # measurements in place stories or caption leads, no stored current
-    # year; see
+    # year, no lead that gives the answer away; see
     # scripts/lint-subject-leads.mjs for every rule it applies.
     - run: npm run lint:subjects
     # One home label (nav-home council, 2026-11-13): fails on hand-written

@@ -30,6 +30,11 @@
  *                typed one shows as itself and fails. Date stamps
  *                (YYYY-MM-DD) and source/notes fields are not child-read.
  *
+ *   GIVEAWAY     the lead shown before the question contains the answer: a
+ *                word or number of the correct choice that no other choice
+ *                and not the question itself has (owner, PR #464 review:
+ *                Greenwich, Heart's Content, Pont du Gard captions).
+ *
  * KNOWN: violations already on main are listed in
  * scripts/lint-subject-leads-baseline.json, printed as KNOWN on every run,
  * and fail as STALE once fixed, so the list only shrinks.
@@ -92,6 +97,40 @@ export function findLiteralYear(text) {
   const undated = String(text ?? "").replace(/\b\d{4}-\d{2}-\d{2}\b/g, " ");
   for (const m of undated.matchAll(/(?<![\d.,])20[2-9]\d(?![\d,])/g)) {
     if (Number(m[0]) !== PIN_YEAR) return m[0];
+  }
+  return null;
+}
+
+const STOP = new Set(["the", "a", "an", "of", "and", "or", "in", "on", "at", "to", "it", "is", "they", "them", "this", "that", "with", "for", "from", "by", "one", "same", "does", "not", "now"]);
+
+const tokens = (text) =>
+  String(text ?? "")
+    .toLowerCase()
+    .replace(/[\u2019']/g, "")
+    .replace(/(\d),(\d)/g, "$1$2")
+    .match(/[a-z]+|\d+(?:\.\d+)?/g) ?? [];
+
+/** The answer word or number a lead leaks, or null. A token counts when it
+ *  is in the correct choice but in no other choice and not in the question
+ *  (so shared words like "cart" or a number the question already gives do
+ *  not count), and is a number or a word of 4+ letters. */
+export function findGiveaway(lead, answer) {
+  if (!answer || typeof answer.correct !== "string") return null;
+  const others = new Set((answer.choices ?? []).filter((c) => c !== answer.correct).flatMap(tokens));
+  const asked = new Set(tokens(answer.prompt));
+  const leadTokens = new Set(tokens(lead));
+  const mine = new Set(tokens(answer.correct));
+  // A lead that also names a wrong choice's own word is posing the options
+  // ("does it still pull, or push away?"), not answering them.
+  const posesOptions = (answer.choices ?? [])
+    .filter((c) => c !== answer.correct)
+    .flatMap(tokens)
+    .some((t) => !STOP.has(t) && !mine.has(t) && !asked.has(t) && t.length >= 4 && leadTokens.has(t));
+  if (posesOptions) return null;
+  for (const t of tokens(answer.correct)) {
+    if (STOP.has(t) || others.has(t) || asked.has(t)) continue;
+    if (!/^\d/.test(t) && t.length < 4) continue;
+    if (leadTokens.has(t)) return t;
   }
   return null;
 }
@@ -211,6 +250,8 @@ function journalTexts() {
 }
 
 const FIX = {
+  GIVEAWAY:
+    "the lead is shown before the question, so it must not contain the answer: show the clip's question-free why as the lead, or ask about something the lead does not say (src/subjects/<id>/answers.ts)",
   YEAR:
     "never store the current year: compute it at play time with currentYear()/yearsSince() from src/subjects/shared/years.ts, or write \"currentYear - <event year>\" in clip rows (owner rule)",
   MEASUREMENT:
@@ -228,6 +269,11 @@ export async function runLint({ baseline = join(HERE, "lint-subject-leads-baseli
   for (const r of stories) {
     const m = findMeasurement(r.text);
     if (m) found.push({ rule: "MEASUREMENT", where: r.where, match: m });
+  }
+  for (const r of leads) {
+    if (r.kind !== "why" && r.kind !== "caption") continue;
+    const g = findGiveaway(r.text, r.answer);
+    if (g) found.push({ rule: "GIVEAWAY", where: r.where, match: g });
   }
   for (const r of [...leads, ...journal]) {
     const y = findLiteralYear(r.text);

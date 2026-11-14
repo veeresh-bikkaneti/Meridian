@@ -1,5 +1,5 @@
 {
-  "note": "Violations already on main (2026-11-13): place-story measurements and one stored counting year. The owner flagged these in the PR #464 review. Fixing a clip means re-recording its narration, so each is KNOWN until that change lands; an entry fails as STALE once fixed. Never add an entry to make a new violation pass.",
+  "note": "Violations already on main (2026-11-13): place-story measurements (flagged in the PR #464 review; fixing one means re-recording its narration), one stored counting year, and two subject leads that may leak the answer (owner's judgment: the dissolve lead says 'still there', the equal-pushes lead names the 8-tile line). Each is printed as KNOWN and fails as STALE once fixed. Never add an entry to make a new violation pass.",
   "entries": [
     {
       "rule": "MEASUREMENT",
@@ -50,6 +50,16 @@
       "rule": "YEAR",
       "where": "docs/scaling/journals/people-places/clips.json countingYear",
       "match": "2026"
+    },
+    {
+      "rule": "GIVEAWAY",
+      "where": "src/subjects/chemistry chemistry:mixtures:dissolve why",
+      "match": "still"
+    },
+    {
+      "rule": "GIVEAWAY",
+      "where": "src/subjects/physics physics:push:equal-pushes why",
+      "match": "8"
     }
   ]
 }
