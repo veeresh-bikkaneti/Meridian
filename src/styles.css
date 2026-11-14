@@ -2266,6 +2266,33 @@
     aspect-ratio: 32 / 9;
   }
 }
+/* Taller hero on tall screens (feat/picker-cards-fill-page): the
+   film is portrait (608×1280) under object-fit: cover, so the wide
+   strip shows only a middle slice of each frame — about a fifth of
+   it. As the viewport gives height, the hero box steps taller and
+   more of the frame shows (about half at 1:1, three-fifths at
+   4:5), while the card grid below flexes into whatever height is
+   left. Short screens keep the strip exactly as it is today. */
+@media (max-width: 680px) and (min-height: 700px) {
+  .why-learn-hero {
+    aspect-ratio: 1 / 1;
+  }
+}
+@media (max-width: 680px) and (min-height: 1000px) {
+  .why-learn-hero {
+    aspect-ratio: 4 / 5;
+  }
+}
+@media (min-width: 681px) and (min-height: 1100px) {
+  .why-learn-hero {
+    aspect-ratio: 2 / 1;
+  }
+}
+@media (min-width: 681px) and (min-height: 1500px) {
+  .why-learn-hero {
+    aspect-ratio: 16 / 10;
+  }
+}
 /* The montage film in the hero slot (feat/why-learn-montage): the
    <video> carries .why-learn-hero, so it fills the same fixed box
    the still did; the controls ride its bottom-right corner on the
@@ -2316,6 +2343,19 @@
 .why-learn-screen > p {
   position: relative;
   z-index: 1;
+}
+/* Fill the page (feat/picker-cards-fill-page): the shell is a
+   min-h-dvh flex column, but nothing in this screen used to grow,
+   so on a tall screen the card grid took its natural height and
+   the rest of the page sat empty — the content ended at about
+   half the height. The grid now takes the column's leftover
+   height and its rows share it equally; each card already
+   stretches to its row (the li is a grid item, the button fills
+   it), so the cards scale to fit the page. On short screens there
+   is no leftover height and the layout is exactly as before. */
+.why-learn-screen > ul {
+  flex: 1 1 auto;
+  grid-auto-rows: 1fr;
 }
 .wl-drift-item {
   position: absolute;
