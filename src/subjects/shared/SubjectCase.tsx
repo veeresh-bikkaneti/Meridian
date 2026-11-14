@@ -32,6 +32,13 @@
  * card, the answer card and the result band into the atlas card
  * anatomy. Presentation only: items, answers, phases and flow are
  * exactly as before.
+ *
+ * Clue scenes (feat/clue-scene-pilot): a subject may pass a `scene`
+ * hook that renders a short live-drawn film above the clue card.
+ * The hook is answer-blind — it receives the item, the phase from
+ * this flow's state, the reduced-motion flag and the band, never
+ * the answer — and the text clue stays below the film as the
+ * readable fallback. Math is the pilot; other subjects pass none.
  */
 import { Suspense, lazy, useEffect, useRef, useState, type ReactNode } from "react";
 import type { AgeGroup, SubjectProps, UnitItem } from "../registry";
@@ -67,6 +74,14 @@ export type SubjectCaseConfig = {
   /** Optional card shown above the question (Journals: the clip's
    * caption text). Absent for every other subject: no change. */
   lead?: (item: UnitItem, reduced: boolean) => ReactNode;
+  /** Optional live scene above the clue card (Math pilot,
+   * feat/clue-scene-pilot: a short drawn film for the item's clue).
+   * Answer-blind by construction, like the detective host: the
+   * hook receives the item, a phase derived from this flow's own
+   * state ("solved" once the case is done, "setup" before it), the
+   * reduced-motion flag and the band — never the answer, a choice,
+   * or a pick. Absent for every other subject: no change. */
+  scene?: (item: UnitItem, phase: "setup" | "solved", reduced: boolean, band: AgeGroup) => ReactNode;
 };
 
 export function SubjectCase({
@@ -75,6 +90,7 @@ export function SubjectCase({
   itemsForGroup,
   answerFor,
   lead,
+  scene,
   group,
   onExit,
   onCelebrate,
@@ -193,6 +209,7 @@ export function SubjectCase({
           </Suspense>
         </div>
         {lead ? lead(item, reduced) : null}
+        {scene ? scene(item, solved ? "solved" : "setup", reduced, band) : null}
         <ClueCard tier={title} index={0} text={item.why} revealed reduced={reduced} />
         {!solved ? (
           <AnswerCard
