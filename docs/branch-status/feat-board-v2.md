@@ -332,3 +332,19 @@ status-move buttons, story points (rationale in REPORT-C, agent-side).
 - E2E 21/21 on the built artifact (one new character test); tsc
   clean; security-headers 10/10; characters ship only in the lazy
   board chunk. Screenshots: ~/workspace/board-v2/screenshots-D/.
+
+### Card characters v2 (2026-11-13, owner's word: "Improve the icons or characters")
+
+- Full mascot redraw of all 11 characters in `card-characters.tsx`
+  (filled atlas-token bodies, highlight-dot eyes, smiles, rosy
+  cheeks, detail props, ground shadows); mapping and counts
+  unchanged (46/46, unit-pinned). New fill classes in board.css
+  (cc-stamp / cc-teal / cc-land / cc-glass / cc-shade / cc-cheek /
+  cc-hl); idle motions unchanged, still all-off under
+  prefers-reduced-motion.
+- Verification: board unit suites 75/75, security-headers 10/10,
+  tsc clean, build:pages green, board e2e 21/21 on the built
+  artifact. Enlarged eyeball sheets: ~/workspace/board-v2/
+  screenshots-E/ (v1 sheets in screenshots-D/).
+- Next step: owner rules on the v2 look from the screenshots;
+  merge remains the owner's word.

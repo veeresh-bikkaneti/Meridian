@@ -1653,8 +1653,9 @@
 }
 
 /* Card characters (card-characters.tsx): one small hand-drawn SVG per
- * card, symbolizing the story's theme. One hand throughout: ink
- * stroke, dot-eyes-and-smile faces, atlas-token fills only. Each
+ * card, symbolizing the story's theme. V2 art direction: filled
+ * bodies in atlas tokens, real faces (highlight eyes, smiles, rosy
+ * cheeks), detail props, a soft ground shadow under each. Each
  * character has ONE subtle idle motion on its .cc-anim part —
  * transform/opacity only, 2–7s, ease-in-out — and every motion stops
  * under prefers-reduced-motion (final block below). */
@@ -1714,6 +1715,100 @@
   stroke-linecap: round;
 }
 
+/* V2 fills and face pieces: solid bodies, one soft shade tone, real
+ * faces. All colours stay inside the atlas token family — stamp
+ * coral, muted teal, brass — so the set reads as one hand in both
+ * the dark and light themes. */
+.board-card-character .cc-stamp {
+  fill: var(--atlas-stamp);
+  stroke: var(--atlas-ink);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.board-card-character .cc-stamp-dot {
+  fill: var(--atlas-stamp);
+}
+
+.board-card-character .cc-stamp-line {
+  fill: none;
+  stroke: var(--atlas-stamp);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+}
+
+.board-card-character .cc-teal {
+  fill: var(--atlas-muted);
+  stroke: var(--atlas-ink);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.board-card-character .cc-land {
+  fill: var(--surface-2);
+  stroke: var(--atlas-ink);
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+}
+
+.board-card-character .cc-glass {
+  fill: var(--surface);
+  opacity: 0.55;
+}
+
+.board-card-character .cc-shade {
+  fill: var(--atlas-vignette);
+  opacity: 0.5;
+}
+
+.board-card-character .cc-shadow {
+  fill: var(--atlas-vignette);
+  opacity: 0.55;
+}
+
+.board-card-character .cc-shade-line {
+  stroke: var(--atlas-ink);
+  stroke-width: 3;
+  opacity: 0.18;
+}
+
+.board-card-character .cc-hl {
+  fill: var(--surface);
+}
+
+.board-card-character .cc-cheek {
+  fill: var(--atlas-stamp);
+  opacity: 0.45;
+}
+
+.board-card-character .cc-brass-dot {
+  fill: var(--atlas-brass);
+}
+
+.board-card-character .cc-brass-line {
+  fill: none;
+  stroke: var(--atlas-brass);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+}
+
+.board-card-character .cc-bubble {
+  fill: none;
+  stroke: var(--atlas-ink);
+  stroke-width: 1.3;
+  opacity: 0.8;
+}
+
+.board-card-character .cc-smile-sm {
+  stroke-width: 1.4;
+}
+
+.board-card-character .cc-eye-outline {
+  stroke-width: 2.4;
+}
+
 /* The one shared animation approach: the moving part carries
  * .cc-anim, sized to its own box so rotations pivot on the part. */
 .board-card-character .cc-anim {
@@ -1747,7 +1842,7 @@
     transform: translateX(0);
   }
   50% {
-    transform: translateX(8px);
+    transform: translateX(4.5px);
   }
 }
 
@@ -1848,9 +1943,6 @@
 }
 
 .board-char-abacus .cc-bead {
-  fill: var(--atlas-brass);
-  stroke: var(--atlas-ink);
-  stroke-width: 2;
   animation: cc-slide 3s ease-in-out infinite;
 }
 
