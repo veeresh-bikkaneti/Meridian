@@ -18,6 +18,7 @@ export function StoryCard({
   story,
   caseNo,
   celebrated,
+  blocked,
   onSelect,
 }: {
   story: LiveStory;
@@ -25,6 +26,8 @@ export function StoryCard({
   caseNo?: number;
   /** True only for the one case celebrated on this visit (step 12). */
   celebrated?: boolean;
+  /** True when the case waits on a story that is not done (blockedIndexes). */
+  blocked?: boolean;
   onSelect?: (story: LiveStory, opener: HTMLElement) => void;
 }) {
   const leads = leadCounts(story);
@@ -61,6 +64,14 @@ export function StoryCard({
           {story.title}
         </button>
       </h4>
+      <p className="board-card-meta-row">
+        <span className="board-mono">{story.id}</span>
+        {blocked ? (
+          <span className="board-blocked-marker" title="Waits on a case that is not closed yet">
+            Blocked
+          </span>
+        ) : null}
+      </p>
       <p className="board-card-wait">
         {story.status === "done" ? (
           <>
@@ -73,12 +84,6 @@ export function StoryCard({
           </>
         )}
       </p>
-      {leads.total > 0 ? (
-        <p className="board-card-leads" title="Leads are pull requests; solved means merged">
-          {leads.total} lead{leads.total === 1 ? "" : "s"}, {leads.solved} solved{" "}
-          <span className="board-plain">(pull requests; solved = merged)</span>
-        </p>
-      ) : null}
       <div className="board-card-meta">
         {story.owner && story.status !== "done" ? (
           <span>
@@ -86,6 +91,12 @@ export function StoryCard({
           </span>
         ) : null}
         {story.inferred ? <span className="board-inferred">inferred</span> : null}
+        {leads.total > 0 ? (
+          <span className="board-card-leads" title="Leads are pull requests; solved means merged">
+            {leads.total} lead{leads.total === 1 ? "" : "s"}, {leads.solved} solved{" "}
+            <span className="board-plain">(pull requests; solved = merged)</span>
+          </span>
+        ) : null}
       </div>
       {story.prs.length > 0 ? (
         <ul className="board-prs">

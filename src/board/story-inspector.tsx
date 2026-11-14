@@ -5,6 +5,7 @@ import {
   dependencyDepths,
   donePathMatch,
   GAME_STATUS_LABEL,
+  leadCounts,
   PR_URL_BASE,
   STATUS_LABEL,
   statusWhy,
@@ -52,6 +53,7 @@ export function StoryInspector({
   const depth = index >= 0 ? (dependencyDepths(stories, edges)[index] ?? 0) : 0;
   const donePathLabel = donePathMatch(story, donePath);
   const caseNo = caseNumber(story, stories);
+  const leads = leadCounts(story);
 
   return (
     <aside className="board-inspector" aria-label="Case dossier">
@@ -81,6 +83,42 @@ export function StoryInspector({
       <p>
         <strong>Why this status:</strong> {statusWhy(story)}
       </p>
+      {leads.total > 0 ? (
+        <div className="board-readiness">
+          <div className="board-readiness-head">
+            <span>
+              Leads solved <span className="board-plain">(merged pull requests)</span>
+            </span>
+            <strong>
+              {leads.solved} / {leads.total}
+            </strong>
+          </div>
+          <div className="board-bar" aria-hidden="true">
+            <i
+              className="b-done"
+              style={{ width: `${(leads.solved / leads.total) * 100}%` }}
+            />
+          </div>
+        </div>
+      ) : null}
+      <div className="board-detail-grid">
+        <div>
+          <span className="board-detail-label">Region</span>
+          <strong>{story.lane}</strong>
+        </div>
+        <div>
+          <span className="board-detail-label">Case</span>
+          <strong>{caseNo > 0 ? `Case ${caseNo}` : "—"}</strong>
+        </div>
+        <div>
+          <span className="board-detail-label">Owner</span>
+          <strong>{story.owner ?? "Unassigned"}</strong>
+        </div>
+        <div>
+          <span className="board-detail-label">Status</span>
+          <strong>{STATUS_LABEL[story.status]}</strong>
+        </div>
+      </div>
       <div>
         <h4>
           Leads <span className="board-plain">(pull requests)</span>
@@ -162,9 +200,6 @@ export function StoryInspector({
           <span className="board-plain">(definition of all done)</span> {donePathLabel}
         </p>
       ) : null}
-      <p>
-        <strong>Owner:</strong> {story.owner ?? "Unassigned"}
-      </p>
       <p>
         <strong>Clue chain depth:</strong> {depth}
       </p>
