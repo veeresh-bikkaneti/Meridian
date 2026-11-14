@@ -21,6 +21,7 @@ import {
   headerMetrics,
   leadCounts,
   mapWorkToStories,
+  MAX_LIVE_PAGES,
   nextToCrack,
   newlyClosedIds,
   parseGithubIssues,
@@ -628,6 +629,118 @@ describe("cache + fallback", () => {
     assert.equal(result.source, "snapshot");
   });
 
+  it("paginates until every wanted PR is covered, then stops", async () => {
+    // Page 1 is full (100 items) but holds none of the wanted numbers —
+    // the exact production failure this fixes (the stories' PRs sit on
+    // pages 3–4 of the real pulls list).
+    const filler = (from: number) =>
+      Array.from({ length: 100 }, (_, i) => ({
+        number: from + i,
+        state: "closed",
+        merged_at: "2026-11-01T00:00:00Z",
+        title: `Filler ${from + i}`,
+      }));
+    const urls: string[] = [];
+    const result = await fetchLivePrs({
+      storage: memoryStorage(),
+      now: NOW,
+      wanted: [430],
+      fetchFn: async (url) => {
+        urls.push(url);
+        if (url.includes("page=2")) {
+          return new Response(
+            JSON.stringify([{ number: 430, state: "open", merged_at: null, title: "Wanted" }]),
+            { status: 200, headers: { "content-type": "application/json" } },
+          );
+        }
+        return new Response(JSON.stringify(filler(1000)), {
+          status: 200,
+          headers: { etag: '"p1"', "content-type": "application/json" },
+        });
+      },
+    });
+    assert.equal(result.source, "live");
+    assert.equal(urls.length, 2, "stops as soon as the wanted PR is covered");
+    assert.ok(urls[1].includes("page=2"));
+    assert.equal(result.prs.length, 101);
+    assert.equal(result.prs.find((p) => p.number === 430)?.title, "Wanted");
+  });
+
+  it("a full page with no wanted numbers outstanding fetches no second page", async () => {
+    let calls = 0;
+    const result = await fetchLivePrs({
+      storage: memoryStorage(),
+      now: NOW,
+      wanted: [7],
+      fetchFn: async () => {
+        calls += 1;
+        return new Response(
+          JSON.stringify(
+            Array.from({ length: 100 }, (_, i) => ({
+              number: i === 0 ? 7 : 2000 + i,
+              state: "open",
+              merged_at: null,
+              title: "x",
+            })),
+          ),
+          { status: 200, headers: { "content-type": "application/json" } },
+        );
+      },
+    });
+    assert.equal(calls, 1);
+    assert.equal(result.prs.length, 100);
+  });
+
+  it("a failure on page 2 falls back whole — no partial live payload", async () => {
+    const result = await fetchLivePrs({
+      storage: memoryStorage(),
+      now: NOW,
+      wanted: [430],
+      fetchFn: async (url) => {
+        if (url.includes("page=2")) return new Response("rate limited", { status: 403 });
+        return new Response(
+          JSON.stringify(
+            Array.from({ length: 100 }, (_, i) => ({
+              number: 3000 + i,
+              state: "open",
+              merged_at: null,
+              title: "x",
+            })),
+          ),
+          { status: 200, headers: { "content-type": "application/json" } },
+        );
+      },
+    });
+    assert.equal(result.source, "snapshot");
+    assert.deepEqual(result.prs, []);
+  });
+
+  it("pagination never exceeds MAX_LIVE_PAGES even when wanted is never found", async () => {
+    let calls = 0;
+    const result = await fetchLivePrs({
+      storage: memoryStorage(),
+      now: NOW,
+      wanted: [424242],
+      fetchFn: async () => {
+        calls += 1;
+        return new Response(
+          JSON.stringify(
+            Array.from({ length: 100 }, (_, i) => ({
+              number: calls * 10000 + i,
+              state: "open",
+              merged_at: null,
+              title: "x",
+            })),
+          ),
+          { status: 200, headers: { "content-type": "application/json" } },
+        );
+      },
+    });
+    assert.equal(calls, MAX_LIVE_PAGES);
+    assert.equal(result.source, "live");
+    assert.equal(result.prs.length, MAX_LIVE_PAGES * 100);
+  });
+
   it("a 200 stores the ETag and payload for the next load", async () => {
     const storage = memoryStorage();
     const result = await fetchLivePrs({
@@ -811,6 +924,46 @@ describe("issues + PR map", () => {
     });
     assert.equal(again.source, "cache");
     assert.deepEqual(again.issues.map((i) => i.number), [319]);
+  });
+
+  it("fetchLiveIssues: paginates until the wanted issues are covered", async () => {
+    // Neither named issue (344, 319) is on page 1 of the real issues
+    // list — a full first page must not end the fetch.
+    let calls = 0;
+    const result = await fetchLiveIssues({
+      storage: memoryStorage(),
+      now: NOW,
+      wanted: [344, 319],
+      fetchFn: async (url) => {
+        calls += 1;
+        if (url.includes("page=2")) {
+          return new Response(
+            JSON.stringify([
+              { number: 344, state: "open", title: "Named issue A", html_url: "https://github.com/veeresh-bikkaneti/Meridian/issues/344" },
+              { number: 319, state: "closed", title: "Named issue B", html_url: "https://github.com/veeresh-bikkaneti/Meridian/issues/319" },
+            ]),
+            { status: 200, headers: { "content-type": "application/json" } },
+          );
+        }
+        return new Response(
+          JSON.stringify(
+            Array.from({ length: 100 }, (_, i) => ({
+              number: 5000 + i,
+              state: "open",
+              title: "filler",
+              html_url: `https://github.com/veeresh-bikkaneti/Meridian/issues/${5000 + i}`,
+            })),
+          ),
+          { status: 200, headers: { etag: '"i1"', "content-type": "application/json" } },
+        );
+      },
+    });
+    assert.equal(calls, 2);
+    assert.equal(result.source, "live");
+    assert.deepEqual(
+      result.issues.filter((i) => i.number === 344 || i.number === 319).map((i) => i.number),
+      [344, 319],
+    );
   });
 });
 

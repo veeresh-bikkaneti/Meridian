@@ -244,11 +244,70 @@ export interface LiveResult {
 
 type FetchFn = (url: string, init?: RequestInit) => Promise<Response>;
 
+/** The pulls/issues endpoints are requested with per_page=100. */
+const LIVE_PAGE_SIZE = 100;
+
 /**
- * One fetch attempt — never a retry loop.
+ * Pagination cap for the live overlay. The repo crossed 100 PRs long
+ * ago, and the PRs the snapshot stories link to sit on page 3–4 of the
+ * pulls list — a single-page fetch "succeeds" while covering NONE of
+ * them, leaving the board snapshot-driven under a "Live" label. The
+ * overlay therefore pages until every `wanted` number is covered, a
+ * short page ends the list, or this cap is hit.
+ */
+export const MAX_LIVE_PAGES = 6;
+
+function pagedUrl(base: string, page: number): string {
+  return page <= 1 ? base : `${base}${base.includes("?") ? "&" : "?"}page=${page}`;
+}
+
+/**
+ * Merge the first page's payload with further pages until `wanted` is
+ * covered, the list ends (a short page), or MAX_LIVE_PAGES is reached.
+ * Pages are de-duplicated by number (sort=updated can overlap pages
+ * when the list shifts mid-fetch). A failed page throws, so the caller
+ * falls back whole — a partial live payload is never applied.
+ */
+async function collectPages<T extends { number: number }>(
+  fetchFn: FetchFn,
+  base: string,
+  parse: (payload: unknown) => T[],
+  firstPayload: unknown,
+  wanted: ReadonlySet<number>,
+): Promise<T[]> {
+  const seen = new Map<number, T>();
+  const add = (items: readonly T[]) => {
+    for (const item of items) if (!seen.has(item.number)) seen.set(item.number, item);
+  };
+  add(parse(firstPayload));
+  let rawCount = Array.isArray(firstPayload) ? firstPayload.length : 0;
+  let page = 1;
+  const covered = () => {
+    for (const n of wanted) if (!seen.has(n)) return false;
+    return true;
+  };
+  while (rawCount >= LIVE_PAGE_SIZE && page < MAX_LIVE_PAGES && !covered()) {
+    page += 1;
+    const res = await fetchFn(pagedUrl(base, page), {
+      headers: { accept: "application/vnd.github+json" },
+    });
+    if (!res.ok) throw new Error(`GitHub page ${page} returned ${res.status}`);
+    const payload: unknown = await res.json();
+    rawCount = Array.isArray(payload) ? payload.length : 0;
+    add(parse(payload));
+  }
+  return [...seen.values()];
+}
+
+/**
+ * One fetch attempt — never a retry loop. (Pagination until the
+ * caller's `wanted` numbers are covered is part of the single attempt:
+ * each page is requested once, in order.)
  *  - Fresh cache (< TTL) wins without a network call.
  *  - Otherwise a conditional request is sent with the cached ETag; a 304
- *    reuses the cached payload and refreshes its timestamp.
+ *    reuses the cached payload and refreshes its timestamp. The cached
+ *    payload is the merged multi-page list; a 304 on page 1 is a sound
+ *    revalidation because sort=updated pushes any change onto page 1.
  *  - On 403 / 429 / any other failure or a network error, the cached data
  *    (if any) or the snapshot is kept and the source says so.
  */
@@ -257,6 +316,8 @@ export async function fetchLivePrs(options: {
   storage?: KeyValueStorage | null;
   now?: number;
   url?: string;
+  /** PR numbers the caller needs live state for (the stories' linked PRs). */
+  wanted?: readonly number[];
 } = {}): Promise<LiveResult> {
   const now = options.now ?? Date.now();
   const fetchFn = options.fetchFn ?? ((u: string, i?: RequestInit) => fetch(u, i));
@@ -288,7 +349,8 @@ export async function fetchLivePrs(options: {
   try {
     const headers: Record<string, string> = { accept: "application/vnd.github+json" };
     if (stale?.etag) headers["if-none-match"] = stale.etag;
-    const res = await fetchFn(options.url ?? GITHUB_PULLS_URL, { headers });
+    const base = options.url ?? GITHUB_PULLS_URL;
+    const res = await fetchFn(base, { headers });
     if (res.status === 304 && stale) {
       writeCache({ ...stale, fetchedAt: now }, options.storage);
       return { prs: stale.prs, source: "live", fetchedAt: now };
@@ -298,7 +360,13 @@ export async function fetchLivePrs(options: {
         ? { prs: stale.prs, source: "cache", fetchedAt: stale.fetchedAt }
         : { prs: [], source: "snapshot", fetchedAt: null };
     }
-    const prs = parseGithubPrs(await res.json());
+    const prs = await collectPages(
+      fetchFn,
+      base,
+      parseGithubPrs,
+      await res.json(),
+      new Set(options.wanted ?? []),
+    );
     const etag = typeof res.headers?.get === "function" ? res.headers.get("etag") : null;
     writeCache({ etag, fetchedAt: now, prs }, options.storage);
     return { prs, source: "live", fetchedAt: now };
@@ -613,12 +681,19 @@ function readIssuesCache(storage: KeyValueStorage | null, now: number, freshOnly
   }
 }
 
-/** One fetch attempt, ETag + 10-minute cache — mirrors fetchLivePrs. */
+/**
+ * One fetch attempt, ETag + 10-minute cache — mirrors fetchLivePrs,
+ * including pagination: the issues stories actually name (344, 319)
+ * sit far past page 1 of the issues list, so pages are collected until
+ * `wanted` is covered, a short page ends the list, or the cap is hit.
+ */
 export async function fetchLiveIssues(options: {
   fetchFn?: FetchFn;
   storage?: KeyValueStorage | null;
   now?: number;
   url?: string;
+  /** Issue numbers the caller needs (the ones stories explicitly name). */
+  wanted?: readonly number[];
 } = {}): Promise<IssuesResult> {
   const now = options.now ?? Date.now();
   const fetchFn = options.fetchFn ?? ((u: string, i?: RequestInit) => fetch(u, i));
@@ -629,7 +704,8 @@ export async function fetchLiveIssues(options: {
   try {
     const headers: Record<string, string> = { accept: "application/vnd.github+json" };
     if (stale?.etag) headers["if-none-match"] = stale.etag;
-    const res = await fetchFn(options.url ?? GITHUB_ISSUES_URL, { headers });
+    const base = options.url ?? GITHUB_ISSUES_URL;
+    const res = await fetchFn(base, { headers });
     if (res.status === 304 && stale) {
       if (store) {
         try {
@@ -645,7 +721,13 @@ export async function fetchLiveIssues(options: {
         ? { issues: stale.issues, source: "cache", fetchedAt: stale.fetchedAt }
         : { issues: [], source: "snapshot", fetchedAt: null };
     }
-    const issues = parseGithubIssues(await res.json());
+    const issues = await collectPages(
+      fetchFn,
+      base,
+      parseGithubIssues,
+      await res.json(),
+      new Set(options.wanted ?? []),
+    );
     const etag = typeof res.headers?.get === "function" ? res.headers.get("etag") : null;
     if (store) {
       try {

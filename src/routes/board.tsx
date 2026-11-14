@@ -104,7 +104,10 @@ function BoardPage() {
 
   useEffect(() => {
     let active = true;
-    fetchLivePrs()
+    // Wanted = every PR the snapshot stories link to. The overlay pages
+    // through the pulls list until all of them are covered — a single
+    // page no longer contains any of them (see board-data.ts).
+    fetchLivePrs({ wanted: snapshot.stories.flatMap((s) => s.prs) })
       .then((result) => {
         if (!active) return;
         setLiveSource(result.source);
@@ -159,11 +162,30 @@ function BoardPage() {
   const lanes = useMemo(() => groupByLane(visibleStories, snapshot.lanes), [visibleStories]);
   const depRows = useMemo(() => dependencyRows(stories), [stories]);
 
+  // Coverage: how many of the PRs the stories link to actually carry a
+  // live state. The live line must never read as complete when it is
+  // not (e.g. the pagination cap was hit before every linked PR was
+  // reached).
+  const linkedPrCount = useMemo(
+    () => new Set(snapshot.stories.flatMap((s) => s.prs)).size,
+    [],
+  );
+  const coveredPrCount = useMemo(() => {
+    const seen = new Set<number>();
+    for (const s of stories) {
+      for (const n of s.prs) if (n in s.prStates) seen.add(n);
+    }
+    return seen.size;
+  }, [stories]);
+  const coverageLine =
+    liveSource !== "snapshot"
+      ? ` · ${coveredPrCount} of ${linkedPrCount} linked PRs have live state`
+      : "";
   const liveLine =
     liveSource === "live" && fetchedAt
-      ? `Live from GitHub · updated ${formatTime(fetchedAt)}`
+      ? `Live from GitHub · updated ${formatTime(fetchedAt)}${coverageLine}`
       : fetchedAt
-        ? `Showing saved data from ${formatTime(fetchedAt)}`
+        ? `Showing saved data from ${formatTime(fetchedAt)}${coverageLine}`
         : "Showing the snapshot from the story map";
 
   return (
