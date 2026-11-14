@@ -12,15 +12,20 @@
  * comment forbids.
  *
  * DetectiveHost and the detective machine are unchanged and not mounted
- * here: the pair ships dark behind detectivePair in prod, and subject
- * items have no voice clips, so the case is text only with no new
- * audio. The win fires GameApp's existing celebration through
- * onCelebrate, on the same first-win guard LoopScreen uses.
+ * here. The pair itself mounts here exactly once, through
+ * SubjectDetectiveHost (below the header): the host self-gates on
+ * detectivePair, so flag-off this case is text only, exactly as
+ * before; flag-on, the pair speaks its fixed manifest clips for the
+ * case's own flow signals. The host receives ONLY the answer-blind
+ * prop whitelist (subject-host-props.ts) — solved / wrongPick /
+ * finished booleans from this flow's state, never an item, an answer
+ * or a pick's value. The win fires GameApp's existing celebration
+ * through onCelebrate, on the same first-win guard LoopScreen uses.
  *
  * Each subject's own case component is a thin wrapper that passes its
  * title, its test-id prefix, its band items and its answer lookup.
  */
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { Suspense, lazy, useEffect, useRef, useState, type ReactNode } from "react";
 import type { AgeGroup, SubjectProps, UnitItem } from "../registry";
 import { getAgeGroup } from "@/game/age-profile";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
@@ -32,9 +37,15 @@ import {
   type CelebrationSpec,
 } from "@/components/celebration-copy";
 import { AnswerCard } from "./AnswerCard";
+import { buildSubjectDetectiveHostProps } from "./subject-host-props";
 import { HomeButton } from "@/components/ui/home-button";
 import { ScreenShell } from "@/components/ui/screen-shell";
 import { advanceCasePhase, type AnswerFor, type CasePhase } from "./answer";
+
+// Holmes & Watson in the subject case: lazy, like the other pair
+// hosts, so the pair's chunk is fetched only when a subject case
+// actually mounts. The host self-gates on detectivePair.
+const SubjectDetectiveHost = lazy(() => import("./SubjectDetectiveHost"));
 
 export type SubjectCaseConfig = {
   /** Subject title as kids see it ("Math", "Physics", …). */
@@ -150,6 +161,23 @@ export function SubjectCase({
     >
 
       <div className="mt-6 grid gap-4">
+        {/* Holmes & Watson (flag-gated inside the host, default off =
+            not rendered at all). Props come from the answer-blind
+            whitelist builder ONLY (subject-host-props.ts): the pair
+            never receives the item, the answer, or a pick's value.
+            display:contents keeps this layout identical, mirroring
+            LoopScreen's detective host slot. */}
+        <div style={{ display: "contents" }} data-testid="subject-detective-host-slot">
+          <Suspense fallback={null}>
+            <SubjectDetectiveHost
+              {...buildSubjectDetectiveHostProps({
+                solved,
+                wrongPick: picked !== null && !solved,
+                finished: solved && index === items.length - 1,
+              })}
+            />
+          </Suspense>
+        </div>
         {lead ? lead(item, reduced) : null}
         <ClueCard tier={title} index={0} text={item.why} revealed reduced={reduced} />
         {!solved ? (
