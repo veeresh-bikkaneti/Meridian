@@ -176,7 +176,7 @@ test("Why Learn under reduced motion: cards do not animate", async ({ browser })
   await expect(page.locator("video.why-learn-hero")).toHaveCount(0);
   const heroStill = page.locator("img.why-learn-hero");
   await expect(heroStill).toHaveAttribute("src", /why-learn-montage-poster/);
-  await expect(heroStill).toHaveAttribute("alt", /bridge truss/);
+  await expect(heroStill).toHaveAttribute("alt", /gravity scene/);
   const card = page.getByTestId("subject-row-math");
   const transition = await card.evaluate((el) => getComputedStyle(el).transitionDuration);
   // The app's global reduced-motion reset leaves 0.01ms; nothing visible.
