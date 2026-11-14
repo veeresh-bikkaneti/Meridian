@@ -10,10 +10,14 @@ import { serveBuiltArtifact } from "./helpers";
  * - each ready card is one button whose accessible name starts with the
  *   subject name and shows an "N cases" pill; Journals is "Coming soon",
  *   disabled and out of the Tab order;
- * - Tab order is Home, then the cards left to right, top to bottom, each
- *   with a visible focus outline;
- * - the hero has meaningful alt text, loads eagerly and has a fixed box;
- *   the montage is a CSS background (nothing to focus or announce);
+ * - Tab order is Home, then the montage controls, then the cards left
+ *   to right, top to bottom, each with a visible focus outline;
+ * - the hero slot carries the montage film (feat/why-learn-montage):
+ *   autoplay, muted, looping, poster-filled, in a fixed box, with
+ *   pause / replay / sound controls; under reduced motion the hero
+ *   is the montage poster's still picture with alt text and no film;
+ *   the page montage wallpaper is a CSS background (nothing to focus
+ *   or announce), and the formula drift is aria-hidden texture;
  * - no sideways scroll at 390/320, nothing clipped at 1280/1440;
  * - reduced motion: no card transition.
  */
@@ -65,12 +69,22 @@ for (const vp of [
 
       await expect(page.getByText(`Pick a subject · Ages ${band}`)).toBeVisible();
 
-      // Hero: meaningful alt, eager, fixed box before load (CSS aspect-ratio).
-      const hero = page.locator(".why-learn-hero");
-      await expect(hero).toHaveAttribute("alt", /chalkboard/);
-      await expect(hero).toHaveAttribute("loading", "eager");
-      const ratio = await hero.evaluate((el) => getComputedStyle(el).aspectRatio);
-      expect(ratio, `${tag}: hero aspect ratio`).not.toBe("auto");
+      // Hero: the montage film — autoplay, muted, looping, poster
+      // first, fixed box (CSS aspect-ratio, no layout shift).
+      const hero = page.locator("video.why-learn-hero");
+      await expect(hero).toHaveAttribute("poster", /why-learn-montage-poster/);
+      await expect(hero).toHaveAttribute("src", /why-learn-montage\.mp4/);
+      const heroState = await hero.evaluate((el) => {
+        const v = el as HTMLVideoElement;
+        return { muted: v.muted, loop: v.loop, ratio: getComputedStyle(v).aspectRatio };
+      });
+      expect(heroState.muted, `${tag}: montage starts muted`).toBe(true);
+      expect(heroState.loop, `${tag}: montage loops`).toBe(true);
+      expect(heroState.ratio, `${tag}: hero aspect ratio`).not.toBe("auto");
+      // Its controls are real buttons with spoken labels.
+      await expect(page.getByTestId("why-learn-hero-playpause")).toHaveAttribute("aria-label", /montage/);
+      await expect(page.getByTestId("why-learn-hero-replay")).toHaveAttribute("aria-label", "Replay montage");
+      await expect(page.getByTestId("why-learn-hero-sound")).toHaveAttribute("aria-pressed", "false");
 
       // Montage: decoration in CSS only.
       const montage = await page
@@ -96,8 +110,14 @@ for (const vp of [
         }
       }
 
-      // Tab order: Home, then each enabled card in DOM (reading) order.
+      // Tab order: Home, then the montage controls, then each
+      // enabled card in DOM (reading) order.
       await page.getByTestId("home-button").focus();
+      for (const controlId of ["why-learn-hero-playpause", "why-learn-hero-replay", "why-learn-hero-sound"]) {
+        await page.keyboard.press("Tab");
+        const focusedId = await page.evaluate(() => document.activeElement?.getAttribute("data-testid"));
+        expect(focusedId, `${tag}: Tab order (montage controls)`).toBe(controlId);
+      }
       const enabled = await cards.evaluateAll((els) =>
         els.filter((e) => !(e as HTMLButtonElement).disabled).map((e) => e.getAttribute("data-testid")),
       );
@@ -151,6 +171,12 @@ test("Why Learn: no sideways scroll at 320, nothing clipped at 1440", async ({ b
 
 test("Why Learn under reduced motion: cards do not animate", async ({ browser }) => {
   const { context, page } = await openPicker(browser, 1280, 800, "10-18", true);
+  // Reduced motion: the hero is the montage poster as a still —
+  // no video element exists, so the film is never fetched.
+  await expect(page.locator("video.why-learn-hero")).toHaveCount(0);
+  const heroStill = page.locator("img.why-learn-hero");
+  await expect(heroStill).toHaveAttribute("src", /why-learn-montage-poster/);
+  await expect(heroStill).toHaveAttribute("alt", /bridge truss/);
   const card = page.getByTestId("subject-row-math");
   const transition = await card.evaluate((el) => getComputedStyle(el).transitionDuration);
   // The app's global reduced-motion reset leaves 0.01ms; nothing visible.
