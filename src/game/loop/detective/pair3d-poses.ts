@@ -45,6 +45,10 @@ export const HOLMES_POSES_3D: Record<string, Pose3D> = {
   "high-five": { shoulderL: [0, 0, -6], shoulderR: [-160, 0, 28], elbowL: -8, elbowR: -10, head: [-8, 15, 0], anim: "idle" },
   clap: { shoulderL: [-60, 0, 14], shoulderR: [-60, 0, -14], elbowL: -45, elbowR: -45, head: [0, 0, 0], anim: "clap" },
   pout: { shoulderL: [-38, 0, 16], shoulderR: [-38, 0, -16], elbowL: -100, elbowR: -100, head: [10, 0, -6], anim: "idle" },
+  // "Why Do We Learn This?" card film (scripts/why-learn-film/): the
+  // magnifying lens raised at chest height, right arm forward, left
+  // hand tucked behind the back, eyes down through the glass.
+  "lens-sweep": { shoulderL: [14, 0, -4], shoulderR: [-62, 0, 10], elbowL: -70, elbowR: -62, head: [8, 0, 0], anim: "idle" },
 };
 
 export const WATSON_POSES_3D: Record<string, Pose3D> = {
@@ -58,6 +62,11 @@ export const WATSON_POSES_3D: Record<string, Pose3D> = {
   "high-five": { shoulderL: [-160, 0, -28], shoulderR: [0, 0, 6], elbowL: -10, elbowR: -8, head: [-8, -15, 0], anim: "idle" },
   clap: { shoulderL: [-60, 0, 14], shoulderR: [-60, 0, -14], elbowL: -45, elbowR: -45, head: [0, 0, 0], anim: "clap" },
   pout: { shoulderL: [-38, 0, 16], shoulderR: [-38, 0, -16], elbowL: -100, elbowR: -100, head: [10, 0, 6], anim: "idle" },
+  // Card film poses (scripts/why-learn-film/). toss: throwing arm high
+  // in follow-through, eyes up after the ball. lean-in: head down and
+  // forward over the table, hands near the knees, delighted.
+  toss: { shoulderL: [-28, 0, -14], shoulderR: [-158, 0, 16], elbowL: -24, elbowR: -10, head: [-20, 0, 0], anim: "idle" },
+  "lean-in": { shoulderL: [-34, 0, -12], shoulderR: [-34, 0, 12], elbowL: -34, elbowR: -34, head: [22, 0, 4], anim: "idle" },
 };
 
 /** The figure turns this far toward the side it faces (degrees about Y). */
