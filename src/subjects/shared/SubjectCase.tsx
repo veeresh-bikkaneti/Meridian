@@ -157,6 +157,7 @@ export function SubjectCase({
             testId={`${testIdPrefix}-answer-card`}
             kind={active.kind ?? "choice"}
             onNumber={checkNumber}
+            moveFocus={phase === "followUp"}
           />
         ) : (
           <section

@@ -108,6 +108,14 @@ test("parseTypedNumber rejects anything that is not one number", () => {
   assert.equal(parseTypedNumber("--5"), null);
 });
 
+test("parseTypedNumber accepts a leading or trailing decimal point", () => {
+  assert.equal(parseTypedNumber(".5"), 0.5);
+  assert.equal(parseTypedNumber("5."), 5);
+  assert.equal(parseTypedNumber("-3.5"), -3.5);
+  assert.equal(parseTypedNumber("1,081"), 1081);
+  assert.equal(parseTypedNumber("3,5"), null);
+});
+
 test("typed number compares as a number: 1,081 is right, 1,071 is wrong", () => {
   assert.equal(parseTypedNumber("1,081"), NUMBER_ENTRY.value);
   assert.notEqual(parseTypedNumber("1,071"), NUMBER_ENTRY.value);
@@ -142,7 +150,9 @@ test("follow-up order: main, then follow-up, then result — never a third quest
 
 test("number card renders one labelled input and a Check button, 44px, no choices", () => {
   const html = renderCard(NUMBER_ENTRY, null);
-  assert.ok(html.includes('inputMode="decimal"'), "inputMode=decimal");
+  assert.ok(html.includes('inputMode="text"') || html.includes('inputmode="text"'), "inputMode=text so the minus key is available");
+  assert.ok(html.includes("pattern="), "pattern hints a number");
+  assert.ok(html.includes("Use a point for decimals, like 3.5"), "decimal-point hint");
   assert.ok(html.includes(">Check<"), "Check button");
   assert.ok(html.includes("min-h-[44px]"), "44px tap targets");
   assert.ok(html.includes('for="fixture-answer-card-number"'), "input is labelled");
@@ -150,10 +160,21 @@ test("number card renders one labelled input and a Check button, 44px, no choice
   assert.ok(!html.includes("Not quite"), "no wrong line before an attempt");
 });
 
+test("the question prompt is a focusable heading so a follow-up can take focus", () => {
+  const html = renderCard(NUMBER_ENTRY, null);
+  assert.ok(html.includes("<h2"), "prompt is a heading");
+  assert.ok(
+    html.includes('tabindex="-1"') || html.includes('tabIndex="-1"'),
+    "heading can receive focus without joining the tab order",
+  );
+  assert.ok(html.includes('id="fixture-answer-card-prompt"'), "heading has an id to focus");
+});
+
 test("number card shows the same wrong-answer line after a mistyped answer", () => {
   const html = renderCard(NUMBER_ENTRY, "1,071");
   assert.ok(html.includes("Not quite"), "wrong line shows");
   assert.ok(html.includes("have another go"), "same kind wording as choice mode");
+  assert.ok(html.includes('role="status"'), "wrong line is a live status");
 });
 
 test("choice entry with neither new field renders exactly as before", () => {

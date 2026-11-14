@@ -41,14 +41,15 @@ export type AnswerFor = (itemId: string) => AnswerEntry | null;
 
 /**
  * Parse a typed number the way the number card does: commas and
- * spaces are ignored ("1,081" = 1081). Returns null for anything
- * that is not one plain decimal number.
+ * spaces are ignored ("1,081" = 1081). A leading or trailing
+ * decimal point is fine (".5" = 0.5, "5." = 5). Returns null for
+ * anything that is not one plain decimal number.
  */
 export function parseTypedNumber(raw: string): number | null {
   // Spaces are ignored anywhere ("1 081" = 1081); commas must be
-  // proper thousands separators ("1,2,3" is not a number).
+  // proper thousands separators ("1,2,3" and "3,5" are not numbers).
   const cleaned = raw.replace(/\s/g, "");
-  if (!/^-?(\d{1,3}(,\d{3})+|\d+)(\.\d+)?$/.test(cleaned)) return null;
+  if (!/^-?((\d{1,3}(,\d{3})+|\d+)(\.\d*)?|\.\d+)$/.test(cleaned)) return null;
   const value = Number(cleaned.replace(/,/g, ""));
   return Number.isFinite(value) ? value : null;
 }
