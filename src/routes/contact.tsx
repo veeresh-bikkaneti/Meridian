@@ -94,6 +94,10 @@ function ContactForm() {
         bug report. Our <Link to="/privacy">privacy notice</Link> explains what this form sends,
         where messages go (a private Discord channel), and how long they are kept.
       </p>
+      <p>
+        You can also see <Link to="/board">What's coming</Link> — our public board showing what is
+        being built and what it is waiting on.
+      </p>
       <p
         className="rounded-lg border border-line bg-surface p-4 text-base font-medium"
         role="note"

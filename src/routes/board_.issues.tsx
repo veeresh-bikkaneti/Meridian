@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import snapshotJson from "@/board/snapshot.json";
 import {
+  explicitIssueNumbers,
   fetchLiveIssues,
   fetchLivePrs,
   mapWorkToStories,
@@ -66,7 +67,10 @@ function BoardIssuesPage() {
 
   useEffect(() => {
     let cancelled = false;
-    void Promise.all([fetchLivePrs(), fetchLiveIssues()]).then(([p, i]) => {
+    void Promise.all([
+      fetchLivePrs({ wanted: snapshot.stories.flatMap((s) => s.prs) }),
+      fetchLiveIssues({ wanted: snapshot.stories.flatMap((s) => explicitIssueNumbers(s)) }),
+    ]).then(([p, i]) => {
       if (cancelled) return;
       setPrs(p);
       setIssues(i);

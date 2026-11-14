@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { InfoPage } from "@/components/grownups/info-page";
 import { IMAGERY_ATTRIBUTION } from "@/map/imagery";
 import { BUNDLED_CREDITS } from "@/lib/credits";
@@ -63,6 +63,12 @@ function CreditsPage() {
           </li>
         ))}
       </ul>
+
+      <h2>What's coming</h2>
+      <p>
+        See what is being built next on our public <Link to="/board">What's coming</Link> board:
+        the cases in progress and what each one is waiting on.
+      </p>
     </InfoPage>
   );
 }

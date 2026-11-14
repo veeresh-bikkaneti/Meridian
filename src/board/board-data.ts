@@ -11,10 +11,12 @@
 export type StoryStatus = "not-started" | "in-progress" | "done";
 
 export interface SnapshotStory {
+  id: string;
   lane: string;
   title: string;
   status: StoryStatus;
   waitsOn: string;
+  waitsOnIds: string[];
   owner: string | null;
   prs: number[];
   inferred: boolean;
@@ -52,6 +54,13 @@ export const STATUS_LABEL: Record<StoryStatus, string> = {
   done: "Done",
 };
 
+/** Game words for the same statuses; the plain STATUS_LABEL always rides alongside. */
+export const GAME_STATUS_LABEL: Record<StoryStatus, string> = {
+  "not-started": "Sealed",
+  "in-progress": "On the trail",
+  done: "Case closed",
+};
+
 export const GITHUB_PULLS_URL =
   "https://api.github.com/repos/veeresh-bikkaneti/Meridian/pulls?state=all&per_page=100&sort=updated";
 
@@ -75,20 +84,28 @@ export function deriveStatus(story: SnapshotStory, prsByNumber: ReadonlyMap<numb
   return story.status;
 }
 
-/** A story after the live overlay: derived status + live PR titles by number. */
+/** Live state of one PR: GitHub's open/closed, with merged split out. */
+export type PrLiveState = "open" | "merged" | "closed";
+
+/** A story after the live overlay: derived status + live PR titles/states by number. */
 export interface LiveStory extends SnapshotStory {
   prTitles: Record<number, string>;
+  prStates: Record<number, PrLiveState>;
 }
 
 export function applyLiveData(stories: readonly SnapshotStory[], prs: readonly GithubPr[]): LiveStory[] {
   const byNumber = new Map(prs.map((p) => [p.number, p]));
   return stories.map((story) => {
     const prTitles: Record<number, string> = {};
+    const prStates: Record<number, PrLiveState> = {};
     for (const n of story.prs) {
       const pr = byNumber.get(n);
-      if (pr) prTitles[n] = pr.title;
+      if (pr) {
+        prTitles[n] = pr.title;
+        prStates[n] = pr.state === "open" ? "open" : pr.merged ? "merged" : "closed";
+      }
     }
-    return { ...story, status: deriveStatus(story, byNumber), prTitles };
+    return { ...story, status: deriveStatus(story, byNumber), prTitles, prStates };
   });
 }
 
@@ -164,6 +181,56 @@ export function writeCache(cache: BoardCache, storage?: KeyValueStorage | null):
   }
 }
 
+// --- Seen-closed baseline (celebration, step 12) ---------------------------
+
+export const SEEN_CLOSED_KEY = "meridian-board-seen-closed:v1";
+
+/**
+ * Ids of cases already seen closed on a previous visit, or null when
+ * there is no usable baseline (absent, unparseable, not an array of
+ * strings, or no storage). Null means "first visit": set a baseline
+ * silently, never celebrate.
+ */
+export function readSeenClosed(storage?: KeyValueStorage | null): string[] | null {
+  const store = safeStorage(storage);
+  if (!store) return null;
+  try {
+    const raw = store.getItem(SEEN_CLOSED_KEY);
+    if (!raw) return null;
+    const parsed: unknown = JSON.parse(raw);
+    if (!Array.isArray(parsed) || !parsed.every((v) => typeof v === "string")) return null;
+    return parsed as string[];
+  } catch {
+    return null;
+  }
+}
+
+export function writeSeenClosed(ids: readonly string[], storage?: KeyValueStorage | null): void {
+  const store = safeStorage(storage);
+  if (!store) return;
+  try {
+    store.setItem(SEEN_CLOSED_KEY, JSON.stringify([...ids]));
+  } catch {
+    // Quota / private mode: best-effort, never fatal.
+  }
+}
+
+/**
+ * Cases closed now that were not in the previous baseline, in current
+ * (snapshot) order. Returns null when previous is null (no baseline —
+ * the caller sets one silently and does not celebrate). A story that
+ * was done before but is absent from `current` is ignored: only
+ * stories present now can be newly closed.
+ */
+export function newlyClosedIds(
+  previous: readonly string[] | null,
+  current: readonly LiveStory[],
+): string[] | null {
+  if (previous === null) return null;
+  const seen = new Set(previous);
+  return current.filter((s) => s.status === "done" && !seen.has(s.id)).map((s) => s.id);
+}
+
 // --- Live fetch --------------------------------------------------------------
 
 export type LiveSource = "live" | "cache" | "snapshot";
@@ -177,11 +244,70 @@ export interface LiveResult {
 
 type FetchFn = (url: string, init?: RequestInit) => Promise<Response>;
 
+/** The pulls/issues endpoints are requested with per_page=100. */
+const LIVE_PAGE_SIZE = 100;
+
 /**
- * One fetch attempt — never a retry loop.
+ * Pagination cap for the live overlay. The repo crossed 100 PRs long
+ * ago, and the PRs the snapshot stories link to sit on page 3–4 of the
+ * pulls list — a single-page fetch "succeeds" while covering NONE of
+ * them, leaving the board snapshot-driven under a "Live" label. The
+ * overlay therefore pages until every `wanted` number is covered, a
+ * short page ends the list, or this cap is hit.
+ */
+export const MAX_LIVE_PAGES = 6;
+
+function pagedUrl(base: string, page: number): string {
+  return page <= 1 ? base : `${base}${base.includes("?") ? "&" : "?"}page=${page}`;
+}
+
+/**
+ * Merge the first page's payload with further pages until `wanted` is
+ * covered, the list ends (a short page), or MAX_LIVE_PAGES is reached.
+ * Pages are de-duplicated by number (sort=updated can overlap pages
+ * when the list shifts mid-fetch). A failed page throws, so the caller
+ * falls back whole — a partial live payload is never applied.
+ */
+async function collectPages<T extends { number: number }>(
+  fetchFn: FetchFn,
+  base: string,
+  parse: (payload: unknown) => T[],
+  firstPayload: unknown,
+  wanted: ReadonlySet<number>,
+): Promise<T[]> {
+  const seen = new Map<number, T>();
+  const add = (items: readonly T[]) => {
+    for (const item of items) if (!seen.has(item.number)) seen.set(item.number, item);
+  };
+  add(parse(firstPayload));
+  let rawCount = Array.isArray(firstPayload) ? firstPayload.length : 0;
+  let page = 1;
+  const covered = () => {
+    for (const n of wanted) if (!seen.has(n)) return false;
+    return true;
+  };
+  while (rawCount >= LIVE_PAGE_SIZE && page < MAX_LIVE_PAGES && !covered()) {
+    page += 1;
+    const res = await fetchFn(pagedUrl(base, page), {
+      headers: { accept: "application/vnd.github+json" },
+    });
+    if (!res.ok) throw new Error(`GitHub page ${page} returned ${res.status}`);
+    const payload: unknown = await res.json();
+    rawCount = Array.isArray(payload) ? payload.length : 0;
+    add(parse(payload));
+  }
+  return [...seen.values()];
+}
+
+/**
+ * One fetch attempt — never a retry loop. (Pagination until the
+ * caller's `wanted` numbers are covered is part of the single attempt:
+ * each page is requested once, in order.)
  *  - Fresh cache (< TTL) wins without a network call.
  *  - Otherwise a conditional request is sent with the cached ETag; a 304
- *    reuses the cached payload and refreshes its timestamp.
+ *    reuses the cached payload and refreshes its timestamp. The cached
+ *    payload is the merged multi-page list; a 304 on page 1 is a sound
+ *    revalidation because sort=updated pushes any change onto page 1.
  *  - On 403 / 429 / any other failure or a network error, the cached data
  *    (if any) or the snapshot is kept and the source says so.
  */
@@ -190,6 +316,8 @@ export async function fetchLivePrs(options: {
   storage?: KeyValueStorage | null;
   now?: number;
   url?: string;
+  /** PR numbers the caller needs live state for (the stories' linked PRs). */
+  wanted?: readonly number[];
 } = {}): Promise<LiveResult> {
   const now = options.now ?? Date.now();
   const fetchFn = options.fetchFn ?? ((u: string, i?: RequestInit) => fetch(u, i));
@@ -221,7 +349,8 @@ export async function fetchLivePrs(options: {
   try {
     const headers: Record<string, string> = { accept: "application/vnd.github+json" };
     if (stale?.etag) headers["if-none-match"] = stale.etag;
-    const res = await fetchFn(options.url ?? GITHUB_PULLS_URL, { headers });
+    const base = options.url ?? GITHUB_PULLS_URL;
+    const res = await fetchFn(base, { headers });
     if (res.status === 304 && stale) {
       writeCache({ ...stale, fetchedAt: now }, options.storage);
       return { prs: stale.prs, source: "live", fetchedAt: now };
@@ -231,7 +360,13 @@ export async function fetchLivePrs(options: {
         ? { prs: stale.prs, source: "cache", fetchedAt: stale.fetchedAt }
         : { prs: [], source: "snapshot", fetchedAt: null };
     }
-    const prs = parseGithubPrs(await res.json());
+    const prs = await collectPages(
+      fetchFn,
+      base,
+      parseGithubPrs,
+      await res.json(),
+      new Set(options.wanted ?? []),
+    );
     const etag = typeof res.headers?.get === "function" ? res.headers.get("etag") : null;
     writeCache({ etag, fetchedAt: now, prs }, options.storage);
     return { prs, source: "live", fetchedAt: now };
@@ -276,6 +411,53 @@ export function buildDependencyEdges(stories: readonly SnapshotStory[]): Depende
     }
   });
   return edges.sort((a, b) => a.to - b.to || a.from - b.from || a.viaPr - b.viaPr);
+}
+
+export interface DependencyRow<T extends SnapshotStory = SnapshotStory> {
+  /** The prerequisite story (must land first). */
+  from: T;
+  /** The waiting story. */
+  to: T;
+  /** PR numbers linking from → to, from buildDependencyEdges (display only). */
+  viaPrs: number[];
+  /** Distinct stories whose waitsOnIds include `from` (its blocking impact). */
+  blocks: number;
+}
+
+/**
+ * One row per waitsOnIds relation (set semantics: duplicate ids in a
+ * story collapse). viaPrs are looked up from buildDependencyEdges for
+ * the same from→to pair; a relation with no explicit PR edge gets [].
+ * Rows follow snapshot order of the waiting story, then the order of
+ * its waitsOnIds. Unknown ids are skipped (snapshot tests forbid them).
+ */
+export function dependencyRows<T extends SnapshotStory>(stories: readonly T[]): DependencyRow<T>[] {
+  const byId = new Map(stories.map((s) => [s.id, s]));
+  const byIndex = new Map(stories.map((s, i) => [s.id, i]));
+  const blocks = new Map<string, number>();
+  for (const s of stories) {
+    for (const id of new Set(s.waitsOnIds ?? [])) blocks.set(id, (blocks.get(id) ?? 0) + 1);
+  }
+  const via = new Map<string, number[]>();
+  for (const e of buildDependencyEdges(stories)) {
+    const key = `${e.from}->${e.to}`;
+    via.set(key, [...(via.get(key) ?? []), e.viaPr]);
+  }
+  const rows: DependencyRow<T>[] = [];
+  stories.forEach((to, toIdx) => {
+    for (const id of new Set(to.waitsOnIds ?? [])) {
+      const from = byId.get(id);
+      if (!from) continue;
+      const fromIdx = byIndex.get(id) ?? -1;
+      rows.push({
+        from,
+        to,
+        viaPrs: (via.get(`${fromIdx}->${toIdx}`) ?? []).sort((a, b) => a - b),
+        blocks: blocks.get(id) ?? 0,
+      });
+    }
+  });
+  return rows;
 }
 
 /** Longest chain of prerequisites behind each story (0 = waits on no story). */
@@ -499,12 +681,19 @@ function readIssuesCache(storage: KeyValueStorage | null, now: number, freshOnly
   }
 }
 
-/** One fetch attempt, ETag + 10-minute cache — mirrors fetchLivePrs. */
+/**
+ * One fetch attempt, ETag + 10-minute cache — mirrors fetchLivePrs,
+ * including pagination: the issues stories actually name (344, 319)
+ * sit far past page 1 of the issues list, so pages are collected until
+ * `wanted` is covered, a short page ends the list, or the cap is hit.
+ */
 export async function fetchLiveIssues(options: {
   fetchFn?: FetchFn;
   storage?: KeyValueStorage | null;
   now?: number;
   url?: string;
+  /** Issue numbers the caller needs (the ones stories explicitly name). */
+  wanted?: readonly number[];
 } = {}): Promise<IssuesResult> {
   const now = options.now ?? Date.now();
   const fetchFn = options.fetchFn ?? ((u: string, i?: RequestInit) => fetch(u, i));
@@ -515,7 +704,8 @@ export async function fetchLiveIssues(options: {
   try {
     const headers: Record<string, string> = { accept: "application/vnd.github+json" };
     if (stale?.etag) headers["if-none-match"] = stale.etag;
-    const res = await fetchFn(options.url ?? GITHUB_ISSUES_URL, { headers });
+    const base = options.url ?? GITHUB_ISSUES_URL;
+    const res = await fetchFn(base, { headers });
     if (res.status === 304 && stale) {
       if (store) {
         try {
@@ -531,7 +721,13 @@ export async function fetchLiveIssues(options: {
         ? { issues: stale.issues, source: "cache", fetchedAt: stale.fetchedAt }
         : { issues: [], source: "snapshot", fetchedAt: null };
     }
-    const issues = parseGithubIssues(await res.json());
+    const issues = await collectPages(
+      fetchFn,
+      base,
+      parseGithubIssues,
+      await res.json(),
+      new Set(options.wanted ?? []),
+    );
     const etag = typeof res.headers?.get === "function" ? res.headers.get("etag") : null;
     if (store) {
       try {
@@ -558,4 +754,204 @@ export function groupByStatus(stories: readonly LiveStory[]): Record<StoryStatus
   const out: Record<StoryStatus, LiveStory[]> = { "not-started": [], "in-progress": [], done: [] };
   for (const s of stories) out[s.status].push(s);
   return out;
+}
+
+/**
+ * A story's case number: its 1-based position within its lane, in
+ * snapshot order. Matched by id, so a live-overlay copy of the story
+ * resolves to the same number; a story absent from the list gets 0.
+ */
+export function caseNumber(story: SnapshotStory, stories: readonly SnapshotStory[]): number {
+  const index = stories.filter((s) => s.lane === story.lane).findIndex((s) => s.id === story.id);
+  return index + 1;
+}
+
+/**
+ * Lead counts for a story: a lead is a linked PR, and a lead is solved
+ * only when its live state is "merged". A PR with no live state yet is
+ * a lead that is not solved — it can never inflate the solved count.
+ */
+export function leadCounts(story: LiveStory): { total: number; solved: number } {
+  return {
+    total: story.prs.length,
+    solved: story.prs.filter((n) => story.prStates?.[n] === "merged").length,
+  };
+}
+
+export interface HeaderMetrics {
+  notStarted: number;
+  inProgress: number;
+  done: number;
+  openPrs: number;
+  blocked: number;
+}
+
+/**
+ * The five /board header metrics, all computed from the stories as shown
+ * (snapshot + live overlay):
+ *  - status counts come from each story's (derived) status;
+ *  - openPrs is the number of DISTINCT PR numbers linked from any story
+ *    whose live state is "open" — a PR no live payload has seen (e.g. a
+ *    snapshot-only render) carries no state and is never counted open;
+ *  - blocked counts stories that are not done and wait, via
+ *    buildDependencyEdges (edge.from = prerequisite, edge.to = waiter),
+ *    on a story that is not done. Waiting on a done story is not blocked,
+ *    and a done story is never blocked.
+ */
+/**
+ * Indexes of blocked stories: not done, and waiting (via
+ * buildDependencyEdges) on a story that is not done. The single source
+ * of truth for "blocked" — headerMetrics and the board filter use it.
+ */
+export function blockedIndexes(stories: readonly LiveStory[]): Set<number> {
+  const blocked = new Set<number>();
+  for (const e of buildDependencyEdges(stories)) {
+    if (stories[e.to].status !== "done" && stories[e.from].status !== "done") blocked.add(e.to);
+  }
+  return blocked;
+}
+
+export function headerMetrics(stories: readonly LiveStory[]): HeaderMetrics {
+  const out: HeaderMetrics = { notStarted: 0, inProgress: 0, done: 0, openPrs: 0, blocked: 0 };
+  const openPrs = new Set<number>();
+  for (const s of stories) {
+    if (s.status === "not-started") out.notStarted += 1;
+    else if (s.status === "in-progress") out.inProgress += 1;
+    else out.done += 1;
+    for (const n of s.prs) {
+      if (s.prStates?.[n] === "open") openPrs.add(n);
+    }
+  }
+  out.openPrs = openPrs.size;
+  out.blocked = blockedIndexes(stories).size;
+  return out;
+}
+
+export interface ExpeditionProgress {
+  total: number;
+  closed: number;
+  perLane: { lane: SnapshotLane; closed: number; total: number }[];
+}
+
+/**
+ * Expedition progress: cases closed (derived status === "done") over
+ * all cases, overall and per lane. The bar measures cases, never
+ * people — owners play no part here.
+ */
+export function expeditionProgress(
+  stories: readonly LiveStory[],
+  lanes: readonly SnapshotLane[],
+): ExpeditionProgress {
+  const perLane = groupByLane(stories, lanes).map(({ lane, stories: inLane }) => ({
+    lane,
+    closed: inLane.filter((s) => s.status === "done").length,
+    total: inLane.length,
+  }));
+  return {
+    total: stories.length,
+    closed: stories.filter((s) => s.status === "done").length,
+    perLane,
+  };
+}
+
+/**
+ * The open case whose closing unblocks the most other cases (direct
+ * dependents only: stories whose waitsOnIds include the candidate's
+ * id). Ties break by snapshot order (first wins). Returns null when
+ * no open case unblocks anything — an honest absence, not a guess.
+ */
+export function nextToCrack<T extends LiveStory>(stories: readonly T[]): { story: T; unblocks: number } | null {
+  let best: { story: T; unblocks: number } | null = null;
+  for (const candidate of stories) {
+    if (candidate.status === "done") continue;
+    const unblocks = stories.filter((s) => (s.waitsOnIds ?? []).includes(candidate.id)).length;
+    if (unblocks > 0 && (best === null || unblocks > best.unblocks)) {
+      best = { story: candidate, unblocks };
+    }
+  }
+  return best;
+}
+
+/**
+ * Case-insensitive substring match on title, lane and owner. A numeric
+ * query ("430", "PR 430", "#430") also matches story.prs numbers.
+ */
+export function storyMatchesQuery(story: SnapshotStory, query: string): boolean {
+  const q = query.trim().toLowerCase();
+  if (!q) return true;
+  const numeric = q.match(/^(?:pr\s*)?#?(\d+)$/);
+  if (numeric && story.prs.includes(Number(numeric[1]))) return true;
+  return [story.title, story.lane, story.owner ?? ""].some((f) => f.toLowerCase().includes(q));
+}
+
+/**
+ * Why a story has its (derived) status, from the same live PR facts
+ * deriveStatus uses. Partial live data is said out loud: a PR with no
+ * live state "has no live data yet" and can never support a Done claim.
+ */
+export function statusWhy(story: LiveStory): string {
+  if (story.prs.length === 0) return "Snapshot status — no linked PRs";
+  const states = story.prStates ?? {};
+  const fmt = (ns: number[]) => ns.map((n) => `PR ${n}`).join(", ");
+  const unknownNote = (ns: number[]) =>
+    `${fmt(ns)} ${ns.length === 1 ? "has" : "have"} no live data yet`;
+  const open = story.prs.filter((n) => states[n] === "open");
+  const merged = story.prs.filter((n) => states[n] === "merged");
+  const closed = story.prs.filter((n) => states[n] === "closed");
+  const unknown = story.prs.filter((n) => !(n in states));
+  if (unknown.length === 0 && merged.length === story.prs.length) {
+    return `Done — all ${story.prs.length} linked PRs are merged (${fmt(story.prs)})`;
+  }
+  if (open.length > 0) {
+    const base = `In progress — ${fmt(open)} ${open.length === 1 ? "is" : "are"} open`;
+    return unknown.length > 0 ? `${base}; ${unknownNote(unknown)}` : base;
+  }
+  if (closed.length > 0) {
+    const base = `Keeps the snapshot status — ${fmt(closed)} closed without merging`;
+    return unknown.length > 0 ? `${base}; ${unknownNote(unknown)}` : base;
+  }
+  if (unknown.length > 0) {
+    const base = `Snapshot status — ${unknownNote(unknown)}`;
+    return merged.length > 0
+      ? `${base}; ${fmt(merged)} merged, but Done needs every linked PR`
+      : base;
+  }
+  return "Snapshot status — no linked PRs";
+}
+
+/**
+ * The done-path gate a story verbatim-matches, if any: the story title
+ * appears in a gate's title/description, or a gate's title appears in
+ * the story title (exact substring, case-insensitive). Stories are not
+ * done-path items, so most stories match nothing and get no line.
+ */
+export function donePathMatch(
+  story: SnapshotStory,
+  donePath: readonly DonePathItem[],
+): string | null {
+  const title = story.title.trim().toLowerCase();
+  if (!title) return null;
+  for (const item of donePath) {
+    if (item.type !== "gate") continue;
+    const gateTitle = item.title.trim().toLowerCase();
+    if (
+      gateTitle.includes(title) ||
+      item.description.toLowerCase().includes(title) ||
+      title.includes(gateTitle)
+    ) {
+      return item.title;
+    }
+  }
+  return null;
+}
+
+/** The visible subset under a search query + blocked-only filter (order kept). */
+export function filterStories<T extends LiveStory>(
+  stories: readonly T[],
+  filter: { query: string; blockedOnly: boolean },
+): T[] {
+  const blocked = filter.blockedOnly ? blockedIndexes(stories) : null;
+  return stories.filter(
+    (s, i) => storyMatchesQuery(s, filter.query) && (!blocked || blocked.has(i)),
+  );
 }
