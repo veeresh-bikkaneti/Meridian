@@ -317,23 +317,24 @@ test("detectivePair on (desktop, 7-10): pair mounts, wrong is silent, right cele
   expect(errors).toEqual([]);
 });
 
-test("detectivePair on (desktop, 7-10): solving the last item finishes — both celebrate, silently", async ({
+test("detectivePair on (desktop, 18+): solving the last item finishes — both celebrate, silently", async ({
   page,
   context,
 }) => {
-  await setupPair(context, "7-10");
+  await setupPair(context, "18+");
   const errors = watchErrors(page);
   await openCase(page);
   const pair = page.getByTestId("subject-detective-pair");
   await expect(pair).toBeVisible();
-  // Items 1 and 2 via the Next-case cycle, then the last item.
-  await solveCase(page, "8");
+  // 18+ has 3 items, so the third is the last. Items 1 and 2 via the
+  // Next-case cycle, then the last item.
+  await solveCase(page, "360");
   await page.getByRole("button", { name: "🔎 Next case" }).click();
-  await solveCase(page, "24");
+  await solveCase(page, "13.5");
   await page.getByRole("button", { name: "🔎 Next case" }).click();
   await page
     .getByTestId("math-answer-card")
-    .getByRole("button", { name: "4", exact: true })
+    .getByRole("button", { name: "Measure the beam again", exact: true })
     .click();
   await expect(pair).toHaveAttribute("data-signal", "finished");
   // Finished is visual only: BOTH rigs hold the celebrate pose.
