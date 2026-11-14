@@ -62,8 +62,8 @@ async function openSocialStudiesCase(page: Page) {
   await expect(page.getByTestId("subject-picker")).toBeVisible();
   const row = page.getByTestId("subject-row-social-studies");
   await expect(row).toBeEnabled();
-  // Journals stays a disabled "Coming soon" row — not in this run.
-  await expect(page.getByTestId("subject-row-journals")).toBeDisabled();
+  // Journals is playable since #464.
+  await expect(page.getByTestId("subject-row-journals")).toBeEnabled();
   await row.click();
   await expect(page.getByTestId("social-studies-case")).toBeVisible();
 }
