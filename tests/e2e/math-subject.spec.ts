@@ -246,7 +246,12 @@ test("detectivePair on (desktop, 7-10): pair mounts, wrong is silent, right cele
   // and requests NO clip (wrong = silence by the clip rules). The
   // baseline waits for the open clip to have registered AND ended,
   // so a late-starting open clip cannot masquerade as a wrong-pick
-  // clip in the comparison below.
+  // clip in the comparison below. The clip parks in the speech
+  // player's first-gesture wait until the kid's next tap — a click
+  // on the heading supplies that gesture (the U5 smoke pattern).
+  await page
+    .getByRole("heading", { name: "Why Do We Learn This? — Math" })
+    .click();
   await expect
     .poll(
       async () =>
