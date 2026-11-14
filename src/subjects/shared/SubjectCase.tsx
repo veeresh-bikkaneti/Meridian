@@ -12,15 +12,17 @@
  * comment forbids.
  *
  * DetectiveHost and the detective machine are unchanged and not mounted
- * here: the pair ships dark behind detectivePair in prod, and subject
- * items have no voice clips, so the case is text only with no new
- * audio. The win fires GameApp's existing celebration through
- * onCelebrate, on the same first-win guard LoopScreen uses.
+ * here. Holmes and Watson come from the small SubjectPairHost beside
+ * this file, behind detectivePair like LoopScreen's host, answer-blind
+ * through buildSubjectPairProps (subject-pair.ts) and speaking only
+ * existing fixed clips. With detectivePair off the case is text only.
+ * The win fires GameApp's existing celebration through onCelebrate, on
+ * the same first-win guard LoopScreen uses.
  *
  * Each subject's own case component is a thin wrapper that passes its
  * title, its test-id prefix, its band items and its answer lookup.
  */
-import { useEffect, useRef, useState } from "react";
+import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import type { AgeGroup, SubjectProps, UnitItem } from "../registry";
 import { getAgeGroup } from "@/game/age-profile";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
@@ -35,6 +37,12 @@ import { AnswerCard } from "./AnswerCard";
 import { HomeButton } from "@/components/ui/home-button";
 import { ScreenShell } from "@/components/ui/screen-shell";
 import type { AnswerFor } from "./answer";
+import { isEnabled } from "@/lib/flags";
+import { buildSubjectPairProps } from "./subject-pair";
+
+// Holmes and Watson (flag-gated like LoopScreen's DetectiveHost): lazy, so
+// with detectivePair off the pair's code and DOM never load.
+const SubjectPairHost = lazy(() => import("./SubjectPairHost"));
 
 export type SubjectCaseConfig = {
   /** Subject title as kids see it ("Math", "Physics", …). */
@@ -123,6 +131,20 @@ export function SubjectCase({
 
       <div className="mt-6 grid gap-4">
         <ClueCard tier={title} index={0} text={item.why} revealed reduced={reduced} />
+        {isEnabled("detectivePair") ? (
+          <div style={{ display: "contents" }} data-testid="subject-pair-slot">
+            <Suspense fallback={null}>
+              <SubjectPairHost
+                {...buildSubjectPairProps({
+                  caseIndex: index,
+                  solved,
+                  wrongPick: picked !== null,
+                  lastCase: index === items.length - 1,
+                })}
+              />
+            </Suspense>
+          </div>
+        ) : null}
         {!solved ? (
           <AnswerCard
             prompt={answer.prompt}
