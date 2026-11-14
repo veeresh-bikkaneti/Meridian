@@ -50,9 +50,24 @@ No shipped item changes here.
   errors (bundled Chromium 1248; /opt/meta-chromium will not launch
   in this VM, as in wave 1).
 
-## Reviewer verdict
+## Reviewer verdict (separate seat, on 08bb95a)
 
-(Separate reviewer seat — pasted verbatim in the PR body.)
+VERDICT: APPROVE-WITH-NITS — see the PR body for the full text,
+pasted verbatim. Educator seat: type shape, parser strictness,
+follow-up order, and unchanged choice entries all verified; no
+content risk. Accessibility seat: 44px, labelled input, Enter
+submits, same role="status" wrong line, no new motion.
+Nits, dispositioned: (1) stale typed input across phases — FIXED
+(AnswerCard keyed by item + phase, clears on transition/next case).
+(3) parser doc over-promised on spaces — FIXED (all whitespace now
+stripped, "1 081" = 1081; "1,2,3" still rejected). (2) `value` is
+comment-required, not type-enforced, for kind "number" — DEFERRED:
+a discriminated union would ripple into every subject's answers
+module and its tests (`entry.choices` access); runtime fails closed
+(missing value is always wrong) and no shipped number entry exists
+yet. (4) no focus move/announcement when the follow-up appears —
+DEFERRED to the follow-up's adopting subject (needs a focus target
+in the card; autoFocus would fight the arrival-focus pattern).
 
 ## Not checked
 

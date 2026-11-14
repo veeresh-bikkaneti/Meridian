@@ -149,6 +149,7 @@ export function SubjectCase({
         <ClueCard tier={title} index={0} text={item.why} revealed reduced={reduced} />
         {!solved ? (
           <AnswerCard
+            key={`${item.id}:${phase}`}
             prompt={active.prompt}
             choices={active.choices}
             picked={picked}

@@ -45,11 +45,11 @@ export type AnswerFor = (itemId: string) => AnswerEntry | null;
  * that is not one plain decimal number.
  */
 export function parseTypedNumber(raw: string): number | null {
-  const trimmed = raw.trim();
-  // Commas must be proper thousands separators; a decimal part is
-  // allowed ("2,400.5"). Anything else is not a number.
-  if (!/^-?(\d{1,3}(,\d{3})+|\d+)(\.\d+)?$/.test(trimmed)) return null;
-  const value = Number(trimmed.replace(/,/g, ""));
+  // Spaces are ignored anywhere ("1 081" = 1081); commas must be
+  // proper thousands separators ("1,2,3" is not a number).
+  const cleaned = raw.replace(/\s/g, "");
+  if (!/^-?(\d{1,3}(,\d{3})+|\d+)(\.\d+)?$/.test(cleaned)) return null;
+  const value = Number(cleaned.replace(/,/g, ""));
   return Number.isFinite(value) ? value : null;
 }
 

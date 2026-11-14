@@ -93,6 +93,7 @@ function renderCard(entry: AnswerEntry, picked: string | null) {
 test("parseTypedNumber accepts commas, spaces and decimals", () => {
   assert.equal(parseTypedNumber("1,081"), 1081);
   assert.equal(parseTypedNumber(" 56 "), 56);
+  assert.equal(parseTypedNumber("1 081"), 1081);
   assert.equal(parseTypedNumber("13.5"), 13.5);
   assert.equal(parseTypedNumber("2,400"), 2400);
   assert.equal(parseTypedNumber("1,081.5"), 1081.5);
