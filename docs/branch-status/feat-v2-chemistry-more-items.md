@@ -108,8 +108,38 @@ rebuild to "Yes — rebuild it longer with the same pieces" (44),
 water:cycle to "Into the air, a cloud, back as rain or snow" (43) —
 full reasoning stays in the derivations; 10-18 E2E walk extended
 through water:cycle and new-look to rust (3 new 10-18 items play
-in-app). **Round 2 re-vote owed on the cured tip before the PR
-opens.**
+in-app). **Round 2 (2026-11-14 ~04:36 UTC, on tip `0acba120`):**
+
+VERDICT: APPROVE-WITH-NITS
+1. Detective hold complete [measured] — answer entry removed (16 keys in answers.ts), removed from CHEMISTRY_ITEM_IDS, counts 16 total / 5-7-10 / 8-10-18 / 3-18+ in the test, held-set test asserts both chemistry:water:where and chemistry:elements:detective stay out while all other 16 of 18 rows are listed.
+2. Chemistry unit tests 8/8 pass [measured] — re-ran `node --experimental-strip-types --test src/subjects/chemistry/chemistry.test.ts` on tip 0acba120: pass 8, fail 0.
+3. Nit (2) cured [measured] — "How heavy each block is" is a fair wrong choice for identify: a common mistake (heavier = different material), a real property, not silly, and unlike float it does not collide with the objective's "Floating is not scored".
+4. Nit (3) cured [measured] — shortened correct choices are unambiguous and correct: new-look "It might be a new substance" (27 chars) vs two "certainly" distractors, derivation keeps the reaction reasoning; rebuild 44 chars; water:cycle 43 chars, full path kept (air, cloud, back as rain or snow). All three now at/below the shipped max (47, mass). 1440×900-only coverage is acceptable for these three — they play in-app in the extended walk at that viewport.
+5. Nit (4) cured [measured from spec read; run builder-reported] — the 10-18 walk now goes particles → water:cycle → new-look → rust, each solved with its exact correct string, result visible after rust, no-errors assertion kept. E2E chemistry-subject 4/4 [inferred].
+6. 7 new derivations spot-checked against their rows in docs/scaling/chemistry/items.json [measured] — rebuild, particles, water:cycle, new-look, identify are directly derivable from why/objective; magnet ("iron bits") and rust (see nit 5) teach their fact in the choice with no reasonable competing distractor and nothing in-game teaching the opposite — no second detective-class defect.
+7. Other gates [inferred, builder-reported, not re-run] — tsc clean, subject suite 58/58, lint:content GATE PASSED (6 baselined, 0 new), lint-cards GATE PASSED, build:pages green.
+
+Remaining nits:
+1. (Carried, round 1) water:cycle tests the path, not the ordering its objective names — acceptable as shipped, flag for educator sign-off.
+2. Dangling curriculum link, docs/data only — items.json still has chemistry:reactions:explain buildsOn chemistry:elements:detective, a held row no learner ever plays; spec.md topic-22 table still lists detective beside explain. No runtime consumer validates buildsOn, no learner-facing break. Fix: re-point explain's buildsOn (e.g. to new-look) and annotate the spec table, or record as known.
+3. Rust correct choice is 52 chars — longest in the subject, above every shipped choice (max 47). It does play in the extended walk at 1440×900, so covered there; 390px still unchecked for all choices.
+4. E2E now plays 5 of 7 new items (magnet + particles/water:cycle/new-look/rust); rebuild and identify still have no in-app play-through.
+5. Rust's mechanism (iron + oxygen + water → rust) is taught by the choice itself, not stated in its row — harmless here because both distractors deny any change, but educator sign-off should confirm the row needn't name rust.
+6. Identify weight caveat — weighing could distinguish same-size blocks; the prompt states no sizes, and the scored property per the objective is dissolving. Educator sign-off to confirm.
+
+No BLOCKED items. The round-1 BLOCKED cause is fully cured.
+
+**Nit dispositions (builder):** (1) carried — flag for educator
+sign-off, no change. (2) recorded as known — `items.json` is
+read-only data (verified: explain's buildsOn points at detective,
+items.json:248); the re-point belongs to the data owner in a
+follow-up. The "spec.md topic-22 table" half does not check out —
+no spec.md exists under docs/scaling/chemistry/; council-notes.md
+mentions detective only as a caution, not a table. (3) deferred —
+shortening rust's correct choice would strip the oxygen+water
+mechanism the choice itself teaches. (4) deferred — rebuild and
+identify are unit-tested; e2e covers 5 of 7 new items. (5) flag for
+educator sign-off. (6) flag for educator sign-off.
 
 ## Not checked
 
