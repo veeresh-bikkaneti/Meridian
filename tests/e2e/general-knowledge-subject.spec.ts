@@ -95,6 +95,47 @@ test("7-10 year-gap case plays through to the result", async ({ page, context })
   expect(errors).toEqual([]);
 });
 
+test("7-10 older-landmark case (new in v2) plays through to the result", async ({
+  page,
+  context,
+}) => {
+  await setup(context, "7-10");
+  const errors = watchErrors(page);
+  await openGkCase(page);
+  const gkCase = page.getByTestId("general-knowledge-case");
+  // Cases deal in order: opera-years-ago, eiffel-antennas, then the
+  // v2 newcomer older-landmark. Solve each and take "Next case".
+  const expectedYear = String(new Date().getFullYear() - 1973);
+  await page
+    .getByTestId("general-knowledge-answer-card")
+    .getByRole("button", { name: expectedYear, exact: true })
+    .click();
+  await dismissCelebration(page);
+  await page.getByRole("button", { name: /Next case/ }).click();
+  await expect(gkCase).toHaveAttribute(
+    "data-item",
+    "general-knowledge:mixed:eiffel-antennas",
+  );
+  await page
+    .getByTestId("general-knowledge-answer-card")
+    .getByRole("button", { name: "59 feet", exact: true })
+    .click();
+  await page.getByRole("button", { name: /Next case/ }).click();
+  await expect(gkCase).toHaveAttribute(
+    "data-item",
+    "general-knowledge:mixed:older-landmark",
+  );
+  await page
+    .getByTestId("general-knowledge-answer-card")
+    .getByRole("button", { name: "The Eiffel Tower", exact: true })
+    .click();
+  await expect(page.getByTestId("general-knowledge-result")).toBeVisible();
+  await expect(page.getByTestId("general-knowledge-used-in")).toContainText(
+    "You just used this in…",
+  );
+  expect(errors).toEqual([]);
+});
+
 test("18+ great-circle case plays through to the result", async ({ page, context }) => {
   await setup(context, "18+");
   const errors = watchErrors(page);

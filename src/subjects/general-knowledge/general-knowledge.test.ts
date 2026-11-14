@@ -32,11 +32,12 @@ it("adapter reads every curated general-knowledge row", () => {
   }
 });
 
-it("the live slice holds up to 3 items per band, each in its own band", () => {
+it("the live slice holds every multiple-choice-ready row, each in its own band", () => {
   const units = generalKnowledgeUnits();
   assert.equal(units.length, GENERAL_KNOWLEDGE_ITEM_IDS.length);
-  assert.equal(units.length, 8);
-  assert.equal(itemsForGroup("7-10").length, 3);
+  assert.equal(units.length, 10);
+  // v2: the 7-10 band grows 3 -> 5 (older-landmark, falls-in-km).
+  assert.equal(itemsForGroup("7-10").length, 5);
   assert.equal(itemsForGroup("10-18").length, 3);
   // 18+ has only 2 curated rows; both ship.
   assert.equal(itemsForGroup("18+").length, 2);
@@ -99,10 +100,27 @@ it("each numeric answer matches its derivation", () => {
   assert.equal(500_000_000 * 1440, 7.2e11);
 });
 
+it("the v2 items' answers follow from their rows' numbers", () => {
+  // Older landmark: 1889 (Eiffel Tower) precedes 1973 (Opera House).
+  assert.ok(1889 < 1973);
+  const older = answerFor("general-knowledge:mixed:older-landmark");
+  assert.ok(older);
+  assert.equal(older.correct, "The Eiffel Tower");
+  // Falls width: 1,708 m is less than 2 km written as metres.
+  assert.ok(1708 < 2 * 1000);
+  const falls = answerFor("general-knowledge:mixed:falls-in-km");
+  assert.ok(falls);
+  assert.equal(falls.correct, "Narrower than 2 km");
+  // Held: noon-shadow compares three pictures of a shadow — it needs
+  // a scene, so it stays out of the live slice.
+  assert.ok(!GENERAL_KNOWLEDGE_ITEM_IDS.includes("general-knowledge:mixed:noon-shadow"));
+  assert.equal(answerFor("general-knowledge:mixed:noon-shadow"), null);
+});
+
 it("the subject module matches contract I1 and is released", () => {
   assert.equal(generalKnowledgeModule.id, "general-knowledge");
   assert.equal(generalKnowledgeModule.released, true);
   assert.deepEqual(generalKnowledgeModule.groups, ["7-10", "10-18", "18+"]);
-  assert.equal(generalKnowledgeModule.units.length, 8);
+  assert.equal(generalKnowledgeModule.units.length, 10);
   assert.equal(typeof generalKnowledgeModule.load, "function");
 });

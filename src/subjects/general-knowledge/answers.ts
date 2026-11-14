@@ -39,6 +39,24 @@ export const GENERAL_KNOWLEDGE_ANSWERS: Record<string, AnswerEntry> = {
     value: 59,
     derivation: "1,083 − 1,024 = 59 feet.",
   },
+  "general-knowledge:mixed:older-landmark": {
+    prompt:
+      "The Eiffel Tower was finished in 1889 and the Sydney Opera House opened in 1973. Which landmark is older?",
+    choices: [
+      "The Eiffel Tower",
+      "The Sydney Opera House",
+      "They were finished in the same year",
+    ],
+    correct: "The Eiffel Tower",
+    derivation: "1889 < 1973, so the Eiffel Tower, finished in 1889, is the older landmark.",
+  },
+  "general-knowledge:mixed:falls-in-km": {
+    prompt:
+      "Victoria Falls is about 1,708 metres wide. A trail sign says 2 km. Is the falls wider or narrower than 2 km?",
+    choices: ["Wider than 2 km", "Narrower than 2 km", "Exactly 2 km wide"],
+    correct: "Narrower than 2 km",
+    derivation: "2 km = 2,000 m, and 1,708 m < 2,000 m, so the falls is narrower than 2 km.",
+  },
   "general-knowledge:mixed:trip-buses": {
     prompt:
       "A class of 30 children and 4 adults is going to see a waterfall. Each minibus seats 8. How many minibuses do they book?",
