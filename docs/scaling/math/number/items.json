@@ -477,5 +477,44 @@
     "useElsewhere": [
       "economics: sharing a group budget when some items are discounted"
     ]
+  },
+  {
+    "id": "math-number:fractions:cloth-multiply",
+    "group": "18+",
+    "objective": "After this, an adult can compute the cloth needed for five covers, shown by entering 3 3/4 metres before the order is checked.",
+    "standard": "UNVERIFIED",
+    "why": "A tailor cuts 3/4 of a metre of cloth for each cushion cover. A shop orders 5 covers. How many metres of cloth are needed? Fit: no code fits; this is 18+ enrichment past 5.NF.B.4.",
+    "buildsOn": [
+      "math-number:fractions:multiply"
+    ],
+    "useElsewhere": [
+      "physics: multiplying a length by a fraction is the same step as scaling a measured distance by a part of a whole"
+    ]
+  },
+  {
+    "id": "math-number:fractions:discount-percent",
+    "group": "18+",
+    "objective": "After this, an adult can compute the coins off a discounted total, shown by entering the coins off before the new total is shown.",
+    "standard": "UNVERIFIED",
+    "why": "A hardware order totals 240 coins before a discount of 15 percent. How many coins come off the total? Fit: no code fits; this is 18+ enrichment past 6.RP.A.3.",
+    "buildsOn": [
+      "math-number:fractions:percent"
+    ],
+    "useElsewhere": [
+      "chemistry: a percent of a total mass is the same share calculation used to size a mix of two parts"
+    ]
+  },
+  {
+    "id": "math-number:division:bulk-cases",
+    "group": "18+",
+    "objective": "After this, an adult can compute how many full cases a count of boxes fills, shown by entering the case count before the load is checked.",
+    "standard": "UNVERIFIED",
+    "why": "A warehouse receives 2,400 small boxes. Each case holds 12 boxes. How many full cases arrive? Fit: no code fits; this is 18+ enrichment past 6.NS.B.2.",
+    "buildsOn": [
+      "math-number:division:standard-algorithm"
+    ],
+    "useElsewhere": [
+      "chemistry: counting identical units in equal groups is the same division step used to count particles in a sample"
+    ]
   }
 ]

@@ -331,3 +331,10 @@ Not started. The build gate is down. When it lifts, and after D5 is picked: one 
 
 No shared file needs an edit for this addendum. Watch only: the number-strand ids above are not on `main` yet. `src/game/learning.ts` stays untouched until Stage B asks for a `setting` field.
 
+## Adult (18+) rows, Stream F (PROPOSED)
+
+These 18+ rows are proposed in v2 Stream F. Each is an UNVERIFIED adult round with a Fit note; educator review runs alongside, not as a gate.
+
+- `math-applied:rates:tank-fill`
+- `math-applied:geometry:fence-posts`
+- `math-applied:trig:slope-ratio`

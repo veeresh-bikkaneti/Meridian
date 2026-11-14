@@ -278,5 +278,83 @@
     "useElsewhere": [
       "everyday: a warmer on-screen mix finishes sooner"
     ]
+  },
+  {
+    "id": "chemistry:mixtures:concentrate-dilution",
+    "group": "18+",
+    "objective": "After this, an adult can scale a concentrate's share of a mix from one volume to another, shown by entering the millilitres before the bottle is checked.",
+    "standard": "UNVERIFIED",
+    "why": "A cleaning concentrate comes in a 250 millilitre bottle that holds 10 millilitres of concentrate, with water making up the rest. How many millilitres of concentrate are in 1 litre of the same mix? Fit: adult extension of HS-PS1-7; no code covers beyond grade 12.",
+    "buildsOn": [
+      "chemistry:mixtures:dissolve"
+    ],
+    "useElsewhere": [
+      "math: scaling a share of a whole from one size to another is the same proportion step used to compare two rates"
+    ]
+  },
+  {
+    "id": "chemistry:reactions:kit-limit",
+    "group": "18+",
+    "objective": "After this, an adult can find which ingredient limits a reaction and count the full batches, shown by entering the pack count before the bin is sealed.",
+    "standard": "UNVERIFIED",
+    "why": "A reaction kit makes one full pack from 1 scoop of substance A and 2 scoops of substance B. A bin holds 10 scoops of A and 14 scoops of B. How many full packs can be made? Fit: adult extension of HS-PS1-2; no code covers beyond grade 12.",
+    "buildsOn": [
+      "chemistry:reactions:weight"
+    ],
+    "useElsewhere": [
+      "math: the smaller of two counts sets how many full groups can be made"
+    ]
+  },
+  {
+    "id": "chemistry:elements:model-hydrogen",
+    "group": "18+",
+    "objective": "After this, an adult can count the atoms of each kind in a set of identical units, shown by entering the hydrogen count before the model is taken apart.",
+    "standard": "UNVERIFIED",
+    "why": "A classroom model unit is built from 2 hydrogen balls and 1 oxygen ball. A teacher builds 50 units. How many hydrogen balls are used? Fit: adult extension of HS-PS1-7; no code covers beyond grade 12.",
+    "buildsOn": [
+      "chemistry:elements:detective"
+    ],
+    "useElsewhere": [
+      "math: counting equal groups of identical pieces is the same multiply step used for any repeated count"
+    ]
+  },
+  {
+    "id": "chemistry:materials:recycle-share",
+    "group": "18+",
+    "objective": "After this, an adult can find a part of a load from its percent share, shown by entering the aluminium mass before the load is sorted.",
+    "standard": "UNVERIFIED",
+    "why": "A recycling plant receives 1,200 kilograms of mixed metal cans. Of that load, 25 percent is aluminium. How many kilograms of aluminium are there? Fit: adult extension of HS-PS1-2; no code covers beyond grade 12.",
+    "buildsOn": [
+      "chemistry:materials:identify"
+    ],
+    "useElsewhere": [
+      "social-studies: a percent share of a region's total is the same calculation as a share of a map's area"
+    ]
+  },
+  {
+    "id": "chemistry:mixtures:two-step-dilution",
+    "group": "18+",
+    "objective": "After this, an adult can multiply two dilution steps into one overall ratio, shown by entering the part count before the stock is labelled.",
+    "standard": "UNVERIFIED",
+    "why": "A stock is diluted 1 part stock to 9 parts water, and then that mix is diluted again 1 part to 4 parts water. What is the total stock share, written as 1 part in how many parts? Fit: adult extension of HS-PS1-7; no code covers beyond grade 12.",
+    "buildsOn": [
+      "chemistry:mixtures:dissolve"
+    ],
+    "useElsewhere": [
+      "math: multiplying two fractions of a whole gives one fraction of the whole"
+    ]
+  },
+  {
+    "id": "chemistry:materials:label-mass",
+    "group": "18+",
+    "objective": "After this, an adult can use a stated mass per volume to find a sample's mass, shown by entering the grams before the balance reading is compared.",
+    "standard": "UNVERIFIED",
+    "why": "A label says a liquid has a mass of 0.8 grams for each millilitre. A 100 millilitre sample is weighed in the lab. What should its mass be, using the label? Fit: adult extension of HS-PS1-7; no code covers beyond grade 12.",
+    "buildsOn": [
+      "chemistry:materials:identify"
+    ],
+    "useElsewhere": [
+      "physics: multiplying a per-unit quantity by an amount is the same step used for work from a force"
+    ]
   }
 ]

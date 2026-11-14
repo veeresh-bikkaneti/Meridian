@@ -183,5 +183,89 @@
     "useElsewhere": [
       "everyday life: comparing a household's water use per day with one second of the falls"
     ]
+  },
+  {
+    "id": "general-knowledge:mixed:map-scale-route",
+    "group": "18+",
+    "objective": "After this, an adult can convert a map distance to a real distance, shown by entering the kilometres before the route is drawn.",
+    "standard": "UNVERIFIED",
+    "why": "A road map's scale says 1 centimetre equals 5 kilometres. Two towns are 7.2 centimetres apart on the map. How far apart are they in real life? Fit: no school code; adult map arithmetic.",
+    "buildsOn": [
+      "general-knowledge:mixed:paris-sydney-flight",
+      "geography:globe:eiffel-tower"
+    ],
+    "useElsewhere": [
+      "geography: a scale turns a measured map length into a real route length"
+    ]
+  },
+  {
+    "id": "general-knowledge:mixed:trail-walk-time",
+    "group": "18+",
+    "objective": "After this, an adult can compute an outing's total time from walking and rest, shown by entering the hours before the trail sign is read.",
+    "standard": "UNVERIFIED",
+    "why": "A hiking trail is 14 kilometres long. A walker covers 4 kilometres in each hour of walking and stops for a 1 hour rest at the end. How long is the whole outing? Fit: no school code; adult trail arithmetic.",
+    "buildsOn": [
+      "general-knowledge:mixed:everest-vs-falls",
+      "physics:arrive:unit-rate"
+    ],
+    "useElsewhere": [
+      "physics: distance over speed gives the time taken, the same rate step used for a moving object"
+    ]
+  },
+  {
+    "id": "general-knowledge:mixed:bridge-spans",
+    "group": "18+",
+    "objective": "After this, an adult can compute a bridge's total length from equal spans, shown by entering the length before the plan is signed.",
+    "standard": "UNVERIFIED",
+    "why": "A river bridge is built from 6 equal spans, each 45 metres long. How long is the bridge from end to end? Fit: no school code; adult length arithmetic.",
+    "buildsOn": [
+      "general-knowledge:mixed:tower-angle",
+      "math-number:place:hundreds-tens-ones"
+    ],
+    "useElsewhere": [
+      "everyday life: repeated equal lengths add up to a product, the same step as a rectangle's area"
+    ]
+  },
+  {
+    "id": "general-knowledge:mixed:flight-arrival-clock",
+    "group": "18+",
+    "objective": "After this, an adult can compute a landing clock time across midnight, shown by entering the landing time before the board is checked.",
+    "standard": "UNVERIFIED",
+    "why": "A flight leaves at 22:00 by the clock and lasts 9 hours and 40 minutes. Ignoring time zones, what time is it when the plane lands? Fit: no school code; adult clock arithmetic.",
+    "buildsOn": [
+      "general-knowledge:mixed:paris-sydney-flight",
+      "geography:globe:sydney-opera-house"
+    ],
+    "useElsewhere": [
+      "everyday life: planning a trip's end time from a start time and a length, as on a route plan"
+    ]
+  },
+  {
+    "id": "general-knowledge:mixed:field-area",
+    "group": "18+",
+    "objective": "After this, an adult can compute a rectangle's area from its two sides, shown by entering the square metres before the field is marked out.",
+    "standard": "UNVERIFIED",
+    "why": "A rectangular sports field is 200 metres long and 150 metres wide. What is its area in square metres? Fit: no school code; adult area arithmetic.",
+    "buildsOn": [
+      "general-knowledge:mixed:tower-angle",
+      "geography:globe:angkor"
+    ],
+    "useElsewhere": [
+      "physics: area times depth gives a volume, the same product step used for the amount a tank holds"
+    ]
+  },
+  {
+    "id": "general-knowledge:mixed:ferry-tickets",
+    "group": "18+",
+    "objective": "After this, an adult can compute a bill with two kinds of item, shown by entering the total coins before the ticket is printed.",
+    "standard": "UNVERIFIED",
+    "why": "A ferry ticket costs 12 coins for each adult. A bicycle costs an extra 3 coins. What does a trip for 4 adults with 2 bicycles cost? Fit: no school code; neutral adult cost arithmetic.",
+    "buildsOn": [
+      "general-knowledge:mixed:everest-vs-falls",
+      "math-number:place:compare"
+    ],
+    "useElsewhere": [
+      "everyday life: a total from two groups of items is the same multiply-and-add step used for any bill"
+    ]
   }
 ]
