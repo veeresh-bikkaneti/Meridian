@@ -94,7 +94,7 @@ export const PHYSICS_ANSWERS: Record<string, AnswerEntry> = {
     ],
     correct: "No, the cardboard blocks the light",
     derivation:
-      "You see the book only when light from it reaches your eye — the cardboard blocks that light, so the book is not seen.",
+      "You see the book only when light reflected from it reaches your eye — the cardboard blocks that light, so the book is not seen.",
   },
   "physics:mirror:sends-back": {
     prompt: "A lamp lights a book on a shelf. How do you see the book?",
@@ -174,7 +174,7 @@ export const PHYSICS_ANSWERS: Record<string, AnswerEntry> = {
     choices: ["The mirror", "The dark cloth", "The clear sheet"],
     correct: "The mirror",
     derivation:
-      "Of the three, only the mirror reflects light — the dark cloth absorbs it and the clear sheet lets it through.",
+      "In this model, the mirror is the one that reflects the light — the dark cloth absorbs it and the clear sheet lets it through.",
   },
   "physics:ramp:adult-ratio": {
     prompt: "Boom A rises 3 for a run of 6. Boom B rises 4 for a run of 6. Which boom is steeper?",
