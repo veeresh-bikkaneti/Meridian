@@ -5,12 +5,18 @@
  * data file is NEVER edited by this module; the adapter only selects
  * and re-shapes rows.
  *
- * The slice keeps up to 3 items per age band, picked where the row's
- * why / objective yields one unambiguous multiple-choice answer with
- * the shared AnswerCard (see answers.ts for each derivation, listed
- * in the PR for educator review). Rows that need an interaction the
- * AnswerCard cannot do (tapping a direction or a path on a scene) are
- * a later wave and are not in this slice.
+ * The slice keeps every row that maps onto the shared AnswerCard as
+ * one multiple-choice question (v2: all 24 curated rows). Rows whose
+ * objective says "shown by tapping X" render as "pick X" choices —
+ * the same mapping the first slice already used for
+ * physics:push:which-way (tap a direction → pick a direction) and
+ * physics:arrive:unit-rate (tap a cart → pick a cart). Two prompts
+ * are reframed, not the rows: physics:lever:seesaw asks about the
+ * far end (the row's literal question gives its answer away), and
+ * physics:shadow:blocks asks the row's own "when is the book seen?"
+ * question. No row needs a scene this wave; none has a number answer
+ * that choices would give away, so nothing is held for typed-number
+ * (Stream B's kind field is not on main yet).
  */
 import type { AgeGroup, UnitItem } from "../registry.ts";
 import rows from "../../../docs/scaling/physics/items.json" with { type: "json" };
@@ -56,16 +62,31 @@ export function allPhysicsRows(): UnitItem[] {
   return out;
 }
 
-/** The live slice: up to 3 items per band, in deal order. */
+/** The live slice: every curated row, in deal order per band (v2: 12 / 9 / 3). */
 export const PHYSICS_ITEM_IDS: readonly string[] = [
   // 7-10
   "physics:push:which-way",
   "physics:push:equal-pushes",
   "physics:magnet:flip",
+  "physics:drop:down",
+  "physics:friction:measure-slide",
+  "physics:ramp:faster-hits-harder",
+  "physics:arrive:equal-steps",
+  "physics:lever:seesaw",
+  "physics:balance:tug",
+  "physics:energy:wound-moves",
+  "physics:shadow:blocks",
+  "physics:mirror:sends-back",
   // 10-18
   "physics:arrive:unit-rate",
   "physics:ramp:slope-ratio",
   "physics:magnet:closer",
+  "physics:push:mass",
+  "physics:push:table",
+  "physics:ramp:higher-stored",
+  "physics:energy:transfer",
+  "physics:sound:medium",
+  "physics:mirror:three-ways",
   // 18+
   "physics:ramp:adult-ratio",
   "physics:arrive:adult-time",
