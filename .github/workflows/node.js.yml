@@ -52,6 +52,9 @@ jobs:
     - run: npm run lint:subjects
     # One home label (nav-home council, 2026-11-13): fails on hand-written
     # home labels ("Editions", "Back to Home", …); see eslint/home-label-rule.mjs.
+    # One voice at a time (PR #430, #470): audio goes through the voice
+    # channel and a tapped play() runs before any await; see
+    # eslint/voice-channel-rule.mjs.
     - run: npm run lint:nav
     - run: npm run test:worker
     - run: npm run typecheck:worker
