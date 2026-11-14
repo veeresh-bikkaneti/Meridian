@@ -3,6 +3,7 @@ import { StorytellerMascot, isPlayAbort, useCelebrationActive, useTourActive } f
 import { fallbackLine, shouldReplayGreeting, decideEnteringFigureTap, isRapidFigureTap, shouldMarkGreetingDismissed } from "./storyteller-audio-guards";
 import { STORYTELLER_HOME_RETRY_HINT } from "./storyteller-lines";
 import { isSoundEnabled } from "@/game/audio/sfx";
+import { claimVoice, type VoiceClaim } from "@/game/audio/voice-channel";
 import {
   GREETINGS,
   POKE_LINES,
@@ -239,6 +240,8 @@ export default function StorytellerHomeHost({
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const pokeAudioRef = useRef<HTMLAudioElement | null>(null);
+  /** The app-wide voice channel claim for the clip now sounding. */
+  const voiceRef = useRef<VoiceClaim | null>(null);
   const bubbleTimer = useRef(0);
   const capTimer = useRef(0);
   const soundWatch = useRef(0);
@@ -322,6 +325,8 @@ export default function StorytellerHomeHost({
     audioRef.current = null;
     pokeAudioRef.current?.pause();
     pokeAudioRef.current = null;
+    voiceRef.current?.release();
+    voiceRef.current = null;
     setGreetingPaused(false);
   }, []);
 
@@ -551,10 +556,25 @@ export default function StorytellerHomeHost({
     setPhase("idle_linger");
   }, [greetingText, showBubble, stopAudio]);
 
-  const beginGreetingAudio = useCallback(() => {
+  const beginGreetingAudio = useCallback((userInitiated = false) => {
     const url = assetsRef.current.greetAudio;
     if (!url || !isSoundEnabled()) return;
     stopAudio();
+    // One voice at a time: a tap takes the channel from whoever holds it;
+    // an automatic greeting waits its turn and falls back to text.
+    const claim = claimVoice(
+      "storyteller-home",
+      () => {
+        stopAudio();
+        setPhase("idle_linger");
+      },
+      { userInitiated },
+    );
+    if (!claim) {
+      failGreetingAudio();
+      return;
+    }
+    voiceRef.current = claim;
     // Fix D: a new attempt resets the replay bookkeeping.
     greetAttemptedRef.current = true;
     greetingHeardRef.current = false;
@@ -665,7 +685,7 @@ export default function StorytellerHomeHost({
     if (isSoundEnabled() && assetsRef.current.greetAudio) {
       gestureDoneRef.current = true;
       showBubble(greetingText, null);
-      beginGreetingAudio();
+      beginGreetingAudio(true);
       return;
     }
     setPhase("greeting_text");
@@ -946,7 +966,7 @@ export default function StorytellerHomeHost({
       gestureDoneRef.current = true;
       if (assetsRef.current.greetAudio) {
         showBubble(greetingText, null);
-        beginGreetingAudio();
+        beginGreetingAudio(true);
       } else {
         // Manifest still in flight — register the intent and make sure
         // the load is in flight (the same cached promise the mount
@@ -981,7 +1001,7 @@ export default function StorytellerHomeHost({
       const replayNow = Date.now();
       if (replayNow - lastPokeRef.current < POKE_DEBOUNCE_MS) return;
       lastPokeRef.current = replayNow;
-      beginGreetingAudio();
+      beginGreetingAudio(true);
       return;
     }
     const now = Date.now();
@@ -995,11 +1015,37 @@ export default function StorytellerHomeHost({
     const pokeUrl = assetsRef.current.pokeAudio[index];
     pokeAudioRef.current?.pause();
     pokeAudioRef.current = null;
+    voiceRef.current?.release();
+    voiceRef.current = null;
     if (pokeUrl && isSoundEnabled()) {
+      // A poke is a tap: it takes the channel from whoever is speaking.
+      const pokeClaim = claimVoice(
+        "storyteller-home",
+        () => {
+          pokeAudioRef.current?.pause();
+          pokeAudioRef.current = null;
+        },
+        { userInitiated: true },
+      );
+      voiceRef.current = pokeClaim;
       const pokeAudio = new Audio(pokeUrl);
       pokeAudioRef.current = pokeAudio;
+      pokeAudio.addEventListener(
+        "ended",
+        () => {
+          if (pokeAudioRef.current === pokeAudio) {
+            voiceRef.current?.release();
+            voiceRef.current = null;
+          }
+        },
+        { once: true },
+      );
       void pokeAudio.play().catch(() => {
-        if (pokeAudioRef.current === pokeAudio) pokeAudioRef.current = null;
+        if (pokeAudioRef.current === pokeAudio) {
+          pokeAudioRef.current = null;
+          voiceRef.current?.release();
+          voiceRef.current = null;
+        }
       });
     }
     pokeVisual();
@@ -1034,6 +1080,8 @@ export default function StorytellerHomeHost({
       audioRef.current = null;
       pokeAudioRef.current?.pause();
       pokeAudioRef.current = null;
+      voiceRef.current?.release();
+      voiceRef.current = null;
     };
   }, [clearTimers]);
 
@@ -1125,7 +1173,7 @@ export default function StorytellerHomeHost({
           className="storyteller-banner-replay"
           data-testid="storyteller-home-replay"
           aria-label="Replay the greeting"
-          onClick={() => beginGreetingAudio()}
+          onClick={() => beginGreetingAudio(true)}
         >
           Hear again
         </button>

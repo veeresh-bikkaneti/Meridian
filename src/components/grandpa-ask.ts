@@ -17,6 +17,8 @@
  * or the figure is hovered or clicked. The speaker toggle is the only mute.
  */
 
+import { claimVoice, type VoiceClaim } from "../game/audio/voice-channel.ts";
+
 export const TRAIL_QUIPS = [
   "These hills did not ask my knees for permission.",
   "I can smell the coffee from the next ridge.",
@@ -45,10 +47,15 @@ function clipUrl(file: string): string {
   return `${base.endsWith("/") ? base : `${base}/`}audio/grandpa/${file}`;
 }
 
+/** The app-wide voice channel claim for the line now sounding. */
+let voiceClaim: VoiceClaim | null = null;
+
 function stopNarration(): void {
   window.clearTimeout(coughTimer);
   current?.pause();
   current = null;
+  voiceClaim?.release();
+  voiceClaim = null;
 }
 
 /** One lazily-created AudioContext shared by all coughs. Kept alive
@@ -114,28 +121,37 @@ export function playCough(): void {
   }
 }
 
-function playFile(file: string): void {
+function playFile(file: string, userInitiated: boolean): void {
   if (!soundOn()) return;
   stopNarration();
+  // One voice at a time. A trail line is timer-driven, so it waits its
+  // turn and is dropped (not queued) if someone is speaking; the coffee
+  // ask is a hover/click, so it takes the channel.
+  const claim = claimVoice("grandpa-ask", stopNarration, { userInitiated });
+  if (!claim) return;
+  voiceClaim = claim;
   playCough();
   const audio = new Audio(clipUrl(file));
   current = audio;
+  const settle = () => {
+    if (current === audio) stopNarration();
+  };
+  audio.onended = settle;
+  audio.onerror = settle;
   coughTimer = window.setTimeout(() => {
     if (current !== audio || !soundOn()) return;
-    void audio.play().catch(() => {
-      if (current === audio) current = null;
-    });
+    void audio.play().catch(settle);
   }, 420);
 }
 
 /** The trail line that matches the caption on screen. */
 export function playTrail(index: number): void {
-  playFile(TRAIL_FILES[index % TRAIL_FILES.length]!);
+  playFile(TRAIL_FILES[index % TRAIL_FILES.length]!, false);
 }
 
 /** The locked coffee ask, spoken. */
 export function playAsk(): void {
-  playFile(ASK_FILE);
+  playFile(ASK_FILE, true);
 }
 
 if (typeof window !== "undefined") {

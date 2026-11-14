@@ -23,6 +23,7 @@ import type { AudioMode } from "@/game/age-profile";
 import { getReadAloudPref, shouldAutoPlayReadAloud } from "@/game/age-profile/read-aloud-pref";
 import type { ReadAloudPrefOrUnset } from "@/game/age-profile/read-aloud-pref";
 import { isSoundEnabled } from "@/game/audio/sfx";
+import { claimVoice, type VoiceClaim } from "@/game/audio/voice-channel";
 
 export interface ReadAloudButtonProps {
   /** The text to speak (the card story). */
@@ -88,6 +89,34 @@ export function ReadAloudButton({ text, mode, autoplay, speakKey, pref }: ReadAl
   const [playing, setPlaying] = useState(false);
   const [showReadAlong, setShowReadAlong] = useState(false);
   const spokenKey = useRef<string | null>(null);
+  const claimRef = useRef<VoiceClaim | null>(null);
+
+  /** Speak `text` on the device voice through the app-wide channel: a
+   * tap takes the channel from whoever is speaking, auto-read waits its
+   * turn and stays silent if someone else has it. */
+  const speak = (userInitiated: boolean) => {
+    const synth = window.speechSynthesis;
+    const claim = claimVoice(
+      "read-aloud",
+      () => {
+        synth.cancel();
+        setPlaying(false);
+      },
+      { userInitiated },
+    );
+    if (!claim) return;
+    claimRef.current = claim;
+    synth.cancel();
+    const utter = new SpeechSynthesisUtterance(text);
+    const end = () => {
+      claim.release();
+      setPlaying(false);
+    };
+    utter.onend = end;
+    utter.onerror = end;
+    setPlaying(true);
+    synth.speak(utter);
+  };
 
   const handleTap = () => {
     // No speech on this device: stay visible + tappable, show the locked
@@ -99,17 +128,12 @@ export function ReadAloudButton({ text, mode, autoplay, speakKey, pref }: ReadAl
     }
     if (playing) {
       window.speechSynthesis.cancel();
+      claimRef.current?.release();
       setPlaying(false);
       return;
     }
     if (!text) return;
-    const synth = window.speechSynthesis;
-    synth.cancel();
-    const utter = new SpeechSynthesisUtterance(text);
-    utter.onend = () => setPlaying(false);
-    utter.onerror = () => setPlaying(false);
-    setPlaying(true);
-    synth.speak(utter);
+    speak(true);
   };
 
   // Auto-play once per card. Guarded by speakKey so re-renders and
@@ -125,18 +149,13 @@ export function ReadAloudButton({ text, mode, autoplay, speakKey, pref }: ReadAl
       spokenKey.current = speakKey;
       const kidPref = pref ?? getReadAloudPref();
       if (shouldAutoPlayReadAloud(kidPref, bandWantsAuto, isSoundEnabled()) && speechAvailable() && text) {
-        const synth = window.speechSynthesis;
-        synth.cancel();
-        const utter = new SpeechSynthesisUtterance(text);
-        utter.onend = () => setPlaying(false);
-        utter.onerror = () => setPlaying(false);
-        setPlaying(true);
-        synth.speak(utter);
+        speak(false);
       }
     }
     // Stop speech when the card leaves (mode unmounts on the next card).
     return () => {
       if (speechAvailable()) window.speechSynthesis.cancel();
+      claimRef.current?.release();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [speakKey, mode, autoplay]);

@@ -284,3 +284,140 @@ test("tap mode: opening cards stay shut past the clue watchdog until Watson is h
     timeout: 120_000,
   });
 });
+
+/** The 7-10 band, tap mode (the Watson read waits for a tap). */
+async function seedBand710(context: BrowserContext): Promise<void> {
+  await context.addInitScript(() => {
+    localStorage.setItem(
+      "meridian.ageProfile.v1",
+      JSON.stringify({
+        status: "active",
+        band: "7-10",
+        updatedAt: new Date().toISOString(),
+        changeCount: 0,
+        schemaVersion: 2,
+      }),
+    );
+  });
+}
+
+/** Clue cards that are open (not "(locked)"), by their article names. */
+async function openClueNames(page: Page): Promise<string[]> {
+  return page.evaluate(() =>
+    Array.from(document.querySelectorAll('article[aria-label^="Clue"]'))
+      .map((el) => el.getAttribute("aria-label") ?? "")
+      .filter((name) => !name.includes("(locked)")),
+  );
+}
+
+test("tap mode, 7-10: past the clue watchdog after a wrong first guess, no extra card opens", async ({
+  page,
+  context,
+}) => {
+  await seedOwnerPref(context);
+  await seedBand710(context);
+  await fulfillFlagsFlank(context);
+  await installDetectiveRecorder(context);
+  await page.setViewportSize({ width: 390, height: 844 });
+
+  await openTapCase(page, CASE);
+  await expect(page.getByRole("article", { name: /^Clue 1: Geography$/ })).toBeVisible();
+
+  // A wrong first guess (the case is Henderson, Nevada).
+  const paris = entryByName("paris");
+  await pickOnly(page, paris.id, "paris");
+  await page.getByRole("button", { name: "Guess this place" }).click();
+  await expect(page.getByText(/Guess 2 of/).first()).toBeVisible({ timeout: 30_000 });
+
+  // The ladder presents the new clue 4 on its own turn.
+  await expect(page.getByRole("article", { name: /^Clue 4: The Hook$/ })).toBeVisible({
+    timeout: 60_000,
+  });
+  const before = await openClueNames(page);
+  expect(before.length).toBeLessThanOrEqual(4);
+
+  // Past CLUE_PRESENT_WATCHDOG_MS (30 s) with Watson's read still waiting
+  // for a tap: that wait is not a stall, so the watchdog adds nothing.
+  await page.waitForTimeout(32_000);
+  expect(await openClueNames(page)).toEqual(before);
+});
+
+test("tap mode: tap Watson, then pick a place while he is still reading — never two voices at once", async ({
+  page,
+  context,
+}, testInfo) => {
+  await seedOwnerPref(context);
+  await fulfillFlagsFlank(context);
+  // Real-time playback (rate 1) so Watson is still reading at the pick.
+  await installDetectiveRecorder(context, 1);
+  await context.addInitScript(() => {
+    const w = window as unknown as {
+      __voiceMax: number;
+      __voiceOverlap: Array<{ started: string; others: string[] }>;
+      __watsonCutAtPick?: boolean;
+      __detectiveAudios?: HTMLMediaElement[];
+    };
+    w.__voiceMax = 0;
+    w.__voiceOverlap = [];
+    // At every speech start, count the OTHER clips still sounding.
+    document.addEventListener(
+      "play",
+      (e) => {
+        const startedEl = e.target as HTMLMediaElement;
+        const started = startedEl.currentSrc || startedEl.src || "";
+        const others = (w.__detectiveAudios ?? []).filter(
+          (a) => a !== startedEl && !a.paused && !a.ended,
+        );
+        w.__voiceOverlap.push({
+          started,
+          others: others.map((a) => a.currentSrc || a.src || ""),
+        });
+        // Voice clips live under case-*/ and names/. Home-screen
+        // films and sfx can overlap; they must not count as voices.
+        const isVoice = (src: string) =>
+          /\/names\//.test(src) || /\/case-\d+\//.test(src);
+        const voiceOthers = others.filter((a) =>
+          isVoice(a.currentSrc || a.src || ""),
+        );
+        const voiceCount = (isVoice(started) ? 1 : 0) + voiceOthers.length;
+        w.__voiceMax = Math.max(w.__voiceMax, voiceCount);
+      },
+      true,
+    );
+  });
+  await page.setViewportSize({ width: 390, height: 844 });
+
+  await openTapCase(page, CASE);
+  await releaseHeldClue(page, `case-${CASE}/clue-1.mp3`);
+
+  const lasVegas = entryByName("las vegas");
+  const NAME_CLIP = "names/5506956.mp3";
+  await pickOnly(page, lasVegas.id, "las vegas");
+  await expect
+    .poll(async () => (await playCount(page, NAME_CLIP)) > 0, { timeout: 45_000 })
+    .toBe(true);
+
+  // Watson's clip was cut for Holmes (paused or already finished), and at
+  // no speech start were two clips sounding.
+  const watsonSounding = await page.evaluate(() => {
+    const w = window as unknown as { __detectiveAudios?: HTMLMediaElement[] };
+    return (w.__detectiveAudios ?? []).some(
+      (a) => (a.currentSrc || a.src).includes("/clue-") && !a.paused && !a.ended,
+    );
+  });
+  expect(watsonSounding).toBe(false);
+  const voice = await page.evaluate(() => {
+    const w = window as unknown as {
+      __voiceMax: number;
+      __voiceOverlap: Array<{ started: string; others: string[] }>;
+    };
+    return { voiceMax: w.__voiceMax, overlap: w.__voiceOverlap ?? [] };
+  });
+  const overlapJson = JSON.stringify(voice.overlap, null, 2);
+  console.log("voice overlap", overlapJson);
+  await testInfo.attach("voice-overlap", {
+    body: overlapJson,
+    contentType: "application/json",
+  });
+  expect(voice.voiceMax, `overlaps: ${overlapJson}`).toBeLessThanOrEqual(1);
+});
