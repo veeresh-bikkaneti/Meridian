@@ -22,20 +22,39 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+      with:
+        # check:provenance reads the PR's own commits, so it needs history.
+        fetch-depth: 0
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
+    # Owner rule (2026-11-13): every PR commit is authored as the owner and
+    # no commit message or added line names an AI tool. Runs on PRs only:
+    # it checks the PR's own range, base..head.
+    - name: Commit author and AI-name check
+      if: github.event_name == 'pull_request'
+      env:
+        PROVENANCE_RANGE: ${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }}
+      run: npm run check:provenance
     # App typecheck (tsc --noEmit over src/ and server/). It takes about 10 s and
     # needs no secrets. Before this step only the crash worker was type-checked.
     - run: npm run typecheck
     - run: npm run build --if-present
     - run: npm test
     - run: npm run lint:content
+    # Subject leads and journal clip text (owner rules, 2026-11-13): no
+    # measurements in place stories or caption leads, no stored current
+    # year, no lead that gives the answer away; see
+    # scripts/lint-subject-leads.mjs for every rule it applies.
+    - run: npm run lint:subjects
     # One home label (nav-home council, 2026-11-13): fails on hand-written
     # home labels ("Editions", "Back to Home", …); see eslint/home-label-rule.mjs.
+    # One voice at a time (PR #430, #470): audio goes through the voice
+    # channel and a tapped play() runs before any await; see
+    # eslint/voice-channel-rule.mjs.
     - run: npm run lint:nav
     - run: npm run test:worker
     - run: npm run typecheck:worker

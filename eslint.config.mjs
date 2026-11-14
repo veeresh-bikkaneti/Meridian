@@ -5,6 +5,7 @@ import reactRefresh from "eslint-plugin-react-refresh";
 import globals from "globals";
 import tseslint from "typescript-eslint";
 import { homeLabelConfig } from "./eslint/home-label-rule.mjs";
+import { voiceChannelConfig } from "./eslint/voice-channel-rule.mjs";
 
 /** Flat ESLint config for the TanStack Start app-builder template. */
 export default tseslint.config(
@@ -45,6 +46,8 @@ export default tseslint.config(
   },
   // One home label everywhere: see eslint/home-label-rule.mjs.
   homeLabelConfig,
+  // One voice at a time: see eslint/voice-channel-rule.mjs.
+  voiceChannelConfig,
   // Disable rules that conflict with Prettier formatting.
   prettier,
 );
