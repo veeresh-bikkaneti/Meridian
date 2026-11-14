@@ -12,10 +12,14 @@
  * comment forbids.
  *
  * DetectiveHost and the detective machine are unchanged and not mounted
- * here: the pair ships dark behind detectivePair in prod, and subject
- * items have no voice clips, so the case is text only with no new
- * audio. The win fires GameApp's existing celebration through
- * onCelebrate, on the same first-win guard LoopScreen uses.
+ * here. A subject case may report answer-blind case events through
+ * onCaseEvent (open / correct / wrong / finished — never an answer
+ * value or an item id): the math case uses that, only when the
+ * detectivePair flag is on, to let Holmes & Watson speak their fixed
+ * manifest clips (see src/subjects/math/case-voice.ts). Subjects that
+ * never pass the prop stay text only, exactly as before. The win
+ * fires GameApp's existing celebration through onCelebrate, on the
+ * same first-win guard LoopScreen uses.
  *
  * Each subject's own case component is a thin wrapper that passes its
  * title, its test-id prefix, its band items and its answer lookup.
@@ -47,6 +51,9 @@ export type SubjectCaseConfig = {
   answerFor: AnswerFor;
 };
 
+/** Answer-blind case events a subject wrapper may listen to. */
+export type SubjectCaseEvent = "open" | "correct" | "wrong" | "finished";
+
 export function SubjectCase({
   title,
   testIdPrefix,
@@ -55,10 +62,14 @@ export function SubjectCase({
   group,
   onExit,
   onCelebrate,
+  onCaseEvent,
 }: SubjectCaseConfig &
   SubjectProps & {
     /** GameApp's celebration trigger (the same one LoopScreen receives). */
     onCelebrate?: (spec: CelebrationSpec) => void;
+    /** Answer-blind case events (see the header). Optional: subjects
+     * that never pass it behave exactly as before. */
+    onCaseEvent?: (event: SubjectCaseEvent) => void;
   }) {
   const reduced = usePrefersReducedMotion();
   // The registry passes the session's group; fall back to the stored
@@ -69,6 +80,8 @@ export function SubjectCase({
   const [picked, setPicked] = useState<string | null>(null);
   const [solved, setSolved] = useState(false);
   const headingRef = useRef<HTMLHeadingElement | null>(null);
+  const openFiredRef = useRef(false);
+  const finishedFiredRef = useRef(false);
 
   // Arrival focus, the LoopScreen pattern: land focus on the heading so
   // it is never stranded on the Home card that opened the case.
@@ -76,6 +89,14 @@ export function SubjectCase({
     const el = headingRef.current;
     if (el && typeof el.focus === "function") el.focus({ preventScroll: true });
   }, []);
+
+  // "open" fires once per mount, and only once a listener exists (the
+  // math wrapper passes one only after its flag resolves on).
+  useEffect(() => {
+    if (!onCaseEvent || openFiredRef.current) return;
+    openFiredRef.current = true;
+    onCaseEvent("open");
+  }, [onCaseEvent]);
 
   const item = items[index] ?? null;
   const answer = item ? answerFor(item.id) : null;
@@ -95,12 +116,20 @@ export function SubjectCase({
     if (choice === answer.correct) {
       setSolved(true);
       setPicked(null);
+      onCaseEvent?.("correct");
+      // "finished": a correct pick on the band's LAST item, first
+      // time per mount only (the Next-case cycle can deal it again).
+      if (index === items.length - 1 && !finishedFiredRef.current) {
+        finishedFiredRef.current = true;
+        onCaseEvent?.("finished");
+      }
       if (onCelebrate && !hasCelebratedFirstWin()) {
         markFirstWinCelebrated();
         onCelebrate(celebrationSpec("mystery-solved", "first-win"));
       }
     } else {
       setPicked(choice);
+      onCaseEvent?.("wrong");
     }
   };
 
