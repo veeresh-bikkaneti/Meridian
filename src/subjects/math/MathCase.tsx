@@ -23,6 +23,7 @@
  */
 import type { SubjectProps } from "../registry";
 import type { CelebrationSpec } from "@/components/celebration-copy";
+import type { ResetHistoryResult } from "@/game/reset-history";
 import { SubjectCase } from "../shared/SubjectCase";
 import { ClueScene, ClueSummaryText } from "../shared/ClueScene";
 import { itemsForGroup } from "./items";
@@ -33,6 +34,14 @@ export default function MathCase(
   props: SubjectProps & {
     /** GameApp's celebration trigger (the same one LoopScreen receives). */
     onCelebrate?: (spec: CelebrationSpec) => void;
+    /** GameApp's End game, forwarded to the shared case's header. */
+    onEndGame?: () => void;
+    /** GameApp's "Start over" reset flow, forwarded to the case footer. */
+    onResetHistory?: () => ResetHistoryResult;
+    /** GameApp's GeoDetective resume, forwarded to the case header. */
+    onResumeCase?: () => void;
+    /** Whether a GeoDetective mystery is mid-play (the loop store). */
+    loopInProgress?: boolean;
   },
 ) {
   return (
