@@ -119,6 +119,18 @@ function givensOf(d: ClueSceneDescription): number[] {
       return [];
     case "light-path":
       return [];
+    case "rate-race":
+      return [d.firstMetres, d.firstSeconds, d.secondMetres, d.secondSeconds];
+    case "slope-pair":
+      return [d.firstRise, d.firstRun, d.secondRise, d.secondRun];
+    case "same-push":
+      return [d.leftBoxes, d.rightBoxes, d.leftForce, d.rightForce];
+    case "hill-carts":
+      return [d.lowStep, d.highStep];
+    case "sound-path":
+      return [];
+    case "energy-ledger":
+      return [d.change, d.out];
   }
 }
 
@@ -210,6 +222,23 @@ function stepCountOf(d: ClueSceneDescription): number {
       return 3; // the key turns, the roll, the final tick
     case "light-path":
       return 3; // the ray to the book, the ray onward (or the card), the final tick
+    case "rate-race": {
+      const winnerSeconds =
+        d.firstMetres / d.firstSeconds >= d.secondMetres / d.secondSeconds
+          ? d.firstSeconds
+          : d.secondSeconds;
+      return winnerSeconds + 1; // one hop per second of the winner's run, then the final tick
+    }
+    case "slope-pair":
+      return 3; // the first slope line, the second slope line, the final tick
+    case "same-push":
+      return 3; // the arrows press, both carts roll, the final tick
+    case "hill-carts":
+      return 3; // the height marks, the store stacks, the final tick
+    case "sound-path":
+      return 3; // the waves cross the air, the waves fade at the gap, the final tick
+    case "energy-ledger":
+      return 3; // the out bar, the stacked change bar, the in bar and tick
   }
 }
 

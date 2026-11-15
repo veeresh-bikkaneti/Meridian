@@ -930,6 +930,89 @@ export function LightPathScene({
    * stepDelay(s) instead of the film's own stagger. */
   stepDelay?: (step: number) => number;
 }) {
+  if (description.threeMaterials) {
+    // Wave-6 variant (physics:mirror:three-ways): one lamp
+    // faces three materials stacked at the right — dark cloth,
+    // clear sheet, mirror. Setup draws the objects only, no
+    // ray at all. Solved in three steps: 0 the light runs to
+    // the cloth and is soaked up, 1 it passes through the
+    // sheet and bounces back off the mirror, 2 the final tick
+    // stands over the mirror. The wave-5 paths below are
+    // untouched.
+    const clothStart = stepDelay ? stepDelay(0) : 0.5;
+    const passStart = stepDelay ? stepDelay(1) : 1.4;
+    const tickStart = stepDelay ? stepDelay(2) : 2.3;
+    const lampX = 46;
+    const matX = 238;
+    const rows = [
+      { cy: 56, kind: "cloth" },
+      { cy: 98, kind: "sheet" },
+      { cy: 140, kind: "mirror" },
+    ] as const;
+    const lampArt = (
+      <>
+        <path className="cs-line" d={`M${lampX} 156 L${lampX} 100`} />
+        <path className="cs-tip" d={`M${lampX - 13} 102 L${lampX + 15} 84 L${lampX + 19} 98 L${lampX - 9} 108 Z`} />
+        <path className="cs-line cs-band" d={`M${lampX - 10} 158 Q${lampX} 155 ${lampX + 10} 158`} />
+      </>
+    );
+    const material = (cy: number, kind: string) => {
+      if (kind === "cloth") {
+        return (
+          <>
+            <path className="cs-line" d={`M${matX - 16} ${cy - 16} Q${matX} ${cy - 20} ${matX + 16} ${cy - 16} L${matX + 14} ${cy + 16} Q${matX} ${cy + 12} ${matX - 14} ${cy + 16} Z`} />
+            <path className="cs-line cs-soft" d={`M${matX - 10} ${cy - 6} Q${matX} ${cy - 9} ${matX + 10} ${cy - 6} M${matX - 10} ${cy + 5} Q${matX} ${cy + 2} ${matX + 10} ${cy + 5}`} />
+          </>
+        );
+      }
+      if (kind === "sheet") {
+        return (
+          <>
+            <rect className="cs-bar" x={matX - 4} y={cy - 17} width="8" height="34" rx="2" />
+            <path className="cs-line cs-soft" d={`M${matX - 1} ${cy - 12} Q${matX + 1} ${cy} ${matX - 1} ${cy + 12}`} />
+          </>
+        );
+      }
+      return (
+        <>
+          <rect className="cs-pack" x={matX - 5} y={cy - 18} width="10" height="36" rx="2" />
+          <path className="cs-line cs-band" d={`M${matX} ${cy - 13} Q${matX + 2} ${cy} ${matX} ${cy + 13}`} />
+        </>
+      );
+    };
+    const rayTo = (cy: number, start: number) => (
+      <path className="cs-line cs-band cs-draw" pathLength={1} d={`M${lampX + 17} 96 Q150 ${cy} ${matX - 18} ${cy}`} style={delay(start)} />
+    );
+    return (
+      <>
+        <path className="cs-line cs-soft cs-draw" pathLength={1} d="M24 30 Q160 26 296 30" style={delay(0.1)} />
+        <path className="cs-line cs-draw" pathLength={1} d="M20 160 Q160 164 300 160" style={delay(0)} />
+        <g className="cs-pop" style={delay(0.35)}>{lampArt}</g>
+        {rows.map((row, i) => (
+          <g key={row.kind} className="cs-pop" style={delay(0.45 + i * 0.12)}>
+            {material(row.cy, row.kind)}
+          </g>
+        ))}
+        {phase === "solved" ? (
+          <>
+            {/* To the cloth: the light arrives and stops. */}
+            {rayTo(rows[0].cy, clothStart)}
+            <circle className="cs-stone cs-pop" cx={matX - 22} cy={rows[0].cy} r="3.2" style={delay(clothStart + 0.5)} />
+            {/* Through the sheet: the light runs on past it. */}
+            {rayTo(rows[1].cy, passStart)}
+            <path className="cs-line cs-soft cs-draw" pathLength={1} d={`M${matX + 6} ${rows[1].cy} Q${matX + 24} ${rows[1].cy - 2} ${matX + 40} ${rows[1].cy}`} style={delay(passStart + 0.35)} />
+            {/* Off the mirror: the light bounces back. */}
+            {rayTo(rows[2].cy, passStart + 0.2)}
+            <path className="cs-line cs-band cs-draw" pathLength={1} d={`M${matX - 6} ${rows[2].cy} Q${matX - 44} ${rows[2].cy + 16} ${matX - 78} ${rows[2].cy + 12}`} style={delay(passStart + 0.6)} />
+            <ellipse className="cs-ring" cx={matX} cy={rows[2].cy} rx="16" ry="24" style={delay(tickStart + 0.4)} />
+            <text className="cs-tick cs-tick-final" x={matX} y="98" style={delay(tickStart + 0.55)}>
+              ✓
+            </text>
+          </>
+        ) : null}
+      </>
+    );
+  }
   const { withCard } = description;
   const rayStart = stepDelay ? stepDelay(0) : 0.5;
   const onwardStart = stepDelay ? stepDelay(1) : 1.4;
@@ -1008,6 +1091,90 @@ export function LightPathScene({
           </text>
         </>
       ) : null}
+    </>
+  );
+}
+
+/* ── energy-ledger (wave 6) ──────────────────────────────────
+   A battery store and its log: change = in − out. Setup: the
+   store outline and the two given bars (out, change) at equal
+   weight — the in bar, which is the answer, is never drawn
+   before the pick. Solved in three steps: 0 the out bar
+   stands, 1 the change bar stacks onto it, 2 the in bar —
+   exactly as long as the two stacked — draws above them with
+   the final tick. Every length is computed from the givens. */
+
+export function EnergyLedgerScene({
+  description,
+  phase,
+  stepDelay,
+}: {
+  description: Extract<ClueSceneDescription, { kind: "energy-ledger" }>;
+  phase: ClueScenePhase;
+  /** Summary pacing: when present, step s's beat starts at
+   * stepDelay(s) instead of the film's own stagger. */
+  stepDelay?: (step: number) => number;
+}) {
+  const { change, out } = description;
+  const into = change + out;
+  const outStart = stepDelay ? stepDelay(0) : 0.5;
+  const stackStart = stepDelay ? stepDelay(1) : 1.4;
+  const inStart = stepDelay ? stepDelay(2) : 2.3;
+  const x0 = 92;
+  const unit = 30;
+  const inY = 62;
+  const outY = 100;
+  const changeY = 132;
+  const bar = (y: number, units: number, cls: string, start: number) => (
+    <g className="cs-grow" style={delay(start)}>
+      <rect className={cls} x={x0} y={y - 10} width={units * unit} height="20" rx="3" />
+    </g>
+  );
+  return (
+    <>
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M24 30 Q160 26 296 30" style={delay(0.1)} />
+      <path className="cs-line cs-draw" pathLength={1} d="M16 168 Q160 172 304 168" style={delay(0)} />
+      {/* The battery store the log belongs to. */}
+      <g className="cs-pop" style={delay(0.4)}>
+        <rect className="cs-pack" x="34" y="66" width="38" height="76" rx="4" />
+        <path className="cs-line cs-band" d="M46 66 L46 56 Q53 53 60 56 L60 66" />
+        <path className="cs-line cs-soft" d="M40 92 Q53 89 66 92 M40 116 Q53 113 66 116" />
+      </g>
+      {/* The log's two given bars, drawn in setup at rest. */}
+      {phase === "setup" ? (
+        <>
+          <g className="cs-pop" style={delay(0.55)}>
+            <rect className="cs-bar" x={x0} y={outY - 10} width={out * unit} height="20" rx="3" />
+          </g>
+          <g className="cs-pop" style={delay(0.65)}>
+            <rect className="cs-bar" x={x0} y={changeY - 10} width={change * unit} height="20" rx="3" />
+          </g>
+        </>
+      ) : (
+        <>
+          {/* Step 0: the out bar stands on its own line. */}
+          {bar(outY, out, "cs-bar", outStart)}
+          <text className="cs-tick" x={x0 + out * unit + 10} y={outY + 5} style={delay(outStart + 0.4)}>
+            {out}
+          </text>
+          {/* Step 1: the change bar stacks onto the out bar's
+              line, end to end. */}
+          <g transform={`translate(${out * unit} ${outY - changeY})`}>
+            <g className="cs-grow" style={delay(stackStart)}>
+              <rect className="cs-split-high" x={x0} y={changeY - 10} width={change * unit} height="20" rx="3" />
+            </g>
+          </g>
+          <text className="cs-tick" x={x0 + into * unit + 10} y={outY + 5} style={delay(stackStart + 0.4)}>
+            {change}
+          </text>
+          {/* Step 2: the in bar above — exactly the stacked
+              length — with the final tick. */}
+          {bar(inY, into, "cs-split-low", inStart)}
+          <text className="cs-tick cs-tick-final" x={x0 + into * unit + 10} y={inY + 5} style={delay(inStart + 0.5)}>
+            {into}
+          </text>
+        </>
+      )}
     </>
   );
 }

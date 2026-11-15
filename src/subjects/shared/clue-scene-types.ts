@@ -627,6 +627,11 @@ export type ClueSceneDescription =
       /** How far the faster ball's hit slides the cup — spent
        * only in the solved phase, like slowSlide. */
       fastSlide: number;
+      /** True for the wave-6 transfer item: ONE ball rolls in,
+       * stops dead against the cup, and the cup slides
+       * slowSlide on its own (fastSlide unused, 0). Absent, the
+       * renderer runs the wave-4 two-ball path unchanged. */
+      stopsDead?: boolean;
       labelSetup: string;
       labelSolved: string;
       /** Narrated solved summary (act 3); solved phase only. */
@@ -641,6 +646,11 @@ export type ClueSceneDescription =
     }
   | {
       kind: "magnet-pair";
+      /** True for the wave-6 closer item: TWO pairs rest at
+       * different gaps (the question's givens) and the closer
+       * pair snaps together in the solved beat. Absent, the
+       * renderer runs the wave-5 cabinet path unchanged. */
+      twoPairs?: boolean;
       labelSetup: string;
       labelSolved: string;
       /** Narrated solved summary (act 3); solved phase only. */
@@ -669,6 +679,90 @@ export type ClueSceneDescription =
        * A given from the question, drawn only as an object in
        * the setup film — no ray path is drawn before the pick. */
       withCard: boolean;
+      /** True for the wave-6 three-ways item: the lamp faces
+       * three materials (dark cloth, clear sheet, mirror)
+       * instead of the book and eye; the solved beat shows the
+       * light absorbed, passed through, and reflected.
+       * `withCard` is false for that item. Absent, the
+       * renderer runs the wave-5 paths unchanged. */
+      threeMaterials?: boolean;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "rate-race";
+      /** Metres the first cart covers — a given from the question. */
+      firstMetres: number;
+      /** Seconds it takes — a given from the question. */
+      firstSeconds: number;
+      /** Metres the second cart covers — a given from the question. */
+      secondMetres: number;
+      /** Seconds it takes — a given from the question. */
+      secondSeconds: number;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "slope-pair";
+      /** The first ramp's rise — a given from the question. */
+      firstRise: number;
+      /** The first ramp's run — a given from the question. */
+      firstRun: number;
+      /** The second ramp's rise — a given from the question. */
+      secondRise: number;
+      /** The second ramp's run — a given from the question. */
+      secondRun: number;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "same-push";
+      /** Boxes loaded on the left cart — a given from the question. */
+      leftBoxes: number;
+      /** Boxes loaded on the right cart — a given from the question. */
+      rightBoxes: number;
+      /** The left push's strength (arrow length scale) — a given. */
+      leftForce: number;
+      /** The right push's strength (arrow length scale) — a given. */
+      rightForce: number;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "hill-carts";
+      /** The lower cart's height step on the hill — the scene's
+       * spatial layout of the question's "one higher" given. */
+      lowStep: number;
+      /** The higher cart's height step — spent as layout only;
+       * the setup film shows the heights themselves (the
+       * question's givens) and no store difference at all. */
+      highStep: number;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "sound-path";
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "energy-ledger";
+      /** How much the stored energy rose — a given from the question. */
+      change: number;
+      /** How much energy went out — a given from the question. */
+      out: number;
       labelSetup: string;
       labelSolved: string;
       /** Narrated solved summary (act 3); solved phase only. */

@@ -797,6 +797,57 @@ export function CupShoveScene({
    * stepDelay(s) instead of the film's own stagger. */
   stepDelay?: (step: number) => number;
 }) {
+  if (description.stopsDead) {
+    // Wave-6 variant (physics:energy:transfer): ONE ball rolls
+    // in, stops dead against the cup, and the cup slides away
+    // on its own. Solved in three steps: 0 the ball rolls, 1
+    // the ball stops and the cup slides, 2 the final tick. The
+    // wave-4 two-ball path below is untouched.
+    const rollStart = stepDelay ? stepDelay(0) : 0.5;
+    const slideStart = stepDelay ? stepDelay(1) : 1.4;
+    const tickStart = stepDelay ? stepDelay(2) : 2.3;
+    const cupCx = 178;
+    const slide = description.slowSlide;
+    const ballRest = cupCx - 23;
+    const ball = (cx: number) => (
+      <>
+        <circle className="cs-coin" cx={cx} cy="141" r="9" />
+        <circle className="cs-coin-inner" cx={cx} cy="141" r="4.4" />
+      </>
+    );
+    return (
+      <>
+        <path className="cs-line cs-soft cs-draw" pathLength={1} d="M24 52 Q160 48 296 52" style={delay(0.1)} />
+        <path className="cs-line cs-draw" pathLength={1} d="M16 152 Q160 156 304 152" style={delay(0)} />
+        {phase === "setup" ? (
+          <>
+            <g className="cs-pop" style={delay(0.4)}>
+              <ShoveCupArt cx={cupCx} />
+            </g>
+            <g className="cs-pop" style={delay(0.55)}>{ball(64)}</g>
+          </>
+        ) : (
+          <>
+            {/* The ball rolls in and stops dead at the cup. */}
+            <g className="cs-slide" style={slideFrom(64 - ballRest, 0, rollStart)}>
+              {ball(ballRest)}
+            </g>
+            <circle className="cs-stone cs-pop" cx={ballRest} cy="160" r="3.5" style={delay(slideStart + 0.3)} />
+            {/* The cup slides away with the ball's motion. */}
+            <g transform={`translate(${slide} 0)`}>
+              <g className="cs-slide" style={slideFrom(-slide, 0, slideStart)}>
+                <ShoveCupArt cx={cupCx} />
+              </g>
+            </g>
+            <ellipse className="cs-ring" cx={cupCx + slide} cy="137" rx="22" ry="17" style={delay(tickStart + 0.4)} />
+            <text className="cs-tick cs-tick-final" x={cupCx + slide} y="104" style={delay(tickStart + 0.55)}>
+              ✓
+            </text>
+          </>
+        )}
+      </>
+    );
+  }
   const { slowSlide, fastSlide } = description;
   const cupCx = 196;
   const midCx = cupCx + slowSlide;
@@ -929,6 +980,281 @@ export function DropFallScene({
           </text>
         </>
       )}
+    </>
+  );
+}
+
+/* ── Wave 6 kinds (Physics 10-18): slope-pair, hill-carts,
+   sound-path ───────────────────────────────────────────────
+   Same discipline as the kinds above: givens only in the setup
+   film, no winner before the pick; the solved beat computes
+   its outcome from the givens at solve time. slope-pair paces
+   three steps (the first slope line draws, the second draws,
+   the final tick over the steeper one); hill-carts paces three
+   (the height marks rise, the stored-energy stacks pop, the
+   final tick); sound-path paces three (the waves cross the
+   air path, the waves fade at the empty gap, the final tick). */
+
+/** One ramp on its rise/run grid: grid cells of `cell` px, the
+ * ramp's run along the ground and its rise at the far end. The
+ * ramp's own slope line is drawn only when `solvedLine` — in
+ * setup the grid and the ramp's outline stand at equal weight. */
+function RampGrid({
+  ox,
+  oy,
+  rise,
+  run,
+  cell,
+  lineStart,
+}: {
+  ox: number;
+  oy: number;
+  rise: number;
+  run: number;
+  cell: number;
+  lineStart?: number;
+}) {
+  const topY = oy - rise * cell;
+  const rightX = ox + run * cell;
+  return (
+    <>
+      {Array.from({ length: run + 1 }, (_, i) => (
+        <path
+          key={`v-${i}`}
+          className="cs-line cs-soft cs-draw"
+          pathLength={1}
+          d={`M${ox + i * cell} ${oy} Q${ox + i * cell + 1} ${oy - rise * cell * 0.5} ${ox + i * cell} ${topY}`}
+          style={delay(0.2 + i * 0.05)}
+        />
+      ))}
+      {Array.from({ length: rise + 1 }, (_, i) => (
+        <path
+          key={`h-${i}`}
+          className="cs-line cs-soft cs-draw"
+          pathLength={1}
+          d={`M${ox} ${oy - i * cell} Q${ox + run * cell * 0.5} ${oy - i * cell - 1} ${rightX} ${oy - i * cell}`}
+          style={delay(0.25 + i * 0.05)}
+        />
+      ))}
+      {/* The ramp itself: a wedge under the slope. */}
+      <path
+        className="cs-line cs-draw"
+        pathLength={1}
+        d={`M${ox} ${oy} L${rightX} ${oy} L${rightX} ${topY} Q${(ox + rightX) / 2} ${(oy + topY) / 2 + 3} ${ox} ${oy} Z`}
+        style={delay(0.3)}
+      />
+      {lineStart !== undefined ? (
+        <path
+          className="cs-line cs-band cs-draw"
+          pathLength={1}
+          strokeWidth="3"
+          d={`M${ox} ${oy} Q${(ox + rightX) / 2} ${(oy + topY) / 2 - 2} ${rightX} ${topY}`}
+          style={delay(lineStart)}
+        />
+      ) : null}
+    </>
+  );
+}
+
+export function SlopePairScene({
+  description,
+  phase,
+  stepDelay,
+}: {
+  description: Extract<ClueSceneDescription, { kind: "slope-pair" }>;
+  phase: ClueScenePhase;
+  /** Summary pacing: when present, step s's beat starts at
+   * stepDelay(s) instead of the film's own stagger. */
+  stepDelay?: (step: number) => number;
+}) {
+  const { firstRise, firstRun, secondRise, secondRun } = description;
+  const firstStart = stepDelay ? stepDelay(0) : 0.5;
+  const secondStart = stepDelay ? stepDelay(1) : 1.4;
+  const tickStart = stepDelay ? stepDelay(2) : 2.3;
+  const groundY = 152;
+  const cell = 15;
+  const firstSteeper = firstRise / firstRun > secondRise / secondRun;
+  const winnerCx = firstSteeper ? 40 + (firstRun * cell) / 2 : 190 + (secondRun * cell) / 2;
+  const winnerTop = groundY - (firstSteeper ? firstRise : secondRise) * cell;
+  return (
+    <>
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M24 36 Q160 32 296 36" style={delay(0.1)} />
+      <path className="cs-line cs-draw" pathLength={1} d="M16 156 Q160 160 304 156" style={delay(0)} />
+      <RampGrid ox={40} oy={groundY} rise={firstRise} run={firstRun} cell={cell} lineStart={phase === "solved" ? firstStart : undefined} />
+      <RampGrid ox={190} oy={groundY} rise={secondRise} run={secondRun} cell={cell} lineStart={phase === "solved" ? secondStart : undefined} />
+      {phase === "solved" ? (
+        <>
+          <ellipse className="cs-ring" cx={winnerCx} cy={(groundY + winnerTop) / 2} rx={34} ry={26} style={delay(tickStart + 0.4)} />
+          <text className="cs-tick cs-tick-final" x={winnerCx} y="52" style={delay(tickStart + 0.55)}>
+            ✓
+          </text>
+        </>
+      ) : null}
+    </>
+  );
+}
+
+/** A small cart glyph for the hill, centred on its ground point. */
+function HillCartArt() {
+  return (
+    <>
+      <rect className="cs-pack" x="-20" y="-19" width="40" height="14" rx="3" />
+      <path className="cs-line cs-band" d="M-19 -11 Q0 -13 19 -11" />
+      <circle className="cs-bus-wheel" cx="-11" cy="-3" r="3.8" />
+      <circle className="cs-bus-wheel" cx="11" cy="-3" r="3.8" />
+    </>
+  );
+}
+
+export function HillCartsScene({
+  description,
+  phase,
+  stepDelay,
+}: {
+  description: Extract<ClueSceneDescription, { kind: "hill-carts" }>;
+  phase: ClueScenePhase;
+  /** Summary pacing: when present, step s's beat starts at
+   * stepDelay(s) instead of the film's own stagger. */
+  stepDelay?: (step: number) => number;
+}) {
+  const { lowStep, highStep } = description;
+  const markStart = stepDelay ? stepDelay(0) : 0.5;
+  const storeStart = stepDelay ? stepDelay(1) : 1.4;
+  const tickStart = stepDelay ? stepDelay(2) : 2.3;
+  const stepPx = 17;
+  const baseY = 158;
+  const lowY = baseY - lowStep * stepPx;
+  const highY = baseY - highStep * stepPx;
+  const lowX = 96;
+  const highX = 216;
+  // The hill: a long rise from the low cart's shelf to the high
+  // cart's shelf — the heights themselves are the givens.
+  const hillD = `M24 ${baseY + 4} Q70 ${lowY + 8} ${lowX + 26} ${lowY + 3} Q160 ${highY + 10} ${highX - 30} ${highY + 3} Q260 ${highY + 1} 296 ${highY - 2}`;
+  const storeStack = (cx: number, groundY: number, steps: number) =>
+    Array.from({ length: steps }, (_, i) => (
+      <circle
+        key={`store-${i}`}
+        className="cs-stone cs-pop"
+        cx={cx + 30}
+        cy={groundY - 6 - i * 9}
+        r="4.2"
+        style={delay(storeStart + i * 0.18)}
+      />
+    ));
+  return (
+    <>
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M24 30 Q160 26 296 30" style={delay(0.1)} />
+      <path className="cs-line cs-draw" pathLength={1} d={hillD} style={delay(0)} />
+      <g transform={`translate(${lowX} ${lowY})`}>
+        <g className="cs-pop" style={delay(0.45)}><HillCartArt /></g>
+      </g>
+      <g transform={`translate(${highX} ${highY})`}>
+        <g className="cs-pop" style={delay(0.6)}><HillCartArt /></g>
+      </g>
+      {phase === "solved" ? (
+        <>
+          {/* Height marks rise from the valley floor beside
+              each cart — equal marks, honestly counted. */}
+          {Array.from({ length: lowStep }, (_, i) => (
+            <path
+              key={`mark-l-${i}`}
+              className="cs-line cs-band cs-draw"
+              pathLength={1}
+              d={`M${lowX - 32} ${baseY - i * stepPx - 4} Q${lowX - 26} ${baseY - i * stepPx - 6} ${lowX - 20} ${baseY - i * stepPx - 4}`}
+              style={delay(markStart + i * 0.15)}
+            />
+          ))}
+          {Array.from({ length: highStep }, (_, i) => (
+            <path
+              key={`mark-h-${i}`}
+              className="cs-line cs-band cs-draw"
+              pathLength={1}
+              d={`M${highX - 32} ${baseY - i * stepPx - 4} Q${highX - 26} ${baseY - i * stepPx - 6} ${highX - 20} ${baseY - i * stepPx - 4}`}
+              style={delay(markStart + i * 0.15)}
+            />
+          ))}
+          {/* The stored-energy stacks: the higher cart's stack
+              stands taller — shown only now, never in setup. */}
+          {storeStack(lowX, lowY, lowStep)}
+          {storeStack(highX, highY, highStep)}
+          <ellipse className="cs-ring" cx={highX + 28} cy={highY - 14} rx="18" ry={10 + highStep * 5} style={delay(tickStart + 0.4)} />
+          <text className="cs-tick cs-tick-final" x={highX} y={highY - 44} style={delay(tickStart + 0.55)}>
+            ✓
+          </text>
+        </>
+      ) : null}
+    </>
+  );
+}
+
+export function SoundPathScene({
+  description,
+  phase,
+  stepDelay,
+}: {
+  description: Extract<ClueSceneDescription, { kind: "sound-path" }>;
+  phase: ClueScenePhase;
+  /** Summary pacing: when present, step s's beat starts at
+   * stepDelay(s) instead of the film's own stagger. */
+  stepDelay?: (step: number) => number;
+}) {
+  void description;
+  const airStart = stepDelay ? stepDelay(0) : 0.5;
+  const gapStart = stepDelay ? stepDelay(1) : 1.4;
+  const tickStart = stepDelay ? stepDelay(2) : 2.3;
+  const bellX = 52;
+  const earX = 272;
+  const airY = 74;
+  const gapY = 132;
+  const bell = (
+    <>
+      <path className="cs-tip" d={`M${bellX - 11} 96 Q${bellX - 12} 66 ${bellX} 60 Q${bellX + 12} 66 ${bellX + 11} 96 Q${bellX} 92 ${bellX - 11} 96 Z`} />
+      <circle className="cs-stone" cx={bellX} cy="101" r="3.4" />
+      <path className="cs-line cs-band" d={`M${bellX - 7} 58 Q${bellX} 52 ${bellX + 7} 58`} />
+    </>
+  );
+  const ear = (cy: number) => (
+    <path className="cs-line" d={`M${earX - 8} ${cy - 11} Q${earX + 10} ${cy - 8} ${earX + 6} ${cy + 2} Q${earX + 3} ${cy + 10} ${earX - 6} ${cy + 11} Q${earX - 1} ${cy + 3} ${earX - 2} ${cy - 2} Q${earX - 3} ${cy - 7} ${earX + 2} ${cy - 8}`} />
+  );
+  const arc = (x: number, cy: number, r: number, start: number, dim?: boolean) => (
+    <path
+      className={`cs-line ${dim ? "cs-soft cs-dim" : "cs-band"} cs-pop`}
+      d={`M${x} ${cy - r} Q${x + r * 0.9} ${cy} ${x} ${cy + r}`}
+      style={delay(start)}
+    />
+  );
+  return (
+    <>
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M24 30 Q160 26 296 30" style={delay(0.1)} />
+      <path className="cs-line cs-draw" pathLength={1} d="M16 168 Q160 172 304 168" style={delay(0)} />
+      <g className="cs-pop" style={delay(0.4)}>{bell}</g>
+      {/* The two paths: the upper lane is filled with air dots;
+          the lower lane is drawn empty between its banks. Both
+          are the question's givens — no wave travels either
+          before the pick. */}
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d={`M92 ${airY - 20} Q180 ${airY - 24} 252 ${airY - 20} M92 ${airY + 20} Q180 ${airY + 24} 252 ${airY + 20}`} style={delay(0.25)} />
+      {Array.from({ length: 9 }, (_, i) => (
+        <circle key={`air-${i}`} className="cs-stone cs-pop" cx={104 + i * 17} cy={airY + (i % 2 === 0 ? -6 : 6)} r="1.9" style={delay(0.35 + i * 0.05)} />
+      ))}
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d={`M92 ${gapY - 20} Q140 ${gapY - 23} 168 ${gapY - 20} M92 ${gapY + 20} Q140 ${gapY + 23} 168 ${gapY + 20} M216 ${gapY - 20} Q240 ${gapY - 22} 252 ${gapY - 20} M216 ${gapY + 20} Q240 ${gapY + 22} 252 ${gapY + 20}`} style={delay(0.3)} />
+      <g className="cs-pop" style={delay(0.5)}>{ear(airY)}</g>
+      <g className="cs-pop" style={delay(0.6)}>{ear(gapY)}</g>
+      {phase === "solved" ? (
+        <>
+          {/* The waves cross the air path, hop by hop. */}
+          {arc(96, airY, 10, airStart)}
+          {arc(136, airY, 12, airStart + 0.25)}
+          {arc(180, airY, 12, airStart + 0.5)}
+          {arc(224, airY, 11, airStart + 0.75)}
+          {/* At the empty gap the waves start — and fade out. */}
+          {arc(96, gapY, 10, gapStart)}
+          {arc(130, gapY, 11, gapStart + 0.3, true)}
+          <ellipse className="cs-ring" cx={earX} cy={airY} rx="17" ry="20" style={delay(tickStart + 0.4)} />
+          <text className="cs-tick cs-tick-final" x={earX} y="36" style={delay(tickStart + 0.55)}>
+            ✓
+          </text>
+        </>
+      ) : null}
     </>
   );
 }

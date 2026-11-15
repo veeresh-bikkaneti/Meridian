@@ -59,6 +59,8 @@ import {
   PercentBarScene,
   MagnetPairScene,
   PushDuelScene,
+  RateRaceScene,
+  SamePushScene,
   ScaleLineScene,
   ShareBarScene,
   TileStepsScene,
@@ -70,15 +72,19 @@ import {
   DropFallScene,
   FractionBarScene,
   FractionMeasureScene,
+  HillCartsScene,
   MapScaleScene,
   PlaceCompareScene,
   PlaceValueScene,
   SlideStopScene,
+  SlopePairScene,
+  SoundPathScene,
   TimelineLineScene,
 } from "./clue-scene-kinds-b";
 import {
   BearingDiagramScene,
   ChunkShareScene,
+  EnergyLedgerScene,
   LightPathScene,
   JourneyLineScene,
   RateBarsScene,
@@ -454,6 +460,12 @@ const SUMMARY_STAGGER: Record<ClueSceneDescription["kind"], number> = {
   "drop-fall": 0.8,
   "wind-up": 0.8,
   "light-path": 0.8,
+  "rate-race": 0.55,
+  "slope-pair": 0.8,
+  "same-push": 0.8,
+  "hill-carts": 0.8,
+  "sound-path": 0.8,
+  "energy-ledger": 0.8,
 };
 
 /** The summary clip's URL (public/audio/subjects/, manifest.json). */
@@ -576,6 +588,18 @@ function SceneArt({
       return <WindUpScene description={description} phase={phase} stepDelay={stepDelay} />;
     case "light-path":
       return <LightPathScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "rate-race":
+      return <RateRaceScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "slope-pair":
+      return <SlopePairScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "same-push":
+      return <SamePushScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "hill-carts":
+      return <HillCartsScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "sound-path":
+      return <SoundPathScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "energy-ledger":
+      return <EnergyLedgerScene description={description} phase={phase} stepDelay={stepDelay} />;
   }
 }
 
