@@ -3,7 +3,8 @@
  * not a game board (nav-home council, 2026-11-13). It applies the
  * `.mode-screen` atlas look (gradient + Fraunces/Karla, styles.css) that
  * GeoDetective and Cold Trail already use, puts the one HomeButton
- * top-left (first in the header row, an optional sound toggle beside it)
+ * top-left (first in the header row, then any screen controls, then an
+ * optional sound toggle beside them — the GeoDetective header cluster)
  * and the Cold Trail header pattern under it: eyebrow → title → sub.
  *
  * Screens that adopted it: the Why Learn picker and the subject case,
@@ -18,6 +19,7 @@ import { cn } from "@/lib/cn";
 export function ScreenShell({
   onHome,
   onBack,
+  controls,
   sound,
   hero,
   eyebrow,
@@ -33,6 +35,10 @@ export function ScreenShell({
   /** A one-step back inside a drill-down (not home): labelled "Back". */
   | { onBack: () => void; onHome?: never }
 ) & {
+  /** Header controls beside the HomeButton (e.g. a screen's End game
+   * button — the GeoDetective header cluster order: Home, controls,
+   * sound). Absent on screens that carry no controls. */
+  controls?: ReactNode;
   /** Trailing header item: a SoundToggle, or a non-interactive wordmark. */
   sound?: ReactNode;
   /** Optional decorative picture above the titles; the titles then sit on
@@ -72,6 +78,7 @@ export function ScreenShell({
               Back
             </Button>
           )}
+          {controls}
           {sound}
         </div>
         {hero ? (

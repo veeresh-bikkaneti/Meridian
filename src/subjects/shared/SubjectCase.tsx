@@ -33,6 +33,22 @@
  * anatomy. Presentation only: items, answers, phases and flow are
  * exactly as before.
  *
+ * Game chrome (fix/case-navigation): the shell's header bar carries
+ * the game's own End game button beside Home — the GeoDetective
+ * header cluster (LoopScreen) — wired to GameApp's handleEndGame,
+ * and the game's own "Start over" reset (ResetHistoryControl, driven
+ * by GameApp's handleResetHistory) sits in a separated footer. Both
+ * arrive as optional props from the picker; neither changes the
+ * case's own flow.
+ *
+ * Amendment (owner decision, 2026-11-14): the header bar also
+ * carries "Resume your case" while a GeoDetective mystery is
+ * mid-play — Home's GeoDetective card offer, on the same condition
+ * (GameApp reads the loop store), wired to GameApp's own tap-in,
+ * which leaves the case the way the Home button does (the case
+ * keeps no state anywhere else; an unsubmitted pick is simply
+ * left behind, as on any exit). Absent when nothing is resumable.
+ *
  * Clue scenes (feat/clue-scene-pilot): a subject may pass a `scene`
  * hook that renders a short live-drawn film above the clue card.
  * The hook is answer-blind — it receives the item, the phase from
@@ -61,7 +77,10 @@ import {
 import { AnswerCard } from "./AnswerCard";
 import { buildSubjectDetectiveHostProps } from "./subject-host-props";
 import { HomeButton } from "@/components/ui/home-button";
+import { Button } from "@/components/ui/button";
 import { ScreenShell } from "@/components/ui/screen-shell";
+import { ResetHistoryControl } from "@/components/reset-history-control";
+import type { ResetHistoryResult } from "@/game/reset-history";
 import { advanceCasePhase, type AnswerFor, type CasePhase } from "./answer";
 
 // Holmes & Watson in the subject case: lazy, like the other pair
@@ -109,10 +128,26 @@ export function SubjectCase({
   group,
   onExit,
   onCelebrate,
+  onEndGame,
+  onResetHistory,
+  onResumeCase,
+  loopInProgress,
 }: SubjectCaseConfig &
   SubjectProps & {
     /** GameApp's celebration trigger (the same one LoopScreen receives). */
     onCelebrate?: (spec: CelebrationSpec) => void;
+    /** GameApp's End game (handleEndGame + leave the subjects): the
+     * header's End game button, the GeoDetective cluster pattern. */
+    onEndGame?: () => void;
+    /** GameApp's "Start over" reset flow (handleResetHistory). */
+    onResetHistory?: () => ResetHistoryResult;
+    /** GameApp's GeoDetective tap-in (leaves the subjects and opens
+     * the loop, whose screen resumes the saved mystery). */
+    onResumeCase?: () => void;
+    /** Whether a GeoDetective mystery is mid-play and resumable
+     * (the loop store, read by GameApp): the header's resume button
+     * renders only while this holds. */
+    loopInProgress?: boolean;
   }) {
   const reduced = usePrefersReducedMotion();
   // The registry passes the session's group; fall back to the stored
@@ -137,10 +172,47 @@ export function SubjectCase({
   const item = items[index] ?? null;
   const answer = item ? answerFor(item.id) : null;
 
+  // The game's header controls for the shell's bar — the same
+  // Buttons, labels and testids as the game's own surfaces
+  // (LoopScreen's End game; Home's GeoDetective card resume); the
+  // handlers are GameApp's own, passed down through the picker.
+  // The resume button renders only while a mystery is mid-play —
+  // Home's card condition — never as a dead control.
+  const resumeButton =
+    onResumeCase && loopInProgress ? (
+      <Button
+        variant="secondary"
+        data-testid="resume-case-button"
+        className="min-h-[44px]"
+        onClick={onResumeCase}
+        aria-label="GeoDetective: Resume your case"
+      >
+        <span aria-hidden="true">▶️</span>{" "}
+        Resume your case
+      </Button>
+    ) : null;
+  const gameControls =
+    resumeButton || onEndGame ? (
+      <>
+        {resumeButton}
+        {onEndGame ? (
+          <Button
+            variant="secondary"
+            data-testid="end-game-button"
+            className="min-h-[44px]"
+            onClick={onEndGame}
+          >
+            End game
+          </Button>
+        ) : null}
+      </>
+    ) : undefined;
+
   if (!item || !answer) {
     return (
       <ScreenShell
         onHome={onExit}
+        controls={gameControls}
         className="why-learn-screen subject-case-screen"
         title={`${title} case`}
         titleRef={headingRef}
@@ -196,6 +268,7 @@ export function SubjectCase({
   return (
     <ScreenShell
       onHome={onExit}
+      controls={gameControls}
       className="why-learn-screen subject-case-screen"
       testId={`${testIdPrefix}-case`}
       data={{ "data-band": band, "data-item": item.id }}
@@ -273,6 +346,16 @@ export function SubjectCase({
           </section>
         )}
       </div>
+      {/* The game's "Start over" reset, alone in a separated footer —
+          the same placement rule as Home's Review card danger footer
+          (the destructive action shares neither a row nor a look with
+          play). The control and the flow behind it are the game's own
+          (ResetHistoryControl + GameApp's handleResetHistory). */}
+      {onResetHistory ? (
+        <div className="mt-8 border-t border-line pt-4">
+          <ResetHistoryControl onReset={onResetHistory} />
+        </div>
+      ) : null}
     </ScreenShell>
   );
 }

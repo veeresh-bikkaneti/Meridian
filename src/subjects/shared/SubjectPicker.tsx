@@ -24,11 +24,32 @@
  * knowledge's turn also draws its route and re-drops its pin). The
  * spotlight is decoration: it never moves focus, and it does not
  * run under prefers-reduced-motion.
+ *
+ * Game chrome (fix/case-navigation): the band is state, not a
+ * one-time read — the footer carries Home's own age-profile entry
+ * (the "For grown-ups" footer link opening GameApp's hosted
+ * AgeProfileSettings: gate → AgePicker), and a band change event
+ * re-deals the rows for the new band and closes any open case back
+ * to this list (the settings flow's own no-rug-pull rule: a change
+ * never swaps a case mid-play). The game's "Start over" reset
+ * (ResetHistoryControl + GameApp's handleResetHistory) sits alone
+ * in a separated block above the footer, mirroring Home's Review
+ * card danger footer; an opened case receives the same reset plus
+ * GameApp's End game through its props.
+ *
+ * Amendment (owner decision, 2026-11-14): the header bar and an
+ * opened case also carry "Resume your case" while a GeoDetective
+ * mystery is mid-play — the same offer Home's GeoDetective card
+ * makes, on the same condition (GameApp reads the loop store and
+ * the band lock), wired to GameApp's own GeoDetective tap-in. When
+ * nothing is resumable the control is absent, never a dead button.
  */
-import { useEffect, useRef, useState, type ComponentType, type CSSProperties } from "react";
-import type { SubjectModule, SubjectProps } from "../registry";
+import { useEffect, useRef, useState, type ComponentType, type CSSProperties, type MouseEvent as ReactMouseEvent } from "react";
+import type { AgeGroup, SubjectModule, SubjectProps } from "../registry";
 import { listReleasedSubjects } from "../registry";
-import { getAgeGroup } from "@/game/age-profile";
+import { getAgeGroup, onAgeProfileChanged } from "@/game/age-profile";
+import { ResetHistoryControl } from "@/components/reset-history-control";
+import type { ResetHistoryResult } from "@/game/reset-history";
 import { withChunkTimeout } from "@/lib/chunk-timeout";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 import { CardFilm } from "@/components/card-film";
@@ -36,6 +57,7 @@ import type { CelebrationSpec } from "@/components/celebration-copy";
 import { SUBJECT_CARD_MEDIA, SUBJECT_CARD_STILLS } from "@/assets/why-learn/subject-card-media";
 import { pickerRows } from "./picker-rows";
 import { ScreenShell } from "@/components/ui/screen-shell";
+import { Button } from "@/components/ui/button";
 import { ArrowRight, Atom, BookOpen, Calculator, FlaskConical, Globe2, Users, type LucideIcon } from "lucide-react";
 import { WhyLearnHero } from "./WhyLearnHero";
 import { WhyLearnDrift } from "./WhyLearnDrift";
@@ -68,18 +90,47 @@ const SUBJECT_ONE_LINERS: Record<string, string> = {
 };
 
 type CaseComponent = ComponentType<
-  SubjectProps & { onCelebrate?: (spec: CelebrationSpec) => void }
+  SubjectProps & {
+    onCelebrate?: (spec: CelebrationSpec) => void;
+    onEndGame?: () => void;
+    onResetHistory?: () => ResetHistoryResult;
+    onResumeCase?: () => void;
+    loopInProgress?: boolean;
+  }
 >;
 
 export default function SubjectPicker({
   group,
   onExit,
   onCelebrate,
+  onEndGame,
+  onResetHistory,
+  onResumeCase,
+  loopInProgress,
+  onOpenAgeSettings,
 }: SubjectProps & {
   /** GameApp's celebration trigger, passed through to the opened case. */
   onCelebrate?: (spec: CelebrationSpec) => void;
+  /** GameApp's End game, passed through to the opened case's header. */
+  onEndGame?: () => void;
+  /** GameApp's "Start over" reset flow: the picker's footer control
+   * and the opened case's footer both run it. */
+  onResetHistory?: () => ResetHistoryResult;
+  /** GameApp's GeoDetective tap-in, passed through to the opened
+   * case's header and offered in this screen's own header bar. */
+  onResumeCase?: () => void;
+  /** Whether a GeoDetective mystery is mid-play and resumable (the
+   * loop store, read by GameApp): the resume control renders only
+   * while this holds, exactly as on Home's GeoDetective card. */
+  loopInProgress?: boolean;
+  /** Open GameApp's hosted age-profile settings (the grown-up gate →
+   * AgePicker flow) — the picker's "For grown-ups" footer entry. */
+  onOpenAgeSettings?: (e?: ReactMouseEvent<HTMLElement>) => void;
 }) {
-  const band = group ?? getAgeGroup();
+  // The band starts from the session's group (or the stored profile)
+  // and then follows age-profile change events: a grown-up switching
+  // the band in the settings re-deals this list in place.
+  const [band, setBand] = useState<AgeGroup>(() => group ?? getAgeGroup());
   const [released, setReleased] = useState<SubjectModule[] | null>(null);
   const [listFailed, setListFailed] = useState(false);
   const [opened, setOpened] = useState<{ title: string; Case: CaseComponent } | null>(null);
@@ -99,6 +150,19 @@ export default function SubjectPicker({
       live = false;
     };
   }, []);
+
+  // Band changes (the settings flow's change event): re-read the
+  // effective band, re-deal the rows, and close any open case back
+  // to the list — a case is dealt for one band and is never swapped
+  // mid-play.
+  useEffect(
+    () =>
+      onAgeProfileChanged(() => {
+        setBand(getAgeGroup());
+        setOpened(null);
+      }),
+    [],
+  );
 
   // Arrival focus, the LoopScreen pattern: land focus on the heading so
   // it is never stranded on the Home card that opened the picker.
@@ -133,9 +197,38 @@ export default function SubjectPicker({
     return () => clearInterval(id);
   }, [reducedMotion, released, band, opened]);
 
+  // "Resume your case" for the header bar — Home's GeoDetective
+  // card offer (same label, same Button, same accessible name),
+  // present only while a mystery is mid-play; the opened case
+  // renders its own beside End game from the same two props.
+  const resumeControl =
+    onResumeCase && loopInProgress ? (
+      <Button
+        variant="secondary"
+        data-testid="resume-case-button"
+        className="min-h-[44px]"
+        onClick={onResumeCase}
+        aria-label="GeoDetective: Resume your case"
+      >
+        <span aria-hidden="true">▶️</span>{" "}
+        Resume your case
+      </Button>
+    ) : undefined;
+
   if (opened) {
     const Case = opened.Case;
-    return <Case group={band} tier="full" onExit={onExit} onCelebrate={onCelebrate} />;
+    return (
+      <Case
+        group={band}
+        tier="full"
+        onExit={onExit}
+        onCelebrate={onCelebrate}
+        onEndGame={onEndGame}
+        onResetHistory={onResetHistory}
+        onResumeCase={onResumeCase}
+        loopInProgress={loopInProgress}
+      />
+    );
   }
 
   const openSubject = (mod: SubjectModule) => {
@@ -154,6 +247,7 @@ export default function SubjectPicker({
   return (
     <ScreenShell
       onHome={onExit}
+      controls={resumeControl}
       className="why-learn-screen lg:max-w-6xl"
       testId="subject-picker"
       hero={<WhyLearnHero />}
@@ -258,6 +352,33 @@ export default function SubjectPicker({
         <p className="mt-3 text-sm text-fg" role="status">
           {openFailed} could not load just now. Try again in a moment.
         </p>
+      ) : null}
+      {/* The game's "Start over" reset, alone in a separated block —
+          Home's Review card danger-footer rule (the destructive
+          action shares neither a row nor a look with play). */}
+      {onResetHistory ? (
+        <div className="mt-10 border-t border-line pt-4">
+          <ResetHistoryControl onReset={onResetHistory} />
+        </div>
+      ) : null}
+      {/* Age-profile footer entry — Home's own footer pattern (the
+          agep-footer row and its grown-ups link, same classes, same
+          label): the gate → AgePicker flow is hosted by GameApp, so
+          the band can be changed without leaving the picker. The
+          current band already reads in the sub line above ("Ages …"),
+          which follows the band state. */}
+      {onOpenAgeSettings ? (
+        <footer className="agep-footer">
+          <button
+            type="button"
+            className="agep-footer-link"
+            onClick={onOpenAgeSettings}
+            aria-label="For grown-ups: game settings"
+            data-testid="grownups-link"
+          >
+            🔒 For grown-ups
+          </button>
+        </footer>
       ) : null}
     </ScreenShell>
   );

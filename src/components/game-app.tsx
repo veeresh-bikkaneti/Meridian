@@ -96,7 +96,6 @@ import {
   setHighContrastEnabled,
 } from "@/game/palette-preference";
 import { Suspense, lazy, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type KeyboardEvent as ReactKeyboardEvent, type MouseEvent as ReactMouseEvent, type ReactNode, type RefObject } from "react";
-import { createPortal } from "react-dom";
 import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { HomeButton } from "@/components/ui/home-button";
@@ -372,6 +371,7 @@ import {
   type DeckPlaceSnapshot,
 } from "@/game/review-deck";
 import { resetHistory, type ResetHistoryResult } from "@/game/reset-history";
+import { ResetHistoryControl } from "./reset-history-control";
 
 /**
  * Watched by the inline crash watchdog injected into _shell.html
@@ -1437,6 +1437,27 @@ export function GameApp() {
   // card tap. Never persisted — a reload lands on Home, like the
   // loop's tap-in rule.
   const [subjectsOpen, setSubjectsOpen] = useState<boolean>(false);
+
+  // A page restored from the browser's back/forward cache keeps its
+  // frozen React state, so a tap-in screen left open when the page
+  // was frozen (a subject case, the GeoDetective loop) resurrects on
+  // what feels like a fresh load — the owner-reported "the game
+  // loads with a clue open". These screens are session-only by rule
+  // (B7: a new session always lands on Home; the picker comment
+  // above says the same), and a cache restore is a new arrival, so
+  // close them and land on Home. Cold Trail is deliberately not
+  // closed here: its open state is persisted on purpose
+  // (readColdTrailOpen in @/game/coldtrail/store).
+  useEffect(() => {
+    const onPageShow = (e: PageTransitionEvent) => {
+      if (!e.persisted) return;
+      setSubjectsOpen(false);
+      writeLoopOpen(false);
+      setLoopOpen(false);
+    };
+    window.addEventListener("pageshow", onPageShow);
+    return () => window.removeEventListener("pageshow", onPageShow);
+  }, []);
   // Journal prefetch (lazy-load scenario 2): while a round is active,
   // warm the current entry's movie and the next window's (B8: one entry
   // per 30-minute window, so "the next 1–2 in the current set" is the
@@ -3187,6 +3208,32 @@ export function GameApp() {
     [updateSession, getSession],
   );
 
+  // GeoDetective tap-in, shared by Home's GeoDetective card and the
+  // Why Learn resume control (fix/case-navigation amendment, owner
+  // decision 2026-11-14): opening is all either surface does — the
+  // loop screen resumes-or-deals from the saved loop store, so a
+  // mystery mid-play comes back exactly where it left off. Locked
+  // bands never open it (Home renders the locked card instead, and
+  // the resume control is absent for them too). Returns whether it
+  // opened, so a caller leaving another screen can stay put when
+  // the guard refuses.
+  const openGeoDetective = useCallback((): boolean => {
+    // Locked for young bands (age-profile): the dossier renders the
+    // locked variant instead, so this guard is belt-and-braces.
+    if (isLoopLocked(ageBand, "geodetective")) return false;
+    // Storyteller home handoff (H1): the loop's locked send-off line
+    // rides along ≤2.5s while the loop loads — navigation never waits
+    // (copy G3). No locked line exists for Cold Trail, so none is sent.
+    window.dispatchEvent(
+      new CustomEvent("meridian:storyteller-sendoff", {
+        detail: { loop: "geodetective" },
+      }),
+    );
+    writeLoopOpen(true);
+    setLoopOpen(true);
+    return true;
+  }, [ageBand]);
+
   // End game: the session's totals (not the run's) become the summary, and
   // the session ends — the next game starts a fresh one.
   const handleEndGame = useCallback((): SessionSummary | null => {
@@ -3496,16 +3543,56 @@ export function GameApp() {
     return (
       <>
         {mapModeAnnouncer}
-        <MapErrorBoundary surface="Subjects">
-          <Suspense fallback={<SessionLoadingFallback label="Loading subjects…" />}>
-            <SubjectPickerScreen
-              group={getAgeGroup()}
-              tier="full"
-              onExit={() => setSubjectsOpen(false)}
-              onCelebrate={(spec) => setCelebration(spec)}
+        <div inert={ageSettingsOpen || undefined}>
+          <MapErrorBoundary surface="Subjects">
+            <Suspense fallback={<SessionLoadingFallback label="Loading subjects…" />}>
+              <SubjectPickerScreen
+                group={getAgeGroup()}
+                tier="full"
+                onExit={() => setSubjectsOpen(false)}
+                onCelebrate={(spec) => setCelebration(spec)}
+                onEndGame={() => {
+                  handleEndGame();
+                  setSubjectsOpen(false);
+                }}
+                onResetHistory={() => {
+                  const result = handleResetHistory();
+                  if (result.failed.length === 0) setSubjectsOpen(false);
+                  return result;
+                }}
+                loopInProgress={
+                  peekLoopProgress().inProgress &&
+                  !isLoopLocked(ageBand, "geodetective")
+                }
+                onResumeCase={() => {
+                  // Home's GeoDetective tap-in, shared verbatim: the
+                  // saved mystery resumes from the loop store. The
+                  // subjects close behind it, so the loop's own
+                  // leave lands on Home exactly as it does from the
+                  // card. Nothing in the subject case is carried
+                  // over or discarded specially — leaving a case is
+                  // the Home button's own path.
+                  if (openGeoDetective()) setSubjectsOpen(false);
+                }}
+                onOpenAgeSettings={openAgeSettings}
+              />
+            </Suspense>
+          </MapErrorBoundary>
+        </div>
+        {ageSettingsOpen ? (
+          <Suspense fallback={null}>
+            <AgeProfileSettings
+              runInProgress={run !== null || loopOpen}
+              onClose={closeAgeSettings}
+              onToast={setAgeToast}
             />
           </Suspense>
-        </MapErrorBoundary>
+        ) : null}
+        {ageToast ? (
+          <div className="agep-toast" role="status" data-testid="agep-toast">
+            {ageToast}
+          </div>
+        ) : null}
         {celebrationOverlay}
         {idleToast}
       </>
@@ -3896,21 +3983,7 @@ export function GameApp() {
       onGlobe={withCardTap("Globe", () => openRun("globe", "globe", "Globe", difficultyChoice))}
       onBegin={withCardTap("Globe", () => openRun("globe", "globe", "Globe", difficultyChoice))}
       onTakeTour={onTakeTour}
-      onLoop={withCardTap("mystery", () => {
-        // Locked for young bands (age-profile): the dossier renders the
-        // locked variant instead, so this guard is belt-and-braces.
-        if (isLoopLocked(ageBand, "geodetective")) return;
-        // Storyteller home handoff (H1): the loop's locked send-off line
-        // rides along ≤2.5s while the loop loads — navigation never waits
-        // (copy G3). No locked line exists for Cold Trail, so none is sent.
-        window.dispatchEvent(
-          new CustomEvent("meridian:storyteller-sendoff", {
-            detail: { loop: "geodetective" },
-          }),
-        );
-        writeLoopOpen(true);
-        setLoopOpen(true);
-      })}
+      onLoop={withCardTap("mystery", openGeoDetective)}
       onColdTrail={withCardTap("coldtrail", () => { writeColdTrailOpen(true); setColdTrailOpen(true); })}      onReview={startReview}
       challengeEnabled={friendChallengesOn}
       whyLearnEnabled
@@ -5306,139 +5379,8 @@ function AtlasBackdrop() {
   );
 }
 
-/**
- * Locked player-facing copy for the "Start over" reset (manifest
- * 2026-10-28 §4 — byte-exact; do not paraphrase, punctuate, or
- * re-wrap in code or tests).
- */
-const RESET_HISTORY_COPY = {
-  opener: "Start over",
-  title: "Start over?",
-  sub: "This clears your misses to practise again, every place you have seen or cleared, your learning growth, your GeoDetective streaks and solved cases, your Cold Trail case and stars, any game you left in the middle, and your score for today. Your badges stay. Your grown-up choices stay. This cannot be undone.",
-  confirm: "Yes, start over",
-  cancel: "Keep my history",
-  partial: "Some things could not be cleared. Try again.",
-} as const;
-
 /** The reset success toast (manifest 2026-10-28 §4, locked). */
 const RESET_HISTORY_SUCCESS_TOAST = "All cleared. You are starting fresh.";
-
-/**
- * The reset entry point shared by both surfaces (home Review card and
- * ReviewComplete): an opener button plus ONE role="alertdialog" confirm
- * mirroring AgeProfileSettings — focus moves into the dialog on open,
- * Esc means "no change", and focus returns to the opener on a
- * no-change close. Nothing is deleted before the confirm. A partial
- * failure keeps the dialog open with the locked partial line and the
- * danger button becomes the retry; on success the opener unmounts with
- * the wiped surface, so there is no focus return (the host shows the
- * success toast instead).
- */
-function ResetHistoryControl({
-  onReset,
-}: {
-  /** Run the reset; the result decides close-vs-retry. */
-  onReset: () => ResetHistoryResult;
-}) {
-  const [open, setOpen] = useState(false);
-  const [partial, setPartial] = useState(false);
-  const openerRef = useRef<HTMLButtonElement | null>(null);
-  const dialogRef = useRef<HTMLDivElement | null>(null);
-
-  // Focus moves into the dialog when it opens (the AgeProfileSettings
-  // pattern) — this is also what lets the dialog's Esc handler fire.
-  useEffect(() => {
-    if (open) dialogRef.current?.focus({ preventScroll: true });
-  }, [open ]);
-
-  const closeWithoutChange = useCallback(() => {
-    setOpen(false);
-    setPartial(false);
-    const opener = openerRef.current;
-    if (opener && document.contains(opener)) {
-      // The dialog unmounts on the next paint — return focus after
-      // that, without scrolling the page (closeAgeSettings pattern).
-      requestAnimationFrame(() => {
-        if (document.contains(opener)) opener.focus({ preventScroll: true });
-      });
-    }
-  }, []);
-
-  const confirm = useCallback(() => {
-    const result = onReset();
-    if (result.failed.length > 0) {
-      // Honest partial failure (D4): stay open, name it, offer retry.
-      setPartial(true);
-      return;
-    }
-    setOpen(false);
-    setPartial(false);
-  }, [onReset]);
-
-  return (
-    <>
-      <button
-        type="button"
-        ref={openerRef}
-        className="reset-history-open"
-        data-testid="reset-history-open"
-        onClick={() => setOpen(true)}
-      >
-        {RESET_HISTORY_COPY.opener}
-      </button>
-      {/* The dialog renders through a portal at the document root (the
-          AgeProfileSettings placement): inside the review card, the
-          text column is a flex item with z-index 1, which caps the
-          dialog's own z-index below the sibling cards' stretch layers
-          — their buttons would paint and hit-test over the dialog. */}
-      {open
-        ? createPortal(
-            <div
-              role="alertdialog"
-              aria-modal="true"
-              aria-labelledby="reset-history-title"
-              className="agep-screen"
-              data-testid="reset-history-confirm"
-              ref={dialogRef}
-              tabIndex={-1}
-              onKeyDown={(e) => {
-                if (e.key === "Escape") closeWithoutChange();
-              }}
-            >
-              <h1 id="reset-history-title" className="agep-h1">
-                {RESET_HISTORY_COPY.title}
-              </h1>
-              <p className="agep-sub">{RESET_HISTORY_COPY.sub}</p>
-              {partial ? (
-                <p className="agep-note" role="alert">
-                  {RESET_HISTORY_COPY.partial}
-                </p>
-              ) : null}
-              <div className="agep-actions">
-                <button
-                  type="button"
-                  className="agep-danger"
-                  data-testid="reset-history-confirm-clear"
-                  onClick={confirm}
-                >
-                  {RESET_HISTORY_COPY.confirm}
-                </button>
-                <button
-                  type="button"
-                  className="agep-ghost"
-                  data-testid="reset-history-cancel"
-                  onClick={closeWithoutChange}
-                >
-                  {RESET_HISTORY_COPY.cancel}
-                </button>
-              </div>
-            </div>,
-            document.body,
-          )
-        : null}
-    </>
-  );
-}
 
 /**
  * End of a review session: the due queue is exhausted. Bounded and
