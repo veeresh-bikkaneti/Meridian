@@ -1,12 +1,13 @@
 /**
  * General knowledge clue scenes — the data-side contract (the
- * math scenes.test.ts pattern, expansion wave 3). Coverage is
- * exactly the five items the adapter deals for ages 7-10; a scene
- * description carries only the givens from the item's own
- * question, so the setup film cannot give the answer away, and
- * the solved beat's arithmetic lands exactly on the item's
- * answer. Each description also carries its act-3 summary (clip,
- * script, beat map) in the solved-phase data path only.
+ * math scenes.test.ts pattern, expansion waves 3 and 10).
+ * Coverage is exactly the ten items the adapter deals across
+ * the three bands (5 / 3 / 2); a scene description carries only
+ * the givens from the item's own question, so the setup film
+ * cannot give the answer away, and the solved beat's arithmetic
+ * lands exactly on the item's answer. Each description also
+ * carries its act-3 summary (clip, script, beat map) in the
+ * solved-phase data path only.
  *
  * The opera item is pinned with a fixed clock: its description
  * is built from the shared years mechanism, its script holds the
@@ -16,7 +17,7 @@
  */
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { readFileSync, statSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import {
@@ -32,7 +33,10 @@ import { itemsForGroup } from "./items.ts";
 import { yearsSince } from "../shared/years.ts";
 import type { ClueSceneDescription } from "../shared/clue-scene-types.ts";
 
-const BAND_IDS = itemsForGroup("7-10").map((item) => item.id);
+const IDS_710 = itemsForGroup("7-10").map((item) => item.id);
+const IDS_1018 = itemsForGroup("10-18").map((item) => item.id);
+const IDS_18 = itemsForGroup("18+").map((item) => item.id);
+const ALL_IDS = [...IDS_710, ...IDS_1018, ...IDS_18];
 const OPERA_ID = "general-knowledge:mixed:opera-years-ago";
 
 /** The description a test should pin: the opera description is
@@ -53,6 +57,16 @@ function givensOf(d: ClueSceneDescription): number[] {
       return [d.kilometres, d.metresPerKm];
     case "bus-boarding":
       return [d.total, d.seats];
+    case "stack-drops":
+      return [d.dropHeight, d.peakHeight];
+    case "journey-line":
+      return [d.totalKm, d.hours ?? -1, d.targetKm ?? -1, d.aheadKm ?? -1].filter((n) => n >= 0);
+    case "angle-sight":
+      return [d.distanceFt, d.angleDeg];
+    case "great-circle":
+      return [];
+    case "flow-counter":
+      return [d.perMinute, d.minutesPerDay];
     default:
       return [];
   }
@@ -70,6 +84,18 @@ function stepCountOf(d: ClueSceneDescription): number {
       return 2; // the kilometre marks, then the final tick
     case "bus-boarding":
       return Math.ceil(d.total / d.seats);
+    case "stack-drops":
+      return 8; // eight stacking bands, the last carrying the final tick
+    case "journey-line":
+      return d.hours !== undefined && d.targetKm !== undefined
+        ? Math.round(d.targetKm / (d.totalKm / d.hours))
+        : 2;
+    case "angle-sight":
+      return 3; // the full sight line, the height bracket, the final tick
+    case "great-circle":
+      return 3; // the globe arc, the flat-map curve, the final tick
+    case "flow-counter":
+      return 3; // the minute row, the day field, the power bars + tick
     default:
       return -1;
   }
@@ -80,28 +106,56 @@ const CLOSING: Record<string, string> = {
   "general-knowledge:mixed:older-landmark": "Eiffel Tower is the older landmark",
   "general-knowledge:mixed:falls-in-km": "narrower than 2 km",
   "general-knowledge:mixed:trip-buses": "5 minibuses",
+  "general-knowledge:mixed:everest-vs-falls": "About 80",
+  "general-knowledge:mixed:paris-sydney-flight": "About 20 hours",
+  "general-knowledge:mixed:tower-angle": "About 1,072 feet",
+  "general-knowledge:mixed:great-circle": "8,000 to 8,500 km",
+  "general-knowledge:mixed:falls-flow": "7.2 × 10^11 litres",
 };
 
-describe("general knowledge clue scene descriptions — wave 3 (ages 7-10)", () => {
+describe("general knowledge clue scene descriptions — waves 3 and 10 (all bands)", () => {
   it("covers exactly the general-knowledge items for ages 7-10", () => {
-    assert.equal(BAND_IDS.length, 5);
-    for (const id of BAND_IDS) {
+    assert.equal(IDS_710.length, 5);
+    for (const id of IDS_710) {
       assert.ok(clueSceneFor(id), `${id} has a scene`);
-    }
-    assert.deepEqual(
-      [...Object.keys(GENERAL_KNOWLEDGE_CLUE_SCENES), OPERA_ID].sort(),
-      [...BAND_IDS].sort(),
-    );
-    // No other band carries a description.
-    for (const band of ["10-18", "18+"] as const) {
-      for (const item of itemsForGroup(band)) {
-        assert.equal(clueSceneFor(item.id), null, `${item.id} (${band}) has no scene`);
-      }
     }
   });
 
+  it("covers exactly the general-knowledge items for ages 10-18", () => {
+    assert.equal(IDS_1018.length, 3);
+    assert.deepEqual(
+      [...IDS_1018].sort(),
+      [
+        "general-knowledge:mixed:everest-vs-falls",
+        "general-knowledge:mixed:paris-sydney-flight",
+        "general-knowledge:mixed:tower-angle",
+      ].sort(),
+    );
+    for (const id of IDS_1018) {
+      assert.ok(clueSceneFor(id), `${id} has a scene`);
+    }
+  });
+
+  it("covers exactly the general-knowledge items for ages 18+", () => {
+    assert.equal(IDS_18.length, 2);
+    assert.deepEqual(
+      [...IDS_18].sort(),
+      ["general-knowledge:mixed:great-circle", "general-knowledge:mixed:falls-flow"].sort(),
+    );
+    for (const id of IDS_18) {
+      assert.ok(clueSceneFor(id), `${id} has a scene`);
+    }
+  });
+
+  it("the whole scene map is exactly the ten dealt items", () => {
+    assert.deepEqual(
+      [...Object.keys(GENERAL_KNOWLEDGE_CLUE_SCENES), OPERA_ID].sort(),
+      [...ALL_IDS].sort(),
+    );
+  });
+
   it("never carries the answer before the pick", () => {
-    for (const id of BAND_IDS) {
+    for (const id of ALL_IDS) {
       const description = pinnedFor(id);
       const answer = id === OPERA_ID ? operaYearsEntry(2026) : GENERAL_KNOWLEDGE_ANSWERS[id]!;
       assert.ok(!/\d/.test(description.labelSetup), `${id}: setup label has no digits`);
@@ -142,8 +196,6 @@ describe("general knowledge clue scene descriptions — wave 3 (ages 7-10)", () 
     const falls = pinnedFor("general-knowledge:mixed:falls-in-km");
     assert.equal(falls.kind, "scale-line");
     if (falls.kind === "scale-line") {
-      // The sign's length in metres, against the falls' own width
-      // from the question: 1,708 m stops short of it.
       assert.equal(falls.kilometres * falls.metresPerKm, 2000);
       assert.ok(1708 < falls.kilometres * falls.metresPerKm, "the falls is the narrower");
       assert.equal(
@@ -159,14 +211,58 @@ describe("general knowledge clue scene descriptions — wave 3 (ages 7-10)", () 
         GENERAL_KNOWLEDGE_ANSWERS["general-knowledge:mixed:trip-buses"]!.value,
       );
     }
+    const everest = pinnedFor("general-knowledge:mixed:everest-vs-falls");
+    assert.equal(everest.kind, "stack-drops");
+    if (everest.kind === "stack-drops") {
+      const drops = everest.peakHeight / everest.dropHeight;
+      assert.ok(drops > 75 && drops < 85, `the stack count is about eighty (got ${drops})`);
+      assert.equal(
+        GENERAL_KNOWLEDGE_ANSWERS["general-knowledge:mixed:everest-vs-falls"]!.correct,
+        "About 80",
+      );
+    }
+    const flight = pinnedFor("general-knowledge:mixed:paris-sydney-flight");
+    assert.equal(flight.kind, "journey-line");
+    if (flight.kind === "journey-line") {
+      assert.equal(
+        flight.targetKm! / (flight.totalKm / flight.hours!),
+        GENERAL_KNOWLEDGE_ANSWERS["general-knowledge:mixed:paris-sydney-flight"]!.value,
+      );
+    }
+    const tower = pinnedFor("general-knowledge:mixed:tower-angle");
+    assert.equal(tower.kind, "angle-sight");
+    if (tower.kind === "angle-sight") {
+      const height = tower.distanceFt * Math.tan((tower.angleDeg * Math.PI) / 180);
+      assert.ok(height > 1060 && height < 1085, `the tangent height is about 1,072 ft (got ${height})`);
+      assert.equal(
+        GENERAL_KNOWLEDGE_ANSWERS["general-knowledge:mixed:tower-angle"]!.correct,
+        "About 1,072 feet",
+      );
+    }
+    const circle = pinnedFor("general-knowledge:mixed:great-circle");
+    assert.equal(circle.kind, "great-circle");
+    assert.equal(
+      GENERAL_KNOWLEDGE_ANSWERS["general-knowledge:mixed:great-circle"]!.correct,
+      "8,000 to 8,500 km",
+    );
+    const flow = pinnedFor("general-knowledge:mixed:falls-flow");
+    assert.equal(flow.kind, "flow-counter");
+    if (flow.kind === "flow-counter") {
+      assert.equal(flow.perMinute * flow.minutesPerDay, 7.2e11);
+      assert.equal(
+        GENERAL_KNOWLEDGE_ANSWERS["general-knowledge:mixed:falls-flow"]!.correct,
+        "7.2 × 10^11 litres",
+      );
+    }
   });
 
-  it("every item carries a well-formed narrated summary, pinned to the manifest", () => {
+  it("every item carries a well-formed narrated summary, pinned to the manifest and the clip file", () => {
     const here = dirname(fileURLToPath(import.meta.url));
-    const manifest = JSON.parse(
-      readFileSync(join(here, "..", "..", "..", "public", "audio", "subjects", "manifest.json"), "utf8"),
-    ) as { clips: Record<string, { file: string; duration: number; lines: number }> };
-    for (const id of BAND_IDS) {
+    const audioDir = join(here, "..", "..", "..", "public", "audio", "subjects");
+    const manifest = JSON.parse(readFileSync(join(audioDir, "manifest.json"), "utf8")) as {
+      clips: Record<string, { file: string; duration: number; lines: number; item: string }>;
+    };
+    for (const id of ALL_IDS) {
       const description = pinnedFor(id);
       const summary = description.summary;
       assert.ok(summary, `${id} has a summary`);
@@ -201,8 +297,15 @@ describe("general knowledge clue scene descriptions — wave 3 (ages 7-10)", () 
       const entry = manifest.clips[summary.clip.replace(/\.mp3$/, "")];
       assert.ok(entry, `${id}: manifest entry for ${summary.clip}`);
       assert.equal(entry.file, summary.clip, `${id}: manifest file matches`);
+      assert.equal(entry.item, id, `${id}: manifest item matches`);
       assert.equal(entry.duration, summary.duration, `${id}: manifest duration matches the description`);
       assert.equal(entry.lines, summary.lines.length, `${id}: manifest line count matches`);
+      const bytes = statSync(join(audioDir, summary.clip)).size;
+      const expected = summary.duration * 8000;
+      assert.ok(
+        Math.abs(bytes - expected) < expected * 0.15,
+        `${id}: clip file size ${bytes} B agrees with duration ${summary.duration} s`,
+      );
     }
   });
 });

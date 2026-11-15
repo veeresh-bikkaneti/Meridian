@@ -60,8 +60,8 @@ describe("clue scene wiring", () => {
     assert.ok(mathCase.includes("<ClueScene"));
   });
 
-  it("the general-knowledge case gates the scenes to ages 7-10 with a description", () => {
-    assert.ok(gkCase.includes('if (band !== "7-10") return null;'));
+  it("the general-knowledge case gates the scenes to ages 7-10, 10-18 and 18+ with a description", () => {
+    assert.ok(gkCase.includes('if (band !== "7-10" && band !== "10-18" && band !== "18+") return null;'));
     assert.ok(gkCase.includes("clueSceneFor(item.id)"));
     assert.ok(gkCase.includes("<ClueScene"));
     assert.ok(gkCase.includes("resultExtra={"), "general knowledge passes the hook");
@@ -507,5 +507,28 @@ describe("wave 9 kinds", () => {
   it("the wave-9 reuse variants are data branches, not new kinds", () => {
     assert.ok(kindsA.includes("secondRows"), "array-grid carries the two-fields variant data");
     assert.ok(kindsB.includes("segmentPx"), "map-scale carries the narrow-segment variant data");
+  });
+});
+
+describe("wave 10 kinds", () => {
+  const kindsC = read(join(here, "clue-scene-kinds-c.tsx"));
+
+  it("the renderer dispatches every wave-10 kind", () => {
+    for (const kind of ["stack-drops", "angle-sight", "flow-counter"]) {
+      assert.ok(scene.includes(`case "${kind}":`), `SceneArt dispatches ${kind}`);
+      assert.ok(scene.includes(`"${kind}":`), `SUMMARY_STAGGER paces ${kind}`);
+    }
+  });
+
+  it("every wave-10 kind accepts the summary pacing prop", () => {
+    for (const name of ["StackDropsScene", "AngleSightScene", "FlowCounterScene"] as const) {
+      assert.ok(kindsC.includes(`function ${name}(`), `${name} exists`);
+      assert.ok(kindsC.includes("stepDelay"), `${name} accepts stepDelay`);
+    }
+  });
+
+  it("the wave-10 reuses are existing kinds, not forks", () => {
+    assert.ok(kindsC.includes("function GreatCircleScene("), "great-circle stays the shared kind");
+    assert.ok(kindsC.includes("function JourneyLineScene("), "journey-line stays the shared kind");
   });
 });
