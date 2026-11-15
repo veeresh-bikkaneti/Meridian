@@ -67,8 +67,13 @@ Base: origin/main `5fe47c1c` (verified latest at dispatch, 2026-11-15)
   board.css. `scripts/static-wellknown.test.mjs` noindex map updated
   (/board/issues removed; /board unchanged).
 - **Gates (numbers from logs):** `npx tsc --noEmit` clean;
-  `npm test` — src suite 2,646/2,646, scripts suite 1,198 tests
-  0 fail; `node scripts/lint-cards.mjs` GATE PASSED;
+  `npm test` — src suite 2,646/2,646, scripts suite ~~1,198 tests
+  0 fail~~ CORRECTION (2026-11-15): the scripts "0 fail" claim does
+  not reproduce at the shipped tip — `e2e-telemetry-guard` (c2)
+  failed on a stale CONTEXT_FILES pin entry for
+  `board.desktop.spec.ts` (left from #436; the v3 spec no longer
+  calls `browser.newContext(`). Stale entry removed on this branch;
+  guard test 6/6 after the cure; `node scripts/lint-cards.mjs` GATE PASSED;
   `npm run lint:content` GATE PASSED (6 baselined, 0 new);
   `npm run build:pages` OK; `npm run board:budget` PASSED
   (170,425 / 184,320 B gz); Playwright `board.desktop.spec.ts`
