@@ -56,12 +56,17 @@ export default function MoleculeMap({
   selectedSlug,
   onSelect,
   onOpenInTrail,
+  scheme,
 }: {
   board: PublishedBoard;
   layout: BoardLayout;
   selectedSlug: string | null;
   onSelect: (slug: string | null) => void;
   onOpenInTrail: (slug: string) => void;
+  /** The board's effective colour scheme (the visitor's switch
+   * choice, or the system scheme under "System") — bonds + halo
+   * follow it live; see the scheme effect below. */
+  scheme: "light" | "dark";
 }) {
   const stageRef = useRef<HTMLDivElement>(null);
   const [webglFailed, setWebglFailed] = useState(false);
@@ -71,6 +76,8 @@ export default function MoleculeMap({
   selectedRef.current = selectedSlug;
   const selectRef = useRef(onSelect);
   selectRef.current = onSelect;
+  const bondMatRef = useRef<THREE.MeshBasicMaterial | null>(null);
+  const haloMatRef = useRef<THREE.MeshBasicMaterial | null>(null);
 
   const flat: FlatStory[] = board.epics.flatMap((e) =>
     e.features.flatMap((f) => f.stories.map((s) => ({ slug: s.slug, featureId: f.id }))),
@@ -123,12 +130,16 @@ export default function MoleculeMap({
     scene.add(atoms);
 
     /* selection halo — one extra mesh, moved to the selected atom */
-    const halo = new THREE.Mesh(
-      new THREE.SphereGeometry(1.25, 14, 10),
-      new THREE.MeshBasicMaterial({ color: 0xe8b64c, wireframe: true, transparent: true, opacity: 0.9 }),
-    );
+    const haloMat = new THREE.MeshBasicMaterial({
+      color: 0xe8b64c,
+      wireframe: true,
+      transparent: true,
+      opacity: 0.9,
+    });
+    const halo = new THREE.Mesh(new THREE.SphereGeometry(1.25, 14, 10), haloMat);
     halo.visible = false;
     scene.add(halo);
+    haloMatRef.current = haloMat;
 
     /* molecule bubbles — belonging, never a line */
     for (const epic of board.epics) {
@@ -191,7 +202,27 @@ export default function MoleculeMap({
     dummy.scale.set(1, 1, 1);
     dummy.quaternion.identity();
     scene.add(bonds);
+    bondMatRef.current = bondMat;
     stage.dataset.bondCount = String(board.bonds.length);
+
+    /* The scene's two scheme-carrying colours (bonds, halo) read
+     * the atlas tokens from the stage's computed style — the CSS
+     * is the single source of truth, so the board theme switch
+     * (data-board-theme on the root, re-declaring the tokens) and
+     * the system scheme both reach the scene through the same
+     * vars the stage ground consumes. The constructor hexes are
+     * the dark-token fallbacks if a var ever comes back empty.
+     * Everything else in the scene is scheme-invariant by design:
+     * status colours (mirrored by the legend's constant swatches),
+     * the parchment label chips, the lights. */
+    const applySchemeColors = () => {
+      const cs = window.getComputedStyle(stage);
+      const stamp = cs.getPropertyValue("--atlas-stamp").trim();
+      if (stamp) bondMat.color.set(stamp);
+      const brass = cs.getPropertyValue("--atlas-brass").trim();
+      if (brass) haloMat.color.set(brass);
+    };
+    applySchemeColors();
 
     /* camera + the §3 gesture map (custom orbit, clamped) */
     let theta = 0.6;
@@ -373,9 +404,26 @@ export default function MoleculeMap({
       el.removeEventListener("wheel", onWheel);
       renderer.dispose();
       el.remove();
+      bondMatRef.current = null;
+      haloMatRef.current = null;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [board, layout]);
+
+  /* Follow the board theme live: when the effective scheme
+   * changes — the visitor flips the switch, or the system scheme
+   * flips under the System choice — re-read the atlas tokens from
+   * the stage's computed style and recolour bonds + halo. The
+   * stage ground is CSS and follows on its own. */
+  useEffect(() => {
+    const stage = stageRef.current;
+    if (!stage || !bondMatRef.current || !haloMatRef.current) return;
+    const cs = window.getComputedStyle(stage);
+    const stamp = cs.getPropertyValue("--atlas-stamp").trim();
+    if (stamp) bondMatRef.current.color.set(stamp);
+    const brass = cs.getPropertyValue("--atlas-brass").trim();
+    if (brass) haloMatRef.current.color.set(brass);
+  }, [scheme]);
 
   const selected = selectedSlug ? findStory(board, selectedSlug) : null;
   const here = selected

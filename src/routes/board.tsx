@@ -46,6 +46,14 @@ const MoleculeMap = lazy(() => import("@/board/molecule-map"));
  * and the tip form. One selection, mirrored to the URL
  * (?view=&story=), shared by trail and map.
  *
+ * Theme (owner ruling, 2026-11-15): the board loads on the
+ * visitor's system theme and the visitor can switch it — System /
+ * Light / Dark in the view nav. An explicit choice sets
+ * data-board-theme on the board root, where board.css re-declares
+ * the scheme tokens (copies pinned by theme-parity.test.ts), and
+ * persists in localStorage; System sets no attribute and the
+ * media query rules, exactly as before the switch existed.
+ *
  * Indexing: the board IS indexed and listed in the sitemap
  * (owner ruling, 2026-11-15, superseding board v2 step 15's
  * noindex): the "What's coming" surface is for parents to
@@ -77,6 +85,8 @@ export const Route = createFileRoute("/board")({
 
 type BoardView = "trail" | "map" | "tip";
 const CALM_KEY = "meridian-board-v3-calm";
+const THEME_KEY = "meridian-board-v3-theme";
+type BoardThemeChoice = "system" | "light" | "dark";
 
 function BoardPage() {
   const search = Route.useSearch();
@@ -89,6 +99,41 @@ function BoardPage() {
   const [calm, setCalm] = useState(
     () => typeof window !== "undefined" && window.localStorage.getItem(CALM_KEY) === "1",
   );
+  /* Board theme: the stored choice wins; "system" (the default,
+   * and the fallback for anything unreadable) sets no attribute —
+   * the media query rules, exactly as before the switch existed. */
+  const [themeChoice, setThemeChoice] = useState<BoardThemeChoice>(() => {
+    if (typeof window === "undefined") return "system";
+    try {
+      const v = window.localStorage.getItem(THEME_KEY);
+      return v === "light" || v === "dark" ? v : "system";
+    } catch {
+      return "system";
+    }
+  });
+  const [systemScheme, setSystemScheme] = useState<"light" | "dark">(() =>
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-color-scheme: light)").matches
+      ? "light"
+      : "dark",
+  );
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-color-scheme: light)");
+    const onChange = (e: MediaQueryListEvent) =>
+      setSystemScheme(e.matches ? "light" : "dark");
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, []);
+  const scheme: "light" | "dark" =
+    themeChoice === "system" ? systemScheme : themeChoice;
+  const pickTheme = (choice: BoardThemeChoice) => {
+    setThemeChoice(choice);
+    try {
+      window.localStorage.setItem(THEME_KEY, choice);
+    } catch {
+      /* ignore */
+    }
+  };
   const [toast, setToast] = useState<string | null>(null);
 
   useEffect(() => {
@@ -143,7 +188,10 @@ function BoardPage() {
   const frontierStory = frontier ? findStory(board, frontier) : null;
 
   return (
-    <main className={`board-v3${calm ? " v3-calm" : ""}`}>
+    <main
+      className={`board-v3${calm ? " v3-calm" : ""}`}
+      data-board-theme={themeChoice === "system" ? undefined : themeChoice}
+    >
       <div className="v3-wrap">
         <p className="v3-back">
           <Link to="/">← Back to the game</Link>
@@ -206,6 +254,28 @@ function BoardPage() {
           >
             Send a tip
           </button>
+          <div className="v3-theme-switch" role="group" aria-label="Board theme">
+            <span className="v3-theme-label" aria-hidden="true">
+              Theme
+            </span>
+            {(
+              [
+                ["system", "System"],
+                ["light", "Light"],
+                ["dark", "Dark"],
+              ] as [BoardThemeChoice, string][]
+            ).map(([choice, label]) => (
+              <button
+                key={choice}
+                type="button"
+                data-testid={`board-theme-${choice}`}
+                aria-pressed={themeChoice === choice}
+                onClick={() => pickTheme(choice)}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
           <button
             type="button"
             className="v3-calm-toggle"
@@ -253,6 +323,7 @@ function BoardPage() {
                 selectedSlug={selectedSlug}
                 onSelect={select}
                 onOpenInTrail={(slug) => go({ view: "trail", story: slug })}
+                scheme={scheme}
               />
             </Suspense>
           ) : (

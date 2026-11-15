@@ -2005,3 +2005,66 @@
 
 /* Calm mode: every loop rests at its end pose (the base styles). */
 .board-v3.v3-calm .v3-anim-window *, .board-v3.v3-calm .v3-story-banner *, .board-v3.v3-calm .v3-form-head * { animation: none !important; }
+
+/* ---- board theme switch (owner ruling, 2026-11-15) ----
+   The board loads on the visitor's system theme — the styles.css
+   scheme behaviour, untouched — and the visitor can switch it.
+   An explicit choice sets data-board-theme on the board root and
+   the two blocks below re-declare, for the board subtree only,
+   the scheme-varying tokens the board consumes. Every value is
+   copied verbatim from src/styles.css: the dark block from its
+   :root defaults, the light block from its
+   @media (prefers-color-scheme: light) block. Declared on the
+   board root, the chosen values win over the media query in BOTH
+   directions; with no attribute set, nothing here applies and
+   the system theme rules exactly as before.
+   src/board/theme-parity.test.ts pins both copies against both
+   sources, so drift fails the build. The homepage (hv5) tokens
+   above are a single-value language in both schemes — nothing
+   to switch — so what flips is the atlas/global family: the
+   map's chart room, the legend, and the form surfaces that
+   consume the global tokens. */
+.board-v3[data-board-theme="dark"] {
+  --fg: #f3f4f2;
+  --muted: #a7b0ab;
+  --surface: #181c1a;
+  --surface-2: #212724;
+  --line: color-mix(in oklab, var(--fg) 14%, transparent);
+  --error: #f1948a;
+  --atlas-bg-1: #10222a;
+  --atlas-bg-2: #070e12;
+  --atlas-glow: rgba(232, 182, 76, 0.1);
+  --atlas-grid: rgba(232, 182, 76, 0.07);
+  --atlas-card: rgba(16, 34, 42, 0.66);
+  --atlas-card-line: rgba(232, 182, 76, 0.22);
+  --atlas-ink: #f0e7d2;
+  --atlas-muted: #9db3ad;
+  --atlas-brass: #e8b64c;
+  --atlas-brass-ink: #0c181d;
+  --atlas-brass-text: #e8b64c;
+  --atlas-stamp: #e86a5c;
+  color-scheme: dark;
+}
+.board-v3[data-board-theme="light"] {
+  --fg: #1c2420;
+  --muted: #5c6762;
+  --surface: #fffdf8;
+  --surface-2: #e7e2d6;
+  --line: color-mix(in oklab, var(--fg) 14%, transparent);
+  --error: #b91c1c;
+  --atlas-bg-1: #f8f2df;
+  --atlas-bg-2: #eadfc3;
+  --atlas-glow: rgba(165, 118, 31, 0.12);
+  --atlas-grid: rgba(27, 43, 49, 0.09);
+  --atlas-card: rgba(255, 253, 246, 0.74);
+  --atlas-card-line: rgba(27, 43, 49, 0.2);
+  --atlas-ink: #1b2b31;
+  --atlas-muted: #54696e;
+  --atlas-brass: #a5761f;
+  --atlas-brass-ink: #fbf6e8;
+  --atlas-brass-text: #8a5f16;
+  --atlas-stamp: #b3372a;
+  color-scheme: light;
+}
+.board-v3 .v3-theme-switch { display: flex; align-items: center; gap: 8px; }
+.board-v3 .v3-theme-label { color: var(--hv5-ink-soft); font-size: 0.9rem; font-weight: 600; }
