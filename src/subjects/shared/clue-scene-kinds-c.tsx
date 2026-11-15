@@ -835,3 +835,76 @@ export function TowerMeasureScene({
     </>
   );
 }
+
+/* ── seesaw-lift (wave 4) ──────────────────────────────────────
+   A board over a log, a box on the far end. Setup: the board
+   rests level, the box sits still — no tilt, no arrow. Solved
+   in three steps: 0 a push arrow presses the near end down,
+   1 the tilted board draws in and the box rides the far end
+   up, 2 a ring and the final tick stand over the lifted box.
+   The tilt is drawn as geometry, not a rotation, so the still
+   frame rests exactly on the film's final frame. */
+
+export function SeesawLiftScene({
+  description,
+  phase,
+  stepDelay,
+}: {
+  description: Extract<ClueSceneDescription, { kind: "seesaw-lift" }>;
+  phase: ClueScenePhase;
+  /** Summary pacing: when present, step s's beat starts at
+   * stepDelay(s) instead of the film's own stagger. */
+  stepDelay?: (step: number) => number;
+}) {
+  void description;
+  const pressStart = stepDelay ? stepDelay(0) : 0.5;
+  const tiltStart = stepDelay ? stepDelay(1) : 1.4;
+  const tickStart = stepDelay ? stepDelay(2) : 2.3;
+  const boxArt = (
+    <>
+      <rect className="cs-pack" x="-14" y="-26" width="28" height="26" rx="3" />
+      <path className="cs-line cs-band" d="M-13 -10 Q0 -12 13 -10" />
+    </>
+  );
+  return (
+    <>
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M24 40 Q160 36 296 40" style={delay(0.1)} />
+      <path className="cs-line cs-draw" pathLength={1} d="M16 160 Q160 164 304 160" style={delay(0)} />
+      {/* The log the board rests over. */}
+      <g className="cs-pop" style={delay(0.3)}>
+        <circle className="cs-stone" cx="160" cy="147" r="12" />
+        <circle className="cs-snack-dot" cx="160" cy="147" r="4" />
+      </g>
+      {phase === "setup" ? (
+        <>
+          <path className="cs-line cs-draw" pathLength={1} d="M38 122 Q160 117 282 122" style={delay(0.15)} />
+          <path className="cs-line cs-draw" pathLength={1} d="M38 130 Q160 125 282 130" style={delay(0.25)} />
+          <g transform="translate(252 122)">
+            <g className="cs-pop" style={delay(0.5)}>{boxArt}</g>
+          </g>
+        </>
+      ) : (
+        <>
+          {/* The push: an arrow presses the near end down. */}
+          <g className="cs-slide" style={slideFrom(0, -16, pressStart)}>
+            <path className="cs-line cs-band" d="M54 58 L54 94" />
+            <path className="cs-tip" d="M54 103 L47 91 L61 91 Z" />
+          </g>
+          {/* The board, tipped over the log: near end down, far
+              end up — drawn in as the tip happens. */}
+          <path className="cs-line cs-draw" pathLength={1} d="M38 140 Q160 112 282 82" style={delay(tiltStart)} />
+          <path className="cs-line cs-draw" pathLength={1} d="M38 148 Q160 120 282 90" style={delay(tiltStart + 0.1)} />
+          <g transform="translate(252 88)">
+            <g className="cs-slide" style={slideFrom(0, 34, tiltStart)}>
+              {boxArt}
+            </g>
+          </g>
+          <ellipse className="cs-ring" cx="252" cy="75" rx="21" ry="19" style={delay(tickStart + 0.4)} />
+          <text className="cs-tick cs-tick-final" x="252" y="44" style={delay(tickStart + 0.55)}>
+            ↑
+          </text>
+        </>
+      )}
+    </>
+  );
+}
