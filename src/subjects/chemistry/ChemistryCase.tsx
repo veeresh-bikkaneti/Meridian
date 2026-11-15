@@ -4,13 +4,12 @@
  * SubjectCase, passing chemistry's title, test-id prefix, band items
  * and answer lookup.
  *
- * Clue scenes (expansion wave 7): chemistry also passes the
- * scene hook, mirroring PhysicsCase. For ages 7-10 and 10-18,
- * an item that carries a scene description (scenes.ts, in data
- * next to the answers) gets a short live-drawn film above its
- * clue card; every other item is exactly as before — in this
- * wave that is the three reactions items and all ages 18+
- * items, which carry no description until wave 8. The hook is
+ * Clue scenes (expansion waves 7-8): chemistry also passes
+ * the scene hook, mirroring PhysicsCase. For ages 7-10, 10-18
+ * and 18+, an item that carries a scene description
+ * (scenes.ts, in data next to the answers) gets a short
+ * live-drawn film above its clue card; every item carries one
+ * since wave 8 completed Chemistry 16/16. The hook is
  * answer-blind — SubjectCase hands it the phase from the case's
  * own state, never the answer.
  *
@@ -49,13 +48,13 @@ export default function ChemistryCase(
       itemsForGroup={itemsForGroup}
       answerFor={answerFor}
       scene={(item, phase, reduced, band) => {
-        if (band !== "7-10" && band !== "10-18") return null;
+        if (band !== "7-10" && band !== "10-18" && band !== "18+") return null;
         const description = clueSceneFor(item.id);
         if (!description) return null;
         return <ClueScene key={item.id} description={description} phase={phase} reduced={reduced} />;
       }}
       resultExtra={(item, _reduced, band) => {
-        if (band !== "7-10" && band !== "10-18") return null;
+        if (band !== "7-10" && band !== "10-18" && band !== "18+") return null;
         const description = clueSceneFor(item.id);
         if (!description?.summary) return null;
         return <ClueSummaryText summary={description.summary} />;

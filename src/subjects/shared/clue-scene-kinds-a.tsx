@@ -1550,3 +1550,209 @@ export function BendTestScene({
     </>
   );
 }
+/* ── scale-balance ───────────────────────────────────────────
+   Two substances in jars rest on a top-pan scale. Setup: the
+   dial face is blank — no needle, no reading — so nothing
+   about the total is shown before the pick. Solved: one jar
+   pours into the other on the same pan (nothing leaves, nothing
+   is added), the mix's look changes, and only then does the
+   needle appear, settling at the dial's centre mark. */
+
+export function ScaleBalanceScene({
+  description,
+  phase,
+  stepDelay,
+}: {
+  description: Extract<ClueSceneDescription, { kind: "scale-balance" }>;
+  phase: ClueScenePhase;
+  /** Summary pacing: when present, step s's beat starts at
+   * stepDelay(s) instead of the film's own stagger. */
+  stepDelay?: (step: number) => number;
+}) {
+  void description;
+  const pourStart = stepDelay ? stepDelay(0) : 0.5;
+  const mixStart = stepDelay ? stepDelay(1) : 1.4;
+  const tickStart = stepDelay ? stepDelay(2) : 2.3;
+  const groundY = 172;
+  const panY = 108;
+  return (
+    <>
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M24 30 Q160 26 296 30" style={delay(0.1)} />
+      <path className="cs-line cs-draw" pathLength={1} d={`M16 ${groundY} Q160 ${groundY + 4} 304 ${groundY}`} style={delay(0)} />
+      {/* The scale body and its pan. */}
+      <path className="cs-line cs-draw" pathLength={1} d="M104 156 L124 116 L196 116 L216 156" style={delay(0.2)} />
+      <path className="cs-line cs-draw" pathLength={1} d="M96 164 Q160 160 224 164 M104 116 Q160 112 216 116" style={delay(0.25)} />
+      <ellipse className="cs-line cs-draw" pathLength={1} cx="160" cy={panY} rx="72" ry="8" style={delay(0.3)} />
+      {/* The dial: a blank face in setup — the needle and its
+          centre mark exist only in the solved beat. */}
+      <circle className="cs-pack cs-pop" cx="160" cy="140" r="15" style={delay(0.4)} />
+      {phase === "solved" ? (
+        <>
+          <path className="cs-line cs-band cs-pop" d="M160 140 L160 128 M155 131 L160 127 L165 131" style={delay(tickStart)} />
+          <circle className="cs-coin-inner cs-pop" cx="160" cy="140" r="2.4" style={delay(tickStart + 0.1)} />
+        </>
+      ) : null}
+      {/* The two jars on the pan. In the solved resting frame
+          the right jar tips over the left one, pouring in. */}
+      <g transform="translate(128 84)">
+        <g className="cs-pop" style={delay(0.5)}>
+          <rect className="cs-pack" x="-16" y="-24" width="32" height="40" rx="3" />
+          <path className="cs-line cs-band" d="M-15 2 Q0 0 15 2" />
+          <circle className="cs-stone" cx="-6" cy="8" r="2.6" />
+          <circle className="cs-stone" cx="5" cy="11" r="2.6" />
+        </g>
+      </g>
+      {phase === "setup" ? (
+        <g transform="translate(192 84)">
+          <g className="cs-pop" style={delay(0.65)}>
+            <rect className="cs-pack" x="-16" y="-24" width="32" height="40" rx="3" />
+            <path className="cs-line cs-band" d="M-15 -8 Q0 -10 15 -8" />
+            <path className="cs-line" d="M-9 8 L9 8 M-9 13 L9 13" />
+          </g>
+        </g>
+      ) : (
+        <>
+          {/* Step 0: the right jar pours into the left one —
+              every drop stays on the same pan. */}
+          <g transform="translate(178 62) rotate(48)">
+            <g className="cs-slide" style={slideFrom(-14, 22, pourStart)}>
+              <rect className="cs-pack" x="-16" y="-24" width="32" height="40" rx="3" />
+              <path className="cs-line cs-band" d="M-15 -8 Q0 -10 15 -8" />
+            </g>
+          </g>
+          {[0, 1, 2].map((i) => (
+            <circle
+              key={`pour-${i}`}
+              className="cs-stone cs-pop"
+              cx={150 + i * 5}
+              cy={66 + i * 7}
+              r="2.4"
+              style={delay(pourStart + 0.25 + i * 0.14)}
+            />
+          ))}
+          {/* Step 1: the mixed jar's look changes — both
+              patterns together in one jar. */}
+          <g transform="translate(128 84)">
+            <g className="cs-pop" style={delay(mixStart)}>
+              <circle className="cs-coin" cx="-8" cy="-2" r="2.6" />
+              <circle className="cs-coin" cx="7" cy="4" r="2.6" />
+              <path className="cs-line cs-band" d="M-11 12 Q0 10 11 12" />
+            </g>
+          </g>
+          <ellipse className="cs-ring" cx="160" cy="140" rx="21" ry="21" style={delay(tickStart + 0.4)} />
+          <text className="cs-tick cs-tick-final" x="160" y="34" style={delay(tickStart + 0.55)}>
+            ✓
+          </text>
+        </>
+      )}
+    </>
+  );
+}
+
+/* ── bubble-reaction ─────────────────────────────────────────
+   Two plain substances in jars flank an empty mixing glass on
+   a shop counter. Setup: the glass is empty and still — no
+   bubbles, no changed look. Solved: both jars pour in, then
+   bubbles rise through the mix and its look changes. */
+
+function BubbleGlassArt() {
+  return (
+    <>
+      <path className="cs-line" d="M-26 -40 L-22 36 Q0 42 22 36 L26 -40" />
+      <path className="cs-line cs-soft" d="M-24 -14 Q0 -18 24 -14" />
+    </>
+  );
+}
+
+export function BubbleReactionScene({
+  description,
+  phase,
+  stepDelay,
+}: {
+  description: Extract<ClueSceneDescription, { kind: "bubble-reaction" }>;
+  phase: ClueScenePhase;
+  /** Summary pacing: when present, step s's beat starts at
+   * stepDelay(s) instead of the film's own stagger. */
+  stepDelay?: (step: number) => number;
+}) {
+  void description;
+  const pourStart = stepDelay ? stepDelay(0) : 0.5;
+  const bubbleStart = stepDelay ? stepDelay(1) : 1.4;
+  const tickStart = stepDelay ? stepDelay(2) : 2.3;
+  const groundY = 172;
+  const counterY = 148;
+  const jarArt = (bandY: number) => (
+    <>
+      <rect className="cs-pack" x="-15" y="-22" width="30" height="38" rx="3" />
+      <path className="cs-line cs-band" d={`M-14 ${bandY} Q0 ${bandY - 2} 14 ${bandY}`} />
+    </>
+  );
+  return (
+    <>
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M24 30 Q160 26 296 30" style={delay(0.1)} />
+      <path className="cs-line cs-draw" pathLength={1} d={`M16 ${groundY} Q160 ${groundY + 4} 304 ${groundY}`} style={delay(0)} />
+      {/* The shop counter. */}
+      <path className="cs-line cs-draw" pathLength={1} d={`M28 ${counterY} Q160 ${counterY + 4} 292 ${counterY}`} style={delay(0.15)} />
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d={`M40 ${counterY} L36 ${groundY} M280 ${counterY} L284 ${groundY}`} style={delay(0.2)} />
+      {/* The mixing glass, centre: empty in both phases' rest
+          until the solved beat fills it. */}
+      <g transform="translate(160 104)">
+        <g className="cs-pop" style={delay(0.35)}>
+          <BubbleGlassArt />
+        </g>
+      </g>
+      {phase === "setup" ? (
+        <>
+          <g transform="translate(84 122)">
+            <g className="cs-pop" style={delay(0.5)}>{jarArt(0)}</g>
+          </g>
+          <g transform="translate(236 122)">
+            <g className="cs-pop" style={delay(0.65)}>{jarArt(-8)}</g>
+          </g>
+        </>
+      ) : (
+        <>
+          {/* Step 0: both jars tip and pour into the glass. */}
+          <g transform="translate(112 66) rotate(42)">
+            <g className="cs-slide" style={slideFrom(-28, 56, pourStart)}>{jarArt(0)}</g>
+          </g>
+          <g transform="translate(208 66) rotate(-42)">
+            <g className="cs-slide" style={slideFrom(28, 56, pourStart + 0.15)}>{jarArt(-8)}</g>
+          </g>
+          {[0, 1, 2, 3].map((i) => (
+            <circle
+              key={`stream-${i}`}
+              className="cs-stone cs-pop"
+              cx={i < 2 ? 138 + i * 5 : 178 - (i - 2) * 5}
+              cy={74 + (i % 2) * 9}
+              r="2.3"
+              style={delay(pourStart + 0.3 + i * 0.12)}
+            />
+          ))}
+          {/* Step 1: bubbles rise through the mix, and a new
+              band marks its changed look. */}
+          <g transform="translate(160 104)">
+            <path className="cs-line cs-band cs-pop" d="M-23 18 Q0 15 23 18" style={delay(bubbleStart)} />
+            {[
+              { x: -12, y: 22 }, { x: -4, y: 8 }, { x: 5, y: 26 }, { x: 12, y: 0 },
+              { x: -9, y: -4 }, { x: 3, y: -10 }, { x: 14, y: 16 }, { x: -15, y: 10 },
+            ].map((b, i) => (
+              <circle
+                key={`bubble-${i}`}
+                className="cs-coin cs-pop"
+                cx={b.x}
+                cy={b.y}
+                r={i % 3 === 0 ? 3.6 : 2.5}
+                style={delay(bubbleStart + 0.15 + i * 0.13)}
+              />
+            ))}
+          </g>
+          <ellipse className="cs-ring" cx="160" cy="104" rx="36" ry="48" style={delay(tickStart + 0.4)} />
+          <text className="cs-tick cs-tick-final" x="160" y="34" style={delay(tickStart + 0.55)}>
+            ✓
+          </text>
+        </>
+      )}
+    </>
+  );
+}
