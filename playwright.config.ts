@@ -443,6 +443,11 @@ export default defineConfig({
       },
     },
     {
+      // Ask first (fix/ask-age-first): the case-start band ask.
+      name: "ask-age-first",
+      testMatch: /ask-age-first\.spec\.ts/,
+    },
+    {
       name: "crash-watchdog",
       testMatch: /crash-watchdog\.spec\.ts/,
     },

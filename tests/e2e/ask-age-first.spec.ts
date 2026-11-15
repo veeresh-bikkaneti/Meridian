@@ -261,7 +261,9 @@ test("backing out of the resume ask writes nothing and starts nothing", async ({
     .getByRole("button", { name: "GeoDetective: Resume your case" })
     .click();
   await expect(page.getByTestId("age-picker")).toBeVisible();
-  await page.getByRole("button", { name: "Not now" }).click();
+  // Scoped to the ask: Home's tutorial invite (inert behind the
+  // overlay) carries its own "Not now".
+  await page.getByTestId("age-picker").getByRole("button", { name: "Not now" }).click();
   await expect(page.getByTestId("age-picker")).toHaveCount(0);
   await expect(page.getByTestId("loop-screen")).toHaveCount(0);
   await expect(page.getByTestId("home-card-why-learn")).toBeVisible();
