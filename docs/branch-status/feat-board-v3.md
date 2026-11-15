@@ -100,9 +100,10 @@ Base: origin/main `5fe47c1c` (verified latest at dispatch, 2026-11-15)
 - Behind the Scenes as a normal trail stop (†).
 - Trailhead counts all 46 stories (†).
 - 3D scene: molecule-only with DOM handoff (†).
-- **Sitemap/indexing of /board** — currently noindex + absent from
-  sitemap (board v2 step 15 owner design, kept). Options: (a) keep,
-  (b) index + sitemap entry. NOT changed on this branch.
+- **Sitemap/indexing of /board** — RULED by the owner 2026-11-15
+  (option b) and LANDED in the fixes run below: /board is in
+  public/sitemap.xml, the route serves no noindex, and
+  scripts/static-wellknown.test.mjs asserts both halves.
 
 ## Ruled out
 - Any live data source for the board (GitHub or otherwise).
@@ -120,3 +121,47 @@ Edges:
 - `board-v3` —depends-on→ `board-status-publisher`.
 - `board-v3` —decided-by→ `decision-board-v3-ship`.
 - `board-status-publisher` —documents→ `board-v3`.
+
+## Update — 2026-11-15 fixes run (owner: "Fix both")
+
+Done, on top of the shipped tip:
+- **Indexing fix:** /board added to public/sitemap.xml; the noindex
+  meta removed from src/routes/board.tsx; the static-wellknown test
+  flipped (NOINDEX_ROUTES mechanism kept, now empty; new positive
+  test asserts /board is listed, serves no noindex, and that the
+  deleted /board/issues is never listed).
+- **Design uplift Top 3** (DESIGN-UPLIFT.md §2, exactly as specced):
+  (1) one journey panel per feature — feature card + stops flat
+  inside the .hv5-card-recipe panel, stop buttons a grid with the
+  pill far right and the line full width, mirror buttons share the
+  anatomy; a finished feature's gold border moved to the panel via
+  :has (no finished feature exists in the data yet). (2) The map
+  stage takes the atlas ground + 76px grid overlay from
+  src/styles.css (the .atlas-bg recipe), 560px tall on desktop
+  with the renderer height on the same >900px rule, atoms at
+  SphereGeometry(0.85, 14, 10), bonds --atlas-stamp, halo
+  --atlas-brass; the legend's bond swatch follows the bond colour.
+  (3) Story banner at its true 64px, story card on --hv5-card with
+  28px insets, the open stop's duplicated line hidden, the ⛔ span
+  deleted — blocked stops carry the dashed frontier rule
+  (.v3-blocked) and their line already says "Coming after: …".
+- theme-parity.test.ts extended (not loosened): the atlas family
+  is now pinned — tokens must exist in styles.css :root with the
+  chart-room values, board.css must consume them via var(), and
+  molecule-map.tsx's hexes must match the tokens.
+- Gates: tsc clean; npm test green (src 2,649/2,649 incl. +3 atlas
+  parity checks); lint-cards + lint:content GATE PASSED;
+  build:pages OK; board:budget PASSED 170,571/184,320 B gz; board
+  Playwright spec 10/10 on the built artifact; renderer measured
+  22 draw calls / 14,228 triangles / 8 bonds (triangles rose from
+  9,076 with the smoother atoms; cap 15,000).
+- Before/after screenshots: ~/workspace/board-v3-ship/screenshots/
+  {before,after}/ (five pairs at 1280×900, plus a dark-scheme map
+  shot — the atlas family is scheme-following, exactly like the
+  play screens' .atlas-bg: light scheme gives the light journal,
+  dark scheme the dark chart room).
+- Full record: ~/workspace/board-v3-ship/FIXES-REPORT.md.
+
+Next step: independent Reality Checker + design re-gate (dispatched
+separately by the parent). NOT merged — merge stays the owners' tap.
+Open questions: the remaining † defaults above, unchanged.
