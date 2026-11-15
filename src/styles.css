@@ -2378,46 +2378,60 @@
     animation: none;
   }
 }
-/* Fixed aspect ratio per breakpoint (plus width/height attributes): the
-   box is sized before the picture loads, so there is no layout shift. */
+/* The film slot is dimension-matched to the film itself
+   (feat/why-learn-landscape-layout): the shipped film is
+   1280×720 landscape, so the slot's aspect is exactly 16 / 9 at
+   every breakpoint (plus width/height attributes: the box is
+   sized before the picture loads, so there is no layout shift).
+   The whole frame shows — object-fit: cover over a same-aspect
+   box crops nothing, and there is no letterbox, blur fill or
+   squeeze anywhere in the slot. The portrait-era stepped
+   aspects (a wide strip centre-cropping a 608×1280 file, taller
+   boxes on tall screens) are gone with the portrait file. */
 .why-learn-hero {
   display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 16 / 7;
+  aspect-ratio: 16 / 9;
   object-fit: cover;
   object-position: 50% 50%;
 }
+/* The hero card is built around the film (the approved landscape
+   layout): on desktop the film slot sits at the card's left at a
+   fixed share of the viewport height — height drives the slot,
+   the 16 / 9 aspect drives its width — and the titles band
+   fills the rest of the card beside it, vertically centred. On
+   phones the card stacks: the film takes the card's full width
+   at 16 / 9 and the titles sit under it, as before. */
 @media (min-width: 681px) {
-  .why-learn-hero {
-    aspect-ratio: 32 / 9;
+  .why-learn-screen[data-testid="subject-picker"] .screen-hero {
+    display: flex;
+    align-items: stretch;
+    gap: 20px;
+    height: clamp(232px, 33dvh, 300px);
+    padding: 16px;
   }
-}
-/* Taller hero on tall screens (feat/picker-cards-fill-page): the
-   film is portrait (608×1280) under object-fit: cover, so the wide
-   strip shows only a middle slice of each frame — about a fifth of
-   it. As the viewport gives height, the hero box steps taller and
-   more of the frame shows (about half at 1:1, three-fifths at
-   4:5), while the card grid below flexes into whatever height is
-   left. Short screens keep the strip exactly as it is today. */
-@media (max-width: 680px) and (min-height: 700px) {
-  .why-learn-hero {
-    aspect-ratio: 1 / 1;
+  .why-learn-screen[data-testid="subject-picker"] .why-learn-hero-wrap {
+    flex: none;
+    height: 100%;
+    aspect-ratio: 16 / 9;
   }
-}
-@media (max-width: 680px) and (min-height: 1000px) {
-  .why-learn-hero {
-    aspect-ratio: 4 / 5;
+  .why-learn-screen[data-testid="subject-picker"] .why-learn-hero-wrap .why-learn-hero,
+  .why-learn-screen[data-testid="subject-picker"] .screen-hero > .why-learn-hero {
+    width: 100%;
+    height: 100%;
   }
-}
-@media (min-width: 681px) and (min-height: 1100px) {
-  .why-learn-hero {
-    aspect-ratio: 2 / 1;
+  .why-learn-screen[data-testid="subject-picker"] .screen-hero > .why-learn-hero {
+    flex: none;
+    width: auto;
   }
-}
-@media (min-width: 681px) and (min-height: 1500px) {
-  .why-learn-hero {
-    aspect-ratio: 16 / 10;
+  .why-learn-screen[data-testid="subject-picker"] .screen-hero-band {
+    flex: 1 1 auto;
+    min-width: 230px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4px 6px 4px 0;
   }
 }
 /* The montage film in the hero slot (feat/why-learn-montage): the
@@ -2602,10 +2616,10 @@
 .wl-card-pic {
   position: relative;
   display: block;
-  width: calc(100% + 40px);
+  width: calc(100% + 32px);
   max-width: none;
   aspect-ratio: 16 / 9;
-  margin: -20px -20px 16px;
+  margin: -16px -16px 12px;
   overflow: hidden;
   flex: none;
   background: #d9cfb2;
@@ -2667,7 +2681,7 @@
   margin-top: 8px;
 }
 .why-learn-card .mode-title {
-  font-size: 23px;
+  font-size: 20px;
 }
 .why-learn-chip {
   border-radius: 6px;

@@ -296,7 +296,7 @@ export default function SubjectPicker({
     <ScreenShell
       onHome={onExit}
       controls={resumeControl}
-      className="why-learn-screen lg:max-w-6xl"
+      className="why-learn-screen lg:max-w-none"
       testId="subject-picker"
       hero={<WhyLearnHero />}
       sound={
@@ -332,10 +332,12 @@ export default function SubjectPicker({
       {/* Subject cards (Living Atlas anatomy, the home card's): one
           button per card; its text is its name (no heading inside the
           button). The picture slot, icon and arrow are aria-hidden
-          decoration, never glyphs. Columns: 1 on phones, 2 at
-          681–1080px, 3 from 1081px; with six subjects every row is
-          full. */}
-      <ul className="mt-5 grid grid-cols-[minmax(0,1fr)] gap-3 min-[681px]:grid-cols-2 min-[1081px]:grid-cols-3 min-[681px]:gap-4" data-testid="subject-cards">
+          decoration, never glyphs. Columns (landscape layout,
+          feat/why-learn-landscape-layout): 2 on phones, 2 at
+          681–1080px, 4 from 1081px — the cards shrink and stack
+          four in a row on desktop, and the fill rule in styles.css
+          stretches the grid into the page's leftover height. */}
+      <ul className="mt-5 grid grid-cols-2 gap-3 min-[1081px]:grid-cols-4 min-[681px]:gap-4" data-testid="subject-cards">
         {rows.map((row, i) => {
           const Icon = SUBJECT_ICONS[row.id] ?? BookOpen;
           const ready = row.state === "ready" && row.module;
@@ -346,7 +348,7 @@ export default function SubjectPicker({
             <li key={row.id} className="flex">
               <button
                 type="button"
-                className={`why-learn-card home-rise flex w-full flex-col p-5 text-left text-fg${ready ? "" : " is-soon"}${spotIndex === i ? " is-spot" : ""}`}
+                className={`why-learn-card home-rise flex w-full flex-col p-4 text-left text-fg${ready ? "" : " is-soon"}${spotIndex === i ? " is-spot" : ""}`}
                 style={{ "--rise-delay": riseDelay } as CSSProperties}
                 data-testid={`subject-row-${row.id}`}
                 disabled={!ready}
