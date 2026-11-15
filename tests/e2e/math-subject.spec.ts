@@ -498,6 +498,81 @@ test("wave 2: first new 10-18 item plays through to the result", async ({ page, 
 });
 // ==== STREAM A (wave-2 math items) — END ====
 
+// ==== STREAM A FOLLOW-UP (wave-3 math items) — BEGIN ====
+// Added by the "remaining playable items" follow-up stream. Deals
+// through every earlier case of the band with the Next-case button
+// (the wave-2 block's pattern, extended) and plays the FIRST wave-3
+// item of the band through to the result screen. The 18+ band adds no
+// wave-3 item in this stream, so it has no wave-3 test. Keep this
+// block self-contained: a sibling stream edits this spec on its own
+// branch in parallel, and whoever merges second rebases.
+async function solveAndNextW3(page: Page, correct: string) {
+  await solveCase(page, correct);
+  await page.getByRole("button", { name: /Next case/ }).click();
+  await expect(page.getByTestId("math-answer-card")).toBeVisible();
+}
+
+test("wave 3: first new 7-10 item plays through to the result", async ({ page, context }) => {
+  await setup(context, "7-10");
+  const errors = watchErrors(page);
+  await openCase(page);
+  const mathCase = page.getByTestId("math-case");
+  // [item dealt, its correct choice] for every case before wave 3.
+  const before: Array<[string, string]> = [
+    ["math-number:groups:skip-count", "8"],
+    ["math-number:groups:equal-groups", "24"],
+    ["math-number:tables:buses", "4"],
+    ["math-number:place:hundreds-tens-ones", "345"],
+    ["math-number:place:compare", "385"],
+    ["math-number:place:round", "300"],
+    ["math-number:place:ten-times", "700"],
+    ["math-number:tables:facts", "28"],
+    ["math-number:tables:big-products", "1,008"],
+    ["math-number:division:fair-share", "3"],
+    ["math-number:division:unknown-factor", "5"],
+    ["math-number:division:remainders", "5"],
+    ["math-number:division:big-quotients", "156"],
+  ];
+  for (const [item, correct] of before) {
+    await expect(mathCase).toHaveAttribute("data-item", item);
+    await solveAndNextW3(page, correct);
+  }
+  await expect(mathCase).toHaveAttribute("data-item", "math-number:fractions:fair-parts");
+  await solveCase(page, "1/4");
+  expect(errors).toEqual([]);
+});
+
+test("wave 3: first new 10-18 item plays through to the result", async ({ page, context }) => {
+  await setup(context, "10-18");
+  const errors = watchErrors(page);
+  await openCase(page);
+  const mathCase = page.getByTestId("math-case");
+  // [item dealt, its correct choice] for every case before wave 3.
+  const before: Array<[string, string]> = [
+    ["math-number:tables:multi-digit", "1,081"],
+    ["math-applied:measure:convert-metric", "2,400"],
+    ["math-number:fractions:percent", "56"],
+    ["math-applied:geometry:scale-drawing", "8"],
+    ["math-number:division:standard-algorithm", "156"],
+    ["math-number:fractions:multiply", "1/3"],
+    ["math-number:fractions:divide", "8"],
+    ["math-applied:measure:accuracy", "2.48"],
+    ["math-applied:rates:unit-rate", "1.6"],
+    ["math-applied:rates:constant-speed", "5"],
+    ["math-applied:rates:one-step", "7"],
+    ["math-applied:rates:two-step", "5"],
+    ["math-applied:trig:bearings", "37°"],
+  ];
+  for (const [item, correct] of before) {
+    await expect(mathCase).toHaveAttribute("data-item", item);
+    await solveAndNextW3(page, correct);
+  }
+  await expect(mathCase).toHaveAttribute("data-item", "math-number:division:two-digit-divisors");
+  await solveCase(page, "13");
+  expect(errors).toEqual([]);
+});
+// ==== STREAM A FOLLOW-UP (wave-3 math items) — END ====
+
 test("390px: Home card, case, answer card and result render on a phone", async ({
   page,
   context,
