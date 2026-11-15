@@ -54,7 +54,7 @@ const MoleculeMap = lazy(() => import("@/board/molecule-map"));
  * seen-closed set, Calm mode) and fetches the status file.
  */
 export const Route = createFileRoute("/board")({
-  validateSearch: (search: Record<string, unknown>) => ({
+  validateSearch: (search: Record<string, unknown>): { view?: string; story?: string } => ({
     view: typeof search.view === "string" ? search.view : undefined,
     story: typeof search.story === "string" ? search.story : undefined,
   }),
