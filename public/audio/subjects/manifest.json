@@ -1,7 +1,7 @@
 {
   "v": 1,
   "voice": "am_michael",
-  "note": "Narrated solved summaries for the math clue scenes (act 3). One clip per item; the script and per-line timings in src/subjects/math/scenes.ts are the source of truth and match the clips line for line. Rendered locally with the same voice and loudness targets as the journal narration (-18 LUFS, true peak -1.5 dBFS), 24 kHz mono MP3 at 64 kbps like the other in-app clips. Wave 1 (expansion) added the ten non-pilot clips in the same voice (am_michael), rendered the same way. The scenes wave (visual-questions Phase 1) added the nine wave-3 clips in the same voice, rendered the same way. Wave 2 (expansion) added the thirteen 10-18 clips in the same voice (am_michael), rendered the same way. Wave 3 (expansion) added the seven 18+ math and 7-10 general-knowledge clips in the same voice (am_michael), rendered the same way. Wave 4 (expansion) added the seven physics ages 7-10 clips in the same voice (am_michael), rendered the same way.",
+  "note": "Narrated solved summaries for the math clue scenes (act 3). One clip per item; the script and per-line timings in src/subjects/math/scenes.ts are the source of truth and match the clips line for line. Rendered locally with the same voice and loudness targets as the journal narration (-18 LUFS, true peak -1.5 dBFS), 24 kHz mono MP3 at 64 kbps like the other in-app clips. Wave 1 (expansion) added the ten non-pilot clips in the same voice (am_michael), rendered the same way. The scenes wave (visual-questions Phase 1) added the nine wave-3 clips in the same voice, rendered the same way. Wave 2 (expansion) added the thirteen 10-18 clips in the same voice (am_michael), rendered the same way. Wave 3 (expansion) added the seven 18+ math and 7-10 general-knowledge clips in the same voice (am_michael), rendered the same way. Wave 4 (expansion) added the seven physics ages 7-10 clips in the same voice (am_michael), rendered the same way. Wave 5 (expansion) added the five remaining physics ages 7-10 clips in the same voice (am_michael), rendered the same way.",
   "clips": {
     "skip-count": {
       "file": "skip-count.mp3",
@@ -295,6 +295,36 @@
       "file": "tug.mp3",
       "item": "physics:balance:tug",
       "duration": 14.69,
+      "lines": 4
+    },
+    "magnet-flip": {
+      "file": "magnet-flip.mp3",
+      "item": "physics:magnet:flip",
+      "duration": 16.65,
+      "lines": 4
+    },
+    "drop-down": {
+      "file": "drop-down.mp3",
+      "item": "physics:drop:down",
+      "duration": 14.69,
+      "lines": 4
+    },
+    "wound-moves": {
+      "file": "wound-moves.mp3",
+      "item": "physics:energy:wound-moves",
+      "duration": 16.6,
+      "lines": 4
+    },
+    "shadow-blocks": {
+      "file": "shadow-blocks.mp3",
+      "item": "physics:shadow:blocks",
+      "duration": 16.74,
+      "lines": 4
+    },
+    "sends-back": {
+      "file": "sends-back.mp3",
+      "item": "physics:mirror:sends-back",
+      "duration": 13.91,
       "lines": 4
     }
   }

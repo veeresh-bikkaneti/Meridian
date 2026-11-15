@@ -310,3 +310,33 @@ describe("wave 4 kinds", () => {
     assert.ok(kindsA.includes("cs-counter-step"), "landed hops fade as the next hop takes over");
   });
 });
+
+describe("wave 5 kinds", () => {
+  const kindsA = read(join(here, "clue-scene-kinds-a.tsx"));
+  const kindsB = read(join(here, "clue-scene-kinds-b.tsx"));
+  const kindsC = read(join(here, "clue-scene-kinds-c.tsx"));
+
+  it("the renderer dispatches every wave-5 kind", () => {
+    for (const kind of ["magnet-pair", "drop-fall", "wind-up", "light-path"]) {
+      assert.ok(scene.includes(`case "${kind}":`), `SceneArt dispatches ${kind}`);
+      assert.ok(scene.includes(`"${kind}":`), `SUMMARY_STAGGER paces ${kind}`);
+    }
+  });
+
+  it("every wave-5 kind accepts the summary pacing prop", () => {
+    for (const [source, name] of [
+      [kindsA, "MagnetPairScene"],
+      [kindsA, "WindUpScene"],
+      [kindsB, "DropFallScene"],
+      [kindsC, "LightPathScene"],
+    ] as const) {
+      assert.ok(source.includes(`function ${name}(`), `${name} exists`);
+      assert.ok(source.includes("stepDelay"), `${name} accepts stepDelay`);
+    }
+  });
+
+  it("light-path reuses one renderer for the card and no-card items", () => {
+    assert.ok(kindsC.includes("withCard"), "the card is the kind's own data");
+    assert.ok(kindsC.includes("phase === \"setup\""), "the setup film draws no ray path");
+  });
+});
