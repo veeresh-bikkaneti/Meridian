@@ -46,9 +46,12 @@ const MoleculeMap = lazy(() => import("@/board/molecule-map"));
  * and the tip form. One selection, mirrored to the URL
  * (?view=&story=), shared by trail and map.
  *
- * Indexing: noindex, unchanged from board v2 step 15 — an owner
- * ruling, listed in the v3 PR; link exposure (nav, footer,
- * grown-ups pages) is how visitors reach this page.
+ * Indexing: the board IS indexed and listed in the sitemap
+ * (owner ruling, 2026-11-15, superseding board v2 step 15's
+ * noindex): the "What's coming" surface is for parents to
+ * discover, so search engines are welcome alongside the link
+ * exposure (nav, footer, grown-ups pages).
+ * scripts/static-wellknown.test.mjs asserts both halves.
  *
  * ssr: false, like / and /contact: the page reads localStorage (the
  * seen-closed set, Calm mode) and fetches the status file.
@@ -61,7 +64,6 @@ export const Route = createFileRoute("/board")({
   head: () => ({
     meta: [
       { title: "See what we're making next — Meridian" },
-      { name: "robots", content: "noindex" },
       {
         name: "description",
         content:
