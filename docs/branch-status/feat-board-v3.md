@@ -170,3 +170,26 @@ Done, on top of the shipped tip:
 Next step: independent Reality Checker + design re-gate (dispatched
 separately by the parent). NOT merged — merge stays the owners' tap.
 Open questions: the remaining † defaults above, unchanged.
+
+## Cure run (2026-11-15) — telemetry pin + record correction
+
+- Done: removed the stale `board.desktop.spec.ts` entry from
+  CONTEXT_FILES in `scripts/e2e-telemetry-guard.test.mjs` — the
+  (c2) pin failure at the shipped tip. The v3 board spec uses the
+  shared fixtures + serveBuiltArtifact and never calls
+  `browser.newContext(`; the pin entry dated from #436. Guard test
+  6/6 after; full `npm test` at this head: scripts suite 1,200
+  tests (1,189 pass, 0 fail), src suite 2,649/2,649. The gates
+  record above carries the dated strike-and-correct for the
+  original "0 fail" claim; the same correction is in the ship
+  REPORT.md.
+- E2E discrepancy (the gate saw 9/10; both crews reported 10/10):
+  the board spec was re-run 2x at this head and 1x at pristine
+  44c88eef — 10/10 every time, the grown-ups shell test ~2s
+  against its 15s expect timeout. Classified environment/timing
+  in the gate session, not code; the specific stall mechanism is
+  unproven; no test or spec was edited. Full record:
+  ~/workspace/board-v3-ship/CURE-REPORT.md.
+- Next step: independent re-gate by the parent. NOT merged.
+- Open questions: unchanged (the remaining † defaults; the
+  light-scheme map ruling stays the owner's).
