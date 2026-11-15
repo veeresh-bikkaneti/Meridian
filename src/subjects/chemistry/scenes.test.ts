@@ -99,6 +99,20 @@ function stepCountOf(d: ClueSceneDescription): number {
       return 3; // the dots rearrange, the pairing rings, the final tick
     case "column-cousins":
       return 3; // the known tile sparks, the cousin sparks the same, the final tick
+    case "compass-walk":
+      return 3;
+    case "density-towns":
+      return 3;
+    case "two-roads":
+      return 3;
+    case "zone-clocks":
+      return 3;
+    case "globe-vs-map":
+      return 3;
+    case "great-circle":
+      return 3;
+    case "cost-compare":
+      return 3;
     default:
       return -1;
   }

@@ -159,6 +159,20 @@ function givensOf(d: ClueSceneDescription): number[] {
       return [];
     case "column-cousins":
       return [];
+    case "compass-walk":
+      return [d.eastSteps, d.northSteps];
+    case "density-towns":
+      return [d.firstArea, d.secondArea];
+    case "two-roads":
+      return [d.passKm, d.passSpeed, d.valleyKm, d.valleySpeed];
+    case "zone-clocks":
+      return [d.hereHour, d.zonesAhead];
+    case "globe-vs-map":
+      return [];
+    case "great-circle":
+      return [];
+    case "cost-compare":
+      return [d.tollFuel, d.tollFee, d.freeFuel];
   }
 }
 
@@ -205,7 +219,7 @@ function stepCountOf(d: ClueSceneDescription): number {
     case "unit-fit":
       return 3; // ant-step, finger-step, stride
     case "array-grid":
-      return 4; // split overlays, wide tick, narrow tick, final tick
+      return d.secondRows !== undefined ? 3 : 4; // two-fields variant: both counts, the difference tick; else split overlays, wide tick, narrow tick, final tick
     case "scale-line":
       return 2; // the kilometre marks, then the final tick
     case "percent-bar":
@@ -295,6 +309,20 @@ function stepCountOf(d: ClueSceneDescription): number {
       return 3;
     case "column-cousins":
       return 3;
+    case "compass-walk":
+      return 3; // the east steps, the north step and landing mark, the final tick
+    case "density-towns":
+      return 3; // the first town's cells, the second town's cells, the final tick
+    case "two-roads":
+      return 3; // both riders ride, the clocks fill, the final tick
+    case "zone-clocks":
+      return 3; // the far clock spins on, the day arc, the final tick
+    case "globe-vs-map":
+      return 3; // the stretch marks, the true land, the final tick
+    case "great-circle":
+      return 3; // the globe arc, the flat-map curve, the final tick
+    case "cost-compare":
+      return 3; // the toll stacks join, the free stack stands beside, the final tick
   }
 }
 
