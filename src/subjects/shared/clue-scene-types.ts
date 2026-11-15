@@ -96,6 +96,29 @@ export function chunkPlan(description: ClueSceneDescription): number[] {
   return chunks;
 }
 
+/**
+ * The unit that fits a unit-fit scene's path: the counts the path
+ * would take in each unit are pathLength × 1000 (millimetres),
+ * × 100 (centimetres) and × 1 (metres); the fitting unit is the
+ * largest whose count stays countable (at most 100 steps) — the
+ * judgement the item teaches, computed from the given alone.
+ */
+export function fittingUnit(description: ClueSceneDescription): "mm" | "cm" | "m" | null {
+  if (description.kind !== "unit-fit") return null;
+  if (description.pathLength * 1000 <= 100) return "mm";
+  if (description.pathLength * 100 <= 100) return "cm";
+  if (description.pathLength <= 100) return "m";
+  return null;
+}
+
+/** Minutes between a clock-arc scene's two clock times. */
+export function elapsedMinutes(description: ClueSceneDescription): number {
+  if (description.kind !== "clock-arc") return 0;
+  const start = description.startHour * 60 + description.startMinute;
+  const end = description.endHour * 60 + description.endMinute;
+  return end - start;
+}
+
 /** The place-value columns of a whole number: [hundreds, tens, ones]
  * for the numbers the place kinds draw (0–999). */
 export function placeColumns(value: number): [number, number, number] {
@@ -299,6 +322,84 @@ export type ClueSceneDescription =
       total: number;
       /** Shelves sharing them — a given from the question. */
       shares: number;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "tile-grid";
+      /** Rows in the rectangle — a given from the question. */
+      rows: number;
+      /** Tiles in each row — a given from the question. */
+      cols: number;
+      /** Brick glyph + row guides for the arrays item. */
+      brick?: boolean;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "measure-trace";
+      /** "loop": trace every side of a length × width rectangle.
+       * "bars": trace two aligned lengths and bracket the gap. */
+      mode: "loop" | "bars";
+      /** Loop: the long side. Bars: the shorter length. */
+      length: number;
+      /** Loop: the short side. Bars: the longer length. */
+      width: number;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "fraction-slice";
+      /** Equal parts the first whole is cut into — a given. */
+      parts: number;
+      /** Parts taken from the first whole — a given. */
+      taken: number;
+      /** A second whole's parts (the equivalence item). */
+      parts2?: number;
+      /** Parts taken from the second whole. */
+      taken2?: number;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "fraction-fill";
+      /** First bottle's fill: numerator of denominator — givens. */
+      numerator: number;
+      denominator: number;
+      /** Second bottle's fill — givens from the question. */
+      otherNumerator: number;
+      otherDenominator: number;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "clock-arc";
+      /** Start time — givens from the question. */
+      startHour: number;
+      startMinute: number;
+      /** End time — givens from the question. */
+      endHour: number;
+      endMinute: number;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "unit-fit";
+      /** The path's length in metres — the staging given the fit
+       * judgement is computed from (see fittingUnit). */
+      pathLength: number;
       labelSetup: string;
       labelSolved: string;
       /** Narrated solved summary (act 3); solved phase only. */
