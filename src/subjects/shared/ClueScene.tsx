@@ -58,6 +58,7 @@ import {
   PackBoxesScene,
   PercentBarScene,
   ScaleLineScene,
+  ShareBarScene,
 } from "./clue-scene-kinds-a";
 import {
   DigitShiftScene,
@@ -66,6 +67,7 @@ import {
   MapScaleScene,
   PlaceCompareScene,
   PlaceValueScene,
+  TimelineLineScene,
 } from "./clue-scene-kinds-b";
 import {
   BearingDiagramScene,
@@ -75,6 +77,7 @@ import {
   RoundingLineScene,
   SpendThenGroupScene,
   SplitProductScene,
+  TowerMeasureScene,
 } from "./clue-scene-kinds-c";
 import {
   ClockArcScene,
@@ -430,6 +433,9 @@ const SUMMARY_STAGGER: Record<ClueSceneDescription["kind"], number> = {
   "journey-line": 0.55,
   "spend-then-group": 0.5,
   "bearing-diagram": 0.9,
+  "share-bar": 0.9,
+  "timeline-line": 0.55,
+  "tower-measure": 0.9,
 };
 
 /** The summary clip's URL (public/audio/subjects/, manifest.json). */
@@ -528,6 +534,12 @@ function SceneArt({
       return <SpendThenGroupScene description={description} phase={phase} stepDelay={stepDelay} />;
     case "bearing-diagram":
       return <BearingDiagramScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "share-bar":
+      return <ShareBarScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "timeline-line":
+      return <TimelineLineScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "tower-measure":
+      return <TowerMeasureScene description={description} phase={phase} stepDelay={stepDelay} />;
   }
 }
 

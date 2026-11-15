@@ -530,4 +530,50 @@ export type ClueSceneDescription =
       labelSolved: string;
       /** Narrated solved summary (act 3); solved phase only. */
       summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "share-bar";
+      /** The whole bill — a given from the question. */
+      total: number;
+      /** The first share's numerator — a given from the question. */
+      firstNumerator: number;
+      /** The first share's denominator — a given from the question. */
+      firstDenominator: number;
+      /** The second share's numerator — a given from the question. */
+      secondNumerator: number;
+      /** The second share's denominator — a given from the question. */
+      secondDenominator: number;
+      /** The percent taken off one remaining share — a given. */
+      discountPercent: number;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "timeline-line";
+      /** The earlier year on the line — a given from the question. */
+      startYear: number;
+      /** The later year on the line — a given (for the year-gap
+       * item, the device's current year, resolved at play time). */
+      endYear: number;
+      /** True when the solved beat counts the gap off in decades
+       * (the year-gap item); false when it compares the two years
+       * and rings the earlier one (the older-landmark item). */
+      countGap: boolean;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "tower-measure";
+      /** The tower's first height — a given from the question. */
+      oldHeight: number;
+      /** The tower's height today — a given from the question. */
+      newHeight: number;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
     };

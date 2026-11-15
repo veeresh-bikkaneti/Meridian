@@ -593,3 +593,93 @@ export function FractionMeasureScene({
     </>
   );
 }
+
+/* ── timeline-line (wave 3) ────────────────────────────────────
+   A long line of years with a marker at each end. Setup: the
+   line and its two end markers only — no digits, no rings, no
+   winner. Solved in compare mode (countGap false): step 0 rings
+   the earlier marker under its year tick, step 1 rings the
+   later marker under its year tick, step 2 stands the final
+   tick over the earlier marker. Solved in gap mode (countGap
+   true): the gap is counted off in decades — one step per
+   decade hop (a short last hop when the gap is not a round
+   ten), each hop's tick the running count, the last tick the
+   whole gap, final. The years and the gap come from the givens
+   (the gap item's later year is the current year, resolved by
+   the description's builder at play time). */
+
+export function TimelineLineScene({
+  description,
+  phase,
+  stepDelay,
+}: {
+  description: Extract<ClueSceneDescription, { kind: "timeline-line" }>;
+  phase: ClueScenePhase;
+  /** Summary pacing: when present, step s's beat starts at
+   * stepDelay(s) instead of the film's own stagger. */
+  stepDelay?: (step: number) => number;
+}) {
+  const { startYear, endYear, countGap } = description;
+  const x0 = 34;
+  const x1 = 286;
+  const y = 112;
+  const gap = endYear - startYear;
+  const hops = Math.max(1, Math.ceil(gap / 10));
+  const hopX = (i: number) => x0 + (Math.min((i + 1) * 10, gap) / gap) * (x1 - x0);
+  const hopValue = (i: number) => Math.min((i + 1) * 10, gap);
+  const marker = (cx: number, dly: number) => (
+    <g transform={`translate(${cx} ${y})`}>
+      <g className="cs-pop" style={delay(dly)}>
+        <circle className="cs-stone" r="6.5" />
+        <circle className="cs-snack-dot" r="2.2" />
+      </g>
+    </g>
+  );
+  return (
+    <>
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M24 52 Q160 46 296 52" style={delay(0.1)} />
+      <path className="cs-line cs-draw" pathLength={1} d={`M${x0} ${y} Q160 ${y - 6} ${x1} ${y}`} style={delay(0)} />
+      <path className="cs-line cs-draw" pathLength={1} d={`M${x0} ${y} L${x0 - 1} ${y - 19} M${x1} ${y} L${x1 + 1} ${y - 19}`} style={delay(0.3)} />
+      <path className="cs-flag cs-pop" d={`M${x0 - 1} ${y - 19} L${x0 + 15} ${y - 14.5} L${x0 - 1} ${y - 9} Z`} style={delay(0.5)} />
+      <path className="cs-flag cs-pop" d={`M${x1 + 1} ${y - 19} L${x1 - 15} ${y - 14.5} L${x1 + 1} ${y - 9} Z`} style={delay(0.6)} />
+      {marker(x0, 0.55)}
+      {marker(x1, 0.65)}
+      {phase === "solved" && !countGap ? (
+        <>
+          <ellipse className="cs-ring" cx={x0} cy={y} rx="17" ry="15" style={delay(stepDelay ? stepDelay(0) + 0.5 : 0.9)} />
+          <text className="cs-tick" x={x0} y={y + 32} style={delay(stepDelay ? stepDelay(0) + 0.6 : 1.0)}>
+            {startYear}
+          </text>
+          <ellipse className="cs-ring" cx={x1} cy={y} rx="17" ry="15" style={delay(stepDelay ? stepDelay(1) + 0.5 : 1.7)} />
+          <text className="cs-tick" x={x1} y={y + 32} style={delay(stepDelay ? stepDelay(1) + 0.6 : 1.8)}>
+            {endYear}
+          </text>
+          <text className="cs-tick cs-tick-final" x={x0} y={y - 34} style={delay(stepDelay ? stepDelay(2) + 0.6 : 2.5)}>
+            {startYear}
+          </text>
+        </>
+      ) : null}
+      {phase === "solved" && countGap ? (
+        <>
+          {Array.from({ length: hops }, (_, i) => (
+            <g key={`hop-${i}`}>
+              <path
+                className="cs-line cs-band cs-fade"
+                d={`M${hopX(i).toFixed(1)} ${y - 12} Q${(hopX(i) + 1).toFixed(1)} ${y} ${hopX(i).toFixed(1)} ${y + 10}`}
+                style={delay(stepDelay ? stepDelay(i) : 0.7 + i * 0.5)}
+              />
+              <text
+                className={`cs-tick${i === hops - 1 ? " cs-tick-final" : ""}`}
+                x={hopX(i).toFixed(1)}
+                y={y - 26}
+                style={delay(stepDelay ? stepDelay(i) + 0.45 : 1.1 + i * 0.5)}
+              >
+                {hopValue(i)}
+              </text>
+            </g>
+          ))}
+        </>
+      ) : null}
+    </>
+  );
+}
