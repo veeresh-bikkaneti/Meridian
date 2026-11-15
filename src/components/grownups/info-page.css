@@ -1,0 +1,57 @@
+/* Grown-ups shell (board v3 Phase 2, spec §7): the plain pages join
+   the game world — same parchment, same cards, same doors as the
+   homepage. Tokens are the home-v5 values, copied value-for-value;
+   src/board/theme-parity.test.ts checks this block against the
+   homepage too, so the grown-ups pages cannot drift plainer again. */
+.grown-page {
+  --hv5-parchment: #f6f1e3;
+  --hv5-card: #fdfbf3;
+  --hv5-ink: #33302a;
+  --hv5-ink-soft: #5c564a;
+  --hv5-brown: #8a6d2f;
+  --hv5-brown-deep: #77591f;
+  --hv5-forest: #33503f;
+  --hv5-forest-deep: #2a4434;
+  --hv5-sage: #8fa382;
+  --hv5-line: #e3d9c3;
+  --hv5-line-warm: #d8cbae;
+  --hv5-ease: cubic-bezier(0.16, 0.8, 0.26, 1);
+  --hv5-shadow-card: 0 1px 2px rgba(94, 76, 32, 0.05), 0 14px 34px -18px rgba(94, 76, 32, 0.28);
+  --hv5-shadow-lift: 0 2px 3px rgba(94, 76, 32, 0.06), 0 24px 44px -18px rgba(94, 76, 32, 0.34);
+  --hv5-display: "Fraunces", Georgia, serif;
+  --hv5-body: "Karla", system-ui, sans-serif;
+  background: var(--hv5-parchment);
+  color: var(--hv5-ink);
+  font-family: var(--hv5-body);
+  min-height: 100dvh;
+}
+.grown-page .gp-wrap { max-width: 760px; margin: 0 auto; padding: 26px 20px 64px; }
+.grown-page .gp-doors { display: flex; flex-wrap: wrap; gap: 8px; }
+.grown-page .gp-doors a {
+  border: 1.5px solid var(--hv5-line-warm); background: var(--hv5-card); color: var(--hv5-ink);
+  border-radius: 999px; padding: 8px 14px; font-weight: 600; text-decoration: none;
+  display: inline-flex; align-items: center; min-height: 44px;
+  transition: box-shadow 0.25s var(--hv5-ease);
+}
+.grown-page .gp-doors a:hover { box-shadow: var(--hv5-shadow-lift); }
+.grown-page .gp-doors a[aria-current="page"] {
+  background: var(--hv5-forest); border-color: var(--hv5-forest); color: var(--hv5-parchment);
+}
+.grown-page .gp-card {
+  background: var(--hv5-card); border: 1px solid var(--hv5-line); border-radius: 20px;
+  box-shadow: var(--hv5-shadow-card); padding: 26px 26px 30px; margin-top: 22px;
+}
+.grown-page .gp-graphic { display: flex; justify-content: center; margin-bottom: 6px; }
+.grown-page .gp-graphic svg { width: min(300px, 80%); height: auto; }
+.grown-page .gp-title {
+  font-family: var(--hv5-display); font-size: clamp(1.8rem, 4vw, 2.4rem);
+  margin: 6px 0 14px; text-align: center;
+}
+.grown-page .gp-body { display: flex; flex-direction: column; gap: 1.05em; line-height: 1.65; }
+.grown-page .gp-body h2 {
+  font-family: var(--hv5-display); font-size: 1.25rem; margin: 0.7em 0 -0.3em;
+}
+.grown-page .gp-body p { margin: 0; }
+.grown-page .gp-body ul { list-style: disc; padding-left: 1.4em; margin: 0; }
+.grown-page .gp-body a { color: var(--hv5-forest); text-decoration: underline; text-underline-offset: 3px; }
+.grown-page .gp-body .text-muted, .grown-page .gp-body .text-sm { color: var(--hv5-ink-soft); }

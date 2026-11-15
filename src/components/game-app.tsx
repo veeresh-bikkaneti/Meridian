@@ -4743,6 +4743,7 @@ function Choose({
           </button>
           <button type="button" onClick={() => scrollTo("home-about")}>ABOUT</button>
           <Link to="/contact" data-testid="nav-contact-link">CONTACT</Link>
+          <Link to="/board" data-testid="nav-board-link">WHAT&rsquo;S COMING</Link>
           <button type="button" onClick={() => scrollTo("home-journal")}>JOURNAL</button>
           <button type="button" onClick={() => scrollTo("home-grownups")}>GET INVOLVED</button>
         </nav>
@@ -5230,6 +5231,11 @@ function Choose({
               JOIN US
               <svg width="14" height="10" viewBox="0 0 15 11" aria-hidden="true"><path d="M1 5.5h12M9 1l4.5 4.5L9 10" stroke="currentColor" fill="none" strokeWidth="1.7" /></svg>
             </button>
+            <p className="hv5-grownups-board-links">
+              <Link to="/board" data-testid="grownups-board-link">See what we&rsquo;re making next →</Link>{" "}
+              ·{" "}
+              <Link to="/board" search={{ view: "tip" }} data-testid="grownups-tip-link">Ask for something new</Link>
+            </p>
           </div>
         </article>
       </div>
@@ -5318,6 +5324,9 @@ function Choose({
         </Link>
         <Link to="/credits" className="agep-footer-link" data-testid="credits-link">
           Credits
+        </Link>
+        <Link to="/board" className="agep-footer-link" data-testid="board-link">
+          What&rsquo;s coming (grown-ups)
         </Link>
         {/* Kids-privacy promise (owner 2026-10-21). Deliberately FACTUAL
             statements, not a "COPPA compliant" badge: compliance is a legal

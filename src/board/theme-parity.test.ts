@@ -64,4 +64,15 @@ describe("theme parity — board v3 vs the homepage (home-v5)", () => {
     assert.ok(v3.includes("var(--hv5-parchment)"), "ground must use the homepage parchment token");
     assert.ok(v3.includes("var(--font-atlas-display)") || v3.includes("var(--hv5-display)"), "display type must come from a token");
   });
+
+  it("the grown-ups shell (.grown-page) carries the same homepage values", () => {
+    const grown = tokensUnder(
+      readFileSync(new URL("../components/grownups/info-page.css", import.meta.url), "utf8"),
+      ".grown-page {",
+    );
+    for (const t of SHARED_TOKENS) {
+      assert.ok(grown.has(t), `grown-ups shell is missing ${t}`);
+      assert.equal(grown.get(t), home.get(t), `grown-ups ${t} drifted from the homepage`);
+    }
+  });
 });

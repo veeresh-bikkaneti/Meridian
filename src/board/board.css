@@ -2317,5 +2317,17 @@
 @keyframes v3-star { 0% { transform: scale(0.4); opacity: 0.4; } 24% { transform: scale(1.12); opacity: 1; } 36%, 100% { transform: scale(1); opacity: 1; } }
 @keyframes v3-travel { 0% { offset-distance: 0%; } 62%, 100% { offset-distance: 100%; } }
 
+/* The tip form's invitation (spec §5): the envelope bobs gently and
+   its seal sparkles — an invitation, in the same family as the card
+   animations. Base pose is the resting envelope. */
+.board-v3 .v3-form-head { display: flex; justify-content: center; }
+.board-v3 .v3-form-head svg { width: min(280px, 75%); height: auto; }
+.board-v3 .v3-env-bob { animation: v3-env-bob 3.6s var(--hv5-ease) infinite; }
+.board-v3 .v3-env-seal { transform-box: fill-box; transform-origin: center; animation: v3-star 3.6s var(--hv5-ease) infinite; }
+.board-v3 .v3-env-spark { animation: v3-spark 3.6s linear infinite; }
+.board-v3 .v3-env-spark.s2 { animation-delay: 1.2s; }
+@keyframes v3-env-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+@keyframes v3-spark { 0%, 100% { opacity: 0.25; } 50% { opacity: 1; } }
+
 /* Calm mode: every loop rests at its end pose (the base styles). */
-.board-v3.v3-calm .v3-anim-window *, .board-v3.v3-calm .v3-story-banner * { animation: none !important; }
+.board-v3.v3-calm .v3-anim-window *, .board-v3.v3-calm .v3-story-banner *, .board-v3.v3-calm .v3-form-head * { animation: none !important; }
