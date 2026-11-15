@@ -75,8 +75,8 @@ describe("clue scene wiring", () => {
     assert.ok(physicsCase.includes("ClueSummaryText"), "as the summary's standing text");
   });
 
-  it("the chemistry case gates the scenes to ages 7-10 and 10-18 with a description", () => {
-    assert.ok(chemistryCase.includes('if (band !== "7-10" && band !== "10-18") return null;'));
+  it("the chemistry case gates the scenes to ages 7-10, 10-18 and 18+ with a description", () => {
+    assert.ok(chemistryCase.includes('if (band !== "7-10" && band !== "10-18" && band !== "18+") return null;'));
     assert.ok(chemistryCase.includes("clueSceneFor(item.id)"));
     assert.ok(chemistryCase.includes("<ClueScene"));
     assert.ok(chemistryCase.includes("resultExtra={"), "chemistry passes the hook");
@@ -423,5 +423,39 @@ describe("wave 7 kinds", () => {
   it("the wave-7 reuse variants are data branches, not new kinds", () => {
     assert.ok(kindsA.includes("description.freeze"), "melt-freeze carries the freeze direction data");
     assert.ok(kindsC.includes("threeBlocks"), "dissolve carries the three-blocks variant data");
+  });
+});
+
+describe("wave 8 kinds", () => {
+  const kindsA = read(join(here, "clue-scene-kinds-a.tsx"));
+  const kindsB = read(join(here, "clue-scene-kinds-b.tsx"));
+  const kindsC = read(join(here, "clue-scene-kinds-c.tsx"));
+
+  it("the renderer dispatches every wave-8 kind", () => {
+    for (const kind of [
+      "scale-balance",
+      "bubble-reaction",
+      "rust-change",
+      "glow-rate",
+      "atom-tally",
+      "column-cousins",
+    ]) {
+      assert.ok(scene.includes(`case "${kind}":`), `SceneArt dispatches ${kind}`);
+      assert.ok(scene.includes(`"${kind}":`), `SUMMARY_STAGGER paces ${kind}`);
+    }
+  });
+
+  it("every wave-8 kind accepts the summary pacing prop", () => {
+    for (const [source, name] of [
+      [kindsA, "ScaleBalanceScene"],
+      [kindsA, "BubbleReactionScene"],
+      [kindsB, "RustChangeScene"],
+      [kindsB, "GlowRateScene"],
+      [kindsC, "AtomTallyScene"],
+      [kindsC, "ColumnCousinsScene"],
+    ] as const) {
+      assert.ok(source.includes(`function ${name}(`), `${name} exists`);
+      assert.ok(source.includes("stepDelay"), `${name} accepts stepDelay`);
+    }
   });
 });

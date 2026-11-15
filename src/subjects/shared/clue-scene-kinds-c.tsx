@@ -1592,3 +1592,219 @@ export function WaterCycleScene({
     </>
   );
 }
+/* ── atom-tally ──────────────────────────────────────────────
+   A tally board with atom dots in two clusters — the
+   question's own picture. Setup: the two clusters stand as
+   given, uncounted, with no ring, mark or pairing drawn
+   between them, so nothing states whether they match.
+   Solved: the right cluster's dots rearrange into a new
+   grouping (the reaction), then pairing rings join each left
+   dot to a right dot, one for one. */
+
+const TALLY_LEFT = [
+  { x: 62, y: 74 }, { x: 84, y: 66 }, { x: 106, y: 74 },
+  { x: 62, y: 100 }, { x: 84, y: 108 }, { x: 106, y: 100 },
+];
+const TALLY_RIGHT_FROM = [
+  { x: 214, y: 74 }, { x: 236, y: 66 }, { x: 258, y: 74 },
+  { x: 214, y: 100 }, { x: 236, y: 108 }, { x: 258, y: 100 },
+];
+/** The rearranged grouping: the same six dots, regrouped as
+ * two trios — a new look, the same dots. */
+const TALLY_RIGHT_TO = [
+  { x: 226, y: 70 }, { x: 248, y: 70 }, { x: 237, y: 88 },
+  { x: 226, y: 106 }, { x: 248, y: 106 }, { x: 237, y: 122 },
+];
+
+function AtomDot({ r }: { r?: number }) {
+  return (
+    <>
+      <circle className="cs-coin" r={r ?? 8} />
+      <circle className="cs-coin-inner" r={(r ?? 8) * 0.45} />
+    </>
+  );
+}
+
+export function AtomTallyScene({
+  description,
+  phase,
+  stepDelay,
+}: {
+  description: Extract<ClueSceneDescription, { kind: "atom-tally" }>;
+  phase: ClueScenePhase;
+  /** Summary pacing: when present, step s's beat starts at
+   * stepDelay(s) instead of the film's own stagger. */
+  stepDelay?: (step: number) => number;
+}) {
+  void description;
+  const moveStart = stepDelay ? stepDelay(0) : 0.5;
+  const pairStart = stepDelay ? stepDelay(1) : 1.4;
+  const tickStart = stepDelay ? stepDelay(2) : 2.3;
+  const groundY = 164;
+  return (
+    <>
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M24 30 Q160 26 296 30" style={delay(0.1)} />
+      <path className="cs-line cs-draw" pathLength={1} d={`M16 ${groundY} Q160 ${groundY + 4} 304 ${groundY}`} style={delay(0)} />
+      {/* The tally board's divider: layout only, no verdict. */}
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M160 52 L160 140" style={delay(0.25)} />
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M36 146 Q160 150 284 146" style={delay(0.3)} />
+      {/* The left cluster: the same in both phases. */}
+      {TALLY_LEFT.map((p, i) => (
+        <g key={`left-${i}`} transform={`translate(${p.x} ${p.y})`}>
+          <g className="cs-pop" style={delay(0.45 + i * 0.07)}>
+            <AtomDot />
+          </g>
+        </g>
+      ))}
+      {phase === "setup" ? (
+        TALLY_RIGHT_FROM.map((p, i) => (
+          <g key={`right-${i}`} transform={`translate(${p.x} ${p.y})`}>
+            <g className="cs-pop" style={delay(0.55 + i * 0.07)}>
+              <AtomDot />
+            </g>
+          </g>
+        ))
+      ) : (
+        <>
+          {/* Step 0: the right dots rearrange into trios. */}
+          {TALLY_RIGHT_TO.map((p, i) => {
+            const from = TALLY_RIGHT_FROM[i]!;
+            return (
+              <g key={`right-${i}`} transform={`translate(${p.x} ${p.y})`}>
+                <g className="cs-slide" style={slideFrom(from.x - p.x, from.y - p.y, moveStart + i * 0.1)}>
+                  <AtomDot />
+                </g>
+              </g>
+            );
+          })}
+          {/* Step 1: pairing rings join the dots one for one
+              across the divider — every dot has a partner. */}
+          {TALLY_LEFT.map((p, i) => {
+            const q = TALLY_RIGHT_TO[i]!;
+            return (
+              <path
+                key={`pair-${i}`}
+                className="cs-line cs-band cs-draw"
+                pathLength={1}
+                d={`M${p.x + 10} ${p.y} Q160 ${Math.min(p.y, q.y) - 14} ${q.x - 10} ${q.y}`}
+                style={delay(pairStart + i * 0.13)}
+              />
+            );
+          })}
+          <ellipse className="cs-ring" cx="160" cy="94" rx="128" ry="52" style={delay(tickStart + 0.4)} />
+          <text className="cs-tick cs-tick-final" x="160" y="34" style={delay(tickStart + 0.55)}>
+            ✓
+          </text>
+        </>
+      )}
+    </>
+  );
+}
+
+/* ── column-cousins ──────────────────────────────────────────
+   A table grid with one column of tiles — the question's own
+   layout. Setup: two tiles stand in the column, plain and
+   unmarked, with no shared highlight and no spark on either,
+   so nothing suggests how the second behaves. Solved: the
+   upper tile sparks with an oxygen dot (the known reaction),
+   then the lower tile sparks the same way. */
+
+const COLUMN_TILES = [
+  { cx: 160, cy: 62 },
+  { cx: 160, cy: 106 },
+];
+
+function ColumnTileArt() {
+  return (
+    <>
+      <rect className="cs-pack" x="-19" y="-16" width="38" height="32" rx="3" />
+      <circle className="cs-stone" cx="0" cy="0" r="5" />
+      <path className="cs-line cs-band" d="M-12 -9 Q0 -11 12 -9" />
+    </>
+  );
+}
+
+function SparkArt({ start }: { start: number }) {
+  return (
+    <>
+      {[0, 1, 2, 3].map((i) => {
+        const dx = [-16, -5, 6, 16][i]!;
+        return (
+          <path
+            key={`spark-${i}`}
+            className="cs-line cs-band cs-pop"
+            d={`M${dx} -26 L${dx + (i % 2 === 0 ? -3 : 3)} -34`}
+            style={delay(start + i * 0.1)}
+          />
+        );
+      })}
+      <circle className="cs-coin cs-pop" cx="24" cy="-18" r="5" style={delay(start + 0.2)} />
+      <circle className="cs-coin-inner cs-pop" cx="24" cy="-18" r="2" style={delay(start + 0.3)} />
+    </>
+  );
+}
+
+export function ColumnCousinsScene({
+  description,
+  phase,
+  stepDelay,
+}: {
+  description: Extract<ClueSceneDescription, { kind: "column-cousins" }>;
+  phase: ClueScenePhase;
+  /** Summary pacing: when present, step s's beat starts at
+   * stepDelay(s) instead of the film's own stagger. */
+  stepDelay?: (step: number) => number;
+}) {
+  void description;
+  const knownStart = stepDelay ? stepDelay(0) : 0.5;
+  const cousinStart = stepDelay ? stepDelay(1) : 1.4;
+  const tickStart = stepDelay ? stepDelay(2) : 2.3;
+  const groundY = 164;
+  return (
+    <>
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M24 30 Q160 26 296 30" style={delay(0.1)} />
+      <path className="cs-line cs-draw" pathLength={1} d={`M16 ${groundY} Q160 ${groundY + 4} 304 ${groundY}`} style={delay(0)} />
+      {/* The table grid: rows and columns of empty tiles, with
+          the question's one column standing at the centre. */}
+      {[64, 108, 196, 240].map((gx, i) => (
+        <g key={`side-${i}`} transform={`translate(${gx} ${i % 2 === 0 ? 62 : 106})`}>
+          <g className="cs-pop" style={delay(0.3 + i * 0.08)}>
+            <rect className="cs-bar" x="-19" y="-16" width="38" height="32" rx="3" />
+          </g>
+        </g>
+      ))}
+      {[64, 108, 196, 240].map((gx, i) => (
+        <g key={`side2-${i}`} transform={`translate(${gx} ${i % 2 === 0 ? 106 : 62})`}>
+          <g className="cs-pop" style={delay(0.38 + i * 0.08)}>
+            <rect className="cs-bar" x="-19" y="-16" width="38" height="32" rx="3" />
+          </g>
+        </g>
+      ))}
+      {/* The column's two tiles: plain and unmarked in setup. */}
+      {COLUMN_TILES.map((t, i) => (
+        <g key={`tile-${i}`} transform={`translate(${t.cx} ${t.cy})`}>
+          <g className="cs-pop" style={delay(0.5 + i * 0.12)}>
+            <ColumnTileArt />
+          </g>
+        </g>
+      ))}
+      {phase === "solved" ? (
+        <>
+          {/* Step 0: the upper tile sparks with its oxygen dot
+              — the known reaction from the question. */}
+          <g transform={`translate(${COLUMN_TILES[0]!.cx} ${COLUMN_TILES[0]!.cy})`}>
+            <SparkArt start={knownStart} />
+          </g>
+          {/* Step 1: the lower tile sparks in the same way. */}
+          <g transform={`translate(${COLUMN_TILES[1]!.cx} ${COLUMN_TILES[1]!.cy})`}>
+            <SparkArt start={cousinStart} />
+          </g>
+          <ellipse className="cs-ring" cx="160" cy="84" rx="34" ry="52" style={delay(tickStart + 0.4)} />
+          <text className="cs-tick cs-tick-final" x="160" y="150" style={delay(tickStart + 0.55)}>
+            ✓
+          </text>
+        </>
+      ) : null}
+    </>
+  );
+}

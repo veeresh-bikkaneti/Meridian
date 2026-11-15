@@ -1,15 +1,14 @@
 /**
  * Chemistry clue scenes — the data-side contract (the physics
- * scenes.test.ts pattern, expansion wave 7). Coverage is
- * exactly the five dealt ages 7-10 items and exactly the five
- * dealt ages 10-18 states, mixtures and materials items. The
- * three reactions items and all three ages 18+ items are
- * pinned description-free — they belong to wave 8. A scene
- * description carries only the givens from the item's own
- * question, so the setup film cannot give the answer away.
- * Each description also carries its act-3 summary (clip,
- * script, beat map) in the solved-phase data path only, its
- * duration pinned against the manifest and the clip file.
+ * scenes.test.ts pattern, expansion waves 7-8). Coverage is
+ * exactly all sixteen dealt items: the five ages 7-10 items,
+ * all eight ages 10-18 items and all three ages 18+ items —
+ * Chemistry is complete at 16/16. A scene description carries
+ * only the givens from the item's own question, so the setup
+ * film cannot give the answer away. Each description also
+ * carries its act-3 summary (clip, script, beat map) in the
+ * solved-phase data path only, its duration pinned against
+ * the manifest and the clip file.
  */
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
@@ -37,7 +36,7 @@ const IDS_710 = [
 ];
 
 /** The five ages 10-18 states/mixtures/materials items wave 7 builds. */
-const IDS_1018 = [
+const IDS_1018_W7 = [
   "chemistry:states:road-salt",
   "chemistry:mixtures:dissolve",
   "chemistry:states:particles",
@@ -45,17 +44,22 @@ const IDS_1018 = [
   "chemistry:materials:identify",
 ];
 
-/** Items that must stay description-free in this wave (wave 8). */
-const FREE_IDS = [
+/** The three ages 10-18 reactions items wave 8 builds. */
+const IDS_1018_W8 = [
   "chemistry:reactions:weight",
   "chemistry:reactions:new-look",
   "chemistry:reactions:rust",
+];
+
+/** The three ages 18+ items wave 8 builds — the whole band. */
+const IDS_18 = [
   "chemistry:reactions:rate",
   "chemistry:reactions:mass",
   "chemistry:reactions:explain",
 ];
 
-const ALL_IDS = [...IDS_710, ...IDS_1018];
+const IDS_1018 = [...IDS_1018_W7, ...IDS_1018_W8];
+const ALL_IDS = [...IDS_710, ...IDS_1018, ...IDS_18];
 
 /** The numeric givens a description carries, per kind. */
 function givensOf(d: ClueSceneDescription): number[] {
@@ -83,6 +87,18 @@ function stepCountOf(d: ClueSceneDescription): number {
       return 3; // the warmth steps, the flying apart, the final tick
     case "water-cycle":
       return 3; // the wisps rise, the cloud gathers, the rain and tick
+    case "scale-balance":
+      return 3; // the pour, the mixed look, the needle and final tick
+    case "bubble-reaction":
+      return 3; // the pours, the bubbles rise, the final tick
+    case "rust-change":
+      return 3; // rain and air meet the frame, the rust blooms, the final tick
+    case "glow-rate":
+      return 3; // the warm glow brightens, the warm stick fades, the final tick
+    case "atom-tally":
+      return 3; // the dots rearrange, the pairing rings, the final tick
+    case "column-cousins":
+      return 3; // the known tile sparks, the cousin sparks the same, the final tick
     default:
       return -1;
   }
@@ -99,9 +115,15 @@ const CLOSING: Record<string, string> = {
   "chemistry:states:particles": "from solid to liquid to gas",
   "chemistry:water:cycle": "back as rain or snow",
   "chemistry:materials:identify": "dissolves in water",
+  "chemistry:reactions:weight": "It stays the same",
+  "chemistry:reactions:new-look": "It might be a new substance",
+  "chemistry:reactions:rust": "iron exposed to oxygen and water turns to rust",
+  "chemistry:reactions:rate": "The one in warm water",
+  "chemistry:reactions:mass": "The same count on both sides \u2014 no atom vanished",
+  "chemistry:reactions:explain": "It reacts in a similar way",
 };
 
-describe("chemistry clue scene descriptions — wave 7", () => {
+describe("chemistry clue scene descriptions — waves 7-8", () => {
   it("covers exactly the five dealt items for ages 7-10", () => {
     const bandIds = itemsForGroup("7-10").map((item) => item.id);
     assert.equal(bandIds.length, 5);
@@ -111,27 +133,25 @@ describe("chemistry clue scene descriptions — wave 7", () => {
     }
   });
 
-  it("covers exactly the five dealt states/mixtures/materials items for ages 10-18", () => {
+  it("covers exactly all eight dealt items for ages 10-18", () => {
     const bandIds = itemsForGroup("10-18").map((item) => item.id);
     assert.equal(bandIds.length, 8);
+    assert.deepEqual([...bandIds].sort(), [...IDS_1018].sort());
     for (const id of IDS_1018) {
       assert.ok(clueSceneFor(id), `${id} has a scene`);
-      assert.ok(bandIds.includes(id), `${id} is dealt at 10-18`);
     }
-    // The whole map is exactly this wave's ten items.
-    assert.deepEqual(Object.keys(CHEMISTRY_CLUE_SCENES).sort(), [...ALL_IDS].sort());
   });
 
-  it("pins the reactions and ages 18+ items description-free (wave 8)", () => {
-    for (const id of FREE_IDS) {
-      assert.equal(clueSceneFor(id), null, `${id} carries no scene in wave 7`);
+  it("covers exactly all three dealt items for ages 18+, completing Chemistry 16/16", () => {
+    const bandIds = itemsForGroup("18+").map((item) => item.id);
+    assert.equal(bandIds.length, 3);
+    assert.deepEqual([...bandIds].sort(), [...IDS_18].sort());
+    for (const id of IDS_18) {
+      assert.ok(clueSceneFor(id), `${id} has a scene`);
     }
-    const band18 = itemsForGroup("18+").map((item) => item.id);
-    assert.deepEqual([...band18].sort(), [
-      "chemistry:reactions:explain",
-      "chemistry:reactions:mass",
-      "chemistry:reactions:rate",
-    ]);
+    // The whole map is exactly the sixteen dealt Chemistry items.
+    assert.deepEqual(Object.keys(CHEMISTRY_CLUE_SCENES).sort(), [...ALL_IDS].sort());
+    assert.equal(ALL_IDS.length, 16);
   });
 
   it("never carries the answer before the pick", () => {
@@ -216,6 +236,33 @@ describe("chemistry clue scene descriptions — wave 7", () => {
       CHEMISTRY_ANSWERS["chemistry:materials:identify"]!.correct,
       "Whether each block dissolves in water",
     );
+  });
+
+  it("the wave-8 solved beats land on their items' answers", () => {
+    const weight = clueSceneFor("chemistry:reactions:weight")!;
+    assert.equal(weight.kind, "scale-balance");
+    assert.equal(CHEMISTRY_ANSWERS["chemistry:reactions:weight"]!.correct, "It stays the same");
+    const newLook = clueSceneFor("chemistry:reactions:new-look")!;
+    assert.equal(newLook.kind, "bubble-reaction");
+    assert.equal(CHEMISTRY_ANSWERS["chemistry:reactions:new-look"]!.correct, "It might be a new substance");
+    const rust = clueSceneFor("chemistry:reactions:rust")!;
+    assert.equal(rust.kind, "rust-change");
+    assert.equal(
+      CHEMISTRY_ANSWERS["chemistry:reactions:rust"]!.correct,
+      "Yes \u2014 iron exposed to oxygen and water turns to rust",
+    );
+    const rate = clueSceneFor("chemistry:reactions:rate")!;
+    assert.equal(rate.kind, "glow-rate");
+    assert.equal(CHEMISTRY_ANSWERS["chemistry:reactions:rate"]!.correct, "The one in warm water");
+    const mass = clueSceneFor("chemistry:reactions:mass")!;
+    assert.equal(mass.kind, "atom-tally");
+    assert.equal(
+      CHEMISTRY_ANSWERS["chemistry:reactions:mass"]!.correct,
+      "The same count on both sides \u2014 no atom vanished",
+    );
+    const explain = clueSceneFor("chemistry:reactions:explain")!;
+    assert.equal(explain.kind, "column-cousins");
+    assert.equal(CHEMISTRY_ANSWERS["chemistry:reactions:explain"]!.correct, "It reacts in a similar way");
   });
 
   it("every item carries a well-formed narrated summary, pinned to the manifest and the clip file", () => {

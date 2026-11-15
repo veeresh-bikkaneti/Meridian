@@ -147,6 +147,18 @@ function givensOf(d: ClueSceneDescription): number[] {
       return [];
     case "water-cycle":
       return [];
+    case "scale-balance":
+      return [];
+    case "bubble-reaction":
+      return [];
+    case "rust-change":
+      return [];
+    case "glow-rate":
+      return [];
+    case "atom-tally":
+      return [];
+    case "column-cousins":
+      return [];
   }
 }
 
@@ -270,6 +282,18 @@ function stepCountOf(d: ClueSceneDescription): number {
     case "particle-states":
       return 3;
     case "water-cycle":
+      return 3;
+    case "scale-balance":
+      return 3;
+    case "bubble-reaction":
+      return 3;
+    case "rust-change":
+      return 3;
+    case "glow-rate":
+      return 3;
+    case "atom-tally":
+      return 3;
+    case "column-cousins":
       return 3;
   }
 }
