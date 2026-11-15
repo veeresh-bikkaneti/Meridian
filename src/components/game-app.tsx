@@ -1438,11 +1438,14 @@ export function GameApp() {
   // card tap. Never persisted — a reload lands on Home, like the
   // loop's tap-in rule.
   const [subjectsOpen, setSubjectsOpen] = useState<boolean>(false);
-  // Ask-first (owner decision, 2026-11-14): a case start attempted
-  // with no age band set holds its continuation here while the age
-  // picker is answered (see askAgeFirst below). Session-only, like
-  // the screens it guards — a cache restore drops it with them, so
-  // no case can start off the back of a frozen page.
+  // Ask-first (owner decision, 2026-11-14): a "Resume your case"
+  // attempted with no age band set holds its continuation here
+  // while the age picker is answered (see askAgeFirst below). The
+  // Why Learn flow asks on the picker page itself since the
+  // 2026-11-15 amendment, so the resume paths are the ones still
+  // held here. Session-only, like the screens it guards — a cache
+  // restore drops it with them, so no case can start off the back
+  // of a frozen page.
   const [ageAsk, setAgeAsk] = useState<{ proceed: () => void } | null>(null);
 
   // A page restored from the browser's back/forward cache keeps its
@@ -1632,16 +1635,21 @@ export function GameApp() {
       });
     }
   }, []);
-  // Ask-first (owner decision, 2026-11-14): the case-start paths —
-  // the Why Learn card, a subject card's case, and "Resume your
-  // case" — run their continuation through here. With a band set
-  // the continuation runs immediately and the player sees no
-  // change; with none set, the continuation is held and the age
-  // picker (AgeAskGate, prod's own AgePicker) renders instead. The
-  // pick writes the band through the store's unset path, then the
-  // held continuation runs — the player lands on the case they
-  // were going to, at the band they picked. Backing out clears
-  // the hold: no write, no case.
+  // Ask-first (owner decision, 2026-11-14): the case-start paths
+  // that bypass the picker page — "Resume your case" in the
+  // subjects branch and on Home's GeoDetective card — run their
+  // continuation through here. With a band set the continuation
+  // runs immediately and the player sees no change; with none set,
+  // the continuation is held and the age picker (AgeAskGate,
+  // prod's own AgePicker) renders instead. The pick writes the
+  // band through the store's unset path, then the held
+  // continuation runs — the player lands on the case they were
+  // going to, at the band they picked. Backing out clears the
+  // hold: no write, no case. The Why Learn entry and the subject
+  // cards ask on the picker page itself since the 2026-11-15
+  // amendment (AgeBandControl's pills — Radhae's reconciliation
+  // design): no case can start from that page with no band set,
+  // and the ask stays contained in that workflow.
   const askAgeFirst = useCallback(
     (proceed: () => void): void => {
       if (ageProfile.status !== "unset") {
@@ -3620,7 +3628,7 @@ export function GameApp() {
                     if (openGeoDetective()) setSubjectsOpen(false);
                   });
                 }}
-                onAskAgeFirst={(proceed) => askAgeFirst(proceed)}
+                bandChangeRunInProgress={run !== null || loopOpen}
                 onOpenAgeSettings={openAgeSettings}
               />
             </Suspense>
@@ -4053,10 +4061,14 @@ export function GameApp() {
       challengeEnabled={friendChallengesOn}
       whyLearnEnabled
       onWhyLearn={withCardTap("why-learn", () => {
-        // Ask-first (owner decision, 2026-11-14): the picker is a
-        // case-start path — with no band set the age picker answers
-        // first and the picker opens off the pick, at that band.
-        askAgeFirst(() => setSubjectsOpen(true));
+        // Ask-first (owner decision, 2026-11-14), contained in the
+        // Why Learn workflow (Radhae, voice call 2026-11-15): the
+        // picker opens directly — its page carries the band ask
+        // itself (AgeBandControl's pills while no band is set),
+        // and no case can start from that page until a band is
+        // picked. The modal ask above still guards the paths that
+        // bypass the page ("Resume your case").
+        setSubjectsOpen(true);
       })}
       onChallenge={withCardTap("challenge", openChallengePicker)}
       onResetHistory={handleResetHistory}

@@ -6,19 +6,25 @@ import { serveBuiltArtifact } from "./helpers";
  * a player with NO age band set is asked to pick one before any
  * case starts — never silently defaulted to 10-18.
  *
- * - The Why Learn card asks first; the pick continues to the
- *   subject picker, and a subject card lands on that subject's
- *   case at the picked band.
+ * Amendment (Radhae's reconciliation design, voice call
+ * 2026-11-15): the Why Learn workflow asks on the picker page
+ * itself — the page shows the three band pills while no band is
+ * set, and a subject tap in that state goes to the pills instead
+ * of opening a case; once a band is set the pills collapse to a
+ * "Change band" option, which re-opens them (graduation). The
+ * modal ask remains only where a case can start without the
+ * page:
+ *
  * - "Resume your case" (Home's GeoDetective card in its resume
  *   mode) asks first; the pick resumes the same mystery.
- * - A player who already has a band set sees no change: no ask
- *   on any of these paths.
- * - Backing out of the picker ("Not now") writes nothing and
- *   starts nothing.
+ * - A player who already has a band set sees no ask anywhere.
+ * - Backing out of the resume ask ("Not now") writes nothing
+ *   and starts nothing.
  *
- * The picker under test is prod's own AgePicker (the settings
- * flow's component), hosted by AgeAskGate: card order is the
- * band table's — 0 = 7-10, 1 = 10-18, 2 = 18+.
+ * The modal picker under test is prod's own AgePicker (the
+ * settings flow's component), hosted by AgeAskGate: card order
+ * is the band table's — 0 = 7-10, 1 = 10-18, 2 = 18+. The page
+ * pills are AgeBandControl's, labelled from the same table.
  */
 
 test.setTimeout(120_000);
@@ -115,7 +121,7 @@ async function dealMystery(page: Page) {
   return dealt;
 }
 
-test("no band: the Why Learn card asks first, then the case lands at the picked band", async ({
+test("no band: the picker page asks with its pills, then the case lands at the picked band", async ({
   page,
   context,
 }) => {
@@ -123,19 +129,64 @@ test("no band: the Why Learn card asks first, then the case lands at the picked 
   const errors = watchErrors(page);
   await page.goto(APP_URL);
   await tapWhyLearn(page);
-  // The ask comes first — no picker, no case, nothing dealt yet.
-  await expect(page.getByTestId("age-picker")).toBeVisible();
-  await expect(page.getByTestId("subject-picker")).toHaveCount(0);
-  await answerAsk(page, 0); // Ages 7-10
-  // The continuation survives the ask: the picker opens at 7-10…
+  // The page itself asks: the picker opens directly — no modal —
+  // with the three band pills showing and no Change band yet.
   await expect(page.getByTestId("subject-picker")).toBeVisible();
-  await expect(page.getByTestId("subject-picker")).toContainText("Ages 7-10");
+  await expect(page.getByTestId("age-picker")).toHaveCount(0);
+  await expect(page.getByTestId("band-pills")).toBeVisible();
+  await expect(page.getByTestId("band-pill-7-10")).toBeVisible();
+  await expect(page.getByTestId("band-pill-10-18")).toBeVisible();
+  await expect(page.getByTestId("band-pill-18+")).toBeVisible();
+  await expect(page.getByTestId("change-band-button")).toHaveCount(0);
+  // A subject tap with no band set starts no case: it takes the
+  // player to the pills (the first pill takes focus).
+  await page.getByTestId("subject-row-math").click();
+  await expect(page.getByTestId("math-case")).toHaveCount(0);
+  await expect(page.getByTestId("subject-picker")).toBeVisible();
+  await expect(page.getByTestId("band-pill-7-10")).toBeFocused();
+  expect(await readProfileBand(page)).toBeNull();
+  // The pick writes the band, the pills collapse to Change band,
+  // and the list re-deals at the picked band.
+  await page.getByTestId("band-pill-7-10").click();
   expect(await readProfileBand(page)).toBe("7-10");
-  // …and the subject card lands on the intended case, at 7-10.
+  await expect(page.getByTestId("band-pills")).toHaveCount(0);
+  await expect(page.getByTestId("change-band-button")).toBeVisible();
+  await expect(page.getByTestId("subject-picker")).toContainText("Ages 7-10");
+  // …and now the subject card lands on its case, at 7-10.
   await page.getByTestId("subject-row-math").click();
   await expect(page.getByTestId("math-case")).toBeVisible();
   await expect(page.getByTestId("math-answer-card")).toBeVisible();
   await expect(page.getByText("Ages 7-10").first()).toBeVisible();
+  expect(errors).toEqual([]);
+});
+
+test("band set: Change band re-opens the pills and graduates the player", async ({
+  page,
+  context,
+}) => {
+  await setup(context);
+  await seedBand(context, "7-10");
+  const errors = watchErrors(page);
+  await page.goto(APP_URL);
+  await tapWhyLearn(page);
+  await expect(page.getByTestId("subject-picker")).toBeVisible();
+  // Set state: no pills — the Change band option instead.
+  await expect(page.getByTestId("band-pills")).toHaveCount(0);
+  await expect(page.getByTestId("change-band-button")).toBeVisible();
+  // Change band re-opens the pills, the current band marked.
+  await page.getByTestId("change-band-button").click();
+  await expect(page.getByTestId("band-pills")).toBeVisible();
+  await expect(page.getByTestId("band-pill-7-10")).toHaveAttribute("aria-pressed", "true");
+  await expect(page.getByTestId("band-pill-18+")).toHaveAttribute("aria-pressed", "false");
+  // Graduating writes the new band and re-deals in place.
+  await page.getByTestId("band-pill-18+").click();
+  expect(await readProfileBand(page)).toBe("18+");
+  await expect(page.getByTestId("band-pills")).toHaveCount(0);
+  await expect(page.getByTestId("change-band-button")).toBeVisible();
+  await expect(page.getByTestId("subject-picker")).toContainText("Ages 18+");
+  await page.getByTestId("subject-row-math").click();
+  await expect(page.getByTestId("math-case")).toBeVisible();
+  await expect(page.getByText("Ages 18+").first()).toBeVisible();
   expect(errors).toEqual([]);
 });
 
@@ -176,6 +227,9 @@ test("band set: no ask on the Why Learn path or on resume", async ({
   await tapWhyLearn(page);
   await expect(page.getByTestId("subject-picker")).toBeVisible();
   await expect(page.getByTestId("age-picker")).toHaveCount(0);
+  // The page's set state: the Change band option, no pills.
+  await expect(page.getByTestId("change-band-button")).toBeVisible();
+  await expect(page.getByTestId("band-pills")).toHaveCount(0);
   await expect(page.getByTestId("subject-picker")).toContainText("Ages 7-10");
   await page.getByTestId("subject-row-math").click();
   await expect(page.getByTestId("math-case")).toBeVisible();
@@ -192,19 +246,26 @@ test("band set: no ask on the Why Learn path or on resume", async ({
   expect(errors).toEqual([]);
 });
 
-test("backing out of the ask writes nothing and starts nothing", async ({
+test("backing out of the resume ask writes nothing and starts nothing", async ({
   page,
   context,
 }) => {
   await setup(context);
   const errors = watchErrors(page);
   await page.goto(APP_URL);
-  await tapWhyLearn(page);
+  // Deal a mystery while unset (a fresh deal is not gated), then
+  // back out of the resume ask: the mystery stays mid-play, no
+  // band is written, nothing resumes.
+  const dealt = await dealMystery(page);
+  await page
+    .getByRole("button", { name: "GeoDetective: Resume your case" })
+    .click();
   await expect(page.getByTestId("age-picker")).toBeVisible();
   await page.getByRole("button", { name: "Not now" }).click();
   await expect(page.getByTestId("age-picker")).toHaveCount(0);
-  await expect(page.getByTestId("subject-picker")).toHaveCount(0);
+  await expect(page.getByTestId("loop-screen")).toHaveCount(0);
   await expect(page.getByTestId("home-card-why-learn")).toBeVisible();
+  expect(await readLoopCurrent(page)).toEqual(dealt);
   expect(await readProfileBand(page)).toBeNull();
   expect(
     await page.evaluate((key) => localStorage.getItem(key), PROFILE_KEY),

@@ -44,21 +44,28 @@
  * the band lock), wired to GameApp's own GeoDetective tap-in. When
  * nothing is resumable the control is absent, never a dead button.
  *
- * Ask-first (owner decision, 2026-11-14): a subject card's tap is a
- * case start, so it runs through GameApp's askAgeFirst (the
- * onAskAgeFirst prop). The picker can be on screen with no band set
- * — a grown-up resetting the profile from the hosted settings
- * re-deals this list under the store's full-access read — and the
- * case must still not open under a silently defaulted band: with
- * no band set the age picker answers first and the same subject's
- * load runs off the pick, at the picked band (the change event
- * re-reads the band before the load lands). With a band set the
- * tap behaves exactly as before.
+ * Ask-first, contained on this page (owner decision 2026-11-14,
+ * "Ask first"; page design by Radhae, voice call 2026-11-15): the
+ * band ask lives on this page itself — AgeBandControl under the
+ * header shows the three band pills while no band is set, and a
+ * "Change band" option once one is (the graduation path: there is
+ * no player-facing settings screen to graduate through). A subject
+ * card's tap with no band set never opens a case under the store's
+ * silently defaulted band: it takes the player back to the pills
+ * instead, and the pick there is what deals this list at a real
+ * band. GameApp's modal ask (AgeAskGate) now guards only the case
+ * starts that bypass this page — "Resume your case" — where there
+ * are no pills to answer. The picker can still be on screen with
+ * no band set (a grown-up resetting the profile from the hosted
+ * settings re-deals this list under the store's full-access read);
+ * the pills are simply there, and the tap guard holds.
  */
 import { useEffect, useRef, useState, type ComponentType, type CSSProperties, type MouseEvent as ReactMouseEvent } from "react";
 import type { AgeGroup, SubjectModule, SubjectProps } from "../registry";
 import { listReleasedSubjects } from "../registry";
-import { getAgeGroup, onAgeProfileChanged } from "@/game/age-profile";
+import { getAgeGroup, loadProfile, onAgeProfileChanged } from "@/game/age-profile";
+import type { ProfileStatus } from "@/game/age-profile";
+import AgeBandControl from "@/components/age-profile/AgeBandControl";
 import { ResetHistoryControl } from "@/components/reset-history-control";
 import type { ResetHistoryResult } from "@/game/reset-history";
 import { withChunkTimeout } from "@/lib/chunk-timeout";
@@ -118,7 +125,7 @@ export default function SubjectPicker({
   onResetHistory,
   onResumeCase,
   loopInProgress,
-  onAskAgeFirst,
+  bandChangeRunInProgress,
   onOpenAgeSettings,
 }: SubjectProps & {
   /** GameApp's celebration trigger, passed through to the opened case. */
@@ -135,11 +142,13 @@ export default function SubjectPicker({
    * loop store, read by GameApp): the resume control renders only
    * while this holds, exactly as on Home's GeoDetective card. */
   loopInProgress?: boolean;
-  /** Ask-first (owner decision, 2026-11-14): GameApp's case-start
-   * gate. A subject card's load runs through it — with a band set
-   * the continuation runs at once; with none set GameApp holds it
-   * behind the age picker and runs it off the pick. */
-  onAskAgeFirst?: (proceed: () => void) => void;
+  /** The settings flow's run-in-progress input, passed through to
+   * the band control's change write (GameApp passes the same
+   * expression it passes AgeProfileSettings): while a run is in
+   * progress a band change defers its re-deal to the next
+   * boundary. This screen's own mount is reached only with no run
+   * and no loop open, so it is false in practice today. */
+  bandChangeRunInProgress?: boolean;
   /** Open GameApp's hosted age-profile settings (the grown-up gate →
    * AgePicker flow) — the picker's "For grown-ups" footer entry. */
   onOpenAgeSettings?: (e?: ReactMouseEvent<HTMLElement>) => void;
@@ -148,11 +157,17 @@ export default function SubjectPicker({
   // and then follows age-profile change events: a grown-up switching
   // the band in the settings re-deals this list in place.
   const [band, setBand] = useState<AgeGroup>(() => group ?? getAgeGroup());
+  // The profile's own status, beside the resolved band: the band
+  // alone cannot say "unset" (an unset profile resolves to the
+  // full-access band for display), and the page's band ask turns
+  // on exactly that distinction.
+  const [profileStatus, setProfileStatus] = useState<ProfileStatus>(() => loadProfile().status);
   const [released, setReleased] = useState<SubjectModule[] | null>(null);
   const [listFailed, setListFailed] = useState(false);
   const [opened, setOpened] = useState<{ title: string; Case: CaseComponent } | null>(null);
   const [openFailed, setOpenFailed] = useState<string | null>(null);
   const headingRef = useRef<HTMLHeadingElement | null>(null);
+  const bandBarRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     let live = true;
@@ -176,6 +191,7 @@ export default function SubjectPicker({
     () =>
       onAgeProfileChanged(() => {
         setBand(getAgeGroup());
+        setProfileStatus(loadProfile().status);
         setOpened(null);
       }),
     [],
@@ -249,21 +265,29 @@ export default function SubjectPicker({
   }
 
   const openSubject = (mod: SubjectModule) => {
-    const proceed = () => {
-      setOpenFailed(null);
-      withChunkTimeout(mod.load(), `${mod.title} case screen`)
-        .then((loaded) => {
-          setOpened({ title: mod.title, Case: loaded.default as CaseComponent });
-        })
-        .catch(() => {
-          setOpenFailed(mod.title);
-        });
-    };
-    // Ask-first: the load is the case start, so it runs through
-    // GameApp's gate (see the header note). Absent the prop (a
-    // mount with no host gate) the tap loads directly, as before.
-    if (onAskAgeFirst) onAskAgeFirst(proceed);
-    else proceed();
+    // Ask-first, contained on this page (see the header note):
+    // with no band set a case never starts — the tap takes the
+    // player to the band pills at the top of the page instead of
+    // opening the case under the store's silently defaulted band.
+    // The pick there is one tap; the next tap on the subject
+    // opens its case at the picked band. The status is read at
+    // tap time, never from state that could be a render behind.
+    if (loadProfile().status === "unset") {
+      const bar = bandBarRef.current;
+      if (bar) {
+        bar.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "start" });
+        bar.querySelector<HTMLButtonElement>('[data-testid^="band-pill-"]')?.focus({ preventScroll: true });
+      }
+      return;
+    }
+    setOpenFailed(null);
+    withChunkTimeout(mod.load(), `${mod.title} case screen`)
+      .then((loaded) => {
+        setOpened({ title: mod.title, Case: loaded.default as CaseComponent });
+      })
+      .catch(() => {
+        setOpenFailed(mod.title);
+      });
   };
 
   const rows = released ? pickerRows(released, band) : [];
@@ -285,10 +309,18 @@ export default function SubjectPicker({
       eyebrow="Case file · Why it matters"
       title="Why Do We Learn This?"
       titleRef={headingRef}
-      sub={`Pick a subject · Ages ${band}`}
+      sub={profileStatus === "unset" ? "Pick a subject" : `Pick a subject · Ages ${band}`}
     >
       <WhyLearnWorld />
       <WhyLearnDrift />
+      {/* The band ask, contained on this page (see the header
+          note): AgeBandControl under the header — the three band
+          pills while no band is set, a "Change band" option once
+          one is. It owns the profile reads and writes; this page
+          only hosts it, beside the band the sub line names. */}
+      <div ref={bandBarRef} className="mt-5">
+        <AgeBandControl runInProgress={bandChangeRunInProgress} />
+      </div>
       {released === null && !listFailed ? (
         <p className="mt-6 text-fg">Loading subjects…</p>
       ) : null}

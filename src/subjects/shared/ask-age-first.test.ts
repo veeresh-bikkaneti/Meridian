@@ -17,19 +17,24 @@ import { fileURLToPath } from "node:url";
  * the built artifact.
  *
  * The gated paths, and what each pin holds:
- * 1. The Why Learn card: GameApp's askAgeFirst holds the picker
- *    open behind AgeAskGate; the pick continues to the picker.
- * 2. Subject cards: the picker's case load runs through the same
- *    gate (GameApp passes it down as onAskAgeFirst).
- * 3. Resume your case: the subjects branch's resume and Home's
+ * 1. Resume your case: the subjects branch's resume and Home's
  *    GeoDetective card in its resume mode both ask first; the
  *    resume itself still runs the shared tap-in verbatim.
- * 4. The gate is prod's own picker: AgeAskGate hosts AgePicker
+ * 2. The gate is prod's own picker: AgeAskGate hosts AgePicker
  *    and writes through the store's unset path (setBand) before
  *    continuing; backing out writes nothing.
- * 5. A band set means no change: askAgeFirst runs the
+ * 3. A band set means no change: askAgeFirst runs the
  *    continuation immediately when the profile is not unset, and
  *    the grown-ups settings flow (gate → picker) is untouched.
+ *
+ * Amendment (Radhae's reconciliation design, voice call
+ * 2026-11-15): the Why Learn entry and the subject cards no
+ * longer route through the modal gate — the picker page carries
+ * the ask itself (AgeBandControl: the band pills while unset,
+ * "Change band" once set), and a subject tap with no band set
+ * goes to the pills instead of opening a case. The amendment
+ * pins are in their own describe below; the gate pins here now
+ * cover only the paths that bypass the page.
  */
 
 const here = dirname(fileURLToPath(import.meta.url));
@@ -109,28 +114,91 @@ describe("the gate holder (GameApp)", () => {
   });
 });
 
-describe("the Why Learn path", () => {
-  it("the card tap asks first and opens the picker off the pick", () => {
-    const handler = region(gameApp, 'onWhyLearn={withCardTap("why-learn", () => {', "})}"); 
-    assert.ok(handler.includes("askAgeFirst(() => setSubjectsOpen(true));"), "the open is the held continuation");
+describe("the Why Learn path (amendment: the page asks itself)", () => {
+  it("the card tap opens the picker directly — no modal ask on this path", () => {
+    const handler = region(gameApp, 'onWhyLearn={withCardTap("why-learn", () => {', "})}");
+    assert.ok(handler.includes("setSubjectsOpen(true);"), "the tap opens the picker");
+    assert.ok(!handler.includes("askAgeFirst"), "the modal gate no longer holds this path — the page's pills ask");
   });
 
-  it("a subject card's case load runs through the gate and lands on the same subject", () => {
+  it("GameApp passes the picker no gate — only the change write's run input", () => {
+    const branch = subjectsBranch(gameApp);
+    assert.ok(!branch.includes("onAskAgeFirst"), "the picker takes no gate prop");
     assert.ok(
-      subjectPicker.includes("onAskAgeFirst?: (proceed: () => void) => void;"),
-      "the picker takes GameApp's gate as a prop",
+      branch.includes("bandChangeRunInProgress={run !== null || loopOpen}"),
+      "the same run-in-progress expression the settings mount gets",
     );
+    assert.ok(!subjectPicker.includes("onAskAgeFirst"), "the prop is gone from the picker too");
+  });
+
+  it("a subject card's tap with no band set goes to the pills, never to a case", () => {
     const open = region(subjectPicker, "const openSubject = (mod: SubjectModule) => {", "\n  };\n");
-    assert.ok(open.includes("if (onAskAgeFirst) onAskAgeFirst(proceed);"), "the load is gated when the host provides the gate");
-    assert.ok(open.includes("else proceed();"), "and runs directly when it does not");
+    assert.ok(
+      open.includes('loadProfile().status === "unset"'),
+      "the guard reads the profile's own status at tap time",
+    );
+    assert.ok(open.includes("bandBarRef"), "the tap takes the player to the band bar");
+    assert.ok(open.includes('data-testid^="band-pill-"'), "and lands focus on the first pill");
+    const guardAt = open.indexOf('loadProfile().status === "unset"');
+    const loadAt = open.indexOf("withChunkTimeout(mod.load()");
+    assert.ok(guardAt >= 0 && loadAt > guardAt, "the guard stands before the case load");
+    assert.ok(open.includes("return;"), "an unset tap starts nothing");
     assert.ok(
       open.includes("withChunkTimeout(mod.load(), `${mod.title} case screen`)"),
-      "the continuation is the tapped subject's own load — the target survives the ask",
+      "with a band set the tap still loads the tapped subject's own case",
     );
-    const branch = subjectsBranch(gameApp);
+  });
+});
+
+describe("the picker page's band control (amendment)", () => {
+  const bandControl = read("../../components/age-profile/AgeBandControl.tsx");
+
+  it("lives in the age-profile UI module and writes only through the store's own paths", () => {
     assert.ok(
-      branch.includes("onAskAgeFirst={(proceed) => askAgeFirst(proceed)}"),
-      "GameApp passes its own gate down to the picker",
+      bandControl.includes('import { setBand, saveBand } from "@/game/age-profile/store.ts";'),
+      "the settings flow's own write calls, imported its way",
+    );
+    assert.ok(bandControl.includes("setBand(id);"), "a first pick uses the unset path");
+    assert.ok(
+      bandControl.includes("saveBand(id, { runInProgress })"),
+      "a change uses the change path with the host's run input",
+    );
+    assert.ok(!bandControl.includes("GrownUpGate"), "no grown-up gate on the page's own band choice");
+    assert.ok(!bandControl.includes("localStorage"), "no storage access of its own — the store owns the key");
+  });
+
+  it("shows the pills while unset and Change band once set", () => {
+    assert.ok(bandControl.includes('profile.status === "unset"'), "the unset state keys on the profile's own status");
+    assert.ok(bandControl.includes('data-testid="band-pills"'), "the pill row");
+    assert.ok(bandControl.includes("data-testid={`band-pill-${id}`}"), "one pill per band");
+    assert.ok(bandControl.includes('data-testid="change-band-button"'), "the collapsed set state is the Change band option");
+    assert.ok(bandControl.includes("AGE_BAND_IDS.map"), "the pills are the band table's bands, in its order");
+    assert.ok(bandControl.includes("AGE_BANDS[id].label"), "with the band table's own labels");
+  });
+
+  it("Change band re-opens the pills, and the control follows changes made anywhere", () => {
+    assert.ok(bandControl.includes("onClick={() => setExpanded(true)}"), "the tap re-opens the pill row");
+    assert.ok(bandControl.includes("onAgeProfileChanged("), "the control subscribes to the change event");
+    assert.ok(bandControl.includes("setExpanded(false)"), "a pick — or any external change — collapses it again");
+    assert.ok(
+      bandControl.includes("const current = loadProfile();") &&
+        bandControl.includes("id !== current.band"),
+      "the pick reads the profile fresh, and re-picking the current band writes nothing (the change path is for a different band)",
+    );
+  });
+
+  it("the picker hosts the control under its header and names no band it does not have", () => {
+    assert.ok(
+      subjectPicker.includes('import AgeBandControl from "@/components/age-profile/AgeBandControl";'),
+      "hosted by the picker",
+    );
+    assert.ok(
+      subjectPicker.includes("<AgeBandControl runInProgress={bandChangeRunInProgress} />"),
+      "with the run input passed through",
+    );
+    assert.ok(
+      subjectPicker.includes('profileStatus === "unset" ? "Pick a subject" : `Pick a subject · Ages ${band}`'),
+      "the sub line claims a band only when one is set",
     );
   });
 });
