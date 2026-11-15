@@ -111,6 +111,14 @@ function givensOf(d: ClueSceneDescription): number[] {
       return [d.slowSlide, d.fastSlide];
     case "seesaw-lift":
       return [];
+    case "magnet-pair":
+      return [];
+    case "drop-fall":
+      return [];
+    case "wind-up":
+      return [];
+    case "light-path":
+      return [];
   }
 }
 
@@ -194,6 +202,14 @@ function stepCountOf(d: ClueSceneDescription): number {
       return 3; // the slower hit, the faster hit, the final tick
     case "seesaw-lift":
       return 3; // the press, the tip and lift, the final tick
+    case "magnet-pair":
+      return 3; // the flip, the spring apart, the final tick
+    case "drop-fall":
+      return 3; // the drop, the catch, the final tick
+    case "wind-up":
+      return 3; // the key turns, the roll, the final tick
+    case "light-path":
+      return 3; // the ray to the book, the ray onward (or the card), the final tick
   }
 }
 

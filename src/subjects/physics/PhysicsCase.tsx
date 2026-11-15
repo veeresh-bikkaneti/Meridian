@@ -4,7 +4,7 @@
  * SubjectCase, passing physics' title, test-id prefix, band items and
  * answer lookup.
  *
- * Clue scenes (expansion wave 4): physics also passes the
+ * Clue scenes (expansion waves 4-5): physics also passes the
  * scene hook, mirroring GeneralKnowledgeCase. For ages 7-10, an
  * item that carries a scene description (scenes.ts, in data next
  * to the answers) gets a short live-drawn film above its clue
