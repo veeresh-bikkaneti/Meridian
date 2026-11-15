@@ -248,3 +248,14 @@ themselves. Built on top of the cure tip:
   mechanism-proven; whether to give that test the same
   serviceWorkers:"block" treatment is the gate's call, not this
   run's (no test beyond the two new ones was edited).
+
+## Grown-ups shell SW shield (2026-11-15) — test-only follow-up
+
+- Per SWITCH-GATE §6(c): the grown-ups shell test in
+  tests/e2e/board.desktop.spec.ts now runs in its own describe
+  with test.use({ serviceWorkers: "block" }) — the identical
+  shield the theme-switch tests already carry, scoped to that
+  one test, with an explanatory comment in the same style. No
+  assertion changed, no timeout raised, no retry added; no
+  product code touched (public/sw.js untouched).
+- Next step: independent spot-gate by the parent. NOT merged.

@@ -225,6 +225,16 @@ test("390px: trail renders, no sideways scroll", async ({ page }) => {
   expect(overflow).toBeLessThanOrEqual(0);
 });
 
+/* Grown-ups shell test runs with service workers blocked, for
+ * the same reason as the theme-switch tests below: once the
+ * app's SW controls the page it re-fetches navigations itself,
+ * and that fetch is not a navigation request — the shell route
+ * above falls back to the file server, which 404s /privacy (a
+ * harness artifact; the SW has its own spec, pwa.spec.ts). The
+ * grown-ups shell does not involve the SW. */
+test.describe("grown-ups shell", () => {
+  test.use({ serviceWorkers: "block" });
+
 test("grown-ups shell: credits + privacy carry the doors and the board is linked", async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 900 });
   await page.goto("http://127.0.0.1:4123/Meridian/credits?idle-ms=3600000");
@@ -234,6 +244,8 @@ test("grown-ups shell: credits + privacy carry the doors and the board is linked
   await page.goto("http://127.0.0.1:4123/Meridian/privacy?idle-ms=3600000");
   await expect(page.getByRole("navigation", { name: "Grown-ups pages" })).toBeVisible();
   await expect(page.getByRole("link", { name: "Ask for something new" })).toBeVisible();
+});
+
 });
 
 /* Theme-switch tests run with service workers blocked: once the
