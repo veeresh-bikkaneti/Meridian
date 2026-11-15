@@ -66,8 +66,8 @@ describe("clue scene wiring", () => {
     assert.ok(gkCase.includes("ClueSummaryText"), "as the summary's standing text");
   });
 
-  it("the physics case gates the scenes to ages 7-10 with a description", () => {
-    assert.ok(physicsCase.includes('if (band !== "7-10") return null;'));
+  it("the physics case gates the scenes to ages 7-10, 10-18 and 18+ with a description", () => {
+    assert.ok(physicsCase.includes('if (band !== "7-10" && band !== "10-18" && band !== "18+") return null;'));
     assert.ok(physicsCase.includes("clueSceneFor(item.id)"));
     assert.ok(physicsCase.includes("<ClueScene"));
     assert.ok(physicsCase.includes("resultExtra={"), "physics passes the hook");
@@ -338,5 +338,38 @@ describe("wave 5 kinds", () => {
   it("light-path reuses one renderer for the card and no-card items", () => {
     assert.ok(kindsC.includes("withCard"), "the card is the kind's own data");
     assert.ok(kindsC.includes("phase === \"setup\""), "the setup film draws no ray path");
+  });
+});
+
+describe("wave 6 kinds", () => {
+  const kindsA = read(join(here, "clue-scene-kinds-a.tsx"));
+  const kindsB = read(join(here, "clue-scene-kinds-b.tsx"));
+  const kindsC = read(join(here, "clue-scene-kinds-c.tsx"));
+
+  it("the renderer dispatches every wave-6 kind", () => {
+    for (const kind of ["rate-race", "slope-pair", "same-push", "hill-carts", "sound-path", "energy-ledger"]) {
+      assert.ok(scene.includes(`case "${kind}":`), `SceneArt dispatches ${kind}`);
+      assert.ok(scene.includes(`"${kind}":`), `SUMMARY_STAGGER paces ${kind}`);
+    }
+  });
+
+  it("every wave-6 kind accepts the summary pacing prop", () => {
+    for (const [source, name] of [
+      [kindsA, "RateRaceScene"],
+      [kindsA, "SamePushScene"],
+      [kindsB, "SlopePairScene"],
+      [kindsB, "HillCartsScene"],
+      [kindsB, "SoundPathScene"],
+      [kindsC, "EnergyLedgerScene"],
+    ] as const) {
+      assert.ok(source.includes(`function ${name}(`), `${name} exists`);
+      assert.ok(source.includes("stepDelay"), `${name} accepts stepDelay`);
+    }
+  });
+
+  it("the wave-6 reuse variants are data branches, not new kinds", () => {
+    assert.ok(kindsA.includes("twoPairs"), "magnet-pair carries the two-pair variant data");
+    assert.ok(kindsB.includes("stopsDead"), "cup-shove carries the stops-dead variant data");
+    assert.ok(kindsC.includes("threeMaterials"), "light-path carries the three-materials variant data");
   });
 });

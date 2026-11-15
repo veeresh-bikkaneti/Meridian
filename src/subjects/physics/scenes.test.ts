@@ -1,9 +1,10 @@
 /**
  * Physics clue scenes — the data-side contract (the math and
  * general-knowledge scenes.test.ts pattern, expansion waves
- * 4-5). Coverage is exactly the twelve items dealt for ages
- * 7-10 — wave 4's seven forces-and-motion items plus wave 5's
- * five energy, light and magnet items. A scene description
+ * 4-6). Coverage is exactly all 24 dealt items — wave 4's seven
+ * ages 7-10 forces-and-motion items, wave 5's five ages 7-10
+ * energy, light and magnet items, and wave 6's nine ages 10-18
+ * items plus three ages 18+ items. A scene description
  * carries only the givens from the item's own question, so the
  * setup film cannot give the answer away, and the solved beat's
  * arithmetic lands exactly on the item's answer. Each
@@ -47,8 +48,31 @@ const WAVE5_IDS = [
   "physics:mirror:sends-back",
 ];
 
+/** The nine ages 10-18 items wave 6 builds. */
+const WAVE6_IDS_1018 = [
+  "physics:arrive:unit-rate",
+  "physics:ramp:slope-ratio",
+  "physics:magnet:closer",
+  "physics:push:mass",
+  "physics:push:table",
+  "physics:ramp:higher-stored",
+  "physics:energy:transfer",
+  "physics:sound:medium",
+  "physics:mirror:three-ways",
+];
+
+/** The three ages 18+ items wave 6 builds. */
+const WAVE6_IDS_18PLUS = [
+  "physics:ramp:adult-ratio",
+  "physics:arrive:adult-time",
+  "physics:energy:missing",
+];
+
 /** All twelve ages 7-10 items, wave 4 then wave 5. */
 const DEALT_IDS = [...WAVE4_IDS, ...WAVE5_IDS];
+
+/** Every dealt item in every band, waves 4-6 (24). */
+const ALL_IDS = [...DEALT_IDS, ...WAVE6_IDS_1018, ...WAVE6_IDS_18PLUS];
 
 /** The numeric givens a description carries, per kind. */
 function givensOf(d: ClueSceneDescription): number[] {
@@ -73,6 +97,20 @@ function givensOf(d: ClueSceneDescription): number[] {
       return [];
     case "light-path":
       return [];
+    case "rate-race":
+      return [d.firstMetres, d.firstSeconds, d.secondMetres, d.secondSeconds];
+    case "slope-pair":
+      return [d.firstRise, d.firstRun, d.secondRise, d.secondRun];
+    case "same-push":
+      return [d.leftBoxes, d.rightBoxes, d.leftForce, d.rightForce];
+    case "hill-carts":
+      return [d.lowStep, d.highStep];
+    case "sound-path":
+      return [];
+    case "energy-ledger":
+      return [d.change, d.out];
+    case "journey-line":
+      return [d.totalKm, d.hours ?? -1, d.targetKm ?? -1, d.aheadKm ?? -1].filter((n) => n >= 0);
     default:
       return [];
   }
@@ -100,6 +138,27 @@ function stepCountOf(d: ClueSceneDescription): number {
       return 3; // the key turns, the roll, the final tick
     case "light-path":
       return 3; // the ray to the book, the ray onward (or the card), the final tick
+    case "rate-race": {
+      const winnerSeconds =
+        d.firstMetres / d.firstSeconds >= d.secondMetres / d.secondSeconds
+          ? d.firstSeconds
+          : d.secondSeconds;
+      return winnerSeconds + 1; // one hop per second of the winner's run, then the final tick
+    }
+    case "slope-pair":
+      return 3; // the first slope line, the second slope line, the final tick
+    case "same-push":
+      return 3; // the arrows press, both carts roll, the final tick
+    case "hill-carts":
+      return 3; // the height marks, the store stacks, the final tick
+    case "sound-path":
+      return 3; // the waves cross the air, the waves fade at the gap, the final tick
+    case "energy-ledger":
+      return 3; // the out bar, the stacked change bar, the in bar and tick
+    case "journey-line":
+      return d.hours !== undefined && d.targetKm !== undefined
+        ? Math.round(d.targetKm / (d.totalKm / d.hours))
+        : 2;
     default:
       return -1;
   }
@@ -118,9 +177,21 @@ const CLOSING: Record<string, string> = {
   "physics:energy:wound-moves": "The wound-up car",
   "physics:shadow:blocks": "cardboard blocks",
   "physics:mirror:sends-back": "into your eye",
+  "physics:arrive:unit-rate": "arrives first",
+  "physics:ramp:slope-ratio": "Ramp B is steeper",
+  "physics:magnet:closer": "the closer pair pulls harder",
+  "physics:push:mass": "the lighter cart",
+  "physics:push:table": "larger net force",
+  "physics:ramp:higher-stored": "the higher cart",
+  "physics:energy:transfer": "moved into the cup",
+  "physics:sound:medium": "the air path carries the sound",
+  "physics:mirror:three-ways": "the mirror is the one that reflects",
+  "physics:ramp:adult-ratio": "Boom B is steeper",
+  "physics:arrive:adult-time": "3 hours",
+  "physics:energy:missing": "5 units",
 };
 
-describe("physics clue scene descriptions — waves 4-5 (ages 7-10, complete)", () => {
+describe("physics clue scene descriptions — waves 4-6 (all bands, complete)", () => {
   it("covers exactly all twelve dealt items for ages 7-10", () => {
     const bandIds = itemsForGroup("7-10").map((item) => item.id);
     assert.equal(bandIds.length, 12);
@@ -128,17 +199,24 @@ describe("physics clue scene descriptions — waves 4-5 (ages 7-10, complete)", 
     for (const id of DEALT_IDS) {
       assert.ok(clueSceneFor(id), `${id} has a scene`);
     }
-    assert.deepEqual(Object.keys(PHYSICS_CLUE_SCENES).sort(), [...DEALT_IDS].sort());
-    // No other band carries a description.
-    for (const band of ["10-18", "18+"] as const) {
-      for (const item of itemsForGroup(band)) {
-        assert.equal(clueSceneFor(item.id), null, `${item.id} (${band}) has no scene`);
-      }
+  });
+
+  it("covers exactly the nine dealt items for ages 10-18 and the three for 18+", () => {
+    const band1018 = itemsForGroup("10-18").map((item) => item.id);
+    assert.equal(band1018.length, 9);
+    assert.deepEqual([...WAVE6_IDS_1018].sort(), [...band1018].sort());
+    const band18 = itemsForGroup("18+").map((item) => item.id);
+    assert.equal(band18.length, 3);
+    assert.deepEqual([...WAVE6_IDS_18PLUS].sort(), [...band18].sort());
+    for (const id of [...WAVE6_IDS_1018, ...WAVE6_IDS_18PLUS]) {
+      assert.ok(clueSceneFor(id), `${id} has a scene`);
     }
+    // The whole map is exactly the 24 dealt items: Physics complete.
+    assert.deepEqual(Object.keys(PHYSICS_CLUE_SCENES).sort(), [...ALL_IDS].sort());
   });
 
   it("never carries the answer before the pick", () => {
-    for (const id of DEALT_IDS) {
+    for (const id of ALL_IDS) {
       const description = clueSceneFor(id)!;
       const answer = PHYSICS_ANSWERS[id]!;
       assert.ok(!/\d/.test(description.labelSetup), `${id}: setup label has no digits`);
@@ -230,6 +308,94 @@ describe("physics clue scene descriptions — waves 4-5 (ages 7-10, complete)", 
       PHYSICS_ANSWERS["physics:mirror:sends-back"]!.correct,
       "Light bounces off the book into your eye",
     );
+    // ── Wave 6 (ages 10-18 and 18+) ──
+    const race = clueSceneFor("physics:arrive:unit-rate")!;
+    assert.equal(race.kind, "rate-race");
+    if (race.kind === "rate-race") {
+      assert.ok(
+        race.firstMetres / race.firstSeconds > race.secondMetres / race.secondSeconds,
+        "the 8-in-2 cart is the faster (4 beats 3 each second)",
+      );
+      assert.equal(PHYSICS_ANSWERS["physics:arrive:unit-rate"]!.correct, "The 8 metres in 2 seconds cart");
+    }
+    const slope = clueSceneFor("physics:ramp:slope-ratio")!;
+    assert.equal(slope.kind, "slope-pair");
+    if (slope.kind === "slope-pair") {
+      assert.ok(slope.secondRise / slope.secondRun > slope.firstRise / slope.firstRun, "B is steeper");
+      assert.equal(PHYSICS_ANSWERS["physics:ramp:slope-ratio"]!.correct, "Ramp B");
+    }
+    const closer = clueSceneFor("physics:magnet:closer")!;
+    assert.equal(closer.kind, "magnet-pair");
+    if (closer.kind === "magnet-pair") {
+      assert.equal(closer.twoPairs, true, "the closer item carries the two-pair variant data");
+    }
+    assert.equal(PHYSICS_ANSWERS["physics:magnet:closer"]!.correct, "The closer pair");
+    const mass = clueSceneFor("physics:push:mass")!;
+    assert.equal(mass.kind, "same-push");
+    if (mass.kind === "same-push") {
+      assert.equal(mass.leftForce, mass.rightForce, "the push is the same");
+      assert.ok(mass.leftBoxes < mass.rightBoxes, "the left cart is the lighter");
+      assert.equal(PHYSICS_ANSWERS["physics:push:mass"]!.correct, "The lighter cart");
+    }
+    const table = clueSceneFor("physics:push:table")!;
+    assert.equal(table.kind, "same-push");
+    if (table.kind === "same-push") {
+      assert.equal(table.leftBoxes, table.rightBoxes, "the mass matches");
+      assert.ok(table.rightForce > table.leftForce, "the right trial's force is the larger");
+      assert.equal(
+        PHYSICS_ANSWERS["physics:push:table"]!.correct,
+        "The trial with the larger net force",
+      );
+    }
+    const higher = clueSceneFor("physics:ramp:higher-stored")!;
+    assert.equal(higher.kind, "hill-carts");
+    if (higher.kind === "hill-carts") {
+      assert.ok(higher.highStep > higher.lowStep, "one cart sits higher");
+      assert.equal(PHYSICS_ANSWERS["physics:ramp:higher-stored"]!.correct, "The higher cart");
+    }
+    const transfer = clueSceneFor("physics:energy:transfer")!;
+    assert.equal(transfer.kind, "cup-shove");
+    if (transfer.kind === "cup-shove") {
+      assert.equal(transfer.stopsDead, true, "the transfer item carries the stops-dead variant data");
+      assert.ok(transfer.slowSlide > 0, "the cup slides");
+    }
+    assert.equal(PHYSICS_ANSWERS["physics:energy:transfer"]!.correct, "It moved into the cup");
+    const medium = clueSceneFor("physics:sound:medium")!;
+    assert.equal(medium.kind, "sound-path");
+    assert.equal(PHYSICS_ANSWERS["physics:sound:medium"]!.correct, "The air path");
+    const threeWays = clueSceneFor("physics:mirror:three-ways")!;
+    assert.equal(threeWays.kind, "light-path");
+    if (threeWays.kind === "light-path") {
+      assert.equal(threeWays.threeMaterials, true, "the three-ways item carries the three-materials data");
+      assert.equal(threeWays.withCard, false);
+    }
+    assert.equal(PHYSICS_ANSWERS["physics:mirror:three-ways"]!.correct, "The mirror");
+    const adultRatio = clueSceneFor("physics:ramp:adult-ratio")!;
+    assert.equal(adultRatio.kind, "slope-pair");
+    if (adultRatio.kind === "slope-pair") {
+      assert.equal(adultRatio.firstRun, adultRatio.secondRun, "the runs match");
+      assert.ok(
+        adultRatio.secondRise / adultRatio.secondRun > adultRatio.firstRise / adultRatio.firstRun,
+        "boom B is steeper",
+      );
+      assert.equal(PHYSICS_ANSWERS["physics:ramp:adult-ratio"]!.correct, "Boom B");
+    }
+    const adultTime = clueSceneFor("physics:arrive:adult-time")!;
+    assert.equal(adultTime.kind, "journey-line");
+    if (adultTime.kind === "journey-line") {
+      assert.equal(
+        adultTime.targetKm! / (adultTime.totalKm / adultTime.hours!),
+        PHYSICS_ANSWERS["physics:arrive:adult-time"]!.value,
+      );
+    }
+    const missing = clueSceneFor("physics:energy:missing")!;
+    assert.equal(missing.kind, "energy-ledger");
+    if (missing.kind === "energy-ledger") {
+      assert.equal(
+        missing.change + missing.out,
+        PHYSICS_ANSWERS["physics:energy:missing"]!.value,
+      );
+    }
   });
 
   it("every item carries a well-formed narrated summary, pinned to the manifest and the clip file", () => {
@@ -238,7 +404,7 @@ describe("physics clue scene descriptions — waves 4-5 (ages 7-10, complete)", 
     const manifest = JSON.parse(readFileSync(join(audioDir, "manifest.json"), "utf8")) as {
       clips: Record<string, { file: string; duration: number; lines: number; item: string }>;
     };
-    for (const id of DEALT_IDS) {
+    for (const id of ALL_IDS) {
       const description = clueSceneFor(id)!;
       const summary = description.summary;
       assert.ok(summary, `${id} has a summary`);

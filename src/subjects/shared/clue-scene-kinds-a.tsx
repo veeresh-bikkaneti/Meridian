@@ -903,7 +903,63 @@ export function MagnetPairScene({
    * stepDelay(s) instead of the film's own stagger. */
   stepDelay?: (step: number) => number;
 }) {
-  void description;
+  if (description.twoPairs) {
+    // Wave-6 variant (physics:magnet:closer): two pairs rest at
+    // different gaps — the gaps are the question's givens, drawn
+    // as they are, with no snap and no winner marked. Solved in
+    // three steps: 0 the closer pair snaps shut, 1 the farther
+    // pair only nudges, 2 the final tick stands over the closer
+    // pair. The wave-5 cabinet path below is untouched.
+    const snapStart = stepDelay ? stepDelay(0) : 0.5;
+    const nudgeStart = stepDelay ? stepDelay(1) : 1.4;
+    const tickStart = stepDelay ? stepDelay(2) : 2.3;
+    const pairY = 108;
+    return (
+      <>
+        <path className="cs-line cs-soft cs-draw" pathLength={1} d="M24 36 Q160 32 296 36" style={delay(0.1)} />
+        <path className="cs-line cs-draw" pathLength={1} d="M16 164 Q160 168 304 164" style={delay(0)} />
+        <path className="cs-line cs-soft cs-draw" pathLength={1} d={`M28 ${pairY + 22} Q88 ${pairY + 25} 148 ${pairY + 22}`} style={delay(0.15)} />
+        <path className="cs-line cs-soft cs-draw" pathLength={1} d={`M172 ${pairY + 22} Q232 ${pairY + 25} 292 ${pairY + 22}`} style={delay(0.2)} />
+        {phase === "setup" ? (
+          <>
+            <g transform={`translate(62 ${pairY})`}>
+              <g className="cs-pop" style={delay(0.45)}><MagnetArt /></g>
+            </g>
+            <g transform={`translate(114 ${pairY})`}>
+              <g className="cs-pop" style={delay(0.55)}><MagnetArt /></g>
+            </g>
+            <g transform={`translate(200 ${pairY})`}>
+              <g className="cs-pop" style={delay(0.65)}><MagnetArt /></g>
+            </g>
+            <g transform={`translate(268 ${pairY})`}>
+              <g className="cs-pop" style={delay(0.75)}><MagnetArt /></g>
+            </g>
+          </>
+        ) : (
+          <>
+            {/* The closer pair snaps shut. */}
+            <g transform={`translate(62 ${pairY})`}>
+              <g className="cs-pop" style={delay(0.3)}><MagnetArt /></g>
+            </g>
+            <g transform={`translate(102 ${pairY})`}>
+              <g className="cs-slide" style={slideFrom(12, 0, snapStart)}><MagnetArt /></g>
+            </g>
+            {/* The farther pair only tugs a little way. */}
+            <g transform={`translate(200 ${pairY})`}>
+              <g className="cs-pop" style={delay(0.35)}><MagnetArt /></g>
+            </g>
+            <g transform={`translate(265 ${pairY})`}>
+              <g className="cs-slide" style={slideFrom(3, 0, nudgeStart)}><MagnetArt /></g>
+            </g>
+            <ellipse className="cs-ring" cx="82" cy={pairY} rx="52" ry="24" style={delay(tickStart + 0.4)} />
+            <text className="cs-tick cs-tick-final" x="82" y="58" style={delay(tickStart + 0.55)}>
+              ✓
+            </text>
+          </>
+        )}
+      </>
+    );
+  }
   const flipStart = stepDelay ? stepDelay(0) : 0.5;
   const apartStart = stepDelay ? stepDelay(1) : 1.4;
   const tickStart = stepDelay ? stepDelay(2) : 2.3;
@@ -1052,6 +1108,239 @@ export function WindUpScene({
           <ellipse className="cs-ring" cx="172" cy={floorY - 16} rx="34" ry="26" style={delay(tickStart + 0.4)} />
           <text className="cs-tick cs-tick-final" x="172" y="86" style={delay(tickStart + 0.55)}>
             →
+          </text>
+        </>
+      )}
+    </>
+  );
+}
+
+/* ── Wave 6 kinds (Physics 10-18): rate-race, same-push ──────
+   Same discipline as the kinds above: givens only in the setup
+   film, no digits and no winner before the pick; the solved
+   beat computes its outcome from the givens at solve time.
+   rate-race paces three steps (the first second's hops, the
+   second second's hops that end the race, the final tick);
+   same-push paces three (the arrows press, both carts roll,
+   the final tick). */
+
+/** One race cart's hops, tile-steps style: each hop but the
+ * last lands, holds a beat and fades as the next takes over. */
+function raceHopper(
+  perHopPx: number,
+  hops: number,
+  x0: number,
+  floorY: number,
+  hopStart: (h: number) => number,
+  keyPrefix: string,
+) {
+  return Array.from({ length: hops }, (_, h) => {
+    const finX = x0 + (h + 1) * perHopPx;
+    const prevX = x0 + h * perHopPx;
+    const inner = (
+      <g className="cs-slide" style={slideFrom(prevX - finX, 0, hopStart(h))}>
+        <StepCartArt />
+      </g>
+    );
+    return (
+      <g key={`${keyPrefix}-${h}`} transform={`translate(${finX} ${floorY})`}>
+        {h < hops - 1 ? (
+          <g className="cs-counter-step" style={delay(hopStart(h))}>{inner}</g>
+        ) : (
+          inner
+        )}
+      </g>
+    );
+  });
+}
+
+export function RateRaceScene({
+  description,
+  phase,
+  stepDelay,
+}: {
+  description: Extract<ClueSceneDescription, { kind: "rate-race" }>;
+  phase: ClueScenePhase;
+  /** Summary pacing: when present, step s's beat starts at
+   * stepDelay(s) instead of the film's own stagger. */
+  stepDelay?: (step: number) => number;
+}) {
+  const { firstMetres, firstSeconds, secondMetres, secondSeconds } = description;
+  const firstPerSecond = firstMetres / firstSeconds;
+  const secondPerSecond = secondMetres / secondSeconds;
+  // The race ends when the faster cart arrives: it runs for its
+  // own seconds, one hop per second, and the other cart hops
+  // the same count at its own slower pace.
+  const fasterIsFirst = firstPerSecond >= secondPerSecond;
+  const hops = fasterIsFirst ? firstSeconds : secondSeconds;
+  const x0 = 36;
+  const pxPerMetre = 24;
+  const bridgeX = x0 + (fasterIsFirst ? firstMetres : secondMetres) * pxPerMetre;
+  const laneA = 96;
+  const laneB = 148;
+  const hopStart = (h: number) => (stepDelay ? stepDelay(h) : 0.4 + h * 0.7);
+  const tickStart = stepDelay ? stepDelay(hops) : 0.4 + hops * 0.7;
+  return (
+    <>
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M24 36 Q160 32 296 36" style={delay(0.1)} />
+      <path className="cs-line cs-draw" pathLength={1} d="M16 168 Q160 172 304 168" style={delay(0)} />
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d={`M28 ${laneA + 4} Q160 ${laneA + 7} 292 ${laneA + 4}`} style={delay(0.12)} />
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d={`M28 ${laneB + 4} Q160 ${laneB + 7} 292 ${laneB + 4}`} style={delay(0.18)} />
+      {/* The bridge both carts leave for (a given). */}
+      <path className="cs-line cs-draw" pathLength={1} d={`M${bridgeX} 168 L${bridgeX} 58`} style={delay(0.3)} />
+      <path className="cs-flag cs-pop" d={`M${bridgeX} 58 L${bridgeX - 14} 62.5 L${bridgeX} 67 Z`} style={delay(0.5)} />
+      {phase === "setup" ? (
+        <>
+          <g transform={`translate(${x0} ${laneA})`}>
+            <g className="cs-pop" style={delay(0.55)}><StepCartArt /></g>
+          </g>
+          <g transform={`translate(${x0} ${laneB})`}>
+            <g className="cs-pop" style={delay(0.65)}><StepCartArt /></g>
+          </g>
+        </>
+      ) : (
+        <>
+          {raceHopper(firstPerSecond * pxPerMetre, hops, x0, laneA, hopStart, "first")}
+          {raceHopper(secondPerSecond * pxPerMetre, hops, x0, laneB, hopStart, "second")}
+          {/* Per-second ticks under each cart: the metres each
+              hop covers, landing with the hop that earns them. */}
+          {Array.from({ length: hops - 1 }, (_, h) => (
+            <text
+              key={`tick-a-${h}`}
+              className="cs-tick"
+              x={x0 + (h + 1) * firstPerSecond * pxPerMetre - 6}
+              y={laneA - 34}
+              style={delay(hopStart(h) + 0.35)}
+            >
+              {(h + 1) * firstPerSecond}
+            </text>
+          ))}
+          {Array.from({ length: hops - 1 }, (_, h) => (
+            <text
+              key={`tick-b-${h}`}
+              className="cs-tick"
+              x={x0 + (h + 1) * secondPerSecond * pxPerMetre - 6}
+              y={laneB - 34}
+              style={delay(hopStart(h) + 0.35)}
+            >
+              {(h + 1) * secondPerSecond}
+            </text>
+          ))}
+          <ellipse
+            className="cs-ring"
+            cx={bridgeX - 11}
+            cy={(fasterIsFirst ? laneA : laneB) - 13}
+            rx="21"
+            ry="18"
+            style={delay(tickStart + 0.4)}
+          />
+          <text className="cs-tick cs-tick-final" x={bridgeX - 11} y="44" style={delay(tickStart + 0.55)}>
+            ✓
+          </text>
+        </>
+      )}
+    </>
+  );
+}
+
+/** The load a same-push cart carries: small boxes stacked on
+ * the cart's bed (the question's given, drawn as it is). */
+function LoadBoxes({ count }: { count: number }) {
+  return (
+    <>
+      {Array.from({ length: count }, (_, i) => (
+        <rect
+          key={i}
+          className="cs-pack"
+          x={-22 + (i % 2) * 13}
+          y={-34 - Math.floor(i / 2) * 11}
+          width="12"
+          height="10"
+          rx="2"
+        />
+      ))}
+    </>
+  );
+}
+
+export function SamePushScene({
+  description,
+  phase,
+  stepDelay,
+}: {
+  description: Extract<ClueSceneDescription, { kind: "same-push" }>;
+  phase: ClueScenePhase;
+  /** Summary pacing: when present, step s's beat starts at
+   * stepDelay(s) instead of the film's own stagger. */
+  stepDelay?: (step: number) => number;
+}) {
+  const { leftBoxes, rightBoxes, leftForce, rightForce } = description;
+  const pressStart = stepDelay ? stepDelay(0) : 0.5;
+  const rollStart = stepDelay ? stepDelay(1) : 1.4;
+  const tickStart = stepDelay ? stepDelay(2) : 2.3;
+  const floorY = 146;
+  // The winner, computed from the givens: with different loads
+  // the lighter cart wins; with equal loads the larger force
+  // wins. The loser still rolls — just not as far.
+  const leftWins = leftBoxes !== rightBoxes ? leftBoxes < rightBoxes : leftForce > rightForce;
+  const leftRoll = leftWins ? 72 : 22;
+  const rightRoll = leftWins ? 22 : 72;
+  const leftX = 78;
+  const rightX = 218;
+  const arrow = (cartX: number, force: number, start: number) => (
+    <g className="cs-grow" style={delay(start)}>
+      <path className="cs-line cs-band" d={`M${cartX - 30 - force * 13} ${floorY - 14} Q${cartX - 28 - force * 6} ${floorY - 17} ${cartX - 29} ${floorY - 14}`} />
+      <path className="cs-tip" d={`M${cartX - 29} ${floorY - 14} L${cartX - 36} ${floorY - 19} L${cartX - 35} ${floorY - 9} Z`} />
+    </g>
+  );
+  const cart = (boxes: number) => (
+    <>
+      <StepCartArt />
+      <LoadBoxes count={boxes} />
+    </>
+  );
+  return (
+    <>
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M24 40 Q160 36 296 40" style={delay(0.1)} />
+      <path className="cs-line cs-draw" pathLength={1} d={`M16 ${floorY + 6} Q160 ${floorY + 10} 304 ${floorY + 6}`} style={delay(0)} />
+      {phase === "setup" ? (
+        <>
+          {/* Both carts at rest, loads and push arrows drawn as
+              the question gives them. No motion, no winner. */}
+          {arrow(leftX, leftForce, 0.5)}
+          {arrow(rightX, rightForce, 0.6)}
+          <g transform={`translate(${leftX} ${floorY})`}>
+            <g className="cs-pop" style={delay(0.45)}>{cart(leftBoxes)}</g>
+          </g>
+          <g transform={`translate(${rightX} ${floorY})`}>
+            <g className="cs-pop" style={delay(0.55)}>{cart(rightBoxes)}</g>
+          </g>
+        </>
+      ) : (
+        <>
+          {arrow(leftX, leftForce, pressStart)}
+          {arrow(rightX, rightForce, pressStart + 0.1)}
+          <g transform={`translate(${leftX + leftRoll} ${floorY})`}>
+            <g className="cs-slide" style={slideFrom(-leftRoll, 0, rollStart)}>{cart(leftBoxes)}</g>
+          </g>
+          <g transform={`translate(${rightX + rightRoll} ${floorY})`}>
+            <g className="cs-slide" style={slideFrom(-rightRoll, 0, rollStart + 0.1)}>{cart(rightBoxes)}</g>
+          </g>
+          <ellipse
+            className="cs-ring"
+            cx={(leftWins ? leftX + leftRoll : rightX + rightRoll) - 11}
+            cy={floorY - 13}
+            rx="24"
+            ry="20"
+            style={delay(tickStart + 0.4)}
+          />
+          <text
+            className="cs-tick cs-tick-final"
+            x={(leftWins ? leftX + leftRoll : rightX + rightRoll) - 11}
+            y="84"
+            style={delay(tickStart + 0.55)}
+          >
+            ✓
           </text>
         </>
       )}

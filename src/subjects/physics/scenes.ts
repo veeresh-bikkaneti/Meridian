@@ -22,16 +22,23 @@
  * (public/audio/subjects/manifest.json carries the same
  * numbers). The summary sits in the solved-phase data path only.
  *
- * Coverage (expansion waves 4-5): all twelve items for ages
- * 7-10 — wave 4's seven forces-and-motion items (five kinds:
+ * Coverage (expansion waves 4-6): all 24 physics items —
+ * wave 4's seven ages 7-10 forces-and-motion items (five kinds:
  * push-duel, tile-steps, slide-stop, cup-shove, seesaw-lift,
  * with tile-steps shared by the two counting/racing items and
- * push-duel shared by the two opposed-push items) and wave 5's
- * five energy, light and magnet items (four new kinds:
- * magnet-pair, drop-fall, wind-up, light-path, with light-path
- * shared by the blocking-card item and the mirror item — the
- * card is the kind's own data, not a second kind). Other bands
- * carry no descriptions.
+ * push-duel shared by the two opposed-push items), wave 5's
+ * five ages 7-10 energy, light and magnet items (four new
+ * kinds: magnet-pair, drop-fall, wind-up, light-path, with
+ * light-path shared by the blocking-card item and the mirror
+ * item — the card is the kind's own data, not a second kind),
+ * and wave 6's twelve upper-band items: nine for ages 10-18
+ * and three for ages 18+ (six new kinds: rate-race, slope-pair,
+ * same-push, hill-carts, sound-path, energy-ledger; magnet-pair
+ * reused as a two-pair variant, cup-shove as a ball-stops-dead
+ * variant, light-path with three-materials data, and math's
+ * journey-line shared for the adult time item — its known
+ * stretch is the speed itself, 4 kilometres in 1 hour, marked
+ * along the 12-kilometre road). Physics is complete: 24 of 24.
  */
 import type { ClueSceneDescription } from "../shared/clue-scene-types.ts";
 
@@ -230,6 +237,231 @@ export const PHYSICS_CLUE_SCENES: Record<string, ClueSceneDescription> = {
         { text: "Light from the lamp shines onto the book on the shelf.", at: 2.73 },
         { text: "The book bounces the light back, into your eye.", at: 5.89 },
         { text: "Light from the lamp bounces off the book and into your eye — that is how you see it.", at: 9.09 },
+      ],
+      beats: [0, 1, 1, 1],
+    },
+  },
+  "physics:arrive:unit-rate": {
+    kind: "rate-race",
+    firstMetres: 8,
+    firstSeconds: 2,
+    secondMetres: 9,
+    secondSeconds: 3,
+    labelSetup: "Two carts wait at the start of a track to a bridge.",
+    labelSolved: "Per-second ticks mark each cart's run to the bridge.",
+    summary: {
+      clip: "cart-race.mp3",
+      duration: 23.32,
+      lines: [
+        { text: "Here is the clever way to see which cart arrives first.", at: 0 },
+        { text: "Count what each cart covers in one second: the first cart covers 8 metres in 2 seconds, so 4 metres each second.", at: 3.62 },
+        { text: "The second cart covers 9 metres in 3 seconds, so 3 metres each second.", at: 12.07 },
+        { text: "Four metres each second beats three, so the 8 metres in 2 seconds cart arrives first!", at: 17.57 },
+      ],
+      beats: [0, 1, 1, 1],
+    },
+  },
+  "physics:ramp:slope-ratio": {
+    kind: "slope-pair",
+    firstRise: 2,
+    firstRun: 4,
+    secondRise: 2,
+    secondRun: 2,
+    labelSetup: "Two ramps stand on a rise and run grid.",
+    labelSolved: "Both slope lines are drawn, and the steeper one stands out.",
+    summary: {
+      clip: "slope-ratio.mp3",
+      duration: 20.61,
+      lines: [
+        { text: "Here is the clever way to tell which ramp is steeper.", at: 0 },
+        { text: "Steepness is the rise divided by the run, so draw each ramp's slope line on its grid.", at: 3.36 },
+        { text: "Ramp A climbs 2 over a run of 4, which is one half; ramp B climbs 2 over a run of 2, which is one whole.", at: 9.66 },
+        { text: "One whole beats one half, so Ramp B is steeper!", at: 17.52 },
+      ],
+      beats: [0, 1, 1, 1],
+    },
+  },
+  "physics:magnet:closer": {
+    kind: "magnet-pair",
+    twoPairs: true,
+    labelSetup: "Two pairs of magnets rest at different gaps.",
+    labelSolved: "The closer pair snaps together, and the farther pair barely stirs.",
+    summary: {
+      clip: "magnet-closer.mp3",
+      duration: 20.46,
+      lines: [
+        { text: "Here is the clever way to tell which magnet pair pulls harder.", at: 0 },
+        { text: "Look at the two pairs: one pair sits close together, and the other pair sits farther apart.", at: 4.19 },
+        { text: "The closer pair snaps together hard, while the farther pair only tugs weakly.", at: 10.28 },
+        { text: "Magnets pull harder when they sit closer together, so the closer pair pulls harder!", at: 15.53 },
+      ],
+      beats: [0, 1, 1, 1],
+    },
+  },
+  "physics:push:mass": {
+    kind: "same-push",
+    leftBoxes: 0,
+    rightBoxes: 3,
+    leftForce: 2,
+    rightForce: 2,
+    labelSetup: "Two carts wait, one stacked with boxes.",
+    labelSolved: "Both carts roll, and the lighter one rolls farther.",
+    summary: {
+      clip: "push-mass.mp3",
+      duration: 20.88,
+      lines: [
+        { text: "Here is the clever way to tell which cart's motion changes more.", at: 0 },
+        { text: "Both carts get exactly the same push, but one cart is loaded with boxes and the other is light.", at: 4.34 },
+        { text: "The light cart rolls far, while the loaded cart barely moves.", at: 11.25 },
+        { text: "The same push changes a lighter cart's motion more, so the lighter cart changes more!", at: 15.63 },
+      ],
+      beats: [0, 1, 1, 1],
+    },
+  },
+  "physics:push:table": {
+    kind: "same-push",
+    leftBoxes: 1,
+    rightBoxes: 1,
+    leftForce: 1,
+    rightForce: 3,
+    labelSetup: "Two trial carts wait with their push arrows.",
+    labelSolved: "Both trial carts roll, and one rolls much farther.",
+    summary: {
+      clip: "push-table.mp3",
+      duration: 22.07,
+      lines: [
+        { text: "Here is the clever way to read the two trials.", at: 0 },
+        { text: "The two trial carts carry the same mass, so mass cannot explain any difference.", at: 3.36 },
+        { text: "One trial's push arrow is larger, and that cart's motion changes far more.", at: 8.99 },
+        { text: "With the same mass, the larger net force changes the motion more, so the trial with the larger net force changes more!", at: 14.45 },
+      ],
+      beats: [0, 1, 1, 1],
+    },
+  },
+  "physics:ramp:higher-stored": {
+    kind: "hill-carts",
+    lowStep: 1,
+    highStep: 3,
+    labelSetup: "Two carts rest at different heights on one hill.",
+    labelSolved: "Height marks rise beside the carts, and the higher store glows.",
+    summary: {
+      clip: "higher-stored.mp3",
+      duration: 19.52,
+      lines: [
+        { text: "Here is the clever way to tell which cart holds more stored energy.", at: 0 },
+        { text: "Both carts sit on the same hill, but one cart rests much higher up than the other.", at: 4.48 },
+        { text: "Climbing higher stores more energy, and the higher cart's store glows stronger.", at: 9.93 },
+        { text: "Higher on the hill means more stored energy, so the higher cart has more!", at: 15.07 },
+      ],
+      beats: [0, 1, 1, 1],
+    },
+  },
+  "physics:energy:transfer": {
+    kind: "cup-shove",
+    slowSlide: 44,
+    fastSlide: 0,
+    stopsDead: true,
+    labelSetup: "A ball waits beside a cup on the floor.",
+    labelSolved: "The ball stops at the cup, and the cup slides away.",
+    summary: {
+      clip: "energy-transfer.mp3",
+      duration: 16.18,
+      lines: [
+        { text: "Here is the clever way to follow the ball's motion.", at: 0 },
+        { text: "The ball rolls toward the cup, carrying all of its motion with it.", at: 3.43 },
+        { text: "The ball stops dead against the cup, and the cup slides away instead.", at: 7.89 },
+        { text: "The ball's motion did not vanish — it moved into the cup!", at: 12.54 },
+      ],
+      beats: [0, 1, 1, 1],
+    },
+  },
+  "physics:sound:medium": {
+    kind: "sound-path",
+    labelSetup: "A bell faces two paths across a gap to an ear.",
+    labelSolved: "Waves cross the air path and fade at the empty gap.",
+    summary: {
+      clip: "sound-medium.mp3",
+      duration: 18.57,
+      lines: [
+        { text: "Here is the clever way to tell which path carries the sound.", at: 0 },
+        { text: "Sound travels as shaking waves, and waves need a material to shake.", at: 3.63 },
+        { text: "The waves cross the air path to the ear, but they fade out where the path is empty.", at: 8.57 },
+        { text: "Sound needs a material to travel through, so the air path carries the sound!", at: 13.92 },
+      ],
+      beats: [0, 1, 1, 1],
+    },
+  },
+  "physics:mirror:three-ways": {
+    kind: "light-path",
+    withCard: false,
+    threeMaterials: true,
+    labelSetup: "A lamp faces a dark cloth, a clear sheet and a mirror.",
+    labelSolved: "The light is soaked up, let through, and bounced back.",
+    summary: {
+      clip: "three-ways.mp3",
+      duration: 18.73,
+      lines: [
+        { text: "Here is the clever way to tell which material reflects the light.", at: 0 },
+        { text: "The lamp shines on all three: the dark cloth, the clear sheet and the mirror.", at: 4.07 },
+        { text: "The cloth soaks the light up and the sheet lets it pass through, but the mirror bounces it back.", at: 9.19 },
+        { text: "Of the three materials, the mirror is the one that reflects the light!", at: 14.88 },
+      ],
+      beats: [0, 1, 1, 1],
+    },
+  },
+  "physics:ramp:adult-ratio": {
+    kind: "slope-pair",
+    firstRise: 3,
+    firstRun: 6,
+    secondRise: 4,
+    secondRun: 6,
+    labelSetup: "Two booms stand on a rise and run grid.",
+    labelSolved: "Both slope lines are drawn, and the steeper one stands out.",
+    summary: {
+      clip: "adult-ratio.mp3",
+      duration: 20.14,
+      lines: [
+        { text: "Here is the clever way to tell which boom is steeper.", at: 0 },
+        { text: "Steepness is the rise divided by the run, and both booms run the same distance.", at: 3.43 },
+        { text: "Boom A climbs 3 over 6, which is one half; boom B climbs 4 over 6, which is more.", at: 9.48 },
+        { text: "Four over six beats three over six, so Boom B is steeper!", at: 16.23 },
+      ],
+      beats: [0, 1, 1, 1],
+    },
+  },
+  "physics:arrive:adult-time": {
+    kind: "journey-line",
+    totalKm: 4,
+    hours: 1,
+    targetKm: 12,
+    labelSetup: "A cart waits at the start of a long road.",
+    labelSolved: "The road is marked out hour by hour.",
+    summary: {
+      clip: "adult-time.mp3",
+      duration: 18.85,
+      lines: [
+        { text: "Here is the clever way to time the trip.", at: 0 },
+        { text: "The cart covers 4 kilometres in every hour, so mark the road hour by hour.", at: 2.76 },
+        { text: "Four kilometres, then eight, then twelve: the third hour mark reaches the end of the road.", at: 8.24 },
+        { text: "Twelve divided by four is three, so the trip takes 3 hours!", at: 14.69 },
+      ],
+      beats: [0, 1, 1, 1],
+    },
+  },
+  "physics:energy:missing": {
+    kind: "energy-ledger",
+    change: 3,
+    out: 2,
+    labelSetup: "A battery store waits with its energy log.",
+    labelSolved: "The out bar and the rise stack up to the in bar.",
+    summary: {
+      clip: "energy-missing.mp3",
+      duration: 20.39,
+      lines: [
+        { text: "Here is the clever way to balance the energy log.", at: 0 },
+        { text: "The log says the change in stored energy is the energy in take away the energy out.", at: 3.42 },
+        { text: "Two units went out while the store rose by three, so the in bar must stack the out bar and the rise together.", at: 9.42 },
+        { text: "Three and two make five, so the panels put in 5 units!", at: 16.66 },
       ],
       beats: [0, 1, 1, 1],
     },
