@@ -2923,13 +2923,250 @@
     transform: none;
   }
 }
+/* ── Clue scenes (ClueScene.tsx, math pilot) ────────────────────
+   Ink line-art on paper, drawn live above the text clue. Every
+   element's resting state is the film's final frame; the
+   keyframes only run it in, once. Transform / opacity / stroke
+   draw-on only — nothing here can thrash layout. */
+.subject-case-screen .clue-scene {
+  padding: 18px 18px 12px;
+}
+.clue-scene svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.cs-line {
+  fill: none;
+  stroke: #33302a;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.cs-soft {
+  stroke: #d8cbae;
+}
+.cs-band {
+  stroke: #8a6d2f;
+}
+.cs-coin {
+  fill: #efe3bc;
+  stroke: #33302a;
+  stroke-width: 1.6;
+}
+.cs-coin-inner {
+  fill: none;
+  stroke: #8a6d2f;
+  stroke-width: 1.2;
+}
+.cs-pack {
+  fill: #fffdf6;
+  stroke: #33302a;
+  stroke-width: 1.8;
+}
+.cs-pencil {
+  fill: #efe3bc;
+  stroke: #33302a;
+  stroke-width: 1.1;
+}
+.cs-tip {
+  fill: #e7cf8e;
+  stroke: #33302a;
+  stroke-width: 1.1;
+  stroke-linejoin: round;
+}
+.cs-snack {
+  fill: #efe3bc;
+  stroke: #33302a;
+  stroke-width: 1.4;
+}
+.cs-snack-dot {
+  fill: #8a6d2f;
+}
+.cs-draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: cs-draw 0.9s cubic-bezier(0.16, 0.8, 0.26, 1) forwards;
+}
+@keyframes cs-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.cs-pop {
+  animation: cs-pop 0.45s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+@keyframes cs-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+}
+.cs-fade {
+  animation: cs-fade 0.5s ease backwards;
+}
+@keyframes cs-fade {
+  from {
+    opacity: 0;
+  }
+}
+.cs-slide {
+  animation: cs-slide 0.7s cubic-bezier(0.16, 0.8, 0.26, 1) backwards;
+}
+@keyframes cs-slide {
+  from {
+    transform: translate(var(--fx), var(--fy));
+  }
+}
+.cs-deal {
+  animation: cs-deal 0.55s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+@keyframes cs-deal {
+  0% {
+    transform: translate(var(--fx), var(--fy));
+  }
+  75% {
+    transform: translate(0, -7px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+.cs-ring {
+  fill: none;
+  stroke: #8a6d2f;
+  stroke-width: 1.6;
+  stroke-dasharray: 4 3;
+  animation: cs-ringin 0.5s ease backwards;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+@keyframes cs-ringin {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+}
+.cs-tick {
+  font-family: var(--font-atlas-mono);
+  font-size: 13px;
+  font-weight: 700;
+  fill: #77591f;
+  text-anchor: middle;
+  animation: cs-pop 0.35s ease backwards;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.cs-cheer {
+  animation: cs-cheer 0.55s ease 2 backwards;
+}
+@keyframes cs-cheer {
+  0% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-4px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.clue-scene-replay {
+  margin-top: 10px;
+  min-height: 44px;
+  padding: 8px 16px;
+  border: 1.5px solid #8a6d2f;
+  border-radius: 14px;
+  background: #fffdf6;
+  color: #77591f;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.clue-scene-replay:hover {
+  border-color: #77591f;
+}
+/* The scene's controls row: the film's replay and the summary's
+   play/stop side by side, wrapping on narrow screens. */
+.clue-scene-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+.clue-scene-controls .clue-scene-replay {
+  margin-top: 0;
+}
+/* Act 3: the summary's stepping caption — the line being spoken,
+   word for word the script standing in the result section. Its
+   space is reserved so the card never jumps as lines change. */
+.clue-scene-caption {
+  margin: 10px 0 0;
+  min-height: 2.9em;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.45;
+  color: #33302a;
+}
+/* Act 3: the summary's full script, standing in the result
+   section (ClueSummaryText) — every line, always, once solved. */
+.clue-summary-text {
+  margin-top: 12px;
+}
+.clue-summary-heading {
+  font-weight: 700;
+}
+.clue-summary-text ol {
+  margin: 4px 0 0;
+  padding-left: 22px;
+  display: grid;
+  gap: 2px;
+}
+/* Off screen or a hidden tab: every scene animation holds still
+   (the component toggles data-paused from its observers). */
+.clue-scene[data-paused="true"] svg * {
+  animation-play-state: paused !important;
+}
+/* Reduced motion: the still frame of the current phase. Only the
+   counter's final tick stands — the finished count, after a solve.
+   The draw-on strokes rest undrawn (dashoffset 1) and only their
+   animation draws them, so the still must force them drawn. */
+.clue-scene[data-still="true"] svg * {
+  animation: none !important;
+}
+.clue-scene[data-still="true"] .cs-draw {
+  stroke-dashoffset: 0;
+}
+.clue-scene[data-still="true"] .cs-tick {
+  opacity: 0;
+}
+.clue-scene[data-still="true"] .cs-tick-final {
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .clue-scene svg * {
+    animation: none !important;
+  }
+  .clue-scene .cs-draw {
+    stroke-dashoffset: 0;
+  }
+  .clue-scene .cs-tick {
+    opacity: 0;
+  }
+  .clue-scene .cs-tick-final {
+    opacity: 1;
+  }
+}
 /* Art off wherever the user asked for plain, high-contrast surfaces. */
 :root[data-palette="high-contrast"] .why-learn-screen::after,
 :root[data-palette="high-contrast"] .why-learn-hero,
 :root[data-palette="high-contrast"] .why-learn-hero-wrap,
 :root[data-palette="high-contrast"] .why-learn-drift,
 :root[data-palette="high-contrast"] .wl-world,
-:root[data-palette="high-contrast"] .wl-gk-over {
+:root[data-palette="high-contrast"] .wl-gk-over,
+:root[data-palette="high-contrast"] .clue-scene {
   display: none;
 }
 @media (prefers-contrast: more) {
@@ -2938,7 +3175,8 @@
   .why-learn-hero-wrap,
   .why-learn-drift,
   .wl-world,
-  .wl-gk-over {
+  .wl-gk-over,
+  .clue-scene {
     display: none;
   }
 }
@@ -2948,7 +3186,8 @@
   .why-learn-hero-wrap,
   .why-learn-drift,
   .wl-world,
-  .wl-gk-over {
+  .wl-gk-over,
+  .clue-scene {
     display: none;
   }
   .why-learn-card,
