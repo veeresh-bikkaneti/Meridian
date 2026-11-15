@@ -20,10 +20,14 @@
  * renderer never reads it before the solve.
  *
  * Coverage: every Math item for ages 7-10 — the pilot's three
- * kinds plus the wave-1 kinds (expansion wave 1) — and every
- * Math item for ages 10-18 (expansion wave 2: ten new kinds,
- * chunk-share and rounding-line reused). Ages 18+ carries no
- * descriptions yet; its clue cards are unchanged.
+ * kinds plus the wave-1 kinds (expansion wave 1) — every Math
+ * item for ages 10-18 (expansion wave 2: ten new kinds,
+ * chunk-share and rounding-line reused), and the two covered
+ * Math items for ages 18+ (expansion wave 3: split-product
+ * reused, share-bar new). The one held 18+ item
+ * (math-applied:measure:survey-check) carries no description —
+ * it is scene-resistant per the expansion inventory and stays
+ * text-only on the owner's word only.
  */
 import type { ClueSceneDescription } from "../shared/clue-scene-types.ts";
 
@@ -713,6 +717,50 @@ export const MATH_CLUE_SCENES: Record<string, ClueSceneDescription> = {
         { text: "That angle is about 37 degrees, so the bearing is 37 degrees!", at: 15.48 }
       ],
       beats: [0, 1, 1, 1, 0],
+    },
+  },
+  "math-number:tables:mental-strategies": {
+    kind: "split-product",
+    rows: 24,
+    perRow: 15,
+    splitHigh: 10,
+    splitLow: 5,
+    labelSetup: "Rows wait, ready to be counted in your head.",
+    labelSolved: "Each row splits into a round part and a leftover part, counted apart.",
+    summary: {
+      clip: "mental-strategies.mp3",
+      duration: 19.79,
+      lines: [
+        { text: "Here is the clever way to multiply in your head.", at: 0 },
+        { text: "Split 15 into 10 and 5.", at: 3.3 },
+        { text: "The round part first: 24 times 10 makes 240.", at: 5.73 },
+        { text: "The leftover part: 24 times 5 makes 120.", at: 10.61 },
+        { text: "240 and 120 make 360!", at: 15.48 }
+      ],
+      beats: [0, 1, 1, 1, 1],
+    },
+  },
+  "math-number:fractions:combine-shares": {
+    kind: "share-bar",
+    total: 120,
+    firstNumerator: 1,
+    firstDenominator: 2,
+    secondNumerator: 1,
+    secondDenominator: 4,
+    discountPercent: 10,
+    labelSetup: "A bill bar waits, ready to be shared.",
+    labelSolved: "The bar is cut into shares, and one share shrinks.",
+    summary: {
+      clip: "combine-shares.mp3",
+      duration: 20.08,
+      lines: [
+        { text: "Here is the clever way to split the bill.", at: 0 },
+        { text: "Half of 120 is 60, and a quarter of 120 is 30.", at: 2.78 },
+        { text: "That leaves 30, and the last two friends split it equally: 15 each.", at: 8.4 },
+        { text: "One of those shares gets 10 percent off.", at: 13.31 },
+        { text: "10 percent off 15 leaves 13.5 coins to pay!", at: 15.96 }
+      ],
+      beats: [0, 3, 1, 1, 0],
     },
   },
 };

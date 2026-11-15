@@ -9,6 +9,9 @@
  */
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
 import {
   MATH_CLUE_SCENES,
   clueSceneFor,
@@ -90,6 +93,12 @@ function givensOf(d: ClueSceneDescription): number[] {
       return [d.total, d.fixedCost, d.perGroup];
     case "bearing-diagram":
       return [d.eastKm, d.northKm];
+    case "share-bar":
+      return [d.total, d.firstNumerator, d.firstDenominator, d.secondNumerator, d.secondDenominator, d.discountPercent];
+    case "timeline-line":
+      return [d.startYear, d.endYear];
+    case "tower-measure":
+      return [d.oldHeight, d.newHeight];
   }
 }
 
@@ -157,6 +166,12 @@ function stepCountOf(d: ClueSceneDescription): number {
       return 1 + Math.round((d.total - d.fixedCost) / d.perGroup);
     case "bearing-diagram":
       return 3; // east leg, north leg, the angle arc
+    case "share-bar":
+      return 5; // the cuts, both share ticks, the rest split, the discounted tick
+    case "timeline-line":
+      return d.countGap ? Math.ceil((d.endYear - d.startYear) / 10) : 3;
+    case "tower-measure":
+      return 3; // the bracket, the new-part fill, the final tick
   }
 }
 
@@ -167,10 +182,10 @@ describe("clue scene descriptions", () => {
     for (const id of ALL_IDS) {
       assert.ok(clueSceneFor(id), `${id} has a scene`);
     }
-    // The 18+ band carries no descriptions yet — its clue cards
-    // are unchanged. (10-18 coverage is pinned by the wave-2 block
-    // below.)
-    assert.equal(clueSceneFor(itemsForGroup("18+")[0]!.id), null);
+    // Ages 18+ coverage (two of the band's three items; the held
+    // survey-check item carries none) is pinned by the wave-3
+    // block below.
+    assert.equal(clueSceneFor("math-applied:measure:survey-check"), null);
   });
 
   it("never carries the answer before the pick", () => {
@@ -335,6 +350,131 @@ describe("clue scene descriptions", () => {
     // Places: the two routes decompose digit by digit.
     assert.deepEqual(placeColumns(358), [3, 5, 8]);
     assert.deepEqual(placeColumns(385), [3, 8, 5]);
+  });
+});
+
+/* ── Wave 3: Math ages 18+ ─────────────────────────────────────
+   The same contract as the earlier blocks, for the band's two
+   covered items (the band deals three; the third,
+   math-applied:measure:survey-check, is held by the inventory —
+   scene-resistant, owner's word only — and must never gain a
+   description). mental-strategies reuses split-product (its 24
+   rows draw on the kind's compact many-rows branch);
+   combine-shares introduces share-bar. */
+
+const BAND3_DEALT = itemsForGroup("18+").map((item) => item.id);
+const BAND3_IDS = [
+  "math-number:tables:mental-strategies",
+  "math-number:fractions:combine-shares",
+];
+
+const BAND3_CLOSING: Record<string, string> = {
+  "math-number:tables:mental-strategies": "360",
+  "math-number:fractions:combine-shares": "13.5",
+};
+
+describe("clue scene descriptions — wave 3 (ages 18+)", () => {
+  it("covers exactly the two covered 18+ items; the held item stays scene-less", () => {
+    assert.equal(BAND3_DEALT.length, 3);
+    assert.ok(BAND3_DEALT.includes("math-applied:measure:survey-check"));
+    for (const id of BAND3_IDS) {
+      assert.ok(clueSceneFor(id), `${id} has a scene`);
+    }
+    assert.equal(clueSceneFor("math-applied:measure:survey-check"), null);
+    assert.deepEqual(
+      Object.keys(MATH_CLUE_SCENES).sort(),
+      [...ALL_IDS, ...BAND2_IDS, ...BAND3_IDS].sort(),
+    );
+  });
+
+  it("never carries the answer before the pick", () => {
+    for (const id of BAND3_IDS) {
+      const description = clueSceneFor(id)!;
+      const answer = MATH_ANSWERS[id]!;
+      assert.ok(!/\d/.test(description.labelSetup), `${id}: setup label has no digits`);
+      assert.ok(!/\d/.test(description.labelSolved), `${id}: solved label has no digits`);
+      for (const choice of answer.choices) {
+        assert.ok(
+          !new RegExp(`\\b${choice.replace(".", "\\.")}\\b`).test(description.labelSetup),
+          `${id}: setup label must not contain the choice ${choice}`,
+        );
+      }
+      assert.ok(
+        !givensOf(description).includes(answer.value!),
+        `${id}: answer value is not a scene given`,
+      );
+    }
+  });
+
+  it("the solved beat's arithmetic lands on the item's answer", () => {
+    const mental = clueSceneFor("math-number:tables:mental-strategies")!;
+    assert.equal(mental.kind, "split-product");
+    if (mental.kind === "split-product") {
+      assert.equal(mental.rows * mental.perRow, MATH_ANSWERS["math-number:tables:mental-strategies"]!.value);
+      assert.equal(mental.splitHigh + mental.splitLow, mental.perRow);
+      assert.equal(mental.splitHigh * mental.rows, 240);
+      assert.equal(mental.splitLow * mental.rows, 120);
+    }
+    const combine = clueSceneFor("math-number:fractions:combine-shares")!;
+    assert.equal(combine.kind, "share-bar");
+    if (combine.kind === "share-bar") {
+      const first = (combine.total * combine.firstNumerator) / combine.firstDenominator;
+      const second = (combine.total * combine.secondNumerator) / combine.secondDenominator;
+      const restEach = (combine.total - first - second) / 2;
+      assert.equal(first, 60);
+      assert.equal(second, 30);
+      assert.equal(restEach, 15);
+      assert.equal(
+        restEach * (1 - combine.discountPercent / 100),
+        MATH_ANSWERS["math-number:fractions:combine-shares"]!.value,
+      );
+    }
+  });
+
+  it("every wave-3 item carries a well-formed narrated summary, pinned to the manifest", () => {
+    const here = dirname(fileURLToPath(import.meta.url));
+    const manifest = JSON.parse(
+      readFileSync(join(here, "..", "..", "..", "public", "audio", "subjects", "manifest.json"), "utf8"),
+    ) as { clips: Record<string, { file: string; duration: number; lines: number }> };
+    for (const id of BAND3_IDS) {
+      const description = clueSceneFor(id)!;
+      const summary = description.summary;
+      assert.ok(summary, `${id} has a summary`);
+      assert.ok(summary.lines.length >= 4, `${id}: an opening, steps, and a closing line`);
+      assert.equal(summary.beats.length, summary.lines.length, `${id}: beats parallel to lines`);
+      assert.equal(summary.lines[0]!.at, 0, `${id}: first line at 0`);
+      for (let i = 1; i < summary.lines.length; i++) {
+        assert.ok(summary.lines[i]!.at > summary.lines[i - 1]!.at, `${id}: timings increase`);
+      }
+      assert.ok(summary.duration > summary.lines[summary.lines.length - 1]!.at, `${id}: clip outlasts last line`);
+      assert.ok(!/\d/.test(summary.clip.replace(/\.mp3$/, "")), `${id}: clip name carries no digits`);
+      assert.ok(!summary.clip.includes("/"), `${id}: clip is a plain file name`);
+      assert.equal(
+        summaryStepCount(summary),
+        stepCountOf(description),
+        `${id}: beat map covers the solved beat`,
+      );
+      const closing = summary.lines[summary.lines.length - 1]!.text;
+      assert.ok(
+        closing.includes(BAND3_CLOSING[id]!),
+        `${id}: closing line states ${BAND3_CLOSING[id]}`,
+      );
+      let previousLine = -1;
+      for (let step = 0; step < summaryStepCount(summary); step++) {
+        const { line } = summaryStepLine(summary, step);
+        assert.ok(line >= previousLine, `${id}: step ${step} never jumps backwards a line`);
+        previousLine = line;
+        const start = summaryStepStart(summary, step, 0.5);
+        assert.ok(start >= (summary.lines[line]?.at ?? 0), `${id}: step ${step} starts inside its line`);
+        assert.ok(start < summary.duration, `${id}: step ${step} starts before the clip ends`);
+      }
+      // The manifest carries the same duration and line count.
+      const entry = manifest.clips[summary.clip.replace(/\.mp3$/, "")];
+      assert.ok(entry, `${id}: manifest entry for ${summary.clip}`);
+      assert.equal(entry.file, summary.clip, `${id}: manifest file matches`);
+      assert.equal(entry.duration, summary.duration, `${id}: manifest duration matches the description`);
+      assert.equal(entry.lines, summary.lines.length, `${id}: manifest line count matches`);
+    }
   });
 });
 

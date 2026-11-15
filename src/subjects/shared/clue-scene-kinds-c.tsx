@@ -139,9 +139,13 @@ function SplitProductScene({
   const splitBase = stepDelay ? stepDelay(0) : 0.5;
   const barX = 35;
   const barW = 250;
-  const barH = 13;
   const firstY = 52;
-  const step = 16;
+  // Wave 3: a description with many rows (24) draws compact bars
+  // so every row stays inside the frame; the wave-1 counts (8 or
+  // fewer) keep the original bar height and step, byte for byte.
+  const compact = rows > 8;
+  const barH = compact ? 3.4 : 13;
+  const step = compact ? Math.min(5.2, (176 - firstY) / rows) : 16;
   const splitW = barW * (splitHigh / perRow);
   const splitX = barX + splitW;
   const highTotal = splitHigh * rows;
@@ -150,8 +154,9 @@ function SplitProductScene({
   // Tiny chair nubs along a bar's top edge, as one bumpy path.
   const nubs = (y: number) => {
     let d = "";
+    const rise = compact ? 1.8 : 4.5;
     for (let nx = barX + 12; nx < barX + barW - 10; nx += 26) {
-      d += `M${nx} ${y} q3.5 -4.5 7 0 `;
+      d += `M${nx} ${y} q3.5 ${-rise} 7 0 `;
     }
     return d.trim();
   };
@@ -753,6 +758,77 @@ export function BearingDiagramScene({
           />
           <text className="cs-tick cs-tick-final" x={ox + 26} y={oy - 44} style={delay(stepDelay ? stepDelay(2) + 0.7 : 2.8)}>
             {`${bearing}°`}
+          </text>
+        </>
+      ) : null}
+    </>
+  );
+}
+
+/* ── tower-measure (wave 3) ────────────────────────────────────
+   A tower between two height lines. Setup: the tower outline
+   and both guide lines (the question's two heights, drawn
+   spatially) — no bracket, no digits, no difference. Solved in
+   three steps: 0 the difference bracket fades in on the right,
+   1 the tower's new part fills between the two heights, 2 the
+   final tick stands beside the bracket with the difference,
+   computed from the givens. */
+
+export function TowerMeasureScene({
+  description,
+  phase,
+  stepDelay,
+}: {
+  description: Extract<ClueSceneDescription, { kind: "tower-measure" }>;
+  phase: ClueScenePhase;
+  /** Summary pacing: when present, step s's beat starts at
+   * stepDelay(s) instead of the film's own stagger. */
+  stepDelay?: (step: number) => number;
+}) {
+  const { oldHeight, newHeight } = description;
+  const groundY = 156;
+  const topY = 26;
+  const yFor = (hgt: number) => groundY - (hgt / newHeight) * (groundY - topY);
+  const newY = yFor(newHeight);
+  const oldY = yFor(oldHeight);
+  const diff = newHeight - oldHeight;
+  return (
+    <>
+      <path className="cs-line cs-draw" pathLength={1} d="M20 156 Q160 160 300 156" style={delay(0)} />
+      {/* The tower: a tapered shaft, a crown, and a spire. */}
+      <path
+        className="cs-line cs-draw"
+        pathLength={1}
+        d={`M138 156 Q142 96 148 ${newY + 22} L150 ${newY + 10} M182 156 Q178 96 172 ${newY + 22} L170 ${newY + 10}`}
+        style={delay(0.15)}
+      />
+      <path
+        className="cs-line cs-draw"
+        pathLength={1}
+        d={`M146 ${newY + 12} Q160 ${newY + 4} 174 ${newY + 12} L172 ${newY + 24} Q160 ${newY + 19} 148 ${newY + 24} Z`}
+        style={delay(0.3)}
+      />
+      <path className="cs-line cs-draw" pathLength={1} d={`M160 ${newY + 6} L160 ${newY - 8}`} style={delay(0.4)} />
+      <g className="cs-pop" style={delay(0.55)}>
+        <circle className="cs-stone" cx="160" cy={newY - 11} r="3.2" />
+      </g>
+      {/* The two height guide lines — the question's own givens. */}
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d={`M104 ${newY.toFixed(1)} Q190 ${(newY - 2).toFixed(1)} 268 ${newY.toFixed(1)}`} style={delay(0.45)} />
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d={`M104 ${oldY.toFixed(1)} Q190 ${(oldY - 2).toFixed(1)} 268 ${oldY.toFixed(1)}`} style={delay(0.55)} />
+      {phase === "solved" ? (
+        <>
+          <path
+            className="cs-line cs-band cs-fade"
+            d={`M252 ${newY.toFixed(1)} L262 ${newY.toFixed(1)} L262 ${oldY.toFixed(1)} L252 ${oldY.toFixed(1)}`}
+            style={delay(stepDelay ? stepDelay(0) : 0.7)}
+          />
+          <path
+            className="cs-split-high cs-fade"
+            d={`M149 ${(newY + 3).toFixed(1)} Q160 ${newY.toFixed(1)} 171 ${(newY + 3).toFixed(1)} L170 ${oldY.toFixed(1)} Q160 ${(oldY - 2).toFixed(1)} 150 ${oldY.toFixed(1)} Z`}
+            style={delay(stepDelay ? stepDelay(1) : 1.4)}
+          />
+          <text className="cs-tick cs-tick-final" x="262" y={((newY + oldY) / 2 + 4).toFixed(1)} style={delay(stepDelay ? stepDelay(2) + 0.6 : 2.2)}>
+            {diff}
           </text>
         </>
       ) : null}
