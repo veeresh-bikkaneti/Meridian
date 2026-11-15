@@ -2434,6 +2434,23 @@
     padding: 4px 6px 4px 0;
   }
 }
+/* 681–1023px (the screen is capped at max-w-3xl here, so the card
+   can be narrower than the height-driven film plus the 230px titles
+   band): the film's width is capped to what the card leaves beside
+   the band, and the card's height follows the film, so the 16 / 9
+   frame never pushes the titles past the card's edge. Same film
+   size as above wherever it fits. */
+@media (min-width: 681px) and (max-width: 1023px) {
+  .why-learn-screen[data-testid="subject-picker"] .screen-hero {
+    height: auto;
+    align-items: center;
+  }
+  .why-learn-screen[data-testid="subject-picker"] .why-learn-hero-wrap,
+  .why-learn-screen[data-testid="subject-picker"] .screen-hero > .why-learn-hero {
+    height: auto;
+    width: min(calc(100% - 250px), max(355.6px, min(476.4px, calc((33dvh - 32px) * 16 / 9))));
+  }
+}
 /* The montage film in the hero slot (feat/why-learn-montage): the
    <video> carries .why-learn-hero, so it fills the same fixed box
    the still did; the controls ride its bottom-right corner on the
