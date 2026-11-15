@@ -236,6 +236,72 @@ test("grown-ups shell: credits + privacy carry the doors and the board is linked
   await expect(page.getByRole("link", { name: "Ask for something new" })).toBeVisible();
 });
 
+/* Theme-switch tests run with service workers blocked: once the
+ * app's SW controls the page it re-fetches navigations itself,
+ * and that fetch is not a navigation request — the shell route
+ * above falls back to the file server, which 404s /board (a
+ * harness artifact; the SW has its own spec, pwa.spec.ts). The
+ * theme switch does not involve the SW. */
+test.describe("theme switch", () => {
+  test.use({ serviceWorkers: "block" });
+
+test("theme switch: dark system loads on system, flips to Light live, persists, and returns to System", async ({
+  page,
+}) => {
+  await page.emulateMedia({ colorScheme: "dark" });
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await openBoard(page);
+  const main = page.locator("main.board-v3");
+  // System default: no override attribute — the media query rules.
+  await expect(main).not.toHaveAttribute("data-board-theme", /.*/);
+  await page.getByTestId("board-nav-map").click();
+  const stage = page.getByTestId("v3-map-stage");
+  const stageBg = () => stage.evaluate((el) => getComputedStyle(el).backgroundImage);
+  await expect.poll(stageBg).toContain("rgb(16, 34, 42)"); // --atlas-bg-1, dark
+
+  // The switch, not the system, takes charge — live, no reload.
+  await page.getByTestId("board-theme-light").click();
+  await expect(main).toHaveAttribute("data-board-theme", "light");
+  await expect.poll(stageBg).toContain("rgb(248, 242, 223)"); // --atlas-bg-1, light
+  await expect(page.locator(".v3-bond-sample")).toHaveCSS(
+    "background-color",
+    "rgb(179, 55, 42)", // --atlas-stamp, light
+  );
+
+  // The choice persists across a reload.
+  await page.reload();
+  await expect(page.getByTestId("board-counts-line")).toBeVisible();
+  await expect(main).toHaveAttribute("data-board-theme", "light");
+  await page.getByTestId("board-nav-map").click();
+  await expect.poll(stageBg).toContain("rgb(248, 242, 223)");
+
+  // …and System is recoverable: the attribute goes away again.
+  await page.getByTestId("board-theme-system").click();
+  await expect(main).not.toHaveAttribute("data-board-theme", /.*/);
+  await expect.poll(stageBg).toContain("rgb(16, 34, 42)");
+});
+
+test("theme switch: light system loads on system and flips to Dark live", async ({ page }) => {
+  await page.emulateMedia({ colorScheme: "light" });
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await openBoard(page);
+  const main = page.locator("main.board-v3");
+  await expect(main).not.toHaveAttribute("data-board-theme", /.*/);
+  await page.getByTestId("board-nav-map").click();
+  const stage = page.getByTestId("v3-map-stage");
+  const stageBg = () => stage.evaluate((el) => getComputedStyle(el).backgroundImage);
+  await expect.poll(stageBg).toContain("rgb(248, 242, 223)"); // --atlas-bg-1, light
+  await page.getByTestId("board-theme-dark").click();
+  await expect(main).toHaveAttribute("data-board-theme", "dark");
+  await expect.poll(stageBg).toContain("rgb(16, 34, 42)"); // --atlas-bg-1, dark
+  await expect(page.locator(".v3-bond-sample")).toHaveCSS(
+    "background-color",
+    "rgb(232, 106, 92)", // --atlas-stamp, dark
+  );
+});
+
+});
+
 test("home links to the board from nav, grown-ups card and footer — and loads no map code", async ({
   page,
 }) => {
