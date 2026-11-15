@@ -120,11 +120,13 @@ Nodes to add (for the integrator; branch never edits graph.json):
 - `board-v3` (feature) — the published-file scrum board: trail + molecular map.
 - `board-status-publisher` (component) — scripts/board/publish-status.mjs + status-core.
 - `decision-board-v3-ship` (decision) — Liz, 2026-11-15: "Ship the scrum board features v3"; motion sample approved 06:52 CT; theme-parity + discoverability corrections 06:58 CT (owner words, voice call).
+- `decision-board-theme-switch` (decision) — Liz, 2026-11-15 (voice call): the board loads with the visitor's default system theme, but "they should be able to switch" — a visitor-facing light/dark switch on the board, never pinned, never locked to the system theme.
 
 Edges:
 - `board-v3` —supersedes→ `board-v2` (the Sprintbound/live-overlay board).
 - `board-v3` —depends-on→ `board-status-publisher`.
 - `board-v3` —decided-by→ `decision-board-v3-ship`.
+- `board-v3` —decided-by→ `decision-board-theme-switch`.
 - `board-status-publisher` —documents→ `board-v3`.
 
 ## Update — 2026-11-15 fixes run (owner: "Fix both")
@@ -193,3 +195,56 @@ Open questions: the remaining † defaults above, unchanged.
 - Next step: independent re-gate by the parent. NOT merged.
 - Open questions: unchanged (the remaining † defaults; the
   light-scheme map ruling stays the owner's).
+
+## Theme switch (2026-11-15) — system default, visitor can switch
+
+Owner ruling (voice call): the board loads with the visitor's
+default system theme, and visitors can switch light/dark
+themselves. Built on top of the cure tip:
+
+- A three-state control (System / Light / Dark — real buttons,
+  aria-pressed, the view nav's own pill recipe) beside the Calm
+  toggle. System is the default and sets NO attribute: the media
+  query rules, exactly as before. Light/Dark set
+  data-board-theme on the board root; board.css re-declares the
+  18 scheme-varying tokens the board consumes (values copied
+  verbatim from styles.css :root and its light media block), so
+  the choice wins over the system scheme in both directions.
+  The choice persists in localStorage
+  (meridian-board-v3-theme). /board only — no global data-theme,
+  no site-wide theme system.
+- The 3D map follows live: bonds + selection halo read
+  --atlas-stamp / --atlas-brass from the stage's computed style
+  (CSS stays the single source of truth) at scene build and
+  whenever the effective scheme changes. Status colours, label
+  chips and lights are scheme-invariant by design, untouched.
+- theme-parity.test.ts EXTENDED (+5 tests, nothing loosened):
+  both override blocks are pinned value-for-value against BOTH
+  styles.css scheme blocks (the light block is parsed now — the
+  fixes gate's blind spot (a), closed for the board's copies),
+  color-scheme is pinned per override, and the map's live token
+  reads are asserted.
+- E2E +2 tests (board spec): dark system → Light flips the map
+  stage + bond swatch live, persists across reload, System
+  recovers the media query; light system → Dark mirrors it. The
+  two tests block service workers (the SW re-fetches navigations
+  as non-navigation fetches, which the shell route 404s — a
+  harness artifact; the SW has its own spec).
+- Gates at this head: tsc clean; npm test green (scripts 1,189
+  pass / 0 fail, src 2,654/2,654 incl. the +5 parity tests);
+  test:worker 235/235; lint-cards + lint:content GATE PASSED;
+  build:pages OK; board:budget PASSED 170,740/184,320 B gz;
+  board Playwright spec: both theme tests pass in every run;
+  the pre-existing grown-ups shell test is intermittent in this
+  harness (SW-claim race on its second navigation — trace-proven
+  at this head AND at the pre-change head; full tally in
+  ~/workspace/board-v3-ship/SWITCH-REPORT.md).
+- Screenshots: ~/workspace/board-v3-ship/screenshots/switch/
+  (trail + map with Light forced on a dark system, trail + map
+  with Dark forced on a light system, the control itself).
+- Next step: independent gate by the parent. NOT merged — the
+  merge stays the owners' tap on PR #499.
+- Open questions: the grown-ups shell test's SW race is now
+  mechanism-proven; whether to give that test the same
+  serviceWorkers:"block" treatment is the gate's call, not this
+  run's (no test beyond the two new ones was edited).
