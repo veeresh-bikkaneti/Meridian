@@ -57,16 +57,20 @@ import {
   BusBoardingScene,
   PackBoxesScene,
   PercentBarScene,
+  PushDuelScene,
   ScaleLineScene,
   ShareBarScene,
+  TileStepsScene,
 } from "./clue-scene-kinds-a";
 import {
+  CupShoveScene,
   DigitShiftScene,
   FractionBarScene,
   FractionMeasureScene,
   MapScaleScene,
   PlaceCompareScene,
   PlaceValueScene,
+  SlideStopScene,
   TimelineLineScene,
 } from "./clue-scene-kinds-b";
 import {
@@ -75,6 +79,7 @@ import {
   JourneyLineScene,
   RateBarsScene,
   RoundingLineScene,
+  SeesawLiftScene,
   SpendThenGroupScene,
   SplitProductScene,
   TowerMeasureScene,
@@ -436,6 +441,11 @@ const SUMMARY_STAGGER: Record<ClueSceneDescription["kind"], number> = {
   "share-bar": 0.9,
   "timeline-line": 0.55,
   "tower-measure": 0.9,
+  "push-duel": 0.7,
+  "tile-steps": 0.55,
+  "slide-stop": 0.9,
+  "cup-shove": 0.9,
+  "seesaw-lift": 0.8,
 };
 
 /** The summary clip's URL (public/audio/subjects/, manifest.json). */
@@ -540,6 +550,16 @@ function SceneArt({
       return <TimelineLineScene description={description} phase={phase} stepDelay={stepDelay} />;
     case "tower-measure":
       return <TowerMeasureScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "push-duel":
+      return <PushDuelScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "tile-steps":
+      return <TileStepsScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "slide-stop":
+      return <SlideStopScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "cup-shove":
+      return <CupShoveScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "seesaw-lift":
+      return <SeesawLiftScene description={description} phase={phase} stepDelay={stepDelay} />;
   }
 }
 

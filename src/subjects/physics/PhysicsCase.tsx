@@ -3,13 +3,28 @@
  * load() returns (contract I1). A thin wrapper over the shared
  * SubjectCase, passing physics' title, test-id prefix, band items and
  * answer lookup.
+ *
+ * Clue scenes (expansion wave 4): physics also passes the
+ * scene hook, mirroring GeneralKnowledgeCase. For ages 7-10, an
+ * item that carries a scene description (scenes.ts, in data next
+ * to the answers) gets a short live-drawn film above its clue
+ * card; every other item and band is exactly as before. The hook
+ * is answer-blind — SubjectCase hands it the phase from the
+ * case's own state, never the answer.
+ *
+ * Act 3: physics also passes the resultExtra hook — for the
+ * same items whose description carries a summary, the solved
+ * result section gains the summary's full script as standing
+ * text (the narrated performance itself lives in the scene).
  */
 import type { SubjectProps } from "../registry";
 import type { CelebrationSpec } from "@/components/celebration-copy";
 import type { ResetHistoryResult } from "@/game/reset-history";
 import { SubjectCase } from "../shared/SubjectCase";
+import { ClueScene, ClueSummaryText } from "../shared/ClueScene";
 import { itemsForGroup } from "./items";
 import { answerFor } from "./answers";
+import { clueSceneFor } from "./scenes";
 
 export default function PhysicsCase(
   props: SubjectProps & {
@@ -31,6 +46,18 @@ export default function PhysicsCase(
       testIdPrefix="physics"
       itemsForGroup={itemsForGroup}
       answerFor={answerFor}
+      scene={(item, phase, reduced, band) => {
+        if (band !== "7-10") return null;
+        const description = clueSceneFor(item.id);
+        if (!description) return null;
+        return <ClueScene key={item.id} description={description} phase={phase} reduced={reduced} />;
+      }}
+      resultExtra={(item, _reduced, band) => {
+        if (band !== "7-10") return null;
+        const description = clueSceneFor(item.id);
+        if (!description?.summary) return null;
+        return <ClueSummaryText summary={description.summary} />;
+      }}
       {...props}
     />
   );

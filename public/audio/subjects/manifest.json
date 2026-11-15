@@ -1,7 +1,7 @@
 {
   "v": 1,
   "voice": "am_michael",
-  "note": "Narrated solved summaries for the math clue scenes (act 3). One clip per item; the script and per-line timings in src/subjects/math/scenes.ts are the source of truth and match the clips line for line. Rendered locally with the same voice and loudness targets as the journal narration (-18 LUFS, true peak -1.5 dBFS), 24 kHz mono MP3 at 64 kbps like the other in-app clips. Wave 1 (expansion) added the ten non-pilot clips in the same voice (am_michael), rendered the same way. The scenes wave (visual-questions Phase 1) added the nine wave-3 clips in the same voice, rendered the same way. Wave 2 (expansion) added the thirteen 10-18 clips in the same voice (am_michael), rendered the same way. Wave 3 (expansion) added the seven 18+ math and 7-10 general-knowledge clips in the same voice (am_michael), rendered the same way.",
+  "note": "Narrated solved summaries for the math clue scenes (act 3). One clip per item; the script and per-line timings in src/subjects/math/scenes.ts are the source of truth and match the clips line for line. Rendered locally with the same voice and loudness targets as the journal narration (-18 LUFS, true peak -1.5 dBFS), 24 kHz mono MP3 at 64 kbps like the other in-app clips. Wave 1 (expansion) added the ten non-pilot clips in the same voice (am_michael), rendered the same way. The scenes wave (visual-questions Phase 1) added the nine wave-3 clips in the same voice, rendered the same way. Wave 2 (expansion) added the thirteen 10-18 clips in the same voice (am_michael), rendered the same way. Wave 3 (expansion) added the seven 18+ math and 7-10 general-knowledge clips in the same voice (am_michael), rendered the same way. Wave 4 (expansion) added the seven physics ages 7-10 clips in the same voice (am_michael), rendered the same way.",
   "clips": {
     "skip-count": {
       "file": "skip-count.mp3",
@@ -254,6 +254,48 @@
       "item": "general-knowledge:mixed:trip-buses",
       "duration": 22.5,
       "lines": 6
+    },
+    "which-way": {
+      "file": "which-way.mp3",
+      "item": "physics:push:which-way",
+      "duration": 16.96,
+      "lines": 4
+    },
+    "equal-pushes": {
+      "file": "equal-pushes.mp3",
+      "item": "physics:push:equal-pushes",
+      "duration": 12.83,
+      "lines": 5
+    },
+    "measure-slide": {
+      "file": "measure-slide.mp3",
+      "item": "physics:friction:measure-slide",
+      "duration": 16.78,
+      "lines": 4
+    },
+    "faster-hits-harder": {
+      "file": "faster-hits-harder.mp3",
+      "item": "physics:ramp:faster-hits-harder",
+      "duration": 18.47,
+      "lines": 4
+    },
+    "equal-steps": {
+      "file": "equal-steps.mp3",
+      "item": "physics:arrive:equal-steps",
+      "duration": 18.7,
+      "lines": 4
+    },
+    "seesaw": {
+      "file": "seesaw.mp3",
+      "item": "physics:lever:seesaw",
+      "duration": 15.64,
+      "lines": 4
+    },
+    "tug": {
+      "file": "tug.mp3",
+      "item": "physics:balance:tug",
+      "duration": 14.69,
+      "lines": 4
     }
   }
 }
