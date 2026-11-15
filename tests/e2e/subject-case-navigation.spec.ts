@@ -34,6 +34,23 @@ async function setup(context: BrowserContext) {
       contentType: "application/json; charset=utf-8",
     }),
   );
+  // These specs cover the navigation chrome, not the age ask.
+  // Since fix/ask-age-first, a player with no band set is asked
+  // before the picker opens — so seed the band a returning player
+  // would already have (the ask itself is covered by
+  // ask-age-first.spec.ts).
+  await context.addInitScript(() => {
+    window.localStorage.setItem(
+      "meridian.ageProfile.v1",
+      JSON.stringify({
+        status: "active",
+        band: "10-18",
+        updatedAt: new Date().toISOString(),
+        changeCount: 0,
+        schemaVersion: 2,
+      }),
+    );
+  });
 }
 
 function watchErrors(page: Page): string[] {

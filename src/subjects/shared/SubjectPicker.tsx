@@ -43,6 +43,17 @@
  * makes, on the same condition (GameApp reads the loop store and
  * the band lock), wired to GameApp's own GeoDetective tap-in. When
  * nothing is resumable the control is absent, never a dead button.
+ *
+ * Ask-first (owner decision, 2026-11-14): a subject card's tap is a
+ * case start, so it runs through GameApp's askAgeFirst (the
+ * onAskAgeFirst prop). The picker can be on screen with no band set
+ * — a grown-up resetting the profile from the hosted settings
+ * re-deals this list under the store's full-access read — and the
+ * case must still not open under a silently defaulted band: with
+ * no band set the age picker answers first and the same subject's
+ * load runs off the pick, at the picked band (the change event
+ * re-reads the band before the load lands). With a band set the
+ * tap behaves exactly as before.
  */
 import { useEffect, useRef, useState, type ComponentType, type CSSProperties, type MouseEvent as ReactMouseEvent } from "react";
 import type { AgeGroup, SubjectModule, SubjectProps } from "../registry";
@@ -107,6 +118,7 @@ export default function SubjectPicker({
   onResetHistory,
   onResumeCase,
   loopInProgress,
+  onAskAgeFirst,
   onOpenAgeSettings,
 }: SubjectProps & {
   /** GameApp's celebration trigger, passed through to the opened case. */
@@ -123,6 +135,11 @@ export default function SubjectPicker({
    * loop store, read by GameApp): the resume control renders only
    * while this holds, exactly as on Home's GeoDetective card. */
   loopInProgress?: boolean;
+  /** Ask-first (owner decision, 2026-11-14): GameApp's case-start
+   * gate. A subject card's load runs through it — with a band set
+   * the continuation runs at once; with none set GameApp holds it
+   * behind the age picker and runs it off the pick. */
+  onAskAgeFirst?: (proceed: () => void) => void;
   /** Open GameApp's hosted age-profile settings (the grown-up gate →
    * AgePicker flow) — the picker's "For grown-ups" footer entry. */
   onOpenAgeSettings?: (e?: ReactMouseEvent<HTMLElement>) => void;
@@ -232,14 +249,21 @@ export default function SubjectPicker({
   }
 
   const openSubject = (mod: SubjectModule) => {
-    setOpenFailed(null);
-    withChunkTimeout(mod.load(), `${mod.title} case screen`)
-      .then((loaded) => {
-        setOpened({ title: mod.title, Case: loaded.default as CaseComponent });
-      })
-      .catch(() => {
-        setOpenFailed(mod.title);
-      });
+    const proceed = () => {
+      setOpenFailed(null);
+      withChunkTimeout(mod.load(), `${mod.title} case screen`)
+        .then((loaded) => {
+          setOpened({ title: mod.title, Case: loaded.default as CaseComponent });
+        })
+        .catch(() => {
+          setOpenFailed(mod.title);
+        });
+    };
+    // Ask-first: the load is the case start, so it runs through
+    // GameApp's gate (see the header note). Absent the prop (a
+    // mount with no host gate) the tap loads directly, as before.
+    if (onAskAgeFirst) onAskAgeFirst(proceed);
+    else proceed();
   };
 
   const rows = released ? pickerRows(released, band) : [];

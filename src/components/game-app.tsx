@@ -174,6 +174,7 @@ function normalizeSnapshotBand(b: AgeBandId | LegacySnapshotBand): AgeBandId {
   return b;
 }
 const AgeProfileSettings = lazy(() => import("./age-profile/AgeProfileSettings"));
+const AgeAskGate = lazy(() => import("./age-profile/AgeAskGate"));
 const StorytellerHomeHost = lazy(() => import("./storyteller-home"));
 // v5 hero globe: React.lazy like the storyteller host — the Three.js chunk
 // never lands in the initial bundle; HomeGlobe itself dynamically imports
@@ -1437,6 +1438,12 @@ export function GameApp() {
   // card tap. Never persisted — a reload lands on Home, like the
   // loop's tap-in rule.
   const [subjectsOpen, setSubjectsOpen] = useState<boolean>(false);
+  // Ask-first (owner decision, 2026-11-14): a case start attempted
+  // with no age band set holds its continuation here while the age
+  // picker is answered (see askAgeFirst below). Session-only, like
+  // the screens it guards — a cache restore drops it with them, so
+  // no case can start off the back of a frozen page.
+  const [ageAsk, setAgeAsk] = useState<{ proceed: () => void } | null>(null);
 
   // A page restored from the browser's back/forward cache keeps its
   // frozen React state, so a tap-in screen left open when the page
@@ -1452,6 +1459,7 @@ export function GameApp() {
     const onPageShow = (e: PageTransitionEvent) => {
       if (!e.persisted) return;
       setSubjectsOpen(false);
+      setAgeAsk(null);
       writeLoopOpen(false);
       setLoopOpen(false);
     };
@@ -1624,6 +1632,38 @@ export function GameApp() {
       });
     }
   }, []);
+  // Ask-first (owner decision, 2026-11-14): the case-start paths —
+  // the Why Learn card, a subject card's case, and "Resume your
+  // case" — run their continuation through here. With a band set
+  // the continuation runs immediately and the player sees no
+  // change; with none set, the continuation is held and the age
+  // picker (AgeAskGate, prod's own AgePicker) renders instead. The
+  // pick writes the band through the store's unset path, then the
+  // held continuation runs — the player lands on the case they
+  // were going to, at the band they picked. Backing out clears
+  // the hold: no write, no case.
+  const askAgeFirst = useCallback(
+    (proceed: () => void): void => {
+      if (ageProfile.status !== "unset") {
+        proceed();
+        return;
+      }
+      setAgeAsk({ proceed });
+    },
+    [ageProfile.status],
+  );
+  const ageAskOverlay = ageAsk ? (
+    <Suspense fallback={null}>
+      <AgeAskGate
+        onPicked={() => {
+          const proceed = ageAsk.proceed;
+          setAgeAsk(null);
+          proceed();
+        }}
+        onCancel={() => setAgeAsk(null)}
+      />
+    </Suspense>
+  ) : null;
   // Cleared-mode celebration: set when a difficulty band's full cycle is  // celebrated (primary onContinue trigger or the run-start backstop). The
   // dialog renders over the current screen; dismissing returns the player
   // to exactly where they were.
@@ -3543,7 +3583,7 @@ export function GameApp() {
     return (
       <>
         {mapModeAnnouncer}
-        <div inert={ageSettingsOpen || undefined}>
+        <div inert={ageSettingsOpen || ageAsk !== null || undefined}>
           <MapErrorBoundary surface="Subjects">
             <Suspense fallback={<SessionLoadingFallback label="Loading subjects…" />}>
               <SubjectPickerScreen
@@ -3571,9 +3611,16 @@ export function GameApp() {
                   // leave lands on Home exactly as it does from the
                   // card. Nothing in the subject case is carried
                   // over or discarded specially — leaving a case is
-                  // the Home button's own path.
-                  if (openGeoDetective()) setSubjectsOpen(false);
+                  // the Home button's own path. Ask-first (owner
+                  // decision, 2026-11-14): with no band set the age
+                  // picker answers first and the resume runs off
+                  // the pick, so a mystery never resumes under a
+                  // silently defaulted band.
+                  askAgeFirst(() => {
+                    if (openGeoDetective()) setSubjectsOpen(false);
+                  });
                 }}
+                onAskAgeFirst={(proceed) => askAgeFirst(proceed)}
                 onOpenAgeSettings={openAgeSettings}
               />
             </Suspense>
@@ -3588,6 +3635,7 @@ export function GameApp() {
             />
           </Suspense>
         ) : null}
+        {ageAskOverlay}
         {ageToast ? (
           <div className="agep-toast" role="status" data-testid="agep-toast">
             {ageToast}
@@ -3974,8 +4022,10 @@ export function GameApp() {
     {challengeWelcomeEl}
     {/* While the grown-up gate/picker is open it is a full-viewport overlay:
         the home page underneath (incl. Comet's banner and the footer link)
-        is inert — non-interactive and removed from the tab order. */}
-    <div inert={ageSettingsOpen || undefined}>
+        is inert — non-interactive and removed from the tab order. The
+        ask-first age picker is the same class of overlay, so it makes
+        the page inert the same way while it is up. */}
+    <div inert={ageSettingsOpen || ageAsk !== null || undefined}>
     <Choose
       key={historyResetEpoch}
       onState={withCardTap("State", () => setMenu({ kind: "states" }))}
@@ -3983,11 +4033,31 @@ export function GameApp() {
       onGlobe={withCardTap("Globe", () => openRun("globe", "globe", "Globe", difficultyChoice))}
       onBegin={withCardTap("Globe", () => openRun("globe", "globe", "Globe", difficultyChoice))}
       onTakeTour={onTakeTour}
-      onLoop={withCardTap("mystery", openGeoDetective)}
+      onLoop={withCardTap("mystery", () => {
+        // Ask-first (owner decision, 2026-11-14): the card is the
+        // resume offer while a mystery is mid-play, and a resume is
+        // a case start — with no band set the age picker answers
+        // first and the tap-in runs off the pick. A fresh deal (no
+        // mystery in progress) is a main-game loop start, the class
+        // the store's no-profile default was decided for, and is
+        // not gated here.
+        if (peekLoopProgress().inProgress) {
+          askAgeFirst(() => {
+            openGeoDetective();
+          });
+        } else {
+          openGeoDetective();
+        }
+      })}
       onColdTrail={withCardTap("coldtrail", () => { writeColdTrailOpen(true); setColdTrailOpen(true); })}      onReview={startReview}
       challengeEnabled={friendChallengesOn}
       whyLearnEnabled
-      onWhyLearn={withCardTap("why-learn", () => setSubjectsOpen(true))}
+      onWhyLearn={withCardTap("why-learn", () => {
+        // Ask-first (owner decision, 2026-11-14): the picker is a
+        // case-start path — with no band set the age picker answers
+        // first and the picker opens off the pick, at that band.
+        askAgeFirst(() => setSubjectsOpen(true));
+      })}
       onChallenge={withCardTap("challenge", openChallengePicker)}
       onResetHistory={handleResetHistory}
       deck={deckStatus}
@@ -4049,6 +4119,7 @@ export function GameApp() {
         />
       </Suspense>
     ) : null}
+    {ageAskOverlay}
     {ageToast ? (
       <div className="agep-toast" role="status" data-testid="agep-toast">
         {ageToast}

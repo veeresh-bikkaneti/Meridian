@@ -173,8 +173,23 @@ for (const vp of [
 
 // Subjects launch: the CTA is enabled ("Start exploring") and a tap
 // opens the subject picker; the Math row opens the math case. The full
-// per-band playthrough lives in math-subject.spec.ts.
+// per-band playthrough lives in math-subject.spec.ts. The band is
+// seeded: since fix/ask-age-first a player with no band set is asked
+// before the picker opens (covered by ask-age-first.spec.ts); this
+// test is about the card's own launch path.
 test("card opens the subject picker, and Math opens the math case", async ({ page }) => {
+  await page.addInitScript(() => {
+    window.localStorage.setItem(
+      "meridian.ageProfile.v1",
+      JSON.stringify({
+        status: "active",
+        band: "10-18",
+        updatedAt: new Date().toISOString(),
+        changeCount: 0,
+        schemaVersion: 2,
+      }),
+    );
+  });
   await page.goto(APP_URL);
   const card = page.getByTestId("home-card-why-learn");
   await expect(card).toBeVisible();
