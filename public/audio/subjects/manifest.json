@@ -1,7 +1,7 @@
 {
   "v": 1,
   "voice": "am_michael",
-  "note": "Narrated solved summaries for the math clue scenes (act 3). One clip per item; the script and per-line timings in src/subjects/math/scenes.ts are the source of truth and match the clips line for line. Rendered locally with the same voice and loudness targets as the journal narration (-18 LUFS, true peak -1.5 dBFS), 24 kHz mono MP3 at 64 kbps like the other in-app clips. Wave 1 (expansion) added the ten non-pilot clips in the same voice (am_michael), rendered the same way. The scenes wave (visual-questions Phase 1) added the nine wave-3 clips in the same voice, rendered the same way. Wave 2 (expansion) added the thirteen 10-18 clips in the same voice (am_michael), rendered the same way. Wave 3 (expansion) added the seven 18+ math and 7-10 general-knowledge clips in the same voice (am_michael), rendered the same way. Wave 4 (expansion) added the seven physics ages 7-10 clips in the same voice (am_michael), rendered the same way. Wave 5 (expansion) added the five remaining physics ages 7-10 clips in the same voice (am_michael), rendered the same way. Wave 6 (expansion) added the twelve physics ages 10-18 and 18+ clips in the same voice (am_michael), rendered the same way. Wave 7 (expansion) added the ten chemistry ages 7-10 and states/mixtures/materials ages 10-18 clips in the same voice (am_michael), rendered the same way. Wave 8 (expansion) added the six chemistry reactions and ages 18+ clips in the same voice (am_michael), rendered the same way. Wave 9 (expansion) added the twelve social studies clips in the same voice (am_michael), rendered the same way.",
+  "note": "Narrated solved summaries for the math clue scenes (act 3). One clip per item; the script and per-line timings in src/subjects/math/scenes.ts are the source of truth and match the clips line for line. Rendered locally with the same voice and loudness targets as the journal narration (-18 LUFS, true peak -1.5 dBFS), 24 kHz mono MP3 at 64 kbps like the other in-app clips. Wave 1 (expansion) added the ten non-pilot clips in the same voice (am_michael), rendered the same way. The scenes wave (visual-questions Phase 1) added the nine wave-3 clips in the same voice, rendered the same way. Wave 2 (expansion) added the thirteen 10-18 clips in the same voice (am_michael), rendered the same way. Wave 3 (expansion) added the seven 18+ math and 7-10 general-knowledge clips in the same voice (am_michael), rendered the same way. Wave 4 (expansion) added the seven physics ages 7-10 clips in the same voice (am_michael), rendered the same way. Wave 5 (expansion) added the five remaining physics ages 7-10 clips in the same voice (am_michael), rendered the same way. Wave 6 (expansion) added the twelve physics ages 10-18 and 18+ clips in the same voice (am_michael), rendered the same way. Wave 7 (expansion) added the ten chemistry ages 7-10 and states/mixtures/materials ages 10-18 clips in the same voice (am_michael), rendered the same way. Wave 8 (expansion) added the six chemistry reactions and ages 18+ clips in the same voice (am_michael), rendered the same way. Wave 9 (expansion) added the twelve social studies clips in the same voice (am_michael), rendered the same way. Wave 10 (expansion) added the five general-knowledge ages 10-18 and 18+ clips in the same voice (am_michael), rendered the same way, completing the programme.",
   "clips": {
     "skip-count": {
       "file": "skip-count.mp3",
@@ -565,6 +565,36 @@
       "file": "trip-cost.mp3",
       "item": "social-studies:compare:trip-cost",
       "duration": 20.6,
+      "lines": 4
+    },
+    "everest-stack": {
+      "file": "everest-stack.mp3",
+      "item": "general-knowledge:mixed:everest-vs-falls",
+      "duration": 24.6,
+      "lines": 4
+    },
+    "paris-sydney": {
+      "file": "paris-sydney.mp3",
+      "item": "general-knowledge:mixed:paris-sydney-flight",
+      "duration": 31.36,
+      "lines": 6
+    },
+    "tower-angle": {
+      "file": "tower-angle.mp3",
+      "item": "general-knowledge:mixed:tower-angle",
+      "duration": 28.28,
+      "lines": 4
+    },
+    "everest-falls": {
+      "file": "everest-falls.mp3",
+      "item": "general-knowledge:mixed:great-circle",
+      "duration": 20.07,
+      "lines": 4
+    },
+    "falls-flow": {
+      "file": "falls-flow.mp3",
+      "item": "general-knowledge:mixed:falls-flow",
+      "duration": 20.73,
       "lines": 4
     }
   }

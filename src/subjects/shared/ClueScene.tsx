@@ -94,6 +94,7 @@ import {
   ZoneClocksScene,
 } from "./clue-scene-kinds-b";
 import {
+  AngleSightScene,
   AtomTallyScene,
   BearingDiagramScene,
   ChunkShareScene,
@@ -103,6 +104,7 @@ import {
   GlobeVsMapScene,
   GreatCircleScene,
   EnergyLedgerScene,
+  FlowCounterScene,
   LightPathScene,
   JourneyLineScene,
   ParticleStatesScene,
@@ -112,6 +114,7 @@ import {
   SeesawLiftScene,
   SpendThenGroupScene,
   SplitProductScene,
+  StackDropsScene,
   TowerMeasureScene,
   WaterCycleScene,
 } from "./clue-scene-kinds-c";
@@ -508,6 +511,9 @@ const SUMMARY_STAGGER: Record<ClueSceneDescription["kind"], number> = {
   "globe-vs-map": 0.8,
   "great-circle": 0.8,
   "cost-compare": 0.8,
+  "stack-drops": 0.55,
+  "angle-sight": 0.9,
+  "flow-counter": 0.9,
 };
 
 /** The summary clip's URL (public/audio/subjects/, manifest.json). */
@@ -684,6 +690,12 @@ function SceneArt({
       return <GreatCircleScene description={description} phase={phase} stepDelay={stepDelay} />;
     case "cost-compare":
       return <CostCompareScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "stack-drops":
+      return <StackDropsScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "angle-sight":
+      return <AngleSightScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "flow-counter":
+      return <FlowCounterScene description={description} phase={phase} stepDelay={stepDelay} />;
   }
 }
 

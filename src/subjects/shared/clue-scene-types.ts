@@ -948,6 +948,36 @@ export type ClueSceneDescription =
       summary?: ClueSceneSummary;
     }
   | {
+      kind: "stack-drops";
+      /** One falls drop's height — a given from the question. */
+      dropHeight: number;
+      /** The peak's height — a given from the question. */
+      peakHeight: number;
+      labelSetup: string;
+      labelSolved: string;
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "angle-sight";
+      /** Feet from the observer to the tower — a given. */
+      distanceFt: number;
+      /** Degrees the sight line climbs — a given. */
+      angleDeg: number;
+      labelSetup: string;
+      labelSolved: string;
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "flow-counter";
+      /** Litres over the falls each minute — a given. */
+      perMinute: number;
+      /** Minutes in a day — a given from the question. */
+      minutesPerDay: number;
+      labelSetup: string;
+      labelSolved: string;
+      summary?: ClueSceneSummary;
+    }
+  | {
       kind: "cost-compare";
       /** Fuel cost on the toll road — a given from the question. */
       tollFuel: number;

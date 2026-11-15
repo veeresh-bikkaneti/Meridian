@@ -1994,3 +1994,204 @@ export function CostCompareScene({
     </>
   );
 }
+
+/* ── stack-drops (wave 10, general knowledge) ───────────────────
+   A peak silhouette stands beside a waterfall's single drop —
+   the question's two givens. Solved: drop blocks stack one on
+   top of another beside the peak in eight bands (each band
+   stands for about ten drops), climbing to just under the
+   summit, and the final tick lands. No stack, no counter and
+   no numbers before the pick. */
+
+export function StackDropsScene({
+  description,
+  phase,
+  stepDelay,
+}: {
+  description: Extract<ClueSceneDescription, { kind: "stack-drops" }>;
+  phase: ClueScenePhase;
+  stepDelay?: (step: number) => number;
+}) {
+  void description;
+  const bands = 8;
+  const groundY = 168;
+  const bandH = 15;
+  const stackX = 118;
+  const bandStart = (s: number) => (stepDelay ? stepDelay(s) : 0.4 + s * 0.45);
+  return (
+    <>
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M24 24 Q160 20 296 24" style={delay(0.1)} />
+      <path className="cs-line cs-draw" pathLength={1} d={`M16 ${groundY} Q160 ${groundY + 4} 304 ${groundY}`} style={delay(0)} />
+      {/* The falls, left: a cliff with one drop ribbon — a given. */}
+      <path className="cs-line cs-draw" pathLength={1} d="M28 60 Q52 56 74 60 L74 168 M28 60 L28 168" style={delay(0.15)} />
+      <path className="cs-line cs-band cs-draw" pathLength={1} d="M44 62 Q48 110 44 164" style={delay(0.35)} />
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M56 62 Q60 110 56 164" style={delay(0.45)} />
+      {/* The peak, right: a tall silhouette — a given. */}
+      <path
+        className="cs-line cs-draw"
+        pathLength={1}
+        d="M196 168 Q228 84 252 34 Q258 22 264 34 Q288 84 308 168"
+        style={delay(0.2)}
+      />
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M244 48 Q252 36 260 44 Q266 36 272 50" style={delay(0.4)} />
+      {phase === "solved" ? (
+        <>
+          {/* Steps 0-7: drop blocks stack beside the peak, one
+              band at a time, each band a falls block with its
+              water lines, climbing to just under the summit. */}
+          {Array.from({ length: bands }, (_, i) => {
+            const top = groundY - (i + 1) * bandH;
+            return (
+              <g key={`band-${i}`} className="cs-pop" style={delay(bandStart(i))}>
+                <rect className="cs-pack" x={stackX} y={top} width="34" height={bandH - 2} rx="2" />
+                <path className="cs-line cs-band" d={`M${stackX + 10} ${top + 2} Q${stackX + 12} ${top + bandH / 2} ${stackX + 10} ${top + bandH - 4}`} />
+                <path className="cs-line cs-soft" d={`M${stackX + 22} ${top + 2} Q${stackX + 24} ${top + bandH / 2} ${stackX + 22} ${top + bandH - 4}`} />
+              </g>
+            );
+          })}
+          <ellipse className="cs-ring" cx={stackX + 17} cy={groundY - bands * bandH - 2} rx="26" ry="12" style={delay(bandStart(bands - 1) + 0.5)} />
+          <text className="cs-tick cs-tick-final" x={stackX + 17} y={groundY - bands * bandH - 22} style={delay(bandStart(bands - 1) + 0.65)}>
+            ✓
+          </text>
+        </>
+      ) : null}
+    </>
+  );
+}
+
+/* ── angle-sight (wave 10, general knowledge) ───────────────────
+   An observer stands on the ground looking up at a tower; a
+   short dashed sight ray leaves the observer's eye — the
+   question's givens (the distance, the angle) drawn without a
+   scale the height could be measured from: the ray stops in
+   mid-air and never touches the tower before the pick. Solved:
+   the ray runs on to the tower's top, the height is bracketed,
+   and the final tick lands. */
+
+export function AngleSightScene({
+  description,
+  phase,
+  stepDelay,
+}: {
+  description: Extract<ClueSceneDescription, { kind: "angle-sight" }>;
+  phase: ClueScenePhase;
+  stepDelay?: (step: number) => number;
+}) {
+  void description;
+  const groundY = 156;
+  const eye = { x: 44, y: groundY - 14 };
+  const top = { x: 252, y: 30 };
+  const rayStart = stepDelay ? stepDelay(0) : 0.5;
+  const bracketStart = stepDelay ? stepDelay(1) : 1.4;
+  const tickStart = stepDelay ? stepDelay(2) : 2.3;
+  return (
+    <>
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M24 24 Q160 20 296 24" style={delay(0.1)} />
+      <path className="cs-line cs-draw" pathLength={1} d={`M16 ${groundY} Q160 ${groundY + 4} 304 ${groundY}`} style={delay(0)} />
+      {/* The tower, right: its outline only — no height mark. */}
+      <path className="cs-line cs-draw" pathLength={1} d={`M238 ${groundY} Q240 92 246 44 L246 30 M266 30 L266 44 Q272 92 274 ${groundY}`} style={delay(0.15)} />
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M242 96 Q256 92 270 96 M244 64 Q256 60 268 64" style={delay(0.3)} />
+      {/* The observer, left, at the given distance. */}
+      <g className="cs-pop" style={delay(0.4)}>
+        <circle className="cs-child-head" cx={eye.x} cy={eye.y} r="5" />
+        <path className="cs-child-body" d={`M${eye.x - 7} ${groundY - 2} Q${eye.x} ${groundY - 9} ${eye.x + 7} ${groundY - 2}`} />
+      </g>
+      {/* The given sight direction: a short dashed ray that
+          stops in mid-air, short of the tower. */}
+      <path
+        className="cs-line cs-soft cs-draw"
+        pathLength={1}
+        d={`M${eye.x + 4} ${eye.y - 2} Q86 ${eye.y - 26} 128 ${eye.y - 48}`}
+        strokeDasharray="4 4"
+        style={delay(0.55)}
+      />
+      {phase === "solved" ? (
+        <>
+          {/* Step 0: the sight line runs on to the tower's top. */}
+          <path className="cs-line cs-band cs-draw" pathLength={1} d={`M${eye.x + 4} ${eye.y - 2} Q150 ${eye.y - 66} ${top.x} ${top.y + 2}`} style={delay(rayStart)} />
+          {/* Step 1: the height bracket stands beside the tower. */}
+          <path className="cs-line cs-band cs-draw" pathLength={1} d={`M288 ${groundY} L288 ${top.y} M282 ${groundY} L294 ${groundY} M282 ${top.y} L294 ${top.y}`} style={delay(bracketStart)} />
+          <ellipse className="cs-ring" cx={top.x + 4} cy={top.y} rx="18" ry="12" style={delay(tickStart + 0.4)} />
+          <text className="cs-tick cs-tick-final" x={top.x + 4} y={top.y - 20} style={delay(tickStart + 0.55)}>
+            ✓
+          </text>
+        </>
+      ) : null}
+    </>
+  );
+}
+
+/* ── flow-counter (wave 10, general knowledge) ──────────────────
+   A waterfall pours into its pool — the question's givens (the
+   falls, its per-minute flow) with no counter and no total
+   before the pick. Solved: a row of droplets stands for one
+   minute's flow, the day's minutes multiply the droplets into
+   a field under a sweeping sun arc, and the field gathers
+   into three rising bars — the powers of ten — before the
+   final tick. Digits live only in the narration and the
+   result card, as in the earlier counter kinds. */
+
+export function FlowCounterScene({
+  description,
+  phase,
+  stepDelay,
+}: {
+  description: Extract<ClueSceneDescription, { kind: "flow-counter" }>;
+  phase: ClueScenePhase;
+  stepDelay?: (step: number) => number;
+}) {
+  void description;
+  const groundY = 168;
+  const minuteStart = stepDelay ? stepDelay(0) : 0.5;
+  const dayStart = stepDelay ? stepDelay(1) : 1.5;
+  const barsStart = stepDelay ? stepDelay(2) : 2.5;
+  const drop = (cx: number, cy: number, dly: number, key: string) => (
+    <path
+      key={key}
+      className="cs-tip cs-pop"
+      d={`M${cx} ${cy - 6} Q${cx + 4.5} ${cy + 1} ${cx + 2.5} ${cy + 4.5} Q${cx} ${cy + 6.5} ${cx - 2.5} ${cy + 4.5} Q${cx - 4.5} ${cy + 1} ${cx} ${cy - 6} Z`}
+      style={delay(dly)}
+    />
+  );
+  return (
+    <>
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M24 24 Q160 20 296 24" style={delay(0.1)} />
+      <path className="cs-line cs-draw" pathLength={1} d={`M16 ${groundY} Q160 ${groundY + 4} 304 ${groundY}`} style={delay(0)} />
+      {/* The falls, left: cliff, falling water, pool — givens. */}
+      <path className="cs-line cs-draw" pathLength={1} d="M24 52 Q48 48 68 52 L68 168 M24 52 L24 168" style={delay(0.15)} />
+      <path className="cs-line cs-band cs-draw" pathLength={1} d="M38 54 Q42 104 38 150" style={delay(0.35)} />
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M52 54 Q56 104 52 150" style={delay(0.45)} />
+      <ellipse className="cs-line cs-draw" pathLength={1} cx="46" cy="158" rx="30" ry="6" style={delay(0.3)} />
+      {phase === "solved" ? (
+        <>
+          {/* Step 0: one minute's flow — a row of droplets. */}
+          {[0, 1, 2, 3, 4].map((i) => drop(112 + i * 16, 148, minuteStart + i * 0.08, `min-${i}`))}
+          {/* Step 1: the day multiplies them — a sun arc sweeps
+              and the droplets fill a field, row on row. */}
+          <path className="cs-line cs-band cs-draw" pathLength={1} d="M104 118 Q160 84 216 118" style={delay(dayStart)} />
+          <circle className="cs-coin cs-pop" cx="160" cy="92" r="6" style={delay(dayStart + 0.3)} />
+          {[0, 1].map((r) =>
+            [0, 1, 2, 3, 4].map((i) => drop(112 + i * 16, 128 - r * 18, dayStart + 0.25 + (r * 5 + i) * 0.05, `day-${r}-${i}`)),
+          )}
+          {/* Step 2: the field gathers into rising bars — each
+              bar ten times the last — and the tick lands. */}
+          {[0, 1, 2].map((i) => (
+            <rect
+              key={`bar-${i}`}
+              className="cs-pack cs-pop"
+              x={248 + i * 18}
+              y={groundY - 22 - i * 26}
+              width="13"
+              height={22 + i * 26}
+              rx="2"
+              style={delay(barsStart + i * 0.18)}
+            />
+          ))}
+          <text className="cs-tick cs-tick-final" x="272" y={groundY - 22 - 2 * 26 - 14} style={delay(barsStart + 0.7)}>
+            ✓
+          </text>
+        </>
+      ) : null}
+    </>
+  );
+}

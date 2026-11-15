@@ -173,6 +173,12 @@ function givensOf(d: ClueSceneDescription): number[] {
       return [];
     case "cost-compare":
       return [d.tollFuel, d.tollFee, d.freeFuel];
+    case "stack-drops":
+      return [d.dropHeight, d.peakHeight];
+    case "angle-sight":
+      return [d.distanceFt, d.angleDeg];
+    case "flow-counter":
+      return [d.perMinute, d.minutesPerDay];
   }
 }
 
@@ -323,6 +329,12 @@ function stepCountOf(d: ClueSceneDescription): number {
       return 3; // the globe arc, the flat-map curve, the final tick
     case "cost-compare":
       return 3; // the toll stacks join, the free stack stands beside, the final tick
+    case "stack-drops":
+      return 8; // eight stacking bands, the last carrying the final tick
+    case "angle-sight":
+      return 3; // the full sight line, the height bracket, the final tick
+    case "flow-counter":
+      return 3; // the minute row, the day field, the power bars + tick
   }
 }
 

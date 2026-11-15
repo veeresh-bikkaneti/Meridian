@@ -18,11 +18,14 @@
  * (public/audio/subjects/manifest.json carries the same
  * numbers). The summary sits in the solved-phase data path only.
  *
- * Coverage (expansion wave 3): every general-knowledge item for
- * ages 7-10 — timeline-line (new, shared by two items),
- * tower-measure (new), scale-line and bus-boarding reused from
- * math. Other bands carry no descriptions; their clue cards are
- * unchanged.
+ * Coverage (expansion waves 3 and 10): every general-knowledge
+ * item in every band — ages 7-10 (wave 3: timeline-line, shared
+ * by two items, tower-measure, scale-line and bus-boarding
+ * reused from math) and, completing the subject at 10/10 in
+ * wave 10, the ages 10-18 and 18+ items: stack-drops,
+ * angle-sight and flow-counter (new), journey-line reused from
+ * math, and great-circle reused from social studies — the
+ * shared kind wave 9 parameterised for exactly this reuse.
  *
  * The opera item is the one runtime-built description: its
  * answer is a year gap resolved at play time (answers.ts builds
@@ -135,6 +138,97 @@ export const GENERAL_KNOWLEDGE_CLUE_SCENES: Record<string, ClueSceneDescription>
         { text: "1708 is less than 2000, so the falls is narrower than 2 km!", at: 14.46 },
       ],
       beats: [0, 1, 0, 1],
+    },
+  },
+  "general-knowledge:mixed:everest-vs-falls": {
+    kind: "stack-drops",
+    dropHeight: 108,
+    peakHeight: 8848.86,
+    labelSetup: "A tall peak waits beside a waterfall's drop.",
+    labelSolved: "Drops stack up beside the peak, one on top of another.",
+    summary: {
+      clip: "everest-stack.mp3",
+      duration: 24.6,
+      lines: [
+        { text: "Here is the clever way to stack the falls.", at: 0 },
+        { text: "Each drop at the falls is 108 metres tall, and Everest stands 8849 metres high.", at: 2.88 },
+        { text: "Stack the drops one on top of another beside the peak, and the stack climbs past forty, past sixty.", at: 10.18 },
+        { text: "8849 divided by 108 is about 82, so the stack needs About 80 drops!", at: 17.07 },
+      ],
+      beats: [0, 4, 4, 0],
+    },
+  },
+  "general-knowledge:mixed:paris-sydney-flight": {
+    kind: "journey-line",
+    totalKm: 850,
+    hours: 1,
+    targetKm: 17000,
+    labelSetup: "A plane waits at the start of a very long journey.",
+    labelSolved: "The journey is marked out hour by hour.",
+    summary: {
+      clip: "paris-sydney.mp3",
+      duration: 31.36,
+      lines: [
+        { text: "Here is the clever way to time the flight.", at: 0 },
+        { text: "The plane flies 850 kilometres every hour, so mark the long journey hour by hour.", at: 2.8 },
+        { text: "Five hours carry the plane 4250 kilometres.", at: 9.57 },
+        { text: "Ten hours carry the plane 8500 kilometres.", at: 13.55 },
+        { text: "Fifteen hours, then twenty: the last hour mark reaches Sydney at 17000 kilometres.", at: 17.73 },
+        { text: "17000 divided by 850 is 20, so the trip takes About 20 hours!", at: 24.9 },
+      ],
+      beats: [0, 5, 5, 5, 5, 0],
+    },
+  },
+  "general-knowledge:mixed:tower-angle": {
+    kind: "angle-sight",
+    distanceFt: 1000,
+    angleDeg: 47,
+    labelSetup: "An observer waits on the ground, looking up at a tower.",
+    labelSolved: "The sight line climbs to the top, and the height is bracketed.",
+    summary: {
+      clip: "tower-angle.mp3",
+      duration: 28.28,
+      lines: [
+        { text: "Here is the clever way to find the tower's height.", at: 0 },
+        { text: "You stand 1000 feet from the tower, and its top sits 47 degrees up from the ground.", at: 3.16 },
+        { text: "The height is 1000 times tan of 47 degrees, and tan of 47 degrees is about 1.07.", at: 9.6 },
+        { text: "1000 times 1.07 makes about 1072 feet, so the tower stands About 1,072 feet!", at: 18.61 },
+      ],
+      beats: [0, 1, 1, 1],
+    },
+  },
+  "general-knowledge:mixed:great-circle": {
+    kind: "great-circle",
+    labelSetup: "A globe and a flat map each carry two pins, a peak and a falls.",
+    labelSolved: "A path arcs over the globe between the two pins, and the same path curves on the map.",
+    summary: {
+      clip: "everest-falls.mp3",
+      duration: 20.07,
+      lines: [
+        { text: "Here is the clever way to find the shortest way round the Earth.", at: 0 },
+        { text: "The shortest route between two places follows a great circle, curving over the surface.", at: 4.03 },
+        { text: "Follow that arc from Everest to Victoria Falls, over the round Earth.", at: 9.93 },
+        { text: "That great-circle journey measures 8,000 to 8,500 km!", at: 15.01 },
+      ],
+      beats: [0, 1, 1, 1],
+    },
+  },
+  "general-knowledge:mixed:falls-flow": {
+    kind: "flow-counter",
+    perMinute: 500000000,
+    minutesPerDay: 1440,
+    labelSetup: "A waterfall pours into its pool.",
+    labelSolved: "The falling water is counted minute by minute, then day by day.",
+    summary: {
+      clip: "falls-flow.mp3",
+      duration: 20.73,
+      lines: [
+        { text: "Here is the clever way to count a whole day of falls.", at: 0 },
+        { text: "Every minute, 500 million litres pour over the falls.", at: 3.6 },
+        { text: "A day holds 1440 minutes, so multiply 500 million by 1440.", at: 7.84 },
+        { text: "That makes 720,000,000,000 litres in one day: 7.2 × 10^11 litres!", at: 14.15 },
+      ],
+      beats: [0, 1, 1, 1],
     },
   },
   "general-knowledge:mixed:trip-buses": {
