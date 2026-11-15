@@ -3124,6 +3124,210 @@
   display: grid;
   gap: 2px;
 }
+/* ── Clue scenes, Wave 1 kinds A (clue-scene-kinds-a.tsx) ──────
+   New classes for bus-boarding and pack-boxes only. Everything
+   else (cs-line, cs-soft, cs-band, cs-draw, cs-pop, cs-slide,
+   cs-tick, cs-tick-final, cs-pencil, cs-tip) is reused from the
+   pilot block in styles.css. Atlas palette only; resting state
+   is the final frame, as everywhere in the clue scenes. */
+.cs-bus {
+  fill: #fffdf6;
+  stroke: #33302a;
+  stroke-width: 1.8;
+}
+.cs-bus-window {
+  fill: #efe3bc;
+  stroke: #8a6d2f;
+  stroke-width: 1;
+}
+.cs-bus-wheel {
+  fill: #33302a;
+  stroke: #fffdf6;
+  stroke-width: 1.2;
+}
+.cs-child-head {
+  fill: #efe3bc;
+  stroke: #33302a;
+  stroke-width: 1.3;
+}
+.cs-child-body {
+  fill: none;
+  stroke: #33302a;
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.cs-head-dot {
+  fill: #efe3bc;
+  stroke: #33302a;
+  stroke-width: 1.1;
+}
+.cs-sign {
+  fill: #efe3bc;
+  stroke: #33302a;
+  stroke-width: 1.6;
+  stroke-linejoin: round;
+}
+
+/* ── Clue scenes, Wave 1 builder B (clue-scene-kinds-b.tsx) ────
+   New classes for the place-value kinds only; everything else
+   reuses the pilot's classes (cs-line / cs-soft / cs-band /
+   cs-coin / cs-pack / cs-tip / cs-draw / cs-pop / cs-slide /
+   cs-ring / cs-tick). Same discipline as the pilot block: every
+   element's resting state is the film's final frame, the
+   keyframes only run it in, once — transform / opacity only.
+   Append after the pilot clue-scene block in src/styles.css.
+   Still frames need no extra rules: the parent's
+   [data-still="true"] / prefers-reduced-motion rules switch all
+   animations off, and these classes rest at their final state
+   (grown, dimmed) on their own. */
+
+/* Digit-shift: a ten-stone grows into a hundred-stone. The stone
+   rests at full hundred size; the keyframe starts it at the ten
+   stone's footprint (24×10 against the resting 34×12) and a
+   little faded, with backwards fill so it waits small until its
+   turn in the stagger. */
+.cs-grow {
+  animation: cs-grow 0.5s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+@keyframes cs-grow {
+  from {
+    opacity: 0.4;
+    transform: scale(0.71, 0.83);
+  }
+}
+
+/* Place-compare: the smaller side dims once the sweep reaches
+   the deciding column. The side rests dimmed; the keyframe
+   starts it at full weight, with backwards fill so it stays
+   full-weight until the sweep arrives. */
+.cs-dim {
+  opacity: 0.45;
+  animation: cs-dim 0.6s cubic-bezier(0.16, 0.8, 0.26, 1) backwards;
+}
+@keyframes cs-dim {
+  from {
+    opacity: 1;
+  }
+}
+
+/* Place-compare: the soft ring for an equal column — the pilot's
+   cs-ring in the soft parchment tone instead of brass, so only
+   the deciding column's ring reads as the winner's. Declared
+   after cs-ring (this block appends below it) so it wins on
+   stroke at equal specificity. */
+.cs-ring-soft {
+  stroke: #d8cbae;
+}
+
+/* ── Clue scenes, wave 1 kinds C (clue-scene-kinds-c.tsx) ──────
+   New classes only; everything else reuses the pilot's cs-line /
+   cs-soft / cs-band / cs-draw / cs-pop / cs-fade / cs-slide /
+   cs-tick / cs-tick-final. Atlas palette only; resting state is
+   the film's final frame, except .cs-counter-step, whose whole
+   job is to be replaced by the next running total — its
+   keyframes end faded and it rests at opacity 0. */
+
+/* rounding-line: the marker stone and the end flags. */
+.cs-stone {
+  fill: #d8cbae;
+  stroke: #33302a;
+  stroke-width: 1.6;
+}
+.cs-flag {
+  fill: #8a6d2f;
+  stroke: #33302a;
+  stroke-width: 1.2;
+  stroke-linejoin: round;
+}
+
+/* split-product: hall bars and the two split fills. */
+.cs-bar {
+  fill: #fffdf6;
+  stroke: #33302a;
+  stroke-width: 1.6;
+}
+.cs-split-high {
+  fill: #d8cbae;
+}
+.cs-split-low {
+  fill: #efe3bc;
+}
+
+/* chunk-share: pile bundles and shelf bundle books. */
+.cs-pile-book {
+  fill: #fffdf6;
+  stroke: #33302a;
+  stroke-width: 1.5;
+}
+.cs-pile-book-gold {
+  fill: #efe3bc;
+  stroke: #33302a;
+  stroke-width: 1.5;
+}
+.cs-book {
+  fill: #fffdf6;
+  stroke: #33302a;
+  stroke-width: 1.1;
+}
+.cs-book-gold {
+  fill: #efe3bc;
+  stroke: #33302a;
+  stroke-width: 1.1;
+}
+
+/* chunk-share counters: small mono numbers at a shelf's end.
+   The step counter pops in, holds while its chunk lands, then
+   fades out as the next running total replaces it (fill mode
+   both: hidden during its delay, faded at rest). The final
+   counter pops in like a tick and stands. */
+.cs-counter {
+  font-family: var(--font-atlas-mono);
+  font-size: 11.5px;
+  font-weight: 700;
+  fill: #77591f;
+  text-anchor: end;
+}
+.cs-counter-step {
+  animation: cs-counter-step 1.15s cubic-bezier(0.22, 1, 0.36, 1) both;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+@keyframes cs-counter-step {
+  0% {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  16% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  76% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.cs-counter-final {
+  animation: cs-pop 0.35s ease backwards;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+/* Still frame (reduced motion): only each shelf's final counter
+   stands — the step counters must not reappear when the parent
+   kills animations. Mirrors the pilot's still rules in styles.css;
+   include alongside them when this snippet is merged in. */
+.clue-scene[data-still="true"] .cs-counter-step {
+  opacity: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .clue-scene .cs-counter-step {
+    opacity: 0;
+  }
+}
 /* Off screen or a hidden tab: every scene animation holds still
    (the component toggles data-paused from its observers). */
 .clue-scene[data-paused="true"] svg * {

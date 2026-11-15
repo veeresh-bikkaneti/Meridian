@@ -113,3 +113,89 @@ test("reduced motion: still frames of both phases, no replay control", async ({ 
 
   expect(errors).toEqual([]);
 });
+
+test("reduced motion: wave-1 kinds also stand still, summaries wait for a tap", async ({
+  page,
+  context,
+}) => {
+  await setup(context);
+  const errors = watchErrors(page);
+  await page.goto(APP_URL);
+  const card = page.getByTestId("home-card-why-learn");
+  await expect(card).toBeVisible();
+  await card.scrollIntoViewIfNeeded();
+  await card.getByRole("button", { name: "Why Do We Learn This?: Start exploring" }).click();
+  await expect(page.getByTestId("subject-picker")).toBeVisible();
+  await page.getByTestId("subject-row-math").click();
+  await expect(page.getByTestId("math-case")).toBeVisible();
+
+  // Solve forward to a target case, then pin its still frames.
+  async function solveForwardTo(item: string) {
+    for (let guard = 0; guard < 13; guard++) {
+      const current = await page.getByTestId("math-case").getAttribute("data-item");
+      if (current === item) return;
+      const correct = {
+        "math-number:groups:skip-count": "8",
+        "math-number:groups:equal-groups": "24",
+        "math-number:tables:buses": "4",
+        "math-number:place:hundreds-tens-ones": "345",
+        "math-number:place:compare": "385",
+        "math-number:place:round": "300",
+        "math-number:place:ten-times": "700",
+        "math-number:tables:facts": "28",
+        "math-number:tables:big-products": "1,008",
+        "math-number:division:fair-share": "3",
+        "math-number:division:unknown-factor": "5",
+        "math-number:division:remainders": "5",
+      }[current!];
+      await page
+        .getByTestId("math-answer-card")
+        .getByRole("button", { name: correct!, exact: true })
+        .click();
+      const close = page.getByRole("button", { name: "Close celebration" });
+      if (await close.isVisible().catch(() => false)) {
+        await close.click();
+        await expect(close).toHaveCount(0);
+      }
+      await expect(page.getByTestId("math-result")).toBeVisible();
+      await page.getByRole("button", { name: /Next case/ }).click();
+      await expect(page.getByTestId("math-answer-card")).toBeVisible();
+    }
+    throw new Error(`never reached ${item}`);
+  }
+
+  async function pinStill(item: string, correct: string, slug: string, snippet: string) {
+    await solveForwardTo(item);
+    const scene = page.getByTestId("clue-scene");
+    await expect(scene).toBeVisible();
+    await expect(scene).toHaveAttribute("data-phase", "setup");
+    await expect(scene).toHaveAttribute("data-still", "true");
+    await expect(page.getByTestId("clue-summary-text")).toHaveCount(0);
+    await scene.screenshot({ path: `${SHOTS}/${slug}-setup-reduced.png` });
+    await page
+      .getByTestId("math-answer-card")
+      .getByRole("button", { name: correct, exact: true })
+      .click();
+    const close = page.getByRole("button", { name: "Close celebration" });
+    if (await close.isVisible().catch(() => false)) {
+      await close.click();
+      await expect(close).toHaveCount(0);
+    }
+    await expect(page.getByTestId("math-result")).toBeVisible();
+    await expect(scene).toHaveAttribute("data-phase", "solved");
+    await expect(scene).toHaveAttribute("data-still", "true");
+    await expect(scene).toHaveAttribute("data-summary", "idle");
+    const summaryText = page.getByTestId("clue-summary-text");
+    await expect(summaryText).toBeVisible();
+    await expect(summaryText).toContainText(snippet);
+    await expect(page.getByTestId("clue-summary-play")).toBeVisible();
+    await scene.screenshot({ path: `${SHOTS}/${slug}-solved-reduced.png` });
+  }
+
+  await pinStill("math-number:tables:buses", "4", "buses", "24 children need 4 buses");
+  await page.getByRole("button", { name: /Next case/ }).click();
+  await expect(page.getByTestId("math-answer-card")).toBeVisible();
+  await pinStill("math-number:division:big-quotients", "156", "big-quotients", "156 books");
+
+  expect(errors).toEqual([]);
+});

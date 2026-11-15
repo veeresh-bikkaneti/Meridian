@@ -1,0 +1,400 @@
+/**
+ * clue-scene-kinds-b.tsx — the place-value clue scenes (Wave 1,
+ * builder B): place-value, place-compare and digit-shift. Each is
+ * a short film drawn live in the browser as ink line-art on paper,
+ * rendered as an SVG fragment inside ClueScene's frame (the parent
+ * supplies the <svg viewBox="0 0 320 190"> wrapper).
+ *
+ * Answer-blind, structurally (the ClueScene.tsx pattern): each
+ * component receives ONLY its scene description (the givens from
+ * the item's question) and a phase — "setup" before the pick,
+ * "solved" after a correct one. It never receives the answer, a
+ * choice, or a pick. The setup film shows the givens only: loose
+ * piles of notes and coins, two route columns drawn at identical
+ * weight, ten-stones on a path — no digits, no totals, no winner
+ * marks. The solved beat computes its grouping, comparison or
+ * shift from the givens at solve time, exactly the derivation the
+ * result card prints a moment later, and only then do digits
+ * appear, as counting ticks.
+ *
+ * Motion discipline (the pilot's, unchanged): CSS keyframes only
+ * (transform / opacity / stroke draw-on), authored so every
+ * element's resting state IS the film's final frame. The film
+ * plays once, then rests. Lines curve, nothing is ruler-straight,
+ * and a seeded layout keeps the scatter identical on every load.
+ */
+import type { CSSProperties } from "react";
+import {
+  placeColumns,
+  type ClueSceneDescription,
+  type ClueScenePhase,
+} from "./clue-scene-types";
+import { seeded } from "./clue-scene-easing";
+
+const delay = (s: number): CSSProperties => ({ animationDelay: `${s.toFixed(2)}s` });
+const slideFrom = (fx: number, fy: number, s: number): CSSProperties =>
+  ({
+    "--fx": `${fx.toFixed(1)}px`,
+    "--fy": `${fy.toFixed(1)}px`,
+    animationDelay: `${s.toFixed(2)}s`,
+  }) as CSSProperties;
+
+/* ── Place value ───────────────────────────────────────────────
+   3 hundred notes, 4 ten notes, 5 one coins (= 345) in the item
+   this was drawn for; every count comes from the givens. */
+
+/** One piece of money, centred on the origin: a wide hundred
+ * note, a smaller ten note, or the pilot's one coin. Notes reuse
+ * the pack's paper styling, with a soft inner line. */
+function PlacePieceArt({ column }: { column: number }) {
+  if (column === 0) {
+    return (
+      <>
+        <rect className="cs-pack" x="-17" y="-10" width="34" height="20" rx="4" />
+        <path className="cs-line cs-band" d="M-11 -3 Q0 -5 11 -3" />
+        <path className="cs-line cs-soft" d="M-11 4 Q0 2 11 4" />
+      </>
+    );
+  }
+  if (column === 1) {
+    return (
+      <>
+        <rect className="cs-pack" x="-12" y="-8" width="24" height="16" rx="3.5" />
+        <path className="cs-line cs-band" d="M-7 -2 Q0 -4 7 -2" />
+      </>
+    );
+  }
+  return (
+    <>
+      <circle className="cs-coin" r="8.5" />
+      <circle className="cs-coin-inner" r="4.4" />
+    </>
+  );
+}
+
+const PLACE_CX = [70, 160, 250];
+/** How far each piece in a neat stack sits above the one below. */
+const PLACE_STEP = [13, 11, 12];
+const PLACE_BASE_Y = 136;
+
+export function PlaceValueScene({
+  description,
+  phase,
+  stepDelay,
+}: {
+  description: Extract<ClueSceneDescription, { kind: "place-value" }>;
+  phase: ClueScenePhase;
+  /** Summary pacing: when present, step s's beat starts at
+   * stepDelay(s) instead of the film's own stagger. */
+  stepDelay?: (step: number) => number;
+}) {
+  const colStart = (c: number) => (stepDelay ? stepDelay(c) : 0.35 + c * 0.8);
+  const counts = [description.hundreds, description.tens, description.ones];
+  const place = [100, 10, 1];
+  // The loose piles (seeded: same scatter on every load), one
+  // cluster per column, lying on the counter.
+  const loose = counts.map((count, c) => {
+    const rnd = seeded(31 + c * 17);
+    return Array.from({ length: count }, () => ({
+      x: (PLACE_CX[c] ?? 160) + (rnd() * 60 - 30),
+      y: 114 + rnd() * 22,
+    }));
+  });
+  // Running totals after each column settles: 300, 340, 345.
+  const running: number[] = [];
+  counts.forEach((count, c) => {
+    running.push((running[c - 1] ?? 0) + count * (place[c] ?? 1));
+  });
+  let gi = 0;
+  return (
+    <>
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M24 92 Q160 86 296 92" style={delay(0.1)} />
+      <path className="cs-line cs-draw" pathLength={1} d="M16 150 Q160 155 304 150" style={delay(0)} />
+      {phase === "solved"
+        ? counts.map((_, c) => {
+            const cx = PLACE_CX[c] ?? 160;
+            return (
+              <path
+                key={`guide-${c}`}
+                className="cs-line cs-soft cs-draw"
+                pathLength={1}
+                d={`M${cx - 30} 148 Q${cx - 32} 95 ${cx - 30} 44 M${cx + 30} 148 Q${cx + 32} 95 ${cx + 30} 44`}
+                style={delay(0.2 + c * 0.15)}
+              />
+            );
+          })
+        : null}
+      {counts.map((count, c) =>
+        Array.from({ length: count }, (_, i) => {
+          const start = loose[c]?.[i] ?? { x: PLACE_CX[c] ?? 160, y: 120 };
+          const myGi = gi++;
+          if (phase === "setup") {
+            return (
+              <g key={`${c}-${i}`} transform={`translate(${start.x.toFixed(1)} ${start.y.toFixed(1)})`}>
+                <g className="cs-pop" style={delay(0.5 + myGi * 0.055)}>
+                  <PlacePieceArt column={c} />
+                </g>
+              </g>
+            );
+          }
+          const fin = { x: PLACE_CX[c] ?? 160, y: PLACE_BASE_Y - i * (PLACE_STEP[c] ?? 12) };
+          return (
+            <g key={`${c}-${i}`} transform={`translate(${fin.x} ${fin.y})`}>
+              <g className="cs-slide" style={slideFrom(start.x - fin.x, start.y - fin.y, colStart(c) + i * 0.07)}>
+                <PlacePieceArt column={c} />
+              </g>
+            </g>
+          );
+        }),
+      )}
+      {phase === "solved"
+        ? counts.map((count, c) =>
+            count > 0 ? (
+              <text
+                key={`tick-${c}`}
+                className={`cs-tick${c === counts.length - 1 ? " cs-tick-final" : ""}`}
+                x={PLACE_CX[c] ?? 160}
+                y="30"
+                style={delay(colStart(c) + count * 0.07 + 0.65)}
+              >
+                {running[c]}
+              </text>
+            ) : null,
+          )
+        : null}
+    </>
+  );
+}
+
+/* ── Place compare ─────────────────────────────────────────────
+   Routes of 358 vs 385 steps in the item this was drawn for;
+   both lengths come from the givens. Each side draws the route's
+   place columns as three small stacks above a path with a flag,
+   in identical weight and style on both sides. */
+
+const COMPARE_STEP = [8, 8, 9];
+const COMPARE_BASE_Y = 128;
+
+function CompareStackArt({ column }: { column: number }) {
+  if (column === 0) {
+    return <rect className="cs-pack" x="-11" y="-5" width="22" height="10" rx="2.5" />;
+  }
+  if (column === 1) {
+    return <rect className="cs-pack" x="-9" y="-4.5" width="18" height="9" rx="2.5" />;
+  }
+  return <circle className="cs-coin" r="5.5" />;
+}
+
+/** The ring that wraps one stack in the comparison sweep, sized
+ * to that stack's own height. */
+function stackRing(cx: number, count: number, column: number) {
+  const step = COMPARE_STEP[column] ?? 9;
+  const top = COMPARE_BASE_Y - Math.max(count - 1, 0) * step;
+  return { cx, cy: (top + COMPARE_BASE_Y) / 2, rx: 20, ry: (COMPARE_BASE_Y - top) / 2 + 14 };
+}
+
+export function PlaceCompareScene({
+  description,
+  phase,
+  stepDelay,
+}: {
+  description: Extract<ClueSceneDescription, { kind: "place-compare" }>;
+  phase: ClueScenePhase;
+  /** Summary pacing: when present, step s's beat starts at
+   * stepDelay(s) instead of the film's own stagger. */
+  stepDelay?: (step: number) => number;
+}) {
+  const sides = [
+    { value: description.left, centre: 80, cols: placeColumns(description.left) },
+    { value: description.right, centre: 240, cols: placeColumns(description.right) },
+  ];
+  // The deciding column: the first place where the digits differ
+  // (-1 when the two routes are the same length).
+  const deciding = sides[0].cols.findIndex((d, c) => d !== sides[1].cols[c]);
+  const winner = description.left === description.right ? -1 : description.left > description.right ? 0 : 1;
+  const loser = winner === -1 ? -1 : 1 - winner;
+  const sweepStart = (c: number) => (stepDelay ? stepDelay(c) : 0.4 + c * 0.7);
+
+  const renderSide = (s: number) => {
+    const side = sides[s] ?? sides[0];
+    return (
+      <>
+        <path className="cs-line cs-draw" pathLength={1} d={`M${side.centre - 62} 140 Q${side.centre} 145 ${side.centre + 62} 140`} style={delay(0)} />
+        <path className="cs-line cs-draw" pathLength={1} d={`M${side.centre + 60} 140 Q${side.centre + 59} 128 ${side.centre + 60} 116`} style={delay(0.2)} />
+        <path className="cs-tip" d={`M${side.centre + 60} 116 L${side.centre + 72} 120.5 L${side.centre + 60} 125 Z`} />
+        {side.cols.map((count, c) =>
+          Array.from({ length: count }, (_, i) => (
+            <g
+              key={`${s}-${c}-${i}`}
+              transform={`translate(${side.centre - 44 + c * 44} ${COMPARE_BASE_Y - i * (COMPARE_STEP[c] ?? 9)})`}
+            >
+              <g className="cs-pop" style={delay(0.35 + c * 0.12 + i * 0.04)}>
+                <CompareStackArt column={c} />
+              </g>
+            </g>
+          )),
+        )}
+      </>
+    );
+  };
+
+  return (
+    <>
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M160 28 Q157 95 160 162" style={delay(0.1)} />
+      {sides.map((_, s) =>
+        phase === "solved" && s === loser ? (
+          <g key={`side-${s}`} className="cs-dim" style={delay(sweepStart(deciding))}>
+            {renderSide(s)}
+          </g>
+        ) : (
+          <g key={`side-${s}`}>{renderSide(s)}</g>
+        ),
+      )}
+      {phase === "solved" ? (
+        <>
+          {/* Equal columns before the deciding one: both sides ring. */}
+          {sides[0].cols.map((_, c) =>
+            deciding === -1 || c < deciding
+              ? sides.map((side, s) => {
+                  const ring = stackRing(side.centre - 44 + c * 44, side.cols[c] ?? 0, c);
+                  return (
+                    <ellipse
+                      key={`ring-${s}-${c}`}
+                      className="cs-ring cs-ring-soft"
+                      cx={ring.cx}
+                      cy={ring.cy}
+                      rx={ring.rx}
+                      ry={ring.ry}
+                      style={delay(sweepStart(c))}
+                    />
+                  );
+                })
+              : null,
+          )}
+          {/* The deciding column: the larger stack rings in brass
+              and its side stays full-weight (the other side dims). */}
+          {deciding >= 0 && winner >= 0
+            ? (() => {
+                const side = sides[winner] ?? sides[0];
+                const ring = stackRing(side.centre - 44 + deciding * 44, side.cols[deciding] ?? 0, deciding);
+                return (
+                  <ellipse
+                    className="cs-ring"
+                    cx={ring.cx}
+                    cy={ring.cy}
+                    rx={ring.rx}
+                    ry={ring.ry}
+                    style={delay(sweepStart(deciding))}
+                  />
+                );
+              })()
+            : null}
+          {winner >= 0 ? (
+            <text
+              className="cs-tick cs-tick-final"
+              x={sides[winner]?.centre ?? 160}
+              y="24"
+              style={delay(stepDelay ? stepDelay(deciding + 1) + 0.1 : sweepStart(Math.max(deciding, 0)) + 0.55)}
+            >
+              {Math.max(description.left, description.right)}
+            </text>
+          ) : null}
+        </>
+      ) : null}
+    </>
+  );
+}
+
+/* ── Digit shift ───────────────────────────────────────────────
+   A 70-step path stretched ten times (→ 700) in the item this
+   was drawn for; the value and the factor come from the givens.
+   The path carries value/10 ten-stones; the solved beat grows
+   each one into a hundred-stone, one place further left. */
+
+function TenStoneArt() {
+  return <rect className="cs-pack" x="-12" y="-5" width="24" height="10" rx="5" />;
+}
+
+function HundredStoneArt() {
+  return (
+    <>
+      <rect className="cs-pack" x="-17" y="-6" width="34" height="12" rx="5" />
+      <path className="cs-line cs-band" d="M-16 0 Q0 -2 16 0" />
+    </>
+  );
+}
+
+export function DigitShiftScene({
+  description,
+  phase,
+  stepDelay,
+}: {
+  description: Extract<ClueSceneDescription, { kind: "digit-shift" }>;
+  phase: ClueScenePhase;
+  /** Summary pacing: when present, step s's beat starts at
+   * stepDelay(s) instead of the film's own stagger. */
+  stepDelay?: (step: number) => number;
+}) {
+  const stones = Math.max(0, Math.round(description.value / 10));
+  const eachWorth = 10 * description.factor;
+  const stoneStart = (i: number) => (stepDelay ? stepDelay(i) : 0.35 + i * 0.45);
+  const setupPos = (i: number) => ({
+    x: 40 + i * 38,
+    y: 110 + Math.round(Math.sin(i * 1.35) * 6),
+  });
+  return (
+    <>
+      <path
+        className="cs-line cs-draw"
+        pathLength={1}
+        d="M14 124 Q60 100 104 114 Q148 128 192 110 Q236 94 282 108 Q300 113 308 106"
+        style={delay(0)}
+      />
+      {phase === "solved" ? (
+        // The empty ones place that opens at the right as the row
+        // nudges one place to the left.
+        <path
+          className="cs-line cs-soft cs-draw"
+          pathLength={1}
+          d="M284 140 Q282 112 284 88 Q295 84 306 88 Q308 112 306 140"
+          style={delay(0.3)}
+        />
+      ) : null}
+      {Array.from({ length: stones }, (_, i) => {
+        const start = setupPos(i);
+        if (phase === "setup") {
+          return (
+            <g key={i} transform={`translate(${start.x} ${start.y})`}>
+              <g className="cs-pop" style={delay(0.4 + i * 0.08)}>
+                <TenStoneArt />
+              </g>
+            </g>
+          );
+        }
+        const fin = { x: start.x - 12, y: start.y };
+        return (
+          <g key={i} transform={`translate(${fin.x} ${fin.y})`}>
+            <g className="cs-slide" style={slideFrom(start.x - fin.x, 0, 0.35)}>
+              <g className="cs-grow" style={delay(stoneStart(i))}>
+                <HundredStoneArt />
+              </g>
+            </g>
+          </g>
+        );
+      })}
+      {phase === "solved"
+        ? Array.from({ length: stones }, (_, i) => (
+            <text
+              key={`tick-${i}`}
+              className={`cs-tick${i === stones - 1 ? " cs-tick-final" : ""}`}
+              x={setupPos(i).x - 12}
+              y="48"
+              style={delay(stoneStart(i) + 0.5)}
+            >
+              {(i + 1) * eachWorth}
+            </text>
+          ))
+        : null}
+    </>
+  );
+}

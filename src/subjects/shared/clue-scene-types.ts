@@ -61,6 +61,47 @@ export function dealOrder(description: ClueSceneDescription): number[] {
   return order;
 }
 
+/**
+ * The counting ticks for the container scenes (bus-boarding,
+ * pack-boxes): the running total each time a container fills —
+ * the multiples of the container size up to the total. A
+ * remainder adds no tick here: the part-full container's tick is
+ * the total itself, which the scene appends.
+ */
+export function groupTicks(total: number, groupSize: number): number[] {
+  const ticks: number[] = [];
+  for (let n = groupSize; n <= total; n += groupSize) {
+    ticks.push(n);
+  }
+  return ticks;
+}
+
+/**
+ * The chunking plan for a chunk-share solved beat: the per-share
+ * quotient split into place-value chunks (156 → [100, 50, 6]),
+ * dealt to every share in turn — the school chunking method, pure
+ * arithmetic on the givens. Empty when the givens do not divide
+ * evenly (the kind is only written for totals that do).
+ */
+export function chunkPlan(description: ClueSceneDescription): number[] {
+  if (description.kind !== "chunk-share") return [];
+  const quotient = description.total / description.shares;
+  if (!Number.isInteger(quotient) || quotient <= 0) return [];
+  const digits = String(quotient).split("").map(Number);
+  const chunks: number[] = [];
+  digits.forEach((digit, i) => {
+    const place = 10 ** (digits.length - 1 - i);
+    if (digit > 0) chunks.push(digit * place);
+  });
+  return chunks;
+}
+
+/** The place-value columns of a whole number: [hundreds, tens, ones]
+ * for the numbers the place kinds draw (0–999). */
+export function placeColumns(value: number): [number, number, number] {
+  return [Math.floor(value / 100) % 10, Math.floor(value / 10) % 10, value % 10];
+}
+
 /** One line of a scene summary's narration. */
 export interface ClueSceneSummaryLine {
   /** The spoken line, word for word the caption shown for its step. */
@@ -162,6 +203,102 @@ export type ClueSceneDescription =
       total: number;
       /** Friends sharing them — a given from the question. */
       friends: number;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "bus-boarding";
+      /** Children waiting — a given from the question. */
+      total: number;
+      /** Seats on each bus — a given from the question. */
+      seats: number;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "pack-boxes";
+      /** Pencils to pack — a given from the question. */
+      total: number;
+      /** Pencils in each box — a given from the question. */
+      perBox: number;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "place-value";
+      /** Hundreds in the amount — a given from the question. */
+      hundreds: number;
+      /** Tens in the amount — a given from the question. */
+      tens: number;
+      /** Ones in the amount — a given from the question. */
+      ones: number;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "place-compare";
+      /** One route's length in steps — a given from the question. */
+      left: number;
+      /** The other route's length — a given from the question. */
+      right: number;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "rounding-line";
+      /** The number to round — a given from the question. */
+      value: number;
+      /** The hundred below it — a given from the question. */
+      low: number;
+      /** The hundred above it — a given from the question. */
+      high: number;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "digit-shift";
+      /** The starting number — a given from the question. */
+      value: number;
+      /** The stretch factor — a given from the question. */
+      factor: number;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "split-product";
+      /** Rows of chairs — a given from the question. */
+      rows: number;
+      /** Chairs in each row — a given from the question. */
+      perRow: number;
+      /** The round part of a row — split from the question's number. */
+      splitHigh: number;
+      /** The leftover part of a row — split from the question's number. */
+      splitLow: number;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "chunk-share";
+      /** Books to share — a given from the question. */
+      total: number;
+      /** Shelves sharing them — a given from the question. */
+      shares: number;
       labelSetup: string;
       labelSolved: string;
       /** Narrated solved summary (act 3); solved phase only. */

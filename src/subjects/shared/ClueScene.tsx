@@ -52,6 +52,17 @@ import {
   type ClueSceneSummary,
 } from "./clue-scene-types";
 import { seeded } from "./clue-scene-easing";
+import { BusBoardingScene, PackBoxesScene } from "./clue-scene-kinds-a";
+import {
+  DigitShiftScene,
+  PlaceCompareScene,
+  PlaceValueScene,
+} from "./clue-scene-kinds-b";
+import {
+  ChunkShareScene,
+  RoundingLineScene,
+  SplitProductScene,
+} from "./clue-scene-kinds-c";
 import { claimVoice, type VoiceClaim } from "../../game/audio/voice-channel";
 import { isSoundEnabled } from "../../game/audio/sfx";
 import { soundAudible } from "../../game/audio/play-guards";
@@ -375,6 +386,14 @@ const SUMMARY_STAGGER: Record<ClueSceneDescription["kind"], number> = {
   "coin-groups": 0.62,
   "pencil-packs": 0.62,
   "fair-share": 0.34,
+  "bus-boarding": 0.95,
+  "pack-boxes": 0.85,
+  "place-value": 0.8,
+  "place-compare": 0.7,
+  "rounding-line": 0.9,
+  "digit-shift": 0.5,
+  "split-product": 0.9,
+  "chunk-share": 1.15,
 };
 
 /** The summary clip's URL (public/audio/subjects/, manifest.json). */
@@ -405,6 +424,43 @@ export function ClueSummaryText({ summary }: { summary: ClueSceneSummary }) {
       </ol>
     </div>
   );
+}
+
+/** The scene art for a description's kind — pilot kinds above,
+ * the wave-1 kinds in their own modules (clue-scene-kinds-a/b/c). */
+function SceneArt({
+  description,
+  phase,
+  stepDelay,
+}: {
+  description: ClueSceneDescription;
+  phase: ClueScenePhase;
+  stepDelay?: (step: number) => number;
+}) {
+  switch (description.kind) {
+    case "coin-groups":
+      return <CoinGroupsScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "pencil-packs":
+      return <PencilPacksScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "fair-share":
+      return <FairShareScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "bus-boarding":
+      return <BusBoardingScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "pack-boxes":
+      return <PackBoxesScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "place-value":
+      return <PlaceValueScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "place-compare":
+      return <PlaceCompareScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "rounding-line":
+      return <RoundingLineScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "digit-shift":
+      return <DigitShiftScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "split-product":
+      return <SplitProductScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "chunk-share":
+      return <ChunkShareScene description={description} phase={phase} stepDelay={stepDelay} />;
+  }
 }
 
 export function ClueScene({
@@ -618,13 +674,7 @@ export function ClueScene({
       data-summary={summary ? summaryState : undefined}
     >
       <svg key={runKey} viewBox="0 0 320 190" role="img" aria-label={label}>
-        {description.kind === "coin-groups" ? (
-          <CoinGroupsScene description={description} phase={phase} stepDelay={stepDelay} />
-        ) : description.kind === "pencil-packs" ? (
-          <PencilPacksScene description={description} phase={phase} stepDelay={stepDelay} />
-        ) : (
-          <FairShareScene description={description} phase={phase} stepDelay={stepDelay} />
-        )}
+        <SceneArt description={description} phase={phase} stepDelay={stepDelay} />
       </svg>
       {summary ? (
         <p className="clue-scene-caption" data-testid="clue-scene-caption" aria-hidden="true">
