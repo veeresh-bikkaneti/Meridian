@@ -57,6 +57,8 @@ import {
   BendTestScene,
   BubbleReactionScene,
   BusBoardingScene,
+  CompassWalkScene,
+  DensityTownsScene,
   MeltFreezeScene,
   PackBoxesScene,
   PercentBarScene,
@@ -88,13 +90,18 @@ import {
   SlopePairScene,
   SoundPathScene,
   TimelineLineScene,
+  TwoRoadsScene,
+  ZoneClocksScene,
 } from "./clue-scene-kinds-b";
 import {
   AtomTallyScene,
   BearingDiagramScene,
   ChunkShareScene,
   ColumnCousinsScene,
+  CostCompareScene,
   DissolveScene,
+  GlobeVsMapScene,
+  GreatCircleScene,
   EnergyLedgerScene,
   LightPathScene,
   JourneyLineScene,
@@ -494,6 +501,13 @@ const SUMMARY_STAGGER: Record<ClueSceneDescription["kind"], number> = {
   "glow-rate": 0.8,
   "atom-tally": 0.8,
   "column-cousins": 0.8,
+  "compass-walk": 0.8,
+  "density-towns": 0.8,
+  "two-roads": 0.8,
+  "zone-clocks": 0.8,
+  "globe-vs-map": 0.8,
+  "great-circle": 0.8,
+  "cost-compare": 0.8,
 };
 
 /** The summary clip's URL (public/audio/subjects/, manifest.json). */
@@ -656,6 +670,20 @@ function SceneArt({
       return <AtomTallyScene description={description} phase={phase} stepDelay={stepDelay} />;
     case "column-cousins":
       return <ColumnCousinsScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "compass-walk":
+      return <CompassWalkScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "density-towns":
+      return <DensityTownsScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "two-roads":
+      return <TwoRoadsScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "zone-clocks":
+      return <ZoneClocksScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "globe-vs-map":
+      return <GlobeVsMapScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "great-circle":
+      return <GreatCircleScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "cost-compare":
+      return <CostCompareScene description={description} phase={phase} stepDelay={stepDelay} />;
   }
 }
 

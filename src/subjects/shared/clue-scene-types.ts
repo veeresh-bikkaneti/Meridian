@@ -411,6 +411,13 @@ export type ClueSceneDescription =
       rows: number;
       /** Tiles in each row — a given from the question. */
       perRow: number;
+      /** True variant (wave 9, social studies): a SECOND field
+       * of this many rows stands beside the first (the two
+       * fields of the area-by-squares item); the solved beat
+       * counts both fields and stands the difference as its
+       * final tick. Absent, the renderer runs the Math path
+       * unchanged. */
+      secondRows?: number;
       /** The round part of a row — split from the question's number. */
       splitHigh: number;
       /** The leftover part of a row — split from the question's number. */
@@ -448,6 +455,10 @@ export type ClueSceneDescription =
       mapCm: number;
       /** Kilometres each centimetre stands for — a given. */
       kmPerCm: number;
+      /** Segment width in px (wave 9, social studies): a long
+       * trail (7 cm) needs narrower segments to stay in frame.
+       * Absent, the renderer uses the Math width unchanged. */
+      segmentPx?: number;
       labelSetup: string;
       labelSolved: string;
       /** Narrated solved summary (act 3); solved phase only. */
@@ -878,5 +889,73 @@ export type ClueSceneDescription =
       labelSetup: string;
       labelSolved: string;
       /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "compass-walk";
+      /** Steps east — a given from the question. */
+      eastSteps: number;
+      /** Steps north — a given from the question. */
+      northSteps: number;
+      labelSetup: string;
+      labelSolved: string;
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "density-towns";
+      /** Square kilometres the first town's crowd fills — a given. */
+      firstArea: number;
+      /** Square kilometres the second town's crowd fills — a given. */
+      secondArea: number;
+      labelSetup: string;
+      labelSolved: string;
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "two-roads";
+      /** The pass road's length — a given from the question. */
+      passKm: number;
+      /** Speed on the pass — a given from the question. */
+      passSpeed: number;
+      /** The valley road's length — a given from the question. */
+      valleyKm: number;
+      /** Speed on the valley road — a given from the question. */
+      valleySpeed: number;
+      labelSetup: string;
+      labelSolved: string;
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "zone-clocks";
+      /** The hour here, on a twelve-hour clock — a given. */
+      hereHour: number;
+      /** Time zones the far place is east — a given. */
+      zonesAhead: number;
+      labelSetup: string;
+      labelSolved: string;
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "globe-vs-map";
+      labelSetup: string;
+      labelSolved: string;
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "great-circle";
+      labelSetup: string;
+      labelSolved: string;
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "cost-compare";
+      /** Fuel cost on the toll road — a given from the question. */
+      tollFuel: number;
+      /** The toll itself — a given from the question. */
+      tollFee: number;
+      /** Fuel cost on the free road — a given from the question. */
+      freeFuel: number;
+      labelSetup: string;
+      labelSolved: string;
       summary?: ClueSceneSummary;
     };

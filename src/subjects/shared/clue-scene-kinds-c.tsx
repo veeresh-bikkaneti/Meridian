@@ -1808,3 +1808,189 @@ export function ColumnCousinsScene({
     </>
   );
 }
+
+/* ── Wave 9 kinds (Social studies): globe-vs-map, great-circle,
+   cost-compare ───────────────────────────────────────────────
+   Same discipline as the kinds above: givens only in the setup
+   film, no outcome before the pick. globe-vs-map paces three
+   steps (the flat map's polar stretch marks widen, the true
+   big land outline stands over the map, the final tick);
+   great-circle paces three (the arc over the globe's pole
+   draws, the same path draws curved on the flat map below,
+   the final tick — a parameterised kind: any description's
+   two pins and labels drive it, nothing is tied to one item);
+   cost-compare paces three (the toll road's two coin stacks
+   join into one, the free road's stack stands beside it, the
+   final tick over the cheaper stack). Each ends with exactly
+   one cs-tick cs-tick-final "✓". Coin counts are the
+   question's givens; no scene label carries a digit. */
+
+export function GlobeVsMapScene({
+  description,
+  phase,
+  stepDelay,
+}: {
+  description: Extract<ClueSceneDescription, { kind: "globe-vs-map" }>;
+  phase: ClueScenePhase;
+  stepDelay?: (step: number) => number;
+}) {
+  void description;
+  const stretchStart = stepDelay ? stepDelay(0) : 0.5;
+  const truthStart = stepDelay ? stepDelay(1) : 1.4;
+  const tickStart = stepDelay ? stepDelay(2) : 2.3;
+  // Land blobs: on the globe the polar land stays small and
+  // the great land below it is wide; on the flat map the polar
+  // land is drawn stretched wide, as the prompt states it looks.
+  const polarLand = (cx: number, cy: number, wide: number, high: number) => (
+    <path className="cs-stone" d={`M${cx - wide} ${cy} Q${cx - wide / 2} ${cy - high} ${cx} ${cy - high + 2} Q${cx + wide / 2} ${cy - high} ${cx + wide} ${cy} Q${cx + wide / 2} ${cy + high - 2} ${cx} ${cy + high} Q${cx - wide / 2} ${cy + high - 2} ${cx - wide} ${cy} Z`} />
+  );
+  const greatLand = (cx: number, cy: number, wide: number, high: number) => (
+    <path className="cs-pack" d={`M${cx - wide / 2} ${cy - high} Q${cx + wide / 4} ${cy - high - 4} ${cx + wide} ${cy - high / 3} Q${cx + wide / 2} ${cy + high / 2} ${cx + wide / 6} ${cy + high} Q${cx - wide / 3} ${cy + high / 2} ${cx - wide} ${cy} Q${cx - wide / 2} ${cy - high / 2} ${cx - wide / 2} ${cy - high} Z`} />
+  );
+  return (
+    <>
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M24 28 Q160 24 296 28" style={delay(0.1)} />
+      <path className="cs-line cs-draw" pathLength={1} d="M16 172 Q160 176 304 172" style={delay(0)} />
+      {/* The globe, left: a circle with its lands at true shape. */}
+      <circle className="cs-line cs-draw" pathLength={1} cx="82" cy="100" r="58" style={delay(0.15)} />
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M28 82 Q82 92 136 82 M28 120 Q82 130 136 120" style={delay(0.25)} />
+      <g className="cs-pop" style={delay(0.45)}>{polarLand(82, 62, 17, 9)}</g>
+      <g className="cs-pop" style={delay(0.55)}>{greatLand(86, 112, 30, 24)}</g>
+      {/* The flat map, right: a sheet whose polar land already
+          stretches wide — the look the prompt itself states. */}
+      <path className="cs-line cs-draw" pathLength={1} d="M176 48 Q238 44 300 48 Q303 100 300 152 Q238 156 176 152 Q173 100 176 48 Z" style={delay(0.2)} />
+      <g className="cs-pop" style={delay(0.5)}>{polarLand(238, 68, 44, 10)}</g>
+      <g className="cs-pop" style={delay(0.6)}>{greatLand(240, 118, 30, 22)}</g>
+      {phase === "solved" ? (
+        <>
+          {/* Step 0: stretch arrows widen at the map's polar land. */}
+          <path className="cs-line cs-band cs-pop" d="M188 68 L196 68 M292 68 L284 68" style={delay(stretchStart)} />
+          <path className="cs-tip cs-pop" d="M186 68 L196 63 L196 73 Z" style={delay(stretchStart + 0.1)} />
+          <path className="cs-tip cs-pop" d="M294 68 L284 63 L284 73 Z" style={delay(stretchStart + 0.2)} />
+          {/* Step 1: the globe's great land stands over the map
+              at its true size — far wider than the polar land. */}
+          <g className="cs-pop" style={delay(truthStart)}>
+            <path className="cs-split-high" d="M204 84 Q226 76 252 82 Q268 92 258 116 Q246 134 224 130 Q202 122 198 104 Q198 92 204 84 Z" />
+          </g>
+          <ellipse className="cs-ring" cx="230" cy="107" rx="38" ry="32" style={delay(tickStart + 0.4)} />
+          <text className="cs-tick cs-tick-final" x="238" y="34" style={delay(tickStart + 0.55)}>
+            ✓
+          </text>
+        </>
+      ) : null}
+    </>
+  );
+}
+
+export function GreatCircleScene({
+  description,
+  phase,
+  stepDelay,
+}: {
+  description: Extract<ClueSceneDescription, { kind: "great-circle" }>;
+  phase: ClueScenePhase;
+  stepDelay?: (step: number) => number;
+}) {
+  void description;
+  const arcStart = stepDelay ? stepDelay(0) : 0.5;
+  const flatStart = stepDelay ? stepDelay(1) : 1.4;
+  const tickStart = stepDelay ? stepDelay(2) : 2.3;
+  const pin = (cx: number, cy: number, dly: number) => (
+    <g className="cs-pop" style={delay(dly)}>
+      <circle className="cs-coin" cx={cx} cy={cy} r="5" />
+      <circle className="cs-coin-inner" cx={cx} cy={cy} r="2.2" />
+    </g>
+  );
+  return (
+    <>
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M24 24 Q160 20 296 24" style={delay(0.1)} />
+      {/* The globe, above: two pins, no path before the pick. */}
+      <circle className="cs-line cs-draw" pathLength={1} cx="160" cy="66" r="42" style={delay(0.15)} />
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M122 54 Q160 62 198 54 M122 80 Q160 88 198 80" style={delay(0.25)} />
+      {pin(132, 74, 0.45)}
+      {pin(188, 74, 0.55)}
+      {/* The flat map, below: the same two pins on a sheet. */}
+      <path className="cs-line cs-draw" pathLength={1} d="M70 124 Q160 120 250 124 Q253 148 250 168 Q160 172 70 168 Q67 148 70 124 Z" style={delay(0.2)} />
+      {pin(102, 148, 0.5)}
+      {pin(218, 148, 0.6)}
+      {phase === "solved" ? (
+        <>
+          {/* Step 0: the shortest path arcs over the globe's pole. */}
+          <path className="cs-line cs-band cs-draw" pathLength={1} d="M132 74 Q160 18 188 74" style={delay(arcStart)} />
+          {/* Step 1: the same path, drawn flat, bends the same way. */}
+          <path className="cs-line cs-band cs-draw" pathLength={1} d="M102 148 Q160 122 218 148" style={delay(flatStart)} />
+          <ellipse className="cs-ring" cx="160" cy="52" rx="34" ry="30" style={delay(tickStart + 0.4)} />
+          <text className="cs-tick cs-tick-final" x="160" y="14" style={delay(tickStart + 0.55)}>
+            ✓
+          </text>
+        </>
+      ) : null}
+    </>
+  );
+}
+
+export function CostCompareScene({
+  description,
+  phase,
+  stepDelay,
+}: {
+  description: Extract<ClueSceneDescription, { kind: "cost-compare" }>;
+  phase: ClueScenePhase;
+  stepDelay?: (step: number) => number;
+}) {
+  const { tollFuel, tollFee, freeFuel } = description;
+  const joinStart = stepDelay ? stepDelay(0) : 0.5;
+  const standStart = stepDelay ? stepDelay(1) : 1.4;
+  const tickStart = stepDelay ? stepDelay(2) : 2.3;
+  const stack = (cx: number, baseY: number, count: number, dly: number) =>
+    Array.from({ length: count }, (_, i) => (
+      <circle key={`coin-${cx}-${i}`} className="cs-coin cs-pop" cx={cx} cy={baseY - i * 7} r="4.6" style={delay(dly + i * 0.03)} />
+    ));
+  const baseY = 156;
+  return (
+    <>
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M24 28 Q160 24 296 28" style={delay(0.1)} />
+      <path className="cs-line cs-draw" pathLength={1} d="M16 162 Q160 166 304 162" style={delay(0)} />
+      {/* Two roads across the top: the toll road with its
+          barrier, the free road open. Givens from the prompt. */}
+      <path className="cs-line cs-draw" pathLength={1} d="M28 52 Q160 46 292 52" style={delay(0.15)} />
+      <path className="cs-line cs-band cs-draw" pathLength={1} d="M238 40 L238 58 M226 44 L250 44" style={delay(0.3)} />
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M28 78 Q160 72 292 78" style={delay(0.2)} />
+      {phase === "setup" ? (
+        <>
+          {/* The toll road's two stacks stand apart — fuel here,
+              the toll there, never added before the pick. The
+              free road's one stack stands on its own side. */}
+          {stack(84, baseY, tollFuel, 0.45)}
+          {stack(128, baseY, tollFee, 0.55)}
+          {stack(228, baseY, freeFuel, 0.6)}
+        </>
+      ) : (
+        <>
+          {/* Step 0: the toll stacks join into one tall stack. */}
+          {stack(84, baseY, tollFuel, 0.3)}
+          <g transform="translate(-44 0)">
+            <g className="cs-slide" style={slideFrom(44, tollFuel * 7, joinStart)}>
+              {Array.from({ length: tollFee }, (_, i) => (
+                <circle key={`fee-${i}`} className="cs-coin" cx={128} cy={baseY - (tollFuel + i) * 7} r="4.6" />
+              ))}
+            </g>
+          </g>
+          {/* Step 1: the free stack slides beside the joined
+              stack — shorter, coin for coin. */}
+          <g transform="translate(-116 0)">
+            <g className="cs-slide" style={slideFrom(116, 0, standStart)}>
+              {Array.from({ length: freeFuel }, (_, i) => (
+                <circle key={`free-${i}`} className="cs-coin" cx={228} cy={baseY - i * 7} r="4.6" />
+              ))}
+            </g>
+          </g>
+          <ellipse className="cs-ring" cx="112" cy={baseY - (freeFuel * 7) / 2} rx="16" ry={(freeFuel * 7) / 2 + 10} style={delay(tickStart + 0.4)} />
+          <text className="cs-tick cs-tick-final" x="112" y="34" style={delay(tickStart + 0.55)}>
+            ✓
+          </text>
+        </>
+      )}
+    </>
+  );
+}
