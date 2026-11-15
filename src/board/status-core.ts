@@ -336,10 +336,10 @@ function mulberry32(seed: number) {
 
 const EPIC_CENTERS: Record<string, [number, number, number]> = {
   geodetective: [0, 2, 0],
-  subjects: [33, 7, -6],
-  journals: [-31, 11, -10],
-  voices: [-16, -16, 10],
-  behind: [21, -16, 12],
+  subjects: [22, 5, -4],
+  journals: [-21, 8, -7],
+  voices: [-11, -11, 7],
+  behind: [14, -11, 8],
 };
 
 /** Deterministic layout, same construction as the owner-seen mockup. */

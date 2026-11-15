@@ -141,9 +141,14 @@ export default function MoleculeMap({
         canvas.width = 512;
         canvas.height = 128;
         const ctx = canvas.getContext("2d")!;
-        ctx.font = "600 52px Georgia, serif";
         ctx.textAlign = "center";
         ctx.fillStyle = "rgba(246,241,227,0.92)";
+        let fontSize = 52;
+        ctx.font = `600 ${fontSize}px Georgia, serif`;
+        while (ctx.measureText(feature.name).width > 460 && fontSize > 26) {
+          fontSize -= 4;
+          ctx.font = `600 ${fontSize}px Georgia, serif`;
+        }
         const tw = Math.min(480, ctx.measureText(feature.name).width + 48);
         ctx.beginPath();
         ctx.roundRect((512 - tw) / 2, 22, tw, 84, 42);
@@ -182,7 +187,7 @@ export default function MoleculeMap({
     /* camera + the §3 gesture map (custom orbit, clamped) */
     let theta = 0.6;
     let phi = 1.15;
-    let radius = 58;
+    let radius = 62;
     let goalTheta = theta;
     let goalPhi = phi;
     let goalRadius = radius;
@@ -212,7 +217,7 @@ export default function MoleculeMap({
       reset: () => {
         goalTheta = 0.6;
         goalPhi = 1.15;
-        goalRadius = 58;
+        goalRadius = 62;
         goalTarget.copy(homeTarget);
         if (reduced) {
           theta = goalTheta;
@@ -309,6 +314,8 @@ export default function MoleculeMap({
         if (sel && layout.positions[sel]) {
           const p = layout.positions[sel];
           goalTarget.set(p[0], p[1], p[2]);
+          goalRadius = 30;
+          if (reduced) radius = goalRadius;
         }
       }
       if (sel && layout.positions[sel]) {
@@ -324,6 +331,18 @@ export default function MoleculeMap({
       if (frames === 45) {
         stage.dataset.drawCalls = String(renderer.info.render.calls);
         stage.dataset.triangles = String(renderer.info.render.triangles);
+        /* E2E probe (same family as the counters above): the frontier
+         * atom's projected position as canvas fractions, so the spec
+         * can click a real atom through the real raycast path. */
+        const frontier = board.epics
+          .flatMap((e) => e.features.flatMap((f) => f.stories))
+          .find((s) => s.status === "in-progress");
+        if (frontier && layout.positions[frontier.slug]) {
+          const v = new THREE.Vector3(...layout.positions[frontier.slug]).project(camera);
+          stage.dataset.probeX = String(v.x * 0.5 + 0.5);
+          stage.dataset.probeY = String(-v.y * 0.5 + 0.5);
+          stage.dataset.probeSlug = frontier.slug;
+        }
       }
     };
     tick();
