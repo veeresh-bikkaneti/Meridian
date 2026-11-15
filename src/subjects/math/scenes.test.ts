@@ -56,6 +56,26 @@ function givensOf(d: ClueSceneDescription): number[] {
       return [d.rows, d.perRow, d.splitHigh, d.splitLow];
     case "chunk-share":
       return [d.total, d.shares];
+    case "array-grid":
+      return [d.rows, d.perRow, d.splitHigh, d.splitLow];
+    case "scale-line":
+      return [d.kilometres, d.metresPerKm];
+    case "percent-bar":
+      return [d.total, d.percentOff];
+    case "map-scale":
+      return [d.mapCm, d.kmPerCm];
+    case "fraction-bar":
+      return [d.numerator, d.denominator];
+    case "fraction-measure":
+      return [d.total, d.pieceNumerator, d.pieceDenominator];
+    case "rate-bars":
+      return [d.firstMetres, d.firstCoins, d.secondMetres, d.secondCoins];
+    case "journey-line":
+      return [d.totalKm, d.hours ?? -1, d.targetKm ?? -1, d.aheadKm ?? -1].filter((n) => n >= 0);
+    case "spend-then-group":
+      return [d.total, d.fixedCost, d.perGroup];
+    case "bearing-diagram":
+      return [d.eastKm, d.northKm];
     case "tile-grid":
       return [d.cols, d.rows];
     case "measure-trace":
@@ -103,6 +123,28 @@ function stepCountOf(d: ClueSceneDescription): number {
       return 4; // split overlays, round-part tick, leftover tick, final tick
     case "chunk-share":
       return chunkPlan(d).length;
+    case "array-grid":
+      return 4; // split overlays, wide tick, narrow tick, final tick
+    case "scale-line":
+      return 2; // the kilometre marks, then the final tick
+    case "percent-bar":
+      return 3; // the split, the saved tick, the final tick
+    case "map-scale":
+      return d.mapCm;
+    case "fraction-bar":
+      return 2; // the shading, then the halved part
+    case "fraction-measure":
+      return Math.round(d.total / (d.pieceNumerator / d.pieceDenominator));
+    case "rate-bars":
+      return 3; // first bar priced, second bar priced, cheaper ringed
+    case "journey-line":
+      return d.hours !== undefined && d.targetKm !== undefined
+        ? Math.round(d.targetKm / (d.totalKm / d.hours))
+        : 2; // the walked fill, then the final tick
+    case "spend-then-group":
+      return 1 + Math.round((d.total - d.fixedCost) / d.perGroup);
+    case "bearing-diagram":
+      return 3; // east leg, north leg, the angle arc
     case "tile-grid":
       return d.rows; // one beat per row laid
     case "measure-trace":
@@ -120,13 +162,14 @@ function stepCountOf(d: ClueSceneDescription): number {
 
 describe("clue scene descriptions", () => {
   it("covers exactly the Math items for ages 7-10", () => {
-    assert.deepEqual(Object.keys(MATH_CLUE_SCENES).sort(), [...ALL_IDS].sort());
+    // (The scene map's full key set — 7-10 plus the wave-2 band —
+    // is pinned exactly by the wave-2 block below.)
     for (const id of ALL_IDS) {
       assert.ok(clueSceneFor(id), `${id} has a scene`);
     }
-    // Other bands carry no descriptions yet — their clue cards
-    // are unchanged.
-    assert.equal(clueSceneFor(itemsForGroup("10-18")[0]!.id), null);
+    // The 18+ band carries no descriptions yet — its clue cards
+    // are unchanged. (10-18 coverage is pinned by the wave-2 block
+    // below.)
     assert.equal(clueSceneFor(itemsForGroup("18+")[0]!.id), null);
   });
 
@@ -369,6 +412,176 @@ describe("clue scene summaries (act 3)", () => {
           start >= (summary.lines[line]?.at ?? 0),
           `${id}: step ${step} starts inside its line`,
         );
+        assert.ok(start < summary.duration, `${id}: step ${step} starts before the clip ends`);
+      }
+    }
+  });
+});
+
+/* ── Wave 2: Math ages 10-18 ───────────────────────────────────
+   The same contract as the 7-10 block above, for the band's 13
+   items: coverage exact, setup blind, arithmetic landing on the
+   answer, summaries well-formed and paced to their solved beat.
+   The one documented exemption is the accuracy item's
+   rounding-line: the zoomed line's two hundredths ARE the
+   question's own givens (the tape's precision), drawn spatially
+   without marking the nearer end before the pick — the same
+   pattern the pilot ruled for place-compare / rounding-line. */
+
+const BAND2_IDS = itemsForGroup("10-18").map((item) => item.id);
+
+const BAND2_CLOSING: Record<string, string> = {
+  "math-number:tables:multi-digit": "1081",
+  "math-applied:measure:convert-metric": "2400",
+  "math-number:fractions:percent": "56",
+  "math-applied:geometry:scale-drawing": "8 kilometres",
+  "math-number:division:standard-algorithm": "156",
+  "math-number:fractions:multiply": "1/3",
+  "math-number:fractions:divide": "8 ribbons",
+  "math-applied:measure:accuracy": "2.48",
+  "math-applied:rates:unit-rate": "1.6",
+  "math-applied:rates:constant-speed": "5 hours",
+  "math-applied:rates:one-step": "7 kilometres",
+  "math-applied:rates:two-step": "5 cups",
+  "math-applied:trig:bearings": "37 degrees",
+};
+
+describe("clue scene descriptions — wave 2 (ages 10-18)", () => {
+  it("covers exactly the Math items for ages 10-18, on top of 7-10", () => {
+    assert.equal(BAND2_IDS.length, 13);
+    for (const id of BAND2_IDS) {
+      assert.ok(clueSceneFor(id), `${id} has a scene`);
+    }
+    assert.deepEqual(
+      Object.keys(MATH_CLUE_SCENES).sort(),
+      [...ALL_IDS, ...BAND2_IDS].sort(),
+    );
+    // The held 18+ item stays description-free.
+    assert.equal(clueSceneFor("math-applied:measure:survey-check"), null);
+  });
+
+  it("never carries the answer before the pick", () => {
+    for (const id of BAND2_IDS) {
+      const description = clueSceneFor(id)!;
+      const answer = MATH_ANSWERS[id]!;
+      assert.ok(!/\d/.test(description.labelSetup), `${id}: setup label has no digits`);
+      assert.ok(!/\d/.test(description.labelSolved), `${id}: solved label has no digits`);
+      for (const choice of answer.choices) {
+        assert.ok(
+          !new RegExp(`\\b${choice.replace(".", "\\.")}\\b`).test(description.labelSetup),
+          `${id}: setup label must not contain the choice ${choice}`,
+        );
+      }
+      // Givens are the question's own numbers; the answer value is
+      // never one of them — except the accuracy item's
+      // rounding-line, whose low hundredth is the rounded value by
+      // construction (documented above; the scene marks no nearer
+      // end before the pick).
+      if (description.kind !== "rounding-line" && answer.value !== undefined) {
+        assert.ok(
+          !givensOf(description).includes(answer.value),
+          `${id}: answer value is not a scene given`,
+        );
+      }
+    }
+  });
+
+  it("the solved beat's arithmetic lands on the item's answer", () => {
+    for (const id of BAND2_IDS) {
+      const d = clueSceneFor(id)!;
+      const value = MATH_ANSWERS[id]!.value;
+      switch (d.kind) {
+        case "array-grid":
+          assert.equal(d.rows * d.perRow, value, id);
+          assert.equal(d.splitHigh + d.splitLow, d.perRow, id);
+          break;
+        case "scale-line":
+          assert.equal(d.kilometres * d.metresPerKm, value, id);
+          break;
+        case "percent-bar":
+          assert.equal(d.total - (d.total * d.percentOff) / 100, value, id);
+          break;
+        case "map-scale":
+          assert.equal(d.mapCm * d.kmPerCm, value, id);
+          break;
+        case "chunk-share": {
+          const plan = chunkPlan(d);
+          assert.deepEqual(plan, [100, 50, 6], id);
+          assert.equal(plan.reduce((a, b) => a + b, 0), d.total / d.shares, id);
+          assert.equal(d.total / d.shares, value, id);
+          break;
+        }
+        case "fraction-bar":
+          assert.equal(d.numerator / d.denominator / 2, value, id);
+          break;
+        case "fraction-measure":
+          assert.equal(d.total / (d.pieceNumerator / d.pieceDenominator), value, id);
+          break;
+        case "rounding-line":
+          assert.equal(d.value - d.low < d.high - d.value ? d.low : d.high, value, id);
+          break;
+        case "rate-bars":
+          assert.equal(
+            Math.min(d.firstCoins / d.firstMetres, d.secondCoins / d.secondMetres),
+            value,
+            id,
+          );
+          break;
+        case "journey-line":
+          if (d.hours !== undefined && d.targetKm !== undefined) {
+            assert.equal(d.targetKm / (d.totalKm / d.hours), value, id);
+          } else {
+            assert.equal(d.totalKm - (d.aheadKm ?? 0), value, id);
+          }
+          break;
+        case "spend-then-group":
+          assert.equal((d.total - d.fixedCost) / d.perGroup, value, id);
+          break;
+        case "bearing-diagram":
+          assert.equal(
+            Math.round((Math.atan2(d.eastKm, d.northKm) * 180) / Math.PI),
+            37,
+            id,
+          );
+          assert.equal(MATH_ANSWERS[id]!.correct, "37°", id);
+          break;
+        default:
+          assert.fail(`${id}: unexpected kind ${d.kind}`);
+      }
+    }
+  });
+
+  it("every wave-2 item carries a well-formed narrated summary", () => {
+    for (const id of BAND2_IDS) {
+      const description = clueSceneFor(id)!;
+      const summary = description.summary;
+      assert.ok(summary, `${id} has a summary`);
+      assert.ok(summary.lines.length >= 4, `${id}: an opening, steps, and a closing line`);
+      assert.equal(summary.beats.length, summary.lines.length, `${id}: beats parallel to lines`);
+      assert.equal(summary.lines[0]!.at, 0, `${id}: first line at 0`);
+      for (let i = 1; i < summary.lines.length; i++) {
+        assert.ok(summary.lines[i]!.at > summary.lines[i - 1]!.at, `${id}: timings increase`);
+      }
+      assert.ok(summary.duration > summary.lines[summary.lines.length - 1]!.at, `${id}: clip outlasts last line`);
+      assert.ok(!/\d/.test(summary.clip.replace(/\.mp3$/, "")), `${id}: clip name carries no digits`);
+      assert.ok(!summary.clip.includes("/"), `${id}: clip is a plain file name`);
+      assert.equal(
+        summaryStepCount(summary),
+        stepCountOf(description),
+        `${id}: beat map covers the solved beat`,
+      );
+      const closing = summary.lines[summary.lines.length - 1]!.text;
+      assert.ok(
+        closing.includes(BAND2_CLOSING[id]!),
+        `${id}: closing line states ${BAND2_CLOSING[id]}`,
+      );
+      let previousLine = -1;
+      for (let step = 0; step < summaryStepCount(summary); step++) {
+        const { line } = summaryStepLine(summary, step);
+        assert.ok(line >= previousLine, `${id}: step ${step} never jumps backwards a line`);
+        previousLine = line;
+        const start = summaryStepStart(summary, step, 0.5);
+        assert.ok(start >= (summary.lines[line]?.at ?? 0), `${id}: step ${step} starts inside its line`);
         assert.ok(start < summary.duration, `${id}: step ${step} starts before the clip ends`);
       }
     }

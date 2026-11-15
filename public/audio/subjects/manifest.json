@@ -1,7 +1,7 @@
 {
   "v": 1,
   "voice": "am_michael",
-  "note": "Narrated solved summaries for the math clue scenes (act 3). One clip per item; the script and per-line timings in src/subjects/math/scenes.ts are the source of truth and match the clips line for line. Rendered locally with the same voice and loudness targets as the journal narration (-18 LUFS, true peak -1.5 dBFS), 24 kHz mono MP3 at 64 kbps like the other in-app clips. Wave 1 (expansion) added the ten non-pilot clips in the same voice (am_michael), rendered the same way. The scenes wave (visual-questions Phase 1) added the nine wave-3 clips in the same voice, rendered the same way.",
+  "note": "Narrated solved summaries for the math clue scenes (act 3). One clip per item; the script and per-line timings in src/subjects/math/scenes.ts are the source of truth and match the clips line for line. Rendered locally with the same voice and loudness targets as the journal narration (-18 LUFS, true peak -1.5 dBFS), 24 kHz mono MP3 at 64 kbps like the other in-app clips. Wave 1 (expansion) added the ten non-pilot clips in the same voice (am_michael), rendered the same way. The scenes wave (visual-questions Phase 1) added the nine wave-3 clips in the same voice, rendered the same way. Wave 2 (expansion) added the thirteen 10-18 clips in the same voice (am_michael), rendered the same way.",
   "clips": {
     "skip-count": {
       "file": "skip-count.mp3",
@@ -134,6 +134,84 @@
       "item": "math-applied:measure:rect-area",
       "duration": 17.48,
       "lines": 4
+    },
+    "multi-digit": {
+      "file": "multi-digit.mp3",
+      "item": "math-number:tables:multi-digit",
+      "duration": 24.19,
+      "lines": 5
+    },
+    "convert-metric": {
+      "file": "convert-metric.mp3",
+      "item": "math-applied:measure:convert-metric",
+      "duration": 17.28,
+      "lines": 4
+    },
+    "percent": {
+      "file": "percent.mp3",
+      "item": "math-number:fractions:percent",
+      "duration": 18.33,
+      "lines": 5
+    },
+    "scale-drawing": {
+      "file": "scale-drawing.mp3",
+      "item": "math-applied:geometry:scale-drawing",
+      "duration": 16.49,
+      "lines": 4
+    },
+    "standard-algorithm": {
+      "file": "standard-algorithm.mp3",
+      "item": "math-number:division:standard-algorithm",
+      "duration": 18.03,
+      "lines": 5
+    },
+    "fraction-multiply": {
+      "file": "fraction-multiply.mp3",
+      "item": "math-number:fractions:multiply",
+      "duration": 14.69,
+      "lines": 4
+    },
+    "fraction-divide": {
+      "file": "fraction-divide.mp3",
+      "item": "math-number:fractions:divide",
+      "duration": 15.85,
+      "lines": 4
+    },
+    "accuracy": {
+      "file": "accuracy.mp3",
+      "item": "math-applied:measure:accuracy",
+      "duration": 21.95,
+      "lines": 4
+    },
+    "unit-rate": {
+      "file": "unit-rate.mp3",
+      "item": "math-applied:rates:unit-rate",
+      "duration": 27.57,
+      "lines": 5
+    },
+    "constant-speed": {
+      "file": "constant-speed.mp3",
+      "item": "math-applied:rates:constant-speed",
+      "duration": 16.11,
+      "lines": 4
+    },
+    "one-step": {
+      "file": "one-step.mp3",
+      "item": "math-applied:rates:one-step",
+      "duration": 15.5,
+      "lines": 4
+    },
+    "two-step": {
+      "file": "two-step.mp3",
+      "item": "math-applied:rates:two-step",
+      "duration": 19.33,
+      "lines": 5
+    },
+    "bearings": {
+      "file": "bearings.mp3",
+      "item": "math-applied:trig:bearings",
+      "duration": 20.5,
+      "lines": 5
     }
   }
 }

@@ -328,6 +328,15 @@ export type ClueSceneDescription =
       summary?: ClueSceneSummary;
     }
   | {
+      kind: "array-grid";
+      /** Rows in the array — a given from the question. */
+      rows: number;
+      /** Tiles in each row — a given from the question. */
+      perRow: number;
+      /** The round part of a row — split from the question's number. */
+      splitHigh: number;
+      /** The leftover part of a row — split from the question's number. */
+      splitLow: number;
       kind: "tile-grid";
       /** Rows in the rectangle — a given from the question. */
       rows: number;
@@ -341,6 +350,11 @@ export type ClueSceneDescription =
       summary?: ClueSceneSummary;
     }
   | {
+      kind: "scale-line";
+      /** The length in kilometres — a given from the question. */
+      kilometres: number;
+      /** Metres in one kilometre — a given from the question. */
+      metresPerKm: number;
       kind: "measure-trace";
       /** "loop": trace every side of a length × width rectangle.
        * "bars": trace two aligned lengths and bracket the gap. */
@@ -355,6 +369,11 @@ export type ClueSceneDescription =
       summary?: ClueSceneSummary;
     }
   | {
+      kind: "percent-bar";
+      /** The whole price — a given from the question. */
+      total: number;
+      /** The percent taken off — a given from the question. */
+      percentOff: number;
       kind: "fraction-slice";
       /** Equal parts the first whole is cut into — a given. */
       parts: number;
@@ -370,6 +389,22 @@ export type ClueSceneDescription =
       summary?: ClueSceneSummary;
     }
   | {
+      kind: "map-scale";
+      /** Centimetres on the map — a given from the question. */
+      mapCm: number;
+      /** Kilometres each centimetre stands for — a given. */
+      kmPerCm: number;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "fraction-bar";
+      /** Shaded parts of the bar — a given from the question. */
+      numerator: number;
+      /** Equal parts the bar is split into — a given. */
+      denominator: number;
       kind: "fraction-fill";
       /** First bottle's fill: numerator of denominator — givens. */
       numerator: number;
@@ -383,6 +418,56 @@ export type ClueSceneDescription =
       summary?: ClueSceneSummary;
     }
   | {
+      kind: "fraction-measure";
+      /** The whole roll's length — a given from the question. */
+      total: number;
+      /** The piece length's numerator — a given from the question. */
+      pieceNumerator: number;
+      /** The piece length's denominator — a given from the question. */
+      pieceDenominator: number;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "rate-bars";
+      /** Metres at the first stall — a given from the question. */
+      firstMetres: number;
+      /** Coins for them at the first stall — a given. */
+      firstCoins: number;
+      /** Metres at the second stall — a given from the question. */
+      secondMetres: number;
+      /** Coins for them at the second stall — a given. */
+      secondCoins: number;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "journey-line";
+      /** The whole journey's length — a given from the question. */
+      totalKm: number;
+      /** Hours the known stretch took (steady-pace items). */
+      hours?: number;
+      /** The longer path to time (steady-pace items). */
+      targetKm?: number;
+      /** Kilometres still ahead (part-walked items). */
+      aheadKm?: number;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "spend-then-group";
+      /** The whole budget — a given from the question. */
+      total: number;
+      /** The one-off charge — a given from the question. */
+      fixedCost: number;
+      /** Coins per cup — a given from the question. */
+      perGroup: number;
       kind: "clock-arc";
       /** Start time — givens from the question. */
       startHour: number;
@@ -396,6 +481,11 @@ export type ClueSceneDescription =
       summary?: ClueSceneSummary;
     }
   | {
+      kind: "bearing-diagram";
+      /** Kilometres east — a given from the question. */
+      eastKm: number;
+      /** Kilometres north — a given from the question. */
+      northKm: number;
       kind: "unit-fit";
       /** The path's length in metres — the staging given the fit
        * judgement is computed from (see fittingUnit). */

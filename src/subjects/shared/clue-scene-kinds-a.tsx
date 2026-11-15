@@ -320,3 +320,188 @@ export function PackBoxesScene({
     </>
   );
 }
+
+/* ── Wave 2 kinds (Math 10-18): array-grid, scale-line, percent-bar ──
+   Same discipline as the wave-1 kinds above: givens only in the
+   setup film, no digits before the pick; the solved beat computes
+   its splits and ticks from the givens at solve time. Steps:
+   array-grid paces like split-product (split, wide tick, narrow
+   tick, final tick); scale-line paces two steps (the kilometre
+   marks, then the final tick); percent-bar paces three (the split,
+   the saved tick, the final tick on the closing line). */
+
+export function ArrayGridScene({
+  description,
+  phase,
+  stepDelay,
+}: {
+  description: Extract<ClueSceneDescription, { kind: "array-grid" }>;
+  phase: ClueScenePhase;
+  stepDelay?: (step: number) => number;
+}) {
+  const { rows, perRow, splitHigh, splitLow } = description;
+  const x0 = 35;
+  const w = 250;
+  const splitX = x0 + (w * splitHigh) / perRow;
+  const firstY = 30;
+  const stepY = 6.2;
+  const rowH = 4.6;
+  const splitBase = stepDelay ? stepDelay(0) : 0.5;
+  return (
+    <>
+      <path className="cs-line cs-draw" pathLength={1} d="M28 176 Q160 180 292 176" style={delay(0)} />
+      {Array.from({ length: rows }, (_, r) => {
+        const y = firstY + r * stepY;
+        return (
+          <g key={`row-${r}`}>
+            <g className="cs-pop" style={delay(0.25 + r * 0.03)}>
+              <rect className="cs-bar" x={x0} y={y} width={w} height={rowH} rx="2.3" />
+            </g>
+            {phase === "solved" ? (
+              <>
+                <path
+                  className="cs-split-high cs-fade"
+                  d={`M${x0 + 2} ${y} H${splitX.toFixed(1)} V${y + rowH} H${x0 + 2} Z`}
+                  style={delay(splitBase + r * 0.02)}
+                />
+                <path
+                  className="cs-split-low cs-fade"
+                  d={`M${splitX.toFixed(1)} ${y} H${x0 + w - 2} V${y + rowH} H${splitX.toFixed(1)} Z`}
+                  style={delay(splitBase + 0.05 + r * 0.02)}
+                />
+              </>
+            ) : null}
+          </g>
+        );
+      })}
+      {phase === "solved" ? (
+        <>
+          <path
+            className="cs-line cs-band cs-fade"
+            d={`M${splitX.toFixed(1)} 26 Q${(splitX + 1.5).toFixed(1)} 96 ${splitX.toFixed(1)} ${(firstY + rows * stepY).toFixed(1)}`}
+            style={delay(splitBase)}
+          />
+          <text className="cs-tick" x={((x0 + splitX) / 2).toFixed(1)} y="20" style={delay(stepDelay ? stepDelay(1) : 1.5)}>
+            {splitHigh * rows}
+          </text>
+          <text className="cs-tick" x={((splitX + x0 + w) / 2).toFixed(1)} y="20" style={delay(stepDelay ? stepDelay(2) : 2.1)}>
+            {splitLow * rows}
+          </text>
+          <text className="cs-tick cs-tick-final" x="160" y="186" style={delay(stepDelay ? stepDelay(3) : 2.7)}>
+            {rows * perRow}
+          </text>
+        </>
+      ) : null}
+    </>
+  );
+}
+
+export function ScaleLineScene({
+  description,
+  phase,
+  stepDelay,
+}: {
+  description: Extract<ClueSceneDescription, { kind: "scale-line" }>;
+  phase: ClueScenePhase;
+  stepDelay?: (step: number) => number;
+}) {
+  const { kilometres, metresPerKm } = description;
+  const x0 = 30;
+  const x1 = 290;
+  const y = 108;
+  const wholeKm = Math.floor(kilometres);
+  const marks = Array.from({ length: wholeKm }, (_, i) => ({
+    x: x0 + ((i + 1) / kilometres) * (x1 - x0),
+    value: (i + 1) * metresPerKm,
+  }));
+  const marksStart = stepDelay ? stepDelay(0) : 0.6;
+  return (
+    <>
+      {/* The river above the measuring bar. */}
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M28 62 Q80 50 128 60 Q176 70 224 58 Q262 50 294 60" style={delay(0.1)} />
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M36 76 Q96 66 160 74 Q224 82 286 72" style={delay(0.2)} />
+      <path className="cs-line cs-draw" pathLength={1} d={`M${x0} ${y} Q160 ${y - 6} ${x1} ${y}`} style={delay(0)} />
+      <path className="cs-line cs-draw" pathLength={1} d={`M${x0} ${y} L${x0 - 1} ${y - 18} M${x1} ${y} L${x1 + 1} ${y - 18}`} style={delay(0.3)} />
+      <path className="cs-flag cs-pop" d={`M${x0 - 1} ${y - 18} L15 ${y - 13.5} L${x0 - 1} ${y - 8} Z`} style={delay(0.5)} />
+      <path className="cs-flag cs-pop" d={`M${x1 + 1} ${y - 18} L${x1 + 17} ${y - 13.5} L${x1 + 1} ${y - 8} Z`} style={delay(0.6)} />
+      {phase === "solved" ? (
+        <>
+          {marks.map((m, i) => (
+            <g key={`mark-${i}`}>
+              <path
+                className="cs-line cs-band cs-fade"
+                d={`M${m.x.toFixed(1)} ${y - 12} Q${(m.x + 1).toFixed(1)} ${y} ${m.x.toFixed(1)} ${y + 10}`}
+                style={delay(marksStart + i * 0.25)}
+              />
+              <text className="cs-tick" x={m.x.toFixed(1)} y={y + 30} style={delay(marksStart + 0.3 + i * 0.25)}>
+                {m.value}
+              </text>
+            </g>
+          ))}
+          <text className="cs-tick cs-tick-final" x={x1 - 6} y={y - 28} style={delay(stepDelay ? stepDelay(1) + 0.7 : 1.9)}>
+            {kilometres * metresPerKm}
+          </text>
+        </>
+      ) : null}
+    </>
+  );
+}
+
+export function PercentBarScene({
+  description,
+  phase,
+  stepDelay,
+}: {
+  description: Extract<ClueSceneDescription, { kind: "percent-bar" }>;
+  phase: ClueScenePhase;
+  stepDelay?: (step: number) => number;
+}) {
+  const { total, percentOff } = description;
+  const saved = (total * percentOff) / 100;
+  const pay = total - saved;
+  const x0 = 35;
+  const w = 250;
+  const y = 84;
+  const h = 26;
+  const splitX = x0 + (w * percentOff) / 100;
+  const splitStart = stepDelay ? stepDelay(0) : 0.55;
+  return (
+    <>
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M24 46 Q160 42 296 46" style={delay(0.1)} />
+      <path className="cs-line cs-draw" pathLength={1} d="M20 146 Q160 150 300 146" style={delay(0)} />
+      <g className="cs-pop" style={delay(0.35)}>
+        <rect className="cs-bar" x={x0} y={y} width={w} height={h} rx="7" />
+      </g>
+      {/* A small stack of price coins under the bar (the price is
+          the question's own given; the coins carry no digits). */}
+      {Array.from({ length: 5 }, (_, i) => (
+        <g key={`coin-${i}`} transform={`translate(${120 + i * 20} 132)`}>
+          <g className="cs-pop" style={delay(0.5 + i * 0.08)}>
+            <circle className="cs-coin" r="7" />
+            <circle className="cs-coin-inner" r="3.6" />
+          </g>
+        </g>
+      ))}
+      {phase === "solved" ? (
+        <>
+          <path
+            className="cs-split-low cs-fade"
+            d={`M${x0 + 7} ${y} H${splitX.toFixed(1)} V${y + h} H${x0 + 7} Q${x0} ${y + h} ${x0} ${y + 13} Q${x0} ${y} ${x0 + 7} ${y} Z`}
+            style={delay(splitStart)}
+          />
+          <path
+            className="cs-line cs-band cs-fade"
+            d={`M${splitX.toFixed(1)} ${y + 1} Q${(splitX + 1.2).toFixed(1)} ${y + h / 2} ${splitX.toFixed(1)} ${y + h - 1}`}
+            style={delay(splitStart + 0.05)}
+          />
+          <text className="cs-tick" x={((x0 + splitX) / 2).toFixed(1)} y={y - 12} style={delay(stepDelay ? stepDelay(1) + 0.6 : 1.5)}>
+            {saved}
+          </text>
+          <text className="cs-tick cs-tick-final" x={((splitX + x0 + w) / 2).toFixed(1)} y={y - 12} style={delay(stepDelay ? stepDelay(2) + 0.6 : 2.3)}>
+            {pay}
+          </text>
+        </>
+      ) : null}
+    </>
+  );
+}
