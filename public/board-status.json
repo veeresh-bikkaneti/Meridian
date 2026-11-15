@@ -1,0 +1,486 @@
+{
+  "version": 3,
+  "source": "generated",
+  "updatedAt": "2026-11-15T13:02:03.083Z",
+  "counts": {
+    "done": 20,
+    "inProgress": 8,
+    "notStarted": 18,
+    "total": 46
+  },
+  "epics": [
+    {
+      "id": "geodetective",
+      "name": "GeoDetective",
+      "color": "#e8b64c",
+      "features": [
+        {
+          "id": "holmes",
+          "name": "Holmes & Watson",
+          "promise": "The detective pair who guide your child through every case.",
+          "anim": "magnifier",
+          "done": 1,
+          "total": 3,
+          "bonds": 1,
+          "stories": [
+            {
+              "slug": "holmes-and-watson-pair-in-the-game",
+              "title": "Holmes and Watson pair in the game",
+              "status": "done",
+              "line": "Ready to play"
+            },
+            {
+              "slug": "pair-art-sheets-and-endings",
+              "title": "Pair art sheets and endings",
+              "status": "in-progress",
+              "line": "Checking in progress"
+            },
+            {
+              "slug": "holmes-follow-and-home-first-landing",
+              "title": "Holmes follow and Home-first landing",
+              "status": "in-progress",
+              "line": "Checking in progress"
+            }
+          ]
+        },
+        {
+          "id": "clues",
+          "name": "Solving the Clues",
+          "promise": "Clues that arrive one at a time, at a pace a child can follow.",
+          "anim": "compass",
+          "done": 1,
+          "total": 3,
+          "bonds": 4,
+          "stories": [
+            {
+              "slug": "held-finger-jitter-fix-on-the-clue-berth",
+              "title": "Held-finger jitter fix on the clue berth",
+              "status": "done",
+              "line": "Ready to play"
+            },
+            {
+              "slug": "clue-pacing-and-one-voice-at-a-time",
+              "title": "Clue pacing and one voice at a time",
+              "status": "in-progress",
+              "line": "Testing in progress"
+            },
+            {
+              "slug": "clue-4-opening-cards-2-and-3",
+              "title": "Clue 4 opening cards 2 and 3",
+              "status": "not-started",
+              "line": "Not started yet"
+            }
+          ]
+        },
+        {
+          "id": "capitals",
+          "name": "Capitals",
+          "promise": "Flags and places on the map, for every age group.",
+          "anim": "pin",
+          "done": 1,
+          "total": 2,
+          "bonds": 2,
+          "stories": [
+            {
+              "slug": "age-groups-7-10-10-18-18-in-code",
+              "title": "Age groups 7-10, 10-18, 18+ in code",
+              "status": "done",
+              "line": "Ready to play"
+            },
+            {
+              "slug": "truce-pennant-port",
+              "title": "Truce pennant port",
+              "status": "not-started",
+              "line": "Coming after: Clue pacing and one voice at a time",
+              "comingAfter": "Clue pacing and one voice at a time"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "subjects",
+      "name": "School Subjects",
+      "color": "#3c8496",
+      "features": [
+        {
+          "id": "why",
+          "name": "Why Do We Learn This?",
+          "promise": "The home card that opens every subject.",
+          "anim": "star",
+          "done": 3,
+          "total": 6,
+          "bonds": 1,
+          "stories": [
+            {
+              "slug": "films-v4-dolly-camera",
+              "title": "Films (v4, dolly camera)",
+              "status": "done",
+              "line": "Ready to play"
+            },
+            {
+              "slug": "the-card-appears-on-the-home-page",
+              "title": "The card appears on the home page",
+              "status": "done",
+              "line": "Ready to play"
+            },
+            {
+              "slug": "fix-for-how-the-site-goes-live",
+              "title": "Fix for how the site goes live",
+              "status": "done",
+              "line": "Ready to play"
+            },
+            {
+              "slug": "3d-film-source-files",
+              "title": "3D film source files",
+              "status": "in-progress",
+              "line": "Animation in progress"
+            },
+            {
+              "slug": "button-opens-a-subject-instead-of-coming-soon",
+              "title": "Button opens a subject instead of Coming soon",
+              "status": "not-started",
+              "line": "Not started yet"
+            },
+            {
+              "slug": "the-card-appears-for-kids",
+              "title": "The card appears for kids",
+              "status": "not-started",
+              "line": "Not started yet"
+            }
+          ]
+        },
+        {
+          "id": "maths",
+          "name": "Maths",
+          "promise": "Cases your child can play at their own level.",
+          "anim": "sum",
+          "done": 4,
+          "total": 6,
+          "bonds": 4,
+          "stories": [
+            {
+              "slug": "number-strand-spec",
+              "title": "Number strand spec",
+              "status": "done",
+              "line": "Ready to play"
+            },
+            {
+              "slug": "applied-strand-spec",
+              "title": "Applied strand spec",
+              "status": "done",
+              "line": "Ready to play"
+            },
+            {
+              "slug": "subject-registry",
+              "title": "Subject registry",
+              "status": "done",
+              "line": "Ready to play"
+            },
+            {
+              "slug": "math-subject-screen-3-items-per-age-group",
+              "title": "Math subject screen, 3 items per age group",
+              "status": "done",
+              "line": "Ready to play"
+            },
+            {
+              "slug": "maths-sign-off-and-release",
+              "title": "Maths sign-off and release",
+              "status": "not-started",
+              "line": "Not started yet"
+            },
+            {
+              "slug": "holmes-and-watson-in-math",
+              "title": "Holmes and Watson in math",
+              "status": "not-started",
+              "line": "Coming after: Clue pacing and one voice at a time",
+              "comingAfter": "Clue pacing and one voice at a time"
+            }
+          ]
+        },
+        {
+          "id": "science",
+          "name": "Physics & Chemistry",
+          "promise": "Predict first — then see what really happens.",
+          "anim": "flask",
+          "done": 3,
+          "total": 7,
+          "bonds": 0,
+          "stories": [
+            {
+              "slug": "physics-spec",
+              "title": "Physics spec",
+              "status": "done",
+              "line": "Ready to play"
+            },
+            {
+              "slug": "chemistry-spec",
+              "title": "Chemistry spec",
+              "status": "done",
+              "line": "Ready to play"
+            },
+            {
+              "slug": "science-definitions-and-scene-engine-spec",
+              "title": "Science definitions and scene engine spec",
+              "status": "done",
+              "line": "Ready to play"
+            },
+            {
+              "slug": "science-expansion-spec",
+              "title": "Science expansion spec",
+              "status": "in-progress",
+              "line": "Polishing in progress"
+            },
+            {
+              "slug": "predict-and-see-scene-engine",
+              "title": "Predict-and-see scene engine",
+              "status": "not-started",
+              "line": "Not started yet"
+            },
+            {
+              "slug": "physics-and-chemistry-screens",
+              "title": "Physics and Chemistry screens",
+              "status": "not-started",
+              "line": "Not started yet"
+            },
+            {
+              "slug": "wave-2-sign-off-and-release",
+              "title": "Wave 2 sign-off and release",
+              "status": "not-started",
+              "line": "Not started yet"
+            }
+          ]
+        },
+        {
+          "id": "rivers",
+          "name": "Rivers, Maps & People",
+          "promise": "Social studies and general knowledge, out in the world.",
+          "anim": "river",
+          "done": 3,
+          "total": 5,
+          "bonds": 0,
+          "stories": [
+            {
+              "slug": "social-studies-economics-civics-spec",
+              "title": "Social studies, economics, civics spec",
+              "status": "done",
+              "line": "Ready to play"
+            },
+            {
+              "slug": "general-knowledge-spec",
+              "title": "General knowledge spec",
+              "status": "done",
+              "line": "Ready to play"
+            },
+            {
+              "slug": "humanities-definitions-spec",
+              "title": "Humanities definitions spec",
+              "status": "done",
+              "line": "Ready to play"
+            },
+            {
+              "slug": "social-studies-and-gk-screens",
+              "title": "Social studies and GK screens",
+              "status": "not-started",
+              "line": "Not started yet"
+            },
+            {
+              "slug": "wave-3-sign-off-and-release",
+              "title": "Wave 3 sign-off and release",
+              "status": "not-started",
+              "line": "Not started yet"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "journals",
+      "name": "Story Journals",
+      "color": "#6e9084",
+      "features": [
+        {
+          "id": "journal",
+          "name": "Story Journals",
+          "promise": "Short stories and films about people and places.",
+          "anim": "book",
+          "done": 2,
+          "total": 4,
+          "bonds": 0,
+          "stories": [
+            {
+              "slug": "7-journal-specs-people-and-places-technology-ww2-monuments-world-wars-modern-world-great-leaders-freedom-fighters",
+              "title": "7 journal specs (people and places, technology, WW2 monuments, world wars, modern world, great leaders, freedom fighters)",
+              "status": "done",
+              "line": "Ready to play"
+            },
+            {
+              "slug": "religious-journal-movies-hidden",
+              "title": "Religious journal movies hidden",
+              "status": "done",
+              "line": "Ready to play"
+            },
+            {
+              "slug": "journal-clips-stage-b-video-files",
+              "title": "Journal clips (Stage B video files)",
+              "status": "not-started",
+              "line": "Not started yet"
+            },
+            {
+              "slug": "journals-release",
+              "title": "Journals release",
+              "status": "not-started",
+              "line": "Not started yet"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "voices",
+      "name": "Voices & Sound",
+      "color": "#e86a5c",
+      "features": [
+        {
+          "id": "voice",
+          "name": "Voices & Sound",
+          "promise": "One clear voice at a time — never talking over.",
+          "anim": "mic",
+          "done": 0,
+          "total": 3,
+          "bonds": 2,
+          "stories": [
+            {
+              "slug": "shared-voice-channel-one-speaker-at-a-time",
+              "title": "Shared voice channel (one speaker at a time)",
+              "status": "in-progress",
+              "line": "Recording in progress"
+            },
+            {
+              "slug": "3-unrendered-clips-beat-me-win-together-truce-watson",
+              "title": "3 unrendered clips: beat-me, win-together, truce-watson",
+              "status": "not-started",
+              "line": "Not started yet"
+            },
+            {
+              "slug": "88-place-names-with-no-holmes-voice",
+              "title": "88 place names with no Holmes voice",
+              "status": "not-started",
+              "line": "Not started yet"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "behind",
+      "name": "Behind the Scenes",
+      "color": "#9db3ad",
+      "features": [
+        {
+          "id": "making",
+          "name": "How Meridian Is Made",
+          "promise": "The tools and checks that keep the game honest.",
+          "anim": "gear",
+          "done": 2,
+          "total": 7,
+          "bonds": 0,
+          "stories": [
+            {
+              "slug": "lean-test-strategy",
+              "title": "Lean test strategy",
+              "status": "done",
+              "line": "Ready to play"
+            },
+            {
+              "slug": "model-neutral-agent-rules",
+              "title": "Model-neutral agent rules",
+              "status": "done",
+              "line": "Ready to play"
+            },
+            {
+              "slug": "scale-play-mockup",
+              "title": "Scale-play mockup",
+              "status": "in-progress",
+              "line": "Building in progress"
+            },
+            {
+              "slug": "scale-play-v2-plan",
+              "title": "Scale-play v2 plan",
+              "status": "in-progress",
+              "line": "Still planning"
+            },
+            {
+              "slug": "the-same-tools-working-on-windows",
+              "title": "The same tools, working on Windows",
+              "status": "not-started",
+              "line": "Not started yet"
+            },
+            {
+              "slug": "turn-the-stream-safety-rules-back-on",
+              "title": "Turn the stream safety rules back on",
+              "status": "not-started",
+              "line": "Not started yet"
+            },
+            {
+              "slug": "open-pieces-of-real-work-not-yet-placed",
+              "title": "Open pieces of real work, not yet placed",
+              "status": "not-started",
+              "line": "Not started yet"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "bonds": [
+    {
+      "fromSlug": "clue-pacing-and-one-voice-at-a-time",
+      "toSlug": "held-finger-jitter-fix-on-the-clue-berth",
+      "fromTitle": "Clue pacing and one voice at a time",
+      "toTitle": "Held-finger jitter fix on the clue berth"
+    },
+    {
+      "fromSlug": "pair-art-sheets-and-endings",
+      "toSlug": "held-finger-jitter-fix-on-the-clue-berth",
+      "fromTitle": "Pair art sheets and endings",
+      "toTitle": "Held-finger jitter fix on the clue berth"
+    },
+    {
+      "fromSlug": "truce-pennant-port",
+      "toSlug": "clue-pacing-and-one-voice-at-a-time",
+      "fromTitle": "Truce pennant port",
+      "toTitle": "Clue pacing and one voice at a time"
+    },
+    {
+      "fromSlug": "truce-pennant-port",
+      "toSlug": "shared-voice-channel-one-speaker-at-a-time",
+      "fromTitle": "Truce pennant port",
+      "toTitle": "Shared voice channel (one speaker at a time)"
+    },
+    {
+      "fromSlug": "button-opens-a-subject-instead-of-coming-soon",
+      "toSlug": "math-subject-screen-3-items-per-age-group",
+      "fromTitle": "Button opens a subject instead of Coming soon",
+      "toTitle": "Math subject screen, 3 items per age group"
+    },
+    {
+      "fromSlug": "holmes-and-watson-in-math",
+      "toSlug": "clue-pacing-and-one-voice-at-a-time",
+      "fromTitle": "Holmes and Watson in math",
+      "toTitle": "Clue pacing and one voice at a time"
+    },
+    {
+      "fromSlug": "holmes-and-watson-in-math",
+      "toSlug": "math-subject-screen-3-items-per-age-group",
+      "fromTitle": "Holmes and Watson in math",
+      "toTitle": "Math subject screen, 3 items per age group"
+    },
+    {
+      "fromSlug": "holmes-and-watson-in-math",
+      "toSlug": "shared-voice-channel-one-speaker-at-a-time",
+      "fromTitle": "Holmes and Watson in math",
+      "toTitle": "Shared voice channel (one speaker at a time)"
+    }
+  ]
+}

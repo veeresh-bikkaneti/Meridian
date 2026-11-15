@@ -1,0 +1,624 @@
+{
+  "generatedFrom": "src/board/snapshot.json x board-v2 live-verify captures (394 PRs)",
+  "counts": {
+    "done": 20,
+    "inProgress": 8,
+    "notStarted": 18,
+    "total": 46
+  },
+  "waits": 8,
+  "stories": [
+    {
+      "id": "detective-core/holmes-and-watson-pair-in-the-game",
+      "snapshotStatus": "done",
+      "derivedStatus": "done",
+      "carriedStatus": "done",
+      "records": [
+        355,
+        356,
+        357,
+        358
+      ],
+      "recordStates": {
+        "355": {
+          "merged": true,
+          "open": false
+        },
+        "356": {
+          "merged": true,
+          "open": false
+        },
+        "357": {
+          "merged": true,
+          "open": false
+        },
+        "358": {
+          "merged": true,
+          "open": false
+        }
+      }
+    },
+    {
+      "id": "detective-core/age-groups-7-10-10-18-18-in-code",
+      "snapshotStatus": "done",
+      "derivedStatus": "done",
+      "carriedStatus": "done",
+      "records": [
+        393,
+        414
+      ],
+      "recordStates": {
+        "393": {
+          "merged": true,
+          "open": false
+        },
+        "414": {
+          "merged": true,
+          "open": false
+        }
+      }
+    },
+    {
+      "id": "detective-core/held-finger-jitter-fix-on-the-clue-berth",
+      "snapshotStatus": "in-progress",
+      "derivedStatus": "done",
+      "carriedStatus": "done",
+      "records": [
+        431
+      ],
+      "recordStates": {
+        "431": {
+          "merged": true,
+          "open": false
+        }
+      }
+    },
+    {
+      "id": "detective-core/clue-pacing-and-one-voice-at-a-time",
+      "snapshotStatus": "in-progress",
+      "derivedStatus": "in-progress",
+      "carriedStatus": "in-progress",
+      "records": [
+        430
+      ],
+      "recordStates": {
+        "430": {
+          "merged": false,
+          "open": true
+        }
+      }
+    },
+    {
+      "id": "detective-core/pair-art-sheets-and-endings",
+      "snapshotStatus": "in-progress",
+      "derivedStatus": "in-progress",
+      "carriedStatus": "in-progress",
+      "records": [
+        366
+      ],
+      "recordStates": {
+        "366": {
+          "merged": false,
+          "open": true
+        }
+      }
+    },
+    {
+      "id": "detective-core/truce-pennant-port",
+      "snapshotStatus": "not-started",
+      "derivedStatus": "not-started",
+      "carriedStatus": "not-started",
+      "records": [],
+      "recordStates": {}
+    },
+    {
+      "id": "detective-core/clue-4-opening-cards-2-and-3",
+      "snapshotStatus": "not-started",
+      "derivedStatus": "not-started",
+      "carriedStatus": "not-started",
+      "records": [],
+      "recordStates": {}
+    },
+    {
+      "id": "detective-core/holmes-follow-and-home-first-landing",
+      "snapshotStatus": "in-progress",
+      "derivedStatus": "in-progress",
+      "carriedStatus": "in-progress",
+      "records": [
+        364,
+        368
+      ],
+      "recordStates": {
+        "364": {
+          "merged": false,
+          "open": true
+        },
+        "368": {
+          "merged": false,
+          "open": true
+        }
+      }
+    },
+    {
+      "id": "why-do-we-learn-this-card/films-v4-dolly-camera",
+      "snapshotStatus": "done",
+      "derivedStatus": "done",
+      "carriedStatus": "done",
+      "records": [
+        433
+      ],
+      "recordStates": {
+        "433": {
+          "merged": true,
+          "open": false
+        }
+      }
+    },
+    {
+      "id": "why-do-we-learn-this-card/card-on-home-behind-scale-1-button-reads-coming-soon",
+      "snapshotStatus": "done",
+      "derivedStatus": "done",
+      "carriedStatus": "done",
+      "records": [
+        433
+      ],
+      "recordStates": {
+        "433": {
+          "merged": true,
+          "open": false
+        }
+      }
+    },
+    {
+      "id": "why-do-we-learn-this-card/cloudflare-deploy-fix",
+      "snapshotStatus": "done",
+      "derivedStatus": "done",
+      "carriedStatus": "done",
+      "records": [
+        435
+      ],
+      "recordStates": {
+        "435": {
+          "merged": true,
+          "open": false
+        }
+      }
+    },
+    {
+      "id": "why-do-we-learn-this-card/3d-film-source-files-branch",
+      "snapshotStatus": "in-progress",
+      "derivedStatus": "in-progress",
+      "carriedStatus": "in-progress",
+      "records": [
+        432
+      ],
+      "recordStates": {
+        "432": {
+          "merged": false,
+          "open": true
+        }
+      }
+    },
+    {
+      "id": "why-do-we-learn-this-card/button-opens-a-subject-instead-of-coming-soon",
+      "snapshotStatus": "not-started",
+      "derivedStatus": "not-started",
+      "carriedStatus": "not-started",
+      "records": [],
+      "recordStates": {}
+    },
+    {
+      "id": "why-do-we-learn-this-card/card-shown-to-kids-without-scale-1",
+      "snapshotStatus": "not-started",
+      "derivedStatus": "not-started",
+      "carriedStatus": "not-started",
+      "records": [],
+      "recordStates": {}
+    },
+    {
+      "id": "math/number-strand-spec",
+      "snapshotStatus": "done",
+      "derivedStatus": "done",
+      "carriedStatus": "done",
+      "records": [
+        395
+      ],
+      "recordStates": {
+        "395": {
+          "merged": true,
+          "open": false
+        }
+      }
+    },
+    {
+      "id": "math/applied-strand-spec",
+      "snapshotStatus": "done",
+      "derivedStatus": "done",
+      "carriedStatus": "done",
+      "records": [
+        405
+      ],
+      "recordStates": {
+        "405": {
+          "merged": true,
+          "open": false
+        }
+      }
+    },
+    {
+      "id": "math/subject-registry-shell-split",
+      "snapshotStatus": "done",
+      "derivedStatus": "done",
+      "carriedStatus": "done",
+      "records": [
+        394
+      ],
+      "recordStates": {
+        "394": {
+          "merged": true,
+          "open": false
+        }
+      }
+    },
+    {
+      "id": "math/math-subject-screen-3-items-per-age-group",
+      "snapshotStatus": "in-progress",
+      "derivedStatus": "done",
+      "carriedStatus": "done",
+      "records": [
+        434
+      ],
+      "recordStates": {
+        "434": {
+          "merged": true,
+          "open": false
+        }
+      }
+    },
+    {
+      "id": "math/math-sign-off-and-release-pr",
+      "snapshotStatus": "not-started",
+      "derivedStatus": "not-started",
+      "carriedStatus": "not-started",
+      "records": [],
+      "recordStates": {}
+    },
+    {
+      "id": "math/holmes-and-watson-in-math",
+      "snapshotStatus": "not-started",
+      "derivedStatus": "not-started",
+      "carriedStatus": "not-started",
+      "records": [],
+      "recordStates": {}
+    },
+    {
+      "id": "physics-and-chemistry/physics-spec",
+      "snapshotStatus": "done",
+      "derivedStatus": "done",
+      "carriedStatus": "done",
+      "records": [
+        398
+      ],
+      "recordStates": {
+        "398": {
+          "merged": true,
+          "open": false
+        }
+      }
+    },
+    {
+      "id": "physics-and-chemistry/chemistry-spec",
+      "snapshotStatus": "done",
+      "derivedStatus": "done",
+      "carriedStatus": "done",
+      "records": [
+        400
+      ],
+      "recordStates": {
+        "400": {
+          "merged": true,
+          "open": false
+        }
+      }
+    },
+    {
+      "id": "physics-and-chemistry/science-definitions-and-scene-engine-spec",
+      "snapshotStatus": "done",
+      "derivedStatus": "done",
+      "carriedStatus": "done",
+      "records": [
+        404
+      ],
+      "recordStates": {
+        "404": {
+          "merged": true,
+          "open": false
+        }
+      }
+    },
+    {
+      "id": "physics-and-chemistry/science-expansion-spec",
+      "snapshotStatus": "in-progress",
+      "derivedStatus": "in-progress",
+      "carriedStatus": "in-progress",
+      "records": [
+        429
+      ],
+      "recordStates": {
+        "429": {
+          "merged": false,
+          "open": true
+        }
+      }
+    },
+    {
+      "id": "physics-and-chemistry/predict-and-see-scene-engine-code",
+      "snapshotStatus": "not-started",
+      "derivedStatus": "not-started",
+      "carriedStatus": "not-started",
+      "records": [],
+      "recordStates": {}
+    },
+    {
+      "id": "physics-and-chemistry/physics-and-chemistry-screens",
+      "snapshotStatus": "not-started",
+      "derivedStatus": "not-started",
+      "carriedStatus": "not-started",
+      "records": [],
+      "recordStates": {}
+    },
+    {
+      "id": "physics-and-chemistry/wave-2-sign-off-and-release",
+      "snapshotStatus": "not-started",
+      "derivedStatus": "not-started",
+      "carriedStatus": "not-started",
+      "records": [],
+      "recordStates": {}
+    },
+    {
+      "id": "social-studies-and-gk/social-studies-economics-civics-spec",
+      "snapshotStatus": "done",
+      "derivedStatus": "done",
+      "carriedStatus": "done",
+      "records": [
+        397
+      ],
+      "recordStates": {
+        "397": {
+          "merged": true,
+          "open": false
+        }
+      }
+    },
+    {
+      "id": "social-studies-and-gk/general-knowledge-spec",
+      "snapshotStatus": "done",
+      "derivedStatus": "done",
+      "carriedStatus": "done",
+      "records": [
+        409
+      ],
+      "recordStates": {
+        "409": {
+          "merged": true,
+          "open": false
+        }
+      }
+    },
+    {
+      "id": "social-studies-and-gk/humanities-definitions-spec",
+      "snapshotStatus": "done",
+      "derivedStatus": "done",
+      "carriedStatus": "done",
+      "records": [
+        399
+      ],
+      "recordStates": {
+        "399": {
+          "merged": true,
+          "open": false
+        }
+      }
+    },
+    {
+      "id": "social-studies-and-gk/social-studies-and-gk-screens",
+      "snapshotStatus": "not-started",
+      "derivedStatus": "not-started",
+      "carriedStatus": "not-started",
+      "records": [],
+      "recordStates": {}
+    },
+    {
+      "id": "social-studies-and-gk/wave-3-sign-off-and-release",
+      "snapshotStatus": "not-started",
+      "derivedStatus": "not-started",
+      "carriedStatus": "not-started",
+      "records": [],
+      "recordStates": {}
+    },
+    {
+      "id": "journals/7-journal-specs-people-and-places-technology-ww2-monuments-world-wars-modern-world-great-leaders-freedom-fighters",
+      "snapshotStatus": "done",
+      "derivedStatus": "done",
+      "carriedStatus": "done",
+      "records": [
+        402,
+        401,
+        410,
+        412,
+        411,
+        408,
+        407
+      ],
+      "recordStates": {
+        "401": {
+          "merged": true,
+          "open": false
+        },
+        "402": {
+          "merged": true,
+          "open": false
+        },
+        "407": {
+          "merged": true,
+          "open": false
+        },
+        "408": {
+          "merged": true,
+          "open": false
+        },
+        "410": {
+          "merged": true,
+          "open": false
+        },
+        "411": {
+          "merged": true,
+          "open": false
+        },
+        "412": {
+          "merged": true,
+          "open": false
+        }
+      }
+    },
+    {
+      "id": "journals/religious-journal-movies-hidden",
+      "snapshotStatus": "done",
+      "derivedStatus": "done",
+      "carriedStatus": "done",
+      "records": [
+        416
+      ],
+      "recordStates": {
+        "416": {
+          "merged": true,
+          "open": false
+        }
+      }
+    },
+    {
+      "id": "journals/journal-clips-stage-b-video-files",
+      "snapshotStatus": "not-started",
+      "derivedStatus": "not-started",
+      "carriedStatus": "not-started",
+      "records": [],
+      "recordStates": {}
+    },
+    {
+      "id": "journals/journals-release",
+      "snapshotStatus": "not-started",
+      "derivedStatus": "not-started",
+      "carriedStatus": "not-started",
+      "records": [],
+      "recordStates": {}
+    },
+    {
+      "id": "audio-and-clips/shared-voice-channel-one-speaker-at-a-time",
+      "snapshotStatus": "in-progress",
+      "derivedStatus": "in-progress",
+      "carriedStatus": "in-progress",
+      "records": [
+        430
+      ],
+      "recordStates": {
+        "430": {
+          "merged": false,
+          "open": true
+        }
+      }
+    },
+    {
+      "id": "audio-and-clips/3-unrendered-clips-beat-me-win-together-truce-watson",
+      "snapshotStatus": "not-started",
+      "derivedStatus": "not-started",
+      "carriedStatus": "not-started",
+      "records": [],
+      "recordStates": {}
+    },
+    {
+      "id": "audio-and-clips/88-place-names-with-no-holmes-voice",
+      "snapshotStatus": "not-started",
+      "derivedStatus": "not-started",
+      "carriedStatus": "not-started",
+      "records": [],
+      "recordStates": {}
+    },
+    {
+      "id": "infra-and-process/lean-test-strategy-in-agents-md",
+      "snapshotStatus": "done",
+      "derivedStatus": "done",
+      "carriedStatus": "done",
+      "records": [
+        423
+      ],
+      "recordStates": {
+        "423": {
+          "merged": true,
+          "open": false
+        }
+      }
+    },
+    {
+      "id": "infra-and-process/model-neutral-agent-rules",
+      "snapshotStatus": "done",
+      "derivedStatus": "done",
+      "carriedStatus": "done",
+      "records": [
+        406
+      ],
+      "recordStates": {
+        "406": {
+          "merged": true,
+          "open": false
+        }
+      }
+    },
+    {
+      "id": "infra-and-process/scale-play-mockup",
+      "snapshotStatus": "in-progress",
+      "derivedStatus": "in-progress",
+      "carriedStatus": "in-progress",
+      "records": [
+        425
+      ],
+      "recordStates": {
+        "425": {
+          "merged": false,
+          "open": true
+        }
+      }
+    },
+    {
+      "id": "infra-and-process/scale-play-v2-plan-inside-the-prod-ui",
+      "snapshotStatus": "in-progress",
+      "derivedStatus": "in-progress",
+      "carriedStatus": "in-progress",
+      "records": [],
+      "recordStates": {}
+    },
+    {
+      "id": "infra-and-process/windows-scripts-build-pages-npm-test-under-cmd-line-endings-on-globe-data",
+      "snapshotStatus": "not-started",
+      "derivedStatus": "not-started",
+      "carriedStatus": "not-started",
+      "records": [],
+      "recordStates": {}
+    },
+    {
+      "id": "infra-and-process/turn-the-scaling-streams-ruleset-back-on",
+      "snapshotStatus": "not-started",
+      "derivedStatus": "not-started",
+      "carriedStatus": "not-started",
+      "records": [],
+      "recordStates": {}
+    },
+    {
+      "id": "infra-and-process/open-issues-344-and-319-real-unbuilt-work",
+      "snapshotStatus": "not-started",
+      "derivedStatus": "not-started",
+      "carriedStatus": "not-started",
+      "records": [],
+      "recordStates": {}
+    }
+  ]
+}
