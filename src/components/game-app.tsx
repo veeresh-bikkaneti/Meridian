@@ -174,6 +174,7 @@ function normalizeSnapshotBand(b: AgeBandId | LegacySnapshotBand): AgeBandId {
   return b;
 }
 const AgeProfileSettings = lazy(() => import("./age-profile/AgeProfileSettings"));
+const BandStep = lazy(() => import("./age-profile/BandStep"));
 const StorytellerHomeHost = lazy(() => import("./storyteller-home"));
 // v5 hero globe: React.lazy like the storyteller host — the Three.js chunk
 // never lands in the initial bundle; HomeGlobe itself dynamically imports
@@ -1437,6 +1438,11 @@ export function GameApp() {
   // card tap. Never persisted — a reload lands on Home, like the
   // loop's tap-in rule.
   const [subjectsOpen, setSubjectsOpen] = useState<boolean>(false);
+  // Which step of the Why Learn entry is showing: the age-band step
+  // comes first (owner direction, 2026-11-15 — the band is picked
+  // in the flow, right after the card, never silently assumed),
+  // then the subject picker. Session-only, like subjectsOpen.
+  const [subjectsStep, setSubjectsStep] = useState<"band" | "picker">("band");
 
   // A page restored from the browser's back/forward cache keeps its
   // frozen React state, so a tap-in screen left open when the page
@@ -1452,6 +1458,7 @@ export function GameApp() {
     const onPageShow = (e: PageTransitionEvent) => {
       if (!e.persisted) return;
       setSubjectsOpen(false);
+      setSubjectsStep("band");
       writeLoopOpen(false);
       setLoopOpen(false);
     };
@@ -3537,7 +3544,9 @@ export function GameApp() {
   }
 
   // Subject picker lives beside the loop screens: its own early
-  // return, reached from the why-learn card. The picker lists the
+  // return, reached from the why-learn card. The entry opens on the
+  // age-band step (BandStep); picking a band writes it through the
+  // age-profile store and advances to the picker, which lists the
   // released subjects and opens the tapped subject's case itself.
   if (subjectsOpen) {
     return (
@@ -3545,6 +3554,15 @@ export function GameApp() {
         {mapModeAnnouncer}
         <div inert={ageSettingsOpen || undefined}>
           <MapErrorBoundary surface="Subjects">
+            {subjectsStep === "band" ? (
+              <Suspense fallback={<SessionLoadingFallback label="Loading subjects…" />}>
+                <BandStep
+                  runInProgress={run !== null || loopOpen}
+                  onPick={() => setSubjectsStep("picker")}
+                  onExit={() => setSubjectsOpen(false)}
+                />
+              </Suspense>
+            ) : (
             <Suspense fallback={<SessionLoadingFallback label="Loading subjects…" />}>
               <SubjectPickerScreen
                 group={getAgeGroup()}
@@ -3577,6 +3595,7 @@ export function GameApp() {
                 onOpenAgeSettings={openAgeSettings}
               />
             </Suspense>
+            )}
           </MapErrorBoundary>
         </div>
         {ageSettingsOpen ? (
@@ -3987,7 +4006,10 @@ export function GameApp() {
       onColdTrail={withCardTap("coldtrail", () => { writeColdTrailOpen(true); setColdTrailOpen(true); })}      onReview={startReview}
       challengeEnabled={friendChallengesOn}
       whyLearnEnabled
-      onWhyLearn={withCardTap("why-learn", () => setSubjectsOpen(true))}
+      onWhyLearn={withCardTap("why-learn", () => {
+        setSubjectsStep("band");
+        setSubjectsOpen(true);
+      })}
       onChallenge={withCardTap("challenge", openChallengePicker)}
       onResetHistory={handleResetHistory}
       deck={deckStatus}

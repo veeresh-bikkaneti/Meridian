@@ -124,6 +124,8 @@ for (const vp of VIEWPORTS) {
 
     await page.goto(APP_URL);
     await page.getByRole("button", { name: "Why Do We Learn This?: Start exploring" }).click();
+    await expect(page.getByTestId("subject-band-step")).toBeVisible();
+    await page.getByTestId("band-step-card-10-18").click();
     await expect(page.getByTestId("subject-picker")).toBeVisible();
     await expectHomeControl(page, `${tag} Why Learn`);
     await page.getByRole("button", { name: "Home", exact: true }).click();
@@ -208,12 +210,16 @@ for (const vp of [
     await expect(page.getByTestId("home-card-why-learn")).toBeVisible({ timeout: 30_000 });
 
     await page.getByRole("button", { name: "Why Do We Learn This?: Start exploring" }).click();
+    await expect(page.getByTestId("subject-band-step")).toBeVisible();
+    await page.getByTestId("band-step-card-10-18").click();
     await expect(page.getByTestId("subject-picker")).toBeVisible();
     await expect(page.getByTestId("subject-row-math")).toBeVisible({ timeout: 30_000 });
     await expectHomeFullyInViewport(page, `${tag} Why Learn`);
     await expectClickHomeLandsOnHome(page, `${tag} Why Learn`);
 
     await page.getByRole("button", { name: "Why Do We Learn This?: Start exploring" }).click();
+    await expect(page.getByTestId("subject-band-step")).toBeVisible();
+    await page.getByTestId("band-step-card-10-18").click();
     await expect(page.getByTestId("subject-row-math")).toBeVisible({ timeout: 30_000 });
     await page.getByTestId("subject-row-math").click();
     await expect(page.getByRole("heading", { name: /Math/ })).toBeVisible({ timeout: 30_000 });

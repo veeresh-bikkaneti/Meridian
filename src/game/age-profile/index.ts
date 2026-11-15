@@ -5,8 +5,10 @@
  * The store is deliberately NOT re-exported whole: screens get the
  * read-side (`resolveBand`, `loadProfile`, param getters) and the event
  * subscription, but mutations (setBand / saveBand / resetProfile)
- * stay inside the grown-up-gated UI. This keeps parent-control writes
- * behind the gate by construction.
+ * are not re-exported: their only callers are this module's own UI
+ * screens — AgeProfileSettings (behind the grown-up gate) and
+ * BandStep, the Why Learn entry's band step (owner direction,
+ * 2026-11-15), which writes the playing band at entry.
  */
 
 export type {
@@ -64,8 +66,10 @@ export {
 } from "./events.ts";
 
 // Read-side store access. Parent-control mutations (setBand, saveBand,
-// resetProfile) are NOT re-exported: only the gate-walled settings UI
-// may call them.
+// resetProfile) are NOT re-exported: only the age-profile UI may call
+// them (AgeProfileSettings behind the grown-up gate, and BandStep at
+// the Why Learn entry — owner direction, 2026-11-15). resetProfile
+// stays settings-only.
 export {
   PROFILE_STORAGE_KEY,
   PROFILE_SCHEMA_VERSION,

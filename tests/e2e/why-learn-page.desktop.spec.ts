@@ -48,6 +48,8 @@ async function openPicker(browser: Browser, width: number, height: number, band:
   const page = await context.newPage();
   await page.goto(APP_URL);
   await page.getByRole("button", { name: "Why Do We Learn This?: Start exploring" }).click();
+  await expect(page.getByTestId("subject-band-step")).toBeVisible();
+  await page.locator('[data-testid^="band-step-card-"].agep-card-checked').click();
   await expect(page.getByTestId("subject-picker")).toBeVisible();
   await expect(page.getByTestId("subject-row-math")).toBeVisible({ timeout: 30_000 });
   return { context, page };

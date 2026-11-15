@@ -183,6 +183,8 @@ test("card opens the subject picker, and Math opens the math case", async ({ pag
   await expect(cta).toBeEnabled();
   await expect(cta).toHaveText(/Start exploring/);
   await cta.click();
+  await expect(page.getByTestId("subject-band-step")).toBeVisible();
+  await page.getByTestId("band-step-card-10-18").click();
   await expect(page.getByTestId("subject-picker")).toBeVisible();
   await page.getByTestId("subject-row-math").click();
   await expect(page.getByTestId("math-case")).toBeVisible();

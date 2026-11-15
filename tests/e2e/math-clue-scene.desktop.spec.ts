@@ -64,6 +64,8 @@ async function openCase(page: Page) {
   await expect(card).toBeVisible();
   await card.scrollIntoViewIfNeeded();
   await card.getByRole("button", { name: "Why Do We Learn This?: Start exploring" }).click();
+  await expect(page.getByTestId("subject-band-step")).toBeVisible();
+  await page.locator('[data-testid^="band-step-card-"].agep-card-checked').click();
   await expect(page.getByTestId("subject-picker")).toBeVisible();
   await page.getByTestId("subject-row-math").click();
   await expect(page.getByTestId("math-case")).toBeVisible();

@@ -58,6 +58,8 @@ async function openChemistryCase(page: Page) {
   await card
     .getByRole("button", { name: "Why Do We Learn This?: Start exploring" })
     .click();
+  await expect(page.getByTestId("subject-band-step")).toBeVisible();
+  await page.locator('[data-testid^="band-step-card-"].agep-card-checked').click();
   await expect(page.getByTestId("subject-picker")).toBeVisible();
   const row = page.getByTestId("subject-row-chemistry");
   await expect(row).toBeEnabled();

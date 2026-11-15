@@ -65,6 +65,8 @@ async function openCase(page: Page) {
   await card
     .getByRole("button", { name: "Why Do We Learn This?: Start exploring" })
     .click();
+  await expect(page.getByTestId("subject-band-step")).toBeVisible();
+  await page.locator('[data-testid^="band-step-card-"].agep-card-checked').click();
   await expect(page.getByTestId("subject-picker")).toBeVisible();
   await page.getByTestId("subject-row-math").click();
   await expect(page.getByTestId("math-case")).toBeVisible();
@@ -103,6 +105,8 @@ test("no flag needed: the card is live and the picker shows the map", async ({
   await card
     .getByRole("button", { name: "Why Do We Learn This?: Start exploring" })
     .click();
+  await expect(page.getByTestId("subject-band-step")).toBeVisible();
+  await page.locator('[data-testid^="band-step-card-"].agep-card-checked').click();
   await expect(page.getByTestId("subject-picker")).toBeVisible();
   await expect(page.getByTestId("subject-row-math")).toBeEnabled();
   // Journals is playable for 7-10 (Stream D, PR D1).
@@ -218,6 +222,8 @@ async function openChemistryCase(page: Page) {
   await card
     .getByRole("button", { name: "Why Do We Learn This?: Start exploring" })
     .click();
+  await expect(page.getByTestId("subject-band-step")).toBeVisible();
+  await page.locator('[data-testid^="band-step-card-"].agep-card-checked').click();
   await expect(page.getByTestId("subject-picker")).toBeVisible();
   await page.getByTestId("subject-row-chemistry").click();
   await expect(page.getByTestId("chemistry-case")).toBeVisible();
@@ -511,6 +517,8 @@ test("390px: Home card, case, answer card and result render on a phone", async (
   await card.scrollIntoViewIfNeeded();
   await card.screenshot({ path: `${SHOTS}/home-card-390.png` });
   await card.getByRole("button", { name: "Why Do We Learn This?: Start exploring" }).click();
+  await expect(page.getByTestId("subject-band-step")).toBeVisible();
+  await page.locator('[data-testid^="band-step-card-"].agep-card-checked').click();
   await expect(page.getByTestId("subject-picker")).toBeVisible();
   await page.getByTestId("subject-row-math").click();
   await expect(page.getByTestId("math-case")).toBeVisible();

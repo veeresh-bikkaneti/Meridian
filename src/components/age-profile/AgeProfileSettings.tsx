@@ -2,9 +2,12 @@
  * AgeProfileSettings.tsx — the gate-walled settings flow (Phase 2 §1a–1d).
  *
  * LAZY ENTRY: this module is loaded via React.lazy from the home footer,
- * so the gate + picker cost zero initial-bundle bytes. It is the ONLY
- * caller of the age-profile store mutations — parent-control writes stay
- * behind the grown-up gate by construction.
+ * so the gate + picker cost zero initial-bundle bytes. It is the
+ * gate-walled caller of the age-profile store mutations, and the only
+ * caller of resetProfile. The one other mutation caller is BandStep
+ * (the Why Learn entry's band step, owner direction 2026-11-15),
+ * which writes the playing band at entry from inside this same UI
+ * module; every other parent-control write stays behind the gate.
  *
  * Flow: GrownUpGate → AgePicker → (confirm-change | confirm-reset) →
  * toast + close. Saves write the new band immediately; a mid-run save's
