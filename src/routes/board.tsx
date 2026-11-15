@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import {
   Suspense,
   lazy,
@@ -23,6 +23,7 @@ import { computeLayout } from "@/board/status-core";
 import { TrailView } from "@/board/trail-view";
 import { FeatureRequestForm } from "@/board/feature-request-form";
 import { isEnabled, loadFlags } from "@/lib/flags";
+import { HomeButton } from "@/components/ui/home-button";
 import "@/board/board.css";
 
 const MoleculeMap = lazy(() => import("@/board/molecule-map"));
@@ -194,7 +195,7 @@ function BoardPage() {
     >
       <div className="v3-wrap">
         <p className="v3-back">
-          <Link to="/">← Back to the game</Link>
+          <HomeButton to="/" />
         </p>
         <p className="v3-eyebrow">For grown-ups</p>
         <h1 className="v3-title">See what we&rsquo;re making next</h1>
