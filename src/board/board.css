@@ -1793,13 +1793,17 @@
 .board-v3 .v3-epic-head h2 { font-family: var(--hv5-display); font-size: 1.65rem; margin: 0; }
 .board-v3 .v3-epic-count { color: var(--hv5-ink-soft); font-size: 0.92rem; }
 .board-v3 .v3-epic-rule { flex: 1; height: 2px; background: var(--hv5-line-warm); border-radius: 2px; min-width: 40px; }
-.board-v3 .v3-feature { margin-top: 22px; }
+.board-v3 .v3-feature {
+  margin-top: 22px; background: var(--hv5-card); border: 1px solid var(--hv5-line);
+  border-radius: 24px; box-shadow: var(--hv5-shadow-card); overflow: hidden; padding-bottom: 14px;
+}
+/* A finished feature gilds its journey panel (uplift Fix 1 follow-through:
+   the gold treatment moved from the inner card to the panel with it). */
+.board-v3 .v3-feature:has(> .v3-feature-card.v3-finished) { border: 2px solid var(--hv5-brown); }
 .board-v3 .v3-feature-card {
   display: grid; grid-template-columns: minmax(0, 430px) 1fr; gap: 20px; align-items: center;
-  background: var(--hv5-card); border: 1px solid var(--hv5-line); border-radius: 20px;
-  box-shadow: var(--hv5-shadow-card); padding: 16px;
+  background: transparent; border: 0; box-shadow: none; border-radius: 0; padding: 16px;
 }
-.board-v3 .v3-feature-card.v3-finished { border: 2px solid var(--hv5-brown); background: linear-gradient(180deg, #fffdf4, var(--hv5-card)); }
 .board-v3 .v3-feature-meta h3 { font-family: var(--hv5-display); font-size: 1.35rem; margin: 0 0 6px; }
 .board-v3 .v3-gold-flag { color: var(--hv5-brown); }
 .board-v3 .v3-promise { margin: 0 0 8px; color: var(--hv5-ink-soft); }
@@ -1826,15 +1830,19 @@
 .board-v3 .v3-stop-done .v3-dot { border-color: var(--hv5-brown); background: var(--hv5-brown); }
 .board-v3 .v3-stop-frontier .v3-stop-btn { border: 1.5px dashed var(--hv5-brown); }
 .board-v3 .v3-stop-btn {
-  display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; width: 100%; text-align: left;
-  background: var(--hv5-card); border: 1px solid var(--hv5-line); border-radius: 14px;
-  box-shadow: var(--hv5-shadow-card); padding: 13px 16px; font: inherit; cursor: pointer; min-height: 44px;
-  transition: box-shadow 0.25s var(--hv5-ease), transform 0.25s var(--hv5-ease);
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 6px 12px; width: 100%; text-align: left;
+  background: transparent; border: 0; border-top: 1px solid var(--hv5-line); border-radius: 0;
+  box-shadow: none; padding: 13px 16px; font: inherit; cursor: pointer; min-height: 44px;
+  transition: background 0.25s var(--hv5-ease), transform 0.25s var(--hv5-ease);
 }
-.board-v3 .v3-stop-btn:hover { box-shadow: var(--hv5-shadow-lift); }
+.board-v3 .v3-stop-btn:hover { background: var(--hv5-parchment); box-shadow: none; }
+/* Blocked stops carry the frontier's dashed rule instead of an emoji
+   (uplift Fix 3): the words in the line already say "Coming after: …". */
+.board-v3 .v3-blocked .v3-stop-btn { border: 1.5px dashed var(--hv5-brown); }
 .board-v3 .v3-s-title { font-weight: 700; font-size: 1.02rem; }
-.board-v3 .v3-s-line { flex-basis: 100%; color: var(--hv5-ink-soft); font-size: 0.94rem; }
-.board-v3 .v3-barrier { font-size: 0.95rem; }
+.board-v3 .v3-s-line { grid-column: 1 / -1; color: var(--hv5-ink-soft); font-size: 0.94rem; }
+.board-v3 .v3-stop-btn .v3-pill, .board-v3 .v3-mirror-btn .v3-pill { grid-column: 2; grid-row: 1; }
+.board-v3 .v3-open .v3-stop-btn .v3-s-line { display: none; }
 
 /* status pill — icon + word, never colour alone */
 .board-v3 .v3-pill {
@@ -1850,10 +1858,10 @@
 
 /* story card (shared: trail + map) */
 .board-v3 .v3-story-card {
-  background: var(--hv5-parchment); border: 1.5px solid var(--hv5-line-warm); border-radius: 16px;
-  padding: 6px 18px 16px; margin-top: 10px; overflow: hidden;
+  background: var(--hv5-card); border: 1.5px solid var(--hv5-line-warm); border-radius: 16px;
+  padding: 0 28px 26px; margin-top: 10px; overflow: hidden;
 }
-.board-v3 .v3-story-banner { margin: 0 -18px; height: 46px; }
+.board-v3 .v3-story-banner { margin: 0 -28px; height: 64px; }
 .board-v3 .v3-story-banner svg { width: 100%; height: 100%; display: block; }
 .board-v3 .v3-sc-where { color: var(--hv5-brown-deep); font-size: 0.85rem; font-weight: 700; margin: 4px 0 2px; }
 .board-v3 .v3-story-card h4 { font-family: var(--hv5-display); font-size: 1.3rem; margin: 0 0 8px; }
@@ -1871,9 +1879,15 @@
 .board-v3 .v3-map-grid { display: grid; grid-template-columns: 1fr 340px; gap: 18px; align-items: start; }
 @media (max-width: 900px) { .board-v3 .v3-map-grid { grid-template-columns: 1fr; } }
 .board-v3 .v3-map-stage {
-  position: relative; background: var(--hv5-card); border: 1px solid var(--hv5-line);
+  position: relative; border: 1px solid var(--atlas-card-line);
+  background: radial-gradient(110% 70% at 50% -10%, var(--atlas-glow), transparent 60%), linear-gradient(180deg, var(--atlas-bg-1), var(--atlas-bg-2));
   border-radius: 20px; box-shadow: var(--hv5-shadow-card); overflow: hidden; min-height: 420px;
 }
+.board-v3 .v3-map-stage::before {
+  content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: repeating-linear-gradient(0deg, var(--atlas-grid) 0 1px, transparent 1px 76px), repeating-linear-gradient(90deg, var(--atlas-grid) 0 1px, transparent 1px 76px);
+}
+@media (min-width: 901px) { .board-v3 .v3-map-stage { min-height: 560px; } }
 .board-v3 .v3-map-stage canvas { display: block; }
 .board-v3 .v3-zoom-tier {
   position: absolute; top: 12px; left: 14px; z-index: 2; background: rgba(246, 241, 227, 0.92);
@@ -1887,13 +1901,14 @@
 }
 .board-v3 .v3-map-legend h3 { font-family: var(--hv5-display); margin: 0 0 10px; }
 .board-v3 .v3-sw { display: inline-block; width: 12px; height: 12px; border-radius: 50%; vertical-align: -1px; }
-.board-v3 .v3-bond-sample { display: inline-block; width: 22px; height: 4px; border-radius: 2px; background: #b3543f; vertical-align: middle; }
+.board-v3 .v3-bond-sample { display: inline-block; width: 22px; height: 4px; border-radius: 2px; background: var(--atlas-stamp); vertical-align: middle; }
 .board-v3 .v3-mirror { margin-top: 26px; }
 .board-v3 .v3-mirror-title { font-family: var(--hv5-display); font-size: 1.4rem; }
 .board-v3 .v3-mirror-epic h4 { font-family: var(--hv5-display); margin: 20px 0 6px; }
 .board-v3 .v3-mirror-feature h5 { margin: 12px 0 6px; font-size: 0.98rem; }
 .board-v3 .v3-mirror-feature ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
 .board-v3 .v3-mirror-btn {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 6px 12px;
   width: 100%; text-align: left; background: var(--hv5-card); border: 1px solid var(--hv5-line);
   border-radius: 12px; padding: 10px 14px; font: inherit; cursor: pointer; min-height: 44px;
 }

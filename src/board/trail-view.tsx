@@ -153,7 +153,7 @@ export function TrailView({
                           key={story.slug}
                           className={`v3-stop v3-stop-${story.status}${open ? " v3-open" : ""}${
                             frontier === story.slug ? " v3-frontier" : ""
-                          }`}
+                          }${blocked ? " v3-blocked" : ""}`}
                           id={`v3-stop-${story.slug}`}
                         >
                           <span className="v3-dot" aria-hidden="true" />
@@ -167,11 +167,6 @@ export function TrailView({
                             onClick={() => onSelect(open ? null : story.slug)}
                           >
                             <span className="v3-s-title">{story.title}</span>
-                            {blocked ? (
-                              <span className="v3-barrier" aria-label="Waiting for another story">
-                                ⛔
-                              </span>
-                            ) : null}
                             <StatusPill status={story.status} />
                             <span className="v3-s-line">{story.line}</span>
                           </button>

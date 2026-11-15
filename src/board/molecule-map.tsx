@@ -23,12 +23,21 @@
 import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import {
-  STATUS_WORD,
   findStory,
   type PublishedBoard,
 } from "./board-data.ts";
 import type { BoardLayout } from "./status-core.ts";
-import { StoryCardPanel } from "./trail-view.tsx";
+import { StatusPill, StoryCardPanel } from "./trail-view.tsx";
+
+/**
+ * Stage height (uplift Fix 2): on desktop viewports the chart room
+ * runs the full 560px — matching the .v3-map-stage min-height at
+ * the same >900px breakpoint in board.css. Smaller viewports keep
+ * the shipped proportion, floored at 420px.
+ */
+function stageHeight(width: number): number {
+  return window.innerWidth > 900 ? 560 : Math.max(420, Math.min(560, width * 0.62));
+}
 
 const STATUS_COLOR: Record<string, number> = {
   done: 0xc39a3a,
@@ -83,7 +92,7 @@ export default function MoleculeMap({
     const pixelRatio = Math.min(window.devicePixelRatio || 1, 1.5);
     renderer.setPixelRatio(pixelRatio);
     const width = stage.clientWidth || 800;
-    const height = Math.max(420, Math.min(560, width * 0.62));
+    const height = stageHeight(width);
     renderer.setSize(width, height);
     renderer.domElement.dataset.testid = "v3-map-canvas";
     renderer.domElement.style.touchAction = "none";
@@ -97,7 +106,7 @@ export default function MoleculeMap({
     scene.add(sun);
 
     /* atoms — one instanced mesh */
-    const atomGeo = new THREE.SphereGeometry(0.85, 10, 8);
+    const atomGeo = new THREE.SphereGeometry(0.85, 14, 10);
     const atomMat = new THREE.MeshStandardMaterial({ roughness: 0.55, metalness: 0.15 });
     const atoms = new THREE.InstancedMesh(atomGeo, atomMat, flat.length);
     const dummy = new THREE.Object3D();
@@ -116,7 +125,7 @@ export default function MoleculeMap({
     /* selection halo — one extra mesh, moved to the selected atom */
     const halo = new THREE.Mesh(
       new THREE.SphereGeometry(1.25, 14, 10),
-      new THREE.MeshBasicMaterial({ color: 0x8a6d2f, wireframe: true, transparent: true, opacity: 0.9 }),
+      new THREE.MeshBasicMaterial({ color: 0xe8b64c, wireframe: true, transparent: true, opacity: 0.9 }),
     );
     halo.visible = false;
     scene.add(halo);
@@ -165,7 +174,7 @@ export default function MoleculeMap({
 
     /* bonds — exactly the recorded waits, instanced cylinders */
     const bondGeo = new THREE.CylinderGeometry(0.14, 0.14, 1, 6, 1, true);
-    const bondMat = new THREE.MeshBasicMaterial({ color: 0xb3543f });
+    const bondMat = new THREE.MeshBasicMaterial({ color: 0xe86a5c });
     const bonds = new THREE.InstancedMesh(bondGeo, bondMat, board.bonds.length);
     const up = new THREE.Vector3(0, 1, 0);
     board.bonds.forEach((bond, i) => {
@@ -349,7 +358,7 @@ export default function MoleculeMap({
 
     const onResize = () => {
       const w = stage.clientWidth || width;
-      const h = Math.max(420, Math.min(560, w * 0.62));
+      const h = stageHeight(w);
       renderer.setSize(w, h);
       camera.aspect = w / h;
       camera.updateProjectionMatrix();
@@ -463,7 +472,9 @@ export default function MoleculeMap({
                         data-slug={story.slug}
                         onClick={() => onSelect(story.slug)}
                       >
-                        <strong>{story.title}</strong> — {STATUS_WORD[story.status]} — {story.line}
+                        <span className="v3-s-title">{story.title}</span>
+                        <StatusPill status={story.status} />
+                        <span className="v3-s-line">{story.line}</span>
                       </button>
                     </li>
                   ))}

@@ -76,3 +76,48 @@ describe("theme parity — board v3 vs the homepage (home-v5)", () => {
     }
   });
 });
+
+/**
+ * The atlas family (uplift Fix 2, 2026-11-15): the molecular map
+ * stage sits in the play screens' dark chart room, so board.css
+ * consumes the --atlas-* tokens from src/styles.css. They are
+ * consumed by var() reference, never copied into board.css — a
+ * single source of truth — and this block pins that arrangement:
+ * every token the map uses must exist in styles.css :root with
+ * the chart-room value, and the Three.js constants in
+ * molecule-map.tsx must carry the same hexes as the tokens.
+ */
+const ATLAS_TOKENS: Record<string, string> = {
+  "--atlas-bg-1": "#10222a",
+  "--atlas-bg-2": "#070e12",
+  "--atlas-glow": "rgba(232, 182, 76, 0.1)",
+  "--atlas-grid": "rgba(232, 182, 76, 0.07)",
+  "--atlas-card-line": "rgba(232, 182, 76, 0.22)",
+  "--atlas-stamp": "#e86a5c",
+  "--atlas-brass": "#e8b64c",
+};
+
+describe("theme parity — the map stage's atlas family (src/styles.css)", () => {
+  const styles = readFileSync(new URL("../styles.css", import.meta.url), "utf8");
+  const root = tokensUnder(styles, ":root {");
+  const boardCss = readFileSync(new URL("./board.css", import.meta.url), "utf8");
+
+  it("every atlas token the board consumes is defined in styles.css :root with the chart-room value", () => {
+    for (const [t, v] of Object.entries(ATLAS_TOKENS)) {
+      assert.ok(root.has(t), `styles.css :root is missing ${t}`);
+      assert.equal(root.get(t), v, `${t} drifted in styles.css`);
+    }
+  });
+  it("board.css consumes the atlas tokens via var(), never copies", () => {
+    for (const t of Object.keys(ATLAS_TOKENS)) {
+      assert.ok(boardCss.includes(`var(${t})`), `board.css must consume var(${t})`);
+    }
+  });
+  it("the map's Three.js constants carry the token hexes (bonds = --atlas-stamp, halo = --atlas-brass)", () => {
+    const map = readFileSync(new URL("./molecule-map.tsx", import.meta.url), "utf8");
+    assert.ok(map.includes("0xe86a5c"), "bond colour must be --atlas-stamp (#e86a5c)");
+    assert.ok(map.includes("0xe8b64c"), "halo colour must be --atlas-brass (#e8b64c)");
+    assert.ok(!map.includes("0xb3543f"), "the pre-uplift bond colour must not return");
+    assert.ok(!map.includes("0x8a6d2f"), "the pre-uplift halo colour must not return");
+  });
+});
