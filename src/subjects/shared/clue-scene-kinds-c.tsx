@@ -28,6 +28,7 @@ import {
   type ClueSceneDescription,
   type ClueScenePhase,
 } from "./clue-scene-types";
+import { seeded } from "./clue-scene-easing";
 
 const delay = (s: number): CSSProperties => ({ animationDelay: `${s.toFixed(2)}s` });
 const slideFrom = (fx: number, fy: number, s: number): CSSProperties =>
@@ -1172,6 +1173,419 @@ export function EnergyLedgerScene({
           {bar(inY, into, "cs-split-low", inStart)}
           <text className="cs-tick cs-tick-final" x={x0 + into * unit + 10} y={inY + 5} style={delay(inStart + 0.5)}>
             {into}
+          </text>
+        </>
+      )}
+    </>
+  );
+}
+
+/* ── Wave 7 kinds (Chemistry): salt-melt, dissolve,
+   particle-states, water-cycle ────────────────────────────────
+   Same discipline as the kinds above: givens only in the setup
+   film, no outcome before the pick. Each kind paces three
+   steps: salt-melt (the specks settle, the melt pools spread,
+   the final tick — the air stays cold throughout, its cold
+   marks drawn in both phases alike); dissolve (the crystals
+   break, the tiny dots spread, the final tick; the threeBlocks
+   variant drops one block per glass, one dissolves, two stay);
+   particle-states (warmth reaches the first panels, the dots
+   fly apart in the last, the final tick); water-cycle (the
+   puddle shrinks and wisps rise, the cloud gathers, the rain
+   falls back with the final tick). */
+
+const SALT_SPECKS = [
+  { x: 92, y: 118 },
+  { x: 138, y: 112 },
+  { x: 184, y: 119 },
+  { x: 228, y: 113 },
+];
+
+export function SaltMeltScene({
+  description,
+  phase,
+  stepDelay,
+}: {
+  description: Extract<ClueSceneDescription, { kind: "salt-melt" }>;
+  phase: ClueScenePhase;
+  /** Summary pacing: when present, step s's beat starts at
+   * stepDelay(s) instead of the film's own stagger. */
+  stepDelay?: (step: number) => number;
+}) {
+  void description;
+  const settleStart = stepDelay ? stepDelay(0) : 0.5;
+  const meltStart = stepDelay ? stepDelay(1) : 1.4;
+  const tickStart = stepDelay ? stepDelay(2) : 2.3;
+  const roadY = 148;
+  return (
+    <>
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M24 30 Q160 26 296 30" style={delay(0.1)} />
+      {/* Cold-air marks: drawn in BOTH phases alike — the air
+          never warms, before the pick or after it. */}
+      {[64, 128, 192, 256].map((sx, i) => (
+        <path
+          key={`cold-${i}`}
+          className="cs-line cs-soft cs-draw"
+          pathLength={1}
+          d={`M${sx} 52 L${sx} 64 M${sx - 5} 58 L${sx + 5} 58 M${sx - 4} 54 L${sx + 4} 62 M${sx - 4} 62 L${sx + 4} 54`}
+          style={delay(0.3 + i * 0.08)}
+        />
+      ))}
+      {/* The icy road: one unbroken sheet in setup. */}
+      <path className="cs-line cs-draw" pathLength={1} d={`M16 ${roadY} Q160 ${roadY + 4} 304 ${roadY}`} style={delay(0)} />
+      <path className="cs-stone" d={`M28 128 Q160 122 292 128 L292 146 Q160 150 28 146 Z`} />
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M36 136 Q160 131 284 136" style={delay(0.35)} />
+      {/* The salt specks resting on the ice (the givens). */}
+      {SALT_SPECKS.map((s, i) => (
+        <circle key={`salt-${i}`} className="cs-coin cs-pop" cx={s.x} cy={s.y} r="3.4" style={delay(0.5 + i * 0.1)} />
+      ))}
+      {phase === "solved" ? (
+        <>
+          {/* Step 0: the specks settle into the ice surface. */}
+          {SALT_SPECKS.map((s, i) => (
+            <ellipse
+              key={`settle-${i}`}
+              className="cs-ring-soft cs-pop"
+              cx={s.x}
+              cy={s.y + 8}
+              rx="10"
+              ry="4"
+              style={delay(settleStart + i * 0.12)}
+            />
+          ))}
+          {/* Step 1: melt pools spread around each speck while
+              the cold marks above stay exactly as they were. */}
+          {SALT_SPECKS.map((s, i) => (
+            <ellipse
+              key={`pool-${i}`}
+              className="cs-line cs-band cs-pop"
+              cx={s.x}
+              cy={s.y + 16}
+              rx="17"
+              ry="5.5"
+              style={delay(meltStart + i * 0.14)}
+            />
+          ))}
+          <ellipse className="cs-ring" cx="160" cy="128" rx="112" ry="26" style={delay(tickStart + 0.4)} />
+          <text className="cs-tick cs-tick-final" x="160" y="88" style={delay(tickStart + 0.55)}>
+            ✓
+          </text>
+        </>
+      ) : null}
+    </>
+  );
+}
+
+/** One glass of water, centred on (0,0), waterline at y=-18. */
+function DissolveGlassArt() {
+  return (
+    <>
+      <path className="cs-line" d="M-30 -44 L-26 40 Q0 46 26 40 L30 -44" />
+      <path className="cs-line cs-soft" d="M-28 -18 Q0 -22 28 -18" />
+      <path className="cs-line cs-band" d="M-29 -30 Q0 -34 29 -30" />
+    </>
+  );
+}
+
+/** Tiny dots spread through a glass's water (solved only). */
+function DissolvedDots({ start, small }: { start: number; small?: boolean }) {
+  const rnd = seeded(small ? 41 : 37);
+  const dots: { x: number; y: number }[] = [];
+  const n = small ? 10 : 22;
+  for (let i = 0; i < n; i++) {
+    dots.push({ x: -22 + rnd() * 44, y: -14 + rnd() * 48 });
+  }
+  return (
+    <>
+      {dots.map((d, i) => (
+        <circle
+          key={`dot-${i}`}
+          className="cs-stone cs-pop"
+          cx={d.x.toFixed(1)}
+          cy={d.y.toFixed(1)}
+          r={small ? 1.3 : 1.7}
+          style={delay(start + i * 0.05)}
+        />
+      ))}
+    </>
+  );
+}
+
+export function DissolveScene({
+  description,
+  phase,
+  stepDelay,
+}: {
+  description: Extract<ClueSceneDescription, { kind: "dissolve" }>;
+  phase: ClueScenePhase;
+  /** Summary pacing: when present, step s's beat starts at
+   * stepDelay(s) instead of the film's own stagger. */
+  stepDelay?: (step: number) => number;
+}) {
+  const breakStart = stepDelay ? stepDelay(0) : 0.5;
+  const spreadStart = stepDelay ? stepDelay(1) : 1.4;
+  const tickStart = stepDelay ? stepDelay(2) : 2.3;
+  const groundY = 164;
+  if (description.threeBlocks) {
+    // Identify variant: three unmarked blocks beside three
+    // glasses in setup (nothing marks which is which); solved
+    // drops one block into each glass — the middle one
+    // dissolves, the other two stay whole.
+    const glassX = [76, 160, 244];
+    return (
+      <>
+        <path className="cs-line cs-soft cs-draw" pathLength={1} d="M24 30 Q160 26 296 30" style={delay(0.1)} />
+        <path className="cs-line cs-draw" pathLength={1} d={`M16 ${groundY} Q160 ${groundY + 4} 304 ${groundY}`} style={delay(0)} />
+        {glassX.map((gx, gi) => (
+          <g key={`glass-${gi}`} transform={`translate(${gx} 108) scale(0.82)`}>
+            <g className="cs-pop" style={delay(0.35 + gi * 0.12)}>
+              <DissolveGlassArt />
+            </g>
+            {phase === "solved" && gi === 1 ? (
+              <DissolvedDots start={spreadStart} small />
+            ) : null}
+            {phase === "solved" && gi !== 1 ? (
+              <g transform="translate(0 16)">
+                <g className="cs-slide" style={slideFrom(0, -64, breakStart + gi * 0.15)}>
+                  <rect className="cs-pack" x="-11" y="-11" width="22" height="22" rx="2" />
+                </g>
+              </g>
+            ) : null}
+          </g>
+        ))}
+        {phase === "setup"
+          ? glassX.map((gx, gi) => (
+              <g key={`block-${gi}`} transform={`translate(${gx} 40)`}>
+                <g className="cs-pop" style={delay(0.55 + gi * 0.12)}>
+                  <rect className="cs-pack" x="-11" y="-11" width="22" height="22" rx="2" />
+                  <path className="cs-line cs-band" d="M-10 -4 Q0 -6 10 -4" />
+                </g>
+              </g>
+            ))
+          : null}
+        {phase === "solved" ? (
+          <>
+            {/* The dissolving block's own slide into its glass. */}
+            <g transform="translate(160 124)">
+              <g className="cs-slide" style={slideFrom(0, -84, breakStart + 0.1)}>
+                <rect className="cs-pack cs-dim" x="-11" y="-11" width="22" height="22" rx="2" />
+              </g>
+            </g>
+            <ellipse className="cs-ring" cx="160" cy="108" rx="34" ry="44" style={delay(tickStart + 0.4)} />
+            <text className="cs-tick cs-tick-final" x="160" y="34" style={delay(tickStart + 0.55)}>
+              ✓
+            </text>
+          </>
+        ) : null}
+      </>
+    );
+  }
+  // Single glass: crystals whole at the bottom in setup.
+  const crystals = [
+    { x: -14, y: 26, r: 0 },
+    { x: 2, y: 30, r: 24 },
+    { x: 15, y: 25, r: 48 },
+    { x: -4, y: 18, r: 12 },
+  ];
+  return (
+    <>
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M24 30 Q160 26 296 30" style={delay(0.1)} />
+      <path className="cs-line cs-draw" pathLength={1} d={`M16 ${groundY} Q160 ${groundY + 4} 304 ${groundY}`} style={delay(0)} />
+      <g transform="translate(160 104) scale(1.25)">
+        <g className="cs-pop" style={delay(0.35)}>
+          <DissolveGlassArt />
+        </g>
+        {phase === "setup" ? (
+          crystals.map((c, i) => (
+            <g key={`crystal-${i}`} transform={`translate(${c.x} ${c.y}) rotate(${c.r})`}>
+              <g className="cs-pop" style={delay(0.55 + i * 0.1)}>
+                <path className="cs-stone" d="M0 -7 L6 0 L0 7 L-6 0 Z" />
+              </g>
+            </g>
+          ))
+        ) : (
+          <>
+            {/* Step 0: the crystals crack into shards. */}
+            {crystals.map((c, i) => (
+              <g key={`shard-${i}`} transform={`translate(${c.x} ${c.y}) rotate(${c.r + 30})`}>
+                <g className="cs-pop" style={delay(breakStart + i * 0.12)}>
+                  <path className="cs-stone cs-dim" d="M0 -3.5 L3 0 L0 3.5 L-3 0 Z" />
+                </g>
+              </g>
+            ))}
+            {/* Step 1: tiny dots spread through all the water. */}
+            <DissolvedDots start={spreadStart} />
+          </>
+        )}
+      </g>
+      {phase === "solved" ? (
+        <>
+          <ellipse className="cs-ring" cx="160" cy="104" rx="48" ry="62" style={delay(tickStart + 0.4)} />
+          <text className="cs-tick cs-tick-final" x="160" y="30" style={delay(tickStart + 0.55)}>
+            ✓
+          </text>
+        </>
+      ) : null}
+    </>
+  );
+}
+
+/** Dot layouts for the three state panels: packed, loose,
+ * flying apart — the question's own three pictures, drawn the
+ * same in both phases (no warmth progression in setup). */
+const PARTICLE_PANELS: { cx: number; dots: { x: number; y: number }[] }[] = [
+  {
+    cx: 62,
+    dots: [
+      { x: -12, y: -12 }, { x: 0, y: -12 }, { x: 12, y: -12 },
+      { x: -12, y: 0 }, { x: 0, y: 0 }, { x: 12, y: 0 },
+      { x: -12, y: 12 }, { x: 0, y: 12 }, { x: 12, y: 12 },
+    ],
+  },
+  {
+    cx: 160,
+    dots: [
+      { x: -16, y: -8 }, { x: -4, y: -14 }, { x: 10, y: -6 },
+      { x: -10, y: 4 }, { x: 4, y: 2 }, { x: 16, y: 12 },
+      { x: -16, y: 14 }, { x: 6, y: 14 },
+    ],
+  },
+  {
+    cx: 258,
+    dots: [
+      { x: -20, y: -18 }, { x: 2, y: -20 }, { x: 20, y: -14 },
+      { x: -14, y: 2 }, { x: 12, y: 4 },
+      { x: -20, y: 18 }, { x: 4, y: 16 }, { x: 20, y: 20 },
+    ],
+  },
+];
+
+export function ParticleStatesScene({
+  description,
+  phase,
+  stepDelay,
+}: {
+  description: Extract<ClueSceneDescription, { kind: "particle-states" }>;
+  phase: ClueScenePhase;
+  /** Summary pacing: when present, step s's beat starts at
+   * stepDelay(s) instead of the film's own stagger. */
+  stepDelay?: (step: number) => number;
+}) {
+  void description;
+  const warmStart = stepDelay ? stepDelay(0) : 0.5;
+  const flyStart = stepDelay ? stepDelay(1) : 1.4;
+  const tickStart = stepDelay ? stepDelay(2) : 2.3;
+  const panelY = 96;
+  return (
+    <>
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M24 30 Q160 26 296 30" style={delay(0.1)} />
+      <path className="cs-line cs-draw" pathLength={1} d="M16 164 Q160 168 304 164" style={delay(0)} />
+      {/* A kettle under the panels: the question's own scene. */}
+      <path className="cs-line cs-draw" pathLength={1} d="M138 164 L140 148 Q160 142 180 148 L182 164 M180 150 Q196 146 194 138" style={delay(0.25)} />
+      {PARTICLE_PANELS.map((panel, pi) => (
+        <g key={`panel-${pi}`}>
+          <rect className="cs-line cs-draw" pathLength={1} x={panel.cx - 34} y={panelY - 38} width="68" height="76" rx="4" style={delay(0.3 + pi * 0.1)} />
+          {panel.dots.map((d, i) => (
+            <circle
+              key={`dot-${pi}-${i}`}
+              className="cs-stone cs-pop"
+              cx={panel.cx + d.x}
+              cy={panelY + d.y}
+              r="3.4"
+              style={delay(0.5 + pi * 0.1 + i * 0.04)}
+            />
+          ))}
+          {phase === "solved" ? (
+            <>
+              {/* Steps 0-1: warmth waves rise under each panel
+                  in turn, and arrows carry the eye packed →
+                  loose → flying apart. */}
+              {[0, 1].map((w) => (
+                <path
+                  key={`warm-${pi}-${w}`}
+                  className="cs-line cs-band cs-pop"
+                  d={`M${panel.cx - 8 + w * 16} ${panelY + 52} Q${panel.cx - 3 + w * 16} ${panelY + 46} ${panel.cx - 8 + w * 16} ${panelY + 40}`}
+                  style={delay((pi === 2 ? flyStart : warmStart) + pi * 0.2 + w * 0.15)}
+                />
+              ))}
+              {pi < 2 ? (
+                <path
+                  className="cs-line cs-band cs-draw"
+                  pathLength={1}
+                  d={`M${panel.cx + 38} ${panelY} Q${panel.cx + 47} ${panelY - 3} ${panel.cx + 56} ${panelY} M${panel.cx + 50} ${panelY - 5} L${panel.cx + 57} ${panelY} L${panel.cx + 50} ${panelY + 5}`}
+                  style={delay(warmStart + 0.4 + pi * 0.3)}
+                />
+              ) : null}
+            </>
+          ) : null}
+        </g>
+      ))}
+      {phase === "solved" ? (
+        <>
+          <ellipse className="cs-ring" cx="258" cy={panelY} rx="40" ry="44" style={delay(tickStart + 0.4)} />
+          <text className="cs-tick cs-tick-final" x="258" y="34" style={delay(tickStart + 0.55)}>
+            ✓
+          </text>
+        </>
+      ) : null}
+    </>
+  );
+}
+
+export function WaterCycleScene({
+  description,
+  phase,
+  stepDelay,
+}: {
+  description: Extract<ClueSceneDescription, { kind: "water-cycle" }>;
+  phase: ClueScenePhase;
+  /** Summary pacing: when present, step s's beat starts at
+   * stepDelay(s) instead of the film's own stagger. */
+  stepDelay?: (step: number) => number;
+}) {
+  void description;
+  const riseStart = stepDelay ? stepDelay(0) : 0.5;
+  const cloudStart = stepDelay ? stepDelay(1) : 1.4;
+  const tickStart = stepDelay ? stepDelay(2) : 2.3;
+  const groundY = 164;
+  const puddleCx = 108;
+  const puddleCy = 146;
+  const cloudD = "M196 58 Q202 40 222 42 Q230 28 248 34 Q264 26 274 40 Q292 40 290 56 Q288 66 272 64 L214 64 Q198 66 196 58 Z";
+  return (
+    <>
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M24 30 Q160 26 296 30" style={delay(0.1)} />
+      <path className="cs-line cs-draw" pathLength={1} d={`M16 ${groundY} Q160 ${groundY + 4} 304 ${groundY}`} style={delay(0)} />
+      {/* Setup: the puddle at full size, and the sky empty. */}
+      {phase === "setup" ? (
+        <ellipse className="cs-line cs-draw" pathLength={1} cx={puddleCx} cy={puddleCy} rx="62" ry="10" style={delay(0.35)} />
+      ) : (
+        <>
+          {/* The puddle at its shrunken resting size. */}
+          <ellipse className="cs-line cs-draw" pathLength={1} cx={puddleCx} cy={puddleCy} rx="30" ry="6" style={delay(riseStart + 0.5)} />
+          <ellipse className="cs-line cs-soft cs-draw" pathLength={1} cx={puddleCx} cy={puddleCy} rx="62" ry="10" style={delay(0.2)} />
+          {/* Step 0: wisps rise from the puddle into the sky. */}
+          {[0, 1, 2].map((i) => (
+            <path
+              key={`wisp-${i}`}
+              className="cs-line cs-band cs-pop"
+              d={`M${88 + i * 22} 132 Q${96 + i * 22} 108 ${88 + i * 22} 88 Q${82 + i * 22} 72 ${92 + i * 22} 60`}
+              style={delay(riseStart + i * 0.2)}
+            />
+          ))}
+          {/* Step 1: the cloud gathers where the wisps rose. */}
+          <path className="cs-line cs-band cs-draw" pathLength={1} d={cloudD} style={delay(cloudStart)} />
+          {/* Step 2: rain falls back toward the ground. */}
+          {[0, 1, 2, 3, 4].map((i) => (
+            <path
+              key={`rain-${i}`}
+              className="cs-line cs-band cs-pop"
+              d={`M${214 + i * 16} 74 L${210 + i * 16} 90`}
+              style={delay(tickStart + i * 0.1)}
+            />
+          ))}
+          <ellipse className="cs-ring" cx="244" cy="48" rx="54" ry="26" style={delay(tickStart + 0.5)} />
+          <text className="cs-tick cs-tick-final" x="244" y="112" style={delay(tickStart + 0.65)}>
+            ✓
           </text>
         </>
       )}

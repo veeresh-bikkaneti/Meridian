@@ -1258,3 +1258,230 @@ export function SoundPathScene({
     </>
   );
 }
+
+/* ── Wave 7 kinds (Chemistry): magnet-sort, rebuild-pieces ────
+   Same discipline as the kinds above: givens only in the setup
+   film. magnet-sort's pile is one seeded mixed scatter, reused
+   as the solved beat's starting positions — the setup film
+   never sorts it by material in any visible way (every glyph
+   kind is scattered through every part of the pile); which bits
+   leap is spent only in the solved phase. rebuild-pieces paces
+   three steps (the pieces come apart, the longer rebuild, the
+   final tick); magnet-sort paces three (the magnet passes, the
+   iron bits leap, the final tick). */
+
+/** The mixed pile: iron rounds, wooden squares and plastic
+ * triangles scattered by one seeded layout — the same spots in
+ * both phases, so the solved beat's leaps start from the pile
+ * the setup film showed. Kind cycles round-robin through the
+ * scatter, so no corner of the pile is one material. */
+const SORT_BITS: { x: number; y: number; mat: number }[] = (() => {
+  const rnd = seeded(29);
+  const bits: { x: number; y: number; mat: number }[] = [];
+  for (let i = 0; i < 15; i++) {
+    bits.push({ x: 84 + rnd() * 152, y: 118 + rnd() * 30, mat: i % 3 });
+  }
+  return bits;
+})();
+
+function SortBitArt({ mat }: { mat: number }) {
+  if (mat === 0) {
+    return (
+      <>
+        <circle className="cs-coin" r="6.5" />
+        <circle className="cs-coin-inner" r="3" />
+      </>
+    );
+  }
+  if (mat === 1) {
+    return <rect className="cs-stone" x="-6" y="-6" width="12" height="12" rx="2" />;
+  }
+  return <path className="cs-tip" d="M0 -7 L7 5 L-7 5 Z" />;
+}
+
+/** A bar magnet glyph, centred on (0,0), poles at its ends. */
+function SortMagnetArt() {
+  return (
+    <>
+      <rect className="cs-pack" x="-26" y="-8" width="52" height="16" rx="3" />
+      <path className="cs-line cs-band" d="M0 -8 L0 8" />
+      <path className="cs-line" d="M-24 -3 Q-13 -5 -2 -3 M2 3 Q13 5 24 3" />
+    </>
+  );
+}
+
+export function MagnetSortScene({
+  description,
+  phase,
+  stepDelay,
+}: {
+  description: Extract<ClueSceneDescription, { kind: "magnet-sort" }>;
+  phase: ClueScenePhase;
+  /** Summary pacing: when present, step s's beat starts at
+   * stepDelay(s) instead of the film's own stagger. */
+  stepDelay?: (step: number) => number;
+}) {
+  void description;
+  const passStart = stepDelay ? stepDelay(0) : 0.5;
+  const leapStart = stepDelay ? stepDelay(1) : 1.4;
+  const tickStart = stepDelay ? stepDelay(2) : 2.3;
+  const groundY = 164;
+  // Where the magnet rests in the solved beat (over the pile),
+  // and where each iron bit lands hanging under it.
+  const magnetX = 160;
+  const magnetY = 74;
+  const ironBits = SORT_BITS.filter((b) => b.mat === 0);
+  const ironSlot = (bit: (typeof SORT_BITS)[number]) => {
+    const i = ironBits.indexOf(bit);
+    return { x: magnetX - 20 + i * 10, y: magnetY + 15 };
+  };
+  return (
+    <>
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M24 30 Q160 26 296 30" style={delay(0.1)} />
+      <path className="cs-line cs-draw" pathLength={1} d={`M16 ${groundY} Q160 ${groundY + 4} 304 ${groundY}`} style={delay(0)} />
+      <ellipse className="cs-line cs-soft cs-draw" pathLength={1} cx="160" cy="146" rx="104" ry="12" style={delay(0.25)} />
+      {phase === "setup" ? (
+        <>
+          {/* The magnet held clear, up at the side. */}
+          <g transform="translate(56 58)">
+            <g className="cs-pop" style={delay(0.45)}>
+              <SortMagnetArt />
+            </g>
+          </g>
+          {SORT_BITS.map((b, i) => (
+            <g key={`bit-${i}`} transform={`translate(${b.x.toFixed(1)} ${b.y.toFixed(1)})`}>
+              <g className="cs-pop" style={delay(0.55 + i * 0.05)}>
+                <SortBitArt mat={b.mat} />
+              </g>
+            </g>
+          ))}
+        </>
+      ) : (
+        <>
+          {/* Step 0: the magnet slides in over the pile. */}
+          <g transform={`translate(${magnetX} ${magnetY})`}>
+            <g className="cs-slide" style={slideFrom(56 - magnetX, 58 - magnetY, passStart)}>
+              <SortMagnetArt />
+            </g>
+          </g>
+          {SORT_BITS.map((b, i) => {
+            if (b.mat === 0) {
+              const fin = ironSlot(b);
+              return (
+                <g key={`bit-${i}`} transform={`translate(${fin.x} ${fin.y})`}>
+                  <g className="cs-slide" style={slideFrom(b.x - fin.x, b.y - fin.y, leapStart + i * 0.06)}>
+                    <SortBitArt mat={b.mat} />
+                  </g>
+                </g>
+              );
+            }
+            return (
+              <g key={`bit-${i}`} transform={`translate(${b.x.toFixed(1)} ${b.y.toFixed(1)})`}>
+                <g className="cs-pop" style={delay(0.3 + i * 0.04)}>
+                  <SortBitArt mat={b.mat} />
+                </g>
+              </g>
+            );
+          })}
+          <ellipse className="cs-ring" cx={magnetX} cy={magnetY + 6} rx="40" ry="24" style={delay(tickStart + 0.4)} />
+          <text className="cs-tick cs-tick-final" x={magnetX} y="34" style={delay(tickStart + 0.55)}>
+            ✓
+          </text>
+        </>
+      )}
+    </>
+  );
+}
+
+/** The bridge's pieces: two posts, two deck planks and one
+ * crossbar. Setup spots build the short bridge; solved spots
+ * lay the same five pieces out in one longer bridge — every
+ * piece used, none added. */
+const BRIDGE_PIECES: {
+  setup: { x: number; y: number };
+  apart: { x: number; y: number };
+  solved: { x: number; y: number };
+  shape: number;
+}[] = [
+  { setup: { x: 118, y: 122 }, apart: { x: 84, y: 148 }, solved: { x: 84, y: 122 }, shape: 0 },
+  { setup: { x: 202, y: 122 }, apart: { x: 128, y: 152 }, solved: { x: 236, y: 122 }, shape: 0 },
+  { setup: { x: 136, y: 106 }, apart: { x: 172, y: 148 }, solved: { x: 122, y: 106 }, shape: 1 },
+  { setup: { x: 184, y: 106 }, apart: { x: 216, y: 152 }, solved: { x: 198, y: 106 }, shape: 1 },
+  { setup: { x: 160, y: 92 }, apart: { x: 248, y: 146 }, solved: { x: 160, y: 106 }, shape: 1 },
+];
+
+function BridgePieceArt({ shape }: { shape: number }) {
+  if (shape === 0) {
+    return <rect className="cs-pack" x="-7" y="-20" width="14" height="40" rx="2" />;
+  }
+  return (
+    <>
+      <rect className="cs-pack" x="-34" y="-6" width="68" height="12" rx="2" />
+      <path className="cs-line cs-band" d="M-32 0 Q0 -3 32 0" />
+    </>
+  );
+}
+
+export function RebuildPiecesScene({
+  description,
+  phase,
+  stepDelay,
+}: {
+  description: Extract<ClueSceneDescription, { kind: "rebuild-pieces" }>;
+  phase: ClueScenePhase;
+  /** Summary pacing: when present, step s's beat starts at
+   * stepDelay(s) instead of the film's own stagger. */
+  stepDelay?: (step: number) => number;
+}) {
+  void description;
+  const apartStart = stepDelay ? stepDelay(0) : 0.5;
+  const buildStart = stepDelay ? stepDelay(1) : 1.4;
+  const tickStart = stepDelay ? stepDelay(2) : 2.3;
+  const groundY = 164;
+  return (
+    <>
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M24 30 Q160 26 296 30" style={delay(0.1)} />
+      <path className="cs-line cs-draw" pathLength={1} d={`M16 ${groundY} Q160 ${groundY + 4} 304 ${groundY}`} style={delay(0)} />
+      {/* The banks the bridge spans. */}
+      <path className="cs-line cs-draw" pathLength={1} d="M16 142 Q44 138 62 142 L62 164 M258 142 Q276 138 304 142 L304 164" style={delay(0.2)} />
+      {phase === "setup" ? (
+        <>
+          {BRIDGE_PIECES.map((p, i) => (
+            <g key={`piece-${i}`} transform={`translate(${p.setup.x} ${p.setup.y})`}>
+              <g className="cs-pop" style={delay(0.4 + i * 0.1)}>
+                <BridgePieceArt shape={p.shape} />
+              </g>
+            </g>
+          ))}
+          {/* The gap the short bridge cannot cross: open water
+              showing on both sides of it. */}
+          <path className="cs-line cs-soft cs-draw" pathLength={1} d="M66 156 Q96 152 110 156 M210 156 Q240 152 254 156" style={delay(0.6)} />
+        </>
+      ) : (
+        <>
+          {/* Steps 0-1 in one travel per piece: each piece slides
+              from its short-bridge spot, out to its apart spot's
+              side, and lands in the longer bridge (the slide
+              starts from the setup spot; the apart beat is the
+              spread of the starting cluster, read as the pieces
+              coming apart before they land longer). */}
+          {BRIDGE_PIECES.map((p, i) => (
+            <g key={`piece-${i}`} transform={`translate(${p.solved.x} ${p.solved.y})`}>
+              <g
+                className="cs-slide"
+                style={slideFrom(p.setup.x - p.solved.x, p.setup.y - p.solved.y, (i < 2 ? apartStart : buildStart) + i * 0.08)}
+              >
+                <BridgePieceArt shape={p.shape} />
+              </g>
+            </g>
+          ))}
+          <path className="cs-line cs-soft cs-draw" pathLength={1} d="M66 156 Q160 151 254 156" style={delay(buildStart + 0.4)} />
+          <ellipse className="cs-ring" cx="160" cy="108" rx="104" ry="30" style={delay(tickStart + 0.4)} />
+          <text className="cs-tick cs-tick-final" x="160" y="52" style={delay(tickStart + 0.55)}>
+            ✓
+          </text>
+        </>
+      )}
+    </>
+  );
+}

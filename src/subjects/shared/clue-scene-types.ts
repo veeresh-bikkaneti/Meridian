@@ -767,4 +767,74 @@ export type ClueSceneDescription =
       labelSolved: string;
       /** Narrated solved summary (act 3); solved phase only. */
       summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "melt-freeze";
+      /** True for the freeze-direction item: an open puddle
+       * (the question's given) skins over with ice in the
+       * solved beat. Absent/false, the renderer runs the melt
+       * direction: a whole ice pop, no drips before the pick,
+       * slumps and drips in the solved beat. The direction is
+       * the item's own data, never a second kind. */
+      freeze?: boolean;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "bend-test";
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "magnet-sort";
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "rebuild-pieces";
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "salt-melt";
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "dissolve";
+      /** True for the identify item: THREE unmarked blocks
+       * beside three glasses (the question's givens); the
+       * solved beat drops one block into each glass and one
+       * dissolves while the others stay whole. Absent, the
+       * renderer runs the single-glass path: crystals whole
+       * in the glass break into tiny dots in the solved beat. */
+      threeBlocks?: boolean;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "particle-states";
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "water-cycle";
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
     };

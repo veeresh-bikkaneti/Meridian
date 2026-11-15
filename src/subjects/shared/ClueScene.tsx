@@ -54,7 +54,9 @@ import {
 import { seeded } from "./clue-scene-easing";
 import {
   ArrayGridScene,
+  BendTestScene,
   BusBoardingScene,
+  MeltFreezeScene,
   PackBoxesScene,
   PercentBarScene,
   MagnetPairScene,
@@ -73,9 +75,11 @@ import {
   FractionBarScene,
   FractionMeasureScene,
   HillCartsScene,
+  MagnetSortScene,
   MapScaleScene,
   PlaceCompareScene,
   PlaceValueScene,
+  RebuildPiecesScene,
   SlideStopScene,
   SlopePairScene,
   SoundPathScene,
@@ -84,15 +88,19 @@ import {
 import {
   BearingDiagramScene,
   ChunkShareScene,
+  DissolveScene,
   EnergyLedgerScene,
   LightPathScene,
   JourneyLineScene,
+  ParticleStatesScene,
   RateBarsScene,
   RoundingLineScene,
+  SaltMeltScene,
   SeesawLiftScene,
   SpendThenGroupScene,
   SplitProductScene,
   TowerMeasureScene,
+  WaterCycleScene,
 } from "./clue-scene-kinds-c";
 import {
   ClockArcScene,
@@ -466,6 +474,14 @@ const SUMMARY_STAGGER: Record<ClueSceneDescription["kind"], number> = {
   "hill-carts": 0.8,
   "sound-path": 0.8,
   "energy-ledger": 0.8,
+  "melt-freeze": 0.8,
+  "bend-test": 0.8,
+  "magnet-sort": 0.8,
+  "rebuild-pieces": 0.8,
+  "salt-melt": 0.8,
+  dissolve: 0.8,
+  "particle-states": 0.8,
+  "water-cycle": 0.8,
 };
 
 /** The summary clip's URL (public/audio/subjects/, manifest.json). */
@@ -600,6 +616,22 @@ function SceneArt({
       return <SoundPathScene description={description} phase={phase} stepDelay={stepDelay} />;
     case "energy-ledger":
       return <EnergyLedgerScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "melt-freeze":
+      return <MeltFreezeScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "bend-test":
+      return <BendTestScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "magnet-sort":
+      return <MagnetSortScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "rebuild-pieces":
+      return <RebuildPiecesScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "salt-melt":
+      return <SaltMeltScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "dissolve":
+      return <DissolveScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "particle-states":
+      return <ParticleStatesScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "water-cycle":
+      return <WaterCycleScene description={description} phase={phase} stepDelay={stepDelay} />;
   }
 }
 
