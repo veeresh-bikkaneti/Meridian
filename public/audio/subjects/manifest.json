@@ -1,7 +1,7 @@
 {
   "v": 1,
   "voice": "am_michael",
-  "note": "Narrated solved summaries for the math clue scenes (act 3). One clip per pilot item; the script and per-line timings in src/subjects/math/scenes.ts are the source of truth and match the clips line for line. Rendered locally with the same voice and loudness targets as the journal narration (-18 LUFS, true peak -1.5 dBFS), 24 kHz mono MP3 at 64 kbps like the other in-app clips.",
+  "note": "Narrated solved summaries for the math clue scenes (act 3). One clip per item; the script and per-line timings in src/subjects/math/scenes.ts are the source of truth and match the clips line for line. Rendered locally with the same voice and loudness targets as the journal narration (-18 LUFS, true peak -1.5 dBFS), 24 kHz mono MP3 at 64 kbps like the other in-app clips. Wave 1 (expansion) added the ten non-pilot clips in the same voice (am_michael), rendered the same way.",
   "clips": {
     "skip-count": {
       "file": "skip-count.mp3",
@@ -19,6 +19,66 @@
       "file": "fair-share.mp3",
       "item": "math-number:division:fair-share",
       "duration": 18.74,
+      "lines": 5
+    },
+    "equal-groups": {
+      "file": "equal-groups.mp3",
+      "item": "math-number:groups:equal-groups",
+      "duration": 13.67,
+      "lines": 5
+    },
+    "buses": {
+      "file": "buses.mp3",
+      "item": "math-number:tables:buses",
+      "duration": 14.24,
+      "lines": 5
+    },
+    "remainders": {
+      "file": "remainders.mp3",
+      "item": "math-number:division:remainders",
+      "duration": 16.89,
+      "lines": 6
+    },
+    "place-value": {
+      "file": "place-value.mp3",
+      "item": "math-number:place:hundreds-tens-ones",
+      "duration": 17.24,
+      "lines": 5
+    },
+    "place-compare": {
+      "file": "place-compare.mp3",
+      "item": "math-number:place:compare",
+      "duration": 16.65,
+      "lines": 5
+    },
+    "rounding": {
+      "file": "rounding.mp3",
+      "item": "math-number:place:round",
+      "duration": 16.78,
+      "lines": 4
+    },
+    "ten-times": {
+      "file": "ten-times.mp3",
+      "item": "math-number:place:ten-times",
+      "duration": 19.53,
+      "lines": 6
+    },
+    "big-products": {
+      "file": "big-products.mp3",
+      "item": "math-number:tables:big-products",
+      "duration": 21.4,
+      "lines": 5
+    },
+    "unknown-factor": {
+      "file": "unknown-factor.mp3",
+      "item": "math-number:division:unknown-factor",
+      "duration": 13.6,
+      "lines": 5
+    },
+    "big-quotients": {
+      "file": "big-quotients.mp3",
+      "item": "math-number:division:big-quotients",
+      "duration": 17.57,
       "lines": 5
     }
   }

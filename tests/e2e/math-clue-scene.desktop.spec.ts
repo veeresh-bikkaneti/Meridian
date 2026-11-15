@@ -2,23 +2,21 @@ import { test, expect, type BrowserContext, type Page } from "playwright/test";
 import { serveBuiltArtifact } from "./helpers";
 
 /**
- * Math clue scenes (pilot, feat/clue-scene-pilot) — desktop.
+ * Math clue scenes (pilot + wave 1) — desktop.
  *
- * For ages 7-10, three math items carry a short live-drawn film
+ * For ages 7-10, every math item carries a short live-drawn film
  * above the text clue: the setup film sets the scene only (never
  * the answer), and the solved beat plays after a correct pick.
- * This spec walks the 7-10 deal order to all three pilot items,
- * screenshots the setup and solved frames, and checks that an
- * item without a scene still shows the plain clue card. The
- * mobile twin (math-clue-scene.mobile.spec.ts) runs the same
- * walk at 390 px; the reduced twin pins the still frames.
- *
- * Act 3: after the correct pick (never a wrong one) the solved
- * case also carries the narrated summary — its full script as
- * standing text in the result section, the play control in the
- * scene card, and the performance under way (data-summary).
+ * This spec walks the full 7-10 deal order, screenshots the setup
+ * and solved frames of all thirteen scenes, and pins act 3 on
+ * each: after the correct pick (never a wrong one) the solved
+ * case carries the narrated summary — its full script as standing
+ * text in the result section, the play control in the scene card,
+ * and the performance under way (data-summary). The mobile twin
+ * (math-clue-scene.mobile.spec.ts) runs the same walk at 390 px;
+ * the reduced twin pins the still frames.
  */
-test.setTimeout(240_000);
+test.setTimeout(600_000);
 
 const APP_URL = "http://127.0.0.1:4123/Meridian/?idle-ms=3600000";
 const PROFILE_KEY = "meridian.ageProfile.v1";
@@ -80,17 +78,6 @@ async function dismissCelebration(page: Page) {
   }
 }
 
-async function solveAndNext(page: Page, correct: string) {
-  await page
-    .getByTestId("math-answer-card")
-    .getByRole("button", { name: correct, exact: true })
-    .click();
-  await dismissCelebration(page);
-  await expect(page.getByTestId("math-result")).toBeVisible();
-  await page.getByRole("button", { name: /Next case/ }).click();
-  await expect(page.getByTestId("math-answer-card")).toBeVisible();
-}
-
 /** Screenshot the scene's setup frame, solve, screenshot the solved frame. */
 async function filmCase(
   page: Page,
@@ -100,6 +87,7 @@ async function filmCase(
   setupLabel: string,
   wrong: string,
   summarySnippet: string,
+  isLast: boolean,
 ) {
   const mathCase = page.getByTestId("math-case");
   await expect(mathCase).toHaveAttribute("data-item", item);
@@ -147,65 +135,132 @@ async function filmCase(
     .toBeGreaterThan(0);
   await page.waitForTimeout(6_200);
   await scene.screenshot({ path: `${SHOTS}/${slug}-solved-${PROJECT}.png` });
-  await page.getByRole("button", { name: /Next case/ }).click();
-  await expect(page.getByTestId("math-answer-card")).toBeVisible();
+  if (!isLast) {
+    await page.getByRole("button", { name: /Next case/ }).click();
+    await expect(page.getByTestId("math-answer-card")).toBeVisible();
+  }
 }
 
-test("clue scenes: setup hides the answer, solved beat plays, plain items unchanged", async ({
-  page,
-  context,
-}) => {
-  await setup(context);
-  const errors = watchErrors(page);
-  await openCase(page);
-
-  // Case 1 is the coin scene.
-  await filmCase(
-    page,
+// The full 7-10 deal order: item, correct pick, screenshot slug,
+// the setup label (answer-blind), one wrong pick, and a line from
+// the summary's closing that must stand in the result section.
+const CASES: [string, string, string, string, string, string][] = [
+  [
     "math-number:groups:skip-count",
     "8",
     "skip-count",
     "Coins wait in a loose pile on a table, ready to be counted.",
     "6",
     "Counting in fives finds the groups fast",
-  );
-
-  // The next item has no scene: the plain clue card, unchanged.
-  await expect(page.getByTestId("math-case")).toHaveAttribute(
-    "data-item",
+  ],
+  [
     "math-number:groups:equal-groups",
-  );
-  await expect(page.getByTestId("clue-scene")).toHaveCount(0);
-  await page.screenshot({ path: `${SHOTS}/plain-clue-${PROJECT}.png` });
-
-  // Walk the deal order to the pencil packs (case 8).
-  await solveAndNext(page, "24");
-  await solveAndNext(page, "4");
-  await solveAndNext(page, "345");
-  await solveAndNext(page, "385");
-  await solveAndNext(page, "300");
-  await solveAndNext(page, "700");
-  await filmCase(
-    page,
+    "24",
+    "equal-groups",
+    "Boxes of pencils stand in a row on a shelf.",
+    "18",
+    "Four boxes of six make 24 pencils",
+  ],
+  [
+    "math-number:tables:buses",
+    "4",
+    "buses",
+    "Children wait in a line at the bus stop.",
+    "3",
+    "24 children need 4 buses",
+  ],
+  [
+    "math-number:place:hundreds-tens-ones",
+    "345",
+    "hundreds-tens-ones",
+    "Notes and coins wait in piles on the counter.",
+    "354",
+    "build 345",
+  ],
+  [
+    "math-number:place:compare",
+    "385",
+    "place-compare",
+    "Two routes wait side by side, their steps laid out in places.",
+    "358",
+    "longer route is 385 steps",
+  ],
+  [
+    "math-number:place:round",
+    "300",
+    "rounding",
+    "A marker waits on a line between two hundreds.",
+    "200",
+    "banner says 300",
+  ],
+  [
+    "math-number:place:ten-times",
+    "700",
+    "ten-times",
+    "Stones mark a path, each stone standing for ten steps.",
+    "77",
+    "70 becomes 700",
+  ],
+  [
     "math-number:tables:facts",
     "28",
     "facts",
     "Packs of pencils stand in a row on a shelf.",
     "11",
     "four times table at work",
-  );
-
-  // One plain case, then the fair-share scene (case 10).
-  await solveAndNext(page, "1,008");
-  await filmCase(
-    page,
+  ],
+  [
+    "math-number:tables:big-products",
+    "1,008",
+    "big-products",
+    "Rows of chairs wait in a hall.",
+    "968",
+    "800 and 208 make 1008",
+  ],
+  [
     "math-number:division:fair-share",
     "3",
     "fair-share",
     "A plate of snacks sits on a table, with friends waiting around it.",
     "2",
     "Sharing one by one keeps it fair",
-  );
+  ],
+  [
+    "math-number:division:unknown-factor",
+    "5",
+    "unknown-factor",
+    "Pencils wait in a loose pile, ready to be packed.",
+    "4",
+    "5 boxes for all 40 pencils",
+  ],
+  [
+    "math-number:division:remainders",
+    "5",
+    "remainders",
+    "Children wait in a line at the bus stop.",
+    "4",
+    "5 buses for all 26 children",
+  ],
+  [
+    "math-number:division:big-quotients",
+    "156",
+    "big-quotients",
+    "A tall pile of books waits beside empty shelves.",
+    "146",
+    "156 books",
+  ],
+];
 
+test("clue scenes: every 7-10 case sets up blind, solves, and narrates", async ({
+  page,
+  context,
+}) => {
+  await setup(context);
+  const errors = watchErrors(page);
+  await openCase(page);
+  for (let i = 0; i < CASES.length; i++) {
+    const [item, correct, slug, setupLabel, wrong, snippet] = CASES[i]!;
+    await filmCase(page, item, correct, slug, setupLabel, wrong, snippet, i === CASES.length - 1);
+  }
   expect(errors).toEqual([]);
 });

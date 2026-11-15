@@ -132,3 +132,56 @@ describe("clue scene summary (act 3)", () => {
     assert.ok(scene.includes('data-testid="clue-summary-text"'));
   });
 });
+
+describe("wave 1 kinds", () => {
+  const kindsA = read(join(here, "clue-scene-kinds-a.tsx"));
+  const kindsB = read(join(here, "clue-scene-kinds-b.tsx"));
+  const kindsC = read(join(here, "clue-scene-kinds-c.tsx"));
+
+  it("the renderer dispatches every kind, pilot and wave 1", () => {
+    for (const kind of [
+      "coin-groups",
+      "pencil-packs",
+      "fair-share",
+      "bus-boarding",
+      "pack-boxes",
+      "place-value",
+      "place-compare",
+      "rounding-line",
+      "digit-shift",
+      "split-product",
+      "chunk-share",
+    ]) {
+      assert.ok(scene.includes(`case "${kind}":`), `SceneArt dispatches ${kind}`);
+      assert.ok(scene.includes(`"${kind}":`), `SUMMARY_STAGGER paces ${kind}`);
+    }
+  });
+
+  it("every wave-1 kind accepts the summary pacing prop", () => {
+    for (const [source, name] of [
+      [kindsA, "BusBoardingScene"],
+      [kindsA, "PackBoxesScene"],
+      [kindsB, "PlaceValueScene"],
+      [kindsB, "PlaceCompareScene"],
+      [kindsB, "DigitShiftScene"],
+      [kindsC, "RoundingLineScene"],
+      [kindsC, "SplitProductScene"],
+      [kindsC, "ChunkShareScene"],
+    ] as const) {
+      assert.ok(source.includes(`function ${name}(`), `${name} exists`);
+      assert.ok(source.includes("stepDelay"), `${name} accepts stepDelay`);
+    }
+  });
+
+  it("the wave-1 kinds' styles ride in the same stylesheet", () => {
+    for (const cls of [".cs-bus", ".cs-grow", ".cs-dim", ".cs-counter", ".cs-stone", ".cs-bar"]) {
+      assert.ok(styles.includes(cls), `styles carry ${cls}`);
+    }
+    // Chunk-share's intermediate counters must stay hidden in the
+    // still frame (they rest faded only while animations run).
+    assert.ok(
+      styles.includes('.clue-scene[data-still="true"] .cs-counter-step'),
+      "the still frame hides the intermediate chunk counters",
+    );
+  });
+});
