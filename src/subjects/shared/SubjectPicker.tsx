@@ -333,11 +333,12 @@ export default function SubjectPicker({
           button per card; its text is its name (no heading inside the
           button). The picture slot, icon and arrow are aria-hidden
           decoration, never glyphs. Columns (landscape layout,
-          feat/why-learn-landscape-layout): 2 on phones, 2 at
-          681–1080px, 4 from 1081px — the cards shrink and stack
+          feat/why-learn-landscape-layout): 1 under 360px (two
+          134px cards break "General knowledge" mid-word), 2 on
+          phones, 2 at 681–1080px, 4 from 1081px — the cards shrink and stack
           four in a row on desktop, and the fill rule in styles.css
           stretches the grid into the page's leftover height. */}
-      <ul className="mt-5 grid grid-cols-2 gap-3 min-[1081px]:grid-cols-4 min-[681px]:gap-4" data-testid="subject-cards">
+      <ul className="mt-5 grid grid-cols-[minmax(0,1fr)] gap-3 min-[360px]:grid-cols-2 min-[1081px]:grid-cols-4 min-[681px]:gap-4" data-testid="subject-cards">
         {rows.map((row, i) => {
           const Icon = SUBJECT_ICONS[row.id] ?? BookOpen;
           const ready = row.state === "ready" && row.module;
