@@ -45,7 +45,7 @@ export const EPICS = [
   {
     id: "geodetective",
     name: "GeoDetective",
-    color: "#e8b64c",
+    color: "#8a6d2f",
     features: [
       {
         id: "holmes",
@@ -84,7 +84,7 @@ export const EPICS = [
   {
     id: "subjects",
     name: "School Subjects",
-    color: "#3c8496",
+    color: "#33503f",
     features: [
       {
         id: "why",
@@ -147,7 +147,7 @@ export const EPICS = [
   {
     id: "journals",
     name: "Story Journals",
-    color: "#6e9084",
+    color: "#8fa382",
     features: [
       {
         id: "journal",
@@ -166,7 +166,7 @@ export const EPICS = [
   {
     id: "voices",
     name: "Voices & Sound",
-    color: "#e86a5c",
+    color: "#b3543f",
     features: [
       {
         id: "voice",
@@ -184,7 +184,7 @@ export const EPICS = [
   {
     id: "behind",
     name: "Behind the Scenes",
-    color: "#9db3ad",
+    color: "#5c564a",
     features: [
       {
         id: "making",

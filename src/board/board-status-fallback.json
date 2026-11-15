@@ -1,7 +1,7 @@
 {
   "version": 3,
   "source": "manual",
-  "updatedAt": "2026-11-15T13:02:03.083Z",
+  "updatedAt": "2026-11-15T13:03:15.476Z",
   "counts": {
     "done": 20,
     "inProgress": 8,
@@ -12,7 +12,7 @@
     {
       "id": "geodetective",
       "name": "GeoDetective",
-      "color": "#e8b64c",
+      "color": "#8a6d2f",
       "features": [
         {
           "id": "holmes",
@@ -101,7 +101,7 @@
     {
       "id": "subjects",
       "name": "School Subjects",
-      "color": "#3c8496",
+      "color": "#33503f",
       "features": [
         {
           "id": "why",
@@ -297,7 +297,7 @@
     {
       "id": "journals",
       "name": "Story Journals",
-      "color": "#6e9084",
+      "color": "#8fa382",
       "features": [
         {
           "id": "journal",
@@ -339,7 +339,7 @@
     {
       "id": "voices",
       "name": "Voices & Sound",
-      "color": "#e86a5c",
+      "color": "#b3543f",
       "features": [
         {
           "id": "voice",
@@ -375,7 +375,7 @@
     {
       "id": "behind",
       "name": "Behind the Scenes",
-      "color": "#9db3ad",
+      "color": "#5c564a",
       "features": [
         {
           "id": "making",
