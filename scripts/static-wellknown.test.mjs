@@ -51,15 +51,14 @@ test("robots.txt allows crawling and points at the sitemap", () => {
 });
 
 /**
- * Page routes that are deliberately noindex (owner-only surfaces: the
- * story board and its issues map). They must NOT appear in the sitemap —
- * listing a URL there while its page says noindex would contradict the
- * noindex. Every other page route MUST be in the sitemap.
+ * Page routes that are deliberately noindex (the story board). They
+ * must NOT appear in the sitemap — listing a URL there while its page
+ * says noindex would contradict the noindex. Every other page route
+ * MUST be in the sitemap. (Board v3 deleted /board/issues — it had no
+ * data source once the board stopped reading public GitHub; /board
+ * itself stays noindex by owner ruling, unchanged.)
  */
-const NOINDEX_ROUTES = new Map([
-  ["/board", "../src/routes/board.tsx"],
-  ["/board/issues", "../src/routes/board_.issues.tsx"],
-]);
+const NOINDEX_ROUTES = new Map([["/board", "../src/routes/board.tsx"]]);
 
 /** Recursively list page routes (.tsx pages only; api/*.ts are server routes). */
 function pageRoutes(dirUrl, prefix = "") {
