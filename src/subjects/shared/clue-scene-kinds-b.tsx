@@ -398,3 +398,198 @@ export function DigitShiftScene({
     </>
   );
 }
+
+/* ── Wave 2 kinds (Math 10-18): map-scale, fraction-bar,
+   fraction-measure ─────────────────────────────────────────────
+   Same discipline as the kinds above: givens only before the
+   pick, no digits in the setup film; the solved beat computes
+   its counts from the givens at solve time. Steps: map-scale
+   paces one step per centimetre; fraction-bar paces two (the
+   shading, then the halved part); fraction-measure paces one
+   step per measured piece. */
+
+export function MapScaleScene({
+  description,
+  phase,
+  stepDelay,
+}: {
+  description: Extract<ClueSceneDescription, { kind: "map-scale" }>;
+  phase: ClueScenePhase;
+  stepDelay?: (step: number) => number;
+}) {
+  const { mapCm, kmPerCm } = description;
+  const x0 = 40;
+  const segW = 55;
+  const mapY = 62;
+  const groundY = 138;
+  const segStart = (s: number) => (stepDelay ? stepDelay(s) : 0.4 + s * 0.55);
+  return (
+    <>
+      {/* The map: a parchment sheet with the river drawn on it. */}
+      <path className="cs-line cs-draw" pathLength={1} d="M30 34 Q160 28 290 34 Q294 62 290 92 Q160 98 30 92 Q26 62 30 34 Z" style={delay(0)} />
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d={`M${x0} ${mapY + 6} Q${x0 + mapCm * segW * 0.4} ${mapY - 8} ${x0 + mapCm * segW * 0.7} ${mapY + 4} Q${x0 + mapCm * segW * 0.9} ${mapY + 10} ${x0 + mapCm * segW} ${mapY}`} style={delay(0.25)} />
+      {/* The ground line below the map. */}
+      <path className="cs-line cs-draw" pathLength={1} d={`M${x0} ${groundY} Q160 ${groundY + 5} ${x0 + mapCm * segW} ${groundY}`} style={delay(0.15)} />
+      {phase === "solved"
+        ? Array.from({ length: mapCm }, (_, s) => {
+            const sx = x0 + s * segW;
+            return (
+              <g key={`seg-${s}`}>
+                <path
+                  className="cs-line cs-band cs-fade"
+                  d={`M${sx} ${mapY - 12} Q${sx + 1} ${mapY} ${sx} ${mapY + 12} M${sx} ${groundY - 12} Q${sx + 1} ${groundY} ${sx} ${groundY + 12}`}
+                  style={delay(segStart(s))}
+                />
+                <path
+                  className="cs-split-low cs-fade"
+                  d={`M${sx + 2} ${groundY - 5} H${sx + segW - 2} V${groundY + 5} H${sx + 2} Z`}
+                  style={delay(segStart(s) + 0.15)}
+                />
+                <text className={`cs-tick${s === mapCm - 1 ? " cs-tick-final" : ""}`} x={sx + segW / 2} y={groundY + 28} style={delay(segStart(s) + 0.45)}>
+                  {(s + 1) * kmPerCm}
+                </text>
+              </g>
+            );
+          })
+        : null}
+      {phase === "solved" ? (
+        <path
+          className="cs-line cs-band cs-fade"
+          d={`M${x0 + mapCm * segW} ${mapY - 12} Q${x0 + mapCm * segW + 1} ${mapY} ${x0 + mapCm * segW} ${mapY + 12} M${x0 + mapCm * segW} ${groundY - 12} Q${x0 + mapCm * segW + 1} ${groundY} ${x0 + mapCm * segW} ${groundY + 12}`}
+          style={delay(segStart(mapCm - 1) + 0.3)}
+        />
+      ) : null}
+    </>
+  );
+}
+
+export function FractionBarScene({
+  description,
+  phase,
+  stepDelay,
+}: {
+  description: Extract<ClueSceneDescription, { kind: "fraction-bar" }>;
+  phase: ClueScenePhase;
+  stepDelay?: (step: number) => number;
+}) {
+  const { numerator, denominator } = description;
+  const x0 = 45;
+  const w = 230;
+  const y = 76;
+  const h = 34;
+  const partW = w / denominator;
+  const shadeStart = stepDelay ? stepDelay(0) : 0.55;
+  const halfStart = stepDelay ? stepDelay(1) : 1.5;
+  // Half of the shaded part, in bar parts: numerator/2 parts —
+  // a whole number of parts for the items this kind serves.
+  const halfParts = numerator / 2;
+  return (
+    <>
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M24 46 Q160 42 296 46" style={delay(0.1)} />
+      <path className="cs-line cs-draw" pathLength={1} d="M20 146 Q160 150 300 146" style={delay(0)} />
+      <g className="cs-pop" style={delay(0.35)}>
+        <rect className="cs-bar" x={x0} y={y} width={w} height={h} rx="7" />
+      </g>
+      {Array.from({ length: denominator - 1 }, (_, i) => {
+        const x = x0 + (i + 1) * partW;
+        return (
+          <path
+            key={`div-${i}`}
+            className="cs-line cs-soft cs-draw"
+            pathLength={1}
+            d={`M${x.toFixed(1)} ${y + 2} Q${(x + 1).toFixed(1)} ${y + h / 2} ${x.toFixed(1)} ${y + h - 2}`}
+            style={delay(0.45 + i * 0.1)}
+          />
+        );
+      })}
+      {phase === "solved" ? (
+        <>
+          {Array.from({ length: numerator }, (_, i) => (
+            <path
+              key={`shade-${i}`}
+              className="cs-split-high cs-fade"
+              d={`M${(x0 + i * partW + 2).toFixed(1)} ${y + 2} H${(x0 + (i + 1) * partW - 2).toFixed(1)} V${y + h - 2} H${(x0 + i * partW + 2).toFixed(1)} Z`}
+              style={delay(shadeStart + i * 0.18)}
+            />
+          ))}
+          <path
+            className="cs-split-low cs-fade"
+            d={`M${(x0 + 2).toFixed(1)} ${y + 2} H${(x0 + halfParts * partW - 2).toFixed(1)} V${y + h - 2} H${(x0 + 2).toFixed(1)} Z`}
+            style={delay(halfStart)}
+          />
+          <ellipse
+            className="cs-ring"
+            cx={x0 + (halfParts * partW) / 2}
+            cy={y + h / 2}
+            rx={(halfParts * partW) / 2 + 7}
+            ry={h / 2 + 8}
+            style={delay(halfStart + 0.25)}
+          />
+          <text className="cs-tick cs-tick-final" x={x0 + (halfParts * partW) / 2} y={y - 14} style={delay(halfStart + 0.6)}>
+            {`${halfParts}/${denominator}`}
+          </text>
+        </>
+      ) : null}
+    </>
+  );
+}
+
+export function FractionMeasureScene({
+  description,
+  phase,
+  stepDelay,
+}: {
+  description: Extract<ClueSceneDescription, { kind: "fraction-measure" }>;
+  phase: ClueScenePhase;
+  stepDelay?: (step: number) => number;
+}) {
+  const { total, pieceNumerator, pieceDenominator } = description;
+  const pieces = Math.round(total / (pieceNumerator / pieceDenominator));
+  const x0 = 28;
+  const w = 264;
+  const y = 84;
+  const h = 26;
+  const pieceW = w / pieces;
+  const pieceStart = (s: number) => (stepDelay ? stepDelay(s) : 0.4 + s * 0.5);
+  return (
+    <>
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M24 46 Q160 42 296 46" style={delay(0.1)} />
+      <path className="cs-line cs-draw" pathLength={1} d="M20 146 Q160 150 300 146" style={delay(0)} />
+      {/* The roll: a long bar with a curled end. */}
+      <g className="cs-pop" style={delay(0.35)}>
+        <rect className="cs-bar" x={x0} y={y} width={w} height={h} rx="7" />
+      </g>
+      <path className="cs-line cs-draw" pathLength={1} d={`M${x0 + w} ${y + 3} Q${x0 + w + 13} ${y + h / 2} ${x0 + w} ${y + h - 3}`} style={delay(0.5)} />
+      {/* Scissors waiting at the start of the roll. */}
+      <g className="cs-pop" style={delay(0.6)}>
+        <circle className="cs-line" cx="22" cy="128" r="4.5" />
+        <circle className="cs-line" cx="22" cy="142" r="4.5" />
+        <path className="cs-line" d="M26 130 L40 138 M26 140 L40 133" />
+      </g>
+      {phase === "solved"
+        ? Array.from({ length: pieces }, (_, s) => {
+            const sx = x0 + s * pieceW;
+            return (
+              <g key={`piece-${s}`}>
+                <path
+                  className={`${s % 2 === 0 ? "cs-split-high" : "cs-split-low"} cs-fade`}
+                  d={`M${(sx + 2).toFixed(1)} ${y + 2} H${(sx + pieceW - 2).toFixed(1)} V${y + h - 2} H${(sx + 2).toFixed(1)} Z`}
+                  style={delay(pieceStart(s))}
+                />
+                {s > 0 ? (
+                  <path
+                    className="cs-line cs-band cs-fade"
+                    d={`M${sx.toFixed(1)} ${y - 5} Q${(sx + 1).toFixed(1)} ${y + h / 2} ${sx.toFixed(1)} ${y + h + 5}`}
+                    style={delay(pieceStart(s) + 0.1)}
+                  />
+                ) : null}
+                <text className={`cs-tick${s === pieces - 1 ? " cs-tick-final" : ""}`} x={(sx + pieceW / 2).toFixed(1)} y={y - 12} style={delay(pieceStart(s) + 0.35)}>
+                  {s + 1}
+                </text>
+              </g>
+            );
+          })
+        : null}
+    </>
+  );
+}
