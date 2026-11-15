@@ -1347,3 +1347,206 @@ export function SamePushScene({
     </>
   );
 }
+
+/* ── Wave 7 kinds (Chemistry): melt-freeze, bend-test ──────────
+   Same discipline as the kinds above: givens only in the setup
+   film, no winner before the pick. melt-freeze paces three
+   steps in both directions (the warmth waves / the returning
+   cold, the melt or freeze itself, the final tick); bend-test
+   paces three (the press, the flex, the final tick). */
+
+/** A wavy warmth line, drawn beside the ice pop in the melt
+ * direction's solved beat only — never in setup. */
+function WarmthWaves({ x, y, start }: { x: number; y: number; start: number }) {
+  return (
+    <>
+      {[0, 1, 2].map((i) => (
+        <path
+          key={`warm-${i}`}
+          className="cs-line cs-band cs-pop"
+          d={`M${x + i * 16} ${y + 14} Q${x + i * 16 + 5} ${y + 6} ${x + i * 16} ${y - 2} Q${x + i * 16 - 5} ${y - 10} ${x + i * 16} ${y - 18}`}
+          style={delay(start + i * 0.18)}
+        />
+      ))}
+    </>
+  );
+}
+
+export function MeltFreezeScene({
+  description,
+  phase,
+  stepDelay,
+}: {
+  description: Extract<ClueSceneDescription, { kind: "melt-freeze" }>;
+  phase: ClueScenePhase;
+  /** Summary pacing: when present, step s's beat starts at
+   * stepDelay(s) instead of the film's own stagger. */
+  stepDelay?: (step: number) => number;
+}) {
+  const firstStart = stepDelay ? stepDelay(0) : 0.5;
+  const changeStart = stepDelay ? stepDelay(1) : 1.4;
+  const tickStart = stepDelay ? stepDelay(2) : 2.3;
+  const groundY = 164;
+  if (description.freeze) {
+    // Freeze direction: an open puddle (the given) under a
+    // darkening sky; the solved beat brings the cold back and
+    // ice skins over the water.
+    const puddleCx = 160;
+    const puddleCy = 138;
+    return (
+      <>
+        <path className="cs-line cs-soft cs-draw" pathLength={1} d="M24 36 Q160 32 296 36" style={delay(0.1)} />
+        <path className="cs-line cs-draw" pathLength={1} d={`M16 ${groundY} Q160 ${groundY + 4} 304 ${groundY}`} style={delay(0)} />
+        {/* The open puddle: plain water, no ice skin anywhere. */}
+        <ellipse className="cs-line cs-draw" pathLength={1} cx={puddleCx} cy={puddleCy} rx="86" ry="13" style={delay(0.3)} />
+        <path className="cs-line cs-soft cs-draw" pathLength={1} d={`M96 ${puddleCy + 2} Q160 ${puddleCy + 7} 224 ${puddleCy + 2}`} style={delay(0.45)} />
+        {phase === "solved" ? (
+          <>
+            {/* Step 0: the sky darkens — a moon and cold stars. */}
+            <circle className="cs-coin cs-pop" cx="262" cy="58" r="11" style={delay(firstStart)} />
+            <circle className="cs-coin-inner cs-pop" cx="258" cy="55" r="2" style={delay(firstStart + 0.15)} />
+            {[52, 96, 140].map((sx, i) => (
+              <path
+                key={`star-${i}`}
+                className="cs-line cs-band cs-pop"
+                d={`M${sx} 50 L${sx} 60 M${sx - 5} 55 L${sx + 5} 55`}
+                style={delay(firstStart + 0.2 + i * 0.15)}
+              />
+            ))}
+            {/* Step 1: ice skins over the puddle, crack by crack. */}
+            {[0, 1, 2, 3].map((i) => (
+              <path
+                key={`skin-${i}`}
+                className="cs-line cs-band cs-draw"
+                pathLength={1}
+                d={`M${92 + i * 36} ${puddleCy - 3} Q${106 + i * 36} ${puddleCy + 3} ${120 + i * 36} ${puddleCy - 2}`}
+                style={delay(changeStart + i * 0.16)}
+              />
+            ))}
+            <ellipse className="cs-ring" cx={puddleCx} cy={puddleCy} rx="92" ry="19" style={delay(tickStart + 0.4)} />
+            <text className="cs-tick cs-tick-final" x={puddleCx} y="98" style={delay(tickStart + 0.55)}>
+              ✓
+            </text>
+          </>
+        ) : null}
+      </>
+    );
+  }
+  // Melt direction: a whole ice pop on its stick. Setup shows
+  // the pop whole with no drips and no warmth marked.
+  const popCx = 160;
+  const popTop = 52;
+  return (
+    <>
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M24 36 Q160 32 296 36" style={delay(0.1)} />
+      <path className="cs-line cs-draw" pathLength={1} d={`M16 ${groundY} Q160 ${groundY + 4} 304 ${groundY}`} style={delay(0)} />
+      {/* The stick, then the pop body resting whole on it. */}
+      <rect className="cs-pack cs-pop" x={popCx - 4} y="118" width="8" height="34" rx="3" style={delay(0.4)} />
+      <g className={phase === "solved" ? "cs-cheer" : "cs-pop"} style={delay(phase === "solved" ? changeStart + 0.5 : 0.5)}>
+        <path
+          className="cs-stone"
+          d={`M${popCx - 22} 124 L${popCx - 22} ${popTop + 16} Q${popCx - 22} ${popTop} ${popCx} ${popTop} Q${popCx + 22} ${popTop} ${popCx + 22} ${popTop + 16} L${popCx + 22} 124 Q${popCx} 118 ${popCx - 22} 124 Z`}
+        />
+        <path className="cs-line cs-band" d={`M${popCx - 21} 84 Q${popCx} 79 ${popCx + 21} 84`} />
+      </g>
+      {phase === "solved" ? (
+        <>
+          {/* Step 0: warmth waves rise on both sides. */}
+          <WarmthWaves x={popCx - 58} y={104} start={firstStart} />
+          <WarmthWaves x={popCx + 34} y={104} start={firstStart + 0.2} />
+          {/* Step 1: drips run down and pool at the base. */}
+          {[-14, 2, 16].map((dx, i) => (
+            <g key={`drip-${i}`} transform={`translate(${popCx + dx} 152)`}>
+              <g className="cs-slide" style={slideFrom(0, -26, changeStart + i * 0.22)}>
+                <path className="cs-tip" d="M0 -6 Q4 2 0 6 Q-4 2 0 -6 Z" />
+              </g>
+            </g>
+          ))}
+          <ellipse className="cs-line cs-band cs-pop" cx={popCx} cy="158" rx="30" ry="4.5" style={delay(changeStart + 0.7)} />
+          <ellipse className="cs-ring" cx={popCx} cy="92" rx="34" ry="46" style={delay(tickStart + 0.4)} />
+          <text className="cs-tick cs-tick-final" x={popCx} y="30" style={delay(tickStart + 0.55)}>
+            ✓
+          </text>
+        </>
+      ) : null}
+    </>
+  );
+}
+
+/** One spoon, lying along y=0 from its bowl (left) to its tip
+ * (right). `bent` draws the tip curved down — solved phase only. */
+function SpoonArt({ bent }: { bent?: boolean }) {
+  return (
+    <>
+      <ellipse className="cs-stone" cx="-52" cy="0" rx="17" ry="9" />
+      <path
+        className="cs-line"
+        d={bent ? "M-36 0 Q10 -2 44 2 Q58 4 64 14" : "M-36 0 Q14 -3 66 0"}
+      />
+      <path className="cs-line cs-band" d="M-62 -3 Q-52 -6 -42 -3" />
+    </>
+  );
+}
+
+export function BendTestScene({
+  description,
+  phase,
+  stepDelay,
+}: {
+  description: Extract<ClueSceneDescription, { kind: "bend-test" }>;
+  phase: ClueScenePhase;
+  /** Summary pacing: when present, step s's beat starts at
+   * stepDelay(s) instead of the film's own stagger. */
+  stepDelay?: (step: number) => number;
+}) {
+  void description;
+  const pressStart = stepDelay ? stepDelay(0) : 0.5;
+  const flexStart = stepDelay ? stepDelay(1) : 1.4;
+  const tickStart = stepDelay ? stepDelay(2) : 2.3;
+  const topY = 76;
+  const lowY = 128;
+  const pressArrow = (y: number, start: number) => (
+    <path
+      className="cs-line cs-band cs-pop"
+      d={`M222 ${y - 34} L222 ${y - 14} M216 ${y - 20} L222 ${y - 12} L228 ${y - 20}`}
+      style={delay(start)}
+    />
+  );
+  return (
+    <>
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M24 36 Q160 32 296 36" style={delay(0.1)} />
+      <path className="cs-line cs-draw" pathLength={1} d="M16 164 Q160 168 304 164" style={delay(0)} />
+      {/* The table edges the spoons rest on. */}
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d={`M28 ${topY + 14} Q160 ${topY + 18} 292 ${topY + 14}`} style={delay(0.2)} />
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d={`M28 ${lowY + 14} Q160 ${lowY + 18} 292 ${lowY + 14}`} style={delay(0.25)} />
+      {/* Setup: both spoons whole and unpressed, identical.
+          Solved: the upper spoon is drawn bent (its resting
+          frame), the lower one stays stiff — which bends is
+          spent only in the solved phase. */}
+      <g transform={`translate(150 ${topY})`}>
+        <g className="cs-pop" style={delay(0.45)}>
+          <SpoonArt bent={phase === "solved"} />
+        </g>
+      </g>
+      <g transform={`translate(150 ${lowY})`}>
+        <g className="cs-pop" style={delay(0.6)}>
+          <SpoonArt />
+        </g>
+      </g>
+      {phase === "solved" ? (
+        <>
+          {/* Step 0: a press lands on each tip alike. */}
+          {pressArrow(topY, pressStart)}
+          {pressArrow(lowY, pressStart + 0.15)}
+          {/* Step 1: the flex shows — a soft ring under the
+              bent tip; the stiff spoon gets none. */}
+          <ellipse className="cs-ring-soft cs-pop" cx="216" cy={topY + 10} rx="18" ry="9" style={delay(flexStart + 0.3)} />
+          <ellipse className="cs-ring" cx="150" cy={topY} rx="86" ry="24" style={delay(tickStart + 0.4)} />
+          <text className="cs-tick cs-tick-final" x="150" y="34" style={delay(tickStart + 0.55)}>
+            ✓
+          </text>
+        </>
+      ) : null}
+    </>
+  );
+}
