@@ -213,17 +213,25 @@ Stream S cherry-picked in: `920c9ddd` (shared shell components) +
   case screen mounts. Its ≤2.5s ride-along still covers the
   loop's load; it never sits on Clue 1. Pinned in the wiring
   test above.
-- **Item 34(b) — NOT REPRODUCED in this sandbox; no change.**
-  The screenshot repro could not run: `vite build` fails at
-  bundling in every local worktree — `node_modules` is a borrowed
-  tree and `maplibre-gl/dist/maplibre-gl-worker.mjs` is missing
-  from all of them (build log error, environment defect; tsc and
-  the unit suites are green). Static pass: `.mode-screen::before`
-  is fixed/inset-0 continuous (ruled out in Phase 2), and
-  styles.css carries no loop backdrop rule and no viewport-height
-  rule that could end at ~700px. The culprit still needs a
-  screenshot repro on a machine with a complete install; no CSS
-  was guessed at.
+- **Item 34(b) — NOT REPRODUCED on a complete install; no
+  change.** First attempt in this sandbox could not run the
+  repro: every borrowed `node_modules` tree is missing
+  `maplibre-gl/dist/maplibre-gl-worker.mjs`, so `vite build`
+  failed at bundling (environment defect). Re-run on a fresh
+  worktree with `npm ci` from the lockfile (worker present,
+  `build:pages` green) and the cached Playwright Chromium,
+  GeoDetective opened at 1280×800 [measured]: a full-page
+  capture (1280×1769) plus scroll-top and mid-play captures
+  show no hard horizontal line anywhere in the background.
+  A row scan of the full capture over both margin bands finds
+  exactly one sharp row transition, at y=800 — the capture's
+  own viewport stitch seam, not page pixels; at y=695–705 the
+  background is a uniform (236,226,199) ±1. Static pass agrees:
+  `.mode-screen::before` is fixed/inset-0 continuous, and
+  styles.css carries no loop backdrop rule and no
+  viewport-height rule that could end at ~700px. No CSS was
+  guessed at. Evidence captures are held with the job's
+  verification evidence (geo-full.png, geo-top.png, geo-1.png).
 - **Item 17 (Stream W's item, this stream's file) — NOT LANDED.**
   W's diagnosis (picker side is correct; `saveBand` defers behind
   `bandChangeRunInProgress` while a GeoDetective case is open)
