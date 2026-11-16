@@ -3704,7 +3704,14 @@ export function GameApp() {
                     if (openGeoDetective()) setSubjectsOpen(false);
                   });
                 }}
-                bandChangeRunInProgress={run !== null || loopOpen}
+                // Item 17: only a live subject round defers the
+                // picker's band-change event. A GeoDetective case
+                // left open (loopOpen) is not a round on this page —
+                // counting it deferred the event to a boundary the
+                // picker never hits, so its counts never re-dealt.
+                // The settings mounts keep `|| loopOpen`: leaving a
+                // case IS a run in progress for their confirm flow.
+                bandChangeRunInProgress={run !== null}
                 onOpenAgeSettings={openAgeSettings}
               />
             </Suspense>

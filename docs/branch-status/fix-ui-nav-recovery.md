@@ -247,6 +247,29 @@ Stream S cherry-picked in: `920c9ddd` (shared shell components) +
   boot reads the persisted flag again. Suites: lazy-boundary +
   persisted-screen + screen-hash 24/24, tsc clean.
 
+## Item 17 cure (owner-approved top-up, 2026-11-16)
+
+- Root cause (traced in `game-app.tsx`, confirming Stream W's
+  diagnosis): `saveBand` writes the new band immediately but
+  defers the change event to a round boundary when
+  `runInProgress`. GameApp passed the picker
+  `bandChangeRunInProgress={run !== null || loopOpen}`, so with a
+  GeoDetective case left open the picker's band event deferred to
+  a boundary the picker never hits — the picker never re-read the
+  band, so its counts never re-dealt (counts and filter were
+  always right).
+- Cure (one line, `game-app.tsx`): the SubjectPicker mount now
+  passes `bandChangeRunInProgress={run !== null}`. A live subject
+  round still defers (the in-round protection is untouched); a
+  background case no longer counts. Both `AgeProfileSettings`
+  mounts keep `run !== null || loopOpen` — leaving an open case
+  is a run in progress for their confirm flow.
+- Tests: `ask-age-first.test.ts` re-pins the picker expression
+  and adds a pin that both settings mounts keep `loopOpen`; the
+  store seam stays pinned both ways in `store.test.ts`
+  (immediate event when not mid-run, deferred when mid-run).
+  Targeted suites 71/71, `tsc --noEmit` clean, `lint:nav` clean.
+
 ## Graph (Phase 2 additions)
 
 - Add node: `src/lib/screen-hash.ts` — the screen ↔ hash contract

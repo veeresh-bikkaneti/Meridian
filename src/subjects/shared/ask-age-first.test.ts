@@ -125,10 +125,23 @@ describe("the Why Learn path (amendment: the page asks itself)", () => {
     const branch = subjectsBranch(gameApp);
     assert.ok(!branch.includes("onAskAgeFirst"), "the picker takes no gate prop");
     assert.ok(
-      branch.includes("bandChangeRunInProgress={run !== null || loopOpen}"),
-      "the same run-in-progress expression the settings mount gets",
+      branch.includes("bandChangeRunInProgress={run !== null}"),
+      "a live subject round is the picker's only deferral input (item 17)",
+    );
+    assert.ok(
+      !branch.includes("bandChangeRunInProgress={run !== null || loopOpen}"),
+      "a background GeoDetective case no longer defers the picker's band change (item 17)",
     );
     assert.ok(!subjectPicker.includes("onAskAgeFirst"), "the prop is gone from the picker too");
+  });
+
+  it("item 17: the settings mounts keep loopOpen as a run in progress", () => {
+    // The split is deliberate: the settings confirm flow treats
+    // leaving an open case as a run in progress; the picker does not,
+    // because its band event has no round boundary of its own to land
+    // on while a case sits open — deferring it starved the re-deal.
+    const settingsMounts = gameApp.split("runInProgress={run !== null || loopOpen}").length - 1;
+    assert.equal(settingsMounts, 2, "both AgeProfileSettings mounts keep the loopOpen expression");
   });
 
   it("a subject card's tap with no band set goes to the pills, never to a case", () => {
