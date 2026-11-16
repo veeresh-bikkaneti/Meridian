@@ -1896,3 +1896,16 @@ body:has(.home-v5) {
     max-width: none;
   }
 }
+
+/* Board v3 discoverability: the grown-ups card's pair of board doors
+   (See what we're making next / Ask for something new). */
+.home-v5 .hv5-grownups-board-links {
+  margin: 12px 0 0;
+  font-size: 0.95rem;
+}
+.home-v5 .hv5-grownups-board-links a {
+  color: var(--hv5-brown-deep);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

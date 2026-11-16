@@ -2018,6 +2018,46 @@
   background: var(--atlas-bg-1);
 }
 
+/* Brand home control (fix/header-logo-home): the shell header's home
+   affordance is the homepage's brand lockup, so these rules mirror
+   .home-v5 .hv5-brand / .hv5-mark / .hv5-word in home-v5.css (same
+   mark size, word font, spacing and colour) without importing or
+   un-scoping home-v5.css — shell screens are .mode-screen, not
+   .home-v5. The word's font is the atlas display stack, the same
+   Fraunces family --hv5-display resolves to on the home page.
+   Focus is the button's own Tailwind focus-visible outline (the
+   HomeButton BASE treatment, carried in home-button.ts). */
+.brand-home-button {
+  background: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+}
+.brand-home-mark {
+  display: block;
+  width: 40px;
+  height: 40px;
+  flex: none;
+}
+.brand-home-word {
+  font-family: var(--font-atlas-display);
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  line-height: 1;
+}
+@media (max-width: 1080px) {
+  .brand-home-word {
+    font-size: 19px;
+    letter-spacing: 0.18em;
+  }
+}
+@media (max-width: 680px) {
+  .brand-home-word {
+    font-size: 19px;
+  }
+}
+
 .mode-title {
   font-family: var(--font-atlas-display);
 }
@@ -2242,11 +2282,6 @@
     linear-gradient(rgba(246, 241, 227, 0.62), rgba(246, 241, 227, 0.62)),
     url("./assets/why-learn/why-learn-montage.webp") center top / cover no-repeat;
 }
-/* The Home strip gets a frosted backing so its label never sits on art. */
-.why-learn-screen [data-testid="home-button"] {
-  background: rgba(253, 250, 242, 0.92);
-  box-shadow: 0 0 0 1px var(--atlas-card-line);
-}
 .why-learn-screen .screen-hero {
   background: #fdfaf2;
   border-radius: 18px;
@@ -2378,52 +2413,84 @@
     animation: none;
   }
 }
-/* Fixed aspect ratio per breakpoint (plus width/height attributes): the
-   box is sized before the picture loads, so there is no layout shift. */
+/* The film slot is dimension-matched to the film itself
+   (feat/why-learn-landscape-layout): the shipped film is
+   1280×720 landscape, so the slot's aspect is exactly 16 / 9 at
+   every breakpoint (plus width/height attributes: the box is
+   sized before the picture loads, so there is no layout shift).
+   The whole frame shows — object-fit: cover over a same-aspect
+   box crops nothing, and there is no letterbox, blur fill or
+   squeeze anywhere in the slot. The portrait-era stepped
+   aspects (a wide strip centre-cropping a 608×1280 file, taller
+   boxes on tall screens) are gone with the portrait file. */
 .why-learn-hero {
   display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 16 / 7;
+  aspect-ratio: 16 / 9;
   object-fit: cover;
   object-position: 50% 50%;
 }
+/* The hero card is built around the film (the approved landscape
+   layout): on desktop the film slot sits at the card's left at a
+   fixed share of the viewport height — height drives the slot,
+   the 16 / 9 aspect drives its width — and the titles band
+   fills the rest of the card beside it, vertically centred. On
+   phones the card stacks: the film takes the card's full width
+   at 16 / 9 and the titles sit under it, as before. */
 @media (min-width: 681px) {
-  .why-learn-hero {
-    aspect-ratio: 32 / 9;
+  .why-learn-screen[data-testid="subject-picker"] .screen-hero {
+    display: flex;
+    align-items: stretch;
+    gap: 20px;
+    height: clamp(232px, 33dvh, 300px);
+    padding: 16px;
+  }
+  .why-learn-screen[data-testid="subject-picker"] .why-learn-hero-wrap {
+    flex: none;
+    height: 100%;
+    aspect-ratio: 16 / 9;
+  }
+  .why-learn-screen[data-testid="subject-picker"] .why-learn-hero-wrap .why-learn-hero,
+  .why-learn-screen[data-testid="subject-picker"] .screen-hero > .why-learn-hero {
+    width: 100%;
+    height: 100%;
+  }
+  .why-learn-screen[data-testid="subject-picker"] .screen-hero > .why-learn-hero {
+    flex: none;
+    width: auto;
+  }
+  .why-learn-screen[data-testid="subject-picker"] .screen-hero-band {
+    flex: 1 1 auto;
+    min-width: 230px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4px 6px 4px 0;
   }
 }
-/* Taller hero on tall screens (feat/picker-cards-fill-page): the
-   film is portrait (608×1280) under object-fit: cover, so the wide
-   strip shows only a middle slice of each frame — about a fifth of
-   it. As the viewport gives height, the hero box steps taller and
-   more of the frame shows (about half at 1:1, three-fifths at
-   4:5), while the card grid below flexes into whatever height is
-   left. Short screens keep the strip exactly as it is today. */
-@media (max-width: 680px) and (min-height: 700px) {
-  .why-learn-hero {
-    aspect-ratio: 1 / 1;
+/* 681–1023px (the screen is capped at max-w-3xl here, so the card
+   can be narrower than the height-driven film plus the 230px titles
+   band): the film's width is capped to what the card leaves beside
+   the band, and the card's height follows the film, so the 16 / 9
+   frame never pushes the titles past the card's edge. Same film
+   size as above wherever it fits. */
+@media (min-width: 681px) and (max-width: 1023px) {
+  .why-learn-screen[data-testid="subject-picker"] .screen-hero {
+    height: auto;
+    align-items: center;
   }
-}
-@media (max-width: 680px) and (min-height: 1000px) {
-  .why-learn-hero {
-    aspect-ratio: 4 / 5;
-  }
-}
-@media (min-width: 681px) and (min-height: 1100px) {
-  .why-learn-hero {
-    aspect-ratio: 2 / 1;
-  }
-}
-@media (min-width: 681px) and (min-height: 1500px) {
-  .why-learn-hero {
-    aspect-ratio: 16 / 10;
+  .why-learn-screen[data-testid="subject-picker"] .why-learn-hero-wrap,
+  .why-learn-screen[data-testid="subject-picker"] .screen-hero > .why-learn-hero {
+    height: auto;
+    width: min(calc(100% - 250px), max(355.6px, min(476.4px, calc((33dvh - 32px) * 16 / 9))));
   }
 }
 /* The montage film in the hero slot (feat/why-learn-montage): the
    <video> carries .why-learn-hero, so it fills the same fixed box
    the still did; the controls ride its bottom-right corner on the
-   page's frosted-chip recipe (cf. .why-learn-wordmark). */
+   page's frosted-chip recipe (the .why-learn-hero-controls button
+   rule below). */
 .why-learn-hero-wrap {
   position: relative;
 }
@@ -2449,6 +2516,17 @@
 .why-learn-hero-controls button:focus-visible {
   outline: 3px solid var(--atlas-ink);
   outline-offset: 2px;
+}
+/* Last-resort hero still (QA/UI-UX council, 2026-11-16): when even the
+   poster cannot load, WhyLearnHero renders this labelled panel in the
+   same hero box instead of leaving the slot empty. */
+.why-learn-hero-still {
+  display: grid;
+  place-items: center;
+  padding: 1rem 1.25rem;
+  text-align: center;
+  background: #fdfaf2;
+  color: var(--atlas-ink);
 }
 /* Background drift (feat/why-learn-montage): formulas and diagrams
    from the card's topics floating at a tenth opacity behind the
@@ -2542,25 +2620,6 @@
     animation: none;
   }
 }
-.why-learn-wordmark {
-  margin-left: auto;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  min-height: 44px;
-  padding: 0 12px;
-  border-radius: 999px;
-  background: rgba(253, 250, 242, 0.92);
-  color: #1b2b31;
-  font-family: var(--font-atlas-display);
-  font-size: 15px;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-}
-.why-learn-wordmark svg {
-  width: 22px;
-  height: 22px;
-}
 /* Subject cards, Living Atlas anatomy (the home card's): a 16:9
    picture slot bleeding to the card's top edges, then badge +
    kicker, title + stamp chip, one-liner, and the go row pinned to
@@ -2602,10 +2661,10 @@
 .wl-card-pic {
   position: relative;
   display: block;
-  width: calc(100% + 40px);
+  width: calc(100% + 32px);
   max-width: none;
   aspect-ratio: 16 / 9;
-  margin: -20px -20px 16px;
+  margin: -16px -16px 12px;
   overflow: hidden;
   flex: none;
   background: #d9cfb2;
@@ -2667,7 +2726,7 @@
   margin-top: 8px;
 }
 .why-learn-card .mode-title {
-  font-size: 23px;
+  font-size: 20px;
 }
 .why-learn-chip {
   border-radius: 6px;
@@ -2923,10 +2982,514 @@
     transform: none;
   }
 }
-/* Art off wherever the user asked for plain, high-contrast surfaces. */
+/* ── Clue scenes (ClueScene.tsx, math pilot) ────────────────────
+   Ink line-art on paper, drawn live above the text clue. Every
+   element's resting state is the film's final frame; the
+   keyframes only run it in, once. Transform / opacity / stroke
+   draw-on only — nothing here can thrash layout. */
+.subject-case-screen .clue-scene {
+  padding: 18px 18px 12px;
+}
+.clue-scene svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.cs-line {
+  fill: none;
+  stroke: #33302a;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.cs-soft {
+  stroke: #d8cbae;
+}
+.cs-band {
+  stroke: #8a6d2f;
+}
+.cs-coin {
+  fill: #efe3bc;
+  stroke: #33302a;
+  stroke-width: 1.6;
+}
+.cs-coin-inner {
+  fill: none;
+  stroke: #8a6d2f;
+  stroke-width: 1.2;
+}
+.cs-pack {
+  fill: #fffdf6;
+  stroke: #33302a;
+  stroke-width: 1.8;
+}
+.cs-pencil {
+  fill: #efe3bc;
+  stroke: #33302a;
+  stroke-width: 1.1;
+}
+.cs-tip {
+  fill: #e7cf8e;
+  stroke: #33302a;
+  stroke-width: 1.1;
+  stroke-linejoin: round;
+}
+.cs-snack {
+  fill: #efe3bc;
+  stroke: #33302a;
+  stroke-width: 1.4;
+}
+.cs-snack-dot {
+  fill: #8a6d2f;
+}
+.cs-draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: cs-draw 0.9s cubic-bezier(0.16, 0.8, 0.26, 1) forwards;
+}
+@keyframes cs-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.cs-pop {
+  animation: cs-pop 0.45s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+@keyframes cs-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+}
+.cs-fade {
+  animation: cs-fade 0.5s ease backwards;
+}
+@keyframes cs-fade {
+  from {
+    opacity: 0;
+  }
+}
+.cs-slide {
+  animation: cs-slide 0.7s cubic-bezier(0.16, 0.8, 0.26, 1) backwards;
+}
+@keyframes cs-slide {
+  from {
+    transform: translate(var(--fx), var(--fy));
+  }
+}
+.cs-deal {
+  animation: cs-deal 0.55s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+@keyframes cs-deal {
+  0% {
+    transform: translate(var(--fx), var(--fy));
+  }
+  75% {
+    transform: translate(0, -7px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+.cs-ring {
+  fill: none;
+  stroke: #8a6d2f;
+  stroke-width: 1.6;
+  stroke-dasharray: 4 3;
+  animation: cs-ringin 0.5s ease backwards;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+@keyframes cs-ringin {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+}
+.cs-tick {
+  font-family: var(--font-atlas-mono);
+  font-size: 13px;
+  font-weight: 700;
+  fill: #77591f;
+  text-anchor: middle;
+  animation: cs-pop 0.35s ease backwards;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.cs-cheer {
+  animation: cs-cheer 0.55s ease 2 backwards;
+}
+@keyframes cs-cheer {
+  0% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-4px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.clue-scene-replay {
+  margin-top: 10px;
+  min-height: 44px;
+  padding: 8px 16px;
+  border: 1.5px solid #8a6d2f;
+  border-radius: 14px;
+  background: #fffdf6;
+  color: #77591f;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.clue-scene-replay:hover {
+  border-color: #77591f;
+}
+/* The scene's controls row: the film's replay and the summary's
+   play/stop side by side, wrapping on narrow screens. */
+.clue-scene-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+.clue-scene-controls .clue-scene-replay {
+  margin-top: 0;
+}
+/* Act 3: the summary's stepping caption — the line being spoken,
+   word for word the script standing in the result section. Its
+   space is reserved so the card never jumps as lines change. */
+.clue-scene-caption {
+  margin: 10px 0 0;
+  min-height: 2.9em;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.45;
+  color: #33302a;
+}
+/* Act 3: the summary's full script, standing in the result
+   section (ClueSummaryText) — every line, always, once solved. */
+.clue-summary-text {
+  margin-top: 12px;
+}
+.clue-summary-heading {
+  font-weight: 700;
+}
+.clue-summary-text ol {
+  margin: 4px 0 0;
+  padding-left: 22px;
+  display: grid;
+  gap: 2px;
+}
+/* ── Clue scenes, Wave 1 kinds A (clue-scene-kinds-a.tsx) ──────
+   New classes for bus-boarding and pack-boxes only. Everything
+   else (cs-line, cs-soft, cs-band, cs-draw, cs-pop, cs-slide,
+   cs-tick, cs-tick-final, cs-pencil, cs-tip) is reused from the
+   pilot block in styles.css. Atlas palette only; resting state
+   is the final frame, as everywhere in the clue scenes. */
+.cs-bus {
+  fill: #fffdf6;
+  stroke: #33302a;
+  stroke-width: 1.8;
+}
+.cs-bus-window {
+  fill: #efe3bc;
+  stroke: #8a6d2f;
+  stroke-width: 1;
+}
+.cs-bus-wheel {
+  fill: #33302a;
+  stroke: #fffdf6;
+  stroke-width: 1.2;
+}
+.cs-child-head {
+  fill: #efe3bc;
+  stroke: #33302a;
+  stroke-width: 1.3;
+}
+.cs-child-body {
+  fill: none;
+  stroke: #33302a;
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.cs-head-dot {
+  fill: #efe3bc;
+  stroke: #33302a;
+  stroke-width: 1.1;
+}
+.cs-sign {
+  fill: #efe3bc;
+  stroke: #33302a;
+  stroke-width: 1.6;
+  stroke-linejoin: round;
+}
+
+/* ── Clue scenes, Wave 1 builder B (clue-scene-kinds-b.tsx) ────
+   New classes for the place-value kinds only; everything else
+   reuses the pilot's classes (cs-line / cs-soft / cs-band /
+   cs-coin / cs-pack / cs-tip / cs-draw / cs-pop / cs-slide /
+   cs-ring / cs-tick). Same discipline as the pilot block: every
+   element's resting state is the film's final frame, the
+   keyframes only run it in, once — transform / opacity only.
+   Append after the pilot clue-scene block in src/styles.css.
+   Still frames need no extra rules: the parent's
+   [data-still="true"] / prefers-reduced-motion rules switch all
+   animations off, and these classes rest at their final state
+   (grown, dimmed) on their own. */
+
+/* Digit-shift: a ten-stone grows into a hundred-stone. The stone
+   rests at full hundred size; the keyframe starts it at the ten
+   stone's footprint (24×10 against the resting 34×12) and a
+   little faded, with backwards fill so it waits small until its
+   turn in the stagger. */
+.cs-grow {
+  animation: cs-grow 0.5s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+@keyframes cs-grow {
+  from {
+    opacity: 0.4;
+    transform: scale(0.71, 0.83);
+  }
+}
+
+/* Place-compare: the smaller side dims once the sweep reaches
+   the deciding column. The side rests dimmed; the keyframe
+   starts it at full weight, with backwards fill so it stays
+   full-weight until the sweep arrives. */
+.cs-dim {
+  opacity: 0.45;
+  animation: cs-dim 0.6s cubic-bezier(0.16, 0.8, 0.26, 1) backwards;
+}
+@keyframes cs-dim {
+  from {
+    opacity: 1;
+  }
+}
+
+/* Place-compare: the soft ring for an equal column — the pilot's
+   cs-ring in the soft parchment tone instead of brass, so only
+   the deciding column's ring reads as the winner's. Declared
+   after cs-ring (this block appends below it) so it wins on
+   stroke at equal specificity. */
+.cs-ring-soft {
+  stroke: #d8cbae;
+}
+
+/* ── Clue scenes, wave 1 kinds C (clue-scene-kinds-c.tsx) ──────
+   New classes only; everything else reuses the pilot's cs-line /
+   cs-soft / cs-band / cs-draw / cs-pop / cs-fade / cs-slide /
+   cs-tick / cs-tick-final. Atlas palette only; resting state is
+   the film's final frame, except .cs-counter-step, whose whole
+   job is to be replaced by the next running total — its
+   keyframes end faded and it rests at opacity 0. */
+
+/* rounding-line: the marker stone and the end flags. */
+.cs-stone {
+  fill: #d8cbae;
+  stroke: #33302a;
+  stroke-width: 1.6;
+}
+.cs-flag {
+  fill: #8a6d2f;
+  stroke: #33302a;
+  stroke-width: 1.2;
+  stroke-linejoin: round;
+}
+
+/* split-product: hall bars and the two split fills. */
+.cs-bar {
+  fill: #fffdf6;
+  stroke: #33302a;
+  stroke-width: 1.6;
+}
+.cs-split-high {
+  fill: #d8cbae;
+}
+.cs-split-low {
+  fill: #efe3bc;
+}
+
+/* chunk-share: pile bundles and shelf bundle books. */
+.cs-pile-book {
+  fill: #fffdf6;
+  stroke: #33302a;
+  stroke-width: 1.5;
+}
+.cs-pile-book-gold {
+  fill: #efe3bc;
+  stroke: #33302a;
+  stroke-width: 1.5;
+}
+.cs-book {
+  fill: #fffdf6;
+  stroke: #33302a;
+  stroke-width: 1.1;
+}
+.cs-book-gold {
+  fill: #efe3bc;
+  stroke: #33302a;
+  stroke-width: 1.1;
+}
+
+/* chunk-share counters: small mono numbers at a shelf's end.
+   The step counter pops in, holds while its chunk lands, then
+   fades out as the next running total replaces it (fill mode
+   both: hidden during its delay, faded at rest). The final
+   counter pops in like a tick and stands. */
+.cs-counter {
+  font-family: var(--font-atlas-mono);
+  font-size: 11.5px;
+  font-weight: 700;
+  fill: #77591f;
+  text-anchor: end;
+}
+.cs-counter-step {
+  animation: cs-counter-step 1.15s cubic-bezier(0.22, 1, 0.36, 1) both;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+@keyframes cs-counter-step {
+  0% {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  16% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  76% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.cs-counter-final {
+  animation: cs-pop 0.35s ease backwards;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+/* Still frame (reduced motion): only each shelf's final counter
+   stands — the step counters must not reappear when the parent
+   kills animations. Mirrors the pilot's still rules in styles.css;
+   include alongside them when this snippet is merged in. */
+.clue-scene[data-still="true"] .cs-counter-step {
+  opacity: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .clue-scene .cs-counter-step {
+    opacity: 0;
+  }
+}
+/* ── Clue scenes, scenes wave kinds D+E (clue-scene-kinds-d/e) ──
+   New classes for tile-grid, measure-trace, clock-arc, unit-fit,
+   fraction-slice and fraction-fill only; everything else reuses
+   the pilot's cs-line / cs-soft / cs-band / cs-draw / cs-pop /
+   cs-fade / cs-slide / cs-ring / cs-tick. Atlas palette only;
+   resting state is the final frame. New animations reference
+   the shared easing tokens by name (born-aligned bar B1). */
+.cs-tile {
+  fill: #fffdf6;
+  stroke: #33302a;
+  stroke-width: 1.4;
+}
+.cs-brick {
+  fill: #efe3bc;
+  stroke: #33302a;
+  stroke-width: 1.4;
+}
+.cs-wash {
+  fill: #efe3bc;
+  opacity: 0.45;
+}
+.cs-plank {
+  fill: #e7cf8e;
+  stroke: #33302a;
+  stroke-width: 1.4;
+}
+.cs-ant {
+  fill: #33302a;
+}
+.cs-finger {
+  fill: #fffdf6;
+  stroke: #33302a;
+  stroke-width: 1.3;
+}
+.cs-wedge {
+  fill: #fffdf6;
+  stroke: #33302a;
+  stroke-width: 1.4;
+  stroke-linejoin: round;
+}
+.cs-wedge-taken {
+  fill: #efe3bc;
+  stroke: #8a6d2f;
+  stroke-width: 1.4;
+  stroke-linejoin: round;
+}
+.cs-liquid {
+  fill: #efe3bc;
+  stroke: #8a6d2f;
+  stroke-width: 1;
+}
+.cs-bottle {
+  fill: none;
+  stroke: #33302a;
+  stroke-width: 1.8;
+  stroke-linejoin: round;
+}
+
+/* Off screen or a hidden tab: every scene animation holds still
+   (the component toggles data-paused from its observers). */
+.clue-scene[data-paused="true"] svg * {
+  animation-play-state: paused !important;
+}
+/* Reduced motion: the still frame of the current phase. Only the
+   counter's final tick stands — the finished count, after a solve.
+   The draw-on strokes rest undrawn (dashoffset 1) and only their
+   animation draws them, so the still must force them drawn. */
+.clue-scene[data-still="true"] svg * {
+  animation: none !important;
+}
+.clue-scene[data-still="true"] .cs-draw {
+  stroke-dashoffset: 0;
+}
+.clue-scene[data-still="true"] .cs-tick {
+  opacity: 0;
+}
+.clue-scene[data-still="true"] .cs-tick-final {
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .clue-scene svg * {
+    animation: none !important;
+  }
+  .clue-scene .cs-draw {
+    stroke-dashoffset: 0;
+  }
+  .clue-scene .cs-tick {
+    opacity: 0;
+  }
+  .clue-scene .cs-tick-final {
+    opacity: 1;
+  }
+}
+/* Decorative art off wherever the user asked for plain, high-contrast
+   surfaces — but content stays. The montage film is the picker's headline
+   and the clue scenes ARE the explanations, so neither is ever hidden:
+   the old rule deleted both for anyone with the high-contrast palette
+   (including players who had only turned on the map's High-contrast
+   view — the palette is a persisted, app-wide attribute), for
+   prefers-contrast: more, and for forced colours, leaving the hero
+   card's title band standing alone and every case unexplained.
+   (QA/UI-UX council fix, 2026-11-16.) */
 :root[data-palette="high-contrast"] .why-learn-screen::after,
-:root[data-palette="high-contrast"] .why-learn-hero,
-:root[data-palette="high-contrast"] .why-learn-hero-wrap,
 :root[data-palette="high-contrast"] .why-learn-drift,
 :root[data-palette="high-contrast"] .wl-world,
 :root[data-palette="high-contrast"] .wl-gk-over {
@@ -2934,8 +3497,6 @@
 }
 @media (prefers-contrast: more) {
   .why-learn-screen::after,
-  .why-learn-hero,
-  .why-learn-hero-wrap,
   .why-learn-drift,
   .wl-world,
   .wl-gk-over {
@@ -2944,8 +3505,6 @@
 }
 @media (forced-colors: active) {
   .why-learn-screen::after,
-  .why-learn-hero,
-  .why-learn-hero-wrap,
   .why-learn-drift,
   .wl-world,
   .wl-gk-over {
@@ -2953,7 +3512,10 @@
   }
   .why-learn-card,
   .why-learn-badge,
-  .why-learn-chip {
+  .why-learn-chip,
+  .why-learn-hero-wrap,
+  .why-learn-hero,
+  .clue-scene {
     border: 1px solid CanvasText;
   }
 }

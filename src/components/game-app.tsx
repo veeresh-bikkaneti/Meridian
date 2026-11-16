@@ -96,7 +96,6 @@ import {
   setHighContrastEnabled,
 } from "@/game/palette-preference";
 import { Suspense, lazy, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type KeyboardEvent as ReactKeyboardEvent, type MouseEvent as ReactMouseEvent, type ReactNode, type RefObject } from "react";
-import { createPortal } from "react-dom";
 import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { HomeButton } from "@/components/ui/home-button";
@@ -175,6 +174,7 @@ function normalizeSnapshotBand(b: AgeBandId | LegacySnapshotBand): AgeBandId {
   return b;
 }
 const AgeProfileSettings = lazy(() => import("./age-profile/AgeProfileSettings"));
+const AgeAskGate = lazy(() => import("./age-profile/AgeAskGate"));
 const StorytellerHomeHost = lazy(() => import("./storyteller-home"));
 // v5 hero globe: React.lazy like the storyteller host — the Three.js chunk
 // never lands in the initial bundle; HomeGlobe itself dynamically imports
@@ -372,6 +372,7 @@ import {
   type DeckPlaceSnapshot,
 } from "@/game/review-deck";
 import { resetHistory, type ResetHistoryResult } from "@/game/reset-history";
+import { ResetHistoryControl } from "./reset-history-control";
 
 /**
  * Watched by the inline crash watchdog injected into _shell.html
@@ -1437,6 +1438,37 @@ export function GameApp() {
   // card tap. Never persisted — a reload lands on Home, like the
   // loop's tap-in rule.
   const [subjectsOpen, setSubjectsOpen] = useState<boolean>(false);
+  // Ask-first (owner decision, 2026-11-14): a "Resume your case"
+  // attempted with no age band set holds its continuation here
+  // while the age picker is answered (see askAgeFirst below). The
+  // Why Learn flow asks on the picker page itself since the
+  // 2026-11-15 amendment, so the resume paths are the ones still
+  // held here. Session-only, like the screens it guards — a cache
+  // restore drops it with them, so no case can start off the back
+  // of a frozen page.
+  const [ageAsk, setAgeAsk] = useState<{ proceed: () => void } | null>(null);
+
+  // A page restored from the browser's back/forward cache keeps its
+  // frozen React state, so a tap-in screen left open when the page
+  // was frozen (a subject case, the GeoDetective loop) resurrects on
+  // what feels like a fresh load — the owner-reported "the game
+  // loads with a clue open". These screens are session-only by rule
+  // (B7: a new session always lands on Home; the picker comment
+  // above says the same), and a cache restore is a new arrival, so
+  // close them and land on Home. Cold Trail is deliberately not
+  // closed here: its open state is persisted on purpose
+  // (readColdTrailOpen in @/game/coldtrail/store).
+  useEffect(() => {
+    const onPageShow = (e: PageTransitionEvent) => {
+      if (!e.persisted) return;
+      setSubjectsOpen(false);
+      setAgeAsk(null);
+      writeLoopOpen(false);
+      setLoopOpen(false);
+    };
+    window.addEventListener("pageshow", onPageShow);
+    return () => window.removeEventListener("pageshow", onPageShow);
+  }, []);
   // Journal prefetch (lazy-load scenario 2): while a round is active,
   // warm the current entry's movie and the next window's (B8: one entry
   // per 30-minute window, so "the next 1–2 in the current set" is the
@@ -1603,6 +1635,43 @@ export function GameApp() {
       });
     }
   }, []);
+  // Ask-first (owner decision, 2026-11-14): the case-start paths
+  // that bypass the picker page — "Resume your case" in the
+  // subjects branch and on Home's GeoDetective card — run their
+  // continuation through here. With a band set the continuation
+  // runs immediately and the player sees no change; with none set,
+  // the continuation is held and the age picker (AgeAskGate,
+  // prod's own AgePicker) renders instead. The pick writes the
+  // band through the store's unset path, then the held
+  // continuation runs — the player lands on the case they were
+  // going to, at the band they picked. Backing out clears the
+  // hold: no write, no case. The Why Learn entry and the subject
+  // cards ask on the picker page itself since the 2026-11-15
+  // amendment (AgeBandControl's pills — Radhae's reconciliation
+  // design): no case can start from that page with no band set,
+  // and the ask stays contained in that workflow.
+  const askAgeFirst = useCallback(
+    (proceed: () => void): void => {
+      if (ageProfile.status !== "unset") {
+        proceed();
+        return;
+      }
+      setAgeAsk({ proceed });
+    },
+    [ageProfile.status],
+  );
+  const ageAskOverlay = ageAsk ? (
+    <Suspense fallback={null}>
+      <AgeAskGate
+        onPicked={() => {
+          const proceed = ageAsk.proceed;
+          setAgeAsk(null);
+          proceed();
+        }}
+        onCancel={() => setAgeAsk(null)}
+      />
+    </Suspense>
+  ) : null;
   // Cleared-mode celebration: set when a difficulty band's full cycle is  // celebrated (primary onContinue trigger or the run-start backstop). The
   // dialog renders over the current screen; dismissing returns the player
   // to exactly where they were.
@@ -3187,6 +3256,32 @@ export function GameApp() {
     [updateSession, getSession],
   );
 
+  // GeoDetective tap-in, shared by Home's GeoDetective card and the
+  // Why Learn resume control (fix/case-navigation amendment, owner
+  // decision 2026-11-14): opening is all either surface does — the
+  // loop screen resumes-or-deals from the saved loop store, so a
+  // mystery mid-play comes back exactly where it left off. Locked
+  // bands never open it (Home renders the locked card instead, and
+  // the resume control is absent for them too). Returns whether it
+  // opened, so a caller leaving another screen can stay put when
+  // the guard refuses.
+  const openGeoDetective = useCallback((): boolean => {
+    // Locked for young bands (age-profile): the dossier renders the
+    // locked variant instead, so this guard is belt-and-braces.
+    if (isLoopLocked(ageBand, "geodetective")) return false;
+    // Storyteller home handoff (H1): the loop's locked send-off line
+    // rides along ≤2.5s while the loop loads — navigation never waits
+    // (copy G3). No locked line exists for Cold Trail, so none is sent.
+    window.dispatchEvent(
+      new CustomEvent("meridian:storyteller-sendoff", {
+        detail: { loop: "geodetective" },
+      }),
+    );
+    writeLoopOpen(true);
+    setLoopOpen(true);
+    return true;
+  }, [ageBand]);
+
   // End game: the session's totals (not the run's) become the summary, and
   // the session ends — the next game starts a fresh one.
   const handleEndGame = useCallback((): SessionSummary | null => {
@@ -3496,16 +3591,64 @@ export function GameApp() {
     return (
       <>
         {mapModeAnnouncer}
-        <MapErrorBoundary surface="Subjects">
-          <Suspense fallback={<SessionLoadingFallback label="Loading subjects…" />}>
-            <SubjectPickerScreen
-              group={getAgeGroup()}
-              tier="full"
-              onExit={() => setSubjectsOpen(false)}
-              onCelebrate={(spec) => setCelebration(spec)}
+        <div inert={ageSettingsOpen || ageAsk !== null || undefined}>
+          <MapErrorBoundary surface="Subjects">
+            <Suspense fallback={<SessionLoadingFallback label="Loading subjects…" />}>
+              <SubjectPickerScreen
+                group={getAgeGroup()}
+                tier="full"
+                onExit={() => setSubjectsOpen(false)}
+                onCelebrate={(spec) => setCelebration(spec)}
+                onEndGame={() => {
+                  handleEndGame();
+                  setSubjectsOpen(false);
+                }}
+                onResetHistory={() => {
+                  const result = handleResetHistory();
+                  if (result.failed.length === 0) setSubjectsOpen(false);
+                  return result;
+                }}
+                loopInProgress={
+                  peekLoopProgress().inProgress &&
+                  !isLoopLocked(ageBand, "geodetective")
+                }
+                onResumeCase={() => {
+                  // Home's GeoDetective tap-in, shared verbatim: the
+                  // saved mystery resumes from the loop store. The
+                  // subjects close behind it, so the loop's own
+                  // leave lands on Home exactly as it does from the
+                  // card. Nothing in the subject case is carried
+                  // over or discarded specially — leaving a case is
+                  // the Home button's own path. Ask-first (owner
+                  // decision, 2026-11-14): with no band set the age
+                  // picker answers first and the resume runs off
+                  // the pick, so a mystery never resumes under a
+                  // silently defaulted band.
+                  askAgeFirst(() => {
+                    if (openGeoDetective()) setSubjectsOpen(false);
+                  });
+                }}
+                bandChangeRunInProgress={run !== null || loopOpen}
+                onOpenAgeSettings={openAgeSettings}
+              />
+            </Suspense>
+          </MapErrorBoundary>
+        </div>
+        {ageSettingsOpen ? (
+          <Suspense fallback={null}>
+            <AgeProfileSettings
+              runInProgress={run !== null || loopOpen}
+              onClose={closeAgeSettings}
+              onToast={setAgeToast}
             />
           </Suspense>
-        </MapErrorBoundary>
+        ) : null}
+        {ageAskOverlay}
+        {ageToast ? (
+          <div className="agep-toast" role="status" data-testid="agep-toast">
+            {ageToast}
+          </div>
+        ) : null}
         {celebrationOverlay}
         {idleToast}
       </>
@@ -3887,8 +4030,10 @@ export function GameApp() {
     {challengeWelcomeEl}
     {/* While the grown-up gate/picker is open it is a full-viewport overlay:
         the home page underneath (incl. Comet's banner and the footer link)
-        is inert — non-interactive and removed from the tab order. */}
-    <div inert={ageSettingsOpen || undefined}>
+        is inert — non-interactive and removed from the tab order. The
+        ask-first age picker is the same class of overlay, so it makes
+        the page inert the same way while it is up. */}
+    <div inert={ageSettingsOpen || ageAsk !== null || undefined}>
     <Choose
       key={historyResetEpoch}
       onState={withCardTap("State", () => setMenu({ kind: "states" }))}
@@ -3897,24 +4042,34 @@ export function GameApp() {
       onBegin={withCardTap("Globe", () => openRun("globe", "globe", "Globe", difficultyChoice))}
       onTakeTour={onTakeTour}
       onLoop={withCardTap("mystery", () => {
-        // Locked for young bands (age-profile): the dossier renders the
-        // locked variant instead, so this guard is belt-and-braces.
-        if (isLoopLocked(ageBand, "geodetective")) return;
-        // Storyteller home handoff (H1): the loop's locked send-off line
-        // rides along ≤2.5s while the loop loads — navigation never waits
-        // (copy G3). No locked line exists for Cold Trail, so none is sent.
-        window.dispatchEvent(
-          new CustomEvent("meridian:storyteller-sendoff", {
-            detail: { loop: "geodetective" },
-          }),
-        );
-        writeLoopOpen(true);
-        setLoopOpen(true);
+        // Ask-first (owner decision, 2026-11-14): the card is the
+        // resume offer while a mystery is mid-play, and a resume is
+        // a case start — with no band set the age picker answers
+        // first and the tap-in runs off the pick. A fresh deal (no
+        // mystery in progress) is a main-game loop start, the class
+        // the store's no-profile default was decided for, and is
+        // not gated here.
+        if (peekLoopProgress().inProgress) {
+          askAgeFirst(() => {
+            openGeoDetective();
+          });
+        } else {
+          openGeoDetective();
+        }
       })}
       onColdTrail={withCardTap("coldtrail", () => { writeColdTrailOpen(true); setColdTrailOpen(true); })}      onReview={startReview}
       challengeEnabled={friendChallengesOn}
       whyLearnEnabled
-      onWhyLearn={withCardTap("why-learn", () => setSubjectsOpen(true))}
+      onWhyLearn={withCardTap("why-learn", () => {
+        // Ask-first (owner decision, 2026-11-14), contained in the
+        // Why Learn workflow (Radhae, voice call 2026-11-15): the
+        // picker opens directly — its page carries the band ask
+        // itself (AgeBandControl's pills while no band is set),
+        // and no case can start from that page until a band is
+        // picked. The modal ask above still guards the paths that
+        // bypass the page ("Resume your case").
+        setSubjectsOpen(true);
+      })}
       onChallenge={withCardTap("challenge", openChallengePicker)}
       onResetHistory={handleResetHistory}
       deck={deckStatus}
@@ -3976,6 +4131,7 @@ export function GameApp() {
         />
       </Suspense>
     ) : null}
+    {ageAskOverlay}
     {ageToast ? (
       <div className="agep-toast" role="status" data-testid="agep-toast">
         {ageToast}
@@ -4670,6 +4826,7 @@ function Choose({
           </button>
           <button type="button" onClick={() => scrollTo("home-about")}>ABOUT</button>
           <Link to="/contact" data-testid="nav-contact-link">CONTACT</Link>
+          <Link to="/board" data-testid="nav-board-link">WHAT&rsquo;S COMING</Link>
           <button type="button" onClick={() => scrollTo("home-journal")}>JOURNAL</button>
           <button type="button" onClick={() => scrollTo("home-grownups")}>GET INVOLVED</button>
         </nav>
@@ -5157,6 +5314,11 @@ function Choose({
               JOIN US
               <svg width="14" height="10" viewBox="0 0 15 11" aria-hidden="true"><path d="M1 5.5h12M9 1l4.5 4.5L9 10" stroke="currentColor" fill="none" strokeWidth="1.7" /></svg>
             </button>
+            <p className="hv5-grownups-board-links">
+              <Link to="/board" data-testid="grownups-board-link">See what we&rsquo;re making next →</Link>{" "}
+              ·{" "}
+              <Link to="/board" search={{ view: "tip" }} data-testid="grownups-tip-link">Ask for something new</Link>
+            </p>
           </div>
         </article>
       </div>
@@ -5246,6 +5408,9 @@ function Choose({
         <Link to="/credits" className="agep-footer-link" data-testid="credits-link">
           Credits
         </Link>
+        <Link to="/board" className="agep-footer-link" data-testid="board-link">
+          What&rsquo;s coming (grown-ups)
+        </Link>
         {/* Kids-privacy promise (owner 2026-10-21). Deliberately FACTUAL
             statements, not a "COPPA compliant" badge: compliance is a legal
             determination nobody has certified, and an unqualified claim on a
@@ -5306,139 +5471,8 @@ function AtlasBackdrop() {
   );
 }
 
-/**
- * Locked player-facing copy for the "Start over" reset (manifest
- * 2026-10-28 §4 — byte-exact; do not paraphrase, punctuate, or
- * re-wrap in code or tests).
- */
-const RESET_HISTORY_COPY = {
-  opener: "Start over",
-  title: "Start over?",
-  sub: "This clears your misses to practise again, every place you have seen or cleared, your learning growth, your GeoDetective streaks and solved cases, your Cold Trail case and stars, any game you left in the middle, and your score for today. Your badges stay. Your grown-up choices stay. This cannot be undone.",
-  confirm: "Yes, start over",
-  cancel: "Keep my history",
-  partial: "Some things could not be cleared. Try again.",
-} as const;
-
 /** The reset success toast (manifest 2026-10-28 §4, locked). */
 const RESET_HISTORY_SUCCESS_TOAST = "All cleared. You are starting fresh.";
-
-/**
- * The reset entry point shared by both surfaces (home Review card and
- * ReviewComplete): an opener button plus ONE role="alertdialog" confirm
- * mirroring AgeProfileSettings — focus moves into the dialog on open,
- * Esc means "no change", and focus returns to the opener on a
- * no-change close. Nothing is deleted before the confirm. A partial
- * failure keeps the dialog open with the locked partial line and the
- * danger button becomes the retry; on success the opener unmounts with
- * the wiped surface, so there is no focus return (the host shows the
- * success toast instead).
- */
-function ResetHistoryControl({
-  onReset,
-}: {
-  /** Run the reset; the result decides close-vs-retry. */
-  onReset: () => ResetHistoryResult;
-}) {
-  const [open, setOpen] = useState(false);
-  const [partial, setPartial] = useState(false);
-  const openerRef = useRef<HTMLButtonElement | null>(null);
-  const dialogRef = useRef<HTMLDivElement | null>(null);
-
-  // Focus moves into the dialog when it opens (the AgeProfileSettings
-  // pattern) — this is also what lets the dialog's Esc handler fire.
-  useEffect(() => {
-    if (open) dialogRef.current?.focus({ preventScroll: true });
-  }, [open ]);
-
-  const closeWithoutChange = useCallback(() => {
-    setOpen(false);
-    setPartial(false);
-    const opener = openerRef.current;
-    if (opener && document.contains(opener)) {
-      // The dialog unmounts on the next paint — return focus after
-      // that, without scrolling the page (closeAgeSettings pattern).
-      requestAnimationFrame(() => {
-        if (document.contains(opener)) opener.focus({ preventScroll: true });
-      });
-    }
-  }, []);
-
-  const confirm = useCallback(() => {
-    const result = onReset();
-    if (result.failed.length > 0) {
-      // Honest partial failure (D4): stay open, name it, offer retry.
-      setPartial(true);
-      return;
-    }
-    setOpen(false);
-    setPartial(false);
-  }, [onReset]);
-
-  return (
-    <>
-      <button
-        type="button"
-        ref={openerRef}
-        className="reset-history-open"
-        data-testid="reset-history-open"
-        onClick={() => setOpen(true)}
-      >
-        {RESET_HISTORY_COPY.opener}
-      </button>
-      {/* The dialog renders through a portal at the document root (the
-          AgeProfileSettings placement): inside the review card, the
-          text column is a flex item with z-index 1, which caps the
-          dialog's own z-index below the sibling cards' stretch layers
-          — their buttons would paint and hit-test over the dialog. */}
-      {open
-        ? createPortal(
-            <div
-              role="alertdialog"
-              aria-modal="true"
-              aria-labelledby="reset-history-title"
-              className="agep-screen"
-              data-testid="reset-history-confirm"
-              ref={dialogRef}
-              tabIndex={-1}
-              onKeyDown={(e) => {
-                if (e.key === "Escape") closeWithoutChange();
-              }}
-            >
-              <h1 id="reset-history-title" className="agep-h1">
-                {RESET_HISTORY_COPY.title}
-              </h1>
-              <p className="agep-sub">{RESET_HISTORY_COPY.sub}</p>
-              {partial ? (
-                <p className="agep-note" role="alert">
-                  {RESET_HISTORY_COPY.partial}
-                </p>
-              ) : null}
-              <div className="agep-actions">
-                <button
-                  type="button"
-                  className="agep-danger"
-                  data-testid="reset-history-confirm-clear"
-                  onClick={confirm}
-                >
-                  {RESET_HISTORY_COPY.confirm}
-                </button>
-                <button
-                  type="button"
-                  className="agep-ghost"
-                  data-testid="reset-history-cancel"
-                  onClick={closeWithoutChange}
-                >
-                  {RESET_HISTORY_COPY.cancel}
-                </button>
-              </div>
-            </div>,
-            document.body,
-          )
-        : null}
-    </>
-  );
-}
 
 /**
  * End of a review session: the due queue is exhausted. Bounded and

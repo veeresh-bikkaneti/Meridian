@@ -24,11 +24,50 @@
  * knowledge's turn also draws its route and re-drops its pin). The
  * spotlight is decoration: it never moves focus, and it does not
  * run under prefers-reduced-motion.
+ *
+ * Game chrome (fix/case-navigation): the band is state, not a
+ * one-time read — the footer carries Home's own age-profile entry
+ * (the "For grown-ups" footer link opening GameApp's hosted
+ * AgeProfileSettings: gate → AgePicker), and a band change event
+ * re-deals the rows for the new band and closes any open case back
+ * to this list (the settings flow's own no-rug-pull rule: a change
+ * never swaps a case mid-play). The game's "Start over" reset
+ * (ResetHistoryControl + GameApp's handleResetHistory) sits alone
+ * in a separated block above the footer, mirroring Home's Review
+ * card danger footer; an opened case receives the same reset plus
+ * GameApp's End game through its props.
+ *
+ * Amendment (owner decision, 2026-11-14): the header bar and an
+ * opened case also carry "Resume your case" while a GeoDetective
+ * mystery is mid-play — the same offer Home's GeoDetective card
+ * makes, on the same condition (GameApp reads the loop store and
+ * the band lock), wired to GameApp's own GeoDetective tap-in. When
+ * nothing is resumable the control is absent, never a dead button.
+ *
+ * Ask-first, contained on this page (owner decision 2026-11-14,
+ * "Ask first"; page design by Radhae, voice call 2026-11-15): the
+ * band ask lives on this page itself — AgeBandControl under the
+ * header shows the three band pills while no band is set, and a
+ * "Change band" option once one is (the graduation path: there is
+ * no player-facing settings screen to graduate through). A subject
+ * card's tap with no band set never opens a case under the store's
+ * silently defaulted band: it takes the player back to the pills
+ * instead, and the pick there is what deals this list at a real
+ * band. GameApp's modal ask (AgeAskGate) now guards only the case
+ * starts that bypass this page — "Resume your case" — where there
+ * are no pills to answer. The picker can still be on screen with
+ * no band set (a grown-up resetting the profile from the hosted
+ * settings re-deals this list under the store's full-access read);
+ * the pills are simply there, and the tap guard holds.
  */
-import { useEffect, useRef, useState, type ComponentType, type CSSProperties } from "react";
-import type { SubjectModule, SubjectProps } from "../registry";
+import { useEffect, useRef, useState, type ComponentType, type CSSProperties, type MouseEvent as ReactMouseEvent } from "react";
+import type { AgeGroup, SubjectModule, SubjectProps } from "../registry";
 import { listReleasedSubjects } from "../registry";
-import { getAgeGroup } from "@/game/age-profile";
+import { getAgeGroup, loadProfile, onAgeProfileChanged } from "@/game/age-profile";
+import type { ProfileStatus } from "@/game/age-profile";
+import AgeBandControl from "@/components/age-profile/AgeBandControl";
+import { ResetHistoryControl } from "@/components/reset-history-control";
+import type { ResetHistoryResult } from "@/game/reset-history";
 import { withChunkTimeout } from "@/lib/chunk-timeout";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 import { CardFilm } from "@/components/card-film";
@@ -36,6 +75,7 @@ import type { CelebrationSpec } from "@/components/celebration-copy";
 import { SUBJECT_CARD_MEDIA, SUBJECT_CARD_STILLS } from "@/assets/why-learn/subject-card-media";
 import { pickerRows } from "./picker-rows";
 import { ScreenShell } from "@/components/ui/screen-shell";
+import { Button } from "@/components/ui/button";
 import { ArrowRight, Atom, BookOpen, Calculator, FlaskConical, Globe2, Users, type LucideIcon } from "lucide-react";
 import { WhyLearnHero } from "./WhyLearnHero";
 import { WhyLearnDrift } from "./WhyLearnDrift";
@@ -68,23 +108,66 @@ const SUBJECT_ONE_LINERS: Record<string, string> = {
 };
 
 type CaseComponent = ComponentType<
-  SubjectProps & { onCelebrate?: (spec: CelebrationSpec) => void }
+  SubjectProps & {
+    onCelebrate?: (spec: CelebrationSpec) => void;
+    onEndGame?: () => void;
+    onResetHistory?: () => ResetHistoryResult;
+    onResumeCase?: () => void;
+    loopInProgress?: boolean;
+  }
 >;
 
 export default function SubjectPicker({
   group,
   onExit,
   onCelebrate,
+  onEndGame,
+  onResetHistory,
+  onResumeCase,
+  loopInProgress,
+  bandChangeRunInProgress,
+  onOpenAgeSettings,
 }: SubjectProps & {
   /** GameApp's celebration trigger, passed through to the opened case. */
   onCelebrate?: (spec: CelebrationSpec) => void;
+  /** GameApp's End game, passed through to the opened case's header. */
+  onEndGame?: () => void;
+  /** GameApp's "Start over" reset flow: the picker's footer control
+   * and the opened case's footer both run it. */
+  onResetHistory?: () => ResetHistoryResult;
+  /** GameApp's GeoDetective tap-in, passed through to the opened
+   * case's header and offered in this screen's own header bar. */
+  onResumeCase?: () => void;
+  /** Whether a GeoDetective mystery is mid-play and resumable (the
+   * loop store, read by GameApp): the resume control renders only
+   * while this holds, exactly as on Home's GeoDetective card. */
+  loopInProgress?: boolean;
+  /** The settings flow's run-in-progress input, passed through to
+   * the band control's change write (GameApp passes the same
+   * expression it passes AgeProfileSettings): while a run is in
+   * progress a band change defers its re-deal to the next
+   * boundary. This screen's own mount is reached only with no run
+   * and no loop open, so it is false in practice today. */
+  bandChangeRunInProgress?: boolean;
+  /** Open GameApp's hosted age-profile settings (the grown-up gate →
+   * AgePicker flow) — the picker's "For grown-ups" footer entry. */
+  onOpenAgeSettings?: (e?: ReactMouseEvent<HTMLElement>) => void;
 }) {
-  const band = group ?? getAgeGroup();
+  // The band starts from the session's group (or the stored profile)
+  // and then follows age-profile change events: a grown-up switching
+  // the band in the settings re-deals this list in place.
+  const [band, setBand] = useState<AgeGroup>(() => group ?? getAgeGroup());
+  // The profile's own status, beside the resolved band: the band
+  // alone cannot say "unset" (an unset profile resolves to the
+  // full-access band for display), and the page's band ask turns
+  // on exactly that distinction.
+  const [profileStatus, setProfileStatus] = useState<ProfileStatus>(() => loadProfile().status);
   const [released, setReleased] = useState<SubjectModule[] | null>(null);
   const [listFailed, setListFailed] = useState(false);
   const [opened, setOpened] = useState<{ title: string; Case: CaseComponent } | null>(null);
   const [openFailed, setOpenFailed] = useState<string | null>(null);
   const headingRef = useRef<HTMLHeadingElement | null>(null);
+  const bandBarRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     let live = true;
@@ -99,6 +182,20 @@ export default function SubjectPicker({
       live = false;
     };
   }, []);
+
+  // Band changes (the settings flow's change event): re-read the
+  // effective band, re-deal the rows, and close any open case back
+  // to the list — a case is dealt for one band and is never swapped
+  // mid-play.
+  useEffect(
+    () =>
+      onAgeProfileChanged(() => {
+        setBand(getAgeGroup());
+        setProfileStatus(loadProfile().status);
+        setOpened(null);
+      }),
+    [],
+  );
 
   // Arrival focus, the LoopScreen pattern: land focus on the heading so
   // it is never stranded on the Home card that opened the picker.
@@ -133,12 +230,56 @@ export default function SubjectPicker({
     return () => clearInterval(id);
   }, [reducedMotion, released, band, opened]);
 
+  // "Resume your case" for the header bar — Home's GeoDetective
+  // card offer (same label, same Button, same accessible name),
+  // present only while a mystery is mid-play; the opened case
+  // renders its own beside End game from the same two props.
+  const resumeControl =
+    onResumeCase && loopInProgress ? (
+      <Button
+        variant="secondary"
+        data-testid="resume-case-button"
+        className="min-h-[44px]"
+        onClick={onResumeCase}
+        aria-label="GeoDetective: Resume your case"
+      >
+        <span aria-hidden="true">▶️</span>{" "}
+        Resume your case
+      </Button>
+    ) : undefined;
+
   if (opened) {
     const Case = opened.Case;
-    return <Case group={band} tier="full" onExit={onExit} onCelebrate={onCelebrate} />;
+    return (
+      <Case
+        group={band}
+        tier="full"
+        onExit={onExit}
+        onCelebrate={onCelebrate}
+        onEndGame={onEndGame}
+        onResetHistory={onResetHistory}
+        onResumeCase={onResumeCase}
+        loopInProgress={loopInProgress}
+      />
+    );
   }
 
   const openSubject = (mod: SubjectModule) => {
+    // Ask-first, contained on this page (see the header note):
+    // with no band set a case never starts — the tap takes the
+    // player to the band pills at the top of the page instead of
+    // opening the case under the store's silently defaulted band.
+    // The pick there is one tap; the next tap on the subject
+    // opens its case at the picked band. The status is read at
+    // tap time, never from state that could be a render behind.
+    if (loadProfile().status === "unset") {
+      const bar = bandBarRef.current;
+      if (bar) {
+        bar.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "start" });
+        bar.querySelector<HTMLButtonElement>('[data-testid^="band-pill-"]')?.focus({ preventScroll: true });
+      }
+      return;
+    }
     setOpenFailed(null);
     withChunkTimeout(mod.load(), `${mod.title} case screen`)
       .then((loaded) => {
@@ -154,23 +295,26 @@ export default function SubjectPicker({
   return (
     <ScreenShell
       onHome={onExit}
-      className="why-learn-screen lg:max-w-6xl"
+      controls={resumeControl}
+      className="why-learn-screen lg:max-w-none"
       testId="subject-picker"
       hero={<WhyLearnHero />}
-      sound={
-        <span className="why-learn-wordmark">
-          <svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><circle cx="24" cy="24" r="21.5" fill="none" stroke="#8A6D2F" strokeWidth="1.6" /><path d="M24 6 L27.2 20.8 L42 24 L27.2 27.2 L24 42 L20.8 27.2 L6 24 L20.8 20.8 Z" fill="#8A6D2F" /><circle cx="24" cy="24" r="3.4" fill="#F6F1E3" stroke="#8A6D2F" strokeWidth="1.2" /></svg>
-          MERIDIAN
-        </span>
-      }
       data={{ "data-band": band }}
       eyebrow="Case file · Why it matters"
       title="Why Do We Learn This?"
       titleRef={headingRef}
-      sub={`Pick a subject · Ages ${band}`}
+      sub={profileStatus === "unset" ? "Pick a subject" : `Pick a subject · Ages ${band}`}
     >
       <WhyLearnWorld />
       <WhyLearnDrift />
+      {/* The band ask, contained on this page (see the header
+          note): AgeBandControl under the header — the three band
+          pills while no band is set, a "Change band" option once
+          one is. It owns the profile reads and writes; this page
+          only hosts it, beside the band the sub line names. */}
+      <div ref={bandBarRef} className="mt-5">
+        <AgeBandControl runInProgress={bandChangeRunInProgress} />
+      </div>
       {released === null && !listFailed ? (
         <p className="mt-6 text-fg">Loading subjects…</p>
       ) : null}
@@ -182,10 +326,13 @@ export default function SubjectPicker({
       {/* Subject cards (Living Atlas anatomy, the home card's): one
           button per card; its text is its name (no heading inside the
           button). The picture slot, icon and arrow are aria-hidden
-          decoration, never glyphs. Columns: 1 on phones, 2 at
-          681–1080px, 3 from 1081px; with six subjects every row is
-          full. */}
-      <ul className="mt-5 grid grid-cols-[minmax(0,1fr)] gap-3 min-[681px]:grid-cols-2 min-[1081px]:grid-cols-3 min-[681px]:gap-4" data-testid="subject-cards">
+          decoration, never glyphs. Columns (landscape layout,
+          feat/why-learn-landscape-layout): 1 under 360px (two
+          134px cards break "General knowledge" mid-word), 2 on
+          phones, 2 at 681–1080px, 4 from 1081px — the cards shrink and stack
+          four in a row on desktop, and the fill rule in styles.css
+          stretches the grid into the page's leftover height. */}
+      <ul className="mt-5 grid grid-cols-[minmax(0,1fr)] gap-3 min-[360px]:grid-cols-2 min-[1081px]:grid-cols-4 min-[681px]:gap-4" data-testid="subject-cards">
         {rows.map((row, i) => {
           const Icon = SUBJECT_ICONS[row.id] ?? BookOpen;
           const ready = row.state === "ready" && row.module;
@@ -196,7 +343,7 @@ export default function SubjectPicker({
             <li key={row.id} className="flex">
               <button
                 type="button"
-                className={`why-learn-card home-rise flex w-full flex-col p-5 text-left text-fg${ready ? "" : " is-soon"}${spotIndex === i ? " is-spot" : ""}`}
+                className={`why-learn-card home-rise flex w-full flex-col p-4 text-left text-fg${ready ? "" : " is-soon"}${spotIndex === i ? " is-spot" : ""}`}
                 style={{ "--rise-delay": riseDelay } as CSSProperties}
                 data-testid={`subject-row-${row.id}`}
                 disabled={!ready}
@@ -258,6 +405,33 @@ export default function SubjectPicker({
         <p className="mt-3 text-sm text-fg" role="status">
           {openFailed} could not load just now. Try again in a moment.
         </p>
+      ) : null}
+      {/* The game's "Start over" reset, alone in a separated block —
+          Home's Review card danger-footer rule (the destructive
+          action shares neither a row nor a look with play). */}
+      {onResetHistory ? (
+        <div className="mt-10 border-t border-line pt-4">
+          <ResetHistoryControl onReset={onResetHistory} />
+        </div>
+      ) : null}
+      {/* Age-profile footer entry — Home's own footer pattern (the
+          agep-footer row and its grown-ups link, same classes, same
+          label): the gate → AgePicker flow is hosted by GameApp, so
+          the band can be changed without leaving the picker. The
+          current band already reads in the sub line above ("Ages …"),
+          which follows the band state. */}
+      {onOpenAgeSettings ? (
+        <footer className="agep-footer">
+          <button
+            type="button"
+            className="agep-footer-link"
+            onClick={onOpenAgeSettings}
+            aria-label="For grown-ups: game settings"
+            data-testid="grownups-link"
+          >
+            🔒 For grown-ups
+          </button>
+        </footer>
       ) : null}
     </ScreenShell>
   );

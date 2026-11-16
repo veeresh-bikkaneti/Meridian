@@ -1,0 +1,412 @@
+{
+  "version": 3,
+  "source": "generated",
+  "updatedAt": "2026-11-16T12:26:19.775Z",
+  "counts": {
+    "done": 20,
+    "inProgress": 4,
+    "notStarted": 13,
+    "total": 37
+  },
+  "epics": [
+    {
+      "id": "geodetective",
+      "name": "GeoDetective",
+      "color": "#8a6d2f",
+      "features": [
+        {
+          "id": "holmes",
+          "name": "Holmes & Watson",
+          "promise": "The detective pair who guide your child through every case.",
+          "anim": "magnifier",
+          "done": 1,
+          "total": 3,
+          "bonds": 1,
+          "stories": [
+            {
+              "slug": "holmes-and-watson-pair-in-the-game",
+              "title": "Meet Holmes & Watson in the game",
+              "status": "done",
+              "line": "Ready to play"
+            },
+            {
+              "slug": "pair-art-sheets-and-endings",
+              "title": "New drawings of Holmes & Watson, and how each case ends",
+              "status": "in-progress",
+              "line": "Drawing in progress"
+            },
+            {
+              "slug": "holmes-follow-and-home-first-landing",
+              "title": "Holmes & Watson greet you on the home page",
+              "status": "in-progress",
+              "line": "Checking in progress"
+            }
+          ]
+        },
+        {
+          "id": "clues",
+          "name": "Solving the Clues",
+          "promise": "Clues that arrive one at a time, at a pace a child can follow.",
+          "anim": "compass",
+          "done": 2,
+          "total": 3,
+          "bonds": 4,
+          "stories": [
+            {
+              "slug": "held-finger-jitter-fix-on-the-clue-berth",
+              "title": "Clues stay steady while little fingers hold them",
+              "status": "done",
+              "line": "Ready to play"
+            },
+            {
+              "slug": "clue-pacing-and-one-voice-at-a-time",
+              "title": "Clues arrive one at a time, one voice at a time",
+              "status": "done",
+              "line": "Ready to play"
+            },
+            {
+              "slug": "clue-4-opening-cards-2-and-3",
+              "title": "The fourth case's opening cards",
+              "status": "not-started",
+              "line": "Not started yet"
+            }
+          ]
+        },
+        {
+          "id": "capitals",
+          "name": "Capitals",
+          "promise": "Flags and places on the map, for every age group.",
+          "anim": "pin",
+          "done": 1,
+          "total": 2,
+          "bonds": 2,
+          "stories": [
+            {
+              "slug": "age-groups-7-10-10-18-18-in-code",
+              "title": "Capitals games for ages 7–10, 10–18 and grown-ups",
+              "status": "done",
+              "line": "Ready to play"
+            },
+            {
+              "slug": "truce-pennant-port",
+              "title": "The truce flag at the end of a capitals case",
+              "status": "not-started",
+              "line": "Not started yet"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "subjects",
+      "name": "School Subjects",
+      "color": "#33503f",
+      "features": [
+        {
+          "id": "why",
+          "name": "Why Do We Learn This?",
+          "promise": "The home card that opens every subject.",
+          "anim": "star",
+          "done": 2,
+          "total": 5,
+          "bonds": 1,
+          "stories": [
+            {
+              "slug": "films-v4-dolly-camera",
+              "title": "Short films showing where school subjects turn up in real life",
+              "status": "done",
+              "line": "Ready to play"
+            },
+            {
+              "slug": "the-card-appears-on-the-home-page",
+              "title": "The card on the home page",
+              "status": "done",
+              "line": "Ready to play"
+            },
+            {
+              "slug": "3d-film-source-files",
+              "title": "Making the films in 3D",
+              "status": "in-progress",
+              "line": "Animation in progress"
+            },
+            {
+              "slug": "button-opens-a-subject-instead-of-coming-soon",
+              "title": "Tap the card and go straight into a subject",
+              "status": "not-started",
+              "line": "Not started yet"
+            },
+            {
+              "slug": "the-card-appears-for-kids",
+              "title": "The card, ready for kids to open themselves",
+              "status": "not-started",
+              "line": "Not started yet"
+            }
+          ]
+        },
+        {
+          "id": "maths",
+          "name": "Maths",
+          "promise": "Cases your child can play at their own level.",
+          "anim": "sum",
+          "done": 5,
+          "total": 5,
+          "bonds": 4,
+          "stories": [
+            {
+              "slug": "number-strand-spec",
+              "title": "Number games — counting, ordering and patterns",
+              "status": "done",
+              "line": "Ready to play"
+            },
+            {
+              "slug": "applied-strand-spec",
+              "title": "Everyday maths games — measuring, money and time",
+              "status": "done",
+              "line": "Ready to play"
+            },
+            {
+              "slug": "math-subject-screen-3-items-per-age-group",
+              "title": "The Maths screen, with games for every age group",
+              "status": "done",
+              "line": "Ready to play"
+            },
+            {
+              "slug": "maths-sign-off-and-release",
+              "title": "A final check, then Maths opens to everyone",
+              "status": "done",
+              "line": "Ready to play"
+            },
+            {
+              "slug": "holmes-and-watson-in-math",
+              "title": "Holmes & Watson join the Maths cases",
+              "status": "done",
+              "line": "Ready to play"
+            }
+          ]
+        },
+        {
+          "id": "science",
+          "name": "Physics & Chemistry",
+          "promise": "Predict first — then see what really happens.",
+          "anim": "flask",
+          "done": 3,
+          "total": 7,
+          "bonds": 0,
+          "stories": [
+            {
+              "slug": "physics-spec",
+              "title": "Physics games — how things move, fall and roll",
+              "status": "done",
+              "line": "Ready to play"
+            },
+            {
+              "slug": "chemistry-spec",
+              "title": "Chemistry games — what things are made of",
+              "status": "done",
+              "line": "Ready to play"
+            },
+            {
+              "slug": "science-definitions-and-scene-engine-spec",
+              "title": "Science words and animated scenes for every case",
+              "status": "done",
+              "line": "Ready to play"
+            },
+            {
+              "slug": "science-expansion-spec",
+              "title": "More science cases",
+              "status": "in-progress",
+              "line": "Polishing in progress"
+            },
+            {
+              "slug": "predict-and-see-scene-engine",
+              "title": "Predict-and-see scenes — guess first, then watch",
+              "status": "not-started",
+              "line": "Not started yet"
+            },
+            {
+              "slug": "physics-and-chemistry-screens",
+              "title": "The Physics & Chemistry screens",
+              "status": "not-started",
+              "line": "Not started yet"
+            },
+            {
+              "slug": "wave-2-sign-off-and-release",
+              "title": "A final check, then science opens to everyone",
+              "status": "not-started",
+              "line": "Not started yet"
+            }
+          ]
+        },
+        {
+          "id": "rivers",
+          "name": "Rivers, Maps & People",
+          "promise": "Social studies and general knowledge, out in the world.",
+          "anim": "river",
+          "done": 3,
+          "total": 5,
+          "bonds": 0,
+          "stories": [
+            {
+              "slug": "social-studies-economics-civics-spec",
+              "title": "Social studies games — people, places and how communities work",
+              "status": "done",
+              "line": "Ready to play"
+            },
+            {
+              "slug": "general-knowledge-spec",
+              "title": "General knowledge games",
+              "status": "done",
+              "line": "Ready to play"
+            },
+            {
+              "slug": "humanities-definitions-spec",
+              "title": "Words for people and places, in plain language",
+              "status": "done",
+              "line": "Ready to play"
+            },
+            {
+              "slug": "social-studies-and-gk-screens",
+              "title": "The people-and-places screens",
+              "status": "not-started",
+              "line": "Not started yet"
+            },
+            {
+              "slug": "wave-3-sign-off-and-release",
+              "title": "A final check, then it opens to everyone",
+              "status": "not-started",
+              "line": "Not started yet"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "journals",
+      "name": "Story Journals",
+      "color": "#8fa382",
+      "features": [
+        {
+          "id": "journal",
+          "name": "Story Journals",
+          "promise": "Short stories and films about people and places.",
+          "anim": "book",
+          "done": 2,
+          "total": 4,
+          "bonds": 0,
+          "stories": [
+            {
+              "slug": "7-journal-specs-people-and-places-technology-ww2-monuments-world-wars-modern-world-great-leaders-freedom-fighters",
+              "title": "Seven story collections — people and places, inventions, monuments, great leaders and freedom fighters",
+              "status": "done",
+              "line": "Ready to play"
+            },
+            {
+              "slug": "religious-journal-movies-hidden",
+              "title": "Some story films kept tucked away, by choice",
+              "status": "done",
+              "line": "Finished"
+            },
+            {
+              "slug": "journal-clips-stage-b-video-files",
+              "title": "Short film clips for the journals",
+              "status": "not-started",
+              "line": "Not started yet"
+            },
+            {
+              "slug": "journals-release",
+              "title": "The journals open to everyone",
+              "status": "not-started",
+              "line": "Not started yet"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "voices",
+      "name": "Voices & Sound",
+      "color": "#b3543f",
+      "features": [
+        {
+          "id": "voice",
+          "name": "Voices & Sound",
+          "promise": "One clear voice at a time — never talking over.",
+          "anim": "mic",
+          "done": 1,
+          "total": 3,
+          "bonds": 2,
+          "stories": [
+            {
+              "slug": "shared-voice-channel-one-speaker-at-a-time",
+              "title": "One clear voice at a time — voices never talk over each other",
+              "status": "done",
+              "line": "Ready to play"
+            },
+            {
+              "slug": "3-unrendered-clips-beat-me-win-together-truce-watson",
+              "title": "Three short voice clips still to record",
+              "status": "not-started",
+              "line": "Not started yet"
+            },
+            {
+              "slug": "88-place-names-with-no-holmes-voice",
+              "title": "Holmes learns to say 88 place names out loud",
+              "status": "not-started",
+              "line": "Not started yet"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "bonds": [
+    {
+      "fromSlug": "clue-pacing-and-one-voice-at-a-time",
+      "toSlug": "held-finger-jitter-fix-on-the-clue-berth",
+      "fromTitle": "Clues arrive one at a time, one voice at a time",
+      "toTitle": "Clues stay steady while little fingers hold them"
+    },
+    {
+      "fromSlug": "pair-art-sheets-and-endings",
+      "toSlug": "held-finger-jitter-fix-on-the-clue-berth",
+      "fromTitle": "New drawings of Holmes & Watson, and how each case ends",
+      "toTitle": "Clues stay steady while little fingers hold them"
+    },
+    {
+      "fromSlug": "truce-pennant-port",
+      "toSlug": "clue-pacing-and-one-voice-at-a-time",
+      "fromTitle": "The truce flag at the end of a capitals case",
+      "toTitle": "Clues arrive one at a time, one voice at a time"
+    },
+    {
+      "fromSlug": "truce-pennant-port",
+      "toSlug": "shared-voice-channel-one-speaker-at-a-time",
+      "fromTitle": "The truce flag at the end of a capitals case",
+      "toTitle": "One clear voice at a time — voices never talk over each other"
+    },
+    {
+      "fromSlug": "button-opens-a-subject-instead-of-coming-soon",
+      "toSlug": "math-subject-screen-3-items-per-age-group",
+      "fromTitle": "Tap the card and go straight into a subject",
+      "toTitle": "The Maths screen, with games for every age group"
+    },
+    {
+      "fromSlug": "holmes-and-watson-in-math",
+      "toSlug": "clue-pacing-and-one-voice-at-a-time",
+      "fromTitle": "Holmes & Watson join the Maths cases",
+      "toTitle": "Clues arrive one at a time, one voice at a time"
+    },
+    {
+      "fromSlug": "holmes-and-watson-in-math",
+      "toSlug": "math-subject-screen-3-items-per-age-group",
+      "fromTitle": "Holmes & Watson join the Maths cases",
+      "toTitle": "The Maths screen, with games for every age group"
+    },
+    {
+      "fromSlug": "holmes-and-watson-in-math",
+      "toSlug": "shared-voice-channel-one-speaker-at-a-time",
+      "fromTitle": "Holmes & Watson join the Maths cases",
+      "toTitle": "One clear voice at a time — voices never talk over each other"
+    }
+  ]
+}

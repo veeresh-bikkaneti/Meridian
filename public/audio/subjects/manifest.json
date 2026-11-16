@@ -1,0 +1,601 @@
+{
+  "v": 1,
+  "voice": "am_michael",
+  "note": "Narrated solved summaries for the math clue scenes (act 3). One clip per item; the script and per-line timings in src/subjects/math/scenes.ts are the source of truth and match the clips line for line. Rendered locally with the same voice and loudness targets as the journal narration (-18 LUFS, true peak -1.5 dBFS), 24 kHz mono MP3 at 64 kbps like the other in-app clips. Wave 1 (expansion) added the ten non-pilot clips in the same voice (am_michael), rendered the same way. The scenes wave (visual-questions Phase 1) added the nine wave-3 clips in the same voice, rendered the same way. Wave 2 (expansion) added the thirteen 10-18 clips in the same voice (am_michael), rendered the same way. Wave 3 (expansion) added the seven 18+ math and 7-10 general-knowledge clips in the same voice (am_michael), rendered the same way. Wave 4 (expansion) added the seven physics ages 7-10 clips in the same voice (am_michael), rendered the same way. Wave 5 (expansion) added the five remaining physics ages 7-10 clips in the same voice (am_michael), rendered the same way. Wave 6 (expansion) added the twelve physics ages 10-18 and 18+ clips in the same voice (am_michael), rendered the same way. Wave 7 (expansion) added the ten chemistry ages 7-10 and states/mixtures/materials ages 10-18 clips in the same voice (am_michael), rendered the same way. Wave 8 (expansion) added the six chemistry reactions and ages 18+ clips in the same voice (am_michael), rendered the same way. Wave 9 (expansion) added the twelve social studies clips in the same voice (am_michael), rendered the same way. Wave 10 (expansion) added the five general-knowledge ages 10-18 and 18+ clips in the same voice (am_michael), rendered the same way, completing the programme.",
+  "clips": {
+    "skip-count": {
+      "file": "skip-count.mp3",
+      "item": "math-number:groups:skip-count",
+      "duration": 18.77,
+      "lines": 7
+    },
+    "pencil-packs": {
+      "file": "pencil-packs.mp3",
+      "item": "math-number:tables:facts",
+      "duration": 17.22,
+      "lines": 6
+    },
+    "fair-share": {
+      "file": "fair-share.mp3",
+      "item": "math-number:division:fair-share",
+      "duration": 18.74,
+      "lines": 5
+    },
+    "equal-groups": {
+      "file": "equal-groups.mp3",
+      "item": "math-number:groups:equal-groups",
+      "duration": 13.67,
+      "lines": 5
+    },
+    "buses": {
+      "file": "buses.mp3",
+      "item": "math-number:tables:buses",
+      "duration": 14.24,
+      "lines": 5
+    },
+    "remainders": {
+      "file": "remainders.mp3",
+      "item": "math-number:division:remainders",
+      "duration": 16.89,
+      "lines": 6
+    },
+    "place-value": {
+      "file": "place-value.mp3",
+      "item": "math-number:place:hundreds-tens-ones",
+      "duration": 17.24,
+      "lines": 5
+    },
+    "place-compare": {
+      "file": "place-compare.mp3",
+      "item": "math-number:place:compare",
+      "duration": 16.65,
+      "lines": 5
+    },
+    "rounding": {
+      "file": "rounding.mp3",
+      "item": "math-number:place:round",
+      "duration": 16.78,
+      "lines": 4
+    },
+    "ten-times": {
+      "file": "ten-times.mp3",
+      "item": "math-number:place:ten-times",
+      "duration": 19.53,
+      "lines": 6
+    },
+    "big-products": {
+      "file": "big-products.mp3",
+      "item": "math-number:tables:big-products",
+      "duration": 21.4,
+      "lines": 5
+    },
+    "unknown-factor": {
+      "file": "unknown-factor.mp3",
+      "item": "math-number:division:unknown-factor",
+      "duration": 13.6,
+      "lines": 5
+    },
+    "big-quotients": {
+      "file": "big-quotients.mp3",
+      "item": "math-number:division:big-quotients",
+      "duration": 17.57,
+      "lines": 5
+    },
+    "fair-parts": {
+      "file": "fair-parts.mp3",
+      "item": "math-number:fractions:fair-parts",
+      "duration": 16.25,
+      "lines": 4
+    },
+    "equivalent": {
+      "file": "equivalent.mp3",
+      "item": "math-number:fractions:equivalent",
+      "duration": 19.7,
+      "lines": 4
+    },
+    "compare-unlike": {
+      "file": "compare-unlike.mp3",
+      "item": "math-number:fractions:compare-unlike",
+      "duration": 19.32,
+      "lines": 4
+    },
+    "arrays": {
+      "file": "arrays.mp3",
+      "item": "math-number:groups:arrays",
+      "duration": 16.9,
+      "lines": 4
+    },
+    "longer-than": {
+      "file": "longer-than.mp3",
+      "item": "math-applied:measure:longer-than",
+      "duration": 19.5,
+      "lines": 4
+    },
+    "choose-unit": {
+      "file": "choose-unit.mp3",
+      "item": "math-applied:measure:choose-unit",
+      "duration": 18.4,
+      "lines": 4
+    },
+    "elapsed-time": {
+      "file": "elapsed-time.mp3",
+      "item": "math-applied:measure:elapsed-time",
+      "duration": 18.07,
+      "lines": 4
+    },
+    "perimeter": {
+      "file": "perimeter.mp3",
+      "item": "math-applied:measure:perimeter",
+      "duration": 23.25,
+      "lines": 5
+    },
+    "rect-area": {
+      "file": "rect-area.mp3",
+      "item": "math-applied:measure:rect-area",
+      "duration": 17.48,
+      "lines": 4
+    },
+    "multi-digit": {
+      "file": "multi-digit.mp3",
+      "item": "math-number:tables:multi-digit",
+      "duration": 24.19,
+      "lines": 5
+    },
+    "convert-metric": {
+      "file": "convert-metric.mp3",
+      "item": "math-applied:measure:convert-metric",
+      "duration": 17.28,
+      "lines": 4
+    },
+    "percent": {
+      "file": "percent.mp3",
+      "item": "math-number:fractions:percent",
+      "duration": 18.33,
+      "lines": 5
+    },
+    "scale-drawing": {
+      "file": "scale-drawing.mp3",
+      "item": "math-applied:geometry:scale-drawing",
+      "duration": 16.49,
+      "lines": 4
+    },
+    "standard-algorithm": {
+      "file": "standard-algorithm.mp3",
+      "item": "math-number:division:standard-algorithm",
+      "duration": 18.03,
+      "lines": 5
+    },
+    "fraction-multiply": {
+      "file": "fraction-multiply.mp3",
+      "item": "math-number:fractions:multiply",
+      "duration": 14.69,
+      "lines": 4
+    },
+    "fraction-divide": {
+      "file": "fraction-divide.mp3",
+      "item": "math-number:fractions:divide",
+      "duration": 15.85,
+      "lines": 4
+    },
+    "accuracy": {
+      "file": "accuracy.mp3",
+      "item": "math-applied:measure:accuracy",
+      "duration": 21.95,
+      "lines": 4
+    },
+    "unit-rate": {
+      "file": "unit-rate.mp3",
+      "item": "math-applied:rates:unit-rate",
+      "duration": 27.57,
+      "lines": 5
+    },
+    "constant-speed": {
+      "file": "constant-speed.mp3",
+      "item": "math-applied:rates:constant-speed",
+      "duration": 16.11,
+      "lines": 4
+    },
+    "one-step": {
+      "file": "one-step.mp3",
+      "item": "math-applied:rates:one-step",
+      "duration": 15.5,
+      "lines": 4
+    },
+    "two-step": {
+      "file": "two-step.mp3",
+      "item": "math-applied:rates:two-step",
+      "duration": 19.33,
+      "lines": 5
+    },
+    "bearings": {
+      "file": "bearings.mp3",
+      "item": "math-applied:trig:bearings",
+      "duration": 20.5,
+      "lines": 5
+    },
+    "mental-strategies": {
+      "file": "mental-strategies.mp3",
+      "item": "math-number:tables:mental-strategies",
+      "duration": 19.79,
+      "lines": 5
+    },
+    "combine-shares": {
+      "file": "combine-shares.mp3",
+      "item": "math-number:fractions:combine-shares",
+      "duration": 20.08,
+      "lines": 5
+    },
+    "opera-years": {
+      "file": "opera-years.mp3",
+      "item": "general-knowledge:mixed:opera-years-ago",
+      "duration": 17.56,
+      "lines": 4
+    },
+    "eiffel-antennas": {
+      "file": "eiffel-antennas.mp3",
+      "item": "general-knowledge:mixed:eiffel-antennas",
+      "duration": 20.34,
+      "lines": 4
+    },
+    "older-landmark": {
+      "file": "older-landmark.mp3",
+      "item": "general-knowledge:mixed:older-landmark",
+      "duration": 21.52,
+      "lines": 5
+    },
+    "falls-in-km": {
+      "file": "falls-in-km.mp3",
+      "item": "general-knowledge:mixed:falls-in-km",
+      "duration": 20.19,
+      "lines": 4
+    },
+    "trip-buses": {
+      "file": "trip-buses.mp3",
+      "item": "general-knowledge:mixed:trip-buses",
+      "duration": 22.5,
+      "lines": 6
+    },
+    "which-way": {
+      "file": "which-way.mp3",
+      "item": "physics:push:which-way",
+      "duration": 16.96,
+      "lines": 4
+    },
+    "equal-pushes": {
+      "file": "equal-pushes.mp3",
+      "item": "physics:push:equal-pushes",
+      "duration": 12.83,
+      "lines": 5
+    },
+    "measure-slide": {
+      "file": "measure-slide.mp3",
+      "item": "physics:friction:measure-slide",
+      "duration": 16.78,
+      "lines": 4
+    },
+    "faster-hits-harder": {
+      "file": "faster-hits-harder.mp3",
+      "item": "physics:ramp:faster-hits-harder",
+      "duration": 18.47,
+      "lines": 4
+    },
+    "equal-steps": {
+      "file": "equal-steps.mp3",
+      "item": "physics:arrive:equal-steps",
+      "duration": 18.7,
+      "lines": 4
+    },
+    "seesaw": {
+      "file": "seesaw.mp3",
+      "item": "physics:lever:seesaw",
+      "duration": 15.64,
+      "lines": 4
+    },
+    "tug": {
+      "file": "tug.mp3",
+      "item": "physics:balance:tug",
+      "duration": 14.69,
+      "lines": 4
+    },
+    "magnet-flip": {
+      "file": "magnet-flip.mp3",
+      "item": "physics:magnet:flip",
+      "duration": 16.65,
+      "lines": 4
+    },
+    "drop-down": {
+      "file": "drop-down.mp3",
+      "item": "physics:drop:down",
+      "duration": 14.69,
+      "lines": 4
+    },
+    "wound-moves": {
+      "file": "wound-moves.mp3",
+      "item": "physics:energy:wound-moves",
+      "duration": 16.6,
+      "lines": 4
+    },
+    "shadow-blocks": {
+      "file": "shadow-blocks.mp3",
+      "item": "physics:shadow:blocks",
+      "duration": 16.74,
+      "lines": 4
+    },
+    "sends-back": {
+      "file": "sends-back.mp3",
+      "item": "physics:mirror:sends-back",
+      "duration": 13.91,
+      "lines": 4
+    },
+    "cart-race": {
+      "file": "cart-race.mp3",
+      "item": "physics:arrive:unit-rate",
+      "duration": 23.32,
+      "lines": 4
+    },
+    "slope-ratio": {
+      "file": "slope-ratio.mp3",
+      "item": "physics:ramp:slope-ratio",
+      "duration": 20.61,
+      "lines": 4
+    },
+    "magnet-closer": {
+      "file": "magnet-closer.mp3",
+      "item": "physics:magnet:closer",
+      "duration": 20.46,
+      "lines": 4
+    },
+    "push-mass": {
+      "file": "push-mass.mp3",
+      "item": "physics:push:mass",
+      "duration": 20.88,
+      "lines": 4
+    },
+    "push-table": {
+      "file": "push-table.mp3",
+      "item": "physics:push:table",
+      "duration": 22.07,
+      "lines": 4
+    },
+    "higher-stored": {
+      "file": "higher-stored.mp3",
+      "item": "physics:ramp:higher-stored",
+      "duration": 19.52,
+      "lines": 4
+    },
+    "energy-transfer": {
+      "file": "energy-transfer.mp3",
+      "item": "physics:energy:transfer",
+      "duration": 16.18,
+      "lines": 4
+    },
+    "sound-medium": {
+      "file": "sound-medium.mp3",
+      "item": "physics:sound:medium",
+      "duration": 18.57,
+      "lines": 4
+    },
+    "three-ways": {
+      "file": "three-ways.mp3",
+      "item": "physics:mirror:three-ways",
+      "duration": 18.73,
+      "lines": 4
+    },
+    "adult-ratio": {
+      "file": "adult-ratio.mp3",
+      "item": "physics:ramp:adult-ratio",
+      "duration": 20.14,
+      "lines": 4
+    },
+    "adult-time": {
+      "file": "adult-time.mp3",
+      "item": "physics:arrive:adult-time",
+      "duration": 18.85,
+      "lines": 4
+    },
+    "energy-missing": {
+      "file": "energy-missing.mp3",
+      "item": "physics:energy:missing",
+      "duration": 20.39,
+      "lines": 4
+    },
+    "solid-liquid": {
+      "file": "solid-liquid.mp3",
+      "item": "chemistry:states:solid-liquid",
+      "duration": 16.96,
+      "lines": 4
+    },
+    "puddle-freeze": {
+      "file": "puddle-freeze.mp3",
+      "item": "chemistry:states:melt-freeze",
+      "duration": 20.9,
+      "lines": 4
+    },
+    "bend-test": {
+      "file": "bend-test.mp3",
+      "item": "chemistry:materials:sort",
+      "duration": 17.03,
+      "lines": 4
+    },
+    "magnet-sort": {
+      "file": "magnet-sort.mp3",
+      "item": "chemistry:materials:magnet",
+      "duration": 20.24,
+      "lines": 4
+    },
+    "rebuild": {
+      "file": "rebuild.mp3",
+      "item": "chemistry:pieces:rebuild",
+      "duration": 17.5,
+      "lines": 4
+    },
+    "road-salt": {
+      "file": "road-salt.mp3",
+      "item": "chemistry:states:road-salt",
+      "duration": 20.05,
+      "lines": 4
+    },
+    "dissolve": {
+      "file": "dissolve.mp3",
+      "item": "chemistry:mixtures:dissolve",
+      "duration": 18.62,
+      "lines": 4
+    },
+    "particles": {
+      "file": "particles.mp3",
+      "item": "chemistry:states:particles",
+      "duration": 17.5,
+      "lines": 4
+    },
+    "water-cycle": {
+      "file": "water-cycle.mp3",
+      "item": "chemistry:water:cycle",
+      "duration": 17.19,
+      "lines": 4
+    },
+    "identify": {
+      "file": "identify.mp3",
+      "item": "chemistry:materials:identify",
+      "duration": 20.76,
+      "lines": 4
+    },
+    "scale-balance": {
+      "file": "scale-balance.mp3",
+      "item": "chemistry:reactions:weight",
+      "duration": 17.12,
+      "lines": 4
+    },
+    "bubble-reaction": {
+      "file": "bubble-reaction.mp3",
+      "item": "chemistry:reactions:new-look",
+      "duration": 17.25,
+      "lines": 4
+    },
+    "rust-change": {
+      "file": "rust-change.mp3",
+      "item": "chemistry:reactions:rust",
+      "duration": 20.56,
+      "lines": 4
+    },
+    "glow-rate": {
+      "file": "glow-rate.mp3",
+      "item": "chemistry:reactions:rate",
+      "duration": 20.42,
+      "lines": 4
+    },
+    "atom-tally": {
+      "file": "atom-tally.mp3",
+      "item": "chemistry:reactions:mass",
+      "duration": 22.95,
+      "lines": 4
+    },
+    "column-cousins": {
+      "file": "column-cousins.mp3",
+      "item": "chemistry:reactions:explain",
+      "duration": 20.84,
+      "lines": 4
+    },
+    "area-squares": {
+      "file": "area-squares.mp3",
+      "item": "social-studies:region:area-by-squares",
+      "duration": 17.14,
+      "lines": 4
+    },
+    "route-steps": {
+      "file": "route-steps.mp3",
+      "item": "social-studies:route:count-the-steps",
+      "duration": 16.04,
+      "lines": 4
+    },
+    "trip-clock": {
+      "file": "trip-clock.mp3",
+      "item": "social-studies:route:trip-clock",
+      "duration": 20.57,
+      "lines": 4
+    },
+    "compass-clue": {
+      "file": "compass-clue.mp3",
+      "item": "social-studies:place:compass-clue",
+      "duration": 15.99,
+      "lines": 4
+    },
+    "town-density": {
+      "file": "town-density.mp3",
+      "item": "social-studies:region:density",
+      "duration": 21.05,
+      "lines": 4
+    },
+    "trail-scale": {
+      "file": "trail-scale.mp3",
+      "item": "social-studies:route:scale-ratio",
+      "duration": 21.06,
+      "lines": 4
+    },
+    "travel-time": {
+      "file": "travel-time.mp3",
+      "item": "social-studies:route:travel-time",
+      "duration": 19.92,
+      "lines": 4
+    },
+    "two-roads": {
+      "file": "two-roads.mp3",
+      "item": "social-studies:route:fastest-or-shortest",
+      "duration": 21.31,
+      "lines": 4
+    },
+    "zone-clocks": {
+      "file": "zone-clocks.mp3",
+      "item": "social-studies:compare:time-zones",
+      "duration": 15.71,
+      "lines": 4
+    },
+    "flat-map": {
+      "file": "flat-map.mp3",
+      "item": "social-studies:region:flat-map-area",
+      "duration": 19.81,
+      "lines": 4
+    },
+    "great-circle": {
+      "file": "great-circle.mp3",
+      "item": "social-studies:route:great-circle",
+      "duration": 19.95,
+      "lines": 4
+    },
+    "trip-cost": {
+      "file": "trip-cost.mp3",
+      "item": "social-studies:compare:trip-cost",
+      "duration": 20.6,
+      "lines": 4
+    },
+    "everest-stack": {
+      "file": "everest-stack.mp3",
+      "item": "general-knowledge:mixed:everest-vs-falls",
+      "duration": 24.6,
+      "lines": 4
+    },
+    "paris-sydney": {
+      "file": "paris-sydney.mp3",
+      "item": "general-knowledge:mixed:paris-sydney-flight",
+      "duration": 31.36,
+      "lines": 6
+    },
+    "tower-angle": {
+      "file": "tower-angle.mp3",
+      "item": "general-knowledge:mixed:tower-angle",
+      "duration": 28.28,
+      "lines": 4
+    },
+    "everest-falls": {
+      "file": "everest-falls.mp3",
+      "item": "general-knowledge:mixed:great-circle",
+      "duration": 20.07,
+      "lines": 4
+    },
+    "falls-flow": {
+      "file": "falls-flow.mp3",
+      "item": "general-knowledge:mixed:falls-flow",
+      "duration": 20.73,
+      "lines": 4
+    }
+  }
+}

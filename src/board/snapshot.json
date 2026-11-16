@@ -285,7 +285,7 @@
       "id": "math/math-sign-off-and-release-pr",
       "lane": "Math",
       "title": "Math sign-off and release PR",
-      "status": "not-started",
+      "status": "done",
       "waitsOn": "A named educator signs the rubric, then release",
       "waitsOnIds": [],
       "owner": "Educator",
@@ -296,7 +296,7 @@
       "id": "math/holmes-and-watson-in-math",
       "lane": "Math",
       "title": "Holmes and Watson in math",
-      "status": "not-started",
+      "status": "done",
       "waitsOn": "PR 434 and PR 430 merged",
       "waitsOnIds": [
         "detective-core/clue-pacing-and-one-voice-at-a-time",

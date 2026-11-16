@@ -40,33 +40,31 @@
  * files, never bundled), so a re-cut ships by replacing those two
  * files — the paths below are the only pointers. Facts of the
  * shipped asset, measured on the delivered file:
- *   why-learn-montage.mp4 — 608×1280 (portrait), 10.0 s, 24 fps,
- *     H.264 + AAC audio, 5,153,559 bytes. The hero box is a wide
- *     strip, so the portrait frame is centre-cropped by the
- *     slot's object-fit: cover — a landscape re-cut is the fix if
- *     the owner wants the full scenes.
- *   why-learn-montage-poster.webp — the film's frame at 5 s (the
- *     gravity scene: apple, pendulum, rocket over the chalkboard),
- *     WebP quality 82, 30,670 bytes. It is the <video> poster
- *     AND the still shown under prefers-reduced-motion or when
- *     the film fails to load, so the slot never sits empty. It
- *     replaced the frame at 1 s with feat/why-learn-living-atlas:
- *     that frame sits inside the film's defective opening (see
- *     the play window below), so the poster showed the defect
- *     even where the film itself no longer does.
+ *   why-learn-montage.mp4 — 1280×720 (landscape, 16:9), 10.0 s,
+ *     24 fps, H.264 + AAC audio, 2,062,107 bytes. The hero slot
+ *     is dimension-matched to this frame (aspect-ratio 16 / 9 in
+ *     styles.css), so the whole frame shows: no crop, no zoom,
+ *     no letterbox, no squeeze.
+ *   why-learn-montage-poster.webp — a real frame of the film's
+ *     gravity scene (apple, pendulum, rocket over the
+ *     chalkboard), WebP quality 70, 77,326 bytes. It is the
+ *     <video> poster AND the still shown under
+ *     prefers-reduced-motion or when the film fails to load, so
+ *     the slot never sits empty.
  *
- * ── The play window (feat/why-learn-living-atlas) ──
+ * ── The landscape re-cut (feat/why-learn-landscape-layout) ──
  *
- * The shipped film's first ~2.5 s are not a scene: they are a
- * picture of the whole picker page itself, and its last ~1.5 s
- * are a collage card. The real scenes run between them. The hero
- * player therefore plays only the window below — it starts at
- * LOOP_START_S and loops back to it at LOOP_END_S — and the
- * poster's frame comes from inside the window for the same
- * reason. This is a player-side window, separable from the film:
- * a re-cut that drops the two defective beats ships by replacing
- * the public film and widening the window back to the full file
- * (start 0, end the film's duration) in this one place.
+ * The previous film was a 608×1280 portrait generation mismatch
+ * (the montage was designed landscape), and its first ~2.5 s
+ * were a picture of the whole picker page itself while its last
+ * ~1.5 s were a collage card; the Living Atlas player worked
+ * around both defects by playing only a 2.8–8.6 s window. This
+ * re-cut is the same montage — the same scenes, the same song
+ * (the shipped film's audio track, stream-copied verbatim) — rendered in the
+ * landscape shape it was designed in, scenes end to end. There
+ * are no page pictures in it, so there is no play window any
+ * more: the player plays the entire 0–10 s and loops whole,
+ * and replay restarts at 0.
  * The film's audio is the song track (an original, fast,
  * list-driven theme in the TV science-theme style, written for
  * this card). It starts muted — browsers block audible autoplay —
@@ -76,12 +74,6 @@
 export const WHY_LEARN_MONTAGE_PATH = "videos/why-learn-montage.mp4";
 
 export const WHY_LEARN_MONTAGE_POSTER_PATH = "videos/why-learn-montage-poster.webp";
-
-/** The montage's play window, in seconds (see the note above): the
- *  hero starts here and loops back here, skipping the film's
- *  defective opening and closing beats. */
-export const WHY_LEARN_MONTAGE_LOOP_START_S = 2.8;
-export const WHY_LEARN_MONTAGE_LOOP_END_S = 8.6;
 
 export const WHY_LEARN_MONTAGE_ALT =
   "Montage still: a chalkboard gravity scene — a red apple on a branch, a brass pendulum and a rocket lifting off, with Gravity's Pull and g = 9.8 m/s² written in chalk.";

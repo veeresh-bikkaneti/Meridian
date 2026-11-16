@@ -10,8 +10,11 @@ import { serveBuiltArtifact } from "./helpers";
  * - each ready card is one button whose accessible name starts with the
  *   subject name and shows an "N cases" pill; Journals is "Coming soon",
  *   disabled and out of the Tab order;
- * - Tab order is Home, then the montage controls, then the cards left
- *   to right, top to bottom, each with a visible focus outline;
+ * - Tab order is Home, then the montage controls, then the band
+ *   control (the "Change band" option — this spec seeds a band, so
+ *   the control is in its collapsed set state; amendment
+ *   2026-11-15), then the cards left to right, top to bottom, each
+ *   with a visible focus outline;
  * - the hero slot carries the montage film (feat/why-learn-montage):
  *   autoplay, muted, looping, poster-filled, in a fixed box, with
  *   pause / replay / sound controls; under reduced motion the hero
@@ -80,7 +83,7 @@ for (const vp of [
       });
       expect(heroState.muted, `${tag}: montage starts muted`).toBe(true);
       expect(heroState.loop, `${tag}: montage loops`).toBe(true);
-      expect(heroState.ratio, `${tag}: hero aspect ratio`).not.toBe("auto");
+      expect(heroState.ratio, `${tag}: hero aspect ratio`).toBe("16 / 9");
       // Its controls are real buttons with spoken labels.
       await expect(page.getByTestId("why-learn-hero-playpause")).toHaveAttribute("aria-label", /montage/);
       await expect(page.getByTestId("why-learn-hero-replay")).toHaveAttribute("aria-label", "Replay montage");
@@ -110,14 +113,17 @@ for (const vp of [
         }
       }
 
-      // Tab order: Home, then the montage controls, then each
-      // enabled card in DOM (reading) order.
+      // Tab order: Home, then the montage controls, then the band
+      // control, then each enabled card in DOM (reading) order.
       await page.getByTestId("home-button").focus();
       for (const controlId of ["why-learn-hero-playpause", "why-learn-hero-replay", "why-learn-hero-sound"]) {
         await page.keyboard.press("Tab");
         const focusedId = await page.evaluate(() => document.activeElement?.getAttribute("data-testid"));
         expect(focusedId, `${tag}: Tab order (montage controls)`).toBe(controlId);
       }
+      await page.keyboard.press("Tab");
+      const bandFocusedId = await page.evaluate(() => document.activeElement?.getAttribute("data-testid"));
+      expect(bandFocusedId, `${tag}: Tab order (band control)`).toBe("change-band-button");
       const enabled = await cards.evaluateAll((els) =>
         els.filter((e) => !(e as HTMLButtonElement).disabled).map((e) => e.getAttribute("data-testid")),
       );
