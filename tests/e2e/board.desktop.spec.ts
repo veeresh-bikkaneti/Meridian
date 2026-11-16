@@ -474,7 +474,7 @@ const PULLS_GLOB = "https://api.github.com/repos/veeresh-bikkaneti/Meridian/pull
 const ISSUES_GLOB = "https://api.github.com/repos/veeresh-bikkaneti/Meridian/issues*";
 
 test.describe("live feed", () => {
-  test("a completed check upgrades the board and states its coverage", async ({ page }) => {
+  test("a completed check upgrades the board; the header keeps the Updated stamp", async ({ page }) => {
     await page.setViewportSize({ width: 1280, height: 900 });
     // PR 430 — the one record two finished stories hang on — is open
     // again in this payload: both stories return to In progress, the
@@ -494,9 +494,10 @@ test.describe("live feed", () => {
     );
     await openBoard(page);
 
-    await expect(page.getByTestId("board-updated-line")).toContainText(
-      `Live from GitHub — every linked record checked (${WANTED.length} of ${WANTED.length})`,
-    );
+    const updated = await page.getByTestId("board-updated-line").innerText();
+    expect(updated).toMatch(/^Updated /);
+    expect(updated).not.toContain("Live from GitHub");
+    expect(updated).not.toContain("linked record");
     await expect(page.getByTestId("board-live-note")).toHaveCount(0);
     await expect(page.getByTestId("board-counts-line")).toContainText("18 of 37 stories finished");
     await expect(page.getByTestId("board-counts-line")).toContainText("6 being built");

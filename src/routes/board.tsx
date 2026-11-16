@@ -46,13 +46,14 @@ const MoleculeMap = lazy(() => import("@/board/molecule-map"));
  * contract. On load the page checks the repo's public PR/issue
  * state on GitHub (live-feed.ts), paginating until every record
  * linked from the publisher's links file is covered. Full coverage:
- * statuses are recomputed from the live answer and the header says
- * "Live from GitHub — every linked record checked (N of N)" beside
- * the snapshot's stamp. Anything less — a failed, rate-limited or
- * partial check — keeps the snapshot on screen and says so plainly.
- * The claim is never made without the coverage to back it: that
- * was v2's centrepiece defect (a one-page fetch under a "Live"
- * label), and it stays dead. Behind the boardLiveFeed kill switch.
+ * statuses are recomputed from the live answer; the header keeps
+ * only the snapshot's Updated stamp either way (owner ruling,
+ * 2026-11-16: no platform or coverage wording in the header).
+ * Anything less — a failed, rate-limited or partial check — keeps
+ * the snapshot on screen and says so plainly. Statuses are never
+ * recomputed without the coverage to back them: that was v2's
+ * centrepiece defect (a one-page fetch under a "Live" label), and
+ * it stays dead. Behind the boardLiveFeed kill switch.
  * If the published file itself cannot be fetched, the bundled copy
  * renders and the header discloses that ("showing the copy that
  * came with the site").
@@ -336,9 +337,6 @@ function BoardPage() {
           </p>
           <p className="v4-walk">Walk the trail — every stop is a feature your child will play.</p>
           <p className="v3-updated" data-testid="board-updated-line">
-            {liveLine?.kind === "live"
-              ? `Live from GitHub — every linked record checked (${liveLine.covered} of ${liveLine.wanted}) · `
-              : ""}
             Updated {formatUpdated(board.updatedAt)}
             {loaded?.source === "manual" ? " — showing the copy that came with the site" : ""}
           </p>
