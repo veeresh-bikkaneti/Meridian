@@ -12,8 +12,10 @@
  * or a pick — so the setup film can only set the scene.
  *
  * Each description also carries its SUMMARY: the narrated
- * walk-through of the solving (act 3), played only after a
- * correct pick. The script lines are word-for-word the captions;
+ * walk-through of the solving (act 3), played after a correct
+ * pick — and, for the one L1 lose-path item named at the foot of
+ * this file, after a wrong pick too. The script lines are
+ * word-for-word the captions;
  * the clip timings were measured when the clips were rendered
  * (public/audio/subjects/manifest.json carries the same numbers).
  * The summary sits in the solved-phase data path only — the
@@ -767,4 +769,17 @@ export const MATH_CLUE_SCENES: Record<string, ClueSceneDescription> = {
 
 export function clueSceneFor(itemId: string): ClueSceneDescription | null {
   return MATH_CLUE_SCENES[itemId] ?? null;
+}
+
+/** The one item on the L1 lose path (feat/fair-share-lose-path):
+ * a wrong pick on fair-share, ages 7-10, reveals its solved
+ * summary — the same act-3 performance a correct pick plays.
+ * Every other item and band returns false, so every other wrong
+ * pick behaves exactly as before. Widening this gate to more
+ * items is a separate, later step; it is deliberately a single
+ * named item, not a per-kind or per-band rule. */
+export const LOSE_SUMMARY_ITEM_ID = "math-number:division:fair-share";
+
+export function showsSummaryOnWrong(itemId: string, band: string): boolean {
+  return band === "7-10" && itemId === LOSE_SUMMARY_ITEM_ID;
 }

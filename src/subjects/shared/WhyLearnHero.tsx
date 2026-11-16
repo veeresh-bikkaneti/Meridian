@@ -12,15 +12,16 @@
  *
  * Gates, mirroring the house rules for moving pictures:
  * - prefers-reduced-motion (the shared hook, live on OS flips):
- *   no film at all — the montage poster (its frame at 5 s) shows
+ *   no film at all — the montage poster (a gravity-scene frame) shows
  *   as a still with alt text, and no controls render.
- * - The play window (feat/why-learn-living-atlas): the shipped
- *   film's first and last beats are a picture of the page itself
- *   and a collage card, not scenes, so the player starts at the
- *   window's start and loops back to it at its end (the constants
- *   and the full note live in why-learn-art.ts). Replay restarts
- *   at the window's start for the same reason. The window is a
- *   player setting, separable from the film file.
+ * - The whole film plays (feat/why-learn-landscape-layout): the
+ *   shipped film is the landscape re-cut — scenes end to end,
+ *   no page pictures — so there is no play window: the native
+ *   loop carries the entire 0–10 s and replay restarts at 0.
+ *   (The portrait cut this replaced needed a 2.8–8.6 s window
+ *   around its defective head and tail; that workaround is gone
+ *   with the file it worked around. The full note lives in
+ *   why-learn-art.ts.)
  * - A film that fails to load latches to the same poster still.
  * - Sound starts OFF (muted): browsers block audible autoplay,
  *   and a reading page should not burst into song. The toggle
@@ -39,8 +40,6 @@ import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 import { assetBase } from "@/components/storyteller-lines";
 import {
   WHY_LEARN_MONTAGE_ALT,
-  WHY_LEARN_MONTAGE_LOOP_END_S,
-  WHY_LEARN_MONTAGE_LOOP_START_S,
   WHY_LEARN_MONTAGE_PATH,
   WHY_LEARN_MONTAGE_POSTER_PATH,
 } from "@/assets/why-learn/why-learn-art";
@@ -49,6 +48,7 @@ export function WhyLearnHero() {
   const reducedMotion = usePrefersReducedMotion();
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [failed, setFailed] = useState(false);
+  const [posterFailed, setPosterFailed] = useState(false);
   const [playing, setPlaying] = useState(true);
   const [soundOn, setSoundOn] = useState(false);
 
@@ -62,18 +62,56 @@ export function WhyLearnHero() {
     if (film) film.muted = !soundOn;
   }, [soundOn]);
 
+  // A media failure is not latched for the whole session: when the
+  // network comes back or the page becomes visible again, clear the
+  // latches and let the film/poster retry. (QA/UI-UX council,
+  // 2026-11-16: the hero media were the one picker asset class with
+  // no service-worker protection, so one transient failure at mount
+  // used to empty the slot until a manual reload.)
+  useEffect(() => {
+    if (!failed && !posterFailed) return;
+    const retry = () => {
+      setFailed(false);
+      setPosterFailed(false);
+    };
+    const onVisible = () => {
+      if (document.visibilityState === "visible") retry();
+    };
+    window.addEventListener("online", retry);
+    document.addEventListener("visibilitychange", onVisible);
+    return () => {
+      window.removeEventListener("online", retry);
+      document.removeEventListener("visibilitychange", onVisible);
+    };
+  }, [failed, posterFailed]);
+
   if (reducedMotion || failed) {
     // The poster IS the design here — no video element exists in
     // this branch, so the .mp4 is never requested.
+    if (posterFailed) {
+      // Even the poster could not load: the slot still stands as a
+      // labelled panel carrying the poster's description, never an
+      // empty hole in the hero card. (QA/UI-UX council, 2026-11-16.)
+      return (
+        <div
+          className="why-learn-hero why-learn-hero-still"
+          role="img"
+          aria-label={WHY_LEARN_MONTAGE_ALT}
+        >
+          <span>{WHY_LEARN_MONTAGE_ALT}</span>
+        </div>
+      );
+    }
     return (
       <img
         className="why-learn-hero"
         src={posterUrl}
         alt={WHY_LEARN_MONTAGE_ALT}
-        width={608}
-        height={1280}
+        width={1280}
+        height={720}
         loading="eager"
         decoding="async"
+        onError={() => setPosterFailed(true)}
       />
     );
   }
@@ -88,28 +126,13 @@ export function WhyLearnHero() {
     }
   };
 
-  // The play window: land inside it as soon as the film can seek,
-  // and fold the playhead back to its start when it reaches the
-  // end, so the loop never shows the defective beats. The native
-  // `loop` stays on as the backstop for the file's own end.
-  const enterWindow = () => {
-    const film = videoRef.current;
-    if (film && film.currentTime < WHY_LEARN_MONTAGE_LOOP_START_S) {
-      film.currentTime = WHY_LEARN_MONTAGE_LOOP_START_S;
-    }
-  };
-
-  const keepInWindow = () => {
-    const film = videoRef.current;
-    if (film && film.currentTime >= WHY_LEARN_MONTAGE_LOOP_END_S) {
-      film.currentTime = WHY_LEARN_MONTAGE_LOOP_START_S;
-    }
-  };
-
+  // No play window: the landscape film is scenes end to end, so
+  // replay restarts at the true start and the native `loop`
+  // carries the whole 0–10 s.
   const replay = () => {
     const film = videoRef.current;
     if (!film) return;
-    film.currentTime = WHY_LEARN_MONTAGE_LOOP_START_S;
+    film.currentTime = 0;
     film.play().catch(() => {});
   };
 
@@ -130,8 +153,6 @@ export function WhyLearnHero() {
         tabIndex={-1}
         onPlay={() => setPlaying(true)}
         onPause={() => setPlaying(false)}
-        onLoadedMetadata={enterWindow}
-        onTimeUpdate={keepInWindow}
         onError={() => setFailed(true)}
       />
       <div className="why-learn-hero-controls">

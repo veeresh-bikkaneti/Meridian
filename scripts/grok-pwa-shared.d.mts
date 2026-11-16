@@ -45,6 +45,9 @@ export type GrokHeadContext = {
 export declare function readOgSite(cwd?: string): OgSite;
 export declare function ogCardPublicPath(cwd?: string): string;
 export declare function snapshotOgIdentity(cwd?: string): { site: OgSite };
+export declare function snapshotBuildId(cwd?: string): string;
+export declare function renderNoswHatchScript(): string;
+export declare function renderCrashWatchdogScript(buildId: string): string;
 export declare function customOgAssetPath(cwd?: string): string;
 export declare function resolveOgCardAsset(site?: OgSite, cwd?: string): string;
 export declare function ogServiceUrl(): string;
@@ -75,6 +78,14 @@ export declare function normalizeHeadContext(ctx?: GrokHeadContext): {
 };
 export declare function injectGrokPwaHead(html: string, ctx?: GrokHeadContext): string;
 export declare function createHeadInjector(ctx?: GrokHeadContext): {
+  push(chunk: Uint8Array | string): Uint8Array[];
+  flush(): Uint8Array[];
+};
+export declare function createCloseTagInjector(opts: {
+  closeTag: string;
+  marker: string;
+  render: () => string;
+}): {
   push(chunk: Uint8Array | string): Uint8Array[];
   flush(): Uint8Array[];
 };

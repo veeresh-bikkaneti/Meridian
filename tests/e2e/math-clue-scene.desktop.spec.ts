@@ -105,13 +105,20 @@ async function filmCase(
   await page.waitForTimeout(3_800);
   await scene.screenshot({ path: `${SHOTS}/${slug}-setup-${PROJECT}.png` });
   // A wrong pick changes nothing: still setup, still no summary.
-  await page
-    .getByTestId("math-answer-card")
-    .getByRole("button", { name: wrong, exact: true })
-    .click();
-  await expect(scene).toHaveAttribute("data-phase", "setup");
-  await expect(page.getByTestId("clue-summary-text")).toHaveCount(0);
-  await expect(page.getByTestId("clue-summary-play")).toHaveCount(0);
+  // The one exception is fair-share, the L1 lose-path item
+  // (feat/fair-share-lose-path): its wrong pick now reveals the
+  // summary instead — that path is walked end to end by
+  // math-fair-share-lose-path.spec.ts, so this walk goes straight
+  // to the correct pick for fair-share and keeps the win path.
+  if (item !== "math-number:division:fair-share") {
+    await page
+      .getByTestId("math-answer-card")
+      .getByRole("button", { name: wrong, exact: true })
+      .click();
+    await expect(scene).toHaveAttribute("data-phase", "setup");
+    await expect(page.getByTestId("clue-summary-text")).toHaveCount(0);
+    await expect(page.getByTestId("clue-summary-play")).toHaveCount(0);
+  }
   await page
     .getByTestId("math-answer-card")
     .getByRole("button", { name: correct, exact: true })
