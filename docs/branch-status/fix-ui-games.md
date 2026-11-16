@@ -6,14 +6,58 @@ game-app.tsx changes go to Stream N through the integrator.
 
 ## Items (prompt §4, Stream G)
 
-- 30. Guess count reads the band cap (5 or 6), not a hardcoded "Five guesses" — pending (Phase 2).
+- 30. Guess count reads the band cap (5 or 6), not a hardcoded "Five guesses" — **LoopScreen half DONE (Phase 2)**; the game-app.tsx half is Stream N's (noted for the integrator; game-app.tsx not edited here).
 - 31. **P0: Clue 1 gives away the answer — audit DONE in this PR (Phase 0.5). Data cure educator-gated, see below.**
-- 32. Deck pill counts from one source; a subset never exceeds its total; one format — pending.
-- 33. Scout Map mode shows the simple fallback map, not an empty space — pending.
-- 34. "A mystery is afoot" popup must not cover Clue 1; background hard line ~700 px — pending.
-- 35. Cold Trail sightings use the viewer's clock, not 24-hour — pending.
-- 36. Holmes covers Brazil; "RU" label clipped; darker tile seam over the Atlantic — pending.
-- 37. High contrast gets a label and a visible effect — pending.
+- 32. Deck pill counts from one source; a subset never exceeds its total; one format — **DONE (Phase 2)**, see below.
+- 33. Scout Map mode shows the simple fallback map, not an empty space — **VERIFIED (Phase 2)**, see below.
+- 34. "A mystery is afoot" popup must not cover Clue 1; background hard line ~700 px — **INVESTIGATED, handed to Stream N with evidence (Phase 2)**, see below.
+- 35. Cold Trail sightings use the viewer's clock, not 24-hour — **DEFERRED** (P2 re-price, owner 2026-11-16).
+- 36. Holmes covers Brazil; "RU" label clipped; darker tile seam over the Atlantic — **DEFERRED** (P2 re-price).
+- 37. High contrast gets a label and a visible effect — **DEFERRED** (P2 re-price).
+
+## Phase 2 (Stream S cherry-picked: a0458929, cc745790)
+
+- **Item 30 (LoopScreen half):** the intro now reads the number from the
+  same cap the counter uses — `activeDealConfig.guessCap` (band deal in
+  `src/game/age-profile/difficulty.ts`): "Six guesses…" on the 7-10 deal
+  (cap 6), "Five guesses…" otherwise. No more hardcoded "Five".
+- **Item 32:** counts measured first-hand: Cold Trail's bundled decks are
+  60 core + 85 capitals (disjoint files), so the shelf showed "All cases"
+  = 60 beside a deck chip of 85. New `resolveDeckCounts` in
+  `src/components/pack-shelf-data.ts` is the one source both screens'
+  chips resolve through: GeoDetective's pack (a subset of the core deck)
+  is clamped to the core total; Cold Trail's "All cases" is the sum of
+  its disjoint decks (145), with its closed count summed across both
+  decks. A subset can never exceed its total — by construction, pinned
+  by a unit test using the real 60/85 counts. Chip counts keep the one
+  "{n} cases" format (`deckProgressLine`, the same format string the
+  shared Pill uses; the chips are tappable, and the Pill contract
+  prescribes Button + same format for tappable counts).
+- **Item 33 (verify):** in Scout mode the main map renders
+  `ScoutFallbackMap` (`src/map/satellite-map.tsx`, `buildScoutStyle` +
+  `scout-fallback.tsx`) — a simple fallback map, not an empty space.
+  GeoDetective's map already sits inside its map-error boundary, which
+  swaps in the map-off line instead of a blank. PR 520 (in flight)
+  extends the same containment to Cold Trail and the static fallback to
+  full mode. Conclusion: no gap remains in Stream G's files; nothing to
+  fix here.
+- **Item 34 (investigated, handed to Stream N):** the "A mystery is
+  afoot…" line is `src/components/storyteller-home-copy.ts:56`, rendered
+  by the storyteller home surface — it never renders inside LoopScreen
+  or TrailScreen, so the cover happens in the home→game layer that
+  Stream N owns (game-app.tsx). GeoDetective's own background
+  (`.mode-screen::before`, `src/styles.css`) is `position: fixed;
+  inset: 0` — continuous by construction; the ~700 px hard line is not
+  reproducible from LoopScreen's files and points at the shell behind
+  the screen (also N's surface). Both halves go to N via the integrator
+  with this evidence; no guessed CSS change made here.
+- **Overlap note (PR 517):** LoopScreen.tsx and TrailScreen.tsx also
+  carry PR 517's header hunks. This branch's LoopScreen hunk is the
+  intro line only — outside the header block. TrailScreen untouched in
+  Phase 2.
+- **Screenshots:** NOT RUN — this sandbox did not produce a build +
+  headless-Chrome run within the stream's budget; the Phase 3 QA seat
+  checks the changed screens at 2560/1280/390.
 
 ## Item 31 — what this PR does
 
@@ -67,13 +111,20 @@ data and is listed for the educator — all 8 are listed in the PR body.
 
 - Done: item 31 audit + gate + baseline; negative control passed
   (planted violation in case 0 → audit exit 1; restored → exit 0).
+  Phase 2: item 30 (LoopScreen half), item 32 (one count source +
+  test), item 33 verified (no gap in G's files).
 - Next: educator seat rules on the 8 baselined cases + the borderline
   classes; approved cures land as reorder + re-render PRs that remove
-  baseline entries. Stream G items 30, 32–37 in Phase 2.
+  baseline entries. Stream N: item 30's game-app.tsx half; item 34
+  (both halves — storyteller popup layer + shell background — evidence
+  in the Phase 2 section above).
+- Deferred (P2 re-price, owner 2026-11-16): items 35, 36, 37.
 - Open questions: none for the integrator.
 - Ruled out: text-only clue reorder (breaks check:detective-audio and
   the spoken/printed clue match); rewriting clue text (fabrication
-  risk, educator's call); weakening the audio gate.
+  risk, educator's call); weakening the audio gate; a guessed CSS fix
+  for item 34's background (its own background is fixed/inset-0 —
+  continuous by construction).
 
 ## Graph
 
