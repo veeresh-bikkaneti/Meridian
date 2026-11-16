@@ -139,16 +139,22 @@ test("story card: waiting story names what it waits for and jumps to that stop",
   // before PR #430 landed.
   const published = JSON.parse(readFileSync("public/board-status.json", "utf8")) as {
     epics: {
-      features: { stories: { slug: string; status: string; line: string }[] }[];
+      features: {
+        stories: { slug: string; status: string; line: string; comingAfter?: string }[];
+      }[];
     }[];
   };
   for (const epic of published.epics)
     for (const feature of epic.features)
-      for (const story of feature.stories)
+      for (const story of feature.stories) {
         if (story.slug === "clue-pacing-and-one-voice-at-a-time") {
           story.status = "in-progress";
           story.line = "Checking in progress";
         }
+        // The publisher derives comingAfter from the same wait, so a
+        // file where the wait binds carries it on the waiting story.
+        if (story.slug === WAITING_SLUG) story.comingAfter = WAITING_FOR_TITLE;
+      }
   await context.route("**/Meridian/board-status.json", async (route) =>
     route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(published) }),
   );
