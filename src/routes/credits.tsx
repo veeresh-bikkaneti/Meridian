@@ -26,7 +26,7 @@ function CreditsPage() {
       <p className="text-sm text-muted">For parents, carers, and teachers</p>
 
       <p>
-        Meridian is a free geography game built on open data and open-source software. This page
+        Meridian is a free geography, math and science game built on open data and open-source software. This page
         credits the sources it uses and the licences they are shared under.
       </p>
 

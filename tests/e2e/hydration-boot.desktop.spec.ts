@@ -60,10 +60,10 @@ test("boot hydrates clean: splash paints from the served HTML, no React #418", a
   await page.goto(APP_NO_IDLE);
 
   // (a) The headline paints from the served HTML — the splash is in
-  // the prerender, not rendered later by JS. ("Daily geography" is
-  // the discriminating string: it exists only in the splash markup,
-  // while "Meridian" also appears in the old shell's title/OG tags.)
-  expect(servedHtml).toContain("Daily geography");
+  // the prerender, not rendered later by JS. ("Geography, math and
+  // science" is the discriminating string: it exists only in the splash
+  // markup, while "Meridian" also appears in the old shell's title/OG tags.)
+  expect(servedHtml).toContain("Geography, math and science");
 
   // The app boots all the way to its ready signal (the same flag the
   // crash watchdog watches).
