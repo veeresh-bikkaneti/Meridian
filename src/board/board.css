@@ -1775,16 +1775,18 @@
 }
 .board-v3 .v3-btn:hover { background: var(--hv5-forest-deep); }
 .board-v3 .v3-btn:disabled { opacity: 0.45; cursor: default; }
-/* The control bar holds two clusters — views, then settings
-   (theme + Calm) — and wraps only BETWEEN clusters, never inside
-   one (cleanup, organization pass: the shipped bar wrapped
-   mid-group and left Calm floating on its own line). */
+/* The control block holds two clusters on two rows — views,
+   then settings (theme + Calm) — stacked in one column so every
+   row starts at the same left edge with the same gap rhythm.
+   A cluster wraps only onto a fresh row that also starts at that
+   edge; nothing is right-aligned, indented, or pushed apart
+   (owner ruling, fix 1: the previous space-between bar scattered
+   the buttons across four ragged rows). */
 .board-v3 .v3-viewnav {
-  display: flex; flex-wrap: wrap; gap: 10px 24px; align-items: center;
-  justify-content: space-between; margin: 18px 0 8px;
+  display: flex; flex-direction: column; align-items: stretch;
+  gap: 8px; margin: 18px 0 8px;
 }
 .board-v3 .v3-nav-cluster { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
-.board-v3 .v3-nav-settings { flex-wrap: nowrap; }
 .board-v3 .v3-viewnav button {
   border: 1.5px solid var(--hv5-line-warm); background: var(--hv5-card); color: var(--hv5-ink);
   border-radius: 999px; padding: 9px 16px; font: inherit; font-weight: 600; cursor: pointer; min-height: 44px;
@@ -1792,10 +1794,7 @@
 .board-v3 .v3-viewnav button[aria-pressed="true"] {
   background: var(--hv5-forest); border-color: var(--hv5-forest); color: var(--hv5-parchment);
 }
-@media (max-width: 620px) {
-  .board-v3 .v3-nav-settings { flex-wrap: wrap; justify-content: flex-end; }
-  .board-v3 .v3-theme-label { display: none; }
-}
+
 .board-v3 .v3-toast {
   background: var(--hv5-card); border: 1.5px solid var(--hv5-brown); border-radius: 14px;
   padding: 12px 16px; box-shadow: var(--hv5-shadow-card);
