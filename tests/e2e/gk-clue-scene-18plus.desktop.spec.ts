@@ -149,7 +149,7 @@ const CASES: [string, string, string, string, string, string][] = [
     "general-knowledge:mixed:great-circle",
     "8,000 to 8,500 km",
     "everest-falls",
-    "A globe carries two pins, a peak and a falls.",
+    "A globe and a flat map each carry two pins, a peak and a falls.",
     "800 to 850 km",
     "8,000 to 8,500 km",
   ],

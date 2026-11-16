@@ -44,6 +44,7 @@
  */
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import {
+  captionText,
   countingTicks,
   dealOrder,
   summaryStepStart,
@@ -539,7 +540,7 @@ export function ClueSummaryText({ summary }: { summary: ClueSceneSummary }) {
       <p className="clue-summary-heading">The solving, step by step</p>
       <ol>
         {summary.lines.map((line, i) => (
-          <li key={i}>{line.text}</li>
+          <li key={i}>{captionText(line.text)}</li>
         ))}
       </ol>
     </div>
@@ -914,7 +915,7 @@ export function ClueScene({
       </svg>
       {summary ? (
         <p className="clue-scene-caption" data-testid="clue-scene-caption" aria-hidden="true">
-          {captionStep >= 0 ? (summary.lines[captionStep]?.text ?? "") : ""}
+          {captionStep >= 0 ? captionText(summary.lines[captionStep]?.text ?? "") : ""}
         </p>
       ) : null}
       <div className="clue-scene-controls">

@@ -237,7 +237,7 @@ const CASES: [string, string, string, string, string, string][] = [
     "math-applied:rates:two-step",
     "5",
     "two-step",
-    "Coins wait in a pile beside empty cups.",
+    "Coins wait in a pile beside one empty cup.",
     "4",
     "budget buys 5 cups",
   ],

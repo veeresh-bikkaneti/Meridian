@@ -151,7 +151,7 @@ const CASES: [string, string, string, string, string, string][] = [
     "everest-stack",
     "A tall peak waits beside a waterfall's drop.",
     "About 8",
-    "About 80 drops",
+    "about 80 drops",
   ],
   [
     "general-knowledge:mixed:paris-sydney-flight",
@@ -159,7 +159,7 @@ const CASES: [string, string, string, string, string, string][] = [
     "paris-sydney",
     "A plane waits at the start of a very long journey.",
     "About 2 hours",
-    "About 20 hours",
+    "about 20 hours",
   ],
   [
     "general-knowledge:mixed:tower-angle",
@@ -167,7 +167,7 @@ const CASES: [string, string, string, string, string, string][] = [
     "tower-angle",
     "An observer waits on the ground, looking up at a tower.",
     "About 470 feet",
-    "About 1,072 feet",
+    "about 1,072 feet",
   ],
 ];
 

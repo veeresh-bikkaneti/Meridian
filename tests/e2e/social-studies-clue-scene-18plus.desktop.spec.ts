@@ -166,9 +166,9 @@ async function plainCase(
 // own specs), the setup label (answer-blind), one wrong pick, and a
 // line from the summary's closing that must stand in the result section.
 const CASES: [string, string, string | null, string, string, string][] = [
-  ["social-studies:region:flat-map-area", "Africa is far bigger \u2014 the flat map stretches places near the poles", "flat-map", "A globe rests beside a flat map of the same lands.", "Greenland is really bigger than Africa", "Africa is far bigger"],
+  ["social-studies:region:flat-map-area", "Africa is far bigger \u2014 the flat map stretches places near the poles", "flat-map", "A flat map shows two lands side by side.", "Greenland is really bigger than Africa", "Africa is far bigger"],
   ["social-studies:route:great-circle", "That curved-looking path is the shortest route on the round Earth", "great-circle", "A globe and a flat map each carry two pins.", "A straight line on the flat map is always shorter", "shortest route on the round Earth"],
-  ["social-studies:compare:trip-cost", "The free road, by $3", "trip-cost", "Two roads cross the page, with coin stacks beside each.", "The toll road, by $3", "The free road, by $3"],
+  ["social-studies:compare:trip-cost", "The free road, by $3", "trip-cost", "Two roads cross the page, with coin stacks beside each.", "The toll road, by $3", "the free road, by $3"],
 ];
 
 test("clue scenes: every ages 18+ case sets up blind, solves, and narrates", async ({

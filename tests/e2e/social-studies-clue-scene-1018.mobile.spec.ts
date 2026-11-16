@@ -169,7 +169,7 @@ const CASES: [string, string, string | null, string, string, string][] = [
   ["social-studies:region:density", "Town A", "town-density", "Two towns hold the same crowd of dots on different land.", "Town B", "Town A"],
   ["social-studies:route:scale-ratio", "3.5 km", "trail-scale", "A trail is drawn on a map, beside a scale note.", "35 km", "3.5 km"],
   ["social-studies:route:travel-time", "6 hours", "travel-time", "A rider waits at the start of a long road.", "3 hours", "6 hours"],
-  ["social-studies:route:fastest-or-shortest", "The valley road", "two-roads", "Two roads lead toward a house, with a rider at the start of each.", "The mountain pass", "The valley road"],
+  ["social-studies:route:fastest-or-shortest", "The valley road", "two-roads", "Two roads lead toward a house, with a rider at the start of each.", "The mountain pass", "the valley road"],
   ["social-studies:compare:time-zones", "2 am the next day", "zone-clocks", "Two clocks rest side by side, one showing the evening hour.", "2 pm the same day", "2 am the next day"],
 ];
 

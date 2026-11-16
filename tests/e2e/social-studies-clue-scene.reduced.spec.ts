@@ -181,7 +181,7 @@ test("reduced motion: ages 10-18 kinds stand still", async ({ page, context }) =
   await pinStill(page, "social-studies:route:travel-time", "travel-time", "6 hours");
   await page.getByRole("button", { name: /Next case/ }).click();
   await expect(page.getByTestId("social-studies-answer-card")).toBeVisible();
-  await pinStill(page, "social-studies:route:fastest-or-shortest", "two-roads", "The valley road");
+  await pinStill(page, "social-studies:route:fastest-or-shortest", "two-roads", "the valley road");
   await page.getByRole("button", { name: /Next case/ }).click();
   await expect(page.getByTestId("social-studies-answer-card")).toBeVisible();
   await pinStill(page, "social-studies:compare:time-zones", "zone-clocks", "2 am the next day");
@@ -198,6 +198,6 @@ test("reduced motion: ages 18+ kinds stand still, summaries wait for a tap", asy
   await pinStill(page, "social-studies:route:great-circle", "great-circle", "shortest route on the round Earth");
   await page.getByRole("button", { name: /Next case/ }).click();
   await expect(page.getByTestId("social-studies-answer-card")).toBeVisible();
-  await pinStill(page, "social-studies:compare:trip-cost", "trip-cost", "The free road, by $3");
+  await pinStill(page, "social-studies:compare:trip-cost", "trip-cost", "the free road, by $3");
   expect(errors).toEqual([]);
 });

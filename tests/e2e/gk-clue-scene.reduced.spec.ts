@@ -132,7 +132,7 @@ test("reduced motion: every 10-18 case stands still, summaries wait for a tap", 
     "general-knowledge:mixed:everest-vs-falls",
     "About 80",
     "everest-stack",
-    "About 80 drops",
+    "about 80 drops",
     true,
   );
   await page.getByRole("button", { name: /Next case/ }).click();
@@ -142,7 +142,7 @@ test("reduced motion: every 10-18 case stands still, summaries wait for a tap", 
     "general-knowledge:mixed:paris-sydney-flight",
     "About 20 hours",
     "paris-sydney",
-    "About 20 hours",
+    "about 20 hours",
     false,
   );
   await page.getByRole("button", { name: /Next case/ }).click();
@@ -152,7 +152,7 @@ test("reduced motion: every 10-18 case stands still, summaries wait for a tap", 
     "general-knowledge:mixed:tower-angle",
     "About 1,072 feet",
     "tower-angle",
-    "About 1,072 feet",
+    "about 1,072 feet",
     false,
   );
   expect(errors).toEqual([]);

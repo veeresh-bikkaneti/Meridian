@@ -543,7 +543,9 @@ export function JourneyLineScene({
     const perHour = totalKm / hours;
     const hops = Math.round(targetKm / perHour);
     const hopX = (h: number) => x0 + (h / hops) * (x1 - x0);
-    const knownX = x0 + (totalKm / targetKm) * (x1 - x0);
+    // Setup plants the known stretch's flag at a neutral, unscaled
+    // spot; it moves to scale only once the case is solved.
+    const knownX = x0 + (phase === "solved" ? totalKm / targetKm : 0.45) * (x1 - x0);
     const hopStart = (s: number) => (stepDelay ? stepDelay(s) : 0.4 + s * 0.5);
     return (
       <>
@@ -641,8 +643,9 @@ export function SpendThenGroupScene({
         <path className="cs-line" d="M238 44 Q238 32 240 26 Q262 23 284 26 Q286 32 286 44" />
         <path className="cs-line" d="M240 44 Q262 47 284 44" />
       </g>
-      {/* Empty cups along the bottom. */}
-      {Array.from({ length: groups }, (_, g) => {
+      {/* One empty cup in setup (the group size); the rest of the
+          cups, one per group, come with the solve. */}
+      {Array.from({ length: phase === "setup" ? 1 : groups }, (_, g) => {
         const p = groupPos(g);
         return (
           <path
@@ -1851,11 +1854,16 @@ export function GlobeVsMapScene({
     <>
       <path className="cs-line cs-soft cs-draw" pathLength={1} d="M24 28 Q160 24 296 28" style={delay(0.1)} />
       <path className="cs-line cs-draw" pathLength={1} d="M16 172 Q160 176 304 172" style={delay(0)} />
-      {/* The globe, left: a circle with its lands at true shape. */}
-      <circle className="cs-line cs-draw" pathLength={1} cx="82" cy="100" r="58" style={delay(0.15)} />
-      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M28 82 Q82 92 136 82 M28 120 Q82 130 136 120" style={delay(0.25)} />
-      <g className="cs-pop" style={delay(0.45)}>{polarLand(82, 62, 17, 9)}</g>
-      <g className="cs-pop" style={delay(0.55)}>{greatLand(86, 112, 30, 24)}</g>
+      {/* The globe, left: a circle with its lands at true shape.
+          Its true sizes are the answer, so it comes with the solve. */}
+      {phase === "solved" ? (
+        <>
+          <circle className="cs-line cs-draw" pathLength={1} cx="82" cy="100" r="58" style={delay(0.15)} />
+          <path className="cs-line cs-soft cs-draw" pathLength={1} d="M28 82 Q82 92 136 82 M28 120 Q82 130 136 120" style={delay(0.25)} />
+          <g className="cs-pop" style={delay(0.45)}>{polarLand(82, 62, 17, 9)}</g>
+          <g className="cs-pop" style={delay(0.55)}>{greatLand(86, 112, 30, 24)}</g>
+        </>
+      ) : null}
       {/* The flat map, right: a sheet whose polar land already
           stretches wide — the look the prompt itself states. */}
       <path className="cs-line cs-draw" pathLength={1} d="M176 48 Q238 44 300 48 Q303 100 300 152 Q238 156 176 152 Q173 100 176 48 Z" style={delay(0.2)} />
@@ -1891,7 +1899,11 @@ export function GreatCircleScene({
   phase: ClueScenePhase;
   stepDelay?: (step: number) => number;
 }) {
-  void description;
+  // A south-west route never nears a pole: pins run corner to
+  // corner and the arc crosses the globe's face.
+  const sw = description.route === "south-west";
+  const globePins = sw ? [184, 52, 138, 92] : [132, 74, 188, 74];
+  const mapPins = sw ? [222, 132, 104, 162] : [102, 148, 218, 148];
   const arcStart = stepDelay ? stepDelay(0) : 0.5;
   const flatStart = stepDelay ? stepDelay(1) : 1.4;
   const tickStart = stepDelay ? stepDelay(2) : 2.3;
@@ -1907,19 +1919,19 @@ export function GreatCircleScene({
       {/* The globe, above: two pins, no path before the pick. */}
       <circle className="cs-line cs-draw" pathLength={1} cx="160" cy="66" r="42" style={delay(0.15)} />
       <path className="cs-line cs-soft cs-draw" pathLength={1} d="M122 54 Q160 62 198 54 M122 80 Q160 88 198 80" style={delay(0.25)} />
-      {pin(132, 74, 0.45)}
-      {pin(188, 74, 0.55)}
+      {pin(globePins[0], globePins[1], 0.45)}
+      {pin(globePins[2], globePins[3], 0.55)}
       {/* The flat map, below: the same two pins on a sheet. */}
       <path className="cs-line cs-draw" pathLength={1} d="M70 124 Q160 120 250 124 Q253 148 250 168 Q160 172 70 168 Q67 148 70 124 Z" style={delay(0.2)} />
-      {pin(102, 148, 0.5)}
-      {pin(218, 148, 0.6)}
+      {pin(mapPins[0], mapPins[1], 0.5)}
+      {pin(mapPins[2], mapPins[3], 0.6)}
       {phase === "solved" ? (
         <>
           {/* Step 0: the shortest path arcs over the globe's pole. */}
-          <path className="cs-line cs-band cs-draw" pathLength={1} d="M132 74 Q160 18 188 74" style={delay(arcStart)} />
+          <path className="cs-line cs-band cs-draw" pathLength={1} d={sw ? "M184 52 Q150 62 138 92" : "M132 74 Q160 18 188 74"} style={delay(arcStart)} />
           {/* Step 1: the same path, drawn flat, bends the same way. */}
-          <path className="cs-line cs-band cs-draw" pathLength={1} d="M102 148 Q160 122 218 148" style={delay(flatStart)} />
-          <ellipse className="cs-ring" cx="160" cy="52" rx="34" ry="30" style={delay(tickStart + 0.4)} />
+          <path className="cs-line cs-band cs-draw" pathLength={1} d={sw ? "M222 132 Q172 136 104 162" : "M102 148 Q160 122 218 148"} style={delay(flatStart)} />
+          <ellipse className="cs-ring" cx={sw ? 161 : 160} cy={sw ? 72 : 52} rx="34" ry="30" style={delay(tickStart + 0.4)} />
           <text className="cs-tick cs-tick-final" x="160" y="14" style={delay(tickStart + 0.55)}>
             ✓
           </text>
