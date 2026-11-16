@@ -274,6 +274,75 @@ export function resetProfile(): AgeProfile {
 }
 
 /**
+ * The "Start over" reset's profile clear (amendment 2026-11-15:
+ * a proper reset for shared devices — the picker reset is a full
+ * clean-out, so the band goes too and the next player is asked
+ * again, exactly like a first run). This is the one place the
+ * reset composition may clear the profile: it follows
+ * clearSession's / clearDiscardedShadowFrom's injected-storage
+ * discipline — with a storage argument it touches ONLY that
+ * storage (never the globals), and with none it resolves the
+ * global localStorage itself. Removal follows resetProfile()'s
+ * precedent: where removal fails, overwrite with the unset
+ * profile so a stale valid blob cannot resurrect the band.
+ * Returns true only when a re-read proves the stored profile is
+ * gone or reads back unset. The in-memory fallback and any
+ * deferred save are dropped either way, and a successful clear
+ * emits the same "reset" change event resetProfile() emits, so
+ * subscribers (the picker's band state, the band control) fall
+ * back to the first-run pills in place.
+ */
+export function clearAgeProfileForReset(
+  storage?: Pick<Storage, "getItem" | "setItem" | "removeItem">,
+): boolean {
+  let s = storage;
+  if (!s) {
+    try {
+      s = typeof localStorage === "undefined" ? undefined : localStorage;
+    } catch {
+      s = undefined;
+    }
+  }
+  if (!s) return true; // No storage = nothing was ever persisted.
+  let previousBand: AgeBandId | null = null;
+  try {
+    const raw = s.getItem(PROFILE_STORAGE_KEY);
+    if (raw) previousBand = validateProfile(JSON.parse(raw))?.band ?? null;
+  } catch {
+    previousBand = null;
+  }
+  try {
+    s.removeItem(PROFILE_STORAGE_KEY);
+  } catch {
+    try {
+      s.setItem(PROFILE_STORAGE_KEY, JSON.stringify(unsetProfile()));
+    } catch {
+      // Both paths blocked; the verification below reports it.
+    }
+  }
+  let cleared = false;
+  try {
+    const raw = s.getItem(PROFILE_STORAGE_KEY);
+    cleared =
+      raw === null || raw === "" || validateProfile(JSON.parse(raw ?? "null"))?.status === "unset";
+  } catch {
+    cleared = false;
+  }
+  if (cleared) {
+    memoryFallback = null;
+    deferred = null;
+    emitAgeProfileChanged({
+      type: "ageprofile:changed",
+      kind: "reset",
+      band: null,
+      previousBand,
+      midSession: false,
+    });
+  }
+  return cleared;
+}
+
+/**
  * The effective band for rendering/config. `unset` resolves to the
  * full-access default "10-18" (the profile only ever *simplifies* on
  * explicit parent intent). Never 18+.

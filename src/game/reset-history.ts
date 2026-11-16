@@ -4,11 +4,25 @@
  * 2026-10-28, §2/§6). This module owns no store of its own: it calls
  * clearReviewDeck / clearLearningStore / clearTrailHistory /
  * clearLoopStore / clearColdtrailStore / clearSession /
- * clearDiscardedShadowFrom and reports an
+ * clearDiscardedShadowFrom / clearAgeProfileForReset and reports an
  * honest partition — a store that could not be cleared lands in
  * `failed`, the rest still clear, and success is claimed only when
  * `failed` is empty (D4). The UI pairs this with the in-memory half:
  * replaceSession(null) plus the epoch/event refresh (D6/D14/D15).
+ *
+ * Amendment (2026-11-15, full reset for shared devices): the
+ * age-band profile joins the wipe (the "age-profile" step, via
+ * its owner module's clearAgeProfileForReset). Before this, the
+ * reset deliberately kept the profile — the confirm copy's
+ * "Your grown-up choices stay" — so on a shared device the next
+ * player inherited the last player's band and was never asked.
+ * Now a reset returns the app to first-run state: no band set
+ * (the picker's pills show again), no saved or resumable game,
+ * no history. Badges and the device preferences (sound, palette,
+ * difficulty, map mode) still stay — they are not the player's
+ * progress, saved game, band or history. The confirm copy is
+ * locked text (manifest 2026-10-28 §4) and is NOT reworded here;
+ * the label/copy question is flagged for the owner in the PR.
  *
  * The one exception to "no raw key removal here" is the paused-run keys
  * (`meridian.run` / `meridian.run.mc2` / `meridian.run.mc3` / `meridian.drop`, the "paused-run" step below): those
@@ -27,6 +41,11 @@ import { clearLoopStore } from "./loop/store.ts";
 import { clearColdtrailStore } from "./coldtrail/store.ts";
 import { clearSession, clearDiscardedShadowFrom, SESSION_KEY } from "./session.ts";
 import { clearChallengeAttempts } from "./challenge-attempts.ts";
+import {
+  clearAgeProfileForReset,
+  validateProfile,
+  PROFILE_STORAGE_KEY,
+} from "./age-profile/store.ts";
 
 export type ResetStorage = {
   getItem(key: string): string | null;
@@ -115,6 +134,12 @@ export function resetHistory(
     // this module's documented no-raw-key rule (paused-run keys only).
     { store: "discarded-shadow", clear: () => clearDiscardedShadowFrom(local) },
     { store: "paused-run", clear: () => clearPausedRun(session) },
+    // Amendment (2026-11-15, see the header note): the age-band
+    // profile is part of the full clean-out, cleared through its
+    // owner module's reset clear (injected local storage only —
+    // U-R6). Its change event is what drops the picker back to
+    // the first-run band pills in place.
+    { store: "age-profile", clear: () => clearAgeProfileForReset(local) },
   ];
   const cleared: string[] = [];
   const failed: { store: string }[] = [];
@@ -163,6 +188,23 @@ export function resetHistory(
     if (raw !== null && raw !== undefined && raw !== "") moveToFailed("session");
   } catch {
     moveToFailed("session");
+  }
+  try {
+    const raw = local?.getItem(PROFILE_STORAGE_KEY);
+    if (raw !== null && raw !== undefined && raw !== "") {
+      // An unset blob (the removal-blocked overwrite fallback)
+      // reads as no band everywhere, so it counts as cleared; an
+      // active profile still on disk is a failed reset.
+      let active = true;
+      try {
+        active = validateProfile(JSON.parse(raw))?.status === "active";
+      } catch {
+        active = false; // A corrupt blob fails closed to unset at load.
+      }
+      if (active) moveToFailed("age-profile");
+    }
+  } catch {
+    moveToFailed("age-profile");
   }
   return { cleared, failed };
 }

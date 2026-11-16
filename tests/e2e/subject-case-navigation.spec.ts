@@ -8,7 +8,8 @@ import { serveBuiltArtifact } from "./helpers";
  * - A reload inside a case lands on Home, never back inside the case
  *   (the tap-in screens are session-only; boot always lands Home).
  * - The case screen carries the game's own controls in its header
- *   bar: Home, then End game (GameApp's handleEndGame — ending the
+ *   bar: "Meridian home" (the brand home control), then End game
+ *   (GameApp's handleEndGame — ending the
  *   session leaves the case for Home), and the game's "Start over"
  *   reset in a separated footer.
  * - The picker footer carries the reset plus Home's grown-ups entry:
@@ -118,7 +119,7 @@ test("Resume your case: offered only with a mystery mid-play, and it reopens tha
   // No mystery yet: neither the picker nor a case offers resume.
   await openCase(page);
   await expect(page.getByTestId("resume-case-button")).toHaveCount(0);
-  await page.getByRole("button", { name: "Home", exact: true }).click();
+  await page.getByRole("button", { name: "Meridian home", exact: true }).click();
   await expect(page.getByTestId("home-heading")).toBeVisible();
 
   // Deal a mystery from Home's GeoDetective card, then leave it

@@ -83,7 +83,7 @@ for (const vp of [
       });
       expect(heroState.muted, `${tag}: montage starts muted`).toBe(true);
       expect(heroState.loop, `${tag}: montage loops`).toBe(true);
-      expect(heroState.ratio, `${tag}: hero aspect ratio`).not.toBe("auto");
+      expect(heroState.ratio, `${tag}: hero aspect ratio`).toBe("16 / 9");
       // Its controls are real buttons with spoken labels.
       await expect(page.getByTestId("why-learn-hero-playpause")).toHaveAttribute("aria-label", /montage/);
       await expect(page.getByTestId("why-learn-hero-replay")).toHaveAttribute("aria-label", "Replay montage");

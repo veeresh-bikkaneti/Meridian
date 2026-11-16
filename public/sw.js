@@ -35,6 +35,21 @@
  *     so resume + search always work offline; clues and loop/names.v2.json
  *     (5.2 MB) populate the cache on first online use and are then fully
  *     playable offline.
+ *   - <BASE>videos/ (the Why Learn montage film + poster, and the
+ *     journal manifests + caption files that also live under videos/)
+ *     → network-first with a cache fallback in the versioned asset
+ *     cache. The URLs are unhashed and re-cuts ship by replacing the
+ *     files in place, so cache-first would pin returning users to a
+ *     stale film; network-first serves the fresh cut online. Only full
+ *     200 responses are cached: the poster (a plain GET) is therefore
+ *     reliably available offline, while the film — normally fetched
+ *     with range requests and answered 206 — is cached only if a
+ *     browser fetches it whole, so offline film replay is NOT
+ *     guaranteed by this branch. How a media element handles a stored
+ *     200 answering a range request is browser-dependent and is
+ *     unverified in a real browser. (Before this branch, videos were
+ *     the one picker asset class with no SW handling at all — QA/UI-UX
+ *     council, 2026-11-16.)
  *   - everything else (map tiles, cross-origin) → pass through untouched
  *   - same-origin non-asset, non-flags requests (build-meta.json, API-ish)
  *     → network only. Note: service workers deployed BEFORE this rule
@@ -216,6 +231,24 @@ self.addEventListener("fetch", (event) => {
           return res;
         })
         .catch(() => caches.match(FLAGS_URL)),
+    );
+    return;
+  }
+
+  // Videos (the montage film + poster): network-first with a cache
+  // fallback — see the strategy note at the top of this file. Only full
+  // 200 responses are cached (a 206 range response must never be stored).
+  if (url.pathname.startsWith(`${BASE}videos/`)) {
+    event.respondWith(
+      fetch(request)
+        .then((res) => {
+          if (res.status === 200) {
+            const copy = res.clone();
+            caches.open(ASSET_CACHE).then((c) => c.put(request, copy));
+          }
+          return res;
+        })
+        .catch(() => caches.match(request)),
     );
     return;
   }
