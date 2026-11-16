@@ -40,7 +40,7 @@ function PrivacyPage() {
       <p className="text-sm text-muted">For parents, carers, and teachers · Last updated {UPDATED}</p>
 
       <p>
-        Meridian is a free geography game made for children. Because the site is directed to
+        Meridian is a free geography, math and science game made for children. Because the site is directed to
         children, we treat <strong>every visitor as a child</strong> and design everything around
         collecting as little as possible.
       </p>
@@ -48,7 +48,7 @@ function PrivacyPage() {
       <h2>The short version</h2>
       <ul>
         <li>No accounts, no sign-up, no log-in.</li>
-        <li>We never ask a player for a name, email, age, location, photo, or any other personal information.</li>
+        <li>We never ask a player for a name, email, location, photo, or any other personal information. We do ask for an age band (7-10, 10-18, or 18+). The band is saved only in this browser, and the game uses it to pick the difficulty and the cases the player sees. It is never sent to us.</li>
         <li>There is no chat, no sharing of player-made content, and no ads.</li>
         <li>No cookies or persistent identifiers are used for analytics or tracking.</li>
       </ul>
