@@ -4,13 +4,12 @@
  * the shared SubjectCase, passing the subject's title, test-id
  * prefix, band items and answer lookup.
  *
- * Clue scenes (expansion wave 3): general knowledge also passes the
- * scene hook, mirroring MathCase. For ages 7-10, an item that
- * carries a scene description (scenes.ts, in data next to the
- * answers) gets a short live-drawn film above its clue card; every
- * other item and band is exactly as before. The hook is
- * answer-blind — SubjectCase hands it the phase from the case's
- * own state, never the answer.
+ * Clue scenes (expansion waves 3 and 10): general knowledge also
+ * passes the scene hook, mirroring MathCase. Every item in every
+ * band now carries a scene description (scenes.ts, in data next
+ * to the answers) and gets a short live-drawn film above its clue
+ * card. The hook is answer-blind — SubjectCase hands it the phase
+ * from the case's own state, never the answer.
  *
  * Act 3: general knowledge also passes the resultExtra hook — for
  * the same items whose description carries a summary, the solved
@@ -47,13 +46,13 @@ export default function GeneralKnowledgeCase(
       itemsForGroup={itemsForGroup}
       answerFor={answerFor}
       scene={(item, phase, reduced, band) => {
-        if (band !== "7-10") return null;
+        if (band !== "7-10" && band !== "10-18" && band !== "18+") return null;
         const description = clueSceneFor(item.id);
         if (!description) return null;
         return <ClueScene key={item.id} description={description} phase={phase} reduced={reduced} />;
       }}
       resultExtra={(item, _reduced, band) => {
-        if (band !== "7-10") return null;
+        if (band !== "7-10" && band !== "10-18" && band !== "18+") return null;
         const description = clueSceneFor(item.id);
         if (!description?.summary) return null;
         return <ClueSummaryText summary={description.summary} />;

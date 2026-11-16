@@ -50,19 +50,32 @@ describe("WhyLearnHero — the montage in the hero slot", () => {
     assert.ok(art.includes('WHY_LEARN_MONTAGE_POSTER_PATH = "videos/why-learn-montage-poster.webp"'), "poster beside it");
   });
 
-  it("the play window skips the film's defective first and last beats", () => {
-    assert.ok(art.includes("WHY_LEARN_MONTAGE_LOOP_START_S = 2.8"), "window start constant in the art module");
-    assert.ok(art.includes("WHY_LEARN_MONTAGE_LOOP_END_S = 8.6"), "window end constant in the art module");
-    assert.ok(hero.includes("onLoadedMetadata={enterWindow}"), "the player lands inside the window once it can seek");
-    assert.ok(hero.includes("onTimeUpdate={keepInWindow}"), "the player folds back before the collage ending");
-    assert.ok(
-      hero.includes("film.currentTime >= WHY_LEARN_MONTAGE_LOOP_END_S"),
-      "the fold-back compares against the window end",
-    );
-    assert.ok(
-      hero.includes("film.currentTime < WHY_LEARN_MONTAGE_LOOP_START_S"),
-      "entering the window never seeks a film already inside it backwards",
-    );
+  it("the whole film plays: the portrait play window is gone with the portrait film", () => {
+    assert.ok(!art.includes("WHY_LEARN_MONTAGE_LOOP_START_S"), "no window start constant in the art module");
+    assert.ok(!art.includes("WHY_LEARN_MONTAGE_LOOP_END_S"), "no window end constant in the art module");
+    assert.ok(!hero.includes("WHY_LEARN_MONTAGE_LOOP_START_S"), "the player never seeks to a window start");
+    assert.ok(!hero.includes("WHY_LEARN_MONTAGE_LOOP_END_S"), "the player never folds back to a window");
+    assert.ok(!hero.includes("onLoadedMetadata"), "no seek on load — the film starts at 0");
+    assert.ok(!hero.includes("onTimeUpdate"), "no playhead policing — the native loop carries the whole film");
+    assert.ok(hero.includes("film.currentTime = 0"), "replay restarts at the true start");
+  });
+
+  it("the slot is dimension-matched to the landscape film (16 / 9, no stepped aspects)", () => {
+    const heroBlock = css.slice(css.indexOf(".why-learn-hero {"), css.indexOf(".why-learn-hero-wrap {"));
+    assert.ok(heroBlock.includes("aspect-ratio: 16 / 9"), "the slot's aspect is exactly the film's");
+    assert.ok(!heroBlock.includes("aspect-ratio: 16 / 7"), "the portrait-era wide strip is gone");
+    assert.ok(!heroBlock.includes("aspect-ratio: 32 / 9"), "the portrait-era desktop strip is gone");
+    assert.ok(!heroBlock.includes("aspect-ratio: 1 / 1"), "the portrait-era tall steps are gone");
+    assert.ok(!heroBlock.includes("aspect-ratio: 4 / 5"), "the portrait-era tall steps are gone");
+    assert.ok(hero.includes("width={1280}"), "the still's width attribute matches the landscape frame");
+    assert.ok(hero.includes("height={720}"), "the still's height attribute matches the landscape frame");
+    assert.ok(!hero.includes("width={608}"), "the portrait width attribute is gone");
+  });
+
+  it("the picker grid stacks the cards four in a row on desktop", () => {
+    assert.ok(picker.includes("min-[1081px]:grid-cols-4"), "four-across at desktop widths");
+    assert.ok(!picker.includes("min-[1081px]:grid-cols-3"), "the three-across grid is gone");
+    assert.ok(picker.includes("lg:max-w-none"), "the picker takes the page's full width");
   });
 
   it("media URLs are built through the assetBase seam, never bundled imports", () => {
@@ -73,10 +86,7 @@ describe("WhyLearnHero — the montage in the hero slot", () => {
   it("controls: pause/play, replay, and a sound toggle that flips the muted property", () => {
     assert.ok(hero.includes('aria-label={playing ? "Pause montage" : "Play montage"}'), "pause/play with a spoken label");
     assert.ok(hero.includes('aria-label="Replay montage"'), "replay with a spoken label");
-    assert.ok(
-      hero.includes("film.currentTime = WHY_LEARN_MONTAGE_LOOP_START_S"),
-      "replay restarts the film at the play window's start",
-    );
+    assert.ok(hero.includes("film.currentTime = 0"), "replay restarts the film at 0");
     assert.ok(hero.includes('aria-pressed={soundOn}'), "sound toggle exposes its state");
     assert.ok(hero.includes("film.muted = !soundOn"), "the toggle drives the element's muted property");
     assert.ok(hero.includes('data-testid="why-learn-hero-video"'), "video testid for the E2E spec");
@@ -102,6 +112,35 @@ describe("WhyLearnHero — the montage in the hero slot", () => {
     assert.ok(!gated.includes("<video"), "no video element in the gated branch (the .mp4 is never fetched)");
     assert.ok(!gated.includes("why-learn-hero-controls"), "no controls with nothing to control");
     assert.ok(hero.includes("onError={() => setFailed(true)}"), "a failed film latches to the still");
+  });
+
+  it("CSS: plain-surface states hide decoration only — the film and the clue scenes stay", () => {
+    // Regression pin (QA/UI-UX council, 2026-11-16): the art-off rule used
+    // to display:none the hero and every .clue-scene under the high-contrast
+    // palette, prefers-contrast: more and forced colours, so a player in
+    // any of those states got a title band with no film and cases with no
+    // explanations. Content is never hidden; decoration still is.
+    const tail = css.slice(css.indexOf("Decorative art off"));
+    assert.ok(tail.length > 0, "the plain-surface block exists");
+    for (const rule of tail.split("}")) {
+      if (!rule.includes("display: none")) continue;
+      assert.ok(!rule.includes(".why-learn-hero"), "no display:none rule names the hero");
+      assert.ok(!rule.includes(".clue-scene"), "no display:none rule names the clue scenes");
+      assert.ok(rule.includes(".why-learn-drift"), "the same rules still hide the decorative drift");
+    }
+    const forced = tail.slice(tail.indexOf("@media (forced-colors: active)"));
+    assert.ok(
+      forced.includes(".clue-scene") && forced.includes("CanvasText"),
+      "forced colours delineate the scenes with a CanvasText border instead of hiding them",
+    );
+    assert.ok(
+      forced.includes(".why-learn-hero-wrap") && forced.includes("CanvasText"),
+      "forced colours delineate the hero the same way",
+    );
+    assert.ok(
+      forced.includes(".why-learn-hero,") && forced.includes("CanvasText"),
+      "the poster branch (a bare .why-learn-hero img, no wrap) is delineated too",
+    );
   });
 
   it("the shipped media files exist under public/videos/", () => {

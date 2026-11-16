@@ -122,6 +122,12 @@ const CLEARED_LOCAL: Record<string, string> = {
   // friendChallenges flag never does.
   "meridian.challenge.attempts.v1":
     '{"counts":{"3|state|nebraska|gn-1,gn-2,gn-3,gn-4,gn-5":2},"order":["3|state|nebraska|gn-1,gn-2,gn-3,gn-4,gn-5"]}',
+  // Amendment (2026-11-15, full reset for shared devices): the
+  // age-band profile is a CLEARED key now — a valid active profile
+  // (schema 2) must not survive a reset, or the next player on a
+  // shared device inherits the band and is never asked.
+  "meridian.ageProfile.v1":
+    '{"status":"active","band":"7-10","updatedAt":"2026-10-09T12:00:00.000Z","changeCount":1,"schemaVersion":2}',
 };
 
 /** Every KEPT localStorage key from manifest §2 plus near-miss foreign keys. */
@@ -131,7 +137,6 @@ const KEPT_LOCAL: Record<string, string> = {
   "meridian.loop.v1": '{"archive":true}',
   "meridian.palette": "high-contrast",
   "meridian.sound": "off",
-  "meridian.ageProfile.v1": '{"status":"active","band":"8-10"}',
   "meridian:map-mode": "scout",
   "meridian.difficulty": "hard",
   // Near-miss foreign keys: same family, wrong version — never ours.
@@ -202,7 +207,7 @@ test("U-R1 master sentinel: every cleared key gone, every kept key byte-identica
     // wipes the preserved shadow from the injected local storage;
     // see the "discarded-shadow" step) and "challenge-attempts"
     // (§Q2-B3: reset clears the attempts store).
-    ["challenge-attempts", "coldtrail", "discarded-shadow", "geodetective", "learning", "paused-run", "review-deck", "session", "trail"],
+    ["age-profile", "challenge-attempts", "coldtrail", "discarded-shadow", "geodetective", "learning", "paused-run", "review-deck", "session", "trail"],
   );
   assertCleared(local, session);
   assertKept(local, session);
@@ -438,4 +443,44 @@ test("U-R11: a globally seeded shadow stays byte-identical (U-R6 respected)", ()
     if (prevLocal === undefined) delete g.localStorage;
     else g.localStorage = prevLocal;
   }
+});
+
+test("U-R12: the reset clears a valid active age-band profile back to first-run (unset)", () => {
+  const local = new FakeStorage();
+  const session = new FakeStorage();
+  seedAll(local, session);
+  const result = resetHistory(local, session);
+  assert.deepEqual(result.failed, []);
+  assert.ok(result.cleared.includes("age-profile"));
+  assert.equal(local.getItem("meridian.ageProfile.v1"), null, "profile key gone after reset");
+  assertKept(local, session);
+});
+
+test("U-R13: blocked profile removal falls back to the unset overwrite; blocked both fails only age-profile", () => {
+  const profile =
+    '{"status":"active","band":"7-10","updatedAt":"2026-10-09T12:00:00.000Z","changeCount":1,"schemaVersion":2}';
+  // Removal blocked, writes allowed: the unset overwrite lands and
+  // the step still reports success (the blob reads as no band).
+  const local = new FakeStorage();
+  const session = new FakeStorage();
+  local.data.set("meridian.ageProfile.v1", profile);
+  local.failRemove.add("meridian.ageProfile.v1");
+  const first = resetHistory(local, session);
+  assert.deepEqual(first.failed, []);
+  assert.ok(first.cleared.includes("age-profile"));
+  const raw = local.getItem("meridian.ageProfile.v1");
+  assert.ok(raw !== null && JSON.parse(raw).status === "unset", "profile overwritten with the unset profile");
+
+  // Both blocked: only the age-profile step fails, never a throw.
+  const local2 = new FakeStorage();
+  const session2 = new FakeStorage();
+  local2.data.set("meridian.ageProfile.v1", profile);
+  local2.failRemove.add("meridian.ageProfile.v1");
+  local2.failSet.add("meridian.ageProfile.v1");
+  let second: ReturnType<typeof resetHistory> | undefined;
+  assert.doesNotThrow(() => {
+    second = resetHistory(local2, session2);
+  });
+  assert.deepEqual(second!.failed, [{ store: "age-profile" }]);
+  assert.equal(local2.getItem("meridian.ageProfile.v1"), profile, "active profile survives a blocked clear, honestly reported");
 });
