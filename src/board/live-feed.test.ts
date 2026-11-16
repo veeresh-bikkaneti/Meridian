@@ -266,7 +266,7 @@ describe("applyLiveBoard — the publisher's rule, fed live states", () => {
     const live = new Map(capturedStates);
     live.set(430, { merged: false, open: true });
     const board = applyLiveBoard(published, links, live);
-    assert.deepEqual(board.counts, { done: 18, inProgress: 6, notStarted: 13, total: 37 });
+    assert.deepEqual(board.counts, { done: 22, inProgress: 6, notStarted: 9, total: 37 });
     const stories = new Map(
       board.epics.flatMap((e) =>
         e.features.flatMap((f) => f.stories.map((s) => [s.slug, s] as const)),

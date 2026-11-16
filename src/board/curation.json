@@ -193,7 +193,7 @@
               "slug": "button-opens-a-subject-instead-of-coming-soon",
               "title": "Tap the card and go straight into a subject",
               "records": [],
-              "carriedStatus": "not-started"
+              "carriedStatus": "done"
             },
             {
               "sourceId": "why-do-we-learn-this-card/card-shown-to-kids-without-scale-1",
@@ -308,7 +308,7 @@
               "slug": "physics-and-chemistry-screens",
               "title": "The Physics & Chemistry screens",
               "records": [],
-              "carriedStatus": "not-started"
+              "carriedStatus": "done"
             },
             {
               "sourceId": "physics-and-chemistry/wave-2-sign-off-and-release",
@@ -411,14 +411,14 @@
               "slug": "journal-clips-stage-b-video-files",
               "title": "Short film clips for the journals",
               "records": [],
-              "carriedStatus": "not-started"
+              "carriedStatus": "done"
             },
             {
               "sourceId": "journals/journals-release",
               "slug": "journals-release",
               "title": "The journals open to everyone",
               "records": [],
-              "carriedStatus": "not-started"
+              "carriedStatus": "done"
             }
           ]
         }

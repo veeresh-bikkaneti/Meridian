@@ -192,7 +192,7 @@ describe("buildPublished on the real curation file (Phase 0 baseline)", () => {
     // 20/4/13 is the current-state picture after the record cache caught
     // up with main (PR #430 merged; the Holmes-in-Maths and Maths
     // sign-off stories' work landed) — board cleanup, 2026-11-16.
-    assert.deepEqual(published.counts, { done: 20, inProgress: 4, notStarted: 13, total: 37 });
+    assert.deepEqual(published.counts, { done: 24, inProgress: 4, notStarted: 9, total: 37 });
   });
   it("excludes the 9 internal items and the whole Behind the Scenes epic", () => {
     const slugs = published.epics.flatMap((e) => e.features.flatMap((f) => f.stories.map((s) => s.slug)));

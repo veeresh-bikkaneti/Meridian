@@ -1,11 +1,11 @@
 {
   "version": 3,
   "source": "manual",
-  "updatedAt": "2026-11-16T12:26:19.775Z",
+  "updatedAt": "2026-11-16T22:10:58.352Z",
   "counts": {
-    "done": 20,
+    "done": 24,
     "inProgress": 4,
-    "notStarted": 13,
+    "notStarted": 9,
     "total": 37
   },
   "epics": [
@@ -107,7 +107,7 @@
           "name": "Why Do We Learn This?",
           "promise": "The home card that opens every subject.",
           "anim": "star",
-          "done": 2,
+          "done": 3,
           "total": 5,
           "bonds": 1,
           "stories": [
@@ -132,8 +132,8 @@
             {
               "slug": "button-opens-a-subject-instead-of-coming-soon",
               "title": "Tap the card and go straight into a subject",
-              "status": "not-started",
-              "line": "Not started yet"
+              "status": "done",
+              "line": "Ready to play"
             },
             {
               "slug": "the-card-appears-for-kids",
@@ -189,7 +189,7 @@
           "name": "Physics & Chemistry",
           "promise": "Predict first — then see what really happens.",
           "anim": "flask",
-          "done": 3,
+          "done": 4,
           "total": 7,
           "bonds": 0,
           "stories": [
@@ -226,8 +226,8 @@
             {
               "slug": "physics-and-chemistry-screens",
               "title": "The Physics & Chemistry screens",
-              "status": "not-started",
-              "line": "Not started yet"
+              "status": "done",
+              "line": "Ready to play"
             },
             {
               "slug": "wave-2-sign-off-and-release",
@@ -290,7 +290,7 @@
           "name": "Story Journals",
           "promise": "Short stories and films about people and places.",
           "anim": "book",
-          "done": 2,
+          "done": 4,
           "total": 4,
           "bonds": 0,
           "stories": [
@@ -309,14 +309,14 @@
             {
               "slug": "journal-clips-stage-b-video-files",
               "title": "Short film clips for the journals",
-              "status": "not-started",
-              "line": "Not started yet"
+              "status": "done",
+              "line": "Ready to play"
             },
             {
               "slug": "journals-release",
               "title": "The journals open to everyone",
-              "status": "not-started",
-              "line": "Not started yet"
+              "status": "done",
+              "line": "Ready to play"
             }
           ]
         }
