@@ -42,6 +42,7 @@ export type FlagName =
   | "watsonWalk"
   | "detectiveFlank"
   | "pair3d"
+  | "board3d"
   | "scalePlay";
 
 /**
@@ -143,6 +144,11 @@ export const FLAG_DEFAULTS: Record<FlagName, boolean> = {
   // The baked default stays false so a failed flags fetch never shows
   // an unreviewed card to kids.
   scalePlay: false,
+  // Board v3 molecular map (3D structure view on /board). true = the
+  // shipped behaviour: the map view is offered beside the trail.
+  // false = kill switch: the board falls back to the trail alone —
+  // the DOM board is always the complete fallback (board v3 spec §3).
+  board3d: true,
 };
 
 /** The one URL turn-on: `?scale=1` turns scalePlay on, nothing else. */
