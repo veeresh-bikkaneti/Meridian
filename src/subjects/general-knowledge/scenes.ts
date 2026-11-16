@@ -199,6 +199,7 @@ export const GENERAL_KNOWLEDGE_CLUE_SCENES: Record<string, ClueSceneDescription>
   },
   "general-knowledge:mixed:great-circle": {
     kind: "great-circle",
+    route: "south-west",
     labelSetup: "A globe and a flat map each carry two pins, a peak and a falls.",
     labelSolved: "A path arcs over the globe between the two pins, and the same path curves on the map.",
     summary: {

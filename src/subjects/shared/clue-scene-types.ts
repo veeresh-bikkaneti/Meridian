@@ -953,6 +953,10 @@ export type ClueSceneDescription =
     }
   | {
       kind: "great-circle";
+      /** "south-west": the pins sit north-east to south-west (a
+       * peak and a falls across the equator), so the arc crosses
+       * the globe's face; omitted: the path bends toward the pole. */
+      route?: "south-west";
       labelSetup: string;
       labelSolved: string;
       summary?: ClueSceneSummary;

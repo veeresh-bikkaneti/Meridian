@@ -1899,7 +1899,11 @@ export function GreatCircleScene({
   phase: ClueScenePhase;
   stepDelay?: (step: number) => number;
 }) {
-  void description;
+  // A south-west route never nears a pole: pins run corner to
+  // corner and the arc crosses the globe's face.
+  const sw = description.route === "south-west";
+  const globePins = sw ? [184, 52, 138, 92] : [132, 74, 188, 74];
+  const mapPins = sw ? [222, 132, 104, 162] : [102, 148, 218, 148];
   const arcStart = stepDelay ? stepDelay(0) : 0.5;
   const flatStart = stepDelay ? stepDelay(1) : 1.4;
   const tickStart = stepDelay ? stepDelay(2) : 2.3;
@@ -1915,19 +1919,19 @@ export function GreatCircleScene({
       {/* The globe, above: two pins, no path before the pick. */}
       <circle className="cs-line cs-draw" pathLength={1} cx="160" cy="66" r="42" style={delay(0.15)} />
       <path className="cs-line cs-soft cs-draw" pathLength={1} d="M122 54 Q160 62 198 54 M122 80 Q160 88 198 80" style={delay(0.25)} />
-      {pin(132, 74, 0.45)}
-      {pin(188, 74, 0.55)}
+      {pin(globePins[0], globePins[1], 0.45)}
+      {pin(globePins[2], globePins[3], 0.55)}
       {/* The flat map, below: the same two pins on a sheet. */}
       <path className="cs-line cs-draw" pathLength={1} d="M70 124 Q160 120 250 124 Q253 148 250 168 Q160 172 70 168 Q67 148 70 124 Z" style={delay(0.2)} />
-      {pin(102, 148, 0.5)}
-      {pin(218, 148, 0.6)}
+      {pin(mapPins[0], mapPins[1], 0.5)}
+      {pin(mapPins[2], mapPins[3], 0.6)}
       {phase === "solved" ? (
         <>
           {/* Step 0: the shortest path arcs over the globe's pole. */}
-          <path className="cs-line cs-band cs-draw" pathLength={1} d="M132 74 Q160 18 188 74" style={delay(arcStart)} />
+          <path className="cs-line cs-band cs-draw" pathLength={1} d={sw ? "M184 52 Q150 62 138 92" : "M132 74 Q160 18 188 74"} style={delay(arcStart)} />
           {/* Step 1: the same path, drawn flat, bends the same way. */}
-          <path className="cs-line cs-band cs-draw" pathLength={1} d="M102 148 Q160 122 218 148" style={delay(flatStart)} />
-          <ellipse className="cs-ring" cx="160" cy="52" rx="34" ry="30" style={delay(tickStart + 0.4)} />
+          <path className="cs-line cs-band cs-draw" pathLength={1} d={sw ? "M222 132 Q172 136 104 162" : "M102 148 Q160 122 218 148"} style={delay(flatStart)} />
+          <ellipse className="cs-ring" cx={sw ? 161 : 160} cy={sw ? 72 : 52} rx="34" ry="30" style={delay(tickStart + 0.4)} />
           <text className="cs-tick cs-tick-final" x="160" y="14" style={delay(tickStart + 0.55)}>
             ✓
           </text>
