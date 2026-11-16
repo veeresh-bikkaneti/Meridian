@@ -24,7 +24,7 @@ import {
 } from "@/board/board-data";
 import { loadLiveBoard } from "@/board/live-feed";
 import { computeLayout } from "@/board/status-core";
-import { TrailView } from "@/board/trail-view";
+import { TrailView, lowerFirst } from "@/board/trail-view";
 import { FeatureRequestForm } from "@/board/feature-request-form";
 import { isEnabled, loadFlags } from "@/lib/flags";
 import { HomeButton } from "@/components/ui/home-button";
@@ -33,7 +33,7 @@ import "@/board/board.css";
 const MoleculeMap = lazy(() => import("@/board/molecule-map"));
 
 /**
- * /board — "See what we're making next" (board v3).
+ * /board — "See what we're making next" (board v4 trail; v3 map/form).
  *
  * The board's base layer is the published status file
  * (public/board-status.json), generated from the team's own curated
@@ -281,11 +281,48 @@ function BoardPage() {
   const select = (slug: string | null) => go({ story: slug });
   const frontierStory = frontier ? findStory(board, frontier) : null;
 
+  /* Parallax ground (v4 sample): two fixed layers drift at different
+   * rates against scroll, as CSS vars on the board root. Frozen under
+   * Calm mode and prefers-reduced-motion — the ground simply rests. */
+  const mainRef = useRef<HTMLElement>(null);
+  useEffect(() => {
+    const main = mainRef.current;
+    if (!main) return;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (calm || reduced) {
+      main.style.setProperty("--v4-pf", "0px");
+      main.style.setProperty("--v4-pm", "0px");
+      return;
+    }
+    let ticking = false;
+    const update = () => {
+      ticking = false;
+      main.style.setProperty("--v4-pf", `${window.scrollY * -0.045}px`);
+      main.style.setProperty("--v4-pm", `${window.scrollY * -0.09}px`);
+    };
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    update();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [calm, view]);
+
   return (
     <main
-      className={`board-v3${calm ? " v3-calm" : ""}`}
+      ref={mainRef}
+      className={`board-v3${calm ? " v3-calm" : ""}${view === "trail" ? " v4-trail-page" : ""}`}
       data-board-theme={themeChoice === "system" ? undefined : themeChoice}
     >
+      {view === "trail" ? (
+        <>
+          <div className="v4-layer v4-layer-far" aria-hidden="true" />
+          <div className="v4-layer v4-layer-mid" aria-hidden="true" />
+          <div className="v4-vignette" aria-hidden="true" />
+        </>
+      ) : null}
       <div className="v3-wrap">
         <header className="v3-head">
           <p className="v3-back">
@@ -297,6 +334,7 @@ function BoardPage() {
             {board.counts.done} of {board.counts.total} stories finished · {board.counts.inProgress}{" "}
             being built · {board.counts.notStarted} not started yet
           </p>
+          <p className="v4-walk">Walk the trail — every stop is a feature your child will play.</p>
           <p className="v3-updated" data-testid="board-updated-line">
             {liveLine?.kind === "live"
               ? `Live from GitHub — every linked record checked (${liveLine.covered} of ${liveLine.wanted}) · `
@@ -320,7 +358,7 @@ function BoardPage() {
         {frontierStory ? (
           <div className="v3-frontier-banner">
             <p>
-              <strong>We&rsquo;re working on this now:</strong> {frontierStory.story.title}
+              <strong>We&rsquo;re working on this now:</strong> {lowerFirst(frontierStory.story.title)}
             </p>
             <button
               type="button"

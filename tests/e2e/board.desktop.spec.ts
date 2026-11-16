@@ -178,6 +178,8 @@ test("story card: waiting story names what it waits for and jumps to that stop",
     `[data-testid="v3-story-group"][data-group="blocked"] [data-testid="v3-story-stop"][data-slug="${WAITING_SLUG}"]`,
   );
   await expect(blockedStop).toContainText(`Waiting for: ${WAITING_FOR_TITLE}`);
+  // Stories live inside an opened feature (v4): open Capitals first.
+  await page.getByTestId("board-feature-toggle-capitals").click();
   await page.locator(`[data-slug="${WAITING_SLUG}"]`).click();
   const card = page.getByTestId("story-card-open");
   await expect(card).toBeVisible();
@@ -252,8 +254,12 @@ test("molecular map: bonds == recorded waits, budgets from the renderer, mirror 
   // Mirror click opens the same card without any 3D at all.
   await page.getByTestId("board-nav-map").click();
   await page.locator(`[data-testid="v3-mirror-story"][data-slug="${FRONTIER_SLUG}"]`).click();
-  await expect(page.getByTestId("story-card-open")).toContainText("New drawings of Holmes & Watson, and how each case ends");
-  await expect(page.getByTestId("v3-you-are-here")).toContainText("New drawings of Holmes & Watson, and how each case ends");
+  await expect(page.getByTestId("story-card-open")).toContainText(
+    "New drawings of Holmes & Watson, and how each case ends",
+  );
+  await expect(page.getByTestId("v3-you-are-here")).toContainText(
+    "New drawings of Holmes & Watson, and how each case ends",
+  );
 });
 
 test("calm mode stills every loop; the tip form wears its §5 costume", async ({ page, context }) => {
@@ -614,4 +620,27 @@ test("390px: controls hide behind the Menu bar — open, Esc, outside tap, theme
   await expect(page).toHaveURL(/view=map/);
   await expect(menuButton).toHaveAttribute("aria-expanded", "false");
   await expect(trailButton).toBeHidden();
+});
+
+test("v4 trail: features first, stories inside, traveller on the trail, no internal items", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await openBoard(page);
+  // The stops on the trail are the 9 player-facing features.
+  await expect(page.locator(".v4-panel")).toHaveCount(9);
+  await expect(page.getByTestId("board-progress-line")).toContainText("ON THE TRAIL");
+  await expect(page.locator(".v4-traveller")).toBeAttached();
+  // No dev language, no internal epic anywhere on the trail.
+  const bodyText = await page.locator("main").innerText();
+  expect(bodyText).not.toContain("Behind the Scenes");
+  expect(bodyText).not.toContain("How Meridian Is Made");
+  expect(bodyText).not.toContain("Subject registry");
+  expect(bodyText.toLowerCase()).not.toContain("in code");
+  // Stories live inside: Maths opens to its five player-words parts.
+  await page.getByTestId("board-feature-toggle-maths").click();
+  const maths = page.locator("#v4-stories-maths");
+  await expect(maths).toContainText("Number games — counting, ordering and patterns");
+  await expect(maths).toContainText("Holmes & Watson join the Maths cases");
+  await expect(maths.locator('[data-testid="v3-story-stop"]')).toHaveCount(5);
 });
