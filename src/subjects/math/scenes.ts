@@ -22,8 +22,14 @@
  * renderer never reads it before the solve.
  *
  * Coverage: every Math item for ages 7-10 — the pilot's three
- * kinds plus the wave-1 kinds (expansion wave 1). Other bands
- * carry no descriptions yet; their clue cards are unchanged.
+ * kinds plus the wave-1 kinds (expansion wave 1) — every Math
+ * item for ages 10-18 (expansion wave 2: ten new kinds,
+ * chunk-share and rounding-line reused), and the two covered
+ * Math items for ages 18+ (expansion wave 3: split-product
+ * reused, share-bar new). The one held 18+ item
+ * (math-applied:measure:survey-check) carries no description —
+ * it is scene-resistant per the expansion inventory and stays
+ * text-only on the owner's word only.
  */
 import type { ClueSceneDescription } from "../shared/clue-scene-types.ts";
 
@@ -465,6 +471,298 @@ export const MATH_CLUE_SCENES: Record<string, ClueSceneDescription> = {
         { text: "3 rows of five make 15 square metres of floor!", at: 13.32 },
       ],
       beats: [0, 2, 1, 0],
+    },
+  },
+  "math-number:tables:multi-digit": {
+    kind: "array-grid",
+    rows: 23,
+    perRow: 47,
+    splitHigh: 40,
+    splitLow: 7,
+    labelSetup: "A tiled floor waits, its rows drawn one by one.",
+    labelSolved: "The floor splits into a wide part and a narrow part, counted apart.",
+    summary: {
+      clip: "multi-digit.mp3",
+      duration: 24.19,
+      lines: [
+        { text: "Here is the clever way to count the tiles.", at: 0 },
+        { text: "Split each row of 47 tiles into 40 and 7.", at: 2.89 },
+        { text: "The wide part: 23 rows of 40 make 920 tiles.", at: 7.19 },
+        { text: "The narrow part: 23 rows of 7 make 161 tiles.", at: 12.57 },
+        { text: "920 and 161 make 1081 tiles in all!", at: 18.19 }
+      ],
+      beats: [0, 1, 1, 1, 1],
+    },
+  },
+  "math-applied:measure:convert-metric": {
+    kind: "scale-line",
+    kilometres: 2.4,
+    metresPerKm: 1000,
+    labelSetup: "A river stretch waits beside a measuring bar.",
+    labelSolved: "The bar stretches out into metre marks.",
+    summary: {
+      clip: "convert-metric.mp3",
+      duration: 17.28,
+      lines: [
+        { text: "Here is the clever way to change the walk into metres.", at: 0 },
+        { text: "Every kilometre is 1000 metres, so count the stretch in thousands.", at: 3.78 },
+        { text: "Two whole kilometres make 2000 metres, and the last part makes 400 more.", at: 9.07 },
+        { text: "That makes 2400 metres in all!", at: 15.01 }
+      ],
+      beats: [0, 1, 0, 1],
+    },
+  },
+  "math-number:fractions:percent": {
+    kind: "percent-bar",
+    total: 80,
+    percentOff: 30,
+    labelSetup: "A price bar waits in the shop window.",
+    labelSolved: "A slice of the price is taken off, and the rest is what you pay.",
+    summary: {
+      clip: "percent.mp3",
+      duration: 18.33,
+      lines: [
+        { text: "Here is the clever way to find the price you pay.", at: 0 },
+        { text: "The price is 80 coins, and the shop takes 30 percent off.", at: 3.26 },
+        { text: "30 percent of 80 is 24 coins saved.", at: 7.6 },
+        { text: "Take the saved coins away from the whole price.", at: 11.35 },
+        { text: "80 take away 24 leaves 56 coins to pay!", at: 14.7 }
+      ],
+      beats: [0, 1, 1, 0, 1],
+    },
+  },
+  "math-applied:geometry:scale-drawing": {
+    kind: "map-scale",
+    mapCm: 4,
+    kmPerCm: 2,
+    labelSetup: "A river is drawn on a map, beside a scale note.",
+    labelSolved: "The map line grows into the ground line, centimetre by centimetre.",
+    summary: {
+      clip: "scale-drawing.mp3",
+      duration: 16.49,
+      lines: [
+        { text: "Here is the clever way to read the map.", at: 0 },
+        { text: "Each centimetre on the map stands for 2 kilometres on the ground.", at: 2.68 },
+        { text: "The river measures 4 centimetres, so count in twos: 2, 4, 6, 8.", at: 7.14 },
+        { text: "Four centimetres on the map stand for 8 kilometres on the ground!", at: 12.33 }
+      ],
+      beats: [0, 2, 2, 0],
+    },
+  },
+  "math-number:division:standard-algorithm": {
+    kind: "chunk-share",
+    total: 4368,
+    shares: 28,
+    labelSetup: "A tall pile waits beside empty share plates.",
+    labelSolved: "The pile is shared out in big chunks.",
+    summary: {
+      clip: "standard-algorithm.mp3",
+      duration: 18.03,
+      lines: [
+        { text: "Here is the clever way to share the coins.", at: 0 },
+        { text: "Share them in big chunks: first, 100 coins for every person.", at: 2.92 },
+        { text: "Then 50 more for every person.", at: 7.96 },
+        { text: "Then 6 more for every person.", at: 10.44 },
+        { text: "Every person gets 100 and 50 and 6: 156 coins!", at: 12.89 }
+      ],
+      beats: [0, 1, 1, 1, 0],
+    },
+  },
+  "math-number:fractions:multiply": {
+    kind: "fraction-bar",
+    numerator: 2,
+    denominator: 3,
+    labelSetup: "A cup bar waits, split into equal parts.",
+    labelSolved: "Half of the shaded part is marked.",
+    summary: {
+      clip: "fraction-multiply.mp3",
+      duration: 14.69,
+      lines: [
+        { text: "Here is the clever way to halve the recipe.", at: 0 },
+        { text: "The cup bar is split into thirds, and two of the thirds are shaded.", at: 2.98 },
+        { text: "Take half of the two shaded thirds, and one third stays marked.", at: 7.36 },
+        { text: "Half of two thirds is 1/3 of a cup!", at: 11.95 }
+      ],
+      beats: [0, 1, 1, 0],
+    },
+  },
+  "math-number:fractions:divide": {
+    kind: "fraction-measure",
+    total: 6,
+    pieceNumerator: 3,
+    pieceDenominator: 4,
+    labelSetup: "A roll of ribbon waits beside the scissors.",
+    labelSolved: "The roll is measured off in equal ribbon lengths.",
+    summary: {
+      clip: "fraction-divide.mp3",
+      duration: 15.85,
+      lines: [
+        { text: "Here is the clever way to cut the ribbons.", at: 0 },
+        { text: "Measure the roll in pieces of three quarters of a metre, one cut at a time.", at: 3 },
+        { text: "Keep measuring along the roll, piece after piece.", at: 7.96 },
+        { text: "Eight pieces of three quarters make 6 metres, so 8 ribbons can be cut!", at: 11.37 }
+      ],
+      beats: [0, 4, 4, 0],
+    },
+  },
+  "math-applied:rates:unit-rate": {
+    kind: "rate-bars",
+    firstMetres: 3,
+    firstCoins: 6,
+    secondMetres: 5,
+    secondCoins: 8,
+    labelSetup: "Two rope bars wait at two market stalls.",
+    labelSolved: "Each bar is split into single metres, and every metre is priced.",
+    summary: {
+      clip: "unit-rate.mp3",
+      duration: 27.57,
+      lines: [
+        { text: "Here is the clever way to compare the rope stalls.", at: 0 },
+        { text: "At the first stall, 6 coins buy 3 metres, so one metre costs 6 divided by 3, which is 2 coins.", at: 3.43 },
+        { text: "At the second stall, 8 coins buy 5 metres, so one metre costs 8 divided by 5, which is 1.6 coins.", at: 11.67 },
+        { text: "The cheaper metre is at the second stall.", at: 21.02 },
+        { text: "One metre at the cheaper stall costs 1.6 coins!", at: 23.93 }
+      ],
+      beats: [0, 1, 1, 1, 0],
+    },
+  },
+  "math-applied:rates:one-step": {
+    kind: "journey-line",
+    totalKm: 12,
+    aheadKm: 5,
+    labelSetup: "A walker waits at the start of a trail.",
+    labelSolved: "The walked part of the trail fills in from the start.",
+    summary: {
+      clip: "one-step.mp3",
+      duration: 15.5,
+      lines: [
+        { text: "Here is the clever way to find the part already walked.", at: 0 },
+        { text: "The whole trail is 12 kilometres, and 5 kilometres are still ahead.", at: 3.72 },
+        { text: "Take the part still ahead away from the whole trail.", at: 8.73 },
+        { text: "12 take away 5 leaves 7 kilometres already walked!", at: 11.9 }
+      ],
+      beats: [0, 0, 1, 1],
+    },
+  },
+  "math-applied:rates:two-step": {
+    kind: "spend-then-group",
+    total: 19,
+    fixedCost: 4,
+    perGroup: 3,
+    labelSetup: "Coins wait in a pile beside empty cups.",
+    labelSolved: "The one-off charge is paid, and the rest fall into cup-priced groups.",
+    summary: {
+      clip: "two-step.mp3",
+      duration: 19.33,
+      lines: [
+        { text: "Here is the clever way to spend the budget.", at: 0 },
+        { text: "Pay the one-off charge of 4 coins first.", at: 2.87 },
+        { text: "That leaves 19 take away 4, which is 15 coins for cups.", at: 5.85 },
+        { text: "Group the 15 coins in threes, one group for each cup.", at: 10.85 },
+        { text: "Five groups of 3 make 15, so the budget buys 5 cups!", at: 15.08 }
+      ],
+      beats: [0, 1, 0, 5, 0],
+    },
+  },
+  "math-applied:rates:constant-speed": {
+    kind: "journey-line",
+    totalKm: 12,
+    hours: 3,
+    targetKm: 20,
+    labelSetup: "A walker waits at the start of a long path.",
+    labelSolved: "The path is marked out hour by hour at a steady pace.",
+    summary: {
+      clip: "constant-speed.mp3",
+      duration: 16.11,
+      lines: [
+        { text: "Here is the clever way to use a steady pace.", at: 0 },
+        { text: "Twelve kilometres in 3 hours is 4 kilometres every hour.", at: 3.16 },
+        { text: "Keep going 4 kilometres an hour along the longer path.", at: 7.82 },
+        { text: "So a path of 20 kilometres takes 5 hours at that steady pace!", at: 11.99 }
+      ],
+      beats: [0, 3, 2, 0],
+    },
+  },
+  "math-applied:measure:accuracy": {
+    kind: "rounding-line",
+    value: 2.4837,
+    low: 2.48,
+    high: 2.49,
+    labelSetup: "A marker waits on a line zoomed in close.",
+    labelSolved: "The marker settles at the hundredth it is closer to.",
+    summary: {
+      clip: "accuracy.mp3",
+      duration: 21.95,
+      lines: [
+        { text: "Here is the clever way to write the measure honestly.", at: 0 },
+        { text: "A centimetre tape can only promise hundredths of a metre, so zoom in between 2.48 and 2.49.", at: 3.62 },
+        { text: "2.4837 sits closer to 2.48 than to 2.49.", at: 12.05 },
+        { text: "So the report should say 2.48 metres!", at: 19.04 }
+      ],
+      beats: [0, 1, 1, 0],
+    },
+  },
+  "math-applied:trig:bearings": {
+    kind: "bearing-diagram",
+    eastKm: 6,
+    northKm: 8,
+    labelSetup: "A boat waits at a harbour on a map, under a north arrow.",
+    labelSolved: "The two legs of the journey draw, and the angle from north opens.",
+    summary: {
+      clip: "bearings.mp3",
+      duration: 20.5,
+      lines: [
+        { text: "Here is the clever way to find the bearing.", at: 0 },
+        { text: "Draw the boat's path: first, 6 kilometres east.", at: 2.92 },
+        { text: "Then 8 kilometres north, up the map.", at: 6.73 },
+        { text: "A bearing is measured from north, and this angle's tangent is 6 divided by 8.", at: 9.74 },
+        { text: "That angle is about 37 degrees, so the bearing is 37 degrees!", at: 15.48 }
+      ],
+      beats: [0, 1, 1, 1, 0],
+    },
+  },
+  "math-number:tables:mental-strategies": {
+    kind: "split-product",
+    rows: 24,
+    perRow: 15,
+    splitHigh: 10,
+    splitLow: 5,
+    labelSetup: "Rows wait, ready to be counted in your head.",
+    labelSolved: "Each row splits into a round part and a leftover part, counted apart.",
+    summary: {
+      clip: "mental-strategies.mp3",
+      duration: 19.79,
+      lines: [
+        { text: "Here is the clever way to multiply in your head.", at: 0 },
+        { text: "Split 15 into 10 and 5.", at: 3.3 },
+        { text: "The round part first: 24 times 10 makes 240.", at: 5.73 },
+        { text: "The leftover part: 24 times 5 makes 120.", at: 10.61 },
+        { text: "240 and 120 make 360!", at: 15.48 }
+      ],
+      beats: [0, 1, 1, 1, 1],
+    },
+  },
+  "math-number:fractions:combine-shares": {
+    kind: "share-bar",
+    total: 120,
+    firstNumerator: 1,
+    firstDenominator: 2,
+    secondNumerator: 1,
+    secondDenominator: 4,
+    discountPercent: 10,
+    labelSetup: "A bill bar waits, ready to be shared.",
+    labelSolved: "The bar is cut into shares, and one share shrinks.",
+    summary: {
+      clip: "combine-shares.mp3",
+      duration: 20.08,
+      lines: [
+        { text: "Here is the clever way to split the bill.", at: 0 },
+        { text: "Half of 120 is 60, and a quarter of 120 is 30.", at: 2.78 },
+        { text: "That leaves 30, and the last two friends split it equally: 15 each.", at: 8.4 },
+        { text: "One of those shares gets 10 percent off.", at: 13.31 },
+        { text: "10 percent off 15 leaves 13.5 coins to pay!", at: 15.96 }
+      ],
+      beats: [0, 3, 1, 1, 0],
     },
   },
 };
