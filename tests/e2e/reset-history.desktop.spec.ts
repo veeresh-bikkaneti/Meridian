@@ -147,6 +147,17 @@ async function seedStoresOn(page: Page, nextDueAt = 0) {
       put("meridian:seen:v1:2026-10-01:globe:globe", ["old"]);
       put("meridian:cleared:v1:globe:globe:medium", "1");
       put("meridian.loop.v2", loop);
+      // Amendment (2026-11-15, full reset for shared devices): an
+      // active age-band profile is seeded so the read-back below
+      // proves the reset clears it too — the next player on a
+      // shared device starts as a first run and is asked again.
+      put("meridian.ageProfile.v1", {
+        status: "active",
+        band: "7-10",
+        updatedAt: "2026-10-09T12:00:00.000Z",
+        changeCount: 1,
+        schemaVersion: 2,
+      });
       put("meridian.coldtrail.v2", coldtrail);
       put("meridian.coldtrail.v1", { v: 1, caseIndex: 2, stars: 9, solved: 3 });
       put("meridian.passport.badges.v1", badges);
@@ -191,6 +202,8 @@ const CLEARED_LOCAL_KEYS = [
   "meridian.coldtrail.v1",
   "meridian.coldtrail.v2",
   "meridian.coldtrail.open",
+  // Amendment (2026-11-15): the age-band profile is a cleared key.
+  "meridian.ageProfile.v1",
 ];
 
 async function expectStoresCleared(page: Page) {

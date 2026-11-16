@@ -50,19 +50,32 @@ describe("WhyLearnHero — the montage in the hero slot", () => {
     assert.ok(art.includes('WHY_LEARN_MONTAGE_POSTER_PATH = "videos/why-learn-montage-poster.webp"'), "poster beside it");
   });
 
-  it("the play window skips the film's defective first and last beats", () => {
-    assert.ok(art.includes("WHY_LEARN_MONTAGE_LOOP_START_S = 2.8"), "window start constant in the art module");
-    assert.ok(art.includes("WHY_LEARN_MONTAGE_LOOP_END_S = 8.6"), "window end constant in the art module");
-    assert.ok(hero.includes("onLoadedMetadata={enterWindow}"), "the player lands inside the window once it can seek");
-    assert.ok(hero.includes("onTimeUpdate={keepInWindow}"), "the player folds back before the collage ending");
-    assert.ok(
-      hero.includes("film.currentTime >= WHY_LEARN_MONTAGE_LOOP_END_S"),
-      "the fold-back compares against the window end",
-    );
-    assert.ok(
-      hero.includes("film.currentTime < WHY_LEARN_MONTAGE_LOOP_START_S"),
-      "entering the window never seeks a film already inside it backwards",
-    );
+  it("the whole film plays: the portrait play window is gone with the portrait film", () => {
+    assert.ok(!art.includes("WHY_LEARN_MONTAGE_LOOP_START_S"), "no window start constant in the art module");
+    assert.ok(!art.includes("WHY_LEARN_MONTAGE_LOOP_END_S"), "no window end constant in the art module");
+    assert.ok(!hero.includes("WHY_LEARN_MONTAGE_LOOP_START_S"), "the player never seeks to a window start");
+    assert.ok(!hero.includes("WHY_LEARN_MONTAGE_LOOP_END_S"), "the player never folds back to a window");
+    assert.ok(!hero.includes("onLoadedMetadata"), "no seek on load — the film starts at 0");
+    assert.ok(!hero.includes("onTimeUpdate"), "no playhead policing — the native loop carries the whole film");
+    assert.ok(hero.includes("film.currentTime = 0"), "replay restarts at the true start");
+  });
+
+  it("the slot is dimension-matched to the landscape film (16 / 9, no stepped aspects)", () => {
+    const heroBlock = css.slice(css.indexOf(".why-learn-hero {"), css.indexOf(".why-learn-hero-wrap {"));
+    assert.ok(heroBlock.includes("aspect-ratio: 16 / 9"), "the slot's aspect is exactly the film's");
+    assert.ok(!heroBlock.includes("aspect-ratio: 16 / 7"), "the portrait-era wide strip is gone");
+    assert.ok(!heroBlock.includes("aspect-ratio: 32 / 9"), "the portrait-era desktop strip is gone");
+    assert.ok(!heroBlock.includes("aspect-ratio: 1 / 1"), "the portrait-era tall steps are gone");
+    assert.ok(!heroBlock.includes("aspect-ratio: 4 / 5"), "the portrait-era tall steps are gone");
+    assert.ok(hero.includes("width={1280}"), "the still's width attribute matches the landscape frame");
+    assert.ok(hero.includes("height={720}"), "the still's height attribute matches the landscape frame");
+    assert.ok(!hero.includes("width={608}"), "the portrait width attribute is gone");
+  });
+
+  it("the picker grid stacks the cards four in a row on desktop", () => {
+    assert.ok(picker.includes("min-[1081px]:grid-cols-4"), "four-across at desktop widths");
+    assert.ok(!picker.includes("min-[1081px]:grid-cols-3"), "the three-across grid is gone");
+    assert.ok(picker.includes("lg:max-w-none"), "the picker takes the page's full width");
   });
 
   it("media URLs are built through the assetBase seam, never bundled imports", () => {
@@ -73,10 +86,7 @@ describe("WhyLearnHero — the montage in the hero slot", () => {
   it("controls: pause/play, replay, and a sound toggle that flips the muted property", () => {
     assert.ok(hero.includes('aria-label={playing ? "Pause montage" : "Play montage"}'), "pause/play with a spoken label");
     assert.ok(hero.includes('aria-label="Replay montage"'), "replay with a spoken label");
-    assert.ok(
-      hero.includes("film.currentTime = WHY_LEARN_MONTAGE_LOOP_START_S"),
-      "replay restarts the film at the play window's start",
-    );
+    assert.ok(hero.includes("film.currentTime = 0"), "replay restarts the film at 0");
     assert.ok(hero.includes('aria-pressed={soundOn}'), "sound toggle exposes its state");
     assert.ok(hero.includes("film.muted = !soundOn"), "the toggle drives the element's muted property");
     assert.ok(hero.includes('data-testid="why-learn-hero-video"'), "video testid for the E2E spec");

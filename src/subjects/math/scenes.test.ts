@@ -99,6 +99,86 @@ function givensOf(d: ClueSceneDescription): number[] {
       return [d.startYear, d.endYear];
     case "tower-measure":
       return [d.oldHeight, d.newHeight];
+    case "push-duel":
+      return [d.leftPower, d.rightPower];
+    case "tile-steps":
+      return d.rivalTilesPerStep === undefined
+        ? [d.tilesPerStep, d.hops]
+        : [d.tilesPerStep, d.hops, d.rivalTilesPerStep];
+    case "slide-stop":
+      return [d.slideTiles];
+    case "cup-shove":
+      return [d.slowSlide, d.fastSlide];
+    case "seesaw-lift":
+      return [];
+    case "magnet-pair":
+      return [];
+    case "drop-fall":
+      return [];
+    case "wind-up":
+      return [];
+    case "light-path":
+      return [];
+    case "rate-race":
+      return [d.firstMetres, d.firstSeconds, d.secondMetres, d.secondSeconds];
+    case "slope-pair":
+      return [d.firstRise, d.firstRun, d.secondRise, d.secondRun];
+    case "same-push":
+      return [d.leftBoxes, d.rightBoxes, d.leftForce, d.rightForce];
+    case "hill-carts":
+      return [d.lowStep, d.highStep];
+    case "sound-path":
+      return [];
+    case "energy-ledger":
+      return [d.change, d.out];
+    case "melt-freeze":
+      return [];
+    case "bend-test":
+      return [];
+    case "magnet-sort":
+      return [];
+    case "rebuild-pieces":
+      return [];
+    case "salt-melt":
+      return [];
+    case "dissolve":
+      return [];
+    case "particle-states":
+      return [];
+    case "water-cycle":
+      return [];
+    case "scale-balance":
+      return [];
+    case "bubble-reaction":
+      return [];
+    case "rust-change":
+      return [];
+    case "glow-rate":
+      return [];
+    case "atom-tally":
+      return [];
+    case "column-cousins":
+      return [];
+    case "compass-walk":
+      return [d.eastSteps, d.northSteps];
+    case "density-towns":
+      return [d.firstArea, d.secondArea];
+    case "two-roads":
+      return [d.passKm, d.passSpeed, d.valleyKm, d.valleySpeed];
+    case "zone-clocks":
+      return [d.hereHour, d.zonesAhead];
+    case "globe-vs-map":
+      return [];
+    case "great-circle":
+      return [];
+    case "cost-compare":
+      return [d.tollFuel, d.tollFee, d.freeFuel];
+    case "stack-drops":
+      return [d.dropHeight, d.peakHeight];
+    case "angle-sight":
+      return [d.distanceFt, d.angleDeg];
+    case "flow-counter":
+      return [d.perMinute, d.minutesPerDay];
   }
 }
 
@@ -145,7 +225,7 @@ function stepCountOf(d: ClueSceneDescription): number {
     case "unit-fit":
       return 3; // ant-step, finger-step, stride
     case "array-grid":
-      return 4; // split overlays, wide tick, narrow tick, final tick
+      return d.secondRows !== undefined ? 3 : 4; // two-fields variant: both counts, the difference tick; else split overlays, wide tick, narrow tick, final tick
     case "scale-line":
       return 2; // the kilometre marks, then the final tick
     case "percent-bar":
@@ -172,6 +252,89 @@ function stepCountOf(d: ClueSceneDescription): number {
       return d.countGap ? Math.ceil((d.endYear - d.startYear) / 10) : 3;
     case "tower-measure":
       return 3; // the bracket, the new-part fill, the final tick
+    case "push-duel":
+      return 3; // the arrows press, the block answers, the final tick
+    case "tile-steps":
+      return d.hops; // one step per hop
+    case "slide-stop":
+      return 3; // the slide, the ghost repeat, the final tick
+    case "cup-shove":
+      return 3; // the slower hit, the faster hit, the final tick
+    case "seesaw-lift":
+      return 3; // the press, the tip and lift, the final tick
+    case "magnet-pair":
+      return 3; // the flip, the spring apart, the final tick
+    case "drop-fall":
+      return 3; // the drop, the catch, the final tick
+    case "wind-up":
+      return 3; // the key turns, the roll, the final tick
+    case "light-path":
+      return 3; // the ray to the book, the ray onward (or the card), the final tick
+    case "rate-race": {
+      const winnerSeconds =
+        d.firstMetres / d.firstSeconds >= d.secondMetres / d.secondSeconds
+          ? d.firstSeconds
+          : d.secondSeconds;
+      return winnerSeconds + 1; // one hop per second of the winner's run, then the final tick
+    }
+    case "slope-pair":
+      return 3; // the first slope line, the second slope line, the final tick
+    case "same-push":
+      return 3; // the arrows press, both carts roll, the final tick
+    case "hill-carts":
+      return 3; // the height marks, the store stacks, the final tick
+    case "sound-path":
+      return 3; // the waves cross the air, the waves fade at the gap, the final tick
+    case "energy-ledger":
+      return 3; // the out bar, the stacked change bar, the in bar and tick
+    case "melt-freeze":
+      return 3;
+    case "bend-test":
+      return 3;
+    case "magnet-sort":
+      return 3;
+    case "rebuild-pieces":
+      return 3;
+    case "salt-melt":
+      return 3;
+    case "dissolve":
+      return 3;
+    case "particle-states":
+      return 3;
+    case "water-cycle":
+      return 3;
+    case "scale-balance":
+      return 3;
+    case "bubble-reaction":
+      return 3;
+    case "rust-change":
+      return 3;
+    case "glow-rate":
+      return 3;
+    case "atom-tally":
+      return 3;
+    case "column-cousins":
+      return 3;
+    case "compass-walk":
+      return 3; // the east steps, the north step and landing mark, the final tick
+    case "density-towns":
+      return 3; // the first town's cells, the second town's cells, the final tick
+    case "two-roads":
+      return 3; // both riders ride, the clocks fill, the final tick
+    case "zone-clocks":
+      return 3; // the far clock spins on, the day arc, the final tick
+    case "globe-vs-map":
+      return 3; // the stretch marks, the true land, the final tick
+    case "great-circle":
+      return 3; // the globe arc, the flat-map curve, the final tick
+    case "cost-compare":
+      return 3; // the toll stacks join, the free stack stands beside, the final tick
+    case "stack-drops":
+      return 8; // eight stacking bands, the last carrying the final tick
+    case "angle-sight":
+      return 3; // the full sight line, the height bracket, the final tick
+    case "flow-counter":
+      return 3; // the minute row, the day field, the power bars + tick
   }
 }
 
