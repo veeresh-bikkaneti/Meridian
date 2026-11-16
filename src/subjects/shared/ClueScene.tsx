@@ -55,6 +55,7 @@ import { seeded } from "./clue-scene-easing";
 import {
   ArrayGridScene,
   BendTestScene,
+  BubbleReactionScene,
   BusBoardingScene,
   MeltFreezeScene,
   PackBoxesScene,
@@ -63,6 +64,7 @@ import {
   PushDuelScene,
   RateRaceScene,
   SamePushScene,
+  ScaleBalanceScene,
   ScaleLineScene,
   ShareBarScene,
   TileStepsScene,
@@ -74,20 +76,24 @@ import {
   DropFallScene,
   FractionBarScene,
   FractionMeasureScene,
+  GlowRateScene,
   HillCartsScene,
   MagnetSortScene,
   MapScaleScene,
   PlaceCompareScene,
   PlaceValueScene,
   RebuildPiecesScene,
+  RustChangeScene,
   SlideStopScene,
   SlopePairScene,
   SoundPathScene,
   TimelineLineScene,
 } from "./clue-scene-kinds-b";
 import {
+  AtomTallyScene,
   BearingDiagramScene,
   ChunkShareScene,
+  ColumnCousinsScene,
   DissolveScene,
   EnergyLedgerScene,
   LightPathScene,
@@ -482,6 +488,12 @@ const SUMMARY_STAGGER: Record<ClueSceneDescription["kind"], number> = {
   dissolve: 0.8,
   "particle-states": 0.8,
   "water-cycle": 0.8,
+  "scale-balance": 0.8,
+  "bubble-reaction": 0.8,
+  "rust-change": 0.8,
+  "glow-rate": 0.8,
+  "atom-tally": 0.8,
+  "column-cousins": 0.8,
 };
 
 /** The summary clip's URL (public/audio/subjects/, manifest.json). */
@@ -632,6 +644,18 @@ function SceneArt({
       return <ParticleStatesScene description={description} phase={phase} stepDelay={stepDelay} />;
     case "water-cycle":
       return <WaterCycleScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "scale-balance":
+      return <ScaleBalanceScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "bubble-reaction":
+      return <BubbleReactionScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "rust-change":
+      return <RustChangeScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "glow-rate":
+      return <GlowRateScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "atom-tally":
+      return <AtomTallyScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "column-cousins":
+      return <ColumnCousinsScene description={description} phase={phase} stepDelay={stepDelay} />;
   }
 }
 

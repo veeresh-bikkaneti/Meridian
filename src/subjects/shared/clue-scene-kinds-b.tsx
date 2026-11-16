@@ -1485,3 +1485,210 @@ export function RebuildPiecesScene({
     </>
   );
 }
+/* ── rust-change ─────────────────────────────────────────────
+   A metal bike that sat out in the rain. Setup follows the
+   prompt's givens only: the bike as drawn, rain marks above
+   it, and no rust anywhere — the prompt says it looks
+   different, but which change is never shown before the pick.
+   Solved: rain and air meet the frame again, and rust patches
+   bloom along it. */
+
+function BikeArt() {
+  return (
+    <>
+      <circle className="cs-line" cx="-52" cy="34" r="20" />
+      <circle className="cs-line" cx="52" cy="34" r="20" />
+      <circle className="cs-coin-inner" cx="-52" cy="34" r="2.4" />
+      <circle className="cs-coin-inner" cx="52" cy="34" r="2.4" />
+      <path className="cs-line" d="M-52 34 L-8 -8 L52 34 M-8 -8 L6 34 L-52 34 M-8 -8 L-16 -16 M30 -14 L52 34 M22 -16 L30 -14" />
+      <path className="cs-line cs-band" d="M-24 -18 Q-16 -21 -8 -18 M16 -19 Q24 -22 32 -18" />
+    </>
+  );
+}
+
+const RUST_PATCHES = [
+  { x: 118, y: 92, rx: 9, ry: 4.5 },
+  { x: 152, y: 76, rx: 7, ry: 4 },
+  { x: 188, y: 94, rx: 10, ry: 5 },
+  { x: 138, y: 108, rx: 6, ry: 3.5 },
+  { x: 204, y: 78, rx: 6, ry: 3.5 },
+];
+
+export function RustChangeScene({
+  description,
+  phase,
+  stepDelay,
+}: {
+  description: Extract<ClueSceneDescription, { kind: "rust-change" }>;
+  phase: ClueScenePhase;
+  /** Summary pacing: when present, step s's beat starts at
+   * stepDelay(s) instead of the film's own stagger. */
+  stepDelay?: (step: number) => number;
+}) {
+  void description;
+  const meetStart = stepDelay ? stepDelay(0) : 0.5;
+  const bloomStart = stepDelay ? stepDelay(1) : 1.4;
+  const tickStart = stepDelay ? stepDelay(2) : 2.3;
+  const groundY = 164;
+  return (
+    <>
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M24 30 Q160 26 296 30" style={delay(0.1)} />
+      <path className="cs-line cs-draw" pathLength={1} d={`M16 ${groundY} Q160 ${groundY + 4} 304 ${groundY}`} style={delay(0)} />
+      {/* Rain marks: the prompt's own given, drawn the same in
+          both phases. */}
+      {[72, 118, 164, 210, 248].map((sx, i) => (
+        <path
+          key={`rain-${i}`}
+          className="cs-line cs-soft cs-draw"
+          pathLength={1}
+          d={`M${sx} 44 L${sx - 4} 58`}
+          style={delay(0.3 + i * 0.08)}
+        />
+      ))}
+      {/* The bike, plain metal in setup. */}
+      <g transform="translate(160 96)">
+        <g className="cs-pop" style={delay(0.45)}>
+          <BikeArt />
+        </g>
+      </g>
+      {phase === "solved" ? (
+        <>
+          {/* Step 0: water drops and air swirls meet the frame. */}
+          {[0, 1, 2].map((i) => (
+            <g key={`drop-${i}`} transform={`translate(${128 + i * 32} 66)`}>
+              <g className="cs-slide" style={slideFrom(0, -18, meetStart + i * 0.16)}>
+                <path className="cs-tip" d="M0 -6 Q4 2 0 6 Q-4 2 0 -6 Z" />
+              </g>
+            </g>
+          ))}
+          {[0, 1].map((i) => (
+            <path
+              key={`air-${i}`}
+              className="cs-line cs-band cs-pop"
+              d={`M${196 + i * 22} ${58 + i * 10} Q${206 + i * 22} ${52 + i * 10} ${214 + i * 22} ${60 + i * 10}`}
+              style={delay(meetStart + 0.3 + i * 0.18)}
+            />
+          ))}
+          {/* Step 1: rust patches bloom along the frame. */}
+          {RUST_PATCHES.map((p, i) => (
+            <ellipse
+              key={`rust-${i}`}
+              className="cs-tip cs-pop"
+              cx={p.x}
+              cy={p.y}
+              rx={p.rx}
+              ry={p.ry}
+              style={delay(bloomStart + i * 0.14)}
+            />
+          ))}
+          <ellipse className="cs-ring" cx="160" cy="98" rx="86" ry="52" style={delay(tickStart + 0.4)} />
+          <text className="cs-tick cs-tick-final" x="160" y="34" style={delay(tickStart + 0.55)}>
+            ✓
+          </text>
+        </>
+      ) : null}
+    </>
+  );
+}
+
+/* ── glow-rate ───────────────────────────────────────────────
+   Two glow sticks, one in a warm-water bowl and one in an
+   ice-water bowl (the question's givens: the bowls are told
+   apart by the warmth waves and ice cubes the question itself
+   names). Setup: both sticks glow alike — neither is faded,
+   dimmed or marked. Solved: the warm stick works through its
+   glow and fades to dim while the cold one still glows. */
+
+function GlowBowlArt({ warm }: { warm?: boolean }) {
+  return (
+    <>
+      <path className="cs-line" d="M-40 6 Q0 16 40 6 L34 34 Q0 42 -34 34 Z" />
+      <path className="cs-line cs-soft" d="M-38 4 Q0 13 38 4" />
+      {warm ? (
+        <>
+          <path className="cs-line cs-band" d="M-14 -22 Q-10 -28 -14 -34 M2 -22 Q6 -28 2 -34" />
+        </>
+      ) : (
+        <>
+          <rect className="cs-pack" x="-18" y="-16" width="11" height="11" rx="2" transform="rotate(12 -12 -10)" />
+          <rect className="cs-pack" x="6" y="-14" width="11" height="11" rx="2" transform="rotate(-10 11 -8)" />
+        </>
+      )}
+    </>
+  );
+}
+
+export function GlowRateScene({
+  description,
+  phase,
+  stepDelay,
+}: {
+  description: Extract<ClueSceneDescription, { kind: "glow-rate" }>;
+  phase: ClueScenePhase;
+  /** Summary pacing: when present, step s's beat starts at
+   * stepDelay(s) instead of the film's own stagger. */
+  stepDelay?: (step: number) => number;
+}) {
+  void description;
+  const glowStart = stepDelay ? stepDelay(0) : 0.5;
+  const fadeStart = stepDelay ? stepDelay(1) : 1.4;
+  const tickStart = stepDelay ? stepDelay(2) : 2.3;
+  const groundY = 164;
+  const bowlY = 118;
+  const stick = (cx: number, dimmed: boolean, start: number) => (
+    <g transform={`translate(${cx} 92) rotate(-18)`}>
+      <g className="cs-pop" style={delay(start)}>
+        <rect className={dimmed ? "cs-stone cs-dim" : "cs-coin"} x="-5" y="-30" width="10" height="52" rx="5" />
+        <path className="cs-line cs-band" d="M-4 -12 Q0 -14 4 -12" />
+      </g>
+    </g>
+  );
+  const glowHalo = (cx: number, start: number) => (
+    <ellipse className="cs-ring-soft cs-pop" cx={cx} cy="88" rx="17" ry="34" style={delay(start)} />
+  );
+  return (
+    <>
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M24 30 Q160 26 296 30" style={delay(0.1)} />
+      <path className="cs-line cs-draw" pathLength={1} d={`M16 ${groundY} Q160 ${groundY + 4} 304 ${groundY}`} style={delay(0)} />
+      <g transform={`translate(92 ${bowlY})`}>
+        <g className="cs-pop" style={delay(0.35)}>
+          <GlowBowlArt warm />
+        </g>
+      </g>
+      <g transform={`translate(228 ${bowlY})`}>
+        <g className="cs-pop" style={delay(0.45)}>
+          <GlowBowlArt />
+        </g>
+      </g>
+      {phase === "setup" ? (
+        <>
+          {/* Both sticks glow alike: a halo on each, no fade. */}
+          {glowHalo(92, 0.6)}
+          {glowHalo(228, 0.7)}
+          {stick(92, false, 0.55)}
+          {stick(228, false, 0.65)}
+        </>
+      ) : (
+        <>
+          {/* Step 0: the warm stick's glow burns brighter. */}
+          <ellipse className="cs-ring cs-pop" cx="92" cy="88" rx="20" ry="38" style={delay(glowStart)} />
+          {stick(228, false, 0.3)}
+          {stick(92, false, 0.3)}
+          {/* Step 1: the warm stick fades — a dull shell lands
+              over the bright stick — while the cold stick's
+              halo still stands. */}
+          {glowHalo(228, fadeStart + 0.2)}
+          <g transform="translate(92 92) rotate(-18)">
+            <g className="cs-pop" style={delay(fadeStart)}>
+              <rect className="cs-stone" x="-5" y="-30" width="10" height="52" rx="5" />
+            </g>
+          </g>
+          <ellipse className="cs-ring" cx="92" cy="92" rx="30" ry="44" style={delay(tickStart + 0.4)} />
+          <text className="cs-tick cs-tick-final" x="92" y="34" style={delay(tickStart + 0.55)}>
+            ✓
+          </text>
+        </>
+      )}
+    </>
+  );
+}

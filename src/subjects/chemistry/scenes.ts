@@ -22,16 +22,18 @@
  * (public/audio/subjects/manifest.json carries the same
  * numbers). The summary sits in the solved-phase data path only.
  *
- * Coverage (expansion wave 7): ten items — all five ages 7-10
- * items and the five ages 10-18 states, mixtures and materials
- * items (eight new kinds: melt-freeze, bend-test, magnet-sort,
- * rebuild-pieces, salt-melt, dissolve, particle-states,
- * water-cycle; melt-freeze is shared by the melt and freeze
- * items through its freeze data, and dissolve by the dissolve
- * and identify items through its three-blocks data). The three
- * reactions items and all three ages 18+ items carry NO
- * description in this wave — they belong to wave 8 and stay
- * text-only here.
+ * Coverage (expansion waves 7-8): all sixteen items — the
+ * five ages 7-10 items, all eight ages 10-18 items and all
+ * three ages 18+ items. Wave 7 built ten (eight new kinds:
+ * melt-freeze, bend-test, magnet-sort, rebuild-pieces,
+ * salt-melt, dissolve, particle-states, water-cycle;
+ * melt-freeze is shared by the melt and freeze items through
+ * its freeze data, and dissolve by the dissolve and identify
+ * items through its three-blocks data). Wave 8 completes
+ * Chemistry 16/16 with the three reactions items and the
+ * three ages 18+ items (six new kinds: scale-balance,
+ * bubble-reaction, rust-change, glow-rate, atom-tally,
+ * column-cousins).
  */
 import type { ClueSceneDescription } from "../shared/clue-scene-types.ts";
 
@@ -203,6 +205,102 @@ export const CHEMISTRY_CLUE_SCENES: Record<string, ClueSceneDescription> = {
         { text: "Three unmarked blocks rest beside three glasses of water, and nothing marks which is which.", at: 3.52 },
         { text: "Drop one block into each glass: one block dissolves away, and the other two stay whole.", at: 9.81 },
         { text: "Whether each block dissolves in water is the test that tells the blocks apart!", at: 15.98 },
+      ],
+      beats: [0, 1, 1, 1],
+    },
+  },
+  "chemistry:reactions:weight": {
+    kind: "scale-balance",
+    labelSetup: "Two substances rest in jars on a scale.",
+    labelSolved: "The substances mix, the look changes, and the needle holds.",
+    summary: {
+      clip: "scale-balance.mp3",
+      duration: 17.12,
+      lines: [
+        { text: "Here is the clever way to watch the total weight.", at: 0 },
+        { text: "Two substances rest on the scale, ready to be mixed.", at: 3.15 },
+        { text: "Mix them together: the mix looks different, but nothing leaves and nothing is added.", at: 7.01 },
+        { text: "It stays the same \u2014 mixing changed the look, but the total weight did not change!", at: 12.15 },
+      ],
+      beats: [0, 1, 1, 1],
+    },
+  },
+  "chemistry:reactions:new-look": {
+    kind: "bubble-reaction",
+    labelSetup: "Two plain substances rest in jars at a counter.",
+    labelSolved: "The stirred mix bubbles and its look changes.",
+    summary: {
+      clip: "bubble-reaction.mp3",
+      duration: 17.25,
+      lines: [
+        { text: "Here is the clever way to read a changed look.", at: 0 },
+        { text: "Two plain substances rest at the shop counter, ready to stir together.", at: 3.2 },
+        { text: "Stir them together, and bubbles rise while the look of the mix changes.", at: 8.04 },
+        { text: "It might be a new substance \u2014 bubbles and a new look can mean a reaction happened!", at: 12.6 },
+      ],
+      beats: [0, 1, 1, 1],
+    },
+  },
+  "chemistry:reactions:rust": {
+    kind: "rust-change",
+    labelSetup: "A metal bike rests after sitting out in the rain.",
+    labelSolved: "Rust patches spread along the bike frame.",
+    summary: {
+      clip: "rust-change.mp3",
+      duration: 20.56,
+      lines: [
+        { text: "Here is the clever way to tell whether the bike's metal changed.", at: 0 },
+        { text: "A metal bike sat out in the rain, and now it looks different.", at: 4.06 },
+        { text: "Rain brings water, and the air brings oxygen, and together they meet the iron in the bike.", at: 8.03 },
+        { text: "Yes \u2014 iron exposed to oxygen and water turns to rust, so the material itself changed!", at: 14.43 },
+      ],
+      beats: [0, 1, 1, 1],
+    },
+  },
+  "chemistry:reactions:rate": {
+    kind: "glow-rate",
+    labelSetup: "Two glow sticks rest in two bowls of water.",
+    labelSolved: "One glow stick fades while the other still glows.",
+    summary: {
+      clip: "glow-rate.mp3",
+      duration: 20.42,
+      lines: [
+        { text: "Here is the clever way to see which glow stick fades first.", at: 0 },
+        { text: "Two glow sticks are the same, one in warm water and one in ice water.", at: 3.77 },
+        { text: "The warm-water stick works through its glow faster, because warmer particles react faster, and it fades while the cold one still glows.", at: 8.94 },
+        { text: "The one in warm water fades first!", at: 18.3 },
+      ],
+      beats: [0, 1, 1, 1],
+    },
+  },
+  "chemistry:reactions:mass": {
+    kind: "atom-tally",
+    labelSetup: "Atom dots stand in two clusters on a tally board.",
+    labelSolved: "The dots rearrange, and both sides still match.",
+    summary: {
+      clip: "atom-tally.mp3",
+      duration: 22.95,
+      lines: [
+        { text: "Here is the clever way to count what a reaction keeps.", at: 0 },
+        { text: "A simple reaction changes how the substances look, and the tally shows atoms on each side.", at: 3.61 },
+        { text: "Count the atoms on one side, then count them on the other: the reaction rearranges them, but none vanish and none appear.", at: 9.88 },
+        { text: "The same count on both sides \u2014 no atom vanished, so the count and the mass match!", at: 17.84 },
+      ],
+      beats: [0, 1, 1, 1],
+    },
+  },
+  "chemistry:reactions:explain": {
+    kind: "column-cousins",
+    labelSetup: "Two tiles stand in one column of a table grid.",
+    labelSolved: "Both tiles in the column spark in the same way.",
+    summary: {
+      clip: "column-cousins.mp3",
+      duration: 20.84,
+      lines: [
+        { text: "Here is the clever way a table column makes a prediction.", at: 0 },
+        { text: "Two elements sit in the same column, and one reacts with oxygen in a known way.", at: 4.04 },
+        { text: "Elements in the same column share the same outer-electron pattern, so the pattern points the same way for the other.", at: 9.66 },
+        { text: "It reacts in a similar way \u2014 the column pattern predicts it!", at: 17.34 },
       ],
       beats: [0, 1, 1, 1],
     },

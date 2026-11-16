@@ -1,7 +1,7 @@
 {
   "v": 1,
   "voice": "am_michael",
-  "note": "Narrated solved summaries for the math clue scenes (act 3). One clip per item; the script and per-line timings in src/subjects/math/scenes.ts are the source of truth and match the clips line for line. Rendered locally with the same voice and loudness targets as the journal narration (-18 LUFS, true peak -1.5 dBFS), 24 kHz mono MP3 at 64 kbps like the other in-app clips. Wave 1 (expansion) added the ten non-pilot clips in the same voice (am_michael), rendered the same way. The scenes wave (visual-questions Phase 1) added the nine wave-3 clips in the same voice, rendered the same way. Wave 2 (expansion) added the thirteen 10-18 clips in the same voice (am_michael), rendered the same way. Wave 3 (expansion) added the seven 18+ math and 7-10 general-knowledge clips in the same voice (am_michael), rendered the same way. Wave 4 (expansion) added the seven physics ages 7-10 clips in the same voice (am_michael), rendered the same way. Wave 5 (expansion) added the five remaining physics ages 7-10 clips in the same voice (am_michael), rendered the same way. Wave 6 (expansion) added the twelve physics ages 10-18 and 18+ clips in the same voice (am_michael), rendered the same way. Wave 7 (expansion) added the ten chemistry ages 7-10 and states/mixtures/materials ages 10-18 clips in the same voice (am_michael), rendered the same way.",
+  "note": "Narrated solved summaries for the math clue scenes (act 3). One clip per item; the script and per-line timings in src/subjects/math/scenes.ts are the source of truth and match the clips line for line. Rendered locally with the same voice and loudness targets as the journal narration (-18 LUFS, true peak -1.5 dBFS), 24 kHz mono MP3 at 64 kbps like the other in-app clips. Wave 1 (expansion) added the ten non-pilot clips in the same voice (am_michael), rendered the same way. The scenes wave (visual-questions Phase 1) added the nine wave-3 clips in the same voice, rendered the same way. Wave 2 (expansion) added the thirteen 10-18 clips in the same voice (am_michael), rendered the same way. Wave 3 (expansion) added the seven 18+ math and 7-10 general-knowledge clips in the same voice (am_michael), rendered the same way. Wave 4 (expansion) added the seven physics ages 7-10 clips in the same voice (am_michael), rendered the same way. Wave 5 (expansion) added the five remaining physics ages 7-10 clips in the same voice (am_michael), rendered the same way. Wave 6 (expansion) added the twelve physics ages 10-18 and 18+ clips in the same voice (am_michael), rendered the same way. Wave 7 (expansion) added the ten chemistry ages 7-10 and states/mixtures/materials ages 10-18 clips in the same voice (am_michael), rendered the same way. Wave 8 (expansion) added the six chemistry reactions and ages 18+ clips in the same voice (am_michael), rendered the same way.",
   "clips": {
     "skip-count": {
       "file": "skip-count.mp3",
@@ -457,6 +457,42 @@
       "file": "identify.mp3",
       "item": "chemistry:materials:identify",
       "duration": 20.76,
+      "lines": 4
+    },
+    "scale-balance": {
+      "file": "scale-balance.mp3",
+      "item": "chemistry:reactions:weight",
+      "duration": 17.12,
+      "lines": 4
+    },
+    "bubble-reaction": {
+      "file": "bubble-reaction.mp3",
+      "item": "chemistry:reactions:new-look",
+      "duration": 17.25,
+      "lines": 4
+    },
+    "rust-change": {
+      "file": "rust-change.mp3",
+      "item": "chemistry:reactions:rust",
+      "duration": 20.56,
+      "lines": 4
+    },
+    "glow-rate": {
+      "file": "glow-rate.mp3",
+      "item": "chemistry:reactions:rate",
+      "duration": 20.42,
+      "lines": 4
+    },
+    "atom-tally": {
+      "file": "atom-tally.mp3",
+      "item": "chemistry:reactions:mass",
+      "duration": 22.95,
+      "lines": 4
+    },
+    "column-cousins": {
+      "file": "column-cousins.mp3",
+      "item": "chemistry:reactions:explain",
+      "duration": 20.84,
       "lines": 4
     }
   }
