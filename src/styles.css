@@ -2058,6 +2058,162 @@
   }
 }
 
+/* --- Shared shell components (fix/ui-shared-shell): SiteHeader, Pill,
+   Badge, ErrorScreen. Shell dialect — theme + atlas tokens only. The
+   .home-v5 rules re-declare the home header's recipes at identical
+   values because --hv5-* exists only under .home-v5 / .board-v3 and
+   is light-only. Hit boxes stay ≥44px at every width: the compact
+   band shrinks type, never the hit box. The only motion is the shared
+   Button's, which the global reduced-motion rule already kills —
+   there is no app-wide Calm state (Calm is board-only), so these
+   components promise reduced-motion behaviour only. */
+.site-header-row {
+  display: flex;
+  align-items: center;
+  gap: 34px;
+  padding: 22px 0 18px;
+}
+.site-header-nav {
+  display: flex;
+  align-items: center;
+  gap: 34px;
+}
+.site-header-nav-link {
+  font-family: var(--font-atlas-body);
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  min-height: 44px;
+  padding: 6px 2px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--fg);
+  white-space: nowrap;
+}
+.site-header-nav-link:hover {
+  color: var(--atlas-brass-text);
+}
+.home-v5 .site-header-nav-link {
+  color: var(--hv5-ink);
+}
+.home-v5 .site-header-nav-link:hover {
+  color: var(--hv5-brown);
+}
+.site-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-left: auto;
+}
+.site-header-menu-button {
+  font-family: var(--font-atlas-body);
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  min-height: 44px;
+  padding: 11px 17px;
+  border-radius: 999px;
+  border: 1px solid var(--atlas-card-line);
+  background: var(--atlas-card);
+  color: var(--fg);
+  cursor: pointer;
+}
+.site-header-panel {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 4px;
+  background: var(--atlas-card);
+  border: 1px solid var(--atlas-card-line);
+  border-radius: 18px;
+  padding: 8px;
+  margin-top: 8px;
+}
+.site-header-panel .site-header-nav-link {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  text-align: left;
+}
+@media (min-width: 1024px) {
+  .site-header[data-nav-mode="inline"] .site-header-menu-button {
+    display: none;
+  }
+}
+@media (max-width: 1023.5px) {
+  .site-header[data-nav-mode="inline"] .site-header-nav {
+    display: none;
+  }
+  .site-header-row {
+    gap: 16px;
+  }
+}
+/* Compact band: the home ≤1080px squeeze gaps, with the UX seat's
+   12px type floor (the squeeze's 10.5px is under the 7–10 band's
+   reading floor; fit is re-checked in Phase 3 screenshots). */
+@media (min-width: 1024px) and (max-width: 1279.5px) {
+  .site-header-row {
+    gap: 16px;
+  }
+  .site-header-nav {
+    gap: 14px;
+  }
+  .site-header-nav-link {
+    font-size: 12px;
+    letter-spacing: 0.06em;
+  }
+}
+
+.site-pill,
+.site-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  border-radius: 999px;
+  border: 1px solid var(--atlas-card-line);
+  background: var(--atlas-card);
+  color: var(--atlas-brass-text-sm);
+  font-family: var(--font-atlas-body);
+  font-size: 14px;
+  font-weight: 700;
+  padding: 6px 12px;
+  white-space: nowrap;
+}
+.site-badge--done {
+  background: var(--surface-2);
+  border-color: var(--line);
+  color: var(--fg);
+}
+
+.error-screen-panel {
+  padding: 24px;
+  margin-top: 24px;
+}
+.error-screen-eyebrow {
+  color: var(--error);
+}
+.error-screen-message {
+  margin-top: 8px;
+  font-family: var(--font-atlas-body);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--fg);
+}
+.error-screen-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+@media (max-width: 560px) {
+  .error-screen-actions {
+    flex-direction: column;
+  }
+  .error-screen-actions > * {
+    width: 100%;
+  }
+}
+
 .mode-title {
   font-family: var(--font-atlas-display);
 }
