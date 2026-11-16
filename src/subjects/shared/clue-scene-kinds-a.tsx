@@ -707,7 +707,8 @@ export function TileStepsScene({
   if (rivalTilesPerStep === undefined) {
     const tileW = 29;
     const x0 = 44;
-    const tiles = tilesPerStep * hops;
+    // Setup lays one push's tiles only; the full track is the answer.
+    const tiles = phase === "setup" ? tilesPerStep : tilesPerStep * hops;
     const finalX = x0 + tiles * tileW;
     return (
       <>
@@ -1218,7 +1219,9 @@ export function RateRaceScene({
   const hops = fasterIsFirst ? firstSeconds : secondSeconds;
   const x0 = 36;
   const pxPerMetre = 24;
-  const bridgeX = x0 + (fasterIsFirst ? firstMetres : secondMetres) * pxPerMetre;
+  // Setup plants the bridge at a neutral, unscaled spot; which cart's
+  // metres set it is the answer, so it moves to scale on the solve.
+  const bridgeX = phase === "solved" ? x0 + (fasterIsFirst ? firstMetres : secondMetres) * pxPerMetre : 250;
   const laneA = 96;
   const laneB = 148;
   const hopStart = (h: number) => (stepDelay ? stepDelay(h) : 0.4 + h * 0.7);

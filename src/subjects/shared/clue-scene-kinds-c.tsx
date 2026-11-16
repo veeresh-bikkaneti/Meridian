@@ -543,7 +543,9 @@ export function JourneyLineScene({
     const perHour = totalKm / hours;
     const hops = Math.round(targetKm / perHour);
     const hopX = (h: number) => x0 + (h / hops) * (x1 - x0);
-    const knownX = x0 + (totalKm / targetKm) * (x1 - x0);
+    // Setup plants the known stretch's flag at a neutral, unscaled
+    // spot; it moves to scale only once the case is solved.
+    const knownX = x0 + (phase === "solved" ? totalKm / targetKm : 0.45) * (x1 - x0);
     const hopStart = (s: number) => (stepDelay ? stepDelay(s) : 0.4 + s * 0.5);
     return (
       <>
@@ -641,8 +643,9 @@ export function SpendThenGroupScene({
         <path className="cs-line" d="M238 44 Q238 32 240 26 Q262 23 284 26 Q286 32 286 44" />
         <path className="cs-line" d="M240 44 Q262 47 284 44" />
       </g>
-      {/* Empty cups along the bottom. */}
-      {Array.from({ length: groups }, (_, g) => {
+      {/* One empty cup in setup (the group size); the rest of the
+          cups, one per group, come with the solve. */}
+      {Array.from({ length: phase === "setup" ? 1 : groups }, (_, g) => {
         const p = groupPos(g);
         return (
           <path
@@ -1851,11 +1854,16 @@ export function GlobeVsMapScene({
     <>
       <path className="cs-line cs-soft cs-draw" pathLength={1} d="M24 28 Q160 24 296 28" style={delay(0.1)} />
       <path className="cs-line cs-draw" pathLength={1} d="M16 172 Q160 176 304 172" style={delay(0)} />
-      {/* The globe, left: a circle with its lands at true shape. */}
-      <circle className="cs-line cs-draw" pathLength={1} cx="82" cy="100" r="58" style={delay(0.15)} />
-      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M28 82 Q82 92 136 82 M28 120 Q82 130 136 120" style={delay(0.25)} />
-      <g className="cs-pop" style={delay(0.45)}>{polarLand(82, 62, 17, 9)}</g>
-      <g className="cs-pop" style={delay(0.55)}>{greatLand(86, 112, 30, 24)}</g>
+      {/* The globe, left: a circle with its lands at true shape.
+          Its true sizes are the answer, so it comes with the solve. */}
+      {phase === "solved" ? (
+        <>
+          <circle className="cs-line cs-draw" pathLength={1} cx="82" cy="100" r="58" style={delay(0.15)} />
+          <path className="cs-line cs-soft cs-draw" pathLength={1} d="M28 82 Q82 92 136 82 M28 120 Q82 130 136 120" style={delay(0.25)} />
+          <g className="cs-pop" style={delay(0.45)}>{polarLand(82, 62, 17, 9)}</g>
+          <g className="cs-pop" style={delay(0.55)}>{greatLand(86, 112, 30, 24)}</g>
+        </>
+      ) : null}
       {/* The flat map, right: a sheet whose polar land already
           stretches wide — the look the prompt itself states. */}
       <path className="cs-line cs-draw" pathLength={1} d="M176 48 Q238 44 300 48 Q303 100 300 152 Q238 156 176 152 Q173 100 176 48 Z" style={delay(0.2)} />

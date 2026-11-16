@@ -194,7 +194,7 @@ export const SOCIAL_STUDIES_CLUE_SCENES: Record<string, ClueSceneDescription> = 
   },
   "social-studies:region:flat-map-area": {
     kind: "globe-vs-map",
-    labelSetup: "A globe rests beside a flat map of the same lands.",
+    labelSetup: "A flat map shows two lands side by side.",
     labelSolved: "The flat map's stretch is marked, and a true land stands over it.",
     summary: {
       clip: "flat-map.mp3",

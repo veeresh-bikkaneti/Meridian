@@ -647,7 +647,7 @@ export const MATH_CLUE_SCENES: Record<string, ClueSceneDescription> = {
     total: 19,
     fixedCost: 4,
     perGroup: 3,
-    labelSetup: "Coins wait in a pile beside empty cups.",
+    labelSetup: "Coins wait in a pile beside one empty cup.",
     labelSolved: "The one-off charge is paid, and the rest fall into cup-priced groups.",
     summary: {
       clip: "two-step.mp3",
