@@ -374,7 +374,7 @@
       "code": "3.NF.A.3",
       "source": "https://www.thecorestandards.org/Math/Content/3/NF/"
     },
-    "why": "Both pizzas are the same size. One friend cut a pizza into 2 pieces and took 1; another cut theirs into 4 pieces and took 2. Who has more, or do they have the same amount?",
+    "why": "Both pizzas are the same size. One friend cut a pizza into 2 pieces and took 1; another cut theirs into 4 pieces and took 2. Who got more pizza, or is it a tie?",
     "buildsOn": [
       "math-number:fractions:number-line"
     ],
