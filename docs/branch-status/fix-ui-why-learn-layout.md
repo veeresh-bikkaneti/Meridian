@@ -117,3 +117,14 @@ write lands.
 - Open questions: none for the owner from this stream.
 - Ruled out: editing `SubjectPicker.tsx` for item 17 (frozen by
   PR 515); rewriting clue text for item 19 (educator's call).
+
+## CI cure (2026-11-16)
+
+- CI build failed on 2 subtests of `scripts/e2e-telemetry-guard.test.mjs`
+  ((c) + (c2) pin): the item-22 montage recheck spec calls
+  `browser.newContext(` but was not listed in the guard's
+  `CONTEXT_FILES`. The spec already imports and calls
+  `serveBuiltArtifact` from `./helpers`, so the cure is registration
+  only — one line added to `CONTEXT_FILES`; no spec behaviour changed.
+- Verified locally: telemetry-guard suite 6/6 pass · `lint:subjects`
+  GATE PASSED.
