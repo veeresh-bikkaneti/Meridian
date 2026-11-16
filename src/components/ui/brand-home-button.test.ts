@@ -6,11 +6,15 @@
  * shared "home-button" testid. Rendered with react-dom/server
  * (the repo's node harness has no DOM), modelled on
  * home-button.test.ts, which stays untouched.
+ * fix/header-consistency-all-screens adds the `to="/"` link mode
+ * (the /board header is a real route, so its brand control is a
+ * router link, exactly as HomeButton's `to` mode is).
  */
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
+import { createMemoryHistory, createRootRoute, createRouter, RouterProvider } from "@tanstack/react-router";
 import { BrandHomeButton, BRAND_HOME_LABEL } from "./home-button.ts";
 
 describe("BrandHomeButton", () => {
@@ -54,6 +58,22 @@ describe("BrandHomeButton", () => {
     assert.match(html, /-ml-3/);
     assert.match(html, /data-testid="home-button-custom"/);
     assert.match(html, /aria-label="Meridian home"/);
+  });
+
+  it("link mode: an <a href=\"/\"> named exactly Meridian home inside a router (the /board header)", async () => {
+    const root = createRootRoute({ component: () => createElement(BrandHomeButton, { to: "/" }) });
+    const router = createRouter({
+      routeTree: root,
+      history: createMemoryHistory({ initialEntries: ["/board"] }),
+    });
+    await router.load();
+    const html = renderToStaticMarkup(createElement(RouterProvider, { router } as never));
+    assert.match(html, /<a [^>]*href="\/"/);
+    assert.doesNotMatch(html, /<button/);
+    assert.match(html, /aria-label="Meridian home"/);
+    assert.match(html, /data-testid="home-button"/);
+    assert.match(html, /<span class="brand-home-word">MERIDIAN<\/span>/);
+    assert.match(html, /<svg class="brand-home-mark"/);
   });
 
   it("is not HomeButton: no House icon, no visible Home label text", () => {

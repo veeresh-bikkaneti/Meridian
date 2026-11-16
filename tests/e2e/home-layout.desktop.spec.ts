@@ -16,10 +16,11 @@ import { fulfillFlagsOn } from "./detective-u10";
  * - cards in one row have one height;
  * - with Review off (2 spot cards) the spot row is 2 full columns;
  * - on Home's destinations the home control is at least 44×44 and
- *   none of the old names is left; on the ScreenShell destinations
- *   (Why Learn picker, Country list) it is named exactly
- *   "Meridian home" (fix/header-logo-home), and on the rest
- *   (Cold Trail, GeoDetective, /credits) exactly "Home".
+ *   none of the old names is left; on the header destinations
+ *   (Why Learn picker, Country list — fix/header-logo-home; Cold
+ *   Trail, GeoDetective — fix/header-consistency-all-screens) it is
+ *   named exactly "Meridian home", and on the rest (/credits)
+ *   exactly "Home".
  *
  * Runs on the built artifact like the rest of tests/e2e; it reads layout
  * only, so it needs no map interaction. The owner's playtest (real globe,
@@ -142,12 +143,12 @@ for (const vp of VIEWPORTS) {
 
     await page.getByRole("button", { name: "Cold Trail: Start the trail" }).click();
     await expect(page.getByTestId("coldtrail-screen")).toBeVisible({ timeout: 30_000 });
-    await expectHomeControl(page, `${tag} Cold Trail`);
-    await page.getByRole("button", { name: "Home", exact: true }).click();
+    await expectHomeControl(page, `${tag} Cold Trail`, "button", "Meridian home");
+    await page.getByRole("button", { name: "Meridian home", exact: true }).click();
 
     await page.getByRole("button", { name: "GeoDetective: Solve a mystery" }).click();
     await expect(page.getByTestId("end-game-button")).toBeVisible({ timeout: 45_000 });
-    await expectHomeControl(page, `${tag} GeoDetective`);
+    await expectHomeControl(page, `${tag} GeoDetective`, "button", "Meridian home");
 
     // The harness serves only the root path; reach /credits the way a
     // player does, through the footer link (credits.desktop.spec.ts).

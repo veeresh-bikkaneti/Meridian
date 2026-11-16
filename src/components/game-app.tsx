@@ -98,7 +98,7 @@ import {
 import { Suspense, lazy, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type KeyboardEvent as ReactKeyboardEvent, type MouseEvent as ReactMouseEvent, type ReactNode, type RefObject } from "react";
 import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
-import { HomeButton } from "@/components/ui/home-button";
+import { BrandHomeButton, HomeButton } from "@/components/ui/home-button";
 import { ScreenShell } from "@/components/ui/screen-shell";
 import { RunStartNotice } from "@/components/run-start-notice";
 import { QuestionBubble, type BubbleViewState } from "./question-bubble";
@@ -3902,7 +3902,7 @@ export function GameApp() {
       <>
         {mapModeAnnouncer}
         <main className="mx-auto w-full max-w-3xl px-5 py-8">
-          <HomeButton onHome={() => setMenu(null)} variant="secondary" />
+          <BrandHomeButton onHome={() => setMenu(null)} className="-ml-3" />
           <h1
             ref={challengeMenuHeadingRef}
             tabIndex={-1}

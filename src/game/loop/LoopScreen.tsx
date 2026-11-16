@@ -17,7 +17,7 @@ import { shareLoopText } from "@/game/share";
 import { isNewBuildDeployed } from "@/game/build-staleness";
 import { calendarDate } from "@/game/daily";
 import { Button } from "@/components/ui/button";
-import { HomeButton } from "@/components/ui/home-button";
+import { BrandHomeButton, HomeButton } from "@/components/ui/home-button";
 import { SoundToggle } from "@/components/SoundToggle";
 import { ShareButton } from "@/components/share-button";
 import { GuessInput } from "./guess-input";
@@ -942,7 +942,7 @@ export function LoopScreen({
     <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 py-8">
       <div className="screen-home-bar -mx-5 flex items-center justify-between gap-3 px-5 py-2">
         <div className="flex items-center gap-2">
-          <HomeButton onHome={onLeave} />
+          <BrandHomeButton onHome={onLeave} className="-ml-3" />
           {store && load.phase === "ready" && !endedSummary ? (
             <Button
               variant="secondary"

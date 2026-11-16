@@ -363,8 +363,8 @@ test("reload proof: wiped open flags do not auto-open an edition after reload", 
   // assertion here: Cold Trail renders a loop-map of its own.)
   await expect(page.getByTestId("loop-screen")).toHaveCount(0);
   expect(await localGet(page, "meridian.loop.open")).toBe("1");
-  // Leave Cold Trail (its Home control clears the flag), then Home renders.
-  await page.getByRole("button", { name: "Home", exact: true }).click();
+  // Leave Cold Trail (its brand control clears the flag), then Home renders.
+  await page.getByRole("button", { name: "Meridian home", exact: true }).click();
   await expect(page.getByTestId("home-heading")).toBeVisible({ timeout: 20_000 });
   await expect(page.getByTestId("deck-due-count")).toHaveText("1 card due");
   await page.evaluate(() => {

@@ -61,7 +61,12 @@ export type HomeButtonProps = Common &
  * Radhae 2026-11-16). The homepage header (game-app.tsx, .hv5-brand)
  * carries the compass + MERIDIAN wordmark on the left, clicking it
  * goes home, and there is no "Home" pill there; the shell screens
- * now match it.
+ * now match it. fix/header-consistency-all-screens (same day) carries
+ * the same control to every remaining screen header: GeoDetective
+ * (LoopScreen), Cold Trail (TrailScreen), the Challenge-a-friend
+ * region picker menu, and the /board route — the route passes
+ * `to="/"` and renders a router <Link>, like HomeButton's `to` mode;
+ * the in-app screens pass their existing `onHome` callback.
  *
  * - Accessible name is exactly BRAND_HOME_LABEL ("Meridian home"),
  *   via aria-label, matching the homepage brand button. The lockup
@@ -87,13 +92,12 @@ const BRAND_BASE =
   "outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-solid focus-visible:outline-current";
 
 export type BrandHomeButtonProps = {
-  onHome: () => void;
   className?: string;
   /** Defaults to "home-button"; see the contract note above. */
   testId?: string;
-};
+} & ({ onHome: () => void; to?: never } | { to: "/"; onHome?: never });
 
-export function BrandHomeButton({ onHome, className, testId = "home-button" }: BrandHomeButtonProps) {
+export function BrandHomeButton({ className, testId = "home-button", ...rest }: BrandHomeButtonProps) {
   const cls = cn(BRAND_BASE, className);
   const mark = createElement(
     "svg",
@@ -115,9 +119,21 @@ export function BrandHomeButton({ onHome, className, testId = "home-button" }: B
     createElement("circle", { cx: "24", cy: "24", r: "3.4", fill: "#F6F1E3", stroke: "#8A6D2F", strokeWidth: "1.2" }),
   );
   const word = createElement("span", { className: "brand-home-word" }, "MERIDIAN");
+  if ("to" in rest && rest.to) {
+    // Real routes (the /board header, fix/header-consistency-all-screens)
+    // pass `to="/"` and the brand control renders a router <Link> — the
+    // same link semantics HomeButton's `to` mode carries, with the brand
+    // lockup and name instead of the pill. Link's prop types omit
+    // data-* / aria-* attributes; it forwards them to the <a>.
+    const linkProps = { to: rest.to, className: cls, "data-testid": testId, "aria-label": BRAND_HOME_LABEL } as {
+      to: "/";
+      className: string;
+    };
+    return createElement(Link, linkProps, mark, word);
+  }
   return createElement(
     "button",
-    { type: "button", className: cls, "data-testid": testId, "aria-label": BRAND_HOME_LABEL, onClick: onHome },
+    { type: "button", className: cls, "data-testid": testId, "aria-label": BRAND_HOME_LABEL, onClick: rest.onHome },
     mark,
     word,
   );

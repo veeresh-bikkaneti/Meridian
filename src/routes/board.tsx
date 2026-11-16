@@ -27,7 +27,7 @@ import { computeLayout } from "@/board/status-core";
 import { TrailView, lowerFirst } from "@/board/trail-view";
 import { FeatureRequestForm } from "@/board/feature-request-form";
 import { isEnabled, loadFlags } from "@/lib/flags";
-import { HomeButton } from "@/components/ui/home-button";
+import { BrandHomeButton } from "@/components/ui/home-button";
 import "@/board/board.css";
 
 const MoleculeMap = lazy(() => import("@/board/molecule-map"));
@@ -325,9 +325,14 @@ function BoardPage() {
       ) : null}
       <div className="v3-wrap">
         <header className="v3-head">
-          <p className="v3-back">
-            <HomeButton to="/" />
-          </p>
+          {/* Brand bar (fix/header-consistency-all-screens): the same
+              homepage lockup that opens every other screen's header,
+              as a router link home — the board's old "Home" pill goes
+              away. The board's own controls (views, theme, calm) stay
+              in the view nav under the header, as before. */}
+          <div className="v3-back">
+            <BrandHomeButton to="/" className="-ml-3" />
+          </div>
           <p className="v3-eyebrow">For grown-ups</p>
           <h1 className="v3-title">See what we&rsquo;re making next</h1>
           <p className="v3-counts" data-testid="board-counts-line">

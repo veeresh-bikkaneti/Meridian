@@ -94,6 +94,24 @@ test("trail: snapshot picture, honestly labelled, when the live check cannot com
   expect(githubCalled).toBe(true);
 });
 
+test("header: the brand lockup opens the board header and links home (no Home pill)", async ({
+  page,
+}) => {
+  await openBoard(page);
+  // fix/header-consistency-all-screens: the board header opens with
+  // the same brand lockup as every other screen — a link named
+  // exactly "Meridian home" — and no control named "Home" remains.
+  const brand = page.getByRole("link", { name: "Meridian home", exact: true });
+  await expect(brand).toBeVisible();
+  const box = await brand.boundingBox();
+  expect(box, "brand link box").not.toBeNull();
+  expect(box!.height, "brand link height").toBeGreaterThanOrEqual(44);
+  await expect(page.getByRole("link", { name: "Home", exact: true })).toHaveCount(0);
+  await expect(page.getByRole("button", { name: "Home", exact: true })).toHaveCount(0);
+  await brand.click();
+  await expect(page.getByTestId("home-card-why-learn")).toBeVisible({ timeout: 30_000 });
+});
+
 test("the board renders the published file's words (fulfilled file, renamed story)", async ({
   page,
   context,

@@ -1747,7 +1747,10 @@
    eyebrow, title and the HUD readout lines (counts + Updated) form
    a single region, closed by a hairline before the views begin. */
 .board-v3 .v3-head { border-bottom: 2px solid var(--hv5-line-warm); padding-bottom: 16px; }
-.board-v3 .v3-back a { color: var(--hv5-brown-deep); text-decoration: none; font-weight: 600; }
+/* The back slot now carries the brand lockup link (BrandHomeButton):
+   its word keeps the shared brand styling — only the link underline
+   is suppressed here, as the old "Home" pill rule did. */
+.board-v3 .v3-back a { text-decoration: none; }
 .board-v3 .v3-eyebrow {
   text-transform: uppercase; letter-spacing: 0.14em; font-size: 0.78rem;
   color: var(--hv5-brown); font-weight: 700; margin: 18px 0 4px;

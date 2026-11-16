@@ -3,7 +3,7 @@ import { clampLat, normalizeLon } from "@/game/geo";
 import { formatLength, unitForLoopTarget } from "@/game/units";
 import { preloadTerritory } from "@/game/territory";
 import { Button } from "@/components/ui/button";
-import { HomeButton } from "@/components/ui/home-button";
+import { BrandHomeButton, HomeButton } from "@/components/ui/home-button";
 import { SoundToggle } from "@/components/SoundToggle";
 import { FlagImg } from "@/components/flag-img";
 import { flagEntry } from "@/lib/flag-registry";
@@ -493,7 +493,7 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
       <header>
         <div className="flex items-start justify-between gap-3">
           <div className="flex items-center gap-2">
-            <HomeButton onHome={onLeave} className="px-2" />
+            <BrandHomeButton onHome={onLeave} className="-ml-3" />
             {/* The one mute, top-left beside the screen's own buttons —
                 the home page's placement (owner, 2026-11-10). Same
                 master toggle everywhere: one persisted key
