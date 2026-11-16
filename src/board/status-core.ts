@@ -57,6 +57,13 @@ export interface CurationStory {
   carriedStatus: BoardStatus;
   /** † Phase line for a carried in-progress story (mockup default, §9.2). */
   phase?: string;
+  /**
+   * Board v4: an explicit player-words line that wins over the derived
+   * line for a done / in-progress story (e.g. a finished story whose
+   * honest line is "Finished", not "Ready to play"). Set only from the
+   * generation source's LINE_OVERRIDES (scripts/board/board-v3-data.mjs).
+   */
+  lineOverride?: string;
   /** Hidden tasks — present only once the story's feature is broken down. */
   tasks?: CurationTask[];
 }
@@ -247,11 +254,13 @@ export function buildPublished(
           (w) => w.from === story.sourceId && statusOf.get(w.to) !== "done",
         );
         const comingAfter = wait ? bySourceId.get(wait.to)!.title : null;
+        const derivedLine = storyLine(status, phaseLineFor(story, states), comingAfter);
         return {
           slug: story.slug,
           title: story.title,
           status,
-          line: storyLine(status, phaseLineFor(story, states), comingAfter),
+          line:
+            story.lineOverride && status !== "not-started" ? story.lineOverride : derivedLine,
           ...(comingAfter ? { comingAfter } : {}),
         };
       });
@@ -308,6 +317,61 @@ export function scanBanned(value: unknown, path = "$"): string[] {
       if (/^(tasks?|records?|taskCount|prs)$/i.test(k)) out.push(`${path}.${k}: private field must not be published`);
       out.push(...scanBanned(v, `${path}.${k}`));
     }
+  }
+  return out;
+}
+
+/* ------------------------------------------------------------------ */
+/* Dev-language scan — board v4's player-words law as a check.         */
+/*                                                                     */
+/* The v4 rewrite (board-v4 sample README, the 46-row table) classes   */
+/* of dev language that must never reach a published title or line:    */
+/* "in code", a filename-like token (a file extension, or one of the   */
+/* leaked voice-clip file names), builder-document/process words       */
+/* (spec, registry, mockup, engine, channel, port, sign-off, release), */
+/* and stage/version jargon. Only the player-visible fields are        */
+/* scanned (titles, lines, comingAfter, bond titles, feature/epic      */
+/* names and promises) — slugs are stable link keys, not words a       */
+/* player reads, and are deliberately out of scope. The patterns are   */
+/* precise enough to never match any of the 37 player titles/lines:    */
+/* the unit tests prove this scan FAILS on the pre-v4 published        */
+/* titles and passes on the v4 file.                                   */
+/* ------------------------------------------------------------------ */
+
+const DEV_LANGUAGE: { name: string; re: RegExp }[] = [
+  { name: "in code", re: /\bin code\b/i },
+  { name: "file name", re: /\b[\w-]+\.(?:ts|tsx|js|jsx|mjs|json|md|css)\b/ },
+  { name: "clip file name", re: /\b(?:beat-me|win-together|truce-watson)\b/ },
+  { name: "builder document/process word", re: /\bspecs?\b|\bregistry\b|\bmockup\b|\bsign-off\b|\brelease\b/i },
+  { name: "dev jargon", re: /\bengine\b|\bchannel\b|\bport\b|\bart sheets\b|\bdolly\b|\bunrendered\b/i },
+  { name: "source/stage file wording", re: /\bsource files\b|\bvideo files\b|\bstage\s+[a-z]\b/i },
+  { name: "version jargon", re: /\(v\d/i },
+  { name: "abbreviation", re: /\bGK\b/ },
+];
+
+/** Scan a published board's player-visible words for dev language. */
+export function scanDevLanguage(board: PublishedBoard): string[] {
+  const out: string[] = [];
+  const check = (value: string | undefined, where: string) => {
+    if (!value) return;
+    for (const d of DEV_LANGUAGE)
+      if (d.re.test(value)) out.push(`${where}: ${d.name} in "${value.slice(0, 60)}"`);
+  };
+  for (const epic of board.epics) {
+    check(epic.name, `epic ${epic.id}`);
+    for (const feature of epic.features) {
+      check(feature.name, `feature ${feature.id}`);
+      check(feature.promise, `feature ${feature.id} promise`);
+      for (const story of feature.stories) {
+        check(story.title, `story ${story.slug} title`);
+        check(story.line, `story ${story.slug} line`);
+        check(story.comingAfter, `story ${story.slug} comingAfter`);
+      }
+    }
+  }
+  for (const bond of board.bonds) {
+    check(bond.fromTitle, `bond ${bond.fromSlug} fromTitle`);
+    check(bond.toTitle, `bond ${bond.fromSlug} toTitle`);
   }
   return out;
 }

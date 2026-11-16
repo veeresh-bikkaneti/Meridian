@@ -22,7 +22,7 @@ describe("loadBoardStatus — published file only, honest fallback", () => {
       new Response(JSON.stringify(published), { status: 200 })) as unknown as typeof fetch;
     const loaded = await loadBoardStatus(fake, Date.parse(FALLBACK_BOARD.updatedAt));
     assert.equal(loaded.source, "generated");
-    assert.equal(loaded.board.counts.total, 46);
+    assert.equal(loaded.board.counts.total, 37);
   });
   it("falls back to the bundled copy — disclosed as manual — when the fetch fails", async () => {
     const fake = (async () => {
@@ -30,7 +30,7 @@ describe("loadBoardStatus — published file only, honest fallback", () => {
     }) as unknown as typeof fetch;
     const loaded = await loadBoardStatus(fake, Date.parse(FALLBACK_BOARD.updatedAt));
     assert.equal(loaded.source, "manual");
-    assert.equal(loaded.board.counts.total, 46);
+    assert.equal(loaded.board.counts.total, 37);
   });
   it("falls back when the published payload is malformed", async () => {
     const fake = (async () =>

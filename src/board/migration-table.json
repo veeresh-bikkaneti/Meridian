@@ -277,17 +277,17 @@
     },
     {
       "id": "math/math-sign-off-and-release-pr",
-      "snapshotStatus": "not-started",
-      "derivedStatus": "not-started",
-      "carriedStatus": "not-started",
+      "snapshotStatus": "done",
+      "derivedStatus": "done",
+      "carriedStatus": "done",
       "records": [],
       "recordStates": {}
     },
     {
       "id": "math/holmes-and-watson-in-math",
-      "snapshotStatus": "not-started",
-      "derivedStatus": "not-started",
-      "carriedStatus": "not-started",
+      "snapshotStatus": "done",
+      "derivedStatus": "done",
+      "carriedStatus": "done",
       "records": [],
       "recordStates": {}
     },
