@@ -1,6 +1,6 @@
 import { Component, createRef, type ReactNode } from "react";
 import { Button } from "@/components/ui/button";
-import { HomeButton } from "@/components/ui/home-button";
+import { BrandHomeButton } from "@/components/ui/home-button";
 import { markChunkReloadNotice } from "@/lib/chunk-recovery";
 import {
   clearPersistedScreenOpen,
@@ -212,7 +212,7 @@ export class MapErrorBoundary extends Component<
                 </p>
                 <div className="mt-4 flex justify-center gap-2">
                   {persisted ? (
-                    <HomeButton variant="secondary" onHome={this.goHome} />
+                    <BrandHomeButton onHome={this.goHome} />
                   ) : null}
                   <Button type="button" onClick={this.retry}>
                     Refresh
@@ -230,7 +230,7 @@ export class MapErrorBoundary extends Component<
                 </p>
                 <div className="mt-4 flex justify-center gap-2">
                   {persisted ? (
-                    <HomeButton variant="secondary" onHome={this.goHome} />
+                    <BrandHomeButton onHome={this.goHome} />
                   ) : null}
                   <Button type="button" onClick={this.retry}>
                     Try again

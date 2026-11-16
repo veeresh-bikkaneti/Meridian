@@ -121,7 +121,7 @@ describe("#210 boundary probes staleness and routes to the update prompt", () =>
       "the Home control must be gated to the persisted screens",
     );
     assert.ok(
-      render.includes("<HomeButton variant=\"secondary\" onHome={this.goHome} />"),
+      render.includes("<BrandHomeButton onHome={this.goHome} />"),
       "the card must offer the shared Home control beside Try again / Refresh (INV2)",
     );
     const goHome = segment(boundarySource, "private goHome", "render()");

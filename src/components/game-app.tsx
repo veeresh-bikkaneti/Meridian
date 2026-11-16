@@ -220,6 +220,10 @@ import {
 } from "./reveal-watchdog";
 import { isEnabled, loadFlags, getObservabilityEndpoint } from "@/lib/flags";
 import { consumeChunkReloadNotice, installChunkLoadRecovery } from "@/lib/chunk-recovery";
+import { consumeRetryScreen } from "@/lib/persisted-screen";
+import { hashForScreen, screenForHash } from "@/lib/screen-hash";
+import { geodetectiveConfig } from "@/game/age-profile/difficulty";
+import { SiteFooter } from "./ui/site-footer";
 import { withChunkTimeout } from "@/lib/chunk-timeout";
 import { resolveGlobeTierSplit } from "@/lib/globe-tier-split";
 import {
@@ -272,7 +276,7 @@ import {
   writeLoopOpen,
   peekLoopProgress,
 } from "@/game/loop/store";
-import { readColdTrailOpen, writeColdTrailOpen } from "@/game/coldtrail/store";
+import { writeColdTrailOpen } from "@/game/coldtrail/store";
 // F2 bundle split: GeoDetective (Loop) and Cold Trail are play-intent
 // screens — they render only when the player opens them (B7: never on
 // boot from a saved loopOpen flag — tap-in only). Both screens statically
@@ -1435,7 +1439,17 @@ export function GameApp() {
   // leave, and the saved loop (deck/progress/streak in meridian.loop.v2)
   // stays intact, so tapping in resumes the saved mystery where it left
   // off; only the boot auto-open is gone.
-  const [loopOpen, setLoopOpen] = useState<boolean>(false);
+  // The 368 rule (owner condition, Stream N Phase 2): the one
+  // exception to the bare-visit rule above is the error screen's
+  // Try again — its reload carries a one-shot session marker, and
+  // boot restores exactly that screen, exactly once. The marker is
+  // consumed here, before either open state initialises, so both
+  // screens read the one answer.
+  const bootRetryRef = useRef<string | null | undefined>(undefined);
+  if (bootRetryRef.current === undefined) {
+    bootRetryRef.current = consumeRetryScreen();
+  }
+  const [loopOpen, setLoopOpen] = useState<boolean>(() => bootRetryRef.current === "GeoDetective");
   // Subject picker: session-only open state, set by the why-learn
   // card tap. Never persisted — a reload lands on Home, like the
   // loop's tap-in rule.
@@ -1581,11 +1595,14 @@ export function GameApp() {
   }, [roundActive]);
   // Cold Trail (vertical slice): its own screen outside the run machine,
   // persisted under meridian.coldtrail.v2. The open flag
-  // (meridian.coldtrail.open) restores the screen after a reload — PR
-  // #203 panel: without it, the error boundary's reload-retry ("Your
-  // game is safe") returned a Trail player home while a GeoDetective
-  // player resumed. In-progress cases resume from the store.
-  const [coldTrailOpen, setColdTrailOpen] = useState<boolean>(() => readColdTrailOpen());
+  // (meridian.coldtrail.open) used to restore the screen after a
+  // reload (PR #203 panel). The 368 rule supersedes that for boot:
+  // a bare visit always lands on Home, and the only boot restore is
+  // the error screen's Try-again retry (the session marker consumed
+  // above, next to loopOpen). The flag is still written on tap-in /
+  // leave; in-progress cases resume from the store when the player
+  // taps in.
+  const [coldTrailOpen, setColdTrailOpen] = useState<boolean>(() => bootRetryRef.current === "Cold Trail");
   // Age profile (parent-set band). The profile object lives in state and
   // refreshes via the `ageprofile:changed` event — game screens never
   // touch the store directly. The settings screen (lazy) is the only
@@ -3439,6 +3456,58 @@ export function GameApp() {
     window.scrollTo(0, 0);
   }, [inAppScreen]);
 
+  // Item 8 (INV3/INV5): each screen carries its own hash (see
+  // src/lib/screen-hash.ts). A screen change pushes it, so Back
+  // returns to the previous screen instead of leaving the site;
+  // a popstate (Back / Forward) drives the screen state to match.
+  useEffect(() => {
+    const hash = hashForScreen(inAppScreen);
+    if (hash !== null && window.location.hash !== hash) {
+      window.history.pushState(null, "", hash);
+    }
+  }, [inAppScreen]);
+
+  // Open exactly one tap-in screen (or none, for Home), closing the
+  // others — the hash counterpart of the card taps, with the same
+  // persisted-flag writes the tap handlers make.
+  const applyHashScreen = useCallback((screen: string) => {
+    writeLoopOpen(screen === "geodetective");
+    setLoopOpen(screen === "geodetective");
+    writeColdTrailOpen(screen === "coldtrail");
+    setColdTrailOpen(screen === "coldtrail");
+    setSubjectsOpen(screen === "subjects");
+    setMenu(
+      screen === "menu:countries"
+        ? { kind: "countries" }
+        : screen === "menu:states"
+          ? { kind: "states" }
+          : null,
+    );
+  }, []);
+
+  useEffect(() => {
+    const onPopState = () => {
+      if (run !== null) return; // a run in progress owns the screen
+      const target = screenForHash(window.location.hash);
+      if (target !== null) applyHashScreen(target);
+    };
+    window.addEventListener("popstate", onPopState);
+    return () => window.removeEventListener("popstate", onPopState);
+  }, [run, applyHashScreen]);
+
+  // Deep link (INV5): a first visit carrying a screen hash opens
+  // the screen it names — unless the 368 retry restore already
+  // picked the first screen, or a saved run was restored over it.
+  const deepLinkAppliedRef = useRef(false);
+  useEffect(() => {
+    if (!ready || deepLinkAppliedRef.current) return;
+    deepLinkAppliedRef.current = true;
+    if (bootRetryRef.current !== null) return;
+    if (run !== null) return;
+    const target = screenForHash(window.location.hash);
+    if (target !== null && target !== "home") applyHashScreen(target);
+  }, [ready, run, applyHashScreen]);
+
   if (!ready) {
     // The boot splash lives in boot-splash.tsx: the index route
     // paints the very same component as its served-HTML fallback
@@ -4571,6 +4640,12 @@ function HeroTrekkerOverlay() {
   );
 }
 
+/** Item 30: the Home card spells the band's guess cap as a word,
+ *  read from the same difficulty table the loop's counter uses
+ *  (geodetectiveConfig) — never a hardcoded count. */
+const GUESS_CAP_WORDS: Record<number, string> = { 5: "Five", 6: "Six" };
+const guessCapWord = (cap: number): string => GUESS_CAP_WORDS[cap] ?? String(cap);
+
 /** Kid-friendly hints for each learning path, shown under the picker. */
 const DIFFICULTY_HINTS: Record<PickerDifficulty, string> = {
   easy: "Famous places — the spots every explorer starts with.",
@@ -5082,7 +5157,7 @@ function Choose({
               GeoDetective<span className="hv5-chip">Open</span>
             </h2>
             <p>
-              Five guesses, one mystery place. Each guess unlocks a clue — solve as many cases as
+              {guessCapWord(geodetectiveConfig(ageBand)?.guessCap ?? 5)} guesses, one mystery place. Each guess unlocks a clue — solve as many cases as
               you can.
             </p>
             {loopProgress.streak > 0 ? (

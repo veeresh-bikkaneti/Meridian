@@ -36,6 +36,58 @@ const OPEN_WRITERS: Record<string, (open: boolean) => void> = {
   GeoDetective: writeLoopOpen,
 };
 
+/**
+ * The 368 rule (owner condition, Stream N Phase 2, amending the
+ * restore behaviour above): a bare visit to `/` ALWAYS lands on
+ * Home, even if a case was left open. Boot therefore never reads
+ * the localStorage open flags to pick its first screen — the flags
+ * stay written on tap-in / leave as a record, nothing more. The one
+ * exception is the error screen's own Try again: it marks a
+ * one-shot retry in sessionStorage before reloading, and boot
+ * restores exactly that screen, exactly once. sessionStorage is
+ * the right store for it: it survives the retry reload but not a
+ * new visit, which is precisely the bare-visit line.
+ */
+const RETRY_SCREEN_KEY = "meridian.retry-screen";
+
+function readRetryMarker(): string | null {
+  try {
+    return sessionStorage.getItem(RETRY_SCREEN_KEY);
+  } catch {
+    return null;
+  }
+}
+
+function writeRetryMarker(surface: string): void {
+  try {
+    sessionStorage.setItem(RETRY_SCREEN_KEY, surface);
+  } catch {
+    // Storage blocked: the retry reload lands on Home, where the
+    // case is offered again — fail-open, never a trap.
+  }
+}
+
+function clearRetryMarker(): void {
+  try {
+    sessionStorage.removeItem(RETRY_SCREEN_KEY);
+  } catch {
+    // Fail-open, as above.
+  }
+}
+
+/**
+ * Boot's restore decision (the 368 rule): the surface named by a
+ * pending Try-again retry, or null — null means land on Home,
+ * whatever the persisted open flags say. One-shot: the marker is
+ * consumed, so a later bare visit cannot restore the screen again.
+ */
+export function consumeRetryScreen(): string | null {
+  const surface = readRetryMarker();
+  if (surface === null) return null;
+  clearRetryMarker();
+  return isPersistedScreen(surface) ? surface : null;
+}
+
 /** True when `surface` names a screen whose open state persists
  *  across visits (GeoDetective, Cold Trail). */
 export function isPersistedScreen(surface?: string): boolean {
@@ -59,4 +111,8 @@ export function clearPersistedScreenOpen(surface?: string): void {
 export function rearmPersistedScreenOpen(surface?: string): void {
   if (surface === undefined) return;
   OPEN_WRITERS[surface]?.(true);
+  // The 368 rule: the retry reload restores the screen through the
+  // one-shot session marker, not the persisted flag (a bare visit
+  // must land on Home even with the flag set).
+  if (isPersistedScreen(surface)) writeRetryMarker(surface);
 }

@@ -126,3 +126,97 @@ error, why prod is unaffected); if it is ours, it is fixed under INV1/INV2.
   Edges: `MapErrorBoundary` depends-on it; it depends-on the
   coldtrail and loop stores' open-flag writers. (Integrator folds
   this in at merge.)
+
+## Phase 2 (Stream N, on top of Phase 0.5)
+
+Stream S cherry-picked in: `920c9ddd` (shared shell components) +
+`4c7af0da` (lint:nav shell bans). Items:
+
+- **Item 8 — DONE.** Hash routes with `pushState`:
+  `src/lib/screen-hash.ts` maps game-app's `inAppScreen` values —
+  home `#home`, geodetective `#geodetective`, coldtrail
+  `#coldtrail`, subjects `#why-learn`, country/state lists
+  `#list/countries` / `#list/states`. A screen change pushes its
+  hash; `popstate` drives the screen state back (Back returns to
+  the previous screen, INV3); a first visit carrying a screen hash
+  opens the screen it names (INV5). Unmapped screens (a quiz run,
+  admin-1 drill-down — it needs a country id the hash does not
+  carry) push nothing; `#c=` challenge fragments and home section
+  fragments (`#home-about`, …) name no screen and are untouched.
+  Tests: `screen-hash.test.ts` (round-trip + non-screen fragments).
+- **368 rule — DONE, with targeted test.** A bare visit to `/`
+  always lands on Home even if a case was left open; the error
+  screen's Try again still reloads into that case. Boot no longer
+  reads the localStorage open flags for its first screen (they stay
+  written on tap-in/leave as a record). Try again writes a one-shot
+  sessionStorage marker (`meridian.retry-screen`, in
+  `src/lib/persisted-screen.ts`); boot's initialisers consume it
+  exactly once (`consumeRetryScreen`). This supersedes the
+  Phase 0.5 note above about PR 368: 368 is closed, its rule lives
+  here now, and #518's flag-clearing stands as the failure half
+  (INV1) beside it. Tests: three new cases in
+  `persisted-screen.test.ts` (bare visit with both flags set →
+  null; re-arm → restore once → null; unknown surface → null).
+  All 9 pass.
+- **Item 30, game-app half (Stream G's item) — DONE.** The Home
+  GeoDetective card reads its guess count from
+  `geodetectiveConfig(ageBand).guessCap` — the same band table the
+  loop's counter uses — spelled as a word ("Five"/"Six"). The
+  LoopScreen.tsx half is Stream G's.
+- **Item 10 — conclusion: explained by PR 520.** 520's root cause
+  (three field captures, build b2ef88a7): headless browsers have
+  no WebGL2, Cold Trail's map threw `GPUInitializationError` into
+  the app-level boundary, and the persisted-flag restore looped
+  it. 520 contains it at the map surface (LoopMapBoundary + the
+  static fallback). What I ran: read 520's body and evidence in
+  full; no headless repro was run in this sandbox in this pass.
+  The non-WebGL failure class (a lazy chunk failing) is the half
+  this PR's item 7 fix covers. Item 10 closes when 520 merges.
+- **Shared-shell adoption — partial.** Home's footer is now
+  `SiteFooter` (an exact mirror of the shipped footer: same
+  testids, labels, handlers). The error boundary's Home control is
+  `BrandHomeButton`, per the new lint ban on the retired pill.
+  `SiteHeader` on Home: not adopted — Home's hv5 header is the
+  design SiteHeader was built from, and swapping it is Stream S/W
+  territory, not a nav fix. `ErrorScreen` in MapErrorBoundary: not
+  adopted — ErrorScreen is a full page (PageColumn + SiteHeader);
+  the boundary is an overlay on a live screen, and its card
+  already meets INV2 (Home + Try again). Route-level error
+  surfaces are the ErrorScreen fit; recorded here as the reason.
+- **Item 9 — DEFERRED (share).** Mapped, not wired: the four
+  prompts live in four places with four seen-stores — Scout auto
+  notice (App state, event-driven), TutorialInvite (App state +
+  its seen flag), ReadAloudPrefPrompt (self-contained, own
+  asked-once store, rendered by the home component), the storyteller
+  greeting bubble (storyteller-home.tsx, own timers). The queue's
+  contract needs the host to supply per-prompt eligibility +
+  advance hooks; two of the four own their visibility inside child
+  components, so a safe wiring lifts that state first. Doing it
+  half-way would break INV4's one-at-a-time promise instead of
+  keeping it. UX flag recorded as instructed: the UX seat prefers
+  the read-aloud sheet earlier than third; the queue order stays
+  Scout notice → tour banner → read-aloud sheet → support bubble
+  per the statechart when this is picked up.
+- **Item 34 — DEFERRED (share), handed from Stream G with
+  evidence, plus what I measured:** the "A mystery is afoot" line
+  is storyteller home copy (`storyteller-home-copy.ts:56`); the
+  host mounts in the Home hero (game-app.tsx, StorytellerHomeHost)
+  and its send-off is an imperative overlay built to outlive the
+  navigation tap by up to ~2.5s (storyteller-home.tsx, "send-off
+  overlay (copy G3)") — that overlay riding over the freshly
+  opened case screen is the Clue 1 cover, and the fix belongs in
+  this shell layer (end or suppress the send-off when a game
+  screen opens), not in LoopScreen/TrailScreen. Background:
+  `.mode-screen::before` is `position: fixed; inset: 0` with a
+  continuous two-stop gradient (styles.css) — verified not the
+  ~700px hard line's source; the line's actual culprit is not yet
+  identified and needs a screenshot repro at the failing height.
+  Neither half fit the remaining share without passing the hard
+  stop; the integrator asks the owner.
+
+## Graph (Phase 2 additions)
+
+- Add node: `src/lib/screen-hash.ts` — the screen ↔ hash contract
+  (item 8, INV3/INV5). Edges: `game-app.tsx` depends-on it.
+- Amend node: `src/lib/persisted-screen.ts` — now also the 368
+  rule (one-shot retry marker; boot ignores the open flags).

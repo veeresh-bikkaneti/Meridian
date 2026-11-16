@@ -19,6 +19,7 @@ import { readLoopOpen, writeLoopOpen } from "../game/loop/store.ts";
 import { LOOP_OPEN_KEY } from "../game/loop/types.ts";
 import {
   clearPersistedScreenOpen,
+  consumeRetryScreen,
   isPersistedScreen,
   rearmPersistedScreenOpen,
 } from "./persisted-screen.ts";
@@ -134,5 +135,73 @@ test("storage failures stay fail-open: the clear and re-arm never throw", () => 
     writeLoopOpen(false);
   } finally {
     s.restore();
+  }
+});
+
+/**
+ * The 368 rule (owner condition, Stream N Phase 2): a bare visit to
+ * `/` always lands on Home even if a case was left open, while the
+ * error screen's Try again still reloads into that case. Boot's
+ * restore decision is consumeRetryScreen() — these tests drive it
+ * the way game-app's first render does.
+ */
+function stubSession(initial: Record<string, string> = {}) {
+  const data = { ...initial };
+  const fake: FakeStorage = {
+    getItem: (k) => (k in data ? data[k]! : null),
+    setItem: (k, v) => {
+      data[k] = v;
+    },
+    removeItem: (k) => {
+      delete data[k];
+    },
+  };
+  const prev = (globalThis as Record<string, unknown>).sessionStorage;
+  (globalThis as Record<string, unknown>).sessionStorage = fake;
+  return {
+    data,
+    restore: () => {
+      (globalThis as Record<string, unknown>).sessionStorage = prev;
+    },
+  };
+}
+
+test("368 rule: a bare visit lands on Home even with both cases left open", () => {
+  const s = stubStorage({ [COLDTRAIL_OPEN_KEY]: "1", [LOOP_OPEN_KEY]: "1" });
+  const sess = stubSession();
+  try {
+    // Both open flags set (cases left open), no retry marker:
+    // boot restores nothing — the visit lands on Home.
+    assert.equal(consumeRetryScreen(), null);
+    assert.equal(consumeRetryScreen(), null, "still nothing on a second read");
+  } finally {
+    s.restore();
+    sess.restore();
+  }
+});
+
+test("368 rule: Try again reloads into the failed case, exactly once", () => {
+  const s = stubStorage({ [COLDTRAIL_OPEN_KEY]: "1" });
+  const sess = stubSession();
+  try {
+    // The boundary's catch clears the flag; Try again re-arms.
+    clearPersistedScreenOpen("Cold Trail");
+    rearmPersistedScreenOpen("Cold Trail");
+    // The retry reload's boot restores Cold Trail…
+    assert.equal(consumeRetryScreen(), "Cold Trail");
+    // …and only that once: a later bare visit lands on Home.
+    assert.equal(consumeRetryScreen(), null);
+  } finally {
+    s.restore();
+    sess.restore();
+  }
+});
+
+test("368 rule: a retry marker for an unknown surface restores nothing", () => {
+  const sess = stubSession({ "meridian.retry-screen": "Subjects" });
+  try {
+    assert.equal(consumeRetryScreen(), null);
+  } finally {
+    sess.restore();
   }
 });
