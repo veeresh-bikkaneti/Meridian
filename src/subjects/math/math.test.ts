@@ -28,10 +28,11 @@ it("playable slice: wave 1 plus up to 10 wave-2 items per band", () => {
   const units = mathUnits();
   assert.equal(units.length, WAVE1_ITEM_IDS.length);
   // Wave 1 dealt 3 per band (9 total). Wave 2 adds 10 for 7-10 and 10
-  // for 10-18; 18+ has no unplayed rows left, so it stays at 3.
-  assert.equal(units.length, 29);
-  assert.equal(itemsForGroup("7-10").length, 13);
-  assert.equal(itemsForGroup("10-18").length, 13);
+  // for 10-18. Wave 3 adds the 24 overflow rows: 9 for 7-10 and 15 for
+  // 10-18; 18+ adds none in this stream, so it stays at 3.
+  assert.equal(units.length, 53);
+  assert.equal(itemsForGroup("7-10").length, 22);
+  assert.equal(itemsForGroup("10-18").length, 28);
   assert.equal(itemsForGroup("18+").length, 3);
 });
 
@@ -56,6 +57,15 @@ it("items filter by band — each band deals only its own items", () => {
     "math-number:division:unknown-factor",
     "math-number:division:remainders",
     "math-number:division:big-quotients",
+    "math-number:fractions:fair-parts",
+    "math-number:fractions:equivalent",
+    "math-number:fractions:compare-unlike",
+    "math-number:groups:arrays",
+    "math-applied:measure:longer-than",
+    "math-applied:measure:choose-unit",
+    "math-applied:measure:elapsed-time",
+    "math-applied:measure:perimeter",
+    "math-applied:measure:rect-area",
   ]);
   assert.deepEqual(ids("10-18"), [
     "math-number:tables:multi-digit",
@@ -71,6 +81,21 @@ it("items filter by band — each band deals only its own items", () => {
     "math-applied:rates:one-step",
     "math-applied:rates:two-step",
     "math-applied:trig:bearings",
+    "math-number:division:two-digit-divisors",
+    "math-number:fractions:add-unlike",
+    "math-applied:trig:missing-angle",
+    "math-number:place:decimal-shifts",
+    "math-applied:measure:volume-box",
+    "math-applied:geometry:coordinates",
+    "math-applied:geometry:pythagoras",
+    "math-applied:geometry:distance-points",
+    "math-applied:geometry:cylinder-volume",
+    "math-applied:rates:proportion",
+    "math-applied:rates:rearrange",
+    "math-applied:rates:linear-model",
+    "math-applied:trig:ratios",
+    "math-applied:trig:missing-side",
+    "math-applied:trig:triangle-area",
   ]);
   assert.deepEqual(ids("18+"), [
     "math-number:tables:mental-strategies",
@@ -169,29 +194,107 @@ it("each wave-2 numeric answer matches its derivation", () => {
   assert.equal(bearings.correct, "37°");
 });
 
-it("every wave-2 item sits in its own row's band", () => {
+it("every wave-3 item sits in its own row's band", () => {
   const rowsById = new Map(allMathRows().map((row) => [row.id, row]));
-  const wave1 = new Set([
-    "math-number:groups:skip-count",
-    "math-number:groups:equal-groups",
-    "math-number:tables:buses",
-    "math-number:tables:multi-digit",
-    "math-applied:measure:convert-metric",
-    "math-number:fractions:percent",
-    "math-number:tables:mental-strategies",
-    "math-number:fractions:combine-shares",
-    "math-applied:measure:survey-check",
-  ]);
-  let added = 0;
-  for (const unit of mathUnits()) {
-    if (wave1.has(unit.id)) continue;
-    added += 1;
-    const row = rowsById.get(unit.id);
-    assert.ok(row, `no row for ${unit.id}`);
-    assert.equal(unit.group, row.group, unit.id);
-    assert.ok(answerFor(unit.id), `no answer for ${unit.id}`);
+  // The 24 wave-3 ids, each with the band its row must carry.
+  const wave3Band: Record<string, "7-10" | "10-18"> = {
+    "math-number:fractions:fair-parts": "7-10",
+    "math-number:fractions:equivalent": "7-10",
+    "math-number:fractions:compare-unlike": "7-10",
+    "math-number:groups:arrays": "7-10",
+    "math-applied:measure:longer-than": "7-10",
+    "math-applied:measure:choose-unit": "7-10",
+    "math-applied:measure:elapsed-time": "7-10",
+    "math-applied:measure:perimeter": "7-10",
+    "math-applied:measure:rect-area": "7-10",
+    "math-number:division:two-digit-divisors": "10-18",
+    "math-number:fractions:add-unlike": "10-18",
+    "math-applied:trig:missing-angle": "10-18",
+    "math-number:place:decimal-shifts": "10-18",
+    "math-applied:measure:volume-box": "10-18",
+    "math-applied:geometry:coordinates": "10-18",
+    "math-applied:geometry:pythagoras": "10-18",
+    "math-applied:geometry:distance-points": "10-18",
+    "math-applied:geometry:cylinder-volume": "10-18",
+    "math-applied:rates:proportion": "10-18",
+    "math-applied:rates:rearrange": "10-18",
+    "math-applied:rates:linear-model": "10-18",
+    "math-applied:trig:ratios": "10-18",
+    "math-applied:trig:missing-side": "10-18",
+    "math-applied:trig:triangle-area": "10-18",
+  };
+  assert.equal(Object.keys(wave3Band).length, 24);
+  const unitIds = new Set(mathUnits().map((u) => u.id));
+  for (const [id, band] of Object.entries(wave3Band)) {
+    const row = rowsById.get(id);
+    assert.ok(row, `no row for ${id}`);
+    assert.equal(row.group, band, id);
+    assert.ok(unitIds.has(id), `not playable: ${id}`);
+    assert.ok(answerFor(id), `no answer for ${id}`);
   }
-  assert.equal(added, 20);
+});
+
+it("each wave-3 numeric answer matches its derivation", () => {
+  // id -> [recomputed value, displayed correct choice]
+  const recompute: Record<string, [number, string]> = {
+    "math-number:fractions:fair-parts": [1 / 4, "1/4"],
+    "math-number:groups:arrays": [4 * 5, "20"],
+    "math-applied:measure:longer-than": [92 - 86, "6"],
+    "math-applied:measure:elapsed-time": [50 - 15, "35"],
+    "math-applied:measure:perimeter": [4 + 3 + 4 + 3, "14"],
+    "math-applied:measure:rect-area": [5 * 3, "15"],
+    "math-number:division:two-digit-divisors": [Math.floor(157 / 12), "13"],
+    "math-number:place:decimal-shifts": [4.6 * 10, "46"],
+    "math-applied:measure:volume-box": [4 * 3 * 2, "24"],
+    "math-applied:geometry:coordinates": [9 - 2, "7"],
+    "math-applied:geometry:pythagoras": [Math.sqrt(6 * 6 + 8 * 8), "10"],
+    "math-applied:geometry:distance-points": [Math.sqrt(3 * 3 + 4 * 4), "5"],
+    "math-applied:geometry:cylinder-volume": [Math.round(3.14 * 2 * 2 * 5 * 10) / 10, "62.8"],
+    "math-applied:rates:proportion": [8 / 2, "4"],
+    "math-applied:rates:rearrange": [60 / 12, "5"],
+    "math-applied:trig:ratios": [3 / 5, "0.6"],
+    "math-applied:trig:missing-side": [9 * 1, "9"],
+    "math-applied:trig:triangle-area": [(1 / 2) * 10 * 8 * 0.5, "20"],
+  };
+  for (const [id, [expected, shown]] of Object.entries(recompute)) {
+    const entry = answerFor(id);
+    assert.ok(entry, id);
+    assert.equal(entry.value, expected, id);
+    assert.equal(entry.correct, shown, id);
+    assert.ok(entry.choices.includes(entry.correct), id);
+  }
+  // Two-digit divisors: the remainder behind the full-pallet count.
+  assert.equal(157 - 13 * 12, 1);
+  // Proportion: the same constant fills the second row too.
+  assert.equal(12 / 3, 4);
+  // Add-unlike: the displayed choice is the fraction itself (the float
+  // sum 1/2 + 1/3 differs from 5/6 in the last bit, so compare closely).
+  const addUnlike = answerFor("math-number:fractions:add-unlike");
+  assert.ok(addUnlike);
+  assert.equal(addUnlike.correct, "5/6");
+  assert.ok(Math.abs((addUnlike.value ?? 0) - (1 / 2 + 1 / 3)) < 1e-12);
+  // Linear model: the displayed choice names the day the value reaches.
+  const linear = answerFor("math-applied:rates:linear-model");
+  assert.ok(linear);
+  assert.equal(linear.value, 90 / 15);
+  assert.equal(linear.correct, "Day 6");
+  // Missing angle: the displayed angle is the inverse tangent of
+  // rise/run, rounded to the nearest degree (pinned inputs).
+  const missingAngle = answerFor("math-applied:trig:missing-angle");
+  assert.ok(missingAngle);
+  assert.equal(Math.round((Math.atan(1 / 4) * 180) / Math.PI), 14);
+  assert.equal(missingAngle.correct, "14°");
+  // The three non-numeric wave-3 answers are phrase choices.
+  for (const [id, correct] of [
+    ["math-number:fractions:equivalent", "They have the same amount"],
+    ["math-number:fractions:compare-unlike", "The 3/4-full bottle"],
+    ["math-applied:measure:choose-unit", "Metres"],
+  ] as const) {
+    const entry = answerFor(id);
+    assert.ok(entry, id);
+    assert.equal(entry.correct, correct, id);
+    assert.ok(entry.choices.includes(entry.correct), id);
+  }
 });
 
 it("the scalePlay flag itself still defaults off (the card no longer reads it)", () => {
@@ -210,6 +313,6 @@ it("the subject module matches contract I1 and is released", () => {
   // ships; educator review runs alongside, after release.
   assert.equal(mathModule.released, true);
   assert.deepEqual(mathModule.groups, ["7-10", "10-18", "18+"]);
-  assert.equal(mathModule.units.length, 29);
+  assert.equal(mathModule.units.length, 53);
   assert.equal(typeof mathModule.load, "function");
 });

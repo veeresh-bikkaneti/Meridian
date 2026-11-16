@@ -3359,6 +3359,64 @@
     opacity: 0;
   }
 }
+/* ── Clue scenes, scenes wave kinds D+E (clue-scene-kinds-d/e) ──
+   New classes for tile-grid, measure-trace, clock-arc, unit-fit,
+   fraction-slice and fraction-fill only; everything else reuses
+   the pilot's cs-line / cs-soft / cs-band / cs-draw / cs-pop /
+   cs-fade / cs-slide / cs-ring / cs-tick. Atlas palette only;
+   resting state is the final frame. New animations reference
+   the shared easing tokens by name (born-aligned bar B1). */
+.cs-tile {
+  fill: #fffdf6;
+  stroke: #33302a;
+  stroke-width: 1.4;
+}
+.cs-brick {
+  fill: #efe3bc;
+  stroke: #33302a;
+  stroke-width: 1.4;
+}
+.cs-wash {
+  fill: #efe3bc;
+  opacity: 0.45;
+}
+.cs-plank {
+  fill: #e7cf8e;
+  stroke: #33302a;
+  stroke-width: 1.4;
+}
+.cs-ant {
+  fill: #33302a;
+}
+.cs-finger {
+  fill: #fffdf6;
+  stroke: #33302a;
+  stroke-width: 1.3;
+}
+.cs-wedge {
+  fill: #fffdf6;
+  stroke: #33302a;
+  stroke-width: 1.4;
+  stroke-linejoin: round;
+}
+.cs-wedge-taken {
+  fill: #efe3bc;
+  stroke: #8a6d2f;
+  stroke-width: 1.4;
+  stroke-linejoin: round;
+}
+.cs-liquid {
+  fill: #efe3bc;
+  stroke: #8a6d2f;
+  stroke-width: 1;
+}
+.cs-bottle {
+  fill: none;
+  stroke: #33302a;
+  stroke-width: 1.8;
+  stroke-linejoin: round;
+}
+
 /* Off screen or a hidden tab: every scene animation holds still
    (the component toggles data-paused from its observers). */
 .clue-scene[data-paused="true"] svg * {

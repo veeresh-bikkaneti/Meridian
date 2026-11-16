@@ -88,7 +88,7 @@ function ContactForm() {
   };
 
   return (
-    <InfoPage title="Contact us">
+    <InfoPage title="Contact us" graphic="envelope">
       <p>
         For parents, carers, and teachers — questions about privacy, a request about your data, or a
         bug report. Our <Link to="/privacy">privacy notice</Link> explains what this form sends,

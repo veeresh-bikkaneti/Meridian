@@ -18,7 +18,13 @@ import {
   summaryStepLine,
   summaryStepStart,
 } from "./scenes.ts";
-import { groupTicks, chunkPlan, placeColumns } from "../shared/clue-scene-types.ts";
+import {
+  groupTicks,
+  chunkPlan,
+  placeColumns,
+  elapsedMinutes,
+  fittingUnit,
+} from "../shared/clue-scene-types.ts";
 import { MATH_ANSWERS } from "./answers.ts";
 import { itemsForGroup } from "./items.ts";
 import type { ClueSceneDescription } from "../shared/clue-scene-types.ts";
@@ -50,6 +56,20 @@ function givensOf(d: ClueSceneDescription): number[] {
       return [d.rows, d.perRow, d.splitHigh, d.splitLow];
     case "chunk-share":
       return [d.total, d.shares];
+    case "tile-grid":
+      return [d.cols, d.rows];
+    case "measure-trace":
+      return [d.length, d.width];
+    case "fraction-slice":
+      return d.parts2
+        ? [d.parts, d.taken, d.parts2, d.taken2 ?? 0]
+        : [d.parts, d.taken];
+    case "fraction-fill":
+      return [d.numerator, d.denominator, d.otherNumerator, d.otherDenominator];
+    case "clock-arc":
+      return [d.startHour, d.startMinute, d.endHour, d.endMinute];
+    case "unit-fit":
+      return [d.pathLength];
   }
 }
 
@@ -83,6 +103,18 @@ function stepCountOf(d: ClueSceneDescription): number {
       return 4; // split overlays, round-part tick, leftover tick, final tick
     case "chunk-share":
       return chunkPlan(d).length;
+    case "tile-grid":
+      return d.rows; // one beat per row laid
+    case "measure-trace":
+      return d.mode === "loop" ? 4 : 3; // loop: four sides; bars: trace, trace, gap
+    case "fraction-slice":
+      return d.parts + (d.parts2 ?? 0); // one beat per slice, across both wholes
+    case "fraction-fill":
+      return 3; // fill, fill, the shared grid
+    case "clock-arc":
+      return elapsedMinutes(d) / 5; // the arc sweeps in five-minute chunks
+    case "unit-fit":
+      return 3; // ant-step, finger-step, stride
   }
 }
 
@@ -128,8 +160,43 @@ describe("clue scene descriptions", () => {
   });
 
   it("the solved beat's arithmetic lands on the item's answer", () => {
+    // §7.2(1) structural variant: three items have phrase answers
+    // with no numeric value for arithmetic to land on. Their
+    // solved end-state's structure is asserted instead — equal
+    // strength, different shape; exact coverage is untouched.
+    const PHRASE_IDS = new Set([
+      "math-number:fractions:equivalent",
+      "math-number:fractions:compare-unlike",
+      "math-applied:measure:choose-unit",
+    ]);
     for (const id of ALL_IDS) {
       const d = clueSceneFor(id)!;
+      if (PHRASE_IDS.has(id)) {
+        const correct = MATH_ANSWERS[id]!.correct;
+        if (d.kind === "fraction-slice") {
+          // The taken parts of the two wholes are the same amount.
+          assert.ok(d.parts2 && d.taken2 !== undefined, `${id}: two wholes`);
+          assert.equal(d.taken / d.parts, d.taken2! / d.parts2!, `${id}: equal edges align`);
+          assert.equal(correct, "They have the same amount", id);
+        } else if (d.kind === "fraction-fill") {
+          // The fuller bottle is the first one, and it is the answer.
+          assert.ok(
+            d.numerator / d.denominator > d.otherNumerator / d.otherDenominator,
+            `${id}: the first bottle is fuller`,
+          );
+          assert.ok(
+            correct.includes(`${d.numerator}/${d.denominator}`),
+            `${id}: the answer names the fuller bottle`,
+          );
+        } else if (d.kind === "unit-fit") {
+          // The stride glyph is the one that fits (see fittingUnit).
+          assert.equal(fittingUnit(d), "m", `${id}: the stride fits the path`);
+          assert.equal(correct, "Metres", id);
+        } else {
+          assert.fail(`${id}: phrase item has unexpected kind ${d.kind}`);
+        }
+        continue;
+      }
       const value = MATH_ANSWERS[id]!.value!;
       switch (d.kind) {
         case "coin-groups":
@@ -177,6 +244,27 @@ describe("clue scene descriptions", () => {
           assert.equal(d.total / d.shares, value, id);
           break;
         }
+        case "tile-grid":
+          assert.equal(d.cols * d.rows, value, id);
+          break;
+        case "measure-trace":
+          assert.equal(
+            d.mode === "loop" ? 2 * (d.length + d.width) : d.width - d.length,
+            value,
+            id,
+          );
+          break;
+        case "fraction-slice":
+          assert.equal(d.taken / d.parts, value, id);
+          break;
+        case "fraction-fill":
+        case "unit-fit":
+          // Phrase-answer kinds: asserted structurally above.
+          assert.fail(`${id}: ${d.kind} item should be a phrase item`);
+          break;
+        case "clock-arc":
+          assert.equal(elapsedMinutes(d), value, id);
+          break;
       }
     }
   });
@@ -254,9 +342,16 @@ describe("clue scene summaries (act 3)", () => {
     for (const id of ALL_IDS) {
       const summary = clueSceneFor(id)!.summary!;
       const closing = summary.lines[summary.lines.length - 1]!.text;
+      // The answer as the item states it: the numeric value, or —
+      // for the §7.2(1) phrase-answer items, which have no value —
+      // the correct choice's own words. (Demanding String(value)
+      // for those would demand the literal string "undefined".)
+      const answer = MATH_ANSWERS[id]!;
+      const stated =
+        answer.value !== undefined ? [String(answer.value), answer.correct] : [answer.correct];
       assert.ok(
-        closing.includes(String(MATH_ANSWERS[id]!.value)),
-        `${id}: closing line states ${MATH_ANSWERS[id]!.value}`,
+        stated.some((s) => closing.includes(s)),
+        `${id}: closing line states ${stated.join(" / ")}`,
       );
     }
   });
