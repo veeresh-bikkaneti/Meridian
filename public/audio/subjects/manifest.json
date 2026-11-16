@@ -1,7 +1,7 @@
 {
   "v": 1,
   "voice": "am_michael",
-  "note": "Narrated solved summaries for the math clue scenes (act 3). One clip per item; the script and per-line timings in src/subjects/math/scenes.ts are the source of truth and match the clips line for line. Rendered locally with the same voice and loudness targets as the journal narration (-18 LUFS, true peak -1.5 dBFS), 24 kHz mono MP3 at 64 kbps like the other in-app clips. Wave 1 (expansion) added the ten non-pilot clips in the same voice (am_michael), rendered the same way. The scenes wave (visual-questions Phase 1) added the nine wave-3 clips in the same voice, rendered the same way. Wave 2 (expansion) added the thirteen 10-18 clips in the same voice (am_michael), rendered the same way. Wave 3 (expansion) added the seven 18+ math and 7-10 general-knowledge clips in the same voice (am_michael), rendered the same way. Wave 4 (expansion) added the seven physics ages 7-10 clips in the same voice (am_michael), rendered the same way. Wave 5 (expansion) added the five remaining physics ages 7-10 clips in the same voice (am_michael), rendered the same way. Wave 6 (expansion) added the twelve physics ages 10-18 and 18+ clips in the same voice (am_michael), rendered the same way. Wave 7 (expansion) added the ten chemistry ages 7-10 and states/mixtures/materials ages 10-18 clips in the same voice (am_michael), rendered the same way. Wave 8 (expansion) added the six chemistry reactions and ages 18+ clips in the same voice (am_michael), rendered the same way.",
+  "note": "Narrated solved summaries for the math clue scenes (act 3). One clip per item; the script and per-line timings in src/subjects/math/scenes.ts are the source of truth and match the clips line for line. Rendered locally with the same voice and loudness targets as the journal narration (-18 LUFS, true peak -1.5 dBFS), 24 kHz mono MP3 at 64 kbps like the other in-app clips. Wave 1 (expansion) added the ten non-pilot clips in the same voice (am_michael), rendered the same way. The scenes wave (visual-questions Phase 1) added the nine wave-3 clips in the same voice, rendered the same way. Wave 2 (expansion) added the thirteen 10-18 clips in the same voice (am_michael), rendered the same way. Wave 3 (expansion) added the seven 18+ math and 7-10 general-knowledge clips in the same voice (am_michael), rendered the same way. Wave 4 (expansion) added the seven physics ages 7-10 clips in the same voice (am_michael), rendered the same way. Wave 5 (expansion) added the five remaining physics ages 7-10 clips in the same voice (am_michael), rendered the same way. Wave 6 (expansion) added the twelve physics ages 10-18 and 18+ clips in the same voice (am_michael), rendered the same way. Wave 7 (expansion) added the ten chemistry ages 7-10 and states/mixtures/materials ages 10-18 clips in the same voice (am_michael), rendered the same way. Wave 8 (expansion) added the six chemistry reactions and ages 18+ clips in the same voice (am_michael), rendered the same way. Wave 9 (expansion) added the twelve social studies clips in the same voice (am_michael), rendered the same way.",
   "clips": {
     "skip-count": {
       "file": "skip-count.mp3",
@@ -493,6 +493,78 @@
       "file": "column-cousins.mp3",
       "item": "chemistry:reactions:explain",
       "duration": 20.84,
+      "lines": 4
+    },
+    "area-squares": {
+      "file": "area-squares.mp3",
+      "item": "social-studies:region:area-by-squares",
+      "duration": 17.14,
+      "lines": 4
+    },
+    "route-steps": {
+      "file": "route-steps.mp3",
+      "item": "social-studies:route:count-the-steps",
+      "duration": 16.04,
+      "lines": 4
+    },
+    "trip-clock": {
+      "file": "trip-clock.mp3",
+      "item": "social-studies:route:trip-clock",
+      "duration": 20.57,
+      "lines": 4
+    },
+    "compass-clue": {
+      "file": "compass-clue.mp3",
+      "item": "social-studies:place:compass-clue",
+      "duration": 15.99,
+      "lines": 4
+    },
+    "town-density": {
+      "file": "town-density.mp3",
+      "item": "social-studies:region:density",
+      "duration": 21.05,
+      "lines": 4
+    },
+    "trail-scale": {
+      "file": "trail-scale.mp3",
+      "item": "social-studies:route:scale-ratio",
+      "duration": 21.06,
+      "lines": 4
+    },
+    "travel-time": {
+      "file": "travel-time.mp3",
+      "item": "social-studies:route:travel-time",
+      "duration": 19.92,
+      "lines": 4
+    },
+    "two-roads": {
+      "file": "two-roads.mp3",
+      "item": "social-studies:route:fastest-or-shortest",
+      "duration": 21.31,
+      "lines": 4
+    },
+    "zone-clocks": {
+      "file": "zone-clocks.mp3",
+      "item": "social-studies:compare:time-zones",
+      "duration": 15.71,
+      "lines": 4
+    },
+    "flat-map": {
+      "file": "flat-map.mp3",
+      "item": "social-studies:region:flat-map-area",
+      "duration": 19.81,
+      "lines": 4
+    },
+    "great-circle": {
+      "file": "great-circle.mp3",
+      "item": "social-studies:route:great-circle",
+      "duration": 19.95,
+      "lines": 4
+    },
+    "trip-cost": {
+      "file": "trip-cost.mp3",
+      "item": "social-studies:compare:trip-cost",
+      "duration": 20.6,
       "lines": 4
     }
   }

@@ -27,6 +27,7 @@ const mathCase = read(join(here, "..", "math", "MathCase.tsx"));
 const gkCase = read(join(here, "..", "general-knowledge", "GeneralKnowledgeCase.tsx"));
 const physicsCase = read(join(here, "..", "physics", "PhysicsCase.tsx"));
 const chemistryCase = read(join(here, "..", "chemistry", "ChemistryCase.tsx"));
+const socialStudiesCase = read(join(here, "..", "social-studies", "SocialStudiesCase.tsx"));
 const styles = read(join(here, "..", "..", "styles.css"));
 
 describe("clue scene wiring", () => {
@@ -73,6 +74,14 @@ describe("clue scene wiring", () => {
     assert.ok(physicsCase.includes("<ClueScene"));
     assert.ok(physicsCase.includes("resultExtra={"), "physics passes the hook");
     assert.ok(physicsCase.includes("ClueSummaryText"), "as the summary's standing text");
+  });
+
+  it("the social-studies case gates the scenes to ages 7-10, 10-18 and 18+ with a description", () => {
+    assert.ok(socialStudiesCase.includes('if (band !== "7-10" && band !== "10-18" && band !== "18+") return null;'));
+    assert.ok(socialStudiesCase.includes("clueSceneFor(item.id)"));
+    assert.ok(socialStudiesCase.includes("<ClueScene"));
+    assert.ok(socialStudiesCase.includes("resultExtra={"), "social studies passes the hook");
+    assert.ok(socialStudiesCase.includes("ClueSummaryText"), "as the summary's standing text");
   });
 
   it("the chemistry case gates the scenes to ages 7-10, 10-18 and 18+ with a description", () => {
@@ -457,5 +466,46 @@ describe("wave 8 kinds", () => {
       assert.ok(source.includes(`function ${name}(`), `${name} exists`);
       assert.ok(source.includes("stepDelay"), `${name} accepts stepDelay`);
     }
+  });
+});
+
+describe("wave 9 kinds", () => {
+  const kindsA = read(join(here, "clue-scene-kinds-a.tsx"));
+  const kindsB = read(join(here, "clue-scene-kinds-b.tsx"));
+  const kindsC = read(join(here, "clue-scene-kinds-c.tsx"));
+
+  it("the renderer dispatches every wave-9 kind", () => {
+    for (const kind of [
+      "compass-walk",
+      "density-towns",
+      "two-roads",
+      "zone-clocks",
+      "globe-vs-map",
+      "great-circle",
+      "cost-compare",
+    ]) {
+      assert.ok(scene.includes(`case "${kind}":`), `SceneArt dispatches ${kind}`);
+      assert.ok(scene.includes(`"${kind}":`), `SUMMARY_STAGGER paces ${kind}`);
+    }
+  });
+
+  it("every wave-9 kind accepts the summary pacing prop", () => {
+    for (const [source, name] of [
+      [kindsA, "CompassWalkScene"],
+      [kindsA, "DensityTownsScene"],
+      [kindsB, "TwoRoadsScene"],
+      [kindsB, "ZoneClocksScene"],
+      [kindsC, "GlobeVsMapScene"],
+      [kindsC, "GreatCircleScene"],
+      [kindsC, "CostCompareScene"],
+    ] as const) {
+      assert.ok(source.includes(`function ${name}(`), `${name} exists`);
+      assert.ok(source.includes("stepDelay"), `${name} accepts stepDelay`);
+    }
+  });
+
+  it("the wave-9 reuse variants are data branches, not new kinds", () => {
+    assert.ok(kindsA.includes("secondRows"), "array-grid carries the two-fields variant data");
+    assert.ok(kindsB.includes("segmentPx"), "map-scale carries the narrow-segment variant data");
   });
 });

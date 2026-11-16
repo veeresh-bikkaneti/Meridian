@@ -419,7 +419,9 @@ export function MapScaleScene({
 }) {
   const { mapCm, kmPerCm } = description;
   const x0 = 40;
-  const segW = 55;
+  // Wave-9 variant data (segmentPx) narrows the segments for a
+  // long trail; absent, the Math width stands unchanged.
+  const segW = description.segmentPx ?? 55;
   const mapY = 62;
   const groundY = 138;
   const segStart = (s: number) => (stepDelay ? stepDelay(s) : 0.4 + s * 0.55);
@@ -1689,6 +1691,162 @@ export function GlowRateScene({
           </text>
         </>
       )}
+    </>
+  );
+}
+
+/* ── Wave 9 kinds (Social studies): two-roads, zone-clocks ───
+   Same discipline as the kinds above: givens only in the setup
+   film, no outcome before the pick. two-roads paces three
+   steps (both riders set off at their own pace, the clocks
+   fill to the faster road's arrival, the final tick);
+   zone-clocks paces three (the far clock's hands spin on by
+   the given zones, the day-boundary arc crosses midnight, the
+   final tick). Each ends with exactly one cs-tick
+   cs-tick-final "✓". Labels and scene text carry no digits —
+   the roads' lengths and speeds live in the question only,
+   spent here as distances and paces. */
+
+export function TwoRoadsScene({
+  description,
+  phase,
+  stepDelay,
+}: {
+  description: Extract<ClueSceneDescription, { kind: "two-roads" }>;
+  phase: ClueScenePhase;
+  stepDelay?: (step: number) => number;
+}) {
+  const { passKm, passSpeed, valleyKm, valleySpeed } = description;
+  const rideStart = stepDelay ? stepDelay(0) : 0.5;
+  const clockStart = stepDelay ? stepDelay(1) : 1.4;
+  const tickStart = stepDelay ? stepDelay(2) : 2.3;
+  const passTime = passKm / passSpeed;
+  const valleyTime = valleyKm / valleySpeed;
+  // When the faster road's rider arrives, the slower rider has
+  // covered this fraction of their road — computed from givens.
+  const slowerFraction = Math.min(1, Math.min(passTime, valleyTime) / Math.max(passTime, valleyTime));
+  const valleyWins = valleyTime < passTime;
+  const passY = 72;
+  const valleyY = 132;
+  const x0 = 42;
+  const passLen = 168;
+  const valleyLen = 232;
+  const passRiderEnd = x0 + (valleyWins ? slowerFraction : 1) * passLen;
+  const valleyRiderEnd = x0 + (valleyWins ? 1 : slowerFraction) * valleyLen;
+  const rider = (cx: number, cy: number) => (
+    <>
+      <circle className="cs-coin" cx={cx} cy={cy - 6} r="6" />
+      <circle className="cs-coin-inner" cx={cx} cy={cy - 6} r="2.8" />
+    </>
+  );
+  const clockHand = (cx: number, cy: number, turns: number, start: number) => {
+    const angle = (turns % 1) * Math.PI * 2 - Math.PI / 2;
+    const hx = cx + Math.cos(angle) * 9;
+    const hy = cy + Math.sin(angle) * 9;
+    return (
+      <g className="cs-pop" style={delay(start)}>
+        <circle className="cs-line" cx={cx} cy={cy} r="12" />
+        <path className="cs-line cs-band" d={`M${cx} ${cy} L${hx.toFixed(1)} ${hy.toFixed(1)}`} />
+      </g>
+    );
+  };
+  return (
+    <>
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M24 28 Q160 24 296 28" style={delay(0.1)} />
+      {/* The home both roads lead to. */}
+      <g className="cs-pop" style={delay(0.4)}>
+        <path className="cs-line" d="M282 52 L296 40 L310 52 L308 68 L284 68 Z" />
+        <path className="cs-line cs-band" d="M284 53 Q296 50 308 53" />
+      </g>
+      {/* The pass: a shorter, winding climb. The valley: a
+          longer, sweeping road. Their lengths are the givens,
+          drawn spatially; no rider moves before the pick. */}
+      <path className="cs-line cs-draw" pathLength={1} d={`M${x0} ${passY} Q90 ${passY - 22} 130 ${passY} Q170 ${passY + 18} ${x0 + passLen} ${passY - 6}`} style={delay(0.15)} />
+      <path className="cs-line cs-draw" pathLength={1} d={`M${x0} ${valleyY} Q120 ${valleyY + 16} 200 ${valleyY - 4} Q250 ${valleyY - 14} ${x0 + valleyLen} ${valleyY - 10}`} style={delay(0.2)} />
+      {phase === "setup" ? (
+        <>
+          <g className="cs-pop" style={delay(0.5)}>{rider(x0, passY)}</g>
+          <g className="cs-pop" style={delay(0.6)}>{rider(x0, valleyY)}</g>
+        </>
+      ) : (
+        <>
+          {/* Step 0: both riders set off; the faster road's
+              rider reaches home, the other is still on the way. */}
+          <g className="cs-slide" style={slideFrom(x0 - passRiderEnd, 0, rideStart)}>{rider(passRiderEnd, passY)}</g>
+          <g className="cs-slide" style={slideFrom(x0 - valleyRiderEnd, 0, rideStart)}>{rider(valleyRiderEnd, valleyY)}</g>
+          {/* Step 1: the clocks fill — the valley clock stops
+              at its shorter time, the pass clock runs on. */}
+          {clockHand(70, 164, valleyTime / 12, clockStart)}
+          {clockHand(150, 164, passTime / 12, clockStart + 0.3)}
+          <ellipse className="cs-ring" cx={valleyWins ? valleyRiderEnd : passRiderEnd} cy={(valleyWins ? valleyY : passY) - 6} rx="14" ry="14" style={delay(tickStart + 0.4)} />
+          <text className="cs-tick cs-tick-final" x={valleyWins ? valleyRiderEnd : passRiderEnd} y={(valleyWins ? valleyY : passY) - 32} style={delay(tickStart + 0.55)}>
+            ✓
+          </text>
+        </>
+      )}
+    </>
+  );
+}
+
+export function ZoneClocksScene({
+  description,
+  phase,
+  stepDelay,
+}: {
+  description: Extract<ClueSceneDescription, { kind: "zone-clocks" }>;
+  phase: ClueScenePhase;
+  stepDelay?: (step: number) => number;
+}) {
+  const { hereHour, zonesAhead } = description;
+  const spinStart = stepDelay ? stepDelay(0) : 0.5;
+  const dayStart = stepDelay ? stepDelay(1) : 1.4;
+  const tickStart = stepDelay ? stepDelay(2) : 2.3;
+  const hand = (cx: number, cy: number, hour: number, len: number) => {
+    const angle = ((hour % 12) / 12) * Math.PI * 2 - Math.PI / 2;
+    return `M${cx} ${cy} L${(cx + Math.cos(angle) * len).toFixed(1)} ${(cy + Math.sin(angle) * len).toFixed(1)}`;
+  };
+  const farHour = hereHour + zonesAhead;
+  const clockFace = (cx: number, cy: number, dly: number) => (
+    <g className="cs-pop" style={delay(dly)}>
+      <circle className="cs-line" cx={cx} cy={cy} r="30" />
+      <circle className="cs-stone" cx={cx} cy={cy} r="2.6" />
+      {[0, 3, 6, 9].map((h, i) => {
+        const a = (h / 12) * Math.PI * 2 - Math.PI / 2;
+        return <circle key={i} className="cs-snack-dot" cx={cx + Math.cos(a) * 24} cy={cy + Math.sin(a) * 24} r="1.8" />;
+      })}
+    </g>
+  );
+  return (
+    <>
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M24 28 Q160 24 296 28" style={delay(0.1)} />
+      <path className="cs-line cs-draw" pathLength={1} d="M16 168 Q160 172 304 168" style={delay(0)} />
+      {/* A moon over the home clock: it is evening here, a given. */}
+      <path className="cs-tip cs-pop" d="M96 30 Q84 42 94 54 Q78 48 82 36 Q85 27 96 30 Z" style={delay(0.4)} />
+      {clockFace(88, 104, 0.45)}
+      {clockFace(232, 104, 0.55)}
+      {/* The home clock's hands show the given evening hour in
+          both phases. The far clock has NO hands in setup —
+          its time is the question. */}
+      <path className="cs-line cs-band" d={hand(88, 104, hereHour, 17)} />
+      <path className="cs-line" d="M88 104 L88 82" />
+      {phase === "solved" ? (
+        <>
+          {/* Step 0: the far clock's hands spin on by the zones. */}
+          <g className="cs-grow" style={delay(spinStart)}>
+            <path className="cs-line cs-band" d={hand(232, 104, farHour, 17)} />
+            <path className="cs-line" d="M232 104 L232 82" />
+          </g>
+          {/* Step 1: a dashed arc crosses the top of the far
+              clock — the count has crossed midnight into the
+              next day. */}
+          <path className="cs-line cs-band cs-draw" pathLength={1} strokeDasharray="3 4" d="M196 62 Q232 44 268 62" style={delay(dayStart)} />
+          <circle className="cs-coin cs-pop" cx="272" cy="56" r="5" style={delay(dayStart + 0.35)} />
+          <ellipse className="cs-ring" cx="232" cy="104" rx="38" ry="38" style={delay(tickStart + 0.4)} />
+          <text className="cs-tick cs-tick-final" x="232" y="34" style={delay(tickStart + 0.55)}>
+            ✓
+          </text>
+        </>
+      ) : null}
     </>
   );
 }

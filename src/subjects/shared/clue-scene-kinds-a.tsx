@@ -340,6 +340,49 @@ export function ArrayGridScene({
   stepDelay?: (step: number) => number;
 }) {
   const { rows, perRow, splitHigh, splitLow } = description;
+  if (description.secondRows !== undefined) {
+    // Wave-9 variant (social studies area-by-squares): TWO
+    // fields stand side by side — the first of `rows` rows, the
+    // second of `secondRows` rows, each row `perRow` squares.
+    // Setup draws both fields plain, as givens, with no count
+    // and no winner marked. Solved in three steps: 0 the first
+    // field's count tick, 1 the second field's count tick, 2
+    // the difference as the final tick. The Math path below is
+    // unchanged when secondRows is absent.
+    const secondRows = description.secondRows;
+    const cell = 24;
+    const field = (fx: number, rowCount: number, keyPrefix: string) =>
+      Array.from({ length: rowCount }, (_, r) =>
+        Array.from({ length: perRow }, (_, c) => (
+          <g key={`${keyPrefix}-${r}-${c}`} className="cs-pop" style={delay(0.25 + (r * perRow + c) * 0.03)}>
+            <rect className="cs-bar" x={fx + c * cell} y={62 + r * cell} width={cell - 3} height={cell - 3} rx="3" />
+          </g>
+        )),
+      );
+    const firstTotal = rows * perRow;
+    const secondTotal = secondRows * perRow;
+    return (
+      <>
+        <path className="cs-line cs-draw" pathLength={1} d="M28 176 Q160 180 292 176" style={delay(0)} />
+        {field(36, rows, "first")}
+        {field(188, secondRows, "second")}
+        {phase === "solved" ? (
+          <>
+            <text className="cs-tick" x={36 + (perRow * cell) / 2} y="46" style={delay(stepDelay ? stepDelay(0) + 0.5 : 0.9)}>
+              {firstTotal}
+            </text>
+            <text className="cs-tick" x={188 + (perRow * cell) / 2} y="46" style={delay(stepDelay ? stepDelay(1) + 0.5 : 1.7)}>
+              {secondTotal}
+            </text>
+            <ellipse className="cs-ring" cx={36 + (perRow * cell) / 2} cy={62 + (rows * cell) / 2 - 1} rx={(perRow * cell) / 2 + 8} ry={(rows * cell) / 2 + 8} style={delay(stepDelay ? stepDelay(2) + 0.4 : 2.4)} />
+            <text className="cs-tick cs-tick-final" x="160" y="170" style={delay(stepDelay ? stepDelay(2) + 0.55 : 2.5)}>
+              {Math.abs(firstTotal - secondTotal)}
+            </text>
+          </>
+        ) : null}
+      </>
+    );
+  }
   const x0 = 35;
   const w = 250;
   const splitX = x0 + (w * splitHigh) / perRow;
@@ -1753,6 +1796,135 @@ export function BubbleReactionScene({
           </text>
         </>
       )}
+    </>
+  );
+}
+
+/* ── Wave 9 kinds (Social studies): compass-walk, density-towns ──
+   Same discipline as the kinds above: givens only in the setup
+   film, no outcome before the pick; the solved beat computes
+   its outcome from the givens at solve time. compass-walk paces
+   three steps (the east steps draw, the north step draws and
+   the landing mark lands, the final tick); density-towns paces
+   three (the first town's area cells divide, the second town's
+   divide, the final tick over the tighter town). Each ends
+   with exactly one cs-tick cs-tick-final "✓". */
+
+export function CompassWalkScene({
+  description,
+  phase,
+  stepDelay,
+}: {
+  description: Extract<ClueSceneDescription, { kind: "compass-walk" }>;
+  phase: ClueScenePhase;
+  stepDelay?: (step: number) => number;
+}) {
+  const { eastSteps, northSteps } = description;
+  const eastStart = stepDelay ? stepDelay(0) : 0.5;
+  const northStart = stepDelay ? stepDelay(1) : 1.4;
+  const tickStart = stepDelay ? stepDelay(2) : 2.3;
+  const cell = 34;
+  const fountain = { x: 94, y: 128 };
+  const land = { x: fountain.x + eastSteps * cell, y: fountain.y - northSteps * cell };
+  return (
+    <>
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M24 28 Q160 24 296 28" style={delay(0.1)} />
+      {/* The map grid: plain squares, a given of any map. */}
+      {[60, 94, 128, 162].map((gy, i) => (
+        <path key={`gh-${i}`} className="cs-line cs-soft cs-draw" pathLength={1} d={`M26 ${gy} Q160 ${gy - 3} 294 ${gy}`} style={delay(0.15 + i * 0.05)} />
+      ))}
+      {[60, 94, 128, 162, 196, 230].map((gx, i) => (
+        <path key={`gv-${i}`} className="cs-line cs-soft cs-draw" pathLength={1} d={`M${gx} 26 Q${gx + 2} 95 ${gx} 164`} style={delay(0.2 + i * 0.05)} />
+      ))}
+      {/* A north arrow in the corner — the map's own given. */}
+      <path className="cs-line cs-band cs-draw" pathLength={1} d="M282 52 L282 34" style={delay(0.3)} />
+      <path className="cs-tip cs-pop" d="M282 26 L277 38 L287 38 Z" style={delay(0.45)} />
+      {/* The fountain at its grid crossing: a basin and sprays. */}
+      <g transform={`translate(${fountain.x} ${fountain.y})`}>
+        <g className="cs-pop" style={delay(0.5)}>
+          <ellipse className="cs-line" cx="0" cy="6" rx="17" ry="6" />
+          <circle className="cs-coin" r="4" />
+          <path className="cs-line cs-band" d="M-10 -6 Q-5 -13 0 -14 M10 -6 Q5 -13 0 -14 M0 -5 L0 -13" />
+        </g>
+      </g>
+      {phase === "solved" ? (
+        <>
+          {/* Step 0: the dotted path steps east, square by square. */}
+          <path className="cs-line cs-band cs-draw" pathLength={1} strokeDasharray="3 4" d={`M${fountain.x} ${fountain.y} Q${(fountain.x + land.x) / 2} ${fountain.y + 3} ${land.x} ${fountain.y}`} style={delay(eastStart)} />
+          {/* Step 1: the path steps north, and the landing mark lands. */}
+          <path className="cs-line cs-band cs-draw" pathLength={1} strokeDasharray="3 4" d={`M${land.x} ${fountain.y} Q${land.x + 3} ${(fountain.y + land.y) / 2} ${land.x} ${land.y}`} style={delay(northStart)} />
+          <path className="cs-line cs-band cs-pop" d={`M${land.x - 7} ${land.y - 7} L${land.x + 7} ${land.y + 7} M${land.x + 7} ${land.y - 7} L${land.x - 7} ${land.y + 7}`} style={delay(northStart + 0.4)} />
+          <ellipse className="cs-ring" cx={land.x} cy={land.y} rx="17" ry="17" style={delay(tickStart + 0.4)} />
+          <text className="cs-tick cs-tick-final" x={land.x} y={land.y - 26} style={delay(tickStart + 0.55)}>
+            ✓
+          </text>
+        </>
+      ) : null}
+    </>
+  );
+}
+
+export function DensityTownsScene({
+  description,
+  phase,
+  stepDelay,
+}: {
+  description: Extract<ClueSceneDescription, { kind: "density-towns" }>;
+  phase: ClueScenePhase;
+  stepDelay?: (step: number) => number;
+}) {
+  const { firstArea, secondArea } = description;
+  const firstStart = stepDelay ? stepDelay(0) : 0.5;
+  const secondStart = stepDelay ? stepDelay(1) : 1.4;
+  const tickStart = stepDelay ? stepDelay(2) : 2.3;
+  // The same crowd of dots in both towns — a given, drawn
+  // spatially (the place-compare pattern): packed tight in the
+  // small town, spread out in the large one. No winner is
+  // marked before the pick.
+  const crowd = (cx: number, cy: number, spreadX: number, spreadY: number) =>
+    Array.from({ length: 12 }, (_, i) => {
+      const col = i % 4;
+      const row = Math.floor(i / 4);
+      return (
+        <circle
+          key={`dot-${i}`}
+          className="cs-stone cs-pop"
+          cx={cx + (col - 1.5) * spreadX}
+          cy={cy + (row - 1) * spreadY}
+          r="3.2"
+          style={delay(0.45 + i * 0.04)}
+        />
+      );
+    });
+  return (
+    <>
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M24 30 Q160 26 296 30" style={delay(0.1)} />
+      <path className="cs-line cs-draw" pathLength={1} d="M16 168 Q160 172 304 168" style={delay(0)} />
+      {/* Town A: a small square of land. Town B: a wide one. */}
+      <path className="cs-line cs-draw" pathLength={1} d="M44 62 Q82 58 120 62 Q124 98 120 134 Q82 138 44 134 Q40 98 44 62 Z" style={delay(0.2)} />
+      <path className="cs-line cs-draw" pathLength={1} d="M176 52 Q236 48 296 52 Q300 98 296 144 Q236 148 176 144 Q172 98 176 52 Z" style={delay(0.25)} />
+      {crowd(82, 98, 13, 13)}
+      {crowd(236, 98, 30, 24)}
+      {phase === "solved" ? (
+        <>
+          {/* Step 0: the small town divides into its square kilometres. */}
+          {Array.from({ length: Math.max(0, firstArea - 1) }, (_, i) => (
+            <path key={`div-a-${i}`} className="cs-line cs-band cs-fade" d={`M${82} 62 Q${83} 98 ${82} 134`} style={delay(firstStart + i * 0.1)} />
+          ))}
+          {/* Step 1: the wide town divides into its many square kilometres. */}
+          {Array.from({ length: secondArea / 2 - 1 }, (_, i) => {
+            const gx = 206 + i * 30;
+            return (
+              <path key={`div-b-${i}`} className="cs-line cs-band cs-fade" d={`M${gx} 52 Q${gx + 1} 98 ${gx} 144`} style={delay(secondStart + i * 0.08)} />
+            );
+          })}
+          <path className="cs-line cs-band cs-fade" d="M176 98 Q236 95 296 98" style={delay(secondStart + 0.3)} />
+          <ellipse className="cs-ring" cx="82" cy="98" rx="48" ry="44" style={delay(tickStart + 0.4)} />
+          <text className="cs-tick cs-tick-final" x="82" y="40" style={delay(tickStart + 0.55)}>
+            ✓
+          </text>
+        </>
+      ) : null}
     </>
   );
 }
