@@ -2153,3 +2153,202 @@
 }
 .board-v3 .v3-theme-switch { display: flex; flex-wrap: nowrap; align-items: center; gap: 8px; }
 .board-v3 .v3-theme-label { color: var(--hv5-ink-soft); font-size: 0.9rem; font-weight: 600; }
+
+/* =====================================================================
+   BOARD V4 — the trail as the owner-approved sample (2026-11-15).
+   Features-first panels falling from the sky, a brass traveller
+   riding the trail, parallax ground, mist between epics. Tokens are
+   the sample's: home-v5 parchment in light, the atlas chart room in
+   dark — the dark flip is scoped to the trail page (.v4-trail-page)
+   so the map and tip views keep their v3 behaviour. Every scene's
+   base state remains its end pose; Calm mode and reduced motion
+   stop every v4 animation and the panels simply rest in place.
+   ===================================================================== */
+.board-v3 {
+  --v4-brass: #b98a1e;
+  --v4-brass-bright: #e8b64c;
+  --v4-halo: rgba(232, 182, 76, 0.5);
+  --v4-ground-2: #efe6cf;
+  --v4-graticule: rgba(119, 89, 31, 0.1);
+  --v4-mist: rgba(253, 251, 243, 0.55);
+  --v4-shadow-land: 0 2px 3px rgba(90, 72, 30, 0.1), 0 18px 38px rgba(90, 72, 30, 0.16);
+  --v4-shadow-blob: rgba(50, 38, 8, 0.4);
+  --ease-soft-land: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-snap-settle: cubic-bezier(0.16, 1, 0.3, 1);
+}
+.board-v3.v4-trail-page {
+  background: linear-gradient(175deg, var(--hv5-parchment), var(--v4-ground-2));
+}
+.board-v3.v4-trail-page[data-board-theme="dark"] {
+  --hv5-parchment: #10222a;
+  --hv5-card: rgba(21, 42, 52, 0.92);
+  --hv5-ink: #f0e7d2;
+  --hv5-ink-soft: #c9bfa5;
+  --hv5-brown: #e8b64c;
+  --hv5-brown-deep: #e8b64c;
+  --hv5-line: rgba(232, 182, 76, 0.28);
+  --hv5-line-warm: rgba(232, 182, 76, 0.35);
+  --hv5-shadow-card: 0 1px 2px rgba(0, 0, 0, 0.35), 0 10px 28px rgba(0, 0, 0, 0.35);
+  --hv5-shadow-lift: 0 2px 3px rgba(0, 0, 0, 0.4), 0 18px 38px rgba(0, 0, 0, 0.45);
+  --v4-ground-2: #0a181e;
+  --v4-graticule: rgba(232, 182, 76, 0.09);
+  --v4-mist: rgba(16, 34, 42, 0.5);
+  --v4-shadow-land: 0 2px 3px rgba(0, 0, 0, 0.4), 0 18px 38px rgba(0, 0, 0, 0.45);
+  --v4-shadow-blob: rgba(0, 0, 0, 0.65);
+}
+@media (prefers-color-scheme: dark) {
+  .board-v3.v4-trail-page:not([data-board-theme="light"]) {
+    --hv5-parchment: #10222a;
+    --hv5-card: rgba(21, 42, 52, 0.92);
+    --hv5-ink: #f0e7d2;
+    --hv5-ink-soft: #c9bfa5;
+    --hv5-brown: #e8b64c;
+    --hv5-brown-deep: #e8b64c;
+    --hv5-line: rgba(232, 182, 76, 0.28);
+    --hv5-line-warm: rgba(232, 182, 76, 0.35);
+    --hv5-shadow-card: 0 1px 2px rgba(0, 0, 0, 0.35), 0 10px 28px rgba(0, 0, 0, 0.35);
+    --hv5-shadow-lift: 0 2px 3px rgba(0, 0, 0, 0.4), 0 18px 38px rgba(0, 0, 0, 0.45);
+    --v4-ground-2: #0a181e;
+    --v4-graticule: rgba(232, 182, 76, 0.09);
+    --v4-mist: rgba(16, 34, 42, 0.5);
+    --v4-shadow-land: 0 2px 3px rgba(0, 0, 0, 0.4), 0 18px 38px rgba(0, 0, 0, 0.45);
+    --v4-shadow-blob: rgba(0, 0, 0, 0.65);
+  }
+}
+/* Dark-trail text fixes: two v3 rules read the forest tokens as TEXT
+   on the card; on the chart-room card they flip to the sage family. */
+.board-v3.v4-trail-page[data-board-theme="dark"] .v3-pill-in-progress,
+.board-v3.v4-trail-page[data-board-theme="dark"] .v3-next a {
+  color: #b7cfa9;
+  border-color: #9db98f;
+}
+@media (prefers-color-scheme: dark) {
+  .board-v3.v4-trail-page:not([data-board-theme="light"]) .v3-pill-in-progress,
+  .board-v3.v4-trail-page:not([data-board-theme="light"]) .v3-next a {
+    color: #b7cfa9;
+    border-color: #9db98f;
+  }
+}
+
+/* ---- layered ground (parallax) ---- */
+.board-v3 .v3-wrap { position: relative; z-index: 1; }
+.board-v3 .v4-layer { position: fixed; inset: -12% 0; pointer-events: none; z-index: 0; will-change: transform; }
+.board-v3 .v4-layer-far {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='720' height='720' viewBox='0 0 720 720'%3E%3Cg fill='none' stroke='%238a6d2f' stroke-opacity='.55' stroke-width='1.4'%3E%3Cpath d='M-40 180 C120 120 240 260 400 200 S640 140 780 220'/%3E%3Cpath d='M-40 250 C120 190 260 330 420 270 S660 210 780 290'/%3E%3Cpath d='M-40 480 C140 420 260 560 440 500 S660 440 780 520'/%3E%3Cpath d='M-40 550 C140 490 280 630 460 570 S680 510 780 590'/%3E%3Ccircle cx='560' cy='120' r='60'/%3E%3Ccircle cx='560' cy='120' r='105'/%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.5;
+  transform: translateY(var(--v4-pf, 0px));
+}
+.board-v3 .v4-layer-mid {
+  background-image:
+    linear-gradient(var(--v4-graticule) 1px, transparent 1px),
+    linear-gradient(90deg, var(--v4-graticule) 1px, transparent 1px);
+  background-size: 56px 56px;
+  transform: translateY(var(--v4-pm, 0px));
+}
+.board-v3 .v4-vignette {
+  position: fixed; inset: 0; pointer-events: none; z-index: 0;
+  background: radial-gradient(120% 90% at 50% 30%, transparent 55%, rgba(60, 45, 10, 0.14) 100%);
+}
+.board-v3.v4-trail-page[data-board-theme="dark"] .v4-vignette {
+  background: radial-gradient(120% 90% at 50% 30%, transparent 50%, rgba(0, 0, 0, 0.5) 100%);
+}
+
+.board-v3 .v4-walk { margin: 0 0 2px; color: var(--hv5-ink-soft); font-size: 1.05rem; }
+.board-v3 .v4-progress-line {
+  font-family: var(--font-atlas-mono); font-size: 12px; color: var(--hv5-brown-deep);
+  letter-spacing: 0.06em; margin: 18px 0 0;
+}
+
+/* ---- the trail ---- */
+.board-v3 .v4-trail { position: relative; margin-top: 10px; padding-left: 34px; }
+.board-v3 .v4-trail::before {
+  content: ""; position: absolute; left: 13px; top: 6px; bottom: 6px; width: 3px; border-radius: 3px;
+  background: repeating-linear-gradient(180deg, var(--v4-brass) 0 9px, transparent 9px 17px); opacity: 0.55;
+}
+.board-v3 .v4-traveller {
+  position: absolute; left: 14px; top: 0; z-index: 5; width: 30px; height: 30px; margin-left: -15px;
+  pointer-events: none; filter: drop-shadow(0 3px 5px rgba(60, 45, 10, 0.35));
+}
+.board-v3 .v4-traveller .v4-halo {
+  position: absolute; inset: -16px; border-radius: 50%;
+  background: radial-gradient(circle, var(--v4-halo), transparent 68%);
+  animation: v4-breathe 3.2s ease-in-out infinite;
+}
+@keyframes v4-breathe { 0%, 100% { transform: scale(0.85); opacity: 0.7; } 50% { transform: scale(1.1); opacity: 1; } }
+.board-v3 .v4-epic-head { position: relative; }
+.board-v3 .v4-epic-head::before {
+  content: ""; position: absolute; left: -28px; top: 8px; width: 9px; height: 9px; border-radius: 50%;
+  background: var(--v4-brass); box-shadow: 0 0 0 4px var(--v4-halo);
+}
+.board-v3 .v4-mist {
+  height: 26px; margin: 10px -16px 0;
+  background: linear-gradient(90deg, transparent, var(--v4-mist), transparent); filter: blur(2px);
+}
+
+/* ---- feature panel: falls from the sky, contact shadow tightens ---- */
+.board-v3 .v4-panel { position: relative; margin: 20px 0 26px; }
+.board-v3 .v4-shadow {
+  position: absolute; left: 6%; right: 6%; bottom: -13px; height: 22px; border-radius: 50%;
+  background: radial-gradient(50% 50% at 50% 50%, var(--v4-shadow-blob), transparent 70%);
+  animation: v4-shadow-in 0.95s var(--ease-soft-land) both; animation-delay: var(--d, 0s);
+}
+@keyframes v4-shadow-in {
+  from { transform: scaleX(1.6) scaleY(0.7); opacity: 0.12; }
+  60% { opacity: 0.3; }
+  to { transform: scaleX(1) scaleY(1); opacity: 0.5; }
+}
+.board-v3 .v4-fall { animation: v4-fall-in 0.95s var(--ease-soft-land) both; animation-delay: var(--d, 0s); }
+@keyframes v4-fall-in {
+  from { transform: translateY(-46vh) scale(0.94); opacity: 0; }
+  55% { opacity: 1; }
+  to { transform: translateY(0) scale(1); opacity: 1; }
+}
+.board-v3 .v4-panel .v3-feature { margin-top: 0; position: relative; }
+.board-v3 .v4-panel .v3-feature::before {
+  content: ""; position: absolute; inset: 0 0 auto 0; height: 2px; border-radius: 24px 24px 0 0;
+  background: linear-gradient(90deg, transparent, var(--v4-brass-bright), transparent); opacity: 0.65; z-index: 1;
+}
+.board-v3 .v4-panel.v4-settled .v3-feature { box-shadow: var(--v4-shadow-land); }
+.board-v3 .v4-stop-dot {
+  position: absolute; left: -28px; top: 34px; width: 15px; height: 15px; border-radius: 50%;
+  background: var(--hv5-card); border: 3px solid var(--v4-brass); z-index: 3;
+  animation: v4-nudge 1.1s var(--ease-snap-settle) both; animation-delay: calc(var(--d, 0s) + 0.95s);
+}
+.board-v3 .v4-stop-dot::after {
+  content: ""; position: absolute; inset: -9px; border-radius: 50%; border: 2px solid var(--v4-brass-bright);
+  opacity: 0; animation: v4-ringpulse 0.45s ease-out both; animation-delay: calc(var(--d, 0s) + 0.9s);
+}
+@keyframes v4-ringpulse { from { transform: scale(0.4); opacity: 0.9; } to { transform: scale(1.25); opacity: 0; } }
+@keyframes v4-nudge {
+  0% { transform: translateX(0); } 35% { transform: translateX(3px); }
+  70% { transform: translateX(-1px); } 100% { transform: translateX(0); }
+}
+
+/* ---- per-feature progress + the inside toggle ---- */
+.board-v3 .v4-progress { display: flex; align-items: center; gap: 10px; font-weight: 600; margin: 0 0 4px; }
+.board-v3 .v4-bar { flex: 1; height: 8px; border-radius: 99px; background: var(--hv5-line); overflow: hidden; }
+.board-v3 .v4-bar i {
+  display: block; height: 100%; border-radius: 99px;
+  background: linear-gradient(90deg, var(--hv5-sage), var(--hv5-forest));
+}
+.board-v3 .v4-toggle {
+  margin: 13px 16px 2px; font: inherit; font-weight: 700; cursor: pointer; min-height: 44px;
+  border: 1px solid var(--hv5-line); background: transparent; color: var(--hv5-ink);
+  border-radius: 999px; padding: 9px 16px;
+}
+.board-v3 .v4-toggle .v4-chev { display: inline-block; transition: transform 0.3s var(--ease-snap-settle); }
+.board-v3 .v4-toggle[aria-expanded="true"] .v4-chev { transform: rotate(180deg); }
+.board-v3 .v3-next strong { color: var(--hv5-brown-deep); }
+
+/* ---- calm + reduced motion: designed stills ---- */
+.board-v3.v3-calm .v4-fall, .board-v3.v3-calm .v4-shadow, .board-v3.v3-calm .v4-stop-dot,
+.board-v3.v3-calm .v4-stop-dot::after, .board-v3.v3-calm .v4-traveller .v4-halo {
+  animation: none !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  .board-v3 .v4-fall, .board-v3 .v4-shadow, .board-v3 .v4-stop-dot,
+  .board-v3 .v4-stop-dot::after, .board-v3 .v4-traveller .v4-halo {
+    animation: none !important;
+  }
+  .board-v3 .v4-layer { transform: none; }
+}
