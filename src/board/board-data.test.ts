@@ -108,17 +108,26 @@ describe("honest celebration bookkeeping", () => {
 describe("failure-mode guards — v2's lies cannot come back", () => {
   const read = (p: string) =>
     existsSync(new URL(p, import.meta.url)) ? readFileSync(new URL(p, import.meta.url), "utf8") : "";
-  it("no board source reads GitHub or claims liveness it cannot prove", () => {
-    const surfaces = [
-      read("./board-data.ts"),
-      read("../routes/board.tsx"),
-      read("../routes/board_.issues.tsx"),
-    ].join("\n");
-    assert.ok(!surfaces.includes("api.github.com"), "board must never fetch GitHub");
-    assert.ok(!surfaces.includes("Live from GitHub"), "false liveness wording");
-    assert.ok(!surfaces.includes("fetchLive"), "the v2 live overlay must stay deleted");
+  it("GitHub is read only by the coverage-gated live feed; liveness is claimed only with its coverage", () => {
+    // The v3 form of this guard banned the mechanism outright. The
+    // owner's 2026-11-16 ruling restored the feed — what stays
+    // banned is the LIE: a liveness claim without proven coverage.
+    // So: the snapshot layer never fetches, the route never fetches
+    // (the feed module owns the check), and the one live wording in
+    // the route is the coverage-gated line, rendered only from a
+    // completed check (live-feed returns kind "live" solely when
+    // every linked record was covered).
+    const snapshotLayer = [read("./board-data.ts"), read("./status-core.ts")].join("\n");
+    assert.ok(!snapshotLayer.includes("api.github.com"), "the snapshot layer must never fetch GitHub");
+    const route = read("../routes/board.tsx");
+    assert.ok(!route.includes("api.github.com"), "the route must not fetch GitHub itself");
+    assert.ok(
+      route.includes("Live from GitHub — every linked record checked"),
+      "the live line must state its coverage",
+    );
+    assert.ok(read("./live-feed.ts").includes("api.github.com"), "the live feed owns the GitHub check");
   });
-  it("the /board/issues route is deleted (it has no data source without public GitHub)", () => {
+  it("the /board/issues route stays deleted (the feed is an overlay, not a data surface)", () => {
     assert.equal(existsSync(new URL("../routes/board_.issues.tsx", import.meta.url)), false);
   });
 });
