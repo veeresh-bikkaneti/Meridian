@@ -63,6 +63,13 @@ import {
   RoundingLineScene,
   SplitProductScene,
 } from "./clue-scene-kinds-c";
+import {
+  ClockArcScene,
+  MeasureTraceScene,
+  TileGridScene,
+  UnitFitScene,
+} from "./clue-scene-kinds-d";
+import { FractionFillScene, FractionSliceScene } from "./clue-scene-kinds-e";
 import { claimVoice, type VoiceClaim } from "../../game/audio/voice-channel";
 import { isSoundEnabled } from "../../game/audio/sfx";
 import { soundAudible } from "../../game/audio/play-guards";
@@ -394,6 +401,12 @@ const SUMMARY_STAGGER: Record<ClueSceneDescription["kind"], number> = {
   "digit-shift": 0.5,
   "split-product": 0.9,
   "chunk-share": 1.15,
+  "tile-grid": 0.9,
+  "measure-trace": 0.9,
+  "fraction-slice": 0.7,
+  "fraction-fill": 1.0,
+  "clock-arc": 0.55,
+  "unit-fit": 0.9,
 };
 
 /** The summary clip's URL (public/audio/subjects/, manifest.json). */
@@ -460,6 +473,18 @@ function SceneArt({
       return <SplitProductScene description={description} phase={phase} stepDelay={stepDelay} />;
     case "chunk-share":
       return <ChunkShareScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "tile-grid":
+      return <TileGridScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "measure-trace":
+      return <MeasureTraceScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "fraction-slice":
+      return <FractionSliceScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "fraction-fill":
+      return <FractionFillScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "clock-arc":
+      return <ClockArcScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "unit-fit":
+      return <UnitFitScene description={description} phase={phase} stepDelay={stepDelay} />;
   }
 }
 
