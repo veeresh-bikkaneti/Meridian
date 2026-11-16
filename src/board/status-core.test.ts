@@ -9,11 +9,13 @@ import {
   deriveFromRecords,
   phaseLineFor,
   scanBanned,
+  scanDevLanguage,
   slugify,
   storyLine,
   storyStatus,
   type Curation,
   type CurationStory,
+  type PublishedBoard,
   type RecordState,
 } from "./status-core.ts";
 
@@ -116,6 +118,66 @@ describe("scanBanned — the readability law as a check", () => {
   });
 });
 
+describe("scanDevLanguage — the v4 player-words law", () => {
+  const boardWith = (title: string, line = "Ready to play"): PublishedBoard =>
+    ({
+      version: 3,
+      source: "generated",
+      updatedAt: "2026-11-15T00:00:00.000Z",
+      counts: { done: 1, inProgress: 0, notStarted: 0, total: 1 },
+      epics: [
+        {
+          id: "e",
+          name: "E",
+          color: "#000",
+          features: [
+            {
+              id: "f",
+              name: "F",
+              promise: "P",
+              anim: "star",
+              done: 1,
+              total: 1,
+              bonds: 0,
+              stories: [{ slug: "s", title, status: "done", line }],
+            },
+          ],
+        },
+      ],
+      bonds: [],
+    }) as PublishedBoard;
+
+  it("FAILS on the pre-v4 published titles (the dev language Liz flagged)", () => {
+    const preV4Titles = [
+      "Age groups 7-10, 10-18, 18+ in code",
+      "3 unrendered clips: beat-me, win-together, truce-watson",
+      "Number strand spec",
+      "Science definitions and scene engine spec",
+      "Shared voice channel (one speaker at a time)",
+      "Truce pennant port",
+      "Films (v4, dolly camera)",
+      "3D film source files",
+      "Journal clips (Stage B video files)",
+      "Pair art sheets and endings",
+      "Social studies and GK screens",
+      "Maths sign-off and release",
+    ];
+    for (const t of preV4Titles)
+      assert.ok(scanDevLanguage(boardWith(t)).length > 0, `expected a violation for: ${t}`);
+  });
+  it("passes every v4 player title and line (no false positives)", () => {
+    const curation = curationJson as unknown as Curation;
+    const recordStates = new Map(
+      Object.entries(recordStatesJson as Record<string, RecordState>).map(([k, v]) => [Number(k), v]),
+    );
+    const published = buildPublished(curation, recordStates, {
+      source: "generated",
+      updatedAt: "2026-11-15T00:00:00.000Z",
+    });
+    assert.deepEqual(scanDevLanguage(published), []);
+  });
+});
+
 describe("buildPublished on the real curation file (Phase 0 baseline)", () => {
   const curation = curationJson as unknown as Curation;
   const recordStates = new Map(
@@ -126,8 +188,38 @@ describe("buildPublished on the real curation file (Phase 0 baseline)", () => {
     updatedAt: "2026-11-15T00:00:00.000Z",
   });
 
-  it("reproduces the locked migration baseline: 46 stories, 20 / 8 / 18", () => {
-    assert.deepEqual(published.counts, { done: 20, inProgress: 8, notStarted: 18, total: 46 });
+  it("reproduces the v4 player-visible baseline: 37 stories, 16 / 6 / 15", () => {
+    assert.deepEqual(published.counts, { done: 16, inProgress: 6, notStarted: 15, total: 37 });
+  });
+  it("excludes the 9 internal items and the whole Behind the Scenes epic", () => {
+    const slugs = published.epics.flatMap((e) => e.features.flatMap((f) => f.stories.map((s) => s.slug)));
+    for (const slug of [
+      "fix-for-how-the-site-goes-live",
+      "subject-registry",
+      "lean-test-strategy",
+      "model-neutral-agent-rules",
+      "scale-play-mockup",
+      "scale-play-v2-plan",
+      "the-same-tools-working-on-windows",
+      "turn-the-stream-safety-rules-back-on",
+      "open-pieces-of-real-work-not-yet-placed",
+    ])
+      assert.ok(!slugs.includes(slug), `excluded item published: ${slug}`);
+    assert.ok(!published.epics.some((e) => e.id === "behind"), "Behind the Scenes must not publish");
+    assert.equal(published.epics.length, 4);
+  });
+  it("carries the v4 line overrides (Drawing in progress; Finished, not Ready to play)", () => {
+    const bySlug = new Map(
+      published.epics.flatMap((e) =>
+        e.features.flatMap((f) => f.stories.map((s) => [s.slug, s] as const)),
+      ),
+    );
+    assert.equal(bySlug.get("pair-art-sheets-and-endings")?.line, "Drawing in progress");
+    assert.equal(bySlug.get("religious-journal-movies-hidden")?.line, "Finished");
+    assert.equal(
+      bySlug.get("truce-pennant-port")?.line,
+      "Coming after: Clues arrive one at a time, one voice at a time",
+    );
   });
   it("draws exactly the 8 recorded waits as bonds — never more", () => {
     assert.equal(published.bonds.length, 8);
@@ -160,7 +252,7 @@ describe("buildPublished on the real curation file (Phase 0 baseline)", () => {
     const a = computeLayout(published);
     const b = computeLayout(published);
     assert.deepEqual(a, b);
-    assert.equal(Object.keys(a.positions).length, 46);
+    assert.equal(Object.keys(a.positions).length, 37);
   });
 });
 

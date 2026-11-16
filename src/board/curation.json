@@ -14,7 +14,7 @@
             {
               "sourceId": "detective-core/holmes-and-watson-pair-in-the-game",
               "slug": "holmes-and-watson-pair-in-the-game",
-              "title": "Holmes and Watson pair in the game",
+              "title": "Meet Holmes & Watson in the game",
               "records": [
                 355,
                 356,
@@ -48,12 +48,13 @@
             {
               "sourceId": "detective-core/pair-art-sheets-and-endings",
               "slug": "pair-art-sheets-and-endings",
-              "title": "Pair art sheets and endings",
+              "title": "New drawings of Holmes & Watson, and how each case ends",
               "records": [
                 366
               ],
               "carriedStatus": "in-progress",
               "phase": "Drawing in progress",
+              "lineOverride": "Drawing in progress",
               "tasks": [
                 {
                   "title": "Pull request 366",
@@ -65,7 +66,7 @@
             {
               "sourceId": "detective-core/holmes-follow-and-home-first-landing",
               "slug": "holmes-follow-and-home-first-landing",
-              "title": "Holmes follow and Home-first landing",
+              "title": "Holmes & Watson greet you on the home page",
               "records": [
                 364,
                 368
@@ -96,7 +97,7 @@
             {
               "sourceId": "detective-core/held-finger-jitter-fix-on-the-clue-berth",
               "slug": "held-finger-jitter-fix-on-the-clue-berth",
-              "title": "Held-finger jitter fix on the clue berth",
+              "title": "Clues stay steady while little fingers hold them",
               "records": [
                 431
               ],
@@ -105,7 +106,7 @@
             {
               "sourceId": "detective-core/clue-pacing-and-one-voice-at-a-time",
               "slug": "clue-pacing-and-one-voice-at-a-time",
-              "title": "Clue pacing and one voice at a time",
+              "title": "Clues arrive one at a time, one voice at a time",
               "records": [
                 430
               ],
@@ -115,7 +116,7 @@
             {
               "sourceId": "detective-core/clue-4-opening-cards-2-and-3",
               "slug": "clue-4-opening-cards-2-and-3",
-              "title": "Clue 4 opening cards 2 and 3",
+              "title": "The fourth case's opening cards",
               "records": [],
               "carriedStatus": "not-started"
             }
@@ -130,7 +131,7 @@
             {
               "sourceId": "detective-core/age-groups-7-10-10-18-18-in-code",
               "slug": "age-groups-7-10-10-18-18-in-code",
-              "title": "Age groups 7-10, 10-18, 18+ in code",
+              "title": "Capitals games for ages 7–10, 10–18 and grown-ups",
               "records": [
                 393,
                 414
@@ -140,7 +141,7 @@
             {
               "sourceId": "detective-core/truce-pennant-port",
               "slug": "truce-pennant-port",
-              "title": "Truce pennant port",
+              "title": "The truce flag at the end of a capitals case",
               "records": [],
               "carriedStatus": "not-started"
             }
@@ -162,7 +163,7 @@
             {
               "sourceId": "why-do-we-learn-this-card/films-v4-dolly-camera",
               "slug": "films-v4-dolly-camera",
-              "title": "Films (v4, dolly camera)",
+              "title": "Short films showing where school subjects turn up in real life",
               "records": [
                 433
               ],
@@ -171,25 +172,16 @@
             {
               "sourceId": "why-do-we-learn-this-card/card-on-home-behind-scale-1-button-reads-coming-soon",
               "slug": "the-card-appears-on-the-home-page",
-              "title": "The card appears on the home page",
+              "title": "The card on the home page",
               "records": [
                 433
               ],
               "carriedStatus": "done"
             },
             {
-              "sourceId": "why-do-we-learn-this-card/cloudflare-deploy-fix",
-              "slug": "fix-for-how-the-site-goes-live",
-              "title": "Fix for how the site goes live",
-              "records": [
-                435
-              ],
-              "carriedStatus": "done"
-            },
-            {
               "sourceId": "why-do-we-learn-this-card/3d-film-source-files-branch",
               "slug": "3d-film-source-files",
-              "title": "3D film source files",
+              "title": "Making the films in 3D",
               "records": [
                 432
               ],
@@ -199,14 +191,14 @@
             {
               "sourceId": "why-do-we-learn-this-card/button-opens-a-subject-instead-of-coming-soon",
               "slug": "button-opens-a-subject-instead-of-coming-soon",
-              "title": "Button opens a subject instead of Coming soon",
+              "title": "Tap the card and go straight into a subject",
               "records": [],
               "carriedStatus": "not-started"
             },
             {
               "sourceId": "why-do-we-learn-this-card/card-shown-to-kids-without-scale-1",
               "slug": "the-card-appears-for-kids",
-              "title": "The card appears for kids",
+              "title": "The card, ready for kids to open themselves",
               "records": [],
               "carriedStatus": "not-started"
             }
@@ -221,7 +213,7 @@
             {
               "sourceId": "math/number-strand-spec",
               "slug": "number-strand-spec",
-              "title": "Number strand spec",
+              "title": "Number games — counting, ordering and patterns",
               "records": [
                 395
               ],
@@ -230,25 +222,16 @@
             {
               "sourceId": "math/applied-strand-spec",
               "slug": "applied-strand-spec",
-              "title": "Applied strand spec",
+              "title": "Everyday maths games — measuring, money and time",
               "records": [
                 405
               ],
               "carriedStatus": "done"
             },
             {
-              "sourceId": "math/subject-registry-shell-split",
-              "slug": "subject-registry",
-              "title": "Subject registry",
-              "records": [
-                394
-              ],
-              "carriedStatus": "done"
-            },
-            {
               "sourceId": "math/math-subject-screen-3-items-per-age-group",
               "slug": "math-subject-screen-3-items-per-age-group",
-              "title": "Math subject screen, 3 items per age group",
+              "title": "The Maths screen, with games for every age group",
               "records": [
                 434
               ],
@@ -257,14 +240,14 @@
             {
               "sourceId": "math/math-sign-off-and-release-pr",
               "slug": "maths-sign-off-and-release",
-              "title": "Maths sign-off and release",
+              "title": "A final check, then Maths opens to everyone",
               "records": [],
               "carriedStatus": "not-started"
             },
             {
               "sourceId": "math/holmes-and-watson-in-math",
               "slug": "holmes-and-watson-in-math",
-              "title": "Holmes and Watson in math",
+              "title": "Holmes & Watson join the Maths cases",
               "records": [],
               "carriedStatus": "not-started"
             }
@@ -279,7 +262,7 @@
             {
               "sourceId": "physics-and-chemistry/physics-spec",
               "slug": "physics-spec",
-              "title": "Physics spec",
+              "title": "Physics games — how things move, fall and roll",
               "records": [
                 398
               ],
@@ -288,7 +271,7 @@
             {
               "sourceId": "physics-and-chemistry/chemistry-spec",
               "slug": "chemistry-spec",
-              "title": "Chemistry spec",
+              "title": "Chemistry games — what things are made of",
               "records": [
                 400
               ],
@@ -297,7 +280,7 @@
             {
               "sourceId": "physics-and-chemistry/science-definitions-and-scene-engine-spec",
               "slug": "science-definitions-and-scene-engine-spec",
-              "title": "Science definitions and scene engine spec",
+              "title": "Science words and animated scenes for every case",
               "records": [
                 404
               ],
@@ -306,7 +289,7 @@
             {
               "sourceId": "physics-and-chemistry/science-expansion-spec",
               "slug": "science-expansion-spec",
-              "title": "Science expansion spec",
+              "title": "More science cases",
               "records": [
                 429
               ],
@@ -316,21 +299,21 @@
             {
               "sourceId": "physics-and-chemistry/predict-and-see-scene-engine-code",
               "slug": "predict-and-see-scene-engine",
-              "title": "Predict-and-see scene engine",
+              "title": "Predict-and-see scenes — guess first, then watch",
               "records": [],
               "carriedStatus": "not-started"
             },
             {
               "sourceId": "physics-and-chemistry/physics-and-chemistry-screens",
               "slug": "physics-and-chemistry-screens",
-              "title": "Physics and Chemistry screens",
+              "title": "The Physics & Chemistry screens",
               "records": [],
               "carriedStatus": "not-started"
             },
             {
               "sourceId": "physics-and-chemistry/wave-2-sign-off-and-release",
               "slug": "wave-2-sign-off-and-release",
-              "title": "Wave 2 sign-off and release",
+              "title": "A final check, then science opens to everyone",
               "records": [],
               "carriedStatus": "not-started"
             }
@@ -345,7 +328,7 @@
             {
               "sourceId": "social-studies-and-gk/social-studies-economics-civics-spec",
               "slug": "social-studies-economics-civics-spec",
-              "title": "Social studies, economics, civics spec",
+              "title": "Social studies games — people, places and how communities work",
               "records": [
                 397
               ],
@@ -354,7 +337,7 @@
             {
               "sourceId": "social-studies-and-gk/general-knowledge-spec",
               "slug": "general-knowledge-spec",
-              "title": "General knowledge spec",
+              "title": "General knowledge games",
               "records": [
                 409
               ],
@@ -363,7 +346,7 @@
             {
               "sourceId": "social-studies-and-gk/humanities-definitions-spec",
               "slug": "humanities-definitions-spec",
-              "title": "Humanities definitions spec",
+              "title": "Words for people and places, in plain language",
               "records": [
                 399
               ],
@@ -372,14 +355,14 @@
             {
               "sourceId": "social-studies-and-gk/social-studies-and-gk-screens",
               "slug": "social-studies-and-gk-screens",
-              "title": "Social studies and GK screens",
+              "title": "The people-and-places screens",
               "records": [],
               "carriedStatus": "not-started"
             },
             {
               "sourceId": "social-studies-and-gk/wave-3-sign-off-and-release",
               "slug": "wave-3-sign-off-and-release",
-              "title": "Wave 3 sign-off and release",
+              "title": "A final check, then it opens to everyone",
               "records": [],
               "carriedStatus": "not-started"
             }
@@ -401,7 +384,7 @@
             {
               "sourceId": "journals/7-journal-specs-people-and-places-technology-ww2-monuments-world-wars-modern-world-great-leaders-freedom-fighters",
               "slug": "7-journal-specs-people-and-places-technology-ww2-monuments-world-wars-modern-world-great-leaders-freedom-fighters",
-              "title": "7 journal specs (people and places, technology, WW2 monuments, world wars, modern world, great leaders, freedom fighters)",
+              "title": "Seven story collections — people and places, inventions, monuments, great leaders and freedom fighters",
               "records": [
                 402,
                 401,
@@ -416,23 +399,24 @@
             {
               "sourceId": "journals/religious-journal-movies-hidden",
               "slug": "religious-journal-movies-hidden",
-              "title": "Religious journal movies hidden",
+              "title": "Some story films kept tucked away, by choice",
               "records": [
                 416
               ],
-              "carriedStatus": "done"
+              "carriedStatus": "done",
+              "lineOverride": "Finished"
             },
             {
               "sourceId": "journals/journal-clips-stage-b-video-files",
               "slug": "journal-clips-stage-b-video-files",
-              "title": "Journal clips (Stage B video files)",
+              "title": "Short film clips for the journals",
               "records": [],
               "carriedStatus": "not-started"
             },
             {
               "sourceId": "journals/journals-release",
               "slug": "journals-release",
-              "title": "Journals release",
+              "title": "The journals open to everyone",
               "records": [],
               "carriedStatus": "not-started"
             }
@@ -454,7 +438,7 @@
             {
               "sourceId": "audio-and-clips/shared-voice-channel-one-speaker-at-a-time",
               "slug": "shared-voice-channel-one-speaker-at-a-time",
-              "title": "Shared voice channel (one speaker at a time)",
+              "title": "One clear voice at a time — voices never talk over each other",
               "records": [
                 430
               ],
@@ -464,86 +448,14 @@
             {
               "sourceId": "audio-and-clips/3-unrendered-clips-beat-me-win-together-truce-watson",
               "slug": "3-unrendered-clips-beat-me-win-together-truce-watson",
-              "title": "3 unrendered clips: beat-me, win-together, truce-watson",
+              "title": "Three short voice clips still to record",
               "records": [],
               "carriedStatus": "not-started"
             },
             {
               "sourceId": "audio-and-clips/88-place-names-with-no-holmes-voice",
               "slug": "88-place-names-with-no-holmes-voice",
-              "title": "88 place names with no Holmes voice",
-              "records": [],
-              "carriedStatus": "not-started"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "behind",
-      "name": "Behind the Scenes",
-      "color": "#5c564a",
-      "features": [
-        {
-          "id": "making",
-          "name": "How Meridian Is Made",
-          "promise": "The tools and checks that keep the game honest.",
-          "anim": "gear",
-          "stories": [
-            {
-              "sourceId": "infra-and-process/lean-test-strategy-in-agents-md",
-              "slug": "lean-test-strategy",
-              "title": "Lean test strategy",
-              "records": [
-                423
-              ],
-              "carriedStatus": "done"
-            },
-            {
-              "sourceId": "infra-and-process/model-neutral-agent-rules",
-              "slug": "model-neutral-agent-rules",
-              "title": "Model-neutral agent rules",
-              "records": [
-                406
-              ],
-              "carriedStatus": "done"
-            },
-            {
-              "sourceId": "infra-and-process/scale-play-mockup",
-              "slug": "scale-play-mockup",
-              "title": "Scale-play mockup",
-              "records": [
-                425
-              ],
-              "carriedStatus": "in-progress",
-              "phase": "Building in progress"
-            },
-            {
-              "sourceId": "infra-and-process/scale-play-v2-plan-inside-the-prod-ui",
-              "slug": "scale-play-v2-plan",
-              "title": "Scale-play v2 plan",
-              "records": [],
-              "carriedStatus": "in-progress",
-              "phase": "Still planning"
-            },
-            {
-              "sourceId": "infra-and-process/windows-scripts-build-pages-npm-test-under-cmd-line-endings-on-globe-data",
-              "slug": "the-same-tools-working-on-windows",
-              "title": "The same tools, working on Windows",
-              "records": [],
-              "carriedStatus": "not-started"
-            },
-            {
-              "sourceId": "infra-and-process/turn-the-scaling-streams-ruleset-back-on",
-              "slug": "turn-the-stream-safety-rules-back-on",
-              "title": "Turn the stream safety rules back on",
-              "records": [],
-              "carriedStatus": "not-started"
-            },
-            {
-              "sourceId": "infra-and-process/open-issues-344-and-319-real-unbuilt-work",
-              "slug": "open-pieces-of-real-work-not-yet-placed",
-              "title": "Open pieces of real work, not yet placed",
+              "title": "Holmes learns to say 88 place names out loud",
               "records": [],
               "carriedStatus": "not-started"
             }
