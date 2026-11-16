@@ -2093,6 +2093,9 @@
 }
 .board-v3.v4-trail-page {
   background: linear-gradient(175deg, var(--hv5-parchment), var(--v4-ground-2));
+  /* The sample's body law: the falling panels and their widening
+     contact shadows must never give the page a sideways scroll. */
+  overflow-x: clip;
 }
 .board-v3.v4-trail-page[data-board-theme="dark"] {
   --hv5-parchment: #10222a;
