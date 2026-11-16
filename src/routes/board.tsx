@@ -4,6 +4,7 @@ import {
   lazy,
   useEffect,
   useMemo,
+  useRef,
   useState,
 } from "react";
 import {
@@ -151,6 +152,40 @@ function BoardPage() {
   };
   const [toast, setToast] = useState<string | null>(null);
 
+  /* Fix 2 (owner, 2026-11-16): on small screens every control hides
+   * behind one Menu bar; on big screens the bar is CSS-hidden and the
+   * panel below is the horizontal nav bar in the header. The menu
+   * contract follows the play pages' popover discipline: opening moves
+   * focus into the panel, Esc closes and returns focus to the Menu
+   * button, and a tap outside closes. */
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement | null>(null);
+  const navPanelRef = useRef<HTMLDivElement | null>(null);
+  const viewnavRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    navPanelRef.current
+      ?.querySelector<HTMLButtonElement>("button:not([disabled])")
+      ?.focus();
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== "Escape") return;
+      setMenuOpen(false);
+      menuButtonRef.current?.focus();
+    };
+    const onPointerDown = (e: PointerEvent) => {
+      if (viewnavRef.current && !viewnavRef.current.contains(e.target as Node)) {
+        setMenuOpen(false);
+      }
+    };
+    document.addEventListener("keydown", onKey);
+    document.addEventListener("pointerdown", onPointerDown);
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.removeEventListener("pointerdown", onPointerDown);
+    };
+  }, [menuOpen]);
+
   useEffect(() => {
     let active = true;
     void loadBoardStatus().then((result) => {
@@ -231,6 +266,18 @@ function BoardPage() {
       },
     });
   };
+  /* Picking a view from the small-screen panel closes it and returns
+   * focus to the Menu button; on big screens the button is hidden, so
+   * focus simply stays in the bar. Theme and Calm picks are settings,
+   * not navigation — they leave the panel open. */
+  const pickView = (next: BoardView) => {
+    if (menuOpen) {
+      setMenuOpen(false);
+      const btn = menuButtonRef.current;
+      if (btn && btn.offsetParent !== null) btn.focus();
+    }
+    go({ view: next });
+  };
   const select = (slug: string | null) => go({ story: slug });
   const frontierStory = frontier ? findStory(board, frontier) : null;
 
@@ -285,13 +332,32 @@ function BoardPage() {
           </div>
         ) : null}
 
-        <nav className="v3-viewnav" aria-label="Board views">
+        <nav className="v3-viewnav" aria-label="Board views" ref={viewnavRef}>
+          <div className="v3-menubar">
+            <button
+              type="button"
+              className="v3-menu-button"
+              data-testid="board-menu-button"
+              ref={menuButtonRef}
+              aria-expanded={menuOpen}
+              aria-controls="board-nav-panel"
+              onClick={() => setMenuOpen((open) => !open)}
+            >
+              <span aria-hidden="true">☰</span> Menu
+            </button>
+          </div>
+          <div
+            className="v3-nav-panel"
+            id="board-nav-panel"
+            ref={navPanelRef}
+            data-open={menuOpen ? "true" : "false"}
+          >
           <div className="v3-nav-cluster" role="group" aria-label="Views">
             <button
               type="button"
               data-testid="board-nav-trail"
               aria-pressed={view === "trail"}
-              onClick={() => go({ view: "trail" })}
+              onClick={() => pickView("trail")}
             >
               The trail
             </button>
@@ -300,7 +366,7 @@ function BoardPage() {
                 type="button"
                 data-testid="board-nav-map"
                 aria-pressed={view === "map"}
-                onClick={() => go({ view: "map" })}
+                onClick={() => pickView("map")}
               >
                 The structure
               </button>
@@ -309,7 +375,7 @@ function BoardPage() {
               type="button"
               data-testid="board-nav-tip"
               aria-pressed={view === "tip"}
-              onClick={() => go({ view: "tip" })}
+              onClick={() => pickView("tip")}
             >
               Send a tip
             </button>
@@ -354,6 +420,7 @@ function BoardPage() {
           >
             Calm mode {calm ? "on" : "off"}
           </button>
+          </div>
           </div>
         </nav>
 

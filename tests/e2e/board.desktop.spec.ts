@@ -571,3 +571,47 @@ test.describe("live feed", () => {
     expect(updated.toLowerCase()).not.toContain("live");
   });
 });
+
+test("390px: controls hide behind the Menu bar — open, Esc, outside tap, theme, view pick", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await openBoard(page);
+  const menuButton = page.getByTestId("board-menu-button");
+  const trailButton = page.getByTestId("board-nav-trail");
+  await expect(menuButton).toBeVisible();
+  await expect(menuButton).toHaveAttribute("aria-expanded", "false");
+  await expect(trailButton).toBeHidden();
+
+  // Opening moves focus into the panel.
+  await menuButton.click();
+  await expect(menuButton).toHaveAttribute("aria-expanded", "true");
+  await expect(trailButton).toBeVisible();
+  await expect(trailButton).toBeFocused();
+
+  // Esc closes and returns focus to the Menu button.
+  await page.keyboard.press("Escape");
+  await expect(menuButton).toHaveAttribute("aria-expanded", "false");
+  await expect(trailButton).toBeHidden();
+  await expect(menuButton).toBeFocused();
+
+  // A tap outside the nav closes without moving the view.
+  await menuButton.click();
+  await expect(trailButton).toBeVisible();
+  await page.locator(".v3-title").click();
+  await expect(menuButton).toHaveAttribute("aria-expanded", "false");
+  await expect(trailButton).toBeHidden();
+
+  // A theme pick applies live and leaves the panel open (a setting,
+  // not a navigation).
+  await menuButton.click();
+  await page.getByTestId("board-theme-dark").click();
+  await expect(page.locator("main.board-v3")).toHaveAttribute("data-board-theme", "dark");
+  await expect(menuButton).toHaveAttribute("aria-expanded", "true");
+
+  // Picking a view navigates and closes the panel.
+  await page.getByTestId("board-nav-map").click();
+  await expect(page).toHaveURL(/view=map/);
+  await expect(menuButton).toHaveAttribute("aria-expanded", "false");
+  await expect(trailButton).toBeHidden();
+});
