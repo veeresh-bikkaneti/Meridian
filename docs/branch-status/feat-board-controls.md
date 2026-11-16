@@ -52,3 +52,27 @@
 
 - No nodes or edges added: no new files, specs, or decisions — one
   branch-local restructure of the board header controls.
+
+## Handoff (2026-11-16)
+
+- **Done:** Fix 2 built and gated on local head `1fe5ec34` (this file's
+  own update rides a follow-up commit). Gates, all on the built
+  artifact / this tree: `npx tsc --noEmit` clean · `npm run lint:nav`
+  clean · board unit suites 58/58 (`node --test src/board/**`) ·
+  `npm run build:pages` green · board Playwright e2e 17/17
+  (`tests/e2e/board.desktop.spec.ts`, `--workers=1`, flock protocol;
+  includes the new 390px menu-flow test and all live-feed tests) ·
+  `npm run check:provenance` PASSED for origin/main..HEAD.
+- **Captures:** `~/workspace/board-cleanup/screenshots/menu/`
+  (menu-390-closed, menu-390-open-light, menu-390-open-dark,
+  menu-desktop-nav), read first-hand; write-up in
+  `~/workspace/board-cleanup/REPORT-FIX2.md`.
+- **Next step:** the coordinator integrates this branch into
+  `feat/board-cleanup` (PR #506) after both waves report; the merge
+  itself is the owner's word on the final integrated head.
+- **Open questions:** none for this branch.
+- **Ruled out:** a bespoke new control style (the consistency ruling —
+  the bar/panel reuse the site's own pill anatomy and hv5 tokens);
+  hiding the desktop controls behind the hamburger (owner: big
+  screens get the horizontal bar); closing the panel on theme/Calm
+  picks (settings are not navigation; the panel stays open).
