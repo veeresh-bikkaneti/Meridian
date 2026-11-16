@@ -12,8 +12,11 @@
  * appends up to 10 more per band under the same rule, preferring rows
  * whose useElsewhere links to another subject; the wave-1 items stay
  * first in deal order so the dealt first case per band is unchanged.
- * The 18+ band has only 3 rows across both files and all were already
- * played in wave 1, so wave 2 adds none there.
+ * Wave 3 appends the remaining overflow rows from wave 2's accounting:
+ * the rows whose givens were already stated, plus the rows that stated
+ * no numbers, whose authored givens are flagged in answers.ts for the
+ * educator (the wave-1 mental-strategies precedent). Earlier waves stay
+ * first in deal order, untouched.
  */
 import type { AgeGroup, UnitItem } from "../registry.ts";
 import numberRows from "../../../docs/scaling/math/number/items.json" with { type: "json" };
@@ -62,8 +65,8 @@ export function allMathRows(): UnitItem[] {
 
 /**
  * Every playable item, in deal order: the wave-1 slice first (up to 3
- * items per band), then the wave-2 additions appended per band. 18+ has
- * only 3 rows across both files, and all three are used in wave 1.
+ * items per band), then the wave-2 additions appended per band, then
+ * the wave-3 additions appended per band.
  * (The export keeps its wave-1 name: it is the list other code and the
  * unit tests already import.)
  */
@@ -102,6 +105,32 @@ export const WAVE1_ITEM_IDS: readonly string[] = [
   "math-applied:rates:one-step",
   "math-applied:rates:two-step",
   "math-applied:trig:bearings",
+  // 7-10 (wave 3)
+  "math-number:fractions:fair-parts",
+  "math-number:fractions:equivalent",
+  "math-number:fractions:compare-unlike",
+  "math-number:groups:arrays",
+  "math-applied:measure:longer-than",
+  "math-applied:measure:choose-unit",
+  "math-applied:measure:elapsed-time",
+  "math-applied:measure:perimeter",
+  "math-applied:measure:rect-area",
+  // 10-18 (wave 3)
+  "math-number:division:two-digit-divisors",
+  "math-number:fractions:add-unlike",
+  "math-applied:trig:missing-angle",
+  "math-number:place:decimal-shifts",
+  "math-applied:measure:volume-box",
+  "math-applied:geometry:coordinates",
+  "math-applied:geometry:pythagoras",
+  "math-applied:geometry:distance-points",
+  "math-applied:geometry:cylinder-volume",
+  "math-applied:rates:proportion",
+  "math-applied:rates:rearrange",
+  "math-applied:rates:linear-model",
+  "math-applied:trig:ratios",
+  "math-applied:trig:missing-side",
+  "math-applied:trig:triangle-area",
 ];
 
 /** The playable units for the subject module (contract I1 `units`). */
