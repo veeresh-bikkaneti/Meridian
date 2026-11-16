@@ -428,8 +428,6 @@ describe("clue scene summaries (act 3)", () => {
    without marking the nearer end before the pick — the same
    pattern the pilot ruled for place-compare / rounding-line. */
 
-const BAND2_IDS = itemsForGroup("10-18").map((item) => item.id);
-
 const BAND2_CLOSING: Record<string, string> = {
   "math-number:tables:multi-digit": "1081",
   "math-applied:measure:convert-metric": "2400",
@@ -446,15 +444,23 @@ const BAND2_CLOSING: Record<string, string> = {
   "math-applied:trig:bearings": "37 degrees",
 };
 
+// The thirteen wave-2 items, named by BAND2_CLOSING. The band is no
+// longer enumerated dynamically: main has since grown the 10-18 band
+// (#495's remaining items, whose scenes are not wave 2's scope).
+const BAND2_IDS = Object.keys(BAND2_CLOSING);
+
 describe("clue scene descriptions — wave 2 (ages 10-18)", () => {
-  it("covers exactly the Math items for ages 10-18, on top of 7-10", () => {
+  it("covers the wave-2 items, on top of 7-10", () => {
     assert.equal(BAND2_IDS.length, 13);
     for (const id of BAND2_IDS) {
       assert.ok(clueSceneFor(id), `${id} has a scene`);
     }
-    assert.deepEqual(
-      Object.keys(MATH_CLUE_SCENES).sort(),
-      [...ALL_IDS, ...BAND2_IDS].sort(),
+    // The registry itself has since grown on main (its own scenes
+    // wave; later waves stack on top), so this asserts coverage of
+    // the 7-10 items and wave 2's thirteen, not registry exactness.
+    assert.ok(
+      [...ALL_IDS, ...BAND2_IDS].every((id) => clueSceneFor(id)),
+      "every 7-10 and wave-2 item has a scene",
     );
     // The held 18+ item stays description-free.
     assert.equal(clueSceneFor("math-applied:measure:survey-check"), null);
