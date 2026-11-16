@@ -36,7 +36,7 @@ const UPDATED = "October 21, 2026";
 
 function PrivacyPage() {
   return (
-    <InfoPage title="Privacy">
+    <InfoPage title="Privacy" graphic="satchel">
       <p className="text-sm text-muted">For parents, carers, and teachers · Last updated {UPDATED}</p>
 
       <p>
