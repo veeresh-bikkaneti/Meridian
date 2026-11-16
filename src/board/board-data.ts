@@ -4,25 +4,36 @@
  * The board reads ONE published status file (spec §6, Option A):
  * `board-status.json`, produced inside the repo by
  * scripts/board/publish-status.mjs from the private curation file.
- * It NEVER reads GitHub from the browser, and no PR number, story id,
- * task or task count exists in the published shape (status-core.ts).
+ * No PR number, story id, task or task count exists in the published
+ * shape (status-core.ts) — and none is ever rendered.
+ *
+ * On top of the snapshot sits the live feed (live-feed.ts, owner
+ * ruling 2026-11-16): the publisher also emits board-links.json —
+ * the record-number machinery the browser needs to recompute
+ * statuses from live GitHub state. The snapshot renders first and
+ * remains the fallback whenever the live check cannot prove full
+ * coverage; the header labels which one is on screen.
  *
  * If the published file cannot be fetched, the board falls back to
  * the bundled copy (board-status-fallback.json, identical format,
  * source: "manual") and DISCLOSES that it is showing the bundled copy.
  */
 import fallbackJson from "./board-status-fallback.json" with { type: "json" };
+import linksFallbackJson from "./board-links-fallback.json" with { type: "json" };
 import {
   STATUS_WORD,
   type BoardStatus,
   type PublishedBoard,
   type PublishedStory,
 } from "./status-core.ts";
+import { isBoardLinks, type BoardLinks } from "./live-feed.ts";
 
 export { STATUS_WORD };
 export type { BoardStatus, PublishedBoard, PublishedStory };
+export type { BoardLinks };
 
 export const FALLBACK_BOARD = fallbackJson as unknown as PublishedBoard;
+export const FALLBACK_LINKS = linksFallbackJson as unknown as BoardLinks;
 
 export interface LoadedBoard {
   board: PublishedBoard;
@@ -76,7 +87,33 @@ export async function loadBoardStatus(
   return { board: FALLBACK_BOARD, source: "manual", stale: isStale(FALLBACK_BOARD.updatedAt, now) };
 }
 
-/** "Updated Nov 15, 2026, 7:02 AM" — an honest stamp, never "live". */
+/**
+ * The live feed's links file, fetched like the status file and
+ * falling back to the bundled copy. Links are invisible machinery
+ * (record numbers for the recompute), so a fallback here needs no
+ * disclosure of its own — the header's live/snapshot labelling is
+ * driven by whether the GitHub check completes, never by which
+ * links copy loaded.
+ */
+export async function loadBoardLinks(
+  fetchImpl: typeof fetch = fetch,
+): Promise<BoardLinks> {
+  try {
+    const base = (import.meta as { env?: { BASE_URL?: string } }).env?.BASE_URL ?? "/";
+    const res = await fetchImpl(`${base}board-links.json`, {
+      headers: { accept: "application/json" },
+    });
+    if (res.ok) {
+      const data: unknown = await res.json();
+      if (isBoardLinks(data)) return data;
+    }
+  } catch {
+    // Network failure → bundled copy.
+  }
+  return FALLBACK_LINKS;
+}
+
+/** "Updated Nov 15, 2026, 7:02 AM" — the snapshot's honest stamp. */
 export function formatUpdated(updatedAt: string): string {
   const d = new Date(updatedAt);
   if (Number.isNaN(d.getTime())) return "a little while ago";

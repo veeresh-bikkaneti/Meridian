@@ -13,12 +13,15 @@ import {
   formatUpdated,
   frontierSlug,
   isStale,
+  loadBoardLinks,
   loadBoardStatus,
   newlyClosedFeatures,
   readSeenClosed,
   writeSeenClosed,
   type LoadedBoard,
+  type PublishedBoard,
 } from "@/board/board-data";
+import { loadLiveBoard } from "@/board/live-feed";
 import { computeLayout } from "@/board/status-core";
 import { TrailView } from "@/board/trail-view";
 import { FeatureRequestForm } from "@/board/feature-request-form";
@@ -31,16 +34,27 @@ const MoleculeMap = lazy(() => import("@/board/molecule-map"));
 /**
  * /board — "See what we're making next" (board v3).
  *
- * The board reads ONE thing: the published status file
+ * The board's base layer is the published status file
  * (public/board-status.json), generated from the team's own curated
- * records by scripts/board/publish-status.mjs. There is no live
- * fetch, no GitHub overlay, no PR anything — v2's live header
- * claimed a freshness the one-page fetch could not back, and
- * v3 removes the claim by removing the mechanism. The header shows
- * the file's own Updated stamp; past 24h the page says so plainly.
- * If the published file cannot be fetched, the bundled copy renders
- * and the header discloses that ("showing the copy that came with
- * the site").
+ * records by scripts/board/publish-status.mjs. It renders first,
+ * exactly as published, with its own Updated stamp.
+ *
+ * Over it sits the live feed (owner ruling, 2026-11-16: "getting
+ * the live feed was the biggest requirement we had") — the overlay
+ * board v2 shipped and v3 removed, restored on the published
+ * contract. On load the page checks the repo's public PR/issue
+ * state on GitHub (live-feed.ts), paginating until every record
+ * linked from the publisher's links file is covered. Full coverage:
+ * statuses are recomputed from the live answer and the header says
+ * "Live from GitHub — every linked record checked (N of N)" beside
+ * the snapshot's stamp. Anything less — a failed, rate-limited or
+ * partial check — keeps the snapshot on screen and says so plainly.
+ * The claim is never made without the coverage to back it: that
+ * was v2's centrepiece defect (a one-page fetch under a "Live"
+ * label), and it stays dead. Behind the boardLiveFeed kill switch.
+ * If the published file itself cannot be fetched, the bundled copy
+ * renders and the header discloses that ("showing the copy that
+ * came with the site").
  *
  * Three views over the same published data: the trail (the journey),
  * the molecular map (the structure; behind the board3d kill switch),
@@ -150,10 +164,42 @@ function BoardPage() {
     };
   }, []);
 
-  const board = loaded?.board ?? FALLBACK_BOARD;
+  /* The live feed: once the snapshot is on screen and the flags
+   * have spoken, run the one GitHub check for this page load. The
+   * snapshot never waits for it. A completed check swaps the board
+   * underneath every view at once (counts, pills, groups, map —
+   * they all read the one `board` below); a failed or partial one
+   * only adds the honest note under the header. Kill switch off =
+   * no fetch and no note: the board is the snapshot, as v3 shipped. */
+  const [liveBoard, setLiveBoard] = useState<PublishedBoard | null>(null);
+  const [liveLine, setLiveLine] = useState<
+    { kind: "live"; covered: number; wanted: number } | { kind: "unavailable" } | null
+  >(null);
+
+  useEffect(() => {
+    if (!loaded) return;
+    let active = true;
+    void loadFlags().then(async () => {
+      if (!active || !isEnabled("boardLiveFeed")) return;
+      const links = await loadBoardLinks();
+      const result = await loadLiveBoard(loaded.board, links);
+      if (!active) return;
+      if (result.kind === "live") {
+        setLiveBoard(result.board);
+        setLiveLine({ kind: "live", covered: result.covered, wanted: result.wanted });
+      } else {
+        setLiveLine({ kind: "unavailable" });
+      }
+    });
+    return () => {
+      active = false;
+    };
+  }, [loaded]);
+
+  const board = liveBoard ?? loaded?.board ?? FALLBACK_BOARD;
   const layout = useMemo(() => computeLayout(board), [board]);
   const frontier = useMemo(() => frontierSlug(board), [board]);
-  const stale = loaded ? isStale(board.updatedAt, Date.now()) : false;
+  const stale = loaded && !liveBoard ? isStale(board.updatedAt, Date.now()) : false;
 
   /* Honest celebration: toast only for a feature that closed since
    * the visitor's last visit — never on first sight (spec §2). */
@@ -205,9 +251,18 @@ function BoardPage() {
             being built · {board.counts.notStarted} not started yet
           </p>
           <p className="v3-updated" data-testid="board-updated-line">
+            {liveLine?.kind === "live"
+              ? `Live from GitHub — every linked record checked (${liveLine.covered} of ${liveLine.wanted}) · `
+              : ""}
             Updated {formatUpdated(board.updatedAt)}
             {loaded?.source === "manual" ? " — showing the copy that came with the site" : ""}
           </p>
+          {liveLine?.kind === "unavailable" ? (
+            <p className="v3-stale" role="note" data-testid="board-live-note">
+              The live check couldn&rsquo;t be completed just now — showing the list as last
+              updated.
+            </p>
+          ) : null}
           {stale ? (
             <p className="v3-stale" role="note">
               This list is more than a day old — a fresher one is on its way.
