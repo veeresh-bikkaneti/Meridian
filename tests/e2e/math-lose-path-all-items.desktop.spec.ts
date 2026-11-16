@@ -8,14 +8,22 @@ import { serveBuiltArtifact } from "./helpers";
  * a wrong pick on ANY item that has a solved summary now shows
  * the answer-first line — "The answer is X — here's how." — and
  * then plays the item's existing act-3 narrated solved summary.
- * On this branch's base the summary system exists only for Math
- * at ages 7-10, so this spec walks three newly flipped Math items
- * end to end (the first case dealt, skip-count; the last of the
- * wave-1 cases, big-quotients; and a wave-3 scene item,
- * fair-parts), plus the two kinds of control that must NOT
- * reveal: a Math band with no summaries on this base (10-18) and
- * a subject with no summary system on this base (Physics, 7-10).
- * The pilot item's own walk stays in
+ * The gate is a property of the item: it is true exactly when
+ * the item is playable for the band asked about and its scene
+ * description carries a summary. On this branch's rebased base
+ * that covers 37 Math item×band pairs — 22 for ages 7-10, 13
+ * for ages 10-18 and 2 for ages 18+ — so this spec walks three
+ * newly flipped Math items end to end (the first case dealt,
+ * skip-count; the last of the wave-1 cases, big-quotients; and
+ * a wave-3 scene item, fair-parts), plus the two kinds of
+ * control that must NOT reveal: a Math 10-18 overflow item
+ * with no scene description and so no summary
+ * (two-digit-divisors, reached by solving forward through the
+ * 13 cases dealt before it) and a hook-free other-subject case
+ * (Physics, ages 7-10: its scene and summary exist for the win
+ * path, but its wrapper passes no loseReveal hook, so a wrong
+ * pick leaves the scene in its setup phase and reveals
+ * nothing). The pilot item's own walk stays in
  * math-fair-share-lose-path.desktop.spec.ts.
  */
 test.setTimeout(600_000);
@@ -38,6 +46,19 @@ const CORRECT: Record<string, string> = {
   "math-number:division:unknown-factor": "5",
   "math-number:division:remainders": "5",
   "math-number:division:big-quotients": "156",
+  "math-number:tables:multi-digit": "1,081",
+  "math-applied:measure:convert-metric": "2,400",
+  "math-number:fractions:percent": "56",
+  "math-applied:geometry:scale-drawing": "8",
+  "math-number:division:standard-algorithm": "156",
+  "math-number:fractions:multiply": "1/3",
+  "math-number:fractions:divide": "8",
+  "math-applied:measure:accuracy": "2.48",
+  "math-applied:rates:unit-rate": "1.6",
+  "math-applied:rates:constant-speed": "5",
+  "math-applied:rates:one-step": "7",
+  "math-applied:rates:two-step": "5",
+  "math-applied:trig:bearings": "37°",
 };
 
 async function setup(context: BrowserContext, band: string) {
@@ -97,7 +118,7 @@ async function dismissCelebration(page: Page) {
 
 /** Solve forward, case by case, until the named item is dealt. */
 async function solveForwardTo(page: Page, item: string) {
-  for (let guard = 0; guard < 13; guard++) {
+  for (let guard = 0; guard < 14; guard++) {
     const current = await page.getByTestId("math-case").getAttribute("data-item");
     if (current === item) return;
     const correct = CORRECT[current!];
@@ -212,22 +233,25 @@ test("wrong pick on fair-parts (newly flipped, a wave-3 scene item) reveals its 
   expect(errors).toEqual([]);
 });
 
-test("control: a wrong pick on a Math 10-18 case (no summary on this base) behaves exactly as before", async ({
+test("control: a wrong pick on a Math 10-18 overflow case (no summary) behaves exactly as before", async ({
   page,
   context,
 }) => {
   await setup(context, "10-18");
   const errors = watchErrors(page);
   await openSubject(page, "subject-row-math", "math-case", "math-answer-card");
+  // two-digit-divisors is dealt 14th in the 10-18 registry order
+  // (index 13), so solve forward through the 13 cases before it.
+  await solveForwardTo(page, "math-number:division:two-digit-divisors");
   await expect(page.getByTestId("math-case")).toHaveAttribute(
     "data-item",
-    "math-number:tables:multi-digit",
+    "math-number:division:two-digit-divisors",
   );
 
-  // The wrong pick ("961"; the answer is "1,081").
+  // The wrong pick ("12"; the answer is "13").
   await page
     .getByTestId("math-answer-card")
-    .getByRole("button", { name: "961", exact: true })
+    .getByRole("button", { name: "12", exact: true })
     .click();
   await expect(page.getByText(/Not quite/)).toBeVisible();
   await expect(page.getByTestId("math-lose-reveal")).toHaveCount(0);
@@ -236,7 +260,7 @@ test("control: a wrong pick on a Math 10-18 case (no summary on this base) behav
   expect(errors).toEqual([]);
 });
 
-test("control: a wrong pick on a Physics 7-10 case (no summary system on this base) behaves exactly as before", async ({
+test("control: a wrong pick on a Physics 7-10 case (no loseReveal hook on this base) behaves exactly as before", async ({
   page,
   context,
 }) => {
@@ -248,6 +272,13 @@ test("control: a wrong pick on a Physics 7-10 case (no summary system on this ba
     "physics:push:which-way",
   );
 
+  // Physics has a scene on this base (the win path's): it stands
+  // in its setup phase before the pick, with no summary text.
+  const scene = page.getByTestId("clue-scene");
+  await expect(scene).toBeVisible();
+  await expect(scene).toHaveAttribute("data-phase", "setup");
+  await expect(page.getByTestId("clue-summary-text")).toHaveCount(0);
+
   // The wrong pick ("To the left"; the answer is "To the right").
   await page
     .getByTestId("physics-answer-card")
@@ -256,7 +287,9 @@ test("control: a wrong pick on a Physics 7-10 case (no summary system on this ba
   await expect(page.getByText(/Not quite/)).toBeVisible();
   await expect(page.getByTestId("physics-lose-reveal")).toHaveCount(0);
   await expect(page.getByTestId("physics-result")).toHaveCount(0);
-  await expect(page.getByTestId("clue-scene")).toHaveCount(0);
+  // No reveal: the scene stays in setup and no summary stands.
+  await expect(scene).toHaveAttribute("data-phase", "setup");
+  await expect(page.getByTestId("clue-summary-text")).toHaveCount(0);
 
   expect(errors).toEqual([]);
 });
