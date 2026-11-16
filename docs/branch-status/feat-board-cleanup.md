@@ -23,7 +23,9 @@ Meridian tokens.
   tips reachable from the board; website theme (system load, switchable).
 
 **Status:** Built and gated; PR open, awaiting the owner's merge word.
-Base: main cf7afb6f (verified 2026-11-16).
+Base: main cf7afb6f (verified 2026-11-16). Live feed restored on top
+(see Done); a parallel branch is reworking the header controls
+(§ Graph) and the two branches combine before this PR is final.
 
 ## Done
 
@@ -64,11 +66,59 @@ Base: main cf7afb6f (verified 2026-11-16).
   VM's blocked egress (identical on main). Full record:
   ~/workspace/board-cleanup/REPORT.md.
 
+- Part 6 (live feed restored, owner ruling 2026-11-16 06:05 CT):
+  on board load the page fetches the repo's PRs and issues from
+  api.github.com directly (unauthenticated, paginated) and, only
+  when every story-linked record is covered, recomputes the board
+  through the publisher's own rule (status-core.buildPublished) —
+  counts, life pills, per-feature %, blocked derivation and the
+  frontier line all reflect the live picture. The publisher now
+  also emits public/board-links.json (+ a bundled fallback): per
+  story, its linked record numbers, carried status/phase and task
+  pairs — no dev titles, no source ids. Header truth, in the
+  totals area (never in the control cluster): live → "Live from
+  GitHub — every linked record checked (N of N)" + the snapshot's
+  Updated stamp; failure / rate-limit / partial → the snapshot
+  runs and a plain note says the live check couldn't be completed.
+  Fail-soft: snapshot renders first, no blocking spinner, header
+  block keeps its dimensions. One fetch sequence per page load,
+  session-cached, one retry on a network error only. Kill switch:
+  the boardLiveFeed flag (default on), same flags pattern as the
+  map's board3d switch; trail, structure and map all consume the
+  same live-adjusted board. Verified two ways: (a) the real module
+  ran in node against the real api.github.com — 31 of 31 linked
+  records covered, live picture identical to the snapshot (20/4/13,
+  zero stories differ); (b) the byte-for-byte captured payload
+  replayed through the page's own fetch path in Playwright
+  Chromium (labelled replay — this VM's Chromium cannot reach
+  external HTTPS), plus a forced-failure run proving the fallback
+  + honest note. Gates: board e2e 16/16 (3 new feed specs: live
+  upgrade + coverage line, partial coverage, kill switch), touched
+  unit suites 100/100, full local CI mirror green with the same
+  two baseline-matched local exceptions as the cleanup (entry-size
+  VM overage — this build measures 326,920 B vs pristine main's
+  326,922 B on this VM; endgame-share egress failures are main's
+  own). Captures: ~/workspace/board-cleanup/screenshots/feed/;
+  full record in REPORT.md, "Live feed restoration".
+
 ## Next step
 
-- Owner's merge word. Nothing else is owed on this branch.
+- Combine with the parallel header-controls branch, re-gate the
+  combined tip, then the owner's merge word. Nothing else is owed
+  on this branch.
 
 ## Graph
 
 - decision node: board cleanup scope (Liz, 2026-11-16) — production
   pages stay, Sprintbound v2 is a polish reference only.
+- decision node: live feed restored (Liz, 2026-11-16 06:05 CT:
+  "getting the live feed was the biggest requirement we had") —
+  the runtime GitHub overlay removed by v3 is a hard requirement
+  again; coverage-gated, never fake-live.
+- decision node: header controls rework (Liz, 2026-11-16 06:33 CT)
+  — small screens: buttons behind a hamburger bar; large screens:
+  horizontal header nav; prominent filled action style; header
+  consistent with the homepage/game pages. Built on a parallel
+  branch; this branch keeps the feed's live line and snapshot
+  labelling in the header totals area so the rework cannot
+  displace them.
