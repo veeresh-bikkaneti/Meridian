@@ -92,14 +92,24 @@ describe("boot landing (defect 1)", () => {
 });
 
 describe("case screen game controls (defect 2)", () => {
-  it("ScreenShell renders a controls slot in the home bar, after Home", () => {
+  it("ScreenShell renders a controls slot in the home bar, after the brand home control", () => {
     assert.ok(screenShell.includes("controls?: ReactNode;"), "controls prop declared");
     const bar = screenShell.slice(screenShell.indexOf("screen-home-bar"));
-    const homeAt = bar.indexOf("<HomeButton");
+    const homeAt = bar.indexOf("<BrandHomeButton");
     const controlsAt = bar.indexOf("{controls}");
     const soundAt = bar.indexOf("{sound}");
-    assert.ok(homeAt >= 0 && controlsAt > homeAt, "controls render after the HomeButton");
+    assert.ok(homeAt >= 0 && controlsAt > homeAt, "controls render after the BrandHomeButton");
     assert.ok(soundAt > controlsAt, "controls render before the sound slot (GeoDetective order)");
+    assert.ok(!bar.includes("<HomeButton"), "no HomeButton pill in the shell header (fix/header-logo-home)");
+    assert.ok(
+      screenShell.includes('import { BrandHomeButton } from "./home-button";'),
+      "the shell imports the brand control from the sanctioned home-control file",
+    );
+  });
+
+  it("the picker no longer passes a wordmark as the shell sound slot", () => {
+    assert.ok(!subjectPicker.includes("why-learn-wordmark"), "the old wordmark span is gone");
+    assert.ok(!subjectPicker.includes("sound={"), "the picker passes no sound/wordmark slot");
   });
 
   it("the case carries the game's End game button in both shells", () => {
