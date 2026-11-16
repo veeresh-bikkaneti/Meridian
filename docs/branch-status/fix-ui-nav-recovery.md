@@ -232,6 +232,21 @@ Stream S cherry-picked in: `920c9ddd` (shared shell components) +
   game-app.tsx is left untouched for the integrator to price
   with the owner rather than half-landed here.
 
+## CI cure (post-Phase 3)
+
+- CI's build job failed on 2 subtests in
+  `game-app-lazy-boundary.test.ts`. Behaviour verified first:
+  boot initialises both open states from the one-shot
+  `consumeRetryScreen()` marker only — the persisted flags are
+  never read at boot, so the 368 rule holds and no code changed.
+  Both pins were stale: (a) pinned the pre-368 source shape
+  `useState<boolean>(false)`; (b) pinned the PR #203 contract
+  (boot restores from the persisted flag), which the 368 rule
+  supersedes. Both pins now assert the 368 contract — init from
+  the retry marker only, plus a negative assertion that fails if
+  boot reads the persisted flag again. Suites: lazy-boundary +
+  persisted-screen + screen-hash 24/24, tsc clean.
+
 ## Graph (Phase 2 additions)
 
 - Add node: `src/lib/screen-hash.ts` — the screen ↔ hash contract
