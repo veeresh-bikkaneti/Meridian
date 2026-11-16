@@ -1712,343 +1712,359 @@
   color: var(--atlas-muted);
 }
 
-/* Card characters (card-characters.tsx): one small hand-drawn SVG per
- * card, symbolizing the story's theme. V2 art direction: filled
- * bodies in atlas tokens, real faces (highlight eyes, smiles, rosy
- * cheeks), detail props, a soft ground shadow under each. Each
- * character has ONE subtle idle motion on its .cc-anim part —
- * transform/opacity only, 2–7s, ease-in-out — and every motion stops
- * under prefers-reduced-motion (final block below). */
-.board-card-character {
-  width: 32px;
-  height: 32px;
-  flex: 0 0 auto;
-  display: block;
+/* =====================================================================
+   BOARD V3 — trail + molecular map + story cards.
+   Theme parity (owner correction 2026-11-15): the tokens below are
+   the homepage's home-v5 tokens, copied value-for-value from
+   src/components/home-v5.css (.home-v5). src/board/theme-parity.test.ts
+   parses both files and fails if any shared token drifts — the board
+   speaks the homepage's language by check, not by hope.
+   ===================================================================== */
+.board-v3 {
+  --hv5-parchment: #f6f1e3;
+  --hv5-card: #fdfbf3;
+  --hv5-ink: #33302a;
+  --hv5-ink-soft: #5c564a;
+  --hv5-brown: #8a6d2f;
+  --hv5-brown-deep: #77591f;
+  --hv5-forest: #33503f;
+  --hv5-forest-deep: #2a4434;
+  --hv5-sage: #8fa382;
+  --hv5-line: #e3d9c3;
+  --hv5-line-warm: #d8cbae;
+  --hv5-ease: cubic-bezier(0.16, 0.8, 0.26, 1);
+  --hv5-shadow-card: 0 1px 2px rgba(94, 76, 32, 0.05), 0 14px 34px -18px rgba(94, 76, 32, 0.28);
+  --hv5-shadow-lift: 0 2px 3px rgba(94, 76, 32, 0.06), 0 24px 44px -18px rgba(94, 76, 32, 0.34);
+  --hv5-display: "Fraunces", Georgia, serif;
+  --hv5-body: "Karla", system-ui, sans-serif;
+  background: var(--hv5-parchment);
+  color: var(--hv5-ink);
+  font-family: var(--hv5-body);
+  min-height: 100dvh;
+}
+.board-v3 .v3-wrap { max-width: 1080px; margin: 0 auto; padding: 28px 20px 72px; }
+.board-v3 .v3-back a { color: var(--hv5-brown-deep); text-decoration: none; font-weight: 600; }
+.board-v3 .v3-eyebrow {
+  text-transform: uppercase; letter-spacing: 0.14em; font-size: 0.78rem;
+  color: var(--hv5-brown); font-weight: 700; margin: 18px 0 4px;
+}
+.board-v3 .v3-title {
+  font-family: var(--hv5-display); font-size: clamp(1.9rem, 4.5vw, 2.9rem);
+  line-height: 1.08; margin: 0 0 10px; color: var(--hv5-ink);
+}
+.board-v3 .v3-counts { font-size: 1.05rem; margin: 0 0 2px; }
+.board-v3 .v3-updated { color: var(--hv5-ink-soft); font-size: 0.9rem; margin: 0; }
+.board-v3 .v3-stale {
+  background: #fdf3d8; border: 1px solid var(--hv5-line-warm); border-radius: 12px;
+  padding: 10px 14px; margin-top: 12px;
+}
+.board-v3 .v3-frontier-banner {
+  display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between;
+  background: var(--hv5-card); border: 1.5px dashed var(--hv5-brown); border-radius: 16px;
+  box-shadow: var(--hv5-shadow-card); padding: 14px 18px; margin-top: 18px;
+}
+.board-v3 .v3-frontier-banner p { margin: 0; }
+.board-v3 .v3-btn {
+  background: var(--hv5-forest); color: var(--hv5-parchment); border: 0; border-radius: 999px;
+  padding: 10px 18px; font: inherit; font-weight: 700; cursor: pointer; min-height: 44px;
+  transition: background 0.25s var(--hv5-ease), transform 0.25s var(--hv5-ease);
+}
+.board-v3 .v3-btn:hover { background: var(--hv5-forest-deep); }
+.board-v3 .v3-btn:disabled { opacity: 0.45; cursor: default; }
+.board-v3 .v3-viewnav { display: flex; flex-wrap: wrap; gap: 8px; margin: 22px 0 8px; }
+.board-v3 .v3-viewnav button {
+  border: 1.5px solid var(--hv5-line-warm); background: var(--hv5-card); color: var(--hv5-ink);
+  border-radius: 999px; padding: 9px 16px; font: inherit; font-weight: 600; cursor: pointer; min-height: 44px;
+}
+.board-v3 .v3-viewnav button[aria-pressed="true"] {
+  background: var(--hv5-forest); border-color: var(--hv5-forest); color: var(--hv5-parchment);
+}
+.board-v3 .v3-viewnav .v3-calm-toggle { margin-left: auto; }
+.board-v3 .v3-toast {
+  background: var(--hv5-card); border: 1.5px solid var(--hv5-brown); border-radius: 14px;
+  padding: 12px 16px; box-shadow: var(--hv5-shadow-card);
+}
+.board-v3 .v3-toast button { background: none; border: 0; cursor: pointer; font: inherit; }
+.board-v3 .v3-loading { color: var(--hv5-ink-soft); padding: 32px 0; }
+
+/* ---- trail ---- */
+.board-v3 .v3-epic { margin-top: 40px; }
+.board-v3 .v3-epic-head { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+.board-v3 .v3-epic-head h2 { font-family: var(--hv5-display); font-size: 1.65rem; margin: 0; }
+.board-v3 .v3-epic-count { color: var(--hv5-ink-soft); font-size: 0.92rem; }
+.board-v3 .v3-epic-rule { flex: 1; height: 2px; background: var(--hv5-line-warm); border-radius: 2px; min-width: 40px; }
+.board-v3 .v3-feature {
+  margin-top: 22px; background: var(--hv5-card); border: 1px solid var(--hv5-line);
+  border-radius: 24px; box-shadow: var(--hv5-shadow-card); overflow: hidden; padding-bottom: 14px;
+}
+/* A finished feature gilds its journey panel (uplift Fix 1 follow-through:
+   the gold treatment moved from the inner card to the panel with it). */
+.board-v3 .v3-feature:has(> .v3-feature-card.v3-finished) { border: 2px solid var(--hv5-brown); }
+.board-v3 .v3-feature-card {
+  display: grid; grid-template-columns: minmax(0, 430px) 1fr; gap: 20px; align-items: center;
+  background: transparent; border: 0; box-shadow: none; border-radius: 0; padding: 16px;
+}
+.board-v3 .v3-feature-meta h3 { font-family: var(--hv5-display); font-size: 1.35rem; margin: 0 0 6px; }
+.board-v3 .v3-gold-flag { color: var(--hv5-brown); }
+.board-v3 .v3-promise { margin: 0 0 8px; color: var(--hv5-ink-soft); }
+.board-v3 .v3-progress { margin: 0 0 4px; }
+.board-v3 .v3-next { margin: 0; color: var(--hv5-brown-deep); }
+.board-v3 .v3-next a { color: var(--hv5-forest); font-weight: 700; }
+@media (max-width: 760px) {
+  .board-v3 .v3-feature-card { grid-template-columns: 1fr; }
 }
 
-.board-card-character .cc-body {
-  fill: var(--surface-2);
-  stroke: var(--atlas-ink);
-  stroke-width: 2.4;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+/* story stops on the rail */
+.board-v3 .v3-stops { list-style: none; margin: 6px 0 0; padding: 0 0 0 26px; position: relative; }
+.board-v3 .v3-stops::before {
+  content: ""; position: absolute; left: 8px; top: 8px; bottom: 8px; width: 3px;
+  background: repeating-linear-gradient(180deg, var(--hv5-line-warm) 0 8px, transparent 8px 15px);
+  border-radius: 3px;
 }
+.board-v3 .v3-stop { position: relative; margin-top: 12px; }
+.board-v3 .v3-stop .v3-dot {
+  position: absolute; left: -25px; top: 20px; width: 15px; height: 15px; border-radius: 50%;
+  background: var(--hv5-card); border: 3px solid var(--hv5-sage); z-index: 1;
+}
+.board-v3 .v3-stop-in-progress .v3-dot { border-color: var(--hv5-forest); background: var(--hv5-forest); }
+.board-v3 .v3-stop-done .v3-dot { border-color: var(--hv5-brown); background: var(--hv5-brown); }
+.board-v3 .v3-stop-frontier .v3-stop-btn { border: 1.5px dashed var(--hv5-brown); }
+.board-v3 .v3-stop-btn {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 6px 12px; width: 100%; text-align: left;
+  background: transparent; border: 0; border-top: 1px solid var(--hv5-line); border-radius: 0;
+  box-shadow: none; padding: 13px 16px; font: inherit; cursor: pointer; min-height: 44px;
+  transition: background 0.25s var(--hv5-ease), transform 0.25s var(--hv5-ease);
+}
+.board-v3 .v3-stop-btn:hover { background: var(--hv5-parchment); box-shadow: none; }
+/* Blocked stops carry the frontier's dashed rule instead of an emoji
+   (uplift Fix 3): the words in the line already say "Coming after: …". */
+.board-v3 .v3-blocked .v3-stop-btn { border: 1.5px dashed var(--hv5-brown); }
+.board-v3 .v3-s-title { font-weight: 700; font-size: 1.02rem; }
+.board-v3 .v3-s-line { grid-column: 1 / -1; color: var(--hv5-ink-soft); font-size: 0.94rem; }
+.board-v3 .v3-stop-btn .v3-pill, .board-v3 .v3-mirror-btn .v3-pill { grid-column: 2; grid-row: 1; }
+.board-v3 .v3-open .v3-stop-btn .v3-s-line { display: none; }
 
-.board-card-character .cc-line {
-  fill: none;
-  stroke: var(--atlas-ink);
-  stroke-width: 2.4;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+/* status pill — icon + word, never colour alone */
+.board-v3 .v3-pill {
+  display: inline-flex; align-items: center; gap: 7px; border-radius: 999px; padding: 3px 11px 3px 8px;
+  font-size: 0.82rem; font-weight: 700; border: 1.5px solid var(--hv5-line-warm);
+  background: var(--hv5-parchment); color: var(--hv5-ink-soft); white-space: nowrap;
 }
+.board-v3 .v3-pill-dot { width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--hv5-sage); background: transparent; }
+.board-v3 .v3-pill-in-progress { border-color: var(--hv5-forest); color: var(--hv5-forest-deep); }
+.board-v3 .v3-pill-in-progress .v3-pill-dot { border-color: var(--hv5-forest); background: conic-gradient(var(--hv5-forest) 0 50%, transparent 50% 100%); }
+.board-v3 .v3-pill-done { border-color: var(--hv5-brown); color: var(--hv5-brown-deep); }
+.board-v3 .v3-pill-done .v3-pill-dot { border-color: var(--hv5-brown); background: var(--hv5-brown); }
 
-.board-card-character .cc-soft {
-  opacity: 0.55;
+/* story card (shared: trail + map) */
+.board-v3 .v3-story-card {
+  background: var(--hv5-card); border: 1.5px solid var(--hv5-line-warm); border-radius: 16px;
+  padding: 0 28px 26px; margin-top: 10px; overflow: hidden;
 }
+.board-v3 .v3-story-banner { margin: 0 -28px; height: 64px; }
+.board-v3 .v3-story-banner svg { width: 100%; height: 100%; display: block; }
+.board-v3 .v3-sc-where { color: var(--hv5-brown-deep); font-size: 0.85rem; font-weight: 700; margin: 4px 0 2px; }
+.board-v3 .v3-story-card h4 { font-family: var(--hv5-display); font-size: 1.3rem; margin: 0 0 8px; }
+.board-v3 .v3-sc-status { margin: 0 0 6px; }
+.board-v3 .v3-sc-line { margin: 0 0 10px; }
+.board-v3 .v3-sc-waiting {
+  background: var(--hv5-card); border: 1px dashed var(--hv5-brown); border-radius: 12px; padding: 10px 14px;
+}
+.board-v3 .v3-sc-waiting p { margin: 0 0 8px; }
+.board-v3 .v3-sc-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
 
-.board-card-character .cc-face {
-  fill: var(--atlas-ink);
+/* ---- molecular map ---- */
+.board-v3 .v3-you-are-here { margin: 14px 0 10px; color: var(--hv5-ink-soft); }
+.board-v3 .v3-you-are-here strong { color: var(--hv5-ink); }
+.board-v3 .v3-map-grid { display: grid; grid-template-columns: 1fr 340px; gap: 18px; align-items: start; }
+@media (max-width: 900px) { .board-v3 .v3-map-grid { grid-template-columns: 1fr; } }
+.board-v3 .v3-map-stage {
+  position: relative; border: 1px solid var(--atlas-card-line);
+  background: radial-gradient(110% 70% at 50% -10%, var(--atlas-glow), transparent 60%), linear-gradient(180deg, var(--atlas-bg-1), var(--atlas-bg-2));
+  border-radius: 20px; box-shadow: var(--hv5-shadow-card); overflow: hidden; min-height: 420px;
 }
+.board-v3 .v3-map-stage::before {
+  content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: repeating-linear-gradient(0deg, var(--atlas-grid) 0 1px, transparent 1px 76px), repeating-linear-gradient(90deg, var(--atlas-grid) 0 1px, transparent 1px 76px);
+}
+@media (min-width: 901px) { .board-v3 .v3-map-stage { min-height: 560px; } }
+.board-v3 .v3-map-stage canvas { display: block; }
+.board-v3 .v3-zoom-tier {
+  position: absolute; top: 12px; left: 14px; z-index: 2; background: rgba(246, 241, 227, 0.92);
+  border: 1px solid var(--hv5-line-warm); border-radius: 999px; padding: 4px 12px; font-size: 0.85rem; font-weight: 700;
+}
+.board-v3 .v3-reset { position: absolute; top: 10px; right: 12px; z-index: 2; padding: 7px 14px; min-height: 38px; }
+.board-v3 .v3-webgl-fallback { padding: 40px 20px; text-align: center; color: var(--hv5-ink-soft); }
+.board-v3 .v3-map-legend {
+  background: var(--hv5-card); border: 1px solid var(--hv5-line); border-radius: 16px;
+  box-shadow: var(--hv5-shadow-card); padding: 16px 18px;
+}
+.board-v3 .v3-map-legend h3 { font-family: var(--hv5-display); margin: 0 0 10px; }
+.board-v3 .v3-sw { display: inline-block; width: 12px; height: 12px; border-radius: 50%; vertical-align: -1px; }
+.board-v3 .v3-bond-sample { display: inline-block; width: 22px; height: 4px; border-radius: 2px; background: var(--atlas-stamp); vertical-align: middle; }
+.board-v3 .v3-mirror { margin-top: 26px; }
+.board-v3 .v3-mirror-title { font-family: var(--hv5-display); font-size: 1.4rem; }
+.board-v3 .v3-mirror-epic h4 { font-family: var(--hv5-display); margin: 20px 0 6px; }
+.board-v3 .v3-mirror-feature h5 { margin: 12px 0 6px; font-size: 0.98rem; }
+.board-v3 .v3-mirror-feature ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.board-v3 .v3-mirror-btn {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 6px 12px;
+  width: 100%; text-align: left; background: var(--hv5-card); border: 1px solid var(--hv5-line);
+  border-radius: 12px; padding: 10px 14px; font: inherit; cursor: pointer; min-height: 44px;
+}
+.board-v3 .v3-mirror-btn.v3-selected { border: 2px solid var(--hv5-brown); }
 
-.board-card-character .cc-brass {
-  fill: var(--atlas-brass);
-  stroke: var(--atlas-ink);
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+.board-v3 .v3-footer {
+  margin-top: 52px; border-top: 2px solid var(--hv5-line-warm); padding-top: 22px;
+  display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between;
 }
+.board-v3 .v3-footer p { margin: 0; font-size: 1.05rem; }
 
-.board-card-character .cc-pale {
-  fill: var(--surface);
-  stroke: var(--atlas-ink);
-  stroke-width: 2;
-  stroke-linejoin: round;
+/* ---- card animation windows ----
+   Base styles ARE the end poses (the solved sum, the planted flag):
+   a window that is not playing — budget, Calm mode, reduced motion —
+   shows the finished picture, never a frozen half-state. Keyframes
+   run only under .v3-playing (the motion-budget registry in
+   card-animations.tsx) or inside an open story card. */
+.board-v3 .v3-anim-window {
+  aspect-ratio: 16 / 9; border-radius: 14px; overflow: hidden;
+  background: var(--hv5-parchment); border: 1px solid var(--hv5-line);
 }
+.board-v3 .v3-anim-window svg { width: 100%; height: 100%; display: block; }
+.board-v3 .sum-q { opacity: 0; }
+.board-v3 .sum-tick { stroke-dasharray: 44; stroke-dashoffset: 0; }
+.board-v3 .sum-dots-scattered { opacity: 0; }
+.board-v3 .mag-glass { transform: translateX(150px); }
+.board-v3 .pin-drop { transform: translateY(56px); }
+.board-v3 .pin-star { fill: #b8932f; }
+.board-v3 .compass-needle { transform-box: view-box; transform-origin: 180px 101px; }
+.board-v3 .river-flow { stroke-dasharray: 10 14; }
+.board-v3 .river-dot { offset-path: path("M8 96 C 70 60, 120 128, 190 84 S 300 40, 352 74"); offset-distance: 100%; }
+.board-v3 .flask-bub { opacity: 0; }
+.board-v3 .book-page { transform-box: fill-box; transform-origin: left center; }
+.board-v3 .gear-spin { transform-box: view-box; transform-origin: 180px 101px; }
+.board-v3 .star-pop { transform-box: fill-box; transform-origin: center; }
+.board-v3 .sc-travel { offset-path: path("M6 44 C 70 22, 140 54, 210 34 S 280 26, 296 36"); offset-distance: 100%; }
 
-.board-card-character .cc-pale-dot {
-  fill: var(--surface);
-}
+.board-v3 .v3-anim-window.v3-playing .sum-q { animation: v3-sum-q 4.6s var(--hv5-ease) infinite; }
+.board-v3 .v3-anim-window.v3-playing .sum-a { animation: v3-sum-a 4.6s var(--hv5-ease) infinite; }
+.board-v3 .v3-anim-window.v3-playing .sum-tick { animation: v3-sum-tick 4.6s linear infinite; }
+.board-v3 .v3-anim-window.v3-playing .sum-dots-scattered { animation: v3-dots-out 4.6s linear infinite; }
+.board-v3 .v3-anim-window.v3-playing .sum-dots-grouped { animation: v3-dots-in 4.6s linear infinite; }
+.board-v3 .v3-anim-window.v3-playing .sum-groups-circles { animation: v3-dots-in 4.6s linear infinite; }
+.board-v3 .v3-anim-window.v3-playing .mag-glass { animation: v3-mag 4.4s var(--hv5-ease) infinite; }
+.board-v3 .v3-anim-window.v3-playing .mag-secret { animation: v3-mag-secret 4.4s linear infinite; }
+.board-v3 .v3-anim-window.v3-playing .pin-drop { animation: v3-pin 4.2s var(--hv5-ease) infinite; }
+.board-v3 .v3-anim-window.v3-playing .pin-star { animation: v3-pin-star 4.2s linear infinite; }
+.board-v3 .v3-anim-window.v3-playing .pin-flag { animation: v3-pin-flag 4.2s linear infinite; }
+.board-v3 .v3-anim-window.v3-playing .compass-needle { animation: v3-compass 4.4s var(--hv5-ease) infinite; }
+.board-v3 .v3-anim-window.v3-playing .river-flow { animation: v3-river 1.6s linear infinite; }
+.board-v3 .v3-anim-window.v3-playing .river-dot { animation: v3-river-dot 4.4s linear infinite; }
+.board-v3 .v3-anim-window.v3-playing .flask-bub { animation: v3-bub 2.6s linear infinite; }
+.board-v3 .v3-anim-window.v3-playing .flask-bub.b2 { animation-delay: 0.8s; }
+.board-v3 .v3-anim-window.v3-playing .flask-bub.b3 { animation-delay: 1.6s; }
+.board-v3 .v3-anim-window.v3-playing .book-page { animation: v3-page 4.6s var(--hv5-ease) infinite; }
+.board-v3 .v3-anim-window.v3-playing .mic-arc { animation: v3-mic 4s linear infinite; }
+.board-v3 .v3-anim-window.v3-playing .mic-arc.a2 { animation-delay: 0.35s; }
+.board-v3 .v3-anim-window.v3-playing .mic-arc.a3 { animation-delay: 0.7s; }
+.board-v3 .v3-anim-window.v3-playing .gear-spin { animation: v3-gear 14s linear infinite; }
+.board-v3 .v3-anim-window.v3-playing .star-pop { animation: v3-star 3.8s var(--hv5-ease) infinite; }
+.board-v3 .v3-story-banner .sc-travel { animation: v3-travel 3.4s var(--hv5-ease) infinite; }
 
-.board-card-character .cc-handle {
-  stroke: var(--atlas-ink);
-  stroke-width: 5.5;
-  stroke-linecap: round;
-}
+@keyframes v3-sum-q { 0%, 12% { opacity: 1; } 20%, 100% { opacity: 0; } }
+@keyframes v3-sum-a { 0%, 14% { opacity: 0; } 24%, 100% { opacity: 1; } }
+@keyframes v3-sum-tick { 0%, 22% { stroke-dashoffset: 44; } 34%, 100% { stroke-dashoffset: 0; } }
+@keyframes v3-dots-out { 0%, 8% { opacity: 1; } 24%, 100% { opacity: 0; } }
+@keyframes v3-dots-in { 0%, 16% { opacity: 0; } 30%, 100% { opacity: 1; } }
+@keyframes v3-mag { 0% { transform: translateX(0); } 42%, 100% { transform: translateX(150px); } }
+@keyframes v3-mag-secret { 0%, 30% { opacity: 0; } 46%, 100% { opacity: 1; } }
+@keyframes v3-pin { 0% { transform: translateY(0); } 26% { transform: translateY(58px); } 33% { transform: translateY(49px); } 40%, 100% { transform: translateY(56px); } }
+@keyframes v3-pin-star { 0%, 40% { fill: transparent; opacity: 0.35; } 55%, 100% { fill: #b8932f; opacity: 1; } }
+@keyframes v3-pin-flag { 0%, 38% { opacity: 0; } 52%, 100% { opacity: 1; } }
+@keyframes v3-compass { 0% { transform: rotate(-52deg); } 30% { transform: rotate(38deg); } 55% { transform: rotate(-13deg); } 74%, 100% { transform: rotate(0deg); } }
+@keyframes v3-river { to { stroke-dashoffset: -24; } }
+@keyframes v3-river-dot { 0% { offset-distance: 0%; } 68%, 100% { offset-distance: 100%; } }
+@keyframes v3-bub { 0% { transform: translateY(0); opacity: 0; } 18% { opacity: 0.9; } 62%, 100% { transform: translateY(-32px); opacity: 0; } }
+@keyframes v3-page { 0%, 12% { transform: rotateY(0deg); } 48%, 62% { transform: rotateY(-155deg); } 96%, 100% { transform: rotateY(0deg); } }
+@keyframes v3-mic { 0%, 8% { opacity: 0.15; } 26%, 100% { opacity: 1; } }
+@keyframes v3-gear { to { transform: rotate(360deg); } }
+@keyframes v3-star { 0% { transform: scale(0.4); opacity: 0.4; } 24% { transform: scale(1.12); opacity: 1; } 36%, 100% { transform: scale(1); opacity: 1; } }
+@keyframes v3-travel { 0% { offset-distance: 0%; } 62%, 100% { offset-distance: 100%; } }
 
-/* V2 fills and face pieces: solid bodies, one soft shade tone, real
- * faces. All colours stay inside the atlas token family — stamp
- * coral, muted teal, brass — so the set reads as one hand in both
- * the dark and light themes. */
-.board-card-character .cc-stamp {
-  fill: var(--atlas-stamp);
-  stroke: var(--atlas-ink);
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
+/* The tip form's invitation (spec §5): the envelope bobs gently and
+   its seal sparkles — an invitation, in the same family as the card
+   animations. Base pose is the resting envelope. */
+.board-v3 .v3-form-head { display: flex; justify-content: center; }
+.board-v3 .v3-form-head svg { width: min(280px, 75%); height: auto; }
+.board-v3 .v3-env-bob { animation: v3-env-bob 3.6s var(--hv5-ease) infinite; }
+.board-v3 .v3-env-seal { transform-box: fill-box; transform-origin: center; animation: v3-star 3.6s var(--hv5-ease) infinite; }
+.board-v3 .v3-env-spark { animation: v3-spark 3.6s linear infinite; }
+.board-v3 .v3-env-spark.s2 { animation-delay: 1.2s; }
+@keyframes v3-env-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+@keyframes v3-spark { 0%, 100% { opacity: 0.25; } 50% { opacity: 1; } }
 
-.board-card-character .cc-stamp-dot {
-  fill: var(--atlas-stamp);
-}
+/* Calm mode: every loop rests at its end pose (the base styles). */
+.board-v3.v3-calm .v3-anim-window *, .board-v3.v3-calm .v3-story-banner *, .board-v3.v3-calm .v3-form-head * { animation: none !important; }
 
-.board-card-character .cc-stamp-line {
-  fill: none;
-  stroke: var(--atlas-stamp);
-  stroke-width: 1.8;
-  stroke-linecap: round;
+/* ---- board theme switch (owner ruling, 2026-11-15) ----
+   The board loads on the visitor's system theme — the styles.css
+   scheme behaviour, untouched — and the visitor can switch it.
+   An explicit choice sets data-board-theme on the board root and
+   the two blocks below re-declare, for the board subtree only,
+   the scheme-varying tokens the board consumes. Every value is
+   copied verbatim from src/styles.css: the dark block from its
+   :root defaults, the light block from its
+   @media (prefers-color-scheme: light) block. Declared on the
+   board root, the chosen values win over the media query in BOTH
+   directions; with no attribute set, nothing here applies and
+   the system theme rules exactly as before.
+   src/board/theme-parity.test.ts pins both copies against both
+   sources, so drift fails the build. The homepage (hv5) tokens
+   above are a single-value language in both schemes — nothing
+   to switch — so what flips is the atlas/global family: the
+   map's chart room, the legend, and the form surfaces that
+   consume the global tokens. */
+.board-v3[data-board-theme="dark"] {
+  --fg: #f3f4f2;
+  --muted: #a7b0ab;
+  --surface: #181c1a;
+  --surface-2: #212724;
+  --line: color-mix(in oklab, var(--fg) 14%, transparent);
+  --error: #f1948a;
+  --atlas-bg-1: #10222a;
+  --atlas-bg-2: #070e12;
+  --atlas-glow: rgba(232, 182, 76, 0.1);
+  --atlas-grid: rgba(232, 182, 76, 0.07);
+  --atlas-card: rgba(16, 34, 42, 0.66);
+  --atlas-card-line: rgba(232, 182, 76, 0.22);
+  --atlas-ink: #f0e7d2;
+  --atlas-muted: #9db3ad;
+  --atlas-brass: #e8b64c;
+  --atlas-brass-ink: #0c181d;
+  --atlas-brass-text: #e8b64c;
+  --atlas-stamp: #e86a5c;
+  color-scheme: dark;
 }
-
-.board-card-character .cc-teal {
-  fill: var(--atlas-muted);
-  stroke: var(--atlas-ink);
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+.board-v3[data-board-theme="light"] {
+  --fg: #1c2420;
+  --muted: #5c6762;
+  --surface: #fffdf8;
+  --surface-2: #e7e2d6;
+  --line: color-mix(in oklab, var(--fg) 14%, transparent);
+  --error: #b91c1c;
+  --atlas-bg-1: #f8f2df;
+  --atlas-bg-2: #eadfc3;
+  --atlas-glow: rgba(165, 118, 31, 0.12);
+  --atlas-grid: rgba(27, 43, 49, 0.09);
+  --atlas-card: rgba(255, 253, 246, 0.74);
+  --atlas-card-line: rgba(27, 43, 49, 0.2);
+  --atlas-ink: #1b2b31;
+  --atlas-muted: #54696e;
+  --atlas-brass: #a5761f;
+  --atlas-brass-ink: #fbf6e8;
+  --atlas-brass-text: #8a5f16;
+  --atlas-stamp: #b3372a;
+  color-scheme: light;
 }
-
-.board-card-character .cc-land {
-  fill: var(--surface-2);
-  stroke: var(--atlas-ink);
-  stroke-width: 1.5;
-  stroke-linejoin: round;
-}
-
-.board-card-character .cc-glass {
-  fill: var(--surface);
-  opacity: 0.55;
-}
-
-.board-card-character .cc-shade {
-  fill: var(--atlas-vignette);
-  opacity: 0.5;
-}
-
-.board-card-character .cc-shadow {
-  fill: var(--atlas-vignette);
-  opacity: 0.55;
-}
-
-.board-card-character .cc-shade-line {
-  stroke: var(--atlas-ink);
-  stroke-width: 3;
-  opacity: 0.18;
-}
-
-.board-card-character .cc-hl {
-  fill: var(--surface);
-}
-
-.board-card-character .cc-cheek {
-  fill: var(--atlas-stamp);
-  opacity: 0.45;
-}
-
-.board-card-character .cc-brass-dot {
-  fill: var(--atlas-brass);
-}
-
-.board-card-character .cc-brass-line {
-  fill: none;
-  stroke: var(--atlas-brass);
-  stroke-width: 2.2;
-  stroke-linecap: round;
-}
-
-.board-card-character .cc-bubble {
-  fill: none;
-  stroke: var(--atlas-ink);
-  stroke-width: 1.3;
-  opacity: 0.8;
-}
-
-.board-card-character .cc-smile-sm {
-  stroke-width: 1.4;
-}
-
-.board-card-character .cc-eye-outline {
-  stroke-width: 2.4;
-}
-
-/* The one shared animation approach: the moving part carries
- * .cc-anim, sized to its own box so rotations pivot on the part. */
-.board-card-character .cc-anim {
-  transform-box: fill-box;
-  transform-origin: center;
-}
-
-@keyframes cc-pulse {
-  0%,
-  100% {
-    opacity: 0.2;
-  }
-  50% {
-    opacity: 1;
-  }
-}
-
-@keyframes cc-sway {
-  0%,
-  100% {
-    transform: rotate(-10deg);
-  }
-  50% {
-    transform: rotate(10deg);
-  }
-}
-
-@keyframes cc-slide {
-  0%,
-  100% {
-    transform: translateX(0);
-  }
-  50% {
-    transform: translateX(4.5px);
-  }
-}
-
-@keyframes cc-wiggle {
-  0%,
-  100% {
-    transform: rotate(0deg);
-  }
-  25% {
-    transform: rotate(-4deg);
-  }
-  75% {
-    transform: rotate(4deg);
-  }
-}
-
-@keyframes cc-blink {
-  0%,
-  90%,
-  100% {
-    transform: scaleY(1);
-  }
-  94% {
-    transform: scaleY(0.08);
-  }
-}
-
-@keyframes cc-spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes cc-rock {
-  0%,
-  100% {
-    transform: rotate(-11deg);
-  }
-  50% {
-    transform: rotate(11deg);
-  }
-}
-
-@keyframes cc-page-lift {
-  0%,
-  100% {
-    transform: rotate(0deg);
-  }
-  50% {
-    transform: rotate(-9deg);
-  }
-}
-
-@keyframes cc-rise {
-  0% {
-    transform: translateY(2px);
-    opacity: 0.3;
-  }
-  55% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-4px);
-    opacity: 0.35;
-  }
-}
-
-@keyframes cc-sway-small {
-  0%,
-  100% {
-    transform: rotate(-4deg);
-  }
-  50% {
-    transform: rotate(4deg);
-  }
-}
-
-@keyframes cc-bob {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-1.6px);
-  }
-}
-
-.board-char-mic .cc-arcs {
-  animation: cc-pulse 2.4s ease-in-out infinite;
-}
-
-.board-char-mic .cc-arcs-late {
-  animation: cc-pulse 2.4s ease-in-out 0.35s infinite;
-}
-
-.board-char-compass .cc-needle {
-  animation: cc-sway 3.6s ease-in-out infinite;
-}
-
-.board-char-abacus .cc-bead {
-  animation: cc-slide 3s ease-in-out infinite;
-}
-
-.board-char-wrench .cc-wrench {
-  animation: cc-wiggle 3.4s ease-in-out infinite;
-}
-
-.board-char-eye .cc-blink {
-  animation: cc-blink 4.2s ease-in-out infinite;
-}
-
-.board-char-camera .cc-reel {
-  animation: cc-spin 7s linear infinite;
-}
-
-.board-char-gear .cc-gear {
-  animation: cc-rock 4.4s ease-in-out infinite;
-}
-
-.board-char-book .cc-page {
-  fill: var(--surface);
-  stroke: var(--atlas-ink);
-  stroke-width: 2.2;
-  stroke-linejoin: round;
-  transform-origin: left bottom;
-  animation: cc-page-lift 3.2s ease-in-out infinite;
-}
-
-.board-char-flask .cc-bubbles {
-  animation: cc-rise 2.8s ease-in-out infinite;
-}
-
-.board-char-globe .cc-globe {
-  animation: cc-sway-small 4.6s ease-in-out infinite;
-}
-
-.board-char-magnifier .cc-mag {
-  animation: cc-bob 3.2s ease-in-out infinite;
-}
-
-/* Reduced motion: characters are simply present, never moving. This
- * selector matches the specificity of the per-character rules above
- * and comes later in the file, so it wins; the * rule in the shared
- * reduced-motion block above is the belt to this brace. */
-@media (prefers-reduced-motion: reduce) {
-  .board-card-character .cc-anim {
-    animation: none;
-  }
-}
+.board-v3 .v3-theme-switch { display: flex; align-items: center; gap: 8px; }
+.board-v3 .v3-theme-label { color: var(--hv5-ink-soft); font-size: 0.9rem; font-weight: 600; }

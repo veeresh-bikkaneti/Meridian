@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
+import { Link } from "@tanstack/react-router";
 import { getFeatureRequestEndpoint, getFeatureTurnstileSiteKey, loadFlags } from "@/lib/flags";
 import {
   buildFeatureRequestPayload,
@@ -110,17 +111,28 @@ export function FeatureRequestForm() {
 
   return (
     <section className="board-section" aria-labelledby="board-feature-heading">
-      <h2 id="board-feature-heading">Send a tip to the detectives</h2>
+      <div className="v3-form-head" aria-hidden="true">
+        <svg viewBox="0 0 300 120">
+          <g className="v3-env-bob">
+            <rect x="72" y="30" width="156" height="76" rx="9" fill="#fdfbf3" stroke="#8a6d2f" strokeWidth="3" />
+            <path d="M76 38 L150 82 L224 38" fill="none" stroke="#33503f" strokeWidth="3.5" strokeLinecap="round" />
+            <path className="v3-env-seal" d="M150 66 l4.2 8.5 9.4 1.4 -6.8 6.6 1.6 9.3 -8.4 -4.4 -8.4 4.4 1.6 -9.3 -6.8 -6.6 9.4 -1.4 Z" fill="#b8932f" />
+          </g>
+          <path className="v3-env-spark s1" d="M52 26 l2 4.4 4.8 .7 -3.5 3.4 .8 4.8 -4.3 -2.3 -4.3 2.3 .8 -4.8 -3.5 -3.4 4.8 -.7 Z" fill="#b8932f" />
+          <path className="v3-env-spark s2" d="M246 18 l1.7 3.7 4 .6 -2.9 2.9 .7 4 -3.6 -1.9 -3.6 1.9 .7 -4 -2.9 -2.9 4 -.6 Z" fill="#8fa382" />
+        </svg>
+      </div>
+      <h2 id="board-feature-heading">Ask for something new</h2>
       <p className="board-muted">
-        This is the feature-request form for grown-ups. Suggest a feature, or tell the detectives
-        what would help your kids learn. Ideas go to the project owner and are never shown on this
-        board.
+        Hey — you can request a feature! Tell us what your child would love to play or learn next.
+        Ideas go to the project owner.
       </p>
 
       <div role="status" className="empty:-mt-2">
         {result?.status === "sent" ? (
           <p className="board-notice" data-testid="feature-request-sent">
-            Thanks — your tip was sent.
+            Thanks! Watch for it on{" "}
+            <Link to="/board">See what we&rsquo;re making next</Link>.
           </p>
         ) : null}
       </div>
