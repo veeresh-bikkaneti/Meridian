@@ -29,8 +29,12 @@ const styles = read(join(here, "..", "..", "styles.css"));
 describe("clue scene wiring", () => {
   it("SubjectCase passes only the phase, never the answer", () => {
     assert.ok(
-      subjectCase.includes('scene(item, solved ? "solved" : "setup", reduced, band)'),
+      subjectCase.includes("scene(item, scenePhase, reduced, band)"),
       "the scene hook receives the item, the flow-derived phase, reduced and the band",
+    );
+    assert.ok(
+      subjectCase.includes('const scenePhase: "setup" | "solved" = solved || loseRevealed ? "solved" : "setup";'),
+      "the phase is solved once the case is done or a lose-path wrong pick has revealed the summary",
     );
     assert.ok(
       subjectCase.includes('phase: "setup" | "solved"'),
@@ -126,7 +130,17 @@ describe("clue scene summary (act 3)", () => {
     const resultAt = subjectCase.indexOf('aria-label="You solved it"');
     const extraAt = subjectCase.indexOf("resultExtra ? resultExtra(item, reduced, band) : null");
     assert.ok(resultAt >= 0, "the result section exists");
-    assert.ok(extraAt > resultAt, "resultExtra renders only inside the solved result section");
+    assert.ok(extraAt > resultAt, "resultExtra renders first inside the solved result section");
+    // The one other sanctioned use (feat/fair-share-lose-path): the
+    // lose-reveal section renders the same standing text after a
+    // wrong pick on the one lose-path item — also post-pick only.
+    const loseAt = subjectCase.indexOf('data-testid={`${testIdPrefix}-lose-reveal`}');
+    const loseExtraAt = subjectCase.indexOf(
+      "resultExtra ? resultExtra(item, reduced, band) : null",
+      extraAt + 1,
+    );
+    assert.ok(loseAt > extraAt, "the lose-reveal section follows the solved section in source");
+    assert.ok(loseExtraAt > loseAt, "the lose reveal's standing text renders inside its section");
     assert.ok(mathCase.includes("resultExtra={"), "math passes the hook");
     assert.ok(mathCase.includes("ClueSummaryText"), "as the summary's standing text");
     assert.ok(scene.includes('data-testid="clue-summary-text"'));

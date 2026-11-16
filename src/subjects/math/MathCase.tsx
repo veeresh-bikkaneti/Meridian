@@ -20,6 +20,12 @@
  * 7-10 items whose description carries a summary, the solved
  * result section gains the summary's full script as standing
  * text (the narrated performance itself lives in the scene).
+ *
+ * L1 lose path (feat/fair-share-lose-path): math also passes the
+ * loseReveal hook, naming exactly one item — fair-share, ages
+ * 7-10. A wrong pick on that item reveals the same act-3 summary
+ * the win path plays; every other item's wrong pick is unchanged.
+ * Widening this gate to more items is a separate, later step.
  */
 import type { SubjectProps } from "../registry";
 import type { CelebrationSpec } from "@/components/celebration-copy";
@@ -28,7 +34,7 @@ import { SubjectCase } from "../shared/SubjectCase";
 import { ClueScene, ClueSummaryText } from "../shared/ClueScene";
 import { itemsForGroup } from "./items";
 import { answerFor } from "./answers";
-import { clueSceneFor } from "./scenes";
+import { clueSceneFor, showsSummaryOnWrong } from "./scenes";
 
 export default function MathCase(
   props: SubjectProps & {
@@ -62,6 +68,7 @@ export default function MathCase(
         if (!description?.summary) return null;
         return <ClueSummaryText summary={description.summary} />;
       }}
+      loseReveal={(item, band) => showsSummaryOnWrong(item.id, band)}
       {...props}
     />
   );
