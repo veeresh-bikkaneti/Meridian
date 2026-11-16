@@ -24,11 +24,12 @@
  * result section gains the summary's full script as standing
  * text (the narrated performance itself lives in the scene).
  *
- * L1 lose path (feat/fair-share-lose-path): math also passes the
- * loseReveal hook, naming exactly one item — fair-share, ages
- * 7-10. A wrong pick on that item reveals the same act-3 summary
- * the win path plays; every other item's wrong pick is unchanged.
- * Widening this gate to more items is a separate, later step.
+ * L1 lose path (feat/fair-share-lose-path, generalised by
+ * feat/lose-path-all-items): math also passes the loseReveal
+ * hook. A wrong pick on an item that has a solved summary
+ * (showsSummaryOnWrong, in scenes.ts — a property of the item,
+ * not a named list) reveals the same act-3 summary the win path
+ * plays; a wrong pick on an item with no summary is unchanged.
  */
 import type { SubjectProps } from "../registry";
 import type { CelebrationSpec } from "@/components/celebration-copy";

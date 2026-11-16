@@ -167,9 +167,10 @@ describe("clue scene summary (act 3)", () => {
     const extraAt = subjectCase.indexOf("resultExtra ? resultExtra(item, reduced, band) : null");
     assert.ok(resultAt >= 0, "the result section exists");
     assert.ok(extraAt > resultAt, "resultExtra renders first inside the solved result section");
-    // The one other sanctioned use (feat/fair-share-lose-path): the
+    // The one other sanctioned use (feat/fair-share-lose-path,
+    // generalised by feat/lose-path-all-items): the
     // lose-reveal section renders the same standing text after a
-    // wrong pick on the one lose-path item — also post-pick only.
+    // wrong pick on a lose-path item — also post-pick only.
     const loseAt = subjectCase.indexOf('data-testid={`${testIdPrefix}-lose-reveal`}');
     const loseExtraAt = subjectCase.indexOf(
       "resultExtra ? resultExtra(item, reduced, band) : null",
