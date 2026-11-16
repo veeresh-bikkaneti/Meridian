@@ -51,15 +51,20 @@ test("robots.txt allows crawling and points at the sitemap", () => {
 });
 
 /**
- * Page routes that are deliberately noindex (owner-only surfaces: the
- * story board and its issues map). They must NOT appear in the sitemap —
- * listing a URL there while its page says noindex would contradict the
- * noindex. Every other page route MUST be in the sitemap.
+ * Page routes that are deliberately noindex. They must NOT appear
+ * in the sitemap — listing a URL there while its page says noindex
+ * would contradict the noindex. Every other page route MUST be in
+ * the sitemap. The map is empty today: /board was the only entry,
+ * and the owner ruled on 2026-11-15 that the board is a discovery
+ * surface for parents — it IS listed in the sitemap and does NOT
+ * serve noindex (asserted explicitly below; supersedes board v2
+ * step 15). Board v3 also deleted /board/issues — it had no data
+ * source once the board stopped reading public GitHub, and a
+ * deleted route must never appear in the sitemap (the route scan
+ * below only yields routes that exist, and every sitemap entry is
+ * checked against the scan in "sitemap entries are real routes").
  */
-const NOINDEX_ROUTES = new Map([
-  ["/board", "../src/routes/board.tsx"],
-  ["/board/issues", "../src/routes/board_.issues.tsx"],
-]);
+const NOINDEX_ROUTES = new Map();
 
 /** Recursively list page routes (.tsx pages only; api/*.ts are server routes). */
 function pageRoutes(dirUrl, prefix = "") {
@@ -107,5 +112,28 @@ test("every sitemap-excluded route really is noindex", () => {
       /name:\s*"robots",\s*content:\s*"noindex"/,
       `${path} is excluded from the sitemap but its route does not declare noindex`,
     );
+  }
+});
+
+test("the board is indexed: listed in the sitemap and serving no noindex (owner ruling, 2026-11-15)", () => {
+  const xml = read("public/sitemap.xml");
+  const locs = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
+  assert.ok(locs.includes(`${SITE}/board`), "sitemap is missing /board");
+  assert.ok(!locs.some((l) => l.includes("issues")), "a deleted route (/board/issues) must not be listed");
+  const source = read("src/routes/board.tsx");
+  assert.doesNotMatch(
+    source,
+    /name:\s*"robots",\s*content:\s*"noindex"/,
+    "/board must not declare noindex — the owner ruled it discoverable",
+  );
+});
+
+test("sitemap entries are real routes", () => {
+  const xml = read("public/sitemap.xml");
+  const locs = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
+  const pages = pageRoutes(new URL("../src/routes/", import.meta.url));
+  for (const l of locs) {
+    const p = l.slice(SITE.length) || "/";
+    assert.ok(pages.includes(p), `sitemap lists ${p}, which is not a page route`);
   }
 });

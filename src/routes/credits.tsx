@@ -22,7 +22,7 @@ export const Route = createFileRoute("/credits")({
 
 function CreditsPage() {
   return (
-    <InfoPage title="Credits">
+    <InfoPage title="Credits" graphic="book">
       <p className="text-sm text-muted">For parents, carers, and teachers</p>
 
       <p>
