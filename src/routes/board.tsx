@@ -4,6 +4,7 @@ import {
   lazy,
   useEffect,
   useMemo,
+  useRef,
   useState,
 } from "react";
 import {
@@ -13,12 +14,15 @@ import {
   formatUpdated,
   frontierSlug,
   isStale,
+  loadBoardLinks,
   loadBoardStatus,
   newlyClosedFeatures,
   readSeenClosed,
   writeSeenClosed,
   type LoadedBoard,
+  type PublishedBoard,
 } from "@/board/board-data";
+import { loadLiveBoard } from "@/board/live-feed";
 import { computeLayout } from "@/board/status-core";
 import { TrailView } from "@/board/trail-view";
 import { FeatureRequestForm } from "@/board/feature-request-form";
@@ -31,16 +35,27 @@ const MoleculeMap = lazy(() => import("@/board/molecule-map"));
 /**
  * /board — "See what we're making next" (board v3).
  *
- * The board reads ONE thing: the published status file
+ * The board's base layer is the published status file
  * (public/board-status.json), generated from the team's own curated
- * records by scripts/board/publish-status.mjs. There is no live
- * fetch, no GitHub overlay, no PR anything — v2's live header
- * claimed a freshness the one-page fetch could not back, and
- * v3 removes the claim by removing the mechanism. The header shows
- * the file's own Updated stamp; past 24h the page says so plainly.
- * If the published file cannot be fetched, the bundled copy renders
- * and the header discloses that ("showing the copy that came with
- * the site").
+ * records by scripts/board/publish-status.mjs. It renders first,
+ * exactly as published, with its own Updated stamp.
+ *
+ * Over it sits the live feed (owner ruling, 2026-11-16: "getting
+ * the live feed was the biggest requirement we had") — the overlay
+ * board v2 shipped and v3 removed, restored on the published
+ * contract. On load the page checks the repo's public PR/issue
+ * state on GitHub (live-feed.ts), paginating until every record
+ * linked from the publisher's links file is covered. Full coverage:
+ * statuses are recomputed from the live answer and the header says
+ * "Live from GitHub — every linked record checked (N of N)" beside
+ * the snapshot's stamp. Anything less — a failed, rate-limited or
+ * partial check — keeps the snapshot on screen and says so plainly.
+ * The claim is never made without the coverage to back it: that
+ * was v2's centrepiece defect (a one-page fetch under a "Live"
+ * label), and it stays dead. Behind the boardLiveFeed kill switch.
+ * If the published file itself cannot be fetched, the bundled copy
+ * renders and the header discloses that ("showing the copy that
+ * came with the site").
  *
  * Three views over the same published data: the trail (the journey),
  * the molecular map (the structure; behind the board3d kill switch),
@@ -137,6 +152,40 @@ function BoardPage() {
   };
   const [toast, setToast] = useState<string | null>(null);
 
+  /* Fix 2 (owner, 2026-11-16): on small screens every control hides
+   * behind one Menu bar; on big screens the bar is CSS-hidden and the
+   * panel below is the horizontal nav bar in the header. The menu
+   * contract follows the play pages' popover discipline: opening moves
+   * focus into the panel, Esc closes and returns focus to the Menu
+   * button, and a tap outside closes. */
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement | null>(null);
+  const navPanelRef = useRef<HTMLDivElement | null>(null);
+  const viewnavRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    navPanelRef.current
+      ?.querySelector<HTMLButtonElement>("button:not([disabled])")
+      ?.focus();
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== "Escape") return;
+      setMenuOpen(false);
+      menuButtonRef.current?.focus();
+    };
+    const onPointerDown = (e: PointerEvent) => {
+      if (viewnavRef.current && !viewnavRef.current.contains(e.target as Node)) {
+        setMenuOpen(false);
+      }
+    };
+    document.addEventListener("keydown", onKey);
+    document.addEventListener("pointerdown", onPointerDown);
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.removeEventListener("pointerdown", onPointerDown);
+    };
+  }, [menuOpen]);
+
   useEffect(() => {
     let active = true;
     void loadBoardStatus().then((result) => {
@@ -150,10 +199,42 @@ function BoardPage() {
     };
   }, []);
 
-  const board = loaded?.board ?? FALLBACK_BOARD;
+  /* The live feed: once the snapshot is on screen and the flags
+   * have spoken, run the one GitHub check for this page load. The
+   * snapshot never waits for it. A completed check swaps the board
+   * underneath every view at once (counts, pills, groups, map —
+   * they all read the one `board` below); a failed or partial one
+   * only adds the honest note under the header. Kill switch off =
+   * no fetch and no note: the board is the snapshot, as v3 shipped. */
+  const [liveBoard, setLiveBoard] = useState<PublishedBoard | null>(null);
+  const [liveLine, setLiveLine] = useState<
+    { kind: "live"; covered: number; wanted: number } | { kind: "unavailable" } | null
+  >(null);
+
+  useEffect(() => {
+    if (!loaded) return;
+    let active = true;
+    void loadFlags().then(async () => {
+      if (!active || !isEnabled("boardLiveFeed")) return;
+      const links = await loadBoardLinks();
+      const result = await loadLiveBoard(loaded.board, links);
+      if (!active) return;
+      if (result.kind === "live") {
+        setLiveBoard(result.board);
+        setLiveLine({ kind: "live", covered: result.covered, wanted: result.wanted });
+      } else {
+        setLiveLine({ kind: "unavailable" });
+      }
+    });
+    return () => {
+      active = false;
+    };
+  }, [loaded]);
+
+  const board = liveBoard ?? loaded?.board ?? FALLBACK_BOARD;
   const layout = useMemo(() => computeLayout(board), [board]);
   const frontier = useMemo(() => frontierSlug(board), [board]);
-  const stale = loaded ? isStale(board.updatedAt, Date.now()) : false;
+  const stale = loaded && !liveBoard ? isStale(board.updatedAt, Date.now()) : false;
 
   /* Honest celebration: toast only for a feature that closed since
    * the visitor's last visit — never on first sight (spec §2). */
@@ -185,6 +266,18 @@ function BoardPage() {
       },
     });
   };
+  /* Picking a view from the small-screen panel closes it and returns
+   * focus to the Menu button; on big screens the button is hidden, so
+   * focus simply stays in the bar. Theme and Calm picks are settings,
+   * not navigation — they leave the panel open. */
+  const pickView = (next: BoardView) => {
+    if (menuOpen) {
+      setMenuOpen(false);
+      const btn = menuButtonRef.current;
+      if (btn && btn.offsetParent !== null) btn.focus();
+    }
+    go({ view: next });
+  };
   const select = (slug: string | null) => go({ story: slug });
   const frontierStory = frontier ? findStory(board, frontier) : null;
 
@@ -194,24 +287,35 @@ function BoardPage() {
       data-board-theme={themeChoice === "system" ? undefined : themeChoice}
     >
       <div className="v3-wrap">
-        <p className="v3-back">
-          <HomeButton to="/" />
-        </p>
-        <p className="v3-eyebrow">For grown-ups</p>
-        <h1 className="v3-title">See what we&rsquo;re making next</h1>
-        <p className="v3-counts" data-testid="board-counts-line">
-          {board.counts.done} of {board.counts.total} stories finished · {board.counts.inProgress}{" "}
-          being built · {board.counts.notStarted} not started yet
-        </p>
-        <p className="v3-updated" data-testid="board-updated-line">
-          Updated {formatUpdated(board.updatedAt)}
-          {loaded?.source === "manual" ? " — showing the copy that came with the site" : ""}
-        </p>
-        {stale ? (
-          <p className="v3-stale" role="note">
-            This list is more than a day old — a fresher one is on its way.
+        <header className="v3-head">
+          <p className="v3-back">
+            <HomeButton to="/" />
           </p>
-        ) : null}
+          <p className="v3-eyebrow">For grown-ups</p>
+          <h1 className="v3-title">See what we&rsquo;re making next</h1>
+          <p className="v3-counts" data-testid="board-counts-line">
+            {board.counts.done} of {board.counts.total} stories finished · {board.counts.inProgress}{" "}
+            being built · {board.counts.notStarted} not started yet
+          </p>
+          <p className="v3-updated" data-testid="board-updated-line">
+            {liveLine?.kind === "live"
+              ? `Live from GitHub — every linked record checked (${liveLine.covered} of ${liveLine.wanted}) · `
+              : ""}
+            Updated {formatUpdated(board.updatedAt)}
+            {loaded?.source === "manual" ? " — showing the copy that came with the site" : ""}
+          </p>
+          {liveLine?.kind === "unavailable" ? (
+            <p className="v3-stale" role="note" data-testid="board-live-note">
+              The live check couldn&rsquo;t be completed just now — showing the list as last
+              updated.
+            </p>
+          ) : null}
+          {stale ? (
+            <p className="v3-stale" role="note">
+              This list is more than a day old — a fresher one is on its way.
+            </p>
+          ) : null}
+        </header>
 
         {frontierStory ? (
           <div className="v3-frontier-banner">
@@ -228,33 +332,55 @@ function BoardPage() {
           </div>
         ) : null}
 
-        <nav className="v3-viewnav" aria-label="Board views">
-          <button
-            type="button"
-            data-testid="board-nav-trail"
-            aria-pressed={view === "trail"}
-            onClick={() => go({ view: "trail" })}
-          >
-            The trail
-          </button>
-          {mapOn ? (
+        <nav className="v3-viewnav" aria-label="Board views" ref={viewnavRef}>
+          <div className="v3-menubar">
             <button
               type="button"
-              data-testid="board-nav-map"
-              aria-pressed={view === "map"}
-              onClick={() => go({ view: "map" })}
+              className="v3-menu-button"
+              data-testid="board-menu-button"
+              ref={menuButtonRef}
+              aria-expanded={menuOpen}
+              aria-controls="board-nav-panel"
+              onClick={() => setMenuOpen((open) => !open)}
             >
-              The structure
+              <span aria-hidden="true">☰</span> Menu
             </button>
-          ) : null}
-          <button
-            type="button"
-            data-testid="board-nav-tip"
-            aria-pressed={view === "tip"}
-            onClick={() => go({ view: "tip" })}
+          </div>
+          <div
+            className="v3-nav-panel"
+            id="board-nav-panel"
+            ref={navPanelRef}
+            data-open={menuOpen ? "true" : "false"}
           >
-            Send a tip
-          </button>
+          <div className="v3-nav-cluster" role="group" aria-label="Views">
+            <button
+              type="button"
+              data-testid="board-nav-trail"
+              aria-pressed={view === "trail"}
+              onClick={() => pickView("trail")}
+            >
+              The trail
+            </button>
+            {mapOn ? (
+              <button
+                type="button"
+                data-testid="board-nav-map"
+                aria-pressed={view === "map"}
+                onClick={() => pickView("map")}
+              >
+                The structure
+              </button>
+            ) : null}
+            <button
+              type="button"
+              data-testid="board-nav-tip"
+              aria-pressed={view === "tip"}
+              onClick={() => pickView("tip")}
+            >
+              Send a tip
+            </button>
+          </div>
+          <div className="v3-nav-cluster v3-nav-settings">
           <div className="v3-theme-switch" role="group" aria-label="Board theme">
             <span className="v3-theme-label" aria-hidden="true">
               Theme
@@ -294,6 +420,8 @@ function BoardPage() {
           >
             Calm mode {calm ? "on" : "off"}
           </button>
+          </div>
+          </div>
         </nav>
 
         {toast ? (

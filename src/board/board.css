@@ -1743,6 +1743,10 @@
   min-height: 100dvh;
 }
 .board-v3 .v3-wrap { max-width: 1080px; margin: 0 auto; padding: 28px 20px 72px; }
+/* One header block (cleanup, organization pass): the back link,
+   eyebrow, title and the HUD readout lines (counts + Updated) form
+   a single region, closed by a hairline before the views begin. */
+.board-v3 .v3-head { border-bottom: 2px solid var(--hv5-line-warm); padding-bottom: 16px; }
 .board-v3 .v3-back a { color: var(--hv5-brown-deep); text-decoration: none; font-weight: 600; }
 .board-v3 .v3-eyebrow {
   text-transform: uppercase; letter-spacing: 0.14em; font-size: 0.78rem;
@@ -1771,15 +1775,61 @@
 }
 .board-v3 .v3-btn:hover { background: var(--hv5-forest-deep); }
 .board-v3 .v3-btn:disabled { opacity: 0.45; cursor: default; }
-.board-v3 .v3-viewnav { display: flex; flex-wrap: wrap; gap: 8px; margin: 22px 0 8px; }
-.board-v3 .v3-viewnav button {
-  border: 1.5px solid var(--hv5-line-warm); background: var(--hv5-card); color: var(--hv5-ink);
-  border-radius: 999px; padding: 9px 16px; font: inherit; font-weight: 600; cursor: pointer; min-height: 44px;
+/* Fix 2 (owner, 2026-11-16): the control block is responsive.
+   Big screens: one horizontal nav bar in the header — the two
+   clusters (views, then settings) on one left edge, wrapping only
+   between clusters, the way the homepage header lays its controls
+   out (fix 1's single left edge is kept). Small screens: one slim
+   filled Menu bar; every control hides in a single-column panel
+   under it. Prominence in both modes, because the page is busy and
+   the controls were easy to miss: the buttons carry the site's
+   action anatomy (the .v3-btn / home-v5 pill: full pill radius,
+   weight 700, a strong forest border on the card ground, the
+   forest fill when pressed) and the Menu bar itself is the forest
+   fill — nothing ghostly, nothing blending into the background.
+   The panel opens by display only, so reduced motion is still. */
+.board-v3 .v3-viewnav { margin: 18px 0 8px; }
+.board-v3 .v3-menubar { display: none; }
+.board-v3 .v3-menu-button {
+  width: 100%; min-height: 48px; padding: 10px 18px;
+  border: 2px solid var(--hv5-forest); border-radius: 999px;
+  background: var(--hv5-forest); color: var(--hv5-parchment);
+  font: inherit; font-weight: 700; font-size: 1.05rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
 }
-.board-v3 .v3-viewnav button[aria-pressed="true"] {
+.board-v3 .v3-menu-button:hover { background: var(--hv5-forest-deep); border-color: var(--hv5-forest-deep); }
+.board-v3 .v3-nav-panel {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px 24px;
+}
+.board-v3 .v3-nav-cluster { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.board-v3 .v3-nav-panel button {
+  border: 2px solid var(--hv5-forest); background: var(--hv5-card); color: var(--hv5-ink);
+  border-radius: 999px; padding: 9px 16px; font: inherit; font-weight: 700; cursor: pointer; min-height: 44px;
+}
+.board-v3 .v3-nav-panel button:hover { border-color: var(--hv5-forest-deep); color: var(--hv5-forest-deep); }
+.board-v3 .v3-nav-panel button[aria-pressed="true"] {
   background: var(--hv5-forest); border-color: var(--hv5-forest); color: var(--hv5-parchment);
 }
-.board-v3 .v3-viewnav .v3-calm-toggle { margin-left: auto; }
+.board-v3 .v3-viewnav button:focus-visible {
+  outline: 2px solid var(--hv5-brown-deep); outline-offset: 3px;
+}
+@media (max-width: 760px) {
+  .board-v3 .v3-menubar { display: block; }
+  .board-v3 .v3-nav-panel { display: none; }
+  .board-v3 .v3-nav-panel[data-open="true"] {
+    display: flex; flex-direction: column; align-items: stretch; gap: 12px;
+    margin-top: 10px; padding: 12px;
+    background: var(--hv5-card); border: 1.5px solid var(--hv5-line-warm);
+    border-radius: 16px; box-shadow: var(--hv5-shadow-card);
+  }
+  .board-v3 .v3-nav-panel[data-open="true"] .v3-nav-cluster {
+    flex-direction: column; align-items: stretch; flex-wrap: nowrap;
+  }
+  .board-v3 .v3-nav-panel[data-open="true"] .v3-theme-switch { flex-wrap: wrap; }
+  .board-v3 .v3-nav-panel[data-open="true"] button { width: 100%; }
+  .board-v3 .v3-nav-panel[data-open="true"] .v3-theme-switch button { width: auto; flex: 1 1 0; }
+}
+
 .board-v3 .v3-toast {
   background: var(--hv5-card); border: 1.5px solid var(--hv5-brown); border-radius: 14px;
   padding: 12px 16px; box-shadow: var(--hv5-shadow-card);
@@ -1807,12 +1857,43 @@
 .board-v3 .v3-feature-meta h3 { font-family: var(--hv5-display); font-size: 1.35rem; margin: 0 0 6px; }
 .board-v3 .v3-gold-flag { color: var(--hv5-brown); }
 .board-v3 .v3-promise { margin: 0 0 8px; color: var(--hv5-ink-soft); }
-.board-v3 .v3-progress { margin: 0 0 4px; }
+/* Life pill (cleanup): % readout beside a pill track that fills to
+   the delivered share. The fill grows once on view; Calm mode and
+   reduced motion rest it filled (rules below with the calm block). */
+.board-v3 .v3-life { display: flex; align-items: center; gap: 10px; margin: 0 0 6px; }
+.board-v3 .v3-life-track {
+  flex: 0 1 190px; height: 13px; border-radius: 999px; overflow: hidden;
+  background: var(--hv5-parchment); border: 1.5px solid var(--hv5-line-warm);
+}
+.board-v3 .v3-life-fill {
+  display: block; height: 100%; border-radius: 999px; background: var(--hv5-forest);
+  transform-origin: left center; animation: v3-life-grow 0.9s var(--hv5-ease) both;
+}
+.board-v3 .v3-feature-card.v3-finished .v3-life-fill { background: var(--hv5-brown); }
+.board-v3 .v3-life-pct { font-weight: 800; font-size: 1.05rem; color: var(--hv5-forest-deep); }
+.board-v3 .v3-feature-card.v3-finished .v3-life-pct { color: var(--hv5-brown-deep); }
+@keyframes v3-life-grow { from { transform: scaleX(0); } }
 .board-v3 .v3-next { margin: 0; color: var(--hv5-brown-deep); }
 .board-v3 .v3-next a { color: var(--hv5-forest); font-weight: 700; }
 @media (max-width: 760px) {
   .board-v3 .v3-feature-card { grid-template-columns: 1fr; }
 }
+
+/* story groups inside a feature (cleanup): each state gets a named
+   heading with its count as the quiet right-side note, then the
+   group's stops on the rail — one anatomy for all four groups. */
+.board-v3 .v3-group { margin-top: 16px; }
+.board-v3 .v3-group-head {
+  display: flex; align-items: baseline; margin: 0; padding: 0 16px;
+  font-size: 0.8rem; font-weight: 800; letter-spacing: 0.09em;
+  text-transform: uppercase; color: var(--hv5-ink-soft);
+}
+.board-v3 .v3-group-count { margin-left: auto; font-size: 0.85rem; letter-spacing: 0; }
+.board-v3 .v3-group-empty {
+  margin: 4px 0 0; padding: 0 16px 0 42px;
+  color: var(--hv5-ink-soft); font-size: 0.92rem; font-style: italic;
+}
+.board-v3 .v3-group .v3-stops { margin-top: 2px; }
 
 /* story stops on the rail */
 .board-v3 .v3-stops { list-style: none; margin: 6px 0 0; padding: 0 0 0 26px; position: relative; }
@@ -1901,7 +1982,7 @@
 }
 .board-v3 .v3-map-legend h3 { font-family: var(--hv5-display); margin: 0 0 10px; }
 .board-v3 .v3-sw { display: inline-block; width: 12px; height: 12px; border-radius: 50%; vertical-align: -1px; }
-.board-v3 .v3-bond-sample { display: inline-block; width: 22px; height: 4px; border-radius: 2px; background: var(--atlas-stamp); vertical-align: middle; }
+.board-v3 .v3-bond-sample { display: inline-block; width: 22px; height: 4px; border-radius: 2px; background: var(--atlas-brass); vertical-align: middle; }
 .board-v3 .v3-mirror { margin-top: 26px; }
 .board-v3 .v3-mirror-title { font-family: var(--hv5-display); font-size: 1.4rem; }
 .board-v3 .v3-mirror-epic h4 { font-family: var(--hv5-display); margin: 20px 0 6px; }
@@ -2005,6 +2086,10 @@
 
 /* Calm mode: every loop rests at its end pose (the base styles). */
 .board-v3.v3-calm .v3-anim-window *, .board-v3.v3-calm .v3-story-banner *, .board-v3.v3-calm .v3-form-head * { animation: none !important; }
+.board-v3.v3-calm .v3-life-fill { animation: none; }
+@media (prefers-reduced-motion: reduce) {
+  .board-v3 .v3-life-fill { animation: none; }
+}
 
 /* ---- board theme switch (owner ruling, 2026-11-15) ----
    The board loads on the visitor's system theme — the styles.css
@@ -2066,5 +2151,5 @@
   --atlas-stamp: #b3372a;
   color-scheme: light;
 }
-.board-v3 .v3-theme-switch { display: flex; align-items: center; gap: 8px; }
+.board-v3 .v3-theme-switch { display: flex; flex-wrap: nowrap; align-items: center; gap: 8px; }
 .board-v3 .v3-theme-label { color: var(--hv5-ink-soft); font-size: 0.9rem; font-weight: 600; }

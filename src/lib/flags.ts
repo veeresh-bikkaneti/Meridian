@@ -43,6 +43,7 @@ export type FlagName =
   | "detectiveFlank"
   | "pair3d"
   | "board3d"
+  | "boardLiveFeed"
   | "scalePlay";
 
 /**
@@ -149,6 +150,16 @@ export const FLAG_DEFAULTS: Record<FlagName, boolean> = {
   // false = kill switch: the board falls back to the trail alone —
   // the DOM board is always the complete fallback (board v3 spec §3).
   board3d: true,
+  // Board live feed (owner ruling, 2026-11-16: "getting the live
+  // feed was the biggest requirement we had"). true = the shipped
+  // behaviour: on load the board checks the repo's public PR/issue
+  // state on GitHub, recomputes statuses from the live answer when
+  // every linked record is covered, and labels the header honestly
+  // (live with its coverage, or the snapshot when the check cannot
+  // complete). false = kill switch: no GitHub fetch at all — the
+  // board reads the published status file alone, exactly as board
+  // v3 shipped.
+  boardLiveFeed: true,
 };
 
 /** The one URL turn-on: `?scale=1` turns scalePlay on, nothing else. */
