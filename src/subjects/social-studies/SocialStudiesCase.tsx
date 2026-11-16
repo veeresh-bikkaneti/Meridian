@@ -3,13 +3,30 @@
  * module's load() returns (contract I1). A thin wrapper over the
  * shared SubjectCase, passing the subject's title, test-id prefix,
  * band items and answer lookup.
+ *
+ * Clue scenes (expansion wave 9): social studies also passes
+ * the scene hook, mirroring ChemistryCase. For ages 7-10,
+ * 10-18 and 18+, an item that carries a scene description
+ * (scenes.ts, in data next to the answers) gets a short
+ * live-drawn film above its clue card; every item carries one
+ * since wave 9 completed Social studies 12/12. The hook is
+ * answer-blind — SubjectCase hands it the phase from the case's
+ * own state, never the answer.
+ *
+ * Act 3: social studies also passes the resultExtra hook — for
+ * the same items whose description carries a summary, the
+ * solved result section gains the summary's full script as
+ * standing text (the narrated performance itself lives in the
+ * scene).
  */
 import type { SubjectProps } from "../registry";
 import type { CelebrationSpec } from "@/components/celebration-copy";
 import type { ResetHistoryResult } from "@/game/reset-history";
 import { SubjectCase } from "../shared/SubjectCase";
+import { ClueScene, ClueSummaryText } from "../shared/ClueScene";
 import { itemsForGroup } from "./items";
 import { answerFor } from "./answers";
+import { clueSceneFor } from "./scenes";
 
 export default function SocialStudiesCase(
   props: SubjectProps & {
@@ -31,6 +48,18 @@ export default function SocialStudiesCase(
       testIdPrefix="social-studies"
       itemsForGroup={itemsForGroup}
       answerFor={answerFor}
+      scene={(item, phase, reduced, band) => {
+        if (band !== "7-10" && band !== "10-18" && band !== "18+") return null;
+        const description = clueSceneFor(item.id);
+        if (!description) return null;
+        return <ClueScene key={item.id} description={description} phase={phase} reduced={reduced} />;
+      }}
+      resultExtra={(item, _reduced, band) => {
+        if (band !== "7-10" && band !== "10-18" && band !== "18+") return null;
+        const description = clueSceneFor(item.id);
+        if (!description?.summary) return null;
+        return <ClueSummaryText summary={description.summary} />;
+      }}
       {...props}
     />
   );

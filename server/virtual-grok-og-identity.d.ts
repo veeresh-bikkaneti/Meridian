@@ -1,4 +1,5 @@
 declare module "virtual:grok-og-identity" {
+  export const grokBuildId: string;
   export const grokOgIdentity: {
     site: {
       title?: string;

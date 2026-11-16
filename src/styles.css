@@ -2018,6 +2018,46 @@
   background: var(--atlas-bg-1);
 }
 
+/* Brand home control (fix/header-logo-home): the shell header's home
+   affordance is the homepage's brand lockup, so these rules mirror
+   .home-v5 .hv5-brand / .hv5-mark / .hv5-word in home-v5.css (same
+   mark size, word font, spacing and colour) without importing or
+   un-scoping home-v5.css — shell screens are .mode-screen, not
+   .home-v5. The word's font is the atlas display stack, the same
+   Fraunces family --hv5-display resolves to on the home page.
+   Focus is the button's own Tailwind focus-visible outline (the
+   HomeButton BASE treatment, carried in home-button.ts). */
+.brand-home-button {
+  background: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+}
+.brand-home-mark {
+  display: block;
+  width: 40px;
+  height: 40px;
+  flex: none;
+}
+.brand-home-word {
+  font-family: var(--font-atlas-display);
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  line-height: 1;
+}
+@media (max-width: 1080px) {
+  .brand-home-word {
+    font-size: 19px;
+    letter-spacing: 0.18em;
+  }
+}
+@media (max-width: 680px) {
+  .brand-home-word {
+    font-size: 19px;
+  }
+}
+
 .mode-title {
   font-family: var(--font-atlas-display);
 }
@@ -2242,11 +2282,6 @@
     linear-gradient(rgba(246, 241, 227, 0.62), rgba(246, 241, 227, 0.62)),
     url("./assets/why-learn/why-learn-montage.webp") center top / cover no-repeat;
 }
-/* The Home strip gets a frosted backing so its label never sits on art. */
-.why-learn-screen [data-testid="home-button"] {
-  background: rgba(253, 250, 242, 0.92);
-  box-shadow: 0 0 0 1px var(--atlas-card-line);
-}
 .why-learn-screen .screen-hero {
   background: #fdfaf2;
   border-radius: 18px;
@@ -2378,52 +2413,84 @@
     animation: none;
   }
 }
-/* Fixed aspect ratio per breakpoint (plus width/height attributes): the
-   box is sized before the picture loads, so there is no layout shift. */
+/* The film slot is dimension-matched to the film itself
+   (feat/why-learn-landscape-layout): the shipped film is
+   1280×720 landscape, so the slot's aspect is exactly 16 / 9 at
+   every breakpoint (plus width/height attributes: the box is
+   sized before the picture loads, so there is no layout shift).
+   The whole frame shows — object-fit: cover over a same-aspect
+   box crops nothing, and there is no letterbox, blur fill or
+   squeeze anywhere in the slot. The portrait-era stepped
+   aspects (a wide strip centre-cropping a 608×1280 file, taller
+   boxes on tall screens) are gone with the portrait file. */
 .why-learn-hero {
   display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 16 / 7;
+  aspect-ratio: 16 / 9;
   object-fit: cover;
   object-position: 50% 50%;
 }
+/* The hero card is built around the film (the approved landscape
+   layout): on desktop the film slot sits at the card's left at a
+   fixed share of the viewport height — height drives the slot,
+   the 16 / 9 aspect drives its width — and the titles band
+   fills the rest of the card beside it, vertically centred. On
+   phones the card stacks: the film takes the card's full width
+   at 16 / 9 and the titles sit under it, as before. */
 @media (min-width: 681px) {
-  .why-learn-hero {
-    aspect-ratio: 32 / 9;
+  .why-learn-screen[data-testid="subject-picker"] .screen-hero {
+    display: flex;
+    align-items: stretch;
+    gap: 20px;
+    height: clamp(232px, 33dvh, 300px);
+    padding: 16px;
+  }
+  .why-learn-screen[data-testid="subject-picker"] .why-learn-hero-wrap {
+    flex: none;
+    height: 100%;
+    aspect-ratio: 16 / 9;
+  }
+  .why-learn-screen[data-testid="subject-picker"] .why-learn-hero-wrap .why-learn-hero,
+  .why-learn-screen[data-testid="subject-picker"] .screen-hero > .why-learn-hero {
+    width: 100%;
+    height: 100%;
+  }
+  .why-learn-screen[data-testid="subject-picker"] .screen-hero > .why-learn-hero {
+    flex: none;
+    width: auto;
+  }
+  .why-learn-screen[data-testid="subject-picker"] .screen-hero-band {
+    flex: 1 1 auto;
+    min-width: 230px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4px 6px 4px 0;
   }
 }
-/* Taller hero on tall screens (feat/picker-cards-fill-page): the
-   film is portrait (608×1280) under object-fit: cover, so the wide
-   strip shows only a middle slice of each frame — about a fifth of
-   it. As the viewport gives height, the hero box steps taller and
-   more of the frame shows (about half at 1:1, three-fifths at
-   4:5), while the card grid below flexes into whatever height is
-   left. Short screens keep the strip exactly as it is today. */
-@media (max-width: 680px) and (min-height: 700px) {
-  .why-learn-hero {
-    aspect-ratio: 1 / 1;
+/* 681–1023px (the screen is capped at max-w-3xl here, so the card
+   can be narrower than the height-driven film plus the 230px titles
+   band): the film's width is capped to what the card leaves beside
+   the band, and the card's height follows the film, so the 16 / 9
+   frame never pushes the titles past the card's edge. Same film
+   size as above wherever it fits. */
+@media (min-width: 681px) and (max-width: 1023px) {
+  .why-learn-screen[data-testid="subject-picker"] .screen-hero {
+    height: auto;
+    align-items: center;
   }
-}
-@media (max-width: 680px) and (min-height: 1000px) {
-  .why-learn-hero {
-    aspect-ratio: 4 / 5;
-  }
-}
-@media (min-width: 681px) and (min-height: 1100px) {
-  .why-learn-hero {
-    aspect-ratio: 2 / 1;
-  }
-}
-@media (min-width: 681px) and (min-height: 1500px) {
-  .why-learn-hero {
-    aspect-ratio: 16 / 10;
+  .why-learn-screen[data-testid="subject-picker"] .why-learn-hero-wrap,
+  .why-learn-screen[data-testid="subject-picker"] .screen-hero > .why-learn-hero {
+    height: auto;
+    width: min(calc(100% - 250px), max(355.6px, min(476.4px, calc((33dvh - 32px) * 16 / 9))));
   }
 }
 /* The montage film in the hero slot (feat/why-learn-montage): the
    <video> carries .why-learn-hero, so it fills the same fixed box
    the still did; the controls ride its bottom-right corner on the
-   page's frosted-chip recipe (cf. .why-learn-wordmark). */
+   page's frosted-chip recipe (the .why-learn-hero-controls button
+   rule below). */
 .why-learn-hero-wrap {
   position: relative;
 }
@@ -2449,6 +2516,17 @@
 .why-learn-hero-controls button:focus-visible {
   outline: 3px solid var(--atlas-ink);
   outline-offset: 2px;
+}
+/* Last-resort hero still (QA/UI-UX council, 2026-11-16): when even the
+   poster cannot load, WhyLearnHero renders this labelled panel in the
+   same hero box instead of leaving the slot empty. */
+.why-learn-hero-still {
+  display: grid;
+  place-items: center;
+  padding: 1rem 1.25rem;
+  text-align: center;
+  background: #fdfaf2;
+  color: var(--atlas-ink);
 }
 /* Background drift (feat/why-learn-montage): formulas and diagrams
    from the card's topics floating at a tenth opacity behind the
@@ -2542,25 +2620,6 @@
     animation: none;
   }
 }
-.why-learn-wordmark {
-  margin-left: auto;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  min-height: 44px;
-  padding: 0 12px;
-  border-radius: 999px;
-  background: rgba(253, 250, 242, 0.92);
-  color: #1b2b31;
-  font-family: var(--font-atlas-display);
-  font-size: 15px;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-}
-.why-learn-wordmark svg {
-  width: 22px;
-  height: 22px;
-}
 /* Subject cards, Living Atlas anatomy (the home card's): a 16:9
    picture slot bleeding to the card's top edges, then badge +
    kicker, title + stamp chip, one-liner, and the go row pinned to
@@ -2602,10 +2661,10 @@
 .wl-card-pic {
   position: relative;
   display: block;
-  width: calc(100% + 40px);
+  width: calc(100% + 32px);
   max-width: none;
   aspect-ratio: 16 / 9;
-  margin: -20px -20px 16px;
+  margin: -16px -16px 12px;
   overflow: hidden;
   flex: none;
   background: #d9cfb2;
@@ -2667,7 +2726,7 @@
   margin-top: 8px;
 }
 .why-learn-card .mode-title {
-  font-size: 23px;
+  font-size: 20px;
 }
 .why-learn-chip {
   border-radius: 6px;
@@ -3421,40 +3480,42 @@
     opacity: 1;
   }
 }
-/* Art off wherever the user asked for plain, high-contrast surfaces. */
+/* Decorative art off wherever the user asked for plain, high-contrast
+   surfaces — but content stays. The montage film is the picker's headline
+   and the clue scenes ARE the explanations, so neither is ever hidden:
+   the old rule deleted both for anyone with the high-contrast palette
+   (including players who had only turned on the map's High-contrast
+   view — the palette is a persisted, app-wide attribute), for
+   prefers-contrast: more, and for forced colours, leaving the hero
+   card's title band standing alone and every case unexplained.
+   (QA/UI-UX council fix, 2026-11-16.) */
 :root[data-palette="high-contrast"] .why-learn-screen::after,
-:root[data-palette="high-contrast"] .why-learn-hero,
-:root[data-palette="high-contrast"] .why-learn-hero-wrap,
 :root[data-palette="high-contrast"] .why-learn-drift,
 :root[data-palette="high-contrast"] .wl-world,
-:root[data-palette="high-contrast"] .wl-gk-over,
-:root[data-palette="high-contrast"] .clue-scene {
+:root[data-palette="high-contrast"] .wl-gk-over {
   display: none;
 }
 @media (prefers-contrast: more) {
   .why-learn-screen::after,
-  .why-learn-hero,
-  .why-learn-hero-wrap,
   .why-learn-drift,
   .wl-world,
-  .wl-gk-over,
-  .clue-scene {
+  .wl-gk-over {
     display: none;
   }
 }
 @media (forced-colors: active) {
   .why-learn-screen::after,
-  .why-learn-hero,
-  .why-learn-hero-wrap,
   .why-learn-drift,
   .wl-world,
-  .wl-gk-over,
-  .clue-scene {
+  .wl-gk-over {
     display: none;
   }
   .why-learn-card,
   .why-learn-badge,
-  .why-learn-chip {
+  .why-learn-chip,
+  .why-learn-hero-wrap,
+  .why-learn-hero,
+  .clue-scene {
     border: 1px solid CanvasText;
   }
 }

@@ -15,9 +15,11 @@ import { fulfillFlagsOn } from "./detective-u10";
  *   rows share one column count when they hold the same number of cards;
  * - cards in one row have one height;
  * - with Review off (2 spot cards) the spot row is 2 full columns;
- * - on Home's destinations (Why Learn picker, Country list, Cold Trail,
- *   GeoDetective, /credits) the home control is named exactly "Home",
- *   is at least 44×44, and none of the old names is left.
+ * - on Home's destinations the home control is at least 44×44 and
+ *   none of the old names is left; on the ScreenShell destinations
+ *   (Why Learn picker, Country list) it is named exactly
+ *   "Meridian home" (fix/header-logo-home), and on the rest
+ *   (Cold Trail, GeoDetective, /credits) exactly "Home".
  *
  * Runs on the built artifact like the rest of tests/e2e; it reads layout
  * only, so it needs no map interaction. The owner's playtest (real globe,
@@ -81,13 +83,18 @@ function expectFullRows(label: string, g: GridReport | undefined, expectedCards:
   }
 }
 
-async function expectHomeControl(page: Page, label: string, role: "button" | "link" = "button") {
-  const home = page.getByRole(role, { name: "Home", exact: true }).first();
-  await expect(home, `${label}: a ${role} named exactly Home`).toBeVisible({ timeout: 30_000 });
+async function expectHomeControl(
+  page: Page,
+  label: string,
+  role: "button" | "link" = "button",
+  name: string = "Home",
+) {
+  const home = page.getByRole(role, { name, exact: true }).first();
+  await expect(home, `${label}: a ${role} named exactly ${name}`).toBeVisible({ timeout: 30_000 });
   const box = await home.boundingBox();
-  expect(box, `${label}: Home box`).not.toBeNull();
-  expect(box!.width, `${label}: Home width ${box!.width}`).toBeGreaterThanOrEqual(44);
-  expect(box!.height, `${label}: Home height ${box!.height}`).toBeGreaterThanOrEqual(44);
+  expect(box, `${label}: ${name} box`).not.toBeNull();
+  expect(box!.width, `${label}: ${name} width ${box!.width}`).toBeGreaterThanOrEqual(44);
+  expect(box!.height, `${label}: ${name} height ${box!.height}`).toBeGreaterThanOrEqual(44);
   const names = await page
     .locator("button:visible, a:visible")
     .evaluateAll((els) => els.map((e) => (e.getAttribute("aria-label") ?? e.textContent ?? "").trim()));
@@ -117,7 +124,7 @@ for (const vp of VIEWPORTS) {
     }
   });
 
-  test(`every home control is one 44px "Home" at ${tag}`, async ({ browser }) => {
+  test(`every home control is one 44px "Home" / "Meridian home" at ${tag}`, async ({ browser }) => {
     const context = await browser.newContext({ viewport: vp, serviceWorkers: "block" });
     await setup(context, true);
     const page = await context.newPage();
@@ -125,13 +132,13 @@ for (const vp of VIEWPORTS) {
     await page.goto(APP_URL);
     await page.getByRole("button", { name: "Why Do We Learn This?: Start exploring" }).click();
     await expect(page.getByTestId("subject-picker")).toBeVisible();
-    await expectHomeControl(page, `${tag} Why Learn`);
-    await page.getByRole("button", { name: "Home", exact: true }).click();
+    await expectHomeControl(page, `${tag} Why Learn`, "button", "Meridian home");
+    await page.getByRole("button", { name: "Meridian home", exact: true }).click();
 
     await page.getByRole("button", { name: "Choose a country" }).click();
     await expect(page.getByRole("heading", { name: "Country" })).toBeVisible();
-    await expectHomeControl(page, `${tag} Country list`);
-    await page.getByRole("button", { name: "Home", exact: true }).click();
+    await expectHomeControl(page, `${tag} Country list`, "button", "Meridian home");
+    await page.getByRole("button", { name: "Meridian home", exact: true }).click();
 
     await page.getByRole("button", { name: "Cold Trail: Start the trail" }).click();
     await expect(page.getByTestId("coldtrail-screen")).toBeVisible({ timeout: 30_000 });
