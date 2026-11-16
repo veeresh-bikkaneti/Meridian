@@ -49,6 +49,7 @@ export function WhyLearnHero() {
   const reducedMotion = usePrefersReducedMotion();
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [failed, setFailed] = useState(false);
+  const [posterFailed, setPosterFailed] = useState(false);
   const [playing, setPlaying] = useState(true);
   const [soundOn, setSoundOn] = useState(false);
 
@@ -62,9 +63,46 @@ export function WhyLearnHero() {
     if (film) film.muted = !soundOn;
   }, [soundOn]);
 
+  // A media failure is not latched for the whole session: when the
+  // network comes back or the page becomes visible again, clear the
+  // latches and let the film/poster retry. (QA/UI-UX council,
+  // 2026-11-16: the hero media were the one picker asset class with
+  // no service-worker protection, so one transient failure at mount
+  // used to empty the slot until a manual reload.)
+  useEffect(() => {
+    if (!failed && !posterFailed) return;
+    const retry = () => {
+      setFailed(false);
+      setPosterFailed(false);
+    };
+    const onVisible = () => {
+      if (document.visibilityState === "visible") retry();
+    };
+    window.addEventListener("online", retry);
+    document.addEventListener("visibilitychange", onVisible);
+    return () => {
+      window.removeEventListener("online", retry);
+      document.removeEventListener("visibilitychange", onVisible);
+    };
+  }, [failed, posterFailed]);
+
   if (reducedMotion || failed) {
     // The poster IS the design here — no video element exists in
     // this branch, so the .mp4 is never requested.
+    if (posterFailed) {
+      // Even the poster could not load: the slot still stands as a
+      // labelled panel carrying the poster's description, never an
+      // empty hole in the hero card. (QA/UI-UX council, 2026-11-16.)
+      return (
+        <div
+          className="why-learn-hero why-learn-hero-still"
+          role="img"
+          aria-label={WHY_LEARN_MONTAGE_ALT}
+        >
+          <span>{WHY_LEARN_MONTAGE_ALT}</span>
+        </div>
+      );
+    }
     return (
       <img
         className="why-learn-hero"
@@ -74,6 +112,7 @@ export function WhyLearnHero() {
         height={1280}
         loading="eager"
         decoding="async"
+        onError={() => setPosterFailed(true)}
       />
     );
   }

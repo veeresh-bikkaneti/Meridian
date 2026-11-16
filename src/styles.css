@@ -2450,6 +2450,17 @@
   outline: 3px solid var(--atlas-ink);
   outline-offset: 2px;
 }
+/* Last-resort hero still (QA/UI-UX council, 2026-11-16): when even the
+   poster cannot load, WhyLearnHero renders this labelled panel in the
+   same hero box instead of leaving the slot empty. */
+.why-learn-hero-still {
+  display: grid;
+  place-items: center;
+  padding: 1rem 1.25rem;
+  text-align: center;
+  background: #fdfaf2;
+  color: var(--atlas-ink);
+}
 /* Background drift (feat/why-learn-montage): formulas and diagrams
    from the card's topics floating at a tenth opacity behind the
    picker — texture only. The layer never takes clicks, and the
