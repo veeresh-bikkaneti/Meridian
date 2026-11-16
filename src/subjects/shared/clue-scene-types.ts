@@ -158,6 +158,16 @@ export interface ClueSceneSummary {
   beats: number[];
 }
 
+/**
+ * A summary line as the caption shows it. The closing line splices
+ * the answer's wording in after "so", which can leave a capital
+ * mid-sentence ("so The valley road", "needs About 80"); words that
+ * are never names drop to lower case after a lower-case word.
+ */
+export function captionText(text: string): string {
+  return text.replace(/(?<=[a-z,] )(The|About)\b/g, (word) => word.toLowerCase());
+}
+
 /** How many animation steps a summary paces in total. */
 export function summaryStepCount(summary: ClueSceneSummary): number {
   return summary.beats.reduce((a, b) => a + b, 0);
@@ -943,6 +953,10 @@ export type ClueSceneDescription =
     }
   | {
       kind: "great-circle";
+      /** "south-west": the pins sit north-east to south-west (a
+       * peak and a falls across the equator), so the arc crosses
+       * the globe's face; omitted: the path bends toward the pole. */
+      route?: "south-west";
       labelSetup: string;
       labelSolved: string;
       summary?: ClueSceneSummary;

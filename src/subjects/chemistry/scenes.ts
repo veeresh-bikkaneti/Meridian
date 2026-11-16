@@ -154,7 +154,7 @@ export const CHEMISTRY_CLUE_SCENES: Record<string, ClueSceneDescription> = {
       lines: [
         { text: "Here is the clever way to find the solid that vanished.", at: 0 },
         { text: "The crystals sit whole in the glass of water, easy to see.", at: 3.73 },
-        { text: "Stirring breaks the crystals into smaller and smaller pieces, until the pieces spread through all the water.", at: 7.71 },
+        { text: "Stirring speeds up dissolving, and the crystals spread through all the water.", at: 7.71 },
         { text: "It is still there, as pieces too small to see, spread through the water!", at: 14.5 },
       ],
       beats: [0, 1, 1, 1],
