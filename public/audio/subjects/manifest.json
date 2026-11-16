@@ -1,7 +1,7 @@
 {
   "v": 1,
   "voice": "am_michael",
-  "note": "Narrated solved summaries for the math clue scenes (act 3). One clip per item; the script and per-line timings in src/subjects/math/scenes.ts are the source of truth and match the clips line for line. Rendered locally with the same voice and loudness targets as the journal narration (-18 LUFS, true peak -1.5 dBFS), 24 kHz mono MP3 at 64 kbps like the other in-app clips. Wave 1 (expansion) added the ten non-pilot clips in the same voice (am_michael), rendered the same way. The scenes wave (visual-questions Phase 1) added the nine wave-3 clips in the same voice, rendered the same way. Wave 2 (expansion) added the thirteen 10-18 clips in the same voice (am_michael), rendered the same way. Wave 3 (expansion) added the seven 18+ math and 7-10 general-knowledge clips in the same voice (am_michael), rendered the same way. Wave 4 (expansion) added the seven physics ages 7-10 clips in the same voice (am_michael), rendered the same way. Wave 5 (expansion) added the five remaining physics ages 7-10 clips in the same voice (am_michael), rendered the same way.",
+  "note": "Narrated solved summaries for the math clue scenes (act 3). One clip per item; the script and per-line timings in src/subjects/math/scenes.ts are the source of truth and match the clips line for line. Rendered locally with the same voice and loudness targets as the journal narration (-18 LUFS, true peak -1.5 dBFS), 24 kHz mono MP3 at 64 kbps like the other in-app clips. Wave 1 (expansion) added the ten non-pilot clips in the same voice (am_michael), rendered the same way. The scenes wave (visual-questions Phase 1) added the nine wave-3 clips in the same voice, rendered the same way. Wave 2 (expansion) added the thirteen 10-18 clips in the same voice (am_michael), rendered the same way. Wave 3 (expansion) added the seven 18+ math and 7-10 general-knowledge clips in the same voice (am_michael), rendered the same way. Wave 4 (expansion) added the seven physics ages 7-10 clips in the same voice (am_michael), rendered the same way. Wave 5 (expansion) added the five remaining physics ages 7-10 clips in the same voice (am_michael), rendered the same way. Wave 6 (expansion) added the twelve physics ages 10-18 and 18+ clips in the same voice (am_michael), rendered the same way.",
   "clips": {
     "skip-count": {
       "file": "skip-count.mp3",
@@ -325,6 +325,78 @@
       "file": "sends-back.mp3",
       "item": "physics:mirror:sends-back",
       "duration": 13.91,
+      "lines": 4
+    },
+    "cart-race": {
+      "file": "cart-race.mp3",
+      "item": "physics:arrive:unit-rate",
+      "duration": 23.32,
+      "lines": 4
+    },
+    "slope-ratio": {
+      "file": "slope-ratio.mp3",
+      "item": "physics:ramp:slope-ratio",
+      "duration": 20.61,
+      "lines": 4
+    },
+    "magnet-closer": {
+      "file": "magnet-closer.mp3",
+      "item": "physics:magnet:closer",
+      "duration": 20.46,
+      "lines": 4
+    },
+    "push-mass": {
+      "file": "push-mass.mp3",
+      "item": "physics:push:mass",
+      "duration": 20.88,
+      "lines": 4
+    },
+    "push-table": {
+      "file": "push-table.mp3",
+      "item": "physics:push:table",
+      "duration": 22.07,
+      "lines": 4
+    },
+    "higher-stored": {
+      "file": "higher-stored.mp3",
+      "item": "physics:ramp:higher-stored",
+      "duration": 19.52,
+      "lines": 4
+    },
+    "energy-transfer": {
+      "file": "energy-transfer.mp3",
+      "item": "physics:energy:transfer",
+      "duration": 16.18,
+      "lines": 4
+    },
+    "sound-medium": {
+      "file": "sound-medium.mp3",
+      "item": "physics:sound:medium",
+      "duration": 18.57,
+      "lines": 4
+    },
+    "three-ways": {
+      "file": "three-ways.mp3",
+      "item": "physics:mirror:three-ways",
+      "duration": 18.73,
+      "lines": 4
+    },
+    "adult-ratio": {
+      "file": "adult-ratio.mp3",
+      "item": "physics:ramp:adult-ratio",
+      "duration": 20.14,
+      "lines": 4
+    },
+    "adult-time": {
+      "file": "adult-time.mp3",
+      "item": "physics:arrive:adult-time",
+      "duration": 18.85,
+      "lines": 4
+    },
+    "energy-missing": {
+      "file": "energy-missing.mp3",
+      "item": "physics:energy:missing",
+      "duration": 20.39,
       "lines": 4
     }
   }
