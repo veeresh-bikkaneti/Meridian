@@ -10,14 +10,17 @@
  * band items and its answer lookup.
  *
  * Clue scene pilot (feat/clue-scene-pilot): math also passes the
- * scene hook. For ages 7-10 only, an item that carries a scene
- * description (scenes.ts, in data next to the answers) gets a short
- * live-drawn film above its clue card; every other item and band is
- * exactly as before. The hook is answer-blind — SubjectCase hands
- * it the phase from the case's own state, never the answer.
+ * scene hook. For ages 7-10, 10-18 and 18+, an item that carries a
+ * scene description (scenes.ts, in data next to the answers) gets
+ * a short live-drawn film above its clue card; every other item
+ * and band is exactly as before (ages 18+ descriptions exist only
+ * for the two covered items — the held survey-check item carries
+ * none, so it stays scene-less). The hook is answer-blind —
+ * SubjectCase hands it the phase from the case's own state, never
+ * the answer.
  *
  * Act 3: math also passes the resultExtra hook — for the same
- * 7-10 items whose description carries a summary, the solved
+ * items whose description carries a summary, the solved
  * result section gains the summary's full script as standing
  * text (the narrated performance itself lives in the scene).
  */
@@ -51,13 +54,13 @@ export default function MathCase(
       itemsForGroup={itemsForGroup}
       answerFor={answerFor}
       scene={(item, phase, reduced, band) => {
-        if (band !== "7-10") return null;
+        if (band !== "7-10" && band !== "10-18" && band !== "18+") return null;
         const description = clueSceneFor(item.id);
         if (!description) return null;
         return <ClueScene key={item.id} description={description} phase={phase} reduced={reduced} />;
       }}
       resultExtra={(item, _reduced, band) => {
-        if (band !== "7-10") return null;
+        if (band !== "7-10" && band !== "10-18" && band !== "18+") return null;
         const description = clueSceneFor(item.id);
         if (!description?.summary) return null;
         return <ClueSummaryText summary={description.summary} />;

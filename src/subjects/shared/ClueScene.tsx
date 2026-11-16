@@ -52,16 +52,71 @@ import {
   type ClueSceneSummary,
 } from "./clue-scene-types";
 import { seeded } from "./clue-scene-easing";
-import { BusBoardingScene, PackBoxesScene } from "./clue-scene-kinds-a";
 import {
+  ArrayGridScene,
+  BendTestScene,
+  BubbleReactionScene,
+  BusBoardingScene,
+  CompassWalkScene,
+  DensityTownsScene,
+  MeltFreezeScene,
+  PackBoxesScene,
+  PercentBarScene,
+  MagnetPairScene,
+  PushDuelScene,
+  RateRaceScene,
+  SamePushScene,
+  ScaleBalanceScene,
+  ScaleLineScene,
+  ShareBarScene,
+  TileStepsScene,
+  WindUpScene,
+} from "./clue-scene-kinds-a";
+import {
+  CupShoveScene,
   DigitShiftScene,
+  DropFallScene,
+  FractionBarScene,
+  FractionMeasureScene,
+  GlowRateScene,
+  HillCartsScene,
+  MagnetSortScene,
+  MapScaleScene,
   PlaceCompareScene,
   PlaceValueScene,
+  RebuildPiecesScene,
+  RustChangeScene,
+  SlideStopScene,
+  SlopePairScene,
+  SoundPathScene,
+  TimelineLineScene,
+  TwoRoadsScene,
+  ZoneClocksScene,
 } from "./clue-scene-kinds-b";
 import {
+  AngleSightScene,
+  AtomTallyScene,
+  BearingDiagramScene,
   ChunkShareScene,
+  ColumnCousinsScene,
+  CostCompareScene,
+  DissolveScene,
+  GlobeVsMapScene,
+  GreatCircleScene,
+  EnergyLedgerScene,
+  FlowCounterScene,
+  LightPathScene,
+  JourneyLineScene,
+  ParticleStatesScene,
+  RateBarsScene,
   RoundingLineScene,
+  SaltMeltScene,
+  SeesawLiftScene,
+  SpendThenGroupScene,
   SplitProductScene,
+  StackDropsScene,
+  TowerMeasureScene,
+  WaterCycleScene,
 } from "./clue-scene-kinds-c";
 import {
   ClockArcScene,
@@ -407,6 +462,58 @@ const SUMMARY_STAGGER: Record<ClueSceneDescription["kind"], number> = {
   "fraction-fill": 1.0,
   "clock-arc": 0.55,
   "unit-fit": 0.9,
+  "array-grid": 0.9,
+  "scale-line": 0.9,
+  "percent-bar": 0.9,
+  "map-scale": 0.55,
+  "fraction-bar": 0.9,
+  "fraction-measure": 0.45,
+  "rate-bars": 0.9,
+  "journey-line": 0.55,
+  "spend-then-group": 0.5,
+  "bearing-diagram": 0.9,
+  "share-bar": 0.9,
+  "timeline-line": 0.55,
+  "tower-measure": 0.9,
+  "push-duel": 0.7,
+  "tile-steps": 0.55,
+  "slide-stop": 0.9,
+  "cup-shove": 0.9,
+  "seesaw-lift": 0.8,
+  "magnet-pair": 0.8,
+  "drop-fall": 0.8,
+  "wind-up": 0.8,
+  "light-path": 0.8,
+  "rate-race": 0.55,
+  "slope-pair": 0.8,
+  "same-push": 0.8,
+  "hill-carts": 0.8,
+  "sound-path": 0.8,
+  "energy-ledger": 0.8,
+  "melt-freeze": 0.8,
+  "bend-test": 0.8,
+  "magnet-sort": 0.8,
+  "rebuild-pieces": 0.8,
+  "salt-melt": 0.8,
+  dissolve: 0.8,
+  "particle-states": 0.8,
+  "water-cycle": 0.8,
+  "scale-balance": 0.8,
+  "bubble-reaction": 0.8,
+  "rust-change": 0.8,
+  "glow-rate": 0.8,
+  "atom-tally": 0.8,
+  "column-cousins": 0.8,
+  "compass-walk": 0.8,
+  "density-towns": 0.8,
+  "two-roads": 0.8,
+  "zone-clocks": 0.8,
+  "globe-vs-map": 0.8,
+  "great-circle": 0.8,
+  "cost-compare": 0.8,
+  "stack-drops": 0.55,
+  "angle-sight": 0.9,
+  "flow-counter": 0.9,
 };
 
 /** The summary clip's URL (public/audio/subjects/, manifest.json). */
@@ -485,6 +592,110 @@ function SceneArt({
       return <ClockArcScene description={description} phase={phase} stepDelay={stepDelay} />;
     case "unit-fit":
       return <UnitFitScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "array-grid":
+      return <ArrayGridScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "scale-line":
+      return <ScaleLineScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "percent-bar":
+      return <PercentBarScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "map-scale":
+      return <MapScaleScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "fraction-bar":
+      return <FractionBarScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "fraction-measure":
+      return <FractionMeasureScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "rate-bars":
+      return <RateBarsScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "journey-line":
+      return <JourneyLineScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "spend-then-group":
+      return <SpendThenGroupScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "bearing-diagram":
+      return <BearingDiagramScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "share-bar":
+      return <ShareBarScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "timeline-line":
+      return <TimelineLineScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "tower-measure":
+      return <TowerMeasureScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "push-duel":
+      return <PushDuelScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "tile-steps":
+      return <TileStepsScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "slide-stop":
+      return <SlideStopScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "cup-shove":
+      return <CupShoveScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "seesaw-lift":
+      return <SeesawLiftScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "magnet-pair":
+      return <MagnetPairScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "drop-fall":
+      return <DropFallScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "wind-up":
+      return <WindUpScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "light-path":
+      return <LightPathScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "rate-race":
+      return <RateRaceScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "slope-pair":
+      return <SlopePairScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "same-push":
+      return <SamePushScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "hill-carts":
+      return <HillCartsScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "sound-path":
+      return <SoundPathScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "energy-ledger":
+      return <EnergyLedgerScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "melt-freeze":
+      return <MeltFreezeScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "bend-test":
+      return <BendTestScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "magnet-sort":
+      return <MagnetSortScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "rebuild-pieces":
+      return <RebuildPiecesScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "salt-melt":
+      return <SaltMeltScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "dissolve":
+      return <DissolveScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "particle-states":
+      return <ParticleStatesScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "water-cycle":
+      return <WaterCycleScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "scale-balance":
+      return <ScaleBalanceScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "bubble-reaction":
+      return <BubbleReactionScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "rust-change":
+      return <RustChangeScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "glow-rate":
+      return <GlowRateScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "atom-tally":
+      return <AtomTallyScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "column-cousins":
+      return <ColumnCousinsScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "compass-walk":
+      return <CompassWalkScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "density-towns":
+      return <DensityTownsScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "two-roads":
+      return <TwoRoadsScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "zone-clocks":
+      return <ZoneClocksScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "globe-vs-map":
+      return <GlobeVsMapScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "great-circle":
+      return <GreatCircleScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "cost-compare":
+      return <CostCompareScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "stack-drops":
+      return <StackDropsScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "angle-sight":
+      return <AngleSightScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "flow-counter":
+      return <FlowCounterScene description={description} phase={phase} stepDelay={stepDelay} />;
   }
 }
 
