@@ -5,8 +5,9 @@
  * Flow, per the plan's table (§3): the problem is read through the
  * existing ClueCard (the item's why, numbers kept to the question),
  * the shared AnswerCard asks one question, and the result mirrors
- * LoopReveal's visual language with the item's useElsewhere as "You
- * just used this in…". LoopReveal itself takes a geographic
+ * LoopReveal's visual language with the item's useElsewhere
+ * composed into a real sentence (used-in-line.ts, item 15).
+ * LoopReveal itself takes a geographic
  * LoopPuzzleState + LoopClueFile, so it is not reused as a component —
  * fabricating a puzzle for it would invent scores, which its own
  * comment forbids.
@@ -35,11 +36,11 @@
  *
  * Game chrome (fix/case-navigation): the shell's header bar carries
  * the game's own End game button beside Home — the GeoDetective
- * header cluster (LoopScreen) — wired to GameApp's handleEndGame,
- * and the game's own "Start over" reset (ResetHistoryControl, driven
- * by GameApp's handleResetHistory) sits in a separated footer. Both
- * arrive as optional props from the picker; neither changes the
- * case's own flow.
+ * header cluster (LoopScreen) — wired to GameApp's handleEndGame.
+ * It arrives as an optional prop from the picker; it does not
+ * change the case's own flow. (The "Start over" reset this file
+ * used to render in a separated footer is gone — item 6, one exit
+ * word per screen; see the note at the foot of SubjectCase.)
  *
  * Amendment (owner decision, 2026-11-14): the header bar also
  * carries "Resume your case" while a GeoDetective mystery is
@@ -87,11 +88,12 @@ import {
   type CelebrationSpec,
 } from "@/components/celebration-copy";
 import { AnswerCard } from "./AnswerCard";
+import { usedInLine } from "./used-in-line";
 import { buildSubjectDetectiveHostProps } from "./subject-host-props";
 import { HomeButton } from "@/components/ui/home-button";
+import { Pill } from "@/components/ui/pill";
 import { Button } from "@/components/ui/button";
 import { ScreenShell } from "@/components/ui/screen-shell";
-import { ResetHistoryControl } from "@/components/reset-history-control";
 import type { ResetHistoryResult } from "@/game/reset-history";
 import { advanceCasePhase, type AnswerFor, type CasePhase } from "./answer";
 
@@ -163,7 +165,10 @@ export function SubjectCase({
     /** GameApp's End game (handleEndGame + leave the subjects): the
      * header's End game button, the GeoDetective cluster pattern. */
     onEndGame?: () => void;
-    /** GameApp's "Start over" reset flow (handleResetHistory). */
+    /** GameApp's "Start over" reset flow (handleResetHistory).
+     * Accepted for the shared wrapper contract; the case renders
+     * no control from it since item 6 (one exit word per screen —
+     * the header's End game is the case's exit). */
     onResetHistory?: () => ResetHistoryResult;
     /** GameApp's GeoDetective tap-in (leaves the subjects and opens
      * the loop, whose screen resumes the saved mystery). */
@@ -320,7 +325,15 @@ export function SubjectCase({
       eyebrow="Case file · Why it matters"
       title={`Why Do We Learn This? — ${title}`}
       titleRef={headingRef}
-      sub={`Case ${index + 1} of ${items.length} · Ages ${band}`}
+      sub={
+        <>
+          {/* Item 14 (Stream W): the case count rides the shared
+              Pill — the one AA count readout — not plain small
+              text. The band beside it is the shell's own line. */}
+          <Pill>{`Case ${index + 1} of ${items.length}`}</Pill>
+          {` · Ages ${band}`}
+        </>
+      }
     >
 
       <div className="mt-6 grid gap-4">
@@ -362,7 +375,7 @@ export function SubjectCase({
             ) : null}
             {resultExtra ? resultExtra(item, reduced, band) : null}
             <p className="mt-3 text-fg" data-testid={`${testIdPrefix}-used-in`}>
-              You just used this in… {item.useElsewhere[0] ?? "everyday life"}.
+              {usedInLine(item.useElsewhere)}
             </p>
             <div className="mt-4 grid gap-2">
               {items.length > 1 ? (
@@ -388,7 +401,7 @@ export function SubjectCase({
             </p>
             {resultExtra ? resultExtra(item, reduced, band) : null}
             <p className="mt-3 text-fg" data-testid={`${testIdPrefix}-used-in`}>
-              You just used this in… {item.useElsewhere[0] ?? "everyday life"}.
+              {usedInLine(item.useElsewhere)}
             </p>
             <div className="mt-4 grid gap-2">
               {items.length > 1 ? (
@@ -417,16 +430,15 @@ export function SubjectCase({
           />
         )}
       </div>
-      {/* The game's "Start over" reset, alone in a separated footer —
-          the same placement rule as Home's Review card danger footer
-          (the destructive action shares neither a row nor a look with
-          play). The control and the flow behind it are the game's own
-          (ResetHistoryControl + GameApp's handleResetHistory). */}
-      {onResetHistory ? (
-        <div className="mt-8 border-t border-line pt-4">
-          <ResetHistoryControl onReset={onResetHistory} />
-        </div>
-      ) : null}
+      {/* Item 6 slice (Stream W): one exit word per screen. The
+          case used to carry a second exit at the bottom — the
+          game's "Start over" reset under a separated footer —
+          beside the header's End game. The bottom duplicate is
+          removed; End game in the header is the case's one exit
+          word, and the picker keeps its own Start over (its only
+          one). The onResetHistory prop stays in the contract —
+          GameApp and the wrappers still pass it — but the case no
+          longer renders a control from it. */}
     </ScreenShell>
   );
 }
