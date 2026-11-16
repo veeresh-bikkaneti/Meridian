@@ -6,6 +6,13 @@
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 
+// The app's own boot-rescue scripts, re-exported here so the Nitro
+// middleware consumes them through the same shared seam as the rest of
+// the platform chrome (the Pages build injects them via its own shell
+// plugins). QA/UI-UX council, 2026-11-16.
+export { renderNoswHatchScript } from "./nosw-hatch.mjs";
+export { renderCrashWatchdogScript } from "./crash-watchdog.mjs";
+
 export const DEFAULT_APP_NAME = "Grok App";
 export const OG_SERVICE_URL_DEFAULT = "https://og.grok.me";
 export const OG_SITE_REL_PATH = "src/lib/og/site.json";
@@ -283,6 +290,24 @@ export function snapshotOgIdentity(cwd = process.cwd()) {
   return { site };
 }
 
+/**
+ * The build id baked at prebuild time into public/build-meta.json —
+ * the same source the Pages crash-watchdog plugin reads, so the
+ * Workers (SSR) watchdog reports the identical stamp. "unknown" when
+ * no meta was baked (dev servers, tarballs). QA/UI-UX council,
+ * 2026-11-16.
+ */
+export function snapshotBuildId(cwd = process.cwd()) {
+  try {
+    const meta = JSON.parse(readFileSync(join(cwd, "public/build-meta.json"), "utf8"));
+    const id = String(meta?.buildId ?? "").trim();
+    if (id) return id;
+  } catch {
+    // No baked meta — fall through to the honest placeholder.
+  }
+  return "unknown";
+}
+
 export function customOgAssetPath(cwd = process.cwd()) {
   return ogCardPublicPath(cwd) || "/og.jpg";
 }
@@ -541,6 +566,67 @@ export function createHeadInjector(ctx = {}) {
       pending = [];
       done = true;
       return [Buffer.from(apply(rest.toString("utf8")), "utf8")];
+    },
+  };
+}
+
+/**
+ * Streaming close-tag injector: passes bytes through as they arrive,
+ * holding back only a tail window (the longer of the close tag and the
+ * marker) so a close tag or marker split across chunks is still
+ * recognised. When `</closeTag>` arrives, `render()` is inserted
+ * immediately before it — at the byte offset, with the surrounding
+ * bytes passed through raw (the stream is scanned as latin1, never
+ * decoded as UTF-8, so a multi-byte character split across chunks
+ * survives intact, exactly as in createHeadInjector). When the stream
+ * already carries `marker` before the close tag, nothing is inserted,
+ * so the injection is idempotent. `flush()` emits the held tail
+ * unchanged (no close tag seen — nowhere safe to inject). Used by the
+ * deploy middleware to give the Workers (SSR) build the same ?nosw=1
+ * escape hatch and crash watchdog the Pages build gets from its shell
+ * plugins. QA/UI-UX council, 2026-11-16.
+ */
+export function createCloseTagInjector({ closeTag, marker, render }) {
+  const close = `</${closeTag}>`.toLowerCase();
+  const mark = String(marker ?? "").toLowerCase();
+  // A marker or close tag that starts in emitted bytes must still be
+  // whole inside the pending window when its last byte arrives.
+  const hold = Math.max(close.length, mark.length);
+  let pending = Buffer.alloc(0);
+  let done = false;
+  let markerSeen = false;
+
+  return {
+    /** @param {Uint8Array | string} chunk @returns {Buffer[]} chunks ready to emit */
+    push(chunk) {
+      const buf = Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk);
+      if (done) return [buf];
+      pending = pending.length ? Buffer.concat([pending, buf]) : buf;
+      const hay = pending.toString("latin1").toLowerCase();
+      const at = hay.indexOf(close);
+      if (at === -1) {
+        if (mark && hay.includes(mark)) markerSeen = true;
+        if (pending.length <= hold) return [];
+        const out = pending.subarray(0, pending.length - hold);
+        pending = pending.subarray(pending.length - hold);
+        return [Buffer.from(out)];
+      }
+      done = true;
+      const markAt = mark ? hay.indexOf(mark) : -1;
+      const already = markerSeen || (markAt !== -1 && markAt < at);
+      const before = pending.subarray(0, at);
+      const after = pending.subarray(at);
+      pending = Buffer.alloc(0);
+      if (already) return [Buffer.concat([before, after])];
+      return [Buffer.concat([before, Buffer.from(render(), "utf8"), after])];
+    },
+    /** @returns {Buffer[]} the held tail (no close tag seen) */
+    flush() {
+      if (pending.length === 0) return [];
+      const rest = pending;
+      pending = Buffer.alloc(0);
+      done = true;
+      return [rest];
     },
   };
 }
