@@ -6,6 +6,7 @@ import { fileURLToPath } from "node:url";
 import test from "node:test";
 import {
   appNameFromHost,
+  createCloseTagInjector,
   createHeadInjector,
   grokXCreatorHeadTags,
   injectGrokPwaHead,
@@ -14,6 +15,7 @@ import {
   publicAppHost,
   renderWebManifest,
   resolveOgCardAsset,
+  snapshotBuildId,
   snapshotOgIdentity,
   stripInstallParams,
 } from "./grok-pwa-shared.mjs";
@@ -653,4 +655,111 @@ test("transformIndexHtml keeps /__grok/ links off the Pages gate (dev)", async (
     if (prev === undefined) delete process.env.GITHUB_PAGES;
     else process.env.GITHUB_PAGES = prev;
   }
+});
+
+test("close-tag injector inserts before the close tag, across chunk splits", () => {
+  // QA/UI-UX council, 2026-11-16: the Workers SSR shell gains the
+  // ?nosw=1 hatch + crash watchdog through this injector.
+  const injector = createCloseTagInjector({
+    closeTag: "body",
+    marker: "meridian-crash-watchdog",
+    render: () => "<script>/* meridian-crash-watchdog */</script>",
+  });
+  const out = [
+    ...injector.push(Buffer.from("<html><body>hel")),
+    ...injector.push(Buffer.from("lo</bo")),
+    ...injector.push(Buffer.from("dy></html>")),
+    ...injector.flush(),
+  ]
+    .map((b) => b.toString("utf8"))
+    .join("");
+  assert.equal(
+    out,
+    "<html><body>hello<script>/* meridian-crash-watchdog */</script></body></html>",
+  );
+});
+
+test("close-tag injector is idempotent when the marker is already present", () => {
+  const injector = createCloseTagInjector({
+    closeTag: "head",
+    marker: "meridian-nosw-hatch",
+    render: () => "<script>SHOULD-NOT-APPEAR</script>",
+  });
+  const doc = "<html><head><script>/* meridian-nosw-hatch */</script></head><body></body></html>";
+  const out = [...injector.push(Buffer.from(doc)), ...injector.flush()]
+    .map((b) => b.toString("utf8"))
+    .join("");
+  assert.equal(out, doc);
+});
+
+test("close-tag injector passes a document with no close tag through unchanged", () => {
+  const injector = createCloseTagInjector({
+    closeTag: "body",
+    marker: "meridian-crash-watchdog",
+    render: () => "<script>SHOULD-NOT-APPEAR</script>",
+  });
+  const out = [...injector.push(Buffer.from("<html><body>partial")), ...injector.flush()]
+    .map((b) => b.toString("utf8"))
+    .join("");
+  assert.equal(out, "<html><body>partial");
+});
+
+test("snapshotBuildId reads the baked build-meta.json, else reports unknown", () => {
+  const root = mkdtempSync(join(tmpdir(), "grok-build-id-"));
+  assert.equal(snapshotBuildId(root), "unknown");
+  mkdirSync(join(root, "public"));
+  writeFileSync(join(root, "public/build-meta.json"), JSON.stringify({ buildId: "0d47ad5fab3b" }));
+  assert.equal(snapshotBuildId(root), "0d47ad5fab3b");
+});
+
+test("close-tag injector survives a UTF-8 character split after the close tag", () => {
+  // Panel re-review cure, 2026-11-16: the first version decoded the
+  // whole buffered stream as UTF-8 once the tag was found, mangling a
+  // character whose bytes straddled the chunk split (cafÃ© -> caf��).
+  // The injector now slices at byte offsets and never decodes.
+  const injector = createCloseTagInjector({
+    closeTag: "body",
+    marker: "meridian-crash-watchdog",
+    render: () => "<script>/* meridian-crash-watchdog */</script>",
+  });
+  const head = Buffer.from("<html><head></head><body>caf", "utf8");
+  const out = [
+    ...injector.push(Buffer.concat([head, Buffer.from([0xc3])])),
+    ...injector.push(Buffer.concat([Buffer.from([0xa9]), Buffer.from("</body></html>", "utf8")])),
+    ...injector.flush(),
+  ]
+    .map((b) => b.toString("utf8"))
+    .join("");
+  assert.equal(
+    out,
+    "<html><head></head><body>café<script>/* meridian-crash-watchdog */</script></body></html>",
+  );
+});
+
+test("close-tag injector streams early bytes and survives a split character before the tag", () => {
+  // Panel re-review cure, 2026-11-16: the </body> injector must not
+  // hold the whole document hostage — bytes flow with only a small
+  // tail window held back, so the head (and the hatch script) reach
+  // the browser while the body is still rendering.
+  const injector = createCloseTagInjector({
+    closeTag: "head",
+    marker: "meridian-nosw-hatch",
+    render: () => "<script>/* meridian-nosw-hatch */</script>",
+  });
+  const first = injector.push(
+    Buffer.concat([Buffer.from(`<html><head>${"x".repeat(40)} caf`, "utf8"), Buffer.from([0xc3])]),
+  );
+  assert.ok(first.length > 0, "bytes are emitted before the close tag arrives");
+  const out = [
+    ...first,
+    ...injector.push(Buffer.concat([Buffer.from([0xa9]), Buffer.from("</head><body></body></html>", "utf8")])),
+    ...injector.flush(),
+  ]
+    .map((b) => b.toString("utf8"))
+    .join("");
+  assert.ok(out.includes("café</head>") === false, "no mangled character before the tag");
+  assert.ok(
+    out.includes("café<script>/* meridian-nosw-hatch */</script></head>"),
+    "character intact and the script lands immediately before </head>",
+  );
 });
