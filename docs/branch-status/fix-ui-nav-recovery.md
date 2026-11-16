@@ -183,36 +183,54 @@ Stream S cherry-picked in: `920c9ddd` (shared shell components) +
   the boundary is an overlay on a live screen, and its card
   already meets INV2 (Home + Try again). Route-level error
   surfaces are the ErrorScreen fit; recorded here as the reason.
-- **Item 9 — DEFERRED (share).** Mapped, not wired: the four
-  prompts live in four places with four seen-stores — Scout auto
-  notice (App state, event-driven), TutorialInvite (App state +
-  its seen flag), ReadAloudPrefPrompt (self-contained, own
-  asked-once store, rendered by the home component), the storyteller
-  greeting bubble (storyteller-home.tsx, own timers). The queue's
-  contract needs the host to supply per-prompt eligibility +
-  advance hooks; two of the four own their visibility inside child
-  components, so a safe wiring lifts that state first. Doing it
-  half-way would break INV4's one-at-a-time promise instead of
-  keeping it. UX flag recorded as instructed: the UX seat prefers
-  the read-aloud sheet earlier than third; the queue order stays
-  Scout notice → tour banner → read-aloud sheet → support bubble
-  per the statechart when this is picked up.
-- **Item 34 — DEFERRED (share), handed from Stream G with
-  evidence, plus what I measured:** the "A mystery is afoot" line
-  is storyteller home copy (`storyteller-home-copy.ts:56`); the
-  host mounts in the Home hero (game-app.tsx, StorytellerHomeHost)
-  and its send-off is an imperative overlay built to outlive the
-  navigation tap by up to ~2.5s (storyteller-home.tsx, "send-off
-  overlay (copy G3)") — that overlay riding over the freshly
-  opened case screen is the Clue 1 cover, and the fix belongs in
-  this shell layer (end or suppress the send-off when a game
-  screen opens), not in LoopScreen/TrailScreen. Background:
-  `.mode-screen::before` is `position: fixed; inset: 0` with a
-  continuous two-stop gradient (styles.css) — verified not the
-  ~700px hard line's source; the line's actual culprit is not yet
-  identified and needs a screenshot repro at the failing height.
-  Neither half fit the remaining share without passing the hard
-  stop; the integrator asks the owner.
+- **Item 9 — DONE (owner top-up, 2026-11-16).** Wired on Home:
+  GameApp builds the ordered eligibility list — Scout notice
+  (`autoScoutNote`) → tour banner (`showTutorialInvite`) →
+  read-aloud sheet (`shouldAskReadAloudPref()`) — and renders it
+  through Stream S's `FirstVisitQueue`
+  (`seenKey="meridian.firstVisitQueue.v1"`), which shows exactly
+  one. Each prompt keeps its own seen-store and dismiss path; the
+  queue only sequences visibility, exactly as mapped. The fourth
+  prompt, the storyteller greeting bubble, keeps its hero slot and
+  is held by the widened `tutorialInviteVisible`
+  (`firstVisitPrompts.length > 0`) until the queue drains — the
+  host's existing no-competing-popups hold, extended from the
+  invite to the whole queue. The read-aloud sheet's old standalone
+  mount below the home `</main>` is gone; it renders as the
+  queue's third prompt, and its `onAnswered` bumps a GameApp state
+  tick so the queue recomputes. Tests:
+  `src/components/first-visit-queue-wiring.test.ts` — two pending
+  prompts never render at once, the queue advances as each
+  prompt's own store clears it, plus source pins (INV4 order,
+  the bubble hold, the Scout notice renders nowhere else). UX
+  flag stands as recorded: the seat prefers read-aloud earlier;
+  the statechart order is unchanged.
+- **Item 34(a) — DONE (owner top-up).** The send-off overlay
+  (storyteller-home.tsx, copy G3) now ends the moment the case
+  opens: `showSendoffOverlay` checks for
+  `[data-testid="loop-screen"]` on append and watches with a
+  MutationObserver, fading and removing itself as soon as the
+  case screen mounts. Its ≤2.5s ride-along still covers the
+  loop's load; it never sits on Clue 1. Pinned in the wiring
+  test above.
+- **Item 34(b) — NOT REPRODUCED in this sandbox; no change.**
+  The screenshot repro could not run: `vite build` fails at
+  bundling in every local worktree — `node_modules` is a borrowed
+  tree and `maplibre-gl/dist/maplibre-gl-worker.mjs` is missing
+  from all of them (build log error, environment defect; tsc and
+  the unit suites are green). Static pass: `.mode-screen::before`
+  is fixed/inset-0 continuous (ruled out in Phase 2), and
+  styles.css carries no loop backdrop rule and no viewport-height
+  rule that could end at ~700px. The culprit still needs a
+  screenshot repro on a machine with a complete install; no CSS
+  was guessed at.
+- **Item 17 (Stream W's item, this stream's file) — NOT LANDED.**
+  W's diagnosis (picker side is correct; `saveBand` defers behind
+  `bandChangeRunInProgress` while a GeoDetective case is open)
+  arrived with the top-up, but the top-up's room went to items
+  9 + 34 and the 34(b) build attempt; the one-line cure in
+  game-app.tsx is left untouched for the integrator to price
+  with the owner rather than half-landed here.
 
 ## Graph (Phase 2 additions)
 
@@ -220,3 +238,6 @@ Stream S cherry-picked in: `920c9ddd` (shared shell components) +
   (item 8, INV3/INV5). Edges: `game-app.tsx` depends-on it.
 - Amend node: `src/lib/persisted-screen.ts` — now also the 368
   rule (one-shot retry marker; boot ignores the open flags).
+- Edge: `game-app.tsx` depends-on `ui/first-visit-queue.tsx`
+  (item 9, INV4) and on `read-aloud-pref.ts`'s
+  `shouldAskReadAloudPref` for the queue's third prompt.

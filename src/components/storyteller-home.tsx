@@ -145,7 +145,9 @@ interface ResolvedAssets {
 /**
  * Imperative send-off overlay (copy G3): navigation begins immediately and
  * unmounts home, so the caption rides along in a body-level node that fades
- * itself in ≤2.5s. Below the celebration overlay (z-40).
+ * itself in ≤2.5s. Below the celebration overlay (z-40). The ride-along
+ * ends the moment the case screen mounts (item 34) — it covers the load,
+ * never Clue 1.
  */
 function showSendoffOverlay(line: string, pointingUrl: string | null): void {
   if (typeof document === "undefined") return;
@@ -175,6 +177,23 @@ function showSendoffOverlay(line: string, pointingUrl: string | null): void {
   else requestAnimationFrame(() => requestAnimationFrame(show));
   window.setTimeout(() => el.classList.add("storyteller-sendoff-hide"), SENDOFF_OVERLAY_MS);
   window.setTimeout(() => el.remove(), SENDOFF_OVERLAY_REMOVE_MS);
+  // Item 34: the ride-along covers the loop while it LOADS only. The
+  // moment the case screen mounts, the overlay ends — left to its
+  // timers it would sit on top of Clue 1 for the rest of its ≤2.5s.
+  const caseMounted = () => document.querySelector('[data-testid="loop-screen"]') !== null;
+  if (caseMounted()) {
+    el.classList.add("storyteller-sendoff-hide");
+    window.setTimeout(() => el.remove(), 200);
+    return;
+  }
+  const watcher = new MutationObserver(() => {
+    if (!caseMounted()) return;
+    watcher.disconnect();
+    el.classList.add("storyteller-sendoff-hide");
+    window.setTimeout(() => el.remove(), 200);
+  });
+  watcher.observe(document.body, { childList: true, subtree: true });
+  window.setTimeout(() => watcher.disconnect(), SENDOFF_OVERLAY_REMOVE_MS);
 }
 
 function firstEditionControl(): HTMLElement | null {

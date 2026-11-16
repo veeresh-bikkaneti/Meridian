@@ -148,6 +148,8 @@ import {
 import "./age-profile/age-profile.css";
 import { LockedLoop } from "./age-profile/LockedLoop";
 import { ReadAloudPrefPrompt } from "./age-profile/ReadAloudPrefPrompt";
+import { shouldAskReadAloudPref } from "@/game/age-profile/read-aloud-pref";
+import { FirstVisitQueue, type FirstVisitPrompt } from "./ui/first-visit-queue";
 import { ReadAloudPrefSettings } from "./age-profile/ReadAloudPrefSettings";
 import { EarnedBadgeRow } from "./passport/EarnedBadgeRow";
 import {
@@ -1821,6 +1823,9 @@ export function GameApp() {
   // The menu invitation is shown at most once per page load; the
   // localStorage seen-flag persists the decision across visits.
   const [inviteDismissed, setInviteDismissed] = useState(false);
+  // Item 9: bumped when the queued read-aloud sheet is answered, so the
+  // first-visit queue recomputes which prompt wants to show next.
+  const [, bumpPromptQueue] = useState(0);
   // E2E seam: ?idle-ms=<n> shortens the 2-minute timeout (see session.ts).
   const idleTimeoutMs = useMemo(
     () => (typeof window === "undefined" ? IDLE_TIMEOUT_MS : idleTimeoutFromSearch(window.location.search)),
@@ -4095,6 +4100,29 @@ export function GameApp() {
   // away — and it appears at most once ever (the seen-flag persists).
   const showTutorialInvite = !inviteDismissed && !hasSeenTutorial();
 
+  // Item 9 (INV4): the first-visit prompts share one queue — Scout Map
+  // notice → tour banner → read-aloud sheet — so at most one is visible
+  // at any moment. Each prompt keeps its own seen-store and dismiss
+  // path; the queue only sequences visibility: this list holds the
+  // prompts that currently want to show, in queue order, and
+  // FirstVisitQueue renders the first of them. The fourth prompt, the
+  // storyteller greeting bubble, keeps its own slot in the hero and is
+  // held by tutorialInviteVisible below until this queue drains.
+  const firstVisitPrompts: FirstVisitPrompt[] = [];
+  if (autoScoutNotice) firstVisitPrompts.push({ id: "scout-notice", node: autoScoutNotice });
+  if (showTutorialInvite) {
+    firstVisitPrompts.push({
+      id: "tour-invite",
+      node: <TutorialInvite onTakeTour={onTakeTour} onDismiss={onDismissInvite} />,
+    });
+  }
+  if (shouldAskReadAloudPref()) {
+    firstVisitPrompts.push({
+      id: "read-aloud-sheet",
+      node: <ReadAloudPrefPrompt onAnswered={() => bumpPromptQueue((n) => n + 1)} />,
+    });
+  }
+
   return (
     <>
     {mapModeAnnouncer}
@@ -4147,11 +4175,11 @@ export function GameApp() {
       difficultyChoice={difficultyChoice}
       onDifficultyChoice={setDifficultyChoice}
       tutorialInvite={
-        showTutorialInvite ? (
-          <TutorialInvite onTakeTour={onTakeTour} onDismiss={onDismissInvite} />
+        firstVisitPrompts.length > 0 ? (
+          <FirstVisitQueue prompts={firstVisitPrompts} seenKey="meridian.firstVisitQueue.v1" />
         ) : null
       }
-      tutorialInviteVisible={showTutorialInvite}
+      tutorialInviteVisible={firstVisitPrompts.length > 0}
       suppressGreeting={!bootQualified}
       ageBand={ageBand}
       onGrownUpOpen={openAgeSettings}
@@ -4165,7 +4193,6 @@ export function GameApp() {
         <>
           {challengeBootNoticeEl}
           {mapSwitchedNotice}
-          {autoScoutNotice}
           {discardedNoticeAnnouncer}
           {discardedNoticeEl}
           {idleNotice}
@@ -5461,9 +5488,10 @@ function Choose({
           /privacy in the same PR). */}
       <SiteFooter lead={<ReadAloudPrefSettings />} onGrownUps={onGrownUpOpen} onTakeTour={onTakeTour} />
     </main>
-    {/* Kid-set read-aloud preference (age-profile B3): asked once, never
-        nags — the component renders nothing after the kid answers. */}
-    <ReadAloudPrefPrompt />
+    {/* Kid-set read-aloud preference (age-profile B3) renders through
+        the first-visit queue in GameApp (item 9): it is the queue's
+        third prompt, so it never piles up with the Scout notice, the
+        tour banner or the storyteller bubble. */}
     {/* Grandpa's Coffee Run — animated donation scene, home only.
         Veeresh 2026-10-07: replaces PR #91's static sign. The v5 nav's
         GET INVOLVED jumps here (the app's get-involved surface). */}
