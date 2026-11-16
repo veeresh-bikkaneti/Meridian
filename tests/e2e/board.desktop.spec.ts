@@ -14,15 +14,18 @@ import { serveBuiltArtifact } from "./helpers";
  * v2's live fetch and every PR trace are deleted, and this spec is
  * part of what keeps them deleted.
  *
- * The migration baseline is locked: 46 stories, 20 done / 8 in
- * progress / 18 not started, exactly 8 bonds (the recorded waits).
+ * The player-visible baseline is locked (board cleanup, 2026-11-16):
+ * 37 stories, 20 done / 4 in progress / 13 not started, exactly 8
+ * bonds (the recorded waits). Every recorded wait is satisfied
+ * today, so no story is waiting — the waiting behaviour is covered
+ * below against a fulfilled file that re-opens one wait.
  */
 test.setTimeout(180_000);
 
 const BOARD_URL = "http://127.0.0.1:4123/Meridian/board?idle-ms=3600000";
 const FRONTIER_SLUG = "pair-art-sheets-and-endings";
 const WAITING_SLUG = "truce-pennant-port";
-const WAITING_FOR_TITLE = "Clue pacing and one voice at a time";
+const WAITING_FOR_TITLE = "Clues arrive one at a time, one voice at a time";
 
 test.beforeEach(async ({ context }) => {
   await serveBuiltArtifact(context);
@@ -53,10 +56,10 @@ test("trail: locked migration picture from the published file, no GitHub, no ban
   });
   await openBoard(page);
 
-  await expect(page.getByTestId("board-counts-line")).toContainText("20 of 46 stories finished");
-  await expect(page.getByTestId("board-counts-line")).toContainText("8 being built");
-  await expect(page.getByTestId("board-counts-line")).toContainText("18 not started yet");
-  await expect(page.getByTestId("v3-story-stop")).toHaveCount(46);
+  await expect(page.getByTestId("board-counts-line")).toContainText("20 of 37 stories finished");
+  await expect(page.getByTestId("board-counts-line")).toContainText("4 being built");
+  await expect(page.getByTestId("board-counts-line")).toContainText("13 not started yet");
+  await expect(page.getByTestId("v3-story-stop")).toHaveCount(37);
 
   // Honest stamp: an Updated date, never a liveness claim.
   const updated = await page.getByTestId("board-updated-line").innerText();
@@ -93,9 +96,69 @@ test("the board renders the published file's words (fulfilled file, renamed stor
   await expect(page.locator("main")).toContainText("ZZZ Published File Story");
 });
 
-test("story card: waiting story names what it waits for and jumps to that stop", async ({ page }) => {
+test("cleanup: life pills carry the delivered %, stories sit in their four groups", async ({
+  page,
+}) => {
   await page.setViewportSize({ width: 1280, height: 900 });
   await openBoard(page);
+
+  // One life pill per feature card (9 features), % = done ÷ total.
+  await expect(page.locator(".v3-life")).toHaveCount(9);
+  await expect(page.locator(".v3-life").first()).toHaveAttribute(
+    "aria-label",
+    "33% delivered — 1 of 3 stories done",
+  );
+  await expect(page.locator(".v3-life-pct").first()).toHaveText("33%");
+  // Maths is finished: its pill reads 100%.
+  await expect(page.locator(".v3-life[aria-label^='100% delivered']")).toHaveCount(1);
+
+  // Four named groups per feature; today every Blocked group is
+  // honestly empty — one quiet line, never a fake entry.
+  await expect(page.getByTestId("v3-story-group")).toHaveCount(36);
+  const blockedGroups = page.locator('[data-testid="v3-story-group"][data-group="blocked"]');
+  await expect(blockedGroups).toHaveCount(9);
+  for (const g of await blockedGroups.all()) {
+    await expect(g).toContainText("Nothing waiting right now");
+    await expect(g.getByTestId("v3-story-stop")).toHaveCount(0);
+  }
+  // The frontier story sits in its feature's In progress group.
+  await expect(
+    page.locator(
+      '[data-testid="v3-story-group"][data-group="in-progress"] [data-testid="v3-story-stop"][data-slug="pair-art-sheets-and-endings"]',
+    ),
+  ).toHaveCount(1);
+});
+
+test("story card: waiting story names what it waits for and jumps to that stop", async ({
+  page,
+  context,
+}) => {
+  // Today's published file has no open wait (see the header note),
+  // so fulfil a copy with the clue-pacing story back in progress —
+  // the truce flag's recorded wait binds again, exactly as it did
+  // before PR #430 landed.
+  const published = JSON.parse(readFileSync("public/board-status.json", "utf8")) as {
+    epics: {
+      features: { stories: { slug: string; status: string; line: string }[] }[];
+    }[];
+  };
+  for (const epic of published.epics)
+    for (const feature of epic.features)
+      for (const story of feature.stories)
+        if (story.slug === "clue-pacing-and-one-voice-at-a-time") {
+          story.status = "in-progress";
+          story.line = "Checking in progress";
+        }
+  await context.route("**/Meridian/board-status.json", async (route) =>
+    route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(published) }),
+  );
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await openBoard(page);
+  // The waiting story files under Blocked, with its Waiting-for line.
+  const blockedStop = page.locator(
+    `[data-testid="v3-story-group"][data-group="blocked"] [data-testid="v3-story-stop"][data-slug="${WAITING_SLUG}"]`,
+  );
+  await expect(blockedStop).toContainText(`Waiting for: ${WAITING_FOR_TITLE}`);
   await page.locator(`[data-slug="${WAITING_SLUG}"]`).click();
   const card = page.getByTestId("story-card-open");
   await expect(card).toBeVisible();
@@ -120,7 +183,7 @@ test("molecular map: bonds == recorded waits, budgets from the renderer, mirror 
   await openBoard(page);
   await page.getByTestId("board-nav-map").click();
   await expect(page.getByTestId("v3-you-are-here")).toContainText("All of Meridian");
-  await expect(page.getByTestId("v3-mirror-story")).toHaveCount(46);
+  await expect(page.getByTestId("v3-mirror-story")).toHaveCount(37);
 
   const stage = page.getByTestId("v3-map-stage");
   await expect(stage).toHaveAttribute("data-bond-count", "8");
@@ -170,8 +233,8 @@ test("molecular map: bonds == recorded waits, budgets from the renderer, mirror 
   // Mirror click opens the same card without any 3D at all.
   await page.getByTestId("board-nav-map").click();
   await page.locator(`[data-testid="v3-mirror-story"][data-slug="${FRONTIER_SLUG}"]`).click();
-  await expect(page.getByTestId("story-card-open")).toContainText("Pair art sheets and endings");
-  await expect(page.getByTestId("v3-you-are-here")).toContainText("Pair art sheets and endings");
+  await expect(page.getByTestId("story-card-open")).toContainText("New drawings of Holmes & Watson, and how each case ends");
+  await expect(page.getByTestId("v3-you-are-here")).toContainText("New drawings of Holmes & Watson, and how each case ends");
 });
 
 test("calm mode stills every loop; the tip form wears its §5 costume", async ({ page, context }) => {
@@ -218,7 +281,7 @@ test("reduced motion: animation windows rest at their end poses", async ({ page 
 test("390px: trail renders, no sideways scroll", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await openBoard(page);
-  await expect(page.getByTestId("v3-story-stop")).toHaveCount(46);
+  await expect(page.getByTestId("v3-story-stop")).toHaveCount(37);
   const overflow = await page.evaluate(
     () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
   );
@@ -277,7 +340,7 @@ test("theme switch: dark system loads on system, flips to Light live, persists, 
   await expect.poll(stageBg).toContain("rgb(248, 242, 223)"); // --atlas-bg-1, light
   await expect(page.locator(".v3-bond-sample")).toHaveCSS(
     "background-color",
-    "rgb(179, 55, 42)", // --atlas-stamp, light
+    "rgb(165, 118, 31)", // --atlas-brass, light
   );
 
   // The choice persists across a reload.
@@ -308,7 +371,7 @@ test("theme switch: light system loads on system and flips to Dark live", async 
   await expect.poll(stageBg).toContain("rgb(16, 34, 42)"); // --atlas-bg-1, dark
   await expect(page.locator(".v3-bond-sample")).toHaveCSS(
     "background-color",
-    "rgb(232, 106, 92)", // --atlas-stamp, dark
+    "rgb(232, 182, 76)", // --atlas-brass, dark
   );
 });
 
