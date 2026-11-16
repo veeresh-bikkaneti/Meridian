@@ -187,7 +187,7 @@ describe("the picker page's band control (amendment)", () => {
     );
   });
 
-  it("the picker hosts the control under its header and names no band it does not have", () => {
+  it("the picker hosts the control in its hero card and names no band it does not have", () => {
     assert.ok(
       subjectPicker.includes('import AgeBandControl from "@/components/age-profile/AgeBandControl";'),
       "hosted by the picker",
@@ -195,6 +195,11 @@ describe("the picker page's band control (amendment)", () => {
     assert.ok(
       subjectPicker.includes("<AgeBandControl runInProgress={bandChangeRunInProgress} />"),
       "with the run input passed through",
+    );
+    assert.ok(
+      subjectPicker.includes("heroExtra={") &&
+        subjectPicker.indexOf("<AgeBandControl") > subjectPicker.indexOf("heroExtra={"),
+      "hosted inside the hero card (the shell's heroExtra slot), beside the film",
     );
     assert.ok(
       subjectPicker.includes('profileStatus === "unset" ? "Pick a subject" : `Pick a subject · Ages ${band}`'),

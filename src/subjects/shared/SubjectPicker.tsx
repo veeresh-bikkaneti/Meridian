@@ -46,10 +46,10 @@
  *
  * Ask-first, contained on this page (owner decision 2026-11-14,
  * "Ask first"; page design by Radhae, voice call 2026-11-15): the
- * band ask lives on this page itself — AgeBandControl under the
- * header shows the three band pills while no band is set, and a
- * "Change band" option once one is (the graduation path: there is
- * no player-facing settings screen to graduate through). A subject
+ * band ask lives on this page itself — AgeBandControl shows the
+ * three band pills while no band is set, and a "Change band"
+ * option once one is (the graduation path: there is no
+ * player-facing settings screen to graduate through). A subject
  * card's tap with no band set never opens a case under the store's
  * silently defaulted band: it takes the player back to the pills
  * instead, and the pick there is what deals this list at a real
@@ -59,6 +59,20 @@
  * no band set (a grown-up resetting the profile from the hosted
  * settings re-deals this list under the store's full-access read);
  * the pills are simply there, and the tap guard holds.
+ *
+ * Wide layout (fix/why-learn-picker-wide-layout, Radhae's review
+ * of the live page on a 2560px monitor, 2026-11-16): this screen
+ * was the only one lifting the shell's width cap entirely at lg,
+ * so at wide widths the hero card and the card
+ * grid stretched to the full viewport while the montage film —
+ * height-driven, capped at 300px — stayed a small slot at the
+ * card's left. The screen now caps at the home page's own width
+ * (lg:max-w-7xl): at 1280px nothing changes, and wider monitors
+ * only gain page margin. The band control also moves into the
+ * hero card (ScreenShell's heroExtra, in the titles band beside
+ * the film), out of its own row under the header; bandBarRef —
+ * the unset tap's scroll-and-focus target — moves with it, and
+ * the control's behaviour is unchanged.
  */
 import { useEffect, useRef, useState, type ComponentType, type CSSProperties, type MouseEvent as ReactMouseEvent } from "react";
 import type { AgeGroup, SubjectModule, SubjectProps } from "../registry";
@@ -296,9 +310,21 @@ export default function SubjectPicker({
     <ScreenShell
       onHome={onExit}
       controls={resumeControl}
-      className="why-learn-screen lg:max-w-none"
+      className="why-learn-screen lg:max-w-7xl"
       testId="subject-picker"
       hero={<WhyLearnHero />}
+      heroExtra={
+        /* The band ask, contained in the hero card (see the header
+           note): AgeBandControl in the titles band beside the film —
+           the three band pills while no band is set, a "Change band"
+           option once one is. It owns the profile reads and writes;
+           this page only hosts it, beside the band the sub line
+           names. bandBarRef rides along: an unset subject tap
+           scrolls to this div and focuses its first pill. */
+        <div ref={bandBarRef} className="mt-4">
+          <AgeBandControl runInProgress={bandChangeRunInProgress} />
+        </div>
+      }
       data={{ "data-band": band }}
       eyebrow="Case file · Why it matters"
       title="Why Do We Learn This?"
@@ -307,14 +333,6 @@ export default function SubjectPicker({
     >
       <WhyLearnWorld />
       <WhyLearnDrift />
-      {/* The band ask, contained on this page (see the header
-          note): AgeBandControl under the header — the three band
-          pills while no band is set, a "Change band" option once
-          one is. It owns the profile reads and writes; this page
-          only hosts it, beside the band the sub line names. */}
-      <div ref={bandBarRef} className="mt-5">
-        <AgeBandControl runInProgress={bandChangeRunInProgress} />
-      </div>
       {released === null && !listFailed ? (
         <p className="mt-6 text-fg">Loading subjects…</p>
       ) : null}

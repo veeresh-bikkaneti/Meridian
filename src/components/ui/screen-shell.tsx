@@ -29,6 +29,7 @@ export function ScreenShell({
   controls,
   sound,
   hero,
+  heroExtra,
   eyebrow,
   title,
   titleRef,
@@ -51,6 +52,12 @@ export function ScreenShell({
   /** Optional decorative picture above the titles; the titles then sit on
    *  an opaque band under it (never text over picture pixels). */
   hero?: ReactNode;
+  /** Optional content rendered inside the hero card's titles band,
+   *  under the titles (fix/why-learn-picker-wide-layout: the Why Learn
+   *  picker hosts its age-band control there, beside the montage
+   *  film). Only rendered when a hero is present; screens that pass
+   *  no heroExtra render exactly as before. */
+  heroExtra?: ReactNode;
   eyebrow?: ReactNode;
   title: ReactNode;
   titleRef?: Ref<HTMLHeadingElement>;
@@ -91,7 +98,10 @@ export function ScreenShell({
         {hero ? (
           <div className="screen-hero mode-card mt-4 overflow-hidden">
             {hero}
-            <div className="screen-hero-band px-5 pt-1 pb-5">{titles("mt-4")}</div>
+            <div className="screen-hero-band px-5 pt-1 pb-5">
+              {titles("mt-4")}
+              {heroExtra}
+            </div>
           </div>
         ) : (
           titles("mt-4")

@@ -192,3 +192,45 @@ test("Why Learn under reduced motion: cards do not animate", async ({ browser })
   expect(transform).toBe("none");
   await context.close();
 });
+
+test("Why Learn at 2560: the page caps at the home width and the band control sits in the hero card", async ({ browser }) => {
+  // fix/why-learn-picker-wide-layout: the picker used to lift the
+  // shell's width cap entirely (lg:max-w-none), so on a wide monitor
+  // the hero card and grid stretched to the viewport while the
+  // height-driven film stayed a small slot at the card's left, and
+  // the band control sat in its own row under the header. Now the
+  // screen caps at the home page's max-w-7xl and the band control
+  // lives inside the hero card's titles band.
+  const { context, page } = await openPicker(browser, 2560, 1440, "10-18");
+  const geo = await page.evaluate(() => {
+    const box = (el: Element | null) => {
+      if (!el) return null;
+      const r = el.getBoundingClientRect();
+      return { x: r.x, y: r.y, width: r.width, height: r.height, right: r.right, bottom: r.bottom };
+    };
+    const picker = document.querySelector('[data-testid="subject-picker"]');
+    const heroCard = document.querySelector(".screen-hero");
+    const slot = document.querySelector(".why-learn-hero-wrap") ?? document.querySelector(".why-learn-hero");
+    const band = document.querySelector('[data-testid="age-band-control"]');
+    const grid = document.querySelector('[data-testid="subject-cards"]');
+    const cards = [...document.querySelectorAll('[data-testid="subject-cards"] > li')].map((el) => box(el)!);
+    const top0 = cards[0].y;
+    const row1 = cards.filter((c) => Math.abs(c.y - top0) < 4);
+    return { picker: box(picker), heroCard: box(heroCard), slot: box(slot), band: box(band), grid: box(grid), row1 };
+  });
+  expect(geo.picker!.width, "picker capped at the home page's 1280px, not stretched to 2560").toBe(1280);
+  expect(geo.heroCard!.width, "hero card composes at the capped width").toBe(1240);
+  expect(Math.abs(geo.slot!.width / geo.slot!.height - 16 / 9), "hero slot stays exactly 16:9").toBeLessThan(0.01);
+  const b = geo.band!;
+  const h = geo.heroCard!;
+  expect(
+    b.x >= h.x && b.y >= h.y && b.right <= h.right && b.bottom <= h.bottom,
+    "the Change band control sits inside the hero card",
+  ).toBe(true);
+  expect(geo.row1.length, "four cards across at wide width").toBe(4);
+  const widths = geo.row1.map((c) => c.width);
+  expect(Math.max(...widths) - Math.min(...widths), "first-row cards share the row evenly").toBeLessThanOrEqual(1);
+  expect(Math.abs(geo.row1[3].right - geo.grid!.right), "the first row fills the grid to its right edge").toBeLessThanOrEqual(1);
+  await noSideways(page, "2560");
+  await context.close();
+});

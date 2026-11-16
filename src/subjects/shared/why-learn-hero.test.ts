@@ -75,7 +75,24 @@ describe("WhyLearnHero — the montage in the hero slot", () => {
   it("the picker grid stacks the cards four in a row on desktop", () => {
     assert.ok(picker.includes("min-[1081px]:grid-cols-4"), "four-across at desktop widths");
     assert.ok(!picker.includes("min-[1081px]:grid-cols-3"), "the three-across grid is gone");
-    assert.ok(picker.includes("lg:max-w-none"), "the picker takes the page's full width");
+    assert.ok(picker.includes("lg:max-w-7xl"), "the picker caps at the home page's own width");
+    assert.ok(!picker.includes("lg:max-w-none"), "the unbounded wide stretch is gone");
+  });
+
+  it("wide layout: the band control lives in the hero card, not in a row under the header", () => {
+    const shell = read(join(here, "../../components/ui/screen-shell.tsx"));
+    assert.ok(shell.includes("heroExtra"), "the shell offers a slot inside the hero band");
+    const band = shell.slice(shell.indexOf('className="screen-hero-band'));
+    assert.ok(band.includes("{heroExtra}"), "the slot renders inside the hero card's titles band");
+    assert.ok(picker.includes("heroExtra={"), "the picker hosts its band control through the slot");
+    assert.ok(
+      picker.indexOf("<AgeBandControl") > picker.indexOf("heroExtra={"),
+      "the band control is the picker's heroExtra content",
+    );
+    assert.ok(
+      !picker.includes('<div ref={bandBarRef} className="mt-5">'),
+      "the separate band row under the header is gone (bandBarRef moved into the card with the control)",
+    );
   });
 
   it("media URLs are built through the assetBase seam, never bundled imports", () => {
