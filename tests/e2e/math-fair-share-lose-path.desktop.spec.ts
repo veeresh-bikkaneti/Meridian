@@ -8,10 +8,16 @@ import { serveBuiltArtifact } from "./helpers";
  * shows the answer-first line — "The answer is 3 — here's how." —
  * and then plays the item's existing act-3 narrated solved
  * summary (scene in its solved phase, the performance under way,
- * the full script standing as text). A wrong pick on the very
- * next case (unknown-factor) behaves exactly as before: kind
- * feedback, the scene still in setup, no summary anywhere. A
- * right pick on fair-share is the win path exactly as before.
+ * the full script standing as text). A right pick on fair-share
+ * is the win path exactly as before.
+ *
+ * AMENDED by feat/lose-path-all-items (the gate flip): the very
+ * next case (unknown-factor) is no longer a no-reveal control —
+ * it carries a summary too, so its wrong pick now reveals as
+ * well, and the second half of the first test below asserts
+ * exactly that. The no-reveal controls (a Math band and a subject
+ * with no summary system on this base) live in
+ * math-lose-path-all-items.desktop.spec.ts.
  */
 test.setTimeout(600_000);
 
@@ -153,8 +159,9 @@ test("wrong pick on fair-share reveals the answer line, then the solved summary"
     .toBeGreaterThan(0);
   await scene.screenshot({ path: `${SHOTS}/fair-share-lose-reveal-desktop.png` });
 
-  // The control: the very next case, a wrong pick, behaves
-  // exactly as before — no reveal, scene still in setup.
+  // AMENDED by the gate flip: the very next case (unknown-factor)
+  // carries a summary too, so its wrong pick now reveals the same
+  // way — it is no longer a no-reveal control.
   await page.getByRole("button", { name: /Next case/ }).click();
   await expect(page.getByTestId("math-case")).toHaveAttribute(
     "data-item",
@@ -165,10 +172,10 @@ test("wrong pick on fair-share reveals the answer line, then the solved summary"
     .getByTestId("math-answer-card")
     .getByRole("button", { name: "4", exact: true })
     .click();
-  await expect(page.getByText(/Not quite/)).toBeVisible();
-  await expect(page.getByTestId("math-lose-reveal")).toHaveCount(0);
-  await expect(page.getByTestId("clue-summary-text")).toHaveCount(0);
-  await expect(page.getByTestId("clue-scene")).toHaveAttribute("data-phase", "setup");
+  await expect(page.getByTestId("math-lose-answer")).toHaveText("The answer is 5 — here's how.");
+  await expect(page.getByTestId("math-result")).toHaveCount(0);
+  await expect(page.getByTestId("clue-summary-text")).toBeVisible();
+  await expect(page.getByTestId("clue-scene")).toHaveAttribute("data-phase", "solved");
 
   expect(errors).toEqual([]);
 });

@@ -111,7 +111,7 @@ test("no flag needed: the card is live and the picker shows the map", async ({
   expect(errors).toEqual([]);
 });
 
-test("7-10 case: wrong pick gives kind feedback, right pick reaches the result", async ({
+test("7-10 case: wrong pick reveals the lose-path summary, next case's right pick reaches the result", async ({
   page,
   context,
 }) => {
@@ -125,12 +125,22 @@ test("7-10 case: wrong pick gives kind feedback, right pick reaches the result",
   await expect(mathCase).toHaveAttribute("data-item", "math-number:groups:skip-count");
   await page.screenshot({ path: `${SHOTS}/case-7-10-desktop.png` });
   await page.getByTestId("math-answer-card").screenshot({ path: `${SHOTS}/answer-card-desktop.png` });
-  // A wrong pick first: kind feedback, still on the same case.
+  // A wrong pick first. AMENDED by feat/lose-path-all-items (the
+  // L1 gate flip): skip-count now carries a solved summary, so a
+  // wrong pick no longer stops at "Not quite" — it reveals the
+  // answer line and the summary, and is not a solve (no result).
+  // (The pilot version of this test, on fair-share only, expected
+  // the kind feedback here; the "Not quite" behaviour is still
+  // walked on summary-less cases by the lose-path spec's
+  // controls.) Picks are inert after the reveal, so the right
+  // pick is exercised on the next case instead.
   const answers = page.getByTestId("math-answer-card");
   await answers.getByRole("button", { name: "6", exact: true }).click();
-  await expect(page.getByText(/Not quite/)).toBeVisible();
+  await expect(page.getByTestId("math-lose-answer")).toHaveText("The answer is 8 — here's how.");
   await expect(page.getByTestId("math-result")).toHaveCount(0);
-  await solveCase(page, "8");
+  await page.getByRole("button", { name: /Next case/ }).click();
+  await expect(mathCase).toHaveAttribute("data-item", "math-number:groups:equal-groups");
+  await solveCase(page, "24");
   await page.screenshot({ path: `${SHOTS}/result-7-10-desktop.png` });
   expect(errors).toEqual([]);
 });
@@ -282,12 +292,29 @@ test("detectivePair on (desktop, 7-10): pair mounts, wrong is silent, right cele
       window as unknown as { __audioEls: HTMLAudioElement[] }
     ).__audioEls.map((a) => a.currentSrc || a.src),
   );
-  expect(srcsAfterWrong).toEqual(srcsBefore);
+  // AMENDED by feat/lose-path-all-items (the L1 gate flip): the
+  // wrong pick on skip-count now also reveals that item's solved
+  // summary, whose narration (skip-count.mp3, under
+  // /audio/subjects/) may start through the same one-voice
+  // channel. The pair's own rule is unchanged — the pair requests
+  // NO clip on a wrong pick — so every element added by the wrong
+  // pick must be the summary clip, and none may be a pair clip.
+  // (The pilot version asserted no new element at all.)
+  const addedByWrong = srcsAfterWrong.filter((src) => !srcsBefore.includes(src));
+  for (const src of addedByWrong) {
+    expect(src.endsWith("skip-count.mp3"), `unexpected clip after the wrong pick: ${src}`).toBe(true);
+    expect(src.includes("/audio/detective/"), `pair clip after the wrong pick: ${src}`).toBe(false);
+  }
 
   // Right pick: Holmes celebrates while win-holmes sounds.
+  // AMENDED by the gate flip: picks are inert after the reveal,
+  // so the right pick is taken on the next case (equal-groups,
+  // "24") instead of this one.
+  await page.getByRole("button", { name: /Next case/ }).click();
+  await expect(page.getByTestId("math-answer-card")).toBeVisible();
   await page
     .getByTestId("math-answer-card")
-    .getByRole("button", { name: "8", exact: true })
+    .getByRole("button", { name: "24", exact: true })
     .click();
   await expect(pair).toHaveAttribute("data-signal", "correct");
   const seenRight = new Set<string>();

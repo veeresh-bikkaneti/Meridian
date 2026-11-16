@@ -6,6 +6,16 @@
  * exactly as the win path plays it. Every other item's wrong
  * pick is unchanged.
  *
+ * AMENDED by feat/lose-path-all-items (the gate flip, stacked on
+ * the pilot): the gate no longer names this one item — it is a
+ * property of having a solved summary, so the sibling items
+ * below are now ON the path too (pinned in
+ * lose-path-all-items.test.ts). This suite keeps pinning the
+ * pilot item's own behaviour unchanged: same line, same summary,
+ * same win path, same answer-blindness. The two gate tests that
+ * asserted the old one-item truth table are amended and marked
+ * as such inline; no other test here changes.
+ *
  * There is no DOM test infra in this repo, so — the clue-scene
  * precedent — the gate itself is pinned as a pure function
  * (imported and exercised directly), the wiring is pinned in the
@@ -18,7 +28,10 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { LOSE_SUMMARY_ITEM_ID, clueSceneFor, showsSummaryOnWrong } from "../math/scenes.ts";
+import { clueSceneFor, showsSummaryOnWrong } from "../math/scenes.ts";
+
+/** The pilot item this suite pins (the gate no longer names it). */
+const LOSE_SUMMARY_ITEM_ID = "math-number:division:fair-share";
 import { MATH_ANSWERS } from "../math/answers.ts";
 
 const here = dirname(fileURLToPath(import.meta.url));
@@ -37,15 +50,17 @@ function region(source: string, from: string, to: string): string {
   return source.slice(start, end);
 }
 
-describe("the lose-path gate names exactly one item", () => {
-  it("fair-share at ages 7-10 is the only item on the path", () => {
-    assert.equal(LOSE_SUMMARY_ITEM_ID, "math-number:division:fair-share");
+describe("the lose-path gate and the pilot item", () => {
+  it("fair-share at ages 7-10 is on the path", () => {
     assert.equal(showsSummaryOnWrong("math-number:division:fair-share", "7-10"), true);
   });
 
-  it("(b) a wrong pick on a sibling pilot item stays off the path", () => {
+  it("(b) AMENDED by the gate flip: a wrong pick on a sibling pilot item now reveals too", () => {
     // The other two pilot items, plus the item dealt right after
-    // fair-share and every other 7-10 scene item.
+    // fair-share and every other 7-10 scene item: each carries a
+    // solved summary, so the generalised gate puts each on the
+    // path. (The pilot's version of this test asserted false for
+    // each; the flip is exactly that change.)
     for (const id of [
       "math-number:groups:skip-count",
       "math-number:tables:facts",
@@ -55,7 +70,7 @@ describe("the lose-path gate names exactly one item", () => {
       "math-number:division:remainders",
       "math-number:division:big-quotients",
     ]) {
-      assert.equal(showsSummaryOnWrong(id, "7-10"), false, `${id} must not reveal on a wrong pick`);
+      assert.equal(showsSummaryOnWrong(id, "7-10"), true, `${id} must reveal on a wrong pick`);
     }
   });
 
@@ -135,7 +150,7 @@ describe("(a) a wrong pick on fair-share reveals the answer line, then the summa
   });
 });
 
-describe("(b) every other wrong pick behaves exactly as today", () => {
+describe("(b) a wrong pick on an item with no summary behaves exactly as today", () => {
   it("the answer card still renders for an unrevealed wrong pick, with its try-again line", () => {
     // The ternary order: solved result, else the lose reveal, else
     // the answer card — an item off the path never leaves the card.

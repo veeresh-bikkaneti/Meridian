@@ -64,12 +64,14 @@
  * section itself renders only when the case is done, nothing the
  * hook returns can be reached before the pick.
  *
- * L1 lose path (feat/fair-share-lose-path): a subject may also
+ * L1 lose path (feat/fair-share-lose-path, generalised by
+ * feat/lose-path-all-items): a subject may also
  * pass a `loseReveal` hook naming the items whose WRONG pick
  * reveals the solved summary — an answer-first line, then the
  * same act-3 performance the win path plays (the scene in its
  * solved phase, the summary's standing text via `resultExtra`).
- * Math enables it for exactly one item (fair-share, ages 7-10).
+ * Math enables it for every item that has a solved summary
+ * (on this branch, every Math item for ages 7-10).
  * The reveal is not a solve: the phase never reaches "done", no
  * celebration fires, and the detective host still sees a wrong
  * pick. It fires only after a pick, so answer-blindness before
