@@ -8,7 +8,7 @@ local model, a person). It names roles, never a vendor or model.
 
 > **Cold start, in order:** (1) §1 Authority, (2) §3 pick your tier,
 > (3) §4 token economy, (4) §9 gates before you call anything done.
-> (5) `docs/ops/orchestration.md` when you use helpers. Read the rest by heading when a task needs it. Long detail lives in
+> (5) `docs/ops/orchestration.md` when you use helpers. (6) `docs/ops/project-audit-checklist.md` when you run an audit. Read the rest by heading when a task needs it. Long detail lives in
 > [`docs/ops/agents-reference.md`](docs/ops/agents-reference.md), which is
 > part of this file for precedence: read a section there only when this
 > file points you to it.
@@ -120,6 +120,8 @@ Tokens are the budget. Spend them on judgment, never on re-reading.
   preamble, no recap. One complete report, no "also found" follow-ups.
 
 **Orchestrating helpers?** Read `docs/ops/orchestration.md` first. It is part of this file for precedence, like the reference.
+
+**Running an audit?** Use docs/ops/project-audit-checklist.md. AGENTS.md wins if they differ.
 
 ### Testing on a budget (owner, 2026-11-11)
 
