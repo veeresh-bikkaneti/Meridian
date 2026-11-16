@@ -254,13 +254,15 @@ export default function MoleculeMap({
           return Math.hypot(p[0], p[1], p[2]);
         }),
         10,
-      ) + 4.5;
+      ) + 3.0;
     const fitRadius = () => {
       const w = stage.clientWidth || width;
       const h = stageHeight(w);
       const vHalf = THREE.MathUtils.degToRad(55) / 2;
       const hHalf = Math.atan(Math.tan(vHalf) * (w / h));
-      return THREE.MathUtils.clamp((boundsR / Math.sin(Math.min(vHalf, hHalf))) * 1.02, 30, 118);
+      // The layout is a shallow disc, not a sphere: its farthest atom
+      // must land inside the frame at the target plane (tan form).
+      return THREE.MathUtils.clamp(boundsR / Math.tan(Math.min(vHalf, hHalf)), 30, 118);
     };
     let theta = 0.6;
     let phi = 1.15;
