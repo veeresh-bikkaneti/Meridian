@@ -76,7 +76,7 @@ export default function MoleculeMap({
   selectedRef.current = selectedSlug;
   const selectRef = useRef(onSelect);
   selectRef.current = onSelect;
-  const bondMatRef = useRef<THREE.MeshBasicMaterial | null>(null);
+  const bondsRef = useRef<(() => void) | null>(null);
   const haloMatRef = useRef<THREE.MeshBasicMaterial | null>(null);
 
   const flat: FlatStory[] = board.epics.flatMap((e) =>
@@ -113,7 +113,7 @@ export default function MoleculeMap({
     scene.add(sun);
 
     /* atoms — one instanced mesh */
-    const atomGeo = new THREE.SphereGeometry(0.85, 14, 10);
+    const atomGeo = new THREE.SphereGeometry(0.72, 14, 10);
     const atomMat = new THREE.MeshStandardMaterial({ roughness: 0.55, metalness: 0.15 });
     const atoms = new THREE.InstancedMesh(atomGeo, atomMat, flat.length);
     const dummy = new THREE.Object3D();
@@ -136,7 +136,7 @@ export default function MoleculeMap({
       transparent: true,
       opacity: 0.9,
     });
-    const halo = new THREE.Mesh(new THREE.SphereGeometry(1.25, 14, 10), haloMat);
+    const halo = new THREE.Mesh(new THREE.SphereGeometry(1.08, 14, 10), haloMat);
     halo.visible = false;
     scene.add(halo);
     haloMatRef.current = haloMat;
@@ -177,15 +177,20 @@ export default function MoleculeMap({
         ctx.fillText(feature.name, 256, 82);
         const tex = new THREE.CanvasTexture(canvas);
         const sprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, transparent: true }));
-        sprite.scale.set(11, 2.75, 1);
-        sprite.position.set(c[0], c[1] + layout.featureRadii[feature.id] + 1.6, c[2]);
+        sprite.scale.set(9, 2.25, 1);
+        sprite.position.set(c[0], c[1] + layout.featureRadii[feature.id] + 1.2, c[2]);
         scene.add(sprite);
       }
     }
 
-    /* bonds — exactly the recorded waits, instanced cylinders */
-    const bondGeo = new THREE.CylinderGeometry(0.14, 0.14, 1, 6, 1, true);
-    const bondMat = new THREE.MeshBasicMaterial({ color: 0xe86a5c });
+    /* bonds — exactly the recorded waits, instanced cylinders.
+     * Cleanup: a slim 0.05 radius (the shipped 0.14 read as thick red
+     * ropes across the whole scene) and per-instance colours — brass
+     * normally, the atlas stamp only for a bond a story is actively
+     * waiting on, the map's one accent (the trail's Blocked group is
+     * the same fact in words). */
+    const bondGeo = new THREE.CylinderGeometry(0.05, 0.05, 1, 6, 1, true);
+    const bondMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
     const bonds = new THREE.InstancedMesh(bondGeo, bondMat, board.bonds.length);
     const up = new THREE.Vector3(0, 1, 0);
     board.bonds.forEach((bond, i) => {
@@ -202,32 +207,64 @@ export default function MoleculeMap({
     dummy.scale.set(1, 1, 1);
     dummy.quaternion.identity();
     scene.add(bonds);
-    bondMatRef.current = bondMat;
     stage.dataset.bondCount = String(board.bonds.length);
 
-    /* The scene's two scheme-carrying colours (bonds, halo) read
-     * the atlas tokens from the stage's computed style — the CSS
-     * is the single source of truth, so the board theme switch
-     * (data-board-theme on the root, re-declaring the tokens) and
-     * the system scheme both reach the scene through the same
-     * vars the stage ground consumes. The constructor hexes are
-     * the dark-token fallbacks if a var ever comes back empty.
+    /* Bond colours are per-instance and read the atlas tokens from
+     * the stage's computed style — the CSS is the single source of
+     * truth, so the board theme switch (data-board-theme on the
+     * root, re-declaring the tokens) and the system scheme both
+     * reach the scene through the same vars the stage ground
+     * consumes. The hex fallbacks are the light tokens, used only
+     * if a var ever comes back empty. */
+    const paintBonds = () => {
+      const cs = window.getComputedStyle(stage);
+      const brass = cs.getPropertyValue("--atlas-brass").trim() || "#a5761f";
+      const stamp = cs.getPropertyValue("--atlas-stamp").trim() || "#b3372a";
+      board.bonds.forEach((bond, i) => {
+        const target = findStory(board, bond.toSlug);
+        const waiting = target !== null && target.story.status !== "done";
+        bonds.setColorAt(i, color.set(waiting ? stamp : brass));
+      });
+      if (bonds.instanceColor) bonds.instanceColor.needsUpdate = true;
+    };
+    paintBonds();
+    bondsRef.current = paintBonds;
+
+    /* The halo's scheme-carrying colour reads the same tokens.
      * Everything else in the scene is scheme-invariant by design:
      * status colours (mirrored by the legend's constant swatches),
      * the parchment label chips, the lights. */
     const applySchemeColors = () => {
       const cs = window.getComputedStyle(stage);
-      const stamp = cs.getPropertyValue("--atlas-stamp").trim();
-      if (stamp) bondMat.color.set(stamp);
       const brass = cs.getPropertyValue("--atlas-brass").trim();
       if (brass) haloMat.color.set(brass);
+      paintBonds();
     };
     applySchemeColors();
 
-    /* camera + the §3 gesture map (custom orbit, clamped) */
+    /* camera + the §3 gesture map (custom orbit, clamped).
+     * Cleanup: the opening distance is FITTED to the layout's own
+     * bounds and the stage's aspect, so the whole molecule starts
+     * in frame at phone width too (the shipped fixed 62 left
+     * clusters off-canvas and bonds running out of the picture). */
+    const boundsR =
+      Math.max(
+        ...flat.map((fs) => {
+          const p = layout.positions[fs.slug];
+          return Math.hypot(p[0], p[1], p[2]);
+        }),
+        10,
+      ) + 4.5;
+    const fitRadius = () => {
+      const w = stage.clientWidth || width;
+      const h = stageHeight(w);
+      const vHalf = THREE.MathUtils.degToRad(55) / 2;
+      const hHalf = Math.atan(Math.tan(vHalf) * (w / h));
+      return THREE.MathUtils.clamp((boundsR / Math.sin(Math.min(vHalf, hHalf))) * 1.02, 30, 118);
+    };
     let theta = 0.6;
     let phi = 1.15;
-    let radius = 62;
+    let radius = fitRadius();
     let goalTheta = theta;
     let goalPhi = phi;
     let goalRadius = radius;
@@ -257,7 +294,7 @@ export default function MoleculeMap({
       reset: () => {
         goalTheta = 0.6;
         goalPhi = 1.15;
-        goalRadius = 62;
+        goalRadius = fitRadius();
         goalTarget.copy(homeTarget);
         if (reduced) {
           theta = goalTheta;
@@ -267,7 +304,7 @@ export default function MoleculeMap({
         }
       },
       zoomBy: (f: number) => {
-        goalRadius = THREE.MathUtils.clamp(goalRadius * f, 18, 110);
+        goalRadius = THREE.MathUtils.clamp(goalRadius * f, 18, 118);
         if (reduced) radius = goalRadius;
       },
     };
@@ -292,7 +329,7 @@ export default function MoleculeMap({
         const [p1, p2] = [...pointers.values()];
         const d = Math.hypot(p1.x - p2.x, p1.y - p2.y);
         if (lastPinch > 0) {
-          goalRadius = THREE.MathUtils.clamp(goalRadius * (lastPinch / d), 18, 110);
+          goalRadius = THREE.MathUtils.clamp(goalRadius * (lastPinch / d), 18, 118);
           if (reduced) radius = goalRadius;
         }
         lastPinch = d;
@@ -329,7 +366,7 @@ export default function MoleculeMap({
     const onWheel = (e: WheelEvent) => {
       e.preventDefault();
       interacted = true;
-      goalRadius = THREE.MathUtils.clamp(goalRadius * (e.deltaY > 0 ? 1.12 : 0.9), 18, 110);
+      goalRadius = THREE.MathUtils.clamp(goalRadius * (e.deltaY > 0 ? 1.12 : 0.9), 18, 118);
       if (reduced) radius = goalRadius;
     };
     el.addEventListener("pointerdown", onDown);
@@ -404,7 +441,7 @@ export default function MoleculeMap({
       el.removeEventListener("wheel", onWheel);
       renderer.dispose();
       el.remove();
-      bondMatRef.current = null;
+      bondsRef.current = null;
       haloMatRef.current = null;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -417,12 +454,11 @@ export default function MoleculeMap({
    * stage ground is CSS and follows on its own. */
   useEffect(() => {
     const stage = stageRef.current;
-    if (!stage || !bondMatRef.current || !haloMatRef.current) return;
+    if (!stage || !haloMatRef.current) return;
     const cs = window.getComputedStyle(stage);
-    const stamp = cs.getPropertyValue("--atlas-stamp").trim();
-    if (stamp) bondMatRef.current.color.set(stamp);
     const brass = cs.getPropertyValue("--atlas-brass").trim();
     if (brass) haloMatRef.current.color.set(brass);
+    bondsRef.current?.();
   }, [scheme]);
 
   const selected = selectedSlug ? findStory(board, selectedSlug) : null;
@@ -490,7 +526,8 @@ export default function MoleculeMap({
               <p>
                 Stories in the same bubble belong to the same feature.{" "}
                 <span className="v3-bond-sample" aria-hidden="true" /> A bond means one story truly
-                has to wait for another — only {board.bonds.length} bonds exist.
+                has to wait for another — only {board.bonds.length} bonds exist. While a story is
+                still waiting, its bond turns red; the rest stay brass.
               </p>
               <p>Drag to spin · scroll or pinch to zoom · tap an atom to open its story.</p>
               <button type="button" className="v3-btn" onClick={() => selectedSlug && onOpenInTrail(selectedSlug)} disabled={!selectedSlug}>

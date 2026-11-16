@@ -434,7 +434,7 @@ export function computeLayout(board: PublishedBoard): BoardLayout {
         const y = 1 - (i / Math.max(n - 1, 1)) * 2;
         const rad = Math.sqrt(Math.max(0, 1 - y * y));
         const th = golden * i;
-        const rr = radius * 0.58 * (1 - 0.125 + rand() * 0.25);
+        const rr = radius * 0.66 * (1 - 0.125 + rand() * 0.25);
         positions[story.slug] = [
           Math.round((fc[0] + Math.cos(th) * rad * rr) * 100) / 100,
           Math.round((fc[1] + y * rr) * 100) / 100,

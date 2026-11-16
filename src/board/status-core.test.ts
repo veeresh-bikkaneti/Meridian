@@ -219,10 +219,14 @@ describe("buildPublished on the real curation file (Phase 0 baseline)", () => {
     );
     assert.equal(bySlug.get("pair-art-sheets-and-endings")?.line, "Drawing in progress");
     assert.equal(bySlug.get("religious-journal-movies-hidden")?.line, "Finished");
-    assert.equal(
-      bySlug.get("truce-pennant-port")?.line,
-      "Coming after: Clues arrive one at a time, one voice at a time",
-    );
+    // Current state (board cleanup, 2026-11-16): every recorded wait
+    // is satisfied — clue pacing and the voice channel are done — so
+    // no story carries a "Coming after" line today. The truce flag
+    // simply hasn't started; its bonds stand in the data for when a
+    // wait binds again (the waiting derivation itself is covered by
+    // the deriveFromRecords suites above).
+    assert.equal(bySlug.get("truce-pennant-port")?.line, "Not started yet");
+    assert.equal(bySlug.get("truce-pennant-port")?.comingAfter, undefined);
   });
   it("draws exactly the 8 recorded waits as bonds — never more", () => {
     assert.equal(published.bonds.length, 8);

@@ -113,10 +113,12 @@ describe("theme parity — the map stage's atlas family (src/styles.css)", () =>
       assert.ok(boardCss.includes(`var(${t})`), `board.css must consume var(${t})`);
     }
   });
-  it("the map's Three.js constants carry the token hexes (bonds = --atlas-stamp, halo = --atlas-brass)", () => {
+  it("the map's Three.js colours carry the token hexes (bonds painted per instance: brass, stamp while waiting; halo = --atlas-brass)", () => {
     const map = readFileSync(new URL("./molecule-map.tsx", import.meta.url), "utf8");
-    assert.ok(map.includes("0xe86a5c"), "bond colour must be --atlas-stamp (#e86a5c)");
     assert.ok(map.includes("0xe8b64c"), "halo colour must be --atlas-brass (#e8b64c)");
+    assert.ok(map.includes('"#a5761f"'), "bond paint fallback must be --atlas-brass (light, #a5761f)");
+    assert.ok(map.includes('"#b3372a"'), "waiting-bond fallback must be --atlas-stamp (light, #b3372a)");
+    assert.ok(!map.includes("0xe86a5c"), "the all-red bond material must not return");
     assert.ok(!map.includes("0xb3543f"), "the pre-uplift bond colour must not return");
     assert.ok(!map.includes("0x8a6d2f"), "the pre-uplift halo colour must not return");
   });

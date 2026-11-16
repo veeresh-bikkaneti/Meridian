@@ -194,24 +194,26 @@ function BoardPage() {
       data-board-theme={themeChoice === "system" ? undefined : themeChoice}
     >
       <div className="v3-wrap">
-        <p className="v3-back">
-          <HomeButton to="/" />
-        </p>
-        <p className="v3-eyebrow">For grown-ups</p>
-        <h1 className="v3-title">See what we&rsquo;re making next</h1>
-        <p className="v3-counts" data-testid="board-counts-line">
-          {board.counts.done} of {board.counts.total} stories finished · {board.counts.inProgress}{" "}
-          being built · {board.counts.notStarted} not started yet
-        </p>
-        <p className="v3-updated" data-testid="board-updated-line">
-          Updated {formatUpdated(board.updatedAt)}
-          {loaded?.source === "manual" ? " — showing the copy that came with the site" : ""}
-        </p>
-        {stale ? (
-          <p className="v3-stale" role="note">
-            This list is more than a day old — a fresher one is on its way.
+        <header className="v3-head">
+          <p className="v3-back">
+            <HomeButton to="/" />
           </p>
-        ) : null}
+          <p className="v3-eyebrow">For grown-ups</p>
+          <h1 className="v3-title">See what we&rsquo;re making next</h1>
+          <p className="v3-counts" data-testid="board-counts-line">
+            {board.counts.done} of {board.counts.total} stories finished · {board.counts.inProgress}{" "}
+            being built · {board.counts.notStarted} not started yet
+          </p>
+          <p className="v3-updated" data-testid="board-updated-line">
+            Updated {formatUpdated(board.updatedAt)}
+            {loaded?.source === "manual" ? " — showing the copy that came with the site" : ""}
+          </p>
+          {stale ? (
+            <p className="v3-stale" role="note">
+              This list is more than a day old — a fresher one is on its way.
+            </p>
+          ) : null}
+        </header>
 
         {frontierStory ? (
           <div className="v3-frontier-banner">
@@ -229,32 +231,35 @@ function BoardPage() {
         ) : null}
 
         <nav className="v3-viewnav" aria-label="Board views">
-          <button
-            type="button"
-            data-testid="board-nav-trail"
-            aria-pressed={view === "trail"}
-            onClick={() => go({ view: "trail" })}
-          >
-            The trail
-          </button>
-          {mapOn ? (
+          <div className="v3-nav-cluster" role="group" aria-label="Views">
             <button
               type="button"
-              data-testid="board-nav-map"
-              aria-pressed={view === "map"}
-              onClick={() => go({ view: "map" })}
+              data-testid="board-nav-trail"
+              aria-pressed={view === "trail"}
+              onClick={() => go({ view: "trail" })}
             >
-              The structure
+              The trail
             </button>
-          ) : null}
-          <button
-            type="button"
-            data-testid="board-nav-tip"
-            aria-pressed={view === "tip"}
-            onClick={() => go({ view: "tip" })}
-          >
-            Send a tip
-          </button>
+            {mapOn ? (
+              <button
+                type="button"
+                data-testid="board-nav-map"
+                aria-pressed={view === "map"}
+                onClick={() => go({ view: "map" })}
+              >
+                The structure
+              </button>
+            ) : null}
+            <button
+              type="button"
+              data-testid="board-nav-tip"
+              aria-pressed={view === "tip"}
+              onClick={() => go({ view: "tip" })}
+            >
+              Send a tip
+            </button>
+          </div>
+          <div className="v3-nav-cluster v3-nav-settings">
           <div className="v3-theme-switch" role="group" aria-label="Board theme">
             <span className="v3-theme-label" aria-hidden="true">
               Theme
@@ -294,6 +299,7 @@ function BoardPage() {
           >
             Calm mode {calm ? "on" : "off"}
           </button>
+          </div>
         </nav>
 
         {toast ? (
