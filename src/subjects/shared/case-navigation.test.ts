@@ -210,7 +210,10 @@ describe("age band picker in the Why Learn flow (defect 4)", () => {
     assert.ok(branch.includes("<AgeProfileSettings"), "the settings flow renders in this branch");
     assert.ok(branch.includes("onClose={closeAgeSettings}"), "with GameApp's own close (focus return)");
     assert.ok(branch.includes("onToast={setAgeToast}"), "with GameApp's own toast");
-    assert.ok(branch.includes("inert={ageSettingsOpen || undefined}"), "the picker goes inert behind it");
+    assert.ok(
+      branch.includes("inert={ageSettingsOpen || ageAsk !== null || undefined}"),
+      "the picker goes inert behind it (and behind the ask-first picker)",
+    );
   });
 });
 
@@ -229,8 +232,16 @@ describe("resume control on the Why Learn screens (defect 2, amendment)", () => 
     assert.ok(body.includes("writeLoopOpen(true);"), "it records the open flag, as the card's tap did");
     assert.ok(body.includes("setLoopOpen(true);"), "it opens the loop, as the card's tap did");
     assert.ok(
-      gameApp.includes('onLoop={withCardTap("mystery", openGeoDetective)}'),
-      "Home's card calls the shared tap-in (no second implementation)",
+      gameApp.includes('onLoop={withCardTap("mystery", () => {'),
+      "Home's card routes to the shared tap-in (no second implementation)",
+    );
+    const loopStart = gameApp.indexOf('onLoop={withCardTap("mystery"');
+    const loopHandler = gameApp.slice(loopStart, gameApp.indexOf("})}", loopStart));
+    assert.ok(loopHandler.includes("openGeoDetective();"), "the card's tap-in is the shared one");
+    assert.ok(
+      loopHandler.includes("peekLoopProgress().inProgress") &&
+        loopHandler.includes("askAgeFirst(() => {"),
+      "ask-first amendment: the card's resume offer asks first when no band is set",
     );
   });
 
