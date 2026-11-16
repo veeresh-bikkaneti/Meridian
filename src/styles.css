@@ -2018,6 +2018,46 @@
   background: var(--atlas-bg-1);
 }
 
+/* Brand home control (fix/header-logo-home): the shell header's home
+   affordance is the homepage's brand lockup, so these rules mirror
+   .home-v5 .hv5-brand / .hv5-mark / .hv5-word in home-v5.css (same
+   mark size, word font, spacing and colour) without importing or
+   un-scoping home-v5.css — shell screens are .mode-screen, not
+   .home-v5. The word's font is the atlas display stack, the same
+   Fraunces family --hv5-display resolves to on the home page.
+   Focus is the button's own Tailwind focus-visible outline (the
+   HomeButton BASE treatment, carried in home-button.ts). */
+.brand-home-button {
+  background: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+}
+.brand-home-mark {
+  display: block;
+  width: 40px;
+  height: 40px;
+  flex: none;
+}
+.brand-home-word {
+  font-family: var(--font-atlas-display);
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  line-height: 1;
+}
+@media (max-width: 1080px) {
+  .brand-home-word {
+    font-size: 19px;
+    letter-spacing: 0.18em;
+  }
+}
+@media (max-width: 680px) {
+  .brand-home-word {
+    font-size: 19px;
+  }
+}
+
 .mode-title {
   font-family: var(--font-atlas-display);
 }
@@ -2242,11 +2282,6 @@
     linear-gradient(rgba(246, 241, 227, 0.62), rgba(246, 241, 227, 0.62)),
     url("./assets/why-learn/why-learn-montage.webp") center top / cover no-repeat;
 }
-/* The Home strip gets a frosted backing so its label never sits on art. */
-.why-learn-screen [data-testid="home-button"] {
-  background: rgba(253, 250, 242, 0.92);
-  box-shadow: 0 0 0 1px var(--atlas-card-line);
-}
 .why-learn-screen .screen-hero {
   background: #fdfaf2;
   border-radius: 18px;
@@ -2423,7 +2458,8 @@
 /* The montage film in the hero slot (feat/why-learn-montage): the
    <video> carries .why-learn-hero, so it fills the same fixed box
    the still did; the controls ride its bottom-right corner on the
-   page's frosted-chip recipe (cf. .why-learn-wordmark). */
+   page's frosted-chip recipe (the .why-learn-hero-controls button
+   rule below). */
 .why-learn-hero-wrap {
   position: relative;
 }
@@ -2541,25 +2577,6 @@
   .wl-drift-item {
     animation: none;
   }
-}
-.why-learn-wordmark {
-  margin-left: auto;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  min-height: 44px;
-  padding: 0 12px;
-  border-radius: 999px;
-  background: rgba(253, 250, 242, 0.92);
-  color: #1b2b31;
-  font-family: var(--font-atlas-display);
-  font-size: 15px;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-}
-.why-learn-wordmark svg {
-  width: 22px;
-  height: 22px;
 }
 /* Subject cards, Living Atlas anatomy (the home card's): a 16:9
    picture slot bleeding to the card's top edges, then badge +

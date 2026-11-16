@@ -299,12 +299,6 @@ export default function SubjectPicker({
       className="why-learn-screen lg:max-w-6xl"
       testId="subject-picker"
       hero={<WhyLearnHero />}
-      sound={
-        <span className="why-learn-wordmark">
-          <svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><circle cx="24" cy="24" r="21.5" fill="none" stroke="#8A6D2F" strokeWidth="1.6" /><path d="M24 6 L27.2 20.8 L42 24 L27.2 27.2 L24 42 L20.8 27.2 L6 24 L20.8 20.8 Z" fill="#8A6D2F" /><circle cx="24" cy="24" r="3.4" fill="#F6F1E3" stroke="#8A6D2F" strokeWidth="1.2" /></svg>
-          MERIDIAN
-        </span>
-      }
       data={{ "data-band": band }}
       eyebrow="Case file · Why it matters"
       title="Why Do We Learn This?"

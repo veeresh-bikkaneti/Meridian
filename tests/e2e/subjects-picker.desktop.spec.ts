@@ -9,7 +9,7 @@ import { serveBuiltArtifact } from "./helpers";
  * rows and everything not built yet as disabled "Coming soon" rows
  * (Journals stay coming soon in this run — their clips are not in the
  * repo). Picking a ready row opens that subject's case; the case's
- * the Home control returns to Home. Per-band "Coming soon" for a released
+ * "Meridian home" (brand) control returns to Home. Per-band "Coming soon" for a released
  * subject is covered by the picker-rows unit tests; no shipped
  * subject currently lacks a band.
  */
@@ -84,7 +84,7 @@ test("picker lists Math and Journals ready for 10-18", async ({ page, context })
   expect(errors).toEqual([]);
 });
 
-test("picking Math opens the math case, and its Home control returns Home", async ({
+test("picking Math opens the math case, and its Meridian home control returns Home", async ({
   page,
   context,
 }) => {
@@ -95,7 +95,7 @@ test("picking Math opens the math case, and its Home control returns Home", asyn
   const mathCase = page.getByTestId("math-case");
   await expect(mathCase).toBeVisible();
   await expect(mathCase).toHaveAttribute("data-band", "7-10");
-  await mathCase.getByRole("button", { name: "Home", exact: true }).click();
+  await mathCase.getByRole("button", { name: "Meridian home", exact: true }).click();
   await expect(page.getByTestId("home-card-why-learn")).toBeVisible();
   expect(errors).toEqual([]);
 });
