@@ -22,13 +22,16 @@
  * (public/audio/subjects/manifest.json carries the same
  * numbers). The summary sits in the solved-phase data path only.
  *
- * Coverage (expansion wave 4): the seven forces-and-motion
- * items for ages 7-10 — five new kinds (push-duel, tile-steps,
- * slide-stop, cup-shove, seesaw-lift), with tile-steps shared
- * by the two counting/racing items and push-duel shared by the
- * two opposed-push items. The other five ages 7-10 items
- * (magnet, drop, energy, shadow, mirror) belong to wave 5 and
- * carry no descriptions yet; other bands carry none either.
+ * Coverage (expansion waves 4-5): all twelve items for ages
+ * 7-10 — wave 4's seven forces-and-motion items (five kinds:
+ * push-duel, tile-steps, slide-stop, cup-shove, seesaw-lift,
+ * with tile-steps shared by the two counting/racing items and
+ * push-duel shared by the two opposed-push items) and wave 5's
+ * five energy, light and magnet items (four new kinds:
+ * magnet-pair, drop-fall, wind-up, light-path, with light-path
+ * shared by the blocking-card item and the mirror item — the
+ * card is the kind's own data, not a second kind). Other bands
+ * carry no descriptions.
  */
 import type { ClueSceneDescription } from "../shared/clue-scene-types.ts";
 
@@ -145,6 +148,88 @@ export const PHYSICS_CLUE_SCENES: Record<string, ClueSceneDescription> = {
         { text: "Push one end of the board down toward the ground.", at: 3.69 },
         { text: "The board tips over the log, and the far end rises.", at: 7.08 },
         { text: "Pushing one end of the board down lifts the other end up, and lifts the box with it!", at: 10.92 },
+      ],
+      beats: [0, 1, 1, 1],
+    },
+  },
+  "physics:magnet:flip": {
+    kind: "magnet-pair",
+    labelSetup: "Two magnets hold a cabinet shut, pulled together.",
+    labelSolved: "One magnet turns, and the pair springs apart.",
+    summary: {
+      clip: "magnet-flip.mp3",
+      duration: 16.65,
+      lines: [
+        { text: "Here is the clever way magnets turn on each other.", at: 0 },
+        { text: "Turn one magnet around, so the faces that meet have changed.", at: 3.27 },
+        { text: "Faces that pulled before now push, and the pair springs apart.", at: 7.62 },
+        { text: "Turning one magnet around swaps pull for push — the pair now pushes apart.", at: 11.97 },
+      ],
+      beats: [0, 1, 1, 1],
+    },
+  },
+  "physics:drop:down": {
+    kind: "drop-fall",
+    labelSetup: "A ball rests on a shelf above a bucket.",
+    labelSolved: "The ball falls into the bucket below.",
+    summary: {
+      clip: "drop-down.mp3",
+      duration: 14.69,
+      lines: [
+        { text: "Here is the clever way to see where the ball goes.", at: 0 },
+        { text: "You let go of the ball, and it drops from the shelf.", at: 3.36 },
+        { text: "It falls straight down, right into the bucket below.", at: 6.8 },
+        { text: "Once nothing holds the ball up, it falls straight down into the bucket.", at: 10.5 },
+      ],
+      beats: [0, 1, 1, 1],
+    },
+  },
+  "physics:energy:wound-moves": {
+    kind: "wind-up",
+    labelSetup: "Two toy cars rest on a mat, one with a key.",
+    labelSolved: "The key turns, and one car rolls across the mat.",
+    summary: {
+      clip: "wound-moves.mp3",
+      duration: 16.6,
+      lines: [
+        { text: "Here is the clever way to tell which car moves.", at: 0 },
+        { text: "The key on the wound car turns, spending its winding.", at: 3.27 },
+        { text: "The wound car rolls across the mat, and the other car stays still.", at: 7.05 },
+        { text: "The wound-up car has stored energy to spend, so it is the one that moves.", at: 11.54 },
+      ],
+      beats: [0, 1, 1, 1],
+    },
+  },
+  "physics:shadow:blocks": {
+    kind: "light-path",
+    withCard: true,
+    labelSetup: "A lamp, a book and an eye, with a card waiting at the side.",
+    labelSolved: "The card slides in, and the light stops at it.",
+    summary: {
+      clip: "shadow-blocks.mp3",
+      duration: 16.74,
+      lines: [
+        { text: "Here is the clever way to see why the book vanishes.", at: 0 },
+        { text: "Light runs from the lamp to the book, and on toward your eye.", at: 3.54 },
+        { text: "The cardboard slides in, and the rays stop at the card.", at: 7.62 },
+        { text: "You see the book only when its light reaches your eye — the cardboard blocks that light.", at: 11.7 },
+      ],
+      beats: [0, 1, 1, 1],
+    },
+  },
+  "physics:mirror:sends-back": {
+    kind: "light-path",
+    withCard: false,
+    labelSetup: "A lamp lights a book on a shelf, near an eye.",
+    labelSolved: "Light bounces off the book into the eye.",
+    summary: {
+      clip: "sends-back.mp3",
+      duration: 13.91,
+      lines: [
+        { text: "Here is the clever way you see the book.", at: 0 },
+        { text: "Light from the lamp shines onto the book on the shelf.", at: 2.73 },
+        { text: "The book bounces the light back, into your eye.", at: 5.89 },
+        { text: "Light from the lamp bounces off the book and into your eye — that is how you see it.", at: 9.09 },
       ],
       beats: [0, 1, 1, 1],
     },

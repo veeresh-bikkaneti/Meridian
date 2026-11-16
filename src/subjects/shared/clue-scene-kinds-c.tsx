@@ -908,3 +908,106 @@ export function SeesawLiftScene({
     </>
   );
 }
+
+/* ── light-path (wave 5) ─────────────────────────────────────
+   A lamp, a book and an eye, left to right. Setup: the three
+   objects only (plus, for the blocking item, the card waiting
+   at the side) — NO ray path is drawn before the pick, because
+   the path is the answer's mechanism. Solved in three steps:
+   0 the ray runs from the lamp to the book, 1 it runs on from
+   the book to the eye — or, with a card, the card slides in
+   and the ray stops at it — 2 the final tick stands. One kind
+   serves both items; `withCard` is the kind's own data. */
+
+export function LightPathScene({
+  description,
+  phase,
+  stepDelay,
+}: {
+  description: Extract<ClueSceneDescription, { kind: "light-path" }>;
+  phase: ClueScenePhase;
+  /** Summary pacing: when present, step s's beat starts at
+   * stepDelay(s) instead of the film's own stagger. */
+  stepDelay?: (step: number) => number;
+}) {
+  const { withCard } = description;
+  const rayStart = stepDelay ? stepDelay(0) : 0.5;
+  const onwardStart = stepDelay ? stepDelay(1) : 1.4;
+  const tickStart = stepDelay ? stepDelay(2) : 2.3;
+  const midY = 96;
+  const lampX = 44;
+  const bookX = 148;
+  const eyeX = 272;
+  const cardX = 214;
+  const lamp = (
+    <>
+      <path className="cs-line" d={`M${lampX} 150 L${lampX} ${midY + 6}`} />
+      <path className="cs-tip" d={`M${lampX - 13} ${midY + 8} L${lampX + 15} ${midY - 12} L${lampX + 19} ${midY + 2} L${lampX - 9} ${midY + 14} Z`} />
+      <path className="cs-line cs-band" d={`M${lampX - 10} 152 Q${lampX} 149 ${lampX + 10} 152`} />
+    </>
+  );
+  const book = (
+    <>
+      <rect className="cs-pack" x={bookX - 17} y={midY - 13} width="34" height="26" rx="3" />
+      <path className="cs-line cs-band" d={`M${bookX} ${midY - 12} Q${bookX - 1} ${midY} ${bookX} ${midY + 12}`} />
+      <path className="cs-line cs-soft" d={`M${bookX - 12} ${midY - 5} Q${bookX - 6} ${midY - 6} ${bookX - 3} ${midY - 5} M${bookX + 3} ${midY - 5} Q${bookX + 6} ${midY - 6} ${bookX + 12} ${midY - 5}`} />
+    </>
+  );
+  const eye = (
+    <>
+      <path className="cs-line" d={`M${eyeX - 18} ${midY} Q${eyeX} ${midY - 15} ${eyeX + 18} ${midY} Q${eyeX} ${midY + 15} ${eyeX - 18} ${midY} Z`} />
+      <circle className="cs-stone" cx={eyeX} cy={midY} r="6" />
+      <circle className="cs-snack-dot" cx={eyeX} cy={midY} r="2.4" />
+    </>
+  );
+  const card = (cx: number, cy: number) => (
+    <>
+      <rect className="cs-pack" x={cx - 13} y={cy - 30} width="26" height="60" rx="3" />
+      <path className="cs-line cs-soft" d={`M${cx - 8} ${cy - 18} Q${cx} ${cy - 20} ${cx + 8} ${cy - 18} M${cx - 8} ${cy + 16} Q${cx} ${cy + 14} ${cx + 8} ${cy + 16}`} />
+    </>
+  );
+  const ray = (x1: number, x2: number, start: number) => (
+    <>
+      <path className="cs-line cs-band cs-draw" pathLength={1} d={`M${x1} ${midY - 4} Q${(x1 + x2) / 2} ${midY - 9} ${x2} ${midY - 4}`} style={delay(start)} />
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d={`M${x1} ${midY + 5} Q${(x1 + x2) / 2} ${midY} ${x2} ${midY + 5}`} style={delay(start + 0.12)} />
+    </>
+  );
+  return (
+    <>
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M24 36 Q160 32 296 36" style={delay(0.1)} />
+      {/* The shelf/table line the book rests on. */}
+      <path className="cs-line cs-draw" pathLength={1} d="M20 154 Q160 158 300 154" style={delay(0)} />
+      <path className="cs-line cs-draw" pathLength={1} d={`M${bookX - 30} 116 Q${bookX} 113 ${bookX + 30} 116`} style={delay(0.2)} />
+      <g className="cs-pop" style={delay(0.35)}>{lamp}</g>
+      <g className="cs-pop" style={delay(0.5)}>{book}</g>
+      <g className="cs-pop" style={delay(0.65)}>{eye}</g>
+      {withCard && phase === "setup" ? (
+        /* The card waits at the side, out of the light's way. */
+        <g className="cs-pop" style={delay(0.75)}>{card(292, 138)}</g>
+      ) : null}
+      {phase === "solved" ? (
+        <>
+          {ray(lampX + 16, bookX - 18, rayStart)}
+          {withCard ? (
+            <>
+              {/* The ray runs on from the book — and stops at
+                  the card, which slides in between book and eye. */}
+              {ray(bookX + 18, cardX - 14, onwardStart)}
+              <g transform={`translate(${cardX - 292} 0)`}>
+                <g className="cs-slide" style={slideFrom(292 - cardX, 42, onwardStart)}>
+                  {card(292, midY)}
+                </g>
+              </g>
+            </>
+          ) : (
+            ray(bookX + 18, eyeX - 20, onwardStart)
+          )}
+          <ellipse className="cs-ring" cx={withCard ? cardX : eyeX} cy={midY} rx={withCard ? 24 : 28} ry={withCard ? 38 : 24} style={delay(tickStart + 0.4)} />
+          <text className="cs-tick cs-tick-final" x={withCard ? cardX : eyeX} y="52" style={delay(tickStart + 0.55)}>
+            ✓
+          </text>
+        </>
+      ) : null}
+    </>
+  );
+}

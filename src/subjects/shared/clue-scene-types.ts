@@ -638,4 +638,39 @@ export type ClueSceneDescription =
       labelSolved: string;
       /** Narrated solved summary (act 3); solved phase only. */
       summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "magnet-pair";
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "drop-fall";
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "wind-up";
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "light-path";
+      /** True when a card the light cannot pass waits at the
+       * side and slides between the book and the eye in the
+       * solved beat (the blocking item); false when the ray
+       * simply traces lamp to book to eye (the mirror item).
+       * A given from the question, drawn only as an object in
+       * the setup film — no ray path is drawn before the pick. */
+      withCard: boolean;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
     };

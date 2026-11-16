@@ -869,3 +869,192 @@ export function ShareBarScene({
     </>
   );
 }
+
+/* ── Wave 5 kinds (Physics 7-10): magnet-pair, wind-up ───────
+   Same discipline as the kinds above: givens only in the setup
+   film, no digits before the pick; the solved beat computes its
+   outcome from the givens at solve time. magnet-pair paces
+   three steps (one magnet flips, the pair springs apart, the
+   final tick); wind-up paces three (the key turns, the wound
+   car rolls, the final tick). Neither kind moves anything at
+   all in setup. */
+
+/** One magnet glyph, centred on the origin: a bar with a pole
+ * cap at each end; `flipped` swaps which cap carries the band,
+ * the turned-around magnet of the solved beat. */
+function MagnetArt({ flipped }: { flipped?: boolean }) {
+  return (
+    <>
+      <rect className="cs-pack" x="-20" y="-9" width="40" height="18" rx="3" />
+      <path className={flipped ? "cs-line cs-soft" : "cs-line cs-band"} d="M-19 -3 Q-10 -5 -1 -3" />
+      <path className={flipped ? "cs-line cs-band" : "cs-line cs-soft"} d="M1 3 Q10 1 19 3" />
+    </>
+  );
+}
+
+export function MagnetPairScene({
+  description,
+  phase,
+  stepDelay,
+}: {
+  description: Extract<ClueSceneDescription, { kind: "magnet-pair" }>;
+  phase: ClueScenePhase;
+  /** Summary pacing: when present, step s's beat starts at
+   * stepDelay(s) instead of the film's own stagger. */
+  stepDelay?: (step: number) => number;
+}) {
+  void description;
+  const flipStart = stepDelay ? stepDelay(0) : 0.5;
+  const apartStart = stepDelay ? stepDelay(1) : 1.4;
+  const tickStart = stepDelay ? stepDelay(2) : 2.3;
+  // Cabinet doors: two panels meeting at the centre seam; in
+  // the solved beat each panel rests swung a little outward,
+  // pushed open as its magnet springs away from the other.
+  const door = (side: 1 | -1, open: boolean) => {
+    const x0 = side < 0 ? 62 : 160;
+    const lean = open ? side * 7 : 0;
+    return (
+      <path
+        className="cs-line cs-draw"
+        pathLength={1}
+        d={`M${x0 + lean} 62 Q${x0 + 49} 58 ${x0 + 98 - lean} 62 L${x0 + 98 - lean * 0.4} 150 Q${x0 + 49} 154 ${x0 + lean * 0.4} 150 Z`}
+        style={delay(0.15)}
+      />
+    );
+  };
+  return (
+    <>
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M24 36 Q160 32 296 36" style={delay(0.1)} />
+      <path className="cs-line cs-draw" pathLength={1} d="M16 164 Q160 168 304 164" style={delay(0)} />
+      {phase === "setup" ? (
+        <>
+          {door(-1, false)}
+          {door(1, false)}
+          {/* The pair snapped together on the seam, holding the
+              cabinet shut — no flip, no gap. */}
+          <g transform="translate(140 106)">
+            <g className="cs-pop" style={delay(0.45)}>
+              <MagnetArt />
+            </g>
+          </g>
+          <g transform="translate(180 106)">
+            <g className="cs-pop" style={delay(0.55)}>
+              <MagnetArt />
+            </g>
+          </g>
+        </>
+      ) : (
+        <>
+          {door(-1, true)}
+          {door(1, true)}
+          {/* One magnet turns around (its pole bands swap), then
+              the pair springs apart to its resting places. */}
+          <g transform="translate(102 106)">
+            <g className="cs-slide" style={slideFrom(38, 0, apartStart)}>
+              <MagnetArt />
+            </g>
+          </g>
+          <g transform="translate(218 106)">
+            <g className="cs-slide" style={slideFrom(-38, 0, apartStart)}>
+              <g className="cs-grow" style={delay(flipStart)}>
+                <MagnetArt flipped />
+              </g>
+            </g>
+          </g>
+          <text className="cs-tick cs-tick-final" x="160" y="46" style={delay(tickStart + 0.55)}>
+            ↔
+          </text>
+        </>
+      )}
+    </>
+  );
+}
+
+/** One toy car glyph, centred on its floor line: a body, a
+ * cabin, and two wheels. */
+function ToyCarArt() {
+  return (
+    <>
+      <rect className="cs-pack" x="-24" y="-20" width="48" height="15" rx="4" />
+      <path className="cs-line cs-band" d="M-12 -20 Q-8 -29 2 -29 Q10 -29 13 -20" />
+      <circle className="cs-bus-wheel" cx="-14" cy="-3" r="4.4" />
+      <circle className="cs-bus-wheel" cx="14" cy="-3" r="4.4" />
+    </>
+  );
+}
+
+/** The winding key on the wound car's roof: a stem and a bow. */
+function WindKeyArt() {
+  return (
+    <>
+      <path className="cs-line cs-band" d="M0 -29 L0 -38" />
+      <circle className="cs-line" cx="-5" cy="-41" r="3.6" />
+      <circle className="cs-line" cx="5" cy="-41" r="3.6" />
+    </>
+  );
+}
+
+export function WindUpScene({
+  description,
+  phase,
+  stepDelay,
+}: {
+  description: Extract<ClueSceneDescription, { kind: "wind-up" }>;
+  phase: ClueScenePhase;
+  /** Summary pacing: when present, step s's beat starts at
+   * stepDelay(s) instead of the film's own stagger. */
+  stepDelay?: (step: number) => number;
+}) {
+  void description;
+  const keyStart = stepDelay ? stepDelay(0) : 0.5;
+  const rollStart = stepDelay ? stepDelay(1) : 1.4;
+  const tickStart = stepDelay ? stepDelay(2) : 2.3;
+  const floorY = 148;
+  return (
+    <>
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M24 40 Q160 36 296 40" style={delay(0.1)} />
+      {/* The mat both cars rest on. */}
+      <path className="cs-line cs-draw" pathLength={1} d={`M28 ${floorY + 6} Q160 ${floorY + 10} 292 ${floorY + 6}`} style={delay(0)} />
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d={`M36 ${floorY + 14} Q160 ${floorY + 17} 284 ${floorY + 14}`} style={delay(0.15)} />
+      {phase === "setup" ? (
+        <>
+          {/* Two cars at rest; the wound one carries its key —
+              the question's own given. No motion. */}
+          <g transform={`translate(78 ${floorY})`}>
+            <g className="cs-pop" style={delay(0.45)}>
+              <ToyCarArt />
+              <WindKeyArt />
+            </g>
+          </g>
+          <g transform={`translate(242 ${floorY})`}>
+            <g className="cs-pop" style={delay(0.6)}>
+              <ToyCarArt />
+            </g>
+          </g>
+        </>
+      ) : (
+        <>
+          {/* The key turns on the wound car, then that car rolls
+              across the mat; the unwound car never moves. */}
+          <g transform={`translate(172 ${floorY})`}>
+            <g className="cs-slide" style={slideFrom(78 - 172, 0, rollStart)}>
+              <ToyCarArt />
+              <g className="cs-grow" style={delay(keyStart)}>
+                <WindKeyArt />
+              </g>
+            </g>
+          </g>
+          <g transform={`translate(242 ${floorY})`}>
+            <g className="cs-pop" style={delay(0.3)}>
+              <ToyCarArt />
+            </g>
+          </g>
+          <ellipse className="cs-ring" cx="172" cy={floorY - 16} rx="34" ry="26" style={delay(tickStart + 0.4)} />
+          <text className="cs-tick cs-tick-final" x="172" y="86" style={delay(tickStart + 0.55)}>
+            →
+          </text>
+        </>
+      )}
+    </>
+  );
+}

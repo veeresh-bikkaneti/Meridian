@@ -57,14 +57,17 @@ import {
   BusBoardingScene,
   PackBoxesScene,
   PercentBarScene,
+  MagnetPairScene,
   PushDuelScene,
   ScaleLineScene,
   ShareBarScene,
   TileStepsScene,
+  WindUpScene,
 } from "./clue-scene-kinds-a";
 import {
   CupShoveScene,
   DigitShiftScene,
+  DropFallScene,
   FractionBarScene,
   FractionMeasureScene,
   MapScaleScene,
@@ -76,6 +79,7 @@ import {
 import {
   BearingDiagramScene,
   ChunkShareScene,
+  LightPathScene,
   JourneyLineScene,
   RateBarsScene,
   RoundingLineScene,
@@ -446,6 +450,10 @@ const SUMMARY_STAGGER: Record<ClueSceneDescription["kind"], number> = {
   "slide-stop": 0.9,
   "cup-shove": 0.9,
   "seesaw-lift": 0.8,
+  "magnet-pair": 0.8,
+  "drop-fall": 0.8,
+  "wind-up": 0.8,
+  "light-path": 0.8,
 };
 
 /** The summary clip's URL (public/audio/subjects/, manifest.json). */
@@ -560,6 +568,14 @@ function SceneArt({
       return <CupShoveScene description={description} phase={phase} stepDelay={stepDelay} />;
     case "seesaw-lift":
       return <SeesawLiftScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "magnet-pair":
+      return <MagnetPairScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "drop-fall":
+      return <DropFallScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "wind-up":
+      return <WindUpScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "light-path":
+      return <LightPathScene description={description} phase={phase} stepDelay={stepDelay} />;
   }
 }
 

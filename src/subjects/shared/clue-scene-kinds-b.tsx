@@ -861,3 +861,74 @@ export function CupShoveScene({
     </>
   );
 }
+
+/* ── Wave 5 kind (Physics 7-10): drop-fall ───────────────────
+   Same discipline as the kinds above: givens only before the
+   pick, no digits in the setup film; the solved beat computes
+   its outcome from the givens at solve time. drop-fall paces
+   three steps (the ball drops, the bucket catches it, the
+   final tick). The setup film shows no fall at all. */
+
+export function DropFallScene({
+  description,
+  phase,
+  stepDelay,
+}: {
+  description: Extract<ClueSceneDescription, { kind: "drop-fall" }>;
+  phase: ClueScenePhase;
+  /** Summary pacing: when present, step s's beat starts at
+   * stepDelay(s) instead of the film's own stagger. */
+  stepDelay?: (step: number) => number;
+}) {
+  void description;
+  const dropStart = stepDelay ? stepDelay(0) : 0.5;
+  const catchStart = stepDelay ? stepDelay(1) : 1.4;
+  const tickStart = stepDelay ? stepDelay(2) : 2.3;
+  const ballX = 196;
+  const shelfY = 66;
+  const floorY = 162;
+  const ball = (
+    <>
+      <circle className="cs-coin" r="10" />
+      <circle className="cs-coin-inner" r="4.8" />
+    </>
+  );
+  const bucket = (
+    <>
+      <path className="cs-line" d="M-22 0 Q-19 24 -14 34 Q0 37 14 34 Q19 24 22 0" />
+      <path className="cs-line cs-band" d="M-22 0 Q0 -4 22 0" />
+    </>
+  );
+  return (
+    <>
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M24 36 Q160 32 296 36" style={delay(0.1)} />
+      <path className="cs-line cs-draw" pathLength={1} d={`M16 ${floorY} Q160 ${floorY + 4} 304 ${floorY}`} style={delay(0)} />
+      {/* The shelf, high on the left, and its bracket. */}
+      <path className="cs-line cs-draw" pathLength={1} d={`M36 ${shelfY} Q120 ${shelfY - 4} 208 ${shelfY}`} style={delay(0.15)} />
+      <path className="cs-line cs-draw" pathLength={1} d={`M52 ${shelfY + 2} L52 ${shelfY + 22} M52 ${shelfY + 12} Q70 ${shelfY + 4} 84 ${shelfY + 2}`} style={delay(0.3)} />
+      {/* The bucket waiting on the floor, under the shelf lip. */}
+      <g transform={`translate(${ballX} 124)`}>
+        {phase === "solved" ? (
+          <g className="cs-cheer" style={delay(catchStart)}>{bucket}</g>
+        ) : (
+          <g className="cs-pop" style={delay(0.5)}>{bucket}</g>
+        )}
+      </g>
+      {phase === "setup" ? (
+        <g transform={`translate(${ballX} ${shelfY - 12})`}>
+          <g className="cs-pop" style={delay(0.55)}>{ball}</g>
+        </g>
+      ) : (
+        <>
+          <g transform={`translate(${ballX} 118)`}>
+            <g className="cs-slide" style={slideFrom(0, shelfY - 12 - 118, dropStart)}>{ball}</g>
+          </g>
+          <ellipse className="cs-ring" cx={ballX} cy="130" rx="30" ry="24" style={delay(tickStart + 0.4)} />
+          <text className="cs-tick cs-tick-final" x={ballX} y="84" style={delay(tickStart + 0.55)}>
+            ↓
+          </text>
+        </>
+      )}
+    </>
+  );
+}

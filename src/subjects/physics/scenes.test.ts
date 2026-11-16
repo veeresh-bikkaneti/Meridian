@@ -1,9 +1,9 @@
 /**
  * Physics clue scenes — the data-side contract (the math and
- * general-knowledge scenes.test.ts pattern, expansion wave 4).
- * Coverage is exactly the seven forces-and-motion items dealt
- * for ages 7-10; the other five ages 7-10 items belong to wave
- * 5 and must carry no description yet. A scene description
+ * general-knowledge scenes.test.ts pattern, expansion waves
+ * 4-5). Coverage is exactly the twelve items dealt for ages
+ * 7-10 — wave 4's seven forces-and-motion items plus wave 5's
+ * five energy, light and magnet items. A scene description
  * carries only the givens from the item's own question, so the
  * setup film cannot give the answer away, and the solved beat's
  * arithmetic lands exactly on the item's answer. Each
@@ -27,9 +27,8 @@ import { PHYSICS_ANSWERS } from "./answers.ts";
 import { itemsForGroup } from "./items.ts";
 import type { ClueSceneDescription } from "../shared/clue-scene-types.ts";
 
-/** The seven forces-and-motion items this wave builds, in the
- * band's deal order. */
-const DEALT_IDS = [
+/** The seven forces-and-motion items wave 4 built. */
+const WAVE4_IDS = [
   "physics:push:which-way",
   "physics:push:equal-pushes",
   "physics:friction:measure-slide",
@@ -39,7 +38,7 @@ const DEALT_IDS = [
   "physics:balance:tug",
 ];
 
-/** The five ages 7-10 items wave 5 owns — no descriptions yet. */
+/** The five energy, light and magnet items wave 5 builds. */
 const WAVE5_IDS = [
   "physics:magnet:flip",
   "physics:drop:down",
@@ -47,6 +46,9 @@ const WAVE5_IDS = [
   "physics:shadow:blocks",
   "physics:mirror:sends-back",
 ];
+
+/** All twelve ages 7-10 items, wave 4 then wave 5. */
+const DEALT_IDS = [...WAVE4_IDS, ...WAVE5_IDS];
 
 /** The numeric givens a description carries, per kind. */
 function givensOf(d: ClueSceneDescription): number[] {
@@ -62,6 +64,14 @@ function givensOf(d: ClueSceneDescription): number[] {
     case "cup-shove":
       return [d.slowSlide, d.fastSlide];
     case "seesaw-lift":
+      return [];
+    case "magnet-pair":
+      return [];
+    case "drop-fall":
+      return [];
+    case "wind-up":
+      return [];
+    case "light-path":
       return [];
     default:
       return [];
@@ -82,6 +92,14 @@ function stepCountOf(d: ClueSceneDescription): number {
       return 3; // the slower hit, the faster hit, the final tick
     case "seesaw-lift":
       return 3; // the press, the tip and lift, the final tick
+    case "magnet-pair":
+      return 3; // the flip, the spring apart, the final tick
+    case "drop-fall":
+      return 3; // the drop, the catch, the final tick
+    case "wind-up":
+      return 3; // the key turns, the roll, the final tick
+    case "light-path":
+      return 3; // the ray to the book, the ray onward (or the card), the final tick
     default:
       return -1;
   }
@@ -95,21 +113,22 @@ const CLOSING: Record<string, string> = {
   "physics:arrive:equal-steps": "reaches the line first",
   "physics:lever:seesaw": "lifts the box",
   "physics:balance:tug": "stays still",
+  "physics:magnet:flip": "pushes apart",
+  "physics:drop:down": "down into the bucket",
+  "physics:energy:wound-moves": "The wound-up car",
+  "physics:shadow:blocks": "cardboard blocks",
+  "physics:mirror:sends-back": "into your eye",
 };
 
-describe("physics clue scene descriptions — wave 4 (ages 7-10, forces & motion)", () => {
-  it("covers exactly the seven dealt forces-and-motion items for ages 7-10", () => {
+describe("physics clue scene descriptions — waves 4-5 (ages 7-10, complete)", () => {
+  it("covers exactly all twelve dealt items for ages 7-10", () => {
     const bandIds = itemsForGroup("7-10").map((item) => item.id);
     assert.equal(bandIds.length, 12);
-    assert.deepEqual([...DEALT_IDS, ...WAVE5_IDS].sort(), [...bandIds].sort());
+    assert.deepEqual([...DEALT_IDS].sort(), [...bandIds].sort());
     for (const id of DEALT_IDS) {
       assert.ok(clueSceneFor(id), `${id} has a scene`);
     }
     assert.deepEqual(Object.keys(PHYSICS_CLUE_SCENES).sort(), [...DEALT_IDS].sort());
-    // Wave 5's items return no description yet.
-    for (const id of WAVE5_IDS) {
-      assert.equal(clueSceneFor(id), null, `${id} (wave 5) has no scene yet`);
-    }
     // No other band carries a description.
     for (const band of ["10-18", "18+"] as const) {
       for (const item of itemsForGroup(band)) {
@@ -184,6 +203,33 @@ describe("physics clue scene descriptions — wave 4 (ages 7-10, forces & motion
       assert.equal(tug.leftPower, tug.rightPower, "the gate's pushes match exactly");
       assert.equal(PHYSICS_ANSWERS["physics:balance:tug"]!.correct, "No, it stays still");
     }
+    const magnet = clueSceneFor("physics:magnet:flip")!;
+    assert.equal(magnet.kind, "magnet-pair");
+    assert.equal(PHYSICS_ANSWERS["physics:magnet:flip"]!.correct, "They now push apart");
+    const drop = clueSceneFor("physics:drop:down")!;
+    assert.equal(drop.kind, "drop-fall");
+    assert.equal(PHYSICS_ANSWERS["physics:drop:down"]!.correct, "Down into the bucket");
+    const wound = clueSceneFor("physics:energy:wound-moves")!;
+    assert.equal(wound.kind, "wind-up");
+    assert.equal(PHYSICS_ANSWERS["physics:energy:wound-moves"]!.correct, "The wound-up car");
+    const shadow = clueSceneFor("physics:shadow:blocks")!;
+    assert.equal(shadow.kind, "light-path");
+    if (shadow.kind === "light-path") {
+      assert.equal(shadow.withCard, true, "the blocking item carries the card in its data");
+    }
+    assert.equal(
+      PHYSICS_ANSWERS["physics:shadow:blocks"]!.correct,
+      "No, the cardboard blocks the light",
+    );
+    const mirror = clueSceneFor("physics:mirror:sends-back")!;
+    assert.equal(mirror.kind, "light-path");
+    if (mirror.kind === "light-path") {
+      assert.equal(mirror.withCard, false, "the mirror item reuses light-path with no card");
+    }
+    assert.equal(
+      PHYSICS_ANSWERS["physics:mirror:sends-back"]!.correct,
+      "Light bounces off the book into your eye",
+    );
   });
 
   it("every item carries a well-formed narrated summary, pinned to the manifest and the clip file", () => {
