@@ -50,8 +50,8 @@ describe("clue scene wiring", () => {
     }
   });
 
-  it("the math case gates the pilot to ages 7-10 with a description", () => {
-    assert.ok(mathCase.includes('if (band !== "7-10") return null;'));
+  it("the math case gates the scenes to ages 7-10 and 10-18 with a description", () => {
+    assert.ok(mathCase.includes('if (band !== "7-10" && band !== "10-18") return null;'));
     assert.ok(mathCase.includes("clueSceneFor(item.id)"));
     assert.ok(mathCase.includes("<ClueScene"));
   });
@@ -130,6 +130,53 @@ describe("clue scene summary (act 3)", () => {
     assert.ok(mathCase.includes("resultExtra={"), "math passes the hook");
     assert.ok(mathCase.includes("ClueSummaryText"), "as the summary's standing text");
     assert.ok(scene.includes('data-testid="clue-summary-text"'));
+  });
+});
+
+describe("wave 2 kinds", () => {
+  const kindsA = read(join(here, "clue-scene-kinds-a.tsx"));
+  const kindsB = read(join(here, "clue-scene-kinds-b.tsx"));
+  const kindsC = read(join(here, "clue-scene-kinds-c.tsx"));
+
+  it("the renderer dispatches every wave-2 kind", () => {
+    for (const kind of [
+      "array-grid",
+      "scale-line",
+      "percent-bar",
+      "map-scale",
+      "fraction-bar",
+      "fraction-measure",
+      "rate-bars",
+      "journey-line",
+      "spend-then-group",
+      "bearing-diagram",
+    ]) {
+      assert.ok(scene.includes(`case "${kind}":`), `SceneArt dispatches ${kind}`);
+      assert.ok(scene.includes(`"${kind}":`), `SUMMARY_STAGGER paces ${kind}`);
+    }
+  });
+
+  it("every wave-2 kind accepts the summary pacing prop", () => {
+    for (const [source, name] of [
+      [kindsA, "ArrayGridScene"],
+      [kindsA, "ScaleLineScene"],
+      [kindsA, "PercentBarScene"],
+      [kindsB, "MapScaleScene"],
+      [kindsB, "FractionBarScene"],
+      [kindsB, "FractionMeasureScene"],
+      [kindsC, "RateBarsScene"],
+      [kindsC, "JourneyLineScene"],
+      [kindsC, "SpendThenGroupScene"],
+      [kindsC, "BearingDiagramScene"],
+    ] as const) {
+      assert.ok(source.includes(`function ${name}(`), `${name} exists`);
+      assert.ok(source.includes("stepDelay"), `${name} accepts stepDelay`);
+    }
+  });
+
+  it("chunk-share renders many shares on its compact plate grid", () => {
+    assert.ok(kindsC.includes("description.shares > 8"), "the compact branch exists");
+    assert.ok(kindsC.includes("platePos"), "one plate per share");
   });
 });
 

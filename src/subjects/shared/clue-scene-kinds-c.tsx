@@ -259,6 +259,88 @@ function ChunkShareScene({
   const pileTop = { x: 52, y: 100 };
   const chunkStart = (c: number) => (stepDelay ? stepDelay(c) : 0.4 + c * 1.15);
   const pileTilt = [-2, 1.5, -1, 2, -1.5];
+  // Many shares (the 10-18 standard-algorithm item shares among
+  // 28 people): the two-column shelf wall cannot hold them, so
+  // the same chunking beat plays on a compact grid of share
+  // plates — one plate per share, the same bundle-per-chunk
+  // flight, the same running counters, tighter stagger.
+  if (description.shares > 8) {
+    const cols = 7;
+    const platePos = (s: number) => ({
+      x: 38 + (s % cols) * 38,
+      y: 62 + Math.floor(s / cols) * 31,
+    });
+    const compactStart = (c: number) => (stepDelay ? stepDelay(c) : 0.4 + c * 1.15);
+    return (
+      <>
+        <path className="cs-line cs-draw" pathLength={1} d="M14 174 Q160 178 306 174" style={delay(0.05)} />
+        {/* The unsorted pile along the top: five bundles askew. */}
+        {pileTilt.map((tilt, i) => {
+          const y = 22 + (i % 2) * 3;
+          const x = 96 + i * 26;
+          return (
+            <g key={`cpile-${i}`} transform={`rotate(${tilt} ${x} ${y})`}>
+              <g className="cs-pop" style={delay(0.3 + i * 0.08)}>
+                <rect className={i % 2 === 0 ? "cs-pile-book" : "cs-pile-book-gold"} x={x - 11} y={y} width="22" height="8" rx="2" />
+              </g>
+            </g>
+          );
+        })}
+        {Array.from({ length: description.shares }, (_, s) => {
+          const p = platePos(s);
+          return (
+            <ellipse
+              key={`plate-${s}`}
+              className="cs-line cs-draw"
+              pathLength={1}
+              cx={p.x}
+              cy={p.y + 12}
+              rx="15"
+              ry="4"
+              style={delay(0.15 + s * 0.03)}
+            />
+          );
+        })}
+        {phase === "solved" ? (
+          <>
+            {chunks.map((_, c) =>
+              Array.from({ length: description.shares }, (_, s) => {
+                const p = platePos(s);
+                const gx = p.x - 8;
+                const gy = p.y + 6 - c * 6;
+                return (
+                  <g key={`cbundle-${c}-${s}`} transform={`translate(${gx} ${gy})`}>
+                    <g className="cs-slide" style={slideFrom(160 - gx, 24 - gy, compactStart(c) + s * 0.035)}>
+                      <g transform="scale(0.72)">
+                        <BookBundle />
+                      </g>
+                    </g>
+                  </g>
+                );
+              }),
+            )}
+            {Array.from({ length: description.shares }, (_, s) => {
+              const p = platePos(s);
+              return chunks.map((_, c) => {
+                const isFinal = c === chunks.length - 1;
+                return (
+                  <text
+                    key={`ccounter-${s}-${c}`}
+                    className={isFinal ? "cs-counter cs-counter-final cs-tick-final" : "cs-counter cs-counter-step"}
+                    x={p.x + 17}
+                    y={p.y - 2}
+                    style={delay(compactStart(c) + s * 0.035 + 0.5)}
+                  >
+                    {running[c]}
+                  </text>
+                );
+              });
+            })}
+          </>
+        ) : null}
+      </>
+    );
+  }
   return (
     <>
       <path className="cs-line cs-draw" pathLength={1} d="M14 174 Q52 177 90 174" style={delay(0.05)} />
@@ -348,3 +430,332 @@ function ChunkShareScene({
 }
 
 export { ChunkShareScene, RoundingLineScene, SplitProductScene };
+
+/* ── Wave 2 kinds (Math 10-18): rate-bars, journey-line,
+   spend-then-group, bearing-diagram ────────────────────────────
+   Same discipline as the kinds above: givens only before the
+   pick, no digits in the setup film; the solved beat computes
+   its splits, hops and angles from the givens at solve time.
+   Steps: rate-bars paces three (first bar priced, second bar
+   priced, the cheaper bar ringed); journey-line paces one step
+   per hour hop on a steady-pace item and two steps on a
+   part-walked item (the walked fill, then the final tick);
+   spend-then-group paces the one-off payment plus one step per
+   group; bearing-diagram paces three (east leg, north leg, the
+   angle arc). */
+
+export function RateBarsScene({
+  description,
+  phase,
+  stepDelay,
+}: {
+  description: Extract<ClueSceneDescription, { kind: "rate-bars" }>;
+  phase: ClueScenePhase;
+  stepDelay?: (step: number) => number;
+}) {
+  const { firstMetres, firstCoins, secondMetres, secondCoins } = description;
+  const firstRate = firstCoins / firstMetres;
+  const secondRate = secondCoins / secondMetres;
+  const cheaperSecond = secondRate < firstRate;
+  const x0 = 30;
+  const perMetre = 46;
+  const bars = [
+    { metres: firstMetres, coins: firstCoins, rate: firstRate, y: 58, step: 0 },
+    { metres: secondMetres, coins: secondCoins, rate: secondRate, y: 118, step: 1 },
+  ];
+  const barStart = (s: number) => (stepDelay ? stepDelay(s) : 0.5 + s * 0.95);
+  return (
+    <>
+      <path className="cs-line cs-draw" pathLength={1} d="M16 176 Q160 180 304 176" style={delay(0)} />
+      {bars.map((bar, bi) => {
+        const w = bar.metres * perMetre;
+        return (
+          <g key={`bar-${bi}`}>
+            <g className="cs-pop" style={delay(0.3 + bi * 0.15)}>
+              <rect className="cs-bar" x={x0} y={bar.y} width={w} height="17" rx="6" />
+            </g>
+            {/* The stall's coins under its bar (a given; no digits). */}
+            {Array.from({ length: bar.coins }, (_, i) => (
+              <g key={`coin-${bi}-${i}`} transform={`translate(${x0 + 12 + i * 17} ${bar.y + 32})`}>
+                <g className="cs-pop" style={delay(0.5 + bi * 0.15 + i * 0.05)}>
+                  <circle className="cs-coin" r="6" />
+                  <circle className="cs-coin-inner" r="3" />
+                </g>
+              </g>
+            ))}
+            {phase === "solved" ? (
+              <>
+                {Array.from({ length: bar.metres - 1 }, (_, i) => {
+                  const x = x0 + (i + 1) * perMetre;
+                  return (
+                    <path
+                      key={`split-${bi}-${i}`}
+                      className="cs-line cs-band cs-fade"
+                      d={`M${x} ${bar.y + 1} Q${x + 1} ${bar.y + 8.5} ${x} ${bar.y + 16}`}
+                      style={delay(barStart(bar.step) + i * 0.12)}
+                    />
+                  );
+                })}
+                <text className="cs-tick" x={x0 + w / 2} y={bar.y - 10} style={delay(barStart(bar.step) + 0.55)}>
+                  {bar.rate}
+                </text>
+              </>
+            ) : null}
+          </g>
+        );
+      })}
+      {phase === "solved" ? (
+        <ellipse
+          className="cs-ring"
+          cx={x0 + ((cheaperSecond ? secondMetres : firstMetres) * perMetre) / 2}
+          cy={(cheaperSecond ? 118 : 58) + 8.5}
+          rx={((cheaperSecond ? secondMetres : firstMetres) * perMetre) / 2 + 9}
+          ry="19"
+          style={delay(stepDelay ? stepDelay(2) + 0.4 : 2.6)}
+        />
+      ) : null}
+    </>
+  );
+}
+
+export function JourneyLineScene({
+  description,
+  phase,
+  stepDelay,
+}: {
+  description: Extract<ClueSceneDescription, { kind: "journey-line" }>;
+  phase: ClueScenePhase;
+  stepDelay?: (step: number) => number;
+}) {
+  const { totalKm, hours, targetKm, aheadKm } = description;
+  const x0 = 26;
+  const x1 = 294;
+  const y = 118;
+  const pathD = `M${x0} ${y} Q110 ${y - 14} 180 ${y - 4} Q240 ${y + 6} ${x1} ${y - 8}`;
+  if (hours !== undefined && targetKm !== undefined) {
+    // Steady pace: hops of totalKm/hours along the target path.
+    const perHour = totalKm / hours;
+    const hops = Math.round(targetKm / perHour);
+    const hopX = (h: number) => x0 + (h / hops) * (x1 - x0);
+    const knownX = x0 + (totalKm / targetKm) * (x1 - x0);
+    const hopStart = (s: number) => (stepDelay ? stepDelay(s) : 0.4 + s * 0.5);
+    return (
+      <>
+        <path className="cs-line cs-soft cs-draw" pathLength={1} d="M24 52 Q160 46 296 52" style={delay(0.1)} />
+        <path className="cs-line cs-draw" pathLength={1} d={pathD} style={delay(0)} />
+        {/* The known stretch's end flag (a given distance). */}
+        <path className="cs-line cs-draw" pathLength={1} d={`M${knownX.toFixed(1)} ${y - 4} L${knownX.toFixed(1)} ${y - 26}`} style={delay(0.3)} />
+        <path className="cs-flag cs-pop" d={`M${knownX.toFixed(1)} ${y - 26} L${(knownX + 14).toFixed(1)} ${y - 21.5} L${knownX.toFixed(1)} ${y - 16} Z`} style={delay(0.5)} />
+        <path className="cs-line cs-draw" pathLength={1} d={`M${x1} ${y - 8} L${x1} ${y - 30}`} style={delay(0.35)} />
+        <path className="cs-flag cs-pop" d={`M${x1} ${y - 30} L${x1 - 14} ${y - 25.5} L${x1} ${y - 20} Z`} style={delay(0.55)} />
+        {/* The walker at the start. */}
+        <g className="cs-pop" style={delay(0.45)}>
+          <circle className="cs-child-head" cx={x0} cy={y - 16} r="5" />
+          <path className="cs-child-body" d={`M${x0 - 7} ${y - 4} Q${x0} ${y - 11} ${x0 + 7} ${y - 4}`} />
+        </g>
+        {phase === "solved"
+          ? Array.from({ length: hops }, (_, h) => (
+              <g key={`hop-${h}`}>
+                <circle className="cs-stone cs-pop" cx={hopX(h + 1).toFixed(1)} cy={y - 2} r="4" style={delay(hopStart(h))} />
+                <text className={`cs-tick${h === hops - 1 ? " cs-tick-final" : ""}`} x={hopX(h + 1).toFixed(1)} y={y + 24} style={delay(hopStart(h) + 0.3)}>
+                  {h + 1}
+                </text>
+              </g>
+            ))
+          : null}
+      </>
+    );
+  }
+  // Part walked: the walked part fills in from the start; the
+  // part still ahead (a given) is the unfilled remainder — the
+  // fill's end is never marked before the pick.
+  const walkedKm = totalKm - (aheadKm ?? 0);
+  const walkedX = x0 + (walkedKm / totalKm) * (x1 - x0);
+  const fillStart = stepDelay ? stepDelay(0) : 0.55;
+  return (
+    <>
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M24 52 Q160 46 296 52" style={delay(0.1)} />
+      <path className="cs-line cs-draw" pathLength={1} d={pathD} style={delay(0)} />
+      <path className="cs-line cs-draw" pathLength={1} d={`M${x1} ${y - 8} L${x1} ${y - 30}`} style={delay(0.3)} />
+      <path className="cs-flag cs-pop" d={`M${x1} ${y - 30} L${x1 - 14} ${y - 25.5} L${x1} ${y - 20} Z`} style={delay(0.5)} />
+      <g className="cs-pop" style={delay(0.45)}>
+        <circle className="cs-child-head" cx={x0} cy={y - 16} r="5" />
+        <path className="cs-child-body" d={`M${x0 - 7} ${y - 4} Q${x0} ${y - 11} ${x0 + 7} ${y - 4}`} />
+      </g>
+      {phase === "solved" ? (
+        <>
+          <path
+            className="cs-line cs-band cs-fade"
+            strokeWidth="5"
+            d={`M${x0} ${y} Q110 ${y - 14} 180 ${y - 4} Q${(180 + walkedX) / 2} ${y + 2} ${walkedX.toFixed(1)} ${y - 6}`}
+            style={delay(fillStart)}
+          />
+          <circle className="cs-stone cs-pop" cx={walkedX.toFixed(1)} cy={y - 6} r="5" style={delay(fillStart + 0.4)} />
+          <text className="cs-tick cs-tick-final" x={walkedX.toFixed(1)} y={y - 24} style={delay(stepDelay ? stepDelay(1) + 0.6 : 1.7)}>
+            {walkedKm}
+          </text>
+        </>
+      ) : null}
+    </>
+  );
+}
+
+export function SpendThenGroupScene({
+  description,
+  phase,
+  stepDelay,
+}: {
+  description: Extract<ClueSceneDescription, { kind: "spend-then-group" }>;
+  phase: ClueScenePhase;
+  stepDelay?: (step: number) => number;
+}) {
+  const { total, fixedCost, perGroup } = description;
+  const rest = total - fixedCost;
+  const groups = Math.round(rest / perGroup);
+  // The coin pile (a loose grid layout, same every load).
+  const pilePos = (i: number) => ({
+    x: 52 + (i % 7) * 17 + (Math.floor(i / 7) % 2) * 6,
+    y: 62 + Math.floor(i / 7) * 17,
+  });
+  const groupPos = (g: number) => ({ x: 42 + g * 52, y: 138 });
+  const payStart = stepDelay ? stepDelay(0) : 0.5;
+  const groupStart = (g: number) => (stepDelay ? stepDelay(1 + g) : 1.3 + g * 0.55);
+  const coin = (
+    <>
+      <circle className="cs-coin" r="7" />
+      <circle className="cs-coin-inner" r="3.6" />
+    </>
+  );
+  return (
+    <>
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M24 34 Q160 30 296 34" style={delay(0.1)} />
+      <path className="cs-line cs-draw" pathLength={1} d="M16 168 Q160 172 304 168" style={delay(0)} />
+      {/* The till at the top right, waiting for the one-off charge. */}
+      <g className="cs-pop" style={delay(0.4)}>
+        <path className="cs-line" d="M238 44 Q238 32 240 26 Q262 23 284 26 Q286 32 286 44" />
+        <path className="cs-line" d="M240 44 Q262 47 284 44" />
+      </g>
+      {/* Empty cups along the bottom. */}
+      {Array.from({ length: groups }, (_, g) => {
+        const p = groupPos(g);
+        return (
+          <path
+            key={`cup-${g}`}
+            className="cs-line cs-draw"
+            pathLength={1}
+            d={`M${p.x - 12} ${p.y + 14} Q${p.x - 10} ${p.y + 28} ${p.x} ${p.y + 29} Q${p.x + 10} ${p.y + 28} ${p.x + 12} ${p.y + 14}`}
+            style={delay(0.3 + g * 0.08)}
+          />
+        );
+      })}
+      {phase === "setup"
+        ? Array.from({ length: total }, (_, i) => {
+            const p = pilePos(i);
+            return (
+              <g key={i} transform={`translate(${p.x} ${p.y})`}>
+                <g className="cs-pop" style={delay(0.45 + i * 0.04)}>
+                  {coin}
+                </g>
+              </g>
+            );
+          })
+        : Array.from({ length: total }, (_, i) => {
+            const start = pilePos(i);
+            let fin: { x: number; y: number };
+            let startAt: number;
+            if (i < fixedCost) {
+              fin = { x: 250 + (i % 2) * 13, y: 52 + Math.floor(i / 2) * 11 };
+              startAt = payStart + i * 0.09;
+            } else {
+              const j = i - fixedCost;
+              const g = Math.floor(j / perGroup);
+              const slot = j % perGroup;
+              const p = groupPos(g);
+              fin = { x: p.x - 8 + slot * 8, y: p.y + 6 - (slot % 2) * 3 };
+              startAt = groupStart(g) + slot * 0.07;
+            }
+            return (
+              <g key={i} transform={`translate(${fin.x} ${fin.y})`}>
+                <g className="cs-slide" style={slideFrom(start.x - fin.x, start.y - fin.y, startAt)}>
+                  {coin}
+                </g>
+              </g>
+            );
+          })}
+      {phase === "solved" ? (
+        <>
+          <text className="cs-tick" x="262" y="18" style={delay(payStart + fixedCost * 0.09 + 0.4)}>
+            {rest}
+          </text>
+          {Array.from({ length: groups }, (_, g) => {
+            const p = groupPos(g);
+            return (
+              <ellipse
+                key={`ring-${g}`}
+                className="cs-ring"
+                cx={p.x}
+                cy={p.y + 12}
+                rx="21"
+                ry="17"
+                style={delay(groupStart(g) + perGroup * 0.07 + 0.3)}
+              />
+            );
+          })}
+        </>
+      ) : null}
+    </>
+  );
+}
+
+export function BearingDiagramScene({
+  description,
+  phase,
+  stepDelay,
+}: {
+  description: Extract<ClueSceneDescription, { kind: "bearing-diagram" }>;
+  phase: ClueScenePhase;
+  stepDelay?: (step: number) => number;
+}) {
+  const { eastKm, northKm } = description;
+  const scale = 88 / Math.max(eastKm, northKm);
+  const ox = 92;
+  const oy = 152;
+  const eastX = ox + eastKm * scale;
+  const northY = oy - northKm * scale;
+  const bearing = Math.round((Math.atan2(eastKm, northKm) * 180) / Math.PI);
+  const legStart = (s: number) => (stepDelay ? stepDelay(s) : 0.5 + s * 0.8);
+  // The arc at the origin, from north toward the direct line.
+  const arcR = 34;
+  const endAngle = Math.atan2(eastKm, northKm);
+  const arcEnd = { x: ox + Math.sin(endAngle) * arcR, y: oy - Math.cos(endAngle) * arcR };
+  return (
+    <>
+      {/* Map frame and a faint grid. */}
+      <path className="cs-line cs-draw" pathLength={1} d="M52 176 Q160 180 268 176 Q272 100 268 24 Q160 18 52 24 Q48 100 52 176 Z" style={delay(0)} />
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M106 24 Q104 100 106 176 M160 20 Q158 100 160 178 M214 22 Q212 100 214 176" style={delay(0.15)} />
+      {/* The north arrow at the harbour. */}
+      <path className="cs-line cs-band cs-draw" pathLength={1} d={`M${ox} ${oy} L${ox} ${oy - 52}`} style={delay(0.3)} />
+      <path className="cs-tip cs-pop" d={`M${ox} ${oy - 60} L${ox - 4.5} ${oy - 48} L${ox + 4.5} ${oy - 48} Z`} style={delay(0.5)} />
+      {/* The boat at the harbour. */}
+      <g className="cs-pop" style={delay(0.45)}>
+        <path className="cs-line" d={`M${ox - 9} ${oy + 3} Q${ox} ${oy + 8} ${ox + 9} ${oy + 3} L${ox + 6} ${oy - 3} L${ox - 6} ${oy - 3} Z`} />
+        <path className="cs-line" d={`M${ox} ${oy - 3} L${ox} ${oy - 10}`} />
+      </g>
+      {phase === "solved" ? (
+        <>
+          <path className="cs-line cs-band cs-draw" pathLength={1} d={`M${ox} ${oy} Q${(ox + eastX) / 2} ${oy + 3} ${eastX} ${oy}`} style={delay(legStart(0))} />
+          <path className="cs-line cs-band cs-draw" pathLength={1} d={`M${eastX} ${oy} Q${eastX + 3} ${(oy + northY) / 2} ${eastX} ${northY}`} style={delay(legStart(1))} />
+          <path className="cs-line cs-soft cs-draw" pathLength={1} strokeDasharray="4 3" d={`M${ox} ${oy} Q${(ox + eastX) / 2} ${(oy + northY) / 2 - 6} ${eastX} ${northY}`} style={delay(legStart(1) + 0.3)} />
+          <path
+            className="cs-line cs-band cs-fade"
+            d={`M${ox} ${oy - arcR} A${arcR} ${arcR} 0 0 1 ${arcEnd.x.toFixed(1)} ${arcEnd.y.toFixed(1)}`}
+            style={delay(stepDelay ? stepDelay(2) : 2.1)}
+          />
+          <text className="cs-tick cs-tick-final" x={ox + 26} y={oy - 44} style={delay(stepDelay ? stepDelay(2) + 0.7 : 2.8)}>
+            {`${bearing}°`}
+          </text>
+        </>
+      ) : null}
+    </>
+  );
+}

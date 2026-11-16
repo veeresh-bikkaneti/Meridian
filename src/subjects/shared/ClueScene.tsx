@@ -52,15 +52,28 @@ import {
   type ClueSceneSummary,
 } from "./clue-scene-types";
 import { seeded } from "./clue-scene-easing";
-import { BusBoardingScene, PackBoxesScene } from "./clue-scene-kinds-a";
+import {
+  ArrayGridScene,
+  BusBoardingScene,
+  PackBoxesScene,
+  PercentBarScene,
+  ScaleLineScene,
+} from "./clue-scene-kinds-a";
 import {
   DigitShiftScene,
+  FractionBarScene,
+  FractionMeasureScene,
+  MapScaleScene,
   PlaceCompareScene,
   PlaceValueScene,
 } from "./clue-scene-kinds-b";
 import {
+  BearingDiagramScene,
   ChunkShareScene,
+  JourneyLineScene,
+  RateBarsScene,
   RoundingLineScene,
+  SpendThenGroupScene,
   SplitProductScene,
 } from "./clue-scene-kinds-c";
 import {
@@ -407,6 +420,16 @@ const SUMMARY_STAGGER: Record<ClueSceneDescription["kind"], number> = {
   "fraction-fill": 1.0,
   "clock-arc": 0.55,
   "unit-fit": 0.9,
+  "array-grid": 0.9,
+  "scale-line": 0.9,
+  "percent-bar": 0.9,
+  "map-scale": 0.55,
+  "fraction-bar": 0.9,
+  "fraction-measure": 0.45,
+  "rate-bars": 0.9,
+  "journey-line": 0.55,
+  "spend-then-group": 0.5,
+  "bearing-diagram": 0.9,
 };
 
 /** The summary clip's URL (public/audio/subjects/, manifest.json). */
@@ -485,6 +508,26 @@ function SceneArt({
       return <ClockArcScene description={description} phase={phase} stepDelay={stepDelay} />;
     case "unit-fit":
       return <UnitFitScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "array-grid":
+      return <ArrayGridScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "scale-line":
+      return <ScaleLineScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "percent-bar":
+      return <PercentBarScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "map-scale":
+      return <MapScaleScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "fraction-bar":
+      return <FractionBarScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "fraction-measure":
+      return <FractionMeasureScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "rate-bars":
+      return <RateBarsScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "journey-line":
+      return <JourneyLineScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "spend-then-group":
+      return <SpendThenGroupScene description={description} phase={phase} stepDelay={stepDelay} />;
+    case "bearing-diagram":
+      return <BearingDiagramScene description={description} phase={phase} stepDelay={stepDelay} />;
   }
 }
 
