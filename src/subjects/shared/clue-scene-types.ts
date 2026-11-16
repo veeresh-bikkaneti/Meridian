@@ -328,15 +328,6 @@ export type ClueSceneDescription =
       summary?: ClueSceneSummary;
     }
   | {
-      kind: "array-grid";
-      /** Rows in the array — a given from the question. */
-      rows: number;
-      /** Tiles in each row — a given from the question. */
-      perRow: number;
-      /** The round part of a row — split from the question's number. */
-      splitHigh: number;
-      /** The leftover part of a row — split from the question's number. */
-      splitLow: number;
       kind: "tile-grid";
       /** Rows in the rectangle — a given from the question. */
       rows: number;
@@ -350,11 +341,6 @@ export type ClueSceneDescription =
       summary?: ClueSceneSummary;
     }
   | {
-      kind: "scale-line";
-      /** The length in kilometres — a given from the question. */
-      kilometres: number;
-      /** Metres in one kilometre — a given from the question. */
-      metresPerKm: number;
       kind: "measure-trace";
       /** "loop": trace every side of a length × width rectangle.
        * "bars": trace two aligned lengths and bracket the gap. */
@@ -369,11 +355,6 @@ export type ClueSceneDescription =
       summary?: ClueSceneSummary;
     }
   | {
-      kind: "percent-bar";
-      /** The whole price — a given from the question. */
-      total: number;
-      /** The percent taken off — a given from the question. */
-      percentOff: number;
       kind: "fraction-slice";
       /** Equal parts the first whole is cut into — a given. */
       parts: number;
@@ -383,6 +364,79 @@ export type ClueSceneDescription =
       parts2?: number;
       /** Parts taken from the second whole. */
       taken2?: number;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "fraction-fill";
+      /** First bottle's fill: numerator of denominator — givens. */
+      numerator: number;
+      denominator: number;
+      /** Second bottle's fill — givens from the question. */
+      otherNumerator: number;
+      otherDenominator: number;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "clock-arc";
+      /** Start time — givens from the question. */
+      startHour: number;
+      startMinute: number;
+      /** End time — givens from the question. */
+      endHour: number;
+      endMinute: number;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "unit-fit";
+      /** The path's length in metres — the staging given the fit
+       * judgement is computed from (see fittingUnit). */
+      pathLength: number;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "array-grid";
+      /** Rows in the array — a given from the question. */
+      rows: number;
+      /** Tiles in each row — a given from the question. */
+      perRow: number;
+      /** The round part of a row — split from the question's number. */
+      splitHigh: number;
+      /** The leftover part of a row — split from the question's number. */
+      splitLow: number;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "scale-line";
+      /** The length in kilometres — a given from the question. */
+      kilometres: number;
+      /** Metres in one kilometre — a given from the question. */
+      metresPerKm: number;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "percent-bar";
+      /** The whole price — a given from the question. */
+      total: number;
+      /** The percent taken off — a given from the question. */
+      percentOff: number;
       labelSetup: string;
       labelSolved: string;
       /** Narrated solved summary (act 3); solved phase only. */
@@ -405,13 +459,6 @@ export type ClueSceneDescription =
       numerator: number;
       /** Equal parts the bar is split into — a given. */
       denominator: number;
-      kind: "fraction-fill";
-      /** First bottle's fill: numerator of denominator — givens. */
-      numerator: number;
-      denominator: number;
-      /** Second bottle's fill — givens from the question. */
-      otherNumerator: number;
-      otherDenominator: number;
       labelSetup: string;
       labelSolved: string;
       /** Narrated solved summary (act 3); solved phase only. */
@@ -468,13 +515,6 @@ export type ClueSceneDescription =
       fixedCost: number;
       /** Coins per cup — a given from the question. */
       perGroup: number;
-      kind: "clock-arc";
-      /** Start time — givens from the question. */
-      startHour: number;
-      startMinute: number;
-      /** End time — givens from the question. */
-      endHour: number;
-      endMinute: number;
       labelSetup: string;
       labelSolved: string;
       /** Narrated solved summary (act 3); solved phase only. */
@@ -486,10 +526,6 @@ export type ClueSceneDescription =
       eastKm: number;
       /** Kilometres north — a given from the question. */
       northKm: number;
-      kind: "unit-fit";
-      /** The path's length in metres — the staging given the fit
-       * judgement is computed from (see fittingUnit). */
-      pathLength: number;
       labelSetup: string;
       labelSolved: string;
       /** Narrated solved summary (act 3); solved phase only. */

@@ -56,6 +56,20 @@ function givensOf(d: ClueSceneDescription): number[] {
       return [d.rows, d.perRow, d.splitHigh, d.splitLow];
     case "chunk-share":
       return [d.total, d.shares];
+    case "tile-grid":
+      return [d.cols, d.rows];
+    case "measure-trace":
+      return [d.length, d.width];
+    case "fraction-slice":
+      return d.parts2
+        ? [d.parts, d.taken, d.parts2, d.taken2 ?? 0]
+        : [d.parts, d.taken];
+    case "fraction-fill":
+      return [d.numerator, d.denominator, d.otherNumerator, d.otherDenominator];
+    case "clock-arc":
+      return [d.startHour, d.startMinute, d.endHour, d.endMinute];
+    case "unit-fit":
+      return [d.pathLength];
     case "array-grid":
       return [d.rows, d.perRow, d.splitHigh, d.splitLow];
     case "scale-line":
@@ -76,20 +90,6 @@ function givensOf(d: ClueSceneDescription): number[] {
       return [d.total, d.fixedCost, d.perGroup];
     case "bearing-diagram":
       return [d.eastKm, d.northKm];
-    case "tile-grid":
-      return [d.cols, d.rows];
-    case "measure-trace":
-      return [d.length, d.width];
-    case "fraction-slice":
-      return d.parts2
-        ? [d.parts, d.taken, d.parts2, d.taken2 ?? 0]
-        : [d.parts, d.taken];
-    case "fraction-fill":
-      return [d.numerator, d.denominator, d.otherNumerator, d.otherDenominator];
-    case "clock-arc":
-      return [d.startHour, d.startMinute, d.endHour, d.endMinute];
-    case "unit-fit":
-      return [d.pathLength];
   }
 }
 
@@ -123,6 +123,18 @@ function stepCountOf(d: ClueSceneDescription): number {
       return 4; // split overlays, round-part tick, leftover tick, final tick
     case "chunk-share":
       return chunkPlan(d).length;
+    case "tile-grid":
+      return d.rows; // one beat per row laid
+    case "measure-trace":
+      return d.mode === "loop" ? 4 : 3; // loop: four sides; bars: trace, trace, gap
+    case "fraction-slice":
+      return d.parts + (d.parts2 ?? 0); // one beat per slice, across both wholes
+    case "fraction-fill":
+      return 3; // fill, fill, the shared grid
+    case "clock-arc":
+      return elapsedMinutes(d) / 5; // the arc sweeps in five-minute chunks
+    case "unit-fit":
+      return 3; // ant-step, finger-step, stride
     case "array-grid":
       return 4; // split overlays, wide tick, narrow tick, final tick
     case "scale-line":
@@ -145,18 +157,6 @@ function stepCountOf(d: ClueSceneDescription): number {
       return 1 + Math.round((d.total - d.fixedCost) / d.perGroup);
     case "bearing-diagram":
       return 3; // east leg, north leg, the angle arc
-    case "tile-grid":
-      return d.rows; // one beat per row laid
-    case "measure-trace":
-      return d.mode === "loop" ? 4 : 3; // loop: four sides; bars: trace, trace, gap
-    case "fraction-slice":
-      return d.parts + (d.parts2 ?? 0); // one beat per slice, across both wholes
-    case "fraction-fill":
-      return 3; // fill, fill, the shared grid
-    case "clock-arc":
-      return elapsedMinutes(d) / 5; // the arc sweeps in five-minute chunks
-    case "unit-fit":
-      return 3; // ant-step, finger-step, stride
   }
 }
 
