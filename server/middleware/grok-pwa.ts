@@ -8,20 +8,28 @@
  *   static output on Vercel and not readable from the function).
  * - `/__grok/manifest.webmanifest` → per-app-named manifest (kept out of
  *   public/ so this dynamic response is the only one).
- * - Other HTML documents → stream-inject PWA + OG head tags at `</head>`.
+ * - Other HTML documents → stream-inject PWA + OG head tags at `</head>`,
+ *   plus the app's boot-rescue scripts for parity with the Pages build:
+ *   the `?nosw=1` escape hatch before `</head>` and the crash watchdog
+ *   before `</body>` (QA/UI-UX council, 2026-11-16: the Workers SSR
+ *   shell carried neither, so a wedged service worker on this deploy
+ *   had no self-rescue and boot failures left no report).
  *   OG identity is baked via `virtual:grok-og-identity` at `vite build`
  *   (this function cannot read `src/lib/og/site.json` or `public/og.jpg`).
  *   This must be a middleware transforming `next()`: h3 discards the `response`
  *   runtime hook's return value, and `render:html` does not exist in Nitro v3.
  */
 import installPageTemplate from "../../scripts/install-page.html?raw";
-import { grokOgIdentity } from "virtual:grok-og-identity";
+import { grokBuildId, grokOgIdentity } from "virtual:grok-og-identity";
 import {
   acceptsHtml,
+  createCloseTagInjector,
   createHeadInjector,
   isDocumentPath,
   isInstallQuery,
+  renderCrashWatchdogScript,
   renderInstallPageHtml,
+  renderNoswHatchScript,
   renderWebManifest,
 } from "../../scripts/grok-pwa-shared.mjs";
 
@@ -36,21 +44,46 @@ function requestHost(event: GrokPwaEvent): string {
   );
 }
 
+interface PushFlushInjector {
+  push(chunk: Uint8Array | string): Uint8Array[];
+  flush(): Uint8Array[];
+}
+
+function injectorStream(injector: PushFlushInjector): TransformStream<Uint8Array, Uint8Array> {
+  return new TransformStream<Uint8Array, Uint8Array>({
+    transform(chunk, controller) {
+      for (const out of injector.push(chunk)) controller.enqueue(out);
+    },
+    flush(controller) {
+      for (const out of injector.flush()) controller.enqueue(out);
+    },
+  });
+}
+
 function injectHeadStreaming(response: Response, host: string): Response {
-  const injector = createHeadInjector({
+  const head = createHeadInjector({
     host,
     site: grokOgIdentity.site,
   });
-  const transformed = response.body!.pipeThrough(
-    new TransformStream<Uint8Array, Uint8Array>({
-      transform(chunk, controller) {
-        for (const out of injector.push(chunk)) controller.enqueue(out);
-      },
-      flush(controller) {
-        for (const out of injector.flush()) controller.enqueue(out);
-      },
-    }),
-  );
+  // Pages parity (QA/UI-UX council, 2026-11-16): the static build gets
+  // these from its shell plugins; the SSR shell gets them here. The
+  // hatch must sit in the head so it runs before any bundle code; the
+  // watchdog only needs to be inline before the bundles execute, and
+  // the end of the body is where the Pages shell carries it too.
+  const hatch = createCloseTagInjector({
+    closeTag: "head",
+    marker: "meridian-nosw-hatch",
+    render: () => renderNoswHatchScript(),
+  });
+  const watchdog = createCloseTagInjector({
+    closeTag: "body",
+    marker: "meridian-crash-watchdog",
+    render: () => renderCrashWatchdogScript(grokBuildId),
+  });
+  const transformed = response
+    .body!.pipeThrough(injectorStream(head))
+    .pipeThrough(injectorStream(hatch))
+    .pipeThrough(injectorStream(watchdog));
   const headers = new Headers(response.headers);
   headers.delete("content-length");
   return new Response(transformed, {

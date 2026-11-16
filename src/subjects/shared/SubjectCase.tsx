@@ -62,6 +62,18 @@
  * it for the summary's full script as standing text. Because the
  * section itself renders only when the case is done, nothing the
  * hook returns can be reached before the pick.
+ *
+ * L1 lose path (feat/fair-share-lose-path): a subject may also
+ * pass a `loseReveal` hook naming the items whose WRONG pick
+ * reveals the solved summary — an answer-first line, then the
+ * same act-3 performance the win path plays (the scene in its
+ * solved phase, the summary's standing text via `resultExtra`).
+ * Math enables it for exactly one item (fair-share, ages 7-10).
+ * The reveal is not a solve: the phase never reaches "done", no
+ * celebration fires, and the detective host still sees a wrong
+ * pick. It fires only after a pick, so answer-blindness before
+ * the choice is unchanged, and every item the hook does not name
+ * keeps today's wrong-pick behaviour exactly.
  */
 import { Suspense, lazy, useEffect, useRef, useState, type ReactNode } from "react";
 import type { AgeGroup, SubjectProps, UnitItem } from "../registry";
@@ -104,9 +116,11 @@ export type SubjectCaseConfig = {
    * feat/clue-scene-pilot: a short drawn film for the item's clue).
    * Answer-blind by construction, like the detective host: the
    * hook receives the item, a phase derived from this flow's own
-   * state ("solved" once the case is done, "setup" before it), the
-   * reduced-motion flag and the band — never the answer, a choice,
-   * or a pick. Absent for every other subject: no change. */
+   * state ("solved" once the case is done — or, on a `loseReveal`
+   * item, once a wrong pick has revealed the summary — "setup"
+   * before either), the reduced-motion flag and the band — never
+   * the answer, a choice, or a pick. Absent for every other
+   * subject: no change. */
   scene?: (item: UnitItem, phase: "setup" | "solved", reduced: boolean, band: AgeGroup) => ReactNode;
   /** Optional extra block inside the SOLVED result section
    * (act 3: the summary's full script as standing text). The
@@ -115,6 +129,15 @@ export type SubjectCaseConfig = {
    * the reduced-motion flag and the band. Absent for subjects
    * without post-solve extras: no change. */
   resultExtra?: (item: UnitItem, reduced: boolean, band: AgeGroup) => ReactNode;
+  /** Optional L1 lose path: the items whose WRONG pick reveals
+   * the solved summary. Receives the item and the band; returning
+   * true means a wrong pick on that item (on the entry question)
+   * shows the answer-first line and plays the item's act-3
+   * summary — the scene in its solved phase, the standing text
+   * via `resultExtra` — instead of leaving the player at the
+   * answer card's "try again". Absent, or false for an item, the
+   * wrong pick behaves exactly as before. */
+  loseReveal?: (item: UnitItem, band: AgeGroup) => boolean;
 };
 
 export function SubjectCase({
@@ -125,6 +148,7 @@ export function SubjectCase({
   lead,
   scene,
   resultExtra,
+  loseReveal,
   group,
   onExit,
   onCelebrate,
@@ -156,10 +180,18 @@ export function SubjectCase({
   const items = itemsForGroup(band);
   const [index, setIndex] = useState(0);
   const [picked, setPicked] = useState<string | null>(null);
+  // L1 lose path: true once a wrong pick on a `loseReveal` item
+  // has revealed that item's solved summary for the current case.
+  // Reset with the case (nextCase); a correct pick never sets it.
+  const [loseRevealed, setLoseRevealed] = useState(false);
   // "main" asks the entry; "followUp" asks its follow-up; "done"
   // shows the result with both answers.
   const [phase, setPhase] = useState<CasePhase>("main");
   const solved = phase === "done";
+  // The scene's phase: the lose reveal performs the same solved
+  // beat as a win — the case itself is not done, so nothing else
+  // in this flow keys off this; it feeds the scene hook only.
+  const scenePhase: "setup" | "solved" = solved || loseRevealed ? "solved" : "setup";
   const headingRef = useRef<HTMLHeadingElement | null>(null);
 
   // Arrival focus, the LoopScreen pattern: land focus on the heading so
@@ -239,21 +271,33 @@ export function SubjectCase({
     }
   };
 
+  // Shared wrong-answer path for picks and typed numbers: the
+  // pick stands as feedback, and on a `loseReveal` item's entry
+  // question it also reveals the solved summary (the L1 lose
+  // path). The reveal is gated on the entry question only — a
+  // follow-up's wrong answer never reveals the entry's summary.
+  const onWrong = (value: string) => {
+    setPicked(value);
+    if (phase === "main" && loseReveal?.(item, band)) {
+      setLoseRevealed(true);
+    }
+  };
+
   const pick = (choice: string) => {
-    if (solved) return;
+    if (solved || loseRevealed) return;
     if (choice === active.correct) {
       onCorrect();
     } else {
-      setPicked(choice);
+      onWrong(choice);
     }
   };
 
   const checkNumber = (value: number | null, raw: string) => {
-    if (solved) return;
+    if (solved || loseRevealed) return;
     // A number entry carries its value; an unparseable typed answer
     // is wrong the same way a wrong pick is.
     if (value === null || active.value === undefined || value !== active.value) {
-      setPicked(raw);
+      onWrong(raw);
     } else {
       onCorrect();
     }
@@ -262,6 +306,7 @@ export function SubjectCase({
   const nextCase = () => {
     setIndex((i) => (i + 1) % items.length);
     setPicked(null);
+    setLoseRevealed(false);
     setPhase("main");
   };
 
@@ -297,21 +342,9 @@ export function SubjectCase({
           </Suspense>
         </div>
         {lead ? lead(item, reduced) : null}
-        {scene ? scene(item, solved ? "solved" : "setup", reduced, band) : null}
+        {scene ? scene(item, scenePhase, reduced, band) : null}
         <ClueCard tier={title} index={0} text={item.why} revealed reduced={reduced} />
-        {!solved ? (
-          <AnswerCard
-            key={`${item.id}:${phase}`}
-            prompt={active.prompt}
-            choices={active.choices}
-            picked={picked}
-            onPick={pick}
-            testId={`${testIdPrefix}-answer-card`}
-            kind={active.kind ?? "choice"}
-            onNumber={checkNumber}
-            moveFocus={phase === "followUp"}
-          />
-        ) : (
+        {solved ? (
           <section
             aria-label="You solved it"
             className="loop-reveal mode-surface rounded-2xl border p-4"
@@ -344,6 +377,44 @@ export function SubjectCase({
               <HomeButton onHome={onExit} testId="home-button-end" variant="secondary" className="w-full rounded-xl" />
             </div>
           </section>
+        ) : loseRevealed ? (
+          <section
+            aria-label="The answer, and how it solves"
+            className="loop-reveal mode-surface rounded-2xl border p-4"
+            data-testid={`${testIdPrefix}-lose-reveal`}
+          >
+            <p className="mt-2 text-fg" data-testid={`${testIdPrefix}-lose-answer`}>
+              The answer is <strong>{answer.correct}</strong> — here's how.
+            </p>
+            {resultExtra ? resultExtra(item, reduced, band) : null}
+            <p className="mt-3 text-fg" data-testid={`${testIdPrefix}-used-in`}>
+              You just used this in… {item.useElsewhere[0] ?? "everyday life"}.
+            </p>
+            <div className="mt-4 grid gap-2">
+              {items.length > 1 ? (
+                <button
+                  type="button"
+                  className="min-h-[44px] w-full rounded-xl border border-line bg-bg px-4 py-2 text-fg"
+                  onClick={nextCase}
+                >
+                  🔎 Next case
+                </button>
+              ) : null}
+              <HomeButton onHome={onExit} testId="home-button-end" variant="secondary" className="w-full rounded-xl" />
+            </div>
+          </section>
+        ) : (
+          <AnswerCard
+            key={`${item.id}:${phase}`}
+            prompt={active.prompt}
+            choices={active.choices}
+            picked={picked}
+            onPick={pick}
+            testId={`${testIdPrefix}-answer-card`}
+            kind={active.kind ?? "choice"}
+            onNumber={checkNumber}
+            moveFocus={phase === "followUp"}
+          />
         )}
       </div>
       {/* The game's "Start over" reset, alone in a separated footer —

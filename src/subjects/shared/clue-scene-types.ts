@@ -158,6 +158,16 @@ export interface ClueSceneSummary {
   beats: number[];
 }
 
+/**
+ * A summary line as the caption shows it. The closing line splices
+ * the answer's wording in after "so", which can leave a capital
+ * mid-sentence ("so The valley road", "needs About 80"); words that
+ * are never names drop to lower case after a lower-case word.
+ */
+export function captionText(text: string): string {
+  return text.replace(/(?<=[a-z,] )(The|About)\b/g, (word) => word.toLowerCase());
+}
+
 /** How many animation steps a summary paces in total. */
 export function summaryStepCount(summary: ClueSceneSummary): number {
   return summary.beats.reduce((a, b) => a + b, 0);
@@ -403,5 +413,593 @@ export type ClueSceneDescription =
       labelSetup: string;
       labelSolved: string;
       /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "array-grid";
+      /** Rows in the array — a given from the question. */
+      rows: number;
+      /** Tiles in each row — a given from the question. */
+      perRow: number;
+      /** True variant (wave 9, social studies): a SECOND field
+       * of this many rows stands beside the first (the two
+       * fields of the area-by-squares item); the solved beat
+       * counts both fields and stands the difference as its
+       * final tick. Absent, the renderer runs the Math path
+       * unchanged. */
+      secondRows?: number;
+      /** The round part of a row — split from the question's number. */
+      splitHigh: number;
+      /** The leftover part of a row — split from the question's number. */
+      splitLow: number;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "scale-line";
+      /** The length in kilometres — a given from the question. */
+      kilometres: number;
+      /** Metres in one kilometre — a given from the question. */
+      metresPerKm: number;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "percent-bar";
+      /** The whole price — a given from the question. */
+      total: number;
+      /** The percent taken off — a given from the question. */
+      percentOff: number;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "map-scale";
+      /** Centimetres on the map — a given from the question. */
+      mapCm: number;
+      /** Kilometres each centimetre stands for — a given. */
+      kmPerCm: number;
+      /** Segment width in px (wave 9, social studies): a long
+       * trail (7 cm) needs narrower segments to stay in frame.
+       * Absent, the renderer uses the Math width unchanged. */
+      segmentPx?: number;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "fraction-bar";
+      /** Shaded parts of the bar — a given from the question. */
+      numerator: number;
+      /** Equal parts the bar is split into — a given. */
+      denominator: number;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "fraction-measure";
+      /** The whole roll's length — a given from the question. */
+      total: number;
+      /** The piece length's numerator — a given from the question. */
+      pieceNumerator: number;
+      /** The piece length's denominator — a given from the question. */
+      pieceDenominator: number;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "rate-bars";
+      /** Metres at the first stall — a given from the question. */
+      firstMetres: number;
+      /** Coins for them at the first stall — a given. */
+      firstCoins: number;
+      /** Metres at the second stall — a given from the question. */
+      secondMetres: number;
+      /** Coins for them at the second stall — a given. */
+      secondCoins: number;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "journey-line";
+      /** The whole journey's length — a given from the question. */
+      totalKm: number;
+      /** Hours the known stretch took (steady-pace items). */
+      hours?: number;
+      /** The longer path to time (steady-pace items). */
+      targetKm?: number;
+      /** Kilometres still ahead (part-walked items). */
+      aheadKm?: number;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "spend-then-group";
+      /** The whole budget — a given from the question. */
+      total: number;
+      /** The one-off charge — a given from the question. */
+      fixedCost: number;
+      /** Coins per cup — a given from the question. */
+      perGroup: number;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "bearing-diagram";
+      /** Kilometres east — a given from the question. */
+      eastKm: number;
+      /** Kilometres north — a given from the question. */
+      northKm: number;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "share-bar";
+      /** The whole bill — a given from the question. */
+      total: number;
+      /** The first share's numerator — a given from the question. */
+      firstNumerator: number;
+      /** The first share's denominator — a given from the question. */
+      firstDenominator: number;
+      /** The second share's numerator — a given from the question. */
+      secondNumerator: number;
+      /** The second share's denominator — a given from the question. */
+      secondDenominator: number;
+      /** The percent taken off one remaining share — a given. */
+      discountPercent: number;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "timeline-line";
+      /** The earlier year on the line — a given from the question. */
+      startYear: number;
+      /** The later year on the line — a given (for the year-gap
+       * item, the device's current year, resolved at play time). */
+      endYear: number;
+      /** True when the solved beat counts the gap off in decades
+       * (the year-gap item); false when it compares the two years
+       * and rings the earlier one (the older-landmark item). */
+      countGap: boolean;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "tower-measure";
+      /** The tower's first height — a given from the question. */
+      oldHeight: number;
+      /** The tower's height today — a given from the question. */
+      newHeight: number;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "push-duel";
+      /** The left push's strength — a given from the question
+       * (drawn as that arrow's length; a relative scale, never
+       * the answer: the setup film draws both arrows and the
+       * block does not move). */
+      leftPower: number;
+      /** The right push's strength — a given from the question. */
+      rightPower: number;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "tile-steps";
+      /** Tiles the lead box or cart covers each step — a given
+       * from the question. */
+      tilesPerStep: number;
+      /** Steps (pushes) taken — a given from the question. */
+      hops: number;
+      /** Tiles the second cart covers each step — a given from
+       * the question (two-cart race items only; absent for the
+       * single-box counting items). */
+      rivalTilesPerStep?: number;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "slide-stop";
+      /** Floor segments the crate slides before the mark — the
+       * scene's spatial layout of the question's own slide (the
+       * question states no number; the mark itself is a given). */
+      slideTiles: number;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "cup-shove";
+      /** How far the slower ball's hit slides the cup — the
+       * scene's spatial layout, spent only in the solved phase
+       * (the setup film never shows a slide at all). */
+      slowSlide: number;
+      /** How far the faster ball's hit slides the cup — spent
+       * only in the solved phase, like slowSlide. */
+      fastSlide: number;
+      /** True for the wave-6 transfer item: ONE ball rolls in,
+       * stops dead against the cup, and the cup slides
+       * slowSlide on its own (fastSlide unused, 0). Absent, the
+       * renderer runs the wave-4 two-ball path unchanged. */
+      stopsDead?: boolean;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "seesaw-lift";
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "magnet-pair";
+      /** True for the wave-6 closer item: TWO pairs rest at
+       * different gaps (the question's givens) and the closer
+       * pair snaps together in the solved beat. Absent, the
+       * renderer runs the wave-5 cabinet path unchanged. */
+      twoPairs?: boolean;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "drop-fall";
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "wind-up";
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "light-path";
+      /** True when a card the light cannot pass waits at the
+       * side and slides between the book and the eye in the
+       * solved beat (the blocking item); false when the ray
+       * simply traces lamp to book to eye (the mirror item).
+       * A given from the question, drawn only as an object in
+       * the setup film — no ray path is drawn before the pick. */
+      withCard: boolean;
+      /** True for the wave-6 three-ways item: the lamp faces
+       * three materials (dark cloth, clear sheet, mirror)
+       * instead of the book and eye; the solved beat shows the
+       * light absorbed, passed through, and reflected.
+       * `withCard` is false for that item. Absent, the
+       * renderer runs the wave-5 paths unchanged. */
+      threeMaterials?: boolean;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "rate-race";
+      /** Metres the first cart covers — a given from the question. */
+      firstMetres: number;
+      /** Seconds it takes — a given from the question. */
+      firstSeconds: number;
+      /** Metres the second cart covers — a given from the question. */
+      secondMetres: number;
+      /** Seconds it takes — a given from the question. */
+      secondSeconds: number;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "slope-pair";
+      /** The first ramp's rise — a given from the question. */
+      firstRise: number;
+      /** The first ramp's run — a given from the question. */
+      firstRun: number;
+      /** The second ramp's rise — a given from the question. */
+      secondRise: number;
+      /** The second ramp's run — a given from the question. */
+      secondRun: number;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "same-push";
+      /** Boxes loaded on the left cart — a given from the question. */
+      leftBoxes: number;
+      /** Boxes loaded on the right cart — a given from the question. */
+      rightBoxes: number;
+      /** The left push's strength (arrow length scale) — a given. */
+      leftForce: number;
+      /** The right push's strength (arrow length scale) — a given. */
+      rightForce: number;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "hill-carts";
+      /** The lower cart's height step on the hill — the scene's
+       * spatial layout of the question's "one higher" given. */
+      lowStep: number;
+      /** The higher cart's height step — spent as layout only;
+       * the setup film shows the heights themselves (the
+       * question's givens) and no store difference at all. */
+      highStep: number;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "sound-path";
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "energy-ledger";
+      /** How much the stored energy rose — a given from the question. */
+      change: number;
+      /** How much energy went out — a given from the question. */
+      out: number;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "melt-freeze";
+      /** True for the freeze-direction item: an open puddle
+       * (the question's given) skins over with ice in the
+       * solved beat. Absent/false, the renderer runs the melt
+       * direction: a whole ice pop, no drips before the pick,
+       * slumps and drips in the solved beat. The direction is
+       * the item's own data, never a second kind. */
+      freeze?: boolean;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "bend-test";
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "magnet-sort";
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "rebuild-pieces";
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "salt-melt";
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "dissolve";
+      /** True for the identify item: THREE unmarked blocks
+       * beside three glasses (the question's givens); the
+       * solved beat drops one block into each glass and one
+       * dissolves while the others stay whole. Absent, the
+       * renderer runs the single-glass path: crystals whole
+       * in the glass break into tiny dots in the solved beat. */
+      threeBlocks?: boolean;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "particle-states";
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "water-cycle";
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "scale-balance";
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "bubble-reaction";
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "rust-change";
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "glow-rate";
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "atom-tally";
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "column-cousins";
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "compass-walk";
+      /** Steps east — a given from the question. */
+      eastSteps: number;
+      /** Steps north — a given from the question. */
+      northSteps: number;
+      labelSetup: string;
+      labelSolved: string;
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "density-towns";
+      /** Square kilometres the first town's crowd fills — a given. */
+      firstArea: number;
+      /** Square kilometres the second town's crowd fills — a given. */
+      secondArea: number;
+      labelSetup: string;
+      labelSolved: string;
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "two-roads";
+      /** The pass road's length — a given from the question. */
+      passKm: number;
+      /** Speed on the pass — a given from the question. */
+      passSpeed: number;
+      /** The valley road's length — a given from the question. */
+      valleyKm: number;
+      /** Speed on the valley road — a given from the question. */
+      valleySpeed: number;
+      labelSetup: string;
+      labelSolved: string;
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "zone-clocks";
+      /** The hour here, on a twelve-hour clock — a given. */
+      hereHour: number;
+      /** Time zones the far place is east — a given. */
+      zonesAhead: number;
+      labelSetup: string;
+      labelSolved: string;
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "globe-vs-map";
+      labelSetup: string;
+      labelSolved: string;
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "great-circle";
+      /** "south-west": the pins sit north-east to south-west (a
+       * peak and a falls across the equator), so the arc crosses
+       * the globe's face; omitted: the path bends toward the pole. */
+      route?: "south-west";
+      labelSetup: string;
+      labelSolved: string;
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "stack-drops";
+      /** One falls drop's height — a given from the question. */
+      dropHeight: number;
+      /** The peak's height — a given from the question. */
+      peakHeight: number;
+      labelSetup: string;
+      labelSolved: string;
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "angle-sight";
+      /** Feet from the observer to the tower — a given. */
+      distanceFt: number;
+      /** Degrees the sight line climbs — a given. */
+      angleDeg: number;
+      labelSetup: string;
+      labelSolved: string;
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "flow-counter";
+      /** Litres over the falls each minute — a given. */
+      perMinute: number;
+      /** Minutes in a day — a given from the question. */
+      minutesPerDay: number;
+      labelSetup: string;
+      labelSolved: string;
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "cost-compare";
+      /** Fuel cost on the toll road — a given from the question. */
+      tollFuel: number;
+      /** The toll itself — a given from the question. */
+      tollFee: number;
+      /** Fuel cost on the free road — a given from the question. */
+      freeFuel: number;
+      labelSetup: string;
+      labelSolved: string;
       summary?: ClueSceneSummary;
     };
