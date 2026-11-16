@@ -131,6 +131,22 @@ function givensOf(d: ClueSceneDescription): number[] {
       return [];
     case "energy-ledger":
       return [d.change, d.out];
+    case "melt-freeze":
+      return [];
+    case "bend-test":
+      return [];
+    case "magnet-sort":
+      return [];
+    case "rebuild-pieces":
+      return [];
+    case "salt-melt":
+      return [];
+    case "dissolve":
+      return [];
+    case "particle-states":
+      return [];
+    case "water-cycle":
+      return [];
   }
 }
 
@@ -239,6 +255,22 @@ function stepCountOf(d: ClueSceneDescription): number {
       return 3; // the waves cross the air, the waves fade at the gap, the final tick
     case "energy-ledger":
       return 3; // the out bar, the stacked change bar, the in bar and tick
+    case "melt-freeze":
+      return 3;
+    case "bend-test":
+      return 3;
+    case "magnet-sort":
+      return 3;
+    case "rebuild-pieces":
+      return 3;
+    case "salt-melt":
+      return 3;
+    case "dissolve":
+      return 3;
+    case "particle-states":
+      return 3;
+    case "water-cycle":
+      return 3;
   }
 }
 

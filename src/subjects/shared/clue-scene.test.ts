@@ -26,6 +26,7 @@ const subjectCase = read(join(here, "SubjectCase.tsx"));
 const mathCase = read(join(here, "..", "math", "MathCase.tsx"));
 const gkCase = read(join(here, "..", "general-knowledge", "GeneralKnowledgeCase.tsx"));
 const physicsCase = read(join(here, "..", "physics", "PhysicsCase.tsx"));
+const chemistryCase = read(join(here, "..", "chemistry", "ChemistryCase.tsx"));
 const styles = read(join(here, "..", "..", "styles.css"));
 
 describe("clue scene wiring", () => {
@@ -72,6 +73,14 @@ describe("clue scene wiring", () => {
     assert.ok(physicsCase.includes("<ClueScene"));
     assert.ok(physicsCase.includes("resultExtra={"), "physics passes the hook");
     assert.ok(physicsCase.includes("ClueSummaryText"), "as the summary's standing text");
+  });
+
+  it("the chemistry case gates the scenes to ages 7-10 and 10-18 with a description", () => {
+    assert.ok(chemistryCase.includes('if (band !== "7-10" && band !== "10-18") return null;'));
+    assert.ok(chemistryCase.includes("clueSceneFor(item.id)"));
+    assert.ok(chemistryCase.includes("<ClueScene"));
+    assert.ok(chemistryCase.includes("resultExtra={"), "chemistry passes the hook");
+    assert.ok(chemistryCase.includes("ClueSummaryText"), "as the summary's standing text");
   });
 
   it("reduced motion renders the still frame of the current phase", () => {
@@ -371,5 +380,48 @@ describe("wave 6 kinds", () => {
     assert.ok(kindsA.includes("twoPairs"), "magnet-pair carries the two-pair variant data");
     assert.ok(kindsB.includes("stopsDead"), "cup-shove carries the stops-dead variant data");
     assert.ok(kindsC.includes("threeMaterials"), "light-path carries the three-materials variant data");
+  });
+});
+
+describe("wave 7 kinds", () => {
+  const kindsA = read(join(here, "clue-scene-kinds-a.tsx"));
+  const kindsB = read(join(here, "clue-scene-kinds-b.tsx"));
+  const kindsC = read(join(here, "clue-scene-kinds-c.tsx"));
+
+  it("the renderer dispatches every wave-7 kind", () => {
+    for (const kind of [
+      "melt-freeze",
+      "bend-test",
+      "magnet-sort",
+      "rebuild-pieces",
+      "salt-melt",
+      "dissolve",
+      "particle-states",
+      "water-cycle",
+    ]) {
+      assert.ok(scene.includes(`case "${kind}":`), `SceneArt dispatches ${kind}`);
+      assert.ok(scene.includes(`"${kind}":`), `SUMMARY_STAGGER paces ${kind}`);
+    }
+  });
+
+  it("every wave-7 kind accepts the summary pacing prop", () => {
+    for (const [source, name] of [
+      [kindsA, "MeltFreezeScene"],
+      [kindsA, "BendTestScene"],
+      [kindsB, "MagnetSortScene"],
+      [kindsB, "RebuildPiecesScene"],
+      [kindsC, "SaltMeltScene"],
+      [kindsC, "DissolveScene"],
+      [kindsC, "ParticleStatesScene"],
+      [kindsC, "WaterCycleScene"],
+    ] as const) {
+      assert.ok(source.includes(`function ${name}(`), `${name} exists`);
+      assert.ok(source.includes("stepDelay"), `${name} accepts stepDelay`);
+    }
+  });
+
+  it("the wave-7 reuse variants are data branches, not new kinds", () => {
+    assert.ok(kindsA.includes("description.freeze"), "melt-freeze carries the freeze direction data");
+    assert.ok(kindsC.includes("threeBlocks"), "dissolve carries the three-blocks variant data");
   });
 });
