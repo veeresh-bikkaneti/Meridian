@@ -15,8 +15,9 @@ import { serveBuiltArtifact } from "./helpers";
  * next case (unknown-factor) is no longer a no-reveal control —
  * it carries a summary too, so its wrong pick now reveals as
  * well, and the second half of the first test below asserts
- * exactly that. The no-reveal controls (a Math band and a subject
- * with no summary system on this base) live in
+ * exactly that. The no-reveal controls (a Math 10-18 overflow
+ * item with no summary, and a subject whose wrapper passes no
+ * loseReveal hook on this base) live in
  * math-lose-path-all-items.desktop.spec.ts.
  */
 test.setTimeout(600_000);
