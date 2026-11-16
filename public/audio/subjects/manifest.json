@@ -1,7 +1,7 @@
 {
   "v": 1,
   "voice": "am_michael",
-  "note": "Narrated solved summaries for the math clue scenes (act 3). One clip per item; the script and per-line timings in src/subjects/math/scenes.ts are the source of truth and match the clips line for line. Rendered locally with the same voice and loudness targets as the journal narration (-18 LUFS, true peak -1.5 dBFS), 24 kHz mono MP3 at 64 kbps like the other in-app clips. Wave 1 (expansion) added the ten non-pilot clips in the same voice (am_michael), rendered the same way.",
+  "note": "Narrated solved summaries for the math clue scenes (act 3). One clip per item; the script and per-line timings in src/subjects/math/scenes.ts are the source of truth and match the clips line for line. Rendered locally with the same voice and loudness targets as the journal narration (-18 LUFS, true peak -1.5 dBFS), 24 kHz mono MP3 at 64 kbps like the other in-app clips. Wave 1 (expansion) added the ten non-pilot clips in the same voice (am_michael), rendered the same way. The scenes wave (visual-questions Phase 1) added the nine wave-3 clips in the same voice, rendered the same way.",
   "clips": {
     "skip-count": {
       "file": "skip-count.mp3",
@@ -80,6 +80,60 @@
       "item": "math-number:division:big-quotients",
       "duration": 17.57,
       "lines": 5
+    },
+    "fair-parts": {
+      "file": "fair-parts.mp3",
+      "item": "math-number:fractions:fair-parts",
+      "duration": 16.25,
+      "lines": 4
+    },
+    "equivalent": {
+      "file": "equivalent.mp3",
+      "item": "math-number:fractions:equivalent",
+      "duration": 19.7,
+      "lines": 4
+    },
+    "compare-unlike": {
+      "file": "compare-unlike.mp3",
+      "item": "math-number:fractions:compare-unlike",
+      "duration": 19.32,
+      "lines": 4
+    },
+    "arrays": {
+      "file": "arrays.mp3",
+      "item": "math-number:groups:arrays",
+      "duration": 16.9,
+      "lines": 4
+    },
+    "longer-than": {
+      "file": "longer-than.mp3",
+      "item": "math-applied:measure:longer-than",
+      "duration": 19.5,
+      "lines": 4
+    },
+    "choose-unit": {
+      "file": "choose-unit.mp3",
+      "item": "math-applied:measure:choose-unit",
+      "duration": 18.4,
+      "lines": 4
+    },
+    "elapsed-time": {
+      "file": "elapsed-time.mp3",
+      "item": "math-applied:measure:elapsed-time",
+      "duration": 18.07,
+      "lines": 4
+    },
+    "perimeter": {
+      "file": "perimeter.mp3",
+      "item": "math-applied:measure:perimeter",
+      "duration": 23.25,
+      "lines": 5
+    },
+    "rect-area": {
+      "file": "rect-area.mp3",
+      "item": "math-applied:measure:rect-area",
+      "duration": 17.48,
+      "lines": 4
     }
   }
 }

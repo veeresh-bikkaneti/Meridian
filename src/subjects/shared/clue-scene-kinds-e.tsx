@@ -98,7 +98,7 @@ export function FractionSliceScene({
                 className="cs-line cs-draw"
                 pathLength={1}
                 d={`M${w.cx} ${w.cy} L${(w.cx + w.r * Math.cos(a)).toFixed(1)} ${(w.cy + w.r * Math.sin(a)).toFixed(1)}`}
-                style={delay(phase === "setup" ? 1.0 : 0.3 + i * 0.12)}
+                style={delay(phase === "setup" ? 1.2 : 0.3 + i * 0.12)}
               />
             );
           })}
@@ -189,7 +189,7 @@ export function FractionFillScene({
             {/* The fill: rests at its phase height; in setup it
                 rises only partway, below both marks. */}
             {shownH > 0 ? (
-              <g className="cs-slide" style={slideFrom(0, 16, phase === "setup" ? 1.0 : stepStart(bi))}>
+              <g className="cs-slide" style={slideFrom(0, 16, phase === "setup" ? 1.3 : stepStart(bi))}>
                 <rect
                   className="cs-liquid"
                   x={b.x + 4}

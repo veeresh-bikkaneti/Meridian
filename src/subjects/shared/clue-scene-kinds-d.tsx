@@ -199,7 +199,7 @@ export function MeasureTraceScene({
                 className="cs-line cs-band cs-draw"
                 pathLength={1}
                 d={`M${bx + 3} ${bar.y - 7} Q${bx + bar.w / 2} ${bar.y - 10} ${bx + bar.w - 3} ${bar.y - 7}`}
-                style={delay(1.0)}
+                style={delay(1.2)}
               />
             ) : null}
             {phase === "solved" ? (
@@ -287,7 +287,7 @@ export function MeasureTraceScene({
           plank per side, in walking order, tick per side. */}
       {(phase === "setup" ? [0] : [0, 1, 2, 3]).map((s) => {
         const p = plankFor(s);
-        const start = phase === "setup" ? 1.2 : stepStart(s);
+        const start = phase === "setup" ? 1.4 : stepStart(s);
         return (
           <g key={`plank-${s}`} className="cs-slide" style={slideFrom(p.horiz ? -30 : 0, p.horiz ? 0 : -24, start)}>
             <rect className="cs-plank" x={p.x} y={p.y} width={p.w} height={p.h} rx="3" />
@@ -399,7 +399,7 @@ export function ClockArcScene({
           className="cs-line cs-band cs-draw"
           pathLength={1}
           d={arcPath(description.startMinute, description.startMinute + 5, CLOCK.r + 9)}
-          style={delay(1.0)}
+          style={delay(1.2)}
         />
       ) : (
         Array.from({ length: chunks }, (_, c) => (
@@ -489,11 +489,11 @@ export function UnitFitScene({
       {phase === "setup" ? (
         <>
           <g transform="translate(30 122)">
-            <g className="cs-pop" style={delay(0.9)}>
+            <g className="cs-pop" style={delay(1.1)}>
               <AntGlyph />
             </g>
           </g>
-          <circle className="cs-snack-dot cs-fade" cx="44" cy="126" r="1.8" style={delay(1.3)} />
+          <circle className="cs-snack-dot cs-fade" cx="44" cy="126" r="1.8" style={delay(1.6)} />
         </>
       ) : (
         <>
