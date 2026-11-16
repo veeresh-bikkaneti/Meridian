@@ -30,7 +30,7 @@
  * the solved beat's starting positions, so the same objects
  * travel across the phase change.
  */
-import type { CSSProperties } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import {
   groupTicks,
   type ClueSceneDescription,
@@ -502,6 +502,281 @@ export function PercentBarScene({
           </text>
         </>
       ) : null}
+    </>
+  );
+}
+
+/* ── Wave 4 kinds (Physics 7-10): push-duel, tile-steps ───────
+   Same discipline as the kinds above: givens only in the setup
+   film, no digits before the pick; the solved beat computes its
+   outcome from the givens at solve time. push-duel paces three
+   steps (the arrows press, the block answers, the final tick);
+   tile-steps paces one step per hop, each hop's tick the running
+   count of tiles covered. */
+
+/** One push arrow, pointing right, its length set by the push's
+ * strength — the question's own given, drawn spatially. */
+function PushArrow({ headX, y, len, flip }: { headX: number; y: number; len: number; flip?: boolean }) {
+  const tailX = flip ? headX + len : headX - len;
+  const tipBack = flip ? headX + 11 : headX - 11;
+  return (
+    <>
+      <path className="cs-line cs-band" d={`M${tailX} ${y} Q${(tailX + headX) / 2} ${y - 2} ${headX} ${y}`} />
+      <path className="cs-tip" d={`M${headX} ${y} L${tipBack} ${y - 5.5} L${tipBack} ${y + 5.5} Z`} />
+    </>
+  );
+}
+
+export function PushDuelScene({
+  description,
+  phase,
+  stepDelay,
+}: {
+  description: Extract<ClueSceneDescription, { kind: "push-duel" }>;
+  phase: ClueScenePhase;
+  /** Summary pacing: when present, step s's beat starts at
+   * stepDelay(s) instead of the film's own stagger. */
+  stepDelay?: (step: number) => number;
+}) {
+  const { leftPower, rightPower } = description;
+  const dir = leftPower > rightPower ? 1 : rightPower > leftPower ? -1 : 0;
+  const finalCx = 160 + dir * 40;
+  const pressStart = stepDelay ? stepDelay(0) : 0.5;
+  const answerStart = stepDelay ? stepDelay(1) : 1.3;
+  const tickStart = stepDelay ? stepDelay(2) : 2.1;
+  const block = (cx: number) => (
+    <>
+      <rect className="cs-pack" x={cx - 23} y="116" width="46" height="34" rx="4" />
+      <path className="cs-line cs-band" d={`M${cx - 22} 128 Q${cx} 126 ${cx + 22} 128`} />
+      <path className="cs-line cs-soft" d={`M${cx - 8} 117 Q${cx - 9} 133 ${cx - 8} 149 M${cx + 8} 117 Q${cx + 9} 133 ${cx + 8} 149`} />
+    </>
+  );
+  return (
+    <>
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M24 40 Q160 36 296 40" style={delay(0.1)} />
+      <path className="cs-line cs-draw" pathLength={1} d="M16 152 Q160 156 304 152" style={delay(0)} />
+      {phase === "setup" ? (
+        <>
+          <g className="cs-pop" style={delay(0.35)}>{block(160)}</g>
+          <g className="cs-pop" style={delay(0.5)}>
+            <PushArrow headX={123} y={133} len={26 + leftPower * 16} />
+          </g>
+          <g className="cs-pop" style={delay(0.6)}>
+            <PushArrow headX={197} y={133} len={26 + rightPower * 16} flip />
+          </g>
+        </>
+      ) : (
+        <>
+          <g className="cs-slide" style={slideFrom(-26, 0, pressStart)}>
+            <PushArrow headX={123} y={133} len={26 + leftPower * 16} />
+          </g>
+          <g className="cs-slide" style={slideFrom(26, 0, pressStart)}>
+            <PushArrow headX={197} y={133} len={26 + rightPower * 16} flip />
+          </g>
+          {dir !== 0 ? (
+            <g transform={`translate(${dir * 40} 0)`}>
+              <g className="cs-slide" style={slideFrom(-dir * 40, 0, answerStart)}>{block(160)}</g>
+            </g>
+          ) : (
+            <>
+              <g className="cs-cheer" style={delay(answerStart)}>{block(160)}</g>
+              <path
+                className="cs-line cs-band cs-fade"
+                d="M128 108 Q124 133 128 150 M192 108 Q196 133 192 150"
+                style={delay(answerStart + 0.2)}
+              />
+            </>
+          )}
+          <text className="cs-tick cs-tick-final" x={finalCx} y="88" style={delay(tickStart + 0.55)}>
+            {dir > 0 ? "→" : dir < 0 ? "←" : "="}
+          </text>
+        </>
+      )}
+    </>
+  );
+}
+
+/** The box the single tile-steps item pushes (a plain crate). */
+function StepBoxArt() {
+  return (
+    <>
+      <rect className="cs-pack" x="-25" y="-25" width="26" height="25" rx="3" />
+      <path className="cs-line cs-band" d="M-24 -8 Q-12 -10 0 -8" />
+    </>
+  );
+}
+
+/** The cart the two-cart tile-steps item races (a crate on wheels). */
+function StepCartArt() {
+  return (
+    <>
+      <rect className="cs-pack" x="-24" y="-23" width="25" height="17" rx="3" />
+      <path className="cs-line cs-band" d="M-23 -12 Q-12 -14 0 -12" />
+      <circle className="cs-bus-wheel" cx="-17" cy="-2" r="3.6" />
+      <circle className="cs-bus-wheel" cx="-6" cy="-2" r="3.6" />
+    </>
+  );
+}
+
+export function TileStepsScene({
+  description,
+  phase,
+  stepDelay,
+}: {
+  description: Extract<ClueSceneDescription, { kind: "tile-steps" }>;
+  phase: ClueScenePhase;
+  /** Summary pacing: when present, hop h's beat starts at
+   * stepDelay(h) instead of the film's own stagger. */
+  stepDelay?: (step: number) => number;
+}) {
+  const { tilesPerStep, hops, rivalTilesPerStep } = description;
+  const hopStart = (h: number) => (stepDelay ? stepDelay(h) : 0.4 + h * 0.6);
+  // One hopper's copies: each hop but the last lands, holds a
+  // beat and fades (the counter-step keyframes) as the next hop
+  // takes over; the last hop stands. `fadeLast` keeps the rival
+  // cart standing where the race left it too.
+  const hopper = (
+    perStep: number,
+    x0: number,
+    tileW: number,
+    floorY: number,
+    art: ReactNode,
+    keyPrefix: string,
+  ) =>
+    Array.from({ length: hops }, (_, h) => {
+      const finX = x0 + (h + 1) * perStep * tileW;
+      const prevX = x0 + h * perStep * tileW;
+      const inner = (
+        <g className="cs-slide" style={slideFrom(prevX - finX, 0, hopStart(h))}>
+          {art}
+        </g>
+      );
+      return (
+        <g key={`${keyPrefix}-${h}`} transform={`translate(${finX} ${floorY})`}>
+          {h < hops - 1 ? (
+            <g className="cs-counter-step" style={delay(hopStart(h))}>{inner}</g>
+          ) : (
+            inner
+          )}
+        </g>
+      );
+    });
+  if (rivalTilesPerStep === undefined) {
+    const tileW = 29;
+    const x0 = 44;
+    const tiles = tilesPerStep * hops;
+    const finalX = x0 + tiles * tileW;
+    return (
+      <>
+        <path className="cs-line cs-soft cs-draw" pathLength={1} d="M24 52 Q160 48 296 52" style={delay(0.1)} />
+        <path className="cs-line cs-draw" pathLength={1} d="M20 154 Q160 158 300 154" style={delay(0)} />
+        {Array.from({ length: tiles }, (_, i) => (
+          <g key={`tile-${i}`} className="cs-pop" style={delay(0.25 + i * 0.04)}>
+            <rect className="cs-bar" x={x0 + i * tileW + 1} y="138" width={tileW - 2} height="14" rx="3" />
+          </g>
+        ))}
+        <path className="cs-line cs-draw" pathLength={1} d={`M${x0} 138 L${x0} 112`} style={delay(0.3)} />
+        <path className="cs-flag cs-pop" d={`M${x0} 112 L${x0 + 14} 116.5 L${x0} 121 Z`} style={delay(0.5)} />
+        {phase === "setup" ? (
+          <g transform={`translate(${x0} 138)`}>
+            <g className="cs-pop" style={delay(0.55)}>
+              <StepBoxArt />
+            </g>
+          </g>
+        ) : (
+          <>
+            {hopper(tilesPerStep, x0, tileW, 138, <StepBoxArt />, "box")}
+            {Array.from({ length: hops }, (_, h) => (
+              <text
+                key={`tick-${h}`}
+                className={`cs-tick${h === hops - 1 ? " cs-tick-final" : ""}`}
+                x={x0 + (h + 1) * tilesPerStep * tileW - (tilesPerStep * tileW) / 2}
+                y="106"
+                style={delay(hopStart(h) + 0.4)}
+              >
+                {(h + 1) * tilesPerStep}
+              </text>
+            ))}
+            <ellipse
+              className="cs-ring"
+              cx={finalX - 12}
+              cy="125"
+              rx="23"
+              ry="20"
+              style={delay(hopStart(hops - 1) + 0.55)}
+            />
+          </>
+        )}
+      </>
+    );
+  }
+  const tileW = 26;
+  const x0 = 36;
+  const tiles = tilesPerStep * hops;
+  const leadFinalX = x0 + tiles * tileW;
+  const lane = (floorY: number, keyPrefix: string) =>
+    Array.from({ length: tiles }, (_, i) => (
+      <g key={`${keyPrefix}-${i}`} className="cs-pop" style={delay(0.25 + i * 0.03)}>
+        <rect className="cs-bar" x={x0 + i * tileW + 1} y={floorY} width={tileW - 2} height="11" rx="3" />
+      </g>
+    ));
+  return (
+    <>
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M24 36 Q160 32 296 36" style={delay(0.1)} />
+      <path className="cs-line cs-draw" pathLength={1} d="M20 172 Q160 176 300 172" style={delay(0)} />
+      {lane(102, "lead-tile")}
+      {lane(150, "rival-tile")}
+      {/* The finish line both carts race for (a given). */}
+      <path className="cs-line cs-draw" pathLength={1} d={`M${leadFinalX} 168 L${leadFinalX} 62`} style={delay(0.3)} />
+      <path className="cs-flag cs-pop" d={`M${leadFinalX} 62 L${leadFinalX - 14} 66.5 L${leadFinalX} 71 Z`} style={delay(0.5)} />
+      {phase === "setup" ? (
+        <>
+          <g transform={`translate(${x0} 102)`}>
+            <g className="cs-pop" style={delay(0.55)}>
+              <StepCartArt />
+            </g>
+          </g>
+          <g transform={`translate(${x0} 150)`}>
+            <g className="cs-pop" style={delay(0.65)}>
+              <StepCartArt />
+            </g>
+          </g>
+        </>
+      ) : (
+        <>
+          {hopper(tilesPerStep, x0, tileW, 102, <StepCartArt />, "lead")}
+          {hopper(rivalTilesPerStep, x0, tileW, 150, <StepCartArt />, "rival")}
+          {Array.from({ length: hops }, (_, h) => (
+            <text
+              key={`tick-${h}`}
+              className={`cs-tick${h === hops - 1 ? " cs-tick-final" : ""}`}
+              x={x0 + (h + 1) * tilesPerStep * tileW - (tilesPerStep * tileW) / 2}
+              y="76"
+              style={delay(hopStart(h) + 0.4)}
+            >
+              {(h + 1) * tilesPerStep}
+            </text>
+          ))}
+          {Array.from({ length: hops }, (_, h) => (
+            <circle
+              key={`dot-${h}`}
+              className="cs-stone cs-pop"
+              cx={x0 + (h + 1) * rivalTilesPerStep * tileW - 4}
+              cy="168"
+              r="3"
+              style={delay(hopStart(h) + 0.35)}
+            />
+          ))}
+          <ellipse
+            className="cs-ring"
+            cx={leadFinalX - 11}
+            cy="90"
+            rx="21"
+            ry="18"
+            style={delay(hopStart(hops - 1) + 0.55)}
+          />
+        </>
+      )}
     </>
   );
 }

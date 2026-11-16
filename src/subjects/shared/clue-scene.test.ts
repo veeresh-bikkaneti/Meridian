@@ -25,6 +25,7 @@ const scene = read(join(here, "ClueScene.tsx"));
 const subjectCase = read(join(here, "SubjectCase.tsx"));
 const mathCase = read(join(here, "..", "math", "MathCase.tsx"));
 const gkCase = read(join(here, "..", "general-knowledge", "GeneralKnowledgeCase.tsx"));
+const physicsCase = read(join(here, "..", "physics", "PhysicsCase.tsx"));
 const styles = read(join(here, "..", "..", "styles.css"));
 
 describe("clue scene wiring", () => {
@@ -63,6 +64,14 @@ describe("clue scene wiring", () => {
     assert.ok(gkCase.includes("<ClueScene"));
     assert.ok(gkCase.includes("resultExtra={"), "general knowledge passes the hook");
     assert.ok(gkCase.includes("ClueSummaryText"), "as the summary's standing text");
+  });
+
+  it("the physics case gates the scenes to ages 7-10 with a description", () => {
+    assert.ok(physicsCase.includes('if (band !== "7-10") return null;'));
+    assert.ok(physicsCase.includes("clueSceneFor(item.id)"));
+    assert.ok(physicsCase.includes("<ClueScene"));
+    assert.ok(physicsCase.includes("resultExtra={"), "physics passes the hook");
+    assert.ok(physicsCase.includes("ClueSummaryText"), "as the summary's standing text");
   });
 
   it("reduced motion renders the still frame of the current phase", () => {
@@ -268,5 +277,36 @@ describe("wave 3 kinds", () => {
   it("split-product renders many rows on its compact branch", () => {
     assert.ok(kindsC.includes("rows > 8"), "the compact branch exists");
     assert.ok(kindsC.includes("compact"), "compact bars keep every row in frame");
+  });
+});
+
+describe("wave 4 kinds", () => {
+  const kindsA = read(join(here, "clue-scene-kinds-a.tsx"));
+  const kindsB = read(join(here, "clue-scene-kinds-b.tsx"));
+  const kindsC = read(join(here, "clue-scene-kinds-c.tsx"));
+
+  it("the renderer dispatches every wave-4 kind", () => {
+    for (const kind of ["push-duel", "tile-steps", "slide-stop", "cup-shove", "seesaw-lift"]) {
+      assert.ok(scene.includes(`case "${kind}":`), `SceneArt dispatches ${kind}`);
+      assert.ok(scene.includes(`"${kind}":`), `SUMMARY_STAGGER paces ${kind}`);
+    }
+  });
+
+  it("every wave-4 kind accepts the summary pacing prop", () => {
+    for (const [source, name] of [
+      [kindsA, "PushDuelScene"],
+      [kindsA, "TileStepsScene"],
+      [kindsB, "SlideStopScene"],
+      [kindsB, "CupShoveScene"],
+      [kindsC, "SeesawLiftScene"],
+    ] as const) {
+      assert.ok(source.includes(`function ${name}(`), `${name} exists`);
+      assert.ok(source.includes("stepDelay"), `${name} accepts stepDelay`);
+    }
+  });
+
+  it("tile-steps reuses one hopper for the single box and both race carts", () => {
+    assert.ok(kindsA.includes("rivalTilesPerStep === undefined"), "the single-box branch exists");
+    assert.ok(kindsA.includes("cs-counter-step"), "landed hops fade as the next hop takes over");
   });
 });

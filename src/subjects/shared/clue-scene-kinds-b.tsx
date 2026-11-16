@@ -683,3 +683,181 @@ export function TimelineLineScene({
     </>
   );
 }
+
+/* ── Wave 4 kinds (Physics 7-10): slide-stop, cup-shove ────────
+   Same discipline as the kinds above: givens only before the
+   pick, no digits in the setup film; the solved beat computes
+   its outcome from the givens at solve time. slide-stop paces
+   three steps (the slide, the ghost repeat, the final tick);
+   cup-shove paces three (the slower hit, the faster hit, the
+   final tick). Neither kind shows any slide at all in setup. */
+
+/** One crate glyph, drawn from its left edge on the floor. */
+function SlideCrateArt() {
+  return (
+    <>
+      <rect className="cs-pack" x="0" y="-26" width="30" height="26" rx="3" />
+      <path className="cs-line cs-band" d="M1 -10 Q15 -12 29 -10" />
+    </>
+  );
+}
+
+export function SlideStopScene({
+  description,
+  phase,
+  stepDelay,
+}: {
+  description: Extract<ClueSceneDescription, { kind: "slide-stop" }>;
+  phase: ClueScenePhase;
+  /** Summary pacing: when present, step s's beat starts at
+   * stepDelay(s) instead of the film's own stagger. */
+  stepDelay?: (step: number) => number;
+}) {
+  const { slideTiles } = description;
+  const x0 = 28;
+  const segW = 33;
+  const segs = 8;
+  const floorY = 142;
+  const startX = 36;
+  const markX = x0 + slideTiles * segW;
+  const finX = markX - 30;
+  const slideStart = stepDelay ? stepDelay(0) : 0.5;
+  const ghostStart = stepDelay ? stepDelay(1) : 1.4;
+  const tickStart = stepDelay ? stepDelay(2) : 2.3;
+  return (
+    <>
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M24 48 Q160 44 296 48" style={delay(0.1)} />
+      <path className="cs-line cs-draw" pathLength={1} d={`M${x0 - 8} ${floorY} Q160 ${floorY + 4} ${x0 + segs * segW + 8} ${floorY}`} style={delay(0)} />
+      {/* Floor segments: plain texture marks, no numbers. */}
+      {Array.from({ length: segs + 1 }, (_, i) => (
+        <path
+          key={`seg-${i}`}
+          className="cs-line cs-soft cs-draw"
+          pathLength={1}
+          d={`M${x0 + i * segW} ${floorY - 5} Q${x0 + i * segW + 1} ${floorY} ${x0 + i * segW} ${floorY + 4}`}
+          style={delay(0.2 + i * 0.05)}
+        />
+      ))}
+      {/* The mark the first slide stopped at (the question's own
+          given) and the glass pane beyond it. */}
+      <path className="cs-line cs-draw" pathLength={1} d={`M${markX} ${floorY} L${markX} ${floorY - 26}`} style={delay(0.35)} />
+      <path className="cs-flag cs-pop" d={`M${markX} ${floorY - 26} L${markX + 14} ${floorY - 21.5} L${markX} ${floorY - 17} Z`} style={delay(0.55)} />
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M284 82 Q286 112 284 142" style={delay(0.4)} />
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M276 96 Q277 104 276 112" style={delay(0.5)} />
+      {phase === "setup" ? (
+        <g transform={`translate(${startX} ${floorY})`}>
+          <g className="cs-pop" style={delay(0.5)}>
+            <SlideCrateArt />
+          </g>
+        </g>
+      ) : (
+        <>
+          <g transform={`translate(${finX} ${floorY})`}>
+            <g className="cs-slide" style={slideFrom(startX - finX, 0, slideStart)}>
+              <SlideCrateArt />
+            </g>
+          </g>
+          {/* The repeat run, ghosted over the first: same push,
+              same floor, same stopping place. */}
+          <g transform={`translate(${finX - 5} ${floorY - 5})`}>
+            <g className="cs-dim">
+              <g className="cs-slide" style={slideFrom(startX - (finX - 5), 5, ghostStart)}>
+                <SlideCrateArt />
+              </g>
+            </g>
+          </g>
+          <ellipse className="cs-ring" cx={finX + 15} cy={floorY - 13} rx="24" ry="20" style={delay(tickStart + 0.4)} />
+          <text className="cs-tick cs-tick-final" x={markX} y={floorY - 40} style={delay(tickStart + 0.55)}>
+            ✓
+          </text>
+        </>
+      )}
+    </>
+  );
+}
+
+/** One cup glyph, drawn around its centre on the floor. */
+function ShoveCupArt({ cx }: { cx: number }) {
+  return (
+    <>
+      <path className="cs-line" d={`M${cx - 14} 126 Q${cx - 12} 148 ${cx} 149 Q${cx + 12} 148 ${cx + 14} 126`} />
+      <path className="cs-line" d={`M${cx - 14} 126 Q${cx} 123 ${cx + 14} 126`} />
+    </>
+  );
+}
+
+export function CupShoveScene({
+  description,
+  phase,
+  stepDelay,
+}: {
+  description: Extract<ClueSceneDescription, { kind: "cup-shove" }>;
+  phase: ClueScenePhase;
+  /** Summary pacing: when present, step s's beat starts at
+   * stepDelay(s) instead of the film's own stagger. */
+  stepDelay?: (step: number) => number;
+}) {
+  const { slowSlide, fastSlide } = description;
+  const cupCx = 196;
+  const midCx = cupCx + slowSlide;
+  const finalCx = midCx + fastSlide;
+  const slowStart = stepDelay ? stepDelay(0) : 0.5;
+  const fastStart = stepDelay ? stepDelay(1) : 1.5;
+  const tickStart = stepDelay ? stepDelay(2) : 2.5;
+  const ball = (cx: number) => (
+    <>
+      <circle className="cs-coin" cx={cx} cy="141" r="9" />
+      <circle className="cs-coin-inner" cx={cx} cy="141" r="4.4" />
+    </>
+  );
+  return (
+    <>
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M24 52 Q160 48 296 52" style={delay(0.1)} />
+      <path className="cs-line cs-draw" pathLength={1} d="M16 152 Q160 156 304 152" style={delay(0)} />
+      {phase === "setup" ? (
+        <>
+          <g className="cs-pop" style={delay(0.4)}>
+            <ShoveCupArt cx={cupCx} />
+          </g>
+          <g className="cs-pop" style={delay(0.55)}>{ball(56)}</g>
+          <g className="cs-pop" style={delay(0.65)}>{ball(88)}</g>
+        </>
+      ) : (
+        <>
+          {/* The slower ball rolls in; the cup slides a little. */}
+          <g className="cs-slide" style={slideFrom(56 - (cupCx - 23), 0, slowStart)}>
+            {ball(cupCx - 23)}
+          </g>
+          <g transform={`translate(${slowSlide} 0)`}>
+            <g className="cs-counter-step" style={delay(slowStart + 0.15)}>
+              <g className="cs-slide" style={slideFrom(-slowSlide, 0, slowStart + 0.15)}>
+                <ShoveCupArt cx={cupCx} />
+              </g>
+            </g>
+          </g>
+          <circle className="cs-stone cs-pop" cx={midCx} cy="160" r="3.5" style={delay(slowStart + 0.55)} />
+          {/* The faster ball rolls in, speed lines and all; the
+              cup slides much farther from where it rested. */}
+          <path
+            className="cs-line cs-soft cs-fade"
+            d="M214 132 Q228 131 240 132 M210 141 Q226 140 242 141 M214 150 Q228 149 240 150"
+            style={delay(fastStart + 0.1)}
+          />
+          <g className="cs-slide" style={slideFrom(88 - (finalCx - 23), 0, fastStart)}>
+            {ball(finalCx - 23)}
+          </g>
+          <g transform={`translate(${slowSlide + fastSlide} 0)`}>
+            <g className="cs-slide" style={slideFrom(-fastSlide, 0, fastStart + 0.1)}>
+              <ShoveCupArt cx={cupCx} />
+            </g>
+          </g>
+          <circle className="cs-stone cs-pop" cx={finalCx} cy="160" r="3.5" style={delay(fastStart + 0.55)} />
+          <ellipse className="cs-ring" cx={finalCx} cy="137" rx="22" ry="17" style={delay(tickStart + 0.4)} />
+          <text className="cs-tick cs-tick-final" x={finalCx} y="104" style={delay(tickStart + 0.55)}>
+            ✓
+          </text>
+        </>
+      )}
+    </>
+  );
+}

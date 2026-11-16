@@ -99,6 +99,18 @@ function givensOf(d: ClueSceneDescription): number[] {
       return [d.startYear, d.endYear];
     case "tower-measure":
       return [d.oldHeight, d.newHeight];
+    case "push-duel":
+      return [d.leftPower, d.rightPower];
+    case "tile-steps":
+      return d.rivalTilesPerStep === undefined
+        ? [d.tilesPerStep, d.hops]
+        : [d.tilesPerStep, d.hops, d.rivalTilesPerStep];
+    case "slide-stop":
+      return [d.slideTiles];
+    case "cup-shove":
+      return [d.slowSlide, d.fastSlide];
+    case "seesaw-lift":
+      return [];
   }
 }
 
@@ -172,6 +184,16 @@ function stepCountOf(d: ClueSceneDescription): number {
       return d.countGap ? Math.ceil((d.endYear - d.startYear) / 10) : 3;
     case "tower-measure":
       return 3; // the bracket, the new-part fill, the final tick
+    case "push-duel":
+      return 3; // the arrows press, the block answers, the final tick
+    case "tile-steps":
+      return d.hops; // one step per hop
+    case "slide-stop":
+      return 3; // the slide, the ghost repeat, the final tick
+    case "cup-shove":
+      return 3; // the slower hit, the faster hit, the final tick
+    case "seesaw-lift":
+      return 3; // the press, the tip and lift, the final tick
   }
 }
 

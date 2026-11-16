@@ -576,4 +576,66 @@ export type ClueSceneDescription =
       labelSolved: string;
       /** Narrated solved summary (act 3); solved phase only. */
       summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "push-duel";
+      /** The left push's strength — a given from the question
+       * (drawn as that arrow's length; a relative scale, never
+       * the answer: the setup film draws both arrows and the
+       * block does not move). */
+      leftPower: number;
+      /** The right push's strength — a given from the question. */
+      rightPower: number;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "tile-steps";
+      /** Tiles the lead box or cart covers each step — a given
+       * from the question. */
+      tilesPerStep: number;
+      /** Steps (pushes) taken — a given from the question. */
+      hops: number;
+      /** Tiles the second cart covers each step — a given from
+       * the question (two-cart race items only; absent for the
+       * single-box counting items). */
+      rivalTilesPerStep?: number;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "slide-stop";
+      /** Floor segments the crate slides before the mark — the
+       * scene's spatial layout of the question's own slide (the
+       * question states no number; the mark itself is a given). */
+      slideTiles: number;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "cup-shove";
+      /** How far the slower ball's hit slides the cup — the
+       * scene's spatial layout, spent only in the solved phase
+       * (the setup film never shows a slide at all). */
+      slowSlide: number;
+      /** How far the faster ball's hit slides the cup — spent
+       * only in the solved phase, like slowSlide. */
+      fastSlide: number;
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
+    }
+  | {
+      kind: "seesaw-lift";
+      labelSetup: string;
+      labelSolved: string;
+      /** Narrated solved summary (act 3); solved phase only. */
+      summary?: ClueSceneSummary;
     };
