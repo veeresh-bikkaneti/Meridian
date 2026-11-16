@@ -22,7 +22,8 @@ Meridian tokens.
   live = current state of the application with an honest Updated stamp;
   tips reachable from the board; website theme (system load, switchable).
 
-**Status:** In progress. Base: main cf7afb6f (verified 2026-11-16).
+**Status:** Built and gated; PR open, awaiting the owner's merge word.
+Base: main cf7afb6f (verified 2026-11-16).
 
 ## Done
 
@@ -37,11 +38,35 @@ Meridian tokens.
   Regenerated board: 37 stories, 20 done / 4 in progress / 13 not
   started, 8 bonds — story-for-story identical to the independently
   corrected cross-check (~/workspace/board-dashboard-sample/data.json).
+- Part 2: the life pill on every feature card (% delivered = done ÷
+  total stories, animated fill, still under Calm / reduced motion).
+- Part 3: each feature's stories grouped Completed / In progress /
+  Blocked / Not started; Blocked derives from the recorded waits and
+  its rows read "Waiting for: …"; empty groups show one quiet line.
+  Today every wait is satisfied, so all Blocked groups are empty.
+- Part 4: molecule map — bonds slimmed (0.14 → 0.05) and repainted
+  per instance (brass; the atlas stamp only while a story waits),
+  labels shrunk, atoms shrunk, epic spread tightened, and the
+  opening camera distance fitted to the layout so the whole
+  molecule starts in frame at 390px and desktop.
+- Part 5: organization pass in Sprintbound v2's discipline, Meridian
+  tokens only — one header block closed by a hairline; the control
+  bar split into a views cluster and a settings cluster that wrap
+  only between clusters; group headings carry their count as a
+  quiet right-side note.
+- Gates: full CI mirror green locally (provenance, typecheck,
+  lint-cards GATE PASSED, lint:content, lint:subjects, lint:nav,
+  npm test 2677/2677 src + scripts clean, worker suites, builds,
+  board e2e 13/13, visual E2E vs pristine-main baseline). Two
+  local-only exceptions, both baseline-matched on pristine main:
+  check:entry-size overage is this VM's measurement (+14 B delta
+  vs main's own overage), and endgame-share's 2 failures are the
+  VM's blocked egress (identical on main). Full record:
+  ~/workspace/board-cleanup/REPORT.md.
 
 ## Next step
 
-- Parts 2–5 (life pill, grouped feature view, map cleanup, organization
-  pass), then the full gate mirror + visual E2E, then the PR.
+- Owner's merge word. Nothing else is owed on this branch.
 
 ## Graph
 
