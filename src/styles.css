@@ -3421,40 +3421,42 @@
     opacity: 1;
   }
 }
-/* Art off wherever the user asked for plain, high-contrast surfaces. */
+/* Decorative art off wherever the user asked for plain, high-contrast
+   surfaces — but content stays. The montage film is the picker's headline
+   and the clue scenes ARE the explanations, so neither is ever hidden:
+   the old rule deleted both for anyone with the high-contrast palette
+   (including players who had only turned on the map's High-contrast
+   view — the palette is a persisted, app-wide attribute), for
+   prefers-contrast: more, and for forced colours, leaving the hero
+   card's title band standing alone and every case unexplained.
+   (QA/UI-UX council fix, 2026-11-16.) */
 :root[data-palette="high-contrast"] .why-learn-screen::after,
-:root[data-palette="high-contrast"] .why-learn-hero,
-:root[data-palette="high-contrast"] .why-learn-hero-wrap,
 :root[data-palette="high-contrast"] .why-learn-drift,
 :root[data-palette="high-contrast"] .wl-world,
-:root[data-palette="high-contrast"] .wl-gk-over,
-:root[data-palette="high-contrast"] .clue-scene {
+:root[data-palette="high-contrast"] .wl-gk-over {
   display: none;
 }
 @media (prefers-contrast: more) {
   .why-learn-screen::after,
-  .why-learn-hero,
-  .why-learn-hero-wrap,
   .why-learn-drift,
   .wl-world,
-  .wl-gk-over,
-  .clue-scene {
+  .wl-gk-over {
     display: none;
   }
 }
 @media (forced-colors: active) {
   .why-learn-screen::after,
-  .why-learn-hero,
-  .why-learn-hero-wrap,
   .why-learn-drift,
   .wl-world,
-  .wl-gk-over,
-  .clue-scene {
+  .wl-gk-over {
     display: none;
   }
   .why-learn-card,
   .why-learn-badge,
-  .why-learn-chip {
+  .why-learn-chip,
+  .why-learn-hero-wrap,
+  .why-learn-hero,
+  .clue-scene {
     border: 1px solid CanvasText;
   }
 }

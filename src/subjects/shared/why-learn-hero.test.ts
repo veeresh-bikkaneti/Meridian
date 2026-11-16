@@ -104,6 +104,35 @@ describe("WhyLearnHero — the montage in the hero slot", () => {
     assert.ok(hero.includes("onError={() => setFailed(true)}"), "a failed film latches to the still");
   });
 
+  it("CSS: plain-surface states hide decoration only — the film and the clue scenes stay", () => {
+    // Regression pin (QA/UI-UX council, 2026-11-16): the art-off rule used
+    // to display:none the hero and every .clue-scene under the high-contrast
+    // palette, prefers-contrast: more and forced colours, so a player in
+    // any of those states got a title band with no film and cases with no
+    // explanations. Content is never hidden; decoration still is.
+    const tail = css.slice(css.indexOf("Decorative art off"));
+    assert.ok(tail.length > 0, "the plain-surface block exists");
+    for (const rule of tail.split("}")) {
+      if (!rule.includes("display: none")) continue;
+      assert.ok(!rule.includes(".why-learn-hero"), "no display:none rule names the hero");
+      assert.ok(!rule.includes(".clue-scene"), "no display:none rule names the clue scenes");
+      assert.ok(rule.includes(".why-learn-drift"), "the same rules still hide the decorative drift");
+    }
+    const forced = tail.slice(tail.indexOf("@media (forced-colors: active)"));
+    assert.ok(
+      forced.includes(".clue-scene") && forced.includes("CanvasText"),
+      "forced colours delineate the scenes with a CanvasText border instead of hiding them",
+    );
+    assert.ok(
+      forced.includes(".why-learn-hero-wrap") && forced.includes("CanvasText"),
+      "forced colours delineate the hero the same way",
+    );
+    assert.ok(
+      forced.includes(".why-learn-hero,") && forced.includes("CanvasText"),
+      "the poster branch (a bare .why-learn-hero img, no wrap) is delineated too",
+    );
+  });
+
   it("the shipped media files exist under public/videos/", () => {
     const film = join(publicDir, "videos/why-learn-montage.mp4");
     const poster = join(publicDir, "videos/why-learn-montage-poster.webp");
