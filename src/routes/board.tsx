@@ -4,6 +4,7 @@ import {
   lazy,
   useEffect,
   useMemo,
+  useRef,
   useState,
 } from "react";
 import {
@@ -20,7 +21,7 @@ import {
   type LoadedBoard,
 } from "@/board/board-data";
 import { computeLayout } from "@/board/status-core";
-import { TrailView } from "@/board/trail-view";
+import { TrailView, lowerFirst } from "@/board/trail-view";
 import { FeatureRequestForm } from "@/board/feature-request-form";
 import { isEnabled, loadFlags } from "@/lib/flags";
 import { HomeButton } from "@/components/ui/home-button";
@@ -29,7 +30,7 @@ import "@/board/board.css";
 const MoleculeMap = lazy(() => import("@/board/molecule-map"));
 
 /**
- * /board — "See what we're making next" (board v3).
+ * /board — "See what we're making next" (board v4 trail; v3 map/form).
  *
  * The board reads ONE thing: the published status file
  * (public/board-status.json), generated from the team's own curated
@@ -188,11 +189,48 @@ function BoardPage() {
   const select = (slug: string | null) => go({ story: slug });
   const frontierStory = frontier ? findStory(board, frontier) : null;
 
+  /* Parallax ground (v4 sample): two fixed layers drift at different
+   * rates against scroll, as CSS vars on the board root. Frozen under
+   * Calm mode and prefers-reduced-motion — the ground simply rests. */
+  const mainRef = useRef<HTMLElement>(null);
+  useEffect(() => {
+    const main = mainRef.current;
+    if (!main) return;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (calm || reduced) {
+      main.style.setProperty("--v4-pf", "0px");
+      main.style.setProperty("--v4-pm", "0px");
+      return;
+    }
+    let ticking = false;
+    const update = () => {
+      ticking = false;
+      main.style.setProperty("--v4-pf", `${window.scrollY * -0.045}px`);
+      main.style.setProperty("--v4-pm", `${window.scrollY * -0.09}px`);
+    };
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    update();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [calm, view]);
+
   return (
     <main
-      className={`board-v3${calm ? " v3-calm" : ""}`}
+      ref={mainRef}
+      className={`board-v3${calm ? " v3-calm" : ""}${view === "trail" ? " v4-trail-page" : ""}`}
       data-board-theme={themeChoice === "system" ? undefined : themeChoice}
     >
+      {view === "trail" ? (
+        <>
+          <div className="v4-layer v4-layer-far" aria-hidden="true" />
+          <div className="v4-layer v4-layer-mid" aria-hidden="true" />
+          <div className="v4-vignette" aria-hidden="true" />
+        </>
+      ) : null}
       <div className="v3-wrap">
         <p className="v3-back">
           <HomeButton to="/" />
@@ -200,9 +238,10 @@ function BoardPage() {
         <p className="v3-eyebrow">For grown-ups</p>
         <h1 className="v3-title">See what we&rsquo;re making next</h1>
         <p className="v3-counts" data-testid="board-counts-line">
-          {board.counts.done} of {board.counts.total} stories finished · {board.counts.inProgress}{" "}
-          being built · {board.counts.notStarted} not started yet
+          {board.counts.done} of {board.counts.total} things are ready to play ·{" "}
+          {board.counts.inProgress} are being made · {board.counts.notStarted} are still to come.
         </p>
+        <p className="v4-walk">Walk the trail — every stop is a feature your child will play.</p>
         <p className="v3-updated" data-testid="board-updated-line">
           Updated {formatUpdated(board.updatedAt)}
           {loaded?.source === "manual" ? " — showing the copy that came with the site" : ""}
@@ -216,7 +255,7 @@ function BoardPage() {
         {frontierStory ? (
           <div className="v3-frontier-banner">
             <p>
-              <strong>We&rsquo;re working on this now:</strong> {frontierStory.story.title}
+              <strong>We&rsquo;re working on this now:</strong> {lowerFirst(frontierStory.story.title)}
             </p>
             <button
               type="button"

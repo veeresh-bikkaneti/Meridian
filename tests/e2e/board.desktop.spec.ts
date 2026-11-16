@@ -14,15 +14,16 @@ import { serveBuiltArtifact } from "./helpers";
  * v2's live fetch and every PR trace are deleted, and this spec is
  * part of what keeps them deleted.
  *
- * The migration baseline is locked: 46 stories, 20 done / 8 in
- * progress / 18 not started, exactly 8 bonds (the recorded waits).
+ * The v4 baseline is locked: 37 player-visible stories, 16 done /
+ * 6 in progress / 15 not started, exactly 8 bonds (the recorded
+ * waits), titles in player words (the generation source's mapping).
  */
 test.setTimeout(180_000);
 
 const BOARD_URL = "http://127.0.0.1:4123/Meridian/board?idle-ms=3600000";
 const FRONTIER_SLUG = "pair-art-sheets-and-endings";
 const WAITING_SLUG = "truce-pennant-port";
-const WAITING_FOR_TITLE = "Clue pacing and one voice at a time";
+const WAITING_FOR_TITLE = "Clues arrive one at a time, one voice at a time";
 
 test.beforeEach(async ({ context }) => {
   await serveBuiltArtifact(context);
@@ -53,10 +54,10 @@ test("trail: locked migration picture from the published file, no GitHub, no ban
   });
   await openBoard(page);
 
-  await expect(page.getByTestId("board-counts-line")).toContainText("20 of 46 stories finished");
-  await expect(page.getByTestId("board-counts-line")).toContainText("8 being built");
-  await expect(page.getByTestId("board-counts-line")).toContainText("18 not started yet");
-  await expect(page.getByTestId("v3-story-stop")).toHaveCount(46);
+  await expect(page.getByTestId("board-counts-line")).toContainText("16 of 37 things are ready to play");
+  await expect(page.getByTestId("board-counts-line")).toContainText("6 are being made");
+  await expect(page.getByTestId("board-counts-line")).toContainText("15 are still to come");
+  await expect(page.getByTestId("v3-story-stop")).toHaveCount(37);
 
   // Honest stamp: an Updated date, never a liveness claim.
   const updated = await page.getByTestId("board-updated-line").innerText();
@@ -96,6 +97,8 @@ test("the board renders the published file's words (fulfilled file, renamed stor
 test("story card: waiting story names what it waits for and jumps to that stop", async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 900 });
   await openBoard(page);
+  // Stories live inside an opened feature (v4): open Capitals first.
+  await page.getByTestId("board-feature-toggle-capitals").click();
   await page.locator(`[data-slug="${WAITING_SLUG}"]`).click();
   const card = page.getByTestId("story-card-open");
   await expect(card).toBeVisible();
@@ -120,7 +123,7 @@ test("molecular map: bonds == recorded waits, budgets from the renderer, mirror 
   await openBoard(page);
   await page.getByTestId("board-nav-map").click();
   await expect(page.getByTestId("v3-you-are-here")).toContainText("All of Meridian");
-  await expect(page.getByTestId("v3-mirror-story")).toHaveCount(46);
+  await expect(page.getByTestId("v3-mirror-story")).toHaveCount(37);
 
   const stage = page.getByTestId("v3-map-stage");
   await expect(stage).toHaveAttribute("data-bond-count", "8");
@@ -170,8 +173,12 @@ test("molecular map: bonds == recorded waits, budgets from the renderer, mirror 
   // Mirror click opens the same card without any 3D at all.
   await page.getByTestId("board-nav-map").click();
   await page.locator(`[data-testid="v3-mirror-story"][data-slug="${FRONTIER_SLUG}"]`).click();
-  await expect(page.getByTestId("story-card-open")).toContainText("Pair art sheets and endings");
-  await expect(page.getByTestId("v3-you-are-here")).toContainText("Pair art sheets and endings");
+  await expect(page.getByTestId("story-card-open")).toContainText(
+    "New drawings of Holmes & Watson, and how each case ends",
+  );
+  await expect(page.getByTestId("v3-you-are-here")).toContainText(
+    "New drawings of Holmes & Watson, and how each case ends",
+  );
 });
 
 test("calm mode stills every loop; the tip form wears its §5 costume", async ({ page, context }) => {
@@ -218,7 +225,7 @@ test("reduced motion: animation windows rest at their end poses", async ({ page 
 test("390px: trail renders, no sideways scroll", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await openBoard(page);
-  await expect(page.getByTestId("v3-story-stop")).toHaveCount(46);
+  await expect(page.getByTestId("v3-story-stop")).toHaveCount(37);
   const overflow = await page.evaluate(
     () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
   );
@@ -327,4 +334,27 @@ test("home links to the board from nav, grown-ups card and footer — and loads 
   await expect(page.getByTestId("board-link")).toBeVisible();
   await expect(page.getByTestId("grownups-board-link")).toBeVisible();
   expect(moleculeLoaded).toBe(false);
+});
+
+test("v4 trail: features first, stories inside, traveller on the trail, no internal items", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await openBoard(page);
+  // The stops on the trail are the 9 player-facing features.
+  await expect(page.locator(".v4-panel")).toHaveCount(9);
+  await expect(page.getByTestId("board-progress-line")).toContainText("ON THE TRAIL");
+  await expect(page.locator(".v4-traveller")).toBeAttached();
+  // No dev language, no internal epic anywhere on the trail.
+  const bodyText = await page.locator("main").innerText();
+  expect(bodyText).not.toContain("Behind the Scenes");
+  expect(bodyText).not.toContain("How Meridian Is Made");
+  expect(bodyText).not.toContain("Subject registry");
+  expect(bodyText.toLowerCase()).not.toContain("in code");
+  // Stories live inside: Maths opens to its five player-words parts.
+  await page.getByTestId("board-feature-toggle-maths").click();
+  const maths = page.locator("#v4-stories-maths");
+  await expect(maths).toContainText("Number games — counting, ordering and patterns");
+  await expect(maths).toContainText("Holmes & Watson join the Maths cases");
+  await expect(maths.locator('[data-testid="v3-story-stop"]')).toHaveCount(5);
 });
