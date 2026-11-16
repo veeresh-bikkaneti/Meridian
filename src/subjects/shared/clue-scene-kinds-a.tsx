@@ -505,3 +505,92 @@ export function PercentBarScene({
     </>
   );
 }
+
+/* ── share-bar (wave 3) ────────────────────────────────────────
+   A bill bar. Setup: the plain bar and a small stack of coins —
+   no cuts, no digits. Solved, in five steps: 0 the two share
+   cuts fade in, 1 the first share's tick, 2 the second share's
+   tick, 3 the rest splits in two with its two equal ticks, 4 one
+   rest share shrinks under its discount and the final tick
+   stands. Every value is computed from the givens. */
+
+function shareFmt(n: number): string {
+  return Number.isInteger(n) ? String(n) : String(Math.round(n * 100) / 100);
+}
+
+export function ShareBarScene({
+  description,
+  phase,
+  stepDelay,
+}: {
+  description: Extract<ClueSceneDescription, { kind: "share-bar" }>;
+  phase: ClueScenePhase;
+  /** Summary pacing: when present, step s's beat starts at
+   * stepDelay(s) instead of the film's own stagger. */
+  stepDelay?: (step: number) => number;
+}) {
+  const { total, firstNumerator, firstDenominator, secondNumerator, secondDenominator, discountPercent } = description;
+  const first = (total * firstNumerator) / firstDenominator;
+  const second = (total * secondNumerator) / secondDenominator;
+  const restEach = (total - first - second) / 2;
+  const finalPay = restEach * (1 - discountPercent / 100);
+  const x0 = 35;
+  const w = 250;
+  const y = 84;
+  const h = 26;
+  const cut1 = x0 + (w * first) / total;
+  const cut2 = cut1 + (w * second) / total;
+  const cut3 = cut2 + (w * restEach) / total;
+  const cutStart = stepDelay ? stepDelay(0) : 0.55;
+  const segPath = (xa: number, xb: number) =>
+    `M${xa.toFixed(1)} ${y} H${xb.toFixed(1)} V${y + h} H${xa.toFixed(1)} Z`;
+  return (
+    <>
+      <path className="cs-line cs-soft cs-draw" pathLength={1} d="M24 46 Q160 42 296 46" style={delay(0.1)} />
+      <path className="cs-line cs-draw" pathLength={1} d="M20 146 Q160 150 300 146" style={delay(0)} />
+      <g className="cs-pop" style={delay(0.35)}>
+        <rect className="cs-bar" x={x0} y={y} width={w} height={h} rx="7" />
+      </g>
+      {Array.from({ length: 5 }, (_, i) => (
+        <g key={`coin-${i}`} transform={`translate(${120 + i * 20} 132)`}>
+          <g className="cs-pop" style={delay(0.5 + i * 0.08)}>
+            <circle className="cs-coin" r="7" />
+            <circle className="cs-coin-inner" r="3.6" />
+          </g>
+        </g>
+      ))}
+      {phase === "solved" ? (
+        <>
+          <path className="cs-split-high cs-fade" d={segPath(x0 + 2, cut1)} style={delay(cutStart)} />
+          <path className="cs-split-low cs-fade" d={segPath(cut1, cut2)} style={delay(cutStart + 0.05)} />
+          <path
+            className="cs-line cs-band cs-fade"
+            d={`M${cut1.toFixed(1)} ${y + 1} Q${(cut1 + 1.2).toFixed(1)} ${y + h / 2} ${cut1.toFixed(1)} ${y + h - 1} M${cut2.toFixed(1)} ${y + 1} Q${(cut2 + 1.2).toFixed(1)} ${y + h / 2} ${cut2.toFixed(1)} ${y + h - 1}`}
+            style={delay(cutStart + 0.05)}
+          />
+          <text className="cs-tick" x={((x0 + cut1) / 2).toFixed(1)} y={y - 12} style={delay(stepDelay ? stepDelay(1) + 0.6 : 1.5)}>
+            {shareFmt(first)}
+          </text>
+          <text className="cs-tick" x={((cut1 + cut2) / 2).toFixed(1)} y={y - 12} style={delay(stepDelay ? stepDelay(2) + 0.6 : 2.2)}>
+            {shareFmt(second)}
+          </text>
+          <path
+            className="cs-line cs-band cs-fade"
+            d={`M${cut3.toFixed(1)} ${y + 1} Q${(cut3 + 1.2).toFixed(1)} ${y + h / 2} ${cut3.toFixed(1)} ${y + h - 1}`}
+            style={delay(stepDelay ? stepDelay(3) : 2.8)}
+          />
+          <text className="cs-tick" x={((cut2 + cut3) / 2).toFixed(1)} y={y - 12} style={delay(stepDelay ? stepDelay(3) + 0.6 : 3.3)}>
+            {shareFmt(restEach)}
+          </text>
+          <text className="cs-tick" x={((cut3 + x0 + w) / 2).toFixed(1)} y={y - 12} style={delay(stepDelay ? stepDelay(3) + 0.6 : 3.3)}>
+            {shareFmt(restEach)}
+          </text>
+          <path className="cs-split-low cs-fade" d={segPath(cut3, x0 + w - 2)} style={delay(stepDelay ? stepDelay(4) : 3.9)} />
+          <text className="cs-tick cs-tick-final" x={((cut3 + x0 + w) / 2).toFixed(1)} y={y + h + 24} style={delay(stepDelay ? stepDelay(4) + 0.6 : 4.4)}>
+            {shareFmt(finalPay)}
+          </text>
+        </>
+      ) : null}
+    </>
+  );
+}

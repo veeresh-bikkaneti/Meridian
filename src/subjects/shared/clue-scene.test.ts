@@ -24,6 +24,7 @@ const read = (path: string) => readFileSync(path, "utf8");
 const scene = read(join(here, "ClueScene.tsx"));
 const subjectCase = read(join(here, "SubjectCase.tsx"));
 const mathCase = read(join(here, "..", "math", "MathCase.tsx"));
+const gkCase = read(join(here, "..", "general-knowledge", "GeneralKnowledgeCase.tsx"));
 const styles = read(join(here, "..", "..", "styles.css"));
 
 describe("clue scene wiring", () => {
@@ -50,10 +51,18 @@ describe("clue scene wiring", () => {
     }
   });
 
-  it("the math case gates the scenes to ages 7-10 and 10-18 with a description", () => {
-    assert.ok(mathCase.includes('if (band !== "7-10" && band !== "10-18") return null;'));
+  it("the math case gates the scenes to ages 7-10, 10-18 and 18+ with a description", () => {
+    assert.ok(mathCase.includes('if (band !== "7-10" && band !== "10-18" && band !== "18+") return null;'));
     assert.ok(mathCase.includes("clueSceneFor(item.id)"));
     assert.ok(mathCase.includes("<ClueScene"));
+  });
+
+  it("the general-knowledge case gates the scenes to ages 7-10 with a description", () => {
+    assert.ok(gkCase.includes('if (band !== "7-10") return null;'));
+    assert.ok(gkCase.includes("clueSceneFor(item.id)"));
+    assert.ok(gkCase.includes("<ClueScene"));
+    assert.ok(gkCase.includes("resultExtra={"), "general knowledge passes the hook");
+    assert.ok(gkCase.includes("ClueSummaryText"), "as the summary's standing text");
   });
 
   it("reduced motion renders the still frame of the current phase", () => {
@@ -230,5 +239,34 @@ describe("wave 1 kinds", () => {
       styles.includes('.clue-scene[data-still="true"] .cs-counter-step'),
       "the still frame hides the intermediate chunk counters",
     );
+  });
+});
+
+describe("wave 3 kinds", () => {
+  const kindsA = read(join(here, "clue-scene-kinds-a.tsx"));
+  const kindsB = read(join(here, "clue-scene-kinds-b.tsx"));
+  const kindsC = read(join(here, "clue-scene-kinds-c.tsx"));
+
+  it("the renderer dispatches every wave-3 kind", () => {
+    for (const kind of ["share-bar", "timeline-line", "tower-measure"]) {
+      assert.ok(scene.includes(`case "${kind}":`), `SceneArt dispatches ${kind}`);
+      assert.ok(scene.includes(`"${kind}":`), `SUMMARY_STAGGER paces ${kind}`);
+    }
+  });
+
+  it("every wave-3 kind accepts the summary pacing prop", () => {
+    for (const [source, name] of [
+      [kindsA, "ShareBarScene"],
+      [kindsB, "TimelineLineScene"],
+      [kindsC, "TowerMeasureScene"],
+    ] as const) {
+      assert.ok(source.includes(`function ${name}(`), `${name} exists`);
+      assert.ok(source.includes("stepDelay"), `${name} accepts stepDelay`);
+    }
+  });
+
+  it("split-product renders many rows on its compact branch", () => {
+    assert.ok(kindsC.includes("rows > 8"), "the compact branch exists");
+    assert.ok(kindsC.includes("compact"), "compact bars keep every row in frame");
   });
 });
