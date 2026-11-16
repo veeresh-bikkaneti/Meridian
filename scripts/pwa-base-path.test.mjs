@@ -69,6 +69,19 @@ test("sw.js derives BASE for the GitHub Pages build", () => {
   assert.ok(!p.isStaticAsset("/assets/index-abc.js"));
 });
 
+test("sw.js gives videos/ a network-first branch with a cache fallback", () => {
+  // QA/UI-UX council, 2026-11-16: the montage film + poster were the one
+  // picker asset class with no SW handling — straight to network on every
+  // visit, so a transient failure emptied the hero for returning users.
+  assert.ok(
+    swSource.includes("url.pathname.startsWith(`${BASE}videos/`)"),
+    "videos branch matches on the derived BASE",
+  );
+  const branch = swSource.slice(swSource.indexOf("`${BASE}videos/`"));
+  assert.ok(branch.includes("caches.match(request)"), "network failure falls back to the cache");
+  assert.ok(branch.includes("res.status === 200"), "only full 200 responses are cached (never a 206)");
+});
+
 test("sw.js derives BASE for the Cloudflare (root) build", () => {
   const p = loadSw("https://meridian.example.workers.dev/sw.js");
   assert.equal(p.BASE, "/");

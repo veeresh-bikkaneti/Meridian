@@ -151,6 +151,21 @@ describe("WhyLearnHero — the montage in the hero slot", () => {
     assert.ok(statSync(film).size > 1_000_000, "film is the real asset, not a stub");
     assert.ok(statSync(poster).size > 10_000, "poster is a real picture");
   });
+
+  it("the fallback chain never dead-ends: poster error lands on a labelled panel, and failures retry", () => {
+    // QA/UI-UX council, 2026-11-16: the poster <img> used to have no
+    // onError at all, and `failed` latched for the whole session — one
+    // transient media failure emptied the hero slot until a reload.
+    assert.ok(
+      hero.includes("onError={() => setPosterFailed(true)}"),
+      "a failed poster advances the fallback chain",
+    );
+    assert.ok(hero.includes("why-learn-hero-still"), "the last resort is a labelled panel in the hero box");
+    assert.ok(hero.includes('role="img"'), "the panel is announced as the image it replaces");
+    assert.ok(css.includes(".why-learn-hero-still"), "the panel is styled in the hero section");
+    assert.ok(hero.includes('addEventListener("online"'), "coming back online retries the media");
+    assert.ok(hero.includes('"visibilitychange"'), "returning to the tab retries the media");
+  });
 });
 
 describe("WhyLearnDrift — background texture only", () => {
