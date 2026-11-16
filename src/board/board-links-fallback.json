@@ -1,0 +1,250 @@
+{
+  "version": 1,
+  "stories": {
+    "holmes-and-watson-pair-in-the-game": {
+      "records": [
+        355,
+        356,
+        357,
+        358
+      ],
+      "carried": "done",
+      "tasks": [
+        {
+          "phase": "Checking",
+          "record": 355
+        },
+        {
+          "phase": "Checking",
+          "record": 356
+        },
+        {
+          "phase": "Checking",
+          "record": 357
+        },
+        {
+          "phase": "Checking",
+          "record": 358
+        }
+      ]
+    },
+    "pair-art-sheets-and-endings": {
+      "records": [
+        366
+      ],
+      "carried": "in-progress",
+      "phase": "Drawing in progress",
+      "lineOverride": "Drawing in progress",
+      "tasks": [
+        {
+          "phase": "Checking",
+          "record": 366
+        }
+      ]
+    },
+    "holmes-follow-and-home-first-landing": {
+      "records": [
+        364,
+        368
+      ],
+      "carried": "in-progress",
+      "phase": "Building in progress",
+      "tasks": [
+        {
+          "phase": "Checking",
+          "record": 364
+        },
+        {
+          "phase": "Checking",
+          "record": 368
+        }
+      ]
+    },
+    "held-finger-jitter-fix-on-the-clue-berth": {
+      "records": [
+        431
+      ],
+      "carried": "done"
+    },
+    "clue-pacing-and-one-voice-at-a-time": {
+      "records": [
+        430
+      ],
+      "carried": "in-progress",
+      "phase": "Testing in progress"
+    },
+    "clue-4-opening-cards-2-and-3": {
+      "records": [],
+      "carried": "not-started"
+    },
+    "age-groups-7-10-10-18-18-in-code": {
+      "records": [
+        393,
+        414
+      ],
+      "carried": "done"
+    },
+    "truce-pennant-port": {
+      "records": [],
+      "carried": "not-started"
+    },
+    "films-v4-dolly-camera": {
+      "records": [
+        433
+      ],
+      "carried": "done"
+    },
+    "the-card-appears-on-the-home-page": {
+      "records": [
+        433
+      ],
+      "carried": "done"
+    },
+    "3d-film-source-files": {
+      "records": [
+        432
+      ],
+      "carried": "in-progress",
+      "phase": "Animation in progress"
+    },
+    "button-opens-a-subject-instead-of-coming-soon": {
+      "records": [],
+      "carried": "not-started"
+    },
+    "the-card-appears-for-kids": {
+      "records": [],
+      "carried": "not-started"
+    },
+    "number-strand-spec": {
+      "records": [
+        395
+      ],
+      "carried": "done"
+    },
+    "applied-strand-spec": {
+      "records": [
+        405
+      ],
+      "carried": "done"
+    },
+    "math-subject-screen-3-items-per-age-group": {
+      "records": [
+        434
+      ],
+      "carried": "done"
+    },
+    "maths-sign-off-and-release": {
+      "records": [],
+      "carried": "done"
+    },
+    "holmes-and-watson-in-math": {
+      "records": [],
+      "carried": "done"
+    },
+    "physics-spec": {
+      "records": [
+        398
+      ],
+      "carried": "done"
+    },
+    "chemistry-spec": {
+      "records": [
+        400
+      ],
+      "carried": "done"
+    },
+    "science-definitions-and-scene-engine-spec": {
+      "records": [
+        404
+      ],
+      "carried": "done"
+    },
+    "science-expansion-spec": {
+      "records": [
+        429
+      ],
+      "carried": "in-progress",
+      "phase": "Polishing in progress"
+    },
+    "predict-and-see-scene-engine": {
+      "records": [],
+      "carried": "not-started"
+    },
+    "physics-and-chemistry-screens": {
+      "records": [],
+      "carried": "not-started"
+    },
+    "wave-2-sign-off-and-release": {
+      "records": [],
+      "carried": "not-started"
+    },
+    "social-studies-economics-civics-spec": {
+      "records": [
+        397
+      ],
+      "carried": "done"
+    },
+    "general-knowledge-spec": {
+      "records": [
+        409
+      ],
+      "carried": "done"
+    },
+    "humanities-definitions-spec": {
+      "records": [
+        399
+      ],
+      "carried": "done"
+    },
+    "social-studies-and-gk-screens": {
+      "records": [],
+      "carried": "not-started"
+    },
+    "wave-3-sign-off-and-release": {
+      "records": [],
+      "carried": "not-started"
+    },
+    "7-journal-specs-people-and-places-technology-ww2-monuments-world-wars-modern-world-great-leaders-freedom-fighters": {
+      "records": [
+        402,
+        401,
+        410,
+        412,
+        411,
+        408,
+        407
+      ],
+      "carried": "done"
+    },
+    "religious-journal-movies-hidden": {
+      "records": [
+        416
+      ],
+      "carried": "done",
+      "lineOverride": "Finished"
+    },
+    "journal-clips-stage-b-video-files": {
+      "records": [],
+      "carried": "not-started"
+    },
+    "journals-release": {
+      "records": [],
+      "carried": "not-started"
+    },
+    "shared-voice-channel-one-speaker-at-a-time": {
+      "records": [
+        430
+      ],
+      "carried": "in-progress",
+      "phase": "Recording in progress"
+    },
+    "3-unrendered-clips-beat-me-win-together-truce-watson": {
+      "records": [],
+      "carried": "not-started"
+    },
+    "88-place-names-with-no-holmes-voice": {
+      "records": [],
+      "carried": "not-started"
+    }
+  }
+}

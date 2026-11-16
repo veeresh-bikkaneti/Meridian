@@ -15,6 +15,15 @@
  * The banned-token scan runs over the output before anything is
  * written: a task count, record number, story id or any other banned
  * token in the published file fails the publish, loudly.
+ *
+ * The publisher ALSO emits the live-feed links file (board-links.json
+ * + its bundled fallback): per published story, keyed by slug, only
+ * the machinery the browser's live check needs to recompute statuses
+ * from live GitHub record states — record numbers, the carried
+ * status, the phase stem, the line override, and per-task
+ * {phase, record} pairs. No task titles, no source ids: the links
+ * file is data for the recompute, never rendered, and the published
+ * status file above keeps its no-records shape untouched.
  */
 import { readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
@@ -58,10 +67,39 @@ if (generated.bonds.length !== curation.waits.length) {
   process.exit(1);
 }
 
+// Live-feed links, derived from the same curation: exactly the
+// published stories, keyed by slug. A links entry for a story the
+// board does not show — or a published story with no entry — fails
+// the publish loudly, like every other guard here.
+const links = { version: 1, stories: {} };
+for (const epic of curation.epics)
+  for (const feature of epic.features)
+    for (const story of feature.stories) {
+      const entry = { records: story.records, carried: story.carriedStatus };
+      if (story.phase) entry.phase = story.phase;
+      if (story.lineOverride) entry.lineOverride = story.lineOverride;
+      if (story.tasks && story.tasks.length > 0)
+        entry.tasks = story.tasks.map((t) => ({
+          phase: t.phase,
+          ...(t.record !== undefined ? { record: t.record } : {}),
+        }));
+      links.stories[story.slug] = entry;
+    }
+const linkSlugs = Object.keys(links.stories).sort();
+if (JSON.stringify(linkSlugs) !== JSON.stringify([...publishedSlugs].sort())) {
+  console.error("publish-status: links stories != published stories");
+  process.exit(1);
+}
+
 writeFileSync(path.join(repoRoot, "public/board-status.json"), JSON.stringify(generated, null, 2) + "\n");
 writeFileSync(
   path.join(repoRoot, "src/board/board-status-fallback.json"),
   JSON.stringify({ ...generated, source: "manual" }, null, 2) + "\n",
+);
+writeFileSync(path.join(repoRoot, "public/board-links.json"), JSON.stringify(links, null, 2) + "\n");
+writeFileSync(
+  path.join(repoRoot, "src/board/board-links-fallback.json"),
+  JSON.stringify(links, null, 2) + "\n",
 );
 console.log(
   `publish-status: OK — ${generated.counts.total} stories ` +
