@@ -205,13 +205,73 @@ PR is `main` so the stack is visible; do not merge before 526.
   the spec's expectation is stale against merged #524. Left for
   its own fix, flagged here so the delta is on record.
 
+## Done — Step 3, Batch C (one commit per item) — Step 3 closed
+
+- **3.8 Region pool error** (`e31c37ec`): the hand-built
+  pool-failure `<main>` (own eyebrow/title/alert + a lone
+  HomeButton) now renders the shared ErrorScreen — the failure copy
+  rides its title/body props verbatim (loader message + the
+  standing partial-pool explanation), and both exits converge on
+  onEditions, the surface's one recovery door, exactly as before.
+  The region loading state and the pinned stale-build/offline
+  notices keep their specialised surfaces. New shared-shell pin.
+- **3.11 GeoDetective override removal** (`1e421220`): LoopScreen
+  was the last screen passing a className override to SiteHeader
+  (`screen-home-bar -mx-5 px-5`). SiteHeader gained a `sticky`
+  prop (data-sticky; bar treatment on the shell's own styles.css
+  rule, layer from --z-header — the retired bar sat at z-20, the
+  shell header's token layer is 30, still below the Q1 overlay at
+  40 and the menu at 50); LoopScreen passes `sticky`. The Home
+  control's slot/size/offsets are unchanged — the adoption e2e
+  (Home ≡ GeoDetective at 1280/1920/2560) is green, and the Q1
+  overlay + staging are untouched. New shared-shell pin.
+- **Revert check:** both new pins fail on the pre-batch sources
+  (stash the four source files → 2 fail / 32 pass) and pass on the
+  branch (shared-shell + boundary + lazy-boundary suites 52/52).
+- **Gates on the batch tip:** tsc clean · lint:nav ✓ ·
+  lint-cards GATE PASSED · check:provenance PASSED ·
+  build:pages green · adoption e2e 3/3 (hermetic, built artifact).
+- Screenshots (before/after, 390 + 1280, real build):
+  `~/workspace/verify-evidence-shell-step3/` —
+  {before,after}-geodetective-{390,1280}.png. Pool error: no
+  screenshot — triggering the pool failure hermetically needs a
+  run-start flow with the places JSON aborted; the surface now
+  renders ErrorScreen, whose appearance the shared-shell suite
+  already pins.
+- **3.9 Map error boundary — HELD, not migrated.** A literal
+  ErrorScreen swap cannot preserve pinned behaviour: ErrorScreen
+  always renders a SiteHeader + both exits, while the boundary's
+  card is an in-place overlay whose Home exit exists ONLY for
+  persisted screens (INV2, pinned in map-error-boundary.test.ts),
+  whose stale variant is owner-approved copy presented as a
+  centred card (the "approved copy verbatim" pin), and whose bare
+  map usage (in-run) has no home action to give ErrorScreen's
+  onHome — the boundary's reload would restore the run, so the
+  button would lie. The boundary is also a recorded shell-ban
+  baseline entry (homeButtonImport). Migrating it needs an
+  ErrorScreen API decision (an embedded/no-header mode or an
+  optional Home exit) — a component-design call for the owner /
+  Step 5's registry rule, not a migration commit.
+- **3.10 Globe overlay (in-run HUD) — HELD, not migrated.** The
+  chrome over the satellite map (game-app's pointer-events-none
+  top bar) does not fit SiteHeader's slots without visible change:
+  in review mode its left control is the pinned "Exit review"
+  Button INSTEAD of Home (SiteHeader always renders Home); its
+  contrast / map-mode / run-menu controls have no on-line slot
+  (the nav slot menu-traps below 1024px, against SiteHeader's own
+  never-menu-trap rule); and the Round 2 adoption deliberately
+  kept the HUD's HomeButton (shell-ban baseline: game-app stays
+  in homeButtonImport for "end-of-flow/HUD HomeButton uses").
+  Needs the same owner call as 3.9: sanction the HUD as a
+  by-design exception (like the end-of-flow HomeButtons) or
+  commission a dedicated HUD variant. Tap-through was therefore
+  not re-proved — the bar is untouched, so its pointer-events
+  behaviour is byte-identical to the Batch B tip.
+
 ## Remaining — in the brief's order
 
-- **Step 3, Batch C:** (8) Region loading + pool
-  error → ErrorScreen; (9) Map error boundary → ErrorScreen;
-  (10) Globe overlay (map variant, taps pass through);
-  (11) GeoDetective: remove the `className="screen-home-bar -mx-5
-  px-5"` override on SiteHeader.
+- **Step 3 held items (owner/Chair call):** (9) Map error
+  boundary and (10) Globe overlay — see Batch C above.
 - **Step 4 — delete legacy:** ScreenShell, BrandHomeButton, the 18
   unused `.hv5-nav` rules and `.brand-home-*`; hand-rolled
   max-w-3xl/7xl/6xl/2xl/xl → PageColumn. Removing the second Home
