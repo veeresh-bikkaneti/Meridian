@@ -509,6 +509,12 @@ function HighContrastToggle({
       style={style}
     >
       <Contrast className={iconClassName} aria-hidden="true" />
+      {/* Visible text label (item 37): the control was icon-only, so a
+          sighted player had no way to know what it does. The word rides
+          beside the icon in both hosts; the hosts' classes give it room
+          (the hero host is min-width 44px inline-flex, the game host is
+          min-w-11 with padding). */}
+      <span className="text-sm font-medium">Contrast</span>
     </button>
   );
 }
@@ -8297,7 +8303,7 @@ function PlayLoaded({
                 44px tap-target floor. */}
             <HighContrastToggle
               testId="high-contrast-toggle-game"
-              className="pointer-events-auto flex h-11 w-11 items-center justify-center rounded-md border border-line bg-surface text-fg transition-colors"
+              className="pointer-events-auto flex h-11 min-w-11 items-center justify-center gap-1.5 rounded-md border border-line bg-surface px-2.5 text-fg transition-colors"
             />
             {/* Scout Map settings toggle. The choice writes
                 meridian:map-mode and sends the player home — the new

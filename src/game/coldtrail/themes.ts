@@ -11,6 +11,31 @@ import type { ColdTrailSighting } from "./types.ts";
  * is deliberately NOT a theme field — it stays hard-coded in TrailScreen.
  */
 
+/**
+ * Sighting timestamps are game fiction stored as "Tue 08:14" (24-hour).
+ * The clock renders the way the VIEWER's system does — 12-hour with
+ * AM/PM where that is the locale's habit, 24-hour where it is not —
+ * the same viewer-locale rule the board's Updated stamp follows
+ * (board-data.ts formatUpdated). The weekday stays as written; a
+ * timestamp that does not match the stored shape passes through
+ * untouched. The eyebrow wording itself is unchanged gate-approved
+ * copy; only the clock segment is locale-formatted (item 35).
+ */
+export function formatSightingTime(timestamp: string, locale?: string): string {
+  const m = /^([A-Za-z]{3}) (\d{1,2}):(\d{2})$/.exec(timestamp);
+  if (!m) return timestamp;
+  const d = new Date(2024, 0, 1, Number(m[2]), Number(m[3]));
+  // 24-hour locales keep the stored two-digit hour ("19:59", "00:05");
+  // 12-hour locales get their usual single digit plus AM/PM ("8:14 AM").
+  const cycle = new Intl.DateTimeFormat(locale, { hour: "numeric" })
+    .resolvedOptions().hourCycle;
+  const time = new Intl.DateTimeFormat(locale, {
+    hour: cycle === "h23" || cycle === "h24" ? "2-digit" : "numeric",
+    minute: "2-digit",
+  }).format(d);
+  return `${m[1]} ${time}`;
+}
+
 export interface VerdictText {
   title: string;
   line: string;
@@ -116,7 +141,7 @@ const BASE_THEMES: Record<"7-10" | "10-18", ColdTrailTheme> = {
     intro:
       "A treasure map has gone missing from its box. Three sightings, three rings — work out where the map ended up and tap your best guess.",
     // T810-A-S3
-    sightingEyebrow: (n, timestamp) => `👀 Sighting ${n} · ${timestamp}`,
+    sightingEyebrow: (n, timestamp) => `👀 Sighting ${n} · ${formatSightingTime(timestamp)}`,
     // T810-A-S4 (= SP-NEUTRAL)
     sightingSentence: (s) =>
       `The treasure map was spotted ${fmtRadius(s.radiusKm)} ${octantWord(s.octant)} of ${s.cityName}.`,
@@ -198,7 +223,7 @@ const BASE_THEMES: Record<"7-10" | "10-18", ColdTrailTheme> = {
     intro:
       "A trail of sightings crosses the map. Three sightings, three rings — triangulate where the trail leads and tap your best guess.",
     // T1113-A-S3 (Architect C-2 retains today's string; gate approved)
-    sightingEyebrow: (n, timestamp) => `🕵️ Sighting ${n} · ${timestamp}`,
+    sightingEyebrow: (n, timestamp) => `🕵️ Sighting ${n} · ${formatSightingTime(timestamp)}`,
     // T1113-A-S4 (Architect ADR-13; gate approved)
     sightingSentence: (s) =>
       `Last spotted ${fmtRadius(s.radiusKm)} ${octantWord(s.octant)} of ${s.cityName}.`,

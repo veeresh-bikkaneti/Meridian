@@ -11,9 +11,9 @@ game-app.tsx changes go to Stream N through the integrator.
 - 32. Deck pill counts from one source; a subset never exceeds its total; one format — **DONE (Phase 2)**, see below.
 - 33. Scout Map mode shows the simple fallback map, not an empty space — **VERIFIED (Phase 2)**, see below.
 - 34. "A mystery is afoot" popup must not cover Clue 1; background hard line ~700 px — **INVESTIGATED, handed to Stream N with evidence (Phase 2)**, see below.
-- 35. Cold Trail sightings use the viewer's clock, not 24-hour — **DEFERRED** (P2 re-price, owner 2026-11-16).
-- 36. Holmes covers Brazil; "RU" label clipped; darker tile seam over the Atlantic — **DEFERRED** (P2 re-price).
-- 37. High contrast gets a label and a visible effect — **DEFERRED** (P2 re-price).
+- 35. Cold Trail sightings use the viewer's clock, not 24-hour — **DONE (P2 sweep)**, see below.
+- 36. Holmes covers Brazil; "RU" label clipped; darker tile seam over the Atlantic — **INVESTIGATED (P2 sweep), all three routed with evidence**, see below.
+- 37. High contrast gets a label and a visible effect — **DONE (P2 sweep)**, see below.
 
 ## Phase 2 (Stream S cherry-picked: a0458929, cc745790)
 
@@ -58,6 +58,53 @@ game-app.tsx changes go to Stream N through the integrator.
 - **Screenshots:** NOT RUN — this sandbox did not produce a build +
   headless-Chrome run within the stream's budget; the Phase 3 QA seat
   checks the changed screens at 2560/1280/390.
+
+## P2 sweep (2026-11-16, owner-approved)
+
+- **Item 35 DONE:** sighting timestamps are fiction strings stored as
+  "Tue 08:14" (24-hour). New `formatSightingTime` in
+  `src/game/coldtrail/themes.ts` re-renders the clock with
+  `Intl.DateTimeFormat` in the viewer's locale — "Tue 8:14 AM" for a
+  12-hour viewer, "Tue 19:59"/"Tue 00:05" (two-digit hour) for a
+  24-hour viewer — the same viewer-locale rule as the board's
+  `formatUpdated`. Both themes' `sightingEyebrow` route through it;
+  the gate-approved eyebrow wording is unchanged, only the clock
+  segment is locale-formatted. Pins in `themes.test.ts` updated to
+  the test runner's en-US rendering + explicit-locale tests added
+  (en-US/en-GB/passthrough). SightingCard is the only render site.
+- **Item 37 DONE:** the HighContrastToggle (`src/components/game-app.tsx`
+  — the control lives there; this hunk lands on this branch under the
+  P2-sweep assignment, flagged for the integrator) gains a visible
+  "Contrast" text label beside the icon in both hosts, and the in-game
+  host widens (`min-w-11` + padding, height still 44px) to fit it.
+  Visible effect: the existing HC styles repaint only the `--map-*`
+  tokens, which the satellite game screen never consumes, so the flip
+  was invisible there. `src/styles.css` gains a second
+  `:root[data-palette="high-contrast"]` block strengthening `--line`
+  (fg 14% → 45% mix): every card/button/panel border on the game
+  surface visibly strengthens on flip. Separate block on purpose —
+  the palette pin tests slice the first block only, and `--line` is
+  chrome, not map palette (pin tests still green).
+- **Item 36 ROUTED (no fix in this layer):** all three sub-defects
+  live outside Stream G's files, with evidence:
+  1. *Holmes covers Brazil* — pair placement is the DetectiveHost /
+     DetectivePair subsystem (`src/game/loop/detective/` +
+     `detective.css` + `pair3d.ts`), a panel-gated surface with its
+     own rig/flank/walk suites and the owner's staging spec; there is
+     no rest-position constant in LoopScreen to offset. Moving the
+     rest anchor needs that panel + the owner-config playthrough.
+  2. *"RU" label clipped at the right edge* — the map is ONE raster
+     source + ONE raster layer (`src/map/satellite-map.tsx:927-934`);
+     there are no symbol/text layers in app code, so country labels
+     are baked into the tile imagery and there is no label layer to
+     pad. Map creation and camera are in the same file (line 905),
+     which is PR 520's frozen surface — route there.
+  3. *Darker tile seam over the Atlantic* — the style carries no
+     background layer; per the comment at `satellite-map.tsx:1081-1083`
+     a starfield backdrop shows wherever no tile paints. A darker seam
+     is that backdrop showing through a tile gap/join — tile-source /
+     frozen-map-file territory, not a style or blend setting in
+     Stream G's files. Route with (2).
 
 ## Item 31 — what this PR does
 
@@ -118,7 +165,8 @@ data and is listed for the educator — all 8 are listed in the PR body.
   baseline entries. Stream N: item 30's game-app.tsx half; item 34
   (both halves — storyteller popup layer + shell background — evidence
   in the Phase 2 section above).
-- Deferred (P2 re-price, owner 2026-11-16): items 35, 36, 37.
+- P2 sweep (owner-approved 2026-11-16): item 35 DONE, item 37 DONE,
+  item 36 investigated and routed with evidence (see P2 sweep section).
 - Open questions: none for the integrator.
 - Ruled out: text-only clue reorder (breaks check:detective-audio and
   the spoken/printed clue match); rewriting clue text (fabrication

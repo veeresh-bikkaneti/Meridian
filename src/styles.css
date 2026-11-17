@@ -290,6 +290,18 @@
   --map-pin-dot: #f6f3ea;
 }
 
+/* High contrast on the game surface (item 37): the block above repaints
+   only the --map-* tokens, which the satellite game screen never
+   consumes — flipping the toggle there changed nothing a player could
+   see. Under the same attribute, strengthen the shared border token so
+   every card, button and panel edge on the game surface (and every
+   other screen) gets visibly stronger the moment the toggle flips.
+   A separate block on purpose: the palette pin tests slice the first
+   block only, and these values are chrome, not map palette. */
+:root[data-palette="high-contrast"] {
+  --line: color-mix(in oklab, var(--fg) 45%, transparent);
+}
+
 @theme inline {
   --color-bg: var(--bg);
   --color-fg: var(--fg);
