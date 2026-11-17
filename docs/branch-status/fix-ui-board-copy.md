@@ -64,6 +64,61 @@ nothing 508/516 did is redone. Stream S cherry-picked: `a0458929`, `cc745790`.
   published board (every chip's bottom edge above every atom top in its
   bubble) plus a source pin for the material flag.
 
+## Done — Review Round 2 (bugs 7 + 9)
+
+- **Bug 9, spec updates:** the board e2e spec still expected the pre-fix
+  board. Measured against the published file and the rendered board, then
+  updated in place: counts line "13 not started yet" → "9 not started yet"
+  (snapshot test + live-feed test; counts are 24/4/9 since item 25, and
+  22/6/9 with record 430 re-opened); the life pill reads "1 of 3 steps
+  done" (item 26's wording); two pills now read 100% (Maths 5/5 and Story
+  Journals 4/4 — item 25's data fix finished the Journals feature);
+  group rows follow item 26 (see below); the grown-ups shell test scopes
+  its "What's coming" locator to the Grown-ups nav — the credits page
+  legitimately carries two board doors (nav + body), so the unscoped
+  locator hit a strict-mode duplicate.
+- **Bug 9, empty-group behaviour in the spec:** only groups with stories
+  render (item 26). Snapshot board: 18 of 36 possible group rows exist,
+  Blocked is not one of them (every recorded wait is satisfied). Live-feed
+  test: exactly one Blocked row renders — the waiting story's own.
+- **Bug 9, empty-group unit test:** `src/board/trail-view.test.ts` pins
+  the render the way this repo pins render behaviour its unit harness
+  cannot mount (the strip-types runner cannot import .tsx; same pattern
+  as the depthTest source pin): the empty-group early return must sit
+  inside the group map before the section is created, and no empty-group
+  line may render. Verified red on main (2/2 fail in the hermetic
+  worktree, main's src) and green here. The unreachable empty-line
+  ternary the item-26 fix left behind in trail-view.tsx is removed,
+  with the now-unused GROUP_EMPTY table.
+- **Bug 7 / A.7, label-vs-dot bounding boxes:** new test in
+  status-core.test.ts asserts no feature chip's 3D bounding box
+  overlaps any atom's 3D bounding box — every chip against every atom,
+  not just its own bubble. Chip width is now one shared constant
+  (`LABEL_WIDTH = 9` in status-core; molecule-map scales the sprite
+  from it instead of a bare 9). Measured on the real published board:
+  3D overlaps = 0. In the x/y projection there is exactly 1 crossing
+  pair ("Why Do We Learn This?" chip vs a Physics & Chemistry atom) —
+  the pair is separated by ~5 units in z, and no lift value clears the
+  projection (scan: 2 crossings at lift 1.2, 1 at 2.2, 2 at 3.0/3.5 —
+  the two bubbles stack 11.9 apart with radii summing 10.6, a 1.3 gap
+  the 2.25-tall chip cannot fit). `LABEL_LIFT` stays 2.2: it is the
+  scan's minimum and the z separation plus depthTest-off rendering is
+  what keeps dots off labels in the scene. Honest limit: the 3D test
+  also passes on main — it pins the geometry against future layout
+  drift rather than catching a main defect; the projection count is
+  the part that improved (2 → 1).
+- **E2E evidence (hermetic recipe, complete installs, pinned Chromium):**
+  main baseline 18/18 pass (main's spec vs main's board); this branch
+  before the spec updates 14/18 — the 4 failures were exactly the
+  deltas above; after the updates 18/18 pass. No app-behaviour delta:
+  the only runtime-code change is the dead-code removal and the
+  LABEL_WIDTH constant (same value, 9).
+- **Merge-train note:** this branch carries PR 516's commit `0cf46af8`
+  ("Board copy: the What's Coming header keeps only its Updated
+  stamp") in its history. When the train rebases onto merged 521, drop
+  that commit (or wait for 516 to merge first) — do not rebase or drop
+  it before then.
+
 ## Gates
 
 - Board unit tests: 61/61 (`node --experimental-strip-types --test src/board/**`).
@@ -84,6 +139,10 @@ nothing 508/516 did is redone. Stream S cherry-picked: `a0458929`, `cc745790`.
 
 ## Handoff
 
-- Done: items 23 (answers + guard verified), 24, 25, 26, 27, 28, 29.
-- Next: Phase 3 combined review; screenshots at 2560/1280/390 still owed.
+- Done: items 23 (answers + guard verified), 24, 25, 26, 27, 28, 29;
+  Review Round 2 bugs 7 + 9 (spec updates, empty-group unit test,
+  chip-vs-atom 3D bounding-box test).
+- Next: merge train — 521 lands first on the owner's word, then this
+  branch rebases onto merged 521 and drops 516's commit `0cf46af8`.
+  Screenshots at 2560/1280/390 still owed.
 - Open: none for the owner inside this stream's share.
