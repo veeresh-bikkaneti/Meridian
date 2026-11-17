@@ -2225,6 +2225,19 @@ div.first-visit-queue-overlay {
 .site-header {
   z-index: var(--z-header);
 }
+/* Sticky bar (PR 3 Step 3.11): the sticky prop pins the shell header
+   to the top of the viewport while the screen scrolls under it. The
+   background mirrors the bar treatment the retired .screen-home-bar
+   className override carried on GeoDetective; the layer is the
+   header's own --z-header above. */
+.site-header[data-sticky="true"] {
+  position: sticky;
+  top: 0;
+  background: var(--bg, var(--atlas-bg-1));
+}
+.mode-screen:not(.why-learn-screen) .site-header[data-sticky="true"] {
+  background: var(--atlas-bg-1);
+}
 /* Map variant (PR 3 Step 2): the header floats over the map on the
    shared game-chrome surface instead of the page's cream. */
 .site-header[data-variant="map"] {

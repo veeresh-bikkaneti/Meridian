@@ -89,6 +89,14 @@ type SiteHeaderSlots = {
    *  (over-map chrome). In the map variant the home control defaults
    *  to its secondary variant unless homeVariant says otherwise. */
   variant?: "cream" | "map";
+  /** Sticky bar (PR 3 Step 3.11): the header pins to the top of the
+   *  viewport while the screen scrolls under it, on the shell's own
+   *  treatment (styles.css, data-sticky) — GeoDetective's case screen
+   *  is the user; it previously hand-rolled this with a className
+   *  override (screen-home-bar + a negative-margin bleed). The shell
+   *  carries the layout now: the row's geometry is the header's, the
+   *  page gutter is the column's. */
+  sticky?: boolean;
   /** HomeButton variant: ghost on cream (default), secondary over
    *  the map. A prop, not a fork (Round 2 review, rules 2–3). */
   homeVariant?: "ghost" | "secondary";
@@ -109,6 +117,7 @@ export function SiteHeader({
   endGame,
   exitInMenuOnSmallScreens = false,
   variant = "cream",
+  sticky = false,
   homeVariant,
   className,
   style,
@@ -163,6 +172,7 @@ export function SiteHeader({
       className={cn("site-header", className)}
       style={style}
       data-variant={variant}
+      data-sticky={sticky ? "true" : undefined}
       data-nav-mode={navMode}
       data-menu-open={menuOpen ? "true" : "false"}
       data-exit-menu={exitInMenuOnSmallScreens ? "sm" : undefined}
