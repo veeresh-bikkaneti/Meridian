@@ -298,6 +298,20 @@ describe("ErrorScreen", () => {
     const card = await render("ErrorScreen", { onHome: () => {}, onRetry: () => {} });
     assert.match(card, /mode-card/);
   });
+
+  it("embedded renders the panel alone, and the Home exit exists only when onHome is passed (PR 3 Step 3.9)", async () => {
+    const withHome = await render("ErrorScreen", { embedded: true, onHome: () => {}, onRetry: () => {} });
+    assert.doesNotMatch(withHome, /site-header|home-button/);
+    assert.match(withHome, /mode-card/);
+    assert.match(withHome, />Try again</);
+    assert.match(withHome, />Home</);
+    // No onHome: no Home exit anywhere — the mid-run case, where a
+    // Home button would lie because the reload restores the run.
+    const noHome = await render("ErrorScreen", { embedded: true, onRetry: () => {} });
+    assert.doesNotMatch(noHome, />Home</);
+    assert.doesNotMatch(noHome, /site-header|home-button/);
+    assert.match(noHome, />Try again</);
+  });
 });
 
 describe("PageShell and PageIntro (PR 3 Step 2)", () => {
