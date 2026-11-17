@@ -63,7 +63,7 @@ describe("#210 boundary probes staleness and routes to the update prompt", () =>
       "the neutral heading must default to the map for the map render site",
     );
     assert.ok(
-      boundarySource.includes("Couldn&rsquo;t load {surface}."),
+      boundarySource.includes("Couldn’t load ${surface}."),
       "the neutral heading must name the wrapped surface, not a hardcoded destination",
     );
     assert.ok(
@@ -121,8 +121,12 @@ describe("#210 boundary probes staleness and routes to the update prompt", () =>
       "the Home control must be gated to the persisted screens",
     );
     assert.ok(
-      render.includes("<HomeButton onHome={this.goHome} />"),
-      "the card must offer the shared Home control beside Try again / Refresh (INV2)",
+      render.includes("onHome={persisted ? this.goHome : undefined}"),
+      "the card must offer the ErrorScreen Home exit beside Try again / Refresh only for persisted screens (INV2)",
+    );
+    assert.ok(
+      render.includes("<ErrorScreen") && render.includes("embedded"),
+      "the card must render through the shared ErrorScreen in embedded mode (PR 3 Step 3.9)",
     );
     const goHome = segment(boundarySource, "private goHome", "render()");
     assert.ok(
