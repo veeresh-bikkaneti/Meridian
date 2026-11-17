@@ -47,6 +47,20 @@ test.beforeEach(async ({ context }) => {
     });
   }
   await context.route("https://api.github.com/**", async (route) => route.abort());
+  // Hermetic default (helpers.ts): every e2e context is served
+  // flags.json with the boardLiveFeed kill switch OFF, and
+  // api.github.com from seed fixtures. This spec is the feed's own
+  // test, so it opts back in — the shipped flags.json verbatim —
+  // while keeping the API fully stubbed per test (abort by default,
+  // fulfilled payloads in the live tests). Registered last, so it
+  // wins dispatch over the shared default.
+  await context.route("**/flags.json*", async (route) =>
+    route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: readFileSync("dist/client/flags.json"),
+    }),
+  );
 });
 
 async function openBoard(page: import("playwright/test").Page, url = BOARD_URL) {
