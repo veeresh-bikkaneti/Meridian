@@ -269,3 +269,42 @@ Trail (TrailScreen — `homeVariant="secondary"` over the map),
 (4) Board (routes/board.tsx — SiteHeader `to="/"` form). Each leaves
 the shell-ban baseline as it adopts; extend the adoption e2e per
 screen as it lands.
+
+## CI cure (run 44005133651 on tip 3d3c0ef7 — RED, merge train stopped)
+
+- **Build job (`npm test`, 3 failures):** all three in
+  `loop-screen-animate.test.ts` — "Cannot read properties of null
+  (reading 'protocolAllowlist')" from TanStack's Link. Root cause:
+  the adoption put SiteHeader/SiteFooter into LoopScreen, and both
+  render router Links; the animate harness renders LoopScreen with
+  react-test-renderer and no RouterProvider, a combination main never
+  had. Cure (d20031c3): the harness's module hooks already stub
+  browser-only modules (auto-animate, LoopMap) — the router joins
+  them; the stub Link renders its children inline. Reproduced
+  locally in a complete-install verify worktree before the fix;
+  after it, the file passes 3/3 and the full suite is 2806/2806
+  (CI had 2803 pass / 3 fail).
+- **E2E job (grownups "home UX polish", 1 failure):** "nav boxes did
+  not stabilize after viewport change". Two layers, both proven by
+  probe in the hermetic recipe:
+  1. The spec read `header.hv5-nav`, which adoption retired — the
+     settle wait read an empty set for 5s and threw. SiteHeader's
+     boxes are in fact stable (two reads 600ms apart identical at
+     1280 and 390). Spec retargeted to `header.site-header`'s
+     visible controls, CONTACT measured wherever it lives (inline
+     from 1024px, in the open menu panel below it); same assertions,
+     same strength (c03e3a68).
+  2. A real product defect the retarget exposed: below 1024px the
+     Menu button opened a panel CSS kept at `display:none` — the
+     ≤1023.5px rule hides `.site-header-nav` and the panel is one.
+     Probe evidence: panel in DOM, computed display none, CONTACT
+     box 0×0 at 390px. Cure (a90abf69): the panel is exempted with
+     an equal-specificity rule inside the same media block.
+- **Local verification (verify worktree, hermetic recipe):** the
+  cured test passes (12.5s); the CI e2e set runs 21/22 — the one
+  failure is endgame-share's clipboard test on
+  ERR_TUNNEL_CONNECTION_FAILED (sandbox proxy refusing the map-tile
+  tunnel; the same test passed in run 44005133651 itself, and the
+  error is identical on rerun). Not a delta of this branch.
+  Baseline for the delta call: PR 525 measured grownups 5/5 PASS on
+  unmodified main in this same recipe.
