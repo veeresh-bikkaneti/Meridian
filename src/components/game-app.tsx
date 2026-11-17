@@ -3466,11 +3466,24 @@ export function GameApp() {
   // src/lib/screen-hash.ts). A screen change pushes it, so Back
   // returns to the previous screen instead of leaving the site;
   // a popstate (Back / Forward) drives the screen state to match.
+  // Round 2 (bug 12): the FIRST screen's hash seeds the current
+  // history entry with replaceState instead of pushing a second
+  // one — pushing #home over a fresh visit to / left a phantom
+  // entry, so a first Back landed on the hash-less / and did
+  // nothing (the player was trapped; a second Back left). Seeding
+  // only happens on a hash-less URL: a visit that arrives with a
+  // fragment (deep link, home section) keeps today's push, so its
+  // entry stays in the stack under the screen it opened.
+  const hashSeededRef = useRef(false);
   useEffect(() => {
     const hash = hashForScreen(inAppScreen);
-    if (hash !== null && window.location.hash !== hash) {
+    if (hash === null || window.location.hash === hash) return;
+    if (!hashSeededRef.current && window.location.hash === "") {
+      window.history.replaceState(null, "", hash);
+    } else {
       window.history.pushState(null, "", hash);
     }
+    hashSeededRef.current = true;
   }, [inAppScreen]);
 
   // Open exactly one tap-in screen (or none, for Home), closing the
@@ -4184,7 +4197,11 @@ export function GameApp() {
       onDifficultyChoice={setDifficultyChoice}
       tutorialInvite={
         firstVisitPrompts.length > 0 ? (
-          <FirstVisitQueue prompts={firstVisitPrompts} seenKey="meridian.firstVisitQueue.v1" />
+          // Round 2 (Q1, owner-ruled): prompts overlay below the
+          // header instead of rendering in-flow above it, where
+          // they pushed the header down the page. placement="flow"
+          // restores the old in-flow render in one line.
+          <FirstVisitQueue prompts={firstVisitPrompts} seenKey="meridian.firstVisitQueue.v1" placement="overlay" />
         ) : null
       }
       tutorialInviteVisible={firstVisitPrompts.length > 0}
