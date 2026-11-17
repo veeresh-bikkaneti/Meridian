@@ -106,6 +106,35 @@ game-app.tsx changes go to Stream N through the integrator.
      frozen-map-file territory, not a style or blend setting in
      Stream G's files. Route with (2).
 
+## Review Round 2 — bug 11: the contrast flip must be visibly obvious
+
+Item 37 strengthened only `--line`; the review re-measured and the flip
+was still invisible where the player looks. Measured from computed
+styles on the game surface (hermetic recipe, dark theme) [measured]:
+
+| Surface | OFF before | ON before | ON after |
+| :--- | :--- | :--- | :--- |
+| Game-chrome border (`--atlas-card-line`) | 1.47:1 | **1.47:1** | **3.6:1** |
+| Shared `--line` border | 1.32:1 | 2.77:1 | **5.01:1** |
+| `--atlas-faint` text | 3.32:1 | 3.32:1 | **5.7:1** |
+| `--subtle` text | 4.49:1 | 4.49:1 | **5.78:1** |
+| Chrome / muted text | 13.03 / 5.78:1 | same | 13.05 / 5.78:1 |
+
+Fix (shared theme tokens only, in the item-37 HC block in
+`src/styles.css`; placement unchanged — label beside the toggle):
+`--line` fg mix 45% → 65%; `--atlas-card-line` and `--atlas-rule` go
+solid `--atlas-brass`; `--game-chrome-bg` goes near-solid
+(`--game-chrome-solid`) so panels read as panels over the map;
+`--atlas-faint` → `--atlas-muted` and `--subtle` → `--muted` under HC.
+Regression test: "high contrast is visibly obvious" in
+`tests/e2e/high-contrast.desktop.spec.ts` asserts the measured ratios
+(≥3:1 borders, ≥4.5:1 text, ON only) — **red on main** (ON chrome
+border 1.47 < 3, run in the hermetic worktree), **green here** (full
+spec 6/6, complete-install verify worktree). Gates: `tsc --noEmit`
+clean, full `npm test` green, `build:pages` green. OFF vs ON
+screenshots at 390 + 1280: `~/workspace/verify-evidence-519/`
+(hc-off/hc-on-390.png, hc-off/hc-on-1280.png).
+
 ## Item 31 — what this PR does
 
 Audit of all 497 published cases (`scripts/clues/clue-giveaway.mjs`,
