@@ -154,6 +154,32 @@ export function deckLabelForId(deckId: string): string {
 }
 
 /**
+ * The ONE source for deck counts (item 32). Every chip total on both
+ * game screens resolves here, so a subset count can never exceed its
+ * total — by construction, not by the callers agreeing:
+ * - GeoDetective's pack deals a subset of the core deck (manifest loop
+ *   indexes into it), so its total is clamped to the core total and
+ *   "All cases" IS the core total.
+ * - Cold Trail's two decks are disjoint files, so "All cases" is their
+ *   sum and each deck's own count sits under it.
+ */
+export function resolveDeckCounts(input: {
+  edition: PackEditionId;
+  coreTotal: number | null;
+  packTotal: number | null;
+}): { coreTotal: number | null; packTotal: number | null; allTotal: number | null } {
+  const { edition, coreTotal, packTotal } = input;
+  if (edition === "geodetective") {
+    const pack =
+      coreTotal !== null && packTotal !== null ? Math.min(packTotal, coreTotal) : packTotal;
+    return { coreTotal, packTotal: pack, allTotal: coreTotal };
+  }
+  const allTotal =
+    coreTotal === null ? packTotal : packTotal === null ? coreTotal : coreTotal + packTotal;
+  return { coreTotal, packTotal, allTotal };
+}
+
+/**
  * Build the chip list for one edition. The core deck always leads. The
  * pack chip joins only when the manifest says this edition can deal it:
  * GeoDetective needs loop indexes, Cold Trail needs its pack case file.
@@ -174,14 +200,28 @@ export function buildDeckList(input: {
    */
   packTotal?: number | null;
 }): PackDeckView[] {
+  const rawPackTotal =
+    input.edition === "coldtrail" && input.packTotal != null
+      ? input.packTotal
+      : (input.packManifest?.size ?? input.packTotal ?? null);
+  const counts = resolveDeckCounts({
+    edition: input.edition,
+    coreTotal: input.coreTotal,
+    packTotal: rawPackTotal,
+  });
   const decks: PackDeckView[] = [
     {
       id: CORE_DECK_ID,
       label: "All cases",
       glyph: "📁",
       star: false,
-      closed: input.coreClosed,
-      total: input.coreTotal,
+      closed:
+        input.edition === "coldtrail" &&
+        input.coreClosed !== null &&
+        input.packClosed !== null
+          ? input.coreClosed + input.packClosed
+          : input.coreClosed,
+      total: counts.allTotal,
     },
   ];
   const m = input.packManifest;
@@ -198,10 +238,7 @@ export function buildDeckList(input: {
     glyph,
     star: true,
     closed: input.packClosed,
-    total:
-      input.edition === "coldtrail" && input.packTotal != null
-        ? input.packTotal
-        : m.size,
+    total: counts.packTotal,
   });
   return decks;
 }

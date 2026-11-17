@@ -14,6 +14,7 @@ import {
   CORE_DECK_ID,
   PACK_SHELF_SELECTION_KEY,
   buildDeckList,
+  resolveDeckCounts,
   deckProgressLine,
   fetchLoopDeckSize,
   fetchPackManifest,
@@ -133,6 +134,33 @@ describe("buildDeckList", () => {
     // Without a bundled count, Cold Trail falls back to the manifest size.
     const fallback = buildDeckList({ ...base, edition: "coldtrail", packManifest: MANIFEST });
     assert.equal(fallback[1]!.total, 72);
+  });
+
+  it("item 32: one count source — a subset never exceeds its total", () => {
+    // Cold Trail's real bundled decks: 60 core + 85 capitals (disjoint
+    // files). "All cases" must read 145, above both deck counts.
+    const trail = buildDeckList({
+      ...base,
+      edition: "coldtrail",
+      packManifest: MANIFEST,
+      coreTotal: 60,
+      packTotal: 85,
+    });
+    assert.equal(trail[0]!.total, 145);
+    assert.equal(trail[1]!.total, 85);
+    assert.ok(trail[1]!.total! <= trail[0]!.total!);
+    // GeoDetective's pack is a subset of the core deck: even a stale
+    // manifest size above the core total resolves down to the core.
+    const geo = resolveDeckCounts({ edition: "geodetective", coreTotal: 50, packTotal: 72 });
+    assert.equal(geo.packTotal, 50);
+    assert.equal(geo.allTotal, 50);
+    const geoDecks = buildDeckList({
+      ...base,
+      edition: "geodetective",
+      packManifest: MANIFEST,
+      coreTotal: 50,
+    });
+    assert.ok(geoDecks[1]!.total! <= geoDecks[0]!.total!);
   });
 });
 

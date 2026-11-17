@@ -1,7 +1,7 @@
 import { strict as assert } from "node:assert";
 import { test } from "node:test";
 import { AGE_BAND_IDS, FULL_ACCESS_BAND } from "../age-profile/bands.ts";
-import { THEMES, fmtRadius, themeForBand, verdictForTheme, type ColdTrailTheme } from "./themes.ts";
+import { THEMES, fmtRadius, formatSightingTime, themeForBand, verdictForTheme, type ColdTrailTheme } from "./themes.ts";
 import type { ColdTrailSighting } from "./types.ts";
 
 const OCTANTS: Array<[string, string]> = [
@@ -265,7 +265,7 @@ const EXPECTED_STRINGS: Record<string, string[]> = {
     "🗺️ Cold Trail · Map Mystery",
     "Case #007 — The Missing Treasure Map",
     "A treasure map has gone missing from its box. Three sightings, three rings — work out where the map ended up and tap your best guess.",
-    "👀 Sighting 1 · Tue 08:14",
+    "👀 Sighting 1 · Tue 8:14 AM",
     "🧭 Guide: tighten this ring by half (1⭐)",
     "Guide: tighten ring to half radius, costs 1 star",
     "Guide unavailable: needs 1 star, you have 0",
@@ -315,7 +315,7 @@ const EXPECTED_STRINGS: Record<string, string[]> = {
     "🕵️ Cold Trail · Case file",
     "Case #007",
     "A trail of sightings crosses the map. Three sightings, three rings — triangulate where the trail leads and tap your best guess.",
-    "🕵️ Sighting 1 · Tue 08:14",
+    "🕵️ Sighting 1 · Tue 8:14 AM",
     "🧭 Guide: tighten 50% (1⭐)",
     "Guide: tighten ring to half radius, costs 1 star",
     "Guide unavailable: needs 1 star, you have 0",
@@ -371,4 +371,17 @@ test("every rendered theme string matches the gate-approved text exactly", () =>
       `band ${band}: a rendered string differs from the Child Safety gate text`,
     );
   }
+});
+
+test("formatSightingTime renders the viewer's clock (item 35)", () => {
+  // The gate-approved eyebrow wording is unchanged; the clock segment
+  // follows the viewer's locale — 12-hour where that is the habit,
+  // 24-hour where it is not. The EXPECTED_STRINGS pins above render in
+  // the test runner's default locale (en-US), hence "Tue 8:14 AM".
+  assert.equal(formatSightingTime("Tue 08:14", "en-US"), "Tue 8:14 AM");
+  assert.equal(formatSightingTime("Tue 13:20", "en-US"), "Tue 1:20 PM");
+  assert.equal(formatSightingTime("Mon 19:59", "en-GB"), "Mon 19:59");
+  assert.equal(formatSightingTime("Wed 00:05", "en-GB"), "Wed 00:05");
+  // A timestamp outside the stored shape passes through untouched.
+  assert.equal(formatSightingTime("just after dawn", "en-US"), "just after dawn");
 });
