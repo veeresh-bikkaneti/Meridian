@@ -32,7 +32,7 @@ export const Route = createFileRoute("/privacy")({
   component: PrivacyPage,
 });
 
-const UPDATED = "October 21, 2026";
+const UPDATED = "November 17, 2026";
 
 function PrivacyPage() {
   return (
