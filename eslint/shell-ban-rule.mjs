@@ -8,10 +8,15 @@
  * site-footer.tsx, page-column.tsx); these bans stop the copy path
  * from coming back:
  *
- * 1. Importing the old HomeButton pill — new screens use SiteHeader
- *    (BrandHomeButton lockup). HomeButton itself is NOT deleted yet:
- *    it still serves end-of-flow and HUD surfaces until their streams
- *    adopt the shell. This rule bans new imports.
+ * 1. Importing a home control (HomeButton or BrandHomeButton) to
+ *    hand-roll a header — screens take the home control from
+ *    SiteHeader, which owns it (Round 2 adoption: the control is
+ *    HomeButton, "Home", top-left, on every adopted screen). The
+ *    controls themselves are NOT deleted: HomeButton still serves
+ *    end-of-flow and HUD surfaces until their streams adopt the
+ *    shell, and BrandHomeButton still serves ScreenShell. Those
+ *    uses are baselined or owner-exempt below; this rule bans new
+ *    imports everywhere else.
  * 2. Page-local <header> / <footer> elements outside the shared
  *    components.
  * 3. `max-w-none` in a class string — screens sit in PageColumn's two
@@ -48,10 +53,13 @@ const shellPlugin = {
           ImportDeclaration(node) {
             if (!/home-button/.test(node.source.value)) return;
             for (const spec of node.specifiers) {
-              if (spec.type === "ImportSpecifier" && spec.imported.name === "HomeButton") {
+              if (
+                spec.type === "ImportSpecifier" &&
+                (spec.imported.name === "HomeButton" || spec.imported.name === "BrandHomeButton")
+              ) {
                 context.report({
                   node: spec,
-                  message: `The HomeButton pill is retired for screens. Fix: ${FIX_HEADER} (BrandHomeButton lockup). End-of-flow/HUD uses are baselined in eslint/shell-ban-baseline.json.`,
+                  message: `Screens take the home control from SiteHeader, never by importing it. Fix: ${FIX_HEADER}. End-of-flow/HUD uses are baselined in eslint/shell-ban-baseline.json.`,
                 });
               }
             }
@@ -100,6 +108,11 @@ const shellPlugin = {
 /** The shared components own the only sanctioned <header>/<footer>. */
 const HEADER_FOOTER_OWNERS = ["src/components/ui/site-header.tsx", "src/components/ui/site-footer.tsx"];
 
+/** The sanctioned hosts of the home controls themselves: SiteHeader
+ *  (every adopted screen's header) and ScreenShell (the picker/case
+ *  shell, frozen while PR 515 is in flight). */
+const HOME_CONTROL_OWNERS = ["src/components/ui/site-header.tsx", "src/components/ui/screen-shell.tsx"];
+
 function block(kind, ruleName, extraIgnores = []) {
   return {
     files: ["src/**/*.{ts,tsx}"],
@@ -110,7 +123,7 @@ function block(kind, ruleName, extraIgnores = []) {
 }
 
 export const shellBanConfigs = [
-  block("homeButtonImport", "no-home-button-import"),
+  block("homeButtonImport", "no-home-button-import", HOME_CONTROL_OWNERS),
   block("pageLocalHeaderFooter", "no-page-local-header-footer", HEADER_FOOTER_OWNERS),
   block("maxWNone", "no-max-w-none"),
 ];
