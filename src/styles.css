@@ -290,16 +290,31 @@
   --map-pin-dot: #f6f3ea;
 }
 
-/* High contrast on the game surface (item 37): the block above repaints
-   only the --map-* tokens, which the satellite game screen never
-   consumes — flipping the toggle there changed nothing a player could
-   see. Under the same attribute, strengthen the shared border token so
-   every card, button and panel edge on the game surface (and every
-   other screen) gets visibly stronger the moment the toggle flips.
-   A separate block on purpose: the palette pin tests slice the first
-   block only, and these values are chrome, not map palette. */
+/* High contrast on the game surface (item 37; strengthened in Review
+   Round 2, bug 11): the block above repaints only the --map-* tokens,
+   which the satellite game screen never consumes — flipping the toggle
+   there changed nothing a player could see. Under the same attribute,
+   strengthen the shared chrome tokens so the flip is unmistakable on
+   every screen the moment it lands. Measured on the game surface
+   (computed styles, dark theme; tests/e2e/high-contrast.desktop.spec.ts
+   pins these): the game-chrome border (--atlas-card-line at 22% brass)
+   sat at 1.47:1 with the toggle OFF *and* ON, the shared --line border
+   reached only 2.77:1 ON, and --atlas-faint text sat at 3.32:1. Now:
+   --line mixes the foreground at 65% (border 2.77:1 → 5.01:1), the
+   card/chrome line and rule go solid brass (border 1.47:1 → 3.6:1),
+   the game chrome
+   background goes near-solid so panels read as panels over the map,
+   and the two weakest text tokens step up to their AA-passing siblings
+   (faint 3.32:1 → muted 5.7:1; subtle → muted 5.78:1). A separate block
+   on purpose: the palette pin tests slice the first block only, and
+   these values are chrome, not map palette. */
 :root[data-palette="high-contrast"] {
-  --line: color-mix(in oklab, var(--fg) 45%, transparent);
+  --line: color-mix(in oklab, var(--fg) 65%, transparent);
+  --atlas-card-line: var(--atlas-brass);
+  --atlas-rule: var(--atlas-brass);
+  --game-chrome-bg: var(--game-chrome-solid);
+  --atlas-faint: var(--atlas-muted);
+  --subtle: var(--muted);
 }
 
 @theme inline {
