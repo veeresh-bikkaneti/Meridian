@@ -30,7 +30,7 @@ test.beforeEach(async ({ context }) => {
 
 async function openHome(page: Page) {
   await page.goto(APP_URL);
-  await expect(page.locator("header.hv5-nav")).toBeVisible();
+  await expect(page.locator("header.site-header")).toBeVisible();
 }
 
 async function assertFirstVisitOverlay(page: Page) {
@@ -40,7 +40,7 @@ async function assertFirstVisitOverlay(page: Page) {
   await expect(queue).toHaveCount(1);
   await expect(queue).toHaveAttribute("data-placement", "overlay");
 
-  const header = page.locator("header.hv5-nav");
+  const header = page.locator("header.site-header");
   const headerBox = await header.boundingBox();
   const queueBox = await queue.boundingBox();
   expect(headerBox).not.toBeNull();
@@ -73,7 +73,7 @@ test("bug 12a: Back from an opened game lands on #home with the game closed", as
   await page.goBack();
   await expect(page).toHaveURL(/#home$/);
   await expect(page.getByTestId("loop-screen")).toHaveCount(0);
-  await expect(page.locator("header.hv5-nav")).toBeVisible();
+  await expect(page.locator("header.site-header")).toBeVisible();
 });
 
 test("bug 12b: a fresh visit holds one history entry — one Back leaves cleanly", async ({ page }) => {
