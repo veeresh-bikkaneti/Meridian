@@ -5,7 +5,7 @@
  * merged with the plan (picker-rows): ready subjects open their case,
  * everything else shows as a disabled "Coming soon" row, so the kid
  * sees the map of what is coming. Rows are subject cards on the shared
- * ScreenShell page style. Subject code loads only when a row is tapped:
+ * mode-screen page style. Subject code loads only when a row is tapped:
  * the registry never calls load() for the list, and the tap races the
  * load against withChunkTimeout like every other lazy screen (#209).
  *
@@ -74,7 +74,8 @@ import { CardFilm } from "@/components/card-film";
 import type { CelebrationSpec } from "@/components/celebration-copy";
 import { SUBJECT_CARD_MEDIA, SUBJECT_CARD_STILLS } from "@/assets/why-learn/subject-card-media";
 import { pickerRows } from "./picker-rows";
-import { ScreenShell } from "@/components/ui/screen-shell";
+import { SiteHeader } from "@/components/ui/site-header";
+import { SiteFooter } from "@/components/ui/site-footer";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Atom, BookOpen, Calculator, FlaskConical, Globe2, Users, type LucideIcon } from "lucide-react";
 import { WhyLearnHero } from "./WhyLearnHero";
@@ -296,18 +297,38 @@ export default function SubjectPicker({
   const rows = released ? pickerRows(released, band) : [];
 
   return (
-    <ScreenShell
-      onHome={onExit}
-      controls={resumeControl}
-      className="why-learn-screen subject-picker-screen lg:max-w-none"
-      testId="subject-picker"
-      hero={<WhyLearnHero />}
-      data={{ "data-band": band }}
-      eyebrow="Case file · Why it matters"
-      title="Why Do We Learn This?"
-      titleRef={headingRef}
-      sub={profileStatus === "unset" ? "Pick a subject" : `Pick a subject · Ages ${band}`}
+    <main
+      className="mode-screen mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 pt-2 pb-8 why-learn-screen subject-picker-screen lg:max-w-none"
+      data-testid="subject-picker"
+      data-band={band}
     >
+      {/* The shared shell (PR 3 Step 3.3): SiteHeader carries the one
+          Home control — the legacy ScreenShell's BrandHomeButton
+          lockup goes — and the resume control rides the header's
+          back slot, beside Home, where ScreenShell's controls sat.
+          The hero card is this screen's own content: the film and
+          its titles band keep the exact classes the hero-cap rules
+          in styles.css key on (.screen-hero / .screen-hero-band),
+          so the approved Variant B measurements are untouched.
+          The page's top padding is 8px, not the old frame's 32px:
+          the shell header's row carries its own vertical padding
+          and is ~24px taller than the old home bar — the page
+          gives that height back here so the hero film and the
+          first card row keep their measured places (the hero-cap
+          spec pins them). */}
+      <SiteHeader onHome={onExit} status={null} mute={null} back={resumeControl} />
+      <div className="screen-hero mode-card mt-4 overflow-hidden">
+        <WhyLearnHero />
+        <div className="screen-hero-band px-5 pt-1 pb-5">
+          <p className="name-eyebrow mt-4">Case file · Why it matters</p>
+          <h1 ref={headingRef} tabIndex={-1} className="mode-title text-3xl text-fg mt-1">
+            Why Do We Learn This?
+          </h1>
+          <p className="mt-2 text-fg">
+            {profileStatus === "unset" ? "Pick a subject" : `Pick a subject · Ages ${band}`}
+          </p>
+        </div>
+      </div>
       <WhyLearnWorld />
       <WhyLearnDrift />
       {/* The band ask, contained on this page (see the header
@@ -421,25 +442,14 @@ export default function SubjectPicker({
           <ResetHistoryControl onReset={onResetHistory} />
         </div>
       ) : null}
-      {/* Age-profile footer entry — Home's own footer pattern (the
-          agep-footer row and its grown-ups link, same classes, same
-          label): the gate → AgePicker flow is hosted by GameApp, so
-          the band can be changed without leaving the picker. The
-          current band already reads in the sub line above ("Ages …"),
+      {/* Age-profile footer entry — the shared SiteFooter (PR 3
+          Step 3.3) carrying the same grown-ups link (same label,
+          aria-label and test id, from the shell component): the
+          gate → AgePicker flow is hosted by GameApp, so the band
+          can be changed without leaving the picker. The current
+          band already reads in the sub line above ("Ages …"),
           which follows the band state. */}
-      {onOpenAgeSettings ? (
-        <footer className="agep-footer">
-          <button
-            type="button"
-            className="agep-footer-link"
-            onClick={onOpenAgeSettings}
-            aria-label="For grown-ups: game settings"
-            data-testid="grownups-link"
-          >
-            🔒 For grown-ups
-          </button>
-        </footer>
-      ) : null}
-    </ScreenShell>
+      {onOpenAgeSettings ? <SiteFooter onGrownUps={onOpenAgeSettings} /> : null}
+    </main>
   );
 }

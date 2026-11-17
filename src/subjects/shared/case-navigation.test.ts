@@ -209,14 +209,24 @@ describe("age band picker in the Why Learn flow (defect 4)", () => {
   });
 
   it("the picker footer carries Home's grown-ups entry", () => {
-    assert.ok(subjectPicker.includes('className="agep-footer"'), "Home's footer row");
-    assert.ok(subjectPicker.includes('className="agep-footer-link"'), "Home's footer link styling");
-    assert.ok(subjectPicker.includes('data-testid="grownups-link"'), "same testid as Home's entry");
+    // PR 3 Step 3.3: the hand-built footer became the shared
+    // SiteFooter; the grown-ups entry it renders is the same one
+    // Home's footer carries (same testid, same accessible label —
+    // pinned in shared-shell.test.ts against site-footer.tsx).
     assert.ok(
-      subjectPicker.includes('aria-label="For grown-ups: game settings"'),
-      "same accessible label as Home's entry",
+      subjectPicker.includes("<SiteFooter onGrownUps={onOpenAgeSettings}"),
+      "the shared footer, wired to GameApp's hosted settings",
     );
-    assert.ok(subjectPicker.includes("onClick={onOpenAgeSettings}"), "opens GameApp's hosted settings");
+    assert.ok(!subjectPicker.includes('className="agep-footer"'), "no hand-built footer row");
+  });
+
+  it("the picker header is the shared SiteHeader (PR 3 Step 3.3)", () => {
+    assert.ok(
+      subjectPicker.includes("<SiteHeader onHome={onExit} status={null} mute={null} back={resumeControl} />"),
+      "SiteHeader carries Home; the resume control rides the back slot",
+    );
+    assert.ok(!subjectPicker.includes("<ScreenShell"), "the legacy ScreenShell is gone from the picker");
+    assert.ok(!subjectPicker.includes('from "@/components/ui/screen-shell"'), "no ScreenShell import");
   });
 
   it("GameApp hosts the age settings over the subjects branch too", () => {
@@ -289,7 +299,7 @@ describe("resume control on the Why Learn screens (defect 2, amendment)", () => 
 
   it("the picker offers the same control and forwards both props to the case", () => {
     assert.ok(subjectPicker.includes('data-testid="resume-case-button"'), "the picker's own header control");
-    assert.ok(subjectPicker.includes("controls={resumeControl}"), "in the shell's controls slot");
+    assert.ok(subjectPicker.includes("back={resumeControl}"), "in the shell header's back slot (PR 3 Step 3.3)");
     assert.ok(subjectPicker.includes("onResumeCase={onResumeCase}"), "forwarded to the opened case");
     assert.ok(subjectPicker.includes("loopInProgress={loopInProgress}"), "the condition forwarded with it");
   });
