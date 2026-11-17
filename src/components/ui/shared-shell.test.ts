@@ -325,6 +325,12 @@ describe("PageShell and PageIntro (PR 3 Step 2)", () => {
     assert.doesNotMatch(src, /<footer|<header/);
   });
 
+  it("the grown-ups pages sit on PageShell (PR 3 Step 3.1): header Home + footer, no hand-built frame", () => {
+    const src = read("src/components/grownups/info-page.tsx");
+    assert.match(src, /<PageShell header=\{\{ to: "\/", status: null, mute: null \}\} width="narrow">/);
+    assert.doesNotMatch(src, /gp-wrap/);
+  });
+
   it("PageIntro renders eyebrow, title and sub", async () => {
     const html = await render("PageIntro", { eyebrow: "Eyebrow", title: "Title", sub: "Sub" });
     assert.match(html, /Eyebrow/);
