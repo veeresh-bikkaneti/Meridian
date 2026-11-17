@@ -299,7 +299,7 @@ export default function SubjectPicker({
     <ScreenShell
       onHome={onExit}
       controls={resumeControl}
-      className="why-learn-screen lg:max-w-none"
+      className="why-learn-screen subject-picker-screen lg:max-w-none"
       testId="subject-picker"
       hero={<WhyLearnHero />}
       data={{ "data-band": band }}
