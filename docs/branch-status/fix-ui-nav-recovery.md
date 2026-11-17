@@ -298,6 +298,77 @@ Stream S cherry-picked in: `920c9ddd` (shared shell components) +
   game-app suites pass (lazy-boundary + 160 neighbouring tests),
   `tsc --noEmit` clean, `lint:nav` clean.
 
+## Round 2 (Review Round 2 fixes, 2026-11-16)
+
+Tip after this round: `1925f4ab`. This branch predates PR 521's
+Round 2 adoption (tip `3d3c0ef7`); no rebase yet — the merge train
+handles it. Overlaps to expect at the train: 521 adopted
+ErrorScreen on GeoDetective (its surface meets this branch's
+map-error-boundary where LoopScreen mounts it), and 521's
+SiteHeader renders the shared HomeButton — the same control
+fix 3 below moves the error card to, so that change converges
+rather than conflicts in intent.
+
+- **Q1 (owner-ruled) — prompts overlay below the header.**
+  `FirstVisitQueue` gains a `placement` variant: `"overlay"`
+  (default) takes the prompt out of flow, fixed below the header;
+  `"flow"` restores the pre-Q1 in-flow render. The Home mount
+  passes `placement="overlay"` explicitly — one line flips it
+  back. Two cascade lessons, both measured on the built artifact:
+  (1) a bare Tailwind `fixed` on the wrapper loses to
+  `.atlas-home > :not(.atlas-bg)` (the atlas lift forces
+  `position: relative` on every direct child — CDP matched-rules
+  evidence), so position/top live in a named styles.css rule
+  (`.first-visit-queue-overlay`) whose selector outranks the lift;
+  (2) offsets are measured, not guessed: at 1280 the header's
+  bottom edge is 136.5px (offset 10rem), at 390 the wrapped
+  header's bottom is ~293px (offset 19rem).
+  Test: `tests/e2e/nav-back-first-visit.desktop.spec.ts` —
+  header bounding-box top ≤40px at 390 and 1280 with a prompt
+  pending, exactly one prompt visible, prompt top ≥ header
+  bottom. Red on main [measured]: both Q1 tests fail on the
+  hermetic main build (no queue; the invite renders in-flow).
+  Green here [measured]: 4/4 in the hermetic recipe.
+- **Bug 12 — Back behaviour.** The boot pushed `#home` over a
+  fresh visit to `/`, leaving a phantom hash-less entry: first
+  Back landed on `/` and did nothing. The push effect now seeds
+  the first screen's hash with `replaceState` when the URL is
+  hash-less (visits arriving with a fragment keep the push, so a
+  deep link's entry stays in the stack); later screens still
+  push. E2e in the same spec: (a) open GeoDetective → Back lands
+  on `#home`, game closed — fails on main [measured]; (b) fresh
+  visit → one Back leaves to about:blank — passes on main (main
+  has no hash routing to regress; the test pins the seeding
+  against this branch's Round-1 push-only boot). Existing unit
+  pins (screen-hash, persisted-screen, lazy-boundary) unchanged
+  and green.
+- **Bug 13 — error card uses the shared HomeButton.**
+  MapErrorBoundary rendered `BrandHomeButton` ("Meridian home");
+  both card variants now render `HomeButton` — the control
+  SiteHeader renders — keeping the 44px floor and focus
+  treatment. The pin in `map-error-boundary.test.ts` moved with
+  it. The shell-ban baseline gains the file under
+  `homeButtonImport` (the rule's own mechanism for HUD/end-of-
+  flow uses); 521's ErrorScreen adoption retires this surface
+  and shrinks the entry back out.
+- **Bug 10 residue — guess copy from one word source.** The
+  GeoDetective intro hardcoded "Five guesses" (wrong for the
+  7–10 band's cap of 6) and the Home card kept a private
+  two-entry word table. New `src/lib/number-words.ts`
+  (`numberWord`, words to Twelve, digit fallback) is the one
+  source; the intro renders `numberWord(activeDealConfig.
+  guessCap)` — the same config the counter uses — and the card
+  uses it via `geodetectiveConfig`. Unit tests in
+  `number-words.test.ts` cover every cap the deal config can
+  produce. Overlap note: this touches LoopScreen's intro, the
+  half PR 519 rendered by a 5/6 ternary; the generic helper
+  supersedes the ternary at the merge train.
+- **Gates [measured]:** full unit suite 1197 pass / 0 fail
+  (1208 tests); `tsc --noEmit` clean; `lint:nav` clean; hermetic
+  e2e (complete install, pinned Chromium, built artifact):
+  nav-back-first-visit 4/4 here, 3 fail / 1 pass on main as
+  recorded above.
+
 ## Graph (Phase 2 additions)
 
 - Add node: `src/lib/screen-hash.ts` — the screen ↔ hash contract
