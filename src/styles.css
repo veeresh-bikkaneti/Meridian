@@ -501,7 +501,7 @@ div.first-visit-queue-overlay {
 @media (min-width: 640px) {
   .atlas-home > div.first-visit-queue-overlay,
   div.first-visit-queue-overlay {
-    top: 8rem;
+    top: 10rem;
   }
 }
 
