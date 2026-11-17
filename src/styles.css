@@ -117,6 +117,22 @@
   --game-chrome-bg: color-mix(in srgb, var(--atlas-bg-1) 80%, transparent);
   --game-chrome-line: var(--atlas-card-line);
   --game-chrome-solid: color-mix(in srgb, var(--atlas-bg-1) 94%, transparent);
+  /* ---- Layout tokens (fix/mobile-header-overflow; PR 3 systematizes) ----
+   * Breakpoints, layers, the header offset and the page gutter are
+   * tokens, not magic numbers scattered through the sheets. Media
+   * queries cannot read custom properties, so @media rules cite the
+   * token in a comment and use its value. --header-height is the
+   * first-visit overlay's top offset: the exact heights the Q1 cure
+   * measured (the phone header wraps tall; the desktop one is one
+   * row), re-expressed as one token with a breakpoint override. */
+  --bp-sm: 640px;
+  --gutter: 1rem;
+  --header-height: 19rem;
+  --z-base: 0;
+  --z-header: 30;
+  --z-overlay: 40;
+  --z-menu: 50;
+  --z-modal: 60;
   color-scheme: dark;
 }
 
@@ -518,24 +534,38 @@
  * lift would otherwise force position: relative and put the
  * prompt back in flow. The top offset clears the home header at
  * both widths: the header wraps tall on a phone (brand row plus
- * wrapped nav), so the phone offset is the larger one. */
+ * wrapped nav), so the phone offset is the larger one.
+ *
+ * Fit (fix/mobile-header-overflow): the offsets are the
+ * --header-height token now, and the sheet is boxed by the
+ * gutters instead of a full-width class — at 390px the old
+ * `w-full` + inset made the sheet 411px wide and cut its Dismiss
+ * off, and at 320x568 its height ran past the viewport so the
+ * last option could not be reached. Max height plus its own
+ * scroll keeps every option reachable at any viewport. */
 .atlas-home > div.first-visit-queue-overlay,
 div.first-visit-queue-overlay {
   position: fixed;
-  top: 19rem;
+  top: var(--header-height);
+  left: var(--gutter);
+  right: var(--gutter);
+  width: auto;
+  max-width: min(36rem, calc(100vw - 2 * var(--gutter)));
+  max-height: calc(100dvh - var(--header-height) - var(--gutter));
+  overflow-y: auto;
   /* The lift above sets z-index: 1 on every atlas child, and this
-   * unlayered rule must claim the stack too: the Tailwind z-40
-   * utility is layered, so it loses to the lift, leaving the queue
-   * tied at 1 with the content column — tree order then paints the
-   * hero over the prompt and swallows its taps. 40 is the design
-   * value (above page content, below the z-50 gates/modals). */
-  z-index: 40;
+   * unlayered rule must claim the stack too: a layered utility
+   * loses to the lift, leaving the queue tied at 1 with the
+   * content column — tree order then paints the hero over the
+   * prompt and swallows its taps. The overlay layer token is the
+   * design value (above page content, below the menu and the
+   * gates/modals). */
+  z-index: var(--z-overlay);
 }
 
-@media (min-width: 640px) {
-  .atlas-home > div.first-visit-queue-overlay,
-  div.first-visit-queue-overlay {
-    top: 10rem;
+@media (min-width: 640px) { /* var(--bp-sm) */
+  :root {
+    --header-height: 10rem;
   }
 }
 
@@ -2166,6 +2196,45 @@ div.first-visit-queue-overlay {
 }
 .site-header-actions > * {
   white-space: nowrap;
+}
+.site-header {
+  z-index: var(--z-header);
+}
+/* With its menu open the header rises to the menu layer: the
+   first-visit sheet sits at the overlay layer and would otherwise
+   paint over the panel's lower items on a phone (the sheet is
+   fixed; the panel hangs from this header). The attribute is the
+   header's own open state, set by SiteHeader. */
+.site-header[data-menu-open="true"] {
+  z-index: var(--z-menu);
+}
+/* The exit slot's wrapper is transparent (display: contents) so
+   the actions row layout is unchanged; the panel copy of the exit
+   exists only when a screen opts into the small-screen move. */
+.site-header-exit {
+  display: contents;
+}
+.site-header-panel-exit {
+  display: none;
+}
+/* Below --bp-sm the actions row cannot fit the exit pill beside
+ * the Menu button (at 320px the row overflowed the page by 91px
+ * and pushed Menu off-screen). A screen that opts in
+ * (data-exit-menu="sm" — Home, whose exit is the Join pill) moves
+ * its exit into the menu panel at phone widths; game screens do
+ * not opt in, so End game is never menu-trapped. */
+@media (max-width: 639.5px) { /* var(--bp-sm) */
+  .site-header[data-exit-menu="sm"] .site-header-actions .site-header-exit {
+    display: none;
+  }
+  .site-header[data-exit-menu="sm"] .site-header-panel-exit {
+    display: block;
+    margin-top: 4px;
+  }
+  .site-header-panel-exit > * {
+    width: 100%;
+    justify-content: center;
+  }
 }
 .site-header-menu-button {
   font-family: var(--font-atlas-body);
