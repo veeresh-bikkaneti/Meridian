@@ -331,6 +331,17 @@ describe("PageShell and PageIntro (PR 3 Step 2)", () => {
     assert.doesNotMatch(src, /gp-wrap/);
   });
 
+  it("Review and Challenge complete sit on SiteHeader (PR 3 Step 3.7): the one Home at the top", () => {
+    const src = read("src/components/game-app.tsx");
+    assert.equal(
+      src.split("<SiteHeader onHome={onDone} status={null} mute={null} />").length - 1,
+      2,
+      "both end-of-flow screens render the shared header",
+    );
+    assert.match(src, /data-testid="review-complete"/);
+    assert.match(src, /testId="challenge-done"/);
+  });
+
   it("the region lists sit on SiteHeader (PR 3 Step 3.6): Home everywhere, Back in the back slot", () => {
     const src = read("src/components/game-app.tsx");
     assert.doesNotMatch(src, /<ScreenShell/);

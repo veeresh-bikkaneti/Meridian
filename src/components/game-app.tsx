@@ -5594,7 +5594,18 @@ function ReviewComplete({
 }) {
   const remembered = results.filter((r) => r.hit).length;
   return (
-    <main className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col justify-center px-5 py-8">
+    <main className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 pt-2 pb-8">
+      {/* The shared shell (PR 3 Step 3.7): SiteHeader carries the
+          one Home control at the top — this screen had no header
+          at all. The content keeps its vertical centring in the
+          space below the header. The primary HomeButton in the
+          flow stays: it is this end-of-flow screen's own exit
+          action beside its challenge/reset entries, the sanctioned
+          end surface. No failure branch exists on this screen —
+          the total === 0 state is an empty deck, not an error —
+          so there is nothing to route to ErrorScreen. */}
+      <SiteHeader onHome={onDone} status={null} mute={null} />
+      <div className="flex flex-1 flex-col justify-center">
       <p className="text-sm tracking-wide text-muted uppercase">
         {REVIEW_DECK_COPY.pickerTitle}
       </p>
@@ -5627,6 +5638,7 @@ function ReviewComplete({
           </Button>
         ) : null}
         {onResetHistory ? <ResetHistoryControl onReset={onResetHistory} /> : null}
+      </div>
       </div>
     </main>
   );
@@ -6356,11 +6368,22 @@ function ChallengeComplete({
     : "";
   return (
     <main
-      className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col justify-center px-5 py-8"
+      className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 pt-2 pb-8"
       data-verdict-settled={incomingWinner ? verdictSettled : undefined}
       onClick={incomingWinner ? settleByGesture : undefined}
       onKeyDown={incomingWinner ? settleByGesture : undefined}
     >
+      {/* The shared shell (PR 3 Step 3.7): SiteHeader carries the
+          one Home control at the top — this screen had no header
+          at all. The verdict block keeps its vertical centring in
+          the space below the header; a tap on the header settles
+          the choreography like any other tap on this screen (the
+          root's own settle rule). The primary HomeButton in the
+          actions (challenge-done) stays: the end-of-flow exit
+          beside the shares. No failure branch exists on this
+          screen, so there is nothing to route to ErrorScreen. */}
+      <SiteHeader onHome={onDone} status={null} mute={null} />
+      <div className="flex flex-1 flex-col justify-center">
       <p className="text-sm tracking-wide text-muted uppercase">
         {isMc2 ? run.regionName : CHALLENGE_REGION_NAME}
       </p>
@@ -6468,6 +6491,7 @@ function ChallengeComplete({
           </Button>
         ) : null}
         <HomeButton onHome={onDone} variant="primary" testId="challenge-done" />
+      </div>
       </div>
     </main>
   );
