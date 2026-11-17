@@ -123,7 +123,6 @@ import {
   journalSetIndexAt,
   nextEntryCountdown,
 } from "./home-journal";
-import { JournalPlayer } from "./journal-player";
 import {
   isJournalPrefetchAllowedNow,
   resolveJournalPrefetchEntries,
@@ -180,6 +179,12 @@ function normalizeSnapshotBand(b: AgeBandId | LegacySnapshotBand): AgeBandId {
 const AgeProfileSettings = lazy(() => import("./age-profile/AgeProfileSettings"));
 const AgeAskGate = lazy(() => import("./age-profile/AgeAskGate"));
 const StorytellerHomeHost = lazy(() => import("./storyteller-home"));
+// Journal movie player: React.lazy like the hosts above — the player and
+// its movie/transcript code stay out of the entry bundle and load with the
+// journal section, instead of taxing every first load (bundle budget).
+const JournalPlayer = lazy(() =>
+  import("./journal-player").then((m) => ({ default: m.JournalPlayer })),
+);
 // v5 hero globe: React.lazy like the storyteller host — the Three.js chunk
 // never lands in the initial bundle; HomeGlobe itself dynamically imports
 // three only when the hero nears the viewport.
@@ -5508,15 +5513,17 @@ function Choose({
           {journalNotes.map((note) => (
             <article key={note.id} className="hv5-entry" data-testid="journal-note">
               {note.image && note.imageAlt && (
-                <JournalPlayer
-                  noteId={note.id}
-                  place={note.place}
-                  imageSrc={journalImageUrl(note.image)}
-                  imageAlt={note.imageAlt}
-                  open={playingJournalId === note.id}
-                  onOpen={setPlayingJournalId}
-                  onClose={() => setPlayingJournalId(null)}
-                />
+                <Suspense fallback={null}>
+                  <JournalPlayer
+                    noteId={note.id}
+                    place={note.place}
+                    imageSrc={journalImageUrl(note.image)}
+                    imageAlt={note.imageAlt}
+                    open={playingJournalId === note.id}
+                    onOpen={setPlayingJournalId}
+                    onClose={() => setPlayingJournalId(null)}
+                  />
+                </Suspense>
               )}
               <div className="hv5-entry-text">
                 <h3>{note.place}</h3>
