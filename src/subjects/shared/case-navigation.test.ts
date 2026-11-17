@@ -115,10 +115,23 @@ describe("case screen game controls (defect 2)", () => {
   });
 
   it("the case carries the game's End game button in both shells", () => {
+    // PR 3 Step 3.4: both SubjectCase branches render the shared
+    // SiteHeader — End game in its exit slot, the resume control in
+    // its back slot — and the legacy ScreenShell is gone.
     assert.equal(
-      subjectCase.split("controls={gameControls}").length - 1,
+      subjectCase.split("endGame={endGameButton}").length - 1,
       2,
-      "the case shell and the empty-band shell both take the controls",
+      "the case shell and the empty-band shell both take the exit slot",
+    );
+    assert.equal(
+      subjectCase.split("back={resumeButton ?? undefined}").length - 1,
+      2,
+      "both shells carry the resume control in the back slot",
+    );
+    assert.ok(!subjectCase.includes("<ScreenShell"), "the legacy ScreenShell is gone from the case");
+    assert.ok(
+      !subjectCase.includes('from "@/components/ui/screen-shell"'),
+      "no ScreenShell import",
     );
     assert.ok(subjectCase.includes('data-testid="end-game-button"'), "same testid as the game's");
     assert.ok(subjectCase.includes('variant="secondary"'), "same Button variant as GeoDetective's");

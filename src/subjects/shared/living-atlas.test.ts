@@ -144,7 +144,7 @@ describe("The spotlight and the entrance cascade", () => {
 
 describe("Case screens carry the same system — scope class only", () => {
   it("both SubjectCase shells take the atlas scope", () => {
-    const scopes = subjectCase.split('className="why-learn-screen subject-case-screen"').length - 1;
+    const scopes = subjectCase.split("why-learn-screen subject-case-screen").length - 1;
     assert.equal(scopes, 2, "the case shell and the empty-band shell");
     assert.ok(css.includes(".subject-case-screen .mode-card"), "clue + answer cards restyled");
     assert.ok(css.includes(".subject-case-screen .loop-reveal"), "the result band restyled");
