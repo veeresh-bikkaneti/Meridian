@@ -84,13 +84,58 @@ PR is `main` so the stack is visible; do not merge before 526.
 - tsc clean · lint:nav ✓ · lint:subjects GATE PASSED · lint-cards
   GATE PASSED · check:provenance PASSED · build:pages green.
 
+## Done — Step 3, Batch A (one commit per screen)
+
+- **3.1 Grown-ups pages** (`d640bb1a`): InfoPage (Privacy / Credits /
+  Contact) now frames its card with PageShell — SiteHeader carries
+  the one "Home" control, SiteFooter closes the page; these pages
+  had no header, footer or Home before. The `.grown-page` parchment
+  wrapper and the doors cross-nav stay as page content; every word
+  inside is unchanged (privacy text and the age-band sentence
+  untouched; no donation copy lives on these pages — the locked
+  lines are in grandpa-coffee-run.tsx, not migrated here). New
+  shared-shell test pins the adoption; revert check: 1 red with
+  main's InfoPage. E2E: grownups-privacy-contact + credits green.
+- **3.2 Board** (`8cc37cd6`): SiteHeader `variant="map"` carries
+  Home; SiteFooter takes the board's ask as its lead, word for
+  word; the title block is content, not a second `<header>`. Board
+  leaves both shell-ban baseline lists. **"Live from GitHub" was
+  player-visible at board.tsx:340 — it is gone**: the coverage line
+  now reads "Checked just now — every linked record checked
+  (N of N)"; status-core's banned-token guard entry stays. The
+  board-data guard test + board e2e state the new line (revert
+  check: guard test red on main's route). Spacing: the block above
+  the map tightens ~56px in board.css because the shell header
+  carries its own row padding — measured: without it the molecule
+  map's probe atom lands below a 900px viewport (click at y=928)
+  and board.desktop.spec.ts:212 fails; with it the board spec
+  passes. **Known flake, not from this batch:** the kill-switch
+  test (board.desktop.spec.ts:562) failed 1 of 3 lone reruns on
+  this branch and passed in the full run — the service-worker
+  flags race PR #527 root-caused (fail-open flags); the feed logic
+  is untouched here and the fix lives in #527.
+- **3.3 Why Learn picker** (`133d4e89`): off ScreenShell —
+  SiteHeader carries Home, the resume control rides the `back`
+  slot, SiteFooter carries the grown-ups entry; the hero card is
+  the screen's own block with the same `.screen-hero` classes.
+  **Variant B holds, identical numbers**: film 931.5×524 @1280×800,
+  first-row peek 50.0px, hero-cap spec green @1280 + @1920. The
+  shell header is ~24px taller than the old home bar; the page's
+  top padding gives the 24px back (32→8px) — `--hero-film-offset`
+  untouched. Picker leaves pageLocalHeaderFooter (keeps maxWNone:
+  the wide desktop column IS the approved Variant B layout).
+  case-navigation + why-learn-hero specs updated in the same
+  commit (3 tests red on main's picker).
+- Screenshots (before/after, 390 + 1280, real build):
+  `~/workspace/verify-evidence-shell-step3/` — before-{privacy,
+  credits,board,picker}-*.png, after-{info,board,picker}-*.png.
+- Gates on the batch tip: tsc clean · npm test 1202 + 2852 pass,
+  0 fail · lint:nav ✓ · lint:subjects GATE PASSED · lint-cards
+  GATE PASSED · check:provenance PASSED · build:pages green.
+
 ## Remaining — in the brief's order
 
-- **Step 3 — migrate one screen per commit:** (1) Privacy / Credits /
-  Contact onto PageShell (locked donation copy moves word for word);
-  (2) Board (variant prop; confirm "Live from GitHub" is gone from
-  anything public); (3) Why Learn picker (hero peek shifts with
-  header height — re-measure); (4) Subject case; (5) Cold Trail
+- **Step 3, Batch B:** (4) Subject case; (5) Cold Trail
   (drop the `px-2` override); (6) Country/State lists + Challenge
   menu; (7) Review / Challenge complete; (8) Region loading + pool
   error → ErrorScreen; (9) Map error boundary → ErrorScreen;
