@@ -4969,7 +4969,7 @@ function Choose({
             <button type="button" className="site-header-nav-link" onClick={() => scrollTo("home-grownups")}>GET INVOLVED</button>
           </>
         }
-        stars={null}
+        status={null}
         mute={null}
         endGame={
           <button

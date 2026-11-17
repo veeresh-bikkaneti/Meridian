@@ -43,7 +43,7 @@ export function ErrorScreen({
 
   return (
     <PageColumn width="read">
-      <SiteHeader onHome={onHome} stars={null} mute={null} />
+      <SiteHeader onHome={onHome} status={null} mute={null} />
       <div className="mode-card error-screen-panel">
         <p className="name-eyebrow error-screen-eyebrow">Oops</p>
         <h1 ref={headingRef} tabIndex={-1} className="mode-title text-3xl text-fg">

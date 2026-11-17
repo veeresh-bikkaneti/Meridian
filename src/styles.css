@@ -2225,6 +2225,17 @@ div.first-visit-queue-overlay {
 .site-header {
   z-index: var(--z-header);
 }
+/* Map variant (PR 3 Step 2): the header floats over the map on the
+   shared game-chrome surface instead of the page's cream. */
+.site-header[data-variant="map"] {
+  background: var(--game-chrome-bg);
+  border-bottom: 1px solid var(--game-chrome-line);
+}
+.site-header-nav-icon {
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+}
 /* With its menu open the header rises to the menu layer: the
    first-visit sheet sits at the overlay layer and would otherwise
    paint over the panel's lower items on a phone (the sheet is

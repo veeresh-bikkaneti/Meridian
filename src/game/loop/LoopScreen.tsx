@@ -965,7 +965,7 @@ export function LoopScreen({
       <SiteHeader
         onHome={onLeave}
         className="screen-home-bar -mx-5 px-5"
-        stars={<p className="text-sm text-fg">Case #{caseNo}</p>}
+        status={<p className="text-sm text-fg">Case #{caseNo}</p>}
         mute={<SoundToggle testId="sound-toggle-loop" className="atlas-sound-toggle" />}
         endGame={
           store && load.phase === "ready" && !endedSummary ? (
