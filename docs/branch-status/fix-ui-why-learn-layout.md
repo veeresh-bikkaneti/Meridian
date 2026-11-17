@@ -114,6 +114,22 @@ write lands.
   container in code. The remaining mechanism needs the C5 capture
   in front of the Phase 3 screenshot seat (this sandbox cannot
   render — the item 13/22 limit); no CSS was guessed.
+- **Item 20 — MEASURED on a complete install (tip `9067f91b`,
+  rebuilt `build:pages`, headless Chromium): NOT REPRODUCED.**
+  Picker, both 1280×800 and 390×844: grid bottom → footer top is
+  103px, fully accounted for — 40px top margin + the 63px
+  reset-history control row (border, 16px padding, 44px button);
+  no empty band. Below the footer on picker and Home: exactly
+  32px at both viewports = the shell main's `padding-bottom`
+  (symmetric with its 32px top padding); after a full scroll the
+  footer stops exactly 32px above the viewport bottom. Home's
+  356px below the footer is the read-aloud preference prompt
+  section (312px of real content mounted after the footer) plus
+  that 32px padding — not void. Storyteller art NOT clipped at
+  either viewport: the full head-and-shoulders figure renders
+  inside the 56×56 banner box and the sprite layers exactly fill
+  it (`300% 300%` sheet, one frame). No code changed.
+  Screenshots: `~/workspace/verify-evidence-34b/item20-*`.
 
 ## Gates run here
 
