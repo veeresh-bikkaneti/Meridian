@@ -9,6 +9,7 @@ import { PlaceNameText } from "@/components/place-name";
 import { FlagImg } from "@/components/flag-img";
 import { flagEntry } from "@/lib/flag-registry";
 import { isEnabled } from "@/lib/flags";
+import { numberWord } from "@/lib/number-words";
 import { buildDetectiveHostProps } from "./detective/detective-host-props";
 import { GradeChip } from "@/components/grade-chip";
 import { ScrollCue, useMoreBelow } from "@/components/scroll-cue";
@@ -983,7 +984,7 @@ export function LoopScreen({
       <div className="mt-4">
         <h1 ref={headingRef} tabIndex={-1} className="mode-title text-4xl text-fg sm:text-5xl">GeoDetective</h1>
         <p className="mt-3 max-w-md text-lg text-fg">
-          Five guesses, one mystery place. Each guess unlocks another clue — and tells you how
+          {numberWord(activeDealConfig.guessCap)} guesses, one mystery place. Each guess unlocks another clue — and tells you how
           far off you were, and in which direction.
         </p>
       </div>

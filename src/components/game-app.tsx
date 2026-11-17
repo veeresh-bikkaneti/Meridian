@@ -224,6 +224,7 @@ import { isEnabled, loadFlags, getObservabilityEndpoint } from "@/lib/flags";
 import { consumeChunkReloadNotice, installChunkLoadRecovery } from "@/lib/chunk-recovery";
 import { consumeRetryScreen } from "@/lib/persisted-screen";
 import { hashForScreen, screenForHash } from "@/lib/screen-hash";
+import { numberWord } from "@/lib/number-words";
 import { geodetectiveConfig } from "@/game/age-profile/difficulty";
 import { SiteFooter } from "./ui/site-footer";
 import { withChunkTimeout } from "@/lib/chunk-timeout";
@@ -4676,9 +4677,10 @@ function HeroTrekkerOverlay() {
 
 /** Item 30: the Home card spells the band's guess cap as a word,
  *  read from the same difficulty table the loop's counter uses
- *  (geodetectiveConfig) — never a hardcoded count. */
-const GUESS_CAP_WORDS: Record<number, string> = { 5: "Five", 6: "Six" };
-const guessCapWord = (cap: number): string => GUESS_CAP_WORDS[cap] ?? String(cap);
+ *  (geodetectiveConfig) — never a hardcoded count. The word itself
+ *  comes from the shared numberWord helper (Round 2, bug 10
+ *  residue), the same source the loop's intro uses. */
+const guessCapWord = numberWord;
 
 /** Kid-friendly hints for each learning path, shown under the picker. */
 const DIFFICULTY_HINTS: Record<PickerDifficulty, string> = {
