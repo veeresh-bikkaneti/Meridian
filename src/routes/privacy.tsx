@@ -37,7 +37,7 @@ const UPDATED = "October 21, 2026";
 function PrivacyPage() {
   return (
     <InfoPage title="Privacy" graphic="satchel">
-      <p className="text-sm text-muted">For parents, carers, and teachers · Last updated {UPDATED}</p>
+      <p className="text-sm text-muted">For parents, caregivers, and teachers · Last updated {UPDATED}</p>
 
       <p>
         Meridian is a free geography, math and science game made for children. Because the site is directed to

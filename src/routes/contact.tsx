@@ -39,12 +39,28 @@ const GrownUpGate = lazy(() =>
   import("@/components/age-profile/GrownUpGate.tsx").then((m) => ({ default: m.GrownUpGate })),
 );
 
+/**
+ * Skeleton shown while the lazy gate chunk loads (item 41): the gate's
+ * own screen shape in the shared agep styles, so the page is never a
+ * blank wait. Decorative bars only; aria-busy carries the state.
+ */
+function GateSkeleton() {
+  return (
+    <div className="agep-screen" aria-busy="true" aria-label="Loading the grown-up check">
+      <div className="agep-skeleton agep-skeleton-title" aria-hidden="true" />
+      <div className="agep-skeleton agep-skeleton-line" aria-hidden="true" />
+      <div className="agep-skeleton agep-skeleton-box" aria-hidden="true" />
+      <div className="agep-skeleton agep-skeleton-line" aria-hidden="true" />
+    </div>
+  );
+}
+
 function ContactPage() {
   const navigate = useNavigate();
   const [passed, setPassed] = useState(false);
   if (!passed) {
     return (
-      <Suspense fallback={null}>
+      <Suspense fallback={<GateSkeleton />}>
         <GrownUpGate onPass={() => setPassed(true)} onCancel={() => void navigate({ to: "/" })} />
       </Suspense>
     );
@@ -90,7 +106,7 @@ function ContactForm() {
   return (
     <InfoPage title="Contact us" graphic="envelope">
       <p>
-        For parents, carers, and teachers — questions about privacy, a request about your data, or a
+        For parents, caregivers, and teachers — questions about privacy, a request about your data, or a
         bug report. Our <Link to="/privacy">privacy notice</Link> explains what this form sends,
         where messages go (a private Discord channel), and how long they are kept.
       </p>

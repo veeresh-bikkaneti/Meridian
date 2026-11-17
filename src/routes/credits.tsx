@@ -23,11 +23,11 @@ export const Route = createFileRoute("/credits")({
 function CreditsPage() {
   return (
     <InfoPage title="Credits" graphic="book">
-      <p className="text-sm text-muted">For parents, carers, and teachers</p>
+      <p className="text-sm text-muted">For parents, caregivers, and teachers</p>
 
       <p>
         Meridian is a free geography, math and science game built on open data and open-source software. This page
-        credits the sources it uses and the licences they are shared under.
+        credits the sources it uses and the licenses they are shared under.
       </p>
 
       <h2>Place data — GeoNames</h2>
@@ -36,7 +36,7 @@ function CreditsPage() {
         <a href="https://www.geonames.org/" target="_blank" rel="noopener noreferrer">
           GeoNames
         </a>
-        , shared under the CC BY 4.0 licence.
+        , shared under the CC BY 4.0 license.
       </p>
 
       <h2>Story text — Wikipedia</h2>
@@ -47,7 +47,7 @@ function CreditsPage() {
         </a>{" "}
         is the source of the history hooks and story text for places, passed through the
         game&rsquo;s reviewed content pipeline, and individual cards name their source. Wikipedia
-        text is shared under the CC BY-SA licence.
+        text is shared under the CC BY-SA license.
       </p>
 
       <h2>Map imagery — Esri</h2>
@@ -59,7 +59,7 @@ function CreditsPage() {
       <ul>
         {BUNDLED_CREDITS.map((credit) => (
           <li key={credit.packageName}>
-            {credit.name} — {credit.license} licence
+            {credit.name} — {credit.license} license
           </li>
         ))}
       </ul>
