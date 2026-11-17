@@ -97,10 +97,13 @@ describe("home page wiring — journal figures are the player now, nothing else"
   // the three .hv5-art sites left too, for the same CardFilm system.
   // feat/journal-player: the journal entry figures left as well — they
   // are a tap-to-play movie now (JournalPlayer, pinned in
-  // journal-player.test.ts). The orb lives INSIDE the player: its
+  // journal-player.test.ts). Task 2 (2026-11-17): the player is
+  // React.lazy (bundle budget), so its one site sits inside a Suspense
+  // wrapper, one indent deeper than the literal below used to be.
+  // The orb lives INSIDE the player: its
   // closed, loading, and error states all render the same still
   // through LazyHomeImage, with the same attrs the journal site had.
-  const site = "<JournalPlayer\n                  noteId={note.id}\n                  place={note.place}\n                  imageSrc={journalImageUrl(note.image)}\n                  imageAlt={note.imageAlt}";
+  const site = "<JournalPlayer\n                    noteId={note.id}\n                    place={note.place}\n                    imageSrc={journalImageUrl(note.image)}\n                    imageAlt={note.imageAlt}";
   it("the journal figures go through the player, whose stills use the shared wrapper with exact attrs", () => {
     assert.ok(gameApp.includes(site), `missing home site: ${site}`);
     assert.equal((gameApp.match(/<JournalPlayer/g) || []).length, 1,
