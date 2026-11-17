@@ -458,6 +458,11 @@ export function computeLayout(board: PublishedBoard): BoardLayout {
 export const ATOM_RADIUS = 0.72;
 export const LABEL_HALF_HEIGHT = 1.125;
 export const LABEL_LIFT = 2.2;
+/** The label sprite's full width in scene units (molecule-map scales
+ * the sprite to exactly this), so the chip's bounding box is
+ * LABEL_WIDTH × LABEL_HALF_HEIGHT * 2 around its centre. The bbox
+ * clearance against every atom is pinned in status-core.test.ts. */
+export const LABEL_WIDTH = 9;
 
 export function slugify(title: string): string {
   return title

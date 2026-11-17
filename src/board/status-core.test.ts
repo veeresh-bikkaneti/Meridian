@@ -7,6 +7,7 @@ import {
   ATOM_RADIUS,
   LABEL_HALF_HEIGHT,
   LABEL_LIFT,
+  LABEL_WIDTH,
   buildPublished,
   computeLayout,
   deriveFromRecords,
@@ -298,6 +299,48 @@ describe("structure-view feature labels clear every atom (item 29)", () => {
     const map = readFileSync(new URL("./molecule-map.tsx", import.meta.url), "utf8");
     assert.match(map, /SpriteMaterial\(\{[^}]*depthTest: false/);
     assert.match(map, /LABEL_LIFT/);
+  });
+
+  it("no chip's 3D bounding box overlaps any atom's 3D bounding box", () => {
+    // Boxes on the 3D label layer: the chip is LABEL_WIDTH wide and
+    // LABEL_HALF_HEIGHT * 2 tall around its sprite centre (the scale
+    // molecule-map sets), in the plane z = feature centre z; an atom's
+    // box is its centre ± ATOM_RADIUS on all three axes. Every chip is
+    // checked against EVERY atom — a tall neighbour bubble's atom can
+    // reach into a chip's x/y span, which the own-bubble clearance
+    // above cannot see; only the z axis separates that pair today
+    // (measured: the one x/y-crossing pair sits ~5 units apart in z),
+    // and this test fails if a layout change ever closes that gap.
+    type Box = { min: number[]; max: number[] };
+    const overlaps = (a: Box, b: Box) =>
+      a.min[0] < b.max[0] && a.max[0] > b.min[0] &&
+      a.min[1] < b.max[1] && a.max[1] > b.min[1] &&
+      a.min[2] < b.max[2] && a.max[2] > b.min[2];
+    for (const epic of published.epics) {
+      for (const feature of epic.features) {
+        const c = layout.featureCenters[feature.id];
+        const radius = layout.featureRadii[feature.id];
+        const chip: Box = {
+          min: [c[0] - LABEL_WIDTH / 2, c[1] + radius + LABEL_LIFT - LABEL_HALF_HEIGHT, c[2]],
+          max: [c[0] + LABEL_WIDTH / 2, c[1] + radius + LABEL_LIFT + LABEL_HALF_HEIGHT, c[2]],
+        };
+        for (const otherEpic of published.epics) {
+          for (const other of otherEpic.features) {
+            for (const s of other.stories) {
+              const p = layout.positions[s.slug];
+              const atom: Box = {
+                min: [p[0] - ATOM_RADIUS, p[1] - ATOM_RADIUS, p[2] - ATOM_RADIUS],
+                max: [p[0] + ATOM_RADIUS, p[1] + ATOM_RADIUS, p[2] + ATOM_RADIUS],
+              };
+              assert.ok(
+                !overlaps(chip, atom),
+                `${feature.name}: chip box x[${chip.min[0].toFixed(2)}..${chip.max[0].toFixed(2)}] y[${chip.min[1].toFixed(2)}..${chip.max[1].toFixed(2)}] z=${chip.min[2].toFixed(2)} overlaps atom ${s.slug} (${other.name}) box x[${atom.min[0].toFixed(2)}..${atom.max[0].toFixed(2)}] y[${atom.min[1].toFixed(2)}..${atom.max[1].toFixed(2)}] z[${atom.min[2].toFixed(2)}..${atom.max[2].toFixed(2)}]`,
+              );
+            }
+          }
+        }
+      }
+    }
   });
 });
 

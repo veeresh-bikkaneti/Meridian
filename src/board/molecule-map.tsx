@@ -30,6 +30,7 @@ import {
   ATOM_RADIUS,
   LABEL_HALF_HEIGHT,
   LABEL_LIFT,
+  LABEL_WIDTH,
   type BoardLayout,
 } from "./status-core.ts";
 import { StatusPill, StoryCardPanel } from "./trail-view.tsx";
@@ -188,7 +189,7 @@ export default function MoleculeMap({
           new THREE.SpriteMaterial({ map: tex, transparent: true, depthTest: false }),
         );
         sprite.renderOrder = 10;
-        sprite.scale.set(9, LABEL_HALF_HEIGHT * 2, 1);
+        sprite.scale.set(LABEL_WIDTH, LABEL_HALF_HEIGHT * 2, 1);
         sprite.position.set(c[0], c[1] + layout.featureRadii[feature.id] + LABEL_LIFT, c[2]);
         scene.add(sprite);
       }
