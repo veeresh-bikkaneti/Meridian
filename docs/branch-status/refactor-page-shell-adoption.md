@@ -133,11 +133,81 @@ PR is `main` so the stack is visible; do not merge before 526.
   0 fail · lint:nav ✓ · lint:subjects GATE PASSED · lint-cards
   GATE PASSED · check:provenance PASSED · build:pages green.
 
+## Done — Step 3, Batch B (one commit per screen)
+
+- **3.4 Subject case** (`52beb93f`): off ScreenShell — SiteHeader
+  carries Home, the resume control rides the `back` slot, End game
+  the exit slot (same Buttons/labels/testids/handlers); titles are
+  the screen's own block in ScreenShell's classes; the Pill
+  ("Case i of N") stays. Top padding 32→8px returns the ~24px the
+  shell header row adds. End-of-flow HomeButtons in the result
+  sections stay (sanctioned end surface). Specs in-commit:
+  case-navigation (both shells pin the SiteHeader slots) +
+  living-atlas (scope count).
+- **3.5 Cold Trail** (`f67a1381`): SiteHeader carries Home, stars
+  in `status`, the one mute in `mute`; the fail-closed branch gets
+  the same header. **The `px-2` call: REMOVED** — it sat on the
+  HomeButton itself, narrowing the one Home control's padding so
+  this screen's Home differed from every other screen's; the
+  shell's standard HomeButton padding/hit box applies, the page
+  gutter (px-5) is unchanged, so neither the PageColumn width
+  prop nor a token exception was needed. TrailScreen leaves both
+  shell-ban baseline lists. New shared-shell pin.
+- **3.6 Country/State lists + drill-down** (`62fd803d`):
+  RegionList off ScreenShell — SiteHeader Home + own title block;
+  chrome only, no nav/history changes (PR 4's territory). One
+  deliberate delta: the drill-down list showed only Back under
+  ScreenShell; it now carries Home (top menu, new `onHome` prop)
+  with Back in the `back` slot, old classes + testid — the Step
+  3.3 pattern, per the one-Home-on-every-screen rule. New
+  shared-shell pin.
+- **3.7 Review / Challenge complete** (`3fc6f6c2`): both had no
+  header at all; SiteHeader now carries Home at the top, content
+  keeps its vertical centring below it (flex-1 wrapper, content
+  classes unchanged); the in-flow primary HomeButtons stay (the
+  end-of-flow exits). ErrorScreen check: neither screen has a
+  failure branch (ReviewComplete's total === 0 is an empty deck;
+  ChallengeComplete always renders) — nothing to route. New
+  shared-shell pin.
+- **Revert check (the batch's pins vs Batch A tip `cfc70c27`
+  sources):** case-navigation 1 fail (the updated shells pin);
+  the 3 new shared-shell pins 3 fail / 0 pass. On the branch all
+  green (shared-shell 32/32, case-navigation 19/19).
+- Screenshots (before/after, 390 + 1280, real build):
+  `~/workspace/verify-evidence-shell-step3/` —
+  {before,after}-{subjectcase,coldtrail,regionlist}-*.png.
+  Review / Challenge complete: no screenshots — both screens sit
+  behind full play flows (review deck / challenge route); their
+  targeted e2e below exercises them on the real build instead.
+- **Spec name updates** (`00061618`): retiring the BrandHomeButton
+  lockup renamed the header control "Meridian home" → "Home" on
+  the picker (Step 3.3, stale since Batch A), the subject case
+  and the region lists; edition-drilldown, ask-age-first and
+  home-layout now drive "Home" (journeys/assertions unchanged).
+- **Targeted e2e (hermetic, built artifact):** capture flows for
+  the case / Cold Trail / Country list 6/6 (the after-screenshot
+  run); drilldown + ask-age-first + home-layout home-control
+  sweep green after the name updates; review-deck green
+  (ReviewComplete exercised end to end); coldtrail green.
+- One more spec cured in passing (`46bb82a3`): pack-shelf's
+  TrailScreen pin keyed on the old hand-built header's closing
+  tag; it now uses the SiteHeader pattern LoopScreen's pin
+  already carried.
+- **Gates on the batch tip:** tsc clean · npm test 1202 + 2855
+  pass, 0 fail · test:worker 235/235 · lint:nav ✓ ·
+  lint:subjects GATE PASSED · lint-cards GATE PASSED ·
+  check:provenance PASSED · build:pages green.
+- **Pre-existing failure, NOT this batch:** the math-subject
+  project's result-line tests expect "You just used this in…"
+  but `usedInLine` (landed in #524, on main) composes "You just
+  used this in real life: …" for colon-shaped catalogue phrases.
+  Zero diff to used-in-line or math data anywhere in this PR;
+  the spec's expectation is stale against merged #524. Left for
+  its own fix, flagged here so the delta is on record.
+
 ## Remaining — in the brief's order
 
-- **Step 3, Batch B:** (4) Subject case; (5) Cold Trail
-  (drop the `px-2` override); (6) Country/State lists + Challenge
-  menu; (7) Review / Challenge complete; (8) Region loading + pool
+- **Step 3, Batch C:** (8) Region loading + pool
   error → ErrorScreen; (9) Map error boundary → ErrorScreen;
   (10) Globe overlay (map variant, taps pass through);
   (11) GeoDetective: remove the `className="screen-home-bar -mx-5
