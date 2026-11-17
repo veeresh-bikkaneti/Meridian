@@ -1,0 +1,118 @@
+# refactor/page-shell-adoption — PR 3 (shell adoption), Steps 1–2
+
+**Stacked on PR #526** (`fix/mobile-header-overflow`, tip `dbfcfdb7`,
+OPEN unmerged): this branch contains 526's three commits until it
+merges; after that it is plain main + the commits below. Base for the
+PR is `main` so the stack is visible; do not merge before 526.
+
+## Done — Step 1: tokens (commit d5f8d8f4)
+
+- `:root` gains `--bp-md` 768, `--bp-menu` 1024, `--bp-lg` 1280,
+  `--page-narrow` 48rem, `--page-wide` 80rem, `--hero-film-offset`
+  276px. 526's z-scale verified against the brief: `--z-base` 0,
+  `--z-header` 30, `--z-overlay` 40, `--z-menu` 50, `--z-modal` 60 ✓.
+- styles.css width queries that map to a token cite it in a comment
+  (media queries cannot read custom properties — the convention 526
+  set). Values unchanged everywhere.
+- **Left literal, with reasons** (component-local thresholds, not
+  page breakpoints; changing them would silently move a layout):
+  479px (brand wordmark shrink), 560px (error actions stack),
+  680/681px family (why-learn hero + trail sizing bands), 1080px
+  (brand wordmark + home squeeze), 375px lower bound (one range
+  query whose upper bound cites `--bp-md`).
+- Hero cap: `[data-testid="subject-picker"]` selector →
+  `.subject-picker-screen` class (SubjectPicker root carries it);
+  magic 276px → `var(--hero-film-offset)`. Variant B holds:
+  why-learn-hero-cap spec green at 1280×800 and 1920×1080 (16/9,
+  first card row peeks in the 35–65px band).
+- `--hv5-*` re-declarations: the brief cites site-header.tsx:24-26;
+  in this tree those lines are the header's doc comment and the file
+  declares no `--hv5-*` values. The shell's only hv5 coupling is two
+  `.home-v5 .site-header-nav-link` colour overrides in styles.css.
+  Left untouched: removing them recolours Home's nav links — a
+  visible change that needs the owner's eye (brief rule 10). Flagged
+  for Step 3.
+
+## Done — Step 2: one shell (commits 81990e09, eb02a2b2, d60b3495, 3e94d33b)
+
+- **PageShell** (new, `ui/page-shell.tsx`): SiteHeader → PageColumn
+  (optional **PageIntro** eyebrow/title/sub) → SiteFooter. No
+  className on the shell; variants are props.
+- **SiteHeader**: `stars` slot renamed to **`status`** (GeoDetective's
+  "Case #N" moved with it; Home/ErrorScreen pass `status={null}`);
+  new **`back`** slot between Home and nav; **`variant="cream"|"map"`**
+  (map = game-chrome surface, home control defaults to secondary);
+  nav items gain **icon** (decorative, before label) and a **link
+  form** (`to` → router Link) beside the onClick button form.
+  526's `exitInMenuOnSmallScreens` already generalises to any
+  screen's endGame slot, so it stays as the phone-collapse mechanism.
+- **Chevron/baseline cure** (`.site-header-nav-link` →
+  inline-flex, measured with the real build at 1024/1280/1920):
+  before — chevron sat below its label (svg 82.8–88.8 vs text
+  66–80 @1280); the two router links' text sat 7px above the
+  buttons' (62.4 vs 69.4). After — chevron centred on the text line
+  (73.4–79.4 within 69–83); every item's text top identical (69).
+- **SiteFooter + grown-ups doors** share ONE link list:
+  `ui/site-links.ts` defines each route once with both surfaces'
+  labels; `FOOTER_ROUTE_LINKS` and `GROWNUP_DOORS` compose from it.
+  SiteFooter and InfoPage render from it (same routes/labels/order
+  as shipped).
+- **ErrorScreen**: `message` → **`body`**, **`actions`** labels
+  (retry/home), **`surface`** prop ("card" default | "plain").
+  Pinned default copy and the two exits unchanged.
+- **PageColumn**: width "read" → **"narrow"**; widths read the
+  `--page-narrow` / `--page-wide` tokens. Same sizes as shipped.
+- **Badge: DELETED** — zero production users (grep: only its own
+  test); `.site-badge` CSS removed; its contrast pin survives under
+  Pill's name (same token pair).
+- **Pill: KEPT, with the reason recorded** — it has a real user
+  (SubjectCase, "Case i of N"); deleting it would fork that markup
+  inline in a screen, the opposite of this PR's point. The picker's
+  count chip is a designed stamp surface, not a Pill adoption; that
+  call belongs to the Step 3 picker migration (Step 3.3 below).
+
+## Tests / gates (this step)
+
+- `shared-shell.test.ts` 28/28 (new-API tests fail on main by
+  construction — PageShell/status/back/variant do not exist there;
+  the inline-flex assertion fails on main's styles.css: the revert
+  check for the chevron/baseline cure).
+- Targeted unit: pack-shelf + why-learn-hero + living-atlas 41/41.
+- E2E (hermetic, built artifact): layout-overflow (526) ✓,
+  shared-shell-adoption (Home + GeoDetective, 1280/1920/2560) ✓,
+  why-learn-hero-cap (1280×800, 1920×1080) ✓.
+- tsc clean · lint:nav ✓ · lint:subjects GATE PASSED · lint-cards
+  GATE PASSED · check:provenance PASSED · build:pages green.
+
+## Remaining — in the brief's order
+
+- **Step 3 — migrate one screen per commit:** (1) Privacy / Credits /
+  Contact onto PageShell (locked donation copy moves word for word);
+  (2) Board (variant prop; confirm "Live from GitHub" is gone from
+  anything public); (3) Why Learn picker (hero peek shifts with
+  header height — re-measure); (4) Subject case; (5) Cold Trail
+  (drop the `px-2` override); (6) Country/State lists + Challenge
+  menu; (7) Review / Challenge complete; (8) Region loading + pool
+  error → ErrorScreen; (9) Map error boundary → ErrorScreen;
+  (10) Globe overlay (map variant, taps pass through);
+  (11) GeoDetective: remove the `className="screen-home-bar -mx-5
+  px-5"` override on SiteHeader.
+- **Step 4 — delete legacy:** ScreenShell, BrandHomeButton, the 18
+  unused `.hv5-nav` rules and `.brand-home-*`; hand-rolled
+  max-w-3xl/7xl/6xl/2xl/xl → PageColumn. Removing the second Home
+  buttons changes what players see: before/after screenshots for
+  owner approval BEFORE it lands.
+- **Step 5 — guards:** registry-driven unit test (every route/screen
+  renders PageShell or SiteHeader, ErrorScreen on every failure
+  branch; prove by removal — red); lint bans on hand-built
+  header/footer/nav/main outside the shell + className overrides on
+  shell components (shrink-only baseline); Home-position e2e (same
+  label, same x/y on every screen at 390/1280/1920); overflow +
+  overlay e2e at all 5 viewports.
+
+## Graph
+
+- New nodes: `ui/page-shell.tsx` (PageShell, PageIntro),
+  `ui/site-links.ts` (one link list). Edges: PageShell composes
+  SiteHeader/PageColumn/SiteFooter; SiteFooter and InfoPage consume
+  site-links. Badge node: superseded-by nothing — deleted as unused.
