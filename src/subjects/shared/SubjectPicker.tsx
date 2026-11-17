@@ -104,7 +104,10 @@ const SUBJECT_ONE_LINERS: Record<string, string> = {
   chemistry: "Why bread rises and iron rusts",
   "general-knowledge": "Why places are where they are",
   "social-studies": "Why towns grew beside rivers",
-  journals: "New journals are on the way.",
+  // The ready-state line. The coming-soon line ("New journals are
+  // on the way.") lives at the render site, picked by row state —
+  // a released card must not promise what it already delivers.
+  journals: "Field notes from real places",
 };
 
 type CaseComponent = ComponentType<
@@ -371,7 +374,7 @@ export default function SubjectPicker({
                       card's accessible name still starts with the
                       subject's own name, as it did before. */}
                   <span className="wl-card-kicker" aria-hidden="true">
-                    {row.id === "journals" ? "Latest journal entry" : `Case file · ${row.title}`}
+                    {row.id === "journals" && ready ? "Latest journal entry" : `Case file · ${row.title}`}
                   </span>
                 </span>
                 <span className="flex min-w-0 flex-1 flex-col [overflow-wrap:anywhere]">
@@ -384,7 +387,11 @@ export default function SubjectPicker({
                       {ready ? `${row.caseCount} ${row.caseCount === 1 ? "case" : "cases"}` : "Coming soon"}
                     </span>
                   </span>
-                  <span className="mt-1 text-sm text-muted">{SUBJECT_ONE_LINERS[row.id] ?? ""}</span>
+                  <span className="mt-1 text-sm text-muted">
+                    {row.id === "journals" && !ready
+                      ? "New journals are on the way."
+                      : SUBJECT_ONE_LINERS[row.id] ?? ""}
+                  </span>
                   <span className="why-learn-go mt-auto pt-2.5">
                     {ready ? (
                       <>

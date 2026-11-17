@@ -80,15 +80,40 @@ SubjectPicker (the settings host keeps the current expression),
 or SubjectPicker re-reads `getAgeGroup()` when its band control's
 write lands.
 
-## Deferred (recorded, not built)
+## P2 sweep (owner-approved 2026-11-16)
 
-- Item 18 (Journals card message) — deferred per the re-priced
-  plan (P2).
-- Item 19 (Math clue repeats the question) — report-only per the
-  prompt; no affected item was hit in this stream's files beyond
-  what the educator seat already owns. Nothing changed.
-- Item 20 (dead space below the grid / storyteller art) — deferred
-  per the re-priced plan (P2).
+- **Item 18 — DONE.** Root cause [measured]: Journals shipped
+  (module `released: true`, cases in every band — the card reads
+  "7 cases" + "Open case"), but the card's static one-liner still
+  said "New journals are on the way." — written when Journals was
+  planned-only. The card now speaks one message per state: ready →
+  one-liner "Field notes from real places" and the kicker "Latest
+  journal entry"; coming-soon → the one-liner is "New journals are
+  on the way." and chip + action already say "Coming soon". The
+  stale planned-only comment in `picker-rows.ts` is corrected.
+- **Item 19 — REPORT (no content changed).** Scan of every Math
+  item: the clue/lead text (the item's `why`, shown on the clue
+  card) against its question prompt (`answers.ts`), plus every
+  clue-scene script line against both. Verbatim repeat — the lead
+  IS the question, word for word, nothing added: **1 item,
+  `math-applied:measure:convert-metric`** (10-18). Near-verbatim,
+  for the educator's eye: `math-number:fractions:divide` (lead and
+  prompt differ only by "can be cut") and `math-number:tables:buses`
+  (the why's first half is the prompt verbatim, then a strategy
+  sentence). All other items: no repeat. Content fixes are the
+  educator seat's; this list is the report to the integrator.
+- **Item 20 — INVESTIGATED, not pinned; no code changed.** The
+  grid's dead space is already cured in code: the fill rule
+  (`.why-learn-screen > ul { flex: 1 1 auto; grid-auto-rows: 1fr }`,
+  feat/picker-cards-fill-page) stretches the grid into the shell's
+  leftover height, and the footer follows the grid in flow, so no
+  fixed height or spacer below either was found in the picker or
+  the shell. Storyteller art: the banner figure's sprite layers
+  (`background-size: 300% 300%` in a square 56px box) and the
+  static fallback (`object-fit: contain`) show no clipped-overflow
+  container in code. The remaining mechanism needs the C5 capture
+  in front of the Phase 3 screenshot seat (this sandbox cannot
+  render — the item 13/22 limit); no CSS was guessed.
 
 ## Gates run here
 
@@ -117,6 +142,15 @@ write lands.
 - Open questions: none for the owner from this stream.
 - Ruled out: editing `SubjectPicker.tsx` for item 17 (frozen by
   PR 515); rewriting clue text for item 19 (educator's call).
+
+## P2 sweep gates
+
+- Subjects suites: 257/258 pass — the one failure is
+  `answer-card.test.ts` failing to LOAD (`ERR_MODULE_NOT_FOUND`
+  for typescript under this sandbox's linked node_modules; the
+  known environment defect Streams G/K recorded, not an assertion
+  failure). CI is the arbiter.
+- `npx tsc --noEmit` clean · `npm run lint:subjects` GATE PASSED.
 
 ## CI cure (2026-11-16)
 
