@@ -2735,14 +2735,22 @@ body:has(.why-learn-screen) {
   .why-learn-screen[data-testid="subject-picker"] .screen-hero {
     height: auto;
   }
+  /* Q2 cap (Round 2, owner's Variant B pick): the film slot is
+     capped by viewport height so the first subject-card row just
+     peeks into view (~50px) at desktop sizes instead of the film
+     taking the whole viewport. The 16 / 9 aspect drives the height
+     from this width. Guarded by
+     tests/e2e/why-learn-hero-cap.desktop.spec.ts. */
   .why-learn-screen[data-testid="subject-picker"] .why-learn-hero-wrap {
     flex: 1 1 auto;
     height: auto;
+    max-width: calc((100dvh - 276px) * 16 / 9);
   }
   .why-learn-screen[data-testid="subject-picker"] .screen-hero > .why-learn-hero {
     flex: 1 1 auto;
     width: auto;
     height: auto;
+    max-width: calc((100dvh - 276px) * 16 / 9);
   }
   .why-learn-screen[data-testid="subject-picker"] .screen-hero-band {
     flex: 0 0 230px;
