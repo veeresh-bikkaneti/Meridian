@@ -358,7 +358,7 @@ export function JournalPlayer({
 
   if (phase === "loading") {
     return (
-      <figure className="hv5-entry-art hv5-journal-art">
+      <figure className="hv5-entry-art hv5-journal-art hv5-journal-loading">
         <LazyHomeImage src={imageSrc} alt={imageAlt} />
         {!reduceMotion ? (
           <span

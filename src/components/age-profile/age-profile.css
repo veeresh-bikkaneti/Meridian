@@ -25,6 +25,9 @@
   align-items: center;
   background: var(--surface);
   color: var(--fg);
+  /* Shared site type (item 41): the gate speaks the same Karla/Fraunces
+     as every other screen, never the platform system font. */
+  font-family: "Karla", system-ui, sans-serif;
   animation: agep-fade 0.3s ease;
 }
 
@@ -34,6 +37,7 @@
 }
 
 .agep-h1 {
+  font-family: "Fraunces", Georgia, serif;
   font-size: clamp(1.5rem, 6vw, 2rem);
   margin: 12px 0 8px;
   text-align: center;
@@ -74,6 +78,7 @@
 /* --- Gate --- */
 
 .agep-question {
+  font-family: "Fraunces", Georgia, serif;
   font-size: clamp(1.5rem, 6vw, 2rem);
   margin: 8px 0 12px;
   text-align: center;
@@ -208,6 +213,27 @@
 
 @media (min-width: 720px) {
   .agep-actions { position: static; justify-content: flex-end; }
+  /* The grown-up check's actions sit centred under its centred column
+     (item 41) instead of trailing to the right edge. */
+  .agep-actions.agep-actions-centre { justify-content: center; }
+}
+
+/* Gate loading skeleton (item 41): page-toned bars in the gate's shape,
+   shown while the lazy gate chunk loads — never a blank page. */
+.agep-skeleton {
+  background: var(--surface-2);
+  border-radius: 12px;
+  animation: agep-skeleton-pulse 1.2s ease-in-out infinite alternate;
+}
+.agep-skeleton-title { width: 220px; max-width: 70%; height: 36px; margin: 52px 0 14px; }
+.agep-skeleton-line { width: 320px; max-width: 85%; height: 18px; margin: 0 0 14px; }
+.agep-skeleton-box { width: 320px; max-width: 85%; height: 120px; margin: 6px 0 20px; }
+@keyframes agep-skeleton-pulse {
+  from { opacity: 0.55; }
+  to { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .agep-skeleton { animation: none; }
 }
 
 .agep-primary, .agep-ghost, .agep-danger {
