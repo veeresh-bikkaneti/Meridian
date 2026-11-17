@@ -613,6 +613,19 @@ test("home UX polish across 6 viewports: unified map-mode pill, whole-card journ
   await page.keyboard.press("Escape");
   await expect(page.getByTestId("map-mode-popover")).toHaveCount(0);
 
+  // The Q1 overlay (PR 518) floats the first-visit queue above the
+  // page: after the invite's "Not now", the read-aloud sheet is the
+  // pending prompt, and it legitimately covers the journal card's
+  // heading (measured: sheet 352,160 576x336 over the h2 at
+  // 475,414). A first-visit player answers it in one tap before the
+  // page beneath is reachable — do the same here, same pattern as
+  // the invite dismissal above. No assertion below changes.
+  const readAloudSheet = page.getByTestId("first-visit-queue");
+  if ((await readAloudSheet.count()) > 0 && (await readAloudSheet.getAttribute("data-prompt-id")) === "read-aloud-sheet") {
+    await readAloudSheet.getByRole("button", { name: /Never/ }).click();
+    await expect(page.locator('[data-prompt-id="read-aloud-sheet"]')).toHaveCount(0);
+  }
+
   // 2. Whole-card click on "What the land remembers" heading & illustration scrolls & focuses #home-journal
   const journalCard = page.getByTestId("journal-card");
   await journalCard.scrollIntoViewIfNeeded();
