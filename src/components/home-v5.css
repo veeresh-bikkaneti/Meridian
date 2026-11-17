@@ -490,6 +490,12 @@ body:has(.home-v5) {
 .home-v5 .hv5-journal-art {
   position: relative;
 }
+/* Movie loading (item 42): the still's 3/2 box is a page-toned skeleton
+   while the movie loads — the spinner sits on the page background,
+   never on a black box. */
+.home-v5 .hv5-journal-loading img {
+  background: var(--surface-2);
+}
 .home-v5 .hv5-journal-play {
   position: absolute;
   inset: 0;
