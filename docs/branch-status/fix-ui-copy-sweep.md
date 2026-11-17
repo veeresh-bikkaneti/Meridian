@@ -74,3 +74,34 @@ Branch `fix/ui-copy-sweep`. Base main `2ce6757a` + Stream S cherry-picks
   science"; trimmed filler ("Plays in a browser", "a named place") to
   141 chars with all subjects and claims kept. `share-meta.test.ts`
   green; the max was not raised.
+
+## Round 2 (review bug 8)
+
+- **The break**: item 42 removed the journal teaser card's
+  `<h2>What the land remembers</h2>`, but
+  `tests/e2e/grownups-privacy-contact.desktop.spec.ts` (the "home UX
+  polish" test declared at :498) still waited for that heading at its
+  step 2 — `journalCard.locator("h2", …).boundingBox()` burned the
+  full 180s test timeout on an element that no longer exists.
+- **Spec updated to the page as it ships**: step 2 now asserts the
+  teaser card has no `h2` at all and clicks the card's intro line
+  ("Short field stories…") — the same whole-card journey, no weaker
+  assertion (one was added). The illustration click and the focus
+  poll are unchanged.
+- **Unit pin**: `src/components/home-journal-heading.test.ts` pins
+  the structure the spec relies on — exactly one "What the land
+  remembers" heading on the page, carried by the journal section
+  (`<h2 id="journal-title">`, wired to its `aria-labelledby`), and a
+  heading-free teaser card that keeps its label + intro line. A copy
+  edit that restores the duplicate heading now fails a fast unit
+  test, not an e2e wait.
+- **Delta, same hermetic env** (complete `npm ci`, pinned Chromium
+  per `docs/e2e-hermetic.md`, serialized runs):
+  main baseline **5/5 pass** · this branch pre-fix **4/5** (only the
+  :498 test failed, at the removed-heading wait, spec line 596) ·
+  this branch post-fix **5/5 pass**.
+- **Red-on-main**: the new unit test fails 2/3 on main's source
+  (duplicate heading + teaser-card `<h2>`) and passes 3/3 here.
+- **Item 39 is still the owner's call** — the Privacy age-band
+  sentence is unchanged by this round and is NOT approved; it awaits
+  his explicit sign-off (Round 2 rule 6).
