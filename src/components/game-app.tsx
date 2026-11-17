@@ -99,6 +99,8 @@ import { Suspense, lazy, useCallback, useEffect, useLayoutEffect, useMemo, useRe
 import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { HomeButton } from "@/components/ui/home-button";
+import { SiteHeader } from "@/components/ui/site-header";
+import { SiteFooter } from "@/components/ui/site-footer";
 import { ScreenShell } from "@/components/ui/screen-shell";
 import { RunStartNotice } from "@/components/run-start-notice";
 import { QuestionBubble, type BubbleViewState } from "./question-bubble";
@@ -4803,34 +4805,39 @@ function Choose({
       </svg>
       {notice}
       {tutorialInvite}
-      {/* v5 top nav. ABOUT and JOURNAL jump to the sections at the bottom
-          of the home page. */}
-      <header className="hv5-nav home-rise" style={rise(0)}>
-        <button
-          type="button"
-          className="hv5-brand"
-          aria-label="Meridian home"
-          onClick={scrollTop}
-        >
-          <svg className="hv5-mark" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="21.5" fill="none" stroke="#8A6D2F" strokeWidth="1.6" /><circle cx="24" cy="24" r="16.5" fill="none" stroke="#B8932F" strokeWidth=".8" strokeOpacity=".6" /><path d="M24 6 L27.2 20.8 L42 24 L27.2 27.2 L24 42 L20.8 27.2 L6 24 L20.8 20.8 Z" fill="#8A6D2F" /><circle cx="24" cy="24" r="3.4" fill="#F6F1E3" stroke="#8A6D2F" strokeWidth="1.2" /></svg>
-          <span className="hv5-word">MERIDIAN</span>
-        </button>
-        <nav aria-label="Primary">
-          <button type="button" onClick={() => scrollTo("home-editions")}>
-            EXPEDITIONS
-            <svg width="9" height="6" viewBox="0 0 9 6" aria-hidden="true"><path d="M1 1l3.5 3.5L8 1" stroke="currentColor" fill="none" strokeWidth="1.5" /></svg>
-          </button>
-          <button type="button" onClick={() => scrollTo("home-cases")}>
-            CASES
-            <svg width="9" height="6" viewBox="0 0 9 6" aria-hidden="true"><path d="M1 1l3.5 3.5L8 1" stroke="currentColor" fill="none" strokeWidth="1.5" /></svg>
-          </button>
-          <button type="button" onClick={() => scrollTo("home-about")}>ABOUT</button>
-          <Link to="/contact" data-testid="nav-contact-link">CONTACT</Link>
-          <Link to="/board" data-testid="nav-board-link">WHAT&rsquo;S COMING</Link>
-          <button type="button" onClick={() => scrollTo("home-journal")}>JOURNAL</button>
-          <button type="button" onClick={() => scrollTo("home-grownups")}>GET INVOLVED</button>
-        </nav>
-        <div className="hv5-actions">
+      {/* The shared shell header (fix/ui-shared-shell, Round 2
+          adoption): SiteHeader owns the home control ("Home",
+          top-left) and the row; home's nav mixes scroll buttons with
+          two router Links, so it rides the `nav` node slot with the
+          shared link class. ABOUT and JOURNAL jump to the sections at
+          the bottom of the home page. Home's sound toggle keeps its
+          owner-ordered place in the hero (2026-10-07/08), so the mute
+          slot is an explicit null here; the Join pill is the header's
+          one exit control, in the endGame slot. */}
+      <SiteHeader
+        onHome={scrollTop}
+        className="home-rise"
+        style={rise(0)}
+        nav={
+          <>
+            <button type="button" className="site-header-nav-link" onClick={() => scrollTo("home-editions")}>
+              EXPEDITIONS
+              <svg width="9" height="6" viewBox="0 0 9 6" aria-hidden="true"><path d="M1 1l3.5 3.5L8 1" stroke="currentColor" fill="none" strokeWidth="1.5" /></svg>
+            </button>
+            <button type="button" className="site-header-nav-link" onClick={() => scrollTo("home-cases")}>
+              CASES
+              <svg width="9" height="6" viewBox="0 0 9 6" aria-hidden="true"><path d="M1 1l3.5 3.5L8 1" stroke="currentColor" fill="none" strokeWidth="1.5" /></svg>
+            </button>
+            <button type="button" className="site-header-nav-link" onClick={() => scrollTo("home-about")}>ABOUT</button>
+            <Link to="/contact" className="site-header-nav-link" data-testid="nav-contact-link">CONTACT</Link>
+            <Link to="/board" className="site-header-nav-link" data-testid="nav-board-link">WHAT&rsquo;S COMING</Link>
+            <button type="button" className="site-header-nav-link" onClick={() => scrollTo("home-journal")}>JOURNAL</button>
+            <button type="button" className="site-header-nav-link" onClick={() => scrollTo("home-grownups")}>GET INVOLVED</button>
+          </>
+        }
+        stars={null}
+        mute={null}
+        endGame={
           <button
             type="button"
             className="hv5-btn hv5-btn-brown"
@@ -4839,8 +4846,8 @@ function Choose({
             JOIN THE JOURNEY
             <svg width="15" height="11" viewBox="0 0 15 11" aria-hidden="true"><path d="M1 5.5h12M9 1l4.5 4.5L9 10" stroke="currentColor" fill="none" strokeWidth="1.7" /></svg>
           </button>
-        </div>
-      </header>
+        }
+      />
       {homeToast}
 
       <div className="hv5-bento">
@@ -5368,64 +5375,16 @@ function Choose({
       {/* Age-profile footer entry (Phase 2 §1a): the COPPA-standard
           ParentZone placement — low-emphasis, after the review deck,
           before GrandpaCoffeeRun. One host per screen: the header hosts
-          brand + sound, so the footer carries this. */}
-      <footer className="agep-footer">
-        {/* Kid-reachable read-aloud setting (owner 2026-10-09): the kid's
-            Always / Sometimes / Never choice is changeable after the first
-            tap. This sits NEXT TO the grown-ups gate — read-aloud is the
-            kid's tool, never parent-gated. */}
-        <ReadAloudPrefSettings />
-        <button
-          type="button"
-          className="agep-footer-link"
-          onClick={onGrownUpOpen}
-          aria-label="For grown-ups: game settings"
-          data-testid="grownups-link"
-        >
-          🔒 For grown-ups
-        </button>
-        {/* Tour re-entry (review finding P2-11): "Not now" on the first-run
-            invite marks the tour seen forever, so without this a player who
-            dismissed it could never get the 30-second tour back. Kid-
-            reachable on purpose — it is help, not a setting. */}
-        <button
-          type="button"
-          className="agep-footer-link"
-          onClick={onTakeTour}
-          data-testid="take-tour-link"
-          aria-label="Take the tour again"
-        >
-          🗺️ Take the tour
-        </button>
-        {/* Grown-ups info pages (review finding P0-3). Contact is gated by
-            the math question on its own page, so linking it here is safe. */}
-        <Link to="/privacy" className="agep-footer-link" data-testid="privacy-link">
-          Privacy
-        </Link>
-        <Link to="/contact" className="agep-footer-link" data-testid="contact-link">
-          Contact us (grown-ups)
-        </Link>
-        <Link to="/credits" className="agep-footer-link" data-testid="credits-link">
-          Credits
-        </Link>
-        <Link to="/board" className="agep-footer-link" data-testid="board-link">
-          What&rsquo;s coming (grown-ups)
-        </Link>
-        {/* Kids-privacy promise (owner 2026-10-21). Deliberately FACTUAL
-            statements, not a "COPPA compliant" badge: compliance is a legal
-            determination nobody has certified, and an unqualified claim on a
-            child-directed site is itself an FTC exposure. Every statement here
-            must stay true — if analytics, ads, or accounts are ever added,
-            update this line and /privacy in the same PR. Links to /privacy
-            for the full detail. */}
-        <p className="agep-footer-note" data-testid="kids-privacy-note">
-          Made for kids: no accounts, no ads, no tracking cookies, and no
-          personal information collected from players.{" "}
-          <Link to="/privacy" data-testid="kids-privacy-note-link">
-            How we protect privacy
-          </Link>
-        </p>
-      </footer>
+          brand + sound, so the footer carries this. The shared
+          SiteFooter (fix/ui-shared-shell) renders the shipped set:
+          the read-aloud setting as its lead (owner 2026-10-09: the
+          kid's tool, next to the grown-ups gate, never parent-gated),
+          the grown-ups gate, the tour re-entry (review finding P2-11),
+          the grown-ups info pages (P0-3) and the kids-privacy promise
+          (owner 2026-10-21 — factual statements only; if analytics,
+          ads or accounts are ever added, update SiteFooter's note and
+          /privacy in the same PR). */}
+      <SiteFooter lead={<ReadAloudPrefSettings />} onGrownUps={onGrownUpOpen} onTakeTour={onTakeTour} />
     </main>
     {/* Kid-set read-aloud preference (age-profile B3): asked once, never
         nags — the component renders nothing after the kid answers. */}

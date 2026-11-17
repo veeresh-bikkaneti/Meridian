@@ -35,6 +35,20 @@ const LOOPMAP_STUB_SRC = [
 ].join("\n");
 const LOOPMAP_STUB_URL = "data:text/javascript," + encodeURIComponent(LOOPMAP_STUB_SRC);
 
+// The adopted shared shell (SiteHeader/SiteFooter, fix/ui-shared-shell)
+// renders TanStack router Links, which read the router context and throw
+// without a <RouterProvider> this harness never mounts. The stub renders
+// a Link's children inline; link behaviour is not what this file tests.
+// Import-free so the data: URL resolves.
+const ROUTER_STUB_SRC = [
+  "export function Link(props) { return props && props.children !== undefined ? props.children : null; }",
+  "export function useRouter() { return null; }",
+  "export function useNavigate() { return () => {}; }",
+  "export function useRouterState() { return undefined; }",
+  "export function useLocation() { return { pathname: '/', search: '', hash: '' }; }",
+].join("\n");
+const ROUTER_STUB_URL = "data:text/javascript," + encodeURIComponent(ROUTER_STUB_SRC);
+
 // Module hooks (repo pattern — see EarnedBadgeRow.test.ts): "@/..." alias,
 // extensionless relatives, directory index files, ".css" stubs, ".tsx"
 // transpile, the stubs above, and a test-only rewrite of
@@ -47,6 +61,7 @@ const HOOKS_SOURCE = [
   "const TS_URL = " + JSON.stringify(TS_URL) + ";",
   "const AA_STUB_URL = " + JSON.stringify(AA_STUB_URL) + ";",
   "const LOOPMAP_STUB_URL = " + JSON.stringify(LOOPMAP_STUB_URL) + ";",
+  "const ROUTER_STUB_URL = " + JSON.stringify(ROUTER_STUB_URL) + ";",
   "const PROBE_EXTS = ['', '.ts', '.tsx'];",
   "function isFile(p) { try { return statSync(p).isFile(); } catch (e) { return false; } }",
   "function tryBase(base) {",
@@ -61,6 +76,7 @@ const HOOKS_SOURCE = [
   "export async function resolve(specifier, context, nextResolve) {",
   "  if (specifier === '@formkit/auto-animate') return { url: AA_STUB_URL, shortCircuit: true };",
   "  if (specifier === './LoopMap' && context.parentURL && context.parentURL.endsWith('LoopScreen.tsx')) return { url: LOOPMAP_STUB_URL, shortCircuit: true };",
+  "  if (specifier === '@tanstack/react-router') return { url: ROUTER_STUB_URL, shortCircuit: true };",
   "  if (specifier.startsWith('@/')) {",
   "    const hit = tryBase(resolvePath(ROOT, 'src', specifier.slice(2)));",
   "    if (hit) return hit;",

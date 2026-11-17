@@ -460,11 +460,17 @@ test("Begin exploring starts a Globe round", async ({ page }) => {
  * best-effort with a short timeout so it can never hang the test).
  * If the flake persists after this fix, the wait was not the cause
  * (rollback note for the report).
+ *
+ * Shared-shell adoption (fix/ui-shared-shell): the header is now
+ * header.site-header, not header.hv5-nav, and below 1024px its nav
+ * collapses behind a Menu button — so this reads the VISIBLE header
+ * controls only. The old selector matched nothing after adoption and
+ * the wait timed out on an empty read.
  */
 async function waitForNavLayoutSettled(page: Page): Promise<void> {
   const readNavBoxes = () =>
     page
-      .locator("header.hv5-nav button, header.hv5-nav a")
+      .locator("header.site-header button:visible, header.site-header a:visible")
       .evaluateAll((els) =>
         els
           .map((el) => {
@@ -521,8 +527,11 @@ test("home UX polish across 6 viewports: unified map-mode pill, whole-card journ
     // wait for layout to settle first (CI flake cause).
     await waitForNavLayoutSettled(page);
 
-    // Header nav items >=44px tall and 0 overlap
-    const navItems = page.locator("header.hv5-nav button, header.hv5-nav a");
+    // Header nav items >=44px tall and 0 overlap. The adopted shared
+    // shell header is header.site-header (was header.hv5-nav before the
+    // fix/ui-shared-shell adoption); only visible controls are measured
+    // — below 1024px the nav collapses behind the Menu button.
+    const navItems = page.locator("header.site-header button:visible, header.site-header a:visible");
     const count = await navItems.count();
     const boxes: { x: number; y: number; width: number; height: number }[] = [];
     for (let i = 0; i < count; i++) {
@@ -540,10 +549,24 @@ test("home UX polish across 6 viewports: unified map-mode pill, whole-card journ
       }
     }
 
-    const navContact = page.getByTestId("nav-contact-link");
+    // CONTACT stays a >=44px target at every width: inline in the nav
+    // from 1024px, behind the Menu button below that (the adopted
+    // header's collapse). Measure whichever copy is visible; close the
+    // menu again so the rest of the loop sees the resting header.
+    const navContact = page.locator('[data-testid="nav-contact-link"]:visible');
+    let menuOpened = false;
+    if ((await navContact.count()) === 0) {
+      await page.locator(".site-header-menu-button").click();
+      menuOpened = true;
+      await expect(navContact).toHaveCount(1);
+    }
     const cBox = (await navContact.boundingBox())!;
     expect(cBox.width).toBeGreaterThanOrEqual(44);
     expect(cBox.height).toBeGreaterThanOrEqual(44);
+    if (menuOpened) {
+      await page.locator(".site-header-menu-button").click();
+      await expect(page.locator(".site-header-panel")).toHaveCount(0);
+    }
 
     // Map-mode popover opens directly below map-mode-button and scrolls WITH the button
     const mapBtnVp = page.getByTestId("map-mode-button");
@@ -607,7 +630,7 @@ test("home UX polish across 6 viewports: unified map-mode pill, whole-card journ
     .toBe("home-journal");
 
   // 3. Navbar GET INVOLVED scrolls & focuses #home-grownups ("For grown-ups" card)
-  const getInvolvedBtn = page.locator("header.hv5-nav nav").getByRole("button", { name: "GET INVOLVED" });
+  const getInvolvedBtn = page.locator("header.site-header nav").getByRole("button", { name: "GET INVOLVED" });
   await getInvolvedBtn.scrollIntoViewIfNeeded();
   await getInvolvedBtn.click();
   await expect

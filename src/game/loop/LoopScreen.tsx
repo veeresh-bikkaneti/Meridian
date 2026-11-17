@@ -18,6 +18,9 @@ import { isNewBuildDeployed } from "@/game/build-staleness";
 import { calendarDate } from "@/game/daily";
 import { Button } from "@/components/ui/button";
 import { HomeButton } from "@/components/ui/home-button";
+import { SiteHeader } from "@/components/ui/site-header";
+import { SiteFooter } from "@/components/ui/site-footer";
+import { ErrorScreen } from "@/components/ui/error-screen";
 import { SoundToggle } from "@/components/SoundToggle";
 import { ShareButton } from "@/components/share-button";
 import { GuessInput } from "./guess-input";
@@ -938,12 +941,33 @@ export function LoopScreen({
     dealBand ??
     (current?.dealBandConfig?.band ? normalizeSnapshotBand(current.dealBandConfig.band) : "18+");
 
+  // The generic load failure is the shared ErrorScreen (fix/ui-
+  // shared-shell): SiteHeader on top, one blameless message, Try
+  // again + Home. The stale-build and offline variants keep their
+  // specialised in-screen notices below — their copy is pinned
+  // (offline: UX-finalized, do not reword) and their one action is a
+  // refresh, not a retry.
+  if (load.phase === "error" && !load.staleBuild && !load.offline) {
+    return <ErrorScreen onHome={onLeave} onRetry={() => setReloadKey((k) => k + 1)} title="Couldn't load this mystery." />;
+  }
+
   return (
     <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 py-8">
-      <div className="screen-home-bar -mx-5 flex items-center justify-between gap-3 px-5 py-2">
-        <div className="flex items-center gap-2">
-          <HomeButton onHome={onLeave} />
-          {store && load.phase === "ready" && !endedSummary ? (
+      {/* The shared shell header (fix/ui-shared-shell, Round 2
+          adoption): HomeButton ("Home") top-left, then the fixed
+          slots — the case readout, the one mute, End game. The
+          screen-home-bar class keeps the bar sticky over the case.
+          The mute is the same master toggle as everywhere: one
+          persisted key (meridian.sound), one implementation
+          (SoundToggle.tsx, owner 2026-11-10). The pair has no
+          speaker of its own. */}
+      <SiteHeader
+        onHome={onLeave}
+        className="screen-home-bar -mx-5 px-5"
+        stars={<p className="text-sm text-fg">Case #{caseNo}</p>}
+        mute={<SoundToggle testId="sound-toggle-loop" className="atlas-sound-toggle" />}
+        endGame={
+          store && load.phase === "ready" && !endedSummary ? (
             <Button
               variant="secondary"
               data-testid="end-game-button"
@@ -953,26 +977,16 @@ export function LoopScreen({
             >
               End game
             </Button>
-          ) : null}
-          {/* The one mute, top-left beside the screen's other two
-              buttons — the same placement as the home page and the
-              map-quiz chrome (owner, 2026-11-10). Same master toggle
-              everywhere: one persisted key (meridian.sound), one
-              implementation (SoundToggle.tsx). The pair has no
-              speaker of its own. */}
-          <SoundToggle testId="sound-toggle-loop" className="atlas-sound-toggle" />
-        </div>
-        <div className="flex items-center gap-2">
-          <p className="text-sm text-fg">Case #{caseNo}</p>
-        </div>
-      </div>
-      <header className="mt-4">
+          ) : undefined
+        }
+      />
+      <div className="mt-4">
         <h1 ref={headingRef} tabIndex={-1} className="mode-title text-4xl text-fg sm:text-5xl">GeoDetective</h1>
         <p className="mt-3 max-w-md text-lg text-fg">
           Five guesses, one mystery place. Each guess unlocks another clue — and tells you how
           far off you were, and in which direction.
         </p>
-      </header>
+      </div>
 
       {/* End game choice dialog: the ResetHistory alertdialog
           mechanics — focus moves into the dialog on open, Esc means
@@ -1140,14 +1154,7 @@ export function LoopScreen({
               Try again
             </Button>
           </div>
-        ) : (
-          <div role="alert" className="mode-card mt-10 p-5">
-            <p className="text-fg">Couldn&rsquo;t load this mystery: {load.message}</p>
-            <Button className="mt-4" onClick={() => setReloadKey((k) => k + 1)}>
-              Retry
-            </Button>
-          </div>
-        )
+        ) : null
       ) : null}
 
       {load.phase === "ready" && store && current && !endedSummary ? (
@@ -1183,6 +1190,11 @@ export function LoopScreen({
           }}
         />
       ) : null}
+
+      {/* The shared footer (fix/ui-shared-shell): the route links +
+          kids-privacy note every screen carries. No page actions live
+          inside it — End game stays in the header slot above. */}
+      <SiteFooter />
     </main>
   );
 }
