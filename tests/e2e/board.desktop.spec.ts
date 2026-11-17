@@ -23,7 +23,7 @@ import { serveBuiltArtifact } from "./helpers";
  * this file ever reaches the real GitHub.
  *
  * The player-visible baseline is locked (board cleanup, 2026-11-16):
- * 37 stories, 20 done / 4 in progress / 13 not started, exactly 8
+ * 37 stories, 24 done / 4 in progress / 9 not started, exactly 8
  * bonds (the recorded waits). Every recorded wait is satisfied
  * today, so no story is waiting — the waiting behaviour is covered
  * below against a fulfilled file that re-opens one wait.
@@ -80,7 +80,7 @@ test("trail: snapshot picture, honestly labelled, when the live check cannot com
 
   await expect(page.getByTestId("board-counts-line")).toContainText("24 of 37 steps finished");
   await expect(page.getByTestId("board-counts-line")).toContainText("4 being built");
-  await expect(page.getByTestId("board-counts-line")).toContainText("13 not started yet");
+  await expect(page.getByTestId("board-counts-line")).toContainText("9 not started yet");
   await expect(page.getByTestId("v3-story-stop")).toHaveCount(37);
 
   // The live check ran — the beforeEach aborts GitHub, so it cannot
@@ -133,21 +133,19 @@ test("cleanup: life pills carry the delivered %, stories sit in their four group
   await expect(page.locator(".v3-life")).toHaveCount(9);
   await expect(page.locator(".v3-life").first()).toHaveAttribute(
     "aria-label",
-    "33% delivered — 1 of 3 stories done",
+    "33% delivered — 1 of 3 steps done",
   );
   await expect(page.locator(".v3-life-pct").first()).toHaveText("33%");
-  // Maths is finished: its pill reads 100%.
-  await expect(page.locator(".v3-life[aria-label^='100% delivered']")).toHaveCount(1);
+  // Maths and Story Journals are finished: their pills read 100%.
+  await expect(page.locator(".v3-life[aria-label^='100% delivered']")).toHaveCount(2);
 
-  // Four named groups per feature; today every Blocked group is
-  // honestly empty — one quiet line, never a fake entry.
-  await expect(page.getByTestId("v3-story-group")).toHaveCount(36);
-  const blockedGroups = page.locator('[data-testid="v3-story-group"][data-group="blocked"]');
-  await expect(blockedGroups).toHaveCount(9);
-  for (const g of await blockedGroups.all()) {
-    await expect(g).toContainText("Nothing waiting right now");
-    await expect(g.getByTestId("v3-story-stop")).toHaveCount(0);
-  }
+  // Four named groups per feature, but a group with no stories
+  // renders no row at all (item 26): 18 of the 36 possible rows
+  // exist today. Every recorded wait is satisfied, so Blocked is
+  // one of the missing rows — no section, no "nothing here" line.
+  await expect(page.getByTestId("v3-story-group")).toHaveCount(18);
+  await expect(page.locator('[data-testid="v3-story-group"][data-group="blocked"]')).toHaveCount(0);
+  await expect(page.locator("main")).not.toContainText("Nothing waiting right now");
   // The frontier story sits in its feature's In progress group.
   await expect(
     page.locator(
@@ -340,12 +338,15 @@ test.describe("grown-ups shell", () => {
 test("grown-ups shell: credits + privacy carry the doors and the board is linked", async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 900 });
   await page.goto("http://127.0.0.1:4123/Meridian/credits?idle-ms=3600000");
-  await expect(page.getByRole("navigation", { name: "Grown-ups pages" })).toBeVisible();
-  await expect(page.getByRole("link", { name: "What's coming" })).toBeVisible();
+  const doors = page.getByRole("navigation", { name: "Grown-ups pages" });
+  await expect(doors).toBeVisible();
+  // Scoped to the doors: the page body links to the board too, so an
+  // unscoped "What's coming" locator matches two doors at once.
+  await expect(doors.getByRole("link", { name: "What's coming" })).toBeVisible();
   await expect(page.locator(".gp-graphic svg")).toBeVisible();
   await page.goto("http://127.0.0.1:4123/Meridian/privacy?idle-ms=3600000");
-  await expect(page.getByRole("navigation", { name: "Grown-ups pages" })).toBeVisible();
-  await expect(page.getByRole("link", { name: "Ask for something new" })).toBeVisible();
+  await expect(doors).toBeVisible();
+  await expect(doors.getByRole("link", { name: "Ask for something new" })).toBeVisible();
 });
 
 });
@@ -514,18 +515,18 @@ test.describe("live feed", () => {
     await expect(page.getByTestId("board-live-note")).toHaveCount(0);
     await expect(page.getByTestId("board-counts-line")).toContainText("22 of 37 steps finished");
     await expect(page.getByTestId("board-counts-line")).toContainText("6 being built");
-    await expect(page.getByTestId("board-counts-line")).toContainText("13 not started yet");
+    await expect(page.getByTestId("board-counts-line")).toContainText("9 not started yet");
 
     const blockedStop = page.locator(
       `[data-testid="v3-story-group"][data-group="blocked"] [data-testid="v3-story-stop"][data-slug="${WAITING_SLUG}"]`,
     );
     await expect(blockedStop).toContainText(`Waiting for: ${WAITING_FOR_TITLE}`);
-    // The other eight Blocked groups stay honestly empty.
+    // Exactly one Blocked row renders — the waiting story's own.
+    // Every other feature's Blocked group is empty, so it renders
+    // no row at all (item 26).
     await expect(
-      page.locator('[data-testid="v3-story-group"][data-group="blocked"]', {
-        hasText: "Nothing waiting right now",
-      }),
-    ).toHaveCount(8);
+      page.locator('[data-testid="v3-story-group"][data-group="blocked"]'),
+    ).toHaveCount(1);
   });
 
   test("a check that cannot cover every record keeps the snapshot and says so", async ({
