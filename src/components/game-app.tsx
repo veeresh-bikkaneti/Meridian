@@ -101,7 +101,6 @@ import { Button } from "@/components/ui/button";
 import { HomeButton } from "@/components/ui/home-button";
 import { SiteHeader } from "@/components/ui/site-header";
 import { SiteFooter } from "@/components/ui/site-footer";
-import { ScreenShell } from "@/components/ui/screen-shell";
 import { RunStartNotice } from "@/components/run-start-notice";
 import { QuestionBubble, type BubbleViewState } from "./question-bubble";
 import { HintPanel } from "./hint-panel";
@@ -3446,7 +3445,7 @@ export function GameApp() {
   // One shared scroll reset when the in-app screen changes (not when
   // focus merely moves inside the same screen). Instant, so reduced
   // motion is already honoured. Nested subject cases remount
-  // ScreenShell and reset there too.
+  // their screen and reset there too.
   const inAppScreen = !ready
     ? "boot"
     : run
@@ -4113,6 +4112,7 @@ export function GameApp() {
         }}
         kind="back"
         onBack={() => setMenu({ kind: menu.from })}
+        onHome={() => setMenu(null)}
         onChoose={(region) => openRun("state", region.id, region.name, difficultyChoice)}
       />
       {celebrationOverlay}
@@ -6481,6 +6481,7 @@ function RegionList({
   notice,
   kind,
   onBack,
+  onHome,
   onChoose,
 }: {
   title: string;
@@ -6491,11 +6492,41 @@ function RegionList({
   /** "home": the top list (its button is Home); "back": one step up a drill-down (Back). */
   kind: "home" | "back";
   onBack: () => void;
+  /** The drill-down lists' way straight home (the top menu). The
+   *  shared header carries the one Home control on every screen —
+   *  the legacy ScreenShell showed only Back here, so the "back"
+   *  lists gain Home beside Back (the picker's Step 3.3 pattern:
+   *  Home first, the step control in the back slot). */
+  onHome?: () => void;
   onChoose: (region: Region) => void;
 }) {
-  const nav = kind === "home" ? { onHome: onBack } : { onBack };
   return (
-    <ScreenShell {...nav} className="max-w-xl" title={title} sub={subtitle}>
+    <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-xl flex-col px-5 pt-2 pb-8">
+      {/* The shared shell (PR 3 Step 3.6): SiteHeader carries the
+          one Home control — the legacy ScreenShell's BrandHomeButton
+          lockup goes. On a drill-down list the Back button rides
+          the header's back slot with its old classes and testid.
+          The titles are the screen's own content block, in the
+          classes ScreenShell rendered. Top padding gives back the
+          ~24px the shell header row adds (32 -> 8px, Step 3.3). */}
+      {kind === "home" ? (
+        <SiteHeader onHome={onBack} status={null} mute={null} />
+      ) : (
+        <SiteHeader
+          onHome={onHome ?? onBack}
+          status={null}
+          mute={null}
+          back={
+            <Button variant="ghost" className="-ml-3 px-3" onClick={onBack} data-testid="back-button">
+              Back
+            </Button>
+          }
+        />
+      )}
+      <h1 tabIndex={-1} className="mode-title mt-4 text-3xl text-fg">
+        {title}
+      </h1>
+      {subtitle ? <p className="mt-2 text-fg">{subtitle}</p> : null}
       {notice}
       {headerAction ? (
         <Button variant="secondary" className="mt-6 w-full" onClick={headerAction.onClick}>
@@ -6515,7 +6546,7 @@ function RegionList({
           </li>
         ))}
       </ul>
-    </ScreenShell>
+    </main>
   );
 }
 

@@ -331,6 +331,15 @@ describe("PageShell and PageIntro (PR 3 Step 2)", () => {
     assert.doesNotMatch(src, /gp-wrap/);
   });
 
+  it("the region lists sit on SiteHeader (PR 3 Step 3.6): Home everywhere, Back in the back slot", () => {
+    const src = read("src/components/game-app.tsx");
+    assert.doesNotMatch(src, /<ScreenShell/);
+    assert.doesNotMatch(src, /from "@\/components\/ui\/screen-shell"/);
+    assert.match(src, /<SiteHeader onHome=\{onBack\} status=\{null\} mute=\{null\} \/>/);
+    assert.match(src, /data-testid="back-button"/);
+    assert.match(src, /onHome=\{\(\) => setMenu\(null\)\}/);
+  });
+
   it("Cold Trail sits on SiteHeader (PR 3 Step 3.5): stars in status, mute in mute, no px-2 Home override", () => {
     const src = read("src/game/coldtrail/TrailScreen.tsx");
     assert.match(src, /<SiteHeader\s+onHome=\{onLeave\}/);
