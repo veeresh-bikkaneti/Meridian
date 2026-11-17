@@ -34,6 +34,8 @@ import { OBSERVABILITY_INGEST_HOSTS } from "../../src/lib/flags.ts";
 // VITE_KOFI_URL (the cloud must render nothing there).
 const DIST = path.resolve(process.env.KOFI_E2E_DIST ?? "dist/client");
 const BASE = "/Meridian/";
+/** Committed seed fixtures for the board's GitHub feed (hermetic e2e). */
+const GITHUB_FIXTURES = path.resolve("tests/e2e/fixtures/github");
 /**
  * The GeoDetective guess index as `{n, id}` rows, decoded from the same
  * packed file the app fetches (public/loop/names.v2.json — format in
@@ -587,6 +589,64 @@ export async function serveBuiltArtifact(
       });
     } catch {
       return route.fulfill({ status: 404, body: "not found" });
+    }
+  });
+  // Hermetic board feed (Review Round 2): two defaults every spec
+  // inherits from this one registration point.
+  //
+  // 1. flags.json is served with the boardLiveFeed kill switch OFF, so
+  //    the board's live GitHub check never runs unless a spec opts in.
+  //    The rest of the shipped payload is preserved verbatim — only
+  //    the one flag flips. Production is untouched: the interception
+  //    exists only inside an e2e context, and public/flags.json still
+  //    ships boardLiveFeed: true. A spec that registers its own
+  //    flags.json route after this call (collectTelemetry; the board
+  //    spec's opt-in) wins dispatch by Playwright's
+  //    later-registration-wins rule.
+  // 2. api.github.com is fulfilled from committed seed fixtures
+  //    (tests/e2e/fixtures/github/), never the live API: pulls page 1
+  //    carries every board-linked record at its captured state
+  //    (src/board/record-states.json), the issues page is empty,
+  //    later pages are empty, and any other GitHub path 404s. A spec
+  //    that opts the feed back in without stubbing the API itself
+  //    still runs deterministically — no spec can silently depend on
+  //    the live feed or on GitHub's rate budget.
+  await context.route("**/flags.json*", async (route) => {
+    try {
+      const raw = await readFile(path.join(DIST, "flags.json"), "utf8");
+      const payload = JSON.parse(raw) as { flags?: Record<string, unknown> };
+      payload.flags = { ...(payload.flags ?? {}), boardLiveFeed: false };
+      return route.fulfill({
+        status: 200,
+        contentType: "application/json",
+        body: JSON.stringify(payload),
+      });
+    } catch {
+      return route.fallback();
+    }
+  });
+  await context.route("https://api.github.com/**", async (route) => {
+    const url = new URL(route.request().url());
+    const isPulls = url.pathname.endsWith("/pulls");
+    const isIssues = url.pathname.endsWith("/issues");
+    if (!isPulls && !isIssues) {
+      return route.fulfill({
+        status: 404,
+        contentType: "application/json",
+        body: JSON.stringify({ message: "Not Found (e2e fixture)" }),
+      });
+    }
+    const pageNo = Number(url.searchParams.get("page") ?? "1");
+    if (pageNo > 1) {
+      return route.fulfill({ status: 200, contentType: "application/json", body: "[]" });
+    }
+    try {
+      const body = await readFile(
+        path.join(GITHUB_FIXTURES, isPulls ? "pulls-page1.json" : "issues-page1.json"),
+      );
+      return route.fulfill({ status: 200, contentType: "application/json", body });
+    } catch {
+      return route.fulfill({ status: 200, contentType: "application/json", body: "[]" });
     }
   });
   return ledger;
