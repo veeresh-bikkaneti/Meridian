@@ -106,7 +106,7 @@ describe("FirstVisitQueue wiring (item 9)", () => {
     const tour = app.indexOf('id: "tour-invite"');
     const sheet = app.indexOf('id: "read-aloud-sheet"');
     assert.ok(scout >= 0 && tour > scout && sheet > tour, "queue order: scout → tour → read-aloud");
-    assert.match(app, /<FirstVisitQueue prompts=\{firstVisitPrompts\} seenKey="meridian\.firstVisitQueue\.v1" \/>/);
+    assert.match(app, /<FirstVisitQueue prompts=\{firstVisitPrompts\} seenKey="meridian\.firstVisitQueue\.v1" placement="overlay" \/>/);
     // The bubble (fourth prompt) waits for the whole queue, not just the invite.
     assert.match(app, /tutorialInviteVisible=\{firstVisitPrompts\.length > 0\}/);
     // The Scout notice no longer renders outside the queue.

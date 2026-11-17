@@ -53,9 +53,24 @@ export type FirstVisitQueueProps = {
   /** Fires when the last unseen prompt is advanced past. */
   onDone?: () => void;
   className?: string;
+  /**
+   * Where the visible prompt sits (Round 2, Q1 — owner-ruled):
+   * "overlay" (default) fixes it below the header, out of the
+   * document flow, so a prompt appearing can never push the
+   * header — or anything else — down the page. "flow" is the
+   * pre-Q1 behaviour, rendering in place at the mount point.
+   * The owner's word flips it back with this one prop.
+   */
+  placement?: "overlay" | "flow";
 };
 
-export function FirstVisitQueue({ prompts, seenKey, onDone, className }: FirstVisitQueueProps) {
+/** Fixed below the header, centred, above page content but below
+ *  the z-50 gates/modals. The top offset clears the home header at
+ *  both phone and desktop widths (the header wraps taller on a
+ *  narrow screen, so the offset is larger there). */
+const OVERLAY_CLASS = "fixed inset-x-4 top-44 z-40 mx-auto w-full max-w-xl sm:top-32";
+
+export function FirstVisitQueue({ prompts, seenKey, onDone, className, placement = "overlay" }: FirstVisitQueueProps) {
   const [seen, setSeen] = useState<ReadonlySet<string>>(() => readSeen(seenKey));
   const current = prompts.find((prompt) => !seen.has(prompt.id));
 
@@ -71,7 +86,12 @@ export function FirstVisitQueue({ prompts, seenKey, onDone, className }: FirstVi
   if (!current) return null;
   return (
     <AdvanceContext.Provider value={advance}>
-      <div className={className} data-testid="first-visit-queue" data-prompt-id={current.id}>
+      <div
+        className={placement === "overlay" ? `${OVERLAY_CLASS} ${className ?? ""}`.trim() : className}
+        data-testid="first-visit-queue"
+        data-prompt-id={current.id}
+        data-placement={placement}
+      >
         {current.node}
       </div>
     </AdvanceContext.Provider>
