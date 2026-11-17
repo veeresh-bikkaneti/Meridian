@@ -26,7 +26,7 @@ import { loadLiveBoard } from "@/board/live-feed";
 import { computeLayout } from "@/board/status-core";
 import { TrailView, lowerFirst } from "@/board/trail-view";
 import { FeatureRequestForm } from "@/board/feature-request-form";
-import { isEnabled, loadFlags } from "@/lib/flags";
+import { flagsRemoteApplied, isEnabled, loadFlags } from "@/lib/flags";
 import { HomeButton } from "@/components/ui/home-button";
 import "@/board/board.css";
 
@@ -215,7 +215,11 @@ function BoardPage() {
     if (!loaded) return;
     let active = true;
     void loadFlags().then(async () => {
-      if (!active || !isEnabled("boardLiveFeed")) return;
+      // Fail closed: the check runs only when the deployed flags.json
+      // was actually read and says on. If the fetch failed or timed
+      // out, the baked-in default (on) must not defeat a deployed
+      // kill switch — the snapshot board is the safe state.
+      if (!active || !flagsRemoteApplied() || !isEnabled("boardLiveFeed")) return;
       const links = await loadBoardLinks();
       const result = await loadLiveBoard(loaded.board, links);
       if (!active) return;

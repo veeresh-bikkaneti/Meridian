@@ -13,7 +13,10 @@
  *   "Meridian home" name and per-screen positions were the drift
  *   the review measured (Home x differing on every screen).
  * - Slots never enter the menu panel: End game and mute stay on the
- *   line at every width, so no action can be menu-trapped.
+ *   line at every width, so no action can be menu-trapped. The one
+ *   exception is a screen that opts into `exitInMenuOnSmallScreens`
+ *   (Home's Join pill): below the small breakpoint its exit renders
+ *   in the panel because the row physically cannot fit it.
  * - `stars` and `mute` are required-but-nullable on purpose (UX seat):
  *   a screen that earns no stars or plays no audio passes null and the
  *   omission is a visible choice in its adoption diff, not a forgotten
@@ -53,6 +56,15 @@ type SiteHeaderSlots = {
    *  passes its Join pill here. A screen renders exactly one exit
    *  control — this slot — and no second one at the bottom. */
   endGame?: ReactNode;
+  /** Opt-in (fix/mobile-header-overflow): below the small breakpoint
+   *  the actions row cannot fit the exit pill beside the Menu button
+   *  (the row overflowed the page and pushed Menu off-screen), so
+   *  the exit moves into the menu panel at phone widths. Home opts
+   *  in — its exit is the Join pill. Game screens leave this off:
+   *  their End game stays on the line at every width and is never
+   *  menu-trapped. The move is CSS (styles.css, data-exit-menu);
+   *  this prop only renders the panel copy and sets the attribute. */
+  exitInMenuOnSmallScreens?: boolean;
   /** HomeButton variant: ghost on cream (default), secondary over
    *  the map. A prop, not a fork (Round 2 review, rules 2–3). */
   homeVariant?: "ghost" | "secondary";
@@ -70,6 +82,7 @@ export function SiteHeader({
   stars,
   mute,
   endGame,
+  exitInMenuOnSmallScreens = false,
   homeVariant = "ghost",
   className,
   style,
@@ -97,7 +110,13 @@ export function SiteHeader({
   const hasNav = navNode !== null && navNode !== undefined;
 
   return (
-    <header className={cn("site-header", className)} style={style} data-nav-mode={navMode}>
+    <header
+      className={cn("site-header", className)}
+      style={style}
+      data-nav-mode={navMode}
+      data-menu-open={menuOpen ? "true" : "false"}
+      data-exit-menu={exitInMenuOnSmallScreens ? "sm" : undefined}
+    >
       <div className="site-header-row">
         {home.to ? (
           <HomeButton to="/" variant={homeVariant} />
@@ -112,7 +131,7 @@ export function SiteHeader({
         <div className="site-header-actions">
           {stars}
           {mute}
-          {endGame}
+          {endGame ? <span className="site-header-exit">{endGame}</span> : null}
           {hasNav ? (
             <button
               type="button"
@@ -129,6 +148,9 @@ export function SiteHeader({
       {hasNav && menuOpen ? (
         <nav className="site-header-nav site-header-panel" aria-label="Site" data-open="true">
           {navNode}
+          {exitInMenuOnSmallScreens && endGame ? (
+            <div className="site-header-panel-exit">{endGame}</div>
+          ) : null}
         </nav>
       ) : null}
     </header>

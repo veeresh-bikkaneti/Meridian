@@ -4982,6 +4982,7 @@ function Choose({
         onHome={scrollTop}
         className="home-rise"
         style={rise(0)}
+        exitInMenuOnSmallScreens
         nav={
           <>
             <button type="button" className="site-header-nav-link" onClick={() => scrollTo("home-editions")}>
