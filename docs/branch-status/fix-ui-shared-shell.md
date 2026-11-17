@@ -203,3 +203,69 @@ Nodes/edges the integrator folds in at merge (branch lists, never edits):
 - Ruled out: deleting HomeButton now (baselined ban instead);
   a global Calm state (no mechanism exists — owner/integrator call);
   adding Help/About/Terms footer links (new content, not reuse).
+
+## Round 2 adoption (2026-11-16, this branch)
+
+Review verdict REVISE, A.1/A.2: a shared component with zero consumers
+is a failed PR. This round adopts the shell and fixes the header
+contract; the owner's split guard applied — Home + GeoDetective are
+complete, the rest are listed for the fast-follow PR below.
+
+- **HomeButton contract (rule 2):** SiteHeader's home control is now
+  HomeButton itself — named exactly "Home", top-left, ≥44px, no arrow
+  in its name. `homeVariant` prop picks ghost (cream) / secondary
+  (over the map); no fork. The BrandHomeButton lockup ("Meridian
+  home") leaves the header; it still serves ScreenShell. SiteHeader
+  also gained a `style` prop (hosts keep entrance-animation vars).
+- **Header fit (A.2):** `.site-header-row/-nav/-actions` are
+  `flex-wrap: nowrap`; slots keep `white-space: nowrap`. Below the
+  fitting width the nav collapses behind Menu (existing behaviour).
+  Behaviour is asserted by the new e2e, not by constants.
+- **Adopted — Home (game-app.tsx):** bespoke `.hv5-nav` header →
+  SiteHeader (the v5 nav rides the `nav` slot with its two router
+  Links; Join pill in the endGame slot; mute an explicit null —
+  home's SoundToggle keeps its owner-ordered hero place, 2026-10-07/08);
+  hand-rolled footer → SiteFooter with ReadAloudPrefSettings as lead.
+- **Adopted — GeoDetective (LoopScreen.tsx):** hand-rolled home bar →
+  SiteHeader (sticky via `screen-home-bar`; case readout, SoundToggle,
+  End game in the fixed slots); title `<header>` → div; SiteFooter
+  added; the generic load failure is now the shared ErrorScreen
+  (early return) — the stale-build and offline notices keep their
+  pinned in-screen variants. The pack-shelf mount pin was updated to
+  the header's new shape in the same PR (rule 5).
+- **Dead hook — WIRED, not deleted:** `useFirstVisitAdvance` is the
+  queue's advance mechanism for host prompt nodes; it was uncalled
+  only because no host had landed on this branch. It is now exercised
+  end-to-end in shared-shell.test.ts via react-test-renderer: a probe
+  prompt calling it advances the queue and persists the seen id.
+- **Shell-ban extended:** `no-home-button-import` now reports
+  BrandHomeButton imports too — importing either control means
+  hand-rolling a header. SiteHeader + ScreenShell are owner-exempt in
+  the rule. Baseline shrank: pageLocalHeaderFooter 6 → 4 files
+  (game-app + LoopScreen cured). lint:nav clean.
+- **Red-on-main evidence:** the new adoption e2e fails on main
+  ("SiteHeader present — element(s) not found", Home, 1280×800,
+  hermetic worktree build) and passes on this branch at 1280/1920/2560
+  (3/3, hermetic recipe, verify worktree `meridian-verify521`).
+- **Measurements (verify build, Playwright Chromium):** GeoDetective
+  header 768×84 at both 1280 and 1920; Home header 1208×86.75. The
+  home control is identical on both screens: 83.8×44px, top offset
+  22px from the header's top, left offset 0 from its content corner.
+  (Home's header sits at y≈149 on a first visit — the first-visit
+  prompts above it are Stream N's Q1 surface, not this PR.)
+  Screenshots: `~/workspace/verify-evidence-521/` (home/geodetective
+  at 1280 + 1920).
+- **Gates:** tsc clean; shared-shell + home-button suites 29/29;
+  neighbouring suites green (pack-shelf pin updated, above);
+  telemetry guard 6/6; build:pages green in the verify worktree.
+
+## Fast-follow (NOT in this PR — split guard)
+
+Adopt SiteHeader + SiteFooter, in this order, in a follow-up PR on
+top of merged 521: (1) Why Learn picker (SubjectPicker/ScreenShell —
+ScreenShell already hosts BrandHomeButton; swap to SiteHeader once
+PR 515's freeze lifts), (2) subject cases (SubjectCase), (3) Cold
+Trail (TrailScreen — `homeVariant="secondary"` over the map),
+(4) Board (routes/board.tsx — SiteHeader `to="/"` form). Each leaves
+the shell-ban baseline as it adopts; extend the adoption e2e per
+screen as it lands.
