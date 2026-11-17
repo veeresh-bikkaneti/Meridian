@@ -2150,6 +2150,11 @@
   .site-header[data-nav-mode="inline"] .site-header-nav {
     display: none;
   }
+  /* The open menu panel is also a .site-header-nav — exempt it from
+     the hide above, or the Menu button opens nothing below 1024px. */
+  .site-header[data-nav-mode="inline"] .site-header-panel {
+    display: flex;
+  }
   .site-header-row {
     gap: 16px;
   }
