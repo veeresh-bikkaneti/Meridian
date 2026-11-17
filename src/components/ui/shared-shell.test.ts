@@ -37,6 +37,17 @@ type ShellModule = {
   FirstVisitQueue: (props: never) => ReactNode;
   createElement: typeof createElement;
   renderToStaticMarkup: typeof renderToStaticMarkup;
+  createTestRenderer: (node: ReactNode) => TestRenderer;
+  act: (fn: () => void) => void;
+  AdvanceProbe: () => ReactNode;
+  capturedAdvance: () => (() => void) | undefined;
+};
+
+type TestRenderer = {
+  root: {
+    findByProps: (props: Record<string, unknown>) => unknown;
+  };
+  unmount: () => void;
 };
 
 let shellPromise: Promise<ShellModule> | undefined;
@@ -55,6 +66,14 @@ function loadShell(): Promise<ShellModule> {
         ...names.map((n) => `export * from ${JSON.stringify(join(here, `${n}.tsx`))};`),
         'export { createElement } from "react";',
         'export { renderToStaticMarkup } from "react-dom/server";',
+        // Interactive rendering for the FirstVisitQueue advance hook:
+        // react-test-renderer shares the bundle's single React copy.
+        'export { create as createTestRenderer, act } from "react-test-renderer";',
+        `import { createElement as ce } from "react";`,
+        `import { useFirstVisitAdvance } from ${JSON.stringify(join(here, "first-visit-queue.tsx"))};`,
+        "let captured;",
+        "export function AdvanceProbe() { captured = useFirstVisitAdvance(); return ce(\"span\", null, \"probe\"); }",
+        "export function capturedAdvance() { return captured; }",
       ].join("\n"),
     );
     const outfile = join(dir, "bundle.mjs");
@@ -73,6 +92,8 @@ function loadShell(): Promise<ShellModule> {
       alias: {
         react: dirname(req.resolve("react/package.json")),
         "react-dom": dirname(req.resolve("react-dom/package.json")),
+        "react-test-renderer": dirname(req.resolve("react-test-renderer/package.json")),
+        scheduler: dirname(req.resolve("scheduler/package.json")),
       },
       loader: { ".css": "empty" },
       logLevel: "silent",
@@ -100,13 +121,27 @@ describe("SiteHeader", () => {
     endGame: createElement("button", { type: "button", "data-testid": "end" }, "End game"),
   };
 
-  it("renders brand, nav, stars, mute, end game in the fixed slot order", async () => {
+  it("renders the home control, nav, stars, mute, end game in the fixed slot order", async () => {
     const html = await render("SiteHeader", base);
-    const order = ["brand-home-button", "Get involved", "stars", "mute", "end"].map((needle) => html.indexOf(needle));
+    const order = ["home-button", "Get involved", "stars", "mute", "end"].map((needle) => html.indexOf(needle));
     assert.ok(order.every((i) => i >= 0), html);
     assert.deepEqual([...order].sort((a, b) => a - b), order);
     assert.match(html, /data-nav-mode="inline"/);
-    assert.match(html, /aria-label="Meridian home"/);
+  });
+
+  it("the home control is HomeButton: named exactly Home, no arrow, ghost by default (Round 2 rule 2)", async () => {
+    const html = await render("SiteHeader", base);
+    assert.match(html, /data-testid="home-button"/);
+    assert.match(html, /Home<\/button>/);
+    assert.doesNotMatch(html, /Meridian home|←/);
+    // ghost variant classes on the control (transparent bg on cream).
+    assert.match(html, /bg-transparent/);
+  });
+
+  it("homeVariant=secondary renders the over-map variant of the same control", async () => {
+    const html = await render("SiteHeader", { ...base, homeVariant: "secondary" });
+    assert.match(html, /data-testid="home-button"/);
+    assert.match(html, /bg-surface-2/);
   });
 
   it("menu button is a 44px-class control, collapsed, and the panel (with the slots outside it) is closed", async () => {
@@ -128,7 +163,7 @@ describe("SiteHeader", () => {
 
   it("accepts explicit null slots (required-but-nullable): a silent, starless screen renders clean", async () => {
     const html = await render("SiteHeader", { onHome: () => {}, stars: null, mute: null });
-    assert.match(html, /brand-home-button/);
+    assert.match(html, /data-testid="home-button"/);
     assert.doesNotMatch(html, /site-header-menu-button/);
   });
 });
@@ -185,7 +220,7 @@ describe("Pill and Badge", () => {
 describe("ErrorScreen", () => {
   it("header on top, pinned blameless copy, exactly the Try again + Home exits", async () => {
     const html = await render("ErrorScreen", { onHome: () => {}, onRetry: () => {} });
-    assert.match(html, /brand-home-button/);
+    assert.match(html, /data-testid="home-button"/);
     assert.match(html, /That page couldn&#x27;t load\./);
     assert.match(html, /it&#x27;s not your fault/);
     assert.match(html, />Try again</);
@@ -207,6 +242,56 @@ describe("FirstVisitQueue", () => {
     assert.match(html, /PROMPT-A/);
     assert.doesNotMatch(html, /PROMPT-B/);
     assert.match(html, /data-prompt-id="a"/);
+  });
+
+  it("useFirstVisitAdvance is wired: a prompt calling it advances the queue and persists the seen id", async () => {
+    const shell = await loadShell();
+    (globalThis as { IS_REACT_ACT_ENVIRONMENT?: boolean }).IS_REACT_ACT_ENVIRONMENT = true;
+    const store = new Map<string, string>();
+    (globalThis as { localStorage?: unknown }).localStorage = {
+      getItem: (k: string) => store.get(k) ?? null,
+      setItem: (k: string, v: string) => void store.set(k, v),
+    };
+    try {
+      const Q = shell.FirstVisitQueue as (p: Record<string, unknown>) => ReactNode;
+      const Probe = shell.AdvanceProbe as (p: Record<string, unknown>) => ReactNode;
+      let renderer!: TestRenderer;
+      shell.act(() => {
+        renderer = shell.createTestRenderer(
+          shell.createElement(Q, {
+            seenKey: "hook-test",
+            prompts: [
+              { id: "a", node: shell.createElement(Probe, {}) },
+              { id: "b", node: shell.createElement("p", null, "PROMPT-B") },
+            ],
+          }),
+        );
+      });
+      assert.ok(renderer.root.findByProps({ "data-prompt-id": "a" }));
+      const advance = shell.capturedAdvance();
+      assert.equal(typeof advance, "function");
+      shell.act(() => advance!());
+      assert.ok(renderer.root.findByProps({ "data-prompt-id": "b" }));
+      assert.deepEqual(JSON.parse(store.get("hook-test") ?? "[]"), ["a"]);
+      renderer.unmount();
+    } finally {
+      delete (globalThis as { localStorage?: unknown }).localStorage;
+    }
+  });
+});
+
+describe("header fit (Round 2, A.2): the row can never wrap", () => {
+  it("row, nav and actions are nowrap in CSS; nav links keep white-space: nowrap", () => {
+    const css = read("src/styles.css");
+    const block = (selector: string) => {
+      const start = css.indexOf(`${selector} {`);
+      assert.ok(start >= 0, selector);
+      return css.slice(start, css.indexOf("}", start));
+    };
+    assert.match(block(".site-header-row"), /flex-wrap: nowrap/);
+    assert.match(block(".site-header-nav"), /flex-wrap: nowrap/);
+    assert.match(block(".site-header-actions"), /flex-wrap: nowrap/);
+    assert.match(block(".site-header-nav-link"), /white-space: nowrap/);
   });
 });
 
@@ -282,7 +367,7 @@ describe("Badge contrast, computed from the styles.css token values", () => {
 describe("shell-ban baseline (KNOWN/STALE)", () => {
   const baseline = JSON.parse(read("eslint/shell-ban-baseline.json")) as Record<string, string[]>;
   const patterns: Record<string, RegExp> = {
-    homeButtonImport: /import[^;]*\bHomeButton\b[^;]*home-button/,
+    homeButtonImport: /import[^;]*\b(?:Brand)?HomeButton\b[^;]*home-button/,
     pageLocalHeaderFooter: /<(header|footer)[\s>]/,
     maxWNone: /max-w-none/,
   };

@@ -75,6 +75,7 @@ const CONTEXT_FILES = Object.freeze([
   "review-card-actions.desktop.spec.ts",
   "scout-switch-note.desktop.spec.ts",
   "search-hidden.spec.ts",
+  "shared-shell-adoption.desktop.spec.ts",
   "session-score.spec.ts",
 ]);
 
