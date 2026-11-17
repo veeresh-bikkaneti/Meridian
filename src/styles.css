@@ -118,16 +118,30 @@
   --game-chrome-line: var(--atlas-card-line);
   --game-chrome-solid: color-mix(in srgb, var(--atlas-bg-1) 94%, transparent);
   /* ---- Layout tokens (fix/mobile-header-overflow; PR 3 systematizes) ----
-   * Breakpoints, layers, the header offset and the page gutter are
+   * Breakpoints, layers, header metrics and the page gutter are
    * tokens, not magic numbers scattered through the sheets. Media
    * queries cannot read custom properties, so @media rules cite the
-   * token in a comment and use its value. --header-height is the
-   * first-visit overlay's top offset: the exact heights the Q1 cure
-   * measured (the phone header wraps tall; the desktop one is one
-   * row), re-expressed as one token with a breakpoint override. */
+   * token in a comment and use its value.
+   * --header-height is the shell header's own height, measured on the
+   * rendered page (84px at phone widths; the desktop row measures
+   * ~87px) — it floors .site-header so the header can never shrink
+   * under the sheet's clearance math.
+   * --sheet-offset is the first-visit overlay's top: a separate token
+   * (fix/geo-endgame-overflow) because the sheet hangs below the
+   * header PLUS the home column's top offset and a breathing gap, not
+   * from the header's top edge. The old single token (19rem) conflated
+   * the two and pushed the sheet so low at 320x568 that it needed its
+   * own scroll to reach its last option. */
   --bp-sm: 640px;
   --gutter: 1rem;
-  --header-height: 19rem;
+  --header-height: 84px;
+  --sheet-offset: 10rem;
+  --sheet-max-width: 36rem;
+  --header-actions-gap: 0.875rem;
+  --header-actions-gap-sm: 0.375rem;
+  --header-row-gap-sm: 0.5rem;
+  --header-exit-pad-sm: 0.5rem;
+  --space-2xs: 0.25rem;
   --z-base: 0;
   --z-header: 30;
   --z-overlay: 40;
@@ -533,25 +547,29 @@
  * class selector outranks the atlas lift above on purpose — the
  * lift would otherwise force position: relative and put the
  * prompt back in flow. The top offset clears the home header at
- * both widths: the header wraps tall on a phone (brand row plus
- * wrapped nav), so the phone offset is the larger one.
+ * both widths.
  *
- * Fit (fix/mobile-header-overflow): the offsets are the
- * --header-height token now, and the sheet is boxed by the
+ * Fit (fix/mobile-header-overflow): the sheet is boxed by the
  * gutters instead of a full-width class — at 390px the old
  * `w-full` + inset made the sheet 411px wide and cut its Dismiss
  * off, and at 320x568 its height ran past the viewport so the
  * last option could not be reached. Max height plus its own
- * scroll keeps every option reachable at any viewport. */
+ * scroll keeps every option reachable at any viewport.
+ * Offset (fix/geo-endgame-overflow): the top is the --sheet-offset
+ * token (the --header-height split — see the token block): at phone
+ * widths the sheet now starts under the real 84px header, high
+ * enough that its whole content fits 320x568 with no inner scroll;
+ * the max-height/scroll below remains as the safety for shorter
+ * viewports. */
 .atlas-home > div.first-visit-queue-overlay,
 div.first-visit-queue-overlay {
   position: fixed;
-  top: var(--header-height);
+  top: var(--sheet-offset);
   left: var(--gutter);
   right: var(--gutter);
   width: auto;
-  max-width: min(36rem, calc(100vw - 2 * var(--gutter)));
-  max-height: calc(100dvh - var(--header-height) - var(--gutter));
+  max-width: min(var(--sheet-max-width), calc(100vw - 2 * var(--gutter)));
+  max-height: calc(100dvh - var(--sheet-offset) - var(--gutter));
   overflow-y: auto;
   /* The lift above sets z-index: 1 on every atlas child, and this
    * unlayered rule must claim the stack too: a layered utility
@@ -563,9 +581,12 @@ div.first-visit-queue-overlay {
   z-index: var(--z-overlay);
 }
 
-@media (min-width: 640px) { /* var(--bp-sm) */
+/* Phone widths: the sheet hangs from just under the real header
+ * (its bottom edge sits at 115px on Home: the column's top offset
+ * plus the 84px header), not from the desktop offset. */
+@media (max-width: 639.5px) { /* var(--bp-sm) */
   :root {
-    --header-height: 10rem;
+    --sheet-offset: 8.5rem;
   }
 }
 
@@ -2191,7 +2212,7 @@ div.first-visit-queue-overlay {
   display: flex;
   align-items: center;
   flex-wrap: nowrap;
-  gap: 14px;
+  gap: var(--header-actions-gap);
   margin-left: auto;
 }
 .site-header-actions > * {
@@ -2199,6 +2220,21 @@ div.first-visit-queue-overlay {
 }
 .site-header {
   z-index: var(--z-header);
+  min-height: var(--header-height);
+}
+/* On Home the header is a child of .atlas-home, whose lift
+ * (.atlas-home > :not(.atlas-bg)) puts every child at z-index 1 and
+ * outranks the plain .site-header rule above — the header computed
+ * to layer 1, tied with the content it must stack over. Claim the
+ * header layer back for the header itself, at the lift's own weight
+ * plus the element (the overlay rule's pattern); the lift is
+ * untouched for every other child. The menu-open twin keeps the
+ * open panel at the menu layer, above the first-visit sheet. */
+.atlas-home > header.site-header {
+  z-index: var(--z-header);
+}
+.atlas-home > header.site-header[data-menu-open="true"] {
+  z-index: var(--z-menu);
 }
 /* With its menu open the header rises to the menu layer: the
    first-visit sheet sits at the overlay layer and would otherwise
@@ -2229,7 +2265,7 @@ div.first-visit-queue-overlay {
   }
   .site-header[data-exit-menu="sm"] .site-header-panel-exit {
     display: block;
-    margin-top: 4px;
+    margin-top: var(--space-2xs);
   }
   .site-header-panel-exit > * {
     width: 100%;
@@ -2281,6 +2317,25 @@ div.first-visit-queue-overlay {
   }
   .site-header-row {
     gap: 16px;
+  }
+}
+/* Phone widths (fix/geo-endgame-overflow): the header's gaps and the
+ * exit pill's inline padding shrink so a full game cluster fits a
+ * 320px page. On GeoDetective the row (Home + case readout + mute +
+ * End game) overflowed by 18px — the End game pill ran to x=338 —
+ * because no part of it could shrink. The shell gives back ~40px
+ * here, in the header itself, so every screen inherits the fit;
+ * hit-box heights never shrink (the 44px floor holds). Placed after
+ * the 1023.5px block above so the row gap wins at phone widths. */
+@media (max-width: 639.5px) { /* var(--bp-sm) */
+  .site-header-row {
+    gap: var(--header-row-gap-sm);
+  }
+  .site-header-actions {
+    gap: var(--header-actions-gap-sm);
+  }
+  .site-header-exit > * {
+    padding-inline: var(--header-exit-pad-sm);
   }
 }
 /* Compact band: the home ≤1080px squeeze gaps, with the UX seat's

@@ -53,6 +53,24 @@ type Box = { x: number; y: number; width: number; height: number };
 async function homeControl(page: Page, label: string) {
   const home = page.getByTestId("home-button");
   await expect(home, `${label}: home control present`).toBeVisible({ timeout: 45_000 });
+  // The header's entrance animation transforms the row for its first
+  // beat, and a box read mid-flight lands a hair under the 44px floor
+  // (43.999996 measured — the flake this wait cures). Measure only
+  // once the control's box has stopped moving; the ≥44 assertion
+  // itself is unchanged.
+  let lastKey = "";
+  await expect
+    .poll(
+      async () => {
+        const b = await home.boundingBox();
+        const key = b ? `${b.x},${b.y},${b.width},${b.height}` : "none";
+        const stable = key === lastKey;
+        lastKey = key;
+        return stable;
+      },
+      { timeout: 10_000 },
+    )
+    .toBe(true);
   const name = await home.evaluate((el) => (el.getAttribute("aria-label") ?? el.textContent ?? "").trim());
   expect(name, `${label}: home control name`).toBe("Home");
   const box = (await home.boundingBox()) as Box;
