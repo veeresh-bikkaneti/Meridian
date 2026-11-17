@@ -79,8 +79,10 @@ test("bug 12a: Back from an opened game lands on #home with the game closed", as
 test("bug 12b: a fresh visit holds one history entry — one Back leaves cleanly", async ({ page }) => {
   await openHome(page);
   // The boot seeds #home into the current entry (replaceState), so
-  // there is no second, hash-less entry under it: goBack has
-  // nowhere in-app to go and returns null.
-  const back = await page.goBack();
-  expect(back).toBeNull();
+  // there is no second, hash-less entry under it: one Back leaves
+  // the app entirely, back to where the tab started. Before the
+  // fix, Back landed on the phantom hash-less entry and the app
+  // stayed on screen.
+  await page.goBack();
+  await expect(page).toHaveURL("about:blank");
 });
