@@ -186,6 +186,21 @@ const FLAGS_FILE = "flags.json";
 let overrides: Partial<Record<FlagName, boolean>> = {};
 
 /**
+ * True once a remote flags.json payload has actually been applied in
+ * this page load. Kill switches that must fail CLOSED (the board live
+ * feed) gate on this: when the fetch times out, fails, or returns an
+ * invalid payload, "defaults win" — and a default of `true` would
+ * silently defeat a deployed `false`. Such a gate may only run when
+ * the deployed payload positively said so.
+ */
+let remotePayloadApplied = false;
+
+/** Whether a remote flags.json payload has been applied this page load. */
+export function flagsRemoteApplied(): boolean {
+  return remotePayloadApplied;
+}
+
+/**
  * Observability endpoint from the top-level `observabilityEndpoint` field
  * of flags.json (NOT inside `flags` — it is a URL, not a boolean flag).
  * Null = observability transport disabled (the shipped default).
@@ -230,6 +245,7 @@ let inflight: Promise<void> | null = null;
  */
 export function resetFlags(): void {
   overrides = {};
+  remotePayloadApplied = false;
   observabilityEndpointValue = null;
   contactEndpointValue = null;
   featureRequestEndpointValue = null;
@@ -426,6 +442,7 @@ function applyPayload(data: unknown): void {
     if (typeof value === "boolean") next[name] = value;
   }
   overrides = next;
+  remotePayloadApplied = true;
 }
 
 /**
