@@ -417,7 +417,7 @@ function BoardPage() {
               aria-pressed={view === "tip"}
               onClick={() => pickView("tip")}
             >
-              Send a tip
+              Ask for something new
             </button>
           </div>
           </div>

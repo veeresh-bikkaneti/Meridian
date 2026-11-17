@@ -26,7 +26,12 @@ import {
   findStory,
   type PublishedBoard,
 } from "./board-data.ts";
-import type { BoardLayout } from "./status-core.ts";
+import {
+  ATOM_RADIUS,
+  LABEL_HALF_HEIGHT,
+  LABEL_LIFT,
+  type BoardLayout,
+} from "./status-core.ts";
 import { StatusPill, StoryCardPanel } from "./trail-view.tsx";
 
 /**
@@ -113,7 +118,7 @@ export default function MoleculeMap({
     scene.add(sun);
 
     /* atoms — one instanced mesh */
-    const atomGeo = new THREE.SphereGeometry(0.72, 14, 10);
+    const atomGeo = new THREE.SphereGeometry(ATOM_RADIUS, 14, 10);
     const atomMat = new THREE.MeshStandardMaterial({ roughness: 0.55, metalness: 0.15 });
     const atoms = new THREE.InstancedMesh(atomGeo, atomMat, flat.length);
     const dummy = new THREE.Object3D();
@@ -176,9 +181,15 @@ export default function MoleculeMap({
         ctx.fillStyle = "#33302a";
         ctx.fillText(feature.name, 256, 82);
         const tex = new THREE.CanvasTexture(canvas);
-        const sprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, transparent: true }));
-        sprite.scale.set(9, 2.25, 1);
-        sprite.position.set(c[0], c[1] + layout.featureRadii[feature.id] + 1.2, c[2]);
+        /* depthTest off + a late renderOrder: a label is never clipped
+         * by an atom in front of it, and LABEL_LIFT (status-core) keeps
+         * the chip clear of its own bubble's atoms. */
+        const sprite = new THREE.Sprite(
+          new THREE.SpriteMaterial({ map: tex, transparent: true, depthTest: false }),
+        );
+        sprite.renderOrder = 10;
+        sprite.scale.set(9, LABEL_HALF_HEIGHT * 2, 1);
+        sprite.position.set(c[0], c[1] + layout.featureRadii[feature.id] + LABEL_LIFT, c[2]);
         scene.add(sprite);
       }
     }

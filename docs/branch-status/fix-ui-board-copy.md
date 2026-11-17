@@ -39,15 +39,36 @@ nothing 508/516 did is redone. Stream S cherry-picked: `a0458929`, `cc745790`.
   "Calm mode" + On/Off, MapModeToggle's 44×24 track / 20px knob recipe in
   board.css's own `--hv5-forest` colours.
 
-## Deferred (recorded, not silent)
+## Done — P2 sweep (owner approved 2026-11-16)
 
-- Item 28 ("Send a tip" vs "Ask for something new") — per Phase 2 re-price.
-- Item 29 (structure-view labels clipped by dots) — per Phase 2 re-price.
+- **Item 28:** one name — "Ask for something new" — everywhere. The flow is
+  a feature request, not a tip jar: the form's own words are "you can
+  request a feature! Tell us what your child would love to play or learn
+  next", it posts via `sendFeatureRequest`, and its heading, the section
+  aria-label, the board footer button, the grown-ups nav and the Home
+  grown-ups link already used that name. The board nav button was the one
+  outlier ("Send a tip") → renamed. Surfaces checked: board.tsx (nav +
+  footer + section), feature-request-form.tsx, grownups/info-page.tsx,
+  game-app.tsx grown-ups link — no third name anywhere. A unit pin fails
+  if "Send a tip" returns to board.tsx or the form. (The internal view
+  key stays `tip`; not player-visible.)
+- **Item 29:** structure-view feature labels were clipped by atoms. Two
+  causes: the chip floated only 1.2 units above its bubble, leaving its
+  bottom edge level with the highest atom tops (story centres reach
+  0.7425 × radius, plus the 0.72 atom radius — clearance ≈ 0.01 on the
+  smallest bubble), and the sprite material depth-tested, so any atom in
+  front punched a hole in the text. Fix: `LABEL_LIFT` 1.2 → 2.2 (now in
+  status-core beside computeLayout, with the derivation) and the label
+  material is `depthTest: false` with `renderOrder = 10`, so no mark can
+  ever clip a chip. Pinned by a measured layout assertion over the real
+  published board (every chip's bottom edge above every atom top in its
+  bubble) plus a source pin for the material flag.
 
 ## Gates
 
-- Board unit tests: 58/58 (`node --experimental-strip-types --test src/board/**`).
+- Board unit tests: 61/61 (`node --experimental-strip-types --test src/board/**`).
 - `npx tsc --noEmit`: clean. `npm run lint:nav`: clean.
+  `npm run check:provenance`: PASSED.
 - Screenshots: NOT taken — this sandbox's node_modules is a borrowed tree
   from an older checkout, so a local build would not prove the board's
   pixels. CI + Phase 3 screenshot check carry it.
@@ -63,6 +84,6 @@ nothing 508/516 did is redone. Stream S cherry-picked: `a0458929`, `cc745790`.
 
 ## Handoff
 
-- Done: items 23 (answers + guard verified), 24, 25, 26, 27.
+- Done: items 23 (answers + guard verified), 24, 25, 26, 27, 28, 29.
 - Next: Phase 3 combined review; screenshots at 2560/1280/390 still owed.
 - Open: none for the owner inside this stream's share.

@@ -4,6 +4,9 @@ import { describe, it } from "node:test";
 import curationJson from "./curation.json" with { type: "json" };
 import recordStatesJson from "./record-states.json" with { type: "json" };
 import {
+  ATOM_RADIUS,
+  LABEL_HALF_HEIGHT,
+  LABEL_LIFT,
   buildPublished,
   computeLayout,
   deriveFromRecords,
@@ -260,6 +263,51 @@ describe("buildPublished on the real curation file (Phase 0 baseline)", () => {
     const b = computeLayout(published);
     assert.deepEqual(a, b);
     assert.equal(Object.keys(a.positions).length, 37);
+  });
+});
+
+describe("structure-view feature labels clear every atom (item 29)", () => {
+  const curation = curationJson as unknown as Curation;
+  const recordStates = new Map(
+    Object.entries(recordStatesJson as Record<string, RecordState>).map(([k, v]) => [Number(k), v]),
+  );
+  const published = buildPublished(curation, recordStates, {
+    source: "generated",
+    updatedAt: "2026-11-15T00:00:00.000Z",
+  });
+  const layout = computeLayout(published);
+
+  it("every chip's bottom edge sits above the highest atom top in its bubble", () => {
+    for (const epic of published.epics) {
+      for (const feature of epic.features) {
+        const c = layout.featureCenters[feature.id];
+        const radius = layout.featureRadii[feature.id];
+        const chipBottom = c[1] + radius + LABEL_LIFT - LABEL_HALF_HEIGHT;
+        for (const s of feature.stories) {
+          const atomTop = layout.positions[s.slug][1] + ATOM_RADIUS;
+          assert.ok(
+            chipBottom > atomTop,
+            `${feature.name}: chip bottom ${chipBottom.toFixed(2)} must clear atom top ${atomTop.toFixed(2)} (${s.slug})`,
+          );
+        }
+      }
+    }
+  });
+
+  it("the label material never lets an atom clip the chip (depthTest off)", () => {
+    const map = readFileSync(new URL("./molecule-map.tsx", import.meta.url), "utf8");
+    assert.match(map, /SpriteMaterial\(\{[^}]*depthTest: false/);
+    assert.match(map, /LABEL_LIFT/);
+  });
+});
+
+describe("one name for the feature-request action (item 28)", () => {
+  it("no player surface still calls it “Send a tip”", () => {
+    for (const rel of ["../routes/board.tsx", "./feature-request-form.tsx"]) {
+      const src = readFileSync(new URL(rel, import.meta.url), "utf8");
+      assert.ok(!src.includes("Send a tip"), `${rel} still says “Send a tip”`);
+      assert.ok(src.includes("Ask for something new"), `${rel} lost the shared name`);
+    }
   });
 });
 
