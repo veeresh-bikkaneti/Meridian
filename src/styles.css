@@ -2357,6 +2357,19 @@ div.first-visit-queue-overlay {
   color: var(--fg);
 }
 
+/* PageShell's title block (PR 3 Step 2): eyebrow, title, sub in the
+   shell dialect, spaced like the screens' hand-rolled intros. */
+.page-intro {
+  margin-top: 24px;
+}
+.page-intro-sub {
+  margin-top: 12px;
+  font-family: var(--font-atlas-body);
+  font-size: 1.125rem;
+  line-height: 1.5;
+  color: var(--fg);
+}
+
 .error-screen-panel {
   padding: 24px;
   margin-top: 24px;

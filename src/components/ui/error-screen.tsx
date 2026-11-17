@@ -11,9 +11,15 @@
  * Focus goes to the heading on mount, so keyboard and switch-device
  * children land somewhere instead of tabbing through the page behind.
  *
- * Layout reuses prod only: PageColumn "read", the .mode-card panel,
- * the .mode-title / .name-eyebrow patterns, --error as the accent,
- * and the shared Button (Try again primary, Home secondary).
+ * Props (PR 3 Step 2): `title`, `body` and the `actions` labels are
+ * the host's only copy levers — the pinned defaults stand when they
+ * are absent — and `surface` picks the panel treatment ("card", the
+ * shipped .mode-card panel, or "plain" on screens that already sit
+ * inside a card). Variants are props, never forks.
+ *
+ * Layout reuses prod only: PageColumn "narrow", the .mode-card
+ * panel, the .mode-title / .name-eyebrow patterns, --error as the
+ * accent, and the shared Button (Try again primary, Home secondary).
  */
 import { useEffect, useRef } from "react";
 import { Button } from "./button";
@@ -25,15 +31,24 @@ export type ErrorScreenProps = {
   onRetry: () => void;
   /** Defaults to the pinned blameless copy. */
   title?: string;
-  /** Defaults to the pinned blameless copy. */
-  message?: string;
+  /** The message under the title. Defaults to the pinned copy. */
+  body?: string;
+  /** Labels for the two exits; both default to the pinned words. */
+  actions?: {
+    retryLabel?: string;
+    homeLabel?: string;
+  };
+  /** Panel treatment: the .mode-card card (default) or plain. */
+  surface?: "card" | "plain";
 };
 
 export function ErrorScreen({
   onHome,
   onRetry,
   title = "That page couldn't load.",
-  message = "Try again, or go home — it's not your fault.",
+  body = "Try again, or go home — it's not your fault.",
+  actions,
+  surface = "card",
 }: ErrorScreenProps) {
   const headingRef = useRef<HTMLHeadingElement>(null);
 
@@ -42,18 +57,18 @@ export function ErrorScreen({
   }, []);
 
   return (
-    <PageColumn width="read">
+    <PageColumn width="narrow">
       <SiteHeader onHome={onHome} status={null} mute={null} />
-      <div className="mode-card error-screen-panel">
+      <div className={surface === "card" ? "mode-card error-screen-panel" : "error-screen-panel"}>
         <p className="name-eyebrow error-screen-eyebrow">Oops</p>
         <h1 ref={headingRef} tabIndex={-1} className="mode-title text-3xl text-fg">
           {title}
         </h1>
-        <p className="error-screen-message">{message}</p>
+        <p className="error-screen-message">{body}</p>
         <div className="error-screen-actions">
-          <Button onClick={onRetry}>Try again</Button>
+          <Button onClick={onRetry}>{actions?.retryLabel ?? "Try again"}</Button>
           <Button variant="secondary" onClick={onHome}>
-            Home
+            {actions?.homeLabel ?? "Home"}
           </Button>
         </div>
       </div>
