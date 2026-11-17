@@ -27,7 +27,7 @@
   color: var(--fg);
   /* Shared site type (item 41): the gate speaks the same Karla/Fraunces
      as every other screen, never the platform system font. */
-  font-family: "Karla", system-ui, sans-serif;
+  font-family: var(--font-atlas-body);
   animation: agep-fade 0.3s ease;
 }
 
@@ -37,7 +37,7 @@
 }
 
 .agep-h1 {
-  font-family: "Fraunces", Georgia, serif;
+  font-family: var(--font-atlas-display);
   font-size: clamp(1.5rem, 6vw, 2rem);
   margin: 12px 0 8px;
   text-align: center;
@@ -78,7 +78,7 @@
 /* --- Gate --- */
 
 .agep-question {
-  font-family: "Fraunces", Georgia, serif;
+  font-family: var(--font-atlas-display);
   font-size: clamp(1.5rem, 6vw, 2rem);
   margin: 8px 0 12px;
   text-align: center;
