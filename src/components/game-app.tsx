@@ -101,6 +101,7 @@ import { Button } from "@/components/ui/button";
 import { HomeButton } from "@/components/ui/home-button";
 import { SiteHeader } from "@/components/ui/site-header";
 import { SiteFooter } from "@/components/ui/site-footer";
+import { ErrorScreen } from "@/components/ui/error-screen";
 import { RunStartNotice } from "@/components/run-start-notice";
 import { QuestionBubble, type BubbleViewState } from "./question-bubble";
 import { HintPanel } from "./hint-panel";
@@ -6813,17 +6814,22 @@ function Play({
   }, [loadKey]);
 
   if (poolError) {
+    // The shared ErrorScreen (PR 3 Step 3.8): the failure copy rides
+    // its title/body props verbatim — the loader's message plus the
+    // standing explanation. This surface has exactly one recovery
+    // door, as it did hand-built: picking the region again
+    // (onEditions), so both ErrorScreen exits converge on it. A true
+    // in-place retry would need a load nonce in the pool loader,
+    // which is outside this surface. The region loading state below
+    // and the pinned stale-build/offline notices elsewhere keep
+    // their specialised surfaces.
     return (
-      <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-3xl flex-col justify-center px-5 py-8">
-        <p className="name-eyebrow">Couldn&rsquo;t load places</p>
-        <h1 className="mode-title mt-2 text-4xl text-fg">{run.regionName}</h1>
-        <p role="alert" className="mt-4 max-w-md text-lg text-fg">
-          {poolError} The run was not started with a partial pool — pick the region again to retry.
-        </p>
-        <div className="mt-6">
-          <HomeButton onHome={onEditions} variant="primary" />
-        </div>
-      </main>
+      <ErrorScreen
+        onHome={onEditions}
+        onRetry={onEditions}
+        title="Couldn't load places."
+        body={`${poolError} The run was not started with a partial pool — pick the region again to retry.`}
+      />
     );
   }
 
