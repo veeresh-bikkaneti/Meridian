@@ -140,8 +140,8 @@ test("back navigation returns one level at a time", async ({ page }) => {
   // State list -> country list: a one-step back, labelled "Back".
   await page.getByRole("button", { name: "Back", exact: true }).click();
   await expect(page.getByRole("heading", { name: "Country" })).toBeVisible();
-  // Country list -> choose screen: the one Meridian home (brand) control.
-  await page.getByRole("button", { name: "Meridian home", exact: true }).click();
+  // Country list -> choose screen: the one Home control (shared shell).
+  await page.getByRole("button", { name: "Home", exact: true }).click();
   await expect(
     page.getByRole("button", { name: "Choose a country" }),
   ).toBeVisible();
@@ -175,8 +175,8 @@ test("State path back navigation returns through the state country list", async 
   // State list -> state country list (not the full country list): "Back".
   await page.getByRole("button", { name: "Back", exact: true }).click();
   await expect(page.getByRole("heading", { name: "State" })).toBeVisible();
-  // State country list -> choose screen: the one Meridian home (brand) control.
-  await page.getByRole("button", { name: "Meridian home", exact: true }).click();
+  // State country list -> choose screen: the one Home control (shared shell).
+  await page.getByRole("button", { name: "Home", exact: true }).click();
   await expect(
     page.getByRole("button", { name: "Choose a state" }),
   ).toBeVisible();
