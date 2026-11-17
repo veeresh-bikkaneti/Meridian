@@ -2070,12 +2070,14 @@
 .site-header-row {
   display: flex;
   align-items: center;
+  flex-wrap: nowrap;
   gap: 34px;
   padding: 22px 0 18px;
 }
 .site-header-nav {
   display: flex;
   align-items: center;
+  flex-wrap: nowrap;
   gap: 34px;
 }
 .site-header-nav-link {
@@ -2103,8 +2105,12 @@
 .site-header-actions {
   display: flex;
   align-items: center;
+  flex-wrap: nowrap;
   gap: 14px;
   margin-left: auto;
+}
+.site-header-actions > * {
+  white-space: nowrap;
 }
 .site-header-menu-button {
   font-family: var(--font-atlas-body);
