@@ -89,9 +89,12 @@ describe("screen mounts", () => {
     assert.ok(trailScreen.includes("<PackShelf"), "shelf mounted");
     assert.ok(trailScreen.includes('edition="coldtrail"'), "edition wired");
     assert.ok(trailScreen.includes("onStartNext={onNextCase}"), "deals through onNextCase");
-    const headerEnd = trailScreen.indexOf("</header>");
+    // The screen header is the shared SiteHeader (PR 3 Step 3.5
+    // adoption); the shelf sits under it — the same pin LoopScreen
+    // carries above.
+    const headerAt = trailScreen.indexOf("<SiteHeader");
     const shelfAt = trailScreen.indexOf("<PackShelf");
-    assert.ok(headerEnd >= 0 && shelfAt > headerEnd, "shelf sits under the screen header");
+    assert.ok(headerAt >= 0 && shelfAt > headerAt, "shelf sits under the screen header");
   });
 });
 
