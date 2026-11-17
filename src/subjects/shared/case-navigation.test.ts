@@ -22,8 +22,10 @@ import { fileURLToPath } from "node:url";
  *    to GameApp's handleEndGame.
  * 3. No reset in the Why Learn flow: the game's own "Start over"
  *    control (ResetHistoryControl + handleResetHistory) renders on
- *    the picker and the case; the control lives in its own module so
- *    the lazy subject chunk never imports the app shell.
+ *    the picker; the control lives in its own module so the lazy
+ *    subject chunk never imports the app shell. (Item 6 update,
+ *    Stream W: the case no longer renders it — End game in the
+ *    header is the case's one exit word.)
  * 4. No age picker in the Why Learn flow: the picker keeps the band
  *    in state, follows age-profile change events (re-deal + close
  *    any open case), and its footer carries Home's grown-ups entry
@@ -159,9 +161,12 @@ describe("reset in the Why Learn flow (defect 3)", () => {
     );
   });
 
-  it("the picker and the case render the reset, wired to handleResetHistory", () => {
+  it("the picker renders the reset, wired to handleResetHistory; the case no longer does (item 6)", () => {
     assert.ok(subjectPicker.includes("<ResetHistoryControl onReset={onResetHistory} />"), "picker footer control");
-    assert.ok(subjectCase.includes("<ResetHistoryControl onReset={onResetHistory} />"), "case footer control");
+    assert.ok(
+      !subjectCase.includes("<ResetHistoryControl onReset={onResetHistory} />"),
+      "case footer control removed — one exit word per screen (item 6)",
+    );
     const branch = subjectsBranch(gameApp);
     assert.ok(branch.includes("const result = handleResetHistory();"), "GameApp's own reset flow");
     assert.ok(

@@ -12,8 +12,9 @@ import type { AgeGroup, SubjectModule } from "../registry";
 
 export type PlannedSubject = { id: string; title: string };
 
-/** The subjects on the map, in the order kids meet them. Journals stay
- * planned-only in this run: their clips are not in the repo yet. */
+/** The subjects on the map, in the order kids meet them. Journals are
+ * released like the others (their module ships cases for every band);
+ * a row reads ready or coming-soon from the released module alone. */
 export const PLANNED_SUBJECTS: readonly PlannedSubject[] = [
   { id: "math", title: "Math" },
   { id: "physics", title: "Physics" },

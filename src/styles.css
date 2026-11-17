@@ -2471,6 +2471,20 @@ div.first-visit-queue-overlay {
    grey secondary text never sits on the wallpaper (it measures 3.7:1
    there) — it lives on a card, the hero band or the frosted Home strip.
    Art module and provenance: src/assets/why-learn/why-learn-art.ts. */
+/* Item 11 (Stream W): the full-bleed wash and world band below use
+   the 100vw trick (left: 50% + width: 100vw + margin-left: -50vw).
+   100vw includes the vertical scrollbar's width, so on a page tall
+   enough to scroll — the picker at 1280px — the layers stick out
+   past the visible right edge by the scrollbar's width and the
+   page grows a horizontal scrollbar. Clip horizontal overflow at
+   the body while a Why Learn screen is up: the clipped strip is
+   exactly the part hidden under the scrollbar, so the wash still
+   covers the visible page edge to edge. overflow-x: clip (not
+   hidden) creates no scroll container, so sticky children and the
+   layers' own positioning are untouched. */
+body:has(.why-learn-screen) {
+  overflow-x: clip;
+}
 .why-learn-screen {
   --bg: #f4f1ea;
   --fg: #1c2420;
@@ -2708,6 +2722,40 @@ div.first-visit-queue-overlay {
     width: min(calc(100% - 250px), max(355.6px, min(476.4px, calc((33dvh - 32px) * 16 / 9))));
   }
 }
+/* Item 12 leftover (Stream W, arena hero spec): from 1024px the
+   film is the hero's main element. The height clamp comes off, the
+   film slot flexes to fill the card at its own 16 / 9, and the
+   titles band becomes a fixed 230px rail beside it (its existing
+   min-width) — the band the picker's Change band control lands in.
+   Width now drives the film, not height: at the picker's capped
+   column the slot takes every pixel the rail and the gaps leave.
+   The 681–1023px band above and the stacked phone layout are
+   untouched. */
+@media (min-width: 1024px) {
+  .why-learn-screen[data-testid="subject-picker"] .screen-hero {
+    height: auto;
+  }
+  /* Q2 cap (Round 2, owner's Variant B pick): the film slot is
+     capped by viewport height so the first subject-card row just
+     peeks into view (~50px) at desktop sizes instead of the film
+     taking the whole viewport. The 16 / 9 aspect drives the height
+     from this width. Guarded by
+     tests/e2e/why-learn-hero-cap.desktop.spec.ts. */
+  .why-learn-screen[data-testid="subject-picker"] .why-learn-hero-wrap {
+    flex: 1 1 auto;
+    height: auto;
+    max-width: calc((100dvh - 276px) * 16 / 9);
+  }
+  .why-learn-screen[data-testid="subject-picker"] .screen-hero > .why-learn-hero {
+    flex: 1 1 auto;
+    width: auto;
+    height: auto;
+    max-width: calc((100dvh - 276px) * 16 / 9);
+  }
+  .why-learn-screen[data-testid="subject-picker"] .screen-hero-band {
+    flex: 0 0 230px;
+  }
+}
 /* The montage film in the hero slot (feat/why-learn-montage): the
    <video> carries .why-learn-hero, so it fills the same fixed box
    the still did; the controls ride its bottom-right corner on the
@@ -2716,10 +2764,15 @@ div.first-visit-queue-overlay {
 .why-learn-hero-wrap {
   position: relative;
 }
+/* Item 13 (Stream W): the controls ride the film's TOP-right
+   corner, not its bottom-right. The montage's own text sits in the
+   lower third of the frame, and the bottom-right chips covered it;
+   the top-right corner carries no film text. The chips stay inside
+   the film box (and so inside the hero card) either way. */
 .why-learn-hero-controls {
   position: absolute;
   right: 10px;
-  bottom: 10px;
+  top: 10px;
   display: flex;
   gap: 8px;
 }
@@ -2904,6 +2957,12 @@ div.first-visit-queue-overlay {
 .why-learn-screen .wl-card-film {
   position: absolute;
   inset: 0;
+  /* Item 21 (Stream W): the media slot is never empty. CardFilm
+     paints its poster, then the film, once its gates open; before
+     that the wrapper itself now carries the atlas paper tone as a
+     loading placeholder, so a card (Chemistry was the reported
+     one) never flashes a blank slot. */
+  background: #e9e1c9;
 }
 .why-learn-screen .hv5-card-film {
   overflow: hidden;
@@ -2953,11 +3012,15 @@ div.first-visit-queue-overlay {
 .why-learn-chip {
   border-radius: 6px;
   border: 1px solid #e2d096;
-  padding: 3px 8px;
-  font-size: 10.5px;
+  padding: 4px 10px;
+  /* Item 14 (Stream W): the case-count stamp was 10.5px — the tiny
+     low-contrast pattern item 14 bans. It now sits at the 14px
+     body-text floor in the pre-measured AA brass (--atlas-brass-
+     text-sm, 7.08:1 on the atlas card) on the same cream ground. */
+  font-size: 14px;
   font-weight: 700;
-  letter-spacing: 0.12em;
-  color: #77591f;
+  letter-spacing: 0.08em;
+  color: #6e4a0e;
   background: #efe3bc;
   transform: rotate(-2deg);
 }
@@ -3212,6 +3275,15 @@ div.first-visit-queue-overlay {
 .subject-case-screen .clue-scene {
   padding: 18px 18px 12px;
 }
+/* Item 14 (Stream W): the case screen's eyebrow is the shared
+   .name-eyebrow — 11px mono everywhere else — but on a case screen
+   it is case text a child reads, so it takes the 14px floor here.
+   Its colour already rides --atlas-brass-text-sm (7.08:1 on the
+   atlas card), so size was the only failing half. */
+.subject-case-screen .name-eyebrow {
+  font-size: 14px;
+  letter-spacing: 0.08em;
+}
 .clue-scene svg {
   display: block;
   width: 100%;
@@ -3362,7 +3434,9 @@ div.first-visit-queue-overlay {
   border-radius: 14px;
   background: #fffdf6;
   color: #77591f;
-  font-size: 13.5px;
+  /* Item 14 (Stream W): 13.5px was under the body-text floor; the
+     film's own buttons now sit at 14px like every other case text. */
+  font-size: 14px;
   font-weight: 600;
   cursor: pointer;
 }
@@ -3671,6 +3745,33 @@ div.first-visit-queue-overlay {
    (the component toggles data-paused from its observers). */
 .clue-scene[data-paused="true"] svg * {
   animation-play-state: paused !important;
+}
+/* Item 16 (Stream W): the SETUP beat stands fully drawn on
+   arrival. The draw-in stagger (0.9s strokes, pops held invisible
+   by backwards fill until 0.35–0.6s) left the first film a child
+   opens — Physics Case 1 was the reported one — looking nearly
+   blank at arrival, and data-paused could hold it there. In the
+   setup phase the frame is simply complete, the same treatment
+   the reduced-motion still gets below; the solved phase keeps its
+   paced performance, and the summary replay still runs paced. */
+.clue-scene[data-phase="setup"] svg * {
+  animation: none !important;
+}
+.clue-scene[data-phase="setup"] .cs-draw {
+  stroke-dashoffset: 0;
+}
+.clue-scene[data-phase="setup"] .cs-tick {
+  opacity: 0;
+}
+/* Item 16, second half (Stream W): on a subject case the first-win
+   celebration card used to centre itself over the clue film while
+   the solved scene played beneath it. While a case screen is up,
+   the overlay's card docks to the bottom of the screen instead —
+   the film stands at the top of the case, so the celebration no
+   longer covers it. The overlay root is the app's own; :has()
+   scopes the rule to case screens only. */
+body:has(.subject-case-screen) .celebration-overlay {
+  align-items: flex-end;
 }
 /* Reduced motion: the still frame of the current phase. Only the
    counter's final tick stands — the finished count, after a solve.
