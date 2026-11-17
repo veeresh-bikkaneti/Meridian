@@ -80,13 +80,6 @@ const GROUP_HEADING: Record<StoryGroupId, string> = {
   "not-started": "Not started",
 };
 
-const GROUP_EMPTY: Record<StoryGroupId, string> = {
-  completed: "Nothing finished yet",
-  "in-progress": "Nothing being built right now",
-  blocked: "Nothing waiting right now",
-  "not-started": "Everything here has begun",
-};
-
 function storyGroup(board: PublishedBoard, story: PublishedStory): StoryGroupId {
   if (story.status === "done") return "completed";
   const waiting = board.bonds.some(
@@ -356,9 +349,6 @@ export function TrailView({
                                   {GROUP_HEADING[groupId]}
                                   <span className="v3-group-count">{stories.length}</span>
                                 </h4>
-                                {stories.length === 0 ? (
-                                  <p className="v3-group-empty">{GROUP_EMPTY[groupId]}</p>
-                                ) : (
                                   <ol className="v3-stops">
                                     {stories.map((story) => {
                                       const open = selectedSlug === story.slug;
@@ -402,7 +392,6 @@ export function TrailView({
                                       );
                                     })}
                                   </ol>
-                                )}
                               </section>
                             );
                           })}
