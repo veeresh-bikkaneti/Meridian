@@ -510,7 +510,7 @@ test.describe("live feed", () => {
     await openBoard(page);
 
     await expect(page.getByTestId("board-updated-line")).toContainText(
-      `Live from GitHub — every linked record checked (${WANTED.length} of ${WANTED.length})`,
+      `Checked just now — every linked record checked (${WANTED.length} of ${WANTED.length})`,
     );
     await expect(page.getByTestId("board-live-note")).toHaveCount(0);
     await expect(page.getByTestId("board-counts-line")).toContainText("22 of 37 steps finished");

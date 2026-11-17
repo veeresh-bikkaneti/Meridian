@@ -1742,15 +1742,19 @@
   font-family: var(--hv5-body);
   min-height: 100dvh;
 }
-.board-v3 .v3-wrap { max-width: 1080px; margin: 0 auto; padding: 28px 20px 72px; }
-/* One header block (cleanup, organization pass): the back link,
-   eyebrow, title and the HUD readout lines (counts + Updated) form
-   a single region, closed by a hairline before the views begin. */
-.board-v3 .v3-head { border-bottom: 2px solid var(--hv5-line-warm); padding-bottom: 16px; }
-.board-v3 .v3-back a { color: var(--hv5-brown-deep); text-decoration: none; font-weight: 600; }
+/* Wrap top padding is 10px, not 28px: the shell SiteHeader above the
+   title block carries its own row padding (PR 3 Step 3.2), and the
+   block above the map must keep the map's probe atoms inside a
+   900px viewport (board.desktop.spec.ts measures this). */
+.board-v3 .v3-wrap { max-width: 1080px; margin: 0 auto; padding: 10px 20px 72px; }
+/* One title block (cleanup, organization pass): the eyebrow, title
+   and the HUD readout lines (counts + Updated) form a single
+   region, closed by a hairline before the views begin. The shell
+   header above it carries the Home control (PR 3 Step 3.2). */
+.board-v3 .v3-head { border-bottom: 2px solid var(--hv5-line-warm); padding-bottom: 10px; }
 .board-v3 .v3-eyebrow {
   text-transform: uppercase; letter-spacing: 0.14em; font-size: 0.78rem;
-  color: var(--hv5-brown); font-weight: 700; margin: 18px 0 4px;
+  color: var(--hv5-brown); font-weight: 700; margin: 2px 0 4px;
 }
 .board-v3 .v3-title {
   font-family: var(--hv5-display); font-size: clamp(1.9rem, 4.5vw, 2.9rem);
@@ -1765,7 +1769,7 @@
 .board-v3 .v3-frontier-banner {
   display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between;
   background: var(--hv5-card); border: 1.5px dashed var(--hv5-brown); border-radius: 16px;
-  box-shadow: var(--hv5-shadow-card); padding: 14px 18px; margin-top: 18px;
+  box-shadow: var(--hv5-shadow-card); padding: 14px 18px; margin-top: 10px;
 }
 .board-v3 .v3-frontier-banner p { margin: 0; }
 .board-v3 .v3-btn {
@@ -1788,7 +1792,7 @@
    forest fill when pressed) and the Menu bar itself is the forest
    fill — nothing ghostly, nothing blending into the background.
    The panel opens by display only, so reduced motion is still. */
-.board-v3 .v3-viewnav { margin: 18px 0 8px; }
+.board-v3 .v3-viewnav { margin: 10px 0 8px; }
 .board-v3 .v3-menubar { display: none; }
 .board-v3 .v3-menu-button {
   width: 100%; min-height: 48px; padding: 10px 18px;
@@ -2007,11 +2011,13 @@
 }
 .board-v3 .v3-mirror-btn.v3-selected { border: 2px solid var(--hv5-brown); }
 
-.board-v3 .v3-footer {
+/* The footer is the shared SiteFooter (PR 3 Step 3.2): the board
+   keeps only its separation from the content above and its lead
+   line's size; the footer's own layout comes from the shell. */
+.board-v3 .agep-footer {
   margin-top: 52px; border-top: 2px solid var(--hv5-line-warm); padding-top: 22px;
-  display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between;
 }
-.board-v3 .v3-footer p { margin: 0; font-size: 1.05rem; }
+.board-v3 .v3-footer-lead { margin: 0; font-size: 1.05rem; }
 
 /* ---- card animation windows ----
    Base styles ARE the end poses (the solved sum, the planted flag):
