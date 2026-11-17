@@ -64,12 +64,13 @@ export type FirstVisitQueueProps = {
   placement?: "overlay" | "flow";
 };
 
-/** Fixed below the header, centred, above page content but below
- *  the z-50 gates/modals. The position and top offset live in
- *  styles.css (.first-visit-queue-overlay): the home page lifts
- *  every direct child with position: relative, and only the named
- *  rule outranks that lift — a bare `fixed` utility loses to it. */
-const OVERLAY_CLASS = "first-visit-queue-overlay inset-x-4 z-40 mx-auto w-full max-w-xl";
+/** Fixed below the header, centred, on the overlay layer. The
+ *  position, top offset, gutters, max width/height and z-index all
+ *  live in styles.css (.first-visit-queue-overlay): the home page
+ *  lifts every direct child with position: relative, and only the
+ *  named rule outranks that lift — bare utilities lose to it, and
+ *  a full-width class made the sheet overflow small viewports. */
+const OVERLAY_CLASS = "first-visit-queue-overlay inset-x-4 mx-auto max-w-xl";
 
 export function FirstVisitQueue({ prompts, seenKey, onDone, className, placement = "overlay" }: FirstVisitQueueProps) {
   const [seen, setSeen] = useState<ReadonlySet<string>>(() => readSeen(seenKey));
