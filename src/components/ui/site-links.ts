@@ -52,10 +52,10 @@ export const FOOTER_ROUTE_LINKS: readonly { to: string; label: string; testId: s
 
 /** The grown-ups doors nav (InfoPage), in the shipped order. */
 export const GROWNUP_DOORS: readonly { to: string; label: string; search?: { view: string } }[] = [
-  ROUTES.home,
-  ROUTES.board,
-  ROUTES.boardTip,
-  ROUTES.contact,
-  ROUTES.credits,
-  ROUTES.privacy,
-].map((r) => ({ to: r.to, label: r.doorsLabel, search: "search" in r ? r.search : undefined }));
+  { to: ROUTES.home.to, label: ROUTES.home.doorsLabel },
+  { to: ROUTES.board.to, label: ROUTES.board.doorsLabel },
+  { to: ROUTES.boardTip.to, label: ROUTES.boardTip.doorsLabel, search: ROUTES.boardTip.search },
+  { to: ROUTES.contact.to, label: ROUTES.contact.doorsLabel },
+  { to: ROUTES.credits.to, label: ROUTES.credits.doorsLabel },
+  { to: ROUTES.privacy.to, label: ROUTES.privacy.doorsLabel },
+];

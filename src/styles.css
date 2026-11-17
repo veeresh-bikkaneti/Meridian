@@ -2159,8 +2159,8 @@ div.first-visit-queue-overlay {
   }
 }
 
-/* --- Shared shell components (fix/ui-shared-shell): SiteHeader, Pill,
-   Badge, ErrorScreen. Shell dialect — theme + atlas tokens only. The
+/* --- Shared shell components (fix/ui-shared-shell): SiteHeader,
+   PageShell, Pill, ErrorScreen. Shell dialect — theme + atlas tokens only. The
    .home-v5 rules re-declare the home header's recipes at identical
    values because --hv5-* exists only under .home-v5 / .board-v3 and
    is light-only. Hit boxes stay ≥44px at every width: the compact
@@ -2336,8 +2336,7 @@ div.first-visit-queue-overlay {
   }
 }
 
-.site-pill,
-.site-badge {
+.site-pill {
   display: inline-flex;
   align-items: center;
   gap: 9px;
@@ -2350,11 +2349,6 @@ div.first-visit-queue-overlay {
   font-weight: 700;
   padding: 6px 12px;
   white-space: nowrap;
-}
-.site-badge--done {
-  background: var(--surface-2);
-  border-color: var(--line);
-  color: var(--fg);
 }
 
 /* PageShell's title block (PR 3 Step 2): eyebrow, title, sub in the

@@ -1,11 +1,11 @@
 /**
  * Shared shell (fix/ui-shared-shell): SiteHeader, SiteFooter,
- * PageColumn, Pill, Badge, ErrorScreen, FirstVisitQueue.
+ * PageColumn, PageShell, Pill, ErrorScreen, FirstVisitQueue.
  *
  * The node harness cannot load .tsx, so the components are bundled
  * with esbuild and rendered with react-dom/server (the clue-scene
  * render test's pattern). Assertions pin the contract: slot order,
- * slots never in the menu panel, the 44px hit-box floor, the Badge
+ * slots never in the menu panel, the 44px hit-box floor, the Pill
  * contrast ratios computed from the actual styles.css token values,
  * and the lint baseline's staleness (a cured file must leave
  * eslint/shell-ban-baseline.json).
@@ -32,7 +32,8 @@ type ShellModule = {
   SiteFooter: (props: never) => ReactNode;
   PageColumn: (props: never) => ReactNode;
   Pill: (props: never) => ReactNode;
-  Badge: (props: never) => ReactNode;
+  PageShell: (props: never) => ReactNode;
+  PageIntro: (props: never) => ReactNode;
   ErrorScreen: (props: never) => ReactNode;
   FirstVisitQueue: (props: never) => ReactNode;
   createElement: typeof createElement;
@@ -59,7 +60,7 @@ function loadShell(): Promise<ShellModule> {
     // re-exports createElement + renderToStaticMarkup from the bundle.
     const dir = mkdtempSync(join(tmpdir(), "shared-shell-test-"));
     const entry = join(dir, "entry.tsx");
-    const names = ["site-header", "site-footer", "page-column", "pill", "badge", "error-screen", "first-visit-queue"];
+    const names = ["site-header", "site-footer", "page-column", "page-shell", "pill", "error-screen", "first-visit-queue"];
     writeFileSync(
       entry,
       [
@@ -116,14 +117,14 @@ describe("SiteHeader", () => {
       { label: "What's coming", onClick: () => {} },
       { label: "Get involved", onClick: () => {} },
     ],
-    stars: createElement("span", { "data-testid": "stars" }, "12 ★"),
+    status: createElement("span", { "data-testid": "status" }, "12 ★"),
     mute: createElement("button", { type: "button", "data-testid": "mute" }, "Sound"),
     endGame: createElement("button", { type: "button", "data-testid": "end" }, "End game"),
   };
 
-  it("renders the home control, nav, stars, mute, end game in the fixed slot order", async () => {
+  it("renders the home control, nav, status, mute, end game in the fixed slot order", async () => {
     const html = await render("SiteHeader", base);
-    const order = ["home-button", "Get involved", "stars", "mute", "end"].map((needle) => html.indexOf(needle));
+    const order = ["home-button", "Get involved", "status", "mute", "end"].map((needle) => html.indexOf(needle));
     assert.ok(order.every((i) => i >= 0), html);
     assert.deepEqual([...order].sort((a, b) => a - b), order);
     assert.match(html, /data-nav-mode="inline"/);
@@ -161,8 +162,49 @@ describe("SiteHeader", () => {
     assert.match(html, /data-testid="mute"/);
   });
 
+  it("the back slot renders between the home control and the nav (PR 3 Step 2)", async () => {
+    const html = await render("SiteHeader", {
+      ...base,
+      back: createElement("button", { type: "button", "data-testid": "back" }, "Back"),
+    });
+    const order = ["home-button", 'data-testid="back"', "Get involved"].map((needle) => html.indexOf(needle));
+    assert.ok(order.every((i) => i >= 0), html);
+    assert.deepEqual([...order].sort((a, b) => a - b), order);
+  });
+
+  it("variant=map marks the header and defaults the home control to secondary; cream stays ghost", async () => {
+    const map = await render("SiteHeader", { ...base, variant: "map" });
+    assert.match(map, /data-variant="map"/);
+    assert.match(map, /bg-surface-2/);
+    const cream = await render("SiteHeader", base);
+    assert.match(cream, /data-variant="cream"/);
+    assert.match(cream, /bg-transparent/);
+  });
+
+  it("an icon nav item renders its icon before the label, aria-hidden", async () => {
+    const html = await render("SiteHeader", {
+      onHome: () => {},
+      status: null,
+      mute: null,
+      navItems: [{ label: "Atlas", onClick: () => {}, icon: createElement("svg", { "data-testid": "nav-icon" }) }],
+    });
+    const order = ["nav-icon", "Atlas"].map((needle) => html.indexOf(needle));
+    assert.ok(order.every((i) => i >= 0), html);
+    assert.deepEqual([...order].sort((a, b) => a - b), order);
+    assert.match(html, /site-header-nav-icon" aria-hidden="true"/);
+  });
+
+  it("a link nav item renders through the router Link, an action item through a button", () => {
+    // Source-level (the harness renders without a router, like the
+    // SiteFooter test): the two item kinds share one data shape.
+    const src = read("src/components/ui/site-header.tsx");
+    assert.match(src, /item\.to \? \(/);
+    assert.match(src, /<Link/);
+    assert.match(src, /<button/);
+  });
+
   it("accepts explicit null slots (required-but-nullable): a silent, starless screen renders clean", async () => {
-    const html = await render("SiteHeader", { onHome: () => {}, stars: null, mute: null });
+    const html = await render("SiteHeader", { onHome: () => {}, status: null, mute: null });
     assert.match(html, /data-testid="home-button"/);
     assert.doesNotMatch(html, /site-header-menu-button/);
   });
@@ -175,11 +217,6 @@ describe("SiteFooter", () => {
       'data-testid="grownups-link"',
       "For grown-ups: game settings",
       'data-testid="take-tour-link"',
-      'data-testid="privacy-link"',
-      'data-testid="contact-link"',
-      "Contact us (grown-ups)",
-      'data-testid="credits-link"',
-      'data-testid="board-link"',
       "kids-privacy-note",
       "no accounts, no ads, no tracking cookies",
     ]) {
@@ -188,32 +225,47 @@ describe("SiteFooter", () => {
     // The prompt's unshipped links must not be invented here.
     assert.doesNotMatch(src, />Help<|>About<|>Terms</);
   });
-});
 
-describe("PageColumn", () => {
-  it("wide is max-w-7xl, read is max-w-3xl, both w-full with px-5 gutters", async () => {
-    const wide = await render("PageColumn", {}, "x");
-    assert.match(wide, /mx-auto w-full px-5 max-w-7xl/);
-    const readCol = await render("PageColumn", { width: "read" }, "x");
-    assert.match(readCol, /max-w-3xl/);
-    assert.doesNotMatch(wide + readCol, /max-w-none|100vw/);
+  it("renders its route links from the ONE shared list (site-links.ts), the grown-ups doors' source too", () => {
+    const footer = read("src/components/ui/site-footer.tsx");
+    assert.match(footer, /FOOTER_ROUTE_LINKS/);
+    for (const literal of ['data-testid="privacy-link"', 'data-testid="contact-link"', 'data-testid="credits-link"', 'data-testid="board-link"']) {
+      assert.ok(!footer.includes(literal), literal);
+    }
+    const links = read("src/components/ui/site-links.ts");
+    for (const needle of [
+      'footerTestId: "privacy-link"',
+      'footerTestId: "contact-link"',
+      'footerTestId: "credits-link"',
+      'footerTestId: "board-link"',
+      "Contact us (grown-ups)",
+      "What's coming (grown-ups)",
+      "GROWNUP_DOORS",
+    ]) {
+      assert.ok(links.includes(needle), needle);
+    }
+    // The grown-ups doors nav renders the same list, not a copy.
+    assert.match(read("src/components/grownups/info-page.tsx"), /GROWNUP_DOORS/);
   });
 });
 
-describe("Pill and Badge", () => {
+describe("PageColumn", () => {
+  it("wide reads --page-wide, narrow reads --page-narrow, both w-full with px-5 gutters", async () => {
+    const wide = await render("PageColumn", {}, "x");
+    assert.match(wide, /mx-auto w-full px-5 max-w-\(--page-wide\)/);
+    const narrow = await render("PageColumn", { width: "narrow" }, "x");
+    assert.match(narrow, /max-w-\(--page-narrow\)/);
+    assert.doesNotMatch(wide + narrow, /max-w-none|100vw/);
+  });
+});
+
+describe("Pill", () => {
   it("Pill uses the one count format, singular included", async () => {
     assert.match(await render("Pill", { count: 12 }), />12 cases</);
     assert.match(await render("Pill", { count: 1 }), />1 case</);
     const html = await render("Pill", { count: 3 });
     assert.match(html, /site-pill/);
     assert.doesNotMatch(html, /cursor-pointer/);
-  });
-
-  it("Badge vocabulary is New / Done — Open is retired", async () => {
-    assert.match(await render("Badge", { variant: "new" }), />New</);
-    const done = await render("Badge", { variant: "done" });
-    assert.match(done, />Done</);
-    assert.match(done, /site-badge--done/);
   });
 });
 
@@ -227,6 +279,57 @@ describe("ErrorScreen", () => {
     assert.match(html, />Home</);
     assert.match(html, /mode-card/);
     assert.doesNotMatch(html, /error code|failed to load|exception/i);
+  });
+
+  it("title, body and action labels are props; surface=plain drops the card (PR 3 Step 2)", async () => {
+    const html = await render("ErrorScreen", {
+      onHome: () => {},
+      onRetry: () => {},
+      title: "Custom title.",
+      body: "Custom body.",
+      actions: { retryLabel: "Try once more", homeLabel: "Go home" },
+      surface: "plain",
+    });
+    assert.match(html, /Custom title\./);
+    assert.match(html, /Custom body\./);
+    assert.match(html, />Try once more</);
+    assert.match(html, />Go home</);
+    assert.doesNotMatch(html, /mode-card/);
+    const card = await render("ErrorScreen", { onHome: () => {}, onRetry: () => {} });
+    assert.match(card, /mode-card/);
+  });
+});
+
+describe("PageShell and PageIntro (PR 3 Step 2)", () => {
+  it("PageShell frames header, intro, content in order inside the column; footer=null omits the footer", async () => {
+    const html = await render(
+      "PageShell",
+      {
+        header: { onHome: () => {}, status: null, mute: null },
+        intro: { eyebrow: "Case file", title: "A Title", sub: "A sub" },
+        footer: null,
+      },
+      createElement("p", { "data-testid": "content" }, "CONTENT"),
+    );
+    const order = ["home-button", "Case file", "A Title", "A sub", "CONTENT"].map((needle) => html.indexOf(needle));
+    assert.ok(order.every((i) => i >= 0), html);
+    assert.deepEqual([...order].sort((a, b) => a - b), order);
+    assert.match(html, /max-w-\(--page-narrow\)/);
+    assert.doesNotMatch(html, /agep-footer/);
+  });
+
+  it("PageShell renders the shared SiteFooter by default (source: no hand-built footer)", () => {
+    const src = read("src/components/ui/page-shell.tsx");
+    assert.match(src, /<SiteHeader \{\.\.\.header\} \/>/);
+    assert.match(src, /<SiteFooter \{\.\.\.footer\} \/>/);
+    assert.doesNotMatch(src, /<footer|<header/);
+  });
+
+  it("PageIntro renders eyebrow, title and sub", async () => {
+    const html = await render("PageIntro", { eyebrow: "Eyebrow", title: "Title", sub: "Sub" });
+    assert.match(html, /Eyebrow/);
+    assert.match(html, /<h1[^>]*>Title<\/h1>/);
+    assert.match(html, /Sub/);
   });
 });
 
@@ -292,6 +395,10 @@ describe("header fit (Round 2, A.2): the row can never wrap", () => {
     assert.match(block(".site-header-nav"), /flex-wrap: nowrap/);
     assert.match(block(".site-header-actions"), /flex-wrap: nowrap/);
     assert.match(block(".site-header-nav-link"), /white-space: nowrap/);
+    // PR 3 Step 2: one inline-flex line — buttons and router links
+    // share a text line (measured 7px apart before) and a chevron
+    // can no longer wrap under its label.
+    assert.match(block(".site-header-nav-link"), /display: inline-flex/);
   });
 });
 
@@ -313,7 +420,7 @@ describe("44px hit-box floor (UX pin)", () => {
   });
 });
 
-describe("Badge contrast, computed from the styles.css token values", () => {
+describe("Pill contrast, computed from the styles.css token values", () => {
   // The token values as shipped; the pins below fail if a token moves,
   // so this table is updated in the same PR as any token change.
   const themes = {
@@ -354,12 +461,11 @@ describe("Badge contrast, computed from the styles.css token values", () => {
     }
   });
 
-  it("New (brass text on the card, composited over the page bg) and Done (fg on surface-2) are ≥4.5:1 on both themes", () => {
+  it("Pill text (brass on the card, composited over the page bg) is ≥4.5:1 on both themes", () => {
     for (const [name, t] of Object.entries(themes)) {
       const bgRgb = rgb(t.bg);
       const cardOverBg = t.card.map((v, i) => (i < 3 ? v * t.card[3] + bgRgb[i] * (1 - t.card[3]) : v)).slice(0, 3);
-      assert.ok(ratio(rgb(t.brassTextSm), cardOverBg) >= 4.5, `${name} New`);
-      assert.ok(ratio(rgb(t.fg), rgb(t.surface2)) >= 4.5, `${name} Done`);
+      assert.ok(ratio(rgb(t.brassTextSm), cardOverBg) >= 4.5, `${name} Pill`);
     }
   });
 });
@@ -387,7 +493,7 @@ describe("shell-ban baseline (KNOWN/STALE)", () => {
 
   it("the shared components themselves are never baselined", () => {
     const all = Object.values(baseline).flat();
-    for (const own of ["site-header", "site-footer", "page-column", "pill", "badge", "error-screen", "first-visit-queue"]) {
+    for (const own of ["site-header", "site-footer", "page-column", "page-shell", "pill", "error-screen", "first-visit-queue"]) {
       assert.ok(!all.some((f) => f.includes(own)), own);
     }
   });
