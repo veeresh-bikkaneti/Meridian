@@ -496,6 +496,13 @@
 div.first-visit-queue-overlay {
   position: fixed;
   top: 19rem;
+  /* The lift above sets z-index: 1 on every atlas child, and this
+   * unlayered rule must claim the stack too: the Tailwind z-40
+   * utility is layered, so it loses to the lift, leaving the queue
+   * tied at 1 with the content column — tree order then paints the
+   * hero over the prompt and swallows its taps. 40 is the design
+   * value (above page content, below the z-50 gates/modals). */
+  z-index: 40;
 }
 
 @media (min-width: 640px) {
