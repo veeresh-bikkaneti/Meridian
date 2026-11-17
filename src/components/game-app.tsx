@@ -226,7 +226,6 @@ import { consumeRetryScreen } from "@/lib/persisted-screen";
 import { hashForScreen, screenForHash } from "@/lib/screen-hash";
 import { numberWord } from "@/lib/number-words";
 import { geodetectiveConfig } from "@/game/age-profile/difficulty";
-import { SiteFooter } from "./ui/site-footer";
 import { withChunkTimeout } from "@/lib/chunk-timeout";
 import { resolveGlobeTierSplit } from "@/lib/globe-tier-split";
 import {
