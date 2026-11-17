@@ -1,4 +1,4 @@
-# refactor/page-shell-adoption — PR 3 (shell adoption), Steps 1–2
+# refactor/page-shell-adoption — PR 3 (shell adoption), Steps 1–3
 
 **Stacked on PR #526** (`fix/mobile-header-overflow`, tip `dbfcfdb7`,
 OPEN unmerged): this branch contains 526's three commits until it
@@ -238,40 +238,52 @@ PR is `main` so the stack is visible; do not merge before 526.
   run-start flow with the places JSON aborted; the surface now
   renders ErrorScreen, whose appearance the shared-shell suite
   already pins.
-- **3.9 Map error boundary — HELD, not migrated.** A literal
-  ErrorScreen swap cannot preserve pinned behaviour: ErrorScreen
-  always renders a SiteHeader + both exits, while the boundary's
-  card is an in-place overlay whose Home exit exists ONLY for
-  persisted screens (INV2, pinned in map-error-boundary.test.ts),
-  whose stale variant is owner-approved copy presented as a
-  centred card (the "approved copy verbatim" pin), and whose bare
-  map usage (in-run) has no home action to give ErrorScreen's
-  onHome — the boundary's reload would restore the run, so the
-  button would lie. The boundary is also a recorded shell-ban
-  baseline entry (homeButtonImport). Migrating it needs an
-  ErrorScreen API decision (an embedded/no-header mode or an
-  optional Home exit) — a component-design call for the owner /
-  Step 5's registry rule, not a migration commit.
-- **3.10 Globe overlay (in-run HUD) — HELD, not migrated.** The
-  chrome over the satellite map (game-app's pointer-events-none
-  top bar) does not fit SiteHeader's slots without visible change:
-  in review mode its left control is the pinned "Exit review"
+- **3.9 Map error boundary — DONE** (`86065ca6`, `1d0c1d53`;
+  owner-approved 2026-11-17). ErrorScreen gained an **embedded
+  mode**: panel only (no PageColumn/SiteHeader), and its Home
+  exit is opt-in — it renders only when the caller passes
+  `onHome`. Existing ErrorScreen callers are unchanged. The
+  boundary's card now renders through ErrorScreen embedded:
+  both cards' wording rides the title/body props **word for
+  word** (the stale wording stays the owner-approved text;
+  rendered-markup proof in the new behaviour test), and the
+  Home exit is passed only for persisted screens (INV2) — the
+  bare-map usage sits inside a run in progress, its reload
+  restores the run, and a Home button there would lie. Retry /
+  goHome behaviour unchanged. The boundary leaves the shell-ban
+  baseline (homeButtonImport). **New behaviour test**
+  (`map-error-boundary.behavior.test.ts`, renders the real
+  boundary class): mid-run → Home hidden + Try again reloads;
+  GeoDetective → Home shown + the retry marker boot consumes
+  restores the screen; stale copy verbatim + Refresh.
+  **Revert check:** 2 of 3 red on the pre-migration boundary
+  (the mid-run pin passes on both — it guards pre-existing
+  correct behaviour), 3/3 green here. Step 3 is now 11/11.
+- **3.10 Globe overlay (in-run HUD) — OWNER DECISION
+  2026-11-17: sanctioned by-design exception, no migration.**
+  The in-run globe HUD is a game overlay, not a page, and its
+  Home button was already approved in Round 2. **The HUD is
+  the sole named by-design exception to the shell rule, to be
+  enforced by the Step 5 registry test: a test must fail if
+  any other screen tries to skip the shell.** The chrome over
+  the satellite map (game-app's pointer-events-none top bar)
+  does not fit SiteHeader's slots without visible change: in
+  review mode its left control is the pinned "Exit review"
   Button INSTEAD of Home (SiteHeader always renders Home); its
   contrast / map-mode / run-menu controls have no on-line slot
-  (the nav slot menu-traps below 1024px, against SiteHeader's own
-  never-menu-trap rule); and the Round 2 adoption deliberately
-  kept the HUD's HomeButton (shell-ban baseline: game-app stays
-  in homeButtonImport for "end-of-flow/HUD HomeButton uses").
-  Needs the same owner call as 3.9: sanction the HUD as a
-  by-design exception (like the end-of-flow HomeButtons) or
-  commission a dedicated HUD variant. Tap-through was therefore
-  not re-proved — the bar is untouched, so its pointer-events
-  behaviour is byte-identical to the Batch B tip.
+  (the nav slot menu-traps below 1024px, against SiteHeader's
+  own never-menu-trap rule). No HUD code changes in this PR.
+  Tap-through was therefore not re-proved — the bar is
+  untouched, so its pointer-events behaviour is byte-identical
+  to the Batch B tip.
 
 ## Remaining — in the brief's order
 
-- **Step 3 held items (owner/Chair call):** (9) Map error
-  boundary and (10) Globe overlay — see Batch C above.
+- **Step 3 held items — RESOLVED 2026-11-17:** (9) Map error
+  boundary migrated onto ErrorScreen embedded (see Batch C
+  addendum above); (10) Globe overlay HUD sanctioned as the
+  sole named by-design shell exception, enforced by Step 5's
+  registry test. Step 3 is closed at 11/11.
 - **Step 4 — delete legacy:** ScreenShell, BrandHomeButton, the 18
   unused `.hv5-nav` rules and `.brand-home-*`; hand-rolled
   max-w-3xl/7xl/6xl/2xl/xl → PageColumn. Removing the second Home
@@ -279,7 +291,9 @@ PR is `main` so the stack is visible; do not merge before 526.
   owner approval BEFORE it lands.
 - **Step 5 — guards:** registry-driven unit test (every route/screen
   renders PageShell or SiteHeader, ErrorScreen on every failure
-  branch; prove by removal — red); lint bans on hand-built
+  branch; the in-run globe HUD is the registry's ONE named
+  by-design exception — owner, 2026-11-17 — and the test must
+  fail if any other screen skips the shell; prove by removal — red); lint bans on hand-built
   header/footer/nav/main outside the shell + className overrides on
   shell components (shrink-only baseline); Home-position e2e (same
   label, same x/y on every screen at 390/1280/1920); overflow +
