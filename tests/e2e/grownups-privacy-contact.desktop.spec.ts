@@ -590,11 +590,16 @@ test("home UX polish across 6 viewports: unified map-mode pill, whole-card journ
   await page.keyboard.press("Escape");
   await expect(page.getByTestId("map-mode-popover")).toHaveCount(0);
 
-  // 2. Whole-card click on "What the land remembers" heading & illustration scrolls & focuses #home-journal
+  // 2. Whole-card click on the teaser card's text & illustration scrolls & focuses #home-journal.
+  // Item 42 (PR #522) removed the teaser card's own "What the land remembers"
+  // heading — the journal section below carries the one heading (pinned by
+  // src/components/home-journal-heading.test.ts) — so the text click target
+  // is the card's intro line, and the card must have no h2 of its own.
   const journalCard = page.getByTestId("journal-card");
   await journalCard.scrollIntoViewIfNeeded();
-  const journalH2 = (await journalCard.locator("h2", { hasText: "What the land remembers" }).boundingBox())!;
-  await page.mouse.click(journalH2.x + journalH2.width / 2, journalH2.y + journalH2.height / 2);
+  await expect(journalCard.locator("h2")).toHaveCount(0);
+  const journalText = (await journalCard.locator("p", { hasText: "Short field stories" }).boundingBox())!;
+  await page.mouse.click(journalText.x + journalText.width / 2, journalText.y + journalText.height / 2);
   await expect
     .poll(() => page.evaluate(() => document.activeElement?.id ?? null))
     .toBe("home-journal");
