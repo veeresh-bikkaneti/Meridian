@@ -86,7 +86,7 @@ async function solveCase(page: Page, correct: string) {
   const result = page.getByTestId("math-result");
   await expect(result).toBeVisible();
   await expect(result).toContainText("You got it!");
-  await expect(page.getByTestId("math-used-in")).toContainText("You just used this in…");
+  await expect(page.getByTestId("math-used-in")).toContainText("You just used this in real life:");
 }
 
 test("no flag needed: the card is live and the picker shows the map", async ({
