@@ -7,8 +7,9 @@
  * prompt's list, which names links the home footer does not carry):
  * an optional lead slot (home puts its read-aloud settings there),
  * For grown-ups and Take the tour (host callbacks, same labels,
- * aria-labels and test ids as home), the four route links, and the
- * kids-privacy note. Every item keeps the .agep-footer-link 44px hit
+ * aria-labels and test ids as home), the four route links (from the
+ * one shared list, site-links.ts — the grown-ups doors nav renders
+ * the same routes), and the kids-privacy note. Every item keeps the .agep-footer-link 44px hit
  * height. Styling is .agep-footer / .agep-footer-link /
  * .agep-footer-note verbatim (age-profile.css, imported here so the
  * classes travel with the component).
@@ -20,6 +21,7 @@
 import type { ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { cn } from "@/lib/cn";
+import { FOOTER_ROUTE_LINKS } from "./site-links";
 import "../age-profile/age-profile.css";
 
 export type SiteFooterProps = {
@@ -60,18 +62,11 @@ export function SiteFooter({ lead, onGrownUps, onTakeTour, note = true, classNam
           🗺️ Take the tour
         </button>
       ) : null}
-      <Link to="/privacy" className="agep-footer-link" data-testid="privacy-link">
-        Privacy
-      </Link>
-      <Link to="/contact" className="agep-footer-link" data-testid="contact-link">
-        Contact us (grown-ups)
-      </Link>
-      <Link to="/credits" className="agep-footer-link" data-testid="credits-link">
-        Credits
-      </Link>
-      <Link to="/board" className="agep-footer-link" data-testid="board-link">
-        What&rsquo;s coming (grown-ups)
-      </Link>
+      {FOOTER_ROUTE_LINKS.map((link) => (
+        <Link key={link.testId} to={link.to} className="agep-footer-link" data-testid={link.testId}>
+          {link.label}
+        </Link>
+      ))}
       {note ? (
         <p className="agep-footer-note" data-testid="kids-privacy-note">
           Made for kids: no accounts, no ads, no tracking cookies, and no personal information collected from players.{" "}

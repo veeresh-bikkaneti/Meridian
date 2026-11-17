@@ -14,6 +14,7 @@
  */
 import type { ReactNode } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
+import { GROWNUP_DOORS } from "../ui/site-links";
 import "./info-page.css";
 
 export type GrownGraphic = "book" | "satchel" | "envelope";
@@ -60,14 +61,10 @@ const GRAPHICS: Record<GrownGraphic, ReactNode> = {
   ),
 };
 
-const DOORS: { to: string; label: string; search?: { view: string } }[] = [
-  { to: "/", label: "Play the game" },
-  { to: "/board", label: "What's coming" },
-  { to: "/board", label: "Ask for something new", search: { view: "tip" } },
-  { to: "/contact", label: "Contact us" },
-  { to: "/credits", label: "Credits" },
-  { to: "/privacy", label: "Privacy" },
-];
+/* The doors render the ONE shared link list (ui/site-links.ts,
+   PR 3 Step 2): the same route entries SiteFooter renders, with
+   this surface's labels. */
+const DOORS = GROWNUP_DOORS;
 
 export function InfoPage({
   title,
