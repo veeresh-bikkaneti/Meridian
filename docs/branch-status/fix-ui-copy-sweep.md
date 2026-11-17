@@ -69,3 +69,8 @@ Branch `fix/ui-copy-sweep`. Base main `2ce6757a` + Stream S cherry-picks
 - Ruled out: touching any other Privacy policy text (item 39 says only
   the one claim changes); editing other streams' screens for item 40/41
   offenders (listed above instead).
+- CI cure: the OG description in `src/lib/og/site.json` hit 168 chars,
+  over `SHARE_DESCRIPTION_MAX` (155) after item 38 added "math and
+  science"; trimmed filler ("Plays in a browser", "a named place") to
+  141 chars with all subjects and claims kept. `share-meta.test.ts`
+  green; the max was not raised.
