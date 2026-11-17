@@ -178,3 +178,37 @@ write lands.
   only — one line added to `CONTEXT_FILES`; no spec behaviour changed.
 - Verified locally: telemetry-guard suite 6/6 pass · `lint:subjects`
   GATE PASSED.
+
+## Round 2 — Q2 hero cap landed (Variant B, owner's pick)
+
+- Owner's pick: Variant B — bigger film, first card row just peeks.
+  He approved the B mock (1920 shot) with a thumbs-up (2026-11-16).
+- Landed: in the ≥1024px hero rule in `src/styles.css`, the film
+  slot (`.why-learn-hero-wrap` and the direct-child
+  `.why-learn-hero`) gets
+  `max-width: calc((100dvh - 276px) * 16 / 9)`; the existing 16 / 9
+  aspect drives the height. Commit `221a9d7e`.
+- Measured on the landed tip (hermetic recipe, verify worktree,
+  complete `npm ci`, pinned Chromium): 1280×800 film 931.5×524
+  (mock 932×524), first card row slot top y=750 → 50px visible
+  (mock 50px). 1920×1080: regression spec green (row top inside the
+  viewport, visible slice in the 35–65px band, film 16/9); mock
+  measured 1429×804 with 50px visible.
+- Regression test: `tests/e2e/why-learn-hero-cap.desktop.spec.ts`
+  asserts behaviour only (film keeps 16/9; first card row's slot
+  top inside the viewport with a 35–65px slice showing) at
+  1280×800 and 1920×1080. RED on the uncapped tip `da37878e`
+  (1920 case fails — row below the fold; the 1280 case passes
+  there, its 36px sliver sits inside the band). GREEN 2/2 on the
+  capped tip. The spec measures the grid `<li>` row slot, not the
+  card button: the button carries the home-rise entrance
+  animation and sits ~18px lower until the rise settles.
+- Gates on the landed tip: `npx tsc --noEmit` clean · `npm test`
+  green (exit 0) · `npm run build:pages` green.
+- Open item (515 layout math): PR 515's `lg:max-w-7xl` narrows the
+  1920 column to 1280px, which changes the uncapped film size; the
+  cap formula must be re-checked against the merged layout when
+  515 lands. No 515 files touched here.
+- Next: owner's merge word for this PR (merge train: 521 first).
+- Ruled out: tuning the cap formula to the test — the landed
+  formula is the mocked one, unchanged.
