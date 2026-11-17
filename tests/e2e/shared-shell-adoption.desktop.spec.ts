@@ -111,17 +111,18 @@ for (const vp of [
     const homeBox = await homeControl(page, `${tag} Home`);
     // Same slot inside the header: the control's offset from the
     // header's top-left content corner is the row's padding (22px
-    // top, 0 left — the row spans the header's content box).
-    expect(Math.round(homeBox.y - homeHeader.y), `${tag} Home: control top offset in header`).toBe(22);
-    expect(Math.round(homeBox.x - homeHeader.contentX), `${tag} Home: control left offset in header`).toBe(0);
+    // top, 0 left — the row spans the header's content box). ±2px
+    // for sub-pixel rounding and the entrance animation's rest state.
+    expect(Math.abs(homeBox.y - homeHeader.y - 22), `${tag} Home: control top offset in header`).toBeLessThanOrEqual(2);
+    expect(Math.abs(homeBox.x - homeHeader.contentX), `${tag} Home: control left offset in header`).toBeLessThanOrEqual(2);
 
     await page.getByRole("button", { name: "GeoDetective: Solve a mystery" }).click();
     await expect(page.getByTestId("loop-screen")).toBeVisible({ timeout: 45_000 });
     await expect(page.getByTestId("end-game-button")).toBeVisible({ timeout: 45_000 });
     const loopHeader = await headerReport(page, `${tag} GeoDetective`);
     const loopBox = await homeControl(page, `${tag} GeoDetective`);
-    expect(Math.round(loopBox.y - loopHeader.y), `${tag} GeoDetective: control top offset in header`).toBe(22);
-    expect(Math.round(loopBox.x - loopHeader.contentX), `${tag} GeoDetective: control left offset in header`).toBe(0);
+    expect(Math.abs(loopBox.y - loopHeader.y - 22), `${tag} GeoDetective: control top offset in header`).toBeLessThanOrEqual(2);
+    expect(Math.abs(loopBox.x - loopHeader.contentX), `${tag} GeoDetective: control left offset in header`).toBeLessThanOrEqual(2);
 
     // The control itself is identical on both screens.
     expect(Math.abs(loopBox.width - homeBox.width), `${tag}: home control width identical`).toBeLessThanOrEqual(1);
