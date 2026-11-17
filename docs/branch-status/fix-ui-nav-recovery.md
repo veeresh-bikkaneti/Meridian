@@ -369,6 +369,32 @@ rather than conflicts in intent.
   nav-back-first-visit 4/4 here, 3 fail / 1 pass on main as
   recorded above.
 
+## Round 2 merge-train cure (518, post-rebase)
+
+- **Symptom:** CI e2e on the rebased tip failed grownups
+  "home UX polish": the tutorial invite's "Not now" click was
+  intercepted by `.hv5-hero`.
+- **Root cause [measured]:** the atlas lift
+  (`.atlas-home > :not(.atlas-bg)`) sets `z-index: 1` unlayered;
+  the queue's Tailwind `z-40` is layered and loses, so the overlay
+  tied at z-index 1 with the content column and tree order painted
+  the hero over it (probe: queue computed z 1, elementFromPoint at
+  the button = SECTION.hv5-hero). The named overlay rule claimed
+  position/top but never z-index.
+- **Fix:** the same unlayered rule now sets `z-index: 40` (the
+  design value). Probe after: computed z 40, elementFromPoint =
+  the button itself.
+- **Second layer [measured]:** with stacking fixed, the test's
+  journal step clicked raw coordinates through the *next* queued
+  prompt (read-aloud sheet, 352,160 576×336 over the h2 at
+  475,414; elementFromPoint = the sheet's option button). The
+  overlay covering content until answered is the Q1 design; the
+  spec now answers the sheet first (same pattern as its invite
+  dismissal), no assertion changed.
+- **Gates [measured]:** grownups 5/5, nav-back-first-visit 4/4,
+  full unit exit 0 (0 fail both suites), on the cured tip in the
+  hermetic env.
+
 ## Graph (Phase 2 additions)
 
 - Add node: `src/lib/screen-hash.ts` — the screen ↔ hash contract
