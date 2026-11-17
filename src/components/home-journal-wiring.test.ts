@@ -1,56 +1,110 @@
 /**
- * Item 42 (PR #522): the journal rotation must pause while the journal
- * is on screen — the wiring in game-app.tsx.
+ * Item 42 (PR #522, rebuilt as #528): the journal rotation must pause
+ * while the journal is on screen — the wiring between the screen and
+ * the rotation.
  *
- * home-journal.test.ts pins the pure blocker logic
- * (shouldApplySetChange honours journalOnScreen). This test pins the
- * other half: game-app.tsx actually FEEDS that blocker from an
- * IntersectionObserver over the teaser card and the journal section,
- * and recomputes the moment both leave the screen so a deferred entry
- * can land. Reverting the game-app.tsx wiring (the observer effect or
- * the blockers line) turns this test red; before it existed, that
- * revert turned nothing red.
+ * BEHAVIOUR version (Task 2, 2026-11-17): this used to grep game-app.tsx
+ * for the wiring's source lines. It now exercises the wiring's real
+ * seam — createJournalRotation — wired exactly the way game-app wires
+ * it: the blockers closure reads a mutable on-screen ref fresh at every
+ * recompute (game-app's journalOnScreenRef, fed by its
+ * IntersectionObserver over the teaser card and the journal section),
+ * and the on-screen → off-screen edge calls recompute() so a deferred
+ * entry lands at once instead of waiting for the 30 s tick. The tests
+ * below play the observer's part by flipping the ref, and the
+ * rotation's part is the real production code.
  *
- * Same source-pinning style as home-journal-heading.test.ts (this
- * repo has no React-render harness).
+ * What this cannot see: the observer effect itself lives in game-app's
+ * DOM code, which the node harness cannot mount; its click/scroll path
+ * is covered by the grownups e2e spec. If the rotation's seam contract
+ * changes shape, this test goes red — that is the guard the grep pin
+ * was standing in for.
  */
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
-import { dirname, join } from "node:path";
-import { fileURLToPath } from "node:url";
+import {
+  JOURNAL_WINDOW_MS,
+  createJournalRotation,
+  type JournalTimerHost,
+} from "./home-journal.ts";
 
-const here = dirname(fileURLToPath(import.meta.url));
-const gameApp = readFileSync(join(here, "game-app.tsx"), "utf8");
+/** Minimal timer host: the wiring tests drive recompute() by hand. */
+const silentTimers: JournalTimerHost = {
+  setTimeout: () => null,
+  clearTimeout: () => {},
+  setInterval: () => null,
+  clearInterval: () => {},
+};
 
-describe("journal on-screen wiring (item 42)", () => {
-  it("the rotation's blockers read the on-screen ref fresh at every recompute", () => {
-    assert.ok(
-      gameApp.includes("journalOnScreen: journalOnScreenRef.current,"),
-      "createJournalRotation blockers include journalOnScreen from the ref",
-    );
+/**
+ * A rotation wired the way game-app wires it: `onScreenRef` stands in
+ * for journalOnScreenRef (the IntersectionObserver's output), and the
+ * blockers closure reads it fresh on every recompute.
+ */
+function wiredRotation(startMs: number) {
+  const clock = { now: startMs };
+  const onScreenRef = { current: false };
+  const applied: number[] = [];
+  const rotation = createJournalRotation({
+    now: () => clock.now,
+    timers: silentTimers,
+    blockers: () => ({
+      focusInsideCard: false,
+      focusInsideSection: false,
+      journalOnScreen: onScreenRef.current,
+    }),
+    onApply: (index) => applied.push(index),
+  });
+  return { clock, onScreenRef, applied, rotation };
+}
+
+describe("journal on-screen wiring, exercised through the rotation seam (item 42)", () => {
+  it("a window change is deferred while the journal is on screen", () => {
+    // Start 1 s into window 10; the journal scrolls into view.
+    const { clock, onScreenRef, applied, rotation } = wiredRotation(JOURNAL_WINDOW_MS * 10 + 1_000);
+    assert.equal(rotation.getCurrentIndex(), 10);
+    onScreenRef.current = true;
+
+    // The window rolls over while the player is reading the journal.
+    clock.now = JOURNAL_WINDOW_MS * 11;
+    rotation.recompute();
+
+    assert.deepEqual(applied, [], "no entry is applied over the one being read");
+    assert.equal(rotation.getCurrentIndex(), 10, "the shown entry stays");
+    assert.equal(rotation.getPendingIndex(), 11, "the next entry waits as pending");
   });
 
-  it("an IntersectionObserver watches the teaser card and the journal section", () => {
-    assert.ok(gameApp.includes("new IntersectionObserver("), "observer is constructed");
-    assert.ok(
-      gameApp.includes('document.querySelector(\'[data-testid="journal-card"]\')'),
-      "teaser card is a watched target",
-    );
-    assert.ok(
-      gameApp.includes('document.getElementById("home-journal")'),
-      "journal section is a watched target",
-    );
-    assert.ok(
-      gameApp.includes("journalOnScreenRef.current = visible.size > 0;"),
-      "the ref tracks whether either target is on screen",
-    );
+  it("the off-screen edge recompute lands the deferred entry immediately", () => {
+    const { clock, onScreenRef, applied, rotation } = wiredRotation(JOURNAL_WINDOW_MS * 10 + 1_000);
+    onScreenRef.current = true;
+    clock.now = JOURNAL_WINDOW_MS * 11;
+    rotation.recompute();
+    assert.equal(rotation.getPendingIndex(), 11);
+
+    // The journal leaves the screen: the observer flips the ref and the
+    // wiring calls recompute() on that edge — no timer tick involved.
+    onScreenRef.current = false;
+    rotation.recompute();
+
+    assert.deepEqual(applied, [11], "the deferred entry applies on the edge");
+    assert.equal(rotation.getCurrentIndex(), 11);
+    assert.equal(rotation.getPendingIndex(), null);
   });
 
-  it("leaving the screen recomputes immediately instead of waiting for the tick", () => {
-    assert.ok(
-      gameApp.includes("if (wasOnScreen && !journalOnScreenRef.current) journalRotation.recompute();"),
-      "the on-screen → off-screen edge calls journalRotation.recompute()",
-    );
+  it("the blockers are probed fresh at every recompute, not captured once", () => {
+    const { clock, onScreenRef, applied, rotation } = wiredRotation(JOURNAL_WINDOW_MS * 10 + 1_000);
+    clock.now = JOURNAL_WINDOW_MS * 11;
+
+    onScreenRef.current = false;
+    rotation.recompute();
+    assert.deepEqual(applied, [11], "off screen: the change applies");
+
+    // Back on screen for the next window: the same closure must now
+    // defer, proving the ref is re-read rather than remembered.
+    onScreenRef.current = true;
+    clock.now = JOURNAL_WINDOW_MS * 12;
+    rotation.recompute();
+    assert.deepEqual(applied, [11], "on screen again: the next change defers");
+    assert.equal(rotation.getPendingIndex(), 12);
   });
 });
