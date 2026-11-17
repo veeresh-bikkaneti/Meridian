@@ -5188,7 +5188,7 @@ function Choose({
               <span className="hv5-label">Case file · Unlimited</span>
             </div>
             <h2 id="geodetective-title">
-              GeoDetective<span className="hv5-chip">Open</span>
+              GeoDetective<span className="hv5-chip">Unlocked</span>
             </h2>
             <p>
               {guessCapWord(geodetectiveConfig(ageBand)?.guessCap ?? 5)} guesses, one mystery place. Each guess unlocks a clue — solve as many cases as

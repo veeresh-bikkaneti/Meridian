@@ -270,6 +270,26 @@ Stream S cherry-picked in: `920c9ddd` (shared shell components) +
   (immediate event when not mid-run, deferred when mid-run).
   Targeted suites 71/71, `tsc --noEmit` clean, `lint:nav` clean.
 
+## Item 40 offender fix (P2 sweep leftover, 2026-11-16)
+
+- Stream K unified the badge vocabulary on PR 522 — a badge states
+  the case's state: "New" = never played, "Done" = finished;
+  "Open" is retired — and listed one offender in this stream's
+  file without editing it: the chip beside the GeoDetective title
+  on the Home card (`game-app.tsx`).
+- What the chip actually marked: not a case state. It is an
+  edition tag on the Home card, rendered only in the unlocked
+  variant of the card (a locked band renders `LockedLoop`
+  instead) — it meant "this edition is unlocked for your band".
+  The shared `Badge` carries only the case states New/Done,
+  neither of which is true of an unlimited edition, so the chip
+  keeps its `hv5-chip` styling and now says what it means:
+  **"Unlocked"**.
+- Tests: no test pinned the old chip text (the lazy-boundary
+  "Open" hits are the `loopOpen` state, untouched). Targeted
+  game-app suites pass (lazy-boundary + 160 neighbouring tests),
+  `tsc --noEmit` clean, `lint:nav` clean.
+
 ## Graph (Phase 2 additions)
 
 - Add node: `src/lib/screen-hash.ts` — the screen ↔ hash contract
