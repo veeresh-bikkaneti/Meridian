@@ -148,6 +148,8 @@ import {
 import "./age-profile/age-profile.css";
 import { LockedLoop } from "./age-profile/LockedLoop";
 import { ReadAloudPrefPrompt } from "./age-profile/ReadAloudPrefPrompt";
+import { shouldAskReadAloudPref } from "@/game/age-profile/read-aloud-pref";
+import { FirstVisitQueue, type FirstVisitPrompt } from "./ui/first-visit-queue";
 import { ReadAloudPrefSettings } from "./age-profile/ReadAloudPrefSettings";
 import { EarnedBadgeRow } from "./passport/EarnedBadgeRow";
 import {
@@ -220,6 +222,10 @@ import {
 } from "./reveal-watchdog";
 import { isEnabled, loadFlags, getObservabilityEndpoint } from "@/lib/flags";
 import { consumeChunkReloadNotice, installChunkLoadRecovery } from "@/lib/chunk-recovery";
+import { consumeRetryScreen } from "@/lib/persisted-screen";
+import { hashForScreen, screenForHash } from "@/lib/screen-hash";
+import { numberWord } from "@/lib/number-words";
+import { geodetectiveConfig } from "@/game/age-profile/difficulty";
 import { withChunkTimeout } from "@/lib/chunk-timeout";
 import { resolveGlobeTierSplit } from "@/lib/globe-tier-split";
 import {
@@ -272,7 +278,7 @@ import {
   writeLoopOpen,
   peekLoopProgress,
 } from "@/game/loop/store";
-import { readColdTrailOpen, writeColdTrailOpen } from "@/game/coldtrail/store";
+import { writeColdTrailOpen } from "@/game/coldtrail/store";
 // F2 bundle split: GeoDetective (Loop) and Cold Trail are play-intent
 // screens — they render only when the player opens them (B7: never on
 // boot from a saved loopOpen flag — tap-in only). Both screens statically
@@ -1435,7 +1441,17 @@ export function GameApp() {
   // leave, and the saved loop (deck/progress/streak in meridian.loop.v2)
   // stays intact, so tapping in resumes the saved mystery where it left
   // off; only the boot auto-open is gone.
-  const [loopOpen, setLoopOpen] = useState<boolean>(false);
+  // The 368 rule (owner condition, Stream N Phase 2): the one
+  // exception to the bare-visit rule above is the error screen's
+  // Try again — its reload carries a one-shot session marker, and
+  // boot restores exactly that screen, exactly once. The marker is
+  // consumed here, before either open state initialises, so both
+  // screens read the one answer.
+  const bootRetryRef = useRef<string | null | undefined>(undefined);
+  if (bootRetryRef.current === undefined) {
+    bootRetryRef.current = consumeRetryScreen();
+  }
+  const [loopOpen, setLoopOpen] = useState<boolean>(() => bootRetryRef.current === "GeoDetective");
   // Subject picker: session-only open state, set by the why-learn
   // card tap. Never persisted — a reload lands on Home, like the
   // loop's tap-in rule.
@@ -1581,11 +1597,14 @@ export function GameApp() {
   }, [roundActive]);
   // Cold Trail (vertical slice): its own screen outside the run machine,
   // persisted under meridian.coldtrail.v2. The open flag
-  // (meridian.coldtrail.open) restores the screen after a reload — PR
-  // #203 panel: without it, the error boundary's reload-retry ("Your
-  // game is safe") returned a Trail player home while a GeoDetective
-  // player resumed. In-progress cases resume from the store.
-  const [coldTrailOpen, setColdTrailOpen] = useState<boolean>(() => readColdTrailOpen());
+  // (meridian.coldtrail.open) used to restore the screen after a
+  // reload (PR #203 panel). The 368 rule supersedes that for boot:
+  // a bare visit always lands on Home, and the only boot restore is
+  // the error screen's Try-again retry (the session marker consumed
+  // above, next to loopOpen). The flag is still written on tap-in /
+  // leave; in-progress cases resume from the store when the player
+  // taps in.
+  const [coldTrailOpen, setColdTrailOpen] = useState<boolean>(() => bootRetryRef.current === "Cold Trail");
   // Age profile (parent-set band). The profile object lives in state and
   // refreshes via the `ageprofile:changed` event — game screens never
   // touch the store directly. The settings screen (lazy) is the only
@@ -1804,6 +1823,9 @@ export function GameApp() {
   // The menu invitation is shown at most once per page load; the
   // localStorage seen-flag persists the decision across visits.
   const [inviteDismissed, setInviteDismissed] = useState(false);
+  // Item 9: bumped when the queued read-aloud sheet is answered, so the
+  // first-visit queue recomputes which prompt wants to show next.
+  const [, bumpPromptQueue] = useState(0);
   // E2E seam: ?idle-ms=<n> shortens the 2-minute timeout (see session.ts).
   const idleTimeoutMs = useMemo(
     () => (typeof window === "undefined" ? IDLE_TIMEOUT_MS : idleTimeoutFromSearch(window.location.search)),
@@ -3439,6 +3461,71 @@ export function GameApp() {
     window.scrollTo(0, 0);
   }, [inAppScreen]);
 
+  // Item 8 (INV3/INV5): each screen carries its own hash (see
+  // src/lib/screen-hash.ts). A screen change pushes it, so Back
+  // returns to the previous screen instead of leaving the site;
+  // a popstate (Back / Forward) drives the screen state to match.
+  // Round 2 (bug 12): the FIRST screen's hash seeds the current
+  // history entry with replaceState instead of pushing a second
+  // one — pushing #home over a fresh visit to / left a phantom
+  // entry, so a first Back landed on the hash-less / and did
+  // nothing (the player was trapped; a second Back left). Seeding
+  // only happens on a hash-less URL: a visit that arrives with a
+  // fragment (deep link, home section) keeps today's push, so its
+  // entry stays in the stack under the screen it opened.
+  const hashSeededRef = useRef(false);
+  useEffect(() => {
+    const hash = hashForScreen(inAppScreen);
+    if (hash === null || window.location.hash === hash) return;
+    if (!hashSeededRef.current && window.location.hash === "") {
+      window.history.replaceState(null, "", hash);
+    } else {
+      window.history.pushState(null, "", hash);
+    }
+    hashSeededRef.current = true;
+  }, [inAppScreen]);
+
+  // Open exactly one tap-in screen (or none, for Home), closing the
+  // others — the hash counterpart of the card taps, with the same
+  // persisted-flag writes the tap handlers make.
+  const applyHashScreen = useCallback((screen: string) => {
+    writeLoopOpen(screen === "geodetective");
+    setLoopOpen(screen === "geodetective");
+    writeColdTrailOpen(screen === "coldtrail");
+    setColdTrailOpen(screen === "coldtrail");
+    setSubjectsOpen(screen === "subjects");
+    setMenu(
+      screen === "menu:countries"
+        ? { kind: "countries" }
+        : screen === "menu:states"
+          ? { kind: "states" }
+          : null,
+    );
+  }, []);
+
+  useEffect(() => {
+    const onPopState = () => {
+      if (run !== null) return; // a run in progress owns the screen
+      const target = screenForHash(window.location.hash);
+      if (target !== null) applyHashScreen(target);
+    };
+    window.addEventListener("popstate", onPopState);
+    return () => window.removeEventListener("popstate", onPopState);
+  }, [run, applyHashScreen]);
+
+  // Deep link (INV5): a first visit carrying a screen hash opens
+  // the screen it names — unless the 368 retry restore already
+  // picked the first screen, or a saved run was restored over it.
+  const deepLinkAppliedRef = useRef(false);
+  useEffect(() => {
+    if (!ready || deepLinkAppliedRef.current) return;
+    deepLinkAppliedRef.current = true;
+    if (bootRetryRef.current !== null) return;
+    if (run !== null) return;
+    const target = screenForHash(window.location.hash);
+    if (target !== null && target !== "home") applyHashScreen(target);
+  }, [ready, run, applyHashScreen]);
+
   if (!ready) {
     // The boot splash lives in boot-splash.tsx: the index route
     // paints the very same component as its served-HTML fallback
@@ -3630,7 +3717,14 @@ export function GameApp() {
                     if (openGeoDetective()) setSubjectsOpen(false);
                   });
                 }}
-                bandChangeRunInProgress={run !== null || loopOpen}
+                // Item 17: only a live subject round defers the
+                // picker's band-change event. A GeoDetective case
+                // left open (loopOpen) is not a round on this page —
+                // counting it deferred the event to a boundary the
+                // picker never hits, so its counts never re-dealt.
+                // The settings mounts keep `|| loopOpen`: leaving a
+                // case IS a run in progress for their confirm flow.
+                bandChangeRunInProgress={run !== null}
                 onOpenAgeSettings={openAgeSettings}
               />
             </Suspense>
@@ -4026,6 +4120,29 @@ export function GameApp() {
   // away — and it appears at most once ever (the seen-flag persists).
   const showTutorialInvite = !inviteDismissed && !hasSeenTutorial();
 
+  // Item 9 (INV4): the first-visit prompts share one queue — Scout Map
+  // notice → tour banner → read-aloud sheet — so at most one is visible
+  // at any moment. Each prompt keeps its own seen-store and dismiss
+  // path; the queue only sequences visibility: this list holds the
+  // prompts that currently want to show, in queue order, and
+  // FirstVisitQueue renders the first of them. The fourth prompt, the
+  // storyteller greeting bubble, keeps its own slot in the hero and is
+  // held by tutorialInviteVisible below until this queue drains.
+  const firstVisitPrompts: FirstVisitPrompt[] = [];
+  if (autoScoutNotice) firstVisitPrompts.push({ id: "scout-notice", node: autoScoutNotice });
+  if (showTutorialInvite) {
+    firstVisitPrompts.push({
+      id: "tour-invite",
+      node: <TutorialInvite onTakeTour={onTakeTour} onDismiss={onDismissInvite} />,
+    });
+  }
+  if (shouldAskReadAloudPref()) {
+    firstVisitPrompts.push({
+      id: "read-aloud-sheet",
+      node: <ReadAloudPrefPrompt onAnswered={() => bumpPromptQueue((n) => n + 1)} />,
+    });
+  }
+
   return (
     <>
     {mapModeAnnouncer}
@@ -4078,11 +4195,15 @@ export function GameApp() {
       difficultyChoice={difficultyChoice}
       onDifficultyChoice={setDifficultyChoice}
       tutorialInvite={
-        showTutorialInvite ? (
-          <TutorialInvite onTakeTour={onTakeTour} onDismiss={onDismissInvite} />
+        firstVisitPrompts.length > 0 ? (
+          // Round 2 (Q1, owner-ruled): prompts overlay below the
+          // header instead of rendering in-flow above it, where
+          // they pushed the header down the page. placement="flow"
+          // restores the old in-flow render in one line.
+          <FirstVisitQueue prompts={firstVisitPrompts} seenKey="meridian.firstVisitQueue.v1" placement="overlay" />
         ) : null
       }
-      tutorialInviteVisible={showTutorialInvite}
+      tutorialInviteVisible={firstVisitPrompts.length > 0}
       suppressGreeting={!bootQualified}
       ageBand={ageBand}
       onGrownUpOpen={openAgeSettings}
@@ -4096,7 +4217,6 @@ export function GameApp() {
         <>
           {challengeBootNoticeEl}
           {mapSwitchedNotice}
-          {autoScoutNotice}
           {discardedNoticeAnnouncer}
           {discardedNoticeEl}
           {idleNotice}
@@ -4570,6 +4690,13 @@ function HeroTrekkerOverlay() {
     </svg>
   );
 }
+
+/** Item 30: the Home card spells the band's guess cap as a word,
+ *  read from the same difficulty table the loop's counter uses
+ *  (geodetectiveConfig) — never a hardcoded count. The word itself
+ *  comes from the shared numberWord helper (Round 2, bug 10
+ *  residue), the same source the loop's intro uses. */
+const guessCapWord = numberWord;
 
 /** Kid-friendly hints for each learning path, shown under the picker. */
 const DIFFICULTY_HINTS: Record<PickerDifficulty, string> = {
@@ -5079,10 +5206,10 @@ function Choose({
               <span className="hv5-label">Case file · Unlimited</span>
             </div>
             <h2 id="geodetective-title">
-              GeoDetective<span className="hv5-chip">Open</span>
+              GeoDetective<span className="hv5-chip">Unlocked</span>
             </h2>
             <p>
-              Five guesses, one mystery place. Each guess unlocks a clue — solve as many cases as
+              {guessCapWord(geodetectiveConfig(ageBand)?.guessCap ?? 5)} guesses, one mystery place. Each guess unlocks a clue — solve as many cases as
               you can.
             </p>
             {loopProgress.streak > 0 ? (
@@ -5386,9 +5513,10 @@ function Choose({
           /privacy in the same PR). */}
       <SiteFooter lead={<ReadAloudPrefSettings />} onGrownUps={onGrownUpOpen} onTakeTour={onTakeTour} />
     </main>
-    {/* Kid-set read-aloud preference (age-profile B3): asked once, never
-        nags — the component renders nothing after the kid answers. */}
-    <ReadAloudPrefPrompt />
+    {/* Kid-set read-aloud preference (age-profile B3) renders through
+        the first-visit queue in GameApp (item 9): it is the queue's
+        third prompt, so it never piles up with the Scout notice, the
+        tour banner or the storyteller bubble. */}
     {/* Grandpa's Coffee Run — animated donation scene, home only.
         Veeresh 2026-10-07: replaces PR #91's static sign. The v5 nav's
         GET INVOLVED jumps here (the app's get-involved surface). */}

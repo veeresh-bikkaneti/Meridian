@@ -484,6 +484,34 @@
   z-index: 1;
 }
 
+/* First-visit queue, overlay placement (Round 2, Q1): the prompt
+ * leaves the document flow entirely, fixed below the header, so a
+ * pending prompt can never push the header down. The element+
+ * class selector outranks the atlas lift above on purpose — the
+ * lift would otherwise force position: relative and put the
+ * prompt back in flow. The top offset clears the home header at
+ * both widths: the header wraps tall on a phone (brand row plus
+ * wrapped nav), so the phone offset is the larger one. */
+.atlas-home > div.first-visit-queue-overlay,
+div.first-visit-queue-overlay {
+  position: fixed;
+  top: 19rem;
+  /* The lift above sets z-index: 1 on every atlas child, and this
+   * unlayered rule must claim the stack too: the Tailwind z-40
+   * utility is layered, so it loses to the lift, leaving the queue
+   * tied at 1 with the content column — tree order then paints the
+   * hero over the prompt and swallows its taps. 40 is the design
+   * value (above page content, below the z-50 gates/modals). */
+  z-index: 40;
+}
+
+@media (min-width: 640px) {
+  .atlas-home > div.first-visit-queue-overlay,
+  div.first-visit-queue-overlay {
+    top: 10rem;
+  }
+}
+
 /* Graticule: faint lat/long grid, masked to the upper glow. */
 .atlas-bg::before {
   content: "";

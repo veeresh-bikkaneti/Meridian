@@ -86,11 +86,20 @@ describe("F2 lazy boundary — Loop/Trail are not eagerly imported", () => {
 
 describe("F2 lazy boundary — restore path crosses Suspense + error boundary", () => {
   it("boot never auto-opens GeoDetective from the saved loopOpen flag (B7)", () => {
+    // The 368 rule (owner condition): a bare visit always lands on
+    // Home — boot never reads the persisted open flag. The one
+    // exception is the error screen's Try again: boot consumes its
+    // one-shot session marker (consumeRetryScreen) and loopOpen
+    // initialises open only when that marker names GeoDetective.
     assert.ok(
       gameAppSource.includes(
-        "const [loopOpen, setLoopOpen] = useState<boolean>(false);",
+        'const [loopOpen, setLoopOpen] = useState<boolean>(() => bootRetryRef.current === "GeoDetective");',
       ),
-      "loopOpen must initialize closed on boot, never from the persisted flag",
+      "loopOpen must initialize from the one-shot retry marker only, never from the persisted flag",
+    );
+    assert.ok(
+      gameAppSource.includes("bootRetryRef.current = consumeRetryScreen();"),
+      "boot must consume the one-shot retry marker before the open states initialise",
     );
     assert.ok(
       !gameAppSource.includes("useState<boolean>(() => readLoopOpen())"),
@@ -160,10 +169,22 @@ describe("F2 lazy boundary — restore path crosses Suspense + error boundary", 
     );
   });
 
-  it("coldTrailOpen persists like loopOpen (PR #203 panel: reload-retry parity)", () => {
+  it("coldTrailOpen follows the 368 rule: flag written on tap-in/leave, boot restore only via the retry marker", () => {
+    // Supersedes the PR #203 reload-restore pin: under the 368 rule
+    // (owner condition) a bare visit always lands on Home, so boot
+    // must NOT initialise from the persisted flag. The only boot
+    // restore is the error screen's Try again — the one-shot session
+    // marker consumed next to loopOpen — and coldTrailOpen
+    // initialises open only when that marker names Cold Trail.
     assert.ok(
-      gameAppSource.includes("useState<boolean>(() => readColdTrailOpen())"),
-      "coldTrailOpen must initialize from the persisted flag so a reload restores the screen",
+      gameAppSource.includes(
+        'const [coldTrailOpen, setColdTrailOpen] = useState<boolean>(() => bootRetryRef.current === "Cold Trail");',
+      ),
+      "coldTrailOpen must initialize from the one-shot retry marker only, never from the persisted flag",
+    );
+    assert.ok(
+      !gameAppSource.includes("useState<boolean>(() => readColdTrailOpen())"),
+      "boot must not read the persisted Cold Trail flag for its landing (368 rule)",
     );
     assert.ok(
       gameAppSource.includes("writeColdTrailOpen(true); setColdTrailOpen(true);"),

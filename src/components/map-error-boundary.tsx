@@ -1,6 +1,12 @@
 import { Component, createRef, type ReactNode } from "react";
 import { Button } from "@/components/ui/button";
+import { HomeButton } from "@/components/ui/home-button";
 import { markChunkReloadNotice } from "@/lib/chunk-recovery";
+import {
+  clearPersistedScreenOpen,
+  isPersistedScreen,
+  rearmPersistedScreenOpen,
+} from "@/lib/persisted-screen";
 import { emitMapError } from "@/lib/observability";
 import { isNewBuildDeployed } from "@/game/build-staleness";
 
@@ -50,6 +56,16 @@ import { isNewBuildDeployed } from "@/game/build-staleness";
  * is set when the player taps Refresh, and while it is set the probe
  * is skipped — if the refreshed tab STILL fails, the build is broken,
  * not stale, and the neutral card is the honest answer.
+ *
+ * Item 7 (INV1/INV2): GeoDetective and Cold Trail persist an "open"
+ * flag that boot reads to restore the screen, so a load failure
+ * used to trap the player — every later visit restored the broken
+ * screen, and Try again's reload restored it too. For those two
+ * surfaces the catch clears the persisted flag (see
+ * src/lib/persisted-screen.ts), so the next visit lands on Home;
+ * the card gains a Home control beside Try again / Refresh, and
+ * Try again re-arms the flag before reloading so the retry — and
+ * only the retry — restores the screen for one more attempt.
  */
 
 /** One-shot stale-refresh guard key — must match game-app.tsx's
@@ -100,6 +116,10 @@ export class MapErrorBoundary extends Component<
   }
 
   componentDidCatch(error: Error): void {
+    // Item 7 (INV1): a persisted screen that failed to load must not
+    // be restored on the next visit — clear its open flag now, so
+    // any later visit lands on Home. No-op for other surfaces.
+    clearPersistedScreenOpen(this.props.surface);
     // Leave a trace for diagnosis; the UI below is what the player sees.
     console.error("[meridian] satellite map failed:", error);
     // Observability: report on the shared endpoint-gated path (name +
@@ -135,6 +155,11 @@ export class MapErrorBoundary extends Component<
   }
 
   private retry = (): void => {
+    // Item 7: the catch cleared the failed screen's persisted open
+    // flag; re-arm it so this reload — the player's own retry —
+    // restores the screen for one more attempt. A later visit that
+    // is not a retry lands on Home instead.
+    rearmPersistedScreenOpen(this.props.surface);
     // Reload: the only recovery that actually re-fetches the chunk (see the
     // doc comment above). The boot restores the run from sessionStorage, so
     // the player's game survives the reload intact. Leave the notice flag
@@ -153,9 +178,21 @@ export class MapErrorBoundary extends Component<
     window.location.reload();
   };
 
+  private goHome = (): void => {
+    // Item 7 (INV2): the way out that is not a retry. The failed
+    // screen's persisted open flag was cleared at catch time (and
+    // is cleared again here), so the reload boots to Home.
+    clearPersistedScreenOpen(this.props.surface);
+    window.location.reload();
+  };
+
   render(): ReactNode {
     if (this.state.error) {
       const surface = this.props.surface ?? "the map";
+      // Item 7 (INV2): persisted screens (GeoDetective, Cold Trail)
+      // get a Home control beside the retry — the exit that does
+      // not restore the broken screen.
+      const persisted = isPersistedScreen(this.props.surface);
       return (
         <div
           ref={this.alertRef}
@@ -173,7 +210,10 @@ export class MapErrorBoundary extends Component<
                   Your game is safe &mdash; this tab is running an older
                   copy. Refresh to get the new version and keep playing.
                 </p>
-                <div className="mt-4 flex justify-center">
+                <div className="mt-4 flex justify-center gap-2">
+                  {persisted ? (
+                    <HomeButton onHome={this.goHome} />
+                  ) : null}
                   <Button type="button" onClick={this.retry}>
                     Refresh
                   </Button>
@@ -188,7 +228,10 @@ export class MapErrorBoundary extends Component<
                   Your game is safe &mdash; it just didn&rsquo;t finish
                   loading. Check your connection, then try again.
                 </p>
-                <div className="mt-4 flex justify-center">
+                <div className="mt-4 flex justify-center gap-2">
+                  {persisted ? (
+                    <HomeButton onHome={this.goHome} />
+                  ) : null}
                   <Button type="button" onClick={this.retry}>
                     Try again
                   </Button>

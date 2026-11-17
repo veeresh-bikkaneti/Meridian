@@ -103,4 +103,31 @@ describe("#210 boundary probes staleness and routes to the update prompt", () =>
       "tapping Refresh on the stale card must arm the one-shot guard",
     );
   });
+
+  it("item 7: a failed persisted screen is not restored, and the card offers Home", () => {
+    const caught = segment(boundarySource, "componentDidCatch", "private startStaleProbe");
+    assert.ok(
+      caught.includes("clearPersistedScreenOpen(this.props.surface);"),
+      "the catch must clear the failed screen's persisted open flag (INV1)",
+    );
+    const retry = segment(boundarySource, "private retry", "private goHome");
+    assert.ok(
+      retry.includes("rearmPersistedScreenOpen(this.props.surface);"),
+      "Try again must re-arm the flag so its reload retries the screen (INV1)",
+    );
+    const render = segment(boundarySource, "render(): ReactNode", "return this.props.children;");
+    assert.ok(
+      render.includes("isPersistedScreen(this.props.surface)"),
+      "the Home control must be gated to the persisted screens",
+    );
+    assert.ok(
+      render.includes("<HomeButton onHome={this.goHome} />"),
+      "the card must offer the shared Home control beside Try again / Refresh (INV2)",
+    );
+    const goHome = segment(boundarySource, "private goHome", "render()");
+    assert.ok(
+      goHome.includes("clearPersistedScreenOpen(this.props.surface);"),
+      "Home must leave the failed screen's flag cleared so the reload boots to Home",
+    );
+  });
 });
