@@ -361,6 +361,31 @@ describe("PageShell and PageIntro (PR 3 Step 2)", () => {
     assert.doesNotMatch(src, /<header>/);
   });
 
+  it("the pool error is the shared ErrorScreen (PR 3 Step 3.8): failure copy on its props, one recovery door", () => {
+    const src = read("src/components/game-app.tsx");
+    const branch = src.slice(src.indexOf("if (poolError)"), src.indexOf("if (!places)"));
+    assert.match(branch, /<ErrorScreen/);
+    assert.match(branch, /title="Couldn't load places\."/);
+    assert.match(branch, /was not started with a partial pool/);
+    assert.match(branch, /onHome=\{onEditions\}/);
+    assert.match(branch, /onRetry=\{onEditions\}/);
+    assert.doesNotMatch(branch, /<main/);
+  });
+
+  it("GeoDetective's header carries no className override (PR 3 Step 3.11): the shell's sticky prop instead", async () => {
+    const src = read("src/game/loop/LoopScreen.tsx");
+    assert.doesNotMatch(src, /screen-home-bar -mx-5 px-5/);
+    const tag = src.slice(src.indexOf("<SiteHeader"), src.indexOf("status={", src.indexOf("<SiteHeader")));
+    assert.match(tag, /sticky/);
+    assert.doesNotMatch(tag, /className/);
+    const header = read("src/components/ui/site-header.tsx");
+    assert.match(header, /data-sticky=\{sticky \? "true" : undefined\}/);
+    const css = read("src/styles.css");
+    assert.match(css, /\.site-header\[data-sticky="true"\] \{\s+position: sticky;/);
+    const html = await render("SiteHeader", { onHome: () => {}, status: null, mute: null, sticky: true });
+    assert.match(html, /data-sticky="true"/);
+  });
+
   it("PageIntro renders eyebrow, title and sub", async () => {
     const html = await render("PageIntro", { eyebrow: "Eyebrow", title: "Title", sub: "Sub" });
     assert.match(html, /Eyebrow/);
