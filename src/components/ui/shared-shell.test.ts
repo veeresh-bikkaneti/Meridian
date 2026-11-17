@@ -331,6 +331,16 @@ describe("PageShell and PageIntro (PR 3 Step 2)", () => {
     assert.doesNotMatch(src, /gp-wrap/);
   });
 
+  it("Cold Trail sits on SiteHeader (PR 3 Step 3.5): stars in status, mute in mute, no px-2 Home override", () => {
+    const src = read("src/game/coldtrail/TrailScreen.tsx");
+    assert.match(src, /<SiteHeader\s+onHome=\{onLeave\}/);
+    assert.match(src, /mute=\{<SoundToggle testId="sound-toggle-trail"/);
+    assert.doesNotMatch(src, /<HomeButton/);
+    assert.doesNotMatch(src, /from "@\/components\/ui\/home-button"/);
+    assert.doesNotMatch(src, /className="px-2"/);
+    assert.doesNotMatch(src, /<header>/);
+  });
+
   it("PageIntro renders eyebrow, title and sub", async () => {
     const html = await render("PageIntro", { eyebrow: "Eyebrow", title: "Title", sub: "Sub" });
     assert.match(html, /Eyebrow/);
