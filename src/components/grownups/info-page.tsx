@@ -62,7 +62,7 @@ const GRAPHICS: Record<GrownGraphic, ReactNode> = {
 
 const DOORS: { to: string; label: string; search?: { view: string } }[] = [
   { to: "/", label: "Play the game" },
-  { to: "/board", label: "See what we're making next" },
+  { to: "/board", label: "What's coming" },
   { to: "/board", label: "Ask for something new", search: { view: "tip" } },
   { to: "/contact", label: "Contact us" },
   { to: "/credits", label: "Credits" },

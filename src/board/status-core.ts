@@ -445,6 +445,25 @@ export function computeLayout(board: PublishedBoard): BoardLayout {
   return { positions, featureCenters, featureRadii, epicCenters };
 }
 
+/** Feature label chips in the structure view (molecule-map): the chip
+ * floats straight above its bubble, centred at
+ * `featureCenter.y + featureRadius + LABEL_LIFT`, and is
+ * LABEL_HALF_HEIGHT * 2 scene units tall. A story centre can sit up to
+ * 0.66 * 1.125 of the bubble radius above the feature centre (the
+ * Fibonacci sphere in computeLayout) and the atom mesh adds its own
+ * ATOM_RADIUS on top of that, so the old lift of 1.2 left the chip's
+ * bottom edge level with the highest atoms — dots clipped the labels.
+ * LABEL_LIFT keeps the chip's bottom edge above every atom's top with
+ * room to spare; the clearance is pinned in status-core.test.ts. */
+export const ATOM_RADIUS = 0.72;
+export const LABEL_HALF_HEIGHT = 1.125;
+export const LABEL_LIFT = 2.2;
+/** The label sprite's full width in scene units (molecule-map scales
+ * the sprite to exactly this), so the chip's bounding box is
+ * LABEL_WIDTH × LABEL_HALF_HEIGHT * 2 around its centre. The bbox
+ * clearance against every atom is pinned in status-core.test.ts. */
+export const LABEL_WIDTH = 9;
+
 export function slugify(title: string): string {
   return title
     .toLowerCase()

@@ -45,7 +45,7 @@ export function LifePill({ done, total }: { done: number; total: number }) {
     <p
       className="v3-life"
       role="img"
-      aria-label={`${pct}% delivered — ${done} of ${total} stories done`}
+      aria-label={`${pct}% delivered — ${done} of ${total} steps done`}
     >
       <span className="v3-life-track" aria-hidden="true">
         <span
@@ -78,13 +78,6 @@ const GROUP_HEADING: Record<StoryGroupId, string> = {
   "in-progress": "In progress",
   blocked: "Blocked",
   "not-started": "Not started",
-};
-
-const GROUP_EMPTY: Record<StoryGroupId, string> = {
-  completed: "Nothing finished yet",
-  "in-progress": "Nothing being built right now",
-  blocked: "Nothing waiting right now",
-  "not-started": "Everything here has begun",
 };
 
 function storyGroup(board: PublishedBoard, story: PublishedStory): StoryGroupId {
@@ -343,6 +336,7 @@ export function TrailView({
                             const stories = feature.stories.filter(
                               (s) => storyGroup(board, s) === groupId,
                             );
+                            if (stories.length === 0) return null;
                             return (
                               <section
                                 key={groupId}
@@ -355,9 +349,6 @@ export function TrailView({
                                   {GROUP_HEADING[groupId]}
                                   <span className="v3-group-count">{stories.length}</span>
                                 </h4>
-                                {stories.length === 0 ? (
-                                  <p className="v3-group-empty">{GROUP_EMPTY[groupId]}</p>
-                                ) : (
                                   <ol className="v3-stops">
                                     {stories.map((story) => {
                                       const open = selectedSlug === story.slug;
@@ -401,7 +392,6 @@ export function TrailView({
                                       );
                                     })}
                                   </ol>
-                                )}
                               </section>
                             );
                           })}

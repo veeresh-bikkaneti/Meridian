@@ -4,6 +4,10 @@ import { describe, it } from "node:test";
 import curationJson from "./curation.json" with { type: "json" };
 import recordStatesJson from "./record-states.json" with { type: "json" };
 import {
+  ATOM_RADIUS,
+  LABEL_HALF_HEIGHT,
+  LABEL_LIFT,
+  LABEL_WIDTH,
   buildPublished,
   computeLayout,
   deriveFromRecords,
@@ -192,7 +196,7 @@ describe("buildPublished on the real curation file (Phase 0 baseline)", () => {
     // 20/4/13 is the current-state picture after the record cache caught
     // up with main (PR #430 merged; the Holmes-in-Maths and Maths
     // sign-off stories' work landed) — board cleanup, 2026-11-16.
-    assert.deepEqual(published.counts, { done: 20, inProgress: 4, notStarted: 13, total: 37 });
+    assert.deepEqual(published.counts, { done: 24, inProgress: 4, notStarted: 9, total: 37 });
   });
   it("excludes the 9 internal items and the whole Behind the Scenes epic", () => {
     const slugs = published.epics.flatMap((e) => e.features.flatMap((f) => f.stories.map((s) => s.slug)));
@@ -260,6 +264,93 @@ describe("buildPublished on the real curation file (Phase 0 baseline)", () => {
     const b = computeLayout(published);
     assert.deepEqual(a, b);
     assert.equal(Object.keys(a.positions).length, 37);
+  });
+});
+
+describe("structure-view feature labels clear every atom (item 29)", () => {
+  const curation = curationJson as unknown as Curation;
+  const recordStates = new Map(
+    Object.entries(recordStatesJson as Record<string, RecordState>).map(([k, v]) => [Number(k), v]),
+  );
+  const published = buildPublished(curation, recordStates, {
+    source: "generated",
+    updatedAt: "2026-11-15T00:00:00.000Z",
+  });
+  const layout = computeLayout(published);
+
+  it("every chip's bottom edge sits above the highest atom top in its bubble", () => {
+    for (const epic of published.epics) {
+      for (const feature of epic.features) {
+        const c = layout.featureCenters[feature.id];
+        const radius = layout.featureRadii[feature.id];
+        const chipBottom = c[1] + radius + LABEL_LIFT - LABEL_HALF_HEIGHT;
+        for (const s of feature.stories) {
+          const atomTop = layout.positions[s.slug][1] + ATOM_RADIUS;
+          assert.ok(
+            chipBottom > atomTop,
+            `${feature.name}: chip bottom ${chipBottom.toFixed(2)} must clear atom top ${atomTop.toFixed(2)} (${s.slug})`,
+          );
+        }
+      }
+    }
+  });
+
+  it("the label material never lets an atom clip the chip (depthTest off)", () => {
+    const map = readFileSync(new URL("./molecule-map.tsx", import.meta.url), "utf8");
+    assert.match(map, /SpriteMaterial\(\{[^}]*depthTest: false/);
+    assert.match(map, /LABEL_LIFT/);
+  });
+
+  it("no chip's 3D bounding box overlaps any atom's 3D bounding box", () => {
+    // Boxes on the 3D label layer: the chip is LABEL_WIDTH wide and
+    // LABEL_HALF_HEIGHT * 2 tall around its sprite centre (the scale
+    // molecule-map sets), in the plane z = feature centre z; an atom's
+    // box is its centre ± ATOM_RADIUS on all three axes. Every chip is
+    // checked against EVERY atom — a tall neighbour bubble's atom can
+    // reach into a chip's x/y span, which the own-bubble clearance
+    // above cannot see; only the z axis separates that pair today
+    // (measured: the one x/y-crossing pair sits ~5 units apart in z),
+    // and this test fails if a layout change ever closes that gap.
+    type Box = { min: number[]; max: number[] };
+    const overlaps = (a: Box, b: Box) =>
+      a.min[0] < b.max[0] && a.max[0] > b.min[0] &&
+      a.min[1] < b.max[1] && a.max[1] > b.min[1] &&
+      a.min[2] < b.max[2] && a.max[2] > b.min[2];
+    for (const epic of published.epics) {
+      for (const feature of epic.features) {
+        const c = layout.featureCenters[feature.id];
+        const radius = layout.featureRadii[feature.id];
+        const chip: Box = {
+          min: [c[0] - LABEL_WIDTH / 2, c[1] + radius + LABEL_LIFT - LABEL_HALF_HEIGHT, c[2]],
+          max: [c[0] + LABEL_WIDTH / 2, c[1] + radius + LABEL_LIFT + LABEL_HALF_HEIGHT, c[2]],
+        };
+        for (const otherEpic of published.epics) {
+          for (const other of otherEpic.features) {
+            for (const s of other.stories) {
+              const p = layout.positions[s.slug];
+              const atom: Box = {
+                min: [p[0] - ATOM_RADIUS, p[1] - ATOM_RADIUS, p[2] - ATOM_RADIUS],
+                max: [p[0] + ATOM_RADIUS, p[1] + ATOM_RADIUS, p[2] + ATOM_RADIUS],
+              };
+              assert.ok(
+                !overlaps(chip, atom),
+                `${feature.name}: chip box x[${chip.min[0].toFixed(2)}..${chip.max[0].toFixed(2)}] y[${chip.min[1].toFixed(2)}..${chip.max[1].toFixed(2)}] z=${chip.min[2].toFixed(2)} overlaps atom ${s.slug} (${other.name}) box x[${atom.min[0].toFixed(2)}..${atom.max[0].toFixed(2)}] y[${atom.min[1].toFixed(2)}..${atom.max[1].toFixed(2)}] z[${atom.min[2].toFixed(2)}..${atom.max[2].toFixed(2)}]`,
+              );
+            }
+          }
+        }
+      }
+    }
+  });
+});
+
+describe("one name for the feature-request action (item 28)", () => {
+  it("no player surface still calls it “Send a tip”", () => {
+    for (const rel of ["../routes/board.tsx", "./feature-request-form.tsx"]) {
+      const src = readFileSync(new URL(rel, import.meta.url), "utf8");
+      assert.ok(!src.includes("Send a tip"), `${rel} still says “Send a tip”`);
+      assert.ok(src.includes("Ask for something new"), `${rel} lost the shared name`);
+    }
   });
 });
 

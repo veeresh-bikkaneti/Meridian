@@ -33,7 +33,7 @@ import "@/board/board.css";
 const MoleculeMap = lazy(() => import("@/board/molecule-map"));
 
 /**
- * /board — "See what we're making next" (board v4 trail; v3 map/form).
+ * /board — "What's coming" (board v4 trail; v3 map/form).
  *
  * The board's base layer is the published status file
  * (public/board-status.json), generated from the team's own curated
@@ -87,11 +87,11 @@ export const Route = createFileRoute("/board")({
   }),
   head: () => ({
     meta: [
-      { title: "See what we're making next — Meridian" },
+      { title: "What's coming — Meridian" },
       {
         name: "description",
         content:
-          "What the Meridian team is making next: the stories being built, in plain words, for grown-ups.",
+          "What the Meridian team is making next: the features being built, in plain words, for grown-ups.",
       },
     ],
   }),
@@ -329,12 +329,12 @@ function BoardPage() {
             <HomeButton to="/" />
           </p>
           <p className="v3-eyebrow">For grown-ups</p>
-          <h1 className="v3-title">See what we&rsquo;re making next</h1>
+          <h1 className="v3-title">What&rsquo;s coming</h1>
           <p className="v3-counts" data-testid="board-counts-line">
-            {board.counts.done} of {board.counts.total} stories finished · {board.counts.inProgress}{" "}
+            {board.counts.done} of {board.counts.total} steps finished · {board.counts.inProgress}{" "}
             being built · {board.counts.notStarted} not started yet
           </p>
-          <p className="v4-walk">Walk the trail — every stop is a feature your child will play.</p>
+          <p className="v4-walk">Every stop is a feature your child will play.</p>
           <p className="v3-updated" data-testid="board-updated-line">
             {liveLine?.kind === "live"
               ? `Live from GitHub — every linked record checked (${liveLine.covered} of ${liveLine.wanted}) · `
@@ -390,14 +390,16 @@ function BoardPage() {
             ref={navPanelRef}
             data-open={menuOpen ? "true" : "false"}
           >
-          <div className="v3-nav-cluster" role="group" aria-label="Views">
+          <div className="v3-nav-row" role="group" aria-label="Views">
+            <span className="v3-nav-row-label" aria-hidden="true">Views</span>
+            <div className="v3-nav-cluster">
             <button
               type="button"
               data-testid="board-nav-trail"
               aria-pressed={view === "trail"}
               onClick={() => pickView("trail")}
             >
-              The trail
+              What&rsquo;s coming
             </button>
             {mapOn ? (
               <button
@@ -415,10 +417,13 @@ function BoardPage() {
               aria-pressed={view === "tip"}
               onClick={() => pickView("tip")}
             >
-              Send a tip
+              Ask for something new
             </button>
           </div>
-          <div className="v3-nav-cluster v3-nav-settings">
+          </div>
+          <div className="v3-nav-row" role="group" aria-label="Settings">
+            <span className="v3-nav-row-label" aria-hidden="true">Settings</span>
+            <div className="v3-nav-cluster v3-nav-settings">
           <div className="v3-theme-switch" role="group" aria-label="Board theme">
             <span className="v3-theme-label" aria-hidden="true">
               Theme
@@ -445,7 +450,8 @@ function BoardPage() {
             type="button"
             className="v3-calm-toggle"
             data-testid="board-calm-toggle"
-            aria-pressed={calm}
+            role="switch"
+            aria-checked={calm}
             onClick={() => {
               const next = !calm;
               setCalm(next);
@@ -456,15 +462,20 @@ function BoardPage() {
               }
             }}
           >
-            Calm mode {calm ? "on" : "off"}
+            <span className="v3-calm-label">Calm mode</span>
+            <span className="v3-switch-track" aria-hidden="true">
+              <span className="v3-switch-knob" />
+            </span>
+            <span className="v3-calm-state">{calm ? "On" : "Off"}</span>
           </button>
+          </div>
           </div>
           </div>
         </nav>
 
         {toast ? (
           <p className="v3-toast" role="status" data-testid="board-toast">
-            🎉 {toast} is finished — every story in it is done.{" "}
+            🎉 {toast} is finished — every step in it is done.{" "}
             <button type="button" onClick={() => setToast(null)} aria-label="Dismiss">
               ✕
             </button>
@@ -472,7 +483,7 @@ function BoardPage() {
         ) : null}
 
         {!loaded ? (
-          <p className="v3-loading">Loading the trail…</p>
+          <p className="v3-loading">Loading what&rsquo;s coming…</p>
         ) : view === "trail" ? (
           <TrailView
             board={board}
@@ -509,7 +520,7 @@ function BoardPage() {
         )}
 
         <footer className="v3-footer">
-          <p>Didn&rsquo;t find your idea on the trail?</p>
+          <p>Didn&rsquo;t find your idea here?</p>
           <button type="button" className="v3-btn" onClick={() => go({ view: "tip" })}>
             Ask for something new
           </button>

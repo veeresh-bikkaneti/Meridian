@@ -132,7 +132,7 @@ export function FeatureRequestForm() {
         {result?.status === "sent" ? (
           <p className="board-notice" data-testid="feature-request-sent">
             Thanks! Watch for it on{" "}
-            <Link to="/board">See what we&rsquo;re making next</Link>.
+            <Link to="/board">What&rsquo;s coming</Link>.
           </p>
         ) : null}
       </div>
