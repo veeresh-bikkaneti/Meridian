@@ -545,6 +545,25 @@ describe("Pill contrast, computed from the styles.css token values", () => {
   });
 });
 
+describe("dead home header CSS (PR 3 Step 4)", () => {
+  it("home-v5.css carries no .hv5-nav or .hv5-brand rules — Home renders SiteHeader, not the old lockup", () => {
+    const css = read("src/components/home-v5.css");
+    assert.doesNotMatch(css, /hv5-nav|hv5-brand/);
+    // No production markup uses those classes either.
+    for (const file of ["src/components/game-app.tsx", "src/components/ui/site-header.tsx"]) {
+      assert.doesNotMatch(read(file), /hv5-nav|hv5-brand/, file);
+    }
+  });
+
+  it("BrandHomeButton is kept, with the CSS it needs (.brand-home-* in styles.css)", () => {
+    const css = read("src/styles.css");
+    for (const rule of [".brand-home-button", ".brand-home-mark", ".brand-home-word"]) {
+      assert.ok(css.includes(rule), rule);
+    }
+    assert.match(read("src/components/ui/home-button.ts"), /export function BrandHomeButton/);
+  });
+});
+
 describe("shell-ban baseline (KNOWN/STALE)", () => {
   const baseline = JSON.parse(read("eslint/shell-ban-baseline.json")) as Record<string, string[]>;
   const patterns: Record<string, RegExp> = {

@@ -2130,15 +2130,15 @@ div.first-visit-queue-overlay {
     linear-gradient(180deg, var(--atlas-bg-1) 0%, var(--atlas-bg-2) 100%);
 }
 
-/* Brand home control (fix/header-logo-home): the shell header's home
-   affordance is the homepage's brand lockup, so these rules mirror
-   .home-v5 .hv5-brand / .hv5-mark / .hv5-word in home-v5.css (same
-   mark size, word font, spacing and colour) without importing or
-   un-scoping home-v5.css — shell screens are .mode-screen, not
-   .home-v5. The word's font is the atlas display stack, the same
-   Fraunces family --hv5-display resolves to on the home page.
-   Focus is the button's own Tailwind focus-visible outline (the
-   HomeButton BASE treatment, carried in home-button.ts). */
+/* Brand home control (fix/header-logo-home; kept in PR 3 Step 4):
+   BrandHomeButton's own rules — mark size, word font, spacing and
+   colour. They originally mirrored Home's old page-local lockup
+   (.hv5-brand in home-v5.css); that markup and its CSS are deleted,
+   and these values now live only here. The word's font is the atlas
+   display stack, the same Fraunces family --hv5-display resolves to
+   on the home page. Focus is the button's own Tailwind
+   focus-visible outline (the HomeButton BASE treatment, carried in
+   home-button.ts). */
 .brand-home-button {
   background: transparent;
   border: none;

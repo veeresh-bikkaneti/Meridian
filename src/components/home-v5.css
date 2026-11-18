@@ -77,71 +77,6 @@ body:has(.home-v5) {
   outline: 3px solid var(--hv5-brown-deep);
   outline-offset: 3px;
 }
-.home-v5 .hv5-nav {
-  position: relative;
-  z-index: 5;
-  display: flex;
-  align-items: center;
-  gap: 34px;
-  padding: 22px 0 18px;
-}
-.home-v5 .hv5-brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  background: none;
-  border: none;
-  padding: 0;
-  color: inherit;
-  min-height: 44px;
-}
-.home-v5 .hv5-brand .hv5-mark {
-  width: 40px;
-  height: 40px;
-  flex: none;
-}
-.home-v5 .hv5-brand .hv5-word {
-  font-family: var(--hv5-display);
-  font-size: 24px;
-  font-weight: 600;
-  letter-spacing: 0.24em;
-}
-.home-v5 .hv5-nav nav {
-  display: flex;
-  gap: 30px;
-  margin: 0 auto;
-}
-.home-v5 .hv5-nav nav button,
-.home-v5 .hv5-nav nav a {
-  font-family: var(--hv5-body);
-  font-size: 12.5px;
-  font-weight: 700;
-  letter-spacing: 0.13em;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 2px;
-  min-height: 44px;
-  color: var(--hv5-ink);
-  background: none;
-  border: none;
-  text-decoration: none;
-  cursor: pointer;
-}
-.home-v5 .hv5-nav nav button:hover:not([aria-disabled="true"]),
-.home-v5 .hv5-nav nav a:hover {
-  color: var(--hv5-brown);
-}
-.home-v5 .hv5-nav nav button[aria-disabled="true"] {
-  opacity: 0.45;
-  cursor: default;
-}
-.home-v5 .hv5-nav .hv5-actions {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-left: auto;
-}
 .home-v5 .hv5-btn {
   display: inline-flex;
   align-items: center;
@@ -1026,23 +961,6 @@ body:has(.home-v5) {
 }
 
 @media (max-width: 1080px) {
-  .home-v5 .hv5-nav {
-    gap: 16px;
-  }
-  .home-v5 .hv5-nav nav {
-    gap: 14px;
-  }
-  .home-v5 .hv5-nav nav button,
-  .home-v5 .hv5-nav nav a {
-    font-size: 10.5px;
-    letter-spacing: 0.06em;
-    gap: 4px;
-    white-space: nowrap;
-  }
-  .home-v5 .hv5-brand .hv5-word {
-    font-size: 19px;
-    letter-spacing: 0.18em;
-  }
   .home-v5 .hv5-actions .hv5-btn-brown {
     padding: 11px 17px;
     font-size: 11px;
@@ -1088,44 +1006,7 @@ body:has(.home-v5) {
     margin: 0 auto;
   }
 }
-@media (max-width: 860px) {
-  .home-v5 .hv5-nav {
-    flex-wrap: wrap;
-  }
-  .home-v5 .hv5-nav nav {
-    display: flex;
-    order: 3;
-    flex-basis: 100%;
-    gap: 18px;
-    margin: 2px 0 0;
-  }
-}
 @media (max-width: 680px) {
-  .home-v5 .hv5-nav {
-    flex-wrap: wrap;
-  }
-  /* The storyteller host sits at the row's right end at EVERY width —
-     that rule now lives on the base .hv5-storyteller above (its greeting
-     popover opens leftward from the host). On phones the globe is
-     in-flow below the hero, so the right end is free here too. */
-  .home-v5 .hv5-nav nav {
-    display: flex;
-    order: 3;
-    flex-basis: 100%;
-    gap: 10px;
-    /* Narrow widths: wrap onto two rows instead of scrolling — the
-       last item (GET INVOLVED) sat 83px past the 390px viewport edge
-       in the old scrollable row. Every item stays reachable with no
-       strip scroll; desktop is untouched (this block is <=680px only). */
-    flex-wrap: wrap;
-    margin: 2px 0 0;
-  }
-  .home-v5 .hv5-nav nav button,
-  .home-v5 .hv5-nav nav a {
-    font-size: 11px;
-    letter-spacing: 0.09em;
-    white-space: nowrap;
-  }
   .home-v5 .hv5-grid2,
   .home-v5 .hv5-grid3,
   .home-v5 .hv5-pages {
@@ -1161,9 +1042,6 @@ body:has(.home-v5) {
     position: relative;
     margin: 14px auto 0;
     transform: none;
-  }
-  .home-v5 .hv5-brand .hv5-word {
-    font-size: 19px;
   }
 }
 @media (prefers-reduced-motion: reduce) {
