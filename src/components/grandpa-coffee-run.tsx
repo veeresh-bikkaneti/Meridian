@@ -15,6 +15,11 @@ import {
 
 /**
  * Grandpa's Tasting Tour — animated donation scene on the Chart Room home.
+ * Since the footer standardization (2026-11-18) the shared SiteFooter
+ * renders this scene in its band on every footer page; those hosts
+ * pass tastingTour={false} (the tour itself measures Home's cards
+ * and stays Home-only), so elsewhere he strolls the strip and
+ * settles.
  *
  * Veeresh 2026-10-07: the mobile (≤1023.5px) screenplay is a guided tasting
  * tour. Beats (mobile):
@@ -1195,7 +1200,7 @@ function TourLayer({
 
 /* ================= The scene (strip finale + desktop) ================= */
 
-export function GrandpaCoffeeRun() {
+export function GrandpaCoffeeRun({ tastingTour = true }: { tastingTour?: boolean } = {}) {
   const [online, setOnline] = useState(
     typeof navigator === "undefined" ? true : navigator.onLine,
   );
@@ -1219,6 +1224,11 @@ export function GrandpaCoffeeRun() {
       matchMedia("(prefers-reduced-motion: reduce)").matches
     )
       return "seated";
+    // Footer hosts (every page but Home) run the strip only: the
+    // tasting tour measures Home's own cards, so it is Home's alone.
+    // With tastingTour off the scene still strolls, pours and
+    // settles in its band exactly as the desktop strip does.
+    if (!tastingTour) return "strip";
     if (isMobileViewport()) {
       // Return visits (same calendar day): no replay — already seated.
       if (readStorage(TOUR_LAST_DATE_KEY, "local") === localDateKey())
