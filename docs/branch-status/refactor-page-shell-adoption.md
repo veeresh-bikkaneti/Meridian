@@ -730,6 +730,38 @@ nothing else changed (no features, no design changes).
       It is the same recurring VM condition the Unit 3 record
       flags, not a product defect.
 
+## Main update — merged origin/main 5ae217c9 (2026-11-18)
+
+- The owner said "merge 529"; this update makes the branch
+  mergeable on the new main. Merge commit `e67a0835` (parents
+  `cde76a4d` + `5ae217c9`), merge — no rebase, no force-push.
+  Main brought in #520 (Cold Trail WebGL2 map crash
+  containment) and #532 (stale-tab chunk crash: guarded
+  one-time reload from the error boundary).
+- Exactly one conflict: `src/components/map-error-boundary.tsx`,
+  in the import block only. The bodies had already unioned
+  cleanly: #532's logic (guarded reload issued from the stale
+  probe, F1b/F1c/F1d exit discipline, F3 report-only-the-repeat,
+  F6 time-bound one-shot guard) over PR 529's item-9 render
+  (the shared ErrorScreen in embedded mode, stale copy word for
+  word, Home exit only on persisted screens). Resolution: the
+  import block carries ErrorScreen plus #532's four
+  chunk-recovery functions; main's `Button`/`HomeButton`
+  imports are dropped — only its superseded hand-rolled card
+  used them. No contract was chosen over the other.
+- Verification on the merged tree (hermetic recipe, complete
+  `npm ci`): the boundary + recovery unit suites — 155/155
+  (map-error-boundary, chunk-recovery, build-staleness,
+  game-app-lazy-boundary, error-component, persisted-screen);
+  `tsc --noEmit` clean; `lint:nav` clean; `build:pages` green;
+  entry JS gzip 323,704 B vs the 323,865 B limit (161 B
+  spare — the growth over Part 2's 322,589 B is #520/#532's
+  code arriving with the merge); named e2e
+  shared-shell-adoption + layout-overflow 8/8 under flock.
+- Next step: push, full CI on the new tip, silo QA re-verifies
+  the resolution; the merge itself is Chitti's on the owner's
+  word. Open questions: none for this update.
+
 ## Remaining
 
 - Nothing in the Part 2 brief, and the cure round above
