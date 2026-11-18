@@ -465,7 +465,6 @@ export default function SubjectPicker({
                 disabled={!hasProgress}
                 onClick={() => {
                   clearSubjectProgress(row.id);
-                  setSubjectProgress(readSubjectProgress());
                   setResetNotice(`${row.title} reset`);
                 }}
               >

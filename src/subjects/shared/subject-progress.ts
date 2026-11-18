@@ -31,6 +31,7 @@
 import {
   SUBJECT_PROGRESS_KEY,
   resolveSubjectProgressStorage,
+  setSubjectProgressClearedHook,
   type SubjectProgressStorage,
 } from "../../game/subject-progress-store-key.ts";
 
@@ -89,8 +90,10 @@ const listeners = new Set<() => void>();
 /** Subscribe to progress changes. Returns an unsubscribe function. */
 export function onSubjectProgressChanged(listener: () => void): () => void {
   listeners.add(listener);
+  syncCrossTabBridge();
   return () => {
     listeners.delete(listener);
+    syncCrossTabBridge();
   };
 }
 
@@ -101,6 +104,42 @@ function emitSubjectProgressChanged(): void {
     } catch {
       // Deliberately swallowed, like the age-profile bus.
     }
+  }
+}
+
+// The game-side clear-all (subject-progress-store-key.ts) cannot
+// import this bus — subjects depend on game, never the reverse —
+// so it announces through a hook, wired here, once, at import.
+setSubjectProgressClearedHook(emitSubjectProgressChanged);
+
+// ---------------------------------------------------------------------------
+// Cross-tab bridge: the browser fires a `storage` event in every
+// OTHER tab when this key changes there, so a solve or a reset in
+// another tab reaches this tab's listeners too. The writing tab
+// gets no storage event for its own write — the bus emit above
+// covers it, so nothing double-fires. The bridge attaches with
+// the first subscriber and detaches with the last; where there
+// is no window (tests, server rendering) it never attaches.
+// ---------------------------------------------------------------------------
+
+let crossTabBridgeAttached = false;
+
+function onCrossTabStorage(event: StorageEvent): void {
+  if (event.key === SUBJECT_PROGRESS_KEY) emitSubjectProgressChanged();
+}
+
+function syncCrossTabBridge(): void {
+  try {
+    if (typeof window === "undefined" || typeof window.addEventListener !== "function") return;
+    if (listeners.size > 0 && !crossTabBridgeAttached) {
+      window.addEventListener("storage", onCrossTabStorage);
+      crossTabBridgeAttached = true;
+    } else if (listeners.size === 0 && crossTabBridgeAttached) {
+      window.removeEventListener("storage", onCrossTabStorage);
+      crossTabBridgeAttached = false;
+    }
+  } catch {
+    // No bridge available; same-tab events still flow.
   }
 }
 
@@ -126,13 +165,17 @@ export function hasSubjectProgress(subjectId: string, storage?: StorageLike): bo
 /**
  * Clear ONE subject's record; every other subject's record stays
  * byte-identical. Returns true only when a re-read proves that
- * subject is gone. (No change event: the one caller, the picker's
- * Reset tap, re-reads the store itself in the same tap.)
+ * subject is gone. A clear that actually removed the subject
+ * emits exactly one change event — subscribers (the picker)
+ * re-read on the bus alone — and clearing a subject with
+ * nothing recorded changes nothing and emits nothing.
  */
 export function clearSubjectProgress(subjectId: string, storage?: StorageLike): boolean {
   const progress = readSubjectProgress(storage);
   if (!(subjectId in progress)) return true; // Nothing recorded = already clear.
   delete progress[subjectId];
   writeSubjectProgress(progress, storage);
-  return !(subjectId in readSubjectProgress(storage));
+  const cleared = !(subjectId in readSubjectProgress(storage));
+  if (cleared) emitSubjectProgressChanged();
+  return cleared;
 }

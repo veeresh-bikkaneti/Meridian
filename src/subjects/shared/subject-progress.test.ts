@@ -112,6 +112,103 @@ describe("subject-progress store", () => {
   });
 });
 
+describe("subject-progress change events", () => {
+  // The statechart, pinned: for each of record, clear-one and
+  // clear-all, a stored-document change fires exactly one change
+  // event and no change fires none — so a subscriber (the
+  // picker) stays correct on the subscription alone, including
+  // changes made in another tab.
+  it("record emits exactly once", () => {
+    const s = new FakeStorage();
+    let events = 0;
+    const off = onSubjectProgressChanged(() => {
+      events += 1;
+    });
+    recordUnitComplete("math", "fair-share", s);
+    off();
+    assert.equal(events, 1);
+  });
+
+  it("a repeat record of the same unit emits nothing", () => {
+    const s = new FakeStorage();
+    recordUnitComplete("math", "fair-share", s);
+    let events = 0;
+    const off = onSubjectProgressChanged(() => {
+      events += 1;
+    });
+    recordUnitComplete("math", "fair-share", s);
+    off();
+    assert.equal(events, 0, "the repeat changed nothing, so it announces nothing");
+  });
+
+  it("clear-one emits once, and only when the subject existed", () => {
+    const s = new FakeStorage();
+    recordUnitComplete("math", "fair-share", s);
+    recordUnitComplete("physics", "pendulum", s);
+    let events = 0;
+    const off = onSubjectProgressChanged(() => {
+      events += 1;
+    });
+    assert.equal(clearSubjectProgress("math", s), true);
+    assert.equal(events, 1, "removing a recorded subject announces itself exactly once");
+    assert.equal(clearSubjectProgress("math", s), true);
+    assert.equal(clearSubjectProgress("chemistry", s), true);
+    off();
+    assert.equal(events, 1, "clearing what is not there changes nothing and announces nothing");
+    assert.deepEqual(readSubjectProgress(s), { physics: ["pendulum"] });
+  });
+
+  it("clear-all emits once, and only when data existed", () => {
+    const s = new FakeStorage();
+    let events = 0;
+    const off = onSubjectProgressChanged(() => {
+      events += 1;
+    });
+    assert.equal(clearAllSubjectProgress(s), true);
+    assert.equal(events, 0, "an already-empty store announces nothing");
+    recordUnitComplete("math", "fair-share", s);
+    assert.equal(events, 1, "the record itself announced");
+    assert.equal(clearAllSubjectProgress(s), true);
+    assert.equal(events, 2, "the clear-all that removed data announces exactly once");
+    assert.equal(clearAllSubjectProgress(s), true);
+    off();
+    assert.equal(events, 2, "a second clear-all has nothing to remove and stays silent");
+  });
+
+  it("a cross-tab storage event for the progress key triggers listeners", () => {
+    // A minimal window stand-in holding just the listener
+    // registry the store's bridge uses (the grandpa-ask.test.ts
+    // pattern for stubbing window in these node tests).
+    type StorageHandler = (event: { key: string | null }) => void;
+    const handlers = new Set<StorageHandler>();
+    const fakeWindow = {
+      addEventListener: (type: string, fn: StorageHandler): void => {
+        if (type === "storage") handlers.add(fn);
+      },
+      removeEventListener: (type: string, fn: StorageHandler): void => {
+        if (type === "storage") handlers.delete(fn);
+      },
+    };
+    (globalThis as Record<string, unknown>).window = fakeWindow;
+    let off: () => void = () => {};
+    try {
+      let events = 0;
+      off = onSubjectProgressChanged(() => {
+        events += 1;
+      });
+      assert.equal(handlers.size, 1, "the bridge attaches with the first subscriber");
+      for (const fn of handlers) fn({ key: "meridian.unrelated" });
+      assert.equal(events, 0, "another key's change is not this store's");
+      for (const fn of handlers) fn({ key: SUBJECT_PROGRESS_KEY });
+      assert.equal(events, 1, "the progress key changing in another tab reaches this tab's listeners");
+    } finally {
+      off();
+      delete (globalThis as Record<string, unknown>).window;
+    }
+    assert.equal(handlers.size, 0, "the bridge detaches with the last subscriber");
+  });
+});
+
 describe("subject-progress wiring (source pins)", () => {
   const subjectCase = read("./SubjectCase.tsx");
   const picker = read("./SubjectPicker.tsx");

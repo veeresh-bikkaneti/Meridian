@@ -16,9 +16,12 @@
  * storage resolution it needs, means the first-load bundle
  * carries this one function instead of the whole picker store
  * (the entry-size budget's rule: subjects load lazily, so first
- * load should not grow). subject-progress.ts imports and
- * re-exports this module's clear and key, so the store's public
- * API still lives in one place.
+ * load should not grow). The one addition is the cleared hook
+ * below — a single function slot the picker store wires its
+ * change-bus emit into, so this clear announces itself without
+ * the bus moving into first load. subject-progress.ts imports
+ * and re-exports this module's clear and key, so the store's
+ * public API still lives in one place.
  */
 
 export const SUBJECT_PROGRESS_KEY = "meridian.subject-progress.v1";
@@ -42,6 +45,24 @@ export function resolveSubjectProgressStorage(
   }
 }
 
+// ---------------------------------------------------------------------------
+// The cleared hook. Every store change announces itself exactly
+// once, this clear included — but the change bus lives with the
+// picker store (src/subjects/shared/subject-progress.ts), which
+// this module may not import (subjects depend on game, never the
+// reverse). So the bus reaches back through this single slot:
+// subject-progress.ts wires its emit in at import, and a clear
+// that actually removed data calls it. One slot, one wiring —
+// the bus itself stays in one module.
+// ---------------------------------------------------------------------------
+
+let subjectProgressClearedHook: (() => void) | undefined;
+
+/** Wire the change bus's emit (called once, by subject-progress.ts). */
+export function setSubjectProgressClearedHook(hook: () => void): void {
+  subjectProgressClearedHook = hook;
+}
+
 /**
  * Clear every subject's record (the "Start over" reset's step).
  * Removal follows the other stores' precedent: where removal
@@ -50,15 +71,21 @@ export function resolveSubjectProgressStorage(
  * proves the store is empty — the raw key is either gone or
  * holds exactly the empty document the fallback writes.
  *
- * No change-bus event here (the bus lives in subject-progress.ts,
- * with the picker): a successful full reset closes the subjects
- * branch outright (GameApp's reset handler), so no mounted
- * picker is left showing stale progress, and a failed reset
- * cleared nothing there was to announce.
+ * The clear announces itself through the cleared hook exactly
+ * once, and only when data actually went away: the store held a
+ * non-empty document before and re-reads empty now. An
+ * already-empty store changes nothing and announces nothing,
+ * and a failed clear cleared nothing there was to announce.
  */
 export function clearAllSubjectProgress(storage?: SubjectProgressStorage): boolean {
   const s = resolveSubjectProgressStorage(storage);
   if (!s) return true; // No storage = nothing was ever persisted.
+  let rawBefore: string | null | undefined;
+  try {
+    rawBefore = s.getItem(SUBJECT_PROGRESS_KEY);
+  } catch {
+    rawBefore = undefined; // Unreadable: no change can be proven, so none is announced.
+  }
   try {
     s.removeItem(SUBJECT_PROGRESS_KEY);
   } catch {
@@ -70,7 +97,11 @@ export function clearAllSubjectProgress(storage?: SubjectProgressStorage): boole
   }
   try {
     const raw = s.getItem(SUBJECT_PROGRESS_KEY);
-    return raw === null || raw === "{}";
+    const empty = raw === null || raw === "{}";
+    // The hook is the bus's own emit, which isolates listener
+    // errors itself — a listener's failure never fails the clear.
+    if (empty && rawBefore && rawBefore !== "{}") subjectProgressClearedHook?.();
+    return empty;
   } catch {
     return false;
   }
