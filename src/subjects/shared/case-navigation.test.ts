@@ -1,6 +1,6 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -51,7 +51,6 @@ const here = dirname(fileURLToPath(import.meta.url));
 const read = (rel: string) => readFileSync(join(here, rel), "utf8");
 
 const gameApp = read("../../components/game-app.tsx");
-const screenShell = read("../../components/ui/screen-shell.tsx");
 const resetControl = read("../../components/reset-history-control.tsx");
 const subjectCase = read("./SubjectCase.tsx");
 const subjectPicker = read("./SubjectPicker.tsx");
@@ -94,19 +93,19 @@ describe("boot landing (defect 1)", () => {
 });
 
 describe("case screen game controls (defect 2)", () => {
-  it("ScreenShell renders a controls slot in the home bar, after the brand home control", () => {
-    assert.ok(screenShell.includes("controls?: ReactNode;"), "controls prop declared");
-    const bar = screenShell.slice(screenShell.indexOf("screen-home-bar"));
-    const homeAt = bar.indexOf("<BrandHomeButton");
-    const controlsAt = bar.indexOf("{controls}");
-    const soundAt = bar.indexOf("{sound}");
-    assert.ok(homeAt >= 0 && controlsAt > homeAt, "controls render after the BrandHomeButton");
-    assert.ok(soundAt > controlsAt, "controls render before the sound slot (GeoDetective order)");
-    assert.ok(!bar.includes("<HomeButton"), "no HomeButton pill in the shell header (fix/header-logo-home)");
+  it("the legacy ScreenShell file is deleted (PR 3 Step 4): no screen can adopt it again", () => {
     assert.ok(
-      screenShell.includes('import { BrandHomeButton } from "./home-button";'),
-      "the shell imports the brand control from the sanctioned home-control file",
+      !existsSync(join(here, "../../components/ui/screen-shell.tsx")),
+      "screen-shell.tsx is gone; screens use PageShell/SiteHeader",
     );
+    for (const [name, src] of [
+      ["game-app", gameApp],
+      ["SubjectCase", subjectCase],
+      ["SubjectPicker", subjectPicker],
+    ] as const) {
+      assert.ok(!src.includes("<ScreenShell"), `${name}: no ScreenShell use`);
+      assert.ok(!src.includes('from "@/components/ui/screen-shell"'), `${name}: no ScreenShell import`);
+    }
   });
 
   it("the picker no longer passes a wordmark as the shell sound slot", () => {

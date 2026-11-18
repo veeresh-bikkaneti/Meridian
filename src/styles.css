@@ -2130,16 +2130,6 @@ div.first-visit-queue-overlay {
     linear-gradient(180deg, var(--atlas-bg-1) 0%, var(--atlas-bg-2) 100%);
 }
 
-.screen-home-bar {
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  background: var(--bg, var(--atlas-bg-1));
-}
-.mode-screen:not(.why-learn-screen) .screen-home-bar {
-  background: var(--atlas-bg-1);
-}
-
 /* Brand home control (fix/header-logo-home): the shell header's home
    affordance is the homepage's brand lockup, so these rules mirror
    .home-v5 .hv5-brand / .hv5-mark / .hv5-word in home-v5.css (same

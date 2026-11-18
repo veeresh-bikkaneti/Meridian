@@ -14,7 +14,9 @@
  *    HomeButton, "Home", top-left, on every adopted screen). The
  *    controls themselves are NOT deleted: HomeButton still serves
  *    end-of-flow and HUD surfaces until their streams adopt the
- *    shell, and BrandHomeButton still serves ScreenShell. Those
+ *    shell. BrandHomeButton is kept in home-button.ts as a
+ *    component (PR 3 Step 4 kept it when ScreenShell was deleted);
+ *    no screen imports it to hand-roll a header. Those
  *    uses are baselined or owner-exempt below; this rule bans new
  *    imports everywhere else.
  * 2. Page-local <header> / <footer> elements outside the shared
@@ -108,10 +110,10 @@ const shellPlugin = {
 /** The shared components own the only sanctioned <header>/<footer>. */
 const HEADER_FOOTER_OWNERS = ["src/components/ui/site-header.tsx", "src/components/ui/site-footer.tsx"];
 
-/** The sanctioned hosts of the home controls themselves: SiteHeader
- *  (every adopted screen's header) and ScreenShell (the picker/case
- *  shell, frozen while PR 515 is in flight). */
-const HOME_CONTROL_OWNERS = ["src/components/ui/site-header.tsx", "src/components/ui/screen-shell.tsx"];
+/** The sanctioned host of the home control itself: SiteHeader
+ *  (every adopted screen's header). ScreenShell, the other host,
+ *  was deleted in PR 3 Step 4. */
+const HOME_CONTROL_OWNERS = ["src/components/ui/site-header.tsx"];
 
 function block(kind, ruleName, extraIgnores = []) {
   return {
