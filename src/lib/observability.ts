@@ -42,6 +42,7 @@ import { CURRENT_BUILD_ID } from "../game/build-staleness.ts";
 import { isUncleanShutdown, type CleanExitStorage } from "../game/clean-exit.ts";
 import { hasDurableMapCrashMarker, writeDurableMapCrashMarker } from "../map/capability.ts";
 import { parseRuntimeUA } from "./ua-parse.ts";
+import { isChunkLoadError, shouldReportChunkFailure } from "./chunk-recovery.ts";
 
 export const BREADCRUMB_KEY = "meridian.breadcrumb";
 export const MAX_HISTORY = 12;
@@ -1921,6 +1922,20 @@ export function createObservability(deps: ObservabilityDeps = {}): Observability
     try {
       const w = target ?? (typeof window !== "undefined" ? window : undefined);
       if (!w || typeof w.addEventListener !== "function") return;
+      // F3: chunk-load failures follow the shared reporting
+      // discipline — a first failure stays silent (the guarded
+      // reload gets it in silence); only the post-reload repeat
+      // reports. Non-chunk errors are untouched.
+      const chunkFailureSilent = (raw: unknown): boolean => {
+        if (!isChunkLoadError(raw)) return false;
+        let storage: { getItem: (key: string) => string | null } | null = null;
+        try {
+          storage = w.sessionStorage ?? null;
+        } catch {
+          storage = null;
+        }
+        return !shouldReportChunkFailure(storage, Date.now());
+      };
       w.addEventListener("error", (e: ErrorEvent) => {
         const sanitized = sanitizeError(e?.error ?? e?.message ?? "unknown error");
         if (isBenignBrowserNoise(sanitized.message)) {
@@ -1929,9 +1944,11 @@ export function createObservability(deps: ObservabilityDeps = {}): Observability
           // lastMilestone must keep describing game progress, not noise.
           return;
         }
+        if (chunkFailureSilent(e?.error ?? e?.message)) return;
         emit({ type: "js_error", ts: now(), buildId, error: sanitized, lastMilestone: breadcrumb?.lastMilestone });
       });
       w.addEventListener("unhandledrejection", (e: PromiseRejectionEvent) => {
+        if (chunkFailureSilent(e?.reason)) return;
         emit({ type: "unhandled_rejection", ts: now(), buildId, error: sanitizeError(e?.reason ?? "unhandled rejection"), lastMilestone: breadcrumb?.lastMilestone });
       });
     } catch {

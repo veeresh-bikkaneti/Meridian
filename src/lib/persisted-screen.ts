@@ -100,6 +100,12 @@ export function isPersistedScreen(surface?: string): boolean {
  */
 export function clearPersistedScreenOpen(surface?: string): void {
   if (surface === undefined) return;
+  // F1a: the retry marker is the operative boot-restore input (the
+  // 368 rule) — clearing only the persisted flag left the marker
+  // armed, so Home's clear could still resurrect the failed screen
+  // on the next boot. Clear both. (Try again re-arms both, in
+  // rearmPersistedScreenOpen below.)
+  clearRetryMarker();
   OPEN_WRITERS[surface]?.(false);
 }
 
