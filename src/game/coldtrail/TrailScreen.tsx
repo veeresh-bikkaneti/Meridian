@@ -192,7 +192,7 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
     // path it targets the case heading at the bottom of this file;
     // without the ref this branch silently dropped the focus landing.
     return (
-      <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 pt-2 pb-8" data-testid="coldtrail-screen">
+      <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-(--page-narrow) flex-col px-5 pt-2 pb-8" data-testid="coldtrail-screen">
         {/* The shared shell (PR 3 Step 3.5): even the fail-closed
             branch carries SiteHeader's one Home control, top-left,
             where every other screen puts it — the bottom-of-card
@@ -493,7 +493,7 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
   const placingNow = placing !== null;
 
   return (
-    <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 pt-2 pb-8 lg:max-w-6xl" data-testid="coldtrail-screen">
+    <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-(--page-narrow) flex-col px-5 pt-2 pb-8 lg:max-w-6xl" data-testid="coldtrail-screen">
       {/* The shared shell (PR 3 Step 3.5): SiteHeader carries the
           one Home control, the stars readout in its status slot and
           the one mute in its mute slot — the shell's fixed slot

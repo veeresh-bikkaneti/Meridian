@@ -570,6 +570,7 @@ describe("page-width tokens (PR 3 Step 4)", () => {
       "src/components/game-app.tsx",
       "src/components/boot-splash.tsx",
       "src/game/loop/LoopScreen.tsx",
+      "src/game/coldtrail/TrailScreen.tsx",
       "src/subjects/shared/SubjectCase.tsx",
       "src/subjects/shared/SubjectPicker.tsx",
     ]) {
@@ -588,6 +589,12 @@ describe("page-width tokens (PR 3 Step 4)", () => {
     // change, not a refactor. Component-local caps (cards, overlays,
     // sheets) are not page widths and stay literal too.
     assert.match(read("src/components/game-app.tsx"), /max-w-xl flex-col/);
+    // Same reason, Cold Trail's wide band: its healthy-path root
+    // widens to 72rem at the large breakpoint (lg:max-w-6xl). No
+    // token in the narrow/wide family holds 72rem, and converting
+    // it to --page-wide (80rem) would move the layout, so the
+    // literal stays — its base width is the token above.
+    assert.match(read("src/game/coldtrail/TrailScreen.tsx"), /lg:max-w-6xl/);
   });
 });
 
