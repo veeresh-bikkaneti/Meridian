@@ -14,4 +14,12 @@ export const TILE_FALLBACK_COPY = {
   switchNote: "We switched to Scout Map so you can keep playing.",
   /** GeoDetective: takes the map's place when the map pictures are off. */
   loopMapOff: "Map pictures are off for now. Your clues and guesses still work!",
+  /**
+   * Cold Trail: takes the map's place when the map is off. Truthful for
+   * this surface — Cold Trail's only input IS the map (rings are placed
+   * by tapping it), so it must not promise that guesses still work. The
+   * case and its sightings stay readable; ring placement is paused.
+   */
+  coldTrailMapOff:
+    "Map pictures are off for now. This case needs the map, so ring placement is paused — the case and sightings are still here to read.",
 } as const;

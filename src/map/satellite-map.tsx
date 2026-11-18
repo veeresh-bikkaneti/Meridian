@@ -24,6 +24,8 @@ import { ScoutFallbackMap } from "./scout-fallback.tsx";
 import { isCoarsePointer, mapOptionsForDevice, revealZoomCap, settleZoomCap, SCOUT_MAX_ZOOM_FLAT, SCOUT_MAX_ZOOM_GLOBE } from "./map-options.ts";
 import { SCOUT_UPGRADE_SOAK_MS, type MapMode } from "./capability.ts";
 import { emitTileFailed, emitWebglContextLost, recordMilestone, recordTileErrors } from "@/lib/observability";
+import { isWebgl2Unavailable } from "@/lib/webgl2-unavailable";
+export { isWebgl2Unavailable } from "@/lib/webgl2-unavailable";
 import { createTapTracker } from "./tap-tracker.ts";
 import { INITIAL_TILE_STATUS, tileStatusReducer, type TileStatus } from "./tile-status.ts";
 import { nextTileFallbackAction } from "./tile-fallback.ts";
@@ -654,6 +656,21 @@ export function SatelliteMap(props: {
     if (scoutFallback && props.variation) onRevealCompleteRef.current?.();
   }, [scoutFallback, props.variation]);
 
+  // WebGL2 arena fix: engaging the static fallback must leave it PLAYABLE.
+  // The wrapper stays inert / aria-hidden for the whole intro beat, and
+  // only controller intents release it — but a construction failure means
+  // no controller ever runs, so the fallback rendered inert with the tile
+  // status wedged at "loading" (spinner forever) and live-but-dead zoom
+  // buttons. Release the intro gate here (this covers every engagement
+  // path: the construction catch below and the scout-mode error handler)
+  // and settle a still-loading tile status to its verdict: no tile set
+  // was ever requested for the fallback, so the verdict is "ready".
+  useEffect(() => {
+    if (!scoutFallback) return;
+    setIntroActive(false);
+    if (tileStatus.kind === "loading") dispatchTile({ type: "map-idle" });
+  }, [scoutFallback, tileStatus.kind]);
+
   // PBI-8: tile_failed counts ride the crash-report breadcrumb (suggestive
   // only — the settled constraint forbids switching on them).
   useEffect(() => {
@@ -900,6 +917,9 @@ export function SatelliteMap(props: {
     // PBI-4: construction can throw on a dead GL context — in scout mode
     // that drops to the static SVG fallback (the game stays playable);
     // full mode keeps the existing behavior (the error boundary owns it).
+    // WebGL2 fix: the one full-mode exception is a missing WebGL2 — that
+    // is permanent on the device, so it takes the same static fallback
+    // instead of the boundary's reload card (see isWebgl2Unavailable).
     let map: Map;
     try {
       map = new Map({
@@ -952,7 +972,11 @@ export function SatelliteMap(props: {
       renderWorldCopies: props.mode === "flat",
       });
     } catch (err) {
-      if (mapMode !== "scout") throw err;
+      if (mapMode !== "scout" && !isWebgl2Unavailable(err)) throw err;
+      // Engaging the fallback: release the intro gate and settle the tile
+      // status right here too (the scoutFallback effect does the same for
+      // the scout-mode error path, which has no catch to land in).
+      setIntroActive(false);
       setScoutFallback(true);
       return;
     }
@@ -2107,7 +2131,11 @@ export function SatelliteMap(props: {
           )}
         </div>
       )}
-      <ZoomControls zoom={zoom} onZoomIn={handleZoomIn} onZoomOut={handleZoomOut} />
+      {/* The static fallback has no camera: zoom buttons would be live
+          no-ops, so they are hidden while it owns the surface. */}
+      {!scoutFallback && (
+        <ZoomControls zoom={zoom} onZoomIn={handleZoomIn} onZoomOut={handleZoomOut} />
+      )}
       {/* Zoom-space announcements (design §1): the controller's `announce`
           intents post here — "Space view" / "<Region> view" at the threshold
           crossings — reusing the M10 sr-only live-region pattern. */}
