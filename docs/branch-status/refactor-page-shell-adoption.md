@@ -626,6 +626,23 @@ nothing else changed (no features, no design changes).
   to retrigger CI) follows. The completed run's id, head SHA
   and per-job conclusions are reported with this cure round
   and appended below once finished.
+  - **Cure 1 outcome [measured]:** the retrigger push
+    (b922e632), an empty commit (c7b331cc) AND a close/reopen
+    of the PR each produced zero runs — the `pull_request`
+    event path stayed dropped for this PR (GitGuardian's app
+    checks landed on every head within seconds throughout, so
+    event delivery itself was alive; scheduled watchdog runs
+    also fired). Cure landed: `workflow_dispatch:` added to
+    `node.js.yml` (39c5327c, one trigger line + comment — the
+    brief's preferred path, made to exist), then
+    `gh workflow run "Node.js CI" --ref
+    refactor/page-shell-adoption`. **Run 44315401754, head
+    39c5327c, completed SUCCESS: build (22.x) success, e2e
+    success** — both jobs that failed on e60fe7a3 (npm test;
+    layout-overflow 1280 scrollWidth) pass on the cured tip.
+    This addendum commit is docs-only on top of 39c5327c; its
+    own dispatched run is reported with the cure round (a
+    docs commit cannot cite its own run id).
 - **Cure 2 — capture evidence completed.**
   `~/workspace/verify-evidence-shell-part2/measurements.json`
   now holds ALL 40 records (Home, Privacy, Why Learn, in-game
