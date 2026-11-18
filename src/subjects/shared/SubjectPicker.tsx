@@ -75,6 +75,12 @@ import { CardFilm } from "@/components/card-film";
 import type { CelebrationSpec } from "@/components/celebration-copy";
 import { SUBJECT_CARD_MEDIA, SUBJECT_CARD_STILLS } from "@/assets/why-learn/subject-card-media";
 import { pickerRows } from "./picker-rows";
+import {
+  clearSubjectProgress,
+  onSubjectProgressChanged,
+  readSubjectProgress,
+  type SubjectProgress,
+} from "./subject-progress";
 import { SiteHeader } from "@/components/ui/site-header";
 import { SiteFooter } from "@/components/ui/site-footer";
 import { Button } from "@/components/ui/button";
@@ -171,6 +177,15 @@ export default function SubjectPicker({
   const [listFailed, setListFailed] = useState(false);
   const [opened, setOpened] = useState<{ title: string; Case: CaseComponent } | null>(null);
   const [openFailed, setOpenFailed] = useState<string | null>(null);
+  // Per-subject progress (subject-progress.ts): which subjects
+  // have a solved unit recorded. It drives each card's Reset
+  // control — disabled while a subject has nothing to reset —
+  // and follows the store's change bus, so a solve recorded by
+  // an opened case (or a reset tapped here) shows on return.
+  const [subjectProgress, setSubjectProgress] = useState<SubjectProgress>(() => readSubjectProgress());
+  const [resetNotice, setResetNotice] = useState<string | null>(null);
+
+  useEffect(() => onSubjectProgressChanged(() => setSubjectProgress(readSubjectProgress())), []);
   const headingRef = useRef<HTMLHeadingElement | null>(null);
   const bandBarRef = useRef<HTMLDivElement | null>(null);
 
@@ -371,8 +386,9 @@ export default function SubjectPicker({
           const media = SUBJECT_CARD_MEDIA[row.id];
           const stillUrl = SUBJECT_CARD_STILLS[row.id];
           const riseDelay = `${RISE_DELAYS_MS[i] ?? 1500}ms`;
+          const hasProgress = (subjectProgress[row.id]?.length ?? 0) > 0;
           return (
-            <li key={row.id} className="flex">
+            <li key={row.id} className="relative flex">
               <button
                 type="button"
                 className={`why-learn-card home-rise flex w-full flex-col p-4 text-left text-fg${ready ? "" : " is-soon"}${spotIndex === i ? " is-spot" : ""}`}
@@ -433,6 +449,27 @@ export default function SubjectPicker({
                   </span>
                 </span>
               </button>
+              {/* Per-subject Reset (owner, 2026-11-17: "reset should
+                  be allowed per subject"): a sibling of the card's
+                  open button, never nested inside it, resting at
+                  the card's bottom-right. One tap clears ONLY this
+                  subject's recorded progress; it is disabled while
+                  the subject has nothing recorded. The outcome is
+                  announced through the status line below the grid. */}
+              <button
+                type="button"
+                className="absolute right-3 bottom-3 z-10 rounded-full border border-line px-2.5 py-1 text-xs text-muted"
+                data-testid={`subject-reset-${row.id}`}
+                aria-label={`Reset ${row.title}`}
+                disabled={!hasProgress}
+                onClick={() => {
+                  clearSubjectProgress(row.id);
+                  setSubjectProgress(readSubjectProgress());
+                  setResetNotice(`${row.title} reset`);
+                }}
+              >
+                Reset
+              </button>
             </li>
           );
         })}
@@ -440,6 +477,11 @@ export default function SubjectPicker({
       {openFailed ? (
         <p className="mt-3 text-sm text-fg" role="status">
           {openFailed} could not load just now. Try again in a moment.
+        </p>
+      ) : null}
+      {resetNotice ? (
+        <p className="mt-3 text-sm text-fg" role="status">
+          {resetNotice}
         </p>
       ) : null}
       {/* The game's "Start over" reset, alone in a separated block —

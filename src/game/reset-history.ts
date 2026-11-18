@@ -24,6 +24,13 @@
  * locked text (manifest 2026-10-28 §4) and is NOT reworded here;
  * the label/copy question is flagged for the owner in the PR.
  *
+ * Amendment (2026-11-18): the per-subject progress store (the
+ * Why Learn picker's solved-unit records, owned by
+ * subject-progress.ts) joins the wipe as the "subject-progress"
+ * step, through its owner module's clear-all — a full reset
+ * leaves no subject progress behind, exactly as the per-subject
+ * Reset on each picker card clears just its own subject.
+ *
  * The one exception to "no raw key removal here" is the paused-run keys
  * (`meridian.run` / `meridian.run.mc2` / `meridian.run.mc3` / `meridian.drop`, the "paused-run" step below): those
  * keys have no owner module — they live in the UI layer
@@ -46,6 +53,10 @@ import {
   validateProfile,
   PROFILE_STORAGE_KEY,
 } from "./age-profile/store.ts";
+import {
+  clearAllSubjectProgress,
+  readSubjectProgress,
+} from "../subjects/shared/subject-progress.ts";
 
 export type ResetStorage = {
   getItem(key: string): string | null;
@@ -140,6 +151,10 @@ export function resetHistory(
     // U-R6). Its change event is what drops the picker back to
     // the first-run band pills in place.
     { store: "age-profile", clear: () => clearAgeProfileForReset(local) },
+    // Per-subject progress (the Why Learn picker's solved-unit
+    // records) joins the wipe through its owner module's
+    // clear-all, in this composition's injected-storage pattern.
+    { store: "subject-progress", clear: () => clearAllSubjectProgress(local) },
   ];
   const cleared: string[] = [];
   const failed: { store: string }[] = [];
@@ -188,6 +203,11 @@ export function resetHistory(
     if (raw !== null && raw !== undefined && raw !== "") moveToFailed("session");
   } catch {
     moveToFailed("session");
+  }
+  try {
+    if (Object.keys(readSubjectProgress(local)).length > 0) moveToFailed("subject-progress");
+  } catch {
+    moveToFailed("subject-progress");
   }
   try {
     const raw = local?.getItem(PROFILE_STORAGE_KEY);

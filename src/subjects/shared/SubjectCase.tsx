@@ -96,6 +96,7 @@ import { Button } from "@/components/ui/button";
 import { SiteHeader } from "@/components/ui/site-header";
 import type { ResetHistoryResult } from "@/game/reset-history";
 import { advanceCasePhase, type AnswerFor, type CasePhase } from "./answer";
+import { recordUnitComplete } from "./subject-progress";
 
 // Holmes & Watson in the subject case: lazy, like the other pair
 // hosts, so the pair's chunk is fetched only when a subject case
@@ -272,6 +273,11 @@ export function SubjectCase({
   const onCorrect = () => {
     setPhase((p) => advanceCasePhase(answer, p, true));
     setPicked(null);
+    // Per-subject progress (subject-progress.ts): a correct pick
+    // in the main phase solves the unit, so record it under this
+    // case's subject (testIdPrefix is the registry subject id).
+    // The store's set semantics make a repeat record a no-op.
+    if (phase === "main") recordUnitComplete(testIdPrefix, item.id);
     if (phase === "main" && onCelebrate && !hasCelebratedFirstWin()) {
       markFirstWinCelebrated();
       onCelebrate(celebrationSpec("mystery-solved", "first-win"));
