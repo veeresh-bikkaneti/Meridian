@@ -4,6 +4,7 @@ import { formatLength, unitForLoopTarget } from "@/game/units";
 import { preloadTerritory } from "@/game/territory";
 import { Button } from "@/components/ui/button";
 import { SiteHeader } from "@/components/ui/site-header";
+import { SiteFooter } from "@/components/ui/site-footer";
 import { SoundToggle } from "@/components/SoundToggle";
 import { FlagImg } from "@/components/flag-img";
 import { flagEntry } from "@/lib/flag-registry";
@@ -217,6 +218,9 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
         <p className="mt-4 text-fg" role="alert">
           The case files didn&rsquo;t load. No case to play right now.
         </p>
+        {/* The shared footer (footer standardization, 2026-11-18),
+            as on the trail screen below. */}
+        <SiteFooter />
       </main>
     );
   }
@@ -746,6 +750,10 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
           </Button>
         </section>
       ) : null}
+      {/* The shared footer (footer standardization, 2026-11-18):
+          SiteFooter + Grandpa's band in page flow below the play
+          surface — never over the map or the sighting cards. */}
+      <SiteFooter />
     </main>
   );
 }
