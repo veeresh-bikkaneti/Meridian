@@ -131,17 +131,24 @@ function playFile(file: string, userInitiated: boolean): void {
   if (!claim) return;
   voiceClaim = claim;
   playCough();
-  const audio = new Audio(clipUrl(file));
-  current = audio;
-  const settle = () => {
-    if (current === audio) stopNarration();
-  };
-  audio.onended = settle;
-  audio.onerror = settle;
-  coughTimer = window.setTimeout(() => {
-    if (current !== audio || !soundOn()) return;
-    void audio.play().catch(settle);
-  }, 420);
+  try {
+    const audio = new Audio(clipUrl(file));
+    current = audio;
+    const settle = () => {
+      if (current === audio) stopNarration();
+    };
+    audio.onended = settle;
+    audio.onerror = settle;
+    coughTimer = window.setTimeout(() => {
+      if (current !== audio || !soundOn()) return;
+      void audio.play().catch(settle);
+    }, 420);
+  } catch {
+    // Audio unavailable (no Audio constructor in this environment) —
+    // the line is a silent no-op, and the voice claim is released so
+    // the channel is never held by a sound that cannot play.
+    stopNarration();
+  }
 }
 
 /** The trail line that matches the caption on screen. */

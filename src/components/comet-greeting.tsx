@@ -7,7 +7,7 @@ import {
   COMET_GREETING_LINES,
   greetingAudioUrl,
   greetingIndexFor,
-} from "./comet-greetings";
+} from "./comet-greetings.ts";
 
 // Designer decisions (locked):
 // 1. Sound ON: audio + text together, audio leads by ~150ms; text reveals

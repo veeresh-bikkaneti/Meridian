@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import { CometGreeting } from "./comet-greeting";
+import { CometGreeting } from "./comet-greeting.tsx";
 import "./comet-mascot.css";
 
 // Palette matches the Chart Room theme (sea-chart ink + brass on deep sea),
