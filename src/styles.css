@@ -2307,6 +2307,19 @@ body:has(> header.site-header) {
   height: auto;
   min-height: 100%;
 }
+/* The Why Learn drift lift does to these screens what the atlas
+ * lift does to Home (mechanism 1 again): .why-learn-screen >
+ * header forces position: relative so the header rides above the
+ * drift layer, and it outranks the plain .site-header rule — on
+ * the picker and the subject case the bar scrolled away
+ * (measured headerY −592 at 600px of scroll). Claim sticky back
+ * at the lift's own weight, with the header's own layer, in the
+ * shell's styles. The lift is untouched for every other child. */
+.why-learn-screen > header.site-header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
+}
 .atlas-home > header.site-header[data-menu-open="true"] {
   z-index: var(--z-menu);
 }

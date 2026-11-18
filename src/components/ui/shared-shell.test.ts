@@ -147,6 +147,9 @@ describe("SiteHeader", () => {
     // lift's own weight (Phase A mechanism 1).
     assert.match(css, /\.site-header \{\s[^}]*position: sticky;/);
     assert.match(css, /\.atlas-home > header\.site-header \{\s[^}]*position: sticky;/);
+    // Same reclaim against the Why Learn drift lift, which also
+    // forces position: relative on the header.
+    assert.match(css, /\.why-learn-screen > header\.site-header \{\s+position: sticky;/);
     // Scroll-offset contract as a token (mechanism: no anchor
     // landing hides under the bar).
     assert.match(css, /scroll-padding-top: calc\(var\(--header-height\) \+ 12px\)/);
