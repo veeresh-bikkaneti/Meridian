@@ -612,6 +612,42 @@ describe("shell-ban baseline (KNOWN/STALE)", () => {
     assert.match(read("eslint.nav.config.mjs"), /shellBanConfigs/);
   });
 
+  // Frozen baselines (PR 3 Step 5 cure): the staleness check alone
+  // cannot stop a baseline from GROWING — an entry added to cover a
+  // genuinely-violating new file would still "still violate" and
+  // pass. So every list is frozen exactly, the registry pattern:
+  // adding or removing an entry fails here until a person edits
+  // this record on purpose, in the same change that cures a file.
+  const FROZEN_BASELINE: Record<string, string[]> = {
+    homeButtonImport: ["src/components/game-app.tsx", "src/game/loop/LoopScreen.tsx", "src/subjects/shared/SubjectCase.tsx"],
+    maxWNone: ["src/subjects/shared/SubjectPicker.tsx"],
+    pageLocalHeaderFooter: [],
+    pageLocalNav: ["src/components/grownups/info-page.tsx", "src/routes/board.tsx"],
+    pageLocalMain: [
+      "src/components/boot-splash.tsx",
+      "src/components/game-app.tsx",
+      "src/components/grownups/info-page.tsx",
+      "src/game/coldtrail/TrailScreen.tsx",
+      "src/game/loop/LoopScreen.tsx",
+      "src/lib/error-component.tsx",
+      "src/routes/board.tsx",
+      "src/subjects/shared/SubjectCase.tsx",
+      "src/subjects/shared/SubjectPicker.tsx",
+    ],
+  };
+
+  it("every baseline list matches its frozen record exactly — growing a baseline goes red", () => {
+    const kinds = Object.keys(baseline).filter((k) => k !== "comment").sort();
+    assert.deepEqual(kinds, Object.keys(FROZEN_BASELINE).sort(), "a baseline kind was added or removed");
+    for (const [kind, frozen] of Object.entries(FROZEN_BASELINE)) {
+      assert.deepEqual(
+        [...(baseline[kind] ?? [])].sort(),
+        [...frozen].sort(),
+        `${kind} baseline changed: shrink it only by curing a file and editing the frozen record in the same change`,
+      );
+    }
+  });
+
   it("every baselined file still violates — a cured file's entry is stale and must be removed", () => {
     for (const [kind, files] of Object.entries(baseline)) {
       if (kind === "comment") continue;
