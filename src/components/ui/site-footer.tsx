@@ -31,12 +31,25 @@
  * if analytics, ads or accounts are ever added, update this note and
  * /privacy in the same PR (the rule on the home footer's copy).
  */
-import type { ReactNode } from "react";
+import { Suspense, lazy, type ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { cn } from "@/lib/cn";
 import { FOOTER_ROUTE_LINKS } from "./site-links.ts";
-import { GrandpaCoffeeRun } from "../grandpa-coffee-run.tsx";
 import "../age-profile/age-profile.css";
+
+// The Grandpa scene is part of this footer's composition, but it is
+// lazy-loaded: the footer itself rides in the entry bundle (every
+// shell renders it), while the animated scene — figure, trail,
+// speech and its audio helpers — must not. Until the scene chunk
+// arrives the band renders empty and its :empty rule collapses it,
+// exactly like the offline / no-Ko-fi states; the scene then fades
+// in at the page foot. (On Home the scene used to arrive with the
+// lazy game-app chunk; this keeps the same weight class.)
+const GrandpaCoffeeRun = lazy(() =>
+  import("../grandpa-coffee-run.tsx").then((m) => ({
+    default: m.GrandpaCoffeeRun,
+  })),
+);
 
 export type SiteFooterProps = {
   /** Rendered first inside the footer (home: ReadAloudPrefSettings). */
@@ -118,7 +131,9 @@ export function SiteFooter({
           className="grandpa-band"
           {...(grandpaAnchor ? { id: "home-involved", tabIndex: -1 } : {})}
         >
-          <GrandpaCoffeeRun tastingTour={grandpaTour} />
+          <Suspense fallback={null}>
+            <GrandpaCoffeeRun tastingTour={grandpaTour} />
+          </Suspense>
         </div>
       ) : null}
     </>
