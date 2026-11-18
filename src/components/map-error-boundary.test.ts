@@ -131,3 +131,42 @@ describe("#210 boundary probes staleness and routes to the update prompt", () =>
     );
   });
 });
+
+describe("chunk skew: the boundary recovers itself and reports only the post-reload repeat", () => {
+  it("a confirmed-stale chunk failure issues the guarded reload from the probe path", () => {
+    assert.ok(
+      boundarySource.includes("attemptGuardedChunkReload({"),
+      "the probe's stale verdict must attempt the guarded chunk reload",
+    );
+    const probe = segment(boundarySource, "private startStaleProbe", "private focusAlert");
+    assert.ok(
+      probe.includes("isChunkLoadError(error)"),
+      "the self-reload is scoped to chunk-load failures, not render errors",
+    );
+    assert.ok(
+      probe.includes("rearmPersistedScreenOpen(this.props.surface)"),
+      "the reload must re-arm the persisted screen so the fresh shell restores it",
+    );
+  });
+
+  it("the catch reports through the chunk-aware rule, never directly", () => {
+    const caught = segment(boundarySource, "componentDidCatch", "private reportError");
+    assert.ok(
+      caught.includes("this.reportError(error);"),
+      "componentDidCatch must route reporting through reportError",
+    );
+    assert.ok(
+      !caught.includes("emitMapError(error);"),
+      "componentDidCatch must not file a crash report unconditionally",
+    );
+    const report = segment(boundarySource, "private reportError", "private startStaleProbe");
+    assert.ok(
+      report.includes("isChunkLoadError(error)"),
+      "the report rule must classify chunk-load failures",
+    );
+    assert.ok(
+      report.includes("CHUNK_RELOAD_KEY") && report.includes("CHUNK_EPISODE_MAX_AGE_MS"),
+      "a chunk failure is reported only with a fresh reload stamp (the post-reload repeat)",
+    );
+  });
+});

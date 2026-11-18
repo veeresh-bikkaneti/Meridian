@@ -1,7 +1,13 @@
 import { Component, createRef, type ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import { HomeButton } from "@/components/ui/home-button";
-import { markChunkReloadNotice } from "@/lib/chunk-recovery";
+import {
+  attemptGuardedChunkReload,
+  CHUNK_EPISODE_MAX_AGE_MS,
+  CHUNK_RELOAD_KEY,
+  isChunkLoadError,
+  markChunkReloadNotice,
+} from "@/lib/chunk-recovery";
 import {
   clearPersistedScreenOpen,
   isPersistedScreen,
@@ -9,6 +15,7 @@ import {
 } from "@/lib/persisted-screen";
 import { emitMapError } from "@/lib/observability";
 import { isNewBuildDeployed } from "@/game/build-staleness";
+import { CURRENT_BUILD_ID } from "@/game/build-staleness";
 
 /**
  * Error boundary around the lazily-loaded screens and map (P0 Safari
@@ -46,10 +53,15 @@ import { isNewBuildDeployed } from "@/game/build-staleness";
  * The probe never blocks the card: the neutral card renders at once
  * and swaps in place if the probe lands stale (the probe itself is
  * bounded at 8 s inside build-staleness). It fails closed — any probe
- * problem keeps the neutral card. While the separate chunk-recovery
- * handler (#245) may auto-reload a stale tab on its own schedule,
- * this card remains the player's own visible, tappable recovery for
- * as long as it is on screen.
+ * problem keeps the neutral card. For a chunk-load failure with a
+ * stale verdict the boundary also issues the guarded one-time reload
+ * itself (attemptGuardedChunkReload): the chunk-recovery handler
+ * (#245) defers to this card's stale copy as "the app's own offer",
+ * so without this the two recoveries deadlock and only a manual tap
+ * recovers (the 2026-11-17 LoopScreen crash). When the guard refuses
+ * — the episode already reloaded once — this card remains the
+ * player's own visible, tappable recovery for as long as it is on
+ * screen.
  *
  * The Refresh offer is one-shot per tab, like every other stale
  * surface: `meridian.staleRefresh` (the same key game-app.tsx uses)
@@ -122,11 +134,41 @@ export class MapErrorBoundary extends Component<
     clearPersistedScreenOpen(this.props.surface);
     // Leave a trace for diagnosis; the UI below is what the player sees.
     console.error("[meridian] satellite map failed:", error);
-    // Observability: report on the shared endpoint-gated path (name +
-    // truncated message only — see src/lib/observability.ts). No-op
-    // until an endpoint is configured in flags.json.
-    emitMapError(error);
+    this.reportError(error);
     this.startStaleProbe(error);
+  }
+
+  /** Observability: report on the shared endpoint-gated path (name +
+   *  truncated message only — see src/lib/observability.ts). No-op
+   *  until an endpoint is configured in flags.json.
+   *
+   *  A chunk-load failure is the exception: it is recoverable version
+   *  skew until proven otherwise, and the guarded reload (the
+   *  chunk-recovery handler, or this boundary's own stale-probe path
+   *  below) gets the first failure in silence — a skew the reload
+   *  heals must not file a crash report. The failure is reported
+   *  only when it is the post-reload repeat: a fresh chunk-reload
+   *  stamp in sessionStorage means a guarded reload already happened
+   *  and the chunk still failed, so the build is genuinely broken.
+   *  When storage itself is unreadable the reload cannot be verified
+   *  either, so the failure is reported rather than swallowed. */
+  private reportError(error: Error): void {
+    if (!isChunkLoadError(error)) {
+      emitMapError(error);
+      return;
+    }
+    try {
+      const raw = window.sessionStorage.getItem(CHUNK_RELOAD_KEY);
+      const stamp = raw === null ? NaN : Number(raw);
+      if (
+        Number.isFinite(stamp) &&
+        Date.now() - stamp <= CHUNK_EPISODE_MAX_AGE_MS
+      ) {
+        emitMapError(error);
+      }
+    } catch {
+      emitMapError(error);
+    }
   }
 
   /** #210: ask once per error whether a newer build is deployed.
@@ -144,6 +186,23 @@ export class MapErrorBoundary extends Component<
     void probe()
       .then((stale) => {
         if (!this.unmounted && stale) this.setState({ staleBuild: true });
+        if (!this.unmounted && stale && isChunkLoadError(error)) {
+          // Confirmed chunk skew recovers itself (2026-11-17): the
+          // guarded one-time reload onto the fresh shell. This card's
+          // own stale copy makes the chunk-recovery handler stand
+          // down (it defers to any on-screen stale offer), so leaving
+          // the reload to that handler deadlocks — the player stays
+          // on this card unless they tap Refresh. If the guard
+          // refuses (this episode already reloaded once, or the
+          // stamp could not be verified), the stale card just set
+          // above remains as the manual path. The persisted screen is
+          // re-armed inside the reload, so the fresh shell restores
+          // the screen the player asked for.
+          attemptGuardedChunkReload({
+            buildId: CURRENT_BUILD_ID,
+            beforeReload: () => rearmPersistedScreenOpen(this.props.surface),
+          });
+        }
       })
       .catch(() => {
         // Fail closed: a probe problem keeps the neutral card.

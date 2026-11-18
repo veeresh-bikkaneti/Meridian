@@ -784,6 +784,139 @@ export function installChunkLoadRecovery(
   });
 }
 
+/** Host seam for {@link attemptGuardedChunkReload}: the slice of the
+ *  recovery host the one-time reload needs, plus outcome wiring. */
+export interface ChunkReloadAttemptHost {
+  storage: ChunkRecoveryHost["storage"];
+  reload: () => void;
+  now: () => number;
+  /** Build id for the Slice 2 outcome marker (see install). */
+  buildId?: string;
+  /** Runs after the stamp verifies, immediately before the reload —
+   *  e.g. the error boundary re-arming a persisted screen so the
+   *  reload restores it. A throw is swallowed: it must never block
+   *  the reload it precedes. */
+  beforeReload?: () => void;
+}
+
+function defaultAttemptHost(): ChunkReloadAttemptHost | null {
+  if (typeof window === "undefined") return null;
+  let storage: ChunkRecoveryHost["storage"] = null;
+  try {
+    storage = window.sessionStorage;
+  } catch {
+    storage = null;
+  }
+  return {
+    storage,
+    reload: () => window.location.reload(),
+    now: () => Date.now(),
+  };
+}
+
+/**
+ * The guarded one-time reload, callable outside the install closure:
+ * reload onto the fresh shell at most once per episode, under the
+ * same stamp discipline as the auto-recovery decision above.
+ *
+ * Why this exists (the 2026-11-17 LoopScreen crash): a mid-session
+ * deploy rotated the hashed chunks and the old tab's lazy import
+ * 404'd. The bundler event fired and this module's handler started
+ * its decision window — but the error boundary's staleness probe
+ * confirmed the new build first and swapped its card to the stale
+ * offer copy, and the decision above defers to ANY on-screen stale
+ * offer, so it stood down (and reported the stand-down as the
+ * outcome). The card's Refresh is a manual tap; a player who never
+ * taps is never recovered, and the boundary had already filed the
+ * failure as a crash. The two recoveries deadlocked by each deferring
+ * to the other. The boundary now calls this when its own probe
+ * confirms staleness for a chunk-load failure: the same verified
+ * stamp, the same episode latch, the same notice and outcome marker
+ * as the auto-reload — so whichever path fires first reloads exactly
+ * once, and the other finds the stamp fresh and stands down.
+ *
+ * Returns true when the reload was issued. Returns false — and does
+ * not reload — when a fresh stamp says this episode already used its
+ * reload (a chunk that still fails after it is genuinely broken, and
+ * the caller keeps its manual recovery card), when the stamp is too
+ * old to judge (it is cleared best-effort and the reload proceeds —
+ * the install-time stale rule), or when the stamp cannot be persisted
+ * and read back verified (no unrememberable reloads, as in decide()).
+ */
+export function attemptGuardedChunkReload(hostArg?: Partial<ChunkReloadAttemptHost>): boolean {
+  // A partial host (the boundary passes only its build id and its
+  // pre-reload hook) is completed from the window defaults; an
+  // explicitly null storage is honoured, never overridden.
+  const defaults = defaultAttemptHost();
+  const host: ChunkReloadAttemptHost | null = hostArg
+    ? {
+        storage: hostArg.storage !== undefined ? hostArg.storage : (defaults?.storage ?? null),
+        reload: hostArg.reload ?? defaults?.reload ?? (() => {}),
+        now: hostArg.now ?? defaults?.now ?? (() => Date.now()),
+        buildId: hostArg.buildId,
+        beforeReload: hostArg.beforeReload,
+      }
+    : defaults;
+  if (!host || !host.storage) return false;
+  const storage = host.storage;
+  try {
+    const at = host.now();
+    const raw = storage.getItem(CHUNK_RELOAD_KEY);
+    const stamp = raw === null ? NaN : Number(raw);
+    if (Number.isFinite(stamp)) {
+      if (at - stamp <= CHUNK_EPISODE_MAX_AGE_MS) return false;
+      // Stale stamp: not evidence of a reload in this episode.
+      try {
+        storage.removeItem(CHUNK_RELOAD_KEY);
+      } catch {
+        // Best-effort, as everywhere in this module.
+      }
+    }
+    storage.setItem(CHUNK_RELOAD_KEY, String(at));
+    if (storage.getItem(CHUNK_RELOAD_KEY) !== String(at)) {
+      try {
+        storage.removeItem(CHUNK_RELOAD_KEY);
+      } catch {
+        // Best-effort cleanup of the unverifiable stamp.
+      }
+      return false;
+    }
+    // The outcome marker rides the verified reload exactly as in
+    // decide(); its write is isolated and never affects the reload.
+    try {
+      const shape = { v: 1, at, build: host.buildId ?? "unknown" };
+      storage.setItem(CHUNK_RECOVERY_KEY, JSON.stringify(shape));
+      const back = storage.getItem(CHUNK_RECOVERY_KEY);
+      const parsed = back ? (JSON.parse(back) as Record<string, unknown> | null) : null;
+      if (!parsed || parsed.v !== shape.v || parsed.at !== shape.at || parsed.build !== shape.build) {
+        storage.removeItem(CHUNK_RECOVERY_KEY);
+      }
+    } catch {
+      try {
+        storage.removeItem(CHUNK_RECOVERY_KEY);
+      } catch {
+        // Best-effort cleanup.
+      }
+    }
+    try {
+      storage.setItem(CHUNK_RELOAD_NOTICE_KEY, String(at));
+    } catch {
+      // A blocked store loses the notice, never the reload.
+    }
+    if (host.beforeReload) {
+      try {
+        host.beforeReload();
+      } catch {
+        // The hook must never block the reload it precedes.
+      }
+    }
+    host.reload();
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 /**
  * Record that a reload is about to happen, so the next boot can
  * explain it (the post-reload notice). Called by the auto-reload

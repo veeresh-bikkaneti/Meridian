@@ -1743,3 +1743,53 @@ test("15-U: the module source pins both scoped sentences verbatim and bans the o
   assert.equal(src.includes("consumes it exactly once"), false);
   assert.equal(src.includes("true exactly once"), false);
 });
+
+test("16-U: attemptGuardedChunkReload reloads once on a fresh episode and writes stamp, notice and marker together", () => {
+  const f = fakeHost(T0);
+  const attemptHost = { ...f.host, buildId: "build-a" };
+  assert.equal(chunkRecovery.attemptGuardedChunkReload(attemptHost), true);
+  assert.equal(f.state.reloads, 1);
+  assert.equal(f.store.get(CHUNK_RELOAD_KEY), String(T0));
+  assert.equal(f.store.get(NOTICE_KEY), String(T0));
+  const marker = JSON.parse(f.store.get(CHUNK_RECOVERY_KEY) ?? "null") as { v?: unknown; at?: unknown; build?: unknown } | null;
+  assert.deepEqual(marker, { v: 1, at: T0, build: "build-a" });
+  // The episode latch: a second attempt inside the episode refuses.
+  assert.equal(chunkRecovery.attemptGuardedChunkReload(attemptHost), false);
+  assert.equal(f.state.reloads, 1);
+});
+
+test("16-U: attemptGuardedChunkReload refuses when a fresh stamp says this episode already reloaded", () => {
+  const f = fakeHost(T0);
+  f.seed(60_000);
+  assert.equal(chunkRecovery.attemptGuardedChunkReload(f.host), false);
+  assert.equal(f.state.reloads, 0);
+});
+
+test("16-U: attemptGuardedChunkReload proceeds past a stale stamp (older than the episode max age)", () => {
+  const f = fakeHost(T0);
+  f.seed(chunkRecovery.CHUNK_EPISODE_MAX_AGE_MS + 1);
+  assert.equal(chunkRecovery.attemptGuardedChunkReload(f.host), true);
+  assert.equal(f.state.reloads, 1);
+  assert.equal(f.store.get(CHUNK_RELOAD_KEY), String(T0));
+});
+
+test("16-U: attemptGuardedChunkReload stands down when the stamp cannot be persisted and verified", () => {
+  const f = fakeHost(T0, sharedStorage(false, new Set([CHUNK_RELOAD_KEY])));
+  assert.equal(chunkRecovery.attemptGuardedChunkReload(f.host), false);
+  assert.equal(f.state.reloads, 0);
+  const noStorage = { storage: null, reload: () => { throw new Error("must not reload"); }, now: () => T0 };
+  assert.equal(chunkRecovery.attemptGuardedChunkReload(noStorage), false);
+});
+
+test("16-U: attemptGuardedChunkReload runs beforeReload after verification, immediately before the reload, and a throwing hook never blocks it", () => {
+  const f = fakeHost(T0);
+  const order: string[] = [];
+  const host = {
+    ...f.host,
+    reload: () => { order.push("reload"); f.host.reload(); },
+    beforeReload: () => { order.push("hook"); throw new Error("hook boom"); },
+  };
+  assert.equal(chunkRecovery.attemptGuardedChunkReload(host), true);
+  assert.deepEqual(order, ["hook", "reload"]);
+  assert.equal(f.state.reloads, 1);
+});
