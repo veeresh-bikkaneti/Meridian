@@ -1,7 +1,7 @@
 /**
  * Chemistry case flow — the component the chemistry subject module's
  * load() returns (contract I1). A thin wrapper over the shared
- * SubjectCase, passing chemistry's title, test-id prefix, band items
+ * SubjectCase, passing chemistry's title, subject id, band items
  * and answer lookup.
  *
  * Clue scenes (expansion waves 7-8): chemistry also passes
@@ -44,7 +44,7 @@ export default function ChemistryCase(
   return (
     <SubjectCase
       title="Chemistry"
-      testIdPrefix="chemistry"
+      subjectId="chemistry"
       itemsForGroup={itemsForGroup}
       answerFor={answerFor}
       scene={(item, phase, reduced, band) => {

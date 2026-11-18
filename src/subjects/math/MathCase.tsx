@@ -5,7 +5,7 @@
  * A thin wrapper over the shared SubjectCase: the flow itself (ClueCard
  * -> AnswerCard -> result with "You just used this in…") lives in
  * src/subjects/shared/SubjectCase.tsx, extracted from this file with no
- * visual change. Math passes its title, its test-id prefix (so the
+ * visual change. Math passes its title, its subject id (so the
  * wave-1 e2e ids stay math-case / math-answer-card / math-result), its
  * band items and its answer lookup.
  *
@@ -56,7 +56,7 @@ export default function MathCase(
   return (
     <SubjectCase
       title="Math"
-      testIdPrefix="math"
+      subjectId="math"
       itemsForGroup={itemsForGroup}
       answerFor={answerFor}
       scene={(item, phase, reduced, band) => {

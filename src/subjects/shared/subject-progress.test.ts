@@ -122,9 +122,40 @@ describe("subject-progress wiring (source pins)", () => {
       "the case records through the store's own API",
     );
     assert.ok(
-      subjectCase.includes('if (phase === "main") recordUnitComplete(testIdPrefix, item.id);'),
+      subjectCase.includes('if (phase === "main") recordUnitComplete(subjectId, item.id);'),
       "the record sits on the main-phase correct-pick beat, keyed by the subject prefix and the item id",
     );
+  });
+
+  it("a correct main-phase pick records under subjectId, the registry id each subject passes", () => {
+    // The save key is the required subjectId config field, never a
+    // test id: renaming a data-testid must not be able to orphan a
+    // player's saved progress (Unit B, PR 533).
+    assert.ok(subjectCase.includes("subjectId: string;"), "subjectId is a required SubjectCase config field");
+    assert.ok(
+      subjectCase.includes('if (phase === "main") recordUnitComplete(subjectId, item.id);'),
+      "the main-phase record is keyed by subjectId",
+    );
+    assert.ok(!subjectCase.includes("testIdPrefix"), "no test-id prop survives in SubjectCase");
+    assert.ok(
+      subjectCase.includes("data-testid={`${subjectId}-case`}"),
+      "the rendered test ids derive from subjectId, so they stay byte-identical",
+    );
+    // Every subject wrapper binds subjectId to its registry id —
+    // the same strings the store already holds for players.
+    const callers: Array<[string, string]> = [
+      ["../chemistry/ChemistryCase.tsx", "chemistry"],
+      ["../general-knowledge/GeneralKnowledgeCase.tsx", "general-knowledge"],
+      ["../journals/JournalsCase.tsx", "journals"],
+      ["../math/MathCase.tsx", "math"],
+      ["../physics/PhysicsCase.tsx", "physics"],
+      ["../social-studies/SocialStudiesCase.tsx", "social-studies"],
+    ];
+    for (const [rel, id] of callers) {
+      const src = read(rel);
+      assert.ok(src.includes(`subjectId="${id}"`), `${rel} passes subjectId="${id}"`);
+      assert.ok(!src.includes("testIdPrefix"), `${rel} no longer passes a test-id prefix`);
+    }
   });
 
   it("the picker renders one Reset per card, a sibling of the open button, disabled with no progress", () => {

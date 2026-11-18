@@ -170,7 +170,7 @@ describe("clue scene summary (act 3)", () => {
     // The one other sanctioned use (feat/fair-share-lose-path): the
     // lose-reveal section renders the same standing text after a
     // wrong pick on the one lose-path item — also post-pick only.
-    const loseAt = subjectCase.indexOf('data-testid={`${testIdPrefix}-lose-reveal`}');
+    const loseAt = subjectCase.indexOf('data-testid={`${subjectId}-lose-reveal`}');
     const loseExtraAt = subjectCase.indexOf(
       "resultExtra ? resultExtra(item, reduced, band) : null",
       extraAt + 1,
