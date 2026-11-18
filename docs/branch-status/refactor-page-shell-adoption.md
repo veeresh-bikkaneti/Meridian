@@ -598,10 +598,127 @@ mechanisms). Zero visual delta beyond them.
   transition in home-button.ts). No conflicts needed a ruling
   beyond that restraint call.
 
+### Cure round — QA's three evidence items (2026-11-18, on tip e3c8d378 + this doc)
+
+Independent silo QA passed the build itself but returned NOT
+READY on three evidence items. All three are cured here;
+nothing else changed (no features, no design changes).
+
+- **Cure 1 — CI on the tip.** Why the pushes after e60fe7a3
+  produced no runs [measured]: `node.js.yml` triggers on
+  `pull_request` to main (no `types`, no `paths`, no
+  `concurrency`) and on `push` to main only; it declares NO
+  `workflow_dispatch`, so `gh workflow run` cannot fire it.
+  None of the six commits after e60fe7a3 (0166be82…e3c8d378)
+  carries `[skip ci]` / `[ci skip]` / `[no ci]` in subject or
+  body, none touches `.github/`, the PR was DRAFT throughout
+  (the same draft PR triggered a run for every earlier push,
+  including run 44293530116 on e60fe7a3 at 11:18:46Z), the
+  workflow is `active`, and Actions permissions are
+  enabled/all. The Actions API holds ZERO runs for every head
+  SHA after e60fe7a3, and no run exists repo-wide after
+  2026-11-18T11:18:57Z — the pushes registered on the PR
+  (timeline `committed` events are present) but GitHub never
+  enqueued a workflow run for them: an ingestion-side drop in
+  that window, not a property of the commits. Cure: this
+  status-doc commit is itself the retrigger push; if it also
+  produces no run, one empty commit (message stating it exists
+  to retrigger CI) follows. The completed run's id, head SHA
+  and per-job conclusions are reported with this cure round
+  and appended below once finished.
+- **Cure 2 — capture evidence completed.**
+  `~/workspace/verify-evidence-shell-part2/measurements.json`
+  now holds ALL 40 records (Home, Privacy, Why Learn, in-game
+  × 5 viewports × top/scrolled), re-measured live on the tip
+  build with the Phase A recipe (band 10-18 seeded profile,
+  hermetic harness, pinned Chromium, flock, --workers=1);
+  in-game shots waited for BOTH rig3d canvases to paint (paint
+  probe: element-clip bytes 7,230–10,662 per canvas, true at
+  every viewport). The Home scrolled PNGs were RE-SHOT with
+  the sheet answered "Sometimes" first (the mock redraw's
+  definition of the scrolled state; a real tap, queue gone
+  before the 600px drop + Cases navigation; visually verified
+  at 390×844 — frozen bar + CASES cards, no sheet). Parity vs
+  the mock set (`~/workspace/frozen-header-mockups`):
+
+  | Surface / state | Mock | Verify | Reading |
+  | --- | --- | --- | --- |
+  | Home top | headerY 31, H 88 (desk) / 85 (phone) | identical | exact |
+  | Home scrolled | headerY 0, CASES current, all viewports | identical | exact (scrollY 1243/1263 identical on desktop; 1641/1674/1773 vs 1484/1661/1898 at 768/390/320 — page height differs, landing is the same) |
+  | Privacy top | headerY 0, H 85, current A:Privacy | headerY 26, H 85, A:Privacy | the documented Part 1 grown-page pad delta |
+  | Privacy scrolled | headerY 0 @ scrollY 600 | identical | exact |
+  | Why Learn top | headerY 0, H 60 | headerY 8, H 85 | documented deltas: Step 3.3 top-padding give-back; 85 is the shell header, 60 was the retired ScreenShell bar |
+  | Why Learn scrolled | headerY 0 @ 600 | identical (H 85) | frozen exact |
+  | In-game top | scrollY 624/489/516/760/1022, headerY 0, H 85 | identical, all five | exact |
+  | In-game scrolled | headerY 0; scrollY 1124/1013/600/1200/1200 | headerY 0; scrollY 1124/600/600/1200/1200 | frozen at both depths (1920 scroll clamped at 600 in the verify run; 1280 proves 1124) |
+  | In-game End game right edge | fully in frame at 390/320 (staging note) | 370 @390, 300 @320, both states | in frame, matches Unit 3's record |
+
+- **Cure 3 — playthrough/e2e re-run on the tip** (hermetic
+  recipe, serial, flock, --workers=1; QA's attempts had died
+  on Chromium renderer crashes under host memory pressure —
+  the VM had since rebooted and NO renderer crash occurred in
+  any cure run):
+  - layout-overflow + shared-shell-adoption +
+    why-learn-hero-cap: **10/10 passed** (builder's figure
+    independently reproduced).
+  - home-layout: **12 passed / 2 failed** on the tip — the
+    grid assertions at 768×1024 + 1280×800, signature
+    "review on spot cards: row 1 has an empty cell (1 cards
+    in 3 columns)", reproduced on a lone re-run. Baseline
+    comparison (brief-prescribed): the same spec on
+    60e9bbaf in a scratch worktree scores **5 passed /
+    9 failed**, including grid failures at 1024×768 +
+    1280×800 with the 1280×800 signature byte-identical to
+    the tip's. **Classification: pre-existing, NOT a Part 2
+    regression** (the failing viewport pair shifts run to
+    run — the known grid flake; the assertion and signature
+    do not). The baseline also fails the five old-"Home"-pill
+    control tests and both "Home stays in the viewport"
+    tests, which PASS on the tip — Part 2 cures, recorded so
+    the comparison is not read backwards. Baseline-run
+    disclosure: `npm ci` in the scratch worktree was blocked
+    by the VM's EDQUOT (below), so its `node_modules` was
+    copied from this worktree after verifying `package.json`
+    + `package-lock.json` are byte-identical between
+    60e9bbaf and the tip (empty diff; copied tree verified
+    at 21,430 files = source count; baseline build green).
+  - Owner-config set (detective-owner-spec,
+    detective-selection-read, detective-tapmode-selection,
+    detective-watson-walk): 21 tests. First pass 13 passed /
+    8 failed, classified one by one:
+    - **Pre-existing (1):** owner-spec's "one mute is
+      top-left" — real assertion (mute right edge 281.19 >
+      Case # x 183.625). The shell's fixed slot order
+      (status → mute → end game, unchanged since Step 2)
+      puts Case # first; Part 2 changed only the left
+      control's width, which cannot move the right-anchored
+      actions. Same failure the builder recorded.
+    - **Environment (7):** five watson-walk tests,
+      selection-read (b) and the tapmode watchdog test
+      failed with ZERO assertion errors — every error is
+      EDQUOT (-122) on Playwright artifact/trace writes
+      under `~/workspace` (at `context.close()`, in one case
+      the spec's own `finally`). Proof: re-run with
+      `--output=/tmp/…` (artifacts off the workspace tree),
+      all 7 pass cleanly (watson-walk 5/5, selection-read
+      (b) 1/1, tapmode watchdog 1/1). Net owner-set verdict:
+      **20/21 pass; the one failure is the pre-existing
+      mute-order expectation above.**
+    - EDQUOT note: the quota bites bulk parallel writes
+      under `~/workspace` (git checkout bursts, npm tar
+      extraction, Playwright trace zips) while single-stream
+      writes and /tmp writes succeed — measured repeatedly
+      this round (worktree add failed 3× at the same audio
+      file while `cp -r` of the same 257 MB tree succeeded).
+      It is the same recurring VM condition the Unit 3 record
+      flags, not a product defect.
+
 ## Remaining
 
-- Nothing in the Part 2 brief. The PR stays DRAFT — no merge,
-  no ready marking (owner's word only).
+- Nothing in the Part 2 brief, and the cure round above
+  closes QA's three evidence items (the Cure 1 CI run id is
+  appended to that section when the run lands). The PR stays
+  DRAFT — no merge, no ready marking (owner's word only).
 - Pre-existing, flagged for their own lanes: the home-layout
   grid flake (both sides of Part 1), the detective-owner-spec
   mute-order expectation vs the shell slot order, the stale
