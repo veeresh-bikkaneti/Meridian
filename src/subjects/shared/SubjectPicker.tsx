@@ -298,7 +298,7 @@ export default function SubjectPicker({
 
   return (
     <main
-      className="mode-screen mx-auto flex min-h-dvh w-full max-w-(--page-narrow) flex-col px-5 pt-2 pb-8 why-learn-screen subject-picker-screen lg:max-w-none"
+      className="mode-screen mx-auto flex min-h-dvh w-full max-w-(--page-wide) flex-col px-5 pt-2 pb-8 why-learn-screen subject-picker-screen"
       data-testid="subject-picker"
       data-band={band}
     >
@@ -307,16 +307,20 @@ export default function SubjectPicker({
           lockup goes — and the resume control rides the header's
           back slot, beside Home, where ScreenShell's controls sat.
           The hero card is this screen's own content: the film and
-          its titles band keep the exact classes the hero-cap rules
-          in styles.css key on (.screen-hero / .screen-hero-band),
-          so the approved Variant B measurements are untouched.
+          its titles band keep the classes the picker hero rules in
+          styles.css key on (.screen-hero / .screen-hero-band).
           The page's top padding is 8px, not the old frame's 32px:
           the shell header's row carries its own vertical padding
           and is ~24px taller than the old home bar — the page
-          gives that height back here so the hero film and the
-          first card row keep their measured places (the hero-cap
-          spec pins them). */}
+          gives that height back here so the page keeps its
+          measured places. */}
       <SiteHeader onHome={onExit} status={null} mute={null} back={resumeControl} />
+      {/* D1 hero (owner-approved, 2026-11-18): the world band is
+          its own section in normal flow, directly under the
+          header — the picker-scoped rules in styles.css seat it
+          in its own layout space, so it can never overlap the
+          hero card below it. The card's own mt-4 is the gap. */}
+      <WhyLearnWorld />
       <div className="screen-hero mode-card mt-4 overflow-hidden">
         <WhyLearnHero />
         <div className="screen-hero-band px-5 pt-1 pb-5">
@@ -329,7 +333,6 @@ export default function SubjectPicker({
           </p>
         </div>
       </div>
-      <WhyLearnWorld />
       <WhyLearnDrift />
       {/* The band ask, contained on this page (see the header
           note): AgeBandControl under the header — the three band

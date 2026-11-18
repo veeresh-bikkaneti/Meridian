@@ -3006,6 +3006,50 @@ body:has(.why-learn-screen) {
     flex: 0 0 230px;
   }
 }
+/* D1 hero (owner-approved, 2026-11-18): the world band leaves the
+   absolute overlay and becomes its own section in normal flow,
+   directly under the header, with the hero card below it. The
+   band owns its own layout space, so no layer can cross the card
+   and the heading always lands on the solid card. The band keeps
+   its authored height steps and every animation above — only its
+   positioning changes, and only on the picker screen; the case
+   screens keep their own atlas scope rules. */
+.subject-picker-screen .wl-world {
+  position: relative;
+  top: auto;
+  left: auto;
+  width: 100%;
+  margin-left: 0;
+  margin-top: 1rem;
+}
+@media (min-width: 681px) {
+  /* The film is sized by its card, not by the viewport: it takes
+     a flex share of the card's content box at 16 / 9 and the
+     title band flexes beside it, so the film cannot balloon at
+     wide or zoomed sizes. The viewport-height formulas above
+     (the 33dvh hero clamp and the (100dvh - offset) cap) must no
+     longer size the picker hero's film at any width, so they are
+     overridden out here. Phones keep the stacked layout. */
+  .why-learn-screen.subject-picker-screen .screen-hero {
+    height: auto;
+    align-items: stretch;
+  }
+  .why-learn-screen.subject-picker-screen .why-learn-hero-wrap,
+  .why-learn-screen.subject-picker-screen .screen-hero > .why-learn-hero {
+    flex: 0 1 56%;
+    width: auto;
+    height: auto;
+    max-width: none;
+    aspect-ratio: 16 / 9;
+  }
+  .why-learn-screen.subject-picker-screen .why-learn-hero-wrap .why-learn-hero {
+    width: 100%;
+    height: 100%;
+  }
+  .why-learn-screen.subject-picker-screen .screen-hero-band {
+    flex: 1 1 auto;
+  }
+}
 /* The montage film in the hero slot (feat/why-learn-montage): the
    <video> carries .why-learn-hero, so it fills the same fixed box
    the still did; the controls ride its bottom-right corner on the
