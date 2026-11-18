@@ -24,6 +24,16 @@ test("GeoDetective map-hidden line, exactly as approved", () => {
   );
 });
 
+test("Cold Trail map-off line is truthful for a map-only input surface", () => {
+  assert.equal(
+    TILE_FALLBACK_COPY.coldTrailMapOff,
+    "Map pictures are off for now. This case needs the map, so ring placement is paused — the case and sightings are still here to read.",
+  );
+  // It must not borrow the GeoDetective promise — Cold Trail guesses are
+  // map taps, so "your guesses still work" would be false here.
+  assert.doesNotMatch(TILE_FALLBACK_COPY.coldTrailMapOff, /guesses still work/i);
+});
+
 test("no provider names and no 'lite' in any child-facing string", () => {
   for (const [key, text] of Object.entries(TILE_FALLBACK_COPY)) {
     assert.doesNotMatch(text, /arcgis/i, `${key} names a provider`);
