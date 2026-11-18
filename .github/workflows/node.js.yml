@@ -8,6 +8,12 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+  # Manual retrigger (PR 529 cure round, 2026-11-18): pushes to this
+  # PR stopped producing runs after 11:18Z with no skip marker, no
+  # paths filter and the workflow active — a dispatch path is the
+  # only way to get a run onto an exact head SHA when the event
+  # path drops one.
+  workflow_dispatch:
 
 jobs:
   build:
