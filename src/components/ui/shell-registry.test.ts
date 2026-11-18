@@ -58,15 +58,25 @@ describe("shell registry (PR 3 Step 5)", () => {
     assert.ok(SHELL_REGISTRY.some((e) => e.id === "home"), "the index route's home screen is registered");
   });
 
-  it("the in-run HUD is the sole header exception, the picker the sole footer exception", () => {
+  it("the in-run HUD is the sole header exception; no footer exceptions remain", () => {
     assert.deepEqual(
       SHELL_REGISTRY.filter((e) => e.header === "exception").map((e) => e.id),
       ["in-run-hud"],
     );
     assert.deepEqual(
       SHELL_REGISTRY.filter((e) => e.footer === "exception").map((e) => e.id),
-      ["why-learn-picker"],
+      [],
     );
+  });
+
+  // Footer standardization (2026-11-18): Grandpa's coffee-run band
+  // is part of the one SiteFooter. Only site-footer.tsx may import
+  // the scene — a page importing it directly would be a per-page
+  // copy of the footer composition, which is what this lane kills.
+  it("only SiteFooter imports the Grandpa scene, and it renders it", () => {
+    const importers = allTsx.filter((f) => /from\s+["'][^"']*grandpa-coffee-run(?:\.tsx)?["']/.test(read(f)));
+    assert.deepEqual(importers, ["src/components/ui/site-footer.tsx"]);
+    assert.ok(read("src/components/ui/site-footer.tsx").includes("<GrandpaCoffeeRun"), "SiteFooter renders the scene");
   });
 
   // Negative controls: the validator must bite on a shell-less
@@ -93,6 +103,19 @@ describe("shell registry (PR 3 Step 5)", () => {
     };
     const problems = validateRegistry([...SHELL_REGISTRY, grown], sourceOf, mainFiles);
     assert.ok(problems.some((p) => p.includes("header exceptions")), problems.join("; "));
+  });
+
+  it("negative control: reviving a footer exception fails validation", () => {
+    const revived: ShellRegistryEntry = {
+      id: "sneaky-footer-exception",
+      file: "src/components/game-app.tsx",
+      header: "SiteHeader",
+      needle: "<SiteHeader",
+      footer: "exception",
+      reason: "trying to make the footer conditional again",
+    };
+    const problems = validateRegistry([...SHELL_REGISTRY, revived], sourceOf, mainFiles);
+    assert.ok(problems.some((p) => p.includes("footer exceptions")), problems.join("; "));
   });
 
   it("negative control: an unregistered <main> file fails validation", () => {
