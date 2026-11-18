@@ -78,7 +78,7 @@ const DROP_KEY = "meridian.drop";
 function resolveLocal(explicit?: ResetStorage): ResetStorage | undefined {
   if (explicit) return explicit;
   try {
-    return typeof localStorage === "undefined" ? undefined : localStorage;
+    return localStorage;
   } catch {
     return undefined;
   }
@@ -87,7 +87,7 @@ function resolveLocal(explicit?: ResetStorage): ResetStorage | undefined {
 function resolveSession(explicit?: ResetStorage): ResetStorage | undefined {
   if (explicit) return explicit;
   try {
-    return typeof sessionStorage === "undefined" ? undefined : sessionStorage;
+    return sessionStorage;
   } catch {
     return undefined;
   }
@@ -106,10 +106,6 @@ function clearPausedRun(session: ResetStorage | undefined): boolean {
   for (const key of [RUN_KEY, RUN_MC2_KEY, RUN_MC3_KEY, DROP_KEY]) {
     try {
       session.removeItem(key);
-    } catch {
-      ok = false;
-    }
-    try {
       if (session.getItem(key) !== null) ok = false;
     } catch {
       ok = false;
@@ -124,14 +120,16 @@ export function resetHistory(
 ): ResetHistoryResult {
   const local = resolveLocal(storage);
   const session = resolveSession(sessionStorageArg);
-  const steps: { store: string; clear: () => boolean }[] = [
-    { store: "review-deck", clear: () => clearReviewDeck(local) },
-    { store: "learning", clear: () => clearLearningStore(local) },
-    { store: "trail", clear: () => clearTrailHistory(local) },
-    { store: "geodetective", clear: () => clearLoopStore(local) },
-    { store: "coldtrail", clear: () => clearColdtrailStore(local) },
-    { store: "challenge-attempts", clear: () => clearChallengeAttempts(local) },
-    { store: "session", clear: () => clearSession(session) },
+  // Each step: the store's name, its owner module's clear, and
+  // the storage that clear takes (injected only — U-R6).
+  const steps: [string, (s: ResetStorage | undefined) => boolean, ResetStorage | undefined][] = [
+    ["review-deck", clearReviewDeck, local],
+    ["learning", clearLearningStore, local],
+    ["trail", clearTrailHistory, local],
+    ["geodetective", clearLoopStore, local],
+    ["coldtrail", clearColdtrailStore, local],
+    ["challenge-attempts", clearChallengeAttempts, local],
+    ["session", clearSession, session],
     // Fix round 2: a Start-over reset with no stored session used to
     // leave a preserved shadow behind (clearSession's hadStoredSession
     // gate, correctly, does not touch it) — and that shadow would fire
@@ -140,30 +138,30 @@ export function resetHistory(
     // (never the globals — U-R6); the global clearDiscardedShadow()
     // cannot serve reset, and a raw-key removal here would violate
     // this module's documented no-raw-key rule (paused-run keys only).
-    { store: "discarded-shadow", clear: () => clearDiscardedShadowFrom(local) },
-    { store: "paused-run", clear: () => clearPausedRun(session) },
+    ["discarded-shadow", clearDiscardedShadowFrom, local],
+    ["paused-run", clearPausedRun, session],
     // Amendment (2026-11-15, see the header note): the age-band
     // profile is part of the full clean-out, cleared through its
     // owner module's reset clear (injected local storage only —
     // U-R6). Its change event is what drops the picker back to
     // the first-run band pills in place.
-    { store: "age-profile", clear: () => clearAgeProfileForReset(local) },
+    ["age-profile", clearAgeProfileForReset, local],
     // Per-subject progress (the Why Learn picker's solved-unit
     // records) joins the wipe through its owner module's
     // clear-all, in this composition's injected-storage pattern.
-    { store: "subject-progress", clear: () => clearAllSubjectProgress(local) },
+    ["subject-progress", clearAllSubjectProgress, local],
   ];
   const cleared: string[] = [];
   const failed: { store: string }[] = [];
-  for (const step of steps) {
+  for (const [store, clear, storage] of steps) {
     let ok = false;
     try {
-      ok = step.clear();
+      ok = clear(storage);
     } catch {
       ok = false; // A clear that throws is a failed store, never a crash.
     }
-    if (ok) cleared.push(step.store);
-    else failed.push({ store: step.store });
+    if (ok) cleared.push(store);
+    else failed.push({ store });
   }
   // Post-clear re-read verification (D4): a store whose clear reported
   // success but whose data still reads back as present is moved to
@@ -178,49 +176,58 @@ export function resetHistory(
       failed.push({ store });
     }
   };
-  try {
-    const deck = readReviewDeck(local);
-    if (deck && deckCounts(deck).total > 0) moveToFailed("review-deck");
-  } catch {
-    moveToFailed("review-deck");
-  }
-  try {
-    const learning = readLearningStore(local);
-    if (
-      learning &&
-      (Object.keys(learning.records).length > 0 || learning.daysPlayed.length > 0)
-    ) {
-      moveToFailed("learning");
+  // Each check answers "is this store's data still present?" —
+  // a yes (or a throw) moves the store to failed.
+  // No post-clear re-read for subject-progress: its clear-all
+  // verifies by re-read inside the owner module and reports
+  // honestly through the step result, like the enumerated stores.
+  const stillPresent: [string, () => boolean][] = [
+    [
+      "review-deck",
+      () => {
+        const deck = readReviewDeck(local);
+        return !!deck && deckCounts(deck).total > 0;
+      },
+    ],
+    [
+      "learning",
+      () => {
+        const learning = readLearningStore(local);
+        return (
+          !!learning &&
+          (Object.keys(learning.records).length > 0 || learning.daysPlayed.length > 0)
+        );
+      },
+    ],
+    [
+      "session",
+      () => {
+        const raw = session?.getItem(SESSION_KEY);
+        return raw !== null && raw !== undefined && raw !== "";
+      },
+    ],
+    [
+      "age-profile",
+      () => {
+        const raw = local?.getItem(PROFILE_STORAGE_KEY);
+        if (raw === null || raw === undefined || raw === "") return false;
+        // An unset blob (the removal-blocked overwrite fallback)
+        // reads as no band everywhere, so it counts as cleared; an
+        // active profile still on disk is a failed reset.
+        try {
+          return validateProfile(JSON.parse(raw))?.status === "active";
+        } catch {
+          return false; // A corrupt blob fails closed to unset at load.
+        }
+      },
+    ],
+  ];
+  for (const [store, check] of stillPresent) {
+    try {
+      if (check()) moveToFailed(store);
+    } catch {
+      moveToFailed(store);
     }
-  } catch {
-    moveToFailed("learning");
-  }
-  try {
-    const raw = session?.getItem(SESSION_KEY);
-    if (raw !== null && raw !== undefined && raw !== "") moveToFailed("session");
-  } catch {
-    moveToFailed("session");
-  }
-  // No post-clear re-read for subject-progress above: its
-  // clear-all verifies by re-read inside the owner module and
-  // reports honestly through the step result, like the
-  // enumerated stores.
-  try {
-    const raw = local?.getItem(PROFILE_STORAGE_KEY);
-    if (raw !== null && raw !== undefined && raw !== "") {
-      // An unset blob (the removal-blocked overwrite fallback)
-      // reads as no band everywhere, so it counts as cleared; an
-      // active profile still on disk is a failed reset.
-      let active = true;
-      try {
-        active = validateProfile(JSON.parse(raw))?.status === "active";
-      } catch {
-        active = false; // A corrupt blob fails closed to unset at load.
-      }
-      if (active) moveToFailed("age-profile");
-    }
-  } catch {
-    moveToFailed("age-profile");
   }
   return { cleared, failed };
 }

@@ -39,7 +39,7 @@ export function resolveSubjectProgressStorage(
 ): SubjectProgressStorage | undefined {
   if (explicit) return explicit;
   try {
-    return typeof localStorage === "undefined" ? undefined : localStorage;
+    return localStorage;
   } catch {
     return undefined;
   }
@@ -80,11 +80,11 @@ export function setSubjectProgressClearedHook(hook: () => void): void {
 export function clearAllSubjectProgress(storage?: SubjectProgressStorage): boolean {
   const s = resolveSubjectProgressStorage(storage);
   if (!s) return true; // No storage = nothing was ever persisted.
-  let rawBefore: string | null | undefined;
+  let rawBefore: string | null = null;
   try {
     rawBefore = s.getItem(SUBJECT_PROGRESS_KEY);
   } catch {
-    rawBefore = undefined; // Unreadable: no change can be proven, so none is announced.
+    // Unreadable: no change can be proven, so none is announced.
   }
   try {
     s.removeItem(SUBJECT_PROGRESS_KEY);
