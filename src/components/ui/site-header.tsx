@@ -5,18 +5,17 @@
  * order — status, mute, end game — so a child never relearns where
  * things live between screens.
  *
- * - Home control: HomeButton from home-button.ts (Round 2 review,
- *   rule 2) — the one control named exactly "Home", top-left, ≥44px,
- *   no arrow in its name. `homeVariant` picks the prop variant:
- *   ghost (default, on cream) or secondary (over the map). Router
- *   routes pass `to="/"` and get the same control as a router Link.
- *   The old BrandHomeButton lockup is retired from the header: its
- *   "Meridian home" name and per-screen positions were the drift
- *   the review measured (Home x differing on every screen).
+ * - Home control: BrandHomeButton from home-button.ts — the brand
+ *   lockup (compass + MERIDIAN word), named exactly "Meridian home",
+ *   top-left, ≥44px (owner ruling 2026-11-17, PR 529 Part 2 / N1;
+ *   this supersedes the Round 2 "Home" pill in the header).
+ *   In-app screens pass `onHome` and get the lockup as a button;
+ *   router routes pass `to="/"` and get the same lockup as a real
+ *   router Link to "/". HomeButton (the "Home" pill) never renders
+ *   in a header; it still serves end-of-flow and HUD surfaces.
  * - `variant` is the surface the header sits on, a prop not a fork
  *   (PR 3 Step 2): "cream" (default) is the page header; "map" is
- *   the over-map chrome (game-chrome surface in styles.css) and
- *   defaults the home control to its secondary variant.
+ *   the over-map chrome (game-chrome surface in styles.css).
  * - Slots never enter the menu panel: End game and mute stay on the
  *   line at every width, so no action can be menu-trapped. The one
  *   exception is a screen that opts into `exitInMenuOnSmallScreens`
@@ -41,9 +40,9 @@
  *   dialect: theme + atlas tokens only — the header never reads the
  *   home-scoped --hv5-* tokens).
  */
-import { useState, type CSSProperties, type ReactNode } from "react";
+import { useEffect, useRef, useState, type CSSProperties, type MouseEvent, type ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
-import { HomeButton } from "./home-button.ts";
+import { BrandHomeButton } from "./home-button.ts";
 import { cn } from "@/lib/cn";
 
 export type SiteNavItem = {
@@ -52,6 +51,11 @@ export type SiteNavItem = {
   ariaLabel?: string;
   /** Decorative glyph rendered before the label (aria-hidden). */
   icon?: ReactNode;
+  /** Home-section id this item jumps to (N1 derived highlight): the
+   *  item renders data-nav-section and is marked current —
+   *  aria-current="location" + the filled-tile style — while the
+   *  location hash names this section. */
+  sectionId?: string;
 } & ({ onClick: () => void; to?: never } | { to: string; onClick?: never });
 
 type SiteHeaderSlots = {
@@ -95,11 +99,10 @@ type SiteHeaderSlots = {
    *  is the user; it previously hand-rolled this with a className
    *  override (screen-home-bar + a negative-margin bleed). The shell
    *  carries the layout now: the row's geometry is the header's, the
-   *  page gutter is the column's. */
+   *  page gutter is the column's. Since Part 2 (N1) every shell
+   *  header is sticky (the frozen bar); this prop now only adds the
+   *  data-sticky bar background treatment. */
   sticky?: boolean;
-  /** HomeButton variant: ghost on cream (default), secondary over
-   *  the map. A prop, not a fork (Round 2 review, rules 2–3). */
-  homeVariant?: "ghost" | "secondary";
   className?: string;
   style?: CSSProperties;
 };
@@ -118,13 +121,47 @@ export function SiteHeader({
   exitInMenuOnSmallScreens = false,
   variant = "cream",
   sticky = false,
-  homeVariant,
   className,
   style,
   ...home
 }: SiteHeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const resolvedHomeVariant = homeVariant ?? (variant === "map" ? "secondary" : "ghost");
+  /* Derived current-section highlight (N1, as staged in Phase A):
+   * the host writes the section id into the hash with replaceState
+   * (GameApp's scrollTo), which fires no event — so this mirrors the
+   * hash onto the nav items that carry data-nav-section on mount, on
+   * hashchange, and after any click (a nav click is what changes
+   * it). ~0 JS: no scroll-spy, no router change. Exactly the item
+   * whose section matches carries aria-current="location" and the
+   * data-current hook the filled-tile style keys on. */
+  const headerRef = useRef<HTMLElement | null>(null);
+  useEffect(() => {
+    const update = () => {
+      const root = headerRef.current;
+      if (!root) return;
+      const hash = window.location.hash.replace(/^#/, "");
+      root.querySelectorAll<HTMLElement>("[data-nav-section]").forEach((el) => {
+        const on = hash !== "" && el.dataset.navSection === hash;
+        el.dataset.current = on ? "true" : "false";
+        if (on) el.setAttribute("aria-current", "location");
+        else el.removeAttribute("aria-current");
+      });
+    };
+    update();
+    const onClick = () => requestAnimationFrame(update);
+    window.addEventListener("hashchange", update);
+    window.addEventListener("click", onClick);
+    return () => {
+      window.removeEventListener("hashchange", update);
+      window.removeEventListener("click", onClick);
+    };
+  }, []);
+  /* The menu panel closes after a section pick (N1): a click on a
+   * nav item inside the panel is a pick, so the panel closes. The
+   * inline nav row is not inside the panel and is untouched. */
+  const onPanelClick = (event: MouseEvent<HTMLElement>) => {
+    if ((event.target as HTMLElement).closest(".site-header-nav-link")) setMenuOpen(false);
+  };
   const navNode: ReactNode =
     nav ??
     (navItems ? (
@@ -147,6 +184,7 @@ export function SiteHeader({
               className="site-header-nav-link"
               data-testid={item.testId}
               aria-label={item.ariaLabel}
+              data-nav-section={item.sectionId}
             >
               {inner}
             </Link>
@@ -158,6 +196,7 @@ export function SiteHeader({
               onClick={item.onClick}
               data-testid={item.testId}
               aria-label={item.ariaLabel}
+              data-nav-section={item.sectionId}
             >
               {inner}
             </button>
@@ -169,6 +208,7 @@ export function SiteHeader({
 
   return (
     <header
+      ref={headerRef}
       className={cn("site-header", className)}
       style={style}
       data-variant={variant}
@@ -178,11 +218,7 @@ export function SiteHeader({
       data-exit-menu={exitInMenuOnSmallScreens ? "sm" : undefined}
     >
       <div className="site-header-row">
-        {home.to ? (
-          <HomeButton to="/" variant={resolvedHomeVariant} />
-        ) : (
-          <HomeButton onHome={home.onHome} variant={resolvedHomeVariant} />
-        )}
+        {home.to ? <BrandHomeButton to="/" /> : <BrandHomeButton onHome={home.onHome} />}
         {back}
         {navMode === "inline" && hasNav ? (
           <nav className="site-header-nav" aria-label="Site">
@@ -207,7 +243,7 @@ export function SiteHeader({
         </div>
       </div>
       {hasNav && menuOpen ? (
-        <nav className="site-header-nav site-header-panel" aria-label="Site" data-open="true">
+        <nav className="site-header-nav site-header-panel" aria-label="Site" data-open="true" onClick={onPanelClick}>
           {navNode}
           {exitInMenuOnSmallScreens && endGame ? (
             <div className="site-header-panel-exit">{endGame}</div>

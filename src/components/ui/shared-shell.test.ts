@@ -130,19 +130,41 @@ describe("SiteHeader", () => {
     assert.match(html, /data-nav-mode="inline"/);
   });
 
-  it("the home control is HomeButton: named exactly Home, no arrow, ghost by default (Round 2 rule 2)", async () => {
+  it("the home control is the brand lockup: named exactly Meridian home, no Home pill (owner ruling 2026-11-17, N1)", async () => {
     const html = await render("SiteHeader", base);
     assert.match(html, /data-testid="home-button"/);
-    assert.match(html, /Home<\/button>/);
-    assert.doesNotMatch(html, /Meridian home|←/);
-    // ghost variant classes on the control (transparent bg on cream).
-    assert.match(html, /bg-transparent/);
+    assert.match(html, /aria-label="Meridian home"/);
+    assert.match(html, /brand-home-button/);
+    assert.match(html, /brand-home-word/);
+    // The retired pill: no visible "Home" text, no house icon.
+    assert.doesNotMatch(html, />Home</);
+    assert.doesNotMatch(html, /lucide-house|←/);
   });
 
-  it("homeVariant=secondary renders the over-map variant of the same control", async () => {
-    const html = await render("SiteHeader", { ...base, homeVariant: "secondary" });
-    assert.match(html, /data-testid="home-button"/);
-    assert.match(html, /bg-surface-2/);
+  it("the header is the frozen bar and carries the N1 contracts in the shell CSS", () => {
+    const css = read("src/styles.css");
+    // Sticky on the shell's own rule, reclaimed on Home at the atlas
+    // lift's own weight (Phase A mechanism 1).
+    assert.match(css, /\.site-header \{\s[^}]*position: sticky;/);
+    assert.match(css, /\.atlas-home > header\.site-header \{\s[^}]*position: sticky;/);
+    // Scroll-offset contract as a token (mechanism: no anchor
+    // landing hides under the bar).
+    assert.match(css, /scroll-padding-top: calc\(var\(--header-height\) \+ 12px\)/);
+    // One current-section style: filled tile + underline cue.
+    assert.match(css, /\.site-header-nav-link\[data-current="true"\] \{[^}]*background: #8a6d2f;[^}]*text-decoration: underline;/);
+    // Mark-only lockup below 560px (Phase A mechanism 3).
+    assert.match(css, /@media \(max-width: 560px\) \{\s+\.site-header \.brand-home-word \{\s+display: none;/);
+    // Route headers: the body box grows with content when the
+    // header is body's own child (Phase A mechanism 2).
+    assert.match(css, /body:has\(> header\.site-header\) \{\s+height: auto;\s+min-height: 100%;/);
+  });
+
+  it("nav items carry their section id for the derived highlight, and the panel closes on a pick", () => {
+    const src = read("src/components/ui/site-header.tsx");
+    assert.match(src, /data-nav-section=\{item\.sectionId\}/);
+    assert.match(src, /aria-current", "location"/);
+    assert.match(src, /onPanelClick/);
+    assert.match(src, /setMenuOpen\(false\)/);
   });
 
   it("menu button is a 44px-class control, collapsed, and the panel (with the slots outside it) is closed", async () => {
@@ -172,13 +194,13 @@ describe("SiteHeader", () => {
     assert.deepEqual([...order].sort((a, b) => a - b), order);
   });
 
-  it("variant=map marks the header and defaults the home control to secondary; cream stays ghost", async () => {
+  it("variant=map marks the header; the lockup home control is the same on both surfaces", async () => {
     const map = await render("SiteHeader", { ...base, variant: "map" });
     assert.match(map, /data-variant="map"/);
-    assert.match(map, /bg-surface-2/);
+    assert.match(map, /aria-label="Meridian home"/);
     const cream = await render("SiteHeader", base);
     assert.match(cream, /data-variant="cream"/);
-    assert.match(cream, /bg-transparent/);
+    assert.match(cream, /aria-label="Meridian home"/);
   });
 
   it("an icon nav item renders its icon before the label, aria-hidden", async () => {

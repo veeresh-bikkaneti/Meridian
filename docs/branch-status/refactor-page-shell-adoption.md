@@ -393,13 +393,88 @@ branch is now plain main + the commits below; no stack remains.
   home-layout, so the claim is UNVERIFIED by CI and stays open
   until a run that includes home-layout speaks.
 
+## Part 2 (N1 SiteNav) — owner mock approval landed; build started 2026-11-18
+
+Design contract: the approved Phase A mocks in
+`~/workspace/frozen-header-mockups/` (see its README for the three
+mechanisms). Zero visual delta beyond them.
+
+### Step 0 — Part 1 cure verification (2026-11-18)
+
+- **(a) TrailScreen tokens — VERIFIED.** Both roots read
+  `max-w-(--page-narrow)` (TrailScreen.tsx:195, :496); the healthy
+  path's `lg:max-w-6xl` (72rem) stays literal and the pin in
+  shared-shell.test.ts records why (no narrow/wide token holds
+  72rem; `--page-wide` at 80rem would move the layout).
+- **(b) Frozen shell-ban baselines — VERIFIED by re-running the
+  negative control.** A scratch file with a page-local `<main>`
+  plus a covering `pageLocalMain` baseline entry made the
+  shared-shell suite fail on the frozen record ("pageLocalMain
+  baseline changed…", 38 pass / 1 fail); removing both restored
+  39/39 green.
+- **(c) GeoDetective 1280 v2 pair — VERIFIED.** Both files in
+  `~/workspace/verify-evidence-shell-step4/` are 1280×800 and
+  byte-identical (same SHA-256,
+  4cf018c07e21e02fda0b44f544e1590db48660ce7d71ec624b36730aeb2a6b96),
+  so the header box claim (x=276, y=32, 728×84, identical in both)
+  holds trivially.
+- **(d) home-layout claim — branch side measured; baseline side
+  pending (see Part 2 notes below).** Hermetic run on this branch
+  (Part 1 tip 48198f12, built artifact): 11 passed / 3 failed —
+  the grid test at 1280×800 and both "Home stays in the viewport"
+  tests (1280 and 390). The baseline comparison on 60e9bbaf is
+  still to land; the UNVERIFIED flag stays until it does.
+
+### Done — Part 2 Unit 1: lockup home control + derived highlight + menu close
+
+- **BrandHomeButton union**: props are now `{onHome} | {to: "/"}`;
+  the link form renders a real router Link to "/" (no
+  location.href fake, the staging shortcut done properly). New
+  link-mode test renders it inside a memory router.
+- **SiteHeader** renders BrandHomeButton in BOTH branches — the
+  "Home" pill is gone from every header. `homeVariant` is removed
+  (the lockup has one form on cream and map alike). Accessible
+  name stays "Meridian home"; testid stays "home-button".
+- **Derived highlight**: SiteHeader mirrors `location.hash` onto
+  nav items carrying `data-nav-section` (mount + hashchange +
+  click, because GameApp's scrollTo writes the hash with
+  replaceState, which fires no event). The matching item gets
+  `aria-current="location"` + `data-current`; GameApp's five Home
+  section buttons carry `data-nav-section` (as staged). Nav items
+  can also declare `sectionId`.
+- **Menu panel closes after a section pick**: a click on a nav
+  link inside the open panel closes it.
+- **Shell CSS (styles.css)**: `.site-header` is sticky with the
+  staged opaque bar treatment on every screen; the atlas lift's
+  forced `position: relative` is reclaimed at its own weight
+  (`.atlas-home > header.site-header { position: sticky }`,
+  mechanism 1); `body:has(> header.site-header)` grows the body
+  box for body-child headers (mechanism 2 — PageShell's column
+  already grows with content for the normal route shape; the rule
+  stays in the shell CSS with its reason, for the shape that has
+  no wrapper); `html { scroll-padding-top:
+  calc(var(--header-height) + 12px) }` (the scroll-offset
+  contract); one current-section style (filled tile + underline,
+  never colour alone); below 560px the SiteHeader lockup collapses
+  to the compass mark alone (mechanism 3). Why Learn: the picker
+  already renders SiteHeader as a direct child of its full-height
+  `<main>` (Step 3.3 removed the old hero `<header>` wrapper with
+  ScreenShell), so mechanism 2's structural cure is the current
+  shell structure itself — no move was needed.
+- Gates: shared-shell + brand-home-button + home-button +
+  shell-registry unit suites 57/57; tsc clean. Revert check: the
+  new/extended pins key on BrandHomeButton-in-header, the union's
+  link mode and the CSS contracts — none exist on the Part 1 tip,
+  so they fail there by construction (recorded per unit below
+  when the tip gates run).
+
 ## Remaining
 
-- Part 2 of PR 529 (Steps 6+ in the brief's order) is the next
-  lane's work, not this branch's Part 1 scope.
-- **Part 2 (N1 SiteNav) is HELD for the owner's mock-screen
-  approval (directive, 2026-11-18)** — no Part 2 code until the
-  approval lands in chat.
+- Part 2 Units 2–3: the lint:nav / AGENTS.md rule amendment
+  (one home control per screen = the brand lockup named
+  "Meridian home") with the e2e spec name updates, then the full
+  gate set, captures and the owner-config playthrough.
+- Step 0(d) baseline side: home-layout on 60e9bbaf.
 - The BrandHomeButton-as-home-control ruling above.
 - Pre-existing stale e2e selectors: journal-player fixes and
   chunk-recovery specs still query `.hv5-nav`, which no screen has

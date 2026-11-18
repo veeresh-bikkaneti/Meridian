@@ -4976,8 +4976,10 @@ function Choose({
       {notice}
       {tutorialInvite}
       {/* The shared shell header (fix/ui-shared-shell, Round 2
-          adoption): SiteHeader owns the home control ("Home",
-          top-left) and the row; home's nav mixes scroll buttons with
+          adoption): SiteHeader owns the home control (the brand
+          lockup, "Meridian home", top-left) and the row; the five
+          section buttons carry data-nav-section for the header's
+          derived current-section highlight (N1); home's nav mixes scroll buttons with
           two router Links, so it rides the `nav` node slot with the
           shared link class. ABOUT and JOURNAL jump to the sections at
           the bottom of the home page. Home's sound toggle keeps its
@@ -4991,19 +4993,19 @@ function Choose({
         exitInMenuOnSmallScreens
         nav={
           <>
-            <button type="button" className="site-header-nav-link" onClick={() => scrollTo("home-editions")}>
+            <button type="button" className="site-header-nav-link" data-nav-section="home-editions" onClick={() => scrollTo("home-editions")}>
               EXPEDITIONS
               <svg width="9" height="6" viewBox="0 0 9 6" aria-hidden="true"><path d="M1 1l3.5 3.5L8 1" stroke="currentColor" fill="none" strokeWidth="1.5" /></svg>
             </button>
-            <button type="button" className="site-header-nav-link" onClick={() => scrollTo("home-cases")}>
+            <button type="button" className="site-header-nav-link" data-nav-section="home-cases" onClick={() => scrollTo("home-cases")}>
               CASES
               <svg width="9" height="6" viewBox="0 0 9 6" aria-hidden="true"><path d="M1 1l3.5 3.5L8 1" stroke="currentColor" fill="none" strokeWidth="1.5" /></svg>
             </button>
-            <button type="button" className="site-header-nav-link" onClick={() => scrollTo("home-about")}>ABOUT</button>
+            <button type="button" className="site-header-nav-link" data-nav-section="home-about" onClick={() => scrollTo("home-about")}>ABOUT</button>
             <Link to="/contact" className="site-header-nav-link" data-testid="nav-contact-link">CONTACT</Link>
             <Link to="/board" className="site-header-nav-link" data-testid="nav-board-link">WHAT&rsquo;S COMING</Link>
-            <button type="button" className="site-header-nav-link" onClick={() => scrollTo("home-journal")}>JOURNAL</button>
-            <button type="button" className="site-header-nav-link" onClick={() => scrollTo("home-grownups")}>GET INVOLVED</button>
+            <button type="button" className="site-header-nav-link" data-nav-section="home-journal" onClick={() => scrollTo("home-journal")}>JOURNAL</button>
+            <button type="button" className="site-header-nav-link" data-nav-section="home-grownups" onClick={() => scrollTo("home-grownups")}>GET INVOLVED</button>
           </>
         }
         status={null}

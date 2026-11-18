@@ -2234,8 +2234,49 @@ div.first-visit-queue-overlay {
   white-space: nowrap;
 }
 .site-header {
+  /* Frozen bar (PR 529 Part 2, N1 — owner-approved Phase A mocks):
+   * the ONE shell header sticks to the top of the viewport on every
+   * screen, so the nav is reachable at every scroll position. The
+   * background and rule are the staged bar treatment: opaque, so
+   * content never shows through the bar while it rides over it. */
+  position: sticky;
+  top: 0;
+  background: var(--bg, var(--atlas-bg-1));
+  border-bottom: 1px solid var(--atlas-card-line);
   z-index: var(--z-header);
   min-height: var(--header-height);
+}
+/* Scroll-offset contract (N1): an anchor landing never hides its
+ * target under the frozen bar — the offset is the header-height
+ * token plus a 12px breathing gap. */
+html {
+  scroll-padding-top: calc(var(--header-height) + 12px);
+}
+/* Current section (N1): exactly one nav item carries data-current
+ * (SiteHeader derives it from the location hash). The cue is a
+ * filled tile AND an underline — never colour alone. One style,
+ * shared by every screen's header. */
+.site-header-nav-link[data-current="true"] {
+  background: #8a6d2f;
+  color: #fff8ea;
+  border-radius: 999px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.home-v5 .site-header-nav-link[data-current="true"] {
+  background: #8a6d2f;
+  color: #fff8ea;
+}
+/* The lockup is wider than the retired "Home" pill: in the in-game
+ * row (lockup + Case # + sound + End game) it pushed End game off
+ * the right edge at 390px in the Phase A captures. Below 560px the
+ * SiteHeader lockup collapses to the compass mark alone — the same
+ * collapse the home brand lockup already makes at that width; the
+ * accessible name ("Meridian home") is unchanged. */
+@media (max-width: 560px) {
+  .site-header .brand-home-word {
+    display: none;
+  }
 }
 /* On Home the header is a child of .atlas-home, whose lift
  * (.atlas-home > :not(.atlas-bg)) puts every child at z-index 1 and
@@ -2246,7 +2287,25 @@ div.first-visit-queue-overlay {
  * untouched for every other child. The menu-open twin keeps the
  * open panel at the menu layer, above the first-visit sheet. */
 .atlas-home > header.site-header {
+  /* The atlas lift also forces position: relative on the header,
+   * which would defeat the frozen bar (Phase A mechanism 1: the
+   * bar scrolled away, headerY −1212 scrolled). Claim sticky back
+   * at the lift's own weight, the same pattern as the z-index
+   * claim below. */
+  position: sticky;
+  top: 0;
   z-index: var(--z-header);
+}
+/* Sticky is confined to its parent's box (Phase A mechanism 2):
+ * PageShell's column grows with the page, so route headers stick
+ * for the whole scroll. A header rendered as a direct child of
+ * <body> instead inherits the base layer's body { height: 100% }
+ * box — one viewport of travel, then the bar lets go. Grow the
+ * body on exactly those pages; this stays in the shell's CSS
+ * because no wrapper exists above a body-child header to fix. */
+body:has(> header.site-header) {
+  height: auto;
+  min-height: 100%;
 }
 .atlas-home > header.site-header[data-menu-open="true"] {
   z-index: var(--z-menu);

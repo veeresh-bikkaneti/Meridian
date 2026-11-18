@@ -80,6 +80,14 @@ export type HomeButtonProps = Common &
  *   styles.css as .brand-home-button / .brand-home-mark /
  *   .brand-home-word, mirroring .home-v5 .hv5-brand values —
  *   home-v5.css is scoped to the home page and is not imported here.
+ * - Two forms, one component (PR 529 Part 2, N1 — the owner's
+ *   2026-11-17 logo-as-home ruling): in-app screens pass `onHome`
+ *   and get a <button>; the real routes pass `to="/"` and get a
+ *   router <Link> to "/". Both carry the same lockup, name and
+ *   testid. SiteHeader renders this control in both its branches —
+ *   the "Home" pill (HomeButton) no longer appears in any header;
+ *   HomeButton itself still serves the end-of-flow and HUD
+ *   surfaces that were never the header.
  */
 const BRAND_BASE =
   "brand-home-button inline-flex min-h-11 shrink-0 items-center justify-center gap-3 rounded-md px-3 text-sm font-medium " +
@@ -87,13 +95,12 @@ const BRAND_BASE =
   "outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-solid focus-visible:outline-current";
 
 export type BrandHomeButtonProps = {
-  onHome: () => void;
   className?: string;
   /** Defaults to "home-button"; see the contract note above. */
   testId?: string;
-};
+} & ({ onHome: () => void; to?: never } | { to: "/"; onHome?: never });
 
-export function BrandHomeButton({ onHome, className, testId = "home-button" }: BrandHomeButtonProps) {
+export function BrandHomeButton({ className, testId = "home-button", ...rest }: BrandHomeButtonProps) {
   const cls = cn(BRAND_BASE, className);
   const mark = createElement(
     "svg",
@@ -115,9 +122,19 @@ export function BrandHomeButton({ onHome, className, testId = "home-button" }: B
     createElement("circle", { cx: "24", cy: "24", r: "3.4", fill: "#F6F1E3", stroke: "#8A6D2F", strokeWidth: "1.2" }),
   );
   const word = createElement("span", { className: "brand-home-word" }, "MERIDIAN");
+  if ("to" in rest && rest.to) {
+    // The route form (PR 529 Part 2, N1): a real router Link to "/",
+    // never a location.href shortcut. Link's prop types omit data-*
+    // and aria-* attributes; it forwards them to the <a>.
+    const linkProps = { to: rest.to, className: cls, "data-testid": testId, "aria-label": BRAND_HOME_LABEL } as {
+      to: "/";
+      className: string;
+    };
+    return createElement(Link, linkProps, mark, word);
+  }
   return createElement(
     "button",
-    { type: "button", className: cls, "data-testid": testId, "aria-label": BRAND_HOME_LABEL, onClick: onHome },
+    { type: "button", className: cls, "data-testid": testId, "aria-label": BRAND_HOME_LABEL, onClick: rest.onHome },
     mark,
     word,
   );
