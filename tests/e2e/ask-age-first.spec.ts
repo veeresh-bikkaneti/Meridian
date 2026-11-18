@@ -11,7 +11,7 @@ import { serveBuiltArtifact } from "./helpers";
  * itself — the page shows the three band pills while no band is
  * set, and a subject tap in that state goes to the pills instead
  * of opening a case; once a band is set the pills collapse to a
- * "Change band" option, which re-opens them (graduation). The
+ * the selected-band pill, which re-opens them (graduation). The
  * modal ask remains only where a case can start without the
  * page:
  *
@@ -130,14 +130,14 @@ test("no band: the picker page asks with its pills, then the case lands at the p
   await page.goto(APP_URL);
   await tapWhyLearn(page);
   // The page itself asks: the picker opens directly — no modal —
-  // with the three band pills showing and no Change band yet.
+  // with the three band pills showing and no selected-band pill yet.
   await expect(page.getByTestId("subject-picker")).toBeVisible();
   await expect(page.getByTestId("age-picker")).toHaveCount(0);
   await expect(page.getByTestId("band-pills")).toBeVisible();
   await expect(page.getByTestId("band-pill-7-10")).toBeVisible();
   await expect(page.getByTestId("band-pill-10-18")).toBeVisible();
   await expect(page.getByTestId("band-pill-18+")).toBeVisible();
-  await expect(page.getByTestId("change-band-button")).toHaveCount(0);
+  await expect(page.getByTestId("band-selected-pill")).toHaveCount(0);
   // A subject tap with no band set starts no case: it takes the
   // player to the pills (the first pill takes focus).
   await page.getByTestId("subject-row-math").click();
@@ -145,12 +145,18 @@ test("no band: the picker page asks with its pills, then the case lands at the p
   await expect(page.getByTestId("subject-picker")).toBeVisible();
   await expect(page.getByTestId("band-pill-7-10")).toBeFocused();
   expect(await readProfileBand(page)).toBeNull();
-  // The pick writes the band, the pills collapse to Change band,
-  // and the list re-deals at the picked band.
+  // The pick writes the band, the pills collapse to the one
+  // selected-band pill naming the pick, and the list re-deals
+  // at the picked band.
   await page.getByTestId("band-pill-7-10").click();
   expect(await readProfileBand(page)).toBe("7-10");
   await expect(page.getByTestId("band-pills")).toHaveCount(0);
-  await expect(page.getByTestId("change-band-button")).toBeVisible();
+  await expect(page.getByTestId("band-selected-pill")).toBeVisible();
+  await expect(page.getByTestId("band-selected-pill")).toHaveText("Ages 7-10");
+  await expect(page.getByTestId("band-selected-pill")).toHaveAttribute(
+    "aria-label",
+    "Age band: Ages 7-10. Tap to change band.",
+  );
   await expect(page.getByTestId("subject-picker")).toContainText("Ages 7-10");
   // …and now the subject card lands on its case, at 7-10.
   await page.getByTestId("subject-row-math").click();
@@ -160,7 +166,7 @@ test("no band: the picker page asks with its pills, then the case lands at the p
   expect(errors).toEqual([]);
 });
 
-test("band set: Change band re-opens the pills and graduates the player", async ({
+test("band set: the selected-band pill re-opens the pills and graduates the player", async ({
   page,
   context,
 }) => {
@@ -170,11 +176,12 @@ test("band set: Change band re-opens the pills and graduates the player", async 
   await page.goto(APP_URL);
   await tapWhyLearn(page);
   await expect(page.getByTestId("subject-picker")).toBeVisible();
-  // Set state: no pills — the Change band option instead.
+  // Set state: no pills — the selected-band pill instead.
   await expect(page.getByTestId("band-pills")).toHaveCount(0);
-  await expect(page.getByTestId("change-band-button")).toBeVisible();
-  // Change band re-opens the pills, the current band marked.
-  await page.getByTestId("change-band-button").click();
+  await expect(page.getByTestId("band-selected-pill")).toBeVisible();
+  await expect(page.getByTestId("band-selected-pill")).toHaveText("Ages 7-10");
+  // The selected-band pill re-opens the pills, the current band marked.
+  await page.getByTestId("band-selected-pill").click();
   await expect(page.getByTestId("band-pills")).toBeVisible();
   await expect(page.getByTestId("band-pill-7-10")).toHaveAttribute("aria-pressed", "true");
   await expect(page.getByTestId("band-pill-18+")).toHaveAttribute("aria-pressed", "false");
@@ -182,7 +189,8 @@ test("band set: Change band re-opens the pills and graduates the player", async 
   await page.getByTestId("band-pill-18+").click();
   expect(await readProfileBand(page)).toBe("18+");
   await expect(page.getByTestId("band-pills")).toHaveCount(0);
-  await expect(page.getByTestId("change-band-button")).toBeVisible();
+  await expect(page.getByTestId("band-selected-pill")).toBeVisible();
+  await expect(page.getByTestId("band-selected-pill")).toHaveText("Ages 18+");
   await expect(page.getByTestId("subject-picker")).toContainText("Ages 18+");
   await page.getByTestId("subject-row-math").click();
   await expect(page.getByTestId("math-case")).toBeVisible();
@@ -227,8 +235,8 @@ test("band set: no ask on the Why Learn path or on resume", async ({
   await tapWhyLearn(page);
   await expect(page.getByTestId("subject-picker")).toBeVisible();
   await expect(page.getByTestId("age-picker")).toHaveCount(0);
-  // The page's set state: the Change band option, no pills.
-  await expect(page.getByTestId("change-band-button")).toBeVisible();
+  // The page's set state: the selected-band pill, no pills.
+  await expect(page.getByTestId("band-selected-pill")).toBeVisible();
   await expect(page.getByTestId("band-pills")).toHaveCount(0);
   await expect(page.getByTestId("subject-picker")).toContainText("Ages 7-10");
   await page.getByTestId("subject-row-math").click();

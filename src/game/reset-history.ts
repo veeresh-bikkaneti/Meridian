@@ -53,10 +53,7 @@ import {
   validateProfile,
   PROFILE_STORAGE_KEY,
 } from "./age-profile/store.ts";
-import {
-  clearAllSubjectProgress,
-  readSubjectProgress,
-} from "../subjects/shared/subject-progress.ts";
+import { clearAllSubjectProgress } from "../subjects/shared/subject-progress.ts";
 
 export type ResetStorage = {
   getItem(key: string): string | null;
@@ -204,11 +201,10 @@ export function resetHistory(
   } catch {
     moveToFailed("session");
   }
-  try {
-    if (Object.keys(readSubjectProgress(local)).length > 0) moveToFailed("subject-progress");
-  } catch {
-    moveToFailed("subject-progress");
-  }
+  // No post-clear re-read for subject-progress above: its
+  // clear-all verifies by re-read inside the owner module and
+  // reports honestly through the step result, like the
+  // enumerated stores.
   try {
     const raw = local?.getItem(PROFILE_STORAGE_KEY);
     if (raw !== null && raw !== undefined && raw !== "") {

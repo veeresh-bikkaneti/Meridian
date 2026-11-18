@@ -13,56 +13,53 @@
  * The shape follows the repo's other stores (the age-profile
  * store, the learning store): one key, one JSON document, reads
  * validated on the way in (a corrupt or wrong-shaped blob reads
- * as empty, never as a crash), writes that never throw when
- * storage is blocked or absent, and a tiny in-memory change bus
- * in the age-profile events pattern so the picker can re-render
- * the moment a case records a solve or a reset clears a subject.
+ * as empty, never as a crash — the age-profile store's whole-blob
+ * fail-closed rule), writes that never throw when storage is
+ * blocked or absent, and a tiny in-memory change bus in the
+ * age-profile events pattern so the picker can re-render the
+ * moment a case records a solve.
+ *
+ * One piece lives next door: clearAllSubjectProgress (the
+ * "Start over" reset's step) is implemented in
+ * subject-progress-clear.ts and re-exported here, so the reset
+ * composition — which ships in the first-load bundle — carries
+ * only that one clear, not this whole picker store. See that
+ * file's header for the full reasoning.
  */
 
-export const SUBJECT_PROGRESS_KEY = "meridian.subject-progress.v1";
+import {
+  SUBJECT_PROGRESS_KEY,
+  resolveSubjectProgressStorage,
+  type SubjectProgressStorage,
+} from "./subject-progress-clear.ts";
+
+export { clearAllSubjectProgress, SUBJECT_PROGRESS_KEY } from "./subject-progress-clear.ts";
 
 /** Completed unit ids per subject id: `{ [subjectId]: string[] }`. */
 export type SubjectProgress = { [subjectId: string]: string[] };
 
-type StorageLike = {
-  getItem(key: string): string | null;
-  setItem(key: string, value: string): void;
-  removeItem(key: string): void;
-};
-
-function resolveStorage(explicit?: StorageLike): StorageLike | undefined {
-  if (explicit) return explicit;
-  try {
-    return typeof localStorage === "undefined" ? undefined : localStorage;
-  } catch {
-    return undefined;
-  }
-}
+type StorageLike = SubjectProgressStorage;
 
 /**
- * Validate a decoded payload. Fail closed to empty: anything that
- * is not a plain object of string arrays is not progress. Unit
- * lists are de-duplicated — a unit is either solved or it is not.
+ * Read the whole store, validated on the way in. Fail closed to
+ * empty: a corrupt blob, or a document whose values are not all
+ * string arrays, is not progress. (Record writes only ever
+ * append a new id to a subject's list, so stored lists hold no
+ * duplicates to clean up.)
  */
-export function parseSubjectProgress(raw: unknown): SubjectProgress {
-  if (!raw || typeof raw !== "object" || Array.isArray(raw)) return {};
-  const out: SubjectProgress = {};
-  for (const [subjectId, units] of Object.entries(raw as Record<string, unknown>)) {
-    if (!Array.isArray(units) || !units.every((u) => typeof u === "string")) continue;
-    const unique = [...new Set(units as string[])];
-    if (unique.length > 0) out[subjectId] = unique;
-  }
-  return out;
-}
-
-/** Read the whole store. Corrupt or absent storage reads as empty. */
 export function readSubjectProgress(storage?: StorageLike): SubjectProgress {
   try {
-    const s = resolveStorage(storage);
+    const s = resolveSubjectProgressStorage(storage);
     if (!s) return {};
     const raw = s.getItem(SUBJECT_PROGRESS_KEY);
     if (!raw) return {};
-    return parseSubjectProgress(JSON.parse(raw));
+    const parsed: unknown = JSON.parse(raw);
+    if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) return {};
+    const doc = parsed as Record<string, unknown>;
+    for (const units of Object.values(doc)) {
+      if (!Array.isArray(units) || !units.every((u) => typeof u === "string")) return {};
+    }
+    return doc as SubjectProgress;
   } catch {
     return {};
   }
@@ -70,13 +67,8 @@ export function readSubjectProgress(storage?: StorageLike): SubjectProgress {
 
 function writeSubjectProgress(progress: SubjectProgress, storage?: StorageLike): void {
   try {
-    const s = resolveStorage(storage);
-    if (!s) return;
-    if (Object.keys(progress).length === 0) {
-      s.removeItem(SUBJECT_PROGRESS_KEY);
-    } else {
-      s.setItem(SUBJECT_PROGRESS_KEY, JSON.stringify(progress));
-    }
+    const s = resolveSubjectProgressStorage(storage);
+    if (s) s.setItem(SUBJECT_PROGRESS_KEY, JSON.stringify(progress));
   } catch {
     // Storage blocked or full; the game must never break on progress data.
   }
@@ -99,7 +91,7 @@ export function onSubjectProgressChanged(listener: () => void): () => void {
 }
 
 function emitSubjectProgressChanged(): void {
-  for (const listener of [...listeners]) {
+  for (const listener of listeners) {
     try {
       listener();
     } catch {
@@ -130,39 +122,13 @@ export function hasSubjectProgress(subjectId: string, storage?: StorageLike): bo
 /**
  * Clear ONE subject's record; every other subject's record stays
  * byte-identical. Returns true only when a re-read proves that
- * subject is gone — the picker's Reset and the "Start over"
- * composition both rely on the honest answer.
+ * subject is gone. (No change event: the one caller, the picker's
+ * Reset tap, re-reads the store itself in the same tap.)
  */
 export function clearSubjectProgress(subjectId: string, storage?: StorageLike): boolean {
   const progress = readSubjectProgress(storage);
   if (!(subjectId in progress)) return true; // Nothing recorded = already clear.
   delete progress[subjectId];
   writeSubjectProgress(progress, storage);
-  const cleared = !(subjectId in readSubjectProgress(storage));
-  if (cleared) emitSubjectProgressChanged();
-  return cleared;
-}
-
-/**
- * Clear every subject's record (the "Start over" reset's step,
- * composed by src/game/reset-history.ts). Removal follows the
- * other stores' precedent: where removal fails, overwrite with
- * the empty document so a stale blob cannot resurrect progress.
- * Returns true only when a re-read proves the store is empty.
- */
-export function clearAllSubjectProgress(storage?: StorageLike): boolean {
-  const s = resolveStorage(storage);
-  if (!s) return true; // No storage = nothing was ever persisted.
-  try {
-    s.removeItem(SUBJECT_PROGRESS_KEY);
-  } catch {
-    try {
-      s.setItem(SUBJECT_PROGRESS_KEY, JSON.stringify({}));
-    } catch {
-      // Both paths blocked; the verification below reports it.
-    }
-  }
-  const cleared = Object.keys(readSubjectProgress(storage)).length === 0;
-  if (cleared) emitSubjectProgressChanged();
-  return cleared;
+  return !(subjectId in readSubjectProgress(storage));
 }

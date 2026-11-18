@@ -87,7 +87,7 @@ describe("subject-progress store", () => {
     s.setItem(SUBJECT_PROGRESS_KEY, "{not json");
     assert.deepEqual(readSubjectProgress(s), {});
     s.setItem(SUBJECT_PROGRESS_KEY, JSON.stringify({ math: "not-an-array", physics: [1, 2] }));
-    assert.deepEqual(readSubjectProgress(s), {}, "wrong-shaped entries are dropped, not trusted");
+    assert.deepEqual(readSubjectProgress(s), {}, "a wrong-shaped document fails closed to empty, never trusted in part");
     s.setItem(SUBJECT_PROGRESS_KEY, JSON.stringify(["math"]));
     assert.deepEqual(readSubjectProgress(s), {}, "a top-level array is not a progress document");
   });

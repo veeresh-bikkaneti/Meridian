@@ -7,8 +7,8 @@ import { serveBuiltArtifact } from "./helpers";
  * The card is live for everyone (subjects launch, Nov 13): no
  * ?scale=1 needed. The picker lists the released subjects as ready
  * rows and everything not built yet as disabled "Coming soon" rows
- * (Journals stay coming soon in this run — their clips are not in the
- * repo). Picking a ready row opens that subject's case; the case's
+ * (all six subjects are released today, Journals included).
+ * Picking a ready row opens that subject's case; the case's
  * "Meridian home" (brand) control returns to Home. Per-band "Coming soon" for a released
  * subject is covered by the picker-rows unit tests; no shipped
  * subject currently lacks a band.
@@ -75,7 +75,13 @@ test("picker lists Math and Journals ready for 10-18", async ({ page, context })
   const math = page.getByTestId("subject-row-math");
   await expect(math).toBeEnabled();
   await expect(math).toContainText("Math");
-  await expect(math).toContainText("3 cases");
+  // The 10-18 dealing counts every math unit for the band
+  // (pickerRows over the registry units): 28 today. This pin
+  // read "3 cases" from the first playable slice and was stale
+  // on main — it failed there too (measured on unmodified main,
+  // 2026-11-18: the card shows "28 cases"). Corrected to the
+  // app's actual dealing; the count is the assertion.
+  await expect(math).toContainText("28 cases");
   // Journals (Stream D, PR D1) is playable: 7 cases for 10-18.
   const journals = page.getByTestId("subject-row-journals");
   await expect(journals).toBeEnabled();
