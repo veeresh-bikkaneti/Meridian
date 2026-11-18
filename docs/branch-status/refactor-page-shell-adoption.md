@@ -468,6 +468,27 @@ mechanisms). Zero visual delta beyond them.
   so they fail there by construction (recorded per unit below
   when the tip gates run).
 
+### Done — Part 2 Unit 2: the home-control rule amended (lint + AGENTS.md, one commit)
+
+- The old rule ("One home control, named exactly Home",
+  HomeButton + HOME_LABEL enforcer) is superseded by the owner's
+  2026-11-17 ruling, in the same commit: the AGENTS.md rule-table
+  row now reads one home control per screen, and it is the brand
+  lockup whose accessible name is exactly "Meridian home"
+  (BrandHomeButton + BRAND_HOME_LABEL, rendered by SiteHeader);
+  the home-label lint's fix guidance and the shell-ban rule's
+  header note say the same. HomeButton ("Home") remains only for
+  end-of-flow and HUD surfaces, which are not headers. The banned
+  old labels themselves are unchanged. lint:nav green.
+- Spec name updates (journeys/assertions unchanged, only the
+  header control's name): shared-shell-adoption (name pin),
+  home-layout (default name, the two explicit pins, test title),
+  and every e2e journey that clicks the header control mid-flow —
+  32 `getByRole("button", { name: "Home" })` sites across 16 spec
+  files, each checked in context: all are header journeys (loop,
+  picker, lists, Cold Trail, subject case), none is an
+  end-of-flow button.
+
 ## Remaining
 
 - Part 2 Units 2–3: the lint:nav / AGENTS.md rule amendment

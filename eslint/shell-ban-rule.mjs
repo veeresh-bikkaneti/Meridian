@@ -10,15 +10,15 @@
  *
  * 1. Importing a home control (HomeButton or BrandHomeButton) to
  *    hand-roll a header — screens take the home control from
- *    SiteHeader, which owns it (Round 2 adoption: the control is
- *    HomeButton, "Home", top-left, on every adopted screen). The
- *    controls themselves are NOT deleted: HomeButton still serves
- *    end-of-flow and HUD surfaces until their streams adopt the
- *    shell. BrandHomeButton is kept in home-button.ts as a
- *    component (PR 3 Step 4 kept it when ScreenShell was deleted);
- *    no screen imports it to hand-roll a header. Those
- *    uses are baselined or owner-exempt below; this rule bans new
- *    imports everywhere else.
+ *    SiteHeader, which owns it. Since PR 529 Part 2 (owner ruling
+ *    2026-11-17) the header control is BrandHomeButton: the brand
+ *    lockup named exactly "Meridian home", top-left, on every
+ *    adopted screen — one home control per screen, and it is the
+ *    lockup. The controls themselves are NOT deleted: HomeButton
+ *    ("Home") still serves end-of-flow and HUD surfaces, which are
+ *    not headers. No screen imports either control to hand-roll a
+ *    header. Those uses are baselined or owner-exempt below; this
+ *    rule bans new imports everywhere else.
  * 2. Page-local <header> / <footer> elements outside the shared
  *    components.
  * 3. `max-w-none` in a class string — screens sit in PageColumn's two

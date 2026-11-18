@@ -10,8 +10,15 @@
  *
  * Not banned (they are not home): "Back" (one step back), "Exit review"
  * (ends a review), "Close" (dismisses a sheet or player).
+ *
+ * Rule amended 2026-11-18 (PR 529 Part 2, owner ruling 2026-11-17):
+ * the one home control per screen is now the brand lockup whose
+ * accessible name is exactly "Meridian home" — the "Home" pill no
+ * longer appears in any header. The banned old labels below are
+ * unchanged; only the fix guidance moved to the lockup.
  */
-const FIX = "use <HomeButton> (HOME_LABEL = \"Home\") from src/components/ui/home-button.ts";
+const FIX =
+  "the header home control is the brand lockup: <BrandHomeButton> (BRAND_HOME_LABEL = \"Meridian home\") from src/components/ui/home-button.ts, rendered by <SiteHeader>; <HomeButton> (\"Home\") remains only for end-of-flow and HUD surfaces";
 
 const EXACT = "^\\s*(←\\s*)?(Editions|← Back)\\s*$";
 const ANYWHERE = "(Back to editions|Back to Home|All games|Back to the game)";

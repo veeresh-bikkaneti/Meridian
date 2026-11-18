@@ -130,7 +130,7 @@ test("no speaker by the pair; the one mute is top-left beside the other two butt
   await expect(page.getByTestId("detective-sound-chip")).toHaveCount(0);
 
   const mute = await page.getByTestId("sound-toggle-loop").boundingBox();
-  const editions = await page.getByRole("button", { name: "Home", exact: true }).boundingBox();
+  const editions = await page.getByRole("button", { name: "Meridian home", exact: true }).boundingBox();
   const viewport = page.viewportSize()!;
   expect(mute).not.toBeNull();
   expect(editions).not.toBeNull();

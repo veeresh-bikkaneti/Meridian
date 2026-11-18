@@ -321,7 +321,7 @@ code the error names; never weaken the check.
 
 | Rule | Enforcer | Fails with |
 | :--- | :--- | :--- |
-| One home control, named exactly `Home`, on every screen | `HomeButton` + `HOME_LABEL` (`src/components/ui/home-button.ts`); `npm run lint:nav` (CI) | `Hand-written home label … use <HomeButton>` |
+| One home control per screen, and it is the brand lockup whose accessible name is exactly `Meridian home` (owner ruling 2026-11-17; the `Home` pill no longer appears in any header — `HomeButton` remains for end-of-flow and HUD surfaces only) | `BrandHomeButton` + `BRAND_HOME_LABEL` (`src/components/ui/home-button.ts`), rendered by `SiteHeader`; `npm run lint:nav` (CI) | `Hand-written home label … use <BrandHomeButton>` |
 | Home card grids: no empty cell, one column count per row, equal heights per row, Home ≥ 44×44 | `tests/e2e/home-layout.spec.ts` (6 viewports) | the viewport, grid and measured gap |
 | Screen changes reset scroll in one shared place and Home stays sticky | `tests/e2e/home-layout.desktop.spec.ts` (Home stays in the viewport) | `Home top … is above the viewport` |
 | Every PR commit is authored `veeresh bikkaneti <57240576+veeresh-bikkaneti@users.noreply.github.com>`; no AI tool name in a commit message, co-author or session trailer, or an added line. Bot authors (name ending `[bot]`, or email ending `[bot]@users.noreply.github.com`) are exempt from the identity check only | `npm run check:provenance` (`scripts/check-provenance.mjs`; CI `build` job, PRs only) | `IDENTITY <sha> authored as …`, `MESSAGE <sha> …`, `FILE <path>:<line> adds an AI tool name` |
