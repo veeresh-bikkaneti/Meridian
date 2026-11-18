@@ -15,6 +15,12 @@ const buttonVariants = cva(
       size: {
         md: "min-h-11 px-4",
         lg: "min-h-12 px-5 text-base",
+        // The small pill from the Why Learn subject cards (the
+        // per-card Reset): the face stays the approved mock's —
+        // muted text on no fill, 26px tall — while the invisible
+        // after: zone grows the tap target to 44px+ both ways
+        // without moving or covering anything beside it.
+        pill: "relative min-h-0 rounded-full bg-transparent px-2.5 py-1 text-xs font-normal text-muted after:absolute after:-inset-x-2 after:-inset-y-3 after:content-['']",
       },
     },
     defaultVariants: { variant: "primary", size: "md" },

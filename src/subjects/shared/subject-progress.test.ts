@@ -163,8 +163,12 @@ describe("subject-progress wiring (source pins)", () => {
     assert.ok(picker.includes("aria-label={`Reset ${row.title}`}"), "the Reset names its subject");
     assert.ok(picker.includes("disabled={!hasProgress}"), "disabled while the subject has nothing recorded");
     assert.ok(
-      picker.includes('className="absolute right-3 bottom-3 z-10 rounded-full border border-line px-2.5 py-1 text-xs text-muted"'),
+      picker.includes('className="absolute right-3 bottom-3 z-10"'),
       "the approved card-corner placement",
+    );
+    assert.ok(
+      picker.includes('size="pill"'),
+      "the Reset renders through the shared Button's pill size (its look lives in button.tsx)",
     );
     assert.ok(picker.includes("clearSubjectProgress(row.id)"), "a tap clears only that subject");
     assert.ok(picker.includes("setResetNotice(`${row.title} reset`)"), "the outcome is announced");

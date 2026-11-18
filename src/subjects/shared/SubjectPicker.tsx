@@ -456,9 +456,10 @@ export default function SubjectPicker({
                   subject's recorded progress; it is disabled while
                   the subject has nothing recorded. The outcome is
                   announced through the status line below the grid. */}
-              <button
-                type="button"
-                className="absolute right-3 bottom-3 z-10 rounded-full border border-line px-2.5 py-1 text-xs text-muted"
+              <Button
+                variant="secondary"
+                size="pill"
+                className="absolute right-3 bottom-3 z-10"
                 data-testid={`subject-reset-${row.id}`}
                 aria-label={`Reset ${row.title}`}
                 disabled={!hasProgress}
@@ -469,7 +470,7 @@ export default function SubjectPicker({
                 }}
               >
                 Reset
-              </button>
+              </Button>
             </li>
           );
         })}
