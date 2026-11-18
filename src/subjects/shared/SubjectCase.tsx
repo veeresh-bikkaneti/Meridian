@@ -245,7 +245,7 @@ export function SubjectCase({
 
   if (!item || !answer) {
     return (
-      <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 pt-2 pb-8 why-learn-screen subject-case-screen">
+      <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-(--page-narrow) flex-col px-5 pt-2 pb-8 why-learn-screen subject-case-screen">
         <SiteHeader
           onHome={onExit}
           status={null}
@@ -319,7 +319,7 @@ export function SubjectCase({
 
   return (
     <main
-      className="mode-screen mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 pt-2 pb-8 why-learn-screen subject-case-screen"
+      className="mode-screen mx-auto flex min-h-dvh w-full max-w-(--page-narrow) flex-col px-5 pt-2 pb-8 why-learn-screen subject-case-screen"
       data-testid={`${testIdPrefix}-case`}
       data-band={band}
       data-item={item.id}

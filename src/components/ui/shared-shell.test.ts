@@ -564,6 +564,33 @@ describe("dead home header CSS (PR 3 Step 4)", () => {
   });
 });
 
+describe("page-width tokens (PR 3 Step 4)", () => {
+  it("screen roots use the PageColumn tokens, not literal max-w-3xl / max-w-7xl", () => {
+    for (const file of [
+      "src/components/game-app.tsx",
+      "src/components/boot-splash.tsx",
+      "src/game/loop/LoopScreen.tsx",
+      "src/subjects/shared/SubjectCase.tsx",
+      "src/subjects/shared/SubjectPicker.tsx",
+    ]) {
+      const src = read(file);
+      assert.doesNotMatch(src, /max-w-3xl|max-w-7xl/, file);
+      assert.match(src, /max-w-\(--page-(narrow|wide)\)/, file);
+    }
+    // Token values are the shipped sizes, so the swap changes nothing
+    // on screen: --page-narrow is Tailwind's 3xl, --page-wide its 7xl.
+    const css = read("src/styles.css");
+    assert.match(css, /--page-narrow: 48rem;/);
+    assert.match(css, /--page-wide: 80rem;/);
+    // Left literal, with the reason on record: the RegionList column
+    // is a deliberate 36rem list width with no token in the
+    // narrow/wide family; widening it to 48rem would be a visual
+    // change, not a refactor. Component-local caps (cards, overlays,
+    // sheets) are not page widths and stay literal too.
+    assert.match(read("src/components/game-app.tsx"), /max-w-xl flex-col/);
+  });
+});
+
 describe("shell-ban baseline (KNOWN/STALE)", () => {
   const baseline = JSON.parse(read("eslint/shell-ban-baseline.json")) as Record<string, string[]>;
   const patterns: Record<string, RegExp> = {

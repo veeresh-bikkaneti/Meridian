@@ -650,7 +650,7 @@ function MapLoadingFallback() {
  */
 function SessionLoadingFallback({ label }: { label: string }) {
   return (
-    <main className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 py-8">
+    <main className="mx-auto flex min-h-dvh w-full max-w-(--page-narrow) flex-col px-5 py-8">
       <div
         role="status"
         data-testid="session-loading"
@@ -3768,7 +3768,7 @@ export function GameApp() {
     return (
       <>
       {mapModeAnnouncer}
-      <main className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col justify-center px-5 py-8">
+      <main className="mx-auto flex min-h-dvh w-full max-w-(--page-narrow) flex-col justify-center px-5 py-8">
         <p className="text-sm tracking-wide text-muted uppercase">Loading places</p>
         <h1 className="mt-2 font-display text-4xl text-fg">{starting.regionName}</h1>
         <p className="mt-4 max-w-md text-lg text-muted" role="status">
@@ -4008,7 +4008,7 @@ export function GameApp() {
     return (
       <>
         {mapModeAnnouncer}
-        <main className="mx-auto w-full max-w-3xl px-5 py-8">
+        <main className="mx-auto w-full max-w-(--page-narrow) px-5 py-8">
           <HomeButton onHome={() => setMenu(null)} variant="secondary" />
           <h1
             ref={challengeMenuHeadingRef}
@@ -4949,7 +4949,7 @@ function Choose({
   );
   return (
     <>
-    <main className="atlas-home home-v5 relative mx-auto flex min-h-dvh w-full max-w-7xl flex-col px-5 py-8 md:px-9">
+    <main className="atlas-home home-v5 relative mx-auto flex min-h-dvh w-full max-w-(--page-wide) flex-col px-5 py-8 md:px-9">
       {/* Skip link (WCAG 2.4.1): the first focusable element on the home
           page, visually hidden until focused; jumps to the journal
           section (scrollTo moves focus there as well as scrolling). */}
@@ -5635,7 +5635,7 @@ function ReviewComplete({
 }) {
   const remembered = results.filter((r) => r.hit).length;
   return (
-    <main className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 pt-2 pb-8">
+    <main className="mx-auto flex min-h-dvh w-full max-w-(--page-narrow) flex-col px-5 pt-2 pb-8">
       {/* The shared shell (PR 3 Step 3.7): SiteHeader carries the
           one Home control at the top — this screen had no header
           at all. The content keeps its vertical centring in the
@@ -6409,7 +6409,7 @@ function ChallengeComplete({
     : "";
   return (
     <main
-      className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 pt-2 pb-8"
+      className="mx-auto flex min-h-dvh w-full max-w-(--page-narrow) flex-col px-5 pt-2 pb-8"
       data-verdict-settled={incomingWinner ? verdictSettled : undefined}
       onClick={incomingWinner ? settleByGesture : undefined}
       onKeyDown={incomingWinner ? settleByGesture : undefined}
@@ -6875,7 +6875,7 @@ function Play({
 
   if (!places) {
     return (
-      <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-3xl flex-col justify-center px-5 py-8">
+      <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-(--page-narrow) flex-col justify-center px-5 py-8">
         <p className="name-eyebrow">Loading places</p>
         <h1 className="mode-title mt-2 text-4xl text-fg">{run.regionName}</h1>
         <p className="mt-4 max-w-md text-lg text-fg" role="status">

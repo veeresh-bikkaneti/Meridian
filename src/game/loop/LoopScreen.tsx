@@ -953,7 +953,7 @@ export function LoopScreen({
   }
 
   return (
-    <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 py-8">
+    <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-(--page-narrow) flex-col px-5 py-8">
       {/* The shared shell header (fix/ui-shared-shell, Round 2
           adoption): HomeButton ("Home") top-left, then the fixed
           slots — the case readout, the one mute, End game. The

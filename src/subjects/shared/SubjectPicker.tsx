@@ -298,7 +298,7 @@ export default function SubjectPicker({
 
   return (
     <main
-      className="mode-screen mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 pt-2 pb-8 why-learn-screen subject-picker-screen lg:max-w-none"
+      className="mode-screen mx-auto flex min-h-dvh w-full max-w-(--page-narrow) flex-col px-5 pt-2 pb-8 why-learn-screen subject-picker-screen lg:max-w-none"
       data-testid="subject-picker"
       data-band={band}
     >
