@@ -596,6 +596,8 @@ describe("shell-ban baseline (KNOWN/STALE)", () => {
   const patterns: Record<string, RegExp> = {
     homeButtonImport: /import[^;]*\b(?:Brand)?HomeButton\b[^;]*home-button/,
     pageLocalHeaderFooter: /<(header|footer)[\s>]/,
+    pageLocalNav: /<nav[\s>]/,
+    pageLocalMain: /<main[\s>]/,
     maxWNone: /max-w-none/,
   };
 
