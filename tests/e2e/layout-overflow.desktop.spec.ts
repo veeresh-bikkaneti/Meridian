@@ -19,6 +19,15 @@ import { serveBuiltArtifact, APP_NO_IDLE } from "./helpers";
  *
  * Every assertion here fails on main (4c3d84c8) and passes on the
  * branch; the revert check is recorded in the PR body.
+ *
+ * Extended (fix/geo-endgame-overflow): GeoDetective and the Why Learn
+ * picker join the overflow contract. GeoDetective's header cluster
+ * (case readout + mute + End game) could not shrink, so at 320px the
+ * page was 338px wide and End game ran off-screen; the shell header's
+ * gaps and the exit pill's padding now shrink below --bp-sm. The
+ * sheet also pins the --header-height/--sheet-offset split: hung
+ * from the real 84px header, the sheet's whole content fits 320x568
+ * with no inner scroll.
  */
 
 test.beforeEach(async ({ context }) => {
@@ -132,6 +141,18 @@ test("first-visit read-aloud sheet fits 320x568; every option reachable", async 
   const headerBox = (await page.locator("header.site-header").boundingBox())!;
   expect(headerBox.y, "header top with sheet pending").toBeLessThanOrEqual(40);
 
+  // The --sheet-offset split: hung from the real header, the sheet's
+  // whole content fits this viewport — no inner scroll needed (on the
+  // conflated 19rem token its scrollHeight was 363 against a 248 box).
+  const sheetScroll = await queue.evaluate((el) => ({
+    scrollH: el.scrollHeight,
+    clientH: el.clientHeight,
+  }));
+  expect(
+    sheetScroll.scrollH,
+    `sheet fits without inner scroll (scrollHeight ${sheetScroll.scrollH} vs clientHeight ${sheetScroll.clientH})`,
+  ).toBeLessThanOrEqual(sheetScroll.clientH + 1);
+
   const sheetBox = (await queue.boundingBox())!;
   expect(sheetBox.x, "sheet left edge").toBeGreaterThanOrEqual(0);
   expect(sheetBox.x + sheetBox.width, "sheet right edge").toBeLessThanOrEqual(320 + 0.5);
@@ -155,6 +176,70 @@ test("first-visit read-aloud sheet fits 320x568; every option reachable", async 
   // A real tap on the last option answers the sheet.
   await options.nth(count - 1).click();
   await expect(page.locator('[data-prompt-id="read-aloud-sheet"]')).toHaveCount(0);
+});
+
+/** The overflow contract on a screen: the page never scrolls
+ *  sideways, and every visible header control sits inside the
+ *  viewport. Returns the measured widths for the caller's message. */
+async function expectNoOverflow(page: Page, label: string, w: number) {
+  const widths = await page.evaluate(() => ({
+    scroll: document.documentElement.scrollWidth,
+    inner: window.innerWidth,
+  }));
+  expect(widths.scroll, `${label} scrollWidth`).toBe(widths.inner);
+  const controls = page.locator("header.site-header button:visible, header.site-header a:visible");
+  const count = await controls.count();
+  expect(count, `${label} header controls found`).toBeGreaterThan(0);
+  for (let i = 0; i < count; i++) {
+    const box = (await controls.nth(i).boundingBox())!;
+    expect(box.x, `${label} control #${i} left edge`).toBeGreaterThanOrEqual(0);
+    expect(box.x + box.width, `${label} control #${i} right edge`).toBeLessThanOrEqual(w + 0.5);
+  }
+}
+
+test("GeoDetective: no horizontal overflow at five viewports; End game fits 320", async ({ page }) => {
+  test.setTimeout(240_000);
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto(APP_NO_IDLE);
+  await expect(page.locator("header.site-header")).toBeVisible();
+  await dismissFirstVisitQueue(page);
+
+  await page.getByRole("button", { name: "GeoDetective: Solve a mystery" }).click();
+  await expect(page.getByTestId("loop-screen")).toBeVisible({ timeout: 45_000 });
+  await expect(page.getByTestId("end-game-button")).toBeVisible({ timeout: 45_000 });
+
+  for (const [w, h] of VIEWPORTS) {
+    await page.setViewportSize({ width: w, height: h });
+    await page.evaluate(() => window.scrollTo(0, 0));
+    await waitForHeaderSettled(page);
+    await expectNoOverflow(page, `GeoDetective ${w}x${h}`, w);
+    if (w === 320) {
+      const end = (await page.getByTestId("end-game-button").boundingBox())!;
+      expect(end.x + end.width, "End game right edge at 320").toBeLessThanOrEqual(320.5);
+      expect(end.height, "End game hit height at 320").toBeGreaterThanOrEqual(44);
+    }
+  }
+});
+
+test("Why Learn picker: no horizontal overflow at five viewports", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto(APP_NO_IDLE);
+  await expect(page.locator("header.site-header")).toBeVisible();
+  await dismissFirstVisitQueue(page);
+
+  await page.getByRole("button", { name: "Why Do We Learn This?: Start exploring" }).click();
+  await expect(page.getByTestId("subject-picker")).toBeVisible({ timeout: 30_000 });
+
+  for (const [w, h] of VIEWPORTS) {
+    await page.setViewportSize({ width: w, height: h });
+    await page.evaluate(() => window.scrollTo(0, 0));
+    await page.waitForTimeout(250);
+    const widths = await page.evaluate(() => ({
+      scroll: document.documentElement.scrollWidth,
+      inner: window.innerWidth,
+    }));
+    expect(widths.scroll, `picker ${w}x${h} scrollWidth`).toBe(widths.inner);
+  }
 });
 
 test("open menu paints above the first-visit sheet at 390", async ({ page }) => {

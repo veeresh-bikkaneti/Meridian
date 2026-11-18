@@ -155,8 +155,11 @@ export function nextEntryCountdown(timeMs: number): string {
 export function shouldApplySetChange(blockers: {
   focusInsideCard: boolean;
   focusInsideSection: boolean;
+  /** Item 42: the journal is on screen — a reader may be mid-story with
+   * no keyboard focus anywhere, so visibility blocks the swap too. */
+  journalOnScreen?: boolean;
 }): boolean {
-  return !blockers.focusInsideCard && !blockers.focusInsideSection;
+  return !blockers.focusInsideCard && !blockers.focusInsideSection && !blockers.journalOnScreen;
 }
 
 // ---------------------------------------------------------------------------
@@ -206,7 +209,7 @@ export function createJournalRotation(options: {
   /** Called whenever a new entry index is applied. */
   onApply: (index: number) => void;
   /** The §6 blockers, probed fresh at every recompute. */
-  blockers: () => { focusInsideCard: boolean; focusInsideSection: boolean };
+  blockers: () => { focusInsideCard: boolean; focusInsideSection: boolean; journalOnScreen?: boolean };
   /** Clock; defaults to Date.now. */
   now?: () => number;
   /** Timer host; defaults to the global timers. */

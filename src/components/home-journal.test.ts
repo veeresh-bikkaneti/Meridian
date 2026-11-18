@@ -227,6 +227,19 @@ test("shouldApplySetChange: blocked by focus in the card or in the section", () 
   assert.equal(shouldApplySetChange({ focusInsideCard: true, focusInsideSection: true }), false);
 });
 
+test("shouldApplySetChange: blocked while the journal is on screen (item 42)", () => {
+  // A child reading with no keyboard focus must not have the entry swap
+  // under them; once the journal leaves the screen the change may land.
+  assert.equal(
+    shouldApplySetChange({ focusInsideCard: false, focusInsideSection: false, journalOnScreen: true }),
+    false,
+  );
+  assert.equal(
+    shouldApplySetChange({ focusInsideCard: false, focusInsideSection: false, journalOnScreen: false }),
+    true,
+  );
+});
+
 // ---------------------------------------------------------------------------
 // Dataset-vs-catalog integrity (spec §1/§4) — adapted from v2
 // src/game/journal-data.test.ts. The generated dataset must match PLACES

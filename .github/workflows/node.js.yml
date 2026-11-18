@@ -82,6 +82,12 @@ jobs:
   # twice on headless Chromium, and its console gate needs real egress,
   # which CI runners have.
   #
+  # layout-overflow belongs here (fix/geo-endgame-overflow): it pins
+  # the no-sideways-scroll contract on Home, GeoDetective and the Why
+  # Learn picker at five viewports plus the first-visit sheet fit —
+  # layout assertions only, no map interaction, and it passed 5/5
+  # locally on headless Chromium before this listing.
+  #
   # playwright.config.ts uses Playwright's bundled Chromium when the dev
   # VM's /opt/meta-chromium/chrome is absent, which is the case here.
   e2e:
@@ -107,6 +113,7 @@ jobs:
         tests/e2e/observability.spec.ts
         tests/e2e/endgame-share.spec.ts
         tests/e2e/round-loop-a11y.spec.ts
+        tests/e2e/layout-overflow.desktop.spec.ts
         --workers=1 --reporter=line
     - name: Upload the Playwright report on failure
       if: failure()

@@ -568,14 +568,21 @@ test.describe("live feed", () => {
     };
     flags.flags.boardLiveFeed = false;
     let flagsRouteHit = false;
-    await page.route("**/flags.json*", async (route) => {
+    const serveKillSwitchFlags = async (route: import("playwright/test").Route) => {
       flagsRouteHit = true;
       return route.fulfill({
         status: 200,
         contentType: "application/json",
         body: JSON.stringify(flags),
       });
-    });
+    };
+    await page.route("**/flags.json*", serveKillSwitchFlags);
+    // The same fulfilment at context level: once the service worker
+    // controls the page it fetches flags.json itself, and page-level
+    // routes never see service-worker requests — without this, the
+    // worker would be served the opt-in payload from beforeEach and
+    // hand the board a live feed this test switched off.
+    await page.context().route("**/flags.json*", serveKillSwitchFlags);
     let githubCalled = false;
     page.on("request", (r) => {
       if (r.url().includes("api.github.com")) githubCalled = true;
@@ -585,6 +592,35 @@ test.describe("live feed", () => {
     // switch were ignored; give it that beat, then judge.
     await page.waitForTimeout(750);
     expect(flagsRouteHit, "the flags.json fulfilment must be what the app read").toBe(true);
+    expect(githubCalled).toBe(false);
+    await expect(page.getByTestId("board-live-note")).toHaveCount(0);
+    const updated = await page.getByTestId("board-updated-line").innerText();
+    expect(updated).toMatch(/^Updated /);
+    expect(updated.toLowerCase()).not.toContain("live");
+  });
+
+  test("flags.json unreachable: the feed fails closed — no GitHub call, no note", async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 1280, height: 900 });
+    // The deployed flags cannot be read at all (network failure). The
+    // baked-in default for boardLiveFeed is ON, so a gate that trusts
+    // the default after a failed load fires the GitHub check anyway —
+    // defeating a deployed kill switch exactly when the network is
+    // degraded. The feed must instead require the deployed payload to
+    // have been read and to say on.
+    // Registered on the context, not the page: once the service
+    // worker controls the page it fetches flags.json itself, and
+    // page-level routes never see service-worker requests — a
+    // page-level abort would leave the deployed payload deliverable
+    // through the worker. Context dispatch is the last word.
+    await page.context().route("**/flags.json*", async (route) => route.abort());
+    let githubCalled = false;
+    page.on("request", (r) => {
+      if (r.url().includes("api.github.com")) githubCalled = true;
+    });
+    await openBoard(page);
+    await page.waitForTimeout(750);
     expect(githubCalled).toBe(false);
     await expect(page.getByTestId("board-live-note")).toHaveCount(0);
     const updated = await page.getByTestId("board-updated-line").innerText();

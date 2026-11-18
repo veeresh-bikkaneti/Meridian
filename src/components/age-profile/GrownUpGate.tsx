@@ -230,7 +230,7 @@ export function GrownUpGate({ onPass, onCancel, onAttempt }: GrownUpGateProps) {
               </button>
             ))}
           </div>
-          <div className="agep-actions">
+          <div className="agep-actions agep-actions-centre">
             <button
               type="button"
               className="agep-primary"

@@ -123,7 +123,6 @@ import {
   journalSetIndexAt,
   nextEntryCountdown,
 } from "./home-journal";
-import { JournalPlayer } from "./journal-player";
 import {
   isJournalPrefetchAllowedNow,
   resolveJournalPrefetchEntries,
@@ -180,6 +179,12 @@ function normalizeSnapshotBand(b: AgeBandId | LegacySnapshotBand): AgeBandId {
 const AgeProfileSettings = lazy(() => import("./age-profile/AgeProfileSettings"));
 const AgeAskGate = lazy(() => import("./age-profile/AgeAskGate"));
 const StorytellerHomeHost = lazy(() => import("./storyteller-home"));
+// Journal movie player: React.lazy like the hosts above — the player and
+// its movie/transcript code stay out of the entry bundle and load with the
+// journal section, instead of taxing every first load (bundle budget).
+const JournalPlayer = lazy(() =>
+  import("./journal-player").then((m) => ({ default: m.JournalPlayer })),
+);
 // v5 hero globe: React.lazy like the storyteller host — the Three.js chunk
 // never lands in the initial bundle; HomeGlobe itself dynamically imports
 // three only when the hero nears the viewport.
@@ -4817,12 +4822,18 @@ function Choose({
     const section = document.getElementById("home-journal");
     return !!active && !!section && section.contains(active);
   }, []);
+  // Item 42: rotation also pauses while the journal is simply ON SCREEN
+  // (a child reading with no keyboard focus anywhere). Probed by the
+  // IntersectionObserver effect below into this ref; the rotation reads
+  // it fresh at every recompute, like the focus probes.
+  const journalOnScreenRef = useRef(false);
   const [journalRotation] = useState(() =>
     createJournalRotation({
       initialIndex: journalIndex,
       blockers: () => ({
         focusInsideCard: focusInsideJournalCard(),
         focusInsideSection: focusInsideJournalSection(),
+        journalOnScreen: journalOnScreenRef.current,
       }),
       onApply: (index) => setJournalIndex(index),
     }),
@@ -4849,6 +4860,31 @@ function Choose({
       document.removeEventListener("visibilitychange", onVisibility);
       document.removeEventListener("focusin", onFocusIn);
     };
+  }, [journalRotation]);
+  // Item 42: watch the journal card + section; while either is on screen
+  // the rotation holds, and the moment both leave, a deferred entry can
+  // land — recompute right away instead of waiting for the 30s tick.
+  useEffect(() => {
+    const targets = [
+      document.querySelector('[data-testid="journal-card"]'),
+      document.getElementById("home-journal"),
+    ].filter((el): el is Element => el !== null);
+    if (targets.length === 0 || typeof IntersectionObserver === "undefined") return;
+    const visible = new Set<Element>();
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) visible.add(entry.target);
+          else visible.delete(entry.target);
+        }
+        const wasOnScreen = journalOnScreenRef.current;
+        journalOnScreenRef.current = visible.size > 0;
+        if (wasOnScreen && !journalOnScreenRef.current) journalRotation.recompute();
+      },
+      { threshold: 0.2 },
+    );
+    for (const target of targets) observer.observe(target);
+    return () => observer.disconnect();
   }, [journalRotation]);
   const journalEntry = journalSetByIndex(journalIndex) ?? journalSetAt(Date.now());
   const journalNotes = journalEntry?.notes ?? [];
@@ -5423,7 +5459,9 @@ function Choose({
               </span>
               <span className="hv5-label">Latest Journal Entry</span>
             </div>
-            <h2>What the land remembers</h2>
+            {/* No second title here (item 42): the journal section below
+                carries the one "What the land remembers" heading; this
+                teaser card's label + "Now showing" line name it. */}
             <p>Short field stories from the places on the map — the tales only landscapes keep.</p>
             {journalEntry ? (
               <p className="hv5-journal-now" data-testid="journal-now-showing">
@@ -5476,15 +5514,17 @@ function Choose({
           {journalNotes.map((note) => (
             <article key={note.id} className="hv5-entry" data-testid="journal-note">
               {note.image && note.imageAlt && (
-                <JournalPlayer
-                  noteId={note.id}
-                  place={note.place}
-                  imageSrc={journalImageUrl(note.image)}
-                  imageAlt={note.imageAlt}
-                  open={playingJournalId === note.id}
-                  onOpen={setPlayingJournalId}
-                  onClose={() => setPlayingJournalId(null)}
-                />
+                <Suspense fallback={null}>
+                  <JournalPlayer
+                    noteId={note.id}
+                    place={note.place}
+                    imageSrc={journalImageUrl(note.image)}
+                    imageAlt={note.imageAlt}
+                    open={playingJournalId === note.id}
+                    onOpen={setPlayingJournalId}
+                    onClose={() => setPlayingJournalId(null)}
+                  />
+                </Suspense>
               )}
               <div className="hv5-entry-text">
                 <h3>{note.place}</h3>
