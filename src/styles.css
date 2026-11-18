@@ -2439,8 +2439,15 @@ body:has(> header.site-header) {
 }
 /* Compact band: the home ≤1080px squeeze gaps, with the UX seat's
    12px type floor (the squeeze's 10.5px is under the 7–10 band's
-   reading floor; fit is re-checked in Phase 3 screenshots). */
-@media (min-width: 1024px) and (max-width: 1279.5px) { /* var(--bp-menu) / var(--bp-lg) */
+   reading floor; fit is re-checked in Phase 3 screenshots).
+   Part 2 (N1): the band's top edge rises from 1279.5px to 1364.5px.
+   The brand lockup is wider than the retired "Home" pill, and with
+   it the full-spacing Home row needs 1365px of viewport (measured:
+   scrollWidth 1365 at a 1280px viewport, the Join pill clipped —
+   the Phase A mock at 1280×800 shows the same clip). The squeeze
+   now covers every width where the full row cannot fit, and the
+   full spacing returns at exactly the width where it fits. */
+@media (min-width: 1024px) and (max-width: 1364.5px) { /* var(--bp-menu) / fit point, see above */
   .site-header-row {
     gap: 16px;
   }
