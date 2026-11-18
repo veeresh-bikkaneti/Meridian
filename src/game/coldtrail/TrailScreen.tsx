@@ -18,6 +18,8 @@ import { playConfirmGuess, playLose, playWin } from "@/game/audio/sfx";
 import { playCelebrationSound } from "@/game/audio/play-guards";
 import { resolveBand, type AgeBandId } from "@/game/age-profile";
 import { LoopMap } from "../loop/LoopMap";
+import { LoopMapBoundary, LoopMapOffLine } from "../loop/loop-map-boundary";
+import { TILE_FALLBACK_COPY } from "@/map/tile-fallback-copy";
 import { coldtrailCaseCount, getColdtrailCase } from "./cases";
 import {
   capitalsPackCaseCount,
@@ -111,6 +113,19 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
   // === null` ⟺ placing(i); `draft !== null` ⟺ adjusting(i).
   const [placing, setPlacing] = useState<number | null>(null);
   const [draft, setDraft] = useState<{ lon: number; lat: number } | null>(null);
+  // Map-off state (mirrors LoopScreen): set when the map's tiles fail
+  // (LoopMap's onTilesFailed — which also carries a post-init WebGL
+  // context loss) and when the map boundary catches a construction
+  // failure. While it is set, the Cold Trail off-line takes the map's
+  // place and ring placement cannot be armed: this surface's only input
+  // is the map, so a hint inviting a tap that can't land would lie.
+  const [mapOff, setMapOff] = useState(false);
+  const handleMapFailed = () => {
+    setMapOff(true);
+    setPlacing(null);
+    setDraft(null);
+    setHint(null);
+  };
   const caseHeadingRef = useRef<HTMLHeadingElement>(null);
   const resultHeadingRef = useRef<HTMLHeadingElement>(null);
   const prevRevealedRef = useRef(false);
@@ -245,7 +260,7 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
   // mid-placement switches implicitly (UXA T5/T11): the in-flight draft is
   // discarded — drafts are free, one tap to recreate.
   const onPlaceRing = (i: number) => {
-    if (revealed) return;
+    if (revealed || mapOff) return;
     if (placing === i) return;
     if (placing !== null) {
       setHint("Your ring draft was set aside — tap 📍 to place it again.");
@@ -365,7 +380,7 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
   // Entering adjusting via Move clears a pending interception (O13): a
   // pending guess predicated on 3 locked rings is void once one unlocks.
   const onMoveRing = (i: number) => {
-    if (revealed || !progress.ringCenters[i]) return;
+    if (revealed || mapOff || !progress.ringCenters[i]) return;
     setPending(null);
     setPlacing(i);
     setDraft({ ...progress.ringCenters[i]! });
@@ -490,7 +505,7 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
   };
 
   const verdict = progress.scoreKm !== null ? verdictForTheme(theme, progress.scoreKm) : null;
-  const placingNow = placing !== null;
+  const placingNow = placing !== null && !mapOff;
 
   return (
     <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-(--page-narrow) flex-col px-5 pt-2 pb-8 lg:max-w-6xl" data-testid="coldtrail-screen">
@@ -561,6 +576,7 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
             onTryAgain={onTryAgain}
             onCancelPlacement={onCancelPlacement}
             onMoveRing={() => onMoveRing(i)}
+            mapOff={mapOff}
             actionRef={(el) => {
               cardActionRefs.current[i] = el;
             }}
@@ -583,12 +599,32 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
               : `Rings placed: ${ringsPlacedCount} of 3`}
         </p>
         <div className="relative">
+          {/* WebGL2 fix: the same containment GeoDetective uses. Without
+              this boundary, a device with no WebGL2 made the map
+              constructor throw straight to the app crash reporter and
+              replaced the whole screen with a reload card that could
+              never succeed. The boundary swaps in the "map pictures are
+              off" line and keeps the screen — sightings, status, hint,
+              and header controls — alive. Cold Trail passes its own
+              truthful off-line (its only input is the map, so the
+              GeoDetective "guesses still work" promise would be false
+              here) and mirrors LoopScreen's map-off state: a tile
+              failure or a boundary failure takes the map off for the
+              rest of this visit and disarms ring placement. */}
+          {mapOff ? (
+            <LoopMapOffLine copy={TILE_FALLBACK_COPY.coldTrailMapOff} />
+          ) : (
+          <LoopMapBoundary
+            onFailed={handleMapFailed}
+            fallback={<LoopMapOffLine copy={TILE_FALLBACK_COPY.coldTrailMapOff} />}
+          >
           <LoopMap
             guesses={[]}
             target={{ lon: caseData.hideout.lon, lat: caseData.hideout.lat }}
             finished={revealed}
             unit={hideoutUnit}
             freeTap
+            onTilesFailed={handleMapFailed}
             onMapTap={onMapTap}
             evidenceRings={evidenceRings}
             evidenceMarks={evidenceMarks}
@@ -606,7 +642,9 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
             onSelectPlace={() => {}}
             onEmptyTap={() => {}}
           />
-          {placingNow && draft === null ? (
+          </LoopMapBoundary>
+          )}
+          {placingNow && !mapOff && draft === null ? (
             <>
               {/* Armed-map signal: dashed gold border while waiting for the
                   first tap. Static (no pulse) — reduced-motion safe. The hint

@@ -293,6 +293,10 @@ async function loadErrorComponent(): Promise<ErrorComponentModule> {
       '"./observability"',
       JSON.stringify(new URL("./observability.ts", import.meta.url).href),
     ],
+    [
+      '"./chunk-recovery"',
+      JSON.stringify(new URL("./chunk-recovery.ts", import.meta.url).href),
+    ],
   ];
   for (const [from, to] of replacements) {
     code = code.split(from).join(to);
@@ -379,5 +383,65 @@ describe("AppErrorComponent route-error telemetry", () => {
 
   it("emits nothing when the boundary never renders", () => {
     assert.equal(queueLength(), 0);
+  });
+});
+
+describe("arena Phase 2 (PR #532): AppErrorComponent chunk discipline + reload affordance", () => {
+  beforeEach(() => {
+    resetObservabilityForTests();
+  });
+
+  it("F4: the router error page offers a Try again reload button", async () => {
+    const { unmount } = await mountWithError(new Error("route boom"));
+    try {
+      assert.ok(
+        (doc.body.textContent ?? "").includes("Try again"),
+        "the error page must never be button-less",
+      );
+    } finally {
+      await unmount();
+    }
+  });
+
+  it("F3: a first chunk-shaped route error stays silent", async () => {
+    const prev = (globalThis as Record<string, unknown>).sessionStorage;
+    (globalThis as Record<string, unknown>).sessionStorage = {
+      getItem: () => null,
+      setItem: () => {},
+      removeItem: () => {},
+    };
+    try {
+      const { unmount } = await mountWithError(
+        new TypeError("Failed to fetch dynamically imported module: https://x.test/assets/a.js"),
+      );
+      try {
+        assert.equal(queueLength(), 0, "no js_error for a first chunk failure");
+      } finally {
+        await unmount();
+      }
+    } finally {
+      (globalThis as Record<string, unknown>).sessionStorage = prev;
+    }
+  });
+
+  it("F3: a chunk-shaped route error after a guarded reload (fresh stamp) reports", async () => {
+    const prev = (globalThis as Record<string, unknown>).sessionStorage;
+    (globalThis as Record<string, unknown>).sessionStorage = {
+      getItem: (k: string) => (k === "meridian.chunkReloadAt" ? String(Date.now() - 1_000) : null),
+      setItem: () => {},
+      removeItem: () => {},
+    };
+    try {
+      const { unmount } = await mountWithError(
+        new TypeError("Failed to fetch dynamically imported module: https://x.test/assets/a.js"),
+      );
+      try {
+        assert.equal(queueLength(), 1, "the post-reload repeat reports exactly once");
+      } finally {
+        await unmount();
+      }
+    } finally {
+      (globalThis as Record<string, unknown>).sessionStorage = prev;
+    }
   });
 });

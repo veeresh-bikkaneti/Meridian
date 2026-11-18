@@ -1812,3 +1812,56 @@ test("trim order (§7.4): an oversized enriched suspected_crash keeps device.osV
     assert.equal((parsed.breadcrumb as { mapMode?: string }).mapMode, "scout", "stub keeps mapMode");
   }
 });
+
+// ---------------------------------------------------------------------------
+// Arena F3 (PR #532): global handlers follow the chunk reporting discipline
+// ---------------------------------------------------------------------------
+
+const CHUNK_MSG = "Failed to fetch dynamically imported module: https://x.test/assets/LoopScreen-abc.js";
+
+function handlerRig(sessionStore: Map<string, string>) {
+  const { transport, beacons, fetches } = makeTransport(true);
+  const obs = createObservability({
+    storage: makeStorage(), transport, endpoint: "https://example.com/ingest",
+    now: () => 5_000_000, randomId: () => "f3-rig", device: DEVICE, buildId: "b", isUnclean: () => false,
+  });
+  obs.init();
+  const handlers: Record<string, (e: unknown) => void> = {};
+  obs.installGlobalHandlers({
+    addEventListener: (t: string, fn: (e: unknown) => void) => {
+      handlers[t] = fn;
+    },
+    sessionStorage: {
+      getItem: (k: string) => sessionStore.get(k) ?? null,
+      setItem: (k: string, v: string) => void sessionStore.set(k, v),
+      removeItem: (k: string) => void sessionStore.delete(k),
+    },
+  } as unknown as Window);
+  return { obs, handlers, sent: () => beacons.length + fetches.length };
+}
+
+test("F3 handlers: a first chunk failure emits NOTHING on error or unhandledrejection", () => {
+  const { obs, handlers, sent } = handlerRig(new Map());
+  handlers["error"]({ error: new TypeError(CHUNK_MSG) });
+  handlers["unhandledrejection"]({ reason: new TypeError(CHUNK_MSG) });
+  assert.equal(sent(), 0, "no transport for a first chunk failure");
+  assert.equal(obs.getQueueLength(), 0, "nothing queued for a first chunk failure");
+});
+
+test("F3 handlers: the post-reload repeat (fresh stamp) still reports js_error", () => {
+  // The helper judges the stamp against the wall clock (Date.now),
+  // as production does — not the observability rig's injected now.
+  const store = new Map([["meridian.chunkReloadAt", String(Date.now() - 60_000)]]);
+  const { handlers, sent } = handlerRig(store);
+  handlers["error"]({ error: new TypeError(CHUNK_MSG) });
+  assert.equal(sent(), 1, "a chunk failure after a guarded reload is a genuine break and reports");
+});
+
+test("F3 handlers: a ChunkLoadTimeoutError rejection is a chunk failure (silent first time)", () => {
+  const { obs, handlers, sent } = handlerRig(new Map());
+  const err = new Error("Chunk load timed out after 10000 ms: places");
+  err.name = "ChunkLoadTimeoutError";
+  handlers["unhandledrejection"]({ reason: err });
+  assert.equal(sent(), 0);
+  assert.equal(obs.getQueueLength(), 0);
+});

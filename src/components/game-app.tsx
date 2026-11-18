@@ -2,7 +2,7 @@ import { distanceKm } from "@/game/geo";
 import { formatLength, unitForEdition } from "@/game/units";
 import { isHit, radiusKm } from "@/game/radius";
 import { placesFor, poolSizeFor, storyForBand } from "@/game/generated-places";
-import { CURRENT_BUILD_ID, isNewBuildDeployed } from "@/game/build-staleness";
+import { CURRENT_BUILD_ID, isNewBuildDeployed, staleRefreshRecentlyUsed } from "@/game/build-staleness";
 import { preloadAdmin1Boundaries, preloadAdmin1ForCountry, admin1ChunkIso2ForRegion } from "@/game/reverse-geocode";
 import { preloadTerritory } from "@/game/territory";
 import {
@@ -141,6 +141,7 @@ import {
   StorytellerBannerBoundary,
   StorytellerBannerSkeleton,
 } from "./storyteller-banner-shell";
+import { JournalBoundary } from "./journal-boundary";
 // Age-profile system: the parent-set group (7-10 / 10-18 / 18+). Game
 // screens use ONLY this facade — the store is never imported directly.
 // The settings screen is React.lazy: zero initial-bundle cost.
@@ -194,6 +195,7 @@ const JournalPlayer = lazy(() =>
 function GlobeChunkFallback() {
   return (
     <img
+      data-chunk-fallback="globe"
       className="hv5-globe-fallback"
       src={globeFallbackUrl}
       alt=""
@@ -226,7 +228,12 @@ import {
   shouldArmRevealWatchdog,
 } from "./reveal-watchdog";
 import { isEnabled, loadFlags, getObservabilityEndpoint } from "@/lib/flags";
-import { consumeChunkReloadNotice, installChunkLoadRecovery } from "@/lib/chunk-recovery";
+import {
+  consumeChunkReloadNotice,
+  installChunkLoadRecovery,
+  isChunkLoadError,
+  shouldReportChunkFailure,
+} from "@/lib/chunk-recovery";
 import { consumeRetryScreen } from "@/lib/persisted-screen";
 import { hashForScreen, screenForHash } from "@/lib/screen-hash";
 import { numberWord } from "@/lib/number-words";
@@ -1694,6 +1701,7 @@ export function GameApp() {
   );
   const ageAskOverlay = ageAsk ? (
     <Suspense fallback={null}>
+      <MapErrorBoundary surface="Age picker">
       <AgeAskGate
         onPicked={() => {
           const proceed = ageAsk.proceed;
@@ -1702,6 +1710,7 @@ export function GameApp() {
         }}
         onCancel={() => setAgeAsk(null)}
       />
+      </MapErrorBoundary>
     </Suspense>
   ) : null;
   // Cleared-mode celebration: set when a difficulty band's full cycle is  // celebrated (primary onContinue trigger or the run-start backstop). The
@@ -2122,10 +2131,6 @@ export function GameApp() {
       buildId: CURRENT_BUILD_ID,
       onRecoverySignal: (signal, facts) => noteRecoverySignal(signal, facts),
     });
-    // If the previous page auto-reloaded (or the player tapped the
-    // error card's "Try again"), explain the reload now that the new
-    // page is up: consume the one-shot notice flag (chunk-recovery).
-    if (consumeChunkReloadNotice()) setChunkReloadNotice(true);
     // Scout Map boot qualification: resolve the mode pre-mount — before
     // any map instance exists.
     // Write policy (Q3): a live stored assignment (manual forever, auto
@@ -2352,6 +2357,13 @@ export function GameApp() {
     // exactly once; never throws (SSR/edge-safe).
     if (ready && !readySignaledRef.current) {
       readySignaledRef.current = true;
+      // F7d: the post-reload notice is consumed HERE, at the point
+      // readiness is signalled — not in the mount effect. A page that
+      // mounts then stalls before ready must still hold its notice
+      // at the crash watchdog's 28 s check, where a surviving fresh
+      // notice is the recovery evidence that stands the watchdog's
+      // boot_failure report down.
+      if (consumeChunkReloadNotice()) setChunkReloadNotice(true);
       try {
         if (typeof window !== "undefined" && typeof window.requestAnimationFrame === "function") {
           window.requestAnimationFrame(() => {
@@ -2888,7 +2900,9 @@ export function GameApp() {
 
   const refreshForNewBuild = useCallback(() => {
     try {
-      sessionStorage.setItem(STALE_REFRESH_KEY, "1");
+      // F6: a timestamp, not "1" — readers honour the mark only
+      // inside the freshness window (staleRefreshRecentlyUsed).
+      sessionStorage.setItem(STALE_REFRESH_KEY, String(Date.now()));
     } catch {
       // Storage unavailable — reload anyway; the prompt simply reappears.
     }
@@ -3060,9 +3074,7 @@ export function GameApp() {
         const message = `Could not load places for ${regionName}: ${err instanceof Error ? err.message : String(err)}`;
         let staleBuild = false;
         try {
-          staleBuild =
-            sessionStorage.getItem(STALE_REFRESH_KEY) !== "1" &&
-            (await isNewBuildDeployed());
+          staleBuild = !staleRefreshRecentlyUsed() && (await isNewBuildDeployed());
         } catch {
           staleBuild = false;
         }
@@ -3078,12 +3090,25 @@ export function GameApp() {
         });
         // Telemetry: region-chunk load failures never left this catch —
         // emit so they reach crash reporting like every other error class.
-        emitEvent({
-          type: "js_error",
-          ts: Date.now(),
-          buildId: "",
-          error: sanitizeError(new Error(message)),
-        });
+        // F3: chunk-shaped failures follow the shared discipline — a
+        // first failure stays silent; only the post-reload repeat (or
+        // unreadable storage) reports. Non-chunk failures report as before.
+        let reportStartError = true;
+        if (isChunkLoadError(err) || isChunkLoadError(message)) {
+          try {
+            reportStartError = shouldReportChunkFailure(window.sessionStorage, Date.now());
+          } catch {
+            reportStartError = true;
+          }
+        }
+        if (reportStartError) {
+          emitEvent({
+            type: "js_error",
+            ts: Date.now(),
+            buildId: "",
+            error: sanitizeError(new Error(message)),
+          });
+        }
       } finally {
         // Only the current start owns the loading state (BLOCK-A): a
         // stale start's finally must not clear a newer start's notice.
@@ -3743,11 +3768,13 @@ export function GameApp() {
         </div>
         {ageSettingsOpen ? (
           <Suspense fallback={null}>
-            <AgeProfileSettings
-              runInProgress={run !== null || loopOpen}
-              onClose={closeAgeSettings}
-              onToast={setAgeToast}
-            />
+            <MapErrorBoundary surface="Age settings">
+              <AgeProfileSettings
+                runInProgress={run !== null || loopOpen}
+                onClose={closeAgeSettings}
+                onToast={setAgeToast}
+              />
+            </MapErrorBoundary>
           </Suspense>
         ) : null}
         {ageAskOverlay}
@@ -3793,9 +3820,17 @@ export function GameApp() {
         </Button>
       </div>
     ) : (
-      <p role="alert" className="mb-4 rounded-xl border border-fg/30 bg-surface p-4 text-base text-fg">
-        {startError.message}
-      </p>
+      <div
+        role="alert"
+        className="mb-4 flex items-center justify-between gap-3 rounded-xl border border-fg/30 bg-surface p-4 text-base text-fg"
+      >
+        <p>{startError.message}</p>
+        {/* F8: never a button-less soft-strand — mirror the in-run
+            start notice's Try again (a plain reload). */}
+        <Button type="button" onClick={() => window.location.reload()}>
+          Try again
+        </Button>
+      </div>
     )
   ) : null;
 
@@ -4258,11 +4293,13 @@ export function GameApp() {
     </div>
     {ageSettingsOpen ? (
       <Suspense fallback={null}>
-        <AgeProfileSettings
-          runInProgress={run !== null || loopOpen}
-          onClose={closeAgeSettings}
-          onToast={setAgeToast}
-        />
+        <MapErrorBoundary surface="Age settings">
+          <AgeProfileSettings
+            runInProgress={run !== null || loopOpen}
+            onClose={closeAgeSettings}
+            onToast={setAgeToast}
+          />
+        </MapErrorBoundary>
       </Suspense>
     ) : null}
     {ageAskOverlay}
@@ -5517,6 +5554,7 @@ function Choose({
             <article key={note.id} className="hv5-entry" data-testid="journal-note">
               {note.image && note.imageAlt && (
                 <Suspense fallback={null}>
+                  <JournalBoundary>
                   <JournalPlayer
                     noteId={note.id}
                     place={note.place}
@@ -5526,6 +5564,7 @@ function Choose({
                     onOpen={setPlayingJournalId}
                     onClose={() => setPlayingJournalId(null)}
                   />
+                  </JournalBoundary>
                 </Suspense>
               )}
               <div className="hv5-entry-text">
