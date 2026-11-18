@@ -7,7 +7,9 @@
  * picker page carries the band ask itself:
  *
  * - No band set (first time): the three band pills, labelled from
- *   the band table. A pick writes through the store's unset path
+ *   the band table. A set profile whose band is somehow missing
+ *   lands here too — the ask fails open, never an empty pill. A
+ *   pick writes through the store's unset path
  *   (setBand, the settings flow's own first-set call) and the
  *   picker's change-event subscription re-deals the list at the
  *   picked band; the pills then collapse away.
@@ -105,7 +107,11 @@ export default function AgeBandControl({ runInProgress = false }: AgeBandControl
     </div>
   );
 
-  if (profile.status === "unset") {
+  // A set profile whose band is missing joins the unset path:
+  // the store's invariant says it cannot happen, but if it ever
+  // did, the ask fails open to the chooser instead of collapsing
+  // to an empty, unlabelled pill.
+  if (profile.status === "unset" || profile.band === null) {
     return (
       <div data-testid="age-band-control">
         {/* The picker's own first-set line (AgePicker's sub copy):
@@ -116,10 +122,12 @@ export default function AgeBandControl({ runInProgress = false }: AgeBandControl
     );
   }
 
+  // Below here the band is set (the guard above took the missing
+  // case), so the collapsed pill always has a real label to show.
+  const band = profile.band;
+
   if (!expanded) {
-    // A set profile always carries its band (the store's own
-    // invariant); the label is read from the band table.
-    const selectedLabel = profile.band ? AGE_BANDS[profile.band].label : "";
+    const selectedLabel = AGE_BANDS[band].label;
     return (
       <div data-testid="age-band-control">
         {/* The collapsed set state: one pill shows what was
@@ -139,5 +147,5 @@ export default function AgeBandControl({ runInProgress = false }: AgeBandControl
     );
   }
 
-  return <div data-testid="age-band-control">{pills(profile.band)}</div>;
+  return <div data-testid="age-band-control">{pills(band)}</div>;
 }
