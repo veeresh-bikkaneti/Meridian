@@ -74,7 +74,11 @@ describe("shell registry (PR 3 Step 5)", () => {
   // the scene — a page importing it directly would be a per-page
   // copy of the footer composition, which is what this lane kills.
   it("only SiteFooter imports the Grandpa scene, and it renders it", () => {
-    const importers = allTsx.filter((f) => /from\s+["'][^"']*grandpa-coffee-run(?:\.tsx)?["']/.test(read(f)));
+    // Static `from` imports and dynamic `import()` both count:
+    // SiteFooter lazy-loads the scene (entry-budget rule), and a
+    // page lazy-loading it directly would bypass the one-footer
+    // composition just the same.
+    const importers = allTsx.filter((f) => /(?:from\s+|import\s*\(\s*)["'][^"']*grandpa-coffee-run(?:\.tsx)?["']/.test(read(f)));
     assert.deepEqual(importers, ["src/components/ui/site-footer.tsx"]);
     assert.ok(read("src/components/ui/site-footer.tsx").includes("<GrandpaCoffeeRun"), "SiteFooter renders the scene");
   });
