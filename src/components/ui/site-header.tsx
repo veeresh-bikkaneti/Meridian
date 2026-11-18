@@ -138,7 +138,7 @@ export function SiteHeader({
   useEffect(() => {
     const update = () => {
       const root = headerRef.current;
-      if (!root) return;
+      if (!root || !window.location) return;
       const hash = window.location.hash.replace(/^#/, "");
       root.querySelectorAll<HTMLElement>("[data-nav-section]").forEach((el) => {
         const on = hash !== "" && el.dataset.navSection === hash;
