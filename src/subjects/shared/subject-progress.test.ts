@@ -19,6 +19,8 @@ import { fileURLToPath } from "node:url";
 import {
   SUBJECT_PROGRESS_KEY,
   clearAllSubjectProgress,
+} from "../../game/subject-progress-store-key.ts";
+import {
   clearSubjectProgress,
   hasSubjectProgress,
   onSubjectProgressChanged,

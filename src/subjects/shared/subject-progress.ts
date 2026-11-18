@@ -19,21 +19,25 @@
  * age-profile events pattern so the picker can re-render the
  * moment a case records a solve.
  *
- * One piece lives next door: clearAllSubjectProgress (the
- * "Start over" reset's step) is implemented in
- * subject-progress-clear.ts and re-exported here, so the reset
- * composition — which ships in the first-load bundle — carries
- * only that one clear, not this whole picker store. See that
- * file's header for the full reasoning.
+ * One piece lives on the game side: clearAllSubjectProgress
+ * (the "Start over" reset's step) is implemented in
+ * src/game/subject-progress-store-key.ts and re-exported here,
+ * so the reset composition — which ships in the first-load
+ * bundle, and may not import from subjects — carries only that
+ * one clear, not this whole picker store. See that file's
+ * header for the full reasoning.
  */
 
 import {
   SUBJECT_PROGRESS_KEY,
   resolveSubjectProgressStorage,
   type SubjectProgressStorage,
-} from "./subject-progress-clear.ts";
+} from "../../game/subject-progress-store-key.ts";
 
-export { clearAllSubjectProgress, SUBJECT_PROGRESS_KEY } from "./subject-progress-clear.ts";
+export {
+  clearAllSubjectProgress,
+  SUBJECT_PROGRESS_KEY,
+} from "../../game/subject-progress-store-key.ts";
 
 /** Completed unit ids per subject id: `{ [subjectId]: string[] }`. */
 export type SubjectProgress = { [subjectId: string]: string[] };

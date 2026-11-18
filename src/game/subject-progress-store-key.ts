@@ -1,19 +1,24 @@
 /**
- * subject-progress-clear.ts — the "clear everything" half of the
- * per-subject progress store (subject-progress.ts), kept in its
- * own small module on purpose.
+ * subject-progress-store-key.ts — the storage key, the storage
+ * resolution and the "clear everything" half of the per-subject
+ * progress store, kept in their own small module on purpose —
+ * and housed under src/game/, because the layering runs one way:
+ * subjects depend on game, never the reverse (the boundary is
+ * lint-guarded; see eslint/game-boundary-rule.mjs).
  *
  * The "Start over" reset (src/game/reset-history.ts) composes
  * this clear into its wipe, and reset-history ships in the
  * first-load bundle. The rest of the progress store — reading,
- * recording, the change bus — is only ever used by the Why Learn
- * picker and its cases, which load lazily. Keeping the clear
- * here, with just the storage key and the storage resolution it
- * needs, means the first-load bundle carries this one function
- * instead of the whole picker store (the entry-size budget's
- * rule: subjects load lazily, so first load should not grow).
- * subject-progress.ts re-exports this module's clear and key, so
- * the store's public API still lives in one place.
+ * recording, the change bus — lives in
+ * src/subjects/shared/subject-progress.ts and is only ever used
+ * by the Why Learn picker and its cases, which load lazily.
+ * Keeping the clear here, with just the storage key and the
+ * storage resolution it needs, means the first-load bundle
+ * carries this one function instead of the whole picker store
+ * (the entry-size budget's rule: subjects load lazily, so first
+ * load should not grow). subject-progress.ts imports and
+ * re-exports this module's clear and key, so the store's public
+ * API still lives in one place.
  */
 
 export const SUBJECT_PROGRESS_KEY = "meridian.subject-progress.v1";

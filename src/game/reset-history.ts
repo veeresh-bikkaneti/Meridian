@@ -53,7 +53,7 @@ import {
   validateProfile,
   PROFILE_STORAGE_KEY,
 } from "./age-profile/store.ts";
-import { clearAllSubjectProgress } from "../subjects/shared/subject-progress.ts";
+import { clearAllSubjectProgress } from "./subject-progress-store-key.ts";
 
 export type ResetStorage = {
   getItem(key: string): string | null;
