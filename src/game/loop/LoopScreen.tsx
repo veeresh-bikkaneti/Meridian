@@ -15,7 +15,7 @@ import { GradeChip } from "@/components/grade-chip";
 import { ScrollCue, useMoreBelow } from "@/components/scroll-cue";
 import { BRAND } from "@/game/brand";
 import { shareLoopText } from "@/game/share";
-import { isNewBuildDeployed } from "@/game/build-staleness";
+import { isNewBuildDeployed, staleRefreshRecentlyUsed } from "@/game/build-staleness";
 import { calendarDate } from "@/game/daily";
 import { Button } from "@/components/ui/button";
 import { HomeButton } from "@/components/ui/home-button";
@@ -707,7 +707,9 @@ export function LoopScreen({
 
   const refreshForNewBuild = () => {
     try {
-      sessionStorage.setItem(STALE_REFRESH_KEY, "1");
+      // F6: a timestamp, not "1" — readers honour the mark only
+      // inside the freshness window (staleRefreshRecentlyUsed).
+      sessionStorage.setItem(STALE_REFRESH_KEY, String(Date.now()));
     } catch {
       // Storage unavailable — reload anyway; the prompt simply reappears.
     }
@@ -1216,8 +1218,7 @@ async function toErrorState(
 ): Promise<Extract<LoadState, { phase: "error" }>> {
   let staleBuild = false;
   try {
-    staleBuild =
-      sessionStorage.getItem(STALE_REFRESH_KEY) !== "1" && (await isNewBuildDeployed());
+    staleBuild = !staleRefreshRecentlyUsed() && (await isNewBuildDeployed());
   } catch {
     staleBuild = false;
   }

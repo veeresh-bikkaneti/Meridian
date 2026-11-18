@@ -114,6 +114,53 @@ Harness: `~/workspace/meridian-work/chunkfix-work/probe.mjs`; facts in
   error-boundary machinery (PR #245 / #210 surfaces) without adding
   modules, routes, or decisions.
 
+## Phase 2+3 — arena hardening (second commit)
+
+- An adversarial arena (5 fresh seats) attacked the Phase 1 fix and
+  confirmed ~20 holes in the crash-stranding / reporting edges.
+  Fixed, each with regression pins: F1 exit/restore (retry marker
+  cleared by clearPersistedScreenOpen; goHome exit-intent guard,
+  hash stripped to Home's, deferred report emitted on exit), F2
+  dwell attribute on every boundary card, F3 shared
+  shouldReportChunkFailure at all four emit sites + ChunkLoadTimeoutError
+  classification + the meridian.chunkReloadSurface companion record,
+  F4 Age hosts wrapped in the boundary, journal fail-closed boundary
+  (src/components/journal-boundary.tsx), router-page Try again,
+  globe-fallback stand-down, F5 episode 15-minute cap + countdown
+  re-arm + future-stamp handling, F6 staleRefresh timestamps via
+  staleRefreshRecentlyUsed, F7 watchdog (future-notice lower bound,
+  boot-scoped ASKED, one timer re-arm, notice consumed at ready;
+  inline budget 6,600 → 6,700, worst case 6,641 measured), F8 menu
+  card Try again, F9 doc correction.
+- Follow-ons named in the PR body (not fixed): cross-surface outcome
+  misattribution + multi-emit dedupe (observability-pipeline call),
+  handler/probe 1.5 s vs 8 s race + cross-surface stale-offer
+  stand-down, single removable stamp key (accepted), watchdog
+  removeItem-throws residual, restored-<Play> boundary gap (Seat H),
+  innerText-less engines' textContent fallback.
+- Two existing pins updated with reasons in-file: 4-U-max (latch
+  past MAX_AGE via restarts — superseded by the F5a cap) and the
+  exact write-sets in 11-U / 14-U1 (the F3 companion record now
+  rides each reload); 3A-U2's boundary leg re-seeded so its decision
+  lands exactly on MAX.
+- Gates on the Phase 2 tip: targeted 118/118 + 132/132 + watchdog
+  65/65; tsc clean; lint-cards / lint:subjects GATE PASSED;
+  lint:nav clean; test:worker 235/235; npm test src 2895/2899,
+  scripts 1207/1217 — the same 5 pre-existing failures as Phase 1
+  (4 WebGL2 pins + ssr-build-shape), unchanged in character.
+  build:pages: vite green, wrapper exit 1 at the known fingerprint
+  postbuild quirk (identical on pristine main). Provenance emulated
+  with the checker's own findVendorName over every changed file:
+  no matches.
+- Behaviour proof (CDP, built artifact; harnesses + JSON +
+  screenshots in ~/workspace/meridian-work/chunkfix-work/arena-proof/):
+  ageask rotate healed with zero telemetry; journal persistent —
+  Home intact, section failed closed, no js_error; homeglobe rotate —
+  no reload, fallback disc shown; GeoDetective failure → Home tap —
+  boots Home (#home, marker/flag cleared, exactly one deferred
+  map_error); LoopScreen rotate unchanged from Phase 1 (one reload,
+  zero reports) with pristine phase-1 JSONs kept beside for contrast.
+
 ## Next step
 - Owner review and merge word. CI carries the full Playwright suite
   (AGENTS.md §4: the sandbox cannot launch the bundled Chromium).

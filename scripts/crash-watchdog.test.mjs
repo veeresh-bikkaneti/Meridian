@@ -280,7 +280,7 @@ test("renderCrashWatchdogScript emits a single self-contained inline script", ()
   assert.ok(script.includes('"test-build"'));
 });
 
-test("rendered script stays within the 6600-byte budget", () => {
+test("rendered script stays within the 6700-byte budget", () => {
   // #223: check the build-id shapes production actually uses, not just
   // the old 10-char fixture — a 12-char CI id (GITHUB_SHA slice) and the
   // 14-char timestamp fallback rendered 5122/5124 bytes and silently
@@ -294,11 +294,14 @@ test("rendered script stays within the 6600-byte budget", () => {
   // main 70e1be6, both features survive and the worst case
   // (14-char build id) measures 6,551 bytes, so the budget is
   // 6,600 — the smallest round fit keeping the established
-  // ~40-byte headroom pattern (49 bytes of margin).
+  // ~40-byte headroom pattern (49 bytes of margin). Arena F7 then
+  // added the boot-scoped ASKED flag, the one-shot timer re-arm and
+  // the recovery-notice lower bound: worst case measures 6,641, so
+  // the budget is now 6,700 (59 bytes of margin).
   for (const buildId of ["abcdef0", "test-build", "abcdef012345", "local-mvpr1hgb"]) {
     const script = renderCrashWatchdogScript(buildId);
     const bytes = Buffer.byteLength(script, "utf8");
-    assert.ok(bytes <= 6600, `rendered script for a ${buildId.length}-char build id is ${bytes} bytes, over budget`);
+    assert.ok(bytes <= 6700, `rendered script for a ${buildId.length}-char build id is ${bytes} bytes, over budget`);
   }
 });
 
@@ -424,7 +427,10 @@ test("timer fires → fallback UI inserted, asked flag set", () => {
   const veil = veilOf({ body });
   assert.ok(veil, "overlay inserted into body");
   assert.equal(veil.attrs.role, "alert");
-  assert.equal(store["meridian.crashwatchdogAsked"], "1");
+  // F7b: ASKED records the boot it belonged to — a boot-start
+  // timestamp, not the legacy "1".
+  const asked = Number(store["meridian.crashwatchdogAsked"]);
+  assert.ok(Number.isFinite(asked) && asked > 1_000_000_000_000, "asked flag is this boot's timestamp");
   // document.body is not destroyed: the veil is appended, not replacing.
   assert.ok(body.children.includes(veil));
 });
@@ -592,14 +598,77 @@ test("empty innerText (blocked boot: body holds only scripts) still shows the UI
   assert.ok(veilOf({ body }), "fallback UI must appear");
 });
 
-test("no UI twice in one session (asked flag)", () => {
-  const { host, calls, body, store } = fakeHost({
-    store: { "meridian.crashwatchdogAsked": "1" },
+test("F7b: an ASKED stamp from THIS boot stands the timer down", () => {
+  // A stamp at/after this boot's start belongs to this boot (e.g. the
+  // card already showed via the re-armed check): never twice in a boot.
+  const { host, calls, body } = fakeHost({
+    store: { "meridian.crashwatchdogAsked": String(Date.now() + 60_000) },
   });
   crashWatchdogMain(host, "b1", isValidWatchdogEndpoint, OBSERVABILITY_INGEST_HOSTS);
   fireTimer(calls);
   assert.equal(veilOf({ body }), undefined);
-  assert.equal(store["meridian.crashwatchdogAsked"], "1");
+});
+
+test("F7b: an ASKED stamp from an EARLIER boot does not silence a second stalled boot", () => {
+  // The old "1"-style once-per-session flag disabled the watchdog for
+  // every later boot in the session. A previous boot's stamp (here:
+  // a minute old, and the legacy "1" alike) must not stand this boot down.
+  for (const prior of [String(Date.now() - 60_000), "1"]) {
+    const { host, calls, body } = fakeHost({
+      store: { "meridian.crashwatchdogAsked": prior },
+    });
+    crashWatchdogMain(host, "b1", isValidWatchdogEndpoint, OBSERVABILITY_INGEST_HOSTS);
+    fireTimer(calls);
+    assert.ok(veilOf({ body }), `a second stalled boot shows the card (prior ASKED=${prior})`);
+  }
+});
+
+test("F7a: a future-dated chunk-reload notice is NOT recovery evidence (generic card + report)", () => {
+  const { host, calls, body, xhr } = fakeHost({
+    store: { "meridian.chunkReloadNotice": String(Date.now() + 60_000) },
+    xhrOpts: {
+      flagsText: JSON.stringify({
+        observabilityEndpoint: INGEST,
+      }),
+    },
+  });
+  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint, OBSERVABILITY_INGEST_HOSTS);
+  fireTimer(calls);
+  const veil = veilOf({ body });
+  assert.ok(veil, "fallback UI still appears for a future-dated notice");
+  assert.ok(
+    !veil.innerHTML.includes("The reload didn't finish loading."),
+    "the recovery heading must NOT appear for a future-dated notice",
+  );
+  assert.equal(xhr.posts.length, 1, "boot_failure still sends for a future-dated notice");
+});
+
+test("F7c: a timer that fires while hidden re-arms once, then shows on the deferred re-check", () => {
+  const h = fakeHost({ docOpts: { hidden: true } });
+  crashWatchdogMain(h.host, "b1", isValidWatchdogEndpoint, OBSERVABILITY_INGEST_HOSTS);
+  assert.equal(h.calls.timers.length, 1);
+  h.calls.timers[0].fn();
+  assert.equal(veilOf(h), undefined, "no UI while hidden");
+  assert.equal(h.calls.timers.length, 2, "one deferred re-check is armed");
+  assert.equal(h.calls.timers[1].ms, 5000, "the re-check is deferred, not immediate");
+  h.doc.hidden = false;
+  h.calls.timers[1].fn();
+  assert.ok(veilOf(h), "the deferred re-check shows the fallback once visible");
+  // And no third arm: the re-arm is spent once per boot.
+  const n = h.calls.timers.length;
+  h.calls.timers[1].fn();
+  assert.equal(h.calls.timers.length, n, "no further re-arms");
+});
+
+test("F7c: a timer that fires before the document settles re-arms once", () => {
+  const h = fakeHost({ docOpts: { readyState: "loading" } });
+  crashWatchdogMain(h.host, "b1", isValidWatchdogEndpoint, OBSERVABILITY_INGEST_HOSTS);
+  h.calls.timers[0].fn();
+  assert.equal(veilOf(h), undefined, "no UI before the document settles");
+  assert.equal(h.calls.timers.length, 2, "one deferred re-check is armed");
+  h.doc.readyState = "complete";
+  h.calls.timers[1].fn();
+  assert.ok(veilOf(h), "the deferred re-check shows the fallback once settled");
 });
 
 test("second timer fire does not duplicate the UI", () => {
@@ -1019,7 +1088,7 @@ test("shipped script runs the watchdog end-to-end in a vm", () => {
   assert.equal(calls.timers[0].ms, 28000);
   calls.timers[0].fn();
   assert.ok(veilOf(host), "minified script shows the fallback UI");
-  assert.equal(store["meridian.crashwatchdogAsked"], "1");
+  assert.ok(Number(store["meridian.crashwatchdogAsked"]) > 1_000_000_000_000, "asked flag is the boot timestamp (F7b)");
   const veil = veilOf(host);
   assert.ok(veil.innerHTML.includes("The game couldn't start on this phone."));
 });

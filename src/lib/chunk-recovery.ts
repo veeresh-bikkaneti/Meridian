@@ -141,6 +141,15 @@ export const CHUNK_RECOVERY_DELAY_MS = 1_500;
  */
 export const CHUNK_ANNOUNCE_DWELL_MS = 10_000;
 
+/** sessionStorage key holding the surface a guarded reload was issued
+ *  for (the F3 companion record): written beside the reload stamp by
+ *  attemptGuardedChunkReload (the boundary's surface) and by the
+ *  handler's own reload decision (the on-screen error card's surface,
+ *  else "unknown"). shouldReportChunkFailure compares it against the
+ *  failing surface so one surface's healed skew cannot be reported as
+ *  another surface's crash. */
+export const CHUNK_RELOAD_SURFACE_KEY = "meridian.chunkReloadSurface";
+
 /** sessionStorage key holding the post-reload notice timestamp. */
 export const CHUNK_RELOAD_NOTICE_KEY = "meridian.chunkReloadNotice";
 
@@ -190,10 +199,62 @@ function messageMatches(message: string): boolean {
 
 /** True when `error` carries the stale-chunk / failed-import signature. */
 export function isChunkLoadError(error: unknown): boolean {
-  if (typeof error === "string") return messageMatches(error);
+  if (typeof error === "string") return messageMatches(error) || error.includes("Chunk load timed out");
   if (!error || typeof error !== "object") return false;
+  // A hung load bounded by withChunkTimeout (chunk-timeout.ts) rejects
+  // with ChunkLoadTimeoutError: a recoverable chunk failure, not an
+  // unconditional report.
+  const name = (error as { name?: unknown }).name;
+  if (name === "ChunkLoadTimeoutError") return true;
   const message = (error as { message?: unknown }).message;
-  return typeof message === "string" && messageMatches(message);
+  return typeof message === "string" && (messageMatches(message) || message.includes("Chunk load timed out"));
+}
+
+/** The slice of storage the reporting helper reads (sessionStorage shape). */
+export interface ChunkReportStorage {
+  getItem: (key: string) => string | null;
+}
+
+/**
+ * Reporting discipline for chunk-load failures (arena F3): a chunk
+ * failure is reported iff it is the post-reload repeat — a FRESH
+ * reload stamp exists (age in [0, CHUNK_EPISODE_MAX_AGE_MS]; a
+ * future-dated stamp is not evidence) AND the companion surface
+ * record does not name a DIFFERENT surface than the one that failed.
+ * The companion reports (matches) when it is absent (legacy reloads
+ * wrote none), "unknown", or equal to the failing surface; when the
+ * failing surface itself is unknown the companion cannot be shown to
+ * differ, so a fresh stamp still reports. A first failure (no stamp,
+ * or a stale/future one) stays silent: the guarded reload gets it in
+ * silence and a healed skew files no crash report. Storage that
+ * cannot be read at all fails loud (report), as the boundary always
+ * did — an unverifiable recovery must not swallow a real failure.
+ */
+export function shouldReportChunkFailure(
+  storage: ChunkReportStorage | null | undefined,
+  now: number,
+  surface?: string,
+): boolean {
+  if (!storage) return true;
+  let stampRaw: string | null;
+  try {
+    stampRaw = storage.getItem(CHUNK_RELOAD_KEY);
+  } catch {
+    return true;
+  }
+  const stamp = stampRaw === null ? NaN : Number(stampRaw);
+  if (!Number.isFinite(stamp)) return false;
+  const age = now - stamp;
+  if (age < 0 || age > CHUNK_EPISODE_MAX_AGE_MS) return false;
+  if (surface === undefined || surface === "") return true;
+  let companion: string | null;
+  try {
+    companion = storage.getItem(CHUNK_RELOAD_SURFACE_KEY);
+  } catch {
+    return true;
+  }
+  if (companion === null || companion === "unknown") return true;
+  return companion === surface;
 }
 
 /**
@@ -234,6 +295,11 @@ export interface ChunkRecoveryHost {
   staleOfferVisible: () => boolean;
   /** True when MapErrorBoundary's error card is on screen. */
   mapErrorCardVisible: () => boolean;
+  /** The surface named by the on-screen error card, if it carries one. */
+  mapErrorSurface?: () => string | null;
+  /** True when a lazy host already recovered in place (its chunk
+   *  fallback is on screen, e.g. HomeGlobe's static disc). */
+  chunkFallbackPresent?: () => boolean;
   /** Slice 2 outcome wiring (optional; see ChunkRecoveryOutcomeHooks). */
   buildId?: string;
   /** Slice 2 outcome wiring (optional; see ChunkRecoveryOutcomeHooks). */
@@ -256,6 +322,16 @@ function defaultStaleOfferVisible(): boolean {
 }
 
 function defaultMapErrorCardVisible(): boolean {
+  // F2: every MapErrorBoundary card carries data-map-error-card, so
+  // the dwell probe matches ANY surface's card, not only the map's
+  // copy. The legacy copy match stays as the fallback for cards
+  // rendered by an older shell. Each probe is guarded separately: a
+  // document without querySelector must still reach the text scan.
+  try {
+    if (typeof document.querySelector === "function" && document.querySelector("[data-map-error-card]")) return true;
+  } catch {
+    // Fall through to the copy scan.
+  }
   try {
     const body = document.body;
     if (!body) return false;
@@ -263,6 +339,23 @@ function defaultMapErrorCardVisible(): boolean {
     // rendered text only, never this module's own bundled copy string.
     const text = body.innerText ?? body.textContent ?? "";
     return text.includes(MAP_ERROR_CARD_COPY);
+  } catch {
+    return false;
+  }
+}
+
+function defaultMapErrorSurface(): string | null {
+  try {
+    const card = document.querySelector("[data-map-error-card]");
+    return card?.getAttribute("data-surface") ?? null;
+  } catch {
+    return null;
+  }
+}
+
+function defaultChunkFallbackPresent(): boolean {
+  try {
+    return document.querySelector("[data-chunk-fallback]") !== null;
   } catch {
     return false;
   }
@@ -288,6 +381,8 @@ function defaultHost(): ChunkRecoveryHost | null {
     },
     staleOfferVisible: defaultStaleOfferVisible,
     mapErrorCardVisible: defaultMapErrorCardVisible,
+    mapErrorSurface: defaultMapErrorSurface,
+    chunkFallbackPresent: defaultChunkFallbackPresent,
   };
 }
 
@@ -595,7 +690,15 @@ export function installChunkLoadRecovery(
     }
   };
 
-  const episodeActive = (): boolean => !episodeCleared && !installStale && readStamp() !== null;
+  // F5a: the latch can never outlive CHUNK_EPISODE_MAX_AGE_MS from
+  // the reload that wrote the stamp, regardless of the clear
+  // countdown's restarts — a stamp older than that is not an episode.
+  const episodeActive = (): boolean => {
+    if (episodeCleared || installStale) return false;
+    const stamp = readStamp();
+    if (stamp === null) return false;
+    return host.now() - stamp <= CHUNK_EPISODE_MAX_AGE_MS;
+  };
 
   // Arm-or-restart the clear countdown. The host timer returns void,
   // so restarts use a generation token: a firing timer clears only if
@@ -604,16 +707,26 @@ export function installChunkLoadRecovery(
     clearGeneration += 1;
     const generation = clearGeneration;
     const deadline = observedAt + CHUNK_EPISODE_CLEAR_MS;
-    try {
+    const schedule = (delay: number): void => {
       host.setTimeout(() => {
         if (generation !== clearGeneration) return;
-        if (host.now() < deadline) return;
+        // F5b: a backward clock step can fire the timer before the
+        // deadline — re-arm for the remainder instead of spending
+        // the generation and losing the clear.
+        const remaining = deadline - host.now();
+        if (remaining > 0) {
+          schedule(remaining);
+          return;
+        }
         clearStamp();
         episodeCleared = true;
         // Slice 2: the episode clear is also the outcome's clear leg
         // (a no-op unless an attempt is pending on this page).
         signalClearLeg();
-      }, CHUNK_EPISODE_CLEAR_MS);
+      }, delay);
+    };
+    try {
+      schedule(CHUNK_EPISODE_CLEAR_MS);
     } catch {
       // Recovery is best-effort; a timer failure must never throw.
     }
@@ -694,6 +807,17 @@ export function installChunkLoadRecovery(
         if (!outcomePending) standDownOutcome();
         return;
       }
+      // F4: a lazy host that already recovered in place (HomeGlobe's
+      // static-disc fallback is on screen) owns its failure — a
+      // handler reload would only yank a healthy Home page.
+      try {
+        if (host.chunkFallbackPresent?.()) {
+          decisionPending = false;
+          return;
+        }
+      } catch {
+        // A throwing probe reads as no fallback, as everywhere here.
+      }
       // An active, uncleared episode never reloads and never rewrites
       // the stamp. Re-checked at the deferred decision (11-U8).
       if (episodeActive()) {
@@ -724,6 +848,14 @@ export function installChunkLoadRecovery(
       // the post-reload notice.
       const at = host.now();
       if (!persistStamp(at)) return;
+      // F3 companion record: the surface this reload was issued for —
+      // the on-screen error card's surface, else "unknown" — so the
+      // post-reload repeat is reported only for the same surface.
+      try {
+        host.storage?.setItem(CHUNK_RELOAD_SURFACE_KEY, host.mapErrorSurface?.() ?? "unknown");
+      } catch {
+        // Best-effort: an absent companion reports as legacy.
+      }
       // The outcome marker rides the verified reload; its own write
       // is isolated and its result never affects the reload.
       writeMarkerVerified({ v: 1, at, build: outcomeBuildId ?? "unknown" });
@@ -792,6 +924,8 @@ export interface ChunkReloadAttemptHost {
   now: () => number;
   /** Build id for the Slice 2 outcome marker (see install). */
   buildId?: string;
+  /** The surface the reload is issued for (F3 companion record). */
+  surface?: string;
   /** Runs after the stamp verifies, immediately before the reload —
    *  e.g. the error boundary re-arming a persisted screen so the
    *  reload restores it. A throw is swallowed: it must never block
@@ -835,13 +969,16 @@ function defaultAttemptHost(): ChunkReloadAttemptHost | null {
  * as the auto-reload — so whichever path fires first reloads exactly
  * once, and the other finds the stamp fresh and stands down.
  *
- * Returns true when the reload was issued. Returns false — and does
- * not reload — when a fresh stamp says this episode already used its
- * reload (a chunk that still fails after it is genuinely broken, and
- * the caller keeps its manual recovery card), when the stamp is too
- * old to judge (it is cleared best-effort and the reload proceeds —
- * the install-time stale rule), or when the stamp cannot be persisted
- * and read back verified (no unrememberable reloads, as in decide()).
+ * Returns true when the reload was issued — including past a stale
+ * stamp (older than the episode max age) or a future-dated stamp:
+ * neither is evidence of a reload in this episode, so each is cleared
+ * best-effort and the reload proceeds (the install-time stale rule,
+ * and the F3 helper's [0, MAX] window). Returns false — and does not
+ * reload — only when a fresh stamp (age in [0, CHUNK_EPISODE_MAX_AGE_MS])
+ * says this episode already used its reload (a chunk that still fails
+ * after it is genuinely broken, and the caller keeps its manual
+ * recovery card), or when the stamp cannot be persisted and read back
+ * verified (no unrememberable reloads, as in decide()).
  */
 export function attemptGuardedChunkReload(hostArg?: Partial<ChunkReloadAttemptHost>): boolean {
   // A partial host (the boundary passes only its build id and its
@@ -854,6 +991,7 @@ export function attemptGuardedChunkReload(hostArg?: Partial<ChunkReloadAttemptHo
         reload: hostArg.reload ?? defaults?.reload ?? (() => {}),
         now: hostArg.now ?? defaults?.now ?? (() => Date.now()),
         buildId: hostArg.buildId,
+        surface: hostArg.surface,
         beforeReload: hostArg.beforeReload,
       }
     : defaults;
@@ -864,8 +1002,10 @@ export function attemptGuardedChunkReload(hostArg?: Partial<ChunkReloadAttemptHo
     const raw = storage.getItem(CHUNK_RELOAD_KEY);
     const stamp = raw === null ? NaN : Number(raw);
     if (Number.isFinite(stamp)) {
-      if (at - stamp <= CHUNK_EPISODE_MAX_AGE_MS) return false;
-      // Stale stamp: not evidence of a reload in this episode.
+      const age = at - stamp;
+      if (age >= 0 && age <= CHUNK_EPISODE_MAX_AGE_MS) return false;
+      // Stale or future-dated stamp: not evidence of a reload in
+      // this episode (F5c) — clear best-effort and proceed.
       try {
         storage.removeItem(CHUNK_RELOAD_KEY);
       } catch {
@@ -902,6 +1042,12 @@ export function attemptGuardedChunkReload(hostArg?: Partial<ChunkReloadAttemptHo
       storage.setItem(CHUNK_RELOAD_NOTICE_KEY, String(at));
     } catch {
       // A blocked store loses the notice, never the reload.
+    }
+    // F3 companion record, beside the stamp (see decide()).
+    try {
+      storage.setItem(CHUNK_RELOAD_SURFACE_KEY, host.surface ?? "unknown");
+    } catch {
+      // Best-effort: an absent companion reports as legacy.
     }
     if (host.beforeReload) {
       try {

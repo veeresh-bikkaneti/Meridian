@@ -94,13 +94,13 @@ describe("#210 boundary probes staleness and routes to the update prompt", () =>
     );
     const probe = segment(boundarySource, "private startStaleProbe", "private focusAlert");
     assert.ok(
-      probe.includes('getItem(STALE_REFRESH_KEY) === "1") return;'),
-      "an already-refreshed tab must skip the probe (neutral card, no Refresh loop)",
+      probe.includes("staleRefreshRecentlyUsed()) return;"),
+      "an already-refreshed tab (inside the F6 window) must skip the probe (neutral card, no Refresh loop)",
     );
     const retry = segment(boundarySource, "private retry", "render()");
     assert.ok(
-      retry.includes('setItem(STALE_REFRESH_KEY, "1")'),
-      "tapping Refresh on the stale card must arm the one-shot guard",
+      retry.includes("setItem(STALE_REFRESH_KEY, String(Date.now()))"),
+      "tapping Refresh on the stale card must arm the one-shot guard with a timestamp (F6)",
     );
   });
 
@@ -165,8 +165,40 @@ describe("chunk skew: the boundary recovers itself and reports only the post-rel
       "the report rule must classify chunk-load failures",
     );
     assert.ok(
-      report.includes("CHUNK_RELOAD_KEY") && report.includes("CHUNK_EPISODE_MAX_AGE_MS"),
-      "a chunk failure is reported only with a fresh reload stamp (the post-reload repeat)",
+      report.includes("shouldReportChunkFailure("),
+      "a chunk failure is reported only through the shared F3 discipline (fresh stamp, surface-matched)",
     );
+    assert.ok(
+      report.includes('this.props.surface ?? "the map"'),
+      "the discipline is judged against THIS boundary's surface, so another surface's reload cannot report here",
+    );
+  });
+});
+
+describe("arena Phase 2 (PR #532): exit/restore, dwell-for-all, deferred report", () => {
+  it("F2: the alert root carries data-map-error-card and data-surface for every surface", () => {
+    assert.ok(boundarySource.includes('data-map-error-card=""'), "the card root must carry the dwell attribute");
+    assert.ok(boundarySource.includes("data-surface={surface}"), "the card root must name its surface");
+  });
+
+  it("F1b/c/d: goHome cancels the probe, strips the screen hash, clears the marker path and emits the deferred report", () => {
+    const goHome = segment(boundarySource, "private goHome", "render()");
+    assert.ok(goHome.includes("this.exitChosen = true;"), "goHome must set the exit-intent guard");
+    assert.ok(goHome.includes("clearPersistedScreenOpen(this.props.surface);"), "goHome clears the persisted flag (and, via F1a, the retry marker)");
+    assert.ok(goHome.includes("this.suppressedChunkError"), "goHome must emit a catch-suppressed chunk report before leaving");
+    assert.ok(goHome.includes("emitMapError(deferred);"), "the deferred report goes through the shared emitter");
+    assert.ok(goHome.includes('hashForScreen("home")'), "goHome must rewrite the fragment to Home's hash so boot cannot resurrect the screen");
+    const probe = segment(boundarySource, "private startStaleProbe", "private focusAlert");
+    assert.ok(probe.includes("!this.exitChosen"), "a late probe resolution must not reload after the player chose Home");
+  });
+
+  it("F3: a suppressed catch report is tracked on the instance", () => {
+    const report = segment(boundarySource, "private reportError", "private startStaleProbe");
+    assert.ok(report.includes("this.suppressedChunkError = error;"), "a silent first failure is held for the goHome path");
+  });
+
+  it("F3: the guarded reload carries this boundary's surface as the companion record", () => {
+    const probe = segment(boundarySource, "private startStaleProbe", "private focusAlert");
+    assert.ok(probe.includes('surface: this.props.surface ?? "the map"'), "attemptGuardedChunkReload must receive the surface");
   });
 });

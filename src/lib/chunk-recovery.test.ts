@@ -430,7 +430,10 @@ test("3A-U2: seed age 300000 latches; boundary age exactly 900000 latches", () =
   assert.equal(f.store.get(CHUNK_RELOAD_KEY), seedVal);
   assert.equal(f.calls.set, 0);
   const b = fakeHost();
-  b.seed(900_000);
+  // F5a boundary: seeded so the decision (T0+1_500) lands at age
+  // exactly MAX — inside [0, MAX], so it still latches. (Seeding
+  // exactly MAX at install would put the decision past the cap.)
+  b.seed(900_000 - 1_500);
   installChunkLoadRecovery(b.host);
   fireVite(b);
   b.advanceTimersBy(1_500);
@@ -507,26 +510,20 @@ test("4-U: observations re-arm the countdown — failures at +20000 and +35000 b
   assert.equal(f.store.get(CHUNK_RELOAD_KEY), String(T0 + 66_500));
 });
 
-test("4-U-max: latch survives past MAX_AGE via restarts — observations at total age 919000 and 939000 both block", () => {
+test("4-U-max-cap (arena F5a, supersedes 4-U-max): the latch can never outlive MAX_AGE from the reload, regardless of countdown restarts", () => {
+  // The old 4-U-max pinned latch survival past MAX_AGE via countdown
+  // restarts; the arena showed that lets a single stamp suppress
+  // recovery for as long as failures keep arriving. F5a caps the
+  // episode at CHUNK_EPISODE_MAX_AGE_MS from the stamp itself.
   const f = fakeHost();
   f.seed(899_000);
   installChunkLoadRecovery(f.host);
   assert.equal(f.calls.remove, 0);
   f.advanceTimersBy(20_000);
-  fireVite(f); // observation #1, total stamp age 919000
+  fireVite(f); // observation at total stamp age 919000 > MAX_AGE
   f.advanceTimersBy(1_500);
-  assert.equal(f.state.reloads, 0); // RED pre-fix / age-cap-at-decision: observation #1 reloads
-  assert.equal(f.calls.set, 0);
-  f.advanceTimersBy(18_500); // T0+40_000
-  fireVite(f); // observation #2, total stamp age 939000 > MAX_AGE
-  f.advanceTimersBy(1_500);
-  assert.equal(f.state.reloads, 0);
-  f.advanceTimersBy(28_500); // T0+70_000: restarted deadline
-  assert.equal(f.calls.remove, 1);
-  fireVite(f);
-  f.advanceTimersBy(1_500);
-  assert.equal(f.state.reloads, 1);
-  assert.equal(f.store.get(CHUNK_RELOAD_KEY), String(T0 + 71_500));
+  assert.equal(f.state.reloads, 1, "past MAX_AGE the episode is over: the failure reloads");
+  assert.equal(f.store.get(CHUNK_RELOAD_KEY), String(T0 + 21_500));
 });
 
 test("4-U-neg: the page that wrote the stamp never re-arms on clock advance alone", () => {
@@ -1327,6 +1324,9 @@ test("11-U: card visible at the decision defers once — nothing written, reload
     f.calls.setArgs.filter(([k]) => k !== CHUNK_RECOVERY_KEY),
     [
       [CHUNK_RELOAD_KEY, at],
+      // Arena F3: the companion surface record rides the reload
+      // (no surface seam on this host, so it reads "unknown").
+      ["meridian.chunkReloadSurface", "unknown"],
       [NOTICE_KEY, at],
     ],
   );
@@ -1598,6 +1598,7 @@ test("14-U1: every auto-reload writes the notice, including the no-card fast pat
     f.calls.setArgs.filter(([k]) => k !== CHUNK_RECOVERY_KEY),
     [
       [CHUNK_RELOAD_KEY, String(T0 + 1_500)],
+      ["meridian.chunkReloadSurface", "unknown"],
       [NOTICE_KEY, String(T0 + 1_500)],
     ],
   );
@@ -1792,4 +1793,171 @@ test("16-U: attemptGuardedChunkReload runs beforeReload after verification, imme
   assert.equal(chunkRecovery.attemptGuardedChunkReload(host), true);
   assert.deepEqual(order, ["hook", "reload"]);
   assert.equal(f.state.reloads, 1);
+});
+
+// ---------------------------------------------------------------------------
+// Arena Phase 2 (PR #532): F3 reporting helper, F5 latch bounds,
+// ChunkLoadTimeoutError classification, F2 dwell attribute, F4 globe stand-down
+// ---------------------------------------------------------------------------
+
+const SURFACE_KEY = "meridian.chunkReloadSurface";
+
+function mapStorage(initial: Record<string, string> = {}, throwing = false) {
+  const m = new Map(Object.entries(initial));
+  return {
+    getItem: (k: string): string | null => {
+      if (throwing) throw new Error("storage blocked");
+      return m.get(k) ?? null;
+    },
+    setItem: (k: string, v: string) => void m.set(k, v),
+    removeItem: (k: string) => void m.delete(k),
+    map: m,
+  };
+}
+
+test("F3 helper: a fresh stamp with a matching surface reports", () => {
+  const s = mapStorage({ [CHUNK_RELOAD_KEY]: String(T0 - 60_000), [SURFACE_KEY]: "GeoDetective" });
+  assert.equal(chunkRecovery.shouldReportChunkFailure(s, T0, "GeoDetective"), true);
+});
+
+test("F3 helper: a fresh stamp naming a DIFFERENT surface stays silent (cross-surface)", () => {
+  const s = mapStorage({ [CHUNK_RELOAD_KEY]: String(T0 - 60_000), [SURFACE_KEY]: "Cold Trail" });
+  assert.equal(chunkRecovery.shouldReportChunkFailure(s, T0, "GeoDetective"), false);
+});
+
+test("F3 helper: companion absent (legacy) or 'unknown' reports on a fresh stamp", () => {
+  const absent = mapStorage({ [CHUNK_RELOAD_KEY]: String(T0 - 60_000) });
+  assert.equal(chunkRecovery.shouldReportChunkFailure(absent, T0, "GeoDetective"), true);
+  const unknown = mapStorage({ [CHUNK_RELOAD_KEY]: String(T0 - 60_000), [SURFACE_KEY]: "unknown" });
+  assert.equal(chunkRecovery.shouldReportChunkFailure(unknown, T0, "GeoDetective"), true);
+  // Failing surface unknown: the companion cannot be shown to differ.
+  const diff = mapStorage({ [CHUNK_RELOAD_KEY]: String(T0 - 60_000), [SURFACE_KEY]: "Cold Trail" });
+  assert.equal(chunkRecovery.shouldReportChunkFailure(diff, T0), true);
+});
+
+test("F3 helper: no stamp, a stale stamp, and a future stamp all stay silent", () => {
+  assert.equal(chunkRecovery.shouldReportChunkFailure(mapStorage(), T0, "GeoDetective"), false);
+  const stale = mapStorage({ [CHUNK_RELOAD_KEY]: String(T0 - chunkRecovery.CHUNK_EPISODE_MAX_AGE_MS - 1) });
+  assert.equal(chunkRecovery.shouldReportChunkFailure(stale, T0, "GeoDetective"), false);
+  const future = mapStorage({ [CHUNK_RELOAD_KEY]: String(T0 + 60_000) });
+  assert.equal(chunkRecovery.shouldReportChunkFailure(future, T0, "GeoDetective"), false);
+  const edge = mapStorage({ [CHUNK_RELOAD_KEY]: String(T0 - chunkRecovery.CHUNK_EPISODE_MAX_AGE_MS) });
+  assert.equal(chunkRecovery.shouldReportChunkFailure(edge, T0, "GeoDetective"), true, "age exactly MAX is inside [0, MAX]");
+});
+
+test("F3 helper: unreadable storage fails loud (reports)", () => {
+  assert.equal(chunkRecovery.shouldReportChunkFailure(mapStorage({}, true), T0, "GeoDetective"), true);
+  assert.equal(chunkRecovery.shouldReportChunkFailure(null, T0, "GeoDetective"), true);
+  assert.equal(chunkRecovery.shouldReportChunkFailure(undefined, T0, "GeoDetective"), true);
+});
+
+test("isChunkLoadError: ChunkLoadTimeoutError is a chunk failure (name and message forms)", () => {
+  const byName = new Error("whatever");
+  byName.name = "ChunkLoadTimeoutError";
+  assert.equal(isChunkLoadError(byName), true);
+  assert.equal(isChunkLoadError(new Error("Chunk load timed out after 10000 ms: the home globe")), true);
+  assert.equal(isChunkLoadError(new Error("Chunk load timed out")), true);
+});
+
+test("F5c: attemptGuardedChunkReload treats a future-dated stamp as no evidence — clears it and reloads", () => {
+  const f = fakeHost(T0);
+  f.store.set(CHUNK_RELOAD_KEY, String(T0 + 60_000));
+  assert.equal(chunkRecovery.attemptGuardedChunkReload(f.host), true);
+  assert.equal(f.state.reloads, 1);
+  assert.equal(f.store.get(CHUNK_RELOAD_KEY), String(T0), "the future stamp is replaced by the verified reload stamp");
+});
+
+test("F3: attemptGuardedChunkReload writes the companion surface beside the stamp", () => {
+  const f = fakeHost(T0);
+  const host = { ...f.host, buildId: "build-a", surface: "GeoDetective" };
+  assert.equal(chunkRecovery.attemptGuardedChunkReload(host), true);
+  assert.equal(f.store.get(SURFACE_KEY), "GeoDetective");
+  const g = fakeHost(T0);
+  assert.equal(chunkRecovery.attemptGuardedChunkReload(g.host), true);
+  assert.equal(g.store.get(SURFACE_KEY), "unknown", "no surface seam reads as unknown, never absent-by-accident");
+});
+
+test("F3: the handler's own reload writes the on-screen card's surface as the companion", () => {
+  const f = fakeHost(T0);
+  const host = { ...f.host, mapErrorSurface: () => "Cold Trail" };
+  installChunkLoadRecovery(host);
+  fireVite(f);
+  f.advanceTimersBy(1_500);
+  assert.equal(f.state.reloads, 1);
+  assert.equal(f.store.get(SURFACE_KEY), "Cold Trail");
+});
+
+test("F4: a present chunk fallback (HomeGlobe's disc) stands the handler's decision down", () => {
+  const f = fakeHost(T0);
+  const host = { ...f.host, chunkFallbackPresent: () => true };
+  installChunkLoadRecovery(host);
+  fireVite(f);
+  f.advanceTimersBy(1_500);
+  assert.equal(f.state.reloads, 0, "the host already recovered in place — no reload");
+  assert.equal(f.store.has(CHUNK_RELOAD_KEY), false, "no stamp is written for a stand-down");
+});
+
+test("F5b: a clear-countdown timer that fires early (backward clock step) re-arms for the remainder", () => {
+  // Bespoke host: the fakeHost timer queue cannot fire a timer while
+  // the clock reads before its deadline, which is exactly the case.
+  const store = new Map<string, string>();
+  const timers: Array<{ fn: () => void; ms: number }> = [];
+  const listeners = new Map<string, Array<(event: unknown) => void>>();
+  const state = { now: T0, reloads: 0 };
+  store.set(CHUNK_RELOAD_KEY, String(T0 - 1_000));
+  const host: ChunkRecoveryHost = {
+    addEventListener: (type, listener) => {
+      const list = listeners.get(type) ?? [];
+      list.push(listener);
+      listeners.set(type, list);
+    },
+    storage: {
+      getItem: (k) => store.get(k) ?? null,
+      setItem: (k, v) => void store.set(k, v),
+      removeItem: (k) => void store.delete(k),
+    },
+    reload: () => {
+      state.reloads += 1;
+    },
+    now: () => state.now,
+    setTimeout: (fn, ms) => {
+      timers.push({ fn, ms });
+    },
+    staleOfferVisible: () => false,
+    mapErrorCardVisible: () => false,
+  };
+  installChunkLoadRecovery(host);
+  assert.equal(timers.length, 1, "install arms the clear countdown");
+  assert.equal(timers[0].ms, 30_000);
+  // The timer fires while the (stepped-back) clock reads T0+10_000,
+  // 20 s before the deadline: it must re-arm, not clear.
+  state.now = T0 + 10_000;
+  timers.shift()!.fn();
+  assert.equal(store.has(CHUNK_RELOAD_KEY), true, "the stamp survives an early firing");
+  assert.equal(timers.length, 1, "a re-armed timer is scheduled");
+  assert.equal(timers[0].ms, 20_000, "re-armed for the remainder, not a fresh 30 s");
+  // At the real deadline the re-armed timer clears the episode.
+  state.now = T0 + 30_000;
+  timers.shift()!.fn();
+  assert.equal(store.has(CHUNK_RELOAD_KEY), false, "the episode clears at its deadline");
+});
+
+test("F2: the default dwell probe sees a data-map-error-card element for ANY surface's card", () => {
+  const { ss } = stubStorageMap();
+  const w = stubWindow(ss, "some other alert text entirely");
+  // stubWindow's document has no querySelector; add one that finds
+  // only the boundary card attribute (a non-map surface's card).
+  const doc = (globalThis as Record<string, unknown>).document as Record<string, unknown>;
+  doc.querySelector = (sel: string) =>
+    sel === "[data-map-error-card]" ? { getAttribute: () => null } : null;
+  installChunkLoadRecovery();
+  w.dispatch("vite:preloadError");
+  w.flush(); // decision runs; dwell timer scheduled, not run
+  const afterFirst = { reloads: w.state.reloads, pending: w.timers.map((t) => t.ms) };
+  w.flush(); // the dwell decision
+  const reloadsFinal = w.state.reloads;
+  w.cleanup();
+  assert.equal(afterFirst.reloads, 0, "the attribute card defers the reload for the dwell");
+  assert.deepEqual(afterFirst.pending, [DWELL_MS]);
+  assert.equal(reloadsFinal, 1);
 });

@@ -3,10 +3,9 @@ import { Button } from "@/components/ui/button";
 import { HomeButton } from "@/components/ui/home-button";
 import {
   attemptGuardedChunkReload,
-  CHUNK_EPISODE_MAX_AGE_MS,
-  CHUNK_RELOAD_KEY,
   isChunkLoadError,
   markChunkReloadNotice,
+  shouldReportChunkFailure,
 } from "@/lib/chunk-recovery";
 import {
   clearPersistedScreenOpen,
@@ -16,6 +15,8 @@ import {
 import { emitMapError } from "@/lib/observability";
 import { isNewBuildDeployed } from "@/game/build-staleness";
 import { CURRENT_BUILD_ID } from "@/game/build-staleness";
+import { staleRefreshRecentlyUsed } from "@/game/build-staleness";
+import { hashForScreen } from "@/lib/screen-hash";
 
 /**
  * Error boundary around the lazily-loaded screens and map (P0 Safari
@@ -99,6 +100,14 @@ export class MapErrorBoundary extends Component<
   private alertRef = createRef<HTMLDivElement>();
   private probedFor: Error | null = null;
   private unmounted = false;
+  // F1b: the player chose Home — a stale probe that resolves after
+  // this must not re-arm or reload the failed screen behind them.
+  private exitChosen = false;
+  // F1d: a chunk failure whose report was suppressed at catch (the
+  // guarded reload gets the first failure in silence). If the player
+  // abandons the screen via Home instead, the failure is genuine and
+  // unrecovered — goHome emits the deferred report before leaving.
+  private suppressedChunkError: Error | null = null;
 
   static getDerivedStateFromError(error: Error): { error: Error } {
     return { error };
@@ -157,17 +166,26 @@ export class MapErrorBoundary extends Component<
       emitMapError(error);
       return;
     }
+    // F3: the shared discipline — report only the post-reload repeat
+    // for THIS surface (a fresh stamp whose companion record does not
+    // name a different surface), or when storage is unreadable.
+    let report: boolean;
     try {
-      const raw = window.sessionStorage.getItem(CHUNK_RELOAD_KEY);
-      const stamp = raw === null ? NaN : Number(raw);
-      if (
-        Number.isFinite(stamp) &&
-        Date.now() - stamp <= CHUNK_EPISODE_MAX_AGE_MS
-      ) {
-        emitMapError(error);
-      }
+      report = shouldReportChunkFailure(
+        window.sessionStorage,
+        Date.now(),
+        this.props.surface ?? "the map",
+      );
     } catch {
+      report = true;
+    }
+    if (report) {
+      this.suppressedChunkError = null;
       emitMapError(error);
+    } else {
+      // Held for F1d: emitted by goHome if the player abandons the
+      // screen; a healed reload never files it.
+      this.suppressedChunkError = error;
     }
   }
 
@@ -177,16 +195,16 @@ export class MapErrorBoundary extends Component<
   private startStaleProbe(error: Error): void {
     if (this.probedFor === error) return;
     this.probedFor = error;
-    try {
-      if (window.sessionStorage.getItem(STALE_REFRESH_KEY) === "1") return;
-    } catch {
-      // Storage unreadable — probe anyway; it still fails closed.
-    }
+    // F6: the one-shot guard is time-bound now — a mark older than
+    // the window (or the legacy "1") no longer skips the probe.
+    if (staleRefreshRecentlyUsed()) return;
     const probe = this.props.probeStaleBuild ?? isNewBuildDeployed;
     void probe()
       .then((stale) => {
         if (!this.unmounted && stale) this.setState({ staleBuild: true });
-        if (!this.unmounted && stale && isChunkLoadError(error)) {
+        // F1b: Home was chosen while the probe was in flight — the
+        // player's exit wins; no re-arm, no reload.
+        if (!this.unmounted && !this.exitChosen && stale && isChunkLoadError(error)) {
           // Confirmed chunk skew recovers itself (2026-11-17): the
           // guarded one-time reload onto the fresh shell. This card's
           // own stale copy makes the chunk-recovery handler stand
@@ -200,6 +218,7 @@ export class MapErrorBoundary extends Component<
           // the screen the player asked for.
           attemptGuardedChunkReload({
             buildId: CURRENT_BUILD_ID,
+            surface: this.props.surface ?? "the map",
             beforeReload: () => rearmPersistedScreenOpen(this.props.surface),
           });
         }
@@ -229,7 +248,9 @@ export class MapErrorBoundary extends Component<
     markChunkReloadNotice();
     if (this.state.staleBuild) {
       try {
-        window.sessionStorage.setItem(STALE_REFRESH_KEY, "1");
+        // F6: a timestamp, not "1" — readers honour it only inside
+        // the freshness window (staleRefreshRecentlyUsed).
+        window.sessionStorage.setItem(STALE_REFRESH_KEY, String(Date.now()));
       } catch {
         // Storage full/blocked — the reload still happens.
       }
@@ -241,7 +262,31 @@ export class MapErrorBoundary extends Component<
     // Item 7 (INV2): the way out that is not a retry. The failed
     // screen's persisted open flag was cleared at catch time (and
     // is cleared again here), so the reload boots to Home.
+    // F1b: cancel any in-flight stale probe's reload first.
+    this.exitChosen = true;
     clearPersistedScreenOpen(this.props.surface);
+    // F1d: a chunk failure suppressed at catch is reported now —
+    // the player is abandoning the screen, so no recovery will heal
+    // it; a genuine failure must not vanish. (Tab-close stays
+    // unreported: an accepted residual, noted in the PR body.)
+    if (this.suppressedChunkError) {
+      const deferred = this.suppressedChunkError;
+      this.suppressedChunkError = null;
+      emitMapError(deferred);
+    }
+    // F1c: strip the failed screen's hash before reloading — boot's
+    // deep-link reader would otherwise resurrect the screen from
+    // #geodetective / #coldtrail. Mirror game-app's hash effect:
+    // Home's hash is hashForScreen("home").
+    try {
+      window.history.replaceState(null, "", hashForScreen("home") ?? "#home");
+    } catch {
+      try {
+        window.location.hash = hashForScreen("home") ?? "#home";
+      } catch {
+        // Hash rewrite is best-effort; the cleared flags still land Home.
+      }
+    }
     window.location.reload();
   };
 
@@ -257,6 +302,8 @@ export class MapErrorBoundary extends Component<
           ref={this.alertRef}
           role="alert"
           tabIndex={-1}
+          data-map-error-card=""
+          data-surface={surface}
           className="absolute inset-0 flex items-center justify-center bg-bg p-6 focus:outline-none"
         >
           <div className="w-full max-w-sm rounded-2xl border border-line bg-surface p-6 text-center">
