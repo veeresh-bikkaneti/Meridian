@@ -1,0 +1,31 @@
+# feat/why-learn-hero-d1 — branch status
+
+**Task:** Port the owner-approved adjusted Why Learn mock into real code: the D1 hero (atlas band as its own section, no overlap), the wide page container, the age-band control in the hero title block with a selected-band pill, and a per-subject Reset on every picker card. Draft PR only — the owner merges. Base: main `cbc119c3`.
+
+**What changed, per unit:**
+- **Unit 1 — D1 hero + container + CSS** (`6b8f86b7`): `WhyLearnWorld` renders in flow as its own section directly under the site header (1rem above the hero card; the card's own `mt-4` is the 16px gap). The picker `<main>` is now `max-w-(--page-wide)` and lost `lg:max-w-none` — the owner's page-container rule (one centred wide column, like Home). In `src/styles.css`, scoped to the picker screen: the band takes `position: relative` in-flow placement, and at ≥681px the hero film is a flex share of the card (flex 0 1 56%, aspect 16/9, height auto) — the old viewport-height film formulas (33dvh clamp, (100dvh − offset) cap) no longer size this film at any width. The band keeps its authored heights and all its animation; the SubjectCase atlas scope rules are untouched.
+- **Unit 2 — band control move + pill** (`293fb40c`): `AgeBandControl`'s collapsed set state is one pill button (`band-selected-pill`) naming the selected band ("Ages 10-18"), `aria-expanded={false}`, tapping re-opens the pills in place. The control renders inside the hero card's title block under the sub line (`mt-3`, `bandBarRef`); the below-hero band block is deleted — there is deliberately exactly one band control on the page. Unset and expanded states unchanged.
+- **Unit 3 — per-subject Reset circuit** (`311a8c66`): new store `src/subjects/shared/subject-progress.ts` (key `meridian.subject-progress.v1`, `{ [subjectId]: string[] }` of solved unit ids; never throws; corrupt data reads as empty; change bus in the age-profile pattern). `SubjectCase` records the current unit under its subject id on the main-phase correct-pick advance — idempotent, no flow or copy change. Each picker card's `<li>` carries the approved Reset button (bottom-right, sibling of the card's open button): rendered on every card, disabled while the subject has no recorded progress; one tap clears only that subject and announces "<Title> reset" in a `role="status"` line. `reset-history.ts` composes `clearAllSubjectProgress` as one more owner-module step (its locked copy is not reworded; the addition is flagged in the PR body).
+- **Unit 4 — test pins + regression spec** (`db5c7218`): pins moved to the approved behaviour (full list in the PR body). New `why-learn-band-switch` e2e regression (unset → Ages 7-10 → Ages 18+, counts follow the dealing, at 1280 and 390) and `why-learn-hero-d1` geometry spec replacing the retired Variant B hero-cap spec. The shell-ban baseline shrank: this branch cured SubjectPicker's `maxWNone` violation, and the frozen record was edited in the same change, as the baseline's own rule requires. Bundle care: the clear-all half of the progress store lives in a small module (`subject-progress-clear.ts`, re-exported from `subject-progress.ts`) so the first-load reset composition does not pull the picker-only store into the entry chunk.
+- **Unit 5 — docs/status:** this file.
+
+**Verification (built tip, hermetic recipe):**
+- `npm test` green: 1,217 + 2,947 tests, 0 fail. `npm run test:worker` green (235). `tsc --noEmit` clean. `lint:nav` clean, `lint:subjects` GATE PASSED, `lint-cards` GATE PASSED, `check:provenance` PASSED.
+- `build:pages` green; entry JS gzip **323,773 B** vs the 323,865 B limit (92 B spare; unmodified main measures 323,720 B, so this branch adds 53 B).
+- Named e2e (hermetic, one worker): why-learn-hero-d1 (4/4), why-learn-band-switch (2/2), ask-age-first, why-learn-card, subjects-picker, shared-shell-adoption, layout-overflow all green; why-learn-page green except one pre-existing failure (below).
+- Measurements on the built tip (`~/workspace/why-learn-build-evidence/`, both band states × 7 sizes): band × card overlap 0 and band × content overlap 0 at every size; card-top − band-bottom = +16 everywhere; film 675.4×379.9 at 1280/1878/1920/3840, 359.9×204.5 at 768, stacked full-card-width on phones; overflow-x 0; exactly one band control, inside the title block; no below-hero change-band control; trekker present in every frame. SMIL clocks were frozen for capture determinism (trekker 9s, trail 4.5s) — disclosed in each JSON.
+- Sabotage check: with the picker band filter temporarily broken (always dealing 10-18), both band-switch regression tests fail; restored and re-verified green.
+- Reset behaviour e2e (scratch spec, not committed): seeded progress enables exactly those subjects' Reset buttons; tapping Math's clears only Math's record and announces "Math reset".
+
+**Pre-existing failures (verified on unmodified main `cbc119c3`, not this branch):**
+- `why-learn-page` "no sideways scroll at 320, nothing clipped at 1440" fails on main too: the atlas band's cloud-bank SVG groups have rects past the left viewport edge inside the band's `overflow: hidden` (visually clipped in both versions; page overflow-x is 0). Left untouched — fixing it means changing the band art or the clip check, neither in this brief.
+- Two stale pins in the named specs failed on main and are corrected here to main's measured behaviour (listed in the PR body): Journals has been playable since #464, and the Math 10-18 dealing is 28 cases.
+
+**Still open:**
+- Owner's merge word. Nothing else is owed.
+- Note for the reviewer: the owner-approved Reset button markup is smaller than the repo's usual 44px touch-target guidance — it is the owner's own approved mock, shipped exactly.
+
+## Graph
+- Add node: per-subject progress store (`src/subjects/shared/subject-progress.ts` + `subject-progress-clear.ts`) — the picker `depends-on` it for the Reset controls; `SubjectCase` writes to it on a solved unit; `reset-history.ts` composes its clear-all.
+- Add edge: the Why Learn hero title block now hosts the shared `AgeBandControl` (the picker's only band control); the atlas band (`WhyLearnWorld`) is a sibling section above the hero card, no longer layered over the page content.
+- No existing nodes or edges changed.
