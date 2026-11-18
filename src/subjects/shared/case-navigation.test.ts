@@ -226,8 +226,8 @@ describe("age band picker in the Why Learn flow (defect 4)", () => {
     // Home's footer carries (same testid, same accessible label —
     // pinned in shared-shell.test.ts against site-footer.tsx).
     assert.ok(
-      subjectPicker.includes("<SiteFooter onGrownUps={onOpenAgeSettings}"),
-      "the shared footer, wired to GameApp's hosted settings",
+      subjectPicker.includes("<SiteFooter lead={<Pill>Ages {band}</Pill>} onGrownUps={onOpenAgeSettings}"),
+      "the shared footer, wired to GameApp's hosted settings, with the picker's tailored Ages pill in the lead slot (footer standardization, 2026-11-18)",
     );
     assert.ok(!subjectPicker.includes('className="agep-footer"'), "no hand-built footer row");
   });
