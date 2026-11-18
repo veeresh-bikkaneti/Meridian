@@ -418,12 +418,29 @@ mechanisms). Zero visual delta beyond them.
   4cf018c07e21e02fda0b44f544e1590db48660ce7d71ec624b36730aeb2a6b96),
   so the header box claim (x=276, y=32, 728×84, identical in both)
   holds trivially.
-- **(d) home-layout claim — branch side measured; baseline side
-  pending (see Part 2 notes below).** Hermetic run on this branch
-  (Part 1 tip 48198f12, built artifact): 11 passed / 3 failed —
-  the grid test at 1280×800 and both "Home stays in the viewport"
-  tests (1280 and 390). The baseline comparison on 60e9bbaf is
-  still to land; the UNVERIFIED flag stays until it does.
+- **(d) home-layout claim — SETTLED 2026-11-18: pre-existing, no
+  Part 1 regression.** Hermetic runs (built artifact, pinned
+  Chromium, flock, --workers=1): on this branch's Part 1 tip
+  48198f12 — 11 passed / 3 failed: the grid test at 1280×800 and
+  both "Home stays in the viewport" tests (1280 and 390). On the
+  pre-Part-1 baseline 60e9bbaf (separate sparse worktree, audio
+  tree excluded; its package.json/package-lock.json are identical
+  to this branch's, and its node_modules was hardlink-copied from
+  this worktree's after a fresh `npm ci` died on a VM-wide disk
+  quota — same files, not a fresh install, noted for honesty) —
+  run 1: the same two viewport failures (1280 and 390), plus grid
+  failures at 768×1024, 1024×768 and 1280×800 (3 grid failures vs
+  the branch's 1). Run 2 on the baseline is INVALID and proves
+  nothing about the app: all 14 tests failed on disk-quota
+  (EDQUOT) errors while Playwright wrote its artifacts, with the
+  assertions themselves passing up to `context.close()`. Exact
+  verdict: the two viewport failures pre-exist on the baseline
+  with the same assertions; the grid assertions are flaky on
+  BOTH sides (branch 1 of 6 grid tests, baseline 3 of 6 in the
+  valid run); the branch had FEWER failures than the baseline.
+  The earlier "UNVERIFIED by CI" flag is now closed by these
+  local hermetic runs — CI's e2e list still does not include
+  home-layout.
 
 ### Done — Part 2 Unit 1: lockup home control + derived highlight + menu close
 
@@ -462,11 +479,15 @@ mechanisms). Zero visual delta beyond them.
   ScreenShell), so mechanism 2's structural cure is the current
   shell structure itself — no move was needed.
 - Gates: shared-shell + brand-home-button + home-button +
-  shell-registry unit suites 57/57; tsc clean. Revert check: the
-  new/extended pins key on BrandHomeButton-in-header, the union's
-  link mode and the CSS contracts — none exist on the Part 1 tip,
-  so they fail there by construction (recorded per unit below
-  when the tip gates run).
+  shell-registry unit suites 57/57; tsc clean. **Revert check
+  (recorded 2026-11-18):** with the four Unit 1 source files
+  (home-button.ts, site-header.tsx, styles.css, game-app.tsx)
+  checked out from the Part 1 tip 48198f12, the new pins fail —
+  41 pass / 5 fail: the BrandHomeButton link-mode test, the
+  lockup home-control pin, the frozen-bar/N1 CSS contract pin,
+  the section-id + panel-close pin, and the map/cream lockup pin.
+  Restoring the branch sources returns 46/46 green across the
+  two suites.
 
 ### Done — Part 2 Unit 2: the home-control rule amended (lint + AGENTS.md, one commit)
 
@@ -491,11 +512,9 @@ mechanisms). Zero visual delta beyond them.
 
 ## Remaining
 
-- Part 2 Units 2–3: the lint:nav / AGENTS.md rule amendment
-  (one home control per screen = the brand lockup named
-  "Meridian home") with the e2e spec name updates, then the full
-  gate set, captures and the owner-config playthrough.
-- Step 0(d) baseline side: home-layout on 60e9bbaf.
+- Part 2 Unit 3: the full gate set on the tip, the before/after
+  captures against the mock set, and the owner-config
+  playthrough.
 - The BrandHomeButton-as-home-control ruling above.
 - Pre-existing stale e2e selectors: journal-player fixes and
   chunk-recovery specs still query `.hv5-nav`, which no screen has
