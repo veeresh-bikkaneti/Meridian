@@ -1,9 +1,11 @@
-# refactor/page-shell-adoption — PR 3 (shell adoption), Steps 1–3
+# refactor/page-shell-adoption — PR 3 (shell adoption), Steps 1–5
 
-**Stacked on PR #526** (`fix/mobile-header-overflow`, tip `dbfcfdb7`,
-OPEN unmerged): this branch contains 526's three commits until it
-merges; after that it is plain main + the commits below. Base for the
-PR is `main` so the stack is visible; do not merge before 526.
+**Stacking note, corrected 2026-11-17:** PR #526 has MERGED to main
+(merge commit 72ced0bd), along with #527, #528 and #530. This branch
+merged `origin/main` at 8ba3a947 in merge commit 60e9bbaf (union
+resolution: main's header/sheet token split and board fail-closed
+flags win; this branch's shell work wins for shell files). The
+branch is now plain main + the commits below; no stack remains.
 
 ## Done — Step 1: tokens (commit d5f8d8f4)
 
@@ -284,24 +286,69 @@ PR is `main` so the stack is visible; do not merge before 526.
   addendum above); (10) Globe overlay HUD sanctioned as the
   sole named by-design shell exception, enforced by Step 5's
   registry test. Step 3 is closed at 11/11.
-- **Step 4 — delete legacy:** ScreenShell, BrandHomeButton, the 18
-  unused `.hv5-nav` rules and `.brand-home-*`; hand-rolled
-  max-w-3xl/7xl/6xl/2xl/xl → PageColumn. Removing the second Home
-  buttons changes what players see: before/after screenshots for
-  owner approval BEFORE it lands.
-- **Step 5 — guards:** registry-driven unit test (every route/screen
-  renders PageShell or SiteHeader, ErrorScreen on every failure
-  branch; the in-run globe HUD is the registry's ONE named
-  by-design exception — owner, 2026-11-17 — and the test must
-  fail if any other screen skips the shell; prove by removal — red); lint bans on hand-built
-  header/footer/nav/main outside the shell + className overrides on
-  shell components (shrink-only baseline); Home-position e2e (same
-  label, same x/y on every screen at 390/1280/1920); overflow +
-  overlay e2e at all 5 viewports.
+- **Step 4 — DONE 2026-11-17 (re-scoped brief; commits 249e551f,
+  d2c93a6f, 7da7384a):** ScreenShell DELETED (no production
+  consumers remained; game-app / SubjectCase / SubjectPicker only
+  mentioned it in comments) with its `.screen-home-bar` CSS and its
+  shell-ban entries (pageLocalHeaderFooter baseline now empty).
+  All unused `.hv5-nav` and orphaned `.hv5-brand` rules DELETED
+  from home-v5.css (122 lines). BrandHomeButton KEPT in
+  home-button.ts with its `.brand-home-*` CSS, per the re-scoped
+  brief. Screen roots' literal max-w-3xl/7xl now read the
+  `--page-narrow` / `--page-wide` tokens (same sizes, no movement);
+  the RegionList 36rem column and component-local caps stay
+  literal, with reasons in the pin. Revert checks: each new pin
+  fails with its change reverted (1 fail each) and passes here.
+  **OPEN, needs a ruling:** the re-scoped brief also says
+  BrandHomeButton "becomes the ONE home control" and Home's header
+  lockup must render from it. That conflicts with the repo's
+  enforced rule (AGENTS.md: one home control named exactly "Home",
+  HomeButton + HOME_LABEL, checked by lint:nav and the
+  shared-shell pins) and with the zero-visual-delta law — Home has
+  no page-local lockup markup left to replace (it renders
+  SiteHeader). The component is kept; SiteHeader was NOT switched.
+  Do not wire it without the owner's word.
+- **Step 5 — DONE 2026-11-17 (commits 031100cf, bb247e48):**
+  registry-driven test (`ui/shell-registry.ts` +
+  `shell-registry.test.ts`, 7/7): every route/screen renders
+  PageShell/SiteHeader/ErrorScreen or is registered; header
+  exceptions frozen at [in-run-hud], footer exceptions at
+  [why-learn-picker] (shrink-only), header baseline frozen at six
+  not-yet-adopted screens. Negative controls recorded: in-test
+  mutated registries fail; a real fake shell-less screen file
+  turned the suite red on the completeness check, green again
+  after removal. Lint: shell-ban gains no-page-local-nav and
+  no-page-local-main, shrink-only baselines (pageLocalNav 2 files,
+  pageLocalMain 9 files); a scratch <main><nav> file failed
+  lint:nav with both new errors. E2E: home-layout +
+  layout-overflow run on the built artifact (results below in the
+  PR report). Bundle: entry gzip 321,988 B vs the 323,865 B limit
+  (post-merge baseline 321,960 B — the CSS deletions do not move
+  the JS number; +28 B net).
+- **Captures (before/after, 1280×800 + 390×844, real build):**
+  `~/workspace/verify-evidence-shell-step4/` — Home and Credits
+  pixel-identical (0 px differ); the picker differs only in the
+  hero film's frame at capture time (geometry identical);
+  GeoDetective differs in map tiles and the dealt case (geometry
+  identical).
+
+## Remaining
+
+- Part 2 of PR 529 (Steps 6+ in the brief's order) is the next
+  lane's work, not this branch's Part 1 scope.
+- The BrandHomeButton-as-home-control ruling above.
+- Pre-existing stale e2e selectors: journal-player fixes and
+  chunk-recovery specs still query `.hv5-nav`, which no screen has
+  rendered since Step 2 — they were stale before Step 4 deleted
+  the (already unused) CSS and need their own cure.
 
 ## Graph
 
 - New nodes: `ui/page-shell.tsx` (PageShell, PageIntro),
-  `ui/site-links.ts` (one link list). Edges: PageShell composes
-  SiteHeader/PageColumn/SiteFooter; SiteFooter and InfoPage consume
-  site-links. Badge node: superseded-by nothing — deleted as unused.
+  `ui/site-links.ts` (one link list), `ui/shell-registry.ts`
+  (registry + frozen exception/baseline lists). Edges: PageShell
+  composes SiteHeader/PageColumn/SiteFooter; SiteFooter and
+  InfoPage consume site-links; shell-registry.test.ts validates
+  every screen against the shell family. Badge node:
+  superseded-by nothing — deleted as unused. ScreenShell node:
+  deleted in Step 4.
