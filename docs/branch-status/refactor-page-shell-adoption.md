@@ -299,6 +299,12 @@ branch is now plain main + the commits below; no stack remains.
   the RegionList 36rem column and component-local caps stay
   literal, with reasons in the pin. Revert checks: each new pin
   fails with its change reverted (1 fail each) and passes here.
+  **Cure round (59e7e2c4):** TrailScreen's two roots still used
+  literal max-w-3xl (QA catch) — both now read
+  `max-w-(--page-narrow)`. Its healthy path's `lg:max-w-6xl`
+  (72rem) stays literal, with the reason in the pin and here: no
+  token in the narrow/wide family holds 72rem, and converting to
+  `--page-wide` (80rem) would move the layout.
   **OPEN, needs a ruling:** the re-scoped brief also says
   BrandHomeButton "becomes the ONE home control" and Home's header
   lockup must render from it. That conflicts with the repo's
@@ -317,25 +323,45 @@ branch is now plain main + the commits below; no stack remains.
   not-yet-adopted screens. Negative controls recorded: in-test
   mutated registries fail; a real fake shell-less screen file
   turned the suite red on the completeness check, green again
-  after removal. Lint: shell-ban gains no-page-local-nav and
+  after removal. **Cure round (0059d56f):** the shell-ban
+  baselines are now frozen exactly in shared-shell.test.ts —
+  before, an entry added to cover a genuinely-violating new file
+  passed both lint and the staleness check; the negative control
+  (scratch <main> file + a covering pageLocalMain entry) passed
+  lint:nav but failed the suite on the frozen record, and
+  removing both restored green. Lint: shell-ban gains no-page-local-nav and
   no-page-local-main, shrink-only baselines (pageLocalNav 2 files,
   pageLocalMain 9 files); a scratch <main><nav> file failed
   lint:nav with both new errors. E2E (built artifact, hermetic):
-  layout-overflow all green; home-layout has failures in "Home
-  stays in the viewport" (1280 + 390) and "home grids are full"
-  (1024 + 1280) — **all four fail identically on the post-merge
-  pre-Part-1 tip 60e9bbaf** (same assertions; the Home-top values
-  vary run to run, a scroll-timing measurement), so they are
-  pre-existing on the merged main, not Part 1 regressions. Bundle:
-  entry gzip 321,988 B vs the 323,865 B limit (post-merge baseline
-  321,960 B — the CSS deletions do not move the JS number;
-  +28 B net).
+  layout-overflow all green. home-layout, stated exactly (cure
+  round correction): the failure set is **not stable across
+  runs**. The two "Home stays in the viewport" failures
+  (1280 + 390) pre-exist on the post-merge pre-Part-1 tip
+  60e9bbaf — they failed there with the same assertions. The
+  grid assertions are flaky across runs: 0 grid failures on the
+  branch run, 3 on the baseline run — the branch had FEWER
+  failures than the baseline, so there is no Part 1 regression;
+  the grid flake itself is pre-existing and still open. Bundle:
+  entry gzip measured 321,990 B by QA (twice) on the Part 1 tip
+  and 321,982 B (twice) on the cure-round build, vs the
+  323,865 B limit — the figure drifts by a few bytes between
+  builds (asset hashes feed the gzip); ~1.9 KB spare either way.
+  Post-merge baseline was 321,960 B; the CSS deletions do not
+  move the JS number.
 - **Captures (before/after, 1280×800 + 390×844, real build):**
   `~/workspace/verify-evidence-shell-step4/` — Home and Credits
   pixel-identical (0 px differ); the picker differs only in the
   hero film's frame at capture time (geometry identical);
   GeoDetective differs in map tiles and the dealt case (geometry
-  identical).
+  identical). **Cure round:** the v1 GeoDetective 1280 pair was
+  not page-comparable (the before frame caught the header
+  ~620px down under a blank area — a capture-timing artifact).
+  It is superseded by `before-geodetective-1280-v2.png` (built
+  on 60e9bbaf) and `after-geodetective-1280-v2.png` (built on
+  the cure-round tip), taken with paint waits (map canvas
+  mounted, clue staged, header box polled stable): header box
+  identical in both (x=276, y=32, 728×84) and the two frames
+  are byte-identical.
 
 ## Remaining
 
