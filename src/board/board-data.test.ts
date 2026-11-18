@@ -122,8 +122,16 @@ describe("failure-mode guards — v2's lies cannot come back", () => {
     const route = read("../routes/board.tsx");
     assert.ok(!route.includes("api.github.com"), "the route must not fetch GitHub itself");
     assert.ok(
-      route.includes("Live from GitHub — every linked record checked"),
+      route.includes("Checked just now — every linked record checked"),
       "the live line must state its coverage",
+    );
+    assert.ok(
+      !route.includes("Live from GitHub"),
+      "player copy never names the service (status-core's banned-token law)",
+    );
+    assert.ok(
+      route.includes("<SiteHeader") && route.includes("<SiteFooter"),
+      "the board sits on the shared shell (PR 3 Step 3.2)",
     );
     assert.ok(read("./live-feed.ts").includes("api.github.com"), "the live feed owns the GitHub check");
   });

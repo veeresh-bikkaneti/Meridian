@@ -33,8 +33,12 @@ const css = read(join(here, "../../styles.css"));
 const publicDir = join(here, "../../../public");
 
 describe("WhyLearnHero — the montage in the hero slot", () => {
-  it("picker renders the hero component in the ScreenShell hero slot, and the drift behind the content", () => {
-    assert.ok(picker.includes("hero={<WhyLearnHero />}"), "hero slot carries WhyLearnHero");
+  it("picker renders the hero component in its hero card, and the drift behind the content", () => {
+    // PR 3 Step 3.3: the picker left ScreenShell for the shared
+    // shell; the hero card is the screen's own content block and
+    // keeps the .screen-hero classes the cap rules key on.
+    assert.ok(picker.includes('<div className="screen-hero mode-card mt-4 overflow-hidden">'), "hero card block");
+    assert.ok(picker.includes("<WhyLearnHero />"), "hero card carries WhyLearnHero");
     assert.ok(picker.includes("<WhyLearnDrift />"), "picker renders the drift layer");
     assert.ok(!picker.includes("WHY_LEARN_HERO_URL"), "the old hero still is no longer rendered");
   });

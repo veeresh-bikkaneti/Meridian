@@ -3,7 +3,7 @@
  * the rest of the ESLint backlog: the home label (eslint/home-label-rule.mjs),
  * one voice at a time (eslint/voice-channel-rule.mjs), and the shared-shell
  * bans (eslint/shell-ban-rule.mjs — no HomeButton-pill imports, no
- * page-local header/footer, no max-w-none; today's violations baselined in
+ * page-local header/footer/nav/main, no max-w-none; today's violations baselined in
  * eslint/shell-ban-baseline.json). The home-label and voice blocks are also
  * part of eslint.config.mjs for editors.
  */

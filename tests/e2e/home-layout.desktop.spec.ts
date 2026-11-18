@@ -16,10 +16,13 @@ import { fulfillFlagsOn } from "./detective-u10";
  * - cards in one row have one height;
  * - with Review off (2 spot cards) the spot row is 2 full columns;
  * - on Home's destinations the home control is at least 44×44 and
- *   none of the old names is left; on the ScreenShell destinations
- *   (Why Learn picker, Country list) it is named exactly
- *   "Meridian home" (fix/header-logo-home), and on the rest
- *   (Cold Trail, GeoDetective, /credits) exactly "Home".
+ *   none of the old names is left; since the shared-shell adoption
+ *   (PR 3 Steps 3.3/3.6) the Why Learn picker and the Country list
+ *   carry the shell's control too, so on every destination here
+ *   (picker, Country list, Cold Trail, GeoDetective, /credits) it
+ *   is named exactly "Meridian home" (the brand lockup, owner
+ *   ruling 2026-11-17 / PR 529 Part 2 — it replaced the "Home"
+ *   pill in every header).
  *
  * Runs on the built artifact like the rest of tests/e2e; it reads layout
  * only, so it needs no map interaction. The owner's playtest (real globe,
@@ -87,7 +90,7 @@ async function expectHomeControl(
   page: Page,
   label: string,
   role: "button" | "link" = "button",
-  name: string = "Home",
+  name: string = "Meridian home",
 ) {
   const home = page.getByRole(role, { name, exact: true }).first();
   await expect(home, `${label}: a ${role} named exactly ${name}`).toBeVisible({ timeout: 30_000 });
@@ -124,7 +127,7 @@ for (const vp of VIEWPORTS) {
     }
   });
 
-  test(`every home control is one 44px "Home" / "Meridian home" at ${tag}`, async ({ browser }) => {
+  test(`every home control is one 44px "Home" at ${tag}`, async ({ browser }) => {
     const context = await browser.newContext({ viewport: vp, serviceWorkers: "block" });
     await setup(context, true);
     const page = await context.newPage();
@@ -143,7 +146,7 @@ for (const vp of VIEWPORTS) {
     await page.getByRole("button", { name: "Cold Trail: Start the trail" }).click();
     await expect(page.getByTestId("coldtrail-screen")).toBeVisible({ timeout: 30_000 });
     await expectHomeControl(page, `${tag} Cold Trail`);
-    await page.getByRole("button", { name: "Home", exact: true }).click();
+    await page.getByRole("button", { name: "Meridian home", exact: true }).click();
 
     await page.getByRole("button", { name: "GeoDetective: Solve a mystery" }).click();
     await expect(page.getByTestId("end-game-button")).toBeVisible({ timeout: 45_000 });

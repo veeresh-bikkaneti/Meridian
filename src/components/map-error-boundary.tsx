@@ -1,6 +1,5 @@
 import { Component, createRef, type ReactNode } from "react";
-import { Button } from "@/components/ui/button";
-import { HomeButton } from "@/components/ui/home-button";
+import { ErrorScreen } from "@/components/ui/error-screen";
 import {
   attemptGuardedChunkReload,
   isChunkLoadError,
@@ -69,6 +68,15 @@ import { hashForScreen } from "@/lib/screen-hash";
  * is set when the player taps Refresh, and while it is set the probe
  * is skipped — if the refreshed tab STILL fails, the build is broken,
  * not stale, and the neutral card is the honest answer.
+ *
+ * PR 3 Step 3.9 (owner-approved 2026-11-17): the card IS the shared
+ * ErrorScreen in its embedded mode — the panel alone, in place,
+ * with no page header. The Home exit is passed only for the
+ * persisted screens (INV2 below): the bare-map usage sits inside
+ * a run in progress, its reload restores that run, and a Home
+ * button there would lie. Both cards' copy rides the title/body
+ * props word for word — the stale wording is owner-approved and
+ * does not change.
  *
  * Item 7 (INV1/INV2): GeoDetective and Cold Trail persist an "open"
  * flag that boot reads to restore the screen, so a load failure
@@ -306,45 +314,25 @@ export class MapErrorBoundary extends Component<
           data-surface={surface}
           className="absolute inset-0 flex items-center justify-center bg-bg p-6 focus:outline-none"
         >
-          <div className="w-full max-w-sm rounded-2xl border border-line bg-surface p-6 text-center">
-            {this.state.staleBuild ? (
-              <>
-                <p className="text-base font-semibold text-fg">
-                  A new version of Meridian is available.
-                </p>
-                <p className="mt-1 text-sm text-muted">
-                  Your game is safe &mdash; this tab is running an older
-                  copy. Refresh to get the new version and keep playing.
-                </p>
-                <div className="mt-4 flex justify-center gap-2">
-                  {persisted ? (
-                    <HomeButton onHome={this.goHome} />
-                  ) : null}
-                  <Button type="button" onClick={this.retry}>
-                    Refresh
-                  </Button>
-                </div>
-              </>
-            ) : (
-              <>
-                <p className="text-base font-semibold text-fg">
-                  Couldn&rsquo;t load {surface}.
-                </p>
-                <p className="mt-1 text-sm text-muted">
-                  Your game is safe &mdash; it just didn&rsquo;t finish
-                  loading. Check your connection, then try again.
-                </p>
-                <div className="mt-4 flex justify-center gap-2">
-                  {persisted ? (
-                    <HomeButton onHome={this.goHome} />
-                  ) : null}
-                  <Button type="button" onClick={this.retry}>
-                    Try again
-                  </Button>
-                </div>
-              </>
-            )}
-          </div>
+          {this.state.staleBuild ? (
+            <ErrorScreen
+              embedded
+              onRetry={this.retry}
+              onHome={persisted ? this.goHome : undefined}
+              title="A new version of Meridian is available."
+              body="Your game is safe — this tab is running an older copy. Refresh to get the new version and keep playing."
+              actions={{ retryLabel: "Refresh" }}
+            />
+          ) : (
+            <ErrorScreen
+              embedded
+              onRetry={this.retry}
+              onHome={persisted ? this.goHome : undefined}
+              title={`Couldn’t load ${surface}.`}
+              body="Your game is safe — it just didn’t finish loading. Check your connection, then try again."
+              actions={{ retryLabel: "Try again" }}
+            />
+          )}
         </div>
       );
     }

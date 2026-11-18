@@ -11,6 +11,12 @@ import { describe, it } from "node:test";
 import assert from "node:assert/strict";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
+import {
+  createMemoryHistory,
+  createRootRoute,
+  createRouter,
+  RouterProvider,
+} from "@tanstack/react-router";
 import { BrandHomeButton, BRAND_HOME_LABEL } from "./home-button.ts";
 
 describe("BrandHomeButton", () => {
@@ -54,6 +60,21 @@ describe("BrandHomeButton", () => {
     assert.match(html, /-ml-3/);
     assert.match(html, /data-testid="home-button-custom"/);
     assert.match(html, /aria-label="Meridian home"/);
+  });
+
+  it("link mode: an <a href=\"/\"> named exactly Meridian home inside a router (N1 union, no location.href fake)", async () => {
+    const root = createRootRoute({ component: () => createElement(BrandHomeButton, { to: "/" }) });
+    const router = createRouter({
+      routeTree: root,
+      history: createMemoryHistory({ initialEntries: ["/privacy"] }),
+    });
+    await router.load();
+    const html = renderToStaticMarkup(createElement(RouterProvider, { router } as never));
+    assert.match(html, /<a [^>]*href="\/"/);
+    assert.doesNotMatch(html, /<button/);
+    assert.match(html, /aria-label="Meridian home"/);
+    assert.match(html, /data-testid="home-button"/);
+    assert.match(html, /brand-home-word/);
   });
 
   it("is not HomeButton: no House icon, no visible Home label text", () => {

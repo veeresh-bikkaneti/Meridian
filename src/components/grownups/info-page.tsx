@@ -11,9 +11,19 @@
  * Privacy, an envelope for Contact. The words inside — including
  * every line of the privacy text — are unchanged; only the room
  * they sit in changed.
+ *
+ * PR 3 Step 3.1: the room is now the shared PageShell — SiteHeader
+ * (with the one "Home" control) on top and SiteFooter at the bottom,
+ * as AGENTS.md requires on every screen. These pages carried no
+ * header, footer or Home before. The parchment wrapper (.grown-page)
+ * stays: it is the pages' theme surface, not a shell fork. The doors
+ * nav stays as page content under the header — it is this family's
+ * own cross-nav, and its entries come from the one shared link list.
  */
 import type { ReactNode } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
+import { GROWNUP_DOORS } from "../ui/site-links.ts";
+import { PageShell } from "../ui/page-shell.tsx";
 import "./info-page.css";
 
 export type GrownGraphic = "book" | "satchel" | "envelope";
@@ -60,14 +70,10 @@ const GRAPHICS: Record<GrownGraphic, ReactNode> = {
   ),
 };
 
-const DOORS: { to: string; label: string; search?: { view: string } }[] = [
-  { to: "/", label: "Play the game" },
-  { to: "/board", label: "What's coming" },
-  { to: "/board", label: "Ask for something new", search: { view: "tip" } },
-  { to: "/contact", label: "Contact us" },
-  { to: "/credits", label: "Credits" },
-  { to: "/privacy", label: "Privacy" },
-];
+/* The doors render the ONE shared link list (ui/site-links.ts,
+   PR 3 Step 2): the same route entries SiteFooter renders, with
+   this surface's labels. */
+const DOORS = GROWNUP_DOORS;
 
 export function InfoPage({
   title,
@@ -81,27 +87,29 @@ export function InfoPage({
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   return (
     <main className="grown-page">
-      <div className="gp-wrap">
-        <nav className="gp-doors" aria-label="Grown-ups pages">
-          {DOORS.map((door) => {
-            const isCurrent = pathname === door.to && !door.search;
-            return (
-              <Link
-                key={door.label}
-                to={door.to}
-                search={door.search}
-                aria-current={isCurrent ? "page" : undefined}
-              >
-                {door.label}
-              </Link>
-            );
-          })}
-        </nav>
-        <div className="gp-card">
-          {graphic ? <div className="gp-graphic">{GRAPHICS[graphic]}</div> : null}
-          <h1 className="gp-title">{title}</h1>
-          <div className="gp-body">{children}</div>
-        </div>
+      <div className="gp-shell-pad">
+        <PageShell header={{ to: "/", status: null, mute: null }} width="narrow">
+          <nav className="gp-doors" aria-label="Grown-ups pages">
+            {DOORS.map((door) => {
+              const isCurrent = pathname === door.to && !door.search;
+              return (
+                <Link
+                  key={door.label}
+                  to={door.to}
+                  search={door.search}
+                  aria-current={isCurrent ? "page" : undefined}
+                >
+                  {door.label}
+                </Link>
+              );
+            })}
+          </nav>
+          <div className="gp-card">
+            {graphic ? <div className="gp-graphic">{GRAPHICS[graphic]}</div> : null}
+            <h1 className="gp-title">{title}</h1>
+            <div className="gp-body">{children}</div>
+          </div>
+        </PageShell>
       </div>
     </main>
   );

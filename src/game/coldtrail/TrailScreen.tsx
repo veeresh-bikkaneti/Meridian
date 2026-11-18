@@ -3,7 +3,7 @@ import { clampLat, normalizeLon } from "@/game/geo";
 import { formatLength, unitForLoopTarget } from "@/game/units";
 import { preloadTerritory } from "@/game/territory";
 import { Button } from "@/components/ui/button";
-import { HomeButton } from "@/components/ui/home-button";
+import { SiteHeader } from "@/components/ui/site-header";
 import { SoundToggle } from "@/components/SoundToggle";
 import { FlagImg } from "@/components/flag-img";
 import { flagEntry } from "@/lib/flag-registry";
@@ -207,12 +207,16 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
     // path it targets the case heading at the bottom of this file;
     // without the ref this branch silently dropped the focus landing.
     return (
-      <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 py-8" data-testid="coldtrail-screen">
-        <h1 ref={caseHeadingRef} tabIndex={-1} className="mode-title text-3xl text-fg">❄️ Cold Trail</h1>
+      <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-(--page-narrow) flex-col px-5 pt-2 pb-8" data-testid="coldtrail-screen">
+        {/* The shared shell (PR 3 Step 3.5): even the fail-closed
+            branch carries SiteHeader's one Home control, top-left,
+            where every other screen puts it — the bottom-of-card
+            HomeButton it replaces sat below the alert. */}
+        <SiteHeader onHome={onLeave} status={null} mute={null} />
+        <h1 ref={caseHeadingRef} tabIndex={-1} className="mode-title mt-4 text-3xl text-fg">❄️ Cold Trail</h1>
         <p className="mt-4 text-fg" role="alert">
           The case files didn&rsquo;t load. No case to play right now.
         </p>
-        <HomeButton onHome={onLeave} variant="secondary" className="mt-6 self-start" />
       </main>
     );
   }
@@ -504,31 +508,38 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
   const placingNow = placing !== null && !mapOff;
 
   return (
-    <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 py-8 lg:max-w-6xl" data-testid="coldtrail-screen">
-      <header>
-        <div className="flex items-start justify-between gap-3">
-          <div className="flex items-center gap-2">
-            <HomeButton onHome={onLeave} className="px-2" />
-            {/* The one mute, top-left beside the screen's own buttons —
-                the home page's placement (owner, 2026-11-10). Same
-                master toggle everywhere: one persisted key
-                (meridian.sound), one implementation (SoundToggle.tsx). */}
-            <SoundToggle testId="sound-toggle-trail" className="atlas-sound-toggle" />
-          </div>
-          <div className="flex items-center gap-2">
-            <p data-testid="coldtrail-stars" className="text-sm text-fg" aria-label={`${store.stars} stars`}>
-              ⭐ {store.stars}
-            </p>
-          </div>
-        </div>
-        <p className="name-eyebrow mt-4">{theme.eyebrow}</p>
-        <h1 ref={caseHeadingRef} tabIndex={-1} className="mode-title mt-1 text-3xl text-fg">
-          {theme.heading(caseData.caseNo)}
-        </h1>
-        <p className="mt-2 text-fg">
-          {theme.intro}
-        </p>
-      </header>
+    <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-(--page-narrow) flex-col px-5 pt-2 pb-8 lg:max-w-6xl" data-testid="coldtrail-screen">
+      {/* The shared shell (PR 3 Step 3.5): SiteHeader carries the
+          one Home control, the stars readout in its status slot and
+          the one mute in its mute slot — the shell's fixed slot
+          order (status, mute) replaces this screen's hand-built row.
+          Same master toggle everywhere: one persisted key
+          (meridian.sound), one implementation (SoundToggle.tsx).
+          The brief's flagged `px-2` override is GONE: it sat on the
+          HomeButton itself, narrowing the one Home control's own
+          padding so this screen's Home differed from every other
+          screen's. The shell's HomeButton carries the standard
+          padding and hit box; no narrower gutter is needed — the
+          page column's px-5 gutter is unchanged, so nothing here
+          needs the width prop or a token exception either. The
+          page's top padding gives back 24px of the ~40px the shell
+          header row adds (32 -> 8px, the Step 3.3 pattern). */}
+      <SiteHeader
+        onHome={onLeave}
+        status={
+          <p data-testid="coldtrail-stars" className="text-sm text-fg" aria-label={`${store.stars} stars`}>
+            ⭐ {store.stars}
+          </p>
+        }
+        mute={<SoundToggle testId="sound-toggle-trail" className="atlas-sound-toggle" />}
+      />
+      <p className="name-eyebrow mt-4">{theme.eyebrow}</p>
+      <h1 ref={caseHeadingRef} tabIndex={-1} className="mode-title mt-1 text-3xl text-fg">
+        {theme.heading(caseData.caseNo)}
+      </h1>
+      <p className="mt-2 text-fg">
+        {theme.intro}
+      </p>
 
       {/* Pack shelf (story packs): deck chips under the header. A pick
           is stored through onPickDeck before onStartNext runs, and

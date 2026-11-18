@@ -955,19 +955,22 @@ export function LoopScreen({
   }
 
   return (
-    <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 py-8">
+    <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-(--page-narrow) flex-col px-5 py-8">
       {/* The shared shell header (fix/ui-shared-shell, Round 2
           adoption): HomeButton ("Home") top-left, then the fixed
           slots — the case readout, the one mute, End game. The
-          screen-home-bar class keeps the bar sticky over the case.
-          The mute is the same master toggle as everywhere: one
-          persisted key (meridian.sound), one implementation
-          (SoundToggle.tsx, owner 2026-11-10). The pair has no
-          speaker of its own. */}
+          shell's sticky prop keeps the bar pinned over the case
+          (PR 3 Step 3.11 — it replaces the hand-rolled
+          screen-home-bar className override; the shell's gutter and
+          row geometry carry the layout, so the Home control sits
+          exactly where every other screen's sits). The mute is the
+          same master toggle as everywhere: one persisted key
+          (meridian.sound), one implementation (SoundToggle.tsx,
+          owner 2026-11-10). The pair has no speaker of its own. */}
       <SiteHeader
         onHome={onLeave}
-        className="screen-home-bar -mx-5 px-5"
-        stars={<p className="text-sm text-fg">Case #{caseNo}</p>}
+        sticky
+        status={<p className="text-sm text-fg">Case #{caseNo}</p>}
         mute={<SoundToggle testId="sound-toggle-loop" className="atlas-sound-toggle" />}
         endGame={
           store && load.phase === "ready" && !endedSummary ? (

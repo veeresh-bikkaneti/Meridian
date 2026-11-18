@@ -136,7 +136,7 @@ test("Resume your case: offered only with a mystery mid-play, and it reopens tha
       : null;
   });
   expect(dealt?.status).toBe("playing");
-  await page.getByRole("button", { name: "Home", exact: true }).click();
+  await page.getByRole("button", { name: "Meridian home", exact: true }).click();
   await expect(page.getByTestId("home-heading")).toBeVisible();
 
   // The picker and the case now offer the resume, on Home's terms.
@@ -159,7 +159,7 @@ test("Resume your case: offered only with a mystery mid-play, and it reopens tha
       : null;
   });
   expect(resumed).toEqual(dealt);
-  await page.getByRole("button", { name: "Home", exact: true }).click();
+  await page.getByRole("button", { name: "Meridian home", exact: true }).click();
   await expect(page.getByTestId("home-heading")).toBeVisible();
   await expect(page.getByTestId("subject-picker")).toHaveCount(0);
   expect(errors).toEqual([]);

@@ -101,7 +101,7 @@ import { Button } from "@/components/ui/button";
 import { HomeButton } from "@/components/ui/home-button";
 import { SiteHeader } from "@/components/ui/site-header";
 import { SiteFooter } from "@/components/ui/site-footer";
-import { ScreenShell } from "@/components/ui/screen-shell";
+import { ErrorScreen } from "@/components/ui/error-screen";
 import { RunStartNotice } from "@/components/run-start-notice";
 import { QuestionBubble, type BubbleViewState } from "./question-bubble";
 import { HintPanel } from "./hint-panel";
@@ -657,7 +657,7 @@ function MapLoadingFallback() {
  */
 function SessionLoadingFallback({ label }: { label: string }) {
   return (
-    <main className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 py-8">
+    <main className="mx-auto flex min-h-dvh w-full max-w-(--page-narrow) flex-col px-5 py-8">
       <div
         role="status"
         data-testid="session-loading"
@@ -3476,7 +3476,7 @@ export function GameApp() {
   // One shared scroll reset when the in-app screen changes (not when
   // focus merely moves inside the same screen). Instant, so reduced
   // motion is already honoured. Nested subject cases remount
-  // ScreenShell and reset there too.
+  // their screen and reset there too.
   const inAppScreen = !ready
     ? "boot"
     : run
@@ -3795,7 +3795,7 @@ export function GameApp() {
     return (
       <>
       {mapModeAnnouncer}
-      <main className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col justify-center px-5 py-8">
+      <main className="mx-auto flex min-h-dvh w-full max-w-(--page-narrow) flex-col justify-center px-5 py-8">
         <p className="text-sm tracking-wide text-muted uppercase">Loading places</p>
         <h1 className="mt-2 font-display text-4xl text-fg">{starting.regionName}</h1>
         <p className="mt-4 max-w-md text-lg text-muted" role="status">
@@ -4043,7 +4043,7 @@ export function GameApp() {
     return (
       <>
         {mapModeAnnouncer}
-        <main className="mx-auto w-full max-w-3xl px-5 py-8">
+        <main className="mx-auto w-full max-w-(--page-narrow) px-5 py-8">
           <HomeButton onHome={() => setMenu(null)} variant="secondary" />
           <h1
             ref={challengeMenuHeadingRef}
@@ -4153,6 +4153,7 @@ export function GameApp() {
         }}
         kind="back"
         onBack={() => setMenu({ kind: menu.from })}
+        onHome={() => setMenu(null)}
         onChoose={(region) => openRun("state", region.id, region.name, difficultyChoice)}
       />
       {celebrationOverlay}
@@ -4985,7 +4986,7 @@ function Choose({
   );
   return (
     <>
-    <main className="atlas-home home-v5 relative mx-auto flex min-h-dvh w-full max-w-7xl flex-col px-5 py-8 md:px-9">
+    <main className="atlas-home home-v5 relative mx-auto flex min-h-dvh w-full max-w-(--page-wide) flex-col px-5 py-8 md:px-9">
       {/* Skip link (WCAG 2.4.1): the first focusable element on the home
           page, visually hidden until focused; jumps to the journal
           section (scrollTo moves focus there as well as scrolling). */}
@@ -5012,8 +5013,10 @@ function Choose({
       {notice}
       {tutorialInvite}
       {/* The shared shell header (fix/ui-shared-shell, Round 2
-          adoption): SiteHeader owns the home control ("Home",
-          top-left) and the row; home's nav mixes scroll buttons with
+          adoption): SiteHeader owns the home control (the brand
+          lockup, "Meridian home", top-left) and the row; the five
+          section buttons carry data-nav-section for the header's
+          derived current-section highlight (N1); home's nav mixes scroll buttons with
           two router Links, so it rides the `nav` node slot with the
           shared link class. ABOUT and JOURNAL jump to the sections at
           the bottom of the home page. Home's sound toggle keeps its
@@ -5027,22 +5030,22 @@ function Choose({
         exitInMenuOnSmallScreens
         nav={
           <>
-            <button type="button" className="site-header-nav-link" onClick={() => scrollTo("home-editions")}>
+            <button type="button" className="site-header-nav-link" data-nav-section="home-editions" onClick={() => scrollTo("home-editions")}>
               EXPEDITIONS
               <svg width="9" height="6" viewBox="0 0 9 6" aria-hidden="true"><path d="M1 1l3.5 3.5L8 1" stroke="currentColor" fill="none" strokeWidth="1.5" /></svg>
             </button>
-            <button type="button" className="site-header-nav-link" onClick={() => scrollTo("home-cases")}>
+            <button type="button" className="site-header-nav-link" data-nav-section="home-cases" onClick={() => scrollTo("home-cases")}>
               CASES
               <svg width="9" height="6" viewBox="0 0 9 6" aria-hidden="true"><path d="M1 1l3.5 3.5L8 1" stroke="currentColor" fill="none" strokeWidth="1.5" /></svg>
             </button>
-            <button type="button" className="site-header-nav-link" onClick={() => scrollTo("home-about")}>ABOUT</button>
+            <button type="button" className="site-header-nav-link" data-nav-section="home-about" onClick={() => scrollTo("home-about")}>ABOUT</button>
             <Link to="/contact" className="site-header-nav-link" data-testid="nav-contact-link">CONTACT</Link>
             <Link to="/board" className="site-header-nav-link" data-testid="nav-board-link">WHAT&rsquo;S COMING</Link>
-            <button type="button" className="site-header-nav-link" onClick={() => scrollTo("home-journal")}>JOURNAL</button>
-            <button type="button" className="site-header-nav-link" onClick={() => scrollTo("home-grownups")}>GET INVOLVED</button>
+            <button type="button" className="site-header-nav-link" data-nav-section="home-journal" onClick={() => scrollTo("home-journal")}>JOURNAL</button>
+            <button type="button" className="site-header-nav-link" data-nav-section="home-grownups" onClick={() => scrollTo("home-grownups")}>GET INVOLVED</button>
           </>
         }
-        stars={null}
+        status={null}
         mute={null}
         endGame={
           <button
@@ -5673,7 +5676,18 @@ function ReviewComplete({
 }) {
   const remembered = results.filter((r) => r.hit).length;
   return (
-    <main className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col justify-center px-5 py-8">
+    <main className="mx-auto flex min-h-dvh w-full max-w-(--page-narrow) flex-col px-5 pt-2 pb-8">
+      {/* The shared shell (PR 3 Step 3.7): SiteHeader carries the
+          one Home control at the top — this screen had no header
+          at all. The content keeps its vertical centring in the
+          space below the header. The primary HomeButton in the
+          flow stays: it is this end-of-flow screen's own exit
+          action beside its challenge/reset entries, the sanctioned
+          end surface. No failure branch exists on this screen —
+          the total === 0 state is an empty deck, not an error —
+          so there is nothing to route to ErrorScreen. */}
+      <SiteHeader onHome={onDone} status={null} mute={null} />
+      <div className="flex flex-1 flex-col justify-center">
       <p className="text-sm tracking-wide text-muted uppercase">
         {REVIEW_DECK_COPY.pickerTitle}
       </p>
@@ -5706,6 +5720,7 @@ function ReviewComplete({
           </Button>
         ) : null}
         {onResetHistory ? <ResetHistoryControl onReset={onResetHistory} /> : null}
+      </div>
       </div>
     </main>
   );
@@ -6435,11 +6450,22 @@ function ChallengeComplete({
     : "";
   return (
     <main
-      className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col justify-center px-5 py-8"
+      className="mx-auto flex min-h-dvh w-full max-w-(--page-narrow) flex-col px-5 pt-2 pb-8"
       data-verdict-settled={incomingWinner ? verdictSettled : undefined}
       onClick={incomingWinner ? settleByGesture : undefined}
       onKeyDown={incomingWinner ? settleByGesture : undefined}
     >
+      {/* The shared shell (PR 3 Step 3.7): SiteHeader carries the
+          one Home control at the top — this screen had no header
+          at all. The verdict block keeps its vertical centring in
+          the space below the header; a tap on the header settles
+          the choreography like any other tap on this screen (the
+          root's own settle rule). The primary HomeButton in the
+          actions (challenge-done) stays: the end-of-flow exit
+          beside the shares. No failure branch exists on this
+          screen, so there is nothing to route to ErrorScreen. */}
+      <SiteHeader onHome={onDone} status={null} mute={null} />
+      <div className="flex flex-1 flex-col justify-center">
       <p className="text-sm tracking-wide text-muted uppercase">
         {isMc2 ? run.regionName : CHALLENGE_REGION_NAME}
       </p>
@@ -6548,6 +6574,7 @@ function ChallengeComplete({
         ) : null}
         <HomeButton onHome={onDone} variant="primary" testId="challenge-done" />
       </div>
+      </div>
     </main>
   );
 }
@@ -6560,6 +6587,7 @@ function RegionList({
   notice,
   kind,
   onBack,
+  onHome,
   onChoose,
 }: {
   title: string;
@@ -6570,11 +6598,41 @@ function RegionList({
   /** "home": the top list (its button is Home); "back": one step up a drill-down (Back). */
   kind: "home" | "back";
   onBack: () => void;
+  /** The drill-down lists' way straight home (the top menu). The
+   *  shared header carries the one Home control on every screen —
+   *  the legacy ScreenShell showed only Back here, so the "back"
+   *  lists gain Home beside Back (the picker's Step 3.3 pattern:
+   *  Home first, the step control in the back slot). */
+  onHome?: () => void;
   onChoose: (region: Region) => void;
 }) {
-  const nav = kind === "home" ? { onHome: onBack } : { onBack };
   return (
-    <ScreenShell {...nav} className="max-w-xl" title={title} sub={subtitle}>
+    <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-xl flex-col px-5 pt-2 pb-8">
+      {/* The shared shell (PR 3 Step 3.6): SiteHeader carries the
+          one Home control — the legacy ScreenShell's BrandHomeButton
+          lockup goes. On a drill-down list the Back button rides
+          the header's back slot with its old classes and testid.
+          The titles are the screen's own content block, in the
+          classes ScreenShell rendered. Top padding gives back the
+          ~24px the shell header row adds (32 -> 8px, Step 3.3). */}
+      {kind === "home" ? (
+        <SiteHeader onHome={onBack} status={null} mute={null} />
+      ) : (
+        <SiteHeader
+          onHome={onHome ?? onBack}
+          status={null}
+          mute={null}
+          back={
+            <Button variant="ghost" className="-ml-3 px-3" onClick={onBack} data-testid="back-button">
+              Back
+            </Button>
+          }
+        />
+      )}
+      <h1 tabIndex={-1} className="mode-title mt-4 text-3xl text-fg">
+        {title}
+      </h1>
+      {subtitle ? <p className="mt-2 text-fg">{subtitle}</p> : null}
       {notice}
       {headerAction ? (
         <Button variant="secondary" className="mt-6 w-full" onClick={headerAction.onClick}>
@@ -6594,7 +6652,7 @@ function RegionList({
           </li>
         ))}
       </ul>
-    </ScreenShell>
+    </main>
   );
 }
 
@@ -6837,23 +6895,28 @@ function Play({
   }, [loadKey]);
 
   if (poolError) {
+    // The shared ErrorScreen (PR 3 Step 3.8): the failure copy rides
+    // its title/body props verbatim — the loader's message plus the
+    // standing explanation. This surface has exactly one recovery
+    // door, as it did hand-built: picking the region again
+    // (onEditions), so both ErrorScreen exits converge on it. A true
+    // in-place retry would need a load nonce in the pool loader,
+    // which is outside this surface. The region loading state below
+    // and the pinned stale-build/offline notices elsewhere keep
+    // their specialised surfaces.
     return (
-      <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-3xl flex-col justify-center px-5 py-8">
-        <p className="name-eyebrow">Couldn&rsquo;t load places</p>
-        <h1 className="mode-title mt-2 text-4xl text-fg">{run.regionName}</h1>
-        <p role="alert" className="mt-4 max-w-md text-lg text-fg">
-          {poolError} The run was not started with a partial pool — pick the region again to retry.
-        </p>
-        <div className="mt-6">
-          <HomeButton onHome={onEditions} variant="primary" />
-        </div>
-      </main>
+      <ErrorScreen
+        onHome={onEditions}
+        onRetry={onEditions}
+        title="Couldn't load places."
+        body={`${poolError} The run was not started with a partial pool — pick the region again to retry.`}
+      />
     );
   }
 
   if (!places) {
     return (
-      <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-3xl flex-col justify-center px-5 py-8">
+      <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-(--page-narrow) flex-col justify-center px-5 py-8">
         <p className="name-eyebrow">Loading places</p>
         <h1 className="mode-title mt-2 text-4xl text-fg">{run.regionName}</h1>
         <p className="mt-4 max-w-md text-lg text-fg" role="status">

@@ -25,7 +25,11 @@
   font-family: var(--hv5-body);
   min-height: 100dvh;
 }
-.grown-page .gp-wrap { max-width: 760px; margin: 0 auto; padding: 26px 20px 64px; }
+/* PageShell owns the column now (PR 3 Step 3.1): its PageColumn is
+   the --page-narrow width with the shell's gutters. This wrapper
+   keeps only the grown pages' vertical breathing room. */
+.grown-page .gp-shell-pad { padding: 26px 0 64px; }
+.grown-page .gp-doors { margin-top: 18px; }
 .grown-page .gp-doors { display: flex; flex-wrap: wrap; gap: 8px; }
 .grown-page .gp-doors a {
   border: 1.5px solid var(--hv5-line-warm); background: var(--hv5-card); color: var(--hv5-ink);

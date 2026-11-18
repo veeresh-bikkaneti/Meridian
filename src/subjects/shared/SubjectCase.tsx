@@ -93,7 +93,7 @@ import { buildSubjectDetectiveHostProps } from "./subject-host-props";
 import { HomeButton } from "@/components/ui/home-button";
 import { Pill } from "@/components/ui/pill";
 import { Button } from "@/components/ui/button";
-import { ScreenShell } from "@/components/ui/screen-shell";
+import { SiteHeader } from "@/components/ui/site-header";
 import type { ResetHistoryResult } from "@/game/reset-history";
 import { advanceCasePhase, type AnswerFor, type CasePhase } from "./answer";
 
@@ -228,36 +228,38 @@ export function SubjectCase({
         Resume your case
       </Button>
     ) : null;
-  const gameControls =
-    resumeButton || onEndGame ? (
-      <>
-        {resumeButton}
-        {onEndGame ? (
-          <Button
-            variant="secondary"
-            data-testid="end-game-button"
-            className="min-h-[44px]"
-            onClick={onEndGame}
-          >
-            End game
-          </Button>
-        ) : null}
-      </>
-    ) : undefined;
+  // The shared shell's slots (PR 3 Step 3.4): the resume control
+  // rides SiteHeader's back slot beside Home (the picker pattern),
+  // and End game is the header's one exit slot. Same Buttons, labels,
+  // testids and handlers as the legacy ScreenShell controls row.
+  const endGameButton = onEndGame ? (
+    <Button
+      variant="secondary"
+      data-testid="end-game-button"
+      className="min-h-[44px]"
+      onClick={onEndGame}
+    >
+      End game
+    </Button>
+  ) : undefined;
 
   if (!item || !answer) {
     return (
-      <ScreenShell
-        onHome={onExit}
-        controls={gameControls}
-        className="why-learn-screen subject-case-screen"
-        title={`${title} case`}
-        titleRef={headingRef}
-      >
+      <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-(--page-narrow) flex-col px-5 pt-2 pb-8 why-learn-screen subject-case-screen">
+        <SiteHeader
+          onHome={onExit}
+          status={null}
+          mute={null}
+          back={resumeButton ?? undefined}
+          endGame={endGameButton}
+        />
+        <h1 ref={headingRef} tabIndex={-1} className="mode-title mt-4 text-3xl text-fg">
+          {`${title} case`}
+        </h1>
         <p className="mt-4 text-fg">
           No {title.toLowerCase()} case is ready for this age band yet.
         </p>
-      </ScreenShell>
+      </main>
     );
   }
 
@@ -316,25 +318,43 @@ export function SubjectCase({
   };
 
   return (
-    <ScreenShell
-      onHome={onExit}
-      controls={gameControls}
-      className="why-learn-screen subject-case-screen"
-      testId={`${testIdPrefix}-case`}
-      data={{ "data-band": band, "data-item": item.id }}
-      eyebrow="Case file · Why it matters"
-      title={`Why Do We Learn This? — ${title}`}
-      titleRef={headingRef}
-      sub={
-        <>
-          {/* Item 14 (Stream W): the case count rides the shared
-              Pill — the one AA count readout — not plain small
-              text. The band beside it is the shell's own line. */}
-          <Pill>{`Case ${index + 1} of ${items.length}`}</Pill>
-          {` · Ages ${band}`}
-        </>
-      }
+    <main
+      className="mode-screen mx-auto flex min-h-dvh w-full max-w-(--page-narrow) flex-col px-5 pt-2 pb-8 why-learn-screen subject-case-screen"
+      data-testid={`${testIdPrefix}-case`}
+      data-band={band}
+      data-item={item.id}
     >
+      {/* The shared shell (PR 3 Step 3.4): SiteHeader carries the
+          one Home control — the legacy ScreenShell's BrandHomeButton
+          lockup goes — with the resume control in its back slot and
+          End game in its exit slot. The titles are this screen's own
+          content block, in the same classes ScreenShell rendered.
+          The page's top padding is 8px, not the old frame's 32px:
+          the shell header's row carries its own vertical padding
+          and is ~24px taller than the old home bar — the page gives
+          that height back here so the case content keeps its
+          measured place (the picker migration, Step 3.3, set this
+          pattern). The end-of-flow HomeButtons in the result
+          sections below stay: they are the sanctioned end surface,
+          not header/footer chrome. */}
+      <SiteHeader
+        onHome={onExit}
+        status={null}
+        mute={null}
+        back={resumeButton ?? undefined}
+        endGame={endGameButton}
+      />
+      <p className="name-eyebrow mt-4">Case file · Why it matters</p>
+      <h1 ref={headingRef} tabIndex={-1} className="mode-title mt-1 text-3xl text-fg">
+        {`Why Do We Learn This? — ${title}`}
+      </h1>
+      <p className="mt-2 text-fg">
+        {/* Item 14 (Stream W): the case count rides the shared
+            Pill — the one AA count readout — not plain small
+            text. The band beside it is the shell's own line. */}
+        <Pill>{`Case ${index + 1} of ${items.length}`}</Pill>
+        {` · Ages ${band}`}
+      </p>
 
       <div className="mt-6 grid gap-4">
         {/* Holmes & Watson (flag-gated inside the host, default off =
@@ -439,6 +459,6 @@ export function SubjectCase({
           one). The onResetHistory prop stays in the contract —
           GameApp and the wrappers still pass it — but the case no
           longer renders a control from it. */}
-    </ScreenShell>
+    </main>
   );
 }

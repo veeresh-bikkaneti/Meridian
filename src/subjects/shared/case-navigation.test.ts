@@ -1,6 +1,6 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -51,7 +51,6 @@ const here = dirname(fileURLToPath(import.meta.url));
 const read = (rel: string) => readFileSync(join(here, rel), "utf8");
 
 const gameApp = read("../../components/game-app.tsx");
-const screenShell = read("../../components/ui/screen-shell.tsx");
 const resetControl = read("../../components/reset-history-control.tsx");
 const subjectCase = read("./SubjectCase.tsx");
 const subjectPicker = read("./SubjectPicker.tsx");
@@ -94,19 +93,19 @@ describe("boot landing (defect 1)", () => {
 });
 
 describe("case screen game controls (defect 2)", () => {
-  it("ScreenShell renders a controls slot in the home bar, after the brand home control", () => {
-    assert.ok(screenShell.includes("controls?: ReactNode;"), "controls prop declared");
-    const bar = screenShell.slice(screenShell.indexOf("screen-home-bar"));
-    const homeAt = bar.indexOf("<BrandHomeButton");
-    const controlsAt = bar.indexOf("{controls}");
-    const soundAt = bar.indexOf("{sound}");
-    assert.ok(homeAt >= 0 && controlsAt > homeAt, "controls render after the BrandHomeButton");
-    assert.ok(soundAt > controlsAt, "controls render before the sound slot (GeoDetective order)");
-    assert.ok(!bar.includes("<HomeButton"), "no HomeButton pill in the shell header (fix/header-logo-home)");
+  it("the legacy ScreenShell file is deleted (PR 3 Step 4): no screen can adopt it again", () => {
     assert.ok(
-      screenShell.includes('import { BrandHomeButton } from "./home-button";'),
-      "the shell imports the brand control from the sanctioned home-control file",
+      !existsSync(join(here, "../../components/ui/screen-shell.tsx")),
+      "screen-shell.tsx is gone; screens use PageShell/SiteHeader",
     );
+    for (const [name, src] of [
+      ["game-app", gameApp],
+      ["SubjectCase", subjectCase],
+      ["SubjectPicker", subjectPicker],
+    ] as const) {
+      assert.ok(!src.includes("<ScreenShell"), `${name}: no ScreenShell use`);
+      assert.ok(!src.includes('from "@/components/ui/screen-shell"'), `${name}: no ScreenShell import`);
+    }
   });
 
   it("the picker no longer passes a wordmark as the shell sound slot", () => {
@@ -115,10 +114,23 @@ describe("case screen game controls (defect 2)", () => {
   });
 
   it("the case carries the game's End game button in both shells", () => {
+    // PR 3 Step 3.4: both SubjectCase branches render the shared
+    // SiteHeader — End game in its exit slot, the resume control in
+    // its back slot — and the legacy ScreenShell is gone.
     assert.equal(
-      subjectCase.split("controls={gameControls}").length - 1,
+      subjectCase.split("endGame={endGameButton}").length - 1,
       2,
-      "the case shell and the empty-band shell both take the controls",
+      "the case shell and the empty-band shell both take the exit slot",
+    );
+    assert.equal(
+      subjectCase.split("back={resumeButton ?? undefined}").length - 1,
+      2,
+      "both shells carry the resume control in the back slot",
+    );
+    assert.ok(!subjectCase.includes("<ScreenShell"), "the legacy ScreenShell is gone from the case");
+    assert.ok(
+      !subjectCase.includes('from "@/components/ui/screen-shell"'),
+      "no ScreenShell import",
     );
     assert.ok(subjectCase.includes('data-testid="end-game-button"'), "same testid as the game's");
     assert.ok(subjectCase.includes('variant="secondary"'), "same Button variant as GeoDetective's");
@@ -209,14 +221,24 @@ describe("age band picker in the Why Learn flow (defect 4)", () => {
   });
 
   it("the picker footer carries Home's grown-ups entry", () => {
-    assert.ok(subjectPicker.includes('className="agep-footer"'), "Home's footer row");
-    assert.ok(subjectPicker.includes('className="agep-footer-link"'), "Home's footer link styling");
-    assert.ok(subjectPicker.includes('data-testid="grownups-link"'), "same testid as Home's entry");
+    // PR 3 Step 3.3: the hand-built footer became the shared
+    // SiteFooter; the grown-ups entry it renders is the same one
+    // Home's footer carries (same testid, same accessible label —
+    // pinned in shared-shell.test.ts against site-footer.tsx).
     assert.ok(
-      subjectPicker.includes('aria-label="For grown-ups: game settings"'),
-      "same accessible label as Home's entry",
+      subjectPicker.includes("<SiteFooter onGrownUps={onOpenAgeSettings}"),
+      "the shared footer, wired to GameApp's hosted settings",
     );
-    assert.ok(subjectPicker.includes("onClick={onOpenAgeSettings}"), "opens GameApp's hosted settings");
+    assert.ok(!subjectPicker.includes('className="agep-footer"'), "no hand-built footer row");
+  });
+
+  it("the picker header is the shared SiteHeader (PR 3 Step 3.3)", () => {
+    assert.ok(
+      subjectPicker.includes("<SiteHeader onHome={onExit} status={null} mute={null} back={resumeControl} />"),
+      "SiteHeader carries Home; the resume control rides the back slot",
+    );
+    assert.ok(!subjectPicker.includes("<ScreenShell"), "the legacy ScreenShell is gone from the picker");
+    assert.ok(!subjectPicker.includes('from "@/components/ui/screen-shell"'), "no ScreenShell import");
   });
 
   it("GameApp hosts the age settings over the subjects branch too", () => {
@@ -289,7 +311,7 @@ describe("resume control on the Why Learn screens (defect 2, amendment)", () => 
 
   it("the picker offers the same control and forwards both props to the case", () => {
     assert.ok(subjectPicker.includes('data-testid="resume-case-button"'), "the picker's own header control");
-    assert.ok(subjectPicker.includes("controls={resumeControl}"), "in the shell's controls slot");
+    assert.ok(subjectPicker.includes("back={resumeControl}"), "in the shell header's back slot (PR 3 Step 3.3)");
     assert.ok(subjectPicker.includes("onResumeCase={onResumeCase}"), "forwarded to the opened case");
     assert.ok(subjectPicker.includes("loopInProgress={loopInProgress}"), "the condition forwarded with it");
   });

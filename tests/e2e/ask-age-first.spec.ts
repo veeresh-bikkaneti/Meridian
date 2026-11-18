@@ -116,7 +116,7 @@ async function dealMystery(page: Page) {
   await expect(page.getByTestId("loop-screen")).toBeVisible({ timeout: 30_000 });
   const dealt = await readLoopCurrent(page);
   expect(dealt?.status).toBe("playing");
-  await page.getByRole("button", { name: "Home", exact: true }).click();
+  await page.getByRole("button", { name: "Meridian home", exact: true }).click();
   await expect(page.getByTestId("home-heading")).toBeVisible();
   return dealt;
 }

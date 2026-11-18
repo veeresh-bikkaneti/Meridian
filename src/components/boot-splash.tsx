@@ -23,7 +23,7 @@ import { BRAND } from "@/game/brand";
  */
 export function BootSplash() {
   return (
-    <main className="mx-auto flex min-h-dvh max-w-3xl flex-col justify-end px-5 py-10">
+    <main className="mx-auto flex min-h-dvh max-w-(--page-narrow) flex-col justify-end px-5 py-10">
       <p className="text-sm tracking-wide text-muted uppercase">Geography, math and science</p>
       <h1 className="mt-2 font-display text-5xl text-fg">{BRAND.name}</h1>
     </main>
