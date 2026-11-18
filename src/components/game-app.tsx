@@ -112,7 +112,6 @@ import { RunSummaryCard } from "./run-summary";
 import { ShareButton } from "./share-button";
 import { ClearedCelebrationDialog, type ClearedInfo } from "./cleared-celebration";
 import { CometEmblem } from "./comet-emblem";
-import { GrandpaCoffeeRun } from "./grandpa-coffee-run";
 import {
   confidenceText,
   createJournalRotation,
@@ -4986,7 +4985,7 @@ function Choose({
   );
   return (
     <>
-    <main className="atlas-home home-v5 relative mx-auto flex min-h-dvh w-full max-w-(--page-wide) flex-col px-5 py-8 md:px-9">
+    <main className="atlas-home home-v5 relative mx-auto flex min-h-dvh w-full max-w-(--page-wide) flex-col px-5 pt-8 md:px-9">
       {/* Skip link (WCAG 2.4.1): the first focusable element on the home
           page, visually hidden until focused; jumps to the journal
           section (scrollTo moves focus there as well as scrolling). */}
@@ -5588,30 +5587,38 @@ function Choose({
         </section>
       </div>
 
-      {/* Age-profile footer entry (Phase 2 §1a): the COPPA-standard
-          ParentZone placement — low-emphasis, after the review deck,
-          before GrandpaCoffeeRun. One host per screen: the header hosts
-          brand + sound, so the footer carries this. The shared
-          SiteFooter (fix/ui-shared-shell) renders the shipped set:
-          the read-aloud setting as its lead (owner 2026-10-09: the
-          kid's tool, next to the grown-ups gate, never parent-gated),
-          the grown-ups gate, the tour re-entry (review finding P2-11),
-          the grown-ups info pages (P0-3) and the kids-privacy promise
-          (owner 2026-10-21 — factual statements only; if analytics,
-          ads or accounts are ever added, update SiteFooter's note and
-          /privacy in the same PR). */}
-      <SiteFooter lead={<ReadAloudPrefSettings />} onGrownUps={onGrownUpOpen} onTakeTour={onTakeTour} />
     </main>
+    {/* Age-profile footer entry (Phase 2 §1a): the COPPA-standard
+        ParentZone placement — low-emphasis, after the review deck.
+        One host per screen: the header hosts brand + sound, so the
+        footer carries this. The shared SiteFooter (fix/ui-shared-shell)
+        renders the shipped set: the read-aloud setting as its lead
+        (owner 2026-10-09: the kid's tool, next to the grown-ups gate,
+        never parent-gated), the grown-ups gate, the tour re-entry
+        (review finding P2-11), the grown-ups info pages (P0-3) and
+        the kids-privacy promise (owner 2026-10-21 — factual
+        statements only; if analytics, ads or accounts are ever added,
+        update SiteFooter's note and /privacy in the same PR).
+        Since the footer standardization (2026-11-18) SiteFooter also
+        owns Grandpa's coffee-run band, so Home renders it here, after
+        </main>, where the band always lived: the band spans the full
+        width under the centred column, carries #home-involved (the
+        v5 nav's GET INVOLVED jump target — the app's get-involved
+        surface, Veeresh 2026-10-07) and runs the full tasting tour.
+        width="wide" gives the links row the column's own width and
+        gutters, so the row sits exactly where it did inside <main>. */}
+    <SiteFooter
+      lead={<ReadAloudPrefSettings />}
+      onGrownUps={onGrownUpOpen}
+      onTakeTour={onTakeTour}
+      width="wide"
+      grandpaTour
+      grandpaAnchor
+    />
     {/* Kid-set read-aloud preference (age-profile B3) renders through
         the first-visit queue in GameApp (item 9): it is the queue's
         third prompt, so it never piles up with the Scout notice, the
         tour banner or the storyteller bubble. */}
-    {/* Grandpa's Coffee Run — animated donation scene, home only.
-        Veeresh 2026-10-07: replaces PR #91's static sign. The v5 nav's
-        GET INVOLVED jumps here (the app's get-involved surface). */}
-    <div id="home-involved" tabIndex={-1}>
-      <GrandpaCoffeeRun />
-    </div>
     {/* Comet now hosts from the banner (in the header above) — the fixed
         bottom-right wrapper is retired. */}
     </>
@@ -5722,6 +5729,11 @@ function ReviewComplete({
         {onResetHistory ? <ResetHistoryControl onReset={onResetHistory} /> : null}
       </div>
       </div>
+      {/* The shared footer (footer standardization, 2026-11-18):
+          the review-end screen carries SiteFooter + Grandpa's band
+          like every other page; its in-flow primary Home button
+          above stays the end-of-flow exit. */}
+      <SiteFooter />
     </main>
   );
 }
