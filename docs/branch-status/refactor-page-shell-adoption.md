@@ -510,11 +510,104 @@ mechanisms). Zero visual delta beyond them.
   picker, lists, Cold Trail, subject case), none is an
   end-of-flow button.
 
+### Done — Part 2 Unit 3: gates, captures, playthrough (tip 29cadcac + this doc)
+
+- **Cures found by the gates, in order:** (1) the highlight
+  effect now no-ops on a location-less window stub (the
+  loop-screen animate harness) — 607fa228. (2) The compact band
+  rises to the header row's fit point, 1364.5px: with the lockup,
+  the full-spacing Home row needs 1365px (scrollWidth 1365 at
+  1280, Join pill clipped — the Phase A mock at 1280×800 shows
+  the same clip); layout-overflow + shared-shell-adoption failed
+  at 1280×800 on the pre-cure tip and pass after — 208c919d.
+  (3) The Why Learn drift lift (`.why-learn-screen > header`)
+  forced `position: relative` on the header like the atlas lift
+  does on Home — the picker and subject-case bars scrolled away
+  (headerY −592 measured). Sticky reclaimed at the lift's own
+  weight in the shell CSS; probe-verified sticky + headerY 0 —
+  29cadcac. The shared-shell CSS pin covers both reclaims; the
+  pre-cure tip fails it on the why-learn line.
+- **Gates on the tip:** npm test 1204 + 2887, 0 fail ·
+  test:worker 235/235 · tsc clean · lint:nav ✓ · lint:subjects
+  GATE PASSED · lint-cards GATE PASSED · check:provenance PASSED
+  · build:pages green. Named e2e (hermetic): layout-overflow +
+  shared-shell-adoption + why-learn-hero-cap 10/10.
+  home-layout on the tip: 12 passed / 2 failed — both failures
+  are the pre-existing grid flake (1024×768 + 1280×800 this run);
+  both "Home stays in the viewport" tests now PASS (they failed
+  on the Part 1 tip and the baseline — the frozen bar cures
+  them; see Step 0(d)).
+- **Bundle:** entry JS gzip 322,589 B vs the 323,865 B limit
+  (1,276 B spare), `scripts/check-entry-size.mjs` on the tip
+  build. Part 1's cure tip measured 321,987 B; Part 2 adds
+  ~600 B (the highlight effect + the lockup's link branch).
+- **Captures:** `~/workspace/verify-evidence-shell-part2/` —
+  Home, Privacy, Why Learn, in-game × 5 viewports × top/scrolled
+  (40 PNGs + measurements.json), in-game shots taken after both
+  rig3d canvases painted (paint probe true at every viewport).
+  Mock parity: scrolled headerY = 0 on every surface at every
+  viewport; Home top headerY 31 and header height 88 (desktop) /
+  85 (phone) match the mock measurements exactly; CASES carries
+  aria-current="location" in every scrolled Home shot (the
+  mobile shots pick it from the menu panel, which now closes on
+  select by itself); Privacy header height 85 matches the mock;
+  End game fully in frame in-game at 390 (right edge 370) and
+  320 (right edge 300). Two top-state deltas against the staging
+  captures, both inherited from Part 1's approved structure, not
+  introduced here: Privacy's header starts 26px down (the
+  grown-page shell pad) and sticks from there; the Why Learn
+  header starts 8px down (Step 3.3's top-padding give-back) with
+  height 85 (the shell header; the staging's 60px bar was the
+  retired ScreenShell bar).
+- **Playthrough (owner-config smoke set, AGENTS §4):**
+  detective-owner-spec + detective-selection-read +
+  detective-tapmode-selection + detective-watson-walk,
+  --workers=1: 19 passed / 2 failed. One failure is a disk-quota
+  artifact error at context.close() (watson-walk mid-walk test;
+  its assertions passed). The other is pre-existing and NOT a
+  Part 2 regression: detective-owner-spec's "one mute is
+  top-left" test expects the mute left of the "Case #" label,
+  but the shell's fixed slot order (status → mute → end game,
+  unchanged since Step 2) puts Case # first; Part 2 changed only
+  the left control's width, which cannot move the right-anchored
+  actions at 390px (the failure screenshot shows the mock's row
+  exactly: mark-only lockup, Case #1, mute, End game, all in
+  frame). The tap-mode selection tests (Listen first tap, pick
+  named before the spend, staging, celebrations) all pass.
+- **Modularity (owner addendum 2026-11-18):** BrandHomeButton is
+  rendered in exactly one place — SiteHeader
+  (site-header.tsx:221, both branches). SiteHeader has 13 call
+  sites; every difference between them is props (onHome/to,
+  variant, sticky, nav/navItems, back, status, mute, endGame,
+  exitInMenuOnSmallScreens, navMode) — no per-page variant, no
+  restyled copy. HomeButton's remaining production uses are the
+  non-header surfaces it was kept for (end-of-flow primary,
+  challenge menu, the HUD exception), all the same component
+  with variant props. Pre-existing items in the touched
+  surfaces, flagged not silently changed: the `.home-v5`
+  colour twins for nav links (home-scoped tokens; Part 1 flagged
+  the same pattern — the N1 highlight follows it with identical
+  values); the current-tile colours are the staged mock's own
+  hex values, as are the lockup svg's; Home's nav rides the
+  shell's documented `nav` node slot (mixed buttons + router
+  Links) with the one shared link class, not navItems.
+- **Emil skills:** no Emil guidance was applied. The mocks show
+  no new motion, and the brief's restraint rule + the component
+  law outrank the pack; the lockup and nav links keep the
+  transitions they already carried (the shared Button/brand
+  transition in home-button.ts). No conflicts needed a ruling
+  beyond that restraint call.
+
 ## Remaining
 
-- Part 2 Unit 3: the full gate set on the tip, the before/after
-  captures against the mock set, and the owner-config
-  playthrough.
+- Nothing in the Part 2 brief. The PR stays DRAFT — no merge,
+  no ready marking (owner's word only).
+- Pre-existing, flagged for their own lanes: the home-layout
+  grid flake (both sides of Part 1), the detective-owner-spec
+  mute-order expectation vs the shell slot order, the stale
+  `.hv5-nav` e2e selectors noted in Part 1, and this VM's
+  recurring disk-quota (EDQUOT) failures on fresh installs and
+  Playwright artifact writes.
 - The BrandHomeButton-as-home-control ruling above.
 - Pre-existing stale e2e selectors: journal-player fixes and
   chunk-recovery specs still query `.hv5-nav`, which no screen has
