@@ -320,11 +320,16 @@ branch is now plain main + the commits below; no stack remains.
   after removal. Lint: shell-ban gains no-page-local-nav and
   no-page-local-main, shrink-only baselines (pageLocalNav 2 files,
   pageLocalMain 9 files); a scratch <main><nav> file failed
-  lint:nav with both new errors. E2E: home-layout +
-  layout-overflow run on the built artifact (results below in the
-  PR report). Bundle: entry gzip 321,988 B vs the 323,865 B limit
-  (post-merge baseline 321,960 B — the CSS deletions do not move
-  the JS number; +28 B net).
+  lint:nav with both new errors. E2E (built artifact, hermetic):
+  layout-overflow all green; home-layout has failures in "Home
+  stays in the viewport" (1280 + 390) and "home grids are full"
+  (1024 + 1280) — **all four fail identically on the post-merge
+  pre-Part-1 tip 60e9bbaf** (same assertions; the Home-top values
+  vary run to run, a scroll-timing measurement), so they are
+  pre-existing on the merged main, not Part 1 regressions. Bundle:
+  entry gzip 321,988 B vs the 323,865 B limit (post-merge baseline
+  321,960 B — the CSS deletions do not move the JS number;
+  +28 B net).
 - **Captures (before/after, 1280×800 + 390×844, real build):**
   `~/workspace/verify-evidence-shell-step4/` — Home and Credits
   pixel-identical (0 px differ); the picker differs only in the
