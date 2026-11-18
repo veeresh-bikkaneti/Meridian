@@ -11,9 +11,9 @@
  * renders inside the column, under the header.
  */
 import type { ReactNode } from "react";
-import { PageColumn } from "./page-column";
-import { SiteFooter, type SiteFooterProps } from "./site-footer";
-import { SiteHeader, type SiteHeaderProps } from "./site-header";
+import { PageColumn } from "./page-column.tsx";
+import { SiteFooter, type SiteFooterProps } from "./site-footer.tsx";
+import { SiteHeader, type SiteHeaderProps } from "./site-header.tsx";
 
 export type PageIntroProps = {
   eyebrow?: string;

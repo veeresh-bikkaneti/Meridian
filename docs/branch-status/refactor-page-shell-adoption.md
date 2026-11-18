@@ -363,10 +363,43 @@ branch is now plain main + the commits below; no stack remains.
   identical in both (x=276, y=32, 728×84) and the two frames
   are byte-identical.
 
+## Build-failure cure — 2026-11-18 (post-Part-1)
+
+- CI on the Part 1 tip `4e080362` (run 44224335774): build (22.x)
+  FAILED in `npm test` — 2 files (`src/routes/privacy-copy.test.ts`,
+  `src/routes/contact-gate-skeleton.test.ts`) died with
+  `ERR_MODULE_NOT_FOUND` for `src/components/ui/site-links` imported
+  from `info-page.tsx`; e2e and GitGuardian passed. Root cause: the
+  node test loader resolves `@/` aliases and extensioned relative
+  imports but not extensionless relative ones; Steps 2/3.1 introduced
+  the extensionless chain (on main, `info-page.tsx` imports only
+  react/router/css, so the tests pass there).
+- Cure: explicit extensions on the 9 relative specifiers in
+  `info-page.tsx`, `page-shell.tsx`, `site-footer.tsx`,
+  `error-screen.tsx` (`.ts` for site-links, `.tsx` for components —
+  the `./home-button.ts` precedent). Specifier-only; no test, copy
+  or behaviour change. Revert check: restoring the extensionless
+  site-links specifier in `info-page.tsx` reproduces the failure;
+  the fix restores green.
+- Independent silo QA verified the cure before it was committed:
+  targeted files 6/6, full `npm test` green, tsc clean; the frozen
+  shell-ban baseline negative control bites (a scratch `<main>`
+  file plus a covering baseline entry failed the shared-shell
+  suite on the frozen record; removal restored 39/39); bundle
+  entry JS gzip 321,987 B vs the 323,865 B limit (1,878 B spare).
+- **Home-layout claim, corrected:** the "pre-existing flake, no
+  regression" statement above rests on this file's earlier baseline
+  record only — the CI e2e job's spec list does not include
+  home-layout, so the claim is UNVERIFIED by CI and stays open
+  until a run that includes home-layout speaks.
+
 ## Remaining
 
 - Part 2 of PR 529 (Steps 6+ in the brief's order) is the next
   lane's work, not this branch's Part 1 scope.
+- **Part 2 (N1 SiteNav) is HELD for the owner's mock-screen
+  approval (directive, 2026-11-18)** — no Part 2 code until the
+  approval lands in chat.
 - The BrandHomeButton-as-home-control ruling above.
 - Pre-existing stale e2e selectors: journal-player fixes and
   chunk-recovery specs still query `.hv5-nav`, which no screen has

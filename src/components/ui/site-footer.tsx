@@ -21,7 +21,7 @@
 import type { ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { cn } from "@/lib/cn";
-import { FOOTER_ROUTE_LINKS } from "./site-links";
+import { FOOTER_ROUTE_LINKS } from "./site-links.ts";
 import "../age-profile/age-profile.css";
 
 export type SiteFooterProps = {

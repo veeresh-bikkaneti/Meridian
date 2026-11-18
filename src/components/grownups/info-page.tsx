@@ -22,8 +22,8 @@
  */
 import type { ReactNode } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
-import { GROWNUP_DOORS } from "../ui/site-links";
-import { PageShell } from "../ui/page-shell";
+import { GROWNUP_DOORS } from "../ui/site-links.ts";
+import { PageShell } from "../ui/page-shell.tsx";
 import "./info-page.css";
 
 export type GrownGraphic = "book" | "satchel" | "envelope";

@@ -31,9 +31,9 @@
  * accent, and the shared Button (Try again primary, Home secondary).
  */
 import { useEffect, useRef } from "react";
-import { Button } from "./button";
-import { PageColumn } from "./page-column";
-import { SiteHeader } from "./site-header";
+import { Button } from "./button.tsx";
+import { PageColumn } from "./page-column.tsx";
+import { SiteHeader } from "./site-header.tsx";
 
 export type ErrorScreenProps = {
   /** The Home exit. Optional on purpose: the exit renders only
