@@ -11,13 +11,14 @@
  *   (setBand, the settings flow's own first-set call) and the
  *   picker's change-event subscription re-deals the list at the
  *   picked band; the pills then collapse away.
- * - Band set: the pills are gone and a "Change band" option shows
- *   instead. Tapping it re-opens the pills; a different band
- *   writes through the store's change path (saveBand with the
- *   host's run-in-progress input — the same write
- *   AgeProfileSettings performs) and the list re-deals in place.
- *   This is the graduation path: a player moves up a band from
- *   the page they play from.
+ * - Band set: the pills collapse to ONE pill showing the
+ *   selected band's own label (e.g. "Ages 10-18"). Tapping it
+ *   re-opens the pills in place; a different band writes through
+ *   the store's change path (saveBand with the host's
+ *   run-in-progress input — the same write AgeProfileSettings
+ *   performs) and the list re-deals in place. This is the
+ *   graduation path: a player moves up a band from the page
+ *   they play from.
  *
  * Deliberately NO grown-up gate here, and that widens who can
  * write the band: the gate in AgeProfileSettings still guards the
@@ -116,16 +117,23 @@ export default function AgeBandControl({ runInProgress = false }: AgeBandControl
   }
 
   if (!expanded) {
+    // A set profile always carries its band (the store's own
+    // invariant); the label is read from the band table.
+    const selectedLabel = profile.band ? AGE_BANDS[profile.band].label : "";
     return (
       <div data-testid="age-band-control">
+        {/* The collapsed set state: one pill shows what was
+            selected — the band's own label — and tapping it
+            re-opens the three pills in place to switch. */}
         <Button
           variant="secondary"
           className="rounded-full"
-          data-testid="change-band-button"
+          data-testid="band-selected-pill"
           aria-expanded={false}
+          aria-label={`Age band: ${selectedLabel}. Tap to change band.`}
           onClick={() => setExpanded(true)}
         >
-          Change band
+          {selectedLabel}
         </Button>
       </div>
     );

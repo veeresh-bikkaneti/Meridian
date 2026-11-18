@@ -46,9 +46,10 @@
  *
  * Ask-first, contained on this page (owner decision 2026-11-14,
  * "Ask first"; page design by Radhae, voice call 2026-11-15): the
- * band ask lives on this page itself — AgeBandControl under the
- * header shows the three band pills while no band is set, and a
- * "Change band" option once one is (the graduation path: there is
+ * band ask lives on this page itself — AgeBandControl sits in the
+ * hero card's title block, under the sub line: it shows the three
+ * band pills while no band is set, and one pill naming the
+ * selected band once one is (the graduation path: there is
  * no player-facing settings screen to graduate through). A subject
  * card's tap with no band set never opens a case under the store's
  * silently defaulted band: it takes the player back to the pills
@@ -331,17 +332,21 @@ export default function SubjectPicker({
           <p className="mt-2 text-fg">
             {profileStatus === "unset" ? "Pick a subject" : `Pick a subject · Ages ${band}`}
           </p>
+          {/* The band ask, contained on this page (see the header
+              note): AgeBandControl lives here in the title block,
+              under the sub line — the three band pills while no
+              band is set, one selected-band pill once one is. It
+              owns the profile reads and writes; this page only
+              hosts it, beside the band the sub line names. */}
+          <div ref={bandBarRef} className="mt-3">
+            <AgeBandControl runInProgress={bandChangeRunInProgress} />
+          </div>
         </div>
       </div>
       <WhyLearnDrift />
-      {/* The band ask, contained on this page (see the header
-          note): AgeBandControl under the header — the three band
-          pills while no band is set, a "Change band" option once
-          one is. It owns the profile reads and writes; this page
-          only hosts it, beside the band the sub line names. */}
-      <div ref={bandBarRef} className="mt-5">
-        <AgeBandControl runInProgress={bandChangeRunInProgress} />
-      </div>
+      {/* The band control lives in the title block above — there
+          is deliberately no second control below the hero. One
+          control, one place. */}
       {released === null && !listFailed ? (
         <p className="mt-6 text-fg">Loading subjects…</p>
       ) : null}
