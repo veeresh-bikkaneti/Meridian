@@ -128,6 +128,9 @@ const CLEARED_LOCAL: Record<string, string> = {
   // shared device inherits the band and is never asked.
   "meridian.ageProfile.v1":
     '{"status":"active","band":"7-10","updatedAt":"2026-10-09T12:00:00.000Z","changeCount":1,"schemaVersion":2}',
+  // Per-subject progress (2026-11-18): the picker's solved-unit
+  // records are progress, so a full reset clears them too.
+  "meridian.subject-progress.v1": '{"math":["fair-share"],"physics":["pendulum"]}',
 };
 
 /** Every KEPT localStorage key from manifest §2 plus near-miss foreign keys. */
@@ -207,7 +210,7 @@ test("U-R1 master sentinel: every cleared key gone, every kept key byte-identica
     // wipes the preserved shadow from the injected local storage;
     // see the "discarded-shadow" step) and "challenge-attempts"
     // (§Q2-B3: reset clears the attempts store).
-    ["age-profile", "challenge-attempts", "coldtrail", "discarded-shadow", "geodetective", "learning", "paused-run", "review-deck", "session", "trail"],
+    ["age-profile", "challenge-attempts", "coldtrail", "discarded-shadow", "geodetective", "learning", "paused-run", "review-deck", "session", "subject-progress", "trail"],
   );
   assertCleared(local, session);
   assertKept(local, session);

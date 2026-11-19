@@ -79,7 +79,8 @@ describe("WhyLearnHero — the montage in the hero slot", () => {
   it("the picker grid stacks the cards four in a row on desktop", () => {
     assert.ok(picker.includes("min-[1081px]:grid-cols-4"), "four-across at desktop widths");
     assert.ok(!picker.includes("min-[1081px]:grid-cols-3"), "the three-across grid is gone");
-    assert.ok(picker.includes("lg:max-w-none"), "the picker takes the page's full width");
+    assert.ok(picker.includes("max-w-(--page-wide)"), "the picker sits in the shared wide page container (D1)");
+    assert.ok(!picker.includes("lg:max-w-none"), "the per-page wide override is gone (D1)");
   });
 
   it("media URLs are built through the assetBase seam, never bundled imports", () => {

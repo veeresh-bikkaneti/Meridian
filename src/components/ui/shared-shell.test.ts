@@ -645,7 +645,10 @@ describe("shell-ban baseline (KNOWN/STALE)", () => {
   // this record on purpose, in the same change that cures a file.
   const FROZEN_BASELINE: Record<string, string[]> = {
     homeButtonImport: ["src/components/game-app.tsx", "src/game/loop/LoopScreen.tsx", "src/subjects/shared/SubjectCase.tsx"],
-    maxWNone: ["src/subjects/shared/SubjectPicker.tsx"],
+    // Why Learn D1 (2026-11-18): SubjectPicker was cured — the
+    // picker sits in the shared --page-wide container and its
+    // lg:max-w-none is gone — so the maxWNone baseline is empty.
+    maxWNone: [],
     pageLocalHeaderFooter: [],
     pageLocalNav: ["src/components/grownups/info-page.tsx", "src/routes/board.tsx"],
     pageLocalMain: [

@@ -8,13 +8,15 @@ import { serveBuiltArtifact } from "./helpers";
  * - all three age groups (7-10, 10-18, 18+) at 1280 and 390: same layout,
  *   only the ages line changes; a screenshot of each for the PR;
  * - each ready card is one button whose accessible name starts with the
- *   subject name and shows an "N cases" pill; Journals is "Coming soon",
- *   disabled and out of the Tab order;
+ *   subject name and shows an "N cases" pill (all six subjects are
+ *   ready, Journals included — it shipped playable in #464);
  * - Tab order is Home, then the montage controls, then the band
- *   control (the "Change band" option — this spec seeds a band, so
- *   the control is in its collapsed set state; amendment
- *   2026-11-15), then the cards left to right, top to bottom, each
- *   with a visible focus outline;
+ *   control (the selected-band pill in the hero title block —
+ *   this spec seeds a band, so the control is in its collapsed
+ *   set state), then the cards left to right, top to bottom,
+ *   each with a visible focus outline. The per-card Reset buttons
+ *   follow their card in DOM order but are disabled here (no
+ *   subject progress is seeded), so they stay out of the order;
  * - the hero slot carries the montage film (feat/why-learn-montage):
  *   autoplay, muted, looping, poster-filled, in a fixed box, with
  *   pause / replay / sound controls; under reduced motion the hero
@@ -95,7 +97,12 @@ for (const vp of [
         .evaluate((el) => getComputedStyle(el, "::after").backgroundImage);
       expect(montage, `${tag}: montage is a CSS background`).toContain("why-learn-montage");
 
-      // Cards: names start with the subject, count pill, Journals closed.
+      // Cards: names start with the subject, count pill. (Journals
+      // is playable like the other subjects — it shipped in #464;
+      // this spec's old "Journals is Coming soon / disabled" pin
+      // was stale on main and failed there too. Corrected
+      // 2026-11-18 to the app's actual behaviour, measured on
+      // unmodified main: every card is enabled with a count pill.)
       const cards = page.locator('[data-testid^="subject-row-"]');
       await expect(cards).toHaveCount(SUBJECTS.length);
       for (const [i, subject] of SUBJECTS.entries()) {
@@ -104,17 +111,16 @@ for (const vp of [
         // Accessible name (not just text) starts with the subject name.
         const byName = page.getByRole("button", { name: new RegExp(`^${subject}\\b`) });
         await expect(byName.and(page.getByTestId(id!)), `${tag}: card ${i + 1} name starts with ${subject}`).toHaveCount(1);
-        if (subject === "Journals") {
-          await expect(card).toBeDisabled();
-          await expect(card).toContainText("Coming soon");
-        } else if (await card.isEnabled()) {
+        if (await card.isEnabled()) {
           await expect(card.locator(".why-learn-chip")).toHaveText(/^\d+ cases?$/);
           await expect(card).toContainText("Open case");
         }
       }
 
       // Tab order: Home, then the montage controls, then the band
-      // control, then each enabled card in DOM (reading) order.
+      // control (now inside the hero title block, after the film
+      // controls in DOM order), then each enabled card in DOM
+      // (reading) order.
       await page.getByTestId("home-button").focus();
       for (const controlId of ["why-learn-hero-playpause", "why-learn-hero-replay", "why-learn-hero-sound"]) {
         await page.keyboard.press("Tab");
@@ -123,7 +129,7 @@ for (const vp of [
       }
       await page.keyboard.press("Tab");
       const bandFocusedId = await page.evaluate(() => document.activeElement?.getAttribute("data-testid"));
-      expect(bandFocusedId, `${tag}: Tab order (band control)`).toBe("change-band-button");
+      expect(bandFocusedId, `${tag}: Tab order (band control)`).toBe("band-selected-pill");
       const enabled = await cards.evaluateAll((els) =>
         els.filter((e) => !(e as HTMLButtonElement).disabled).map((e) => e.getAttribute("data-testid")),
       );
