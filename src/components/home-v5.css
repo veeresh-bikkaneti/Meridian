@@ -21,6 +21,13 @@
   --hv5-shadow-lift: 0 2px 3px rgba(94, 76, 32, 0.06), 0 24px 44px -18px rgba(94, 76, 32, 0.34);
   --hv5-display: "Fraunces", Georgia, serif;
   --hv5-body: "Karla", system-ui, sans-serif;
+  /* Landmark globe (§3.6): one token set drives the zone at every
+     breakpoint — size, the overlap onto the map card, and the extra
+     desktop bleed that drops the zone clear of Grandpa and his
+     speech bubble. Bottom margin is always overlap + bleed. */
+  --globe-size: 100%;
+  --globe-overlap: -92px;
+  --globe-bleed: 0px;
   font-family: var(--hv5-body);
   color: var(--hv5-ink);
 }
@@ -139,9 +146,9 @@ body:has(.home-v5) {
 }
 .home-v5 .hv5-globe-zone {
   position: relative;
-  width: 100%;
+  width: var(--globe-size);
   aspect-ratio: 1;
-  margin: 0 0 -92px;
+  margin: 0 0 calc(var(--globe-overlap) + var(--globe-bleed));
   z-index: 2;
   pointer-events: auto;
 }
@@ -155,7 +162,7 @@ body:has(.home-v5) {
   position: relative;
   z-index: 3;
   margin-top: 0;
-  flex: 1;
+  flex: 0 0 auto;
 }
 .home-v5 .hv5-hero:has([data-testid="map-mode-popover"]) {
   overflow: visible;
@@ -844,22 +851,18 @@ body:has(.home-v5) {
 .home-v5 .hv5-mapcard p {
   color: #d8dcc8;
 }
-.home-v5 .hv5-worldmap {
-  margin: 14px 0 6px;
-  width: 100%;
-}
 .home-v5 .hv5-editions {
   display: flex;
   flex-direction: column;
-  gap: 9px;
-  margin-top: 12px;
+  gap: 16px;
+  margin-top: 16px;
 }
 .home-v5 .hv5-edition {
   display: flex;
   align-items: center;
   gap: 12px;
   width: 100%;
-  min-height: 48px;
+  min-height: 64px;
   text-align: left;
   background: rgba(253, 251, 243, 0.08);
   border: 1px solid rgba(242, 239, 226, 0.35);
@@ -999,11 +1002,16 @@ body:has(.home-v5) {
   .home-v5 .hv5-mapcard {
     margin-top: 0;
   }
+  .home-v5 {
+    --globe-size: 220px;
+    --globe-overlap: 0px;
+    --globe-bleed: 0px;
+  }
   .home-v5 .hv5-globe-zone {
-    width: 220px;
+    width: var(--globe-size);
     height: auto;
     aspect-ratio: 1;
-    margin: 0 auto;
+    margin: 0 auto calc(var(--globe-overlap) + var(--globe-bleed));
   }
 }
 @media (max-width: 680px) {
@@ -1019,11 +1027,21 @@ body:has(.home-v5) {
     padding: 28px 22px 32px;
     min-height: 0;
   }
+  .home-v5 {
+    --globe-size: 260px;
+  }
   .home-v5 .hv5-globe-zone {
     position: relative;
-    width: 200px;
+    width: var(--globe-size);
     height: auto;
-    margin: 0 auto;
+    margin: 0 auto calc(var(--globe-overlap) + var(--globe-bleed));
+  }
+  .home-v5 .hv5-editions {
+    gap: 12px;
+  }
+  .home-v5 .hv5-mtn-wrap {
+    flex: 0 0 auto;
+    margin: 20px -22px -32px;
   }
   .home-v5 .hv5-split {
     flex-direction: column;
@@ -1042,6 +1060,24 @@ body:has(.home-v5) {
     position: relative;
     margin: 14px auto 0;
     transform: none;
+  }
+}
+/* Desktop (§3.6 items 3, 4, 6): the rail's globe zone + map card travel
+   as one foot-anchored group; the globe grows to 792px and drops by the
+   bleed so it never covers Grandpa or his speech bubble. */
+@media (min-width: 1081px) {
+  .home-v5 {
+    --globe-size: 792px;
+    --globe-bleed: -180px;
+  }
+  .home-v5 .hv5-rail {
+    justify-content: flex-end;
+  }
+  .home-v5 .hv5-globe-zone {
+    width: var(--globe-size);
+    flex: 0 0 auto;
+    align-self: flex-end;
+    margin-bottom: calc(var(--globe-overlap) + var(--globe-bleed));
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -1679,13 +1715,6 @@ body:has(.home-v5) {
   width: 100%;
   height: 100%;
   pointer-events: none;
-}
-@media (max-width: 1080px) {
-  /* No mountain art at these widths — the wrap is display:none,
-     so neither overlay inside it can render or leak there either. */
-  .home-v5 .hv5-mtn-wrap {
-    display: none;
-  }
 }
 @media (prefers-reduced-motion: reduce) {
   .home-v5 .hv5-trail-dots,
