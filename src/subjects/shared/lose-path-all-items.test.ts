@@ -340,7 +340,7 @@ describe("the reveal waits for the second distinct wrong answer (owner decision,
 });
 
 describe("the supportive line (owner decision, 2026-11-19)", () => {
-  const SUPPORT_LINE = "Good trying — this one was tricky. Let's look at how it works.";
+  const SUPPORT_LINE = "Good try, this one was tricky. Let's look at how it works.";
 
   it("the reveal render carries the supportive line ahead of the answer line, for both item kinds", () => {
     const lose = subjectCase.slice(
