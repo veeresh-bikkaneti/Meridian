@@ -180,7 +180,7 @@ test("second wrong pick on skip-count (newly flipped) reveals the answer line, t
   const reveal = page.getByTestId("math-lose-reveal");
   await expect(reveal).toBeVisible();
   await expect(page.getByTestId("math-lose-support")).toHaveText(
-    "Good trying — this one was tricky. Let's look at how it works.",
+    "Good try, this one was tricky. Let's look at how it works.",
   );
   await expect(page.getByTestId("math-lose-answer")).toHaveText("The answer is 8 — here's how.");
   // It is not a win: no result section, no celebration copy.
@@ -304,7 +304,7 @@ test("second distinct wrong pick on a Math 10-18 overflow case (no summary) reve
   const reveal = page.getByTestId("math-lose-reveal");
   await expect(reveal).toBeVisible();
   await expect(page.getByTestId("math-lose-support")).toHaveText(
-    "Good trying — this one was tricky. Let's look at how it works.",
+    "Good try, this one was tricky. Let's look at how it works.",
   );
   await expect(page.getByTestId("math-lose-answer")).toHaveText("The answer is 13 — here's how.");
   await expect(page.getByTestId("clue-summary-text")).toHaveCount(0);

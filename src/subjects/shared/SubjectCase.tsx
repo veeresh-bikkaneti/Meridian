@@ -122,7 +122,7 @@ import { soundAudible } from "@/game/audio/play-guards";
  * is new copy awaiting the owner's approval). One fixed line for
  * every subject and item, so a child who did not solve the case
  * hears the same kind words before the explanation. */
-export const LOSE_SUPPORT_LINE = "Good trying — this one was tricky. Let's look at how it works.";
+export const LOSE_SUPPORT_LINE = "Good try, this one was tricky. Let's look at how it works.";
 
 /** The supportive line's clip URL (public/audio/subjects/, where
  * the subject summary clips live — the summaryClipUrl pattern in
