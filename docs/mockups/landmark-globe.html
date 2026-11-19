@@ -1,4 +1,4 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html><html><head><meta charset=utf8><link rel="icon" href="data:,"><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>Meridian Landmark Globe</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -107,6 +107,8 @@ body {
 .notes li { margin: 4px 0; }
 kbd { font-family: var(--mono); font-size: 12px; background: var(--hv5-card); border: 1px solid var(--hv5-line-warm); border-bottom-width: 2px; border-radius: 5px; padding: 0 5px; color: var(--hv5-ink); }
 
+#globe-readout { position: fixed; right: 14px; bottom: 14px; z-index: 50; font-family: var(--mono); font-size: 12px; background: var(--hv5-card); border: 1px solid var(--hv5-line-warm); border-radius: 10px; padding: 8px 11px; color: var(--hv5-ink); box-shadow: var(--hv5-shadow-card); line-height: 1.6; }
+#globe-readout b { color: var(--hv5-brown-deep); }
 /* ---- contract table ---- */
 .contract { background: var(--hv5-card); border: 1px solid var(--hv5-line); border-radius: 22px; padding: 22px; }
 .contract h2 { font-family: var(--hv5-display); font-size: 22px; margin: 0 0 4px; }
@@ -185,8 +187,15 @@ td code { font-family: var(--mono); font-size: 12px; color: var(--hv5-forest-dee
   </section>
 </div>
 
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+} }
+</script>
 <script type="module">
-import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js";
+import * as THREE from "three";
+import { mergeGeometries } from "three/addons/utils/BufferGeometryUtils.js";
 
 const TEXTURE_URL = "../../src/assets/home-v5/globe-texture.webp";
 
@@ -212,7 +221,7 @@ const C = {
   inertiaStop: 0.02, // rad/s
   ring: { radius: 1.42, tube: 0.005, opacity: 0.45, tiltX: Math.PI / 2.25, tiltY: 0.35 },
   plane: { speed: 0.35 },
-  halo: { radius: 1.09, color: 0xc9a14a, power: 2.6, strength: 0.85 },
+  halo: { radius: 1.09, color: 0xc9a14a, power: 2.6, strength: 0.5 },
   lights: {
     ambient: [0xfff1da, 1.15],
     sun: [0xffe9c4, 1.6, [-2.4, 1.6, 2.6]],
@@ -250,7 +259,7 @@ const matCache = new Map();
 function mat(key, extra = {}) {
   const k = key + JSON.stringify(extra);
   if (!matCache.has(k)) {
-    matCache.set(k, new THREE.MeshStandardMaterial({ color: PAL[key], roughness: 0.78, metalness: key.startsWith("brass") ? 0.25 : 0, flatShading: true, ...extra }));
+    matCache.set(k, new THREE.MeshStandardMaterial({ color: PAL[key], roughness: 0.78, metalness: key.startsWith("brass") ? 0.25 : 0, flatShading: false, ...extra }));
   }
   return matCache.get(k);
 }
@@ -264,168 +273,264 @@ function add(g, geo, m, x = 0, y = 0, z = 0, ry = 0) {
 const box = (w, h, d) => new THREE.BoxGeometry(w, h, d);
 const frustum = (rt, rb, h, s = 4) => new THREE.CylinderGeometry(rt, rb, h, s, 1);
 
-/* ===== low-poly landmark builders (unit height ~1, base at y=0) ===== */
+/* ===== merged-geometry landmark builders (unit height ~1, base at y=0) =====
+   Each builder collects geometries per material, bakes every transform into
+   the geometry, then merges to one mesh per material. Triangle counts are
+   stored on the returned group as userData.tris. */
+const bx = (w, h, d) => new THREE.BoxGeometry(w, h, d);
+const cyl = (rt, rb, h, s = 10, open = false) => new THREE.CylinderGeometry(rt, rb, h, s, 1, open);
+const cone = (r, h, s = 10) => new THREE.ConeGeometry(r, h, s);
+const sph = (r, w = 12, h = 9) => new THREE.SphereGeometry(r, w, h);
+function crisp(geo) { const g = geo.toNonIndexed(); g.computeVertexNormals(); return g; }
+
+function bag() {
+  const map = new Map();
+  return {
+    add(geo, material, x = 0, y = 0, z = 0, rx = 0, ry = 0, rz = 0, sx = 1, sy = null, sz = null) {
+      const q = new THREE.Quaternion().setFromEuler(new THREE.Euler(rx, ry, rz));
+      const m = new THREE.Matrix4().compose(new THREE.Vector3(x, y, z), q, new THREE.Vector3(sx, sy ?? sx, sz ?? sx));
+      geo.applyMatrix4(m);
+      if (!map.has(material.uuid)) map.set(material.uuid, { material, geos: [] });
+      map.get(material.uuid).geos.push(geo);
+    },
+    build() {
+      const grp = new THREE.Group();
+      let tris = 0;
+      for (const { material, geos } of map.values()) {
+        const merged = mergeGeometries(geos, false);
+        tris += (merged.index ? merged.index.count : merged.attributes.position.count) / 3;
+        grp.add(new THREE.Mesh(merged, material));
+      }
+      grp.userData.tris = tris;
+      return grp;
+    },
+  };
+}
+function tube(points, radius, mat4bag, material, seg = 36) {
+  const curve = new THREE.CatmullRomCurve3(points);
+  mat4bag.add(new THREE.TubeGeometry(curve, seg, radius, 5), material);
+}
+
 const BUILD = {
-  eiffel(m) {
-    const g = new THREE.Group();
-    add(g, frustum(0.13, 0.3, 0.34), m, 0, 0.17, 0, Math.PI / 4);
-    add(g, box(0.3, 0.035, 0.3), m, 0, 0.355);
-    add(g, frustum(0.06, 0.13, 0.36), m, 0, 0.55, 0, Math.PI / 4);
-    add(g, box(0.15, 0.03, 0.15), m, 0, 0.745);
-    add(g, frustum(0.012, 0.06, 0.42), m, 0, 0.97, 0, Math.PI / 4);
-    add(g, frustum(0.004, 0.01, 0.1, 6), m, 0, 1.23);
-    return g;
-  },
-  bigben(m) {
-    const g = new THREE.Group();
-    add(g, box(0.16, 0.95, 0.16), m, 0, 0.475);
-    add(g, box(0.21, 0.22, 0.21), m, 0, 1.06);
-    const face = new THREE.CircleGeometry(0.07, 16);
-    for (let i = 0; i < 4; i++) {
-      const f = new THREE.Mesh(face, mat("card", { flatShading: false }));
-      const a = (i * Math.PI) / 2;
-      f.position.set(Math.sin(a) * 0.106, 1.06, Math.cos(a) * 0.106);
-      f.rotation.y = a;
-      g.add(f);
-      const hand = new THREE.Mesh(box(0.008, 0.05, 0.004), mat("ink"));
-      hand.position.set(Math.sin(a) * 0.109, 1.075, Math.cos(a) * 0.109);
-      hand.rotation.y = a;
-      g.add(hand);
+  eiffel(mat, key) {
+    const b = bag(); const m = mat(key); const brass = mat("brass");
+    for (const sx of [-1, 1]) for (const sz of [-1, 1]) {
+      b.add(bx(0.075, 0.22, 0.075), m, sx * 0.155, 0.1, sz * 0.155, -sz * 0.16, 0, sx * 0.16);
+      b.add(bx(0.06, 0.2, 0.06), m, sx * 0.112, 0.29, sz * 0.112, -sz * 0.12, 0, sx * 0.12);
+      b.add(bx(0.048, 0.18, 0.048), m, sx * 0.078, 0.46, sz * 0.078, -sz * 0.08, 0, sx * 0.08);
     }
-    add(g, frustum(0.01, 0.15, 0.32), mat("forest"), 0, 1.33, 0, Math.PI / 4);
-    add(g, frustum(0.003, 0.01, 0.1, 6), mat("brass"), 0, 1.53);
-    return g;
+    for (const [ty, off] of [[0.2, 0.148], [0.38, 0.104]]) {
+      for (const s of [-1, 1]) {
+        b.add(bx(off * 2, 0.016, 0.016), m, 0, ty, s * off, 0, 0, 0.62);
+        b.add(bx(off * 2, 0.016, 0.016), m, 0, ty, s * off, 0, 0, -0.62);
+        b.add(bx(0.016, 0.016, off * 2), m, s * off, ty, 0, 0.62, 0, 0);
+        b.add(bx(0.016, 0.016, off * 2), m, s * off, ty, 0, -0.62, 0, 0);
+      }
+    }
+    b.add(bx(0.34, 0.035, 0.34), m, 0, 0.545);
+    b.add(cyl(0.055, 0.115, 0.26, 4), m, 0, 0.69, 0, 0, Math.PI / 4, 0);
+    b.add(bx(0.19, 0.03, 0.19), m, 0, 0.835);
+    b.add(cyl(0.018, 0.055, 0.3, 4), m, 0, 0.99, 0, 0, Math.PI / 4, 0);
+    b.add(cyl(0.003, 0.011, 0.17, 6), brass, 0, 1.22);
+    b.add(sph(0.014, 8, 6), brass, 0, 1.31);
+    return b.build();
   },
-  colosseum(m) {
-    const g = new THREE.Group();
+  bigben(mat, key) {
+    const b = bag(); const m = mat(key); const brass = mat("brass");
+    const lit = mat("card", { emissive: 0xd9b25a, emissiveIntensity: 0.4 });
+    const ink = mat("ink"); const forest = mat("forest");
+    b.add(bx(0.21, 0.06, 0.21), m, 0, 0.03);
+    b.add(bx(0.15, 0.88, 0.15), m, 0, 0.5);
+    for (let i = 0; i < 4; i++) {
+      const a = (i * Math.PI) / 2;
+      b.add(bx(0.022, 0.78, 0.006), brass, Math.sin(a) * 0.077, 0.5, Math.cos(a) * 0.077, 0, a, 0);
+    }
+    b.add(bx(0.23, 0.25, 0.23), m, 0, 1.06);
+    const face = new THREE.CircleGeometry(0.076, 18);
+    for (let i = 0; i < 4; i++) {
+      const a = (i * Math.PI) / 2, sx = Math.sin(a), cz = Math.cos(a);
+      b.add(face.clone(), lit, sx * 0.117, 1.06, cz * 0.117, 0, a, 0);
+      b.add(bx(0.009, 0.052, 0.004), ink, sx * 0.12, 1.075, cz * 0.12, 0, a, 0.7);
+      b.add(bx(0.007, 0.036, 0.004), ink, sx * 0.121, 1.05, cz * 0.121, 0, a, -1.9);
+    }
+    b.add(bx(0.2, 0.03, 0.2), brass, 0, 1.2);
+    b.add(bx(0.155, 0.13, 0.155), m, 0, 1.28);
+    for (const sx of [-1, 1]) for (const sz of [-1, 1]) b.add(cyl(0.011, 0.011, 0.13, 6), brass, sx * 0.062, 1.28, sz * 0.062);
+    b.add(bx(0.19, 0.025, 0.19), brass, 0, 1.36);
+    b.add(cone(0.125, 0.32, 4), forest, 0, 1.53, 0, 0, Math.PI / 4, 0);
+    b.add(cyl(0.003, 0.009, 0.1, 6), brass, 0, 1.74);
+    return b.build();
+  },
+  colosseum(mat, key) {
+    const b = bag();
     const c = document.createElement("canvas");
-    c.width = 512; c.height = 128;
+    c.width = 1024; c.height = 256;
     const x = c.getContext("2d");
-    x.fillStyle = "#efe4c8"; x.fillRect(0, 0, 512, 128);
-    x.fillStyle = "#8a7550";
-    for (let row = 0; row < 3; row++) for (let i = 0; i < 24; i++) {
-      const ax = i * 21.3 + 5, ay = 10 + row * 40;
-      x.beginPath(); x.moveTo(ax, ay + 30); x.lineTo(ax, ay + 9); x.arc(ax + 6, ay + 9, 6, Math.PI, 0); x.lineTo(ax + 12, ay + 30); x.fill();
+    x.fillStyle = "#efe4c8"; x.fillRect(0, 0, 1024, 256);
+    x.fillStyle = "#b89a68";
+    x.fillRect(0, 0, 1024, 14);
+    x.fillStyle = "#7d6440";
+    for (let row = 0; row < 3; row++) for (let i = 0; i < 36; i++) {
+      const ax = i * 28.4 + 6, ay = 26 + row * 76;
+      x.beginPath(); x.moveTo(ax, ay + 58); x.lineTo(ax, ay + 18); x.arc(ax + 8, ay + 18, 8, Math.PI, 0); x.lineTo(ax + 16, ay + 58); x.fill();
     }
     const tex = new THREE.CanvasTexture(c);
     tex.colorSpace = THREE.SRGBColorSpace;
     tex.wrapS = THREE.RepeatWrapping;
     const wallMat = new THREE.MeshStandardMaterial({ map: tex, roughness: 0.9, side: THREE.DoubleSide });
-    const outer = add(g, new THREE.CylinderGeometry(0.5, 0.5, 0.34, 28, 1, true), wallMat, 0, 0.17);
-    outer.scale.set(1, 1, 0.8);
-    const ruin = add(g, new THREE.CylinderGeometry(0.5, 0.5, 0.12, 28, 1, true, 0, Math.PI * 1.15), wallMat, 0, 0.4);
-    ruin.scale.set(1, 1, 0.8);
-    const floor = add(g, new THREE.CylinderGeometry(0.47, 0.47, 0.03, 24), mat("sand"), 0, 0.015);
-    floor.scale.set(1, 1, 0.8);
-    return g;
+    b.add(new THREE.CylinderGeometry(0.5, 0.52, 0.34, 36, 1, true), wallMat, 0, 0.17, 0, 0, 0, 0, 1, 1, 0.8);
+    b.add(new THREE.CylinderGeometry(0.5, 0.5, 0.13, 36, 1, true, 0, Math.PI * 1.1), wallMat, 0, 0.405, 0, 0, 0, 0, 1, 1, 0.8);
+    b.add(new THREE.TorusGeometry(0.5, 0.013, 4, 36), mat(key), 0, 0.34, 0, Math.PI / 2, 0, 0, 1, 0.8, 1);
+    b.add(new THREE.CylinderGeometry(0.33, 0.33, 0.2, 28, 1, true), mat(key), 0, 0.1, 0, 0, 0, 0, 1, 1, 0.8);
+    b.add(cyl(0.46, 0.46, 0.03, 28), mat("sand"), 0, 0.015, 0, 0, 0, 0, 1, 1, 0.8);
+    return b.build();
   },
-  liberty(m) {
-    const g = new THREE.Group();
-    add(g, box(0.3, 0.3, 0.3), mat("stone"), 0, 0.15);
-    add(g, box(0.2, 0.12, 0.2), mat("stone"), 0, 0.36);
-    add(g, frustum(0.055, 0.12, 0.48, 7), m, 0, 0.66);
-    add(g, new THREE.SphereGeometry(0.055, 8, 6), m, 0, 0.95);
-    for (let i = 0; i < 5; i++) {
-      const a = -0.9 + i * 0.45;
-      const s = add(g, new THREE.ConeGeometry(0.012, 0.07, 4), m, Math.sin(a) * 0.05, 1.0, Math.cos(a) * 0.05);
-      s.rotation.set(Math.cos(a) * 0.6, 0, -Math.sin(a) * 0.6);
+  liberty(mat, key) {
+    const b = bag(); const m = mat(key); const stone = mat("stone");
+    const flame = mat("brass", { emissive: 0xcc7722, emissiveIntensity: 0.7 });
+    b.add(bx(0.36, 0.1, 0.36), stone, 0, 0.05);
+    b.add(bx(0.36, 0.1, 0.36), stone, 0, 0.05, 0, 0, Math.PI / 4, 0);
+    b.add(cyl(0.12, 0.17, 0.24, 8), stone, 0, 0.22);
+    const profile = [[0.135, 0], [0.12, 0.08], [0.095, 0.22], [0.075, 0.36], [0.066, 0.46], [0.07, 0.5]].map(([px, py]) => new THREE.Vector2(px, py));
+    b.add(new THREE.LatheGeometry(profile, 14), m, 0, 0.34);
+    b.add(sph(0.052, 10, 8), m, 0, 0.9);
+    b.add(cyl(0.056, 0.058, 0.022, 10), m, 0, 0.945);
+    for (let i = 0; i < 7; i++) {
+      const a = -0.95 + i * (1.9 / 6);
+      b.add(cone(0.009, 0.065, 4), m, Math.sin(a) * 0.052, 0.985, -Math.cos(a) * 0.02 + 0.028, Math.cos(a) * 0.55, 0, -Math.sin(a) * 0.55);
     }
-    const arm = add(g, frustum(0.018, 0.024, 0.3, 6), m, 0.08, 1.02, 0);
-    arm.rotation.z = -0.25;
-    add(g, new THREE.ConeGeometry(0.03, 0.07, 6), mat("brass"), 0.12, 1.2, 0).rotation.x = Math.PI;
-    add(g, new THREE.SphereGeometry(0.022, 6, 4), mat("brass", { emissive: 0x5a3d0a }), 0.12, 1.24, 0);
-    return g;
+    b.add(cyl(0.015, 0.019, 0.27, 6), m, 0.085, 1.0, 0, 0, 0, -0.42);
+    b.add(cyl(0.011, 0.013, 0.08, 6), flame, 0.148, 1.13);
+    b.add(sph(0.02, 8, 6), flame, 0.148, 1.2, 0, 0, 0, 0, 1, 1.7, 1);
+    b.add(cyl(0.014, 0.017, 0.2, 6), m, -0.075, 0.82, 0.02, 0.5, 0, 0.9);
+    b.add(bx(0.075, 0.095, 0.016), m, -0.125, 0.76, 0.045, 0.2, 0.3, 0.15);
+    return b.build();
   },
-  cntower(m) {
-    const g = new THREE.Group();
-    add(g, frustum(0.035, 0.08, 0.95, 6), m, 0, 0.475);
-    add(g, new THREE.CylinderGeometry(0.13, 0.1, 0.09, 10), mat("brass"), 0, 0.8);
-    add(g, new THREE.CylinderGeometry(0.05, 0.05, 0.05, 8), mat("brass"), 0, 1.0);
-    add(g, frustum(0.006, 0.03, 0.5, 6), m, 0, 1.25);
-    return g;
+  cntower(mat, key) {
+    const b = bag(); const m = mat(key); const brass = mat("brass");
+    b.add(cyl(0.032, 0.078, 0.95, 12), m, 0, 0.475);
+    b.add(sph(0.115, 12, 8), m, 0, 0.79, 0, 0, 0, 0, 1, 0.55, 1);
+    b.add(cyl(0.117, 0.117, 0.028, 12), brass, 0, 0.79);
+    b.add(cyl(0.048, 0.058, 0.07, 10), m, 0, 0.93);
+    b.add(cyl(0.004, 0.017, 0.52, 6), m, 0, 1.22);
+    return b.build();
   },
-  goldengate(m) {
-    const g = new THREE.Group();
+  goldengate(mat, key) {
+    const b = bag(); const m = mat(key); const steel = mat("steel");
     const span = 0.62;
     for (const sx of [-span / 2, span / 2]) {
-      add(g, box(0.035, 0.75, 0.035), m, sx, 0.375, -0.05);
-      add(g, box(0.035, 0.75, 0.035), m, sx, 0.375, 0.05);
-      for (const by of [0.45, 0.62, 0.73]) add(g, box(0.035, 0.03, 0.13), m, sx, by, 0);
+      for (const sz of [-0.055, 0.055]) b.add(bx(0.04, 0.78, 0.04), m, sx, 0.39, sz);
+      for (const by of [0.2, 0.42, 0.62, 0.76]) b.add(bx(0.042, 0.035, 0.15), m, sx, by, 0);
+      b.add(bx(0.05, 0.03, 0.16), m, sx, 0.795, 0);
     }
-    add(g, box(1.3, 0.035, 0.12), m, 0, 0.26);
-    for (const z of [-0.05, 0.05]) {
+    b.add(bx(1.3, 0.04, 0.15), steel, 0, 0.27);
+    b.add(bx(1.3, 0.012, 0.1), m, 0, 0.295);
+    const cableY = (xx) => Math.abs(xx) <= span / 2
+      ? 0.32 + 0.46 * Math.pow(xx / (span / 2), 2)
+      : 0.78 - 0.44 * ((Math.abs(xx) - span / 2) / (0.65 - span / 2));
+    for (const z of [-0.055, 0.055]) {
       const pts = [];
-      for (let i = 0; i <= 24; i++) {
-        const t = i / 24, xx = -0.65 + t * 1.3;
-        const local = Math.abs(xx) <= span / 2 ? 0.3 + 0.44 * Math.pow((xx / (span / 2)), 2) : 0.74 - 0.46 * ((Math.abs(xx) - span / 2) / (0.65 - span / 2));
-        pts.push(new THREE.Vector3(xx, local, z));
+      for (let i = 0; i <= 24; i++) { const xx = -0.65 + (i / 24) * 1.3; pts.push(new THREE.Vector3(xx, cableY(xx), z)); }
+      tube(pts, 0.0075, b, m, 40);
+      for (let i = 0; i <= 10; i++) {
+        const xx = -0.55 + i * 0.11, top = cableY(xx), len = Math.max(top - 0.3, 0.02);
+        b.add(cyl(0.0035, 0.0035, len, 4, true), m, xx, 0.3 + len / 2, z);
       }
-      add(g, new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts), 40, 0.007, 4), m);
     }
-    return g;
+    return b.build();
   },
-  machupicchu(m) {
-    const g = new THREE.Group();
-    const steps = [[0.9, "sage"], [0.74, "forest"], [0.58, "sage"], [0.42, "forest"]];
-    steps.forEach(([w, c], i) => add(g, box(w, 0.07, 0.42 - i * 0.06), mat(c), -0.06 * i, 0.035 + i * 0.07, 0.04 * i));
-    for (let i = 0; i < 4; i++) add(g, box(0.06, 0.05, 0.06), mat("stone"), -0.25 + i * 0.1, 0.305, 0.06);
-    add(g, new THREE.ConeGeometry(0.22, 0.75, 6), mat("forest"), 0.3, 0.375, -0.15);
-    add(g, new THREE.ConeGeometry(0.14, 0.42, 6), mat("sage"), -0.38, 0.21, -0.12);
-    return g;
-  },
-  pyramids(m) {
-    const g = new THREE.Group();
-    add(g, new THREE.ConeGeometry(0.34, 0.5, 4), m, 0, 0.25, 0, Math.PI / 4);
-    add(g, new THREE.ConeGeometry(0.3, 0.44, 4), m, 0.46, 0.22, -0.18, Math.PI / 4);
-    add(g, new THREE.ConeGeometry(0.16, 0.23, 4), m, -0.36, 0.115, 0.22, Math.PI / 4);
-    return g;
-  },
-  burj(m) {
-    const g = new THREE.Group();
-    const r = [0.15, 0.125, 0.1, 0.078, 0.058, 0.04];
-    r.forEach((rb, i) => add(g, frustum(rb * 0.86, rb, 0.24, 6), m, 0, 0.12 + i * 0.24, 0, i * 0.3));
-    add(g, frustum(0.004, 0.03, 0.36, 6), m, 0, 1.62);
-    return g;
-  },
-  indiagate(m) {
-    const g = new THREE.Group();
-    add(g, box(0.17, 0.66, 0.2), m, -0.25, 0.33);
-    add(g, box(0.17, 0.66, 0.2), m, 0.25, 0.33);
-    add(g, box(0.7, 0.16, 0.22), m, 0, 0.74);
-    add(g, box(0.52, 0.1, 0.18), m, 0, 0.87);
-    add(g, new THREE.SphereGeometry(0.07, 10, 6, 0, Math.PI * 2, 0, Math.PI / 2), m, 0, 0.92);
-    add(g, box(0.34, 0.025, 0.21), mat("brassDeep"), 0, 0.42);
-    return g;
-  },
-  greatwall(m) {
-    const g = new THREE.Group();
-    const pts = [];
-    for (let i = 0; i <= 8; i++) {
-      const t = i / 8;
-      pts.push(new THREE.Vector3(-0.55 + t * 1.1, 0, Math.sin(t * Math.PI * 1.6) * 0.18));
-    }
-    for (let i = 0; i < 8; i++) {
-      const a = pts[i], b = pts[i + 1];
-      const len = a.distanceTo(b);
-      const seg = add(g, box(len, 0.08, 0.06), m, (a.x + b.x) / 2, 0.04 + Math.sin(i * 1.3) * 0.02, (a.z + b.z) / 2);
-      seg.rotation.y = -Math.atan2(b.z - a.z, b.x - a.x);
-    }
-    for (const i of [0, 3, 6, 8]) add(g, box(0.1, 0.17, 0.1), mat("sandstone"), pts[i].x, 0.085, pts[i].z);
-    return g;
-  },
-  opera(m) {
-    const g = new THREE.Group();
-    add(g, box(0.95, 0.07, 0.42), mat("sandstone"), 0, 0.035);
-    const shell = new THREE.SphereGeometry(0.3, 10, 6, 0, Math.PI, 0, Math.PI / 2);
-    const sm = mat("card", { side: THREE.DoubleSide });
-    [[-0.3, 1], [-0.08, 0.86], [0.12, 0.72], [0.3, 0.55]].forEach(([x, s], i) => {
-      const sh = new THREE.Mesh(shell, sm);
-      sh.position.set(x, 0.07, i % 2 ? 0.07 : -0.05);
-      sh.scale.set(0.55 * s, 1.15 * s, 0.9 * s);
-      sh.rotation.set(0, Math.PI / 2, -0.35);
-      g.add(sh);
+  machupicchu(mat, key) {
+    const b = bag();
+    const steps = [[0.92, "sage"], [0.76, "forest"], [0.6, "sage"], [0.44, "forest"]];
+    steps.forEach(([w, c], i) => {
+      b.add(bx(w, 0.07, 0.44 - i * 0.06), mat(c), -0.05 * i, 0.035 + i * 0.07, 0.03 * i);
+      b.add(bx(w, 0.05, 0.02), mat("stone"), -0.05 * i, 0.025 + i * 0.07, 0.03 * i + (0.44 - i * 0.06) / 2);
     });
-    return g;
+    for (let i = 0; i < 3; i++) {
+      const hx = -0.22 + i * 0.13, hy = 0.31;
+      b.add(bx(0.075, 0.055, 0.07), mat("stone"), hx, hy, 0.05);
+      b.add(bx(0.1, 0.014, 0.05), mat("clay"), hx - 0.024, hy + 0.045, 0.05, 0, 0, 0.62);
+      b.add(bx(0.1, 0.014, 0.05), mat("clay"), hx + 0.024, hy + 0.045, 0.05, 0, 0, -0.62);
+    }
+    b.add(cone(0.24, 0.82, 7), mat("forest"), 0.32, 0.41, -0.18);
+    b.add(cone(0.15, 0.45, 7), mat("sage"), -0.4, 0.225, -0.14);
+    return b.build();
+  },
+  pyramids(mat, key) {
+    const b = bag();
+    const tints = [0, 0.16, 0.3].map((t) => new THREE.MeshStandardMaterial({
+      color: new THREE.Color(PAL.sand).lerp(new THREE.Color(PAL.stone), t), roughness: 0.88, metalness: 0,
+    }));
+    b.add(crisp(cone(0.34, 0.5, 4)), tints[0], 0, 0.25, 0, 0, Math.PI / 4, 0);
+    b.add(crisp(cone(0.3, 0.44, 4)), tints[1], 0.46, 0.22, -0.18, 0, Math.PI / 4, 0);
+    b.add(crisp(cone(0.16, 0.23, 4)), tints[2], -0.36, 0.115, 0.22, 0, Math.PI / 4, 0);
+    b.add(crisp(bx(1.05, 0.02, 0.6)), tints[2], 0.05, 0.01, 0);
+    return b.build();
+  },
+  burj(mat, key) {
+    const b = bag(); const m = mat(key);
+    const tiers = [0.135, 0.115, 0.096, 0.078, 0.06, 0.044];
+    tiers.forEach((r, i) => {
+      const y = 0.11 + i * 0.22;
+      b.add(cyl(r * 0.8, r * 0.92, 0.22, 6), m, 0, y);
+      for (let k = 0; k < 3; k++) {
+        const a = (k * Math.PI * 2) / 3 + i * 0.22;
+        b.add(bx(r * 1.7, 0.22, r * 0.6), m, Math.cos(a) * r * 0.62, y, Math.sin(a) * r * 0.62, 0, -a, 0);
+      }
+    });
+    b.add(cyl(0.004, 0.026, 0.42, 6), m, 0, 1.53);
+    b.add(cyl(0.0015, 0.004, 0.14, 5), m, 0, 1.8);
+    return b.build();
+  },
+  indiagate(mat, key) {
+    const b = bag(); const m = mat(key); const brassDeep = mat("brassDeep");
+    b.add(bx(0.74, 0.05, 0.28), m, 0, 0.025);
+    b.add(bx(0.17, 0.62, 0.21), m, -0.25, 0.36);
+    b.add(bx(0.17, 0.62, 0.21), m, 0.25, 0.36);
+    b.add(bx(0.69, 0.05, 0.235), brassDeep, 0, 0.6);
+    b.add(bx(0.7, 0.15, 0.23), m, 0, 0.745);
+    b.add(bx(0.76, 0.04, 0.27), m, 0, 0.84);
+    b.add(bx(0.42, 0.09, 0.19), m, 0, 0.905);
+    b.add(sph(0.095, 12, 8), m, 0, 0.95, 0, 0, 0, 0, 1, 0.68, 1);
+    b.add(cyl(0.004, 0.01, 0.07, 6), brassDeep, 0, 1.05);
+    return b.build();
+  },
+  greatwall(mat, key) {
+    const b = bag(); const m = mat(key); const sandstone = mat("sandstone");
+    const pts = [];
+    for (let i = 0; i <= 9; i++) {
+      const t = i / 9;
+      pts.push(new THREE.Vector3(-0.58 + t * 1.16, 0.05 + Math.sin(t * Math.PI * 1.4) * 0.045, Math.sin(t * Math.PI * 1.6) * 0.17));
+    }
+    for (let i = 0; i < 9; i++) {
+      const a = pts[i], p = pts[i + 1];
+      const len = a.distanceTo(p), mx = (a.x + p.x) / 2, my = (a.y + p.y) / 2, mz = (a.z + p.z) / 2;
+      const ry = -Math.atan2(p.z - a.z, p.x - a.x), rz = Math.atan2(p.y - a.y, Math.hypot(p.x - a.x, p.z - a.z));
+      b.add(bx(len, 0.075, 0.06), m, mx, my, mz, 0, ry, rz);
+      for (const f of [-0.32, 0, 0.32]) {
+        b.add(bx(0.028, 0.035, 0.062), m, mx + Math.cos(ry) * len * f, my + 0.055 - Math.sin(rz) * len * f, mz - Math.sin(ry) * len * f, 0, ry, rz);
+      }
+    }
+    for (const i of [0, 3, 6, 9]) {
+      b.add(bx(0.11, 0.19, 0.11), sandstone, pts[i].x, pts[i].y + 0.06, pts[i].z);
+      b.add(cone(0.095, 0.07, 4), sandstone, pts[i].x, pts[i].y + 0.19, pts[i].z, 0, Math.PI / 4, 0);
+    }
+    return b.build();
+  },
+  opera(mat, key) {
+    const b = bag();
+    b.add(bx(1.0, 0.03, 0.48), mat("sandstone"), 0, 0.015);
+    b.add(bx(0.94, 0.06, 0.42), mat("sandstone"), 0, 0.06);
+    const sm = mat(key, { side: THREE.DoubleSide });
+    const shellGeo = () => new THREE.SphereGeometry(0.3, 14, 9, 0, Math.PI, 0, Math.PI / 2);
+    [[-0.3, 1], [-0.08, 0.86], [0.12, 0.72], [0.3, 0.55]].forEach(([sx, s], i) => {
+      const px = sx, py = 0.09, pz = i % 2 ? 0.07 : -0.05;
+      b.add(shellGeo(), sm, px, py, pz, 0, Math.PI / 2, -0.35, 0.55 * s, 1.15 * s, 0.9 * s);
+      for (const f of [0.82, 1.0]) {
+        b.add(new THREE.TorusGeometry(0.3, 0.006, 4, 14, Math.PI), sm, px, py, pz, 0, Math.PI / 2, -0.35 + (f - 1) * 0.3, 0.55 * s * f, 1.15 * s * f, 0.9 * s);
+      }
+    });
+    return b.build();
   },
 };
 
@@ -500,15 +605,20 @@ function createGlobe(mount, opts) {
   const shadowTex = shadowTexture();
   const shadowMat = new THREE.MeshBasicMaterial({ map: shadowTex, transparent: true, depthWrite: false, polygonOffset: true, polygonOffsetFactor: -2 });
   const up = new THREE.Vector3(0, 1, 0);
+  const rise = [];
+  let lmTris = 0; const lmMax = { name: "", tris: 0 };
   for (const lm of LANDMARKS) {
     const [la, lo] = lm.show || [lm.lat, lm.lon];
     const n = latLonToVec3(la, lo, 1).normalize();
     const holder = new THREE.Group();
     holder.position.copy(n).multiplyScalar(R * 0.998);
     holder.quaternion.setFromUnitVectors(up, n);
-    const model = BUILD[lm.id](mat(lm.color));
+    const model = BUILD[lm.id](mat, lm.color);
     model.scale.setScalar(lm.scale);
     holder.add(model);
+    rise.push({ holder, model, n: n.clone(), base: lm.scale });
+    lmTris += model.userData.tris || 0;
+    if ((model.userData.tris || 0) > lmMax.tris) { lmMax.name = lm.name; lmMax.tris = model.userData.tris || 0; }
     const sh = new THREE.Mesh(new THREE.CircleGeometry(lm.scale * 0.75, 20), shadowMat);
     sh.rotation.x = -Math.PI / 2;
     sh.position.y = 0.004;
@@ -668,6 +778,16 @@ function createGlobe(mount, opts) {
     now += dt;
     const rm = reduced();
     const interacting = pointers.size > 0;
+    // rise-in: landmarks ease into place over 0.8 s on first load (skipped under reduced motion)
+    const rp = rm ? 1 : Math.min(now / 0.8, 1);
+    if (rp < 1 || rise.length) {
+      const e = 1 - Math.pow(1 - rp, 3);
+      for (const r of rise) {
+        r.model.scale.setScalar(r.base * (0.9 + 0.1 * e));
+        r.holder.position.copy(r.n).multiplyScalar(R * 0.998 - (1 - e) * 0.04);
+      }
+      if (rp >= 1) rise.length = 0;
+    }
 
     // inertia
     if (!interacting && !rm && omega.lengthSq() > C.inertiaStop * C.inertiaStop) {
@@ -717,6 +837,16 @@ const globes = [...document.querySelectorAll("[data-globe]")].map((m) => {
 });
 const refresh = () => globes.forEach((g) => g && g.refresh());
 toggle.addEventListener("change", refresh);
+const readout = document.createElement("div");
+readout.id = "globe-readout";
+readout.textContent = "globe stats: loading";
+document.body.appendChild(readout);
+setInterval(() => {
+  const g = globes[0];
+  if (!g) { readout.textContent = "globe stats: unavailable"; return; }
+  const st = g.stats();
+  readout.innerHTML = `<b>Desktop globe</b><br>triangles ${st.sceneTris.toLocaleString()} · draw calls ${st.calls}<br>landmarks ${st.tris.toLocaleString()} tris · largest ${st.maxName} ${Math.round(st.maxTris).toLocaleString()}`;
+}, 500);
 mq.addEventListener("change", () => { toggle.checked = mq.matches; refresh(); });
 
 /* contract table, drawn from the same constants */
@@ -736,7 +866,7 @@ const rows = [
   ["Keys", "arrows spin <code>0.18</code> rad, <code>+</code>/<code>=</code> and <code>-</code> zoom, <code>0</code> resets pose and zoom"],
   ["Pause", "36 px round button on the globe, toggles the slow turn and the plane; <code>aria-pressed</code>; hidden when motion is reduced"],
   ["Reduced motion", "no slow turn, no inertia, no plane, zoom snaps; production keeps its static disc fallback"],
-  ["Lights", `ambient <code>${hex(L0("ambient"))}</code> 1.15; sun <code>#ffe9c4</code> 1.6; rim <code>#dfe8d2</code> 0.45; brass rim <code>#d9b25a</code> 0.9 from behind`],
+  ["Lights", `ambient <code>${hex(C.lights.ambient[0])}</code> ${C.lights.ambient[1]}; sun <code>${hex(C.lights.sun[0])}</code> ${C.lights.sun[1]}; rim <code>${hex(C.lights.rim[0])}</code> ${C.lights.rim[1]}; brass rim <code>${hex(C.lights.brassRim[0])}</code> ${C.lights.brassRim[1]} from behind`],
   ["Halo", `back-face fresnel sphere x<code>${C.halo.radius}</code>, <code>${hex(C.halo.color)}</code>, power <code>${C.halo.power}</code>, strength <code>${C.halo.strength}</code>`],
   ["Ring and plane", `brass torus x<code>${C.ring.radius}</code>, opacity <code>${C.ring.opacity}</code>; parchment plane at <code>${C.plane.speed}</code> rad/s`],
   ["Landmark palette", Object.entries(PAL).map(([k, v]) => `<span class="sw" style="background:${hex(v)}"></span><code>${k} ${hex(v)}</code>`).join(" &nbsp; ")],
