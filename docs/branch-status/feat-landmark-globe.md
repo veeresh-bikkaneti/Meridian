@@ -48,6 +48,13 @@ Captures: `docs/motion-verify/landmark-globe-mockup-1280px.png` (1280 x 900, ful
 - Gates re-run (Playwright, Chromium): zero console errors PASS; zero `.hv5-globe-pause` elements on the page PASS; drag PASS; wheel zoom PASS; pinch (CDP) PASS; slow turn resumed after drag + 4.6 s idle PASS. The pause gate is gone with the button.
 - All four captures re-taken with no button: `landmark-globe-mockup-1280px.png`, `landmark-globe-mockup-390px.png`, `landmark-globe-in-prod-1280px.png`, `landmark-globe-in-prod-390px.png`. In-prod fit re-measured on the same staged build (main `cef9af3c`): mount boxes identical before and after the swap, horizontal overflow 0, map-card overlap unchanged (92 px desktop, none on phone), no injection errors. The 390 px in-prod capture was read by eye: no button beside the globe.
 
+## Addendum 3 — the grey ring is the Colosseum; full-page prod captures (Nov 19 2026)
+
+- Owner, on the in-prod captures: "i see a play/pause button on globe. if you can remove that" and "can you show full screen". Owner hold: remove nothing until he has seen the proof and the full pages.
+- Ring identity, proven on the staged prod page (main `cef9af3c`, mockup globe injected, pose frozen in the staging copy only): a raycast through the ring's centre hits the Colosseum holder's own geometry first (its merged model, then its contact disc), with the globe sphere behind; the element at that pixel is the canvas, not a DOM control; after a 140 px drag the ring moved with the surface (holder projection 1031,240 → 983,255) and re-foreshortened like a surface object. The ring is the Colosseum model — its open elliptical wall reads as a thick grey ring at globe size. Nothing was removed or changed; whether it is removed or restyled is the owner's call.
+- Full-page captures of the staged prod page with the new globe, first-visit overlays dismissed (tour card via its seen flag, read-aloud sheet via its stored "never" pref, Scout toast): `landmark-globe-in-prod-full-1280px.png` (1280 x 3474), `landmark-globe-in-prod-full-768px.png` (768 x 3674), `landmark-globe-in-prod-full-390px.png` (390 x 5992). No injection errors.
+- Observation from the 390 px full page: the phone hero card does not show the mountain illustration that the desktop hero carries; the globe, Expeditions Map card and the sections below all render. Pre-existing prod behaviour, not changed here.
+
 ## Next step
 
 - Owner reviews the mockup and the captures. Stage 2 (production code in the Home hero) starts only on the owner's approval.
