@@ -78,7 +78,12 @@ function FloatingBanner(props: {
       role="status"
       aria-label={props.label}
       className={`pointer-events-none absolute inset-x-3 z-40 mx-auto max-w-md ${
-        props.positionClass ?? "top-16"
+        // Default top offset clears the run screen's top chrome row at
+        // every width: the sound toggle + Contrast pill (bottom ≈56px)
+        // and the stacked score / End game cluster on narrow screens
+        // (bottom ≈110px). top-16 (64px) sat inside that cluster's
+        // footprint at ≤390px and left only ~8px above the toggles.
+        props.positionClass ?? "top-32"
       }`}
     >
       <div className={cardClass}>{props.children}</div>
