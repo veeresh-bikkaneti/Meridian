@@ -191,15 +191,15 @@ describe("the shared safeguards hold for every newly covered item", () => {
   it("win and lose sections stay mutually exclusive, so no answer line can double", () => {
     assert.ok(subjectCase.includes(") : loseRevealed ? ("), "the reveal is the solved branch's sibling");
     const solvedAt = subjectCase.indexOf('aria-label="You solved it"');
-    const loseAt = subjectCase.indexOf('data-testid={`${testIdPrefix}-lose-reveal`}');
+    const loseAt = subjectCase.indexOf('data-testid={`${subjectId}-lose-reveal`}');
     const cardAt = subjectCase.indexOf("<AnswerCard", loseAt);
     assert.ok(solvedAt >= 0 && loseAt > solvedAt && cardAt > loseAt, "solved, reveal, card — in that order");
   });
 
   it("the reveal is not a solve for any item: no done phase, no celebration, host still sees the wrong pick", () => {
     const lose = subjectCase.slice(
-      subjectCase.indexOf('data-testid={`${testIdPrefix}-lose-reveal`}'),
-      subjectCase.indexOf("<AnswerCard", subjectCase.indexOf('data-testid={`${testIdPrefix}-lose-reveal`}')),
+      subjectCase.indexOf('data-testid={`${subjectId}-lose-reveal`}'),
+      subjectCase.indexOf("<AnswerCard", subjectCase.indexOf('data-testid={`${subjectId}-lose-reveal`}')),
     );
     assert.ok(!lose.includes("You got it!"));
     assert.ok(!lose.includes("onCelebrate"));
