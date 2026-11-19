@@ -38,15 +38,18 @@ def apply_modifiers(objs):
         bpy.context.view_layer.objects.active = o
         bpy.ops.object.convert(target="MESH")
         tris = sum(len(p.vertices) - 2 for p in o.data.polygons)
-        if tris > 240:
+        # Cap each mesh at ~100 tris (floor 0.035): the pair renders
+        # at ~104 px in game, and the pair's 500 KB budget is mostly
+        # geometry — the old 240 / 0.12 cap landed the pair at ~880 KB.
+        if tris > 100:
             d = o.modifiers.new("dec", "DECIMATE")
-            d.ratio = max(0.12, 240 / tris)
+            d.ratio = max(0.035, 100 / tris)
             bpy.ops.object.convert(target="MESH")
         for p in o.data.polygons:
             p.use_smooth = True
 
 
-def bake_plaid(meshes, tag, size=1024):
+def bake_plaid(meshes, tag, size=512):
     plaid = [o for o in meshes if o.data.materials and o.data.materials[0].name.split(".")[0] in PLAID]
     if not plaid:
         return
