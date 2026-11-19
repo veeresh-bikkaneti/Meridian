@@ -108,22 +108,26 @@ describe("honest celebration bookkeeping", () => {
 describe("failure-mode guards — v2's lies cannot come back", () => {
   const read = (p: string) =>
     existsSync(new URL(p, import.meta.url)) ? readFileSync(new URL(p, import.meta.url), "utf8") : "";
-  it("GitHub is read only by the coverage-gated live feed; liveness is claimed only with its coverage", () => {
+  it("GitHub is read only by the coverage-gated live feed; the header never claims liveness", () => {
     // The v3 form of this guard banned the mechanism outright. The
     // owner's 2026-11-16 ruling restored the feed — what stays
     // banned is the LIE: a liveness claim without proven coverage.
     // So: the snapshot layer never fetches, the route never fetches
-    // (the feed module owns the check), and the one live wording in
-    // the route is the coverage-gated line, rendered only from a
-    // completed check (live-feed returns kind "live" solely when
-    // every linked record was covered).
+    // (the feed module owns the check), and the header carries no
+    // platform or coverage wording at all: its updated line is the
+    // snapshot's stamp alone, whatever the check found (owner
+    // ruling 2026-11-16).
     const snapshotLayer = [read("./board-data.ts"), read("./status-core.ts")].join("\n");
     assert.ok(!snapshotLayer.includes("api.github.com"), "the snapshot layer must never fetch GitHub");
     const route = read("../routes/board.tsx");
     assert.ok(!route.includes("api.github.com"), "the route must not fetch GitHub itself");
     assert.ok(
-      route.includes("Checked just now — every linked record checked"),
-      "the live line must state its coverage",
+      !route.includes("every linked record checked"),
+      "the header must not carry coverage wording",
+    );
+    assert.ok(
+      route.includes("Updated {formatUpdated(board.updatedAt)}"),
+      "the header keeps the snapshot's Updated stamp",
     );
     assert.ok(
       !route.includes("Live from GitHub"),
