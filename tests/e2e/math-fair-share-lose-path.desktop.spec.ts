@@ -4,18 +4,20 @@ import { serveBuiltArtifact } from "./helpers";
 /**
  * L1 lose path (feat/fair-share-lose-path) — desktop.
  *
- * One item only: a wrong pick on fair-share (Math, ages 7-10)
- * shows the answer-first line — "The answer is 3 — here's how." —
- * and then plays the item's existing act-3 narrated solved
- * summary (scene in its solved phase, the performance under way,
- * the full script standing as text). A right pick on fair-share
- * is the win path exactly as before.
+ * One item only: the second distinct wrong pick on fair-share
+ * (Math, ages 7-10) shows the answer-first line — "The answer
+ * is 3 — here's how." — and then plays the item's existing act-3
+ * narrated solved summary (scene in its solved phase, the
+ * performance under way, the full script standing as text). The
+ * first wrong pick keeps the plain "Not quite" feedback (owner
+ * decision, 2026-11-19). A right pick on fair-share is the win
+ * path exactly as before.
  *
  * AMENDED by feat/lose-path-all-items (the gate flip): the very
  * next case (unknown-factor) is no longer a no-reveal control —
- * it carries a summary too, so its wrong pick now reveals as
- * well, and the second half of the first test below asserts
- * exactly that. The no-reveal controls (a Math 10-18 overflow
+ * it carries a summary too, so its second distinct wrong pick
+ * now reveals as well, and the second half of the first test
+ * below asserts exactly that. The no-reveal controls (a Math 10-18 overflow
  * item with no summary, and a subject whose wrapper passes no
  * loseReveal hook on this base) live in
  * math-lose-path-all-items.desktop.spec.ts.
@@ -115,7 +117,7 @@ async function solveForwardTo(page: Page, item: string) {
   throw new Error(`never dealt ${item}`);
 }
 
-test("wrong pick on fair-share reveals the answer line, then the solved summary", async ({
+test("second wrong pick on fair-share reveals the answer line, then the solved summary", async ({
   page,
   context,
 }) => {
@@ -130,10 +132,22 @@ test("wrong pick on fair-share reveals the answer line, then the solved summary"
   await expect(page.getByTestId("math-lose-reveal")).toHaveCount(0);
   await expect(page.getByTestId("clue-summary-text")).toHaveCount(0);
 
-  // The wrong pick ("2"; the answer is "3").
+  // The FIRST wrong pick ("2"; the answer is "3") reveals
+  // nothing: "Not quite", picks live, scene still in setup.
   await page
     .getByTestId("math-answer-card")
     .getByRole("button", { name: "2", exact: true })
+    .click();
+  await expect(page.getByText(/Not quite/)).toBeVisible();
+  await expect(page.getByTestId("math-answer-card")).toBeVisible();
+  await expect(page.getByTestId("math-lose-reveal")).toHaveCount(0);
+  await expect(page.getByTestId("clue-summary-text")).toHaveCount(0);
+  await expect(scene).toHaveAttribute("data-phase", "setup");
+
+  // The SECOND distinct wrong pick ("4") reveals.
+  await page
+    .getByTestId("math-answer-card")
+    .getByRole("button", { name: "4", exact: true })
     .click();
 
   // 1. The answer-first line.
@@ -161,17 +175,27 @@ test("wrong pick on fair-share reveals the answer line, then the solved summary"
   await scene.screenshot({ path: `${SHOTS}/fair-share-lose-reveal-desktop.png` });
 
   // AMENDED by the gate flip: the very next case (unknown-factor)
-  // carries a summary too, so its wrong pick now reveals the same
-  // way — it is no longer a no-reveal control.
+  // carries a summary too, so its second distinct wrong pick now
+  // reveals the same way — it is no longer a no-reveal control.
   await page.getByRole("button", { name: /Next case/ }).click();
   await expect(page.getByTestId("math-case")).toHaveAttribute(
     "data-item",
     "math-number:division:unknown-factor",
   );
   await expect(page.getByTestId("math-answer-card")).toBeVisible();
+  // First wrong pick ("4"; the answer is "5"): no reveal. (This
+  // also proves the count reset with the case — fair-share's two
+  // wrongs must not carry over.)
   await page
     .getByTestId("math-answer-card")
     .getByRole("button", { name: "4", exact: true })
+    .click();
+  await expect(page.getByText(/Not quite/)).toBeVisible();
+  await expect(page.getByTestId("math-lose-reveal")).toHaveCount(0);
+  // Second distinct wrong pick ("6"): the reveal.
+  await page
+    .getByTestId("math-answer-card")
+    .getByRole("button", { name: "6", exact: true })
     .click();
   await expect(page.getByTestId("math-lose-answer")).toHaveText("The answer is 5 — here's how.");
   await expect(page.getByTestId("math-result")).toHaveCount(0);
