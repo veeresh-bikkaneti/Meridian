@@ -98,6 +98,36 @@ off origin/main `330925a9`. Re-skin commit `30728d87` (pushed).
   game phase/step in `viewForState`; pair is answer-blind), rig
   contract 0 missing joints per figure, no unrelated commits.
 
+## Second coordinator verification (independent of the pass above)
+
+- **Full unit suite:** `npm test` exit 0 — src suite 2,956 pass /
+  0 fail; `test:worker` + `typecheck:worker` green.
+- **Owner-config playthrough, actually played** (tap mode = read-aloud
+  "sometimes", band 8–10, sound on, case 137 Henderson via
+  `?loop-puzzle=137`, spec seeded the shipped prefs): **PASSED at
+  390×844 and at 1280×800.** Beats per leg: staging completes with
+  both rig3d canvases painted; clue 1 plays after ONE tap on Watson;
+  Shanghai miss deals clue 2; Henderson pick (12 ft — inside the
+  city's radius) closes the case; 390 solve shot shows the pair
+  celebrating by the gold star with the "…we did it together!"
+  bubble; 1280 shows the "Case closed — Your first discovery!" card
+  + confetti. Logs + shots:
+  `~/workspace/pixar-pair-evidence/captures/playthrough-after-{390,1280}.json`,
+  `play-after-{390,1280}-{clue1,clue2,solve}.png`.
+- **Second clean-context Silo QA (did not build it): PASS, all 6
+  gates** — find-Holmes 30/30, identity 30/30, clue-text coverage 0
+  across all 12 in-game/play captures, gaze/lean leak none (wrong-pick
+  frame poses identical to clue-1 frame; celebration only after the
+  reveal), plus its OWN played 390 playthrough (clean pass: first-tap
+  clue-1 read recorded, Shanghai miss → clue 2, Henderson solve,
+  celebration seen mid-play). Expression on the emotion-family
+  rubric: **28/30** (pass ≥26) — the two misses are Watson `think`
+  (reads search/examine; magnifier raised) and Watson `clap` (hand
+  holds the magnifier), both prop traits of the unchanged pose set.
+  Read together with the exact-token scoring above: the feelings
+  read; the token names are what stills can't carry — for both pairs
+  equally.
+
 ## Next step
 
 1. Owner's merge word on draft PR #538 (or his call on the disclosed
