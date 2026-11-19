@@ -227,7 +227,7 @@ const PAL = {
 const LANDMARKS = [
   { id: "eiffel", name: "Eiffel Tower", place: "Paris", lat: 48.858, lon: 2.294, show: [47.0, 2.8], scale: 0.22, color: "brassDeep" },
   { id: "bigben", name: "Big Ben", place: "London", lat: 51.501, lon: -0.125, show: [53.0, -2.0], scale: 0.19, color: "stone" },
-  { id: "colosseum", name: "Colosseum", place: "Rome", lat: 41.890, lon: 12.492, show: [41.9, 13.5], scale: 0.16, color: "stone" },
+  { id: "colosseum", name: "Colosseum", place: "Rome", lat: 41.890, lon: 12.492, show: [40.5, 15.0], scale: 0.25, color: "sandstone" },
   { id: "liberty", name: "Statue of Liberty", place: "New York", lat: 40.689, lon: -74.045, scale: 0.22, color: "sage" },
   { id: "cntower", name: "CN Tower", place: "Toronto", lat: 43.643, lon: -79.387, scale: 0.19, color: "stone" },
   { id: "goldengate", name: "Golden Gate Bridge", place: "San Francisco", lat: 37.820, lon: -122.478, scale: 0.28, color: "clay" },
@@ -353,25 +353,44 @@ const BUILD = {
   },
   colosseum(mat, key) {
     const b = bag();
+    // Restyled Nov 19 2026 (council spec, owner-adopted): the old build read as
+    // a grey ring at page size — pale stone, texture-only arches, shortest drum
+    // of the twelve. Now: warm sandstone, a taller drum, dark arch insets as
+    // real geometry, and a stepped broken upper tier for the ruin silhouette.
     const c = document.createElement("canvas");
     c.width = 1024; c.height = 256;
     const x = c.getContext("2d");
-    x.fillStyle = "#efe4c8"; x.fillRect(0, 0, 1024, 256);
-    x.fillStyle = "#b89a68";
+    x.fillStyle = "#dfc298"; x.fillRect(0, 0, 1024, 256);
+    x.fillStyle = "#b08954";
     x.fillRect(0, 0, 1024, 14);
-    x.fillStyle = "#7d6440";
-    for (let row = 0; row < 3; row++) for (let i = 0; i < 36; i++) {
-      const ax = i * 28.4 + 6, ay = 26 + row * 76;
-      x.beginPath(); x.moveTo(ax, ay + 58); x.lineTo(ax, ay + 18); x.arc(ax + 8, ay + 18, 8, Math.PI, 0); x.lineTo(ax + 16, ay + 58); x.fill();
-    }
+    x.fillStyle = "rgba(122, 90, 52, 0.35)";
+    for (let y = 62; y < 256; y += 64) x.fillRect(0, y, 1024, 5);
     const tex = new THREE.CanvasTexture(c);
     tex.colorSpace = THREE.SRGBColorSpace;
     tex.wrapS = THREE.RepeatWrapping;
     const wallMat = new THREE.MeshStandardMaterial({ map: tex, roughness: 0.9, side: THREE.DoubleSide });
-    b.add(new THREE.CylinderGeometry(0.5, 0.52, 0.34, 36, 1, true), wallMat, 0, 0.17, 0, 0, 0, 0, 1, 1, 0.8);
-    b.add(new THREE.CylinderGeometry(0.5, 0.5, 0.13, 36, 1, true, 0, Math.PI * 1.1), wallMat, 0, 0.405, 0, 0, 0, 0, 1, 1, 0.8);
-    b.add(new THREE.TorusGeometry(0.5, 0.013, 4, 36), mat(key), 0, 0.34, 0, Math.PI / 2, 0, 0, 1, 0.8, 1);
-    b.add(new THREE.CylinderGeometry(0.33, 0.33, 0.2, 28, 1, true), mat(key), 0, 0.1, 0, 0, 0, 0, 1, 1, 0.8);
+    const dark = new THREE.MeshStandardMaterial({ color: 0x4a3421, roughness: 0.95 });
+    const drum = (rt, rb, h, start, len) => new THREE.CylinderGeometry(rt, rb, h, 36, 1, true, start, len);
+    b.add(drum(0.5, 0.53, 0.46, 0, Math.PI * 2), wallMat, 0, 0.23, 0, 0, 0, 0, 1, 1, 0.8);
+    // stepped broken wedge: full height on one arc, stepping down twice
+    b.add(drum(0.5, 0.5, 0.22, 0, 1.5), wallMat, 0, 0.57, 0, 0, 0, 0, 1, 1, 0.8);
+    b.add(drum(0.5, 0.5, 0.14, 1.5, 1.05), wallMat, 0, 0.53, 0, 0, 0, 0, 1, 1, 0.8);
+    b.add(drum(0.5, 0.5, 0.07, 2.55, 0.8), wallMat, 0, 0.495, 0, 0, 0, 0, 1, 1, 0.8);
+    b.add(new THREE.TorusGeometry(0.5, 0.016, 4, 36), mat(key), 0, 0.46, 0, Math.PI / 2, 0, 0, 1, 0.8, 1);
+    // dark recessed arch insets as geometry, two rows all the way around
+    const aw = 0.062, ah = 0.115, ar = aw / 2;
+    const archShape = new THREE.Shape();
+    archShape.moveTo(-ar, -ah / 2);
+    archShape.lineTo(-ar, ah / 2 - ar);
+    archShape.absarc(0, ah / 2 - ar, ar, Math.PI, 0, true);
+    archShape.lineTo(ar, -ah / 2);
+    archShape.closePath();
+    const archGeo = new THREE.ShapeGeometry(archShape, 6);
+    for (const ay of [0.145, 0.325]) for (let i = 0; i < 16; i++) {
+      const t = ((i + 0.5) / 16) * Math.PI * 2;
+      b.add(archGeo.clone(), dark, 0.509 * Math.sin(t), ay, 0.8 * 0.509 * Math.cos(t), 0, t, 0);
+    }
+    b.add(new THREE.CylinderGeometry(0.33, 0.33, 0.3, 28, 1, true), mat(key), 0, 0.15, 0, 0, 0, 0, 1, 1, 0.8);
     b.add(cyl(0.46, 0.46, 0.03, 28), mat("sand"), 0, 0.015, 0, 0, 0, 0, 1, 1, 0.8);
     return b.build();
   },

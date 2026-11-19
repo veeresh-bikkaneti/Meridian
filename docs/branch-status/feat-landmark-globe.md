@@ -100,6 +100,15 @@ Captures: `docs/motion-verify/landmark-globe-mockup-1280px.png` (1280 x 900, ful
 - Colosseum evidence: docs/motion-verify/landmark-globe-europe-cluster-1280px.png (zoomed crop of the cluster at the new size, rest pose). Read by eye: Big Ben, the Eiffel Tower, the Pyramids and the Burj read as themselves; the Colosseum still reads as a grey ring, not a building — its arch texture is not discernible at this size and angle. Nothing removed or restyled; the owner's call comes after he sees the crop.
 - Captures overwritten: landmark-globe-in-prod-full-1280px.png, landmark-globe-in-prod-1280px.png; new: landmark-globe-europe-cluster-1280px.png. Contract section 3.6 Stage 2 item 4 carries the 792px zone into the production spec.
 
+## Addendum 9 — Colosseum restyle + recognition test (council spec, owner-adopted Nov 19 2026)
+
+- Model (docs/mockups/landmark-globe.html only; production untouched): scale 0.16 -> 0.25, colour stone -> sandstone, drawn-at (41.9, 13.5) -> (40.5, 15.0). Drum 0.34 -> 0.46 units tall in warm sandstone (strata-banded texture; the drawn texture arches are gone). Dark recessed arch insets as geometry: two rows of 16 arch shapes (#4a3421) around the drum. Stepped broken upper tier: arcs of 0.22 / 0.14 / 0.07. Inner wall 0.2 -> 0.3.
+- Measured [tested]: landmarks 7,602 tris total (+592, all of it the Colosseum), largest single Sydney Opera House 1,872, 51 draw calls, 19,442 scene tris/frame — inside every budget (5k per landmark, 40k total, 60 calls). Zero page/console errors on the staged prod page and the mockup page (the mockup page logs one expected fonts-proxy tunnel failure, same as Stage 1; the globe renders regardless).
+- Recognition test [tested]: test input = landmark-globe-in-prod-full-1280px.png (full page, natural size — owner rule Nov 19 2026: mocks are always full page; the cluster crop is supporting evidence only, labelled a zoom). Three clean-context readers who did not build the model, no hints beyond "name the landmarks you can see". All three named the Colosseum — A: "large round, open-topped amphitheatre with small arches around its wall"; B: "large round, open-topped cylindrical amphitheatre with small arched openings around its wall, centre-top of the globe"; C: "large open-topped circular amphitheatre drum with small arched openings around its wall". Controls: Eiffel Tower and Pyramids of Giza named by all three (Big Ben by all three, Burj Khalifa by two). PASS against the council bar (at least 2 of 3 for the in-lane proxy of "a 7-year-old names it at rest page size"); the owner's eye remains final.
+- Process note: the first reader dispatch lost its brief (spawn items silently took precedence over the message text, so the readers got the image with no question and returned layout audits). That round was voided; the test was re-run with the brief embedded next to the image. Only the re-run results are recorded above.
+- Captures overwritten: landmark-globe-europe-cluster-1280px.png (zoom on the restyled cluster, same framing slot), landmark-globe-in-prod-full-1280px.png, landmark-globe-in-prod-1280px.png, landmark-globe-mockup-1280px.png (1280x2984), landmark-globe-mockup-390px.png (622x3941 — dimensions match the previous capture).
+- Contract: 3.4 (table row, build detail, measured line, recognition-test note) and 3.6 Stage 2 item 5 carry the restyle into the production spec.
+
 ## Next step
 
 - Owner reviews the mockup and the captures. Stage 2 (production code in the Home hero) starts only on the owner's approval.
@@ -110,7 +119,7 @@ Captures: `docs/motion-verify/landmark-globe-mockup-1280px.png` (1280 x 900, ful
 
 ## Ruled out
 
-- Post-processing and a bigger geometry budget were not needed: the scene sits at 50 draw calls and 7,010 landmark triangles against limits of 60 and 40,000.
+- Post-processing and a bigger geometry budget were not needed: after the addendum-9 Colosseum restyle the scene sits at 51 draw calls and 7,602 landmark triangles against limits of 60 and 40,000.
 
 ## Graph
 
