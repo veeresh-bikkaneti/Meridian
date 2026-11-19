@@ -465,6 +465,18 @@
 /* --- Home footer entry (Phase 2 §1a) --- */
 
 .agep-footer {
+  /* The footer carries its own lift: positioned with z-index 1, it
+     paints above a host's fixed page backdrop (Home's .atlas-bg is
+     position:fixed with z-index 0 and an opaque gradient). Inside
+     Home's <main> the atlas lift (.atlas-home > :not(.atlas-bg)) used
+     to do this for the footer; once the shared footer moved after
+     </main> (footer standardization, 2026-11-18) a static footer sat
+     UNDER that backdrop — in the DOM, correctly coloured, and
+     invisible. No host lift is borrowed any more: every page's
+     footer lifts itself, and 1 stays below the header (30), the
+     overlays (40+) and the toast (90). */
+  position: relative;
+  z-index: 1;
   display: flex;
   justify-content: center;
   align-items: center;
