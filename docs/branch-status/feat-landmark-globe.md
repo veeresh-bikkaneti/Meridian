@@ -121,6 +121,17 @@ Captures: `docs/motion-verify/landmark-globe-mockup-1280px.png` (1280 x 900, ful
 
 - Post-processing and a bigger geometry budget were not needed: after the addendum-9 Colosseum restyle the scene sits at 51 draw calls and 7,602 landmark triangles against limits of 60 and 40,000.
 
+## Addendum 10 — globe moved off Grandpa (owner ruling, Nov 19 2026)
+
+- Done: staged in the mock only (production untouched). Owner's words: "move the globe since it is covering the mascot grandpa story teller." The desktop globe zone drops 180px: in the staging copy's home-v5.css, inside the @media (min-width: 1081px) block, the zone's bottom margin goes from the base -92px to -272px; the foot-anchored map card does not move, so the zone-to-card overlap grows by the same 180px. Globe size unchanged (792px zone, ~470px disc, ~667px ring).
+- Measured [tested]: Grandpa's boxes at 1280 — avatar x780-836, y218-274; bubble x612-836, y282-436. Before: disc circle overlapped the bubble box by 149px (1878: 129px). After: at 1280 the disc clears the bubble by +30px and the avatar by +192px; the orbit ring's true projected curve clears the bubble by +119px (conservative bounding-circle test reads -68px; the ring is an ellipse and that circle overstates it); the halo clears the bubble by +13px. At 1878: disc +50px vs the bubble, ring curve +138px. Zone top 125 -> 305px (1878: 145 -> 325px).
+- Rail fill after: content 1012px of hero 1192px at 1280; the freed 180px sits above the zone beside the hero copy as margin; space under the card 0px, card 492px content-height, foot flush with the hero's foot; overflow 0 at 1280 and 1878.
+- 768/390 unaffected: the change is scoped to min-width: 1081px; re-measured at 390 (zone 200px, card 484px, overflow 0, bubble box 740px above the zone).
+- Staging note: the injection harness logs one app-side page error (null innerHTML) when the production mount's children are cleared for the mockup swap; the globe mounts and renders correctly in every run. Artefact of the staging swap only — Stage 2 replaces the component properly.
+- Captures: landmark-globe-in-prod-full-1280px.png + landmark-globe-in-prod-1280px.png overwritten (full page only). Contract §3.6 item 6 carries the position + the mascot clearance rule into Stage 2.
+- Next step: owner's Stage 1 approval (including addenda 4-10) is the gate for Stage 2.
+- Ruled out: shrinking the globe back toward the 345px zone (the owner asked for a move, not a shrink); re-stretching the map card to fill the freed space (addendum 6 stands); a rightward shift (the disc already ends at the page's right edge at 1280).
+
 ## Graph
 
 - Add node: `docs/mockups/landmark-globe.html` (mockup, landmark globe) — documents the Home hero globe design.
