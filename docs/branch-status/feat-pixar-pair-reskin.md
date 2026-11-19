@@ -10,9 +10,9 @@ changes: same DetectivePair component, same `pair3d` flag, same rig +
 pose set (`pair3d-poses.ts`), same speech/mouth behaviour, same
 recorded beats. Draft PR; merge only on the owner's word.
 
-**State (2026-11-19): BUILD DONE at `30728d87` (pushed). Gates in
-progress.** Worktree `~/workspace/meridian-pixar-pair` off origin/main
-`330925a9`.
+**State (2026-11-19): GATES COMPLETE. Draft PR #538 open; STOPPED at
+the owner's merge word.** Worktree `~/workspace/meridian-pixar-pair`
+off origin/main `330925a9`. Re-skin commit `30728d87` (pushed).
 
 ## Done
 
@@ -52,23 +52,56 @@ progress.** Worktree `~/workspace/meridian-pixar-pair` off origin/main
   check:provenance PASSED · build:pages green · entry JS gzip
   319,601 B vs 323,865 B limit · detective unit suite 224/224.
 
+## Gates (all run on the branch tip)
+
+- **E2E smoke set** (hermetic, owner-config vehicle: tap mode, band
+  8–10, sound on): 20 passed / 1 failed. The failure —
+  detective-owner-spec mute-button geometry (spec line 143) — is
+  A/B-proven pre-existing: lone re-run on this branch fails
+  identically, and the same test on unmodified main `330925a9`
+  fails with the identical assertion. This diff touches no layout
+  code. Known main debt, not a regression.
+- **Owner-config playthrough + captures:** before/after sets at
+  1920×1080, 1878×751, 1280×800, 768×1024, 390×844, 320×568 (deck +
+  in-game + flank, 18 files each) in `~/workspace/pixar-pair-evidence/`
+  (`before/`, `after/`). Mid-case state confirmed: Watson beside the
+  active clue, Holmes at the bench, zero clue-text coverage.
+  Temporary capture specs deleted after use (never committed).
+- **Kid gates** (scored render studies, independent clean-context
+  seats, figures at real game height 104 px; keys sealed from seats):
+  - Find-Holmes / discrimination **30/30 PASS** — three independent
+    seats; trait groups programmatically identical to the key on
+    both sheets (F 30 cells, X 22 cells); zero ambiguous cells.
+  - Identity **30/30 PASS** under the game's definitions (Holmes =
+    red coat + deerstalker, no moustache, no magnifier; Watson =
+    blue coat + bowler + moustache + magnifier). Disclosed: every
+    un-briefed seat naming from cultural priors inverted the names
+    (the magnifier reads as "Holmes") — identical in the current
+    live pair; not a re-skin regression.
+  - Expression **gate NOT MET as operationalized — disclosed for the
+    owner's ship call.** Exact pose-token naming from stills: new
+    pair 8/22 (strict prose mapping) to 16/22 (pose-attentive read)
+    vs ≥26/30 equivalent. Baseline: the CURRENT pair scores 8/22
+    under the identical method, same hit cells, same miss pattern —
+    a property of the shared rig + pose set (no facial-expression
+    channel; mouth flap only; subtle idle/think variants are
+    near-duplicates), which this re-skin does not change. All seats
+    agree the big beats read clearly at game size: celebrate,
+    high-five, pout, gasp, clap. No re-runs were taken to chase the
+    number and the gate was not lowered.
+  - Zero clue-text coverage: observed first-hand at 1280 + 390 and
+    confirmed by Silo QA.
+- **Silo QA (clean context, did not build it): PASS on all 6 items**
+  — diff scope exact (the 5 files above), GLB sizes exact vs the
+  commit (old pair 878,728 B re-measured at `330925a9`), coverage
+  PASS, gaze/lean answer-leak PASS (pose selection keyed only to
+  game phase/step in `viewForState`; pair is answer-blind), rig
+  contract 0 missing joints per figure, no unrelated commits.
+
 ## Next step
 
-1. E2E smoke set (owner-spec / selection-read / tapmode-selection /
-   watson-walk): first run under heavy multi-crew VM load failed 4 —
-   1 documented pre-existing (owner-spec mute-ordering, main debt) +
-   3 environment-class (10-min click timeout, browser channel closed,
-   frame-starved walk sampling). A lone re-run decides; a parallel
-   independent run of the same set was in progress at last check.
-2. Owner-config playthrough (tap mode, band 8-10, 390 + 1280, real
-   taps, captures wait for both rig3d canvases) + before/after
-   in-game captures at 1920×1080, 1878×751, 1280×800, 768×1024,
-   390×844, 320×568 (temporary spec, deleted after use).
-3. Clean-context Silo QA: kid gates (find-Holmes ≥27/30, identity
-   ≥27/30, expression ≥26/30, zero clue-text coverage, gaze/lean
-   answer-leak check) scored on the game-size pack + playthrough
-   re-play.
-4. Draft PR with the evidence; STOP at the owner's merge word.
+1. Owner's merge word on draft PR #538 (or his call on the disclosed
+   expression-gate flag). Nothing merges or deploys without it.
 
 ## Open questions
 
