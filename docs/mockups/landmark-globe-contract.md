@@ -100,3 +100,5 @@ Pause button removed — owner ruling Nov 19 2026: the globe auto-loops; no play
 | Desktop hero | copy card left, globe right, map card tucked under the globe |
 | Phone frame | 390 px wide, globe zone 260 px |
 | Readout | small fixed corner readout outside the hero, live renderer triangles and draw calls plus landmark totals, refreshed twice a second (changed in Stage 1: new, mockup only) |
+
+Stage 2 production change: remove the hv5-worldmap SVG from the Expeditions Map card and tighten the card layout to match the approved mock (owner ruling Nov 19 2026). In the approved mock the card keeps its badge, label, heading and copy, the State / Country / Globe rows sit 16 px under the copy, and the card's padding rhythm is unchanged.

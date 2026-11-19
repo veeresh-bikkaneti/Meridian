@@ -55,6 +55,14 @@ Captures: `docs/motion-verify/landmark-globe-mockup-1280px.png` (1280 x 900, ful
 - Full-page captures of the staged prod page with the new globe, first-visit overlays dismissed (tour card via its seen flag, read-aloud sheet via its stored "never" pref, Scout toast): `landmark-globe-in-prod-full-1280px.png` (1280 x 3474), `landmark-globe-in-prod-full-768px.png` (768 x 3674), `landmark-globe-in-prod-full-390px.png` (390 x 5992). No injection errors.
 - Observation from the 390 px full page: the phone hero card does not show the mountain illustration that the desktop hero carries; the globe, Expeditions Map card and the sections below all render. Pre-existing prod behaviour, not changed here.
 
+## Addendum 4 — worldmap removed from the map card in the mocks (owner ruling, Nov 19 2026)
+
+- Owner ruling on his annotated desktop screenshot: with the full landmark globe coming, the dotted world-map SVG (`hv5-worldmap`) inside the Expeditions Map card is "just redundant and bloat". Removed from the mocks only; the Colosseum and every other element are untouched (the owner's hold stands for them).
+- Source check: the SVG renders in exactly one place — `src/components/game-app.tsx` (line 5201 on main `cef9af3c`), inside the `.hv5-mapcard` card between the copy and the edition rows, styled by `.home-v5 .hv5-worldmap` in `src/components/home-v5.css`. It renders nowhere else.
+- Staged mock: the staging checkout (main `cef9af3c`) was rebuilt with the SVG and its CSS rule removed and `.hv5-editions` margin-top set to 16 px, then the landmark globe was staged into the hero as before. Measured on the staged page at 1280 / 768 / 390: zero `.hv5-worldmap` elements, copy-to-first-row gap 16 px, badge, label, heading, copy and all three rows intact, horizontal overflow 0, zero injection errors. Card crops read by eye at all three widths: rows sit directly under the copy, no dead gap.
+- Captures re-taken: `landmark-globe-in-prod-full-1280px.png` (1280 x 3642), `landmark-globe-in-prod-full-768px.png` (768 x 3520), `landmark-globe-in-prod-full-390px.png` (390 x 5941), plus the hero-framed `landmark-globe-in-prod-1280px.png` and `landmark-globe-in-prod-390px.png`.
+- Contract: section 3.6 now carries the Stage 2 carry-over — production removes the `hv5-worldmap` SVG from the Expeditions Map card and tightens the card layout to match this approved mock. No production code changed in this addendum.
+
 ## Next step
 
 - Owner reviews the mockup and the captures. Stage 2 (production code in the Home hero) starts only on the owner's approval.
