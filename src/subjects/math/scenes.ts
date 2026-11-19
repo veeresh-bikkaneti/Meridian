@@ -13,8 +13,8 @@
  *
  * Each description also carries its SUMMARY: the narrated
  * walk-through of the solving (act 3), played after a correct
- * pick — and, for the one L1 lose-path item named at the foot of
- * this file, after a wrong pick too. The script lines are
+ * pick — and, on the L1 lose path (the gate at the foot of this
+ * file), after a wrong pick too. The script lines are
  * word-for-word the captions;
  * the clip timings were measured when the clips were rendered
  * (public/audio/subjects/manifest.json carries the same numbers).
@@ -32,6 +32,8 @@
  * text-only on the owner's word only.
  */
 import type { ClueSceneDescription } from "../shared/clue-scene-types.ts";
+import type { AgeGroup } from "../registry.ts";
+import { itemsForGroup } from "./items.ts";
 
 export type { ClueSceneDescription };
 export {
@@ -771,15 +773,26 @@ export function clueSceneFor(itemId: string): ClueSceneDescription | null {
   return MATH_CLUE_SCENES[itemId] ?? null;
 }
 
-/** The one item on the L1 lose path (feat/fair-share-lose-path):
- * a wrong pick on fair-share, ages 7-10, reveals its solved
- * summary — the same act-3 performance a correct pick plays.
- * Every other item and band returns false, so every other wrong
- * pick behaves exactly as before. Widening this gate to more
- * items is a separate, later step; it is deliberately a single
- * named item, not a per-kind or per-band rule. */
-export const LOSE_SUMMARY_ITEM_ID = "math-number:division:fair-share";
-
+/** The L1 lose path (feat/fair-share-lose-path, generalised by
+ * feat/lose-path-all-items, widened by the owner's decision of
+ * 2026-11-19): EVERY item reveals at the second distinct wrong
+ * answer — the counting and reveal live in SubjectCase, gated
+ * only on the entry question and on the subject passing its
+ * loseReveal hook at all. This function no longer gates the
+ * reveal: it names which items' summaries play as the
+ * explanation — the same act-3 performance a correct pick plays
+ * (the summary rendering and narration self-gate on the
+ * description carrying one). It is a property of the item, not a
+ * hand-maintained list: it is true exactly when the item is a
+ * playable item for the band asked about AND its scene description
+ * in this file carries a summary. An item with no description, or
+ * no summary on its description, returns false — its reveal
+ * carries the supportive and answer lines with no summary —
+ * including the held 18+ survey-check item, which carries no
+ * description by design. When a later wave adds descriptions
+ * (with summaries) for another band, those items satisfy this
+ * same property in their own band with no change here. */
 export function showsSummaryOnWrong(itemId: string, band: string): boolean {
-  return band === "7-10" && itemId === LOSE_SUMMARY_ITEM_ID;
+  if (!clueSceneFor(itemId)?.summary) return false;
+  return itemsForGroup(band as AgeGroup).some((item) => item.id === itemId);
 }

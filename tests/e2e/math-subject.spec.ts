@@ -111,7 +111,7 @@ test("no flag needed: the card is live and the picker shows the map", async ({
   expect(errors).toEqual([]);
 });
 
-test("7-10 case: wrong pick gives kind feedback, right pick reaches the result", async ({
+test("7-10 case: second wrong pick reveals the lose-path summary, next case's right pick reaches the result", async ({
   page,
   context,
 }) => {
@@ -125,12 +125,25 @@ test("7-10 case: wrong pick gives kind feedback, right pick reaches the result",
   await expect(mathCase).toHaveAttribute("data-item", "math-number:groups:skip-count");
   await page.screenshot({ path: `${SHOTS}/case-7-10-desktop.png` });
   await page.getByTestId("math-answer-card").screenshot({ path: `${SHOTS}/answer-card-desktop.png` });
-  // A wrong pick first: kind feedback, still on the same case.
+  // Wrong picks first. AMENDED by feat/lose-path-all-items (the
+  // L1 gate flip) and re-paced by the owner's 2026-11-19 ruling:
+  // skip-count carries a solved summary, but the FIRST wrong
+  // pick still stops at "Not quite" with the picks live — only
+  // the SECOND DISTINCT wrong pick reveals the answer line and
+  // the summary, and the reveal is not a solve (no result).
+  // Picks are inert after the reveal, so the right pick is
+  // exercised on the next case instead.
   const answers = page.getByTestId("math-answer-card");
   await answers.getByRole("button", { name: "6", exact: true }).click();
   await expect(page.getByText(/Not quite/)).toBeVisible();
+  await expect(page.getByTestId("math-lose-reveal")).toHaveCount(0);
   await expect(page.getByTestId("math-result")).toHaveCount(0);
-  await solveCase(page, "8");
+  await answers.getByRole("button", { name: "10", exact: true }).click();
+  await expect(page.getByTestId("math-lose-answer")).toHaveText("The answer is 8 — here's how.");
+  await expect(page.getByTestId("math-result")).toHaveCount(0);
+  await page.getByRole("button", { name: /Next case/ }).click();
+  await expect(mathCase).toHaveAttribute("data-item", "math-number:groups:equal-groups");
+  await solveCase(page, "24");
   await page.screenshot({ path: `${SHOTS}/result-7-10-desktop.png` });
   expect(errors).toEqual([]);
 });
@@ -282,12 +295,36 @@ test("detectivePair on (desktop, 7-10): pair mounts, wrong is silent, right cele
       window as unknown as { __audioEls: HTMLAudioElement[] }
     ).__audioEls.map((a) => a.currentSrc || a.src),
   );
-  expect(srcsAfterWrong).toEqual(srcsBefore);
+  // AMENDED by feat/lose-path-all-items (the L1 gate flip),
+  // re-paced by the owner's 2026-11-19 ruling: the FIRST wrong
+  // pick on skip-count no longer reveals anything — the solved
+  // summary (and its narration, skip-count.mp3, under
+  // /audio/subjects/) waits for the SECOND distinct wrong pick.
+  // The pair's own rule is unchanged — the pair requests NO clip
+  // on a wrong pick — so every element added by the first wrong
+  // pick must be the summary clip, and none may be a pair clip.
+  // (The pilot version asserted no new element at all.)
+  const addedByWrong = srcsAfterWrong.filter((src) => !srcsBefore.includes(src));
+  for (const src of addedByWrong) {
+    expect(src.endsWith("skip-count.mp3"), `unexpected clip after the wrong pick: ${src}`).toBe(true);
+    expect(src.includes("/audio/detective/"), `pair clip after the wrong pick: ${src}`).toBe(false);
+  }
 
-  // Right pick: Holmes celebrates while win-holmes sounds.
+  // The second distinct wrong pick ("10") brings the reveal up;
+  // picks are then inert, so the right pick below is taken on
+  // the next case (equal-groups, "24") instead of this one.
   await page
     .getByTestId("math-answer-card")
-    .getByRole("button", { name: "8", exact: true })
+    .getByRole("button", { name: "10", exact: true })
+    .click();
+  await expect(page.getByTestId("math-lose-reveal")).toBeVisible();
+
+  // Right pick: Holmes celebrates while win-holmes sounds.
+  await page.getByRole("button", { name: /Next case/ }).click();
+  await expect(page.getByTestId("math-answer-card")).toBeVisible();
+  await page
+    .getByTestId("math-answer-card")
+    .getByRole("button", { name: "24", exact: true })
     .click();
   await expect(pair).toHaveAttribute("data-signal", "correct");
   const seenRight = new Set<string>();

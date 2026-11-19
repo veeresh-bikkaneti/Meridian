@@ -64,17 +64,30 @@
  * section itself renders only when the case is done, nothing the
  * hook returns can be reached before the pick.
  *
- * L1 lose path (feat/fair-share-lose-path): a subject may also
- * pass a `loseReveal` hook naming the items whose WRONG pick
- * reveals the solved summary — an answer-first line, then the
- * same act-3 performance the win path plays (the scene in its
- * solved phase, the summary's standing text via `resultExtra`).
- * Math enables it for exactly one item (fair-share, ages 7-10).
+ * L1 lose path (feat/fair-share-lose-path, generalised by
+ * feat/lose-path-all-items, widened by the owner's decision of
+ * 2026-11-19): a subject may also pass a `loseReveal` hook —
+ * passing the hook at all is the subject's opt-in, and on the
+ * entry question EVERY item then counts distinct wrong answers
+ * and reveals at the SECOND one: a supportive line, an
+ * answer-first line, then the same act-3 performance the win
+ * path plays (the scene in its solved phase, the summary's
+ * standing text via `resultExtra`) where the item has a
+ * summary — the hook's return value names which items those
+ * are, and the summary rendering and narration already
+ * self-gate on the description carrying one, so an item with
+ * no summary reveals with the supportive and answer lines
+ * alone. The pacing is the owner's decision of 2026-11-19: the
+ * first wrong answer keeps today's "Not quite" feedback and
+ * live picks, so the player gets another go before the answer
+ * is given away; the counting rule lives in lose-reveal.ts.
+ * The supportive line is voiced first, through the shared
+ * voice channel, and the scene's solved performance waits
+ * until that clip ends (or is skipped) — see playSupportLine.
  * The reveal is not a solve: the phase never reaches "done", no
  * celebration fires, and the detective host still sees a wrong
  * pick. It fires only after a pick, so answer-blindness before
- * the choice is unchanged, and every item the hook does not name
- * keeps today's wrong-pick behaviour exactly.
+ * the choice is unchanged.
  */
 import { Suspense, lazy, useEffect, useRef, useState, type ReactNode } from "react";
 import type { AgeGroup, SubjectProps, UnitItem } from "../registry";
@@ -98,7 +111,27 @@ import { SiteFooter } from "@/components/ui/site-footer";
 import { ReadAloudPrefSettings } from "@/components/age-profile/ReadAloudPrefSettings";
 import type { ResetHistoryResult } from "@/game/reset-history";
 import { advanceCasePhase, type AnswerFor, type CasePhase } from "./answer";
+import { recordDistinctWrong, typedWrongKey } from "./lose-reveal";
 import { recordUnitComplete } from "./subject-progress";
+import { claimVoice, type VoiceClaim } from "@/game/audio/voice-channel";
+import { isSoundEnabled } from "@/game/audio/sfx";
+import { soundAudible } from "@/game/audio/play-guards";
+
+/** The supportive line shown — and voiced — ahead of the answer
+ * on every lose reveal (owner decision, 2026-11-19; the wording
+ * is new copy awaiting the owner's approval). One fixed line for
+ * every subject and item, so a child who did not solve the case
+ * hears the same kind words before the explanation. */
+export const LOSE_SUPPORT_LINE = "Good trying — this one was tricky. Let's look at how it works.";
+
+/** The supportive line's clip URL (public/audio/subjects/, where
+ * the subject summary clips live — the summaryClipUrl pattern in
+ * ClueScene.tsx). */
+function loseSupportClipUrl(): string {
+  const base = import.meta.env.BASE_URL ?? "/";
+  const withSlash = base.endsWith("/") ? base : `${base}/`;
+  return `${withSlash}audio/subjects/lose-support.mp3`;
+}
 
 // Holmes & Watson in the subject case: lazy, like the other pair
 // hosts, so the pair's chunk is fetched only when a subject case
@@ -136,14 +169,16 @@ export type SubjectCaseConfig = {
    * the reduced-motion flag and the band. Absent for subjects
    * without post-solve extras: no change. */
   resultExtra?: (item: UnitItem, reduced: boolean, band: AgeGroup) => ReactNode;
-  /** Optional L1 lose path: the items whose WRONG pick reveals
-   * the solved summary. Receives the item and the band; returning
-   * true means a wrong pick on that item (on the entry question)
-   * shows the answer-first line and plays the item's act-3
-   * summary — the scene in its solved phase, the standing text
-   * via `resultExtra` — instead of leaving the player at the
-   * answer card's "try again". Absent, or false for an item, the
-   * wrong pick behaves exactly as before. */
+  /** Optional L1 lose path: passing this hook at all opts the
+   * subject in — on the entry question, EVERY item's second
+   * distinct wrong answer reveals (the supportive line, the
+   * answer-first line, and the item's act-3 summary where one
+   * exists), while the first wrong answer (and any repeat of
+   * it) leaves the player at the answer card's "try again".
+   * The hook's return value no longer gates the counting: it
+   * names which items' summaries play as the explanation (the
+   * summary rendering and narration self-gate on that).
+   * Absent, every wrong answer behaves exactly as before. */
   loseReveal?: (item: UnitItem, band: AgeGroup) => boolean;
 };
 
@@ -190,10 +225,28 @@ export function SubjectCase({
   const items = itemsForGroup(band);
   const [index, setIndex] = useState(0);
   const [picked, setPicked] = useState<string | null>(null);
-  // L1 lose path: true once a wrong pick on a `loseReveal` item
-  // has revealed that item's solved summary for the current case.
-  // Reset with the case (nextCase); a correct pick never sets it.
+  // L1 lose path: true once the second distinct wrong answer on
+  // the entry question has revealed the answer for the current
+  // case — on every item, with the item's solved summary as the
+  // explanation where one exists. Reset with the case
+  // (nextCase); a correct pick never sets it.
   const [loseRevealed, setLoseRevealed] = useState(false);
+  // The supportive line's beat: false while its clip is playing
+  // (or waiting to start), true once it has ended or been
+  // skipped (sound off, claim denied, clip error, or the ~4s
+  // cap). Only the scene's phase waits on this — the reveal
+  // section itself renders the moment loseRevealed is set.
+  const [supportHeard, setSupportHeard] = useState(false);
+  const supportAudioRef = useRef<HTMLAudioElement | null>(null);
+  const supportClaimRef = useRef<VoiceClaim | null>(null);
+  const supportTimerRef = useRef<number | null>(null);
+  const supportGenRef = useRef(0);
+  // The distinct wrong answers given on the current case's entry
+  // question, keyed as lose-reveal.ts defines (a pick by its
+  // choice string, a typed answer by its parsed value, every
+  // unparseable typed answer under one shared key). The reveal
+  // fires when this set reaches LOSE_REVEAL_AFTER_WRONG.
+  const wrongKeysRef = useRef<Set<string>>(new Set());
   // "main" asks the entry; "followUp" asks its follow-up; "done"
   // shows the result with both answers.
   const [phase, setPhase] = useState<CasePhase>("main");
@@ -201,8 +254,75 @@ export function SubjectCase({
   // The scene's phase: the lose reveal performs the same solved
   // beat as a win — the case itself is not done, so nothing else
   // in this flow keys off this; it feeds the scene hook only.
-  const scenePhase: "setup" | "solved" = solved || loseRevealed ? "solved" : "setup";
+  const scenePhase: "setup" | "solved" =
+    solved || (loseRevealed && supportHeard) ? "solved" : "setup";
   const headingRef = useRef<HTMLHeadingElement | null>(null);
+
+  // ── The supportive line's voice ─────────────────────────────
+  // The reveal fires: the supportive clip plays FIRST, through
+  // the shared voice channel (the ClueScene contract — one
+  // voice at a time, an automatic claim that is denied proceeds
+  // silently), and only when it ends does supportHeard flip and
+  // the scene start its act-3 solved performance. Sound off, a
+  // denied claim, a clip error, or the ~4s cap all flip it at
+  // once, so the scene never waits on a voice that is not coming.
+  const clearSupportPlayback = () => {
+    if (supportTimerRef.current !== null) {
+      window.clearTimeout(supportTimerRef.current);
+      supportTimerRef.current = null;
+    }
+    if (supportAudioRef.current) {
+      supportAudioRef.current.pause();
+      supportAudioRef.current.removeAttribute("src");
+      supportAudioRef.current = null;
+    }
+    supportClaimRef.current?.release();
+    supportClaimRef.current = null;
+  };
+
+  const stopSupportPlayback = () => {
+    supportGenRef.current += 1;
+    clearSupportPlayback();
+  };
+
+  const playSupportLine = () => {
+    stopSupportPlayback();
+    const gen = supportGenRef.current;
+    if (!isSoundEnabled() || !soundAudible()) {
+      setSupportHeard(true);
+      return;
+    }
+    let finished = false;
+    const finish = () => {
+      if (finished || supportGenRef.current !== gen) return;
+      finished = true;
+      clearSupportPlayback();
+      setSupportHeard(true);
+    };
+    const claim = claimVoice("lose-support", finish, { userInitiated: false });
+    if (!claim) {
+      setSupportHeard(true);
+      return;
+    }
+    supportClaimRef.current = claim;
+    const audio = new Audio(loseSupportClipUrl());
+    supportAudioRef.current = audio;
+    audio.addEventListener("ended", finish);
+    audio.addEventListener("error", finish);
+    supportTimerRef.current = window.setTimeout(finish, 4000);
+    void audio.play().catch(finish);
+  };
+
+  // Leaving the case silences the supportive line and frees the
+  // channel (the ClueScene unmount rule).
+  useEffect(
+    () => () => {
+      supportGenRef.current += 1;
+      clearSupportPlayback();
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [],
+  );
 
   // Arrival focus, the LoopScreen pattern: land focus on the heading so
   // it is never stranded on the Home card that opened the case.
@@ -293,14 +413,27 @@ export function SubjectCase({
   };
 
   // Shared wrong-answer path for picks and typed numbers: the
-  // pick stands as feedback, and on a `loseReveal` item's entry
-  // question it also reveals the solved summary (the L1 lose
-  // path). The reveal is gated on the entry question only — a
-  // follow-up's wrong answer never reveals the entry's summary.
-  const onWrong = (value: string) => {
+  // pick stands as feedback, and on the entry question of a
+  // subject that passes a `loseReveal` hook the SECOND distinct
+  // wrong answer also reveals — on EVERY item, whether or not
+  // the item has a summary (the summary explains where one
+  // exists; the L1 lose path, paced per the owner's 2026-11-19
+  // decisions — see lose-reveal.ts). The hook's return value no
+  // longer gates the counting; passing the hook at all is the
+  // opt-in. `key` names the answer for distinctness: a pick keys
+  // by its choice string, a typed answer by its parsed value (or
+  // the shared unparseable key). The reveal is gated on the
+  // entry question only — a follow-up's wrong answer never
+  // counts and never reveals. When the reveal fires, the
+  // supportive line is voiced first (playSupportLine) and the
+  // scene's solved performance waits for it.
+  const onWrong = (value: string, key: string) => {
     setPicked(value);
-    if (phase === "main" && loseReveal?.(item, band)) {
-      setLoseRevealed(true);
+    if (phase === "main" && loseReveal) {
+      if (recordDistinctWrong(wrongKeysRef.current, key)) {
+        setLoseRevealed(true);
+        playSupportLine();
+      }
     }
   };
 
@@ -309,7 +442,7 @@ export function SubjectCase({
     if (choice === active.correct) {
       onCorrect();
     } else {
-      onWrong(choice);
+      onWrong(choice, choice);
     }
   };
 
@@ -318,16 +451,19 @@ export function SubjectCase({
     // A number entry carries its value; an unparseable typed answer
     // is wrong the same way a wrong pick is.
     if (value === null || active.value === undefined || value !== active.value) {
-      onWrong(raw);
+      onWrong(raw, typedWrongKey(value));
     } else {
       onCorrect();
     }
   };
 
   const nextCase = () => {
+    stopSupportPlayback();
     setIndex((i) => (i + 1) % items.length);
     setPicked(null);
     setLoseRevealed(false);
+    setSupportHeard(false);
+    wrongKeysRef.current.clear();
     setPhase("main");
   };
 
@@ -430,6 +566,9 @@ export function SubjectCase({
             className="loop-reveal mode-surface rounded-2xl border p-4"
             data-testid={`${subjectId}-lose-reveal`}
           >
+            <p className="mt-2 text-fg" data-testid={`${subjectId}-lose-support`}>
+              {LOSE_SUPPORT_LINE}
+            </p>
             <p className="mt-2 text-fg" data-testid={`${subjectId}-lose-answer`}>
               The answer is <strong>{answer.correct}</strong> — here's how.
             </p>

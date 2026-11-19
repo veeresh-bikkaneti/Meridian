@@ -104,21 +104,18 @@ async function filmCase(
   await expect(scene).not.toHaveAttribute("data-summary", /./);
   await page.waitForTimeout(3_800);
   await scene.screenshot({ path: `${SHOTS}/${slug}-setup-${PROJECT}.png` });
-  // A wrong pick changes nothing: still setup, still no summary.
-  // The one exception is fair-share, the L1 lose-path item
-  // (feat/fair-share-lose-path): its wrong pick now reveals the
-  // summary instead — that path is walked end to end by
-  // math-fair-share-lose-path.spec.ts, so this walk goes straight
-  // to the correct pick for fair-share and keeps the win path.
-  if (item !== "math-number:division:fair-share") {
-    await page
-      .getByTestId("math-answer-card")
-      .getByRole("button", { name: wrong, exact: true })
-      .click();
-    await expect(scene).toHaveAttribute("data-phase", "setup");
-    await expect(page.getByTestId("clue-summary-text")).toHaveCount(0);
-    await expect(page.getByTestId("clue-summary-play")).toHaveCount(0);
-  }
+  // A wrong pick used to change nothing here. Since the L1
+  // lose-path gate flip (feat/lose-path-all-items, generalising
+  // feat/fair-share-lose-path), EVERY case in this walk carries a
+  // solved summary, so a wrong pick now reveals the answer line
+  // and the summary instead of leaving the case in setup — that
+  // path is walked end to end by
+  // math-lose-path-all-items.desktop.spec.ts (and, for the pilot
+  // item, math-fair-share-lose-path.desktop.spec.ts). This walk
+  // therefore no longer takes a wrong pick at all: it goes
+  // straight to the correct pick and keeps the win path. (The
+  // `wrong` column of CASES is retained for the lose-path specs'
+  // reference and is no longer clicked here.)
   await page
     .getByTestId("math-answer-card")
     .getByRole("button", { name: correct, exact: true })
