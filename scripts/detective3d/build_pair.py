@@ -1,10 +1,12 @@
 """Holmes & Watson as 3D models, built by script in Blender (bpy).
 
-Art of record (DetectivePair.tsx): Holmes tall/thin, brick-red plaid
-coat (#a52a21 base, #bc3a2c bands), rust-orange deerstalker (#b45a1b),
-burgundy tie. Watson ~75% of his height and wider, royal-blue plaid
-(#27408b base, #33539f bands), navy bowler (#1d2f57), gold tie
-(#c9a227), cream vest, ginger moustache, magnifying glass. NO pipe.
+Art of record (owner's Pixar-style bench reference, approved
+2026-11-18): round soft proportions, big round heads. Holmes tall,
+brick-red plaid coat (#a52a21 base, #b03327 bands), brown-red check
+deerstalker, burgundy tie, long kind face. Watson ~75% of his height
+and wider, royal-blue plaid (#27408b base, #2f4690 bands) softened
+toward solid, dark navy bowler, gold tie (#c9a227), cream vest, dark
+brown moustache, magnifying glass. NO pipe.
 
 Usage: python build_pair.py <out_dir>
 Writes holmes.glb, watson.glb and preview PNGs.
@@ -227,76 +229,83 @@ def rig_arm(prefix, side, shoulder, elbow, wrist, r1, r2, coat, skin, root, hand
     return el, hand
 
 
-def eyes(prefix, head_c, head_r, spread, root, look=(0, -1, 0)):
+def eyes(prefix, head_c, head_r, spread, root, big=1.0):
     white = mat_solid("eye-white", "#fbf7ef", 0.3)
     dark = mat_solid("eye-dark", "#1b1612", 0.2)
     for sx in (-1, 1):
-        c = Vector(head_c) + Vector((sx * spread, -head_r * 0.86, head_r * 0.12))
-        sphere(f"{prefix}-eye-{sx}", c, (0.04, 0.022, 0.048), white, root, 1, 16)
-        sphere(f"{prefix}-pupil-{sx}", c + Vector((0, -0.018, -0.004)), (0.024, 0.012, 0.03), dark, root, 1, 12)
+        c = Vector(head_c) + Vector((sx * spread, -head_r * 0.94, head_r * 0.12))
+        sphere(f"{prefix}-eye-{sx}", c, (0.04 * big, 0.022 * big, 0.048 * big), white, root, 1, 16)
+        sphere(f"{prefix}-pupil-{sx}", c + Vector((0, -0.018 * big, -0.004)), (0.024 * big, 0.012 * big, 0.03 * big), dark, root, 1, 12)
+
+
+def cheeks(prefix, head_c, dx, dy, dz, scale, root):
+    """Rosy cheek mounds, named under the head prefix so the export
+    reparents them onto the head pivot with the rest of the face."""
+    cheek = mat_solid("cheek", "#e89a7d", 0.65)
+    for sx in (-1, 1):
+        sphere(f"{prefix}-head-cheek-{sx}", (head_c[0] + sx * dx, head_c[1] + dy, head_c[2] + dz), scale, cheek, root)
 
 
 # ------------------------------------------------------------------ Holmes
 def build_holmes(x=0.0):
     root = empty("Holmes")
     root.location = (x, 0, 0)
-    coat = mat_plaid("holmes-plaid", "#a52a21", "#bc3a2c", "#4a120e", scale=8)
+    coat = mat_plaid("holmes-plaid", "#a52a21", "#b03327", "#4a120e", scale=8)
     trousers = mat_solid("holmes-trousers", "#2b2a2e", 0.7)
     shoe = mat_solid("shoe", "#18140f", 0.35)
     skin = mat_solid("skin", SKIN, 0.55)
-    hat = mat_plaid("deerstalker", "#b45a1b", "#c9732e", "#5a2a0a", scale=14)
+    hat = mat_plaid("deerstalker", "#9a4a22", "#b85a28", "#4c2410", scale=12)
     tie = mat_solid("holmes-tie", "#6b1626", 0.5)
     hair = mat_solid("holmes-hair", "#2a1d14", 0.6)
     collar = mat_solid("collar", "#f4efe4", 0.5)
 
-    # Legs + shoes (tall and thin).
+    # Legs + shoes (tall, a touch less gaunt than the first pair).
     for sx in (-1, 1):
-        capsule_between(f"h-leg-{sx}", (sx * 0.11, 0, 0.1), (sx * 0.1, 0, 0.82), 0.075, 0.085, trousers, root)
+        capsule_between(f"h-leg-{sx}", (sx * 0.11, 0, 0.1), (sx * 0.1, 0, 0.82), 0.088, 0.098, trousers, root)
         sphere(f"h-shoe-{sx}", (sx * 0.11, -0.06, 0.06), (0.09, 0.17, 0.07), shoe, root)
-    # Coat: long, slightly flared to the knee, narrow shoulders.
-    capsule_between("h-coat", (0, 0, 0.5), (0, 0, 1.42), 0.2, 0.15, coat, root, 0, 24)
+    # Coat: long, slightly flared to the knee, soft round shoulders.
+    capsule_between("h-coat", (0, 0, 0.5), (0, 0, 1.42), 0.225, 0.168, coat, root, 0, 24)
     # Inverness cape over the shoulders — his silhouette.
-    capsule_between("h-cape", (0, 0, 1.08), (0, 0, 1.46), 0.29, 0.13, coat, root, 0, 24)
-    sphere("h-shoulders", (0, 0, 1.43), (0.15, 0.13, 0.06), coat, root)
+    capsule_between("h-cape", (0, 0, 1.08), (0, 0, 1.46), 0.315, 0.145, coat, root, 0, 24)
+    sphere("h-shoulders", (0, 0, 1.43), (0.175, 0.145, 0.065), coat, root)
     # Collar + tie.
-    sphere("h-collar", (0, -0.12, 1.45), (0.1, 0.06, 0.05), collar, root)
+    sphere("h-collar", (0, -0.13, 1.45), (0.115, 0.065, 0.055), collar, root)
     capsule_between("h-tie", (0, -0.2, 1.42), (0, -0.23, 1.2), 0.035, 0.05, tie, root, 1, 8)
     # Arms: one at the side, one raised to the chin (thinking).
     if RIG:
         for sx, side in ((1, "r"), (-1, "l")):
-            rig_arm("H", side, (sx * 0.2, 0, 1.36), (sx * 0.25, -0.01, 1.11), (sx * 0.28, -0.02, 0.9),
-                    0.06, 0.055, coat, skin, root, (0.055, 0.05, 0.065))
+            rig_arm("H", side, (sx * 0.215, 0, 1.36), (sx * 0.27, -0.01, 1.11), (sx * 0.3, -0.02, 0.9),
+                    0.068, 0.062, coat, skin, root, (0.055, 0.05, 0.065))
     else:
-        capsule_between("h-arm-r", (0.2, 0, 1.36), (0.27, -0.02, 0.92), 0.06, 0.055, coat, root)
-        sphere("h-hand-r", (0.28, -0.02, 0.86), (0.06, 0.05, 0.07), skin, root)
-        capsule_between("h-arm-l-up", (-0.2, 0, 1.36), (-0.27, -0.1, 1.08), 0.06, 0.055, coat, root)
-        capsule_between("h-arm-l-fore", (-0.28, -0.1, 1.08), (-0.1, -0.2, 1.5), 0.06, 0.055, coat, root)
+        capsule_between("h-arm-r", (0.215, 0, 1.36), (0.285, -0.02, 0.92), 0.068, 0.062, coat, root)
+        sphere("h-hand-r", (0.295, -0.02, 0.86), (0.06, 0.05, 0.07), skin, root)
+        capsule_between("h-arm-l-up", (-0.215, 0, 1.36), (-0.285, -0.1, 1.08), 0.068, 0.062, coat, root)
+        capsule_between("h-arm-l-fore", (-0.29, -0.1, 1.08), (-0.1, -0.2, 1.5), 0.068, 0.062, coat, root)
         sphere("h-hand-l", (-0.08, -0.22, 1.54), (0.055, 0.05, 0.065), skin, root)
-    # Neck + head: long face, sharp nose.
+    # Neck + head: big round head, long kind face, soft nose.
     capsule_between("h-neck", (0, 0, 1.45), (0, 0, 1.58), 0.055, 0.05, skin, root, 1, 12)
-    head_c, head_r = (0, 0, 1.74), 0.17
-    sphere("h-head", head_c, (0.15, 0.16, 0.2), skin, root)
-    bpy.ops.mesh.primitive_cone_add(vertices=12, radius1=0.035, radius2=0.005, depth=0.12,
-                                    location=(0, -0.19, 1.72), rotation=(math.radians(100), 0, 0))
-    nose = bpy.context.active_object
-    nose.name = "h-nose"
-    finish(nose, skin, 1, parent=root)
-    eyes("h", head_c, head_r, 0.06, root)
+    head_c, head_r = (0, 0, 1.71), 0.185
+    sphere("h-head", head_c, (0.185, 0.19, 0.215), skin, root)
+    # Long SOFT nose: a tapered capsule rounded at both ends (the
+    # reference's storybook nose, not the old sharp cone).
+    capsule_between("h-nose", (0, -0.155, 1.76), (0, -0.235, 1.685), 0.04, 0.027, skin, root, 1, 16)
+    eyes("h", head_c, head_r, 0.075, root, big=1.5)
+    cheeks("h", head_c, 0.102, -0.118, -0.09, (0.05, 0.036, 0.04), root)
     # Small closed smile: thinking, but friendly.
-    capsule_between("h-mouth", (-0.035, -0.148, 1.625), (0.035, -0.148, 1.632), 0.009, 0.009, mat_solid("h-mouth", "#7a2e24", 0.5), root, 1, 8)
-    # Brows: thin, a little raised — keen.
+    capsule_between("h-mouth", (-0.043, -0.176, 1.586), (0.043, -0.176, 1.594), 0.01, 0.01, mat_solid("h-mouth", "#7a2e24", 0.5), root, 1, 8)
+    # Brows: soft, a little raised — keen.
     for sx in (-1, 1):
-        capsule_between(f"h-brow-{sx}", (sx * 0.035, -0.152, 1.835), (sx * 0.095, -0.128, 1.83), 0.01, 0.008, hair, root, 1, 8)
+        capsule_between(f"h-brow-{sx}", (sx * 0.043, -0.181, 1.812), (sx * 0.117, -0.152, 1.807), 0.012, 0.01, hair, root, 1, 8)
     # Hair at the back/sides under the hat.
-    sphere("h-hair", (0, 0.03, 1.8), (0.16, 0.16, 0.12), hair, root)
+    sphere("h-hair", (0, 0.036, 1.775), (0.195, 0.19, 0.13), hair, root)
     # Deerstalker: crown + front and back peaks + tied ear flaps.
-    sphere("h-hat-crown", (0, 0, 1.9), (0.175, 0.185, 0.12), hat, root)
-    sphere("h-hat-peak-front", (0, -0.2, 1.86), (0.11, 0.09, 0.018), hat, root)
-    sphere("h-hat-peak-back", (0, 0.2, 1.86), (0.11, 0.09, 0.018), hat, root)
-    sphere("h-hat-bow", (0, 0, 2.02), (0.04, 0.03, 0.02), mat_solid("bow", "#7a3510", 0.6), root)
+    sphere("h-hat-crown", (0, 0, 1.95), (0.21, 0.215, 0.125), hat, root)
+    sphere("h-hat-peak-front", (0, -0.225, 1.9), (0.125, 0.1, 0.018), hat, root)
+    sphere("h-hat-peak-back", (0, 0.225, 1.9), (0.125, 0.1, 0.018), hat, root)
+    sphere("h-hat-bow", (0, 0, 2.06), (0.045, 0.032, 0.02), mat_solid("bow", "#7a3510", 0.6), root)
     for sx in (-1, 1):
         # Ear flaps tied up against the crown (not sticking out).
-        f = sphere(f"h-hat-flap-{sx}", (sx * 0.12, 0, 1.97), (0.015, 0.075, 0.05), hat, root)
+        f = sphere(f"h-hat-flap-{sx}", (sx * 0.15, 0, 2.0), (0.015, 0.085, 0.055), hat, root)
         f.rotation_euler = (0, math.radians(sx * -35), 0)
     return root
 
@@ -306,14 +315,14 @@ def build_watson(x=0.0):
     root = empty("Watson")
     root.location = (x, 0, 0)
     s = 0.75  # ~3/4 of Holmes's height, wider
-    coat = mat_plaid("watson-plaid", "#27408b", "#33539f", "#111d3d", scale=9)
+    coat = mat_plaid("watson-plaid", "#27408b", "#2f4690", "#111d3d", scale=8)
     trousers = mat_solid("watson-trousers", "#2a2f3d", 0.7)
     shoe = mat_solid("shoe", "#18140f", 0.35)
     skin = mat_solid("skin", SKIN, 0.55)
     vest = mat_solid("watson-vest", "#efe3c4", 0.6)
     tie = mat_solid("watson-tie", "#c9a227", 0.4)
-    hat = mat_solid("bowler", "#1d2f57", 0.35)
-    tache = mat_solid("moustache", "#c0652a", 0.7)
+    hat = mat_solid("bowler", "#152238", 0.35)
+    tache = mat_solid("moustache", "#4a2c17", 0.7)
     brass = mat_solid("brass", "#c9a227", 0.25)
     glass = bpy.data.materials.new("lens")
     glass.use_nodes = True
@@ -331,8 +340,8 @@ def build_watson(x=0.0):
         capsule_between(f"w-leg-{sx}", (sx * 0.13, 0, 0.09), (sx * 0.13, 0, z(0.8)), 0.09, 0.1, trousers, root)
         sphere(f"w-shoe-{sx}", (sx * 0.13, -0.06, 0.06), (0.1, 0.17, 0.07), shoe, root)
     # Round body: jacket + cream vest front.
-    sphere("w-body", (0, 0, z(1.1)), (0.33, 0.27, 0.36), coat, root)
-    sphere("w-vest", (0, -0.15, z(1.1)), (0.18, 0.14, 0.27), vest, root)
+    sphere("w-body", (0, 0, z(1.1)), (0.35, 0.285, 0.375), coat, root)
+    sphere("w-vest", (0, -0.15, z(1.1)), (0.19, 0.15, 0.28), vest, root)
     capsule_between("w-tie", (0, -0.27, z(1.4)), (0, -0.29, z(1.2)), 0.03, 0.045, tie, root, 1, 8)
     sphere("w-collar", (0, -0.13, z(1.43)), (0.11, 0.07, 0.05), mat_solid("collar", "#f4efe4", 0.5), root)
     # Arms: left holds the notebook, right lifts the magnifier.
@@ -380,19 +389,21 @@ def build_watson(x=0.0):
         lens = bpy.context.active_object
         lens.name = "w-glass-lens"
         finish(lens, glass, 0, parent=root)
-    # Head: round, friendly; moustache with a visible mouth beneath.
-    head_c, head_r = (0, 0, z(1.62)), 0.19
+    # Head: big, round and full; dark fuller moustache with a visible
+    # mouth beneath, rosy cheeks.
+    head_c, head_r = (0, 0, z(1.64)), 0.21
     capsule_between("w-neck", (0, 0, z(1.42)), (0, 0, z(1.5)), 0.07, 0.065, skin, root, 1, 12)
-    sphere("w-head", head_c, (0.19, 0.18, 0.19), skin, root)
-    sphere("w-nose", (0, -0.19, z(1.6)), (0.04, 0.04, 0.04), skin, root)
-    eyes("w", head_c, head_r, 0.07, root)
+    sphere("w-head", head_c, (0.225, 0.215, 0.215), skin, root)
+    sphere("w-nose", (0, -0.227, z(1.615)), (0.055, 0.052, 0.052), skin, root)
+    eyes("w", head_c, head_r, 0.082, root, big=1.35)
+    cheeks("w", head_c, 0.118, -0.155, -0.055, (0.068, 0.048, 0.052), root)
     for sx in (-1, 1):
-        sphere(f"w-tache-{sx}", (sx * 0.05, -0.18, z(1.555)), (0.06, 0.03, 0.022), tache, root)
-    sphere("w-mouth", (0, -0.175, z(1.51)), (0.035, 0.01, 0.012), mat_solid("mouth", "#7a2e24", 0.5), root)
-    # Bowler: dome + rolled brim.
-    sphere("w-hat-dome", (0, 0, z(1.78)), (0.17, 0.17, 0.13), hat, root)
-    torus("w-hat-brim", (0, 0, z(1.73)), 0.2, 0.025, hat, scale=(1, 1.05, 0.6), parent=root)
-    torus("w-hat-band", (0, 0, z(1.75)), 0.165, 0.018, mat_solid("hat-band", "#101a33", 0.4), parent=root)
+        sphere(f"w-tache-{sx}", (sx * 0.059, -0.215, z(1.55)), (0.075, 0.038, 0.028), tache, root)
+    sphere("w-mouth", (0, -0.209, z(1.495)), (0.042, 0.012, 0.014), mat_solid("mouth", "#7a2e24", 0.5), root)
+    # Bowler: dome + rolled brim, darker navy.
+    sphere("w-hat-dome", (0, 0, z(1.85)), (0.2, 0.2, 0.145), hat, root)
+    torus("w-hat-brim", (0, 0, z(1.735)), 0.225, 0.028, hat, scale=(1, 1.05, 0.6), parent=root)
+    torus("w-hat-band", (0, 0, z(1.755)), 0.195, 0.02, mat_solid("hat-band", "#0b1226", 0.4), parent=root)
     return root
 
 
