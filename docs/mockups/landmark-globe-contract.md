@@ -88,8 +88,9 @@ Measured on the built mockup (Chromium, renderer readout): landmarks 7,010 trian
 | Pinch rule | two touch pointers: distance ratio sets zoom, midpoint move tilts; browser pinch-zoom never fires on the canvas |
 | Touch scroll rule | canvas keeps touch-action: pan-y; a vertical one-finger swipe scrolls the page |
 | Keys | arrows spin 0.18 rad, + and - zoom, 0 resets pose and zoom |
-| Pause | 36 px round button on the globe, toggles the slow turn and the plane, aria-pressed, hidden when motion is reduced |
 | Reduced motion | no slow turn, no inertia, no plane movement, no rise-in; zoom snaps |
+
+Pause button removed — owner ruling Nov 19 2026: the globe auto-loops; no play/pause button on any card. (Owner change, not a Stage 1 tuning change.) The brief's statechart has no paused state any more, and the Stage 2 e2e pause test and the section 9 pause checklist item from the original brief are superseded by this ruling.
 
 ## 3.6 Layout
 

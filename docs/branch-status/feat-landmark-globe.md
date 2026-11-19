@@ -21,7 +21,7 @@ Verification ran against a copy of the page staged in /tmp with the two three.js
 | Wheel over the globe zooms | PASS (73.2% changed) |
 | Pinch (CDP two touch points moving apart) zooms | PASS (99.8% changed) |
 | Slow turn resumed after drag + 4.6 s idle | PASS (53.2% differ between shots 500 ms apart) |
-| Pause button stops the turn | PASS (0% differ, limit 0.5%) |
+| Pause button stops the turn | PASS at the time (0% differ, limit 0.5%) — superseded by Addendum 2: the button is removed |
 | Landmark triangles within budget | PASS: 7,010 total (limit 40,000) |
 | Largest single landmark | PASS: Sydney Opera House 1,872 (limit 5,000) |
 | Scene draw calls | PASS: 50 (limit 60) |
@@ -39,6 +39,14 @@ Captures: `docs/motion-verify/landmark-globe-mockup-1280px.png` (1280 x 900, ful
 - Added: importmap for three and three/addons, merged-geometry landmark builders, rise-in animation, live stats readout, data-URI favicon.
 - One line removed from the shared mockup: the `viewport-fit-sides` viewer meta tag, because the repo provenance check rejects AI tool names in added lines. The page keeps its standard viewport meta.
 - Every motion and input value, the landmark list and coordinates, both page sections and the contract section are unchanged. The on-page contract table's light and halo rows now read the real constant values.
+
+## Addendum 2 — pause button removed (owner ruling, Nov 19 2026)
+
+- Owner ruling on the 390 px in-prod capture: "playbutton shouldnt be displayed on any card", "since its autolooping". The pause/play button is removed from the design. This overrides the original brief's pause-button row (3.5), the `.hv5-globe-pause` layout rules (3.6), the paused state in the statechart (section 4), the Stage 2 e2e pause test (section 7) and the pause checklist item (section 9).
+- Mockup: button element, its creation and wiring in `createGlobe`, the `paused` flag's UI effects and the `.hv5-globe-pause` CSS are all removed. The slow turn, inertia, resume after 3 s, upright drift, plane and reduced-motion behaviour are unchanged; the loop still stops under reduced motion, and the production static-disc fallback is untouched. The on-page contract table no longer has a Pause row.
+- Contract: pause entries removed; the removal and the superseded brief items are recorded in section 3.5.
+- Gates re-run (Playwright, Chromium): zero console errors PASS; zero `.hv5-globe-pause` elements on the page PASS; drag PASS; wheel zoom PASS; pinch (CDP) PASS; slow turn resumed after drag + 4.6 s idle PASS. The pause gate is gone with the button.
+- All four captures re-taken with no button: `landmark-globe-mockup-1280px.png`, `landmark-globe-mockup-390px.png`, `landmark-globe-in-prod-1280px.png`, `landmark-globe-in-prod-390px.png`. In-prod fit re-measured on the same staged build (main `cef9af3c`): mount boxes identical before and after the swap, horizontal overflow 0, map-card overlap unchanged (92 px desktop, none on phone), no injection errors. The 390 px in-prod capture was read by eye: no button beside the globe.
 
 ## Next step
 

@@ -81,14 +81,6 @@ body {
 .hv5-globe-mount canvas { width: 100%; height: 100%; display: block; cursor: grab; touch-action: pan-y; outline: none; border-radius: 50%; }
 .hv5-globe-mount canvas:active { cursor: grabbing; }
 .hv5-globe-mount canvas:focus-visible { box-shadow: 0 0 0 3px var(--hv5-card), 0 0 0 5px var(--hv5-brown); }
-.hv5-globe-pause {
-  position: absolute; right: 8%; bottom: 12%; z-index: 3;
-  width: 36px; height: 36px; border-radius: 50%;
-  border: 1px solid var(--hv5-line-warm); background: var(--hv5-card); color: var(--hv5-brown-deep);
-  display: grid; place-items: center; cursor: pointer; box-shadow: var(--hv5-shadow-card);
-}
-.hv5-globe-pause:focus-visible { outline: 2px solid var(--hv5-brown); outline-offset: 2px; }
-.hv5-globe-pause svg { width: 14px; height: 14px; fill: currentColor; }
 .hv5-mapcard { position: relative; z-index: 1; background: var(--hv5-forest); color: var(--hv5-card); border-radius: 24px; padding: 110px 24px 24px; }
 .hv5-mapcard h4 { font-family: var(--hv5-display); font-size: 22px; margin: 0 0 4px; }
 .hv5-mapcard p { margin: 0; font-size: 13px; color: #d9e2d3; }
@@ -99,7 +91,6 @@ body {
 .phone .hv5-hero { padding: 28px 22px 32px; border-radius: 24px; }
 .phone .hv5-hero h3 { font-size: 30px; }
 .phone .hv5-globe-zone { width: 260px; margin: 6px auto 0; }
-.phone .hv5-globe-pause { right: 2%; bottom: 6%; }
 .notes { flex: 1 1 320px; min-width: 0; display: grid; gap: 10px; align-content: start; }
 .notes h3 { font-family: var(--hv5-display); margin: 0; font-size: 18px; }
 .notes ul { margin: 0; padding-left: 18px; color: var(--hv5-ink-soft); }
@@ -172,7 +163,7 @@ td code { font-family: var(--mono); font-size: 12px; color: var(--hv5-forest-dee
         <ul>
           <li>A sideways swipe spins the globe. An up or down swipe scrolls the page, so the globe never traps you.</li>
           <li>Pinch with two fingers to zoom. Move two fingers together to tilt it.</li>
-          <li>The round button pauses the slow turn. Turning stops on its own when reduced motion is on.</li>
+          <li>The globe turns on its own in a slow loop. Turning stops when reduced motion is on.</li>
           <li>Keyboard: <kbd>←</kbd> <kbd>→</kbd> <kbd>↑</kbd> <kbd>↓</kbd> spin, <kbd>+</kbd> <kbd>−</kbd> zoom, <kbd>0</kbd> resets.</li>
         </ul>
       </div>
@@ -645,7 +636,7 @@ function createGlobe(mount, opts) {
 
   // state
   const clock = new THREE.Clock();
-  let now = 0, lastInteract = -999, paused = false;
+  let now = 0, lastInteract = -999;
   const omega = new THREE.Vector3(); // inertia, axis * rad/s
   const pointers = new Map();
   let pinchStart = 0, pinchDist0 = 0, lastMid = null, lastMoveT = 0;
@@ -740,23 +731,6 @@ function createGlobe(mount, opts) {
     touch();
   });
 
-  // pause button (WCAG 2.2.2: moving content longer than 5 s needs a pause)
-  const btn = document.createElement("button");
-  btn.type = "button";
-  btn.className = "hv5-globe-pause";
-  const setBtn = () => {
-    btn.setAttribute("aria-pressed", String(paused));
-    btn.setAttribute("aria-label", paused ? "Play globe spin" : "Pause globe spin");
-    btn.innerHTML = paused
-      ? '<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 1.5v11l9-5.5z"/></svg>'
-      : '<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 1.5h3v11H3zM8 1.5h3v11H8z"/></svg>';
-  };
-  btn.addEventListener("click", () => { paused = !paused; setBtn(); kick(); });
-  setBtn();
-  mount.appendChild(btn);
-  const syncBtn = () => { btn.hidden = reduced(); };
-  syncBtn();
-
   // visibility and resize
   let visible = true, raf = 0;
   new IntersectionObserver((es) => { visible = es[0]?.isIntersecting ?? false; if (visible) kick(); }).observe(mount);
@@ -798,7 +772,7 @@ function createGlobe(mount, opts) {
 
     // slow turn returns after idle, with the pole easing back to its tilt
     const idle = now - lastInteract;
-    if (!interacting && !rm && !paused && idle > C.resumeAfter) {
+    if (!interacting && !rm && idle > C.resumeAfter) {
       const ramp = THREE.MathUtils.smoothstep(idle, C.resumeAfter, C.resumeAfter + C.resumeRamp);
       group.quaternion.multiply(tmpQ.setFromAxisAngle(up, C.autoSpin * ramp * dt));
       poleNow.copy(up).applyQuaternion(group.quaternion);
@@ -812,7 +786,7 @@ function createGlobe(mount, opts) {
     camera.position.z = dist;
 
     // plane on the ring
-    if (!rm && !paused) planeA += C.plane.speed * dt;
+    if (!rm) planeA += C.plane.speed * dt;
     const pr = R * C.ring.radius;
     plane.position.set(Math.cos(planeA) * pr, Math.sin(planeA) * pr, 0);
     plane.rotation.set(0, 0, planeA + Math.PI / 2);
@@ -821,7 +795,7 @@ function createGlobe(mount, opts) {
   }
   loop();
   return {
-    refresh() { syncBtn(); omega.set(0, 0, 0); kick(); },
+    refresh() { omega.set(0, 0, 0); kick(); },
     stats() { return { tris: lmTris, maxName: lmMax.name, maxTris: lmMax.tris, calls: renderer.info.render.calls, sceneTris: renderer.info.render.triangles }; },
   };
 }
@@ -863,7 +837,6 @@ const rows = [
   ["Upright drift", `while turning, the pole eases back to tilt at rate <code>${C.uprightEase}</code>/s`],
   ["Rest pose", `axial tilt <code>23.44°</code>, pitch toward viewer <code>${C.viewerPitch}</code> rad, facing longitude <code>${C.startLongitude}°</code>`],
   ["Keys", "arrows spin <code>0.18</code> rad, <code>+</code>/<code>=</code> and <code>-</code> zoom, <code>0</code> resets pose and zoom"],
-  ["Pause", "36 px round button on the globe, toggles the slow turn and the plane; <code>aria-pressed</code>; hidden when motion is reduced"],
   ["Reduced motion", "no slow turn, no inertia, no plane, zoom snaps; production keeps its static disc fallback"],
   ["Lights", `ambient <code>${hex(C.lights.ambient[0])}</code> ${C.lights.ambient[1]}; sun <code>${hex(C.lights.sun[0])}</code> ${C.lights.sun[1]}; rim <code>${hex(C.lights.rim[0])}</code> ${C.lights.rim[1]}; brass rim <code>${hex(C.lights.brassRim[0])}</code> ${C.lights.brassRim[1]} from behind`],
   ["Halo", `back-face fresnel sphere x<code>${C.halo.radius}</code>, <code>${hex(C.halo.color)}</code>, power <code>${C.halo.power}</code>, strength <code>${C.halo.strength}</code>`],
