@@ -473,6 +473,24 @@
   padding: 24px 16px max(32px, env(safe-area-inset-bottom));
 }
 
+/* Home renders SiteFooter after </main> (its Grandpa band spans the
+   full width, as #home-involved always did), so the links row takes
+   the wide page column itself: same cap and gutters as the home
+   <main> (px-5, md:px-9), centred. Hosts inside a column omit it. */
+.agep-footer-wide {
+  max-width: var(--page-wide);
+  margin-inline: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+@media (min-width: 768px) {
+  .agep-footer-wide {
+    padding-left: 36px;
+    padding-right: 36px;
+  }
+}
+
 /* --- Read-aloud preference settings (owner 2026-10-09: changeable later) --- */
 
 .agep-readaloud-settings {

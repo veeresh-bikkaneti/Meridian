@@ -18,13 +18,19 @@
  *   error page, the challenge menu). The test freezes this list: it
  *   may only shrink, and a cured screen leaves it in the same change
  *   that adopts the shell.
- * - `footer: "exception"`: the Why Learn picker only. It renders
- *   SiteFooter only while its host passes the grown-ups callback;
- *   its own follow-up closes that gap, and then this entry must
- *   shrink away. Screens with `footer: "none"` are registered
- *   no-footer screens (end-of-flow and in-game screens whose exit is
- *   the header's Home control); that is a design fact recorded per
- *   screen, not an exception list.
+ * - `footer: "exception"`: none remain. The Why Learn picker was
+ *   the one exception (it rendered SiteFooter only while its host
+ *   passed the grown-ups callback); the footer standardization
+ *   (2026-11-18) closed it — the picker renders the shared footer
+ *   unconditionally, and the frozen exception list below is empty.
+ *   Screens with `footer: "none"` are registered no-footer screens
+ *   (end-of-flow and in-game screens whose exit is the header's
+ *   Home control); that is a design fact recorded per screen, not
+ *   an exception list.
+ * - Footer "shell" also means Grandpa's band: SiteFooter renders
+ *   the coffee-run scene itself, and the registry test fails if
+ *   any other file imports that scene — the band can never become
+ *   a per-page copy.
  */
 
 export type ShellKind = "PageShell" | "SiteHeader" | "ErrorScreen" | "exception" | "baseline";
@@ -52,11 +58,11 @@ export const SHELL_REGISTRY: readonly ShellRegistryEntry[] = [
   { id: "root-layout", file: "src/routes/__root.tsx", header: "baseline", footer: "none", reason: "The router root layout (outlet + update toast), not a screen; screens render inside it." },
   // In-app screens
   { id: "geodetective", file: "src/game/loop/LoopScreen.tsx", header: "SiteHeader", needle: "<SiteHeader", footer: "shell", footerNeedle: "<SiteFooter" },
-  { id: "cold-trail", file: "src/game/coldtrail/TrailScreen.tsx", header: "SiteHeader", needle: "<SiteHeader", footer: "none", reason: "In-game screen; the header's Home control is its exit, no footer in the shipped design." },
-  { id: "why-learn-picker", file: "src/subjects/shared/SubjectPicker.tsx", header: "SiteHeader", needle: "<SiteHeader", footer: "exception", reason: "Renders SiteFooter only while the host passes the grown-ups callback; its own follow-up PR closes this. The one known footer exception (PR 3 Step 5)." },
-  { id: "subject-case", file: "src/subjects/shared/SubjectCase.tsx", header: "SiteHeader", needle: "<SiteHeader", footer: "none", reason: "In-case screen; the header carries Home and End game, no footer in the shipped design." },
+  { id: "cold-trail", file: "src/game/coldtrail/TrailScreen.tsx", header: "SiteHeader", needle: "<SiteHeader", footer: "shell", footerNeedle: "<SiteFooter" },
+  { id: "why-learn-picker", file: "src/subjects/shared/SubjectPicker.tsx", header: "SiteHeader", needle: "<SiteHeader", footer: "shell", footerNeedle: "<SiteFooter" },
+  { id: "subject-case", file: "src/subjects/shared/SubjectCase.tsx", header: "SiteHeader", needle: "<SiteHeader", footer: "shell", footerNeedle: "<SiteFooter" },
   { id: "region-list", file: "src/components/game-app.tsx", header: "SiteHeader", needle: "<SiteHeader", footer: "none", reason: "Drill-down list; the header carries Home/Back, no footer in the shipped design." },
-  { id: "review-complete", file: "src/components/game-app.tsx", header: "SiteHeader", needle: "<SiteHeader", footer: "none", reason: "End-of-flow screen; its in-flow primary Home button is the sanctioned end surface." },
+  { id: "review-complete", file: "src/components/game-app.tsx", header: "SiteHeader", needle: "<SiteHeader", footer: "shell", footerNeedle: "<SiteFooter" },
   { id: "challenge-complete", file: "src/components/game-app.tsx", header: "SiteHeader", needle: "<SiteHeader", footer: "none", reason: "End-of-flow screen; its in-flow primary Home button is the sanctioned end surface." },
   { id: "pool-error", file: "src/components/game-app.tsx", header: "ErrorScreen", needle: "<ErrorScreen", footer: "none", reason: "Failure branch; ErrorScreen frames itself with SiteHeader and its two exits." },
   { id: "map-error-boundary", file: "src/components/map-error-boundary.tsx", header: "ErrorScreen", needle: "ErrorScreen", footer: "none", reason: "ErrorScreen in embedded mode: a panel inside a screen that already carries the shell (PR 3 Step 3.9)." },
@@ -75,7 +81,7 @@ export const SHELL_REGISTRY: readonly ShellRegistryEntry[] = [
  *  against these, so adding an exception or a baseline entry fails
  *  until a person edits this record on purpose, in review. */
 export const HEADER_EXCEPTIONS: readonly string[] = ["in-run-hud"];
-export const FOOTER_EXCEPTIONS: readonly string[] = ["why-learn-picker"];
+export const FOOTER_EXCEPTIONS: readonly string[] = [];
 export const HEADER_BASELINE: readonly string[] = [
   "boot-splash",
   "challenge-menu",

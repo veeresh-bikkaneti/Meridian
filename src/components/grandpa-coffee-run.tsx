@@ -2,8 +2,8 @@ import { lazy, Suspense, useCallback, useEffect, useRef, useState } from "react"
 import { createPortal } from "react-dom";
 import "./grandpa-coffee-run.css";
 import "./age-profile/age-profile.css";
-import { TRAIL_QUIPS, playAsk, playTrail } from "./grandpa-ask";
-import { BODY as COMET_BODY, BODY_LIGHT as COMET_BODY_LIGHT } from "./comet-mascot";
+import { TRAIL_QUIPS, playAsk, playTrail } from "./grandpa-ask.ts";
+import { BODY as COMET_BODY, BODY_LIGHT as COMET_BODY_LIGHT } from "./comet-mascot.tsx";
 import {
   buildStraightTrail,
   buildTourPath,
@@ -11,10 +11,15 @@ import {
   type TourGeometry,
   type TourMeasurements,
   type TourStop,
-} from "./grandpa-tour";
+} from "./grandpa-tour.ts";
 
 /**
  * Grandpa's Tasting Tour — animated donation scene on the Chart Room home.
+ * Since the footer standardization (2026-11-18) the shared SiteFooter
+ * renders this scene in its band on every footer page; those hosts
+ * pass tastingTour={false} (the tour itself measures Home's cards
+ * and stays Home-only), so elsewhere he strolls the strip and
+ * settles.
  *
  * Veeresh 2026-10-07: the mobile (≤1023.5px) screenplay is a guided tasting
  * tour. Beats (mobile):
@@ -86,7 +91,12 @@ import {
  * - prefers-reduced-motion: settled scene ONLY — no trail, no walker
  * - the trail layer never intercepts input (pointer-events: none)
  */
-const KOFI_URL = import.meta.env.VITE_KOFI_URL?.trim() || undefined;
+// import.meta.env is a Vite-ism: in the node test bundles it is
+// absent entirely, so the read must be defensive (the same pattern
+// grandpa-ask.ts uses for its asset URLs) — since SiteFooter made
+// this module part of every shell render, a hard read here would
+// crash the shell's unit renders.
+const KOFI_URL = import.meta.env?.VITE_KOFI_URL?.trim() || undefined;
 
 const GrownUpGate = lazy(() =>
   import("./age-profile/GrownUpGate.tsx").then((m) => ({ default: m.GrownUpGate })),
@@ -1195,7 +1205,7 @@ function TourLayer({
 
 /* ================= The scene (strip finale + desktop) ================= */
 
-export function GrandpaCoffeeRun() {
+export function GrandpaCoffeeRun({ tastingTour = true }: { tastingTour?: boolean } = {}) {
   const [online, setOnline] = useState(
     typeof navigator === "undefined" ? true : navigator.onLine,
   );
@@ -1219,6 +1229,11 @@ export function GrandpaCoffeeRun() {
       matchMedia("(prefers-reduced-motion: reduce)").matches
     )
       return "seated";
+    // Footer hosts (every page but Home) run the strip only: the
+    // tasting tour measures Home's own cards, so it is Home's alone.
+    // With tastingTour off the scene still strolls, pours and
+    // settles in its band exactly as the desktop strip does.
+    if (!tastingTour) return "strip";
     if (isMobileViewport()) {
       // Return visits (same calendar day): no replay — already seated.
       if (readStorage(TOUR_LAST_DATE_KEY, "local") === localDateKey())
@@ -1287,6 +1302,14 @@ export function GrandpaCoffeeRun() {
     quipRef.current = 0;
     setQuip(0);
     playTrail(0);
+    // Since the footer standardization this scene also mounts
+    // inside other screens' unit renders, whose window stubs carry
+    // setTimeout but not setInterval. Where the interval timer is
+    // unavailable the quip simply never rotates — a silent no-op,
+    // like the audio guards in grandpa-ask.ts. In the browser
+    // window.setInterval always exists, so behaviour there is
+    // unchanged.
+    if (typeof window.setInterval !== "function") return;
     const id = window.setInterval(() => {
       quipRef.current = (quipRef.current + 1) % TRAIL_QUIPS.length;
       setQuip(quipRef.current);

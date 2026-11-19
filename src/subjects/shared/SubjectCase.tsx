@@ -94,6 +94,8 @@ import { HomeButton } from "@/components/ui/home-button";
 import { Pill } from "@/components/ui/pill";
 import { Button } from "@/components/ui/button";
 import { SiteHeader } from "@/components/ui/site-header";
+import { SiteFooter } from "@/components/ui/site-footer";
+import { ReadAloudPrefSettings } from "@/components/age-profile/ReadAloudPrefSettings";
 import type { ResetHistoryResult } from "@/game/reset-history";
 import { advanceCasePhase, type AnswerFor, type CasePhase } from "./answer";
 import { recordUnitComplete } from "./subject-progress";
@@ -262,6 +264,9 @@ export function SubjectCase({
         <p className="mt-4 text-fg">
           No {title.toLowerCase()} case is ready for this age band yet.
         </p>
+        {/* The shared footer (footer standardization, 2026-11-18),
+            here in its Stories-lead form, as on the case screen. */}
+        <SiteFooter lead={<ReadAloudPrefSettings />} />
       </main>
     );
   }
@@ -468,6 +473,11 @@ export function SubjectCase({
           one). The onResetHistory prop stays in the contract —
           GameApp and the wrappers still pass it — but the case no
           longer renders a control from it. */}
+      {/* The shared footer (footer standardization, 2026-11-18):
+          SiteFooter + Grandpa's band under the case, its tailored
+          lead the read-aloud "Stories:" settings — the same lead
+          Home carries. End game in the header stays the one exit. */}
+      <SiteFooter lead={<ReadAloudPrefSettings />} />
     </main>
   );
 }

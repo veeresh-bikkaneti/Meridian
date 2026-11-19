@@ -83,6 +83,7 @@ import {
 } from "./subject-progress";
 import { SiteHeader } from "@/components/ui/site-header";
 import { SiteFooter } from "@/components/ui/site-footer";
+import { Pill } from "@/components/ui/pill";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Atom, BookOpen, Calculator, FlaskConical, Globe2, Users, type LucideIcon } from "lucide-react";
 import { WhyLearnHero } from "./WhyLearnHero";
@@ -496,10 +497,13 @@ export default function SubjectPicker({
           Step 3.3) carrying the same grown-ups link (same label,
           aria-label and test id, from the shell component): the
           gate → AgePicker flow is hosted by GameApp, so the band
-          can be changed without leaving the picker. The current
-          band already reads in the sub line above ("Ages …"),
-          which follows the band state. */}
-      {onOpenAgeSettings ? <SiteFooter onGrownUps={onOpenAgeSettings} /> : null}
+          can be changed without leaving the picker. The footer
+          renders unconditionally (footer standardization,
+          2026-11-18 — the registry's one footer exception closes):
+          its tailored lead is the current band's pill, which
+          follows the band state, and Grandpa's band rides under
+          the links like on every other page. */}
+      <SiteFooter lead={<Pill>Ages {band}</Pill>} onGrownUps={onOpenAgeSettings} />
     </main>
   );
 }

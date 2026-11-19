@@ -20,14 +20,16 @@
  *
  * Fully static under prefers-reduced-motion: no trail, no walker. */
 
-#home-involved {
+#home-involved,
+.grandpa-band {
   position: relative;
   height: 168px;
 }
 /* Fail-closed: when the scene renders nothing (offline, or no Ko-fi URL
    configured), the band must not reserve space — the overlap spec asserts
    the strip collapses to zero height (scrollHeight slack < 48px). */
-#home-involved:empty {
+#home-involved:empty,
+.grandpa-band:empty {
   height: 0;
 }
 .grandpa-scene {
