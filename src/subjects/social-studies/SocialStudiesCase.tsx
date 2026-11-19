@@ -1,7 +1,7 @@
 /**
  * Social studies case flow — the component the social-studies subject
  * module's load() returns (contract I1). A thin wrapper over the
- * shared SubjectCase, passing the subject's title, test-id prefix,
+ * shared SubjectCase, passing the subject's title, subject id,
  * band items and answer lookup.
  *
  * Clue scenes (expansion wave 9): social studies also passes
@@ -45,7 +45,7 @@ export default function SocialStudiesCase(
   return (
     <SubjectCase
       title="Social studies"
-      testIdPrefix="social-studies"
+      subjectId="social-studies"
       itemsForGroup={itemsForGroup}
       answerFor={answerFor}
       scene={(item, phase, reduced, band) => {

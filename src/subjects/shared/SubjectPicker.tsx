@@ -46,9 +46,10 @@
  *
  * Ask-first, contained on this page (owner decision 2026-11-14,
  * "Ask first"; page design by Radhae, voice call 2026-11-15): the
- * band ask lives on this page itself — AgeBandControl under the
- * header shows the three band pills while no band is set, and a
- * "Change band" option once one is (the graduation path: there is
+ * band ask lives on this page itself — AgeBandControl sits in the
+ * hero card's title block, under the sub line: it shows the three
+ * band pills while no band is set, and one pill naming the
+ * selected band once one is (the graduation path: there is
  * no player-facing settings screen to graduate through). A subject
  * card's tap with no band set never opens a case under the store's
  * silently defaulted band: it takes the player back to the pills
@@ -74,6 +75,12 @@ import { CardFilm } from "@/components/card-film";
 import type { CelebrationSpec } from "@/components/celebration-copy";
 import { SUBJECT_CARD_MEDIA, SUBJECT_CARD_STILLS } from "@/assets/why-learn/subject-card-media";
 import { pickerRows } from "./picker-rows";
+import {
+  clearSubjectProgress,
+  onSubjectProgressChanged,
+  readSubjectProgress,
+  type SubjectProgress,
+} from "./subject-progress";
 import { SiteHeader } from "@/components/ui/site-header";
 import { SiteFooter } from "@/components/ui/site-footer";
 import { Pill } from "@/components/ui/pill";
@@ -171,6 +178,15 @@ export default function SubjectPicker({
   const [listFailed, setListFailed] = useState(false);
   const [opened, setOpened] = useState<{ title: string; Case: CaseComponent } | null>(null);
   const [openFailed, setOpenFailed] = useState<string | null>(null);
+  // Per-subject progress (subject-progress.ts): which subjects
+  // have a solved unit recorded. It drives each card's Reset
+  // control — disabled while a subject has nothing to reset —
+  // and follows the store's change bus, so a solve recorded by
+  // an opened case (or a reset tapped here) shows on return.
+  const [subjectProgress, setSubjectProgress] = useState<SubjectProgress>(() => readSubjectProgress());
+  const [resetNotice, setResetNotice] = useState<string | null>(null);
+
+  useEffect(() => onSubjectProgressChanged(() => setSubjectProgress(readSubjectProgress())), []);
   const headingRef = useRef<HTMLHeadingElement | null>(null);
   const bandBarRef = useRef<HTMLDivElement | null>(null);
 
@@ -299,7 +315,7 @@ export default function SubjectPicker({
 
   return (
     <main
-      className="mode-screen mx-auto flex min-h-dvh w-full max-w-(--page-narrow) flex-col px-5 pt-2 pb-8 why-learn-screen subject-picker-screen lg:max-w-none"
+      className="mode-screen mx-auto flex min-h-dvh w-full max-w-(--page-wide) flex-col px-5 pt-2 pb-8 why-learn-screen subject-picker-screen"
       data-testid="subject-picker"
       data-band={band}
     >
@@ -308,16 +324,20 @@ export default function SubjectPicker({
           lockup goes — and the resume control rides the header's
           back slot, beside Home, where ScreenShell's controls sat.
           The hero card is this screen's own content: the film and
-          its titles band keep the exact classes the hero-cap rules
-          in styles.css key on (.screen-hero / .screen-hero-band),
-          so the approved Variant B measurements are untouched.
+          its titles band keep the classes the picker hero rules in
+          styles.css key on (.screen-hero / .screen-hero-band).
           The page's top padding is 8px, not the old frame's 32px:
           the shell header's row carries its own vertical padding
           and is ~24px taller than the old home bar — the page
-          gives that height back here so the hero film and the
-          first card row keep their measured places (the hero-cap
-          spec pins them). */}
+          gives that height back here so the page keeps its
+          measured places. */}
       <SiteHeader onHome={onExit} status={null} mute={null} back={resumeControl} />
+      {/* D1 hero (owner-approved, 2026-11-18): the world band is
+          its own section in normal flow, directly under the
+          header — the picker-scoped rules in styles.css seat it
+          in its own layout space, so it can never overlap the
+          hero card below it. The card's own mt-4 is the gap. */}
+      <WhyLearnWorld />
       <div className="screen-hero mode-card mt-4 overflow-hidden">
         <WhyLearnHero />
         <div className="screen-hero-band px-5 pt-1 pb-5">
@@ -328,18 +348,21 @@ export default function SubjectPicker({
           <p className="mt-2 text-fg">
             {profileStatus === "unset" ? "Pick a subject" : `Pick a subject · Ages ${band}`}
           </p>
+          {/* The band ask, contained on this page (see the header
+              note): AgeBandControl lives here in the title block,
+              under the sub line — the three band pills while no
+              band is set, one selected-band pill once one is. It
+              owns the profile reads and writes; this page only
+              hosts it, beside the band the sub line names. */}
+          <div ref={bandBarRef} className="mt-3">
+            <AgeBandControl runInProgress={bandChangeRunInProgress} />
+          </div>
         </div>
       </div>
-      <WhyLearnWorld />
       <WhyLearnDrift />
-      {/* The band ask, contained on this page (see the header
-          note): AgeBandControl under the header — the three band
-          pills while no band is set, a "Change band" option once
-          one is. It owns the profile reads and writes; this page
-          only hosts it, beside the band the sub line names. */}
-      <div ref={bandBarRef} className="mt-5">
-        <AgeBandControl runInProgress={bandChangeRunInProgress} />
-      </div>
+      {/* The band control lives in the title block above — there
+          is deliberately no second control below the hero. One
+          control, one place. */}
       {released === null && !listFailed ? (
         <p className="mt-6 text-fg">Loading subjects…</p>
       ) : null}
@@ -364,8 +387,9 @@ export default function SubjectPicker({
           const media = SUBJECT_CARD_MEDIA[row.id];
           const stillUrl = SUBJECT_CARD_STILLS[row.id];
           const riseDelay = `${RISE_DELAYS_MS[i] ?? 1500}ms`;
+          const hasProgress = (subjectProgress[row.id]?.length ?? 0) > 0;
           return (
-            <li key={row.id} className="flex">
+            <li key={row.id} className="relative flex">
               <button
                 type="button"
                 className={`why-learn-card home-rise flex w-full flex-col p-4 text-left text-fg${ready ? "" : " is-soon"}${spotIndex === i ? " is-spot" : ""}`}
@@ -426,6 +450,27 @@ export default function SubjectPicker({
                   </span>
                 </span>
               </button>
+              {/* Per-subject Reset (owner, 2026-11-17: "reset should
+                  be allowed per subject"): a sibling of the card's
+                  open button, never nested inside it, resting at
+                  the card's bottom-right. One tap clears ONLY this
+                  subject's recorded progress; it is disabled while
+                  the subject has nothing recorded. The outcome is
+                  announced through the status line below the grid. */}
+              <Button
+                variant="secondary"
+                size="pill"
+                className="absolute right-3 bottom-3 z-10"
+                data-testid={`subject-reset-${row.id}`}
+                aria-label={`Reset ${row.title}`}
+                disabled={!hasProgress}
+                onClick={() => {
+                  clearSubjectProgress(row.id);
+                  setResetNotice(`${row.title} reset`);
+                }}
+              >
+                Reset
+              </Button>
             </li>
           );
         })}
@@ -433,6 +478,11 @@ export default function SubjectPicker({
       {openFailed ? (
         <p className="mt-3 text-sm text-fg" role="status">
           {openFailed} could not load just now. Try again in a moment.
+        </p>
+      ) : null}
+      {resetNotice ? (
+        <p className="mt-3 text-sm text-fg" role="status">
+          {resetNotice}
         </p>
       ) : null}
       {/* The game's "Start over" reset, alone in a separated block —

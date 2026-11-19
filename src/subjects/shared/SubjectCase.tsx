@@ -98,6 +98,7 @@ import { SiteFooter } from "@/components/ui/site-footer";
 import { ReadAloudPrefSettings } from "@/components/age-profile/ReadAloudPrefSettings";
 import type { ResetHistoryResult } from "@/game/reset-history";
 import { advanceCasePhase, type AnswerFor, type CasePhase } from "./answer";
+import { recordUnitComplete } from "./subject-progress";
 
 // Holmes & Watson in the subject case: lazy, like the other pair
 // hosts, so the pair's chunk is fetched only when a subject case
@@ -107,8 +108,10 @@ const SubjectDetectiveHost = lazy(() => import("./SubjectDetectiveHost"));
 export type SubjectCaseConfig = {
   /** Subject title as kids see it ("Math", "Physics", …). */
   title: string;
-  /** Prefix for data-testids ("math" keeps math-case, math-result, …). */
-  testIdPrefix: string;
+  /** The registry subject id: the key progress is recorded under,
+   * and the prefix for data-testids ("math" keeps math-case,
+   * math-result, …). */
+  subjectId: string;
   /** The subject's playable items for one age band, in deal order. */
   itemsForGroup: (group: AgeGroup) => UnitItem[];
   /** The subject's answer lookup, keyed by item id. */
@@ -146,7 +149,7 @@ export type SubjectCaseConfig = {
 
 export function SubjectCase({
   title,
-  testIdPrefix,
+  subjectId,
   itemsForGroup,
   answerFor,
   lead,
@@ -277,6 +280,12 @@ export function SubjectCase({
   const onCorrect = () => {
     setPhase((p) => advanceCasePhase(answer, p, true));
     setPicked(null);
+    // Per-subject progress (subject-progress.ts): a correct pick
+    // in the main phase solves the unit, so record it under this
+    // case's registry subject id — never a test id, so renaming a
+    // test id can't orphan a player's saved progress.
+    // The store's set semantics make a repeat record a no-op.
+    if (phase === "main") recordUnitComplete(subjectId, item.id);
     if (phase === "main" && onCelebrate && !hasCelebratedFirstWin()) {
       markFirstWinCelebrated();
       onCelebrate(celebrationSpec("mystery-solved", "first-win"));
@@ -325,7 +334,7 @@ export function SubjectCase({
   return (
     <main
       className="mode-screen mx-auto flex min-h-dvh w-full max-w-(--page-narrow) flex-col px-5 pt-2 pb-8 why-learn-screen subject-case-screen"
-      data-testid={`${testIdPrefix}-case`}
+      data-testid={`${subjectId}-case`}
       data-band={band}
       data-item={item.id}
     >
@@ -386,7 +395,7 @@ export function SubjectCase({
           <section
             aria-label="You solved it"
             className="loop-reveal mode-surface rounded-2xl border p-4"
-            data-testid={`${testIdPrefix}-result`}
+            data-testid={`${subjectId}-result`}
           >
             <p className="verdict-headline loop-verdict-headline">🎯 You got it!</p>
             <p className="mt-2 text-fg">
@@ -399,7 +408,7 @@ export function SubjectCase({
               </p>
             ) : null}
             {resultExtra ? resultExtra(item, reduced, band) : null}
-            <p className="mt-3 text-fg" data-testid={`${testIdPrefix}-used-in`}>
+            <p className="mt-3 text-fg" data-testid={`${subjectId}-used-in`}>
               {usedInLine(item.useElsewhere)}
             </p>
             <div className="mt-4 grid gap-2">
@@ -419,13 +428,13 @@ export function SubjectCase({
           <section
             aria-label="The answer, and how it solves"
             className="loop-reveal mode-surface rounded-2xl border p-4"
-            data-testid={`${testIdPrefix}-lose-reveal`}
+            data-testid={`${subjectId}-lose-reveal`}
           >
-            <p className="mt-2 text-fg" data-testid={`${testIdPrefix}-lose-answer`}>
+            <p className="mt-2 text-fg" data-testid={`${subjectId}-lose-answer`}>
               The answer is <strong>{answer.correct}</strong> — here's how.
             </p>
             {resultExtra ? resultExtra(item, reduced, band) : null}
-            <p className="mt-3 text-fg" data-testid={`${testIdPrefix}-used-in`}>
+            <p className="mt-3 text-fg" data-testid={`${subjectId}-used-in`}>
               {usedInLine(item.useElsewhere)}
             </p>
             <div className="mt-4 grid gap-2">
@@ -448,7 +457,7 @@ export function SubjectCase({
             choices={active.choices}
             picked={picked}
             onPick={pick}
-            testId={`${testIdPrefix}-answer-card`}
+            testId={`${subjectId}-answer-card`}
             kind={active.kind ?? "choice"}
             onNumber={checkNumber}
             moveFocus={phase === "followUp"}

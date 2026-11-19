@@ -42,7 +42,7 @@ export default function GeneralKnowledgeCase(
   return (
     <SubjectCase
       title="General knowledge"
-      testIdPrefix="general-knowledge"
+      subjectId="general-knowledge"
       itemsForGroup={itemsForGroup}
       answerFor={answerFor}
       scene={(item, phase, reduced, band) => {
