@@ -117,6 +117,11 @@ const KETTLE_HOLD_MS = 4000;
 // --- Tasting-tour tuning (mobile) ---
 const MOBILE_QUERY = "(max-width: 1023.5px)";
 const TOUR_LAST_DATE_KEY = "meridian.grandpaTour.lastDate";
+/** Once per session (owner, 2026-11-19): the footer scene mounts on every
+ *  page, so without this flag each route change remounts the scene and
+ *  replays the walk + trail lines. Set when a walk begins; any later mount
+ *  in the same session starts seated. A new session walks again. */
+const WALKED_SESSION_KEY = "meridian.grandpa.walkedSession";
 /** Total journey hard cap, measured from the first step. */
 const TOUR_JOURNEY_CAP_MS = 12_000;
 /** Normal journey target — comfortably under the cap. */
@@ -1229,6 +1234,9 @@ export function GrandpaCoffeeRun({ tastingTour = true }: { tastingTour?: boolean
       matchMedia("(prefers-reduced-motion: reduce)").matches
     )
       return "seated";
+    // This session already had its one walk (any page, any viewport):
+    // start at the seated finale, no replay.
+    if (readStorage(WALKED_SESSION_KEY, "session") === "1") return "seated";
     // Footer hosts (every page but Home) run the strip only: the
     // tasting tour measures Home's own cards, so it is Home's alone.
     // With tastingTour off the scene still strolls, pours and
@@ -1257,6 +1265,15 @@ export function GrandpaCoffeeRun({ tastingTour = true }: { tastingTour?: boolean
       window.removeEventListener("online", goOnline);
       window.removeEventListener("offline", goOffline);
     };
+  }, []);
+
+  // The session's one walk starts with this mount: record it now, so
+  // navigating away mid-walk (or the tour stepping down to the strip)
+  // still counts — the next page mounts seated instead of replaying.
+  const mountModeRef = useRef(mode);
+  useEffect(() => {
+    if (mountModeRef.current === "strip" || mountModeRef.current === "tour")
+      writeStorage(WALKED_SESSION_KEY, "1", "session");
   }, []);
 
   // Beat machine for the "strip" mode: the previous behavior — desktop's
@@ -1297,11 +1314,19 @@ export function GrandpaCoffeeRun({ tastingTour = true }: { tastingTour?: boolean
   // playTrail inside the setQuip updater would be a side effect inside a
   // state updater (double-fires under StrictMode dev).
   const quipRef = useRef(0);
+  // The reset + opening line belong to the FIRST entry into "walking" for
+  // a walk only: the beat machine returns kettle → walking mid-walk, and
+  // re-entering must continue the rotation from quipRef, never replay
+  // line 0.
+  const quipStartedRef = useRef(false);
   useEffect(() => {
     if (reducedMotion || beat !== "walking" || mode === "seated") return;
-    quipRef.current = 0;
-    setQuip(0);
-    playTrail(0);
+    if (!quipStartedRef.current) {
+      quipStartedRef.current = true;
+      quipRef.current = 0;
+      setQuip(0);
+      playTrail(0);
+    }
     // Since the footer standardization this scene also mounts
     // inside other screens' unit renders, whose window stubs carry
     // setTimeout but not setInterval. Where the interval timer is
