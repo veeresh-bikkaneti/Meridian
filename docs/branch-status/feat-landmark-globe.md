@@ -37,6 +37,7 @@ Captures: `docs/motion-verify/landmark-globe-mockup-1280px.png` (1280 x 900, ful
 - Liberty flame: brass emissive #5a3d0a → brass with emissive #cc7722 at 0.7, flame shape.
 - Colosseum arch texture: 512 x 128 canvas, 24 arches per row → 1024 x 256, 36 arches per row.
 - Added: importmap for three and three/addons, merged-geometry landmark builders, rise-in animation, live stats readout, data-URI favicon.
+- One line removed from the shared mockup: the `viewport-fit-sides` viewer meta tag, because the repo provenance check rejects AI tool names in added lines. The page keeps its standard viewport meta.
 - Every motion and input value, the landmark list and coordinates, both page sections and the contract section are unchanged. The on-page contract table's light and halo rows now read the real constant values.
 
 ## Next step
