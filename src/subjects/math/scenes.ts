@@ -774,23 +774,24 @@ export function clueSceneFor(itemId: string): ClueSceneDescription | null {
 }
 
 /** The L1 lose path (feat/fair-share-lose-path, generalised by
- * feat/lose-path-all-items): on an item that HAS a solved
- * summary, the second distinct wrong answer reveals that
- * summary — the same act-3 performance a correct pick plays
- * (the pacing is SubjectCase's, per the owner's 2026-11-19
- * decision; this gate only names WHICH items are on the path).
- * The gate is a property of the item, not a
+ * feat/lose-path-all-items, widened by the owner's decision of
+ * 2026-11-19): EVERY item reveals at the second distinct wrong
+ * answer — the counting and reveal live in SubjectCase, gated
+ * only on the entry question and on the subject passing its
+ * loseReveal hook at all. This function no longer gates the
+ * reveal: it names which items' summaries play as the
+ * explanation — the same act-3 performance a correct pick plays
+ * (the summary rendering and narration self-gate on the
+ * description carrying one). It is a property of the item, not a
  * hand-maintained list: it is true exactly when the item is a
  * playable item for the band asked about AND its scene description
- * in this file carries a summary. On this branch (rebased onto the
- * merged wave train) that is every Math item in every band whose
- * description carries a summary; an item with no description, or
- * no summary on its description, returns false, so its wrong pick
- * behaves exactly as before — including the held 18+ survey-check
- * item, which carries no description by design. When a later wave
- * adds descriptions (with summaries) for another band, those items
- * satisfy this same property in their own band with no change
- * here. */
+ * in this file carries a summary. An item with no description, or
+ * no summary on its description, returns false — its reveal
+ * carries the supportive and answer lines with no summary —
+ * including the held 18+ survey-check item, which carries no
+ * description by design. When a later wave adds descriptions
+ * (with summaries) for another band, those items satisfy this
+ * same property in their own band with no change here. */
 export function showsSummaryOnWrong(itemId: string, band: string): boolean {
   if (!clueSceneFor(itemId)?.summary) return false;
   return itemsForGroup(band as AgeGroup).some((item) => item.id === itemId);
