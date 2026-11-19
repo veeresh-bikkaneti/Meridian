@@ -19,16 +19,18 @@ import { serveBuiltArtifact } from "./helpers";
  * for ages 10-18 and 2 for ages 18+ — so this spec walks three
  * newly flipped Math items end to end (the first case dealt,
  * skip-count; the last of the wave-1 cases, big-quotients; and
- * a wave-3 scene item, fair-parts), plus the two kinds of
- * control that must NOT reveal: a Math 10-18 overflow item
- * with no scene description and so no summary
- * (two-digit-divisors, reached by solving forward through the
- * 13 cases dealt before it) and a hook-free other-subject case
- * (Physics, ages 7-10: its scene and summary exist for the win
- * path, but its wrapper passes no loseReveal hook, so a wrong
- * pick leaves the scene in its setup phase and reveals
- * nothing). The pilot item's own walk stays in
- * math-fair-share-lose-path.desktop.spec.ts.
+ * a wave-3 scene item, fair-parts). WIDENED by the owner's
+ * 2026-11-19 decision, the reveal now fires on every unsolved
+ * case: the Math 10-18 overflow item with no scene description
+ * and so no summary (two-digit-divisors, reached by solving
+ * forward through the 13 cases dealt before it) reveals at its
+ * second distinct wrong pick with the supportive and answer
+ * lines and no summary. The one remaining no-reveal control is
+ * the hook-free other-subject case (Physics, ages 7-10: its
+ * scene and summary exist for the win path, but its wrapper
+ * passes no loseReveal hook, so a wrong pick leaves the scene
+ * in its setup phase and reveals nothing). The pilot item's
+ * own walk stays in math-fair-share-lose-path.desktop.spec.ts.
  */
 test.setTimeout(600_000);
 
@@ -177,6 +179,9 @@ test("second wrong pick on skip-count (newly flipped) reveals the answer line, t
 
   const reveal = page.getByTestId("math-lose-reveal");
   await expect(reveal).toBeVisible();
+  await expect(page.getByTestId("math-lose-support")).toHaveText(
+    "Good trying — this one was tricky. Let's look at how it works.",
+  );
   await expect(page.getByTestId("math-lose-answer")).toHaveText("The answer is 8 — here's how.");
   // It is not a win: no result section, no celebration copy.
   await expect(page.getByTestId("math-result")).toHaveCount(0);
@@ -263,7 +268,7 @@ test("second wrong pick on fair-parts (newly flipped, a wave-3 scene item) revea
   expect(errors).toEqual([]);
 });
 
-test("control: a wrong pick on a Math 10-18 overflow case (no summary) behaves exactly as before", async ({
+test("second distinct wrong pick on a Math 10-18 overflow case (no summary) reveals the answer and supportive lines, with no summary", async ({
   page,
   context,
 }) => {
@@ -278,7 +283,8 @@ test("control: a wrong pick on a Math 10-18 overflow case (no summary) behaves e
     "math-number:division:two-digit-divisors",
   );
 
-  // The wrong pick ("12"; the answer is "13").
+  // The FIRST wrong pick ("12"; the answer is "13") still shows
+  // only "Not quite": no reveal, no result.
   await page
     .getByTestId("math-answer-card")
     .getByRole("button", { name: "12", exact: true })
@@ -286,6 +292,24 @@ test("control: a wrong pick on a Math 10-18 overflow case (no summary) behaves e
   await expect(page.getByText(/Not quite/)).toBeVisible();
   await expect(page.getByTestId("math-lose-reveal")).toHaveCount(0);
   await expect(page.getByTestId("math-result")).toHaveCount(0);
+
+  // The SECOND distinct wrong pick ("14") reveals — widened by
+  // the owner's 2026-11-19 decision, every unsolved case reveals
+  // even with no summary: the supportive line and the answer
+  // line, and NO summary text (this item has none to play).
+  await page
+    .getByTestId("math-answer-card")
+    .getByRole("button", { name: "14", exact: true })
+    .click();
+  const reveal = page.getByTestId("math-lose-reveal");
+  await expect(reveal).toBeVisible();
+  await expect(page.getByTestId("math-lose-support")).toHaveText(
+    "Good trying — this one was tricky. Let's look at how it works.",
+  );
+  await expect(page.getByTestId("math-lose-answer")).toHaveText("The answer is 13 — here's how.");
+  await expect(page.getByTestId("clue-summary-text")).toHaveCount(0);
+  await expect(page.getByTestId("math-result")).toHaveCount(0);
+  await expect(reveal).not.toContainText("You got it!");
 
   expect(errors).toEqual([]);
 });
