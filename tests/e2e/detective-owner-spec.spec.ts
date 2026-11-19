@@ -119,7 +119,7 @@ test("8-10 deal: cards open one at a time, Watson reads 1 → 2 → 3, Holmes ac
   await expect(page.getByRole("article", { name: "Clue 4: The Hook (locked)" })).toBeVisible();
 });
 
-test("no speaker by the pair; the one mute is top-left beside the other two buttons", async ({
+test("no speaker by the pair; the one mute sits in the header actions, right of the case label", async ({
   page,
   context,
 }) => {
@@ -134,13 +134,16 @@ test("no speaker by the pair; the one mute is top-left beside the other two butt
   const viewport = page.viewportSize()!;
   expect(mute).not.toBeNull();
   expect(editions).not.toBeNull();
-  // Same row as Home, in the left-hand button group: right of
-  // Home and left of the "Case #" label on the right.
+  // #529: the shared SiteHeader actions order is status ("Case #N"), mute, End game.
   const caseLabel = await page.getByText(/^Case #\d+$/).first().boundingBox();
   expect(caseLabel).not.toBeNull();
   expect(Math.abs(mute!.y - editions!.y)).toBeLessThan(24);
   expect(mute!.x).toBeGreaterThan(editions!.x);
-  expect(mute!.x + mute!.width).toBeLessThanOrEqual(caseLabel!.x);
+  expect(mute!.x).toBeGreaterThanOrEqual(caseLabel!.x + caseLabel!.width);
+  const endGame = await page.getByRole("button", { name: "End game", exact: true }).boundingBox();
+  if (endGame) {
+    expect(mute!.x + mute!.width).toBeLessThanOrEqual(endGame.x);
+  }
   void viewport;
 });
 
