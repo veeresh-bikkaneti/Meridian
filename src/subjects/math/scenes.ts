@@ -774,9 +774,12 @@ export function clueSceneFor(itemId: string): ClueSceneDescription | null {
 }
 
 /** The L1 lose path (feat/fair-share-lose-path, generalised by
- * feat/lose-path-all-items): a wrong pick on an item that HAS a
- * solved summary reveals that summary — the same act-3 performance
- * a correct pick plays. The gate is a property of the item, not a
+ * feat/lose-path-all-items): on an item that HAS a solved
+ * summary, the second distinct wrong answer reveals that
+ * summary — the same act-3 performance a correct pick plays
+ * (the pacing is SubjectCase's, per the owner's 2026-11-19
+ * decision; this gate only names WHICH items are on the path).
+ * The gate is a property of the item, not a
  * hand-maintained list: it is true exactly when the item is a
  * playable item for the band asked about AND its scene description
  * in this file carries a summary. On this branch (rebased onto the

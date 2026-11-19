@@ -66,10 +66,15 @@
  *
  * L1 lose path (feat/fair-share-lose-path, generalised by
  * feat/lose-path-all-items): a subject may also
- * pass a `loseReveal` hook naming the items whose WRONG pick
- * reveals the solved summary — an answer-first line, then the
- * same act-3 performance the win path plays (the scene in its
- * solved phase, the summary's standing text via `resultExtra`).
+ * pass a `loseReveal` hook naming the items whose SECOND
+ * DISTINCT wrong answer on the entry question reveals the
+ * solved summary — an answer-first line, then the same act-3
+ * performance the win path plays (the scene in its solved
+ * phase, the summary's standing text via `resultExtra`).
+ * The pacing is the owner's decision of 2026-11-19: the first
+ * wrong answer keeps today's "Not quite" feedback and live
+ * picks, so the player gets another go before the answer is
+ * given away; the counting rule lives in lose-reveal.ts.
  * Math enables it for every item that has a solved summary
  * (on this branch, every Math item for ages 7-10).
  * The reveal is not a solve: the phase never reaches "done", no
@@ -100,6 +105,7 @@ import { SiteFooter } from "@/components/ui/site-footer";
 import { ReadAloudPrefSettings } from "@/components/age-profile/ReadAloudPrefSettings";
 import type { ResetHistoryResult } from "@/game/reset-history";
 import { advanceCasePhase, type AnswerFor, type CasePhase } from "./answer";
+import { recordDistinctWrong, typedWrongKey } from "./lose-reveal";
 import { recordUnitComplete } from "./subject-progress";
 
 // Holmes & Watson in the subject case: lazy, like the other pair
@@ -138,14 +144,16 @@ export type SubjectCaseConfig = {
    * the reduced-motion flag and the band. Absent for subjects
    * without post-solve extras: no change. */
   resultExtra?: (item: UnitItem, reduced: boolean, band: AgeGroup) => ReactNode;
-  /** Optional L1 lose path: the items whose WRONG pick reveals
-   * the solved summary. Receives the item and the band; returning
-   * true means a wrong pick on that item (on the entry question)
-   * shows the answer-first line and plays the item's act-3
-   * summary — the scene in its solved phase, the standing text
-   * via `resultExtra` — instead of leaving the player at the
-   * answer card's "try again". Absent, or false for an item, the
-   * wrong pick behaves exactly as before. */
+  /** Optional L1 lose path: the items whose SECOND DISTINCT
+   * wrong answer reveals the solved summary. Receives the item
+   * and the band; returning true means the second distinct wrong
+   * answer on that item (on the entry question) shows the
+   * answer-first line and plays the item's act-3 summary — the
+   * scene in its solved phase, the standing text via
+   * `resultExtra` — while the first wrong answer (and any repeat
+   * of it) leaves the player at the answer card's "try again".
+   * Absent, or false for an item, every wrong answer behaves
+   * exactly as before. */
   loseReveal?: (item: UnitItem, band: AgeGroup) => boolean;
 };
 
@@ -192,10 +200,17 @@ export function SubjectCase({
   const items = itemsForGroup(band);
   const [index, setIndex] = useState(0);
   const [picked, setPicked] = useState<string | null>(null);
-  // L1 lose path: true once a wrong pick on a `loseReveal` item
-  // has revealed that item's solved summary for the current case.
-  // Reset with the case (nextCase); a correct pick never sets it.
+  // L1 lose path: true once the second distinct wrong answer on
+  // a `loseReveal` item has revealed that item's solved summary
+  // for the current case. Reset with the case (nextCase); a
+  // correct pick never sets it.
   const [loseRevealed, setLoseRevealed] = useState(false);
+  // The distinct wrong answers given on the current case's entry
+  // question, keyed as lose-reveal.ts defines (a pick by its
+  // choice string, a typed answer by its parsed value, every
+  // unparseable typed answer under one shared key). The reveal
+  // fires when this set reaches LOSE_REVEAL_AFTER_WRONG.
+  const wrongKeysRef = useRef<Set<string>>(new Set());
   // "main" asks the entry; "followUp" asks its follow-up; "done"
   // shows the result with both answers.
   const [phase, setPhase] = useState<CasePhase>("main");
@@ -296,13 +311,19 @@ export function SubjectCase({
 
   // Shared wrong-answer path for picks and typed numbers: the
   // pick stands as feedback, and on a `loseReveal` item's entry
-  // question it also reveals the solved summary (the L1 lose
-  // path). The reveal is gated on the entry question only — a
-  // follow-up's wrong answer never reveals the entry's summary.
-  const onWrong = (value: string) => {
+  // question the SECOND distinct wrong answer also reveals the
+  // solved summary (the L1 lose path, paced per the owner's
+  // 2026-11-19 decision — see lose-reveal.ts). `key` names the
+  // answer for distinctness: a pick keys by its choice string, a
+  // typed answer by its parsed value (or the shared unparseable
+  // key). The reveal is gated on the entry question only — a
+  // follow-up's wrong answer never counts and never reveals.
+  const onWrong = (value: string, key: string) => {
     setPicked(value);
     if (phase === "main" && loseReveal?.(item, band)) {
-      setLoseRevealed(true);
+      if (recordDistinctWrong(wrongKeysRef.current, key)) {
+        setLoseRevealed(true);
+      }
     }
   };
 
@@ -311,7 +332,7 @@ export function SubjectCase({
     if (choice === active.correct) {
       onCorrect();
     } else {
-      onWrong(choice);
+      onWrong(choice, choice);
     }
   };
 
@@ -320,7 +341,7 @@ export function SubjectCase({
     // A number entry carries its value; an unparseable typed answer
     // is wrong the same way a wrong pick is.
     if (value === null || active.value === undefined || value !== active.value) {
-      onWrong(raw);
+      onWrong(raw, typedWrongKey(value));
     } else {
       onCorrect();
     }
@@ -330,6 +351,7 @@ export function SubjectCase({
     setIndex((i) => (i + 1) % items.length);
     setPicked(null);
     setLoseRevealed(false);
+    wrongKeysRef.current.clear();
     setPhase("main");
   };
 
