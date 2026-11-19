@@ -102,8 +102,8 @@ describe("(a) a wrong pick on fair-share reveals the answer line, then the summa
     const onWrong = region(subjectCase, "const onWrong = (value: string, key: string) => {", "const pick =");
     assert.ok(onWrong.includes("setPicked(value);"), "the pick still stands as feedback");
     assert.ok(
-      onWrong.includes('if (phase === "main" && loseReveal?.(item, band)) {'),
-      "the reveal is gated on the entry question and the subject's hook",
+      onWrong.includes('if (phase === "main" && loseReveal) {'),
+      "the reveal is gated on the entry question and the subject passing its hook at all (widened 2026-11-19: every item reveals)",
     );
     assert.ok(onWrong.includes("setLoseRevealed(true);"));
     const onCorrect = region(subjectCase, "const onCorrect = () => {", "// Shared wrong-answer path");
@@ -132,8 +132,10 @@ describe("(a) a wrong pick on fair-share reveals the answer line, then the summa
 
   it("the scene performs the solved beat on the reveal — the same act 3 as a win", () => {
     assert.ok(
-      subjectCase.includes('const scenePhase: "setup" | "solved" = solved || loseRevealed ? "solved" : "setup";'),
-      "the reveal puts the scene in its solved phase, so ClueScene's act 3 starts",
+      subjectCase.includes(
+        'const scenePhase: "setup" | "solved" =\n    solved || (loseRevealed && supportHeard) ? "solved" : "setup";',
+      ),
+      "once the supportive line has been heard, the reveal puts the scene in its solved phase, so ClueScene's act 3 starts",
     );
     // ClueScene itself is untouched: its act 3 still starts only in
     // the solved phase, through the one-voice channel, honouring

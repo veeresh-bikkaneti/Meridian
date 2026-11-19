@@ -37,8 +37,10 @@ describe("clue scene wiring", () => {
       "the scene hook receives the item, the flow-derived phase, reduced and the band",
     );
     assert.ok(
-      subjectCase.includes('const scenePhase: "setup" | "solved" = solved || loseRevealed ? "solved" : "setup";'),
-      "the phase is solved once the case is done or a lose-path wrong pick has revealed the summary",
+      subjectCase.includes(
+        'const scenePhase: "setup" | "solved" =\n    solved || (loseRevealed && supportHeard) ? "solved" : "setup";',
+      ),
+      "the phase is solved once the case is done, or once a lose-path reveal's supportive line has been heard",
     );
     assert.ok(
       subjectCase.includes('phase: "setup" | "solved"'),

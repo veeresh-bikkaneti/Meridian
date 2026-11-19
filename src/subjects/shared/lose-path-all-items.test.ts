@@ -26,6 +26,13 @@
  * function, the wiring is pinned in the component sources, and
  * the Playwright specs plus the built-artifact walk prove the
  * behaviour end to end.
+ *
+ * WIDENED by the owner's decision of 2026-11-19: the reveal now
+ * fires on EVERY unsolved case, even items with no summary,
+ * with a supportive line ahead of the answer. `showsSummaryOnWrong`
+ * no longer gates the reveal — it names which items' summaries
+ * play as the explanation. The widened pins live in the last two
+ * describe blocks below.
  */
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
@@ -191,7 +198,7 @@ describe("the shared safeguards hold for every newly covered item", () => {
     assert.ok(subjectCase.includes("const [loseRevealed, setLoseRevealed] = useState(false);"));
     const start = subjectCase.indexOf("const onWrong = (value: string, key: string) => {");
     const onWrong = subjectCase.slice(start, subjectCase.indexOf("const pick =", start));
-    assert.ok(onWrong.includes('if (phase === "main" && loseReveal?.(item, band)) {'));
+    assert.ok(onWrong.includes('if (phase === "main" && loseReveal) {'));
   });
 
   it("win and lose sections stay mutually exclusive, so no answer line can double", () => {
@@ -260,17 +267,21 @@ describe("the reveal waits for the second distinct wrong answer (owner decision,
     assert.equal(recordDistinctWrong(seen, typedWrongKey(6)), true);
   });
 
-  it("the component feeds the count only inside the entry-question loseReveal gate", () => {
+  it("the component feeds the count only inside the entry-question gate, for every item once the subject passes its hook", () => {
     const start = subjectCase.indexOf("const onWrong = (value: string, key: string) => {");
     const onWrong = subjectCase.slice(start, subjectCase.indexOf("const pick =", start));
     assert.ok(onWrong.includes("setPicked(value);"), "feedback is unchanged: the pick always stands");
-    const gateAt = onWrong.indexOf('if (phase === "main" && loseReveal?.(item, band)) {');
+    const gateAt = onWrong.indexOf('if (phase === "main" && loseReveal) {');
     const countAt = onWrong.indexOf("recordDistinctWrong(wrongKeysRef.current, key)");
-    assert.ok(gateAt >= 0 && countAt > gateAt, "counting happens only behind the gate");
+    assert.ok(gateAt >= 0 && countAt > gateAt, "counting happens only behind the entry-question + hook-present gate");
+    assert.ok(
+      !onWrong.includes("loseReveal?.(item, band)"),
+      "the hook's per-item return value no longer gates the counting (widened 2026-11-19)",
+    );
     assert.equal(
       subjectCase.split("recordDistinctWrong(").length - 1,
       1,
-      "one counting call site — follow-up wrongs never reach it (the phase gate), summary-less items never reach it (the hook gate)",
+      "one counting call site — follow-up wrongs never reach it (the phase gate); every entry-question item reaches it once the subject passes its hook",
     );
     // The keys are plumbed from both funnels: a pick keys by its
     // choice string, a typed answer by its derived typed key.
@@ -293,16 +304,89 @@ describe("the reveal waits for the second distinct wrong answer (owner decision,
     assert.ok(nextCase.includes("setLoseRevealed(false);"));
   });
 
-  it("a summary-less item never reveals, however many distinct wrongs", () => {
-    // The gate itself is false for such items (pinned above), and
-    // the component counts only behind that gate — so no number
-    // of wrongs on a summary-less item can ever set the reveal.
+  it("a summary-less item reveals at the second distinct wrong (widened 2026-11-19)", () => {
+    // The summary gate itself is still false for such items — it
+    // now names only which items' summaries play as the
+    // explanation — but the component counts every item behind
+    // the hook-present gate, so the second distinct wrong sets
+    // the reveal for a summary-less item too.
     assert.equal(showsSummaryOnWrong("math-number:division:two-digit-divisors", "10-18"), false);
+    const seen = new Set<string>();
+    assert.equal(recordDistinctWrong(seen, "12"), false, "wrong-1 does not reveal");
+    assert.equal(recordDistinctWrong(seen, "14"), true, "wrong-2 reveals");
     const start = subjectCase.indexOf("const onWrong = (value: string, key: string) => {");
     const onWrong = subjectCase.slice(start, subjectCase.indexOf("const pick =", start));
     assert.ok(
-      !onWrong.slice(0, onWrong.indexOf("loseReveal?.(item, band)")).includes("recordDistinctWrong"),
-      "nothing is counted before the gate has said the item is on the path",
+      !onWrong.includes("loseReveal?.(item, band)"),
+      "nothing in the counting asks the hook about this item, so a summary-less item counts like any other",
     );
+    assert.ok(onWrong.includes("setLoseRevealed(true);"), "the second distinct wrong sets the reveal");
+    assert.ok(onWrong.includes("playSupportLine();"), "the reveal voices the supportive line first");
+  });
+
+  it("wrong-1 on a summary-less item shows only Not quite (no reveal)", () => {
+    // The counting rule itself: one distinct wrong is below the
+    // threshold, for summary-less items exactly as for covered
+    // ones — so the first wrong can only ever stand as the
+    // answer card's "Not quite" feedback.
+    const seen = new Set<string>();
+    assert.equal(recordDistinctWrong(seen, "12"), false);
+    assert.equal(LOSE_REVEAL_AFTER_WRONG, 2);
+    assert.ok(
+      subjectCase.includes("if (recordDistinctWrong(wrongKeysRef.current, key)) {"),
+      "the reveal is set only when the count reaches the threshold",
+    );
+  });
+});
+
+describe("the supportive line (owner decision, 2026-11-19)", () => {
+  const SUPPORT_LINE = "Good trying — this one was tricky. Let's look at how it works.";
+
+  it("the reveal render carries the supportive line ahead of the answer line, for both item kinds", () => {
+    const lose = subjectCase.slice(
+      subjectCase.indexOf('data-testid={`${subjectId}-lose-reveal`}'),
+      subjectCase.indexOf("<AnswerCard", subjectCase.indexOf('data-testid={`${subjectId}-lose-reveal`}')),
+    );
+    const supportAt = lose.indexOf('data-testid={`${subjectId}-lose-support`}');
+    const answerAt = lose.indexOf('data-testid={`${subjectId}-lose-answer`}');
+    assert.ok(supportAt >= 0 && answerAt > supportAt, "the supportive line renders ahead of the answer line");
+    assert.ok(subjectCase.includes(SUPPORT_LINE), "the fixed supportive line, word for word");
+    assert.ok(lose.includes("{LOSE_SUPPORT_LINE}"), "the reveal renders the shared line");
+    // Both item kinds share this one reveal section — a covered
+    // item adds its summary via resultExtra below the lines, and
+    // MathCase's resultExtra self-gates on a summary existing, so
+    // a summary-less item's reveal is the two lines alone.
+    const mathCase = read(join(here, "..", "math", "MathCase.tsx"));
+    assert.ok(
+      mathCase.includes("if (!description?.summary) return null;"),
+      "the summary text self-gates: a summary-less item renders no summary in the reveal",
+    );
+  });
+
+  it("the supportive line never appears on the solved (win) section", () => {
+    const solved = subjectCase.slice(
+      subjectCase.indexOf('aria-label="You solved it"'),
+      subjectCase.indexOf('data-testid={`${subjectId}-lose-reveal`}'),
+    );
+    assert.ok(!solved.includes("lose-support"), "no supportive testid on the win section");
+    assert.ok(!solved.includes(SUPPORT_LINE), "no supportive line on the win section");
+    assert.ok(!solved.includes("LOSE_SUPPORT_LINE"), "the win section never references the line");
+  });
+
+  it("the scene's solved performance waits for the supportive clip, and nextCase resets the beat", () => {
+    assert.ok(
+      subjectCase.includes(
+        'const scenePhase: "setup" | "solved" =\n    solved || (loseRevealed && supportHeard) ? "solved" : "setup";',
+      ),
+      "only the scene phase is gated on the supportive beat — the reveal itself renders at once",
+    );
+    assert.ok(subjectCase.includes('claimVoice("lose-support", finish, { userInitiated: false })'));
+    assert.ok(subjectCase.includes("isSoundEnabled()"), "the clip honours the sound toggle");
+    assert.ok(subjectCase.includes("soundAudible()"), "the clip honours the play guards");
+    assert.ok(subjectCase.includes("audio/subjects/lose-support.mp3"), "the clip lives with the summary clips");
+    const start = subjectCase.indexOf("const nextCase = () => {");
+    const nextCase = subjectCase.slice(start, subjectCase.indexOf("return (", start));
+    assert.ok(nextCase.includes("setSupportHeard(false);"), "the next case resets the supportive beat");
+    assert.ok(nextCase.includes("stopSupportPlayback();"), "the next case silences a still-playing clip");
   });
 });
