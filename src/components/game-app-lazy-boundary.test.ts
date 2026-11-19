@@ -279,3 +279,48 @@ describe("#209 — every gameplay chunk load is timeout-bounded", () => {
     );
   });
 });
+
+describe("arena Phase 2 (PR #532): boundary-less hosts and notice timing", () => {
+  it("F4: AgeAskGate renders inside MapErrorBoundary", () => {
+    assert.ok(
+      gameAppSource.includes('<MapErrorBoundary surface="Age picker">'),
+      "the age-ask gate must show the standard card on a chunk failure, not unmount the app",
+    );
+  });
+
+  it("F4: every AgeProfileSettings render site renders inside MapErrorBoundary", () => {
+    const sites = gameAppSource.split('<MapErrorBoundary surface="Age settings">').length - 1;
+    assert.equal(sites, 2, "both settings sites (subjects branch and Home) are wrapped");
+  });
+
+  it("F4: JournalPlayer is wrapped in its fail-closed local boundary, so Home survives its chunk failure", () => {
+    assert.ok(gameAppSource.includes("<JournalBoundary>"), "the journal player must fail closed in place");
+    assert.ok(gameAppSource.includes("</JournalBoundary>"), "the journal boundary must close around the player");
+  });
+
+  it("F4: GlobeChunkFallback marks itself so the recovery handler stands down", () => {
+    assert.ok(
+      gameAppSource.includes('data-chunk-fallback="globe"'),
+      "the globe's graceful fallback must carry data-chunk-fallback",
+    );
+  });
+
+  it("F7d: the chunk-reload notice is consumed at the ready point, not in the mount effect", () => {
+    const readyEffect = segment(gameAppSource, "if (ready && !readySignaledRef.current) {", "}, [ready]);");
+    assert.ok(
+      readyEffect.includes("consumeChunkReloadNotice()"),
+      "consume must ride the __meridian_ready signal so a mount-then-stall page keeps its notice for the watchdog",
+    );
+    assert.equal(
+      gameAppSource.split("consumeChunkReloadNotice()").length - 1,
+      1,
+      "exactly one consume site",
+    );
+  });
+
+  it("F8: the menu loadNotice card offers a reload button beside the message", () => {
+    const notice = segment(gameAppSource, "const loadNotice = startError ? (", "const discardedNoticeEl");
+    assert.ok(notice.includes("Try again"), "the non-stale menu card must not be button-less");
+    assert.ok(notice.includes("window.location.reload()"), "the menu card's button is a plain reload, like the in-run variant");
+  });
+});

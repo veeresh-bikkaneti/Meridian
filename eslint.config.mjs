@@ -6,6 +6,7 @@ import globals from "globals";
 import tseslint from "typescript-eslint";
 import { homeLabelConfig } from "./eslint/home-label-rule.mjs";
 import { voiceChannelConfig } from "./eslint/voice-channel-rule.mjs";
+import { gameBoundaryConfig } from "./eslint/game-boundary-rule.mjs";
 
 /** Flat ESLint config for the TanStack Start app-builder template. */
 export default tseslint.config(
@@ -48,6 +49,8 @@ export default tseslint.config(
   homeLabelConfig,
   // One voice at a time: see eslint/voice-channel-rule.mjs.
   voiceChannelConfig,
+  // Layering: src/game never imports src/subjects; see eslint/game-boundary-rule.mjs.
+  gameBoundaryConfig,
   // Disable rules that conflict with Prettier formatting.
   prettier,
 );

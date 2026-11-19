@@ -1,11 +1,11 @@
 /**
  * Shared shell (fix/ui-shared-shell): SiteHeader, SiteFooter,
- * PageColumn, Pill, Badge, ErrorScreen, FirstVisitQueue.
+ * PageColumn, PageShell, Pill, ErrorScreen, FirstVisitQueue.
  *
  * The node harness cannot load .tsx, so the components are bundled
  * with esbuild and rendered with react-dom/server (the clue-scene
  * render test's pattern). Assertions pin the contract: slot order,
- * slots never in the menu panel, the 44px hit-box floor, the Badge
+ * slots never in the menu panel, the 44px hit-box floor, the Pill
  * contrast ratios computed from the actual styles.css token values,
  * and the lint baseline's staleness (a cured file must leave
  * eslint/shell-ban-baseline.json).
@@ -32,7 +32,8 @@ type ShellModule = {
   SiteFooter: (props: never) => ReactNode;
   PageColumn: (props: never) => ReactNode;
   Pill: (props: never) => ReactNode;
-  Badge: (props: never) => ReactNode;
+  PageShell: (props: never) => ReactNode;
+  PageIntro: (props: never) => ReactNode;
   ErrorScreen: (props: never) => ReactNode;
   FirstVisitQueue: (props: never) => ReactNode;
   createElement: typeof createElement;
@@ -59,7 +60,7 @@ function loadShell(): Promise<ShellModule> {
     // re-exports createElement + renderToStaticMarkup from the bundle.
     const dir = mkdtempSync(join(tmpdir(), "shared-shell-test-"));
     const entry = join(dir, "entry.tsx");
-    const names = ["site-header", "site-footer", "page-column", "pill", "badge", "error-screen", "first-visit-queue"];
+    const names = ["site-header", "site-footer", "page-column", "page-shell", "pill", "error-screen", "first-visit-queue"];
     writeFileSync(
       entry,
       [
@@ -116,32 +117,57 @@ describe("SiteHeader", () => {
       { label: "What's coming", onClick: () => {} },
       { label: "Get involved", onClick: () => {} },
     ],
-    stars: createElement("span", { "data-testid": "stars" }, "12 ★"),
+    status: createElement("span", { "data-testid": "status" }, "12 ★"),
     mute: createElement("button", { type: "button", "data-testid": "mute" }, "Sound"),
     endGame: createElement("button", { type: "button", "data-testid": "end" }, "End game"),
   };
 
-  it("renders the home control, nav, stars, mute, end game in the fixed slot order", async () => {
+  it("renders the home control, nav, status, mute, end game in the fixed slot order", async () => {
     const html = await render("SiteHeader", base);
-    const order = ["home-button", "Get involved", "stars", "mute", "end"].map((needle) => html.indexOf(needle));
+    const order = ["home-button", "Get involved", "status", "mute", "end"].map((needle) => html.indexOf(needle));
     assert.ok(order.every((i) => i >= 0), html);
     assert.deepEqual([...order].sort((a, b) => a - b), order);
     assert.match(html, /data-nav-mode="inline"/);
   });
 
-  it("the home control is HomeButton: named exactly Home, no arrow, ghost by default (Round 2 rule 2)", async () => {
+  it("the home control is the brand lockup: named exactly Meridian home, no Home pill (owner ruling 2026-11-17, N1)", async () => {
     const html = await render("SiteHeader", base);
     assert.match(html, /data-testid="home-button"/);
-    assert.match(html, /Home<\/button>/);
-    assert.doesNotMatch(html, /Meridian home|←/);
-    // ghost variant classes on the control (transparent bg on cream).
-    assert.match(html, /bg-transparent/);
+    assert.match(html, /aria-label="Meridian home"/);
+    assert.match(html, /brand-home-button/);
+    assert.match(html, /brand-home-word/);
+    // The retired pill: no visible "Home" text, no house icon.
+    assert.doesNotMatch(html, />Home</);
+    assert.doesNotMatch(html, /lucide-house|←/);
   });
 
-  it("homeVariant=secondary renders the over-map variant of the same control", async () => {
-    const html = await render("SiteHeader", { ...base, homeVariant: "secondary" });
-    assert.match(html, /data-testid="home-button"/);
-    assert.match(html, /bg-surface-2/);
+  it("the header is the frozen bar and carries the N1 contracts in the shell CSS", () => {
+    const css = read("src/styles.css");
+    // Sticky on the shell's own rule, reclaimed on Home at the atlas
+    // lift's own weight (Phase A mechanism 1).
+    assert.match(css, /\.site-header \{\s[^}]*position: sticky;/);
+    assert.match(css, /\.atlas-home > header\.site-header \{\s[^}]*position: sticky;/);
+    // Same reclaim against the Why Learn drift lift, which also
+    // forces position: relative on the header.
+    assert.match(css, /\.why-learn-screen > header\.site-header \{\s+position: sticky;/);
+    // Scroll-offset contract as a token (mechanism: no anchor
+    // landing hides under the bar).
+    assert.match(css, /scroll-padding-top: calc\(var\(--header-height\) \+ 12px\)/);
+    // One current-section style: filled tile + underline cue.
+    assert.match(css, /\.site-header-nav-link\[data-current="true"\] \{[^}]*background: #8a6d2f;[^}]*text-decoration: underline;/);
+    // Mark-only lockup below 560px (Phase A mechanism 3).
+    assert.match(css, /@media \(max-width: 560px\) \{\s+\.site-header \.brand-home-word \{\s+display: none;/);
+    // Route headers: the body box grows with content when the
+    // header is body's own child (Phase A mechanism 2).
+    assert.match(css, /body:has\(> header\.site-header\) \{\s+height: auto;\s+min-height: 100%;/);
+  });
+
+  it("nav items carry their section id for the derived highlight, and the panel closes on a pick", () => {
+    const src = read("src/components/ui/site-header.tsx");
+    assert.match(src, /data-nav-section=\{item\.sectionId\}/);
+    assert.match(src, /aria-current", "location"/);
+    assert.match(src, /onPanelClick/);
+    assert.match(src, /setMenuOpen\(false\)/);
   });
 
   it("menu button is a 44px-class control, collapsed, and the panel (with the slots outside it) is closed", async () => {
@@ -161,8 +187,49 @@ describe("SiteHeader", () => {
     assert.match(html, /data-testid="mute"/);
   });
 
+  it("the back slot renders between the home control and the nav (PR 3 Step 2)", async () => {
+    const html = await render("SiteHeader", {
+      ...base,
+      back: createElement("button", { type: "button", "data-testid": "back" }, "Back"),
+    });
+    const order = ["home-button", 'data-testid="back"', "Get involved"].map((needle) => html.indexOf(needle));
+    assert.ok(order.every((i) => i >= 0), html);
+    assert.deepEqual([...order].sort((a, b) => a - b), order);
+  });
+
+  it("variant=map marks the header; the lockup home control is the same on both surfaces", async () => {
+    const map = await render("SiteHeader", { ...base, variant: "map" });
+    assert.match(map, /data-variant="map"/);
+    assert.match(map, /aria-label="Meridian home"/);
+    const cream = await render("SiteHeader", base);
+    assert.match(cream, /data-variant="cream"/);
+    assert.match(cream, /aria-label="Meridian home"/);
+  });
+
+  it("an icon nav item renders its icon before the label, aria-hidden", async () => {
+    const html = await render("SiteHeader", {
+      onHome: () => {},
+      status: null,
+      mute: null,
+      navItems: [{ label: "Atlas", onClick: () => {}, icon: createElement("svg", { "data-testid": "nav-icon" }) }],
+    });
+    const order = ["nav-icon", "Atlas"].map((needle) => html.indexOf(needle));
+    assert.ok(order.every((i) => i >= 0), html);
+    assert.deepEqual([...order].sort((a, b) => a - b), order);
+    assert.match(html, /site-header-nav-icon" aria-hidden="true"/);
+  });
+
+  it("a link nav item renders through the router Link, an action item through a button", () => {
+    // Source-level (the harness renders without a router, like the
+    // SiteFooter test): the two item kinds share one data shape.
+    const src = read("src/components/ui/site-header.tsx");
+    assert.match(src, /item\.to \? \(/);
+    assert.match(src, /<Link/);
+    assert.match(src, /<button/);
+  });
+
   it("accepts explicit null slots (required-but-nullable): a silent, starless screen renders clean", async () => {
-    const html = await render("SiteHeader", { onHome: () => {}, stars: null, mute: null });
+    const html = await render("SiteHeader", { onHome: () => {}, status: null, mute: null });
     assert.match(html, /data-testid="home-button"/);
     assert.doesNotMatch(html, /site-header-menu-button/);
   });
@@ -175,11 +242,6 @@ describe("SiteFooter", () => {
       'data-testid="grownups-link"',
       "For grown-ups: game settings",
       'data-testid="take-tour-link"',
-      'data-testid="privacy-link"',
-      'data-testid="contact-link"',
-      "Contact us (grown-ups)",
-      'data-testid="credits-link"',
-      'data-testid="board-link"',
       "kids-privacy-note",
       "no accounts, no ads, no tracking cookies",
     ]) {
@@ -188,32 +250,47 @@ describe("SiteFooter", () => {
     // The prompt's unshipped links must not be invented here.
     assert.doesNotMatch(src, />Help<|>About<|>Terms</);
   });
-});
 
-describe("PageColumn", () => {
-  it("wide is max-w-7xl, read is max-w-3xl, both w-full with px-5 gutters", async () => {
-    const wide = await render("PageColumn", {}, "x");
-    assert.match(wide, /mx-auto w-full px-5 max-w-7xl/);
-    const readCol = await render("PageColumn", { width: "read" }, "x");
-    assert.match(readCol, /max-w-3xl/);
-    assert.doesNotMatch(wide + readCol, /max-w-none|100vw/);
+  it("renders its route links from the ONE shared list (site-links.ts), the grown-ups doors' source too", () => {
+    const footer = read("src/components/ui/site-footer.tsx");
+    assert.match(footer, /FOOTER_ROUTE_LINKS/);
+    for (const literal of ['data-testid="privacy-link"', 'data-testid="contact-link"', 'data-testid="credits-link"', 'data-testid="board-link"']) {
+      assert.ok(!footer.includes(literal), literal);
+    }
+    const links = read("src/components/ui/site-links.ts");
+    for (const needle of [
+      'footerTestId: "privacy-link"',
+      'footerTestId: "contact-link"',
+      'footerTestId: "credits-link"',
+      'footerTestId: "board-link"',
+      "Contact us (grown-ups)",
+      "What's coming (grown-ups)",
+      "GROWNUP_DOORS",
+    ]) {
+      assert.ok(links.includes(needle), needle);
+    }
+    // The grown-ups doors nav renders the same list, not a copy.
+    assert.match(read("src/components/grownups/info-page.tsx"), /GROWNUP_DOORS/);
   });
 });
 
-describe("Pill and Badge", () => {
+describe("PageColumn", () => {
+  it("wide reads --page-wide, narrow reads --page-narrow, both w-full with px-5 gutters", async () => {
+    const wide = await render("PageColumn", {}, "x");
+    assert.match(wide, /mx-auto w-full px-5 max-w-\(--page-wide\)/);
+    const narrow = await render("PageColumn", { width: "narrow" }, "x");
+    assert.match(narrow, /max-w-\(--page-narrow\)/);
+    assert.doesNotMatch(wide + narrow, /max-w-none|100vw/);
+  });
+});
+
+describe("Pill", () => {
   it("Pill uses the one count format, singular included", async () => {
     assert.match(await render("Pill", { count: 12 }), />12 cases</);
     assert.match(await render("Pill", { count: 1 }), />1 case</);
     const html = await render("Pill", { count: 3 });
     assert.match(html, /site-pill/);
     assert.doesNotMatch(html, /cursor-pointer/);
-  });
-
-  it("Badge vocabulary is New / Done — Open is retired", async () => {
-    assert.match(await render("Badge", { variant: "new" }), />New</);
-    const done = await render("Badge", { variant: "done" });
-    assert.match(done, />Done</);
-    assert.match(done, /site-badge--done/);
   });
 });
 
@@ -227,6 +304,132 @@ describe("ErrorScreen", () => {
     assert.match(html, />Home</);
     assert.match(html, /mode-card/);
     assert.doesNotMatch(html, /error code|failed to load|exception/i);
+  });
+
+  it("title, body and action labels are props; surface=plain drops the card (PR 3 Step 2)", async () => {
+    const html = await render("ErrorScreen", {
+      onHome: () => {},
+      onRetry: () => {},
+      title: "Custom title.",
+      body: "Custom body.",
+      actions: { retryLabel: "Try once more", homeLabel: "Go home" },
+      surface: "plain",
+    });
+    assert.match(html, /Custom title\./);
+    assert.match(html, /Custom body\./);
+    assert.match(html, />Try once more</);
+    assert.match(html, />Go home</);
+    assert.doesNotMatch(html, /mode-card/);
+    const card = await render("ErrorScreen", { onHome: () => {}, onRetry: () => {} });
+    assert.match(card, /mode-card/);
+  });
+
+  it("embedded renders the panel alone, and the Home exit exists only when onHome is passed (PR 3 Step 3.9)", async () => {
+    const withHome = await render("ErrorScreen", { embedded: true, onHome: () => {}, onRetry: () => {} });
+    assert.doesNotMatch(withHome, /site-header|home-button/);
+    assert.match(withHome, /mode-card/);
+    assert.match(withHome, />Try again</);
+    assert.match(withHome, />Home</);
+    // No onHome: no Home exit anywhere — the mid-run case, where a
+    // Home button would lie because the reload restores the run.
+    const noHome = await render("ErrorScreen", { embedded: true, onRetry: () => {} });
+    assert.doesNotMatch(noHome, />Home</);
+    assert.doesNotMatch(noHome, /site-header|home-button/);
+    assert.match(noHome, />Try again</);
+  });
+});
+
+describe("PageShell and PageIntro (PR 3 Step 2)", () => {
+  it("PageShell frames header, intro, content in order inside the column; footer=null omits the footer", async () => {
+    const html = await render(
+      "PageShell",
+      {
+        header: { onHome: () => {}, status: null, mute: null },
+        intro: { eyebrow: "Case file", title: "A Title", sub: "A sub" },
+        footer: null,
+      },
+      createElement("p", { "data-testid": "content" }, "CONTENT"),
+    );
+    const order = ["home-button", "Case file", "A Title", "A sub", "CONTENT"].map((needle) => html.indexOf(needle));
+    assert.ok(order.every((i) => i >= 0), html);
+    assert.deepEqual([...order].sort((a, b) => a - b), order);
+    assert.match(html, /max-w-\(--page-narrow\)/);
+    assert.doesNotMatch(html, /agep-footer/);
+  });
+
+  it("PageShell renders the shared SiteFooter by default (source: no hand-built footer)", () => {
+    const src = read("src/components/ui/page-shell.tsx");
+    assert.match(src, /<SiteHeader \{\.\.\.header\} \/>/);
+    assert.match(src, /<SiteFooter \{\.\.\.footer\} \/>/);
+    assert.doesNotMatch(src, /<footer|<header/);
+  });
+
+  it("the grown-ups pages sit on PageShell (PR 3 Step 3.1): header Home + footer, no hand-built frame", () => {
+    const src = read("src/components/grownups/info-page.tsx");
+    assert.match(src, /<PageShell header=\{\{ to: "\/", status: null, mute: null \}\} width="narrow">/);
+    assert.doesNotMatch(src, /gp-wrap/);
+  });
+
+  it("Review and Challenge complete sit on SiteHeader (PR 3 Step 3.7): the one Home at the top", () => {
+    const src = read("src/components/game-app.tsx");
+    assert.equal(
+      src.split("<SiteHeader onHome={onDone} status={null} mute={null} />").length - 1,
+      2,
+      "both end-of-flow screens render the shared header",
+    );
+    assert.match(src, /data-testid="review-complete"/);
+    assert.match(src, /testId="challenge-done"/);
+  });
+
+  it("the region lists sit on SiteHeader (PR 3 Step 3.6): Home everywhere, Back in the back slot", () => {
+    const src = read("src/components/game-app.tsx");
+    assert.doesNotMatch(src, /<ScreenShell/);
+    assert.doesNotMatch(src, /from "@\/components\/ui\/screen-shell"/);
+    assert.match(src, /<SiteHeader onHome=\{onBack\} status=\{null\} mute=\{null\} \/>/);
+    assert.match(src, /data-testid="back-button"/);
+    assert.match(src, /onHome=\{\(\) => setMenu\(null\)\}/);
+  });
+
+  it("Cold Trail sits on SiteHeader (PR 3 Step 3.5): stars in status, mute in mute, no px-2 Home override", () => {
+    const src = read("src/game/coldtrail/TrailScreen.tsx");
+    assert.match(src, /<SiteHeader\s+onHome=\{onLeave\}/);
+    assert.match(src, /mute=\{<SoundToggle testId="sound-toggle-trail"/);
+    assert.doesNotMatch(src, /<HomeButton/);
+    assert.doesNotMatch(src, /from "@\/components\/ui\/home-button"/);
+    assert.doesNotMatch(src, /className="px-2"/);
+    assert.doesNotMatch(src, /<header>/);
+  });
+
+  it("the pool error is the shared ErrorScreen (PR 3 Step 3.8): failure copy on its props, one recovery door", () => {
+    const src = read("src/components/game-app.tsx");
+    const branch = src.slice(src.indexOf("if (poolError)"), src.indexOf("if (!places)"));
+    assert.match(branch, /<ErrorScreen/);
+    assert.match(branch, /title="Couldn't load places\."/);
+    assert.match(branch, /was not started with a partial pool/);
+    assert.match(branch, /onHome=\{onEditions\}/);
+    assert.match(branch, /onRetry=\{onEditions\}/);
+    assert.doesNotMatch(branch, /<main/);
+  });
+
+  it("GeoDetective's header carries no className override (PR 3 Step 3.11): the shell's sticky prop instead", async () => {
+    const src = read("src/game/loop/LoopScreen.tsx");
+    assert.doesNotMatch(src, /screen-home-bar -mx-5 px-5/);
+    const tag = src.slice(src.indexOf("<SiteHeader"), src.indexOf("status={", src.indexOf("<SiteHeader")));
+    assert.match(tag, /sticky/);
+    assert.doesNotMatch(tag, /className/);
+    const header = read("src/components/ui/site-header.tsx");
+    assert.match(header, /data-sticky=\{sticky \? "true" : undefined\}/);
+    const css = read("src/styles.css");
+    assert.match(css, /\.site-header\[data-sticky="true"\] \{\s+position: sticky;/);
+    const html = await render("SiteHeader", { onHome: () => {}, status: null, mute: null, sticky: true });
+    assert.match(html, /data-sticky="true"/);
+  });
+
+  it("PageIntro renders eyebrow, title and sub", async () => {
+    const html = await render("PageIntro", { eyebrow: "Eyebrow", title: "Title", sub: "Sub" });
+    assert.match(html, /Eyebrow/);
+    assert.match(html, /<h1[^>]*>Title<\/h1>/);
+    assert.match(html, /Sub/);
   });
 });
 
@@ -292,6 +495,10 @@ describe("header fit (Round 2, A.2): the row can never wrap", () => {
     assert.match(block(".site-header-nav"), /flex-wrap: nowrap/);
     assert.match(block(".site-header-actions"), /flex-wrap: nowrap/);
     assert.match(block(".site-header-nav-link"), /white-space: nowrap/);
+    // PR 3 Step 2: one inline-flex line — buttons and router links
+    // share a text line (measured 7px apart before) and a chevron
+    // can no longer wrap under its label.
+    assert.match(block(".site-header-nav-link"), /display: inline-flex/);
   });
 });
 
@@ -313,7 +520,7 @@ describe("44px hit-box floor (UX pin)", () => {
   });
 });
 
-describe("Badge contrast, computed from the styles.css token values", () => {
+describe("Pill contrast, computed from the styles.css token values", () => {
   // The token values as shipped; the pins below fail if a token moves,
   // so this table is updated in the same PR as any token change.
   const themes = {
@@ -354,13 +561,65 @@ describe("Badge contrast, computed from the styles.css token values", () => {
     }
   });
 
-  it("New (brass text on the card, composited over the page bg) and Done (fg on surface-2) are ≥4.5:1 on both themes", () => {
+  it("Pill text (brass on the card, composited over the page bg) is ≥4.5:1 on both themes", () => {
     for (const [name, t] of Object.entries(themes)) {
       const bgRgb = rgb(t.bg);
       const cardOverBg = t.card.map((v, i) => (i < 3 ? v * t.card[3] + bgRgb[i] * (1 - t.card[3]) : v)).slice(0, 3);
-      assert.ok(ratio(rgb(t.brassTextSm), cardOverBg) >= 4.5, `${name} New`);
-      assert.ok(ratio(rgb(t.fg), rgb(t.surface2)) >= 4.5, `${name} Done`);
+      assert.ok(ratio(rgb(t.brassTextSm), cardOverBg) >= 4.5, `${name} Pill`);
     }
+  });
+});
+
+describe("dead home header CSS (PR 3 Step 4)", () => {
+  it("home-v5.css carries no .hv5-nav or .hv5-brand rules — Home renders SiteHeader, not the old lockup", () => {
+    const css = read("src/components/home-v5.css");
+    assert.doesNotMatch(css, /hv5-nav|hv5-brand/);
+    // No production markup uses those classes either.
+    for (const file of ["src/components/game-app.tsx", "src/components/ui/site-header.tsx"]) {
+      assert.doesNotMatch(read(file), /hv5-nav|hv5-brand/, file);
+    }
+  });
+
+  it("BrandHomeButton is kept, with the CSS it needs (.brand-home-* in styles.css)", () => {
+    const css = read("src/styles.css");
+    for (const rule of [".brand-home-button", ".brand-home-mark", ".brand-home-word"]) {
+      assert.ok(css.includes(rule), rule);
+    }
+    assert.match(read("src/components/ui/home-button.ts"), /export function BrandHomeButton/);
+  });
+});
+
+describe("page-width tokens (PR 3 Step 4)", () => {
+  it("screen roots use the PageColumn tokens, not literal max-w-3xl / max-w-7xl", () => {
+    for (const file of [
+      "src/components/game-app.tsx",
+      "src/components/boot-splash.tsx",
+      "src/game/loop/LoopScreen.tsx",
+      "src/game/coldtrail/TrailScreen.tsx",
+      "src/subjects/shared/SubjectCase.tsx",
+      "src/subjects/shared/SubjectPicker.tsx",
+    ]) {
+      const src = read(file);
+      assert.doesNotMatch(src, /max-w-3xl|max-w-7xl/, file);
+      assert.match(src, /max-w-\(--page-(narrow|wide)\)/, file);
+    }
+    // Token values are the shipped sizes, so the swap changes nothing
+    // on screen: --page-narrow is Tailwind's 3xl, --page-wide its 7xl.
+    const css = read("src/styles.css");
+    assert.match(css, /--page-narrow: 48rem;/);
+    assert.match(css, /--page-wide: 80rem;/);
+    // Left literal, with the reason on record: the RegionList column
+    // is a deliberate 36rem list width with no token in the
+    // narrow/wide family; widening it to 48rem would be a visual
+    // change, not a refactor. Component-local caps (cards, overlays,
+    // sheets) are not page widths and stay literal too.
+    assert.match(read("src/components/game-app.tsx"), /max-w-xl flex-col/);
+    // Same reason, Cold Trail's wide band: its healthy-path root
+    // widens to 72rem at the large breakpoint (lg:max-w-6xl). No
+    // token in the narrow/wide family holds 72rem, and converting
+    // it to --page-wide (80rem) would move the layout, so the
+    // literal stays — its base width is the token above.
+    assert.match(read("src/game/coldtrail/TrailScreen.tsx"), /lg:max-w-6xl/);
   });
 });
 
@@ -369,11 +628,52 @@ describe("shell-ban baseline (KNOWN/STALE)", () => {
   const patterns: Record<string, RegExp> = {
     homeButtonImport: /import[^;]*\b(?:Brand)?HomeButton\b[^;]*home-button/,
     pageLocalHeaderFooter: /<(header|footer)[\s>]/,
+    pageLocalNav: /<nav[\s>]/,
+    pageLocalMain: /<main[\s>]/,
     maxWNone: /max-w-none/,
   };
 
   it("lint:nav wires the shell bans in", () => {
     assert.match(read("eslint.nav.config.mjs"), /shellBanConfigs/);
+  });
+
+  // Frozen baselines (PR 3 Step 5 cure): the staleness check alone
+  // cannot stop a baseline from GROWING — an entry added to cover a
+  // genuinely-violating new file would still "still violate" and
+  // pass. So every list is frozen exactly, the registry pattern:
+  // adding or removing an entry fails here until a person edits
+  // this record on purpose, in the same change that cures a file.
+  const FROZEN_BASELINE: Record<string, string[]> = {
+    homeButtonImport: ["src/components/game-app.tsx", "src/game/loop/LoopScreen.tsx", "src/subjects/shared/SubjectCase.tsx"],
+    // Why Learn D1 (2026-11-18): SubjectPicker was cured — the
+    // picker sits in the shared --page-wide container and its
+    // lg:max-w-none is gone — so the maxWNone baseline is empty.
+    maxWNone: [],
+    pageLocalHeaderFooter: [],
+    pageLocalNav: ["src/components/grownups/info-page.tsx", "src/routes/board.tsx"],
+    pageLocalMain: [
+      "src/components/boot-splash.tsx",
+      "src/components/game-app.tsx",
+      "src/components/grownups/info-page.tsx",
+      "src/game/coldtrail/TrailScreen.tsx",
+      "src/game/loop/LoopScreen.tsx",
+      "src/lib/error-component.tsx",
+      "src/routes/board.tsx",
+      "src/subjects/shared/SubjectCase.tsx",
+      "src/subjects/shared/SubjectPicker.tsx",
+    ],
+  };
+
+  it("every baseline list matches its frozen record exactly — growing a baseline goes red", () => {
+    const kinds = Object.keys(baseline).filter((k) => k !== "comment").sort();
+    assert.deepEqual(kinds, Object.keys(FROZEN_BASELINE).sort(), "a baseline kind was added or removed");
+    for (const [kind, frozen] of Object.entries(FROZEN_BASELINE)) {
+      assert.deepEqual(
+        [...(baseline[kind] ?? [])].sort(),
+        [...frozen].sort(),
+        `${kind} baseline changed: shrink it only by curing a file and editing the frozen record in the same change`,
+      );
+    }
   });
 
   it("every baselined file still violates — a cured file's entry is stale and must be removed", () => {
@@ -387,7 +687,7 @@ describe("shell-ban baseline (KNOWN/STALE)", () => {
 
   it("the shared components themselves are never baselined", () => {
     const all = Object.values(baseline).flat();
-    for (const own of ["site-header", "site-footer", "page-column", "pill", "badge", "error-screen", "first-visit-queue"]) {
+    for (const own of ["site-header", "site-footer", "page-column", "page-shell", "pill", "error-screen", "first-visit-queue"]) {
       assert.ok(!all.some((f) => f.includes(own)), own);
     }
   });

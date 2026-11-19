@@ -3,7 +3,7 @@ import { clampLat, normalizeLon } from "@/game/geo";
 import { formatLength, unitForLoopTarget } from "@/game/units";
 import { preloadTerritory } from "@/game/territory";
 import { Button } from "@/components/ui/button";
-import { HomeButton } from "@/components/ui/home-button";
+import { SiteHeader } from "@/components/ui/site-header";
 import { SoundToggle } from "@/components/SoundToggle";
 import { FlagImg } from "@/components/flag-img";
 import { flagEntry } from "@/lib/flag-registry";
@@ -18,6 +18,8 @@ import { playConfirmGuess, playLose, playWin } from "@/game/audio/sfx";
 import { playCelebrationSound } from "@/game/audio/play-guards";
 import { resolveBand, type AgeBandId } from "@/game/age-profile";
 import { LoopMap } from "../loop/LoopMap";
+import { LoopMapBoundary, LoopMapOffLine } from "../loop/loop-map-boundary";
+import { TILE_FALLBACK_COPY } from "@/map/tile-fallback-copy";
 import { coldtrailCaseCount, getColdtrailCase } from "./cases";
 import {
   capitalsPackCaseCount,
@@ -111,6 +113,19 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
   // === null` ⟺ placing(i); `draft !== null` ⟺ adjusting(i).
   const [placing, setPlacing] = useState<number | null>(null);
   const [draft, setDraft] = useState<{ lon: number; lat: number } | null>(null);
+  // Map-off state (mirrors LoopScreen): set when the map's tiles fail
+  // (LoopMap's onTilesFailed — which also carries a post-init WebGL
+  // context loss) and when the map boundary catches a construction
+  // failure. While it is set, the Cold Trail off-line takes the map's
+  // place and ring placement cannot be armed: this surface's only input
+  // is the map, so a hint inviting a tap that can't land would lie.
+  const [mapOff, setMapOff] = useState(false);
+  const handleMapFailed = () => {
+    setMapOff(true);
+    setPlacing(null);
+    setDraft(null);
+    setHint(null);
+  };
   const caseHeadingRef = useRef<HTMLHeadingElement>(null);
   const resultHeadingRef = useRef<HTMLHeadingElement>(null);
   const prevRevealedRef = useRef(false);
@@ -192,12 +207,16 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
     // path it targets the case heading at the bottom of this file;
     // without the ref this branch silently dropped the focus landing.
     return (
-      <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 py-8" data-testid="coldtrail-screen">
-        <h1 ref={caseHeadingRef} tabIndex={-1} className="mode-title text-3xl text-fg">❄️ Cold Trail</h1>
+      <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-(--page-narrow) flex-col px-5 pt-2 pb-8" data-testid="coldtrail-screen">
+        {/* The shared shell (PR 3 Step 3.5): even the fail-closed
+            branch carries SiteHeader's one Home control, top-left,
+            where every other screen puts it — the bottom-of-card
+            HomeButton it replaces sat below the alert. */}
+        <SiteHeader onHome={onLeave} status={null} mute={null} />
+        <h1 ref={caseHeadingRef} tabIndex={-1} className="mode-title mt-4 text-3xl text-fg">❄️ Cold Trail</h1>
         <p className="mt-4 text-fg" role="alert">
           The case files didn&rsquo;t load. No case to play right now.
         </p>
-        <HomeButton onHome={onLeave} variant="secondary" className="mt-6 self-start" />
       </main>
     );
   }
@@ -241,7 +260,7 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
   // mid-placement switches implicitly (UXA T5/T11): the in-flight draft is
   // discarded — drafts are free, one tap to recreate.
   const onPlaceRing = (i: number) => {
-    if (revealed) return;
+    if (revealed || mapOff) return;
     if (placing === i) return;
     if (placing !== null) {
       setHint("Your ring draft was set aside — tap 📍 to place it again.");
@@ -361,7 +380,7 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
   // Entering adjusting via Move clears a pending interception (O13): a
   // pending guess predicated on 3 locked rings is void once one unlocks.
   const onMoveRing = (i: number) => {
-    if (revealed || !progress.ringCenters[i]) return;
+    if (revealed || mapOff || !progress.ringCenters[i]) return;
     setPending(null);
     setPlacing(i);
     setDraft({ ...progress.ringCenters[i]! });
@@ -486,34 +505,41 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
   };
 
   const verdict = progress.scoreKm !== null ? verdictForTheme(theme, progress.scoreKm) : null;
-  const placingNow = placing !== null;
+  const placingNow = placing !== null && !mapOff;
 
   return (
-    <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 py-8 lg:max-w-6xl" data-testid="coldtrail-screen">
-      <header>
-        <div className="flex items-start justify-between gap-3">
-          <div className="flex items-center gap-2">
-            <HomeButton onHome={onLeave} className="px-2" />
-            {/* The one mute, top-left beside the screen's own buttons —
-                the home page's placement (owner, 2026-11-10). Same
-                master toggle everywhere: one persisted key
-                (meridian.sound), one implementation (SoundToggle.tsx). */}
-            <SoundToggle testId="sound-toggle-trail" className="atlas-sound-toggle" />
-          </div>
-          <div className="flex items-center gap-2">
-            <p data-testid="coldtrail-stars" className="text-sm text-fg" aria-label={`${store.stars} stars`}>
-              ⭐ {store.stars}
-            </p>
-          </div>
-        </div>
-        <p className="name-eyebrow mt-4">{theme.eyebrow}</p>
-        <h1 ref={caseHeadingRef} tabIndex={-1} className="mode-title mt-1 text-3xl text-fg">
-          {theme.heading(caseData.caseNo)}
-        </h1>
-        <p className="mt-2 text-fg">
-          {theme.intro}
-        </p>
-      </header>
+    <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-(--page-narrow) flex-col px-5 pt-2 pb-8 lg:max-w-6xl" data-testid="coldtrail-screen">
+      {/* The shared shell (PR 3 Step 3.5): SiteHeader carries the
+          one Home control, the stars readout in its status slot and
+          the one mute in its mute slot — the shell's fixed slot
+          order (status, mute) replaces this screen's hand-built row.
+          Same master toggle everywhere: one persisted key
+          (meridian.sound), one implementation (SoundToggle.tsx).
+          The brief's flagged `px-2` override is GONE: it sat on the
+          HomeButton itself, narrowing the one Home control's own
+          padding so this screen's Home differed from every other
+          screen's. The shell's HomeButton carries the standard
+          padding and hit box; no narrower gutter is needed — the
+          page column's px-5 gutter is unchanged, so nothing here
+          needs the width prop or a token exception either. The
+          page's top padding gives back 24px of the ~40px the shell
+          header row adds (32 -> 8px, the Step 3.3 pattern). */}
+      <SiteHeader
+        onHome={onLeave}
+        status={
+          <p data-testid="coldtrail-stars" className="text-sm text-fg" aria-label={`${store.stars} stars`}>
+            ⭐ {store.stars}
+          </p>
+        }
+        mute={<SoundToggle testId="sound-toggle-trail" className="atlas-sound-toggle" />}
+      />
+      <p className="name-eyebrow mt-4">{theme.eyebrow}</p>
+      <h1 ref={caseHeadingRef} tabIndex={-1} className="mode-title mt-1 text-3xl text-fg">
+        {theme.heading(caseData.caseNo)}
+      </h1>
+      <p className="mt-2 text-fg">
+        {theme.intro}
+      </p>
 
       {/* Pack shelf (story packs): deck chips under the header. A pick
           is stored through onPickDeck before onStartNext runs, and
@@ -550,6 +576,7 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
             onTryAgain={onTryAgain}
             onCancelPlacement={onCancelPlacement}
             onMoveRing={() => onMoveRing(i)}
+            mapOff={mapOff}
             actionRef={(el) => {
               cardActionRefs.current[i] = el;
             }}
@@ -572,12 +599,32 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
               : `Rings placed: ${ringsPlacedCount} of 3`}
         </p>
         <div className="relative">
+          {/* WebGL2 fix: the same containment GeoDetective uses. Without
+              this boundary, a device with no WebGL2 made the map
+              constructor throw straight to the app crash reporter and
+              replaced the whole screen with a reload card that could
+              never succeed. The boundary swaps in the "map pictures are
+              off" line and keeps the screen — sightings, status, hint,
+              and header controls — alive. Cold Trail passes its own
+              truthful off-line (its only input is the map, so the
+              GeoDetective "guesses still work" promise would be false
+              here) and mirrors LoopScreen's map-off state: a tile
+              failure or a boundary failure takes the map off for the
+              rest of this visit and disarms ring placement. */}
+          {mapOff ? (
+            <LoopMapOffLine copy={TILE_FALLBACK_COPY.coldTrailMapOff} />
+          ) : (
+          <LoopMapBoundary
+            onFailed={handleMapFailed}
+            fallback={<LoopMapOffLine copy={TILE_FALLBACK_COPY.coldTrailMapOff} />}
+          >
           <LoopMap
             guesses={[]}
             target={{ lon: caseData.hideout.lon, lat: caseData.hideout.lat }}
             finished={revealed}
             unit={hideoutUnit}
             freeTap
+            onTilesFailed={handleMapFailed}
             onMapTap={onMapTap}
             evidenceRings={evidenceRings}
             evidenceMarks={evidenceMarks}
@@ -595,7 +642,9 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
             onSelectPlace={() => {}}
             onEmptyTap={() => {}}
           />
-          {placingNow && draft === null ? (
+          </LoopMapBoundary>
+          )}
+          {placingNow && !mapOff && draft === null ? (
             <>
               {/* Armed-map signal: dashed gold border while waiting for the
                   first tap. Static (no pulse) — reduced-motion safe. The hint

@@ -364,7 +364,7 @@ test("reload proof: wiped open flags do not auto-open an edition after reload", 
   await expect(page.getByTestId("loop-screen")).toHaveCount(0);
   expect(await localGet(page, "meridian.loop.open")).toBe("1");
   // Leave Cold Trail (its Home control clears the flag), then Home renders.
-  await page.getByRole("button", { name: "Home", exact: true }).click();
+  await page.getByRole("button", { name: "Meridian home", exact: true }).click();
   await expect(page.getByTestId("home-heading")).toBeVisible({ timeout: 20_000 });
   await expect(page.getByTestId("deck-due-count")).toHaveText("1 card due");
   await page.evaluate(() => {
@@ -419,7 +419,7 @@ test("ReviewComplete: reset there empties the deck seen back home", async ({ pag
   expect(await localGet(page, "meridian:review-deck:v1")).toBeNull();
 
   // Back home: the card shows the empty state.
-  await page.getByRole("button", { name: "Home", exact: true }).click();
+  await page.getByRole("button", { name: "Meridian home", exact: true }).click();
   await expect(page.getByTestId("home-heading")).toBeVisible({ timeout: 20_000 });
   await expect(page.getByTestId("tour-stop-review")).toContainText(
     "Miss a place and it'll land here for review.",
@@ -451,7 +451,7 @@ test("Editions-paused variant: reset discards the paused run and its banks for g
   await expect.poll(() => readPhase(page), { timeout: 20_000 }).toBe("aim");
 
   // Editions = paused, NOT End game: the run and the session survive.
-  await page.getByRole("button", { name: "Home", exact: true }).click();
+  await page.getByRole("button", { name: "Meridian home", exact: true }).click();
   await expect(page.getByTestId("home-heading")).toBeVisible({ timeout: 20_000 });
   expect(await sessionGet(page, "meridian.session")).not.toBeNull();
   expect(await sessionGet(page, "meridian.run")).not.toBeNull();

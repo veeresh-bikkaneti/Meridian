@@ -38,6 +38,49 @@ export interface StalenessDeps {
  * bundle. Fails closed: any fetch/parse problem returns false, so the caller
  * keeps its original error instead of prompting a useless refresh.
  */
+/** sessionStorage key marking that this tab already refreshed once
+ *  for a stale build (the one-shot guard every stale surface shares). */
+export const STALE_REFRESH_KEY = "meridian.staleRefresh";
+
+/** A stale-refresh mark older than this no longer skips the probe. */
+export const STALE_REFRESH_MAX_AGE_MS = 900_000;
+
+/**
+ * True only when the stale-refresh mark is a timestamp whose age is
+ * in [0, STALE_REFRESH_MAX_AGE_MS] (F6). Writers (the boundary's
+ * retry, game-app's and LoopScreen's refreshForNewBuild) now write
+ * Date.now() instead of the legacy "1": that legacy value parses as
+ * epoch, its age is enormous, and the probe runs — fail-open, exactly
+ * right for a mark whose freshness cannot be proven. Unreadable
+ * storage also reads as not-recent (the probe runs and fails closed
+ * on its own), matching the boundary's long-standing rule.
+ */
+export function staleRefreshRecentlyUsed(
+  storage?: { getItem: (key: string) => string | null } | null,
+  now: number = Date.now(),
+): boolean {
+  let store = storage;
+  if (store === undefined) {
+    try {
+      store = window.sessionStorage;
+    } catch {
+      return false;
+    }
+  }
+  if (!store) return false;
+  let raw: string | null;
+  try {
+    raw = store.getItem(STALE_REFRESH_KEY);
+  } catch {
+    return false;
+  }
+  if (raw === null) return false;
+  const parsed = Number(raw);
+  if (!Number.isFinite(parsed)) return false;
+  const age = now - parsed;
+  return age >= 0 && age <= STALE_REFRESH_MAX_AGE_MS;
+}
+
 export async function isNewBuildDeployed(deps: StalenessDeps = {}): Promise<boolean> {
   const fetchFn = deps.fetchFn ?? fetch;
   const base = deps.base ?? baseUrl();

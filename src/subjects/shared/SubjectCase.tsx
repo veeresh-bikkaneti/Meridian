@@ -93,9 +93,10 @@ import { buildSubjectDetectiveHostProps } from "./subject-host-props";
 import { HomeButton } from "@/components/ui/home-button";
 import { Pill } from "@/components/ui/pill";
 import { Button } from "@/components/ui/button";
-import { ScreenShell } from "@/components/ui/screen-shell";
+import { SiteHeader } from "@/components/ui/site-header";
 import type { ResetHistoryResult } from "@/game/reset-history";
 import { advanceCasePhase, type AnswerFor, type CasePhase } from "./answer";
+import { recordUnitComplete } from "./subject-progress";
 
 // Holmes & Watson in the subject case: lazy, like the other pair
 // hosts, so the pair's chunk is fetched only when a subject case
@@ -105,8 +106,10 @@ const SubjectDetectiveHost = lazy(() => import("./SubjectDetectiveHost"));
 export type SubjectCaseConfig = {
   /** Subject title as kids see it ("Math", "Physics", …). */
   title: string;
-  /** Prefix for data-testids ("math" keeps math-case, math-result, …). */
-  testIdPrefix: string;
+  /** The registry subject id: the key progress is recorded under,
+   * and the prefix for data-testids ("math" keeps math-case,
+   * math-result, …). */
+  subjectId: string;
   /** The subject's playable items for one age band, in deal order. */
   itemsForGroup: (group: AgeGroup) => UnitItem[];
   /** The subject's answer lookup, keyed by item id. */
@@ -144,7 +147,7 @@ export type SubjectCaseConfig = {
 
 export function SubjectCase({
   title,
-  testIdPrefix,
+  subjectId,
   itemsForGroup,
   answerFor,
   lead,
@@ -228,36 +231,38 @@ export function SubjectCase({
         Resume your case
       </Button>
     ) : null;
-  const gameControls =
-    resumeButton || onEndGame ? (
-      <>
-        {resumeButton}
-        {onEndGame ? (
-          <Button
-            variant="secondary"
-            data-testid="end-game-button"
-            className="min-h-[44px]"
-            onClick={onEndGame}
-          >
-            End game
-          </Button>
-        ) : null}
-      </>
-    ) : undefined;
+  // The shared shell's slots (PR 3 Step 3.4): the resume control
+  // rides SiteHeader's back slot beside Home (the picker pattern),
+  // and End game is the header's one exit slot. Same Buttons, labels,
+  // testids and handlers as the legacy ScreenShell controls row.
+  const endGameButton = onEndGame ? (
+    <Button
+      variant="secondary"
+      data-testid="end-game-button"
+      className="min-h-[44px]"
+      onClick={onEndGame}
+    >
+      End game
+    </Button>
+  ) : undefined;
 
   if (!item || !answer) {
     return (
-      <ScreenShell
-        onHome={onExit}
-        controls={gameControls}
-        className="why-learn-screen subject-case-screen"
-        title={`${title} case`}
-        titleRef={headingRef}
-      >
+      <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-(--page-narrow) flex-col px-5 pt-2 pb-8 why-learn-screen subject-case-screen">
+        <SiteHeader
+          onHome={onExit}
+          status={null}
+          mute={null}
+          back={resumeButton ?? undefined}
+          endGame={endGameButton}
+        />
+        <h1 ref={headingRef} tabIndex={-1} className="mode-title mt-4 text-3xl text-fg">
+          {`${title} case`}
+        </h1>
         <p className="mt-4 text-fg">
           No {title.toLowerCase()} case is ready for this age band yet.
         </p>
-      </ScreenShell>
+      </main>
     );
   }
 
@@ -270,6 +275,12 @@ export function SubjectCase({
   const onCorrect = () => {
     setPhase((p) => advanceCasePhase(answer, p, true));
     setPicked(null);
+    // Per-subject progress (subject-progress.ts): a correct pick
+    // in the main phase solves the unit, so record it under this
+    // case's registry subject id — never a test id, so renaming a
+    // test id can't orphan a player's saved progress.
+    // The store's set semantics make a repeat record a no-op.
+    if (phase === "main") recordUnitComplete(subjectId, item.id);
     if (phase === "main" && onCelebrate && !hasCelebratedFirstWin()) {
       markFirstWinCelebrated();
       onCelebrate(celebrationSpec("mystery-solved", "first-win"));
@@ -316,25 +327,43 @@ export function SubjectCase({
   };
 
   return (
-    <ScreenShell
-      onHome={onExit}
-      controls={gameControls}
-      className="why-learn-screen subject-case-screen"
-      testId={`${testIdPrefix}-case`}
-      data={{ "data-band": band, "data-item": item.id }}
-      eyebrow="Case file · Why it matters"
-      title={`Why Do We Learn This? — ${title}`}
-      titleRef={headingRef}
-      sub={
-        <>
-          {/* Item 14 (Stream W): the case count rides the shared
-              Pill — the one AA count readout — not plain small
-              text. The band beside it is the shell's own line. */}
-          <Pill>{`Case ${index + 1} of ${items.length}`}</Pill>
-          {` · Ages ${band}`}
-        </>
-      }
+    <main
+      className="mode-screen mx-auto flex min-h-dvh w-full max-w-(--page-narrow) flex-col px-5 pt-2 pb-8 why-learn-screen subject-case-screen"
+      data-testid={`${subjectId}-case`}
+      data-band={band}
+      data-item={item.id}
     >
+      {/* The shared shell (PR 3 Step 3.4): SiteHeader carries the
+          one Home control — the legacy ScreenShell's BrandHomeButton
+          lockup goes — with the resume control in its back slot and
+          End game in its exit slot. The titles are this screen's own
+          content block, in the same classes ScreenShell rendered.
+          The page's top padding is 8px, not the old frame's 32px:
+          the shell header's row carries its own vertical padding
+          and is ~24px taller than the old home bar — the page gives
+          that height back here so the case content keeps its
+          measured place (the picker migration, Step 3.3, set this
+          pattern). The end-of-flow HomeButtons in the result
+          sections below stay: they are the sanctioned end surface,
+          not header/footer chrome. */}
+      <SiteHeader
+        onHome={onExit}
+        status={null}
+        mute={null}
+        back={resumeButton ?? undefined}
+        endGame={endGameButton}
+      />
+      <p className="name-eyebrow mt-4">Case file · Why it matters</p>
+      <h1 ref={headingRef} tabIndex={-1} className="mode-title mt-1 text-3xl text-fg">
+        {`Why Do We Learn This? — ${title}`}
+      </h1>
+      <p className="mt-2 text-fg">
+        {/* Item 14 (Stream W): the case count rides the shared
+            Pill — the one AA count readout — not plain small
+            text. The band beside it is the shell's own line. */}
+        <Pill>{`Case ${index + 1} of ${items.length}`}</Pill>
+        {` · Ages ${band}`}
+      </p>
 
       <div className="mt-6 grid gap-4">
         {/* Holmes & Watson (flag-gated inside the host, default off =
@@ -361,7 +390,7 @@ export function SubjectCase({
           <section
             aria-label="You solved it"
             className="loop-reveal mode-surface rounded-2xl border p-4"
-            data-testid={`${testIdPrefix}-result`}
+            data-testid={`${subjectId}-result`}
           >
             <p className="verdict-headline loop-verdict-headline">🎯 You got it!</p>
             <p className="mt-2 text-fg">
@@ -374,7 +403,7 @@ export function SubjectCase({
               </p>
             ) : null}
             {resultExtra ? resultExtra(item, reduced, band) : null}
-            <p className="mt-3 text-fg" data-testid={`${testIdPrefix}-used-in`}>
+            <p className="mt-3 text-fg" data-testid={`${subjectId}-used-in`}>
               {usedInLine(item.useElsewhere)}
             </p>
             <div className="mt-4 grid gap-2">
@@ -394,13 +423,13 @@ export function SubjectCase({
           <section
             aria-label="The answer, and how it solves"
             className="loop-reveal mode-surface rounded-2xl border p-4"
-            data-testid={`${testIdPrefix}-lose-reveal`}
+            data-testid={`${subjectId}-lose-reveal`}
           >
-            <p className="mt-2 text-fg" data-testid={`${testIdPrefix}-lose-answer`}>
+            <p className="mt-2 text-fg" data-testid={`${subjectId}-lose-answer`}>
               The answer is <strong>{answer.correct}</strong> — here's how.
             </p>
             {resultExtra ? resultExtra(item, reduced, band) : null}
-            <p className="mt-3 text-fg" data-testid={`${testIdPrefix}-used-in`}>
+            <p className="mt-3 text-fg" data-testid={`${subjectId}-used-in`}>
               {usedInLine(item.useElsewhere)}
             </p>
             <div className="mt-4 grid gap-2">
@@ -423,7 +452,7 @@ export function SubjectCase({
             choices={active.choices}
             picked={picked}
             onPick={pick}
-            testId={`${testIdPrefix}-answer-card`}
+            testId={`${subjectId}-answer-card`}
             kind={active.kind ?? "choice"}
             onNumber={checkNumber}
             moveFocus={phase === "followUp"}
@@ -439,6 +468,6 @@ export function SubjectCase({
           one). The onResetHistory prop stays in the contract —
           GameApp and the wrappers still pass it — but the case no
           longer renders a control from it. */}
-    </ScreenShell>
+    </main>
   );
 }

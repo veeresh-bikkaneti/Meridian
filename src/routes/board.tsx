@@ -27,7 +27,8 @@ import { computeLayout } from "@/board/status-core";
 import { TrailView, lowerFirst } from "@/board/trail-view";
 import { FeatureRequestForm } from "@/board/feature-request-form";
 import { flagsRemoteApplied, isEnabled, loadFlags } from "@/lib/flags";
-import { HomeButton } from "@/components/ui/home-button";
+import { SiteHeader } from "@/components/ui/site-header";
+import { SiteFooter } from "@/components/ui/site-footer";
 import "@/board/board.css";
 
 const MoleculeMap = lazy(() => import("@/board/molecule-map"));
@@ -47,8 +48,10 @@ const MoleculeMap = lazy(() => import("@/board/molecule-map"));
  * state on GitHub (live-feed.ts), paginating until every record
  * linked from the publisher's links file is covered. Full coverage:
  * statuses are recomputed from the live answer and the header says
- * "Live from GitHub — every linked record checked (N of N)" beside
- * the snapshot's stamp. Anything less — a failed, rate-limited or
+ * "Checked just now — every linked record checked (N of N)" beside
+ * the snapshot's stamp (player words only: the board's own
+ * banned-token scan in status-core.ts bars the service's name from
+ * anything public). Anything less — a failed, rate-limited or
  * partial check — keeps the snapshot on screen and says so plainly.
  * The claim is never made without the coverage to back it: that
  * was v2's centrepiece defect (a one-page fetch under a "Live"
@@ -328,10 +331,12 @@ function BoardPage() {
         </>
       ) : null}
       <div className="v3-wrap">
-        <header className="v3-head">
-          <p className="v3-back">
-            <HomeButton to="/" />
-          </p>
+        {/* The shared shell header (PR 3 Step 3.2): SiteHeader carries
+            the one Home control; the board's dark-capable theme rides
+            the shell's map variant (a prop, not a fork). The board's
+            own title block below is content, not a second header. */}
+        <SiteHeader to="/" variant="map" status={null} mute={null} />
+        <div className="v3-head">
           <p className="v3-eyebrow">For grown-ups</p>
           <h1 className="v3-title">What&rsquo;s coming</h1>
           <p className="v3-counts" data-testid="board-counts-line">
@@ -341,7 +346,7 @@ function BoardPage() {
           <p className="v4-walk">Every stop is a feature your child will play.</p>
           <p className="v3-updated" data-testid="board-updated-line">
             {liveLine?.kind === "live"
-              ? `Live from GitHub — every linked record checked (${liveLine.covered} of ${liveLine.wanted}) · `
+              ? `Checked just now — every linked record checked (${liveLine.covered} of ${liveLine.wanted}) · `
               : ""}
             Updated {formatUpdated(board.updatedAt)}
             {loaded?.source === "manual" ? " — showing the copy that came with the site" : ""}
@@ -357,7 +362,7 @@ function BoardPage() {
               This list is more than a day old — a fresher one is on its way.
             </p>
           ) : null}
-        </header>
+        </div>
 
         {frontierStory ? (
           <div className="v3-frontier-banner">
@@ -523,12 +528,19 @@ function BoardPage() {
           </section>
         )}
 
-        <footer className="v3-footer">
-          <p>Didn&rsquo;t find your idea here?</p>
-          <button type="button" className="v3-btn" onClick={() => go({ view: "tip" })}>
-            Ask for something new
-          </button>
-        </footer>
+        {/* The shared shell footer (PR 3 Step 3.2): the board's own
+            ask stays as the footer's lead, word for word; the shared
+            route links and kids-privacy note follow it. */}
+        <SiteFooter
+          lead={
+            <>
+              <p className="v3-footer-lead">Didn&rsquo;t find your idea here?</p>
+              <button type="button" className="v3-btn" onClick={() => go({ view: "tip" })}>
+                Ask for something new
+              </button>
+            </>
+          }
+        />
       </div>
     </main>
   );

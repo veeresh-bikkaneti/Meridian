@@ -1,7 +1,7 @@
 /**
  * Physics case flow — the component the physics subject module's
  * load() returns (contract I1). A thin wrapper over the shared
- * SubjectCase, passing physics' title, test-id prefix, band items and
+ * SubjectCase, passing physics' title, subject id, band items and
  * answer lookup.
  *
  * Clue scenes (expansion waves 4-6): physics also passes the
@@ -44,7 +44,7 @@ export default function PhysicsCase(
   return (
     <SubjectCase
       title="Physics"
-      testIdPrefix="physics"
+      subjectId="physics"
       itemsForGroup={itemsForGroup}
       answerFor={answerFor}
       scene={(item, phase, reduced, band) => {

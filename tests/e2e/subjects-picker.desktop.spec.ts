@@ -7,8 +7,8 @@ import { serveBuiltArtifact } from "./helpers";
  * The card is live for everyone (subjects launch, Nov 13): no
  * ?scale=1 needed. The picker lists the released subjects as ready
  * rows and everything not built yet as disabled "Coming soon" rows
- * (Journals stay coming soon in this run — their clips are not in the
- * repo). Picking a ready row opens that subject's case; the case's
+ * (all six subjects are released today, Journals included).
+ * Picking a ready row opens that subject's case; the case's
  * "Meridian home" (brand) control returns to Home. Per-band "Coming soon" for a released
  * subject is covered by the picker-rows unit tests; no shipped
  * subject currently lacks a band.
@@ -17,6 +17,7 @@ test.setTimeout(120_000);
 
 const APP_URL = "http://127.0.0.1:4123/Meridian/?idle-ms=3600000";
 const PROFILE_KEY = "meridian.ageProfile.v1";
+const PROGRESS_KEY = "meridian.subject-progress.v1";
 
 type Band = "7-10" | "10-18" | "18+";
 
@@ -75,7 +76,13 @@ test("picker lists Math and Journals ready for 10-18", async ({ page, context })
   const math = page.getByTestId("subject-row-math");
   await expect(math).toBeEnabled();
   await expect(math).toContainText("Math");
-  await expect(math).toContainText("3 cases");
+  // The 10-18 dealing counts every math unit for the band
+  // (pickerRows over the registry units): 28 today. This pin
+  // read "3 cases" from the first playable slice and was stale
+  // on main — it failed there too (measured on unmodified main,
+  // 2026-11-18: the card shows "28 cases"). Corrected to the
+  // app's actual dealing; the count is the assertion.
+  await expect(math).toContainText("28 cases");
   // Journals (Stream D, PR D1) is playable: 7 cases for 10-18.
   const journals = page.getByTestId("subject-row-journals");
   await expect(journals).toBeEnabled();
@@ -127,3 +134,57 @@ test("390px: the picker renders on a phone with no sideways scroll", async ({
   expect(overflow).toBeLessThanOrEqual(0);
   expect(errors).toEqual([]);
 });
+
+// The per-card Reset renders through the shared Button's pill
+// size: its face must stay the approved mock's size (measured on
+// the pre-Button build, 2026-11-18: 52.5 x 26 px at both widths)
+// while its tap target — the visible pill plus the Button's
+// invisible expanded hit zone — reaches the 44px floor both ways.
+for (const vp of [
+  { name: "1280px", width: 1280, height: 800 },
+  { name: "390px", width: 390, height: 844 },
+]) {
+  test(`Reset pill at ${vp.name}: mock-size face, 44px hit zone`, async ({ page, context }) => {
+    await setup(context, "10-18");
+    // Seed one solved Math unit so the Reset is enabled (a live
+    // tap target is what the 44px floor governs).
+    await context.addInitScript(
+      ({ key }) => {
+        window.localStorage.setItem(key, JSON.stringify({ math: ["seeded-unit"] }));
+      },
+      { key: PROGRESS_KEY },
+    );
+    await page.setViewportSize({ width: vp.width, height: vp.height });
+    const errors = watchErrors(page);
+    await openPicker(page);
+    const reset = page.getByTestId("subject-reset-math");
+    await expect(reset).toBeEnabled();
+    await reset.scrollIntoViewIfNeeded();
+    const box = await reset.boundingBox();
+    expect(box).not.toBeNull();
+    expect(Math.abs(box!.width - 52.5)).toBeLessThanOrEqual(2);
+    expect(Math.abs(box!.height - 26)).toBeLessThanOrEqual(2);
+    // Walk out from the pill's centre one pixel at a time: every
+    // point that still lands on the Reset (its hit zone included)
+    // counts toward the tap target's true size.
+    const hit = await reset.evaluate((el) => {
+      const r = el.getBoundingClientRect();
+      const cx = r.left + r.width / 2;
+      const cy = r.top + r.height / 2;
+      const scan = (dx: number, dy: number) => {
+        let n = 0;
+        while (
+          n < 80 &&
+          document.elementFromPoint(cx + dx * (n + 1), cy + dy * (n + 1)) === el
+        ) {
+          n++;
+        }
+        return n;
+      };
+      return { w: scan(-1, 0) + scan(1, 0) + 1, h: scan(0, -1) + scan(0, 1) + 1 };
+    });
+    expect(hit.w).toBeGreaterThanOrEqual(44);
+    expect(hit.h).toBeGreaterThanOrEqual(44);
+    expect(errors).toEqual([]);
+  });
+}

@@ -10,18 +10,26 @@
  *
  * 1. Importing a home control (HomeButton or BrandHomeButton) to
  *    hand-roll a header — screens take the home control from
- *    SiteHeader, which owns it (Round 2 adoption: the control is
- *    HomeButton, "Home", top-left, on every adopted screen). The
- *    controls themselves are NOT deleted: HomeButton still serves
- *    end-of-flow and HUD surfaces until their streams adopt the
- *    shell, and BrandHomeButton still serves ScreenShell. Those
- *    uses are baselined or owner-exempt below; this rule bans new
- *    imports everywhere else.
+ *    SiteHeader, which owns it. Since PR 529 Part 2 (owner ruling
+ *    2026-11-17) the header control is BrandHomeButton: the brand
+ *    lockup named exactly "Meridian home", top-left, on every
+ *    adopted screen — one home control per screen, and it is the
+ *    lockup. The controls themselves are NOT deleted: HomeButton
+ *    ("Home") still serves end-of-flow and HUD surfaces, which are
+ *    not headers. No screen imports either control to hand-roll a
+ *    header. Those uses are baselined or owner-exempt below; this
+ *    rule bans new imports everywhere else.
  * 2. Page-local <header> / <footer> elements outside the shared
  *    components.
  * 3. `max-w-none` in a class string — screens sit in PageColumn's two
  *    named widths; lifting the cap is what stretched the Why Learn
  *    picker (item 11).
+ * 4. Page-local <nav> / <main> elements (PR 3 Step 5): the header's
+ *    nav lives in SiteHeader, and a screen's <main> root is part of
+ *    its shell adoption record (shell-registry.ts). Today's <main>
+ *    hosts and the two content navs (the grown-ups doors, the
+ *    board's view switcher) are baselined, shrink-only; a new file
+ *    that hand-builds either fails here.
  *
  * The bans are three rules of one local plugin, not three
  * no-restricted-syntax blocks: flat-config blocks that set the same
@@ -81,6 +89,34 @@ const shellPlugin = {
         };
       },
     },
+    "no-page-local-nav": {
+      meta: { type: "problem", schema: [] },
+      create(context) {
+        return {
+          JSXOpeningElement(node) {
+            if (node.name.name === "nav") {
+              context.report({ node, message: `Page-local <nav>. Fix: ${FIX_HEADER} (its nav slot). Content navs are baselined in eslint/shell-ban-baseline.json.` });
+            }
+          },
+        };
+      },
+    },
+    "no-page-local-main": {
+      meta: { type: "problem", schema: [] },
+      create(context) {
+        return {
+          JSXOpeningElement(node) {
+            if (node.name.name === "main") {
+              context.report({
+                node,
+                message:
+                  "Page-local <main> in a file with no shell-registry entry. Fix: adopt PageShell/SiteHeader and register the screen in src/components/ui/shell-registry.ts. Existing hosts are baselined in eslint/shell-ban-baseline.json (shrink-only).",
+              });
+            }
+          },
+        };
+      },
+    },
     "no-max-w-none": {
       meta: { type: "problem", schema: [] },
       create(context) {
@@ -108,10 +144,13 @@ const shellPlugin = {
 /** The shared components own the only sanctioned <header>/<footer>. */
 const HEADER_FOOTER_OWNERS = ["src/components/ui/site-header.tsx", "src/components/ui/site-footer.tsx"];
 
-/** The sanctioned hosts of the home controls themselves: SiteHeader
- *  (every adopted screen's header) and ScreenShell (the picker/case
- *  shell, frozen while PR 515 is in flight). */
-const HOME_CONTROL_OWNERS = ["src/components/ui/site-header.tsx", "src/components/ui/screen-shell.tsx"];
+/** SiteHeader owns the only sanctioned header <nav>. */
+const NAV_OWNERS = ["src/components/ui/site-header.tsx"];
+
+/** The sanctioned host of the home control itself: SiteHeader
+ *  (every adopted screen's header). ScreenShell, the other host,
+ *  was deleted in PR 3 Step 4. */
+const HOME_CONTROL_OWNERS = ["src/components/ui/site-header.tsx"];
 
 function block(kind, ruleName, extraIgnores = []) {
   return {
@@ -125,5 +164,7 @@ function block(kind, ruleName, extraIgnores = []) {
 export const shellBanConfigs = [
   block("homeButtonImport", "no-home-button-import", HOME_CONTROL_OWNERS),
   block("pageLocalHeaderFooter", "no-page-local-header-footer", HEADER_FOOTER_OWNERS),
+  block("pageLocalNav", "no-page-local-nav", NAV_OWNERS),
+  block("pageLocalMain", "no-page-local-main"),
   block("maxWNone", "no-max-w-none"),
 ];

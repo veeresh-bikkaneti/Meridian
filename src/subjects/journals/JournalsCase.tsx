@@ -43,7 +43,7 @@ export default function JournalsCase(
   return (
     <SubjectCase
       title="Journals"
-      testIdPrefix="journals"
+      subjectId="journals"
       itemsForGroup={itemsForGroup}
       answerFor={answerFor}
       lead={captionLead}

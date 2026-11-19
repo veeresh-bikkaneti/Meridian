@@ -34,3 +34,30 @@ test("isNewBuildDeployed: false on non-OK response or missing buildId", async ()
   assert.equal(await isNewBuildDeployed({ fetchFn: fakeFetch(undefined) }), false);
   assert.equal(await isNewBuildDeployed({ fetchFn: fakeFetch(42) }), false);
 });
+
+// F6: the stale-refresh mark is a timestamp, honoured only inside
+// its freshness window; the legacy "1" parses as epoch (probe runs).
+import { staleRefreshRecentlyUsed, STALE_REFRESH_MAX_AGE_MS } from "./build-staleness.ts";
+
+const NOW = 1_800_000_000_000;
+const storeOf = (v: string | null, throwing = false) => ({
+  getItem: (_k: string): string | null => {
+    if (throwing) throw new Error("blocked");
+    return v;
+  },
+});
+
+test("staleRefreshRecentlyUsed: a fresh timestamp skips the probe; the window edge is inclusive", () => {
+  assert.equal(staleRefreshRecentlyUsed(storeOf(String(NOW - 1_000)), NOW), true);
+  assert.equal(staleRefreshRecentlyUsed(storeOf(String(NOW - STALE_REFRESH_MAX_AGE_MS)), NOW), true);
+  assert.equal(staleRefreshRecentlyUsed(storeOf(String(NOW - STALE_REFRESH_MAX_AGE_MS - 1)), NOW), false);
+});
+
+test("staleRefreshRecentlyUsed: legacy '1', future, malformed, absent and blocked all run the probe", () => {
+  assert.equal(staleRefreshRecentlyUsed(storeOf("1"), NOW), false, "legacy '1' is epoch — fail-open");
+  assert.equal(staleRefreshRecentlyUsed(storeOf(String(NOW + 1_000)), NOW), false, "future-dated is not evidence");
+  assert.equal(staleRefreshRecentlyUsed(storeOf("yes"), NOW), false);
+  assert.equal(staleRefreshRecentlyUsed(storeOf(null), NOW), false);
+  assert.equal(staleRefreshRecentlyUsed(storeOf(null, true), NOW), false);
+  assert.equal(staleRefreshRecentlyUsed(null, NOW), false);
+});

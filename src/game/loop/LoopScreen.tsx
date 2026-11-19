@@ -15,7 +15,7 @@ import { GradeChip } from "@/components/grade-chip";
 import { ScrollCue, useMoreBelow } from "@/components/scroll-cue";
 import { BRAND } from "@/game/brand";
 import { shareLoopText } from "@/game/share";
-import { isNewBuildDeployed } from "@/game/build-staleness";
+import { isNewBuildDeployed, staleRefreshRecentlyUsed } from "@/game/build-staleness";
 import { calendarDate } from "@/game/daily";
 import { Button } from "@/components/ui/button";
 import { HomeButton } from "@/components/ui/home-button";
@@ -707,7 +707,9 @@ export function LoopScreen({
 
   const refreshForNewBuild = () => {
     try {
-      sessionStorage.setItem(STALE_REFRESH_KEY, "1");
+      // F6: a timestamp, not "1" — readers honour the mark only
+      // inside the freshness window (staleRefreshRecentlyUsed).
+      sessionStorage.setItem(STALE_REFRESH_KEY, String(Date.now()));
     } catch {
       // Storage unavailable — reload anyway; the prompt simply reappears.
     }
@@ -953,19 +955,22 @@ export function LoopScreen({
   }
 
   return (
-    <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 py-8">
+    <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-(--page-narrow) flex-col px-5 py-8">
       {/* The shared shell header (fix/ui-shared-shell, Round 2
           adoption): HomeButton ("Home") top-left, then the fixed
           slots — the case readout, the one mute, End game. The
-          screen-home-bar class keeps the bar sticky over the case.
-          The mute is the same master toggle as everywhere: one
-          persisted key (meridian.sound), one implementation
-          (SoundToggle.tsx, owner 2026-11-10). The pair has no
-          speaker of its own. */}
+          shell's sticky prop keeps the bar pinned over the case
+          (PR 3 Step 3.11 — it replaces the hand-rolled
+          screen-home-bar className override; the shell's gutter and
+          row geometry carry the layout, so the Home control sits
+          exactly where every other screen's sits). The mute is the
+          same master toggle as everywhere: one persisted key
+          (meridian.sound), one implementation (SoundToggle.tsx,
+          owner 2026-11-10). The pair has no speaker of its own. */}
       <SiteHeader
         onHome={onLeave}
-        className="screen-home-bar -mx-5 px-5"
-        stars={<p className="text-sm text-fg">Case #{caseNo}</p>}
+        sticky
+        status={<p className="text-sm text-fg">Case #{caseNo}</p>}
         mute={<SoundToggle testId="sound-toggle-loop" className="atlas-sound-toggle" />}
         endGame={
           store && load.phase === "ready" && !endedSummary ? (
@@ -1216,8 +1221,7 @@ async function toErrorState(
 ): Promise<Extract<LoadState, { phase: "error" }>> {
   let staleBuild = false;
   try {
-    staleBuild =
-      sessionStorage.getItem(STALE_REFRESH_KEY) !== "1" && (await isNewBuildDeployed());
+    staleBuild = !staleRefreshRecentlyUsed() && (await isNewBuildDeployed());
   } catch {
     staleBuild = false;
   }

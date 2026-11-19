@@ -98,10 +98,10 @@ describe("(a) a wrong pick on fair-share reveals the answer line, then the summa
   it("the answer line states the answer first, in the win path's own shape", () => {
     const lose = region(
       subjectCase,
-      'data-testid={`${testIdPrefix}-lose-reveal`}',
+      'data-testid={`${subjectId}-lose-reveal`}',
       ") : (\n          <AnswerCard",
     );
-    assert.ok(lose.includes('data-testid={`${testIdPrefix}-lose-answer`}'));
+    assert.ok(lose.includes('data-testid={`${subjectId}-lose-answer`}'));
     assert.ok(
       lose.includes("The answer is <strong>{answer.correct}</strong> — here's how."),
       "the line is built from the item's own correct answer, so fair-share reads: The answer is 3 — here's how.",
@@ -140,7 +140,7 @@ describe("(b) every other wrong pick behaves exactly as today", () => {
     // The ternary order: solved result, else the lose reveal, else
     // the answer card — an item off the path never leaves the card.
     const solvedAt = subjectCase.indexOf('aria-label="You solved it"');
-    const loseAt = subjectCase.indexOf('data-testid={`${testIdPrefix}-lose-reveal`}');
+    const loseAt = subjectCase.indexOf('data-testid={`${subjectId}-lose-reveal`}');
     const cardAt = subjectCase.indexOf("<AnswerCard", loseAt);
     assert.ok(solvedAt >= 0 && loseAt > solvedAt && cardAt > loseAt, "solved, reveal, card — in that order");
     assert.ok(subjectCase.includes("picked={picked}"), "the card still receives the wrong pick as feedback");
@@ -157,7 +157,7 @@ describe("(c) a right pick on fair-share is unchanged", () => {
     const solvedSection = region(
       subjectCase,
       'aria-label="You solved it"',
-      'data-testid={`${testIdPrefix}-lose-reveal`}',
+      'data-testid={`${subjectId}-lose-reveal`}',
     );
     assert.ok(solvedSection.includes("🎯 You got it!"));
     assert.ok(

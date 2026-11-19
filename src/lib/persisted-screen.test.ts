@@ -205,3 +205,20 @@ test("368 rule: a retry marker for an unknown surface restores nothing", () => {
     sess.restore();
   }
 });
+
+test("F1a: clearing a failed screen also clears the retry marker (Home cannot resurrect it)", () => {
+  const s = stubStorage({ [LOOP_OPEN_KEY]: "1" });
+  const sess = stubSession();
+  try {
+    // Try again on a previous failure armed the one-shot marker…
+    rearmPersistedScreenOpen("GeoDetective");
+    // …then the screen failed again and the player chose Home: the
+    // catch-time / goHome clear must disarm the marker too, or the
+    // next boot would restore the broken screen anyway.
+    clearPersistedScreenOpen("GeoDetective");
+    assert.equal(consumeRetryScreen(), null, "the retry marker is cleared with the open flag");
+  } finally {
+    s.restore();
+    sess.restore();
+  }
+});

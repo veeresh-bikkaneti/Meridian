@@ -1,9 +1,11 @@
 /**
  * PageColumn: the ONE centred column every page sits in (Stream S
  * contract, fix/ui-shared-shell, items 11 and 20). Two named widths,
- * both already shipped by ScreenShell / home: "wide" (max-w-7xl —
- * home, picker, board) and "read" (max-w-3xl — cases, text pages),
- * with prod's px-5 gutters.
+ * both token values (--page-narrow / --page-wide in styles.css, the
+ * shipped max-w-3xl / max-w-7xl sizes): "narrow" (cases, text pages)
+ * and "wide" (home, picker, board), with prod's px-5 gutters. The
+ * width was named "read" until PR 3 Step 2 aligned it with the
+ * PageShell vocabulary (narrow | wide).
  *
  * Width is `w-full`, never `100vw` (UX seat): 100vw includes the
  * scrollbar and re-creates item 11's 1280px horizontal scrollbar
@@ -14,7 +16,7 @@ import type { ReactNode } from "react";
 import { cn } from "@/lib/cn";
 
 export type PageColumnProps = {
-  width?: "wide" | "read";
+  width?: "narrow" | "wide";
   className?: string;
   testId?: string;
   children?: ReactNode;
@@ -24,7 +26,7 @@ export function PageColumn({ width = "wide", className, testId, children }: Page
   return (
     <div
       data-testid={testId}
-      className={cn("mx-auto w-full px-5", width === "wide" ? "max-w-7xl" : "max-w-3xl", className)}
+      className={cn("mx-auto w-full px-5", width === "wide" ? "max-w-(--page-wide)" : "max-w-(--page-narrow)", className)}
     >
       {children}
     </div>

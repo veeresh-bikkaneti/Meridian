@@ -35,6 +35,7 @@ export function SightingCard({
   onTryAgain,
   onCancelPlacement,
   onMoveRing,
+  mapOff,
   actionRef,
 }: {
   sighting: ColdTrailSighting;
@@ -58,6 +59,12 @@ export function SightingCard({
   onCancelPlacement: () => void;
   /** Re-enter adjusting(i) with the draft planted at the locked center. */
   onMoveRing: () => void;
+  /**
+   * The map is off (tiles failed / no WebGL2): placement cannot be armed,
+   * so the Place ring / Move buttons render disabled instead of inviting
+   * a tap that can't land. Optional — absent means the map is live.
+   */
+  mapOff?: boolean;
   /** Ref for the card's primary action button (focus management, WCAG 2.4.3). */
   actionRef?: Ref<HTMLButtonElement>;
 }): JSX.Element {
@@ -149,6 +156,7 @@ export function SightingCard({
                 ref={actionRef}
                 data-testid="place-ring-btn"
                 onClick={onPlaceRing}
+                disabled={mapOff}
                 className="min-h-[44px]"
               >
                 📍 Place ring on map
@@ -159,6 +167,7 @@ export function SightingCard({
                 variant="secondary"
                 data-testid="move-ring-btn"
                 onClick={onMoveRing}
+                disabled={mapOff}
                 className="min-h-[44px]"
               >
                 ↩ Move

@@ -7,17 +7,20 @@
  * picker page carries the band ask itself:
  *
  * - No band set (first time): the three band pills, labelled from
- *   the band table. A pick writes through the store's unset path
+ *   the band table. A set profile whose band is somehow missing
+ *   lands here too — the ask fails open, never an empty pill. A
+ *   pick writes through the store's unset path
  *   (setBand, the settings flow's own first-set call) and the
  *   picker's change-event subscription re-deals the list at the
  *   picked band; the pills then collapse away.
- * - Band set: the pills are gone and a "Change band" option shows
- *   instead. Tapping it re-opens the pills; a different band
- *   writes through the store's change path (saveBand with the
- *   host's run-in-progress input — the same write
- *   AgeProfileSettings performs) and the list re-deals in place.
- *   This is the graduation path: a player moves up a band from
- *   the page they play from.
+ * - Band set: the pills collapse to ONE pill showing the
+ *   selected band's own label (e.g. "Ages 10-18"). Tapping it
+ *   re-opens the pills in place; a different band writes through
+ *   the store's change path (saveBand with the host's
+ *   run-in-progress input — the same write AgeProfileSettings
+ *   performs) and the list re-deals in place. This is the
+ *   graduation path: a player moves up a band from the page
+ *   they play from.
  *
  * Deliberately NO grown-up gate here, and that widens who can
  * write the band: the gate in AgeProfileSettings still guards the
@@ -104,7 +107,11 @@ export default function AgeBandControl({ runInProgress = false }: AgeBandControl
     </div>
   );
 
-  if (profile.status === "unset") {
+  // A set profile whose band is missing joins the unset path:
+  // the store's invariant says it cannot happen, but if it ever
+  // did, the ask fails open to the chooser instead of collapsing
+  // to an empty, unlabelled pill.
+  if (profile.status === "unset" || profile.band === null) {
     return (
       <div data-testid="age-band-control">
         {/* The picker's own first-set line (AgePicker's sub copy):
@@ -115,21 +122,30 @@ export default function AgeBandControl({ runInProgress = false }: AgeBandControl
     );
   }
 
+  // Below here the band is set (the guard above took the missing
+  // case), so the collapsed pill always has a real label to show.
+  const band = profile.band;
+
   if (!expanded) {
+    const selectedLabel = AGE_BANDS[band].label;
     return (
       <div data-testid="age-band-control">
+        {/* The collapsed set state: one pill shows what was
+            selected — the band's own label — and tapping it
+            re-opens the three pills in place to switch. */}
         <Button
           variant="secondary"
           className="rounded-full"
-          data-testid="change-band-button"
+          data-testid="band-selected-pill"
           aria-expanded={false}
+          aria-label={`Age band: ${selectedLabel}. Tap to change band.`}
           onClick={() => setExpanded(true)}
         >
-          Change band
+          {selectedLabel}
         </Button>
       </div>
     );
   }
 
-  return <div data-testid="age-band-control">{pills(profile.band)}</div>;
+  return <div data-testid="age-band-control">{pills(band)}</div>;
 }

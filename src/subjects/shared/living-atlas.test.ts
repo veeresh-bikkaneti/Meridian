@@ -54,9 +54,15 @@ describe("WhyLearnWorld — the mountain painting as the page world", () => {
     assert.ok(css.includes("animation: wl-flagwave 2.2s ease-in-out infinite alternate"), "summit flag waves 2.2 s");
   });
 
-  it("the picker renders the world behind its content", () => {
-    assert.ok(picker.includes("<WhyLearnWorld />"), "world layer rendered by the picker");
+  it("the picker renders the world as its own section above the hero card (D1)", () => {
+    assert.ok(picker.includes("<WhyLearnWorld />"), "world band rendered by the picker");
+    const worldAt = picker.indexOf("<WhyLearnWorld />");
+    const heroAt = picker.indexOf('<div className="screen-hero mode-card mt-4 overflow-hidden">');
+    assert.ok(worldAt >= 0 && heroAt > worldAt, "the band section stands above the hero card in the flow");
+    assert.equal(picker.split("<WhyLearnWorld />").length - 1, 1, "the band renders exactly once");
     assert.ok(css.includes(".wl-world {"), "band CSS present");
+    assert.ok(css.includes(".subject-picker-screen .wl-world {"), "the picker-scoped in-flow band rule (D1)");
+    assert.ok(css.includes("position: relative;"), "the band is in normal flow on the picker, not an absolute overlay");
     assert.ok(css.includes("mask-image: linear-gradient(to bottom, #000 78%, transparent)"), "the band feathers into the wash");
   });
 });
@@ -144,7 +150,7 @@ describe("The spotlight and the entrance cascade", () => {
 
 describe("Case screens carry the same system — scope class only", () => {
   it("both SubjectCase shells take the atlas scope", () => {
-    const scopes = subjectCase.split('className="why-learn-screen subject-case-screen"').length - 1;
+    const scopes = subjectCase.split("why-learn-screen subject-case-screen").length - 1;
     assert.equal(scopes, 2, "the case shell and the empty-band shell");
     assert.ok(css.includes(".subject-case-screen .mode-card"), "clue + answer cards restyled");
     assert.ok(css.includes(".subject-case-screen .loop-reveal"), "the result band restyled");

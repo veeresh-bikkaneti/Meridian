@@ -31,7 +31,7 @@ import { fileURLToPath } from "node:url";
  * 2026-11-15): the Why Learn entry and the subject cards no
  * longer route through the modal gate — the picker page carries
  * the ask itself (AgeBandControl: the band pills while unset,
- * "Change band" once set), and a subject tap with no band set
+ * the selected-band pill once set), and a subject tap with no band set
  * goes to the pills instead of opening a case. The amendment
  * pins are in their own describe below; the gate pins here now
  * cover only the paths that bypass the page.
@@ -180,16 +180,19 @@ describe("the picker page's band control (amendment)", () => {
     assert.ok(!bandControl.includes("localStorage"), "no storage access of its own — the store owns the key");
   });
 
-  it("shows the pills while unset and Change band once set", () => {
+  it("shows the pills while unset and the selected-band pill once set", () => {
     assert.ok(bandControl.includes('profile.status === "unset"'), "the unset state keys on the profile's own status");
     assert.ok(bandControl.includes('data-testid="band-pills"'), "the pill row");
     assert.ok(bandControl.includes("data-testid={`band-pill-${id}`}"), "one pill per band");
-    assert.ok(bandControl.includes('data-testid="change-band-button"'), "the collapsed set state is the Change band option");
+    assert.ok(bandControl.includes('data-testid="band-selected-pill"'), "the collapsed set state is the selected-band pill");
+    assert.ok(!bandControl.includes('data-testid="change-band-button"'), "the retired Change band testid is gone");
+    assert.ok(bandControl.includes("Tap to change band."), "the pill's label says what tapping it does");
+    assert.ok(bandControl.includes("{selectedLabel}"), "the pill's text is the selected band's own label");
     assert.ok(bandControl.includes("AGE_BAND_IDS.map"), "the pills are the band table's bands, in its order");
     assert.ok(bandControl.includes("AGE_BANDS[id].label"), "with the band table's own labels");
   });
 
-  it("Change band re-opens the pills, and the control follows changes made anywhere", () => {
+  it("the selected-band pill re-opens the pills, and the control follows changes made anywhere", () => {
     assert.ok(bandControl.includes("onClick={() => setExpanded(true)}"), "the tap re-opens the pill row");
     assert.ok(bandControl.includes("onAgeProfileChanged("), "the control subscribes to the change event");
     assert.ok(bandControl.includes("setExpanded(false)"), "a pick — or any external change — collapses it again");
@@ -200,7 +203,7 @@ describe("the picker page's band control (amendment)", () => {
     );
   });
 
-  it("the picker hosts the control under its header and names no band it does not have", () => {
+  it("the picker hosts the control in its title block and names no band it does not have", () => {
     assert.ok(
       subjectPicker.includes('import AgeBandControl from "@/components/age-profile/AgeBandControl";'),
       "hosted by the picker",
@@ -212,6 +215,14 @@ describe("the picker page's band control (amendment)", () => {
     assert.ok(
       subjectPicker.includes('profileStatus === "unset" ? "Pick a subject" : `Pick a subject · Ages ${band}`'),
       "the sub line claims a band only when one is set",
+    );
+    assert.ok(
+      subjectPicker.includes('<div ref={bandBarRef} className="mt-3">'),
+      "the band bar sits in the title block under the sub line (D1 adjustment)",
+    );
+    assert.ok(
+      !subjectPicker.includes('<div ref={bandBarRef} className="mt-5">'),
+      "the retired below-hero band bar is gone — one control, one place",
     );
   });
 });

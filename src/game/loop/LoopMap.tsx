@@ -5,6 +5,7 @@ import { clampLat, initialBearing, normalizeLon } from "@/game/geo";
 import { formatLength, type LengthUnit } from "@/game/units";
 import { playCelebrationSound } from "@/game/audio/play-guards";
 import { IMAGERY_TILES } from "@/map/imagery";
+import { isWebgl2Unavailable } from "@/lib/webgl2-unavailable";
 import { LOOP_LABELS_ATTRIBUTION, LOOP_LABELS_TILES } from "./map-labels";
 import { buildPlaceGrid, nearestPlace, type PlaceGrid } from "./place-resolve";
 import { destination, guessArrow, ringPolygon } from "./rings";
@@ -127,6 +128,9 @@ interface LoopMapProps {
   /**
    * WS-4 Phase 1: the map pictures failed to load. The owner hides the map
    * and keeps the clue -> guess -> feedback loop going. Fires once per mount.
+   * Also the map-off channel for a post-init WebGL context loss and for a
+   * MapLibre error carrying a GPU initialization failure — same dead
+   * canvas, same off-line.
    */
   onTilesFailed?: () => void;
   /**
@@ -406,6 +410,14 @@ export function LoopMap({
       onTilesFailedRef.current?.();
     };
     map.on("error", (e) => {
+      // A GPU initialization failure (the context-restore failure shape)
+      // is not a tile problem, but the corpse canvas it leaves behind is
+      // the same dead end — route it to the same map-off channel instead
+      // of letting the tile-only filter below swallow it.
+      if (isWebgl2Unavailable((e as { error?: unknown }).error)) {
+        reportTilesOff();
+        return;
+      }
       if (!(e as { tile?: unknown }).tile) return;
       tileErrors += 1;
       if (!tileVerdictTimer) tileVerdictTimer = window.setTimeout(reportTilesOff, 15_000);
@@ -413,6 +425,19 @@ export function LoopMap({
     map.on("idle", () => {
       if (tileErrors > 0) reportTilesOff();
     });
+
+    // Post-init WebGL context loss: without this, a lost context leaves a
+    // frozen dead canvas on screen forever — no fallback, no report.
+    // Route it to the same map-off channel as a tile failure, so both
+    // surfaces (GeoDetective and Cold Trail) show the off-line and the
+    // owner unmounts the corpse canvas. No new UX surface.
+    let loopCanvas: HTMLCanvasElement | null = null;
+    try {
+      loopCanvas = map.getCanvas();
+      loopCanvas.addEventListener("webglcontextlost", reportTilesOff);
+    } catch {
+      // Canvas unavailable — construction failure is the boundary's job.
+    }
 
     // Cold-Trail draft marker (placement mode only): a draggable 🎯 pin at
     // the unconfirmed draft center. Tap-to-move (map click) is the primary
@@ -679,6 +704,7 @@ export function LoopMap({
 
     return () => {
       container.removeEventListener("keydown", onKeyDown);
+      loopCanvas?.removeEventListener("webglcontextlost", reportTilesOff);
       map.off("click", onClick);
       draftMarker.remove();
       draftMarkerRef.current = null;

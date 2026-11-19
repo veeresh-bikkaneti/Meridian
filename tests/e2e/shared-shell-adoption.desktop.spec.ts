@@ -9,10 +9,12 @@ import { serveBuiltArtifact } from "./helpers";
  * Board 440 at 1920) and wore a different name ("Meridian home" on
  * some screens, "Home" on others), and desktop headers wrapped to
  * 106px with nav items on 2–3 lines. The fix is one component —
- * SiteHeader with HomeButton — adopted screen by screen. This spec
+ * SiteHeader with the BrandHomeButton lockup — adopted screen by screen. This spec
  * pins the adopted screens (Home, GeoDetective):
  *
- * - the home control is named exactly "Home", is ≥44×44, and sits in
+ * - the home control is the brand lockup, named exactly
+ *   "Meridian home" (owner ruling 2026-11-17, PR 529 Part 2 — the
+ *   "Home" pill it replaced is gone from every header), is ≥44×44, and sits in
  *   the same slot on both screens: same size, same offset from the
  *   header's top-left content corner (the screens' page columns
  *   differ — wide vs read — so the identical quantity is the slot
@@ -72,7 +74,7 @@ async function homeControl(page: Page, label: string) {
     )
     .toBe(true);
   const name = await home.evaluate((el) => (el.getAttribute("aria-label") ?? el.textContent ?? "").trim());
-  expect(name, `${label}: home control name`).toBe("Home");
+  expect(name, `${label}: home control name`).toBe("Meridian home");
   const box = (await home.boundingBox()) as Box;
   expect(box, `${label}: home control box`).not.toBeNull();
   expect(box.width, `${label}: home width ${box.width}`).toBeGreaterThanOrEqual(44);

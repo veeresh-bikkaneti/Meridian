@@ -61,7 +61,7 @@
  * isValidWatchdogEndpoint): var, function, no ?./??, no arrows, no
  * template literals, no const/let, no classes, no fetch/Promise (XHR +
  * callbacks only), no import/export. The whole inline body is wrapped in
- * try/catch and the rendered output must stay <= 6,600 bytes
+ * try/catch and the rendered output must stay <= 6,700 bytes
  * (6,144 until issue #345 added the read-only boot-health stamp
  * and PR #349 added the chunk-recovery stand-down + recovery card;
  * see the RENAME comment for the measured figures), so the
@@ -69,6 +69,12 @@
  * through minifyEmbedded() (comment/whitespace removal plus renaming of
  * a fixed safe-list of long locals — token-based, so strings, regexes,
  * property accesses and object-literal keys are untouched).
+ *
+ * Budget note (arena F7): the boot-scoped ASKED flag, the one-shot
+ * timer re-arm and the recovery-notice lower bound measure 6,641
+ * bytes at the worst case (14-char build id), so the budget is now
+ * 6,700 bytes — the smallest round fit keeping the established
+ * headroom pattern (59 bytes of margin).
  */
 
 /**
@@ -116,7 +122,7 @@ export function isValidWatchdogEndpoint(value, hosts) {
  * which drives the real orchestration against fake browser globals. The
  * inline script embeds this same function by source via
  * renderCrashWatchdogScript(). Everything in here is ES5-only (see the
- * module docstring) and deliberately terse to hold the 6600-byte budget.
+ * module docstring) and deliberately terse to hold the 6700-byte budget.
  */
 export function crashWatchdogMain(host, buildId, isValidEndpointFn, ingestHosts) {
   var ASKED = "meridian.crashwatchdogAsked",
@@ -127,7 +133,10 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn, ingestHosts)
     STALE = "A new version of Meridian is available.",
     CAP = 8192;
   var win = host,
-    doc = win.document;
+    doc = win.document,
+    // F7b: this boot's start — the ASKED flag records the boot it
+    // belonged to by storing this stamp when the card shows.
+    b0 = Date.now();
   // §4.4 parity: false iff any guarded storage access threw during
   // this run — stamped on the boot_failure event as storageOk.
   var sok = true;
@@ -224,6 +233,9 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn, ingestHosts)
   }
   var unclean = !!prev && ss(CLEAN) === "0",
     shown = false,
+    // F7c: the 28s timer gets ONE deferred re-check when it fires
+    // into a hidden / unsettled page, instead of dying permanently.
+    ra = false,
     // Set by onTimer when this load is, in practice, a stalled
     // chunk-recovery reload (fresh chunkReloadNotice, ready unset).
     // show() reads it: recovery copy in the heading, and no send().
@@ -504,7 +516,7 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn, ingestHosts)
   function show() {
     if (shown) return;
     shown = true;
-    ss(ASKED, "1");
+    ss(ASKED, b0);
     try {
       var v = doc.createElement("div");
       v.id = "mv";
@@ -565,8 +577,20 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn, ingestHosts)
   // checks the flag exactly once, at fire time.
   function onTimer() {
     try {
-      if (shown || doc.readyState !== "complete" || doc.hidden || win[READY] || ss(ASKED) === "1")
+      // F7b: ASKED stands this boot down only when it was stamped by
+      // THIS boot (at/after b0) — a stamp from an earlier boot in the
+      // same session (or the legacy "1") must not silence a second
+      // stalled boot.
+      if (shown || win[READY] || +ss(ASKED) >= b0) return;
+      // F7c: hidden or unsettled at fire time is not a verdict —
+      // re-arm once for a deferred re-check instead of dying.
+      if (doc.readyState !== "complete" || doc.hidden) {
+        if (!ra) {
+          ra = true;
+          win.setTimeout(onTimer, 5000);
+        }
         return;
+      }
       // Chunk-recovery case: a fresh meridian.chunkReloadNotice
       // (age <= 9e5 ms = CHUNK_RELOAD_NOTICE_MAX_AGE_MS in
       // src/lib/chunk-recovery.ts; keep in sync) was, in practice,
@@ -586,7 +610,10 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn, ingestHosts)
       // never left on a blank shell. A malformed value reads as NaN
       // and a stale one falls below the cutoff, so both keep the
       // generic fallback, report included.
-      rcv = +ss("meridian.chunkReloadNotice") >= Date.now() - 9e5;
+      // F7a: the age window gains its lower bound — a future-dated
+      // notice is not recovery evidence.
+      var nv = +ss("meridian.chunkReloadNotice");
+      rcv = nv <= Date.now() && nv >= Date.now() - 9e5;
       var t = "";
       try {
         // innerText, not textContent: <script>/<style> contents are part
@@ -628,7 +655,8 @@ const RENAME = {
   // ids are 12 chars (14 for the timestamp fallback), which pushed the
   // rendered script 2–4 bytes over its then budget while the 10-char
   // test fixture still passed. These two renames free 20 bytes.
-  // Current figures (§7.5 gated decision): the budget was 6,144
+  // Budget is 6,700 since the arena F7 changes (worst case 6,641,
+  // measured). Earlier figures: the budget was 6,144
   // bytes with the worst case (14-char build id) at 6,104 bytes.
   // Two features then landed on parallel branches. Issue #345
   // (PR #347) added the read-only boot-health stamp (the ds()
@@ -641,7 +669,7 @@ const RENAME = {
   // send() skip; +58 more, 6,213), budget 6,250 on that branch.
   // Merged (PR #349 merge-up over main 70e1be6): both features
   // survive; the rendered worst case MEASURES 6,551 bytes on the
-  // merged tree, so the budget is now 6,600 bytes — the smallest
+  // merged tree, so the budget became 6,600 bytes — the smallest
   // round fit keeping the established ~40-byte headroom pattern
   // (49 bytes of margin). Neither name is an
   // object-literal key or a property, so the rename is safe here.

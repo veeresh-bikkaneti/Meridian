@@ -471,7 +471,7 @@ test("leave and return: menu shows the resume variant; reload doesn't hijack", a
   await expect(page.getByText("Guess 2 of 5")).toBeVisible();
 
   // Leave explicitly: the menu offers to resume the case.
-  await page.getByRole("button", { name: "Home", exact: true }).click();
+  await page.getByRole("button", { name: "Meridian home", exact: true }).click();
   await expect(page.getByRole("button", { name: "GeoDetective: Resume your case" })).toBeVisible();
   await page.reload();
   await expect(page.getByRole("button", { name: "GeoDetective: Resume your case" })).toBeVisible({
