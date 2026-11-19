@@ -49,11 +49,48 @@ Deliverable: DRAFT PR, stopped at the owner's merge word.
 ## State
 
 - [x] Worktree + branch created off `ea1af3da`; capsule written.
-- [ ] Builder: repro + BEFORE captures.
-- [ ] Builder: fixes + tests + AFTER captures.
-- [ ] Builder: gates + draft PR.
+- [x] Builder: repro + BEFORE captures.
+- [x] Builder: fixes + tests + AFTER captures.
+- [x] Builder: gates + draft PR.
 - [ ] Clean-context review seat.
 - [ ] Coordinator verification + report.
+
+## Builder notes (2026-11-19)
+
+- Session key: `meridian.grandpa.walkedSession` (sessionStorage, via the
+  file's `readStorage`/`writeStorage` helpers). Written in a mount effect
+  when the initial mode is "strip" or "tour"; the mode initializer
+  returns "seated" when it is set. Quip guard: a `quipStartedRef` lets
+  only the first entry into "walking" reset `quipRef` / play line 0;
+  kettle → walking re-entry continues the rotation.
+- Tour card: `FloatingBanner` default offset `top-16` → `top-32` in
+  `tutorial-overlay.tsx` only. Beat 1 (`bottom-24`) left as-is.
+- BEFORE measurements (fresh profile, tour beat 2, hermetic captures in
+  `~/workspace/grandpa-once-evidence/`): the sound toggle and Contrast
+  pill were NOT intersected at any width on this base (card top 64px,
+  toggle bottoms 46–56px — an ~8px gap at phone widths), but at 390px
+  the card DID overlap the run screen's top-right End game pill
+  (2,632 px²), and beat 1's card covers the hint and End game buttons
+  in the aim dock at 768/390/320px (pointer-transparent, so taps pass
+  through; the buttons are visually covered). AFTER: card top 128px —
+  no intersection with sound/Contrast at 1280/768/390/320, centres hit
+  the toggles themselves, End game cluster clear, card fully inside a
+  320×568 viewport (x 12–308, y 128–326).
+- Test-stub guard: LEFT in place — Phase 1 debt. There is no shared
+  vitest/node-test setup file; window stubs are per-file (e.g.
+  `home-journal-wiring.test.ts` builds its own timer host), so there is
+  no one small safe place to move the guard to.
+- Pre-existing e2e failures (A/B proven): `grandpa-coffee-run.desktop`
+  fails 7 tests (2 pass) IDENTICALLY on unmodified `ea1af3da` in this
+  environment — a missed "kettle" beat sample and `page.url()` gaining
+  a `#home` hash the spec does not expect. Not caused by this branch;
+  the same 2 pass / 7 fail split occurs with these fixes applied.
+- Unit tests: `src/components/grandpa-once-per-visit.test.ts` (2 tests,
+  real component via esbuild bundle + react-test-renderer,
+  `./grandpa-ask.ts` stubbed to observe `playTrail`).
+- E2E: `tests/e2e/grandpa-once-per-visit.desktop.spec.ts` (3 tests:
+  once-per-session route change, toggle clearance at 1280 + 390) —
+  all pass. `tutorial.spec.ts` 4/4 pass; `footer-links-visible` pass.
 
 ## Graph
 
