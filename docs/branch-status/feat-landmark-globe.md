@@ -93,6 +93,13 @@ Captures: `docs/motion-verify/landmark-globe-mockup-1280px.png` (1280 x 900, ful
 - Captures overwritten: `landmark-globe-in-prod-full-1280px.png`, `landmark-globe-in-prod-1280px.png`. A 1878 px full-page capture was taken for the eyeball check (staging only, not committed).
 - Contract: section 3.6 Stage 2 gains item 3 — the desktop composition rule stated as classes/values.
 
+## Addendum 8 — desktop globe grows to fill the rail (owner: "make the globe bigger and fill the void", Nov 19 2026)
+
+- Staged (staging checkout only; production untouched): inside the >=1081px block, .hv5-globe-zone { width: 792px; flex: 0 0 auto; align-self: flex-end; } — zone 345px → 792px, sized so zone + card 492px − the unchanged −92px overlap = the hero's 1192px at 1280px. The zone right-aligns to the rail's edge (centred, the disc would cross the page's right edge at 1280px). Addendum 7's foot anchor is kept as the guard for any remainder.
+- Measured [tested]: at 1280px — zone 792×792px, disc ~205px → ~470px, ring ~290px → ~667px (render fractions of the square canvas), void above the zone 447px → 0px, space under the card 0px, card top in the rail 700px, overflow 0, zero injection errors. At 1878px — zone 792px, the anchor collects the remaining 20px above the zone, space under the card 0px, overflow 0. At 768/390px every metric identical to addendum 6/7 (zone 220/200px, card 470/484px, mountain 462/256px visible) — the stacked layouts did not move.
+- Colosseum evidence: docs/motion-verify/landmark-globe-europe-cluster-1280px.png (zoomed crop of the cluster at the new size, rest pose). Read by eye: Big Ben, the Eiffel Tower, the Pyramids and the Burj read as themselves; the Colosseum still reads as a grey ring, not a building — its arch texture is not discernible at this size and angle. Nothing removed or restyled; the owner's call comes after he sees the crop.
+- Captures overwritten: landmark-globe-in-prod-full-1280px.png, landmark-globe-in-prod-1280px.png; new: landmark-globe-europe-cluster-1280px.png. Contract section 3.6 Stage 2 item 4 carries the 792px zone into the production spec.
+
 ## Next step
 
 - Owner reviews the mockup and the captures. Stage 2 (production code in the Home hero) starts only on the owner's approval.
