@@ -298,7 +298,11 @@ function initGlobe(
   let lastMoveT = 0;
 
   const onDown = (e: PointerEvent) => {
-    canvas.setPointerCapture(e.pointerId);
+    try {
+      canvas.setPointerCapture(e.pointerId);
+    } catch {
+      /* capture already released */
+    }
     pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
     step({ type: "dragStart" });
     lastMoveT = performance.now();
@@ -340,13 +344,29 @@ function initGlobe(
   const endDrag = (e: PointerEvent) => {
     if (!pointers.has(e.pointerId)) return;
     pointers.delete(e.pointerId);
-    if (pointers.size < 2) lastMid = null;
-    step({
-      type: "dragEnd",
-      stale: performance.now() - lastMoveT > 80,
-      reducedMotion: reducedMotion(),
-    });
-    canvas.style.cursor = "grab";
+    if (pointers.size === 1) {
+      // Pinch 2 -> 1: the remaining finger is still dragging, so do not
+      // end the drag (that would clear dragging, reset idleTime and let
+      // inertia / auto-spin run under the held finger). Clear the pinch
+      // state and re-baseline: the remaining pointer's entry in
+      // `pointers` already holds its current position, and the next
+      // dragMove derives its delta from that entry, so keeping it is
+      // the re-baseline (no jump from the old pinch midpoint). Only the
+      // move clock is refreshed, so the next dt is not measured across
+      // the pinch.
+      lastMid = null;
+      pinchStartDist = 0;
+      lastMoveT = performance.now();
+    } else if (pointers.size === 0) {
+      step({
+        type: "dragEnd",
+        stale: performance.now() - lastMoveT > 80,
+        reducedMotion: reducedMotion(),
+      });
+      canvas.style.cursor = "grab";
+    } else {
+      lastMid = null;
+    }
     try {
       canvas.releasePointerCapture(e.pointerId);
     } catch {

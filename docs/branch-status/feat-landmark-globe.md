@@ -137,3 +137,10 @@ Captures: `docs/motion-verify/landmark-globe-mockup-1280px.png` (1280 x 900, ful
 - Add node: `docs/mockups/landmark-globe.html` (mockup, landmark globe) — documents the Home hero globe design.
 - Add node: `docs/mockups/landmark-globe-contract.md` (contract) — depends-on the mockup.
 - Edge: contract `documents` the Stage 2 production build (future).
+
+## Panel cure — PR #542 Senior developer BLOCK (pinch 2 -> 1)
+
+- Done: `home-globe.tsx` endDrag now dispatches `dragEnd` only when `pointers.size === 0`; on the 2 -> 1 transition it clears `lastMid`/`pinchStartDist`, refreshes `lastMoveT` (remaining pointer's stored position is the re-baseline, no jump) and keeps the drag alive. `setPointerCapture` in onDown wrapped in the same try/catch as `releasePointerCapture`. `globe-controls.ts` untouched.
+- Regression test: `src/components/home-globe-pinch-release.test.ts` (source-pinning, the shell's existing level — no canvas harness in repo; see home-loading-orbs precedent). Fails on pre-cure source (no size guard/branch/try-catch), passes on cure.
+- Gates: tsc clean; globe + home unit suites 33/33 pass; build:pages pass; e2e home-layout.desktop 13 passed / 1 failed in full run (768 grid row), lone re-runs inconsistent (fail, then baseline pass, then cure fresh-build pass in 11.8s) — timing flake, no delta from this change.
+- Next: panel re-vote on the new tip. Open questions: none from this cure.
