@@ -99,7 +99,7 @@ describe("(a) a wrong pick on fair-share reveals the answer line, then the summa
   });
 
   it("the reveal is set only on the wrong-answer path, on the entry question", () => {
-    const onWrong = region(subjectCase, "const onWrong = (value: string) => {", "const pick =");
+    const onWrong = region(subjectCase, "const onWrong = (value: string, key: string) => {", "const pick =");
     assert.ok(onWrong.includes("setPicked(value);"), "the pick still stands as feedback");
     assert.ok(
       onWrong.includes('if (phase === "main" && loseReveal?.(item, band)) {'),

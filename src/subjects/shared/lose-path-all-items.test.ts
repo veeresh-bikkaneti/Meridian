@@ -33,6 +33,12 @@ import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { MATH_CLUE_SCENES, clueSceneFor, showsSummaryOnWrong } from "../math/scenes.ts";
+import {
+  LOSE_REVEAL_AFTER_WRONG,
+  UNPARSEABLE_WRONG_KEY,
+  recordDistinctWrong,
+  typedWrongKey,
+} from "./lose-reveal.ts";
 import { MATH_ANSWERS } from "../math/answers.ts";
 import { itemsForGroup as mathItemsForGroup } from "../math/items.ts";
 import { itemsForGroup as physicsItemsForGroup } from "../physics/items.ts";
@@ -183,7 +189,7 @@ describe("the shared safeguards hold for every newly covered item", () => {
   it("the reveal is set only on the wrong-answer path, on the entry question — one setter call site", () => {
     assert.equal(subjectCase.split("setLoseRevealed(true)").length - 1, 1);
     assert.ok(subjectCase.includes("const [loseRevealed, setLoseRevealed] = useState(false);"));
-    const start = subjectCase.indexOf("const onWrong = (value: string) => {");
+    const start = subjectCase.indexOf("const onWrong = (value: string, key: string) => {");
     const onWrong = subjectCase.slice(start, subjectCase.indexOf("const pick =", start));
     assert.ok(onWrong.includes('if (phase === "main" && loseReveal?.(item, band)) {'));
   });
@@ -216,5 +222,87 @@ describe("the shared safeguards hold for every newly covered item", () => {
     for (const item of COVERED) {
       assert.ok(!/\d/.test(clueSceneFor(item.id)!.labelSetup), `${item.id}: setup label carries no digits`);
     }
+  });
+});
+
+describe("the reveal waits for the second distinct wrong answer (owner decision, 2026-11-19)", () => {
+  it("the threshold is the named constant, set at the second wrong answer", () => {
+    assert.equal(LOSE_REVEAL_AFTER_WRONG, 2);
+  });
+
+  it("wrong-1 shows no reveal", () => {
+    const seen = new Set<string>();
+    assert.equal(recordDistinctWrong(seen, "6"), false);
+    assert.equal(seen.size, 1);
+  });
+
+  it("wrong-2 reveals", () => {
+    const seen = new Set<string>();
+    assert.equal(recordDistinctWrong(seen, "6"), false);
+    assert.equal(recordDistinctWrong(seen, "10"), true);
+  });
+
+  it("the same wrong twice does not reveal", () => {
+    const seen = new Set<string>();
+    assert.equal(recordDistinctWrong(seen, "6"), false);
+    assert.equal(recordDistinctWrong(seen, "6"), false);
+    assert.equal(seen.size, 1);
+  });
+
+  it("typed answers key by parsed value; every unparseable typed answer shares one key", () => {
+    assert.equal(typedWrongKey(6), "typed:6");
+    assert.equal(typedWrongKey(null), UNPARSEABLE_WRONG_KEY);
+    const seen = new Set<string>();
+    // Two differently spelled unparseable answers are ONE wrong.
+    assert.equal(recordDistinctWrong(seen, typedWrongKey(null)), false);
+    assert.equal(recordDistinctWrong(seen, typedWrongKey(null)), false);
+    // A parseable wrong is a second, distinct wrong: reveal.
+    assert.equal(recordDistinctWrong(seen, typedWrongKey(6)), true);
+  });
+
+  it("the component feeds the count only inside the entry-question loseReveal gate", () => {
+    const start = subjectCase.indexOf("const onWrong = (value: string, key: string) => {");
+    const onWrong = subjectCase.slice(start, subjectCase.indexOf("const pick =", start));
+    assert.ok(onWrong.includes("setPicked(value);"), "feedback is unchanged: the pick always stands");
+    const gateAt = onWrong.indexOf('if (phase === "main" && loseReveal?.(item, band)) {');
+    const countAt = onWrong.indexOf("recordDistinctWrong(wrongKeysRef.current, key)");
+    assert.ok(gateAt >= 0 && countAt > gateAt, "counting happens only behind the gate");
+    assert.equal(
+      subjectCase.split("recordDistinctWrong(").length - 1,
+      1,
+      "one counting call site — follow-up wrongs never reach it (the phase gate), summary-less items never reach it (the hook gate)",
+    );
+    // The keys are plumbed from both funnels: a pick keys by its
+    // choice string, a typed answer by its derived typed key.
+    assert.ok(subjectCase.includes("onWrong(choice, choice);"));
+    assert.ok(subjectCase.includes("onWrong(raw, typedWrongKey(value));"));
+  });
+
+  it("wrong-1 then correct solves: the win path never reads or clears the count", () => {
+    const start = subjectCase.indexOf("const onCorrect = () => {");
+    const onCorrect = subjectCase.slice(start, subjectCase.indexOf("// Shared wrong-answer path", start));
+    assert.ok(!onCorrect.includes("wrongKeysRef"), "a correct pick ignores the wrong count");
+    assert.ok(!onCorrect.includes("recordDistinctWrong"), "a correct pick never counts as a wrong");
+    assert.ok(!onCorrect.includes("LoseRevealed"), "a correct pick never touches the reveal");
+  });
+
+  it("nextCase resets the count", () => {
+    const start = subjectCase.indexOf("const nextCase = () => {");
+    const nextCase = subjectCase.slice(start, subjectCase.indexOf("return (", start));
+    assert.ok(nextCase.includes("wrongKeysRef.current.clear();"), "the next case starts with an empty count");
+    assert.ok(nextCase.includes("setLoseRevealed(false);"));
+  });
+
+  it("a summary-less item never reveals, however many distinct wrongs", () => {
+    // The gate itself is false for such items (pinned above), and
+    // the component counts only behind that gate — so no number
+    // of wrongs on a summary-less item can ever set the reveal.
+    assert.equal(showsSummaryOnWrong("math-number:division:two-digit-divisors", "10-18"), false);
+    const start = subjectCase.indexOf("const onWrong = (value: string, key: string) => {");
+    const onWrong = subjectCase.slice(start, subjectCase.indexOf("const pick =", start));
+    assert.ok(
+      !onWrong.slice(0, onWrong.indexOf("loseReveal?.(item, band)")).includes("recordDistinctWrong"),
+      "nothing is counted before the gate has said the item is on the path",
+    );
   });
 });
