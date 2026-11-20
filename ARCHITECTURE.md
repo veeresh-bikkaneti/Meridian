@@ -12,6 +12,11 @@ layer below it, never from a layer above it. A feature screen never imports
 another feature screen. When two screens need the same code, the shared code
 moves **down** a layer — it is never copied sideways.
 
+A feature area is the first folder under `src/components`, `src/subjects`
+or `src/game` (for example `src/components/grownups`, `src/subjects/math`).
+Top-level files directly in `src/components` are one shared area,
+`components/root`, until Phase 4 splits them.
+
 ## Layers, lowest first
 
 ### 1. Content
@@ -38,8 +43,11 @@ moves **down** a layer — it is never copied sideways.
 ### 4. Shared UI components
 
 - Owns: `src/components/ui/**` and `src/hooks/**`.
-- Presentational building blocks (buttons, pills, the shell parts).
-  No I/O: a shared component never fetches, stores, or plays sound itself.
+- Presentational building blocks: buttons, pills, and the shell parts —
+  `site-header`, `site-footer`, `page-column`, `page-shell`, and
+  `shell-registry`, all in `src/components/ui/`.
+- Screens import the shell parts down from this layer.
+- No I/O: a shared component never fetches, stores, or plays sound itself.
 
 ### 5. Feature screens
 
@@ -51,10 +59,9 @@ moves **down** a layer — it is never copied sideways.
 
 ### 6. Shell and routes
 
-- Owns: `src/routes/**`, `src/router.tsx`, and the shell parts inside
-  `src/components/ui/`: `site-header`, `site-footer`, `page-column`,
-  `page-shell`, and `shell-registry`.
-- The frame every page sits in, and the routing that picks the screen.
+- Owns: `src/routes/**` and `src/router.tsx` only.
+- The routing that picks the screen. Routes compose screens; the shell
+  parts themselves live in layer 4.
 
 ## Out of scope until Phase 5
 
@@ -98,7 +105,7 @@ Leave these where they are unless your slice is the one moving them.
 1. **Story first.** Build a mockup from the real shared components (a
    Storybook story, once PR 0.4 lands it) and get Veeresh's approval
    before writing the screen. No mockup, no UI code.
-2. **Adopt the shell.** Use the layer 6 shell parts (`page-shell`,
+2. **Adopt the shell.** Use the layer 4 shell parts (`page-shell`,
    `page-column`, the header and footer) instead of building a new frame.
 3. **Use shared components.** Build the screen from layer 4 components
    and hooks; if a piece is missing, add it to layer 4, not to the screen.
