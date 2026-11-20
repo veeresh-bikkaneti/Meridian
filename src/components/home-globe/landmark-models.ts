@@ -828,22 +828,27 @@ const BUILD: Record<string, Builder> = {
     b.add(bx(0.84, 0.03, 0.1), sage, 0, 0.355, -0.23);
     b.add(bx(0.7, 0.02, 0.16), water, 0, 0.35, -0.19);
     b.add(bx(0.7, 0.03, 0.03), water, 0, 0.345, -0.075);
+    // The sheets lean out over the gorge (0.2 rad, not a token 0.06):
+    // at the dive's ~50-degree finish elevation a vertical sheet
+    // foreshortens into one more strata band — the first rework's
+    // capture proved it — so the curtain tips its face up to the
+    // camera and hangs the full height of the slot.
     b.add(
-      bx(0.66, 0.26, 0.01),
+      bx(0.66, 0.3, 0.01),
       mat("steel", { transparent: true, opacity: 0.35 }),
-      0, 0.17, -0.058, 0.06, 0, 0,
+      0, 0.175, -0.052, 0.2, 0, 0,
     );
     b.add(
-      bx(0.66, 0.3, 0.014),
+      bx(0.66, 0.34, 0.014),
       mat("card", { transparent: true, opacity: 0.55 }),
-      0, 0.185, -0.045, 0.06, 0, 0,
+      0, 0.185, -0.038, 0.2, 0, 0,
     );
     b.add(bx(0.84, 0.3, 0.2), rock, 0, 0.15, 0.16);
     b.add(bx(0.66, 0.025, 0.1), mat("card"), 0, 0.013, 0.0);
     b.add(
-      sph(0.2, 10, 8),
-      mat("card", { transparent: true, opacity: 0.3 }),
-      0, 0.09, 0.0, 0, 0, 0, 1.6, 0.5, 0.6,
+      sph(0.22, 10, 8),
+      mat("card", { transparent: true, opacity: 0.4 }),
+      0, 0.1, 0.0, 0, 0, 0, 1.6, 0.55, 0.6,
     );
     return b.build();
   },
