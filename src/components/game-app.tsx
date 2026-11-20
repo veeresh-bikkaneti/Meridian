@@ -5198,25 +5198,6 @@ function Choose({
           </div>
           <h2>Expeditions Map</h2>
           <p>Choose your expedition — a single US state, a whole country, or the entire globe.</p>
-          <svg className="hv5-worldmap" viewBox="0 0 300 138" aria-hidden="true">
-            <defs>
-              <pattern id="hv5-dots" width="7" height="7" patternUnits="userSpaceOnUse">
-                <circle cx="1.6" cy="1.6" r="1.6" fill="#C9D4BE" fillOpacity=".75" />
-              </pattern>
-            </defs>
-            <g fill="url(#hv5-dots)">
-              <path d="M18 38 L52 22 L84 26 L92 40 L74 52 L66 72 L48 64 L30 58 L16 50 Z" />
-              <path d="M66 78 L84 74 L90 92 L80 122 L68 104 L62 88 Z" />
-              <path d="M138 30 L168 22 L182 34 L172 48 L148 50 L134 42 Z" />
-              <path d="M146 56 L172 52 L184 72 L172 104 L156 108 L144 80 Z" />
-              <path d="M186 26 L238 16 L272 30 L268 52 L232 62 L206 54 L188 44 Z" />
-              <path d="M216 66 L244 62 L256 76 L238 88 L220 80 Z" />
-              <path d="M240 100 L272 96 L282 108 L262 120 L242 114 Z" />
-            </g>
-            <path d="M74 50 C130 84 190 84 248 104" fill="none" stroke="#EFEAD6" strokeWidth="1.3" strokeDasharray="1 5" strokeLinecap="round" />
-            <circle cx="248" cy="104" r="7" fill="none" stroke="#EFEAD6" strokeWidth="1.2" />
-            <path d="M248 97 C244 97 242 100 242 102.4 C242 106 248 110.6 248 110.6 C248 110.6 254 106 254 102.4 C254 100 252 97 248 97 Z" fill="#EFEAD6" />
-          </svg>
           <div className="hv5-editions">
             <button type="button" className="hv5-edition" onClick={onState} onPointerEnter={prefetchTerritoryData} onPointerDown={prefetchTerritoryData} onFocus={prefetchTerritoryDataOnFocus}>
               <span className="hv5-idx">N° 01</span>

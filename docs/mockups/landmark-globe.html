@@ -1,0 +1,872 @@
+<!doctype html><html><head><meta charset=utf8><link rel="icon" href="data:,"><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Meridian Landmark Globe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Karla:wght@400;600;700&display=swap">
+<style>
+/* Layout: the live Home hero (copy left, globe right, map card tucked under the globe), then the same hero at 390 px, then the contract. */
+:root {
+  --hv5-parchment: #f6f1e3;
+  --hv5-card: #fdfbf3;
+  --hv5-ink: #33302a;
+  --hv5-ink-soft: #5c564a;
+  --hv5-brown: #8a6d2f;
+  --hv5-brown-deep: #77591f;
+  --hv5-forest: #33503f;
+  --hv5-forest-deep: #2a4434;
+  --hv5-sage: #8fa382;
+  --hv5-line: #e3d9c3;
+  --hv5-line-warm: #d8cbae;
+  --hv5-shadow-card: 0 1px 2px rgba(94, 76, 32, 0.05), 0 14px 34px -18px rgba(94, 76, 32, 0.28);
+  --hv5-display: "Fraunces", Georgia, serif;
+  --hv5-body: "Karla", system-ui, sans-serif;
+  --mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--hv5-parchment);
+  color: var(--hv5-ink);
+  font-family: var(--hv5-body);
+  font-size: 15px;
+  line-height: 1.5;
+}
+.wrap {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding-block: 28px 64px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: grid;
+  gap: 40px;
+}
+.bar { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: end; justify-content: space-between; }
+.bar h1 { font-family: var(--hv5-display); font-size: clamp(26px, 3.4vw, 36px); margin: 0; letter-spacing: -0.01em; }
+.bar p { margin: 4px 0 0; color: var(--hv5-ink-soft); max-width: 62ch; }
+.eyebrow { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--hv5-brown-deep); font-weight: 700; }
+.switch { display: inline-flex; gap: 8px; align-items: center; font-size: 13px; color: var(--hv5-ink-soft); cursor: pointer; }
+.switch input { accent-color: var(--hv5-forest); width: 16px; height: 16px; }
+.view-label { display: flex; gap: 10px; align-items: baseline; margin: 0 0 12px; }
+.view-label h2 { font-family: var(--hv5-display); font-size: 20px; margin: 0; }
+.view-label span { font-size: 13px; color: var(--hv5-ink-soft); }
+
+/* ---- hero mock (mirrors home-v5.css) ---- */
+.home-v5 { display: grid; grid-template-columns: 1.08fr 1fr; gap: 22px; align-items: start; }
+.hv5-hero {
+  position: relative;
+  background: linear-gradient(160deg, #fdfbf3 55%, #f7efda);
+  border: 1px solid var(--hv5-line);
+  border-radius: 30px;
+  box-shadow: var(--hv5-shadow-card);
+  padding: 36px 40px 40px;
+  overflow: hidden;
+  min-width: 0;
+  display: flex; flex-direction: column; gap: 14px;
+}
+.chips { display: flex; gap: 8px; flex-wrap: wrap; }
+.chip { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--hv5-brown-deep); border: 1px solid var(--hv5-line-warm); border-radius: 999px; padding: 4px 10px; background: var(--hv5-card); }
+.hv5-hero h3 { font-family: var(--hv5-display); font-size: clamp(30px, 3.6vw, 46px); line-height: 1.05; margin: 6px 0 0; letter-spacing: -0.015em; text-wrap: balance; }
+.hv5-hero p { margin: 0; color: var(--hv5-ink-soft); max-width: 46ch; }
+.ages { display: flex; gap: 6px; }
+.ages span { border: 1px solid var(--hv5-line-warm); border-radius: 10px; padding: 4px 12px; font-size: 13px; background: var(--hv5-card); }
+.ages span:first-child { background: var(--hv5-forest); color: var(--hv5-card); border-color: var(--hv5-forest); }
+.cta { align-self: start; margin-top: 8px; background: var(--hv5-brown-deep); color: var(--hv5-card); border: 0; border-radius: 999px; padding: 12px 20px; font: 700 13px var(--hv5-body); letter-spacing: 0.06em; text-transform: uppercase; }
+.right { display: flex; flex-direction: column; min-width: 0; }
+.hv5-globe-zone { position: relative; width: 100%; max-width: 100%; aspect-ratio: 1; margin: 0 0 -92px; z-index: 2; }
+.hv5-globe-zone::before {
+  content: ""; position: absolute; inset: 12% 6% 2% 10%; border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(88, 70, 28, 0.3), rgba(88, 70, 28, 0.12) 55%, transparent 72%);
+  filter: blur(18px);
+}
+.hv5-globe-mount { position: relative; width: 100%; height: 100%; }
+.hv5-globe-mount canvas { width: 100%; height: 100%; display: block; cursor: grab; touch-action: pan-y; outline: none; border-radius: 50%; }
+.hv5-globe-mount canvas:active { cursor: grabbing; }
+.hv5-globe-mount canvas:focus-visible { box-shadow: 0 0 0 3px var(--hv5-card), 0 0 0 5px var(--hv5-brown); }
+.hv5-mapcard { position: relative; z-index: 1; background: var(--hv5-forest); color: var(--hv5-card); border-radius: 24px; padding: 110px 24px 24px; }
+.hv5-mapcard h4 { font-family: var(--hv5-display); font-size: 22px; margin: 0 0 4px; }
+.hv5-mapcard p { margin: 0; font-size: 13px; color: #d9e2d3; }
+
+/* ---- 390 px phone frame ---- */
+.phone-row { display: flex; flex-wrap: wrap; gap: 28px; align-items: start; }
+.phone { width: 390px; max-width: 100%; border: 1px solid var(--hv5-line-warm); border-radius: 34px; background: var(--hv5-parchment); padding: 16px; box-shadow: var(--hv5-shadow-card); }
+.phone .hv5-hero { padding: 28px 22px 32px; border-radius: 24px; }
+.phone .hv5-hero h3 { font-size: 30px; }
+.phone .hv5-globe-zone { width: 260px; margin: 6px auto 0; }
+.notes { flex: 1 1 320px; min-width: 0; display: grid; gap: 10px; align-content: start; }
+.notes h3 { font-family: var(--hv5-display); margin: 0; font-size: 18px; }
+.notes ul { margin: 0; padding-left: 18px; color: var(--hv5-ink-soft); }
+.notes li { margin: 4px 0; }
+kbd { font-family: var(--mono); font-size: 12px; background: var(--hv5-card); border: 1px solid var(--hv5-line-warm); border-bottom-width: 2px; border-radius: 5px; padding: 0 5px; color: var(--hv5-ink); }
+
+#globe-readout { position: fixed; right: 14px; bottom: 14px; z-index: 50; font-family: var(--mono); font-size: 12px; background: var(--hv5-card); border: 1px solid var(--hv5-line-warm); border-radius: 10px; padding: 8px 11px; color: var(--hv5-ink); box-shadow: var(--hv5-shadow-card); line-height: 1.6; }
+#globe-readout b { color: var(--hv5-brown-deep); }
+/* ---- contract table ---- */
+.contract { background: var(--hv5-card); border: 1px solid var(--hv5-line); border-radius: 22px; padding: 22px; }
+.contract h2 { font-family: var(--hv5-display); font-size: 22px; margin: 0 0 4px; }
+.contract > p { margin: 0 0 14px; color: var(--hv5-ink-soft); }
+.tbl { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; min-width: 560px; }
+th, td { text-align: left; padding: 7px 10px; border-bottom: 1px solid var(--hv5-line); vertical-align: top; }
+th { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--hv5-brown-deep); }
+td code { font-family: var(--mono); font-size: 12px; color: var(--hv5-forest-deep); font-variant-numeric: tabular-nums; }
+.sw { display: inline-block; width: 12px; height: 12px; border-radius: 3px; vertical-align: -1px; margin-right: 6px; border: 1px solid rgba(51, 48, 42, 0.2); }
+
+@media (max-width: 900px) {
+  .home-v5 { grid-template-columns: 1fr; }
+  .hv5-globe-zone { max-width: 460px; margin: 0 auto -92px; }
+}
+@media (max-width: 440px) {
+  .phone { padding: 8px; border-radius: 26px; }
+}
+</style>
+
+<div class="wrap">
+  <header class="bar">
+    <div>
+      <div class="eyebrow">Mockup · Home hero</div>
+      <h1>Landmark globe</h1>
+      <p>Drag to spin it any way. Wheel or pinch over the globe to zoom. Let go and it settles back into a slow turn after 3 seconds.</p>
+    </div>
+    <label class="switch"><input type="checkbox" id="rm-preview"> Preview reduced motion</label>
+  </header>
+
+  <section aria-labelledby="v-desk">
+    <div class="view-label"><h2 id="v-desk">Desktop</h2><span>hero right column, 1280 px layout</span></div>
+    <div class="home-v5">
+      <div class="hv5-hero">
+        <div class="chips"><span class="chip">Welcome to Meridian</span><span class="chip">Field notes</span></div>
+        <h3>Explore. Understand. Make sense of what matters.</h3>
+        <p>Plan the next expedition, crack a case, and see why the maths you learn at school shows up all over the world.</p>
+        <div class="ages" aria-hidden="true"><span>7-10</span><span>10-18</span><span>18+</span></div>
+        <button class="cta" type="button" tabindex="-1">Begin exploring</button>
+      </div>
+      <div class="right">
+        <div class="hv5-globe-zone"><div class="hv5-globe-mount" data-globe></div></div>
+        <div class="hv5-mapcard"><h4>Expeditions Map</h4><p>Choose your expedition: a single US state, a whole country, or the entire globe.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="v-phone">
+    <div class="view-label"><h2 id="v-phone">Phone</h2><span>390 px wide, globe zone 260 px</span></div>
+    <div class="phone-row">
+      <div class="phone">
+        <div class="hv5-hero">
+          <div class="chips"><span class="chip">Welcome to Meridian</span></div>
+          <h3>Explore. Understand. Make sense of what matters.</h3>
+          <div class="hv5-globe-zone"><div class="hv5-globe-mount" data-globe data-small></div></div>
+          <p>Plan the next expedition, crack a case, and see the maths behind it.</p>
+          <button class="cta" type="button" tabindex="-1">Begin exploring</button>
+        </div>
+      </div>
+      <div class="notes">
+        <h3>Try it on a phone</h3>
+        <ul>
+          <li>A sideways swipe spins the globe. An up or down swipe scrolls the page, so the globe never traps you.</li>
+          <li>Pinch with two fingers to zoom. Move two fingers together to tilt it.</li>
+          <li>The globe turns on its own in a slow loop. Turning stops when reduced motion is on.</li>
+          <li>Keyboard: <kbd>←</kbd> <kbd>→</kbd> <kbd>↑</kbd> <kbd>↓</kbd> spin, <kbd>+</kbd> <kbd>−</kbd> zoom, <kbd>0</kbd> resets.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="contract" aria-labelledby="v-contract">
+    <h2 id="v-contract">Design and motion contract</h2>
+    <p>The build copies these values into one constants module. Nobody tunes them without a new mockup.</p>
+    <div class="tbl" id="contract-table"></div>
+  </section>
+</div>
+
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+} }
+</script>
+<script type="module">
+import * as THREE from "three";
+import { mergeGeometries } from "three/addons/utils/BufferGeometryUtils.js";
+
+const TEXTURE_URL = "../../src/assets/home-v5/globe-texture.webp";
+
+/* ===== Design and motion contract (single source of truth) ===== */
+const DEG = Math.PI / 180;
+const C = {
+  radius: 1,
+  segments: { full: [64, 48], small: [32, 24] },
+  smallBelowPx: 280,
+  dprCap: 1.5,
+  fov: 34,
+  zoom: { start: 5.6, min: 3.4, max: 8.5, keyStep: 0.85, wheelK: 0.0015, ease: 8 },
+  axialTilt: 23.44 * DEG,
+  viewerPitch: 0.12,
+  startLongitude: 20,
+  autoSpin: 0.12, // rad/s, one turn in about 52 s
+  resumeAfter: 3.0, // s idle before the slow turn returns
+  resumeRamp: 1.5, // s to ease from still to full auto speed
+  uprightEase: 0.8, // 1/s, how fast the pole drifts back to its tilt when idle
+  dragSens: 0.005, // rad per CSS px at start zoom
+  keySpin: 0.18, // rad per arrow press
+  inertiaDamp: 0.92, // per 60 fps frame
+  inertiaStop: 0.02, // rad/s
+  ring: { radius: 1.42, tube: 0.005, opacity: 0.45, tiltX: Math.PI / 2.25, tiltY: 0.35 },
+  plane: { speed: 0.35 },
+  halo: { radius: 1.09, color: 0xc9a14a, power: 2.6, strength: 0.5 },
+  lights: {
+    ambient: [0xfff1da, 1.15],
+    sun: [0xffe9c4, 1.6, [-2.4, 1.6, 2.6]],
+    rim: [0xdfe8d2, 0.45, [2.6, -0.8, -1.4]],
+    brassRim: [0xd9b25a, 0.9, [-2.0, 1.2, -3.0]],
+  },
+};
+const PAL = {
+  stone: 0xefe4c8, sandstone: 0xd9b68c, sand: 0xcfae6a, brass: 0x8a6d2f, brassDeep: 0x77591f,
+  forest: 0x33503f, sage: 0x8fa382, steel: 0xb7c2b0, ink: 0x33302a, card: 0xfdfbf3, clay: 0xa2603a,
+};
+// lat/lon are real; show* is the drawn spot, nudged only where Europe would overlap.
+const LANDMARKS = [
+  { id: "eiffel", name: "Eiffel Tower", place: "Paris", lat: 48.858, lon: 2.294, show: [47.0, 2.8], scale: 0.22, color: "brassDeep" },
+  { id: "bigben", name: "Big Ben", place: "London", lat: 51.501, lon: -0.125, show: [53.0, -2.0], scale: 0.19, color: "stone" },
+  { id: "colosseum", name: "Colosseum", place: "Rome", lat: 41.890, lon: 12.492, show: [40.5, 15.0], scale: 0.25, color: "sandstone" },
+  { id: "liberty", name: "Statue of Liberty", place: "New York", lat: 40.689, lon: -74.045, scale: 0.22, color: "sage" },
+  { id: "cntower", name: "CN Tower", place: "Toronto", lat: 43.643, lon: -79.387, scale: 0.19, color: "stone" },
+  { id: "goldengate", name: "Golden Gate Bridge", place: "San Francisco", lat: 37.820, lon: -122.478, scale: 0.28, color: "clay" },
+  { id: "machupicchu", name: "Machu Picchu", place: "Peru", lat: -13.163, lon: -72.545, scale: 0.3, color: "forest" },
+  { id: "pyramids", name: "Pyramids of Giza", place: "Egypt", lat: 29.979, lon: 31.134, scale: 0.25, color: "sand" },
+  { id: "burj", name: "Burj Khalifa", place: "Dubai", lat: 25.197, lon: 55.274, scale: 0.2, color: "steel" },
+  { id: "indiagate", name: "India Gate", place: "New Delhi", lat: 28.613, lon: 77.230, scale: 0.25, color: "sandstone" },
+  { id: "greatwall", name: "Great Wall", place: "China", lat: 40.432, lon: 116.570, scale: 0.3, color: "stone" },
+  { id: "opera", name: "Sydney Opera House", place: "Sydney", lat: -33.857, lon: 151.215, scale: 0.3, color: "card" },
+];
+
+/* ===== geometry helpers ===== */
+function latLonToVec3(lat, lon, r) {
+  const phi = (90 - lat) * DEG;
+  const theta = (lon + 180) * DEG;
+  return new THREE.Vector3(-r * Math.sin(phi) * Math.cos(theta), r * Math.cos(phi), r * Math.sin(phi) * Math.sin(theta));
+}
+const matCache = new Map();
+function mat(key, extra = {}) {
+  const k = key + JSON.stringify(extra);
+  if (!matCache.has(k)) {
+    matCache.set(k, new THREE.MeshStandardMaterial({ color: PAL[key], roughness: 0.78, metalness: key.startsWith("brass") ? 0.25 : 0, flatShading: false, ...extra }));
+  }
+  return matCache.get(k);
+}
+function add(g, geo, m, x = 0, y = 0, z = 0, ry = 0) {
+  const mesh = new THREE.Mesh(geo, m);
+  mesh.position.set(x, y, z);
+  mesh.rotation.y = ry;
+  g.add(mesh);
+  return mesh;
+}
+const box = (w, h, d) => new THREE.BoxGeometry(w, h, d);
+const frustum = (rt, rb, h, s = 4) => new THREE.CylinderGeometry(rt, rb, h, s, 1);
+
+/* ===== merged-geometry landmark builders (unit height ~1, base at y=0) =====
+   Each builder collects geometries per material, bakes every transform into
+   the geometry, then merges to one mesh per material. Triangle counts are
+   stored on the returned group as userData.tris. */
+const bx = (w, h, d) => new THREE.BoxGeometry(w, h, d);
+const cyl = (rt, rb, h, s = 10, open = false) => new THREE.CylinderGeometry(rt, rb, h, s, 1, open);
+const cone = (r, h, s = 10) => new THREE.ConeGeometry(r, h, s);
+const sph = (r, w = 12, h = 9) => new THREE.SphereGeometry(r, w, h);
+function crisp(geo) { const g = geo.toNonIndexed(); g.computeVertexNormals(); return g; }
+
+function bag() {
+  const map = new Map();
+  return {
+    add(geo, material, x = 0, y = 0, z = 0, rx = 0, ry = 0, rz = 0, sx = 1, sy = null, sz = null) {
+      const q = new THREE.Quaternion().setFromEuler(new THREE.Euler(rx, ry, rz));
+      const m = new THREE.Matrix4().compose(new THREE.Vector3(x, y, z), q, new THREE.Vector3(sx, sy ?? sx, sz ?? sx));
+      geo.applyMatrix4(m);
+      if (!map.has(material.uuid)) map.set(material.uuid, { material, geos: [] });
+      map.get(material.uuid).geos.push(geo);
+    },
+    build() {
+      const grp = new THREE.Group();
+      let tris = 0;
+      for (const { material, geos } of map.values()) {
+        const merged = mergeGeometries(geos, false);
+        tris += (merged.index ? merged.index.count : merged.attributes.position.count) / 3;
+        grp.add(new THREE.Mesh(merged, material));
+      }
+      grp.userData.tris = tris;
+      return grp;
+    },
+  };
+}
+function tube(points, radius, mat4bag, material, seg = 36) {
+  const curve = new THREE.CatmullRomCurve3(points);
+  mat4bag.add(new THREE.TubeGeometry(curve, seg, radius, 5), material);
+}
+
+const BUILD = {
+  eiffel(mat, key) {
+    const b = bag(); const m = mat(key); const brass = mat("brass");
+    for (const sx of [-1, 1]) for (const sz of [-1, 1]) {
+      b.add(bx(0.075, 0.22, 0.075), m, sx * 0.155, 0.1, sz * 0.155, -sz * 0.16, 0, sx * 0.16);
+      b.add(bx(0.06, 0.2, 0.06), m, sx * 0.112, 0.29, sz * 0.112, -sz * 0.12, 0, sx * 0.12);
+      b.add(bx(0.048, 0.18, 0.048), m, sx * 0.078, 0.46, sz * 0.078, -sz * 0.08, 0, sx * 0.08);
+    }
+    for (const [ty, off] of [[0.2, 0.148], [0.38, 0.104]]) {
+      for (const s of [-1, 1]) {
+        b.add(bx(off * 2, 0.016, 0.016), m, 0, ty, s * off, 0, 0, 0.62);
+        b.add(bx(off * 2, 0.016, 0.016), m, 0, ty, s * off, 0, 0, -0.62);
+        b.add(bx(0.016, 0.016, off * 2), m, s * off, ty, 0, 0.62, 0, 0);
+        b.add(bx(0.016, 0.016, off * 2), m, s * off, ty, 0, -0.62, 0, 0);
+      }
+    }
+    b.add(bx(0.34, 0.035, 0.34), m, 0, 0.545);
+    b.add(cyl(0.055, 0.115, 0.26, 4), m, 0, 0.69, 0, 0, Math.PI / 4, 0);
+    b.add(bx(0.19, 0.03, 0.19), m, 0, 0.835);
+    b.add(cyl(0.018, 0.055, 0.3, 4), m, 0, 0.99, 0, 0, Math.PI / 4, 0);
+    b.add(cyl(0.003, 0.011, 0.17, 6), brass, 0, 1.22);
+    b.add(sph(0.014, 8, 6), brass, 0, 1.31);
+    return b.build();
+  },
+  bigben(mat, key) {
+    const b = bag(); const m = mat(key); const brass = mat("brass");
+    const lit = mat("card", { emissive: 0xd9b25a, emissiveIntensity: 0.4 });
+    const ink = mat("ink"); const forest = mat("forest");
+    b.add(bx(0.21, 0.06, 0.21), m, 0, 0.03);
+    b.add(bx(0.15, 0.88, 0.15), m, 0, 0.5);
+    for (let i = 0; i < 4; i++) {
+      const a = (i * Math.PI) / 2;
+      b.add(bx(0.022, 0.78, 0.006), brass, Math.sin(a) * 0.077, 0.5, Math.cos(a) * 0.077, 0, a, 0);
+    }
+    b.add(bx(0.23, 0.25, 0.23), m, 0, 1.06);
+    const face = new THREE.CircleGeometry(0.076, 18);
+    for (let i = 0; i < 4; i++) {
+      const a = (i * Math.PI) / 2, sx = Math.sin(a), cz = Math.cos(a);
+      b.add(face.clone(), lit, sx * 0.117, 1.06, cz * 0.117, 0, a, 0);
+      b.add(bx(0.009, 0.052, 0.004), ink, sx * 0.12, 1.075, cz * 0.12, 0, a, 0.7);
+      b.add(bx(0.007, 0.036, 0.004), ink, sx * 0.121, 1.05, cz * 0.121, 0, a, -1.9);
+    }
+    b.add(bx(0.2, 0.03, 0.2), brass, 0, 1.2);
+    b.add(bx(0.155, 0.13, 0.155), m, 0, 1.28);
+    for (const sx of [-1, 1]) for (const sz of [-1, 1]) b.add(cyl(0.011, 0.011, 0.13, 6), brass, sx * 0.062, 1.28, sz * 0.062);
+    b.add(bx(0.19, 0.025, 0.19), brass, 0, 1.36);
+    b.add(cone(0.125, 0.32, 4), forest, 0, 1.53, 0, 0, Math.PI / 4, 0);
+    b.add(cyl(0.003, 0.009, 0.1, 6), brass, 0, 1.74);
+    return b.build();
+  },
+  colosseum(mat, key) {
+    const b = bag();
+    // Restyled Nov 19 2026 (council spec, owner-adopted): the old build read as
+    // a grey ring at page size — pale stone, texture-only arches, shortest drum
+    // of the twelve. Now: warm sandstone, a taller drum, dark arch insets as
+    // real geometry, and a stepped broken upper tier for the ruin silhouette.
+    const c = document.createElement("canvas");
+    c.width = 1024; c.height = 256;
+    const x = c.getContext("2d");
+    x.fillStyle = "#dfc298"; x.fillRect(0, 0, 1024, 256);
+    x.fillStyle = "#b08954";
+    x.fillRect(0, 0, 1024, 14);
+    x.fillStyle = "rgba(122, 90, 52, 0.35)";
+    for (let y = 62; y < 256; y += 64) x.fillRect(0, y, 1024, 5);
+    const tex = new THREE.CanvasTexture(c);
+    tex.colorSpace = THREE.SRGBColorSpace;
+    tex.wrapS = THREE.RepeatWrapping;
+    const wallMat = new THREE.MeshStandardMaterial({ map: tex, roughness: 0.9, side: THREE.DoubleSide });
+    const dark = new THREE.MeshStandardMaterial({ color: 0x4a3421, roughness: 0.95 });
+    const drum = (rt, rb, h, start, len) => new THREE.CylinderGeometry(rt, rb, h, 36, 1, true, start, len);
+    b.add(drum(0.5, 0.53, 0.46, 0, Math.PI * 2), wallMat, 0, 0.23, 0, 0, 0, 0, 1, 1, 0.8);
+    // stepped broken wedge: full height on one arc, stepping down twice
+    b.add(drum(0.5, 0.5, 0.22, 0, 1.5), wallMat, 0, 0.57, 0, 0, 0, 0, 1, 1, 0.8);
+    b.add(drum(0.5, 0.5, 0.14, 1.5, 1.05), wallMat, 0, 0.53, 0, 0, 0, 0, 1, 1, 0.8);
+    b.add(drum(0.5, 0.5, 0.07, 2.55, 0.8), wallMat, 0, 0.495, 0, 0, 0, 0, 1, 1, 0.8);
+    b.add(new THREE.TorusGeometry(0.5, 0.016, 4, 36), mat(key), 0, 0.46, 0, Math.PI / 2, 0, 0, 1, 0.8, 1);
+    // dark recessed arch insets as geometry, two rows all the way around
+    const aw = 0.062, ah = 0.115, ar = aw / 2;
+    const archShape = new THREE.Shape();
+    archShape.moveTo(-ar, -ah / 2);
+    archShape.lineTo(-ar, ah / 2 - ar);
+    archShape.absarc(0, ah / 2 - ar, ar, Math.PI, 0, true);
+    archShape.lineTo(ar, -ah / 2);
+    archShape.closePath();
+    const archGeo = new THREE.ShapeGeometry(archShape, 6);
+    for (const ay of [0.145, 0.325]) for (let i = 0; i < 16; i++) {
+      const t = ((i + 0.5) / 16) * Math.PI * 2;
+      b.add(archGeo.clone(), dark, 0.509 * Math.sin(t), ay, 0.8 * 0.509 * Math.cos(t), 0, t, 0);
+    }
+    b.add(new THREE.CylinderGeometry(0.33, 0.33, 0.3, 28, 1, true), mat(key), 0, 0.15, 0, 0, 0, 0, 1, 1, 0.8);
+    b.add(cyl(0.46, 0.46, 0.03, 28), mat("sand"), 0, 0.015, 0, 0, 0, 0, 1, 1, 0.8);
+    return b.build();
+  },
+  liberty(mat, key) {
+    const b = bag(); const m = mat(key); const stone = mat("stone");
+    const flame = mat("brass", { emissive: 0xcc7722, emissiveIntensity: 0.7 });
+    b.add(bx(0.36, 0.1, 0.36), stone, 0, 0.05);
+    b.add(bx(0.36, 0.1, 0.36), stone, 0, 0.05, 0, 0, Math.PI / 4, 0);
+    b.add(cyl(0.12, 0.17, 0.24, 8), stone, 0, 0.22);
+    const profile = [[0.135, 0], [0.12, 0.08], [0.095, 0.22], [0.075, 0.36], [0.066, 0.46], [0.07, 0.5]].map(([px, py]) => new THREE.Vector2(px, py));
+    b.add(new THREE.LatheGeometry(profile, 14), m, 0, 0.34);
+    b.add(sph(0.052, 10, 8), m, 0, 0.9);
+    b.add(cyl(0.056, 0.058, 0.022, 10), m, 0, 0.945);
+    for (let i = 0; i < 7; i++) {
+      const a = -0.95 + i * (1.9 / 6);
+      b.add(cone(0.009, 0.065, 4), m, Math.sin(a) * 0.052, 0.985, -Math.cos(a) * 0.02 + 0.028, Math.cos(a) * 0.55, 0, -Math.sin(a) * 0.55);
+    }
+    b.add(cyl(0.015, 0.019, 0.27, 6), m, 0.085, 1.0, 0, 0, 0, -0.42);
+    b.add(cyl(0.011, 0.013, 0.08, 6), flame, 0.148, 1.13);
+    b.add(sph(0.02, 8, 6), flame, 0.148, 1.2, 0, 0, 0, 0, 1, 1.7, 1);
+    b.add(cyl(0.014, 0.017, 0.2, 6), m, -0.075, 0.82, 0.02, 0.5, 0, 0.9);
+    b.add(bx(0.075, 0.095, 0.016), m, -0.125, 0.76, 0.045, 0.2, 0.3, 0.15);
+    return b.build();
+  },
+  cntower(mat, key) {
+    const b = bag(); const m = mat(key); const brass = mat("brass");
+    b.add(cyl(0.032, 0.078, 0.95, 12), m, 0, 0.475);
+    b.add(sph(0.115, 12, 8), m, 0, 0.79, 0, 0, 0, 0, 1, 0.55, 1);
+    b.add(cyl(0.117, 0.117, 0.028, 12), brass, 0, 0.79);
+    b.add(cyl(0.048, 0.058, 0.07, 10), m, 0, 0.93);
+    b.add(cyl(0.004, 0.017, 0.52, 6), m, 0, 1.22);
+    return b.build();
+  },
+  goldengate(mat, key) {
+    const b = bag(); const m = mat(key); const steel = mat("steel");
+    const span = 0.62;
+    for (const sx of [-span / 2, span / 2]) {
+      for (const sz of [-0.055, 0.055]) b.add(bx(0.04, 0.78, 0.04), m, sx, 0.39, sz);
+      for (const by of [0.2, 0.42, 0.62, 0.76]) b.add(bx(0.042, 0.035, 0.15), m, sx, by, 0);
+      b.add(bx(0.05, 0.03, 0.16), m, sx, 0.795, 0);
+    }
+    b.add(bx(1.3, 0.04, 0.15), steel, 0, 0.27);
+    b.add(bx(1.3, 0.012, 0.1), m, 0, 0.295);
+    const cableY = (xx) => Math.abs(xx) <= span / 2
+      ? 0.32 + 0.46 * Math.pow(xx / (span / 2), 2)
+      : 0.78 - 0.44 * ((Math.abs(xx) - span / 2) / (0.65 - span / 2));
+    for (const z of [-0.055, 0.055]) {
+      const pts = [];
+      for (let i = 0; i <= 24; i++) { const xx = -0.65 + (i / 24) * 1.3; pts.push(new THREE.Vector3(xx, cableY(xx), z)); }
+      tube(pts, 0.0075, b, m, 40);
+      for (let i = 0; i <= 10; i++) {
+        const xx = -0.55 + i * 0.11, top = cableY(xx), len = Math.max(top - 0.3, 0.02);
+        b.add(cyl(0.0035, 0.0035, len, 4, true), m, xx, 0.3 + len / 2, z);
+      }
+    }
+    return b.build();
+  },
+  machupicchu(mat, key) {
+    const b = bag();
+    const steps = [[0.92, "sage"], [0.76, "forest"], [0.6, "sage"], [0.44, "forest"]];
+    steps.forEach(([w, c], i) => {
+      b.add(bx(w, 0.07, 0.44 - i * 0.06), mat(c), -0.05 * i, 0.035 + i * 0.07, 0.03 * i);
+      b.add(bx(w, 0.05, 0.02), mat("stone"), -0.05 * i, 0.025 + i * 0.07, 0.03 * i + (0.44 - i * 0.06) / 2);
+    });
+    for (let i = 0; i < 3; i++) {
+      const hx = -0.22 + i * 0.13, hy = 0.31;
+      b.add(bx(0.075, 0.055, 0.07), mat("stone"), hx, hy, 0.05);
+      b.add(bx(0.1, 0.014, 0.05), mat("clay"), hx - 0.024, hy + 0.045, 0.05, 0, 0, 0.62);
+      b.add(bx(0.1, 0.014, 0.05), mat("clay"), hx + 0.024, hy + 0.045, 0.05, 0, 0, -0.62);
+    }
+    b.add(cone(0.24, 0.82, 7), mat("forest"), 0.32, 0.41, -0.18);
+    b.add(cone(0.15, 0.45, 7), mat("sage"), -0.4, 0.225, -0.14);
+    return b.build();
+  },
+  pyramids(mat, key) {
+    const b = bag();
+    const tints = [0, 0.16, 0.3].map((t) => new THREE.MeshStandardMaterial({
+      color: new THREE.Color(PAL.sand).lerp(new THREE.Color(PAL.stone), t), roughness: 0.88, metalness: 0,
+    }));
+    b.add(crisp(cone(0.34, 0.5, 4)), tints[0], 0, 0.25, 0, 0, Math.PI / 4, 0);
+    b.add(crisp(cone(0.3, 0.44, 4)), tints[1], 0.46, 0.22, -0.18, 0, Math.PI / 4, 0);
+    b.add(crisp(cone(0.16, 0.23, 4)), tints[2], -0.36, 0.115, 0.22, 0, Math.PI / 4, 0);
+    b.add(crisp(bx(1.05, 0.02, 0.6)), tints[2], 0.05, 0.01, 0);
+    return b.build();
+  },
+  burj(mat, key) {
+    const b = bag(); const m = mat(key);
+    const tiers = [0.135, 0.115, 0.096, 0.078, 0.06, 0.044];
+    tiers.forEach((r, i) => {
+      const y = 0.11 + i * 0.22;
+      b.add(cyl(r * 0.8, r * 0.92, 0.22, 6), m, 0, y);
+      for (let k = 0; k < 3; k++) {
+        const a = (k * Math.PI * 2) / 3 + i * 0.22;
+        b.add(bx(r * 1.7, 0.22, r * 0.6), m, Math.cos(a) * r * 0.62, y, Math.sin(a) * r * 0.62, 0, -a, 0);
+      }
+    });
+    b.add(cyl(0.004, 0.026, 0.42, 6), m, 0, 1.53);
+    b.add(cyl(0.0015, 0.004, 0.14, 5), m, 0, 1.8);
+    return b.build();
+  },
+  indiagate(mat, key) {
+    const b = bag(); const m = mat(key); const brassDeep = mat("brassDeep");
+    b.add(bx(0.74, 0.05, 0.28), m, 0, 0.025);
+    b.add(bx(0.17, 0.62, 0.21), m, -0.25, 0.36);
+    b.add(bx(0.17, 0.62, 0.21), m, 0.25, 0.36);
+    b.add(bx(0.69, 0.05, 0.235), brassDeep, 0, 0.6);
+    b.add(bx(0.7, 0.15, 0.23), m, 0, 0.745);
+    b.add(bx(0.76, 0.04, 0.27), m, 0, 0.84);
+    b.add(bx(0.42, 0.09, 0.19), m, 0, 0.905);
+    b.add(sph(0.095, 12, 8), m, 0, 0.95, 0, 0, 0, 0, 1, 0.68, 1);
+    b.add(cyl(0.004, 0.01, 0.07, 6), brassDeep, 0, 1.05);
+    return b.build();
+  },
+  greatwall(mat, key) {
+    const b = bag(); const m = mat(key); const sandstone = mat("sandstone");
+    const pts = [];
+    for (let i = 0; i <= 9; i++) {
+      const t = i / 9;
+      pts.push(new THREE.Vector3(-0.58 + t * 1.16, 0.05 + Math.sin(t * Math.PI * 1.4) * 0.045, Math.sin(t * Math.PI * 1.6) * 0.17));
+    }
+    for (let i = 0; i < 9; i++) {
+      const a = pts[i], p = pts[i + 1];
+      const len = a.distanceTo(p), mx = (a.x + p.x) / 2, my = (a.y + p.y) / 2, mz = (a.z + p.z) / 2;
+      const ry = -Math.atan2(p.z - a.z, p.x - a.x), rz = Math.atan2(p.y - a.y, Math.hypot(p.x - a.x, p.z - a.z));
+      b.add(bx(len, 0.075, 0.06), m, mx, my, mz, 0, ry, rz);
+      for (const f of [-0.32, 0, 0.32]) {
+        b.add(bx(0.028, 0.035, 0.062), m, mx + Math.cos(ry) * len * f, my + 0.055 - Math.sin(rz) * len * f, mz - Math.sin(ry) * len * f, 0, ry, rz);
+      }
+    }
+    for (const i of [0, 3, 6, 9]) {
+      b.add(bx(0.11, 0.19, 0.11), sandstone, pts[i].x, pts[i].y + 0.06, pts[i].z);
+      b.add(cone(0.095, 0.07, 4), sandstone, pts[i].x, pts[i].y + 0.19, pts[i].z, 0, Math.PI / 4, 0);
+    }
+    return b.build();
+  },
+  opera(mat, key) {
+    const b = bag();
+    b.add(bx(1.0, 0.03, 0.48), mat("sandstone"), 0, 0.015);
+    b.add(bx(0.94, 0.06, 0.42), mat("sandstone"), 0, 0.06);
+    const sm = mat(key, { side: THREE.DoubleSide });
+    const shellGeo = () => new THREE.SphereGeometry(0.3, 14, 9, 0, Math.PI, 0, Math.PI / 2);
+    [[-0.3, 1], [-0.08, 0.86], [0.12, 0.72], [0.3, 0.55]].forEach(([sx, s], i) => {
+      const px = sx, py = 0.09, pz = i % 2 ? 0.07 : -0.05;
+      b.add(shellGeo(), sm, px, py, pz, 0, Math.PI / 2, -0.35, 0.55 * s, 1.15 * s, 0.9 * s);
+      for (const f of [0.82, 1.0]) {
+        b.add(new THREE.TorusGeometry(0.3, 0.006, 4, 14, Math.PI), sm, px, py, pz, 0, Math.PI / 2, -0.35 + (f - 1) * 0.3, 0.55 * s * f, 1.15 * s * f, 0.9 * s);
+      }
+    });
+    return b.build();
+  },
+};
+
+/* soft contact shadow under each landmark */
+function shadowTexture() {
+  const c = document.createElement("canvas");
+  c.width = c.height = 64;
+  const x = c.getContext("2d");
+  const gr = x.createRadialGradient(32, 32, 2, 32, 32, 32);
+  gr.addColorStop(0, "rgba(51,48,42,0.45)");
+  gr.addColorStop(1, "rgba(51,48,42,0)");
+  x.fillStyle = gr; x.fillRect(0, 0, 64, 64);
+  const t = new THREE.CanvasTexture(c);
+  t.colorSpace = THREE.SRGBColorSpace;
+  return t;
+}
+
+function buildPlane() {
+  const g = new THREE.Group();
+  const m = mat("card");
+  add(g, box(0.16, 0.025, 0.03), m);
+  add(g, box(0.035, 0.008, 0.2), m, 0.01, 0, 0);
+  add(g, box(0.025, 0.05, 0.006), mat("brass"), -0.07, 0.025, 0);
+  add(g, box(0.025, 0.006, 0.08), m, -0.07, 0, 0);
+  return g;
+}
+
+/* ===== the globe controller ===== */
+function createGlobe(mount, opts) {
+  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, C.dprCap));
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  const W0 = mount.clientWidth || 400;
+  renderer.setSize(W0, W0);
+  mount.appendChild(renderer.domElement);
+  const small = W0 < C.smallBelowPx;
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(C.fov, 1, 0.1, 100);
+  let dist = C.zoom.start, targetDist = C.zoom.start;
+  camera.position.set(0, 0, dist);
+
+  const L = C.lights;
+  scene.add(new THREE.AmbientLight(L.ambient[0], L.ambient[1]));
+  for (const k of ["sun", "rim", "brassRim"]) {
+    const d = new THREE.DirectionalLight(L[k][0], L[k][1]);
+    d.position.set(...L[k][2]);
+    scene.add(d);
+  }
+
+  const group = new THREE.Group();
+  scene.add(group);
+  const R = C.radius;
+  const tex = new THREE.TextureLoader().load(TEXTURE_URL, (t) => { t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 4; });
+  const seg = small ? C.segments.small : C.segments.full;
+  const globe = new THREE.Mesh(new THREE.SphereGeometry(R, seg[0], seg[1]), new THREE.MeshStandardMaterial({ map: tex, roughness: 0.92, metalness: 0 }));
+  group.add(globe);
+
+  // brass halo (fresnel rim)
+  const halo = new THREE.Mesh(
+    new THREE.SphereGeometry(R * C.halo.radius, 48, 32),
+    new THREE.ShaderMaterial({
+      uniforms: { uColor: { value: new THREE.Color(C.halo.color) }, uPow: { value: C.halo.power }, uStr: { value: C.halo.strength } },
+      vertexShader: "varying vec3 vN; void main(){ vN = normalize(normalMatrix*normal); gl_Position = projectionMatrix*modelViewMatrix*vec4(position,1.0); }",
+      fragmentShader: "uniform vec3 uColor; uniform float uPow; uniform float uStr; varying vec3 vN; void main(){ float i = pow(clamp(0.72 - dot(vN, vec3(0.0,0.0,1.0)), 0.0, 1.0), uPow) * uStr; gl_FragColor = vec4(uColor, i); }",
+      side: THREE.BackSide, transparent: true, depthWrite: false,
+    }),
+  );
+  scene.add(halo);
+
+  // landmarks
+  const shadowTex = shadowTexture();
+  const shadowMat = new THREE.MeshBasicMaterial({ map: shadowTex, transparent: true, depthWrite: false, polygonOffset: true, polygonOffsetFactor: -2 });
+  const up = new THREE.Vector3(0, 1, 0);
+  const rise = [];
+  let lmTris = 0; const lmMax = { name: "", tris: 0 };
+  for (const lm of LANDMARKS) {
+    const [la, lo] = lm.show || [lm.lat, lm.lon];
+    const n = latLonToVec3(la, lo, 1).normalize();
+    const holder = new THREE.Group();
+    holder.position.copy(n).multiplyScalar(R * 0.998);
+    holder.quaternion.setFromUnitVectors(up, n);
+    const model = BUILD[lm.id](mat, lm.color);
+    model.scale.setScalar(lm.scale);
+    holder.add(model);
+    rise.push({ holder, model, n: n.clone(), base: lm.scale });
+    lmTris += model.userData.tris || 0;
+    if ((model.userData.tris || 0) > lmMax.tris) { lmMax.name = lm.name; lmMax.tris = model.userData.tris || 0; }
+    const sh = new THREE.Mesh(new THREE.CircleGeometry(lm.scale * 0.75, 20), shadowMat);
+    sh.rotation.x = -Math.PI / 2;
+    sh.position.y = 0.004;
+    holder.add(sh);
+    group.add(holder);
+  }
+
+  // orbit ring and plane
+  const ringPivot = new THREE.Group();
+  ringPivot.rotation.set(C.ring.tiltX, C.ring.tiltY, 0);
+  group.add(ringPivot);
+  ringPivot.add(new THREE.Mesh(
+    new THREE.TorusGeometry(R * C.ring.radius, C.ring.tube, 8, 160),
+    new THREE.MeshBasicMaterial({ color: PAL.brass, transparent: true, opacity: C.ring.opacity }),
+  ));
+  const plane = buildPlane();
+  ringPivot.add(plane);
+  let planeA = 0.6;
+
+  // orientation
+  const qTilt = new THREE.Quaternion().setFromEuler(new THREE.Euler(C.viewerPitch, 0, C.axialTilt, "XYZ"));
+  const qStart = () => qTilt.clone().multiply(new THREE.Quaternion().setFromAxisAngle(up, -Math.PI / 2 - C.startLongitude * DEG));
+  group.quaternion.copy(qStart());
+  const poleTarget = up.clone().applyQuaternion(qTilt);
+
+  // state
+  const clock = new THREE.Clock();
+  let now = 0, lastInteract = -999;
+  const omega = new THREE.Vector3(); // inertia, axis * rad/s
+  const pointers = new Map();
+  let pinchStart = 0, pinchDist0 = 0, lastMid = null, lastMoveT = 0;
+  const reduced = () => opts.reducedMotion();
+
+  const tmpQ = new THREE.Quaternion(), tmpV = new THREE.Vector3();
+  function rotateBy(dx, dy, sens) {
+    const len = Math.hypot(dx, dy);
+    if (!len) return 0;
+    const ang = len * sens;
+    tmpV.set(dy / len, dx / len, 0);
+    tmpQ.setFromAxisAngle(tmpV, ang);
+    group.quaternion.premultiply(tmpQ);
+    return ang;
+  }
+  const sensNow = () => C.dragSens * (dist / C.zoom.start);
+  const touch = () => { lastInteract = now; };
+
+  const canvas = renderer.domElement;
+  canvas.tabIndex = 0;
+  canvas.setAttribute("role", "img");
+  canvas.setAttribute("aria-label", "Globe with world landmarks. Drag to spin, wheel or pinch to zoom, arrow keys spin, plus and minus zoom.");
+
+  canvas.addEventListener("pointerdown", (e) => {
+    canvas.setPointerCapture(e.pointerId);
+    pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    omega.set(0, 0, 0);
+    lastMoveT = performance.now();
+    if (pointers.size === 2) {
+      const [a, b] = [...pointers.values()];
+      pinchDist0 = Math.hypot(a.x - b.x, a.y - b.y) || 1;
+      pinchStart = targetDist;
+      lastMid = { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 };
+    }
+    touch();
+  });
+  canvas.addEventListener("pointermove", (e) => {
+    const p = pointers.get(e.pointerId);
+    if (!p) return;
+    const dx = e.clientX - p.x, dy = e.clientY - p.y;
+    p.x = e.clientX; p.y = e.clientY;
+    const t = performance.now(), dt = Math.max((t - lastMoveT) / 1000, 1 / 240);
+    lastMoveT = t;
+    if (pointers.size === 1) {
+      const ang = rotateBy(dx, dy, sensNow());
+      if (ang) omega.copy(tmpV).multiplyScalar(Math.min(ang / dt, 6));
+    } else if (pointers.size === 2) {
+      const [a, b] = [...pointers.values()];
+      const d = Math.hypot(a.x - b.x, a.y - b.y) || 1;
+      targetDist = THREE.MathUtils.clamp(pinchStart * (pinchDist0 / d), C.zoom.min, C.zoom.max);
+      const mid = { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 };
+      if (lastMid) rotateBy(mid.x - lastMid.x, mid.y - lastMid.y, sensNow());
+      lastMid = mid;
+      omega.set(0, 0, 0);
+    }
+    touch();
+  });
+  const end = (e) => {
+    pointers.delete(e.pointerId);
+    if (pointers.size < 2) lastMid = null;
+    if (reduced() || performance.now() - lastMoveT > 80) omega.set(0, 0, 0);
+    touch();
+  };
+  canvas.addEventListener("pointerup", end);
+  canvas.addEventListener("pointercancel", end);
+
+  const ray = new THREE.Raycaster(), ndc = new THREE.Vector2();
+  canvas.addEventListener("wheel", (e) => {
+    const r = canvas.getBoundingClientRect();
+    ndc.set(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
+    ray.setFromCamera(ndc, camera);
+    if (!ray.intersectObject(globe, false).length) return; // off the sphere: the page scrolls
+    const next = THREE.MathUtils.clamp(targetDist * Math.exp(e.deltaY * C.zoom.wheelK), C.zoom.min, C.zoom.max);
+    if (Math.abs(next - targetDist) < 1e-4) return; // at the limit: the page scrolls
+    e.preventDefault();
+    targetDist = next;
+    touch();
+  }, { passive: false });
+
+  canvas.addEventListener("keydown", (e) => {
+    const s = C.keySpin / C.dragSens;
+    if (e.key === "ArrowLeft") rotateBy(-s, 0, C.dragSens);
+    else if (e.key === "ArrowRight") rotateBy(s, 0, C.dragSens);
+    else if (e.key === "ArrowUp") rotateBy(0, -s, C.dragSens);
+    else if (e.key === "ArrowDown") rotateBy(0, s, C.dragSens);
+    else if (e.key === "+" || e.key === "=") targetDist = Math.max(C.zoom.min, targetDist * C.zoom.keyStep);
+    else if (e.key === "-" || e.key === "_") targetDist = Math.min(C.zoom.max, targetDist / C.zoom.keyStep);
+    else if (e.key === "0") { group.quaternion.copy(qStart()); targetDist = C.zoom.start; }
+    else return;
+    e.preventDefault();
+    omega.set(0, 0, 0);
+    touch();
+  });
+
+  // visibility and resize
+  let visible = true, raf = 0;
+  new IntersectionObserver((es) => { visible = es[0]?.isIntersecting ?? false; if (visible) kick(); }).observe(mount);
+  document.addEventListener("visibilitychange", () => { if (!document.hidden) kick(); });
+  new ResizeObserver(() => {
+    const w = mount.clientWidth;
+    if (!w) return;
+    renderer.setSize(w, w);
+    kick();
+  }).observe(mount);
+
+  const qa = new THREE.Quaternion(), qi = new THREE.Quaternion(), poleNow = new THREE.Vector3();
+  function kick() { if (raf === 0) loop(); }
+  function loop() {
+    if (!visible || document.hidden) { raf = 0; return; }
+    raf = requestAnimationFrame(loop);
+    const dt = Math.min(clock.getDelta(), 0.05);
+    now += dt;
+    const rm = reduced();
+    const interacting = pointers.size > 0;
+    // rise-in: landmarks ease into place over 0.8 s on first load (skipped under reduced motion)
+    const rp = rm ? 1 : Math.min(now / 0.8, 1);
+    if (rp < 1 || rise.length) {
+      const e = 1 - Math.pow(1 - rp, 3);
+      for (const r of rise) {
+        r.model.scale.setScalar(r.base * (0.9 + 0.1 * e));
+        r.holder.position.copy(r.n).multiplyScalar(R * 0.998 - (1 - e) * 0.04);
+      }
+      if (rp >= 1) rise.length = 0;
+    }
+
+    // inertia
+    if (!interacting && !rm && omega.lengthSq() > C.inertiaStop * C.inertiaStop) {
+      const a = omega.length();
+      tmpQ.setFromAxisAngle(tmpV.copy(omega).divideScalar(a), a * dt);
+      group.quaternion.premultiply(tmpQ);
+      omega.multiplyScalar(Math.pow(C.inertiaDamp, dt * 60));
+    } else if (!interacting) omega.set(0, 0, 0);
+
+    // slow turn returns after idle, with the pole easing back to its tilt
+    const idle = now - lastInteract;
+    if (!interacting && !rm && idle > C.resumeAfter) {
+      const ramp = THREE.MathUtils.smoothstep(idle, C.resumeAfter, C.resumeAfter + C.resumeRamp);
+      group.quaternion.multiply(tmpQ.setFromAxisAngle(up, C.autoSpin * ramp * dt));
+      poleNow.copy(up).applyQuaternion(group.quaternion);
+      qa.setFromUnitVectors(poleNow, poleTarget);
+      qi.identity().slerp(qa, (1 - Math.exp(-C.uprightEase * dt)) * ramp);
+      group.quaternion.premultiply(qi);
+    }
+
+    // zoom eases (snaps under reduced motion)
+    dist = rm ? targetDist : THREE.MathUtils.damp(dist, targetDist, C.zoom.ease, dt);
+    camera.position.z = dist;
+
+    // plane on the ring
+    if (!rm) planeA += C.plane.speed * dt;
+    const pr = R * C.ring.radius;
+    plane.position.set(Math.cos(planeA) * pr, Math.sin(planeA) * pr, 0);
+    plane.rotation.set(0, 0, planeA + Math.PI / 2);
+
+    renderer.render(scene, camera);
+  }
+  loop();
+  return {
+    refresh() { omega.set(0, 0, 0); kick(); },
+    stats() { return { tris: lmTris, maxName: lmMax.name, maxTris: lmMax.tris, calls: renderer.info.render.calls, sceneTris: renderer.info.render.triangles }; },
+  };
+}
+
+/* ===== page wiring ===== */
+const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+const toggle = document.getElementById("rm-preview");
+toggle.checked = mq.matches;
+const reducedMotion = () => toggle.checked;
+const globes = [...document.querySelectorAll("[data-globe]")].map((m) => {
+  try { return createGlobe(m, { reducedMotion }); } catch (err) { m.textContent = "WebGL is off in this browser."; return null; }
+});
+const refresh = () => globes.forEach((g) => g && g.refresh());
+toggle.addEventListener("change", refresh);
+const readout = document.createElement("div");
+readout.id = "globe-readout";
+readout.textContent = "globe stats: loading";
+document.body.appendChild(readout);
+setInterval(() => {
+  const g = globes[0];
+  if (!g) { readout.textContent = "globe stats: unavailable"; return; }
+  const st = g.stats();
+  readout.innerHTML = `<b>Desktop globe</b><br>triangles ${st.sceneTris.toLocaleString()} · draw calls ${st.calls}<br>landmarks ${st.tris.toLocaleString()} tris · largest ${st.maxName} ${Math.round(st.maxTris).toLocaleString()}`;
+}, 500);
+mq.addEventListener("change", () => { toggle.checked = mq.matches; refresh(); });
+
+/* contract table, drawn from the same constants */
+const hex = (n) => "#" + n.toString(16).padStart(6, "0");
+const rows = [
+  ["Globe texture", "the existing <code>globe-texture.webp</code> (1600 x 800, equirectangular), unchanged"],
+  ["Camera", `fov <code>${C.fov}</code>, start distance <code>${C.zoom.start}</code>, globe radius <code>${C.radius}</code>, DPR cap <code>${C.dprCap}</code>`],
+  ["Zoom", `min <code>${C.zoom.min}</code>, max <code>${C.zoom.max}</code>, key step x<code>${C.zoom.keyStep}</code>, wheel <code>exp(deltaY x ${C.zoom.wheelK})</code>, ease <code>${C.zoom.ease}</code>/s`],
+  ["Wheel rule", "zooms only when the pointer is over the sphere and the zoom is not at its limit; otherwise the page scrolls"],
+  ["Pinch rule", "two touch pointers: distance ratio sets zoom, midpoint move tilts; browser pinch-zoom never fires on the canvas"],
+  ["Touch scroll rule", "canvas keeps <code>touch-action: pan-y</code>: a vertical one-finger swipe scrolls the page"],
+  ["Drag", `free trackball, <code>${C.dragSens}</code> rad per px at start zoom, scaled by zoom distance`],
+  ["Inertia", `damping <code>${C.inertiaDamp}</code> per 60 fps frame, stops below <code>${C.inertiaStop}</code> rad/s, max <code>6</code> rad/s`],
+  ["Slow turn", `<code>${C.autoSpin}</code> rad/s about the globe's own pole, resumes <code>${C.resumeAfter}</code> s after the last input, ramps in over <code>${C.resumeRamp}</code> s`],
+  ["Upright drift", `while turning, the pole eases back to tilt at rate <code>${C.uprightEase}</code>/s`],
+  ["Rest pose", `axial tilt <code>23.44°</code>, pitch toward viewer <code>${C.viewerPitch}</code> rad, facing longitude <code>${C.startLongitude}°</code>`],
+  ["Keys", "arrows spin <code>0.18</code> rad, <code>+</code>/<code>=</code> and <code>-</code> zoom, <code>0</code> resets pose and zoom"],
+  ["Reduced motion", "no slow turn, no inertia, no plane, zoom snaps; production keeps its static disc fallback"],
+  ["Lights", `ambient <code>${hex(C.lights.ambient[0])}</code> ${C.lights.ambient[1]}; sun <code>${hex(C.lights.sun[0])}</code> ${C.lights.sun[1]}; rim <code>${hex(C.lights.rim[0])}</code> ${C.lights.rim[1]}; brass rim <code>${hex(C.lights.brassRim[0])}</code> ${C.lights.brassRim[1]} from behind`],
+  ["Halo", `back-face fresnel sphere x<code>${C.halo.radius}</code>, <code>${hex(C.halo.color)}</code>, power <code>${C.halo.power}</code>, strength <code>${C.halo.strength}</code>`],
+  ["Ring and plane", `brass torus x<code>${C.ring.radius}</code>, opacity <code>${C.ring.opacity}</code>; parchment plane at <code>${C.plane.speed}</code> rad/s`],
+  ["Landmark palette", Object.entries(PAL).map(([k, v]) => `<span class="sw" style="background:${hex(v)}"></span><code>${k} ${hex(v)}</code>`).join(" &nbsp; ")],
+];
+function L0(k) { return C.lights[k][0]; }
+const lmRows = LANDMARKS.map((l) => `<tr><td>${l.name}</td><td>${l.place}</td><td><code>${l.lat.toFixed(3)}, ${l.lon.toFixed(3)}</code></td><td>${l.show ? `<code>${l.show[0]}, ${l.show[1]}</code>` : "same"}</td><td><code>${l.scale}</code></td><td><span class="sw" style="background:${hex(PAL[l.color])}"></span><code>${l.color}</code></td></tr>`).join("");
+document.getElementById("contract-table").innerHTML =
+  `<table><thead><tr><th>Setting</th><th>Value</th></tr></thead><tbody>${rows.map(([a, b]) => `<tr><td>${a}</td><td>${b}</td></tr>`).join("")}</tbody></table>` +
+  `<table style="margin-top:18px"><thead><tr><th>Landmark</th><th>Place</th><th>Real lat, lon</th><th>Drawn at</th><th>Scale</th><th>Colour</th></tr></thead><tbody>${lmRows}</tbody></table>`;
+</script>
+
+</body></html>

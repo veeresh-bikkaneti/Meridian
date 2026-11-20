@@ -41,7 +41,7 @@
  * (pipeline Block A cure).
  */
 
-import { useCallback, useEffect, useRef, useState, type JSX, type KeyboardEvent } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState, type JSX, type KeyboardEvent } from "react";
 import { Layers } from "lucide-react";
 import type { MapMode } from "@/map/capability";
 import { SCOUT_COPY } from "./scout-copy.ts";
@@ -91,6 +91,39 @@ export function MapModeToggle(props: {
       measureHomeLeftOffset();
     }
     setOpen((v) => !v);
+  }, [open, atHome, measureHomeLeftOffset]);
+
+  // The click-time measure can read a pre-settle rect: opening the
+  // popover flips the hero's overflow (the :has rule in home-v5.css),
+  // which re-wraps the hero-top row and shifts the button sideways
+  // after the handler ran — on a 375px screen that left the popover
+  // clamped to the button's old spot, past the right margin.
+  // Re-measure once the popover is in the DOM so the clamp uses the
+  // settled button position.
+  useLayoutEffect(() => {
+    if (open && atHome) {
+      measureHomeLeftOffset();
+    }
+  }, [open, atHome, measureHomeLeftOffset]);
+
+  // The one-shot re-measure above still races: on a slow frame the
+  // hero-top row can finish re-wrapping after the layout effect read
+  // the rect (CI at 390×844 measured the button settled +18px later,
+  // popover past the margin again). So while the popover stays open,
+  // keep tracking the button frame by frame — the clamp follows
+  // whenever the button settles, at any viewport, under any timing.
+  // The loop is cheap (one rect read per frame, and React drops the
+  // state write once the offset stops changing) and it cancels the
+  // moment the popover closes or the component unmounts.
+  useEffect(() => {
+    if (!open || !atHome) return;
+    let frame = 0;
+    const track = () => {
+      measureHomeLeftOffset();
+      frame = requestAnimationFrame(track);
+    };
+    frame = requestAnimationFrame(track);
+    return () => cancelAnimationFrame(frame);
   }, [open, atHome, measureHomeLeftOffset]);
 
   // Escape closes the popover and returns focus to the button; resize
