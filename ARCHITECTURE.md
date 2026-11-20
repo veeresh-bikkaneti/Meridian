@@ -105,7 +105,7 @@ Leave these where they are unless your slice is the one moving them.
 1. **Story first.** Build a mockup from the real shared components (a
    Storybook story, once PR 0.4 lands it) and get Veeresh's approval
    before writing the screen. No mockup, no UI code.
-A mockup is a story built from real components; link it in the PR template.
+   A mockup is a story built from real components; link it in the PR template.
 2. **Adopt the shell.** Use the layer 4 shell parts (`page-shell`,
    `page-column`, the header and footer) instead of building a new frame.
 3. **Use shared components.** Build the screen from layer 4 components
