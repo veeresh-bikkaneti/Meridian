@@ -171,12 +171,20 @@ for (const choice of [
 }
 
 /**
- * Owner captures (mocks are always full page): with CAPTURE_MODAL=1
- * this writes the modal's full-page captures at the four owner
- * widths into docs/motion-verify/. Skipped in normal runs so CI
- * never churns the committed captures.
+ * Owner captures: with CAPTURE_MODAL=1 this writes a TWO-SHOT pair
+ * per owner width into docs/motion-verify/. Skipped in normal runs
+ * so CI never churns the committed captures.
+ *
+ * Why two shots: while the sheet is up the modal's scroll lock
+ * collapses the document to the viewport height, so a fullPage
+ * screenshot taken with the sheet up stitches the page height but
+ * renders it blank (the original captures were void by
+ * construction — the page itself was intact). The honest pair is:
+ * (a) an arrival VIEWPORT shot with the sheet up, and (b) a
+ * full-page shot taken after answering "Never", when the page
+ * scrolls and paints in full.
  */
-test("captures: modal full-page at 1280, 768, 390, 320", async ({ page }) => {
+test("captures: modal arrival + answered full-page at 1280, 768, 390, 320", async ({ page }) => {
   test.skip(process.env.CAPTURE_MODAL !== "1", "captures are produced on demand only");
   await page.emulateMedia({ reducedMotion: "reduce" });
   for (const [width, height] of [
@@ -187,7 +195,13 @@ test("captures: modal full-page at 1280, 768, 390, 320", async ({ page }) => {
   ] as const) {
     await page.setViewportSize({ width, height });
     await page.goto(APP_NO_IDLE);
-    await reachSheet(page);
+    const sheet = await reachSheet(page);
+    await page.screenshot({
+      path: `docs/motion-verify/read-aloud-modal-arrival-${width}px.png`,
+    });
+    await sheet.getByRole("button", { name: /Never/ }).click();
+    await expect.poll(() => storedPref(page)).toBe("never");
+    await page.waitForTimeout(600);
     await page.screenshot({
       path: `docs/motion-verify/read-aloud-modal-full-${width}px.png`,
       fullPage: true,

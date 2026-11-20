@@ -110,3 +110,97 @@ produced by the spec's env-gated capture test (CAPTURE_MODAL=1).
 - The backdrop color moved to a `--scrim` token in the `styles.css`
   `:root` block (same value, `rgba(21, 28, 24, 0.55)`); the backdrop
   rule now reads `var(--scrim)`. No visual change.
+
+## Capture verification — CHECKPOINT (2026-11-20, capture re-shoot leg)
+
+Budget: hard cap 20k tokens for this leg; checkpoint at ~12k reached.
+Spent estimate: ~12k (±30% — no meter; two full doc reads, one build,
+one probe run, one screenshot read). DONE below; the re-shoot REMAINS.
+
+### Diagnosis: the "half empty" captures are a CAPTURE ARTEFACT [measured]
+
+The owner reported the four `read-aloud-modal-full-*px.png` captures
+show the hero + sheet over a blank cream void. Verdict: the page is
+intact; the full-page capture method is what failed.
+
+- While the modal is up, the below-hero sections EXIST in the DOM
+  with real geometry: 76 sized elements below the fold at 1280×800
+  (footer present; globe SVG parts at document tops 949/1053/1166).
+- The modal's scroll lock (overflow hidden on body + root, by
+  design) collapses `document.scrollHeight` to the viewport height
+  (800 at 1280×800); a scripted scroll attempt stays at scrollY 0.
+- After answering "Never", the same page scrolls freely (scrollY
+  1400) and the below-hero sections PAINT in a real viewport:
+  editions/case cards (GeoDetective, Cold Trail, Review my misses,
+  Journal, For grown-ups) fully rendered in the probe screenshot.
+- The returning-visit full-page capture is 1280×3642 — the same
+  height as the modal-up full-page capture. The height exists; the
+  modal-up fullPage shot renders it blank because Playwright's
+  fullPage resize/stitch runs against a scroll-locked document with
+  a fixed scrim [inferred mechanism; DOM + paint facts measured].
+- Probe: temporary spec, hermetic recipe (build:pages, flock,
+  --workers=1, pinned Chromium, VITE_KOFI_URL both envs), 1 passed;
+  spec deleted after the run. Probe shots were kept in /tmp only.
+
+### Remaining (next run, on the parent's continuation word)
+
+1. Re-shoot per width (1280×800, 768×1024, 390×844, 320×568):
+   (a) arrival viewport shot with the sheet up →
+   `read-aloud-modal-arrival-<w>px.png`; (b) answer "Never", then
+   fullPage → replaces `read-aloud-modal-full-<w>px.png` (populated).
+   Cleanest path: update the CAPTURE_MODAL test in
+   `tests/e2e/read-aloud-modal.desktop.spec.ts` to this two-shot
+   method (it currently does fullPage with the sheet up — the void
+   method) and run it with CAPTURE_MODAL=1.
+2. Spot-check one arrival shot + the new full-page sizes.
+3. Commit named files only (8 PNGs + the spec), provenance check,
+   push (standing branch authorization).
+4. Append a capture-method correction to the PR #547 body.
+5. Mark this section complete in the branch status.
+
+## Capture continuation — CHECKPOINT (2026-11-20, +15k re-baseline leg)
+
+Budget: hard cap 15k tokens for this leg (owner-approved
+re-baseline); checkpoint at ~9k (60%) reached. Spent estimate: ~9k
+(±30% — no meter; sync + spec rewrite + one build + one capture run
++ dimension read + two screenshot reads). The re-shoot is DONE; the
+records step REMAINS (below).
+
+### Done in this leg [measured]
+
+- Sync: worktree moved onto origin tip `2a1088d6` (the local
+  checkpoint commit `32711b72` was verified status-file-only; its
+  section is re-applied above as a plain edit — no rebase, no
+  force-push).
+- The CAPTURE_MODAL test in
+  `tests/e2e/read-aloud-modal.desktop.spec.ts` now uses the TWO-SHOT
+  method: (a) arrival viewport shot, sheet up →
+  `read-aloud-modal-arrival-<w>px.png`; (b) answer "Never", then
+  fullPage → `read-aloud-modal-full-<w>px.png`. Its comment names
+  why: fullPage against the scroll-locked page stitches blank.
+- Hermetic run PASSED (build:pages, flock, --workers=1, pinned
+  Chromium, VITE_KOFI_URL in build + runner envs): 1 passed.
+- All 8 captures written. Dimensions: arrival 1280×800, 768×1024,
+  390×844, 320×568 (exact viewports); full 1280×3642, 768×4033,
+  390×6288, 320×6428 (tall, populated — the 1280 height matches the
+  owner-approved sample exactly).
+- Spot-check [read first-hand]: arrival-390 — sheet correct
+  ("Do you like stories read aloud?", Always carries the focus
+  ring, page dimmed behind the scrim). full-390 — fully populated:
+  hero, globe, Expeditions Map, GeoDetective / Why Learn / Cold
+  Trail / Review my misses / Journal / For grown-ups cards, "How a
+  round works", footer + Grandpa. No void.
+
+### Remaining (records step, next run)
+
+1. `npm run check:provenance` — must PASS.
+2. Commit named files only: the 8 PNGs in docs/motion-verify/ +
+   `tests/e2e/read-aloud-modal.desktop.spec.ts` + this status file.
+   Owner identity, plain subject, no trailers.
+3. Push to origin `feat/read-aloud-modal` (normal push; base is
+   `2a1088d6`).
+4. Append the capture-method correction to the PR #547 body:
+   the original captures were void by construction (fullPage
+   against a scroll-locked page); replaced by arrival +
+   answered full-page pairs; method named honestly.
+5. Mark the capture sections in this file complete.
