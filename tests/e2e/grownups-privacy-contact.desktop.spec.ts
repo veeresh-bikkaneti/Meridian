@@ -1,5 +1,5 @@
 import http from "node:http";
-import { test, expect, type Page } from "playwright/test";
+import { test, expect, type Page, type Locator } from "playwright/test";
 import { serveBuiltArtifact, APP_NO_IDLE } from "./helpers";
 import {
   handleContactRequest,
@@ -501,6 +501,33 @@ async function waitForNavLayoutSettled(page: Page): Promise<void> {
   throw new Error("nav boxes did not stabilize after viewport change");
 }
 
+// The map-mode popover's clamp tracks its button frame by frame while
+// the popover is open, so its box keeps moving for a few frames after
+// the click. Owner ruling 2026-11-19: the settled state is the product
+// truth — sample the popover the way the nav checks above sample the
+// header: wait until two consecutive reads of its box agree.
+async function waitForPopoverSettled(page: Page, popover: Locator): Promise<void> {
+  const readBox = () =>
+    popover.evaluate((el) => {
+      const b = el.getBoundingClientRect();
+      return `${b.x},${b.y},${b.width},${b.height}`;
+    });
+  let prev = "";
+  const deadline = Date.now() + 5000;
+  while (Date.now() < deadline) {
+    await page.evaluate(
+      () =>
+        new Promise<void>((resolve) => {
+          requestAnimationFrame(() => requestAnimationFrame(() => resolve()));
+        }),
+    );
+    const cur = await readBox();
+    if (cur !== "" && cur === prev) return;
+    prev = cur;
+  }
+  throw new Error("popover box did not stabilize after opening");
+}
+
 test("home UX polish across 6 viewports: unified map-mode pill, whole-card journal & grownups click, inline links, and navbar CONTACT", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   const viewports = [
@@ -573,6 +600,10 @@ test("home UX polish across 6 viewports: unified map-mode pill, whole-card journ
     await mapBtnVp.click();
     const popVp = page.getByTestId("map-mode-popover");
     await expect(popVp).toBeVisible();
+    // Settled-state sampling (owner ruling 2026-11-19): the popover's
+    // clamp tracks the button for a few frames after opening, so
+    // measure only once its box has stopped moving.
+    await waitForPopoverSettled(page, popVp);
     const btnBefore = (await mapBtnVp.boundingBox())!;
     const popBefore = (await popVp.boundingBox())!;
     expect(
