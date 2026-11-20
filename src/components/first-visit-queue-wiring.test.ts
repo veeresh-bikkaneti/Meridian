@@ -106,7 +106,13 @@ describe("FirstVisitQueue wiring (item 9)", () => {
     const tour = app.indexOf('id: "tour-invite"');
     const sheet = app.indexOf('id: "read-aloud-sheet"');
     assert.ok(scout >= 0 && tour > scout && sheet > tour, "queue order: scout → tour → read-aloud");
-    assert.match(app, /<FirstVisitQueue prompts=\{firstVisitPrompts\} seenKey="meridian\.firstVisitQueue\.v1" placement="overlay" \/>/);
+    assert.match(app, /<FirstVisitQueue prompts=\{firstVisitPrompts\} seenKey="meridian\.firstVisitQueue\.v1" placement="overlay" onModalChange=\{setFirstVisitModalOpen\} \/>/);
+    // Arrival modal (2026-11-20): the read-aloud sheet — and only the
+    // sheet — is flagged modal, and the Home page goes inert while
+    // the queue reports a modal prompt up.
+    assert.match(app, /id: "read-aloud-sheet",\s*\n\s*\/\/ Arrival modal/);
+    assert.match(app, /modal: true,/);
+    assert.match(app, /inert=\{ageSettingsOpen \|\| ageAsk !== null \|\| firstVisitModalOpen \|\| undefined\}/);
     // The bubble (fourth prompt) waits for the whole queue, not just the invite.
     assert.match(app, /tutorialInviteVisible=\{firstVisitPrompts\.length > 0\}/);
     // The Scout notice no longer renders outside the queue.

@@ -107,7 +107,9 @@ describe("the gate holder (GameApp)", () => {
       "the overlay renders in the subjects branch and on Home",
     );
     assert.equal(
-      gameApp.split("inert={ageSettingsOpen || ageAsk !== null || undefined}").length - 1,
+      // The shared prefix: Home's expression carries one extra term
+      // (firstVisitModalOpen, the read-aloud arrival modal) after it.
+      gameApp.split("inert={ageSettingsOpen || ageAsk !== null ||").length - 1,
       2,
       "both surfaces go inert behind the ask-first picker, like the settings overlay",
     );

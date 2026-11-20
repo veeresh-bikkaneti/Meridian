@@ -547,6 +547,20 @@ test("home UX polish across 6 viewports: unified map-mode pill, whole-card journ
     await expect(page.getByTestId("tutorial-invite")).toHaveCount(0);
   }
 
+  // Arrival modal (2026-11-20): after the invite, the read-aloud
+  // sheet is the pending prompt and it now HOLDS the page — backdrop,
+  // inert page, scroll lock — until it is answered. On main it was a
+  // passive overlay and this spec answered it after the viewport
+  // loop; under the modal nothing beneath it is reachable first,
+  // which is the point. A first-visit player answers it in one tap
+  // before touching the page — do the same here, up front. No
+  // assertion below changes; only the answer moved earlier.
+  const readAloudSheet = page.getByTestId("first-visit-queue");
+  if ((await readAloudSheet.count()) > 0 && (await readAloudSheet.getAttribute("data-prompt-id")) === "read-aloud-sheet") {
+    await readAloudSheet.getByRole("button", { name: /Never/ }).click();
+    await expect(page.locator('[data-prompt-id="read-aloud-sheet"]')).toHaveCount(0);
+  }
+
   for (const [w, h] of viewports) {
     await page.setViewportSize({ width: w, height: h });
     await page.evaluate(() => window.scrollTo(0, 0));
@@ -644,18 +658,8 @@ test("home UX polish across 6 viewports: unified map-mode pill, whole-card journ
   await page.keyboard.press("Escape");
   await expect(page.getByTestId("map-mode-popover")).toHaveCount(0);
 
-  // The Q1 overlay (PR 518) floats the first-visit queue above the
-  // page: after the invite's "Not now", the read-aloud sheet is the
-  // pending prompt, and it legitimately covers the journal card's
-  // heading (measured: sheet 352,160 576x336 over the h2 at
-  // 475,414). A first-visit player answers it in one tap before the
-  // page beneath is reachable — do the same here, same pattern as
-  // the invite dismissal above. No assertion below changes.
-  const readAloudSheet = page.getByTestId("first-visit-queue");
-  if ((await readAloudSheet.count()) > 0 && (await readAloudSheet.getAttribute("data-prompt-id")) === "read-aloud-sheet") {
-    await readAloudSheet.getByRole("button", { name: /Never/ }).click();
-    await expect(page.locator('[data-prompt-id="read-aloud-sheet"]')).toHaveCount(0);
-  }
+  // (The read-aloud sheet was answered up front, right after the
+  // invite: as an arrival modal it holds the page until then.)
 
   // 2. Whole-card click on the teaser card's text & illustration scrolls & focuses #home-journal.
   // Item 42 (PR #522) removed the teaser card's own "What the land remembers"
