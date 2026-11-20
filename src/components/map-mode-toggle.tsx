@@ -106,6 +106,26 @@ export function MapModeToggle(props: {
     }
   }, [open, atHome, measureHomeLeftOffset]);
 
+  // The one-shot re-measure above still races: on a slow frame the
+  // hero-top row can finish re-wrapping after the layout effect read
+  // the rect (CI at 390×844 measured the button settled +18px later,
+  // popover past the margin again). So while the popover stays open,
+  // keep tracking the button frame by frame — the clamp follows
+  // whenever the button settles, at any viewport, under any timing.
+  // The loop is cheap (one rect read per frame, and React drops the
+  // state write once the offset stops changing) and it cancels the
+  // moment the popover closes or the component unmounts.
+  useEffect(() => {
+    if (!open || !atHome) return;
+    let frame = 0;
+    const track = () => {
+      measureHomeLeftOffset();
+      frame = requestAnimationFrame(track);
+    };
+    frame = requestAnimationFrame(track);
+    return () => cancelAnimationFrame(frame);
+  }, [open, atHome, measureHomeLeftOffset]);
+
   // Escape closes the popover and returns focus to the button; resize
   // updates the horizontal offset on Home.
   useEffect(() => {
