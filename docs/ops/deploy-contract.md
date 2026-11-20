@@ -41,3 +41,14 @@ Not a secret. Players keep today's header values. `src/lib/security-headers.ts` 
 | Security headers on worker responses and on static `/*` | `SECURITY_HEADERS` via `withSecurityHeaders` in `src/server.ts` and `src/start.ts`; the same pairs in the `public/_headers` `/*` block | [tested] `node --experimental-strip-types --test src/lib/security-headers.test.ts` |
 | Static path headers, including cache rules | `STATIC_HEADER_RULES` and `headersForStaticPath` in the same module, compared to `public/_headers` for the same paths | Same test. It fails when a path's headers differ. |
 | Rendered HTML `Cache-Control` | `HTML_CACHE_CONTROL` = `public, max-age=0, must-revalidate`, set only from `src/start.ts`. Not the asset `/` rule (`s-maxage=60`). | Same test. |
+
+## Migrations
+
+One runner applies pending SQL. `applyPendingMigrations` lives in `scripts/migration-runner.mjs`. The caller opens the database and runs `MIGRATIONS_LEDGER_SQL`. The runner does not open a connection.
+
+| Caller | When | Check |
+| :--- | :--- | :--- |
+| Build | `package.json` `build` is `vite build && npm run db:migrate`. `scripts/migrate.mjs` calls the runner only when `DATABASE_URL` is set and `migrations/` has a top-level `.sql` file. An empty URL exits 0 and does not connect. `migrations/auth/` is not applied. | [tested] `node --test scripts/migration-schema.test.mjs` |
+| PGLite | `src/lib/db.ts` calls the same runner when the embedded database opens (`DATABASE_URL` unset). | Same test. The build adapter (BEGIN, file, INSERT, COMMIT) and the PGLite transaction adapter leave the same columns and the same `_migrations` names. A bad file rolls back on both. |
+| Worker | `wrangler.jsonc` `main` is `src/server.ts`. That entry does not import `src/lib/db.ts` and does not apply SQL. `workers/` has no migrator. `DATABASE_URL` is not a Worker binding. There is no third runner. | [tested] `grep` of `applyPendingMigrations` and `lib/db` in `src/server.ts` returns nothing. `grep` of `migrate`, `DATABASE_URL`, and `applyPending` in `workers/` returns nothing. `grep` of `DATABASE_URL` in `wrangler.jsonc` returns nothing. |
+

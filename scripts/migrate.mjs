@@ -17,6 +17,7 @@ import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import pg from "pg";
 import { pendingMigrations } from "./migration-plan.mjs";
+import { applyPendingMigrations, MIGRATIONS_LEDGER_SQL } from "./migration-runner.mjs";
 
 const databaseUrl = process.env.DATABASE_URL;
 if (!databaseUrl) {
@@ -45,34 +46,50 @@ async function main() {
   const pool = new pg.Pool({ connectionString: databaseUrl, max: 1 });
   const client = await pool.connect();
   try {
-    await client.query(
-      "CREATE TABLE IF NOT EXISTS _migrations (name TEXT PRIMARY KEY, applied_at TIMESTAMPTZ NOT NULL DEFAULT now())",
-    );
+    await client.query(MIGRATIONS_LEDGER_SQL);
     const applied = (await client.query("SELECT name FROM _migrations")).rows.map(
       (r) => r.name,
     );
 
-    let count = 0;
+    const files = [];
     for (const { name } of pendingMigrations(entries, applied)) {
-      const text = await readFile(join(migrationsDir, name), "utf8");
-      try {
-        await client.query("BEGIN");
-        // pg's simple-query protocol runs a whole multi-statement file at once.
-        await client.query(text);
-        await client.query("INSERT INTO _migrations (name) VALUES ($1)", [name]);
-        await client.query("COMMIT");
-      } catch (err) {
-        console.error(`[migrate] error applying ${name}`);
-        try {
-          await client.query("ROLLBACK");
-        } catch {
-          // ROLLBACK fails when the connection died — keep the original error.
-        }
-        throw err;
-      }
-      console.log(`[migrate] applied ${name}`);
-      count += 1;
+      files.push({
+        name,
+        sql: await readFile(join(migrationsDir, name), "utf8"),
+      });
     }
+
+    let appliedNow;
+    try {
+      appliedNow = await applyPendingMigrations({
+        files,
+        applied,
+        transaction: async (run) => {
+          await client.query("BEGIN");
+          try {
+            await run({
+              exec: (sql) => client.query(sql),
+              query: (sql, params) => client.query(sql, params),
+            });
+            await client.query("COMMIT");
+          } catch (err) {
+            try {
+              await client.query("ROLLBACK");
+            } catch {
+              // ROLLBACK fails when the connection died — keep the original error.
+            }
+            throw err;
+          }
+        },
+      });
+    } catch (err) {
+      console.error(`[migrate] error applying ${err.migrationName}`);
+      throw err;
+    }
+    for (const name of appliedNow) {
+      console.log(`[migrate] applied ${name}`);
+    }
+    const count = appliedNow.length;
     console.log(count ? `[migrate] done — ${count} migration(s) applied.` : "[migrate] up to date.");
   } finally {
     client.release();
