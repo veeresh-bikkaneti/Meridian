@@ -23,4 +23,5 @@ Add, do not edit `docs/knowledge/graph.json` here:
 
 - RED first: `node --experimental-strip-types --test src/lib/security-headers.test.ts` failed because `STATIC_HEADER_RULES` was not exported (`SyntaxError: does not provide an export named 'STATIC_HEADER_RULES'`).
 - GREEN: same command after the table and `headersForStaticPath` landed. `public/_headers` was not edited.
+- Review nit on `84f03c58`: the entry-file guard did not reject an inlined `Cache-Control` or `headers.set`. The follow-up commit asserts those are absent, plus `s-maxage`, in both entry files.
 - Ruled out: generating `_headers` from the module. A rewrite of that file could change bytes players' static assets depend on. The test pins the current bytes instead.

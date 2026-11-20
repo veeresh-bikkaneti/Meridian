@@ -263,4 +263,10 @@ test("server.ts and start.ts apply response headers only through the shared modu
   assert.equal(server.includes("withHtmlCacheControl"), false);
   assert.equal(server.includes("Content-Security-Policy:"), false);
   assert.equal(start.includes("Content-Security-Policy:"), false);
+  assert.equal(server.includes("Cache-Control:"), false);
+  assert.equal(start.includes("Cache-Control:"), false);
+  assert.equal(server.includes("s-maxage"), false);
+  assert.equal(start.includes("s-maxage"), false);
+  assert.equal(server.includes("headers.set("), false);
+  assert.equal(start.includes("headers.set("), false);
 });
