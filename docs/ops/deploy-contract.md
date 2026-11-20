@@ -31,3 +31,28 @@ Facts below were checked on this branch against `main` `7bc4d8f2`. A row marked 
 ## Not in this table
 
 Script paths (`MERIDIAN_GEONAMES_DUMP` and the like) are machine paths, not deploy secrets. They are out of this contract.
+
+## Response headers
+
+One module is the source of truth for response headers:
+`src/lib/security-headers.ts` holds `SECURITY_HEADERS` (including the
+Content-Security-Policy), `HTML_CACHE_CONTROL`, and the per-path table
+`PATH_CACHE_CONTROL` with `getPathCacheControl()` /
+`withPathCacheControl()`. `public/_headers` is the static-asset copy of
+the same policy; it is unchanged by the headers work, and the test
+simulates it and fails if the module drifts from it.
+
+`src/start.ts` applies all three to every Worker response: security
+headers, then the HTML default for rendered pages, then the per-path
+Cache-Control for non-HTML responses. `src/server.ts` applies the
+security headers only to its guard (404/405) responses, which are
+errors, not cacheable assets. Header values did not change for players:
+the test proves today's values are kept, and rendered pages keep the
+plain HTML value — the `/` and `/index.html` rows' `s-maxage=60`
+reaches asset-served copies only, never Worker-rendered HTML.
+
+Checked on this branch against main `c733fe68`. Check: [tested]
+`node --experimental-strip-types --test src/lib/security-headers.test.ts`
+(19 tests: the `/*` drift guard, the 14 per-path probes against the
+`_headers` simulation, the no-orphan table check, and the composed
+middleware check on rendered `/`).

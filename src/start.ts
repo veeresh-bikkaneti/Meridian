@@ -1,5 +1,5 @@
 import { createCsrfMiddleware, createMiddleware, createStart } from "@tanstack/react-start";
-import { withHtmlCacheControl, withSecurityHeaders } from "@/lib/security-headers";
+import { withHtmlCacheControl, withPathCacheControl, withSecurityHeaders } from "@/lib/security-headers";
 
 /**
  * TanStack Start instance (server entry options).
@@ -14,6 +14,10 @@ import { withHtmlCacheControl, withSecurityHeaders } from "@/lib/security-header
  * `public/_headers`. Rendered HTML also gets the default Cache-Control
  * here, for the same reason: `_headers` never reaches Worker responses,
  * so without this the live pages would serve no Cache-Control at all.
+ * Non-HTML Worker responses get the per-path Cache-Control from the
+ * same module (`withPathCacheControl`), mirroring the matching
+ * `_headers` rule for their path; HTML keeps the plain default, never
+ * the asset-served `s-maxage=60` row.
  *
  * Defining `startInstance` replaces TanStack's built-in default request
  * middleware, which is CSRF protection for server functions. The CSRF
@@ -24,9 +28,12 @@ const csrfMiddleware = createCsrfMiddleware({
   filter: (ctx) => ctx.handlerType === "serverFn",
 });
 
-const securityHeadersMiddleware = createMiddleware().server(async ({ next }) => {
+const securityHeadersMiddleware = createMiddleware().server(async ({ next, request }) => {
   const result = await next();
-  const response = withHtmlCacheControl(withSecurityHeaders(result.response));
+  const response = withPathCacheControl(
+    withHtmlCacheControl(withSecurityHeaders(result.response)),
+    new URL(request.url).pathname,
+  );
   return { ...result, response };
 });
 

@@ -19,6 +19,12 @@
  * `src/lib/security-headers.test.ts` parses `public/_headers` and fails if
  * its `/*` block drifts from SECURITY_HEADERS. Edit both together.
  *
+ * The per-path Cache-Control rules in `_headers` have the same treatment:
+ * PATH_CACHE_CONTROL mirrors them, and the test simulates that file and
+ * fails on drift. `src/start.ts` applies the path rule to Worker
+ * responses; `src/server.ts` does not, because its guard responses are
+ * errors, not cacheable assets.
+ *
  * CSP notes:
  * - script-src 'unsafe-inline' is still needed. TanStack Start's
  *   dehydration script is inline and changes with every SSR response (it
@@ -94,6 +100,58 @@ export const SECURITY_HEADERS: Readonly<Record<string, string>> = Object.freeze(
 export const HTML_CACHE_CONTROL = "public, max-age=0, must-revalidate";
 
 /**
+ * The Cache-Control for content-hashed build assets (`/assets/*`).
+ *
+ * Any path under `/assets/` that is not listed in PATH_CACHE_CONTROL
+ * below carries this value: a hashed URL never changes content, so it
+ * is immutable for a year. `public/_headers` says the same thing with
+ * its `/assets/*` rule; the test compares the two.
+ */
+export const ASSETS_CACHE_CONTROL = "public, max-age=31536000, immutable";
+
+/**
+ * Per-path Cache-Control, mirroring `public/_headers` (Phase 5.3).
+ *
+ * Exact paths only — the `/assets/*` wildcard above is the one prefix
+ * rule, handled by `getPathCacheControl`. Every value here is copied
+ * verbatim from `_headers`; the test simulates that file and fails on
+ * drift, so edit both together.
+ *
+ * The `/` and `/index.html` rows carry `s-maxage=60`, but only for an
+ * ASSET-served copy of the document. A Worker-rendered page must never
+ * see it (owner rule, WI-18): `withPathCacheControl` skips HTML
+ * responses, and the middleware runs it after `withHtmlCacheControl`,
+ * which has already set the plain HTML value.
+ */
+export const PATH_CACHE_CONTROL: Readonly<Record<string, string>> = Object.freeze({
+  "/assets/maplibre-gl-worker.mjs": "public, max-age=0, must-revalidate",
+  "/assets/maplibre-gl-shared.mjs": "public, max-age=0, must-revalidate",
+  "/assets/storyteller/storyteller-assets.json": "public, max-age=0, must-revalidate",
+  "/sw.js": "no-cache",
+  "/flags.json": "no-cache",
+  "/build-meta.json": "no-cache",
+  "/manifest.webmanifest": "no-cache",
+  "/": "public, max-age=0, s-maxage=60, must-revalidate",
+  "/index.html": "public, max-age=0, s-maxage=60, must-revalidate",
+  "/offline": "public, max-age=0, must-revalidate",
+  "/offline.html": "public, max-age=0, must-revalidate",
+  "/_shell.html": "public, max-age=0, must-revalidate",
+});
+
+/**
+ * The Cache-Control `public/_headers` would serve for `pathname`, or
+ * `undefined` when no rule covers it (then the platform default applies
+ * and this module stays silent). An exact table entry wins; otherwise
+ * any path under `/assets/` gets the hashed-asset value.
+ */
+export function getPathCacheControl(pathname: string): string | undefined {
+  const exact = PATH_CACHE_CONTROL[pathname];
+  if (exact !== undefined) return exact;
+  if (pathname.startsWith("/assets/")) return ASSETS_CACHE_CONTROL;
+  return undefined;
+}
+
+/**
  * Add the security headers to a response. A header the route already set
  * is left alone, so a route can opt into something stricter. If the
  * response's headers are immutable (for example a fetch() passthrough), a
@@ -109,6 +167,36 @@ export function withSecurityHeaders(response: Response): Response {
     const headers = new Headers(response.headers);
     for (const [name, value] of Object.entries(SECURITY_HEADERS)) {
       if (!headers.has(name)) headers.set(name, value);
+    }
+    return new Response(response.body, { status: response.status, statusText: response.statusText, headers });
+  }
+}
+
+/**
+ * Add the per-path Cache-Control to a Worker response.
+ *
+ * Only non-HTML responses without a Cache-Control yet: an HTML
+ * response keeps the default `withHtmlCacheControl` sets (the plain
+ * value, never the asset-served `s-maxage=60` row), a response the
+ * route already labelled keeps its own value, and a path with no rule
+ * (for example `/audio/*`, deliberately unlisted in `_headers`) is
+ * left to the platform default. If the response's headers are
+ * immutable, a copy is returned instead.
+ */
+export function withPathCacheControl(response: Response, pathname: string): Response {
+  try {
+    const contentType = (response.headers.get("content-type") ?? "").toLowerCase();
+    if (!contentType.startsWith("text/html") && !response.headers.has("cache-control")) {
+      const value = getPathCacheControl(pathname);
+      if (value !== undefined) response.headers.set("cache-control", value);
+    }
+    return response;
+  } catch {
+    const headers = new Headers(response.headers);
+    const contentType = (headers.get("content-type") ?? "").toLowerCase();
+    if (!contentType.startsWith("text/html") && !headers.has("cache-control")) {
+      const value = getPathCacheControl(pathname);
+      if (value !== undefined) headers.set("cache-control", value);
     }
     return new Response(response.body, { status: response.status, statusText: response.statusText, headers });
   }
