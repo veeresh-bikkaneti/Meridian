@@ -253,6 +253,8 @@ test("worker HTML cache stays the plain value, not the asset / rule", () => {
 test("server.ts and start.ts apply response headers only through the shared module", () => {
   const server = readFileSync(new URL("../server.ts", import.meta.url), "utf8");
   const start = readFileSync(new URL("../start.ts", import.meta.url), "utf8");
+  const serverCode = server.replace(/\/\*[\s\S]*?\*\//g, "").replace(/\/\/.*$/gm, "");
+  const startCode = start.replace(/\/\*[\s\S]*?\*\//g, "").replace(/\/\/.*$/gm, "");
   assert.match(server, /from "@\/lib\/security-headers"/);
   assert.match(start, /from "@\/lib\/security-headers"/);
   assert.match(server, /withSecurityHeaders\(/);
@@ -261,12 +263,12 @@ test("server.ts and start.ts apply response headers only through the shared modu
   assert.equal(server.includes("headersForStaticPath"), false);
   assert.equal(start.includes("headersForStaticPath"), false);
   assert.equal(server.includes("withHtmlCacheControl"), false);
-  assert.equal(server.includes("Content-Security-Policy:"), false);
-  assert.equal(start.includes("Content-Security-Policy:"), false);
-  assert.equal(server.includes("Cache-Control:"), false);
-  assert.equal(start.includes("Cache-Control:"), false);
-  assert.equal(server.includes("s-maxage"), false);
-  assert.equal(start.includes("s-maxage"), false);
-  assert.equal(server.includes("headers.set("), false);
-  assert.equal(start.includes("headers.set("), false);
+  assert.equal(/cache-control/i.test(serverCode), false);
+  assert.equal(/cache-control/i.test(startCode), false);
+  assert.equal(serverCode.includes("s-maxage"), false);
+  assert.equal(startCode.includes("s-maxage"), false);
+  assert.equal(serverCode.includes("headers.set("), false);
+  assert.equal(startCode.includes("headers.set("), false);
+  assert.equal(serverCode.includes("Content-Security-Policy"), false);
+  assert.equal(startCode.includes("Content-Security-Policy"), false);
 });
