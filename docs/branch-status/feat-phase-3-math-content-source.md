@@ -2,7 +2,7 @@
 
 Branch: `feat/phase-3-math-content-source`, off `origin/main` 7bc4d8f2adb147816f309e1f4a5b0d38c4090dde (PR #548 merged).
 Lane: Phase 3 math content source, one PR, math only. Cap 400k tokens (Tier 2).
-Estimate: 200k–280k. Running total (estimate, no meter): ~35k after lead read + fact re-check.
+Estimate: 200k–280k. Running total (estimate, no meter): ~165k after panel + cures (lead ~35k, arena ~11k, TDD ~4k, builder ~45k, lead verification/gates/e2e ~35k, cure worker ~15k, panel seats ~20k).
 Other lanes open: Phase 0.3 ci-required, Phase 1 audio port, Phase 5.1 secrets.
 This lane owns `src/subjects/math/` and `docs/scaling/contracts.md` only.
 Shared hot spot: `eslint/layer-baseline.json` — remove only this lane's own
@@ -352,13 +352,35 @@ Edges to add:
   separate answers module) — the old `answers.ts` becomes a one-release
   compat projection, deleted by the next math PR.
 
+## Panel review — READY (2026-11-20 ~14:54 CST, final tip c1871f90)
+
+Evidence pack: `docs/branch-status/panel-feat-phase-3-math-content-source/`
+(PACK.md, diff.txt, TALLY.md, exp/ — local evidence, not committed).
+Wave 1 (3 seats, clean context): UX Architect, UI Designer, Accessibility
+Auditor — all APPROVE-WITH-NITS, zero BLOCKs. Nits: duplicate-id guard,
+follow-up giveaway check, stale test header, §I2b wording (prebuild AND
+prebuild:pages; 18 JSON-backed rows), AnswerEntry type pin, generator
+note. Cures landed in one commit (c1871f90): records.test 5/5, tsc clean,
+lint:subjects PASS, lint:arch clean, prebuild "math records: 53 valid",
+build:pages rebuilt PASS. Scoped re-vote on the delta: 3/3 APPROVE.
+Wave 2 experiential: played one math case end to end at 390px and
+desktop on the cured tip's fresh build — identical first case, zero
+errors, no player-visible change; artifacts exp/LOG.md + 8 screenshots +
+session.mts. APPROVE.
+Carried visibly: the educator / subject-expert seat is VACANT (no persona
+file on disk). Content correctness rests on the frozen-fixture
+byte-equality test + validator; the merge decision carries this vacancy.
+Unslop: contracts §I2b and the PR body read clean (plain, factual, no
+padded prose); no changes needed.
+
 ## Done / pending
 
 - Done: base verified (7bc4d8f2), facts re-checked, capsule, statechart,
   architect map, arena (both workers, lead picks D1–D10), failing test
   (ERR_MODULE_NOT_FOUND on validate.ts, verified by lead), records
   generation, compat wiring, validator wiring (prebuild + prebuild:pages),
-  contracts §I2b, gates except math e2e (in progress).
+  contracts §I2b, all gates, math e2e resolved as pre-existing on main,
+  panel review (2 rounds, READY), unslop, draft PR.
 - E2E RESOLVED (2026-11-20): the lone re-run failed the same way, and
   the same spec on main 7bc4d8f2 (separate worktree, since removed) failed
   identically — same "Next case" click, same `<footer class="agep-footer">`
@@ -367,7 +389,9 @@ Edges to add:
   this PR touches no UI/CSS/layout file. Per AGENTS.md §4, a run matching
   main's known failures satisfies the §9 E2E gate: math e2e 35/36, the 1
   failure pre-existing.
-- Pending: panel review (max 2 rounds), unslop, push + draft PR.
+- Pending: Veeresh's merge decision (per-PR, pinned to head SHA). Before
+  merge: "Update branch" onto latest main, rerun gates, report synced
+  head SHA.
 - Open questions: none for Veeresh right now. If the validator finds a
   known baseline case, it will be reported, not fixed.
 - Ruled out: new `records.ts` re-exported by `items.ts` (upward import);
