@@ -162,6 +162,13 @@ describe("HomeGlobe — textured-state orb", () => {
     );
   });
 
+  it("leaves three's shader info-log check off so a null Chromium log cannot throw", () => {
+    assert.ok(
+      globe.includes("renderer.debug.checkShaderErrors = false"),
+      "home globe must not trim a null getProgramInfoLog (three r160)",
+    );
+  });
+
   it("orb fades via one transitionend handler, never a timer chain", () => {
     assert.ok(
       globe.includes('if (e.propertyName === "opacity") setOrbGone(true)'),

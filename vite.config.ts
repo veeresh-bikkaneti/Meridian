@@ -189,13 +189,15 @@ function pgliteBootstrapPlugin(): Plugin {
 }
 
 /**
- * Bake build-time `CONTACT_DISCORD_WEBHOOK_URL` / `CONTACT_ALLOWED_ORIGINS`
- * into the server-only ("ssr") Worker bundle as a fallback when the variable
- * is configured in Cloudflare Workers Builds build settings rather than as a
- * runtime Worker secret binding (see wrangler.jsonc lines 26-28).
+ * Bake build-time `CONTACT_ALLOWED_ORIGINS` into the server-only ("ssr")
+ * Worker bundle as a fallback when that allowlist is a Workers Builds
+ * build variable rather than a runtime binding.
+ *
+ * The contact webhook secret is not baked. It is a runtime Worker secret
+ * read only by src/lib/contact/runtime-config.server.ts.
  *
  * Scoped strictly to `name === "ssr"` and `!githubPages`: client bundles and
- * the GitHub Pages static build always receive `""`, so the webhook URL can
+ * the GitHub Pages static build always receive `""`, so the allowlist can
  * never leak into `dist/client` or `.vercel/output/static`.
  */
 function ssrContactEnvPlugin(): Plugin {
@@ -205,9 +207,6 @@ function ssrContactEnvPlugin(): Plugin {
       const isSsr = name === "ssr" && !githubPages;
       return {
         define: {
-          __MERIDIAN_SSR_CONTACT_WEBHOOK_URL__: JSON.stringify(
-            isSsr ? (process.env.CONTACT_DISCORD_WEBHOOK_URL ?? "") : "",
-          ),
           __MERIDIAN_SSR_CONTACT_ALLOWED_ORIGINS__: JSON.stringify(
             isSsr ? (process.env.CONTACT_ALLOWED_ORIGINS ?? "") : "",
           ),

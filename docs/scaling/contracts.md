@@ -44,6 +44,39 @@ Review-deck entries for a subject item use the item id. Wiring subject items
 into `src/game/review-deck.ts` is integrator-only; until then, a subject
 records misses in its own module state.
 
+### I2b. Subject item (Phase 3, math first) — contract change
+
+`UnitItem` above stays the projection screens read. The validated record
+behind it is `SubjectItem`: the `UnitItem` fields plus its answer,
+provenance, media rules and lead policy. Canonical for math:
+`src/subjects/math/items.ts` (`MATH_RECORDS`, `SubjectItemSchema`); the
+old `answers.ts` is a thin compatibility projection for one release.
+
+```ts
+// AnswerEntry is the shared answer shape (src/subjects/shared/answer.ts):
+// one question, its correct choice, a one-line derivation, an optional
+// numeric value, an optional kind ("choice" default, "number" typed),
+// and one optional follow-up question.
+export type SubjectItem = UnitItem & {
+  answer: AnswerEntry;              // the question, correct choice, derivation
+  provenance: "UNVERIFIED" | { source: string; verifiedOn: string }; // YYYY-MM-DD
+  media: { id: string; kind: "clip" | "still"; revealsAnswer: boolean }[];
+  leadPolicy: "answer-not-in-lead"; // the lead (why) never contains the answer
+};
+```
+
+For math: provenance is `UNVERIFIED` for all 53 records (no verifiedOn
+date exists for these rows), media is `[]` for all 53 (math carries no
+clip or still ids today), and leadPolicy is `answer-not-in-lead` for every
+record. A build-time validator (`src/subjects/math/validate.ts`, run from
+`prebuild` and `prebuild:pages`) parses every record and fails on a
+missing answer, an answer in the lead, an unknown media id, a stored
+current year, or a duplicate id. Transitional state: the 18 answer-less
+JSON rows stay JSON-backed via `allMathRows()` until they get answers;
+only the 53 playable items are records. Other subjects adopt
+`SubjectItem` in their own PRs; until then they keep `UnitItem` plus
+their own answers module.
+
 ## I3. Age group (owned by `feat/age-groups`)
 
 ```ts

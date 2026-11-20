@@ -66,6 +66,13 @@ async function startLocalDiscordWebhookReceiver() {
     req.on("data", (c: Buffer) => chunks.push(c));
     req.on("end", () => {
       const raw = Buffer.concat(chunks).toString("utf8");
+      // A non-webhook client can hit this port with an empty body. Ignore it.
+      // The assertions below still require the real JSON posts.
+      if (!raw) {
+        res.writeHead(204);
+        res.end();
+        return;
+      }
       calls.push({
         method: req.method ?? "UNKNOWN",
         url: req.url ?? "",
