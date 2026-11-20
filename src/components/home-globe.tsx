@@ -11,7 +11,7 @@ import {
 
 /**
  * Landmark globe for the v5 home hero: the textured sphere from the
- * original globe, now carrying the fifteen contract landmarks
+ * original globe, now carrying the thirty-seven contract landmarks
  * (docs/mockups/landmark-globe-contract.md), ported from the approved
  * mock. Perf contract:
  * - three is dynamically imported ONLY when the hero nears the viewport
@@ -145,6 +145,10 @@ export function HomeGlobe() {
 
 type ThreeModule = typeof import("three");
 type LandmarkModels = typeof import("./home-globe/landmark-models");
+
+/** The canvas label at rest; a dive swaps in the landmark's name and
+ *  cancelling the dive restores this (see startDive / cancelDive). */
+const GLOBE_LABEL_DEFAULT = "Globe. Drag or use arrow keys to spin.";
 
 function initGlobe(
   THREE: ThreeModule,
@@ -365,6 +369,10 @@ function initGlobe(
     const base = n.clone().multiplyScalar(R * 0.998).applyQuaternion(face);
     const toPos = base.clone().sub(base.clone().applyQuaternion(tilt));
     diveTarget = { id: lm.id, n };
+    // The canvas is a labelled image; while a dive holds on a landmark
+    // the label names it, so a screen reader hears where the globe is
+    // pointing (and the state is readable in the DOM, not a test hook).
+    canvas.setAttribute("aria-label", `Globe. ${lm.name}, ${lm.place}.`);
     step({ type: "dive", targetDist: C.zoom.diveDist });
     posReturn = null;
     if (reducedMotion()) {
@@ -385,6 +393,7 @@ function initGlobe(
   const cancelDive = () => {
     diveAnim = null;
     diveTarget = null;
+    canvas.setAttribute("aria-label", GLOBE_LABEL_DEFAULT);
     if (group.position.lengthSq() < 1e-10) {
       posReturn = null;
     } else if (reducedMotion()) {
@@ -398,7 +407,7 @@ function initGlobe(
   const canvas = renderer.domElement;
   canvas.tabIndex = 0;
   canvas.setAttribute("role", "img");
-  canvas.setAttribute("aria-label", "Globe. Drag or use arrow keys to spin.");
+  canvas.setAttribute("aria-label", GLOBE_LABEL_DEFAULT);
   canvas.style.cursor = "grab";
 
   const pointers = new Map<number, { x: number; y: number }>();
@@ -695,74 +704,9 @@ function initGlobe(
     renderer.render(scene, camera);
   };
 
-  /* Mockup capture hook (famous-landmarks mock): lets the capture spec
-   * project a landmark to canvas coordinates so a scripted tap exercises
-   * the real tap -> raycast -> dive path, and poll the flight state.
-   * Scaffolding for the mock only — a production port removes it. */
-  const mockMount = mount as HTMLDivElement & { __globeMock?: unknown };
-  mockMount.__globeMock = {
-    project: (id: string) => {
-      const entry = holderById.get(id);
-      if (!entry) return null;
-      const wp = new THREE.Vector3();
-      entry.holder.getWorldPosition(wp);
-      const v = wp.project(camera);
-      const r = canvas.getBoundingClientRect();
-      return {
-        x: r.left + ((v.x + 1) / 2) * r.width,
-        y: r.top + ((1 - v.y) / 2) * r.height,
-        behind: v.z > 1,
-      };
-    },
-    dive: (id: string) => {
-      const entry = holderById.get(id);
-      if (!entry) return false;
-      startDive(entry.lm);
-      return true;
-    },
-    /** Park the globe on a landmark at an exact distance (regional
-     *  framings): the real dive orientation and parked state, with the
-     *  zoom target overridden. Keys would un-park and let auto-spin
-     *  drift the frame before a screenshot lands (wave-2 regional
-     *  finding: state passed, picture failed). */
-    frameAt: (id: string, dist: number) => {
-      const entry = holderById.get(id);
-      if (!entry) return false;
-      startDive(entry.lm);
-      controls = { ...controls, targetDist: dist };
-      return true;
-    },
-    state: () => ({
-      dist: controls.dist,
-      targetDist: controls.targetDist,
-      parked: controls.parked,
-      diving: diveAnim !== null,
-    }),
-    /** Ids whose holder is currently visible (reveal progress > 0). */
-    revealed: () => {
-      const ids: string[] = [];
-      for (const { holder, lm } of holderById.values()) if (holder.visible) ids.push(lm.id);
-      return ids;
-    },
-    renderInfo: () => ({
-      triangles: renderer.info.render.triangles,
-      calls: renderer.info.render.calls,
-    }),
-    landmarkTris: () => {
-      let total = 0;
-      for (const { holder } of holderById.values()) {
-        holder.traverse((o) => {
-          const ud = o.userData as { tris?: number };
-          if (typeof ud.tris === "number") total += ud.tris;
-        });
-      }
-      return total;
-    },
-  };
   loop();
 
   return () => {
-    delete mockMount.__globeMock;
     cancelAnimationFrame(raf);
     visIo.disconnect();
     resizeObserver?.disconnect();

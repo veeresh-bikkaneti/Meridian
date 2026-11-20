@@ -25,8 +25,11 @@ export interface GlobeControlsState {
   /** True while at least one pointer is down. */
   dragging: boolean;
   /**
-   * True after a dive: auto-spin stays parked (however long the idle)
-   * until the next real input — drag, wheel, pinch or key — un-parks it.
+   * True after a dive or a zoom (wheel, pinch, zoom key): auto-spin
+   * stays parked however long the idle, until a rotation input — a
+   * drag or an arrow key — un-parks it. Zoom inputs park rather than
+   * un-park: a player closing in to look at a reveal must not have
+   * the frame start rotating away once the idle delay passes.
    */
   parked: boolean;
 }
@@ -150,21 +153,24 @@ export function stepGlobeControls(
       break;
     }
     case "wheel": {
-      // A real wheel input un-parks a dive even when it cannot zoom.
-      next.parked = false;
       // Zooms only over the sphere and only when not already at the limit;
-      // otherwise the event is left for the page to scroll.
+      // otherwise the event is left for the page to scroll — and the park
+      // is left exactly as it was: a wheel that does not zoom is page
+      // browsing, not globe input.
       if (!input.overSphere) break;
       const zoomed = clampZoom(next.targetDist * Math.exp(input.deltaY * C.zoom.wheelK));
       if (Math.abs(zoomed - next.targetDist) < 1e-4) break;
       next.targetDist = zoomed;
       effects.consumed = true;
+      // A zoom parks the slow turn, like a dive (see `parked`).
+      next.parked = true;
       next.idleTime = 0;
       break;
     }
     case "pinch": {
-      next.parked = false;
       next.targetDist = clampZoom(input.pinchStartTarget * input.distanceRatio);
+      // A pinch that actually zooms parks the slow turn, like a dive.
+      if (next.targetDist !== state.targetDist) next.parked = true;
       Object.assign(effects, trackball(input.midDx, input.midDy, dragSensitivity(next.dist)));
       next.velAxisX = 0;
       next.velAxisY = 0;
@@ -173,6 +179,9 @@ export function stepGlobeControls(
     }
     case "key": {
       const px = C.keySpin / C.dragSens;
+      // Rotation keys un-park (they are the player browsing); zoom and
+      // reset keys park, like a dive (see `parked`).
+      let parks = true;
       if (input.key === "ArrowLeft") Object.assign(effects, trackball(-px, 0, C.dragSens));
       else if (input.key === "ArrowRight") Object.assign(effects, trackball(px, 0, C.dragSens));
       else if (input.key === "ArrowUp") Object.assign(effects, trackball(0, -px, C.dragSens));
@@ -187,10 +196,11 @@ export function stepGlobeControls(
       } else {
         return { state, effects: NO_EFFECTS };
       }
+      if (input.key.startsWith("Arrow")) parks = false;
       next.velAxisX = 0;
       next.velAxisY = 0;
       next.idleTime = 0;
-      next.parked = false;
+      next.parked = parks;
       break;
     }
     case "dive": {
