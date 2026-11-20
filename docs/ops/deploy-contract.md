@@ -48,7 +48,7 @@ One runner applies pending SQL. `applyPendingMigrations` lives in `scripts/migra
 
 | Caller | When | Check |
 | :--- | :--- | :--- |
-| Build | `package.json` `build` is `vite build && npm run db:migrate`. `scripts/migrate.mjs` calls the runner only when `DATABASE_URL` is set and `migrations/` has a top-level `.sql` file. An empty URL exits 0 and does not connect. `migrations/auth/` is not applied. | [tested] `node --test scripts/migration-schema.test.mjs` |
+| Build | `package.json` `build` is `node scripts/with-app-env.mjs vite build && npm run db:migrate` [tested, that line in `package.json`]. It runs Vite, then `npm run db:migrate`. `scripts/migrate.mjs` calls the runner only when `DATABASE_URL` is set and `migrations/` has a top-level `.sql` file. An empty URL exits 0 and does not connect. `migrations/auth/` is not applied. | [tested] `node --test scripts/migration-schema.test.mjs` |
 | PGLite | `src/lib/db.ts` calls the same runner when the embedded database opens (`DATABASE_URL` unset). | Same test. The build adapter (BEGIN, file, INSERT, COMMIT) and the PGLite transaction adapter leave the same columns and the same `_migrations` names. A bad file rolls back on both. |
 | Worker | `wrangler.jsonc` `main` is `src/server.ts`. That entry does not import `src/lib/db.ts` and does not apply SQL. `workers/` has no migrator. `DATABASE_URL` is not a Worker binding. There is no third runner. | [tested] `grep` of `applyPendingMigrations` and `lib/db` in `src/server.ts` returns nothing. `grep` of `migrate`, `DATABASE_URL`, and `applyPending` in `workers/` returns nothing. `grep` of `DATABASE_URL` in `wrangler.jsonc` returns nothing. |
 
