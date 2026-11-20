@@ -17,7 +17,8 @@
  *    because `_headers` never reaches those Worker responses either.
  *
  * `src/lib/security-headers.test.ts` parses `public/_headers` and fails if
- * its `/*` block drifts from SECURITY_HEADERS. Edit both together.
+ * its `/*` block drifts from SECURITY_HEADERS, or if a path's resolved
+ * headers drift from `headersForStaticPath`. Edit both together.
  *
  * CSP notes:
  * - script-src 'unsafe-inline' is still needed. TanStack Start's
@@ -76,6 +77,107 @@ export const SECURITY_HEADERS: Readonly<Record<string, string>> = Object.freeze(
   "Cross-Origin-Opener-Policy": "same-origin",
   "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
 });
+
+/**
+ * One static-asset rule, in the same order as `public/_headers`.
+ * Pattern forms are only `/*`, a trailing `/*`, or an exact path.
+ */
+export type StaticHeaderOp =
+  | { readonly kind: "detach"; readonly name: string }
+  | { readonly kind: "set"; readonly name: string; readonly value: string };
+
+export type StaticHeaderRule = {
+  readonly pattern: string;
+  readonly ops: readonly StaticHeaderOp[];
+};
+
+const ASSET_IMMUTABLE = "public, max-age=31536000, immutable";
+const ASSET_REVALIDATE = "public, max-age=0, must-revalidate";
+const ASSET_HTML = "public, max-age=0, s-maxage=60, must-revalidate";
+
+function setCache(value: string): readonly StaticHeaderOp[] {
+  return [{ kind: "set" as const, name: "Cache-Control", value }];
+}
+
+function carveCache(): readonly StaticHeaderOp[] {
+  return [
+    { kind: "detach" as const, name: "Cache-Control" },
+    { kind: "set" as const, name: "Cache-Control", value: ASSET_REVALIDATE },
+  ];
+}
+
+/**
+ * Static-asset policy. The `/*` sets are `SECURITY_HEADERS`, so that block
+ * cannot diverge from the worker path. Path cache lines are today's
+ * `public/_headers` values. The drift test compares this table, and
+ * `headersForStaticPath`, to that file.
+ *
+ * Do not apply this to Worker-rendered HTML. That response uses
+ * `HTML_CACHE_CONTROL` (no `s-maxage`). The asset `/` rule below is only
+ * for an asset-served copy.
+ */
+export const STATIC_HEADER_RULES: readonly StaticHeaderRule[] = [
+  {
+    pattern: "/*",
+    ops: Object.entries(SECURITY_HEADERS).map(([name, value]) => ({ kind: "set" as const, name, value })),
+  },
+  { pattern: "/assets/*", ops: setCache(ASSET_IMMUTABLE) },
+  { pattern: "/assets/maplibre-gl-worker.mjs", ops: carveCache() },
+  { pattern: "/assets/maplibre-gl-shared.mjs", ops: carveCache() },
+  { pattern: "/assets/storyteller/storyteller-assets.json", ops: carveCache() },
+  { pattern: "/sw.js", ops: setCache("no-cache") },
+  { pattern: "/flags.json", ops: setCache("no-cache") },
+  { pattern: "/build-meta.json", ops: setCache("no-cache") },
+  { pattern: "/manifest.webmanifest", ops: setCache("no-cache") },
+  { pattern: "/", ops: setCache(ASSET_HTML) },
+  { pattern: "/index.html", ops: setCache(ASSET_HTML) },
+  { pattern: "/offline", ops: setCache(ASSET_REVALIDATE) },
+  { pattern: "/offline.html", ops: setCache(ASSET_REVALIDATE) },
+  { pattern: "/_shell.html", ops: setCache(ASSET_REVALIDATE) },
+];
+
+function staticPatternMatches(pattern: string, pathname: string): boolean {
+  if (pattern === "/*") return true;
+  if (pattern.endsWith("/*")) return pathname.startsWith(pattern.slice(0, -1));
+  return pattern === pathname;
+}
+
+/**
+ * Headers `public/_headers` would set for `pathname`. Platform defaults
+ * (ETag, the unset-path cache default) are not included: this is the file's
+ * own output. A later set of the same header appends with a comma.
+ */
+export function headersForStaticPath(pathname: string): Record<string, string> {
+  const order: string[] = [];
+  const values = new Map<string, { name: string; value: string }>();
+  for (const rule of STATIC_HEADER_RULES) {
+    if (!staticPatternMatches(rule.pattern, pathname)) continue;
+    for (const op of rule.ops) {
+      if (op.kind !== "detach") continue;
+      const key = op.name.toLowerCase();
+      values.delete(key);
+      const at = order.indexOf(key);
+      if (at >= 0) order.splice(at, 1);
+    }
+    for (const op of rule.ops) {
+      if (op.kind !== "set") continue;
+      const key = op.name.toLowerCase();
+      const prev = values.get(key);
+      if (!prev) {
+        values.set(key, { name: op.name, value: op.value });
+        order.push(key);
+      } else {
+        prev.value = `${prev.value}, ${op.value}`;
+      }
+    }
+  }
+  const headers: Record<string, string> = {};
+  for (const key of order) {
+    const row = values.get(key);
+    if (row) headers[row.name] = row.value;
+  }
+  return headers;
+}
 
 /**
  * The Cache-Control every rendered HTML page should carry.
