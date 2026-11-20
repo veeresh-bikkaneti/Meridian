@@ -31,3 +31,13 @@ Facts below were checked on this branch against `main` `7bc4d8f2`. A row marked 
 ## Not in this table
 
 Script paths (`MERIDIAN_GEONAMES_DUMP` and the like) are machine paths, not deploy secrets. They are out of this contract.
+
+## Response headers
+
+Not a secret. Players keep today's header values. `src/lib/security-headers.ts` is the one module `src/server.ts` and `src/start.ts` call. `public/_headers` is the static-asset copy of the same policy. Rendered HTML cache stays the plain value, with no `s-maxage`. That split is the 2026-10-22 ruling (WI-18). This section does not collapse it.
+
+| What | Where | Check |
+| :--- | :--- | :--- |
+| Security headers on worker responses and on static `/*` | `SECURITY_HEADERS` via `withSecurityHeaders` in `src/server.ts` and `src/start.ts`; the same pairs in the `public/_headers` `/*` block | [tested] `node --experimental-strip-types --test src/lib/security-headers.test.ts` |
+| Static path headers, including cache rules | `STATIC_HEADER_RULES` and `headersForStaticPath` in the same module, compared to `public/_headers` for the same paths | Same test. It fails when a path's headers differ. |
+| Rendered HTML `Cache-Control` | `HTML_CACHE_CONTROL` = `public, max-age=0, must-revalidate`, set only from `src/start.ts`. Not the asset `/` rule (`s-maxage=60`). | Same test. |
