@@ -626,20 +626,27 @@ const BUILD: Record<string, Builder> = {
     const b = bag();
     const m = mat(key);
     const brass = mat("brass");
-    b.add(bx(0.78, 0.04, 0.2), m, 0, 0.02);
-    for (let i = 0; i < 10; i++) {
-      const x = -0.34 + i * (0.68 / 9);
-      b.add(cyl(0.012, 0.014, 0.3, 6), m, x, 0.19, 0.06);
-      b.add(cyl(0.012, 0.014, 0.3, 6), m, x, 0.19, -0.06);
+    // The colonnade IS the landmark: six full columns a side, thick
+    // enough to read as columns at the dive finish (the first build's
+    // ten spindly rods vanished and left the roof slab reading alone).
+    // The face is local +Z; the row's spinDeg presents it at the finish.
+    b.add(bx(0.8, 0.04, 0.24), m, 0, 0.02);
+    for (let i = 0; i < 6; i++) {
+      const x = -0.325 + i * 0.13;
+      b.add(cyl(0.021, 0.024, 0.34, 8), m, x, 0.21, 0.075);
+      b.add(cyl(0.021, 0.024, 0.34, 8), m, x, 0.21, -0.075);
     }
-    b.add(bx(0.8, 0.05, 0.2), m, 0, 0.365);
-    b.add(bx(0.3, 0.09, 0.16), m, 0, 0.435);
-    // The Quadriga, abstracted: a brass chariot group on the attic.
-    b.add(bx(0.1, 0.03, 0.05), brass, 0, 0.5);
-    for (const sx of [-1, 1])
-      for (const sz of [-1, 1])
-        b.add(bx(0.05, 0.025, 0.02), brass, sx * 0.032, 0.525, sz * 0.016, 0, 0, sx * 0.5);
-    b.add(cyl(0.008, 0.012, 0.07, 6), brass, 0, 0.55);
+    b.add(bx(0.82, 0.055, 0.24), m, 0, 0.407);
+    b.add(bx(0.7, 0.04, 0.02), brass, 0, 0.407, 0.125);
+    b.add(bx(0.36, 0.1, 0.2), m, 0, 0.485);
+    // The Quadriga: four brass horses abreast drawing the chariot,
+    // the goddess standing in it with her spear.
+    b.add(bx(0.2, 0.03, 0.1), brass, 0, 0.55);
+    for (const hx of [-0.075, -0.025, 0.025, 0.075])
+      b.add(bx(0.045, 0.09, 0.11), brass, hx, 0.6, 0.05);
+    b.add(bx(0.09, 0.05, 0.06), brass, 0, 0.59, -0.03);
+    b.add(cyl(0.01, 0.016, 0.09, 6), brass, 0, 0.64, -0.03);
+    b.add(cyl(0.004, 0.004, 0.14, 5), brass, 0.03, 0.68, -0.03, 0, 0, 0.3);
     return b.build();
   },
 
@@ -668,17 +675,27 @@ const BUILD: Record<string, Builder> = {
     const wall = mat(key);
     const roof = mat("brass");
     const card = mat("card");
-    b.add(bx(0.76, 0.05, 0.56), card, 0, 0.025);
-    b.add(bx(0.6, 0.16, 0.42), wall, 0, 0.13);
-    b.add(bx(0.68, 0.035, 0.5), roof, 0, 0.23);
-    b.add(cone(0.3, 0.09, 4), roof, 0, 0.29, 0, 0, Math.PI / 4, 0, 1, 1, 0.72);
-    b.add(bx(0.4, 0.1, 0.28), wall, 0, 0.36);
-    b.add(bx(0.48, 0.03, 0.36), roof, 0, 0.425);
-    b.add(cone(0.21, 0.08, 4), roof, 0, 0.48, 0, 0, Math.PI / 4, 0, 1, 1, 0.72);
-    // A front gate on its own little causeway slab.
-    b.add(bx(0.2, 0.03, 0.14), card, 0, 0.015, 0.33);
-    b.add(bx(0.24, 0.1, 0.08), wall, 0, 0.08, 0.33);
-    b.add(bx(0.3, 0.03, 0.13), roof, 0, 0.145, 0.33);
+    // A walled palace mass, not floating roofs: a solid wall ring on
+    // its terrace, corner towers, the great hall's double eave SEATED
+    // on its walls (every roof bottom touches the wall top below it —
+    // the first build's slabs hovered and read as loose lids), and
+    // the front gate given real mass on the terrace edge.
+    b.add(bx(0.84, 0.06, 0.64), card, 0, 0.03);
+    b.add(bx(0.8, 0.12, 0.6), wall, 0, 0.12);
+    for (const sx of [-1, 1])
+      for (const sz of [-1, 1]) {
+        b.add(bx(0.07, 0.16, 0.07), wall, sx * 0.36, 0.14, sz * 0.26);
+        b.add(cone(0.055, 0.05, 4), roof, sx * 0.36, 0.245, sz * 0.26, 0, Math.PI / 4, 0);
+      }
+    b.add(bx(0.56, 0.14, 0.4), wall, 0, 0.25);
+    b.add(bx(0.66, 0.04, 0.5), roof, 0, 0.34);
+    b.add(bx(0.42, 0.08, 0.3), wall, 0, 0.4);
+    b.add(bx(0.52, 0.035, 0.4), roof, 0, 0.457);
+    b.add(cone(0.27, 0.09, 4), roof, 0, 0.52, 0, 0, Math.PI / 4, 0, 1, 1, 0.74);
+    // The front gate, massed like the hall in miniature.
+    b.add(bx(0.3, 0.12, 0.1), wall, 0, 0.09, 0.36);
+    b.add(bx(0.38, 0.03, 0.16), roof, 0, 0.165, 0.36);
+    b.add(cone(0.2, 0.06, 4), roof, 0, 0.21, 0.36, 0, Math.PI / 4, 0, 1, 1, 0.45);
     return b.build();
   },
 
@@ -740,21 +757,24 @@ const BUILD: Record<string, Builder> = {
     const m = mat(key);
     const cliff = mat("sandstone");
     const ink = mat("ink");
-    // The Treasury facade, carried on both faces (the globe shows the
-    // model from every side), with the canyon cliffs flanking it.
+    // The Treasury as RELIEF in the cliff front: one facade plane set
+    // into the rock, its columns half-embedded so they read as carved,
+    // not built. The first build carried the facade on both faces of
+    // a free slab and the dive finish caught it edge-on; the row's
+    // spinDeg now presents this +Z face at the finish, with the two
+    // canyon cliffs framing it.
+    b.add(bx(0.72, 0.64, 0.26), cliff, 0, 0.32, -0.06);
     for (const sx of [-1, 1])
-      b.add(bx(0.16, 0.62, 0.3), cliff, sx * 0.31, 0.31, -0.02, 0, sx * 0.06, 0);
-    b.add(bx(0.46, 0.58, 0.1), m, 0, 0.29, 0);
-    for (const fz of [0.065, -0.065]) {
-      for (let i = 0; i < 6; i++)
-        b.add(cyl(0.013, 0.015, 0.3, 6), m, -0.175 + i * 0.07, 0.19, fz);
-      b.add(bx(0.44, 0.035, 0.03), m, 0, 0.36, fz);
-      b.add(cone(0.16, 0.07, 4), m, 0, 0.41, fz, 0, Math.PI / 4, 0, 1.35, 1, 0.32);
-      b.add(cyl(0.045, 0.05, 0.09, 8), m, 0, 0.475, fz);
-      b.add(cone(0.055, 0.05, 8), m, 0, 0.545, fz);
-      for (const sx of [-1, 1]) b.add(bx(0.11, 0.07, 0.025), m, sx * 0.13, 0.475, fz);
-    }
-    b.add(bx(0.09, 0.2, 0.02), ink, 0, 0.12, 0.058);
+      b.add(bx(0.16, 0.7, 0.34), cliff, sx * 0.4, 0.35, -0.02, 0, 0, sx * -0.05);
+    b.add(bx(0.44, 0.52, 0.05), m, 0, 0.3, 0.075);
+    for (let i = 0; i < 6; i++)
+      b.add(cyl(0.017, 0.019, 0.3, 8), m, -0.175 + i * 0.07, 0.21, 0.105);
+    b.add(bx(0.42, 0.035, 0.03), m, 0, 0.375, 0.105);
+    b.add(cone(0.17, 0.08, 4), m, 0, 0.435, 0.1, 0, Math.PI / 4, 0, 1.3, 1, 0.3);
+    b.add(cyl(0.05, 0.055, 0.1, 8), m, 0, 0.5, 0.1);
+    b.add(cone(0.06, 0.05, 8), m, 0, 0.575, 0.1);
+    for (const sx of [-1, 1]) b.add(bx(0.11, 0.08, 0.03), m, sx * 0.135, 0.5, 0.1);
+    b.add(bx(0.09, 0.2, 0.02), ink, 0, 0.11, 0.105);
     return b.build();
   },
 
@@ -798,29 +818,52 @@ const BUILD: Record<string, Builder> = {
     const rock = mat(key);
     const water = mat("steel");
     const sage = mat("sage");
-    // Cross-section of the falls: the Zambezi runs across the
-    // plateau top, drops as one wide curtain into the gorge slot,
-    // and foams on the gorge floor. No structure — water and cliff.
-    b.add(bx(0.84, 0.34, 0.2), rock, 0, 0.17, -0.13);
-    b.add(bx(0.84, 0.03, 0.14), sage, 0, 0.355, -0.16);
-    b.add(bx(0.6, 0.02, 0.14), water, 0, 0.345, -0.08);
-    b.add(bx(0.6, 0.3, 0.018), water, 0, 0.18, 0.0, 0.08, 0, 0);
-    b.add(bx(0.84, 0.04, 0.22), rock, 0, 0.02, 0.13);
-    b.add(bx(0.62, 0.03, 0.12), water, 0, 0.05, 0.05);
+    // Cross-section of the falls, rebuilt so the curtain reads as
+    // WATER: a pale translucent sheet (backed by a fainter steel one
+    // for depth) hanging from the river lip into a real gorge slot
+    // between two cliff masses, foam and a mist plume where it lands.
+    // The first build's curtain was one opaque box among rock boxes —
+    // it read as another strata band.
+    b.add(bx(0.84, 0.34, 0.22), rock, 0, 0.17, -0.17);
+    b.add(bx(0.84, 0.03, 0.1), sage, 0, 0.355, -0.23);
+    b.add(bx(0.7, 0.02, 0.16), water, 0, 0.35, -0.19);
+    b.add(bx(0.7, 0.03, 0.03), water, 0, 0.345, -0.075);
+    b.add(
+      bx(0.66, 0.26, 0.01),
+      mat("steel", { transparent: true, opacity: 0.35 }),
+      0, 0.17, -0.058, 0.06, 0, 0,
+    );
+    b.add(
+      bx(0.66, 0.3, 0.014),
+      mat("card", { transparent: true, opacity: 0.55 }),
+      0, 0.185, -0.045, 0.06, 0, 0,
+    );
+    b.add(bx(0.84, 0.3, 0.2), rock, 0, 0.15, 0.16);
+    b.add(bx(0.66, 0.025, 0.1), mat("card"), 0, 0.013, 0.0);
+    b.add(
+      sph(0.2, 10, 8),
+      mat("card", { transparent: true, opacity: 0.3 }),
+      0, 0.09, 0.0, 0, 0, 0, 1.6, 0.5, 0.6,
+    );
     return b.build();
   },
 
   rushmore(mat, key) {
     const b = bag();
     const rock = mat(key);
+    const panel = mat("sandstone");
     const face = mat("card");
-    // A granite cliff block; the four presidents are pale carved
-    // faces in a row on the +Z wall, noses proud of the surface.
-    b.add(bx(0.7, 0.5, 0.3), rock, 0, 0.29, -0.05);
-    b.add(bx(0.78, 0.09, 0.38), rock, 0, 0.045, -0.03);
-    for (const x of [-0.255, -0.085, 0.085, 0.255]) {
-      b.add(sph(0.075, 10, 8), face, x, 0.4, 0.105, 0, 0, 0, 0.85, 1.05, 0.4);
-      b.add(bx(0.022, 0.05, 0.03), face, x, 0.355, 0.145);
+    // The four presidents as RELIEF in the cliff face, not busts on
+    // a box: a carved panel band stands barely proud of the granite,
+    // each head a shallow cap sunk into the panel (only ~0.02 of it
+    // breaks the surface), with a nose and jaw cut beneath.
+    b.add(bx(0.72, 0.52, 0.3), rock, 0, 0.3, -0.06);
+    b.add(bx(0.8, 0.1, 0.4), rock, 0, 0.05, -0.04);
+    b.add(bx(0.64, 0.3, 0.03), panel, 0, 0.38, 0.095);
+    for (const x of [-0.24, -0.08, 0.08, 0.24]) {
+      b.add(sph(0.072, 10, 8), face, x, 0.4, 0.105, 0, 0, 0, 0.85, 1.05, 0.35);
+      b.add(bx(0.02, 0.045, 0.025), face, x, 0.372, 0.122);
+      b.add(bx(0.055, 0.03, 0.02), face, x, 0.322, 0.115);
     }
     return b.build();
   },
@@ -830,19 +873,23 @@ const BUILD: Record<string, Builder> = {
     const m = mat(key);
     const card = mat("card");
     const ink = mat("ink");
-    // El Castillo: stepped tiers shrinking to the summit temple,
-    // with the great staircase strip climbing the +Z face.
-    const tiers: Array<[number, number]> = [
-      [0.64, 0.055],
-      [0.55, 0.055],
-      [0.46, 0.055],
-      [0.37, 0.055],
-      [0.28, 0.055],
-    ];
-    tiers.forEach(([w, h], i) => b.add(bx(w, h, w), m, 0, h / 2 + i * h, 0));
-    b.add(bx(0.1, 0.36, 0.03), card, 0, 0.15, 0.245, 0.98, 0, 0);
-    b.add(bx(0.2, 0.1, 0.19), m, 0, 0.325, 0);
-    b.add(bx(0.06, 0.065, 0.02), ink, 0, 0.32, 0.1);
+    // El Castillo at the set's ~1-unit convention: the first build
+    // stood 0.375 tall where its neighbours stand 0.6-1.0, so it read
+    // as a toy among them. Nine terraces (the real pyramid has nine)
+    // climb to the summit temple; the great staircase, flanked by its
+    // balustrade rails, hugs the +Z slope at the slope's own angle.
+    const H = 0.058;
+    for (let i = 0; i < 9; i++) {
+      const w = 0.8 - i * 0.05;
+      b.add(bx(w, H, w), m, 0, H / 2 + i * H, 0);
+    }
+    const slope = Math.atan2(4 * 0.05, 9 * H);
+    b.add(bx(0.12, 0.62, 0.025), card, 0, 0.26, 0.3, -slope, 0, 0);
+    for (const sx of [-1, 1])
+      b.add(bx(0.03, 0.62, 0.045), m, sx * 0.078, 0.26, 0.3, -slope, 0, 0);
+    b.add(bx(0.24, 0.11, 0.22), m, 0, 0.577, 0);
+    b.add(bx(0.28, 0.03, 0.26), m, 0, 0.647, 0);
+    b.add(bx(0.07, 0.08, 0.02), ink, 0, 0.565, 0.115);
     return b.build();
   },
 
@@ -869,38 +916,56 @@ const BUILD: Record<string, Builder> = {
     const rim = mat(key);
     const strata = mat("clay");
     const deep = mat("ink");
-    // A gorge incised along local X: two rim plateaus, stepped
-    // strata ledges falling away, the shadowed floor far below.
-    b.add(bx(0.86, 0.3, 0.2), rim, 0, 0.15, 0.19);
-    b.add(bx(0.86, 0.3, 0.2), rim, 0, 0.15, -0.19);
-    b.add(bx(0.86, 0.07, 0.1), strata, 0, 0.2, 0.1);
-    b.add(bx(0.86, 0.07, 0.1), strata, 0, 0.2, -0.1);
-    b.add(bx(0.86, 0.06, 0.08), strata, 0, 0.1, 0.05);
-    b.add(bx(0.86, 0.06, 0.08), strata, 0, 0.1, -0.05);
-    b.add(bx(0.86, 0.03, 0.12), deep, 0, 0.015, 0);
+    const river = mat("steel");
+    // A gorge incised along local X, deepened until the dive finish
+    // looks INTO it: the slot is half its old width and the floor
+    // sits 0.32 below the rim (the first build's shallow tray read
+    // as terraced slabs, its gorge hidden behind the near rim).
+    // Strata ledges step down BOTH slot walls, and the Colorado
+    // runs as a steel ribbon on the shadowed floor.
+    b.add(bx(0.86, 0.34, 0.24), rim, 0, 0.17, 0.2);
+    b.add(bx(0.86, 0.34, 0.24), rim, 0, 0.17, -0.2);
+    for (const sz of [-1, 1]) {
+      b.add(bx(0.86, 0.045, 0.05), strata, 0, 0.265, sz * 0.068);
+      b.add(bx(0.86, 0.045, 0.04), rim, 0, 0.195, sz * 0.058);
+      b.add(bx(0.86, 0.045, 0.03), strata, 0, 0.125, sz * 0.048);
+    }
+    b.add(bx(0.86, 0.02, 0.09), deep, 0, 0.01, 0);
+    b.add(bx(0.86, 0.012, 0.035), river, 0, 0.024, 0);
     return b.build();
   },
 
   niagara(mat, key) {
     const b = bag();
-    const water = mat(key);
+    const water = mat(key, { side: THREE.DoubleSide });
+    const foam = mat("card");
     const rock = mat("sandstone");
     const sage = mat("sage");
-    // The Horseshoe: a curved curtain of water over the gorge head
-    // (the half-cylinder's convex face fronts +Z), the river disc
-    // above it, foam pool below, green-topped rock banks flanking.
+    // The Horseshoe, rebuilt so it stops reading as a pale drum:
+    // the curtain is a double-sided arc (the first build's shell
+    // was invisible from inside, so the dive saw through it), the
+    // river runs in across the top to its lip, foam rings the crest
+    // and fills the basin, mist rises off the basin, and the gorge
+    // channel runs downstream between green-topped banks.
     b.add(
-      new THREE.CylinderGeometry(0.17, 0.17, 0.2, 14, 1, true, -Math.PI / 2, Math.PI),
+      new THREE.CylinderGeometry(0.19, 0.19, 0.24, 16, 1, true, -Math.PI / 2, Math.PI),
       water,
       0,
-      0.14,
-      0,
+      0.15,
+      -0.02,
     );
-    b.add(cyl(0.17, 0.17, 0.018, 14), water, 0, 0.245, 0);
-    b.add(cyl(0.19, 0.19, 0.025, 14), water, 0, 0.013, 0);
+    b.add(bx(0.42, 0.02, 0.3), mat(key), 0, 0.275, -0.2);
+    b.add(cyl(0.195, 0.195, 0.02, 16), foam, 0, 0.272, -0.02);
+    b.add(cyl(0.23, 0.23, 0.03, 16), foam, 0, 0.015, 0);
+    b.add(
+      sph(0.16, 10, 8),
+      mat("card", { transparent: true, opacity: 0.35 }),
+      0, 0.1, 0.05, 0, 0, 0, 1.2, 0.6, 1,
+    );
+    b.add(bx(0.34, 0.02, 0.44), mat(key), 0, 0.012, 0.18);
     for (const sx of [-1, 1]) {
-      b.add(bx(0.16, 0.25, 0.32), rock, sx * 0.27, 0.125, 0);
-      b.add(bx(0.17, 0.03, 0.33), sage, sx * 0.27, 0.265, 0);
+      b.add(bx(0.14, 0.2, 0.44), rock, sx * 0.26, 0.1, 0.14);
+      b.add(bx(0.15, 0.03, 0.45), sage, sx * 0.26, 0.215, 0.14);
     }
     return b.build();
   },

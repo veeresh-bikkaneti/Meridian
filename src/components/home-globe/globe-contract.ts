@@ -131,13 +131,13 @@ export const LANDMARKS: readonly LandmarkSpec[] = [
   { id: "pisa", name: "Leaning Tower of Pisa", place: "Pisa", lat: 43.723, lon: 10.397, drawnLat: 44.5, drawnLon: 9.0, scale: 0.25, color: "stone", revealAt: 2.6 },
   { id: "acropolis", name: "Acropolis", place: "Athens", lat: 37.972, lon: 23.727, drawnLat: 36.5, drawnLon: 25.5, scale: 0.24, color: "stone", revealAt: 2.6 },
   { id: "sagrada", name: "Sagrada Familia", place: "Barcelona", lat: 41.404, lon: 2.174, drawnLat: 39.0, drawnLon: 1.0, scale: 0.24, color: "sandstone", revealAt: 2.6 },
-  { id: "brandenburg", name: "Brandenburg Gate", place: "Berlin", lat: 52.516, lon: 13.378, drawnLat: 52.516, drawnLon: 13.378, scale: 0.24, color: "sandstone", revealAt: 2.6 },
+  { id: "brandenburg", name: "Brandenburg Gate", place: "Berlin", lat: 52.516, lon: 13.378, drawnLat: 52.516, drawnLon: 13.378, scale: 0.24, color: "sandstone", spinDeg: 80, revealAt: 2.6 },
   { id: "angkor", name: "Angkor Wat", place: "Cambodia", lat: 13.412, lon: 103.867, drawnLat: 13.412, drawnLon: 103.867, scale: 0.26, color: "stone", revealAt: 2.6 },
   { id: "forbidden", name: "Forbidden City", place: "Beijing", lat: 39.916, lon: 116.397, drawnLat: 34.5, drawnLon: 110.0, scale: 0.26, color: "clay", revealAt: 2.6 },
   { id: "fuji", name: "Mount Fuji", place: "Japan", lat: 35.361, lon: 138.727, drawnLat: 35.361, drawnLon: 138.727, scale: 0.3, color: "stone", revealAt: 8.5 },
   { id: "petronas", name: "Petronas Towers", place: "Kuala Lumpur", lat: 3.158, lon: 101.712, drawnLat: 3.158, drawnLon: 101.712, scale: 0.21, color: "steel", revealAt: 2.6 },
   { id: "hagia", name: "Hagia Sophia", place: "Istanbul", lat: 41.009, lon: 28.98, drawnLat: 44.5, drawnLon: 30.0, scale: 0.24, color: "sandstone", revealAt: 2.6 },
-  { id: "petra", name: "Petra", place: "Jordan", lat: 30.322, lon: 35.452, drawnLat: 31.0, drawnLon: 40.5, scale: 0.22, color: "clay", revealAt: 2.2 },
+  { id: "petra", name: "Petra", place: "Jordan", lat: 30.322, lon: 35.452, drawnLat: 31.0, drawnLon: 40.5, scale: 0.22, color: "clay", spinDeg: 107, revealAt: 2.2 },
   // Wave-2 additions (canon completion): spec lat/lon are Wikipedia
   // infobox values (five of them re-verified by search this wave —
   // see MOCKUP-STATUS.md). Drawn spots nudged only for the Sphinx
