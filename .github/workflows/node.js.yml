@@ -62,6 +62,10 @@ jobs:
     # channel and a tapped play() runs before any await; see
     # eslint/voice-channel-rule.mjs.
     - run: npm run lint:nav
+    # Architecture guardrails (Phase 0, PR 0.2): imports point down
+    # only and no raw browser I/O outside src/platform; today's
+    # violations are baselined shrink-only; see eslint/layer-rule.mjs.
+    - run: npm run lint:arch
     - run: npm run test:worker
     - run: npm run typecheck:worker
 
