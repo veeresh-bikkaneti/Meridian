@@ -13,6 +13,8 @@
     "build:pages": "node scripts/with-app-env.mjs --env GITHUB_PAGES=1 vite build",
     "db:migrate": "node scripts/migrate.mjs",
     "build:dev": "node scripts/with-app-env.mjs vite build --mode development",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
     "preview": "node scripts/with-app-env.mjs vite preview",
     "preview:restart": "node scripts/preview.mjs restart",
     "preview:stop": "node scripts/preview.mjs stop",
@@ -84,6 +86,7 @@
   "devDependencies": {
     "@cloudflare/vite-plugin": "1.66.0",
     "@eslint/js": "^9.20.0",
+    "@storybook/react-vite": "10.6.8",
     "@types/node": "^22.16.5",
     "@types/pg": "^8.11.10",
     "@types/react": "^19.2.0",
@@ -98,6 +101,7 @@
     "playwright": "^1.62.0",
     "prettier": "^3.4.0",
     "react-test-renderer": "^19.3.0",
+    "storybook": "10.6.8",
     "topojson-server": "3.0.1",
     "typescript-eslint": "^8.56.1",
     "wrangler": "4.152.0"
