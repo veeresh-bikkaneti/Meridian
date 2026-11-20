@@ -8,7 +8,7 @@ local model, a person). It names roles, never a vendor or model.
 
 > **Cold start, in order:** (1) §1 Authority, (2) §3 pick your tier,
 > (3) §4 token economy, (4) §9 gates before you call anything done.
-> (5) `docs/ops/orchestration.md` when you use helpers. (6) `docs/ops/project-audit-checklist.md` when you run an audit. Read the rest by heading when a task needs it. Long detail lives in
+> (5) `docs/ops/orchestration.md` when you use helpers. (6) `docs/ops/project-audit-checklist.md` when you run an audit. (7) `ARCHITECTURE.md` before you add or move a file. Read the rest by heading when a task needs it. Long detail lives in
 > [`docs/ops/agents-reference.md`](docs/ops/agents-reference.md), which is
 > part of this file for precedence: read a section there only when this
 > file points you to it.
@@ -240,11 +240,18 @@ and what it depends on before you open files.
 
 ## 8. Constitution (owner, 2026-10-21)
 
-1. Do not refactor existing working code.
-2. Do not create new branches or duplicate files: work on the assigned
-   branch and edit files in place.
-3. Edit only the targeted functions, in place.
+1. Do not refactor working code for its own sake. A refactor is allowed
+   when it moves code into the layer `ARCHITECTURE.md` assigns it, or
+   replaces two or more copies with one shared part, and the PR names
+   the copies it removes.
+2. No duplicate files. One branch per slice, created from `main`; never
+   copy a file to change it.
+3. Keep each PR to one slice. Inside the slice you may edit every file
+   the extraction moves; outside it, touch nothing.
 4. Show code changes as unified diffs, never whole pasted files.
+5. Every new file sits in one layer of `ARCHITECTURE.md`, and its
+   imports point only in the allowed directions. `npm run lint:arch`
+   enforces this once Phase 0 lands.
 
 If a task cannot be done within these rules, stop and ask. The bounded
 Chair-lift of rules 1 and 3 is in the reference, §A.
