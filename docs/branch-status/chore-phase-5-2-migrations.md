@@ -28,5 +28,6 @@ Add, do not edit `docs/knowledge/graph.json` here:
 - Worker: no third runner. `src/server.ts` does not import `src/lib/db.ts`.
 - Gates, after the catch-line type fix: `npx tsc --noEmit` PASS. `npm test` PASS (scripts 1250, 1239 pass, 11 skipped, 0 fail; src 3002 pass, 0 fail). `npm run test:worker` PASS (235). `node scripts/lint-cards.mjs` PASS. `npm run build:pages` PASS. `npm run lint:nav` PASS. `npm run lint:subjects` PASS. `npm run check:entry-size` PASS. `npm run lint:arch` PASS. Playwright NOT RUN: no spec under `tests/` references `lib/db` or the runner.
 - Provenance: PASS (`npm run check:provenance`, `origin/main..HEAD`) on the code commit `af92a5e3`. This status commit is docs only; re-check the range before push.
-- Next: panel on the tip, then draft PR. Do not merge.
+- Next: draft PR after the doc nit is re-voted. Do not merge.
+- Review: clean-context seat, no schema persona on file (personas present are accessibility, ui, and ux only). APPROVE-WITH-NITS on `1626ee64`. Nit: the migrations section quoted `build` without `with-app-env.mjs`. Cure is that one cell.
 - Ruled out: editing `src/server.ts` so the Worker process opens PGLite. No `DATABASE_URL` binding exists, and that file is the header path for Phase 5.3.
