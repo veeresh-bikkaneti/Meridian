@@ -163,8 +163,9 @@ intact; the full-page capture method is what failed.
 Budget: hard cap 15k tokens for this leg (owner-approved
 re-baseline); checkpoint at ~9k (60%) reached. Spent estimate: ~9k
 (±30% — no meter; sync + spec rewrite + one build + one capture run
-+ dimension read + two screenshot reads). The re-shoot is DONE; the
-records step REMAINS (below).
++ dimension read + two screenshot reads). The re-shoot is DONE;
+the records step is now COMPLETE (see the completion note at the
+end of this section).
 
 ### Done in this leg [measured]
 
@@ -191,16 +192,16 @@ records step REMAINS (below).
   Trail / Review my misses / Journal / For grown-ups cards, "How a
   round works", footer + Grandpa. No void.
 
-### Remaining (records step, next run)
+### Records step — COMPLETE (2026-11-20)
 
-1. `npm run check:provenance` — must PASS.
-2. Commit named files only: the 8 PNGs in docs/motion-verify/ +
-   `tests/e2e/read-aloud-modal.desktop.spec.ts` + this status file.
-   Owner identity, plain subject, no trailers.
-3. Push to origin `feat/read-aloud-modal` (normal push; base is
-   `2a1088d6`).
-4. Append the capture-method correction to the PR #547 body:
+1. ✅ `npm run check:provenance` — PASSED.
+2. ✅ Committed named files only (8 PNGs + spec + this status
+   file) as `17d018f3` "Re-shoot the read-aloud modal captures
+   with the two-shot method". Owner identity, no trailers.
+3. ✅ Pushed to origin `feat/read-aloud-modal`
+   (`2a1088d6..17d018f3`, normal push).
+4. ✅ Capture-method correction appended to the PR #547 body:
    the original captures were void by construction (fullPage
    against a scroll-locked page); replaced by arrival +
    answered full-page pairs; method named honestly.
-5. Mark the capture sections in this file complete.
+5. ✅ Capture sections in this file marked complete (this note).
