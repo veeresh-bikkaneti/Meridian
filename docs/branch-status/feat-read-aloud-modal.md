@@ -94,3 +94,19 @@ produced by the spec's env-gated capture test (CAPTURE_MODAL=1).
   seat below the header (same box as the overlay) — only the layer,
   backdrop and hold changed. If the owner wants it centred, that
   is a follow-up design call, not a defect in this variant.
+
+## Review fix (Nov 20)
+
+- The arrival modal now uses the alertdialog pattern (an answer is
+  required — no Escape, no backdrop close): the queue's modal layer
+  renders `role="alertdialog"` with `aria-modal="true"` and names
+  itself by the sheet's heading via `aria-labelledby`, taken from
+  the prompt's new optional `labelledBy` field — the queue stays
+  generic and holds no prompt-specific id.
+- The heading id is exported once as `READ_ALOUD_PREF_HEADING_ID`
+  from `ReadAloudPrefPrompt.tsx` (its `h2` and section label both
+  use it); `game-app.tsx` passes it as the read-aloud entry's
+  `labelledBy`. No second copy of the string.
+- The backdrop color moved to a `--scrim` token in the `styles.css`
+  `:root` block (same value, `rgba(21, 28, 24, 0.55)`); the backdrop
+  rule now reads `var(--scrim)`. No visual change.

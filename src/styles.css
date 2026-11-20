@@ -73,6 +73,7 @@
   --accent: #d7ddd9;
   --accent-fg: #101211;
   --error: #f1948a; /* error text on dark surfaces */
+  --scrim: rgba(21, 28, 24, 0.55); /* modal backdrop */
   --font-body: "Avenir Next", "Segoe UI", sans-serif;
   --font-display-family: "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif;
   /* ---- Atlas home design tokens (chart-room identity; home screen only for now) ---- */
@@ -609,7 +610,7 @@ div.first-visit-modal-backdrop {
   position: fixed;
   inset: 0;
   z-index: calc(var(--z-modal) - 1);
-  background: rgba(21, 28, 24, 0.55);
+  background: var(--scrim);
 }
 
 div.first-visit-queue-overlay.first-visit-queue-modal {

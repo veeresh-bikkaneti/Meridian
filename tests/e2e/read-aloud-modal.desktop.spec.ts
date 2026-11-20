@@ -61,8 +61,9 @@ test("arrival modal: backdrop holds the page, focus trapped, no dismiss without 
   // The modal layer is up: dialog semantics + backdrop + the sheet
   // itself in the modal seat.
   await expect(sheet).toHaveAttribute("data-modal", "true");
-  await expect(sheet).toHaveAttribute("role", "dialog");
+  await expect(sheet).toHaveAttribute("role", "alertdialog");
   await expect(sheet).toHaveAttribute("aria-modal", "true");
+  await expect(sheet).toHaveAccessibleName(/read aloud|stories/i);
   const backdrop = page.getByTestId("first-visit-modal-backdrop");
   await expect(backdrop).toBeVisible();
 

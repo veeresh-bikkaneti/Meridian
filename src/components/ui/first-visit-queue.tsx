@@ -57,6 +57,13 @@ export type FirstVisitPrompt = {
    * prompts that can appear at arrival, never over gameplay.
    */
   modal?: boolean;
+  /**
+   * Accessible name for the arrival-modal layer: the id of the
+   * heading inside this prompt's node, rendered on the modal div
+   * as aria-labelledby. Prompts without a heading of their own
+   * omit it (React drops an undefined aria-labelledby).
+   */
+  labelledBy?: string;
 };
 
 function readSeen(seenKey: string): ReadonlySet<string> {
@@ -245,8 +252,9 @@ export function FirstVisitQueue({ prompts, seenKey, onDone, onModalChange, class
               data-prompt-id={current.id}
               data-placement={placement}
               data-modal="true"
-              role="dialog"
+              role="alertdialog"
               aria-modal="true"
+              aria-labelledby={current.labelledBy}
             >
               {current.node}
             </div>

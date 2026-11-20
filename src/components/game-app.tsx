@@ -146,7 +146,7 @@ import { JournalBoundary } from "./journal-boundary";
 // The settings screen is React.lazy: zero initial-bundle cost.
 import "./age-profile/age-profile.css";
 import { LockedLoop } from "./age-profile/LockedLoop";
-import { ReadAloudPrefPrompt } from "./age-profile/ReadAloudPrefPrompt";
+import { ReadAloudPrefPrompt, READ_ALOUD_PREF_HEADING_ID } from "./age-profile/ReadAloudPrefPrompt";
 import { shouldAskReadAloudPref } from "@/game/age-profile/read-aloud-pref";
 import { FirstVisitQueue, type FirstVisitPrompt } from "./ui/first-visit-queue";
 import { ReadAloudPrefSettings } from "./age-profile/ReadAloudPrefSettings";
@@ -4196,6 +4196,7 @@ export function GameApp() {
       // built solely in the Home branch below, so the sheet can
       // never surface over a run or a case.
       modal: true,
+      labelledBy: READ_ALOUD_PREF_HEADING_ID,
       node: <ReadAloudPrefPrompt onAnswered={() => bumpPromptQueue((n) => n + 1)} />,
     });
   }

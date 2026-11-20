@@ -19,6 +19,9 @@ import { useState } from "react";
 import { setReadAloudPref, shouldAskReadAloudPref } from "@/game/age-profile/read-aloud-pref";
 import type { ReadAloudPref } from "@/game/age-profile/read-aloud-pref";
 
+/** The sheet heading's id: the arrival modal names itself by it. */
+export const READ_ALOUD_PREF_HEADING_ID = "agep-pref-q";
+
 export interface ReadAloudPrefPromptProps {
   /** Called after the kid answers (e.g. to continue onboarding). */
   onAnswered?: (value: ReadAloudPref) => void;
@@ -43,8 +46,8 @@ export function ReadAloudPrefPrompt({ onAnswered }: ReadAloudPrefPromptProps) {
   };
 
   return (
-    <section className="agep-pref-prompt" aria-labelledby="agep-pref-q">
-      <h2 id="agep-pref-q" className="agep-pref-q">
+    <section className="agep-pref-prompt" aria-labelledby={READ_ALOUD_PREF_HEADING_ID}>
+      <h2 id={READ_ALOUD_PREF_HEADING_ID} className="agep-pref-q">
         Do you like stories read aloud?
       </h2>
       <div className="agep-pref-options" role="group" aria-label="Read-aloud preference">
