@@ -161,3 +161,72 @@ meter).
 
 Nodes/edges for the integrator (AGENTS.md §7): none added — no new
 concepts, only a module extension and a doc section.
+
+## Push status
+
+BLOCKED 2026-11-20: `git push origin chore/phase-5-3-response-policy`
+fails with "Invalid username or token" (exit 128), and `gh auth
+status` says the token in `~/.config/gh/hosts.yml` is invalid for
+`veeresh-bikkaneti`. The branch is local-only at `595f8f7e` (2
+commits), tree clean. Needs a fresh token, then push this branch and
+open the draft PR below. No gate re-run is needed unless main moves;
+if it does, the sync step (GitHub "Update branch" onto latest main,
+rerun gates, report synced head SHA) is owed before any merge ask.
+
+## Draft PR body (to paste when opening the PR)
+
+# Summary
+
+One headers module now covers per-path Cache-Control too:
+`PATH_CACHE_CONTROL` in `src/lib/security-headers.ts` mirrors the
+`public/_headers` rules, the `src/start.ts` middleware applies them
+to Worker responses, and a test simulates `_headers` and fails on
+drift. Header values do not change for players.
+
+## Before / After
+
+- Before: per-path Cache-Control lived only in `public/_headers`;
+  Worker responses got no path rule, so a non-HTML Worker response
+  carried no Cache-Control unless its route set one.
+- After: the middleware sends the matching `_headers` value for the
+  request path. Rendered HTML still gets the plain default, never
+  the asset-served `s-maxage=60` row.
+
+## Layer(s) touched
+
+- Layer 2 pure helpers (`src/lib/*`).
+- Server code outside the layer map until Phase 5 (`src/start.ts`).
+  Imports point down only (server → lib).
+
+## Mockup
+
+- Mockup link: not player-visible (no UI change; header values
+  unchanged for players).
+- Veeresh's approval: not applicable.
+
+## Gates
+
+| Gate | Result (PASS / FAIL / NOT RUN) |
+| :--- | :--- |
+| `npx tsc --noEmit` | PASS |
+| `npm test` | PASS (3010/3010) |
+| `npm run test:worker` | PASS (235/235) |
+| `node scripts/lint-cards.mjs` | PASS |
+| `npm run build:pages` | PASS |
+| `npm run lint:nav` | PASS |
+| `npm run lint:subjects` | PASS |
+| `npm run check:provenance` | PASS |
+| `npm run check:entry-size` | PASS (317,740 B gzip, limit 323,865 B) |
+| `npm run lint:arch` | PASS |
+| `npm run ci:required` | PASS (every row PASS except lint FAIL report-only, Playwright NOT RUN) |
+| lint (inside ci:required) | FAIL, report-only — 28 errors, 160 warnings, all pre-existing in `tests/e2e` and `workers/crash-report` tests; the three changed source files lint clean |
+| Playwright (specs this change can break, `--workers=1`) | NOT RUN — the two header-touching specs were attempted; the browser cannot launch in this runner (`Hatch WebGL domain policy is required for browser startup`, exit 13) before any page loads. CI runs the rest. |
+
+## Baseline entries removed
+
+- none
+
+## Tokens
+
+- Tokens used vs cap: builder ~35k estimated of the 400k Tier 2 cap
+  (plus ~12k arena; no meter exists, numbers are estimates).
