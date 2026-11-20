@@ -171,6 +171,10 @@ Nothing about a guess is stored on a server. The in-progress run lives in `sessi
 
 `public/flags.json` carries the production feature flags. Both graduated experiments are ON in production: `globeTierSplit` (the globe edition ships per-difficulty-tier region files, PR #148) and `learningOutcomes` (players build per-place learning records from their next boot, PR #45).
 
+### Before you open a PR, run `npm run ci:required`
+
+One command runs the required gates in order — typecheck, the unit suites, the card lint, the pages build, `lint:nav`, `lint:arch`, `lint:subjects`, `check:provenance` and `check:entry-size` — keeps going after a failure, and ends with one PASS / FAIL / NOT RUN table. A gate that cannot run in your tree (for example `check:provenance` outside a git checkout, or Playwright with no browser) is NOT RUN and the table says why. The general `lint` also runs, but report-only until Phase 5: its failures print in the table and do not change the exit code. The run exits non-zero when any required gate fails.
+
 ## Inspired by MapTap, not a copy
 
 [MapTap](https://maptap.gg/) is the daily that suggested a pin on a map and a line you can share. Meridian keeps that feeling and leaves the rest.
