@@ -66,6 +66,7 @@ const CONTEXT_FILES = Object.freeze([
   "endgame-share.spec.ts",
   "friend-challenge-mc3-verdict.desktop.spec.ts",
   "home-greeting-keyboard.desktop.spec.ts",
+  "home-globe.desktop.spec.ts",
   "home-hero-trekker.desktop.spec.ts",
   "home-layout.desktop.spec.ts",
   "why-learn-montage-recheck.desktop.spec.ts",
