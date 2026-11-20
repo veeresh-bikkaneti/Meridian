@@ -597,6 +597,25 @@ div.first-visit-queue-overlay {
   z-index: var(--z-overlay);
 }
 
+/* Arrival modal (owner direction, 2026-11-20): a first-visit prompt
+ * flagged modal (the read-aloud sheet) holds the page until it is
+ * answered. The backdrop sits one step under the modal layer and
+ * covers the whole viewport — it has no dismiss behaviour; its job
+ * is to be what a stray tap lands on instead of the page. The sheet
+ * itself keeps the overlay box above (same seat, gutters and fit)
+ * and only changes layer: the modal token, above the menu. Both
+ * rules are unlayered for the same reason as the overlay rule. */
+div.first-visit-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: calc(var(--z-modal) - 1);
+  background: rgba(21, 28, 24, 0.55);
+}
+
+div.first-visit-queue-overlay.first-visit-queue-modal {
+  z-index: var(--z-modal);
+}
+
 /* Phone widths: the sheet hangs from just under the real header
  * (its bottom edge sits at 115px on Home: the column's top offset
  * plus the 84px header), not from the desktop offset. */
