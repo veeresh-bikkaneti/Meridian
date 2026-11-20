@@ -24,6 +24,11 @@ export interface GlobeControlsState {
   idleTime: number;
   /** True while at least one pointer is down. */
   dragging: boolean;
+  /**
+   * True after a dive: auto-spin stays parked (however long the idle)
+   * until the next real input — drag, wheel, pinch or key — un-parks it.
+   */
+  parked: boolean;
 }
 
 export type GlobeControlsInput =
@@ -42,6 +47,8 @@ export type GlobeControlsInput =
       midDy: number;
     }
   | { type: "key"; key: string }
+  /** A tap-to-landmark dive: ease the zoom to targetDist and park. */
+  | { type: "dive"; targetDist: number }
   | { type: "tick"; dt: number; reducedMotion: boolean };
 
 export interface GlobeControlsEffects {
@@ -77,6 +84,7 @@ export function createGlobeControlsState(): GlobeControlsState {
     velAxisY: 0,
     idleTime: Number.POSITIVE_INFINITY,
     dragging: false,
+    parked: false,
   };
 }
 
@@ -118,6 +126,7 @@ export function stepGlobeControls(
       next.velAxisX = 0;
       next.velAxisY = 0;
       next.idleTime = 0;
+      next.parked = false;
       break;
     }
     case "dragMove": {
@@ -141,6 +150,8 @@ export function stepGlobeControls(
       break;
     }
     case "wheel": {
+      // A real wheel input un-parks a dive even when it cannot zoom.
+      next.parked = false;
       // Zooms only over the sphere and only when not already at the limit;
       // otherwise the event is left for the page to scroll.
       if (!input.overSphere) break;
@@ -152,6 +163,7 @@ export function stepGlobeControls(
       break;
     }
     case "pinch": {
+      next.parked = false;
       next.targetDist = clampZoom(input.pinchStartTarget * input.distanceRatio);
       Object.assign(effects, trackball(input.midDx, input.midDy, dragSensitivity(next.dist)));
       next.velAxisX = 0;
@@ -178,6 +190,15 @@ export function stepGlobeControls(
       next.velAxisX = 0;
       next.velAxisY = 0;
       next.idleTime = 0;
+      next.parked = false;
+      break;
+    }
+    case "dive": {
+      next.targetDist = clampZoom(input.targetDist);
+      next.velAxisX = 0;
+      next.velAxisY = 0;
+      next.idleTime = 0;
+      next.parked = true;
       break;
     }
     case "tick": {
@@ -205,7 +226,8 @@ export function stepGlobeControls(
       }
 
       // Slow turn: returns after the idle delay, ramping to full speed.
-      if (!next.dragging && !input.reducedMotion && next.idleTime > C.resumeAfter) {
+      // Parked (post-dive) suppresses it until a real input un-parks.
+      if (!next.dragging && !next.parked && !input.reducedMotion && next.idleTime > C.resumeAfter) {
         const ramp = smoothstep(next.idleTime, C.resumeAfter, C.resumeAfter + C.resumeRamp);
         effects.autoSpinAngle = C.autoSpin * ramp * dt;
         effects.autoSpinRamp = ramp;
