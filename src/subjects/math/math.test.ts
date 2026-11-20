@@ -6,7 +6,8 @@
 import { it } from "node:test";
 import assert from "node:assert/strict";
 import { allMathRows, itemsForGroup, mathUnits, WAVE1_ITEM_IDS } from "./items.ts";
-import { MATH_ANSWERS, answerFor, currentYear, yearsSince } from "./answers.ts";
+import { MATH_ANSWERS, answerFor } from "./answers.ts";
+import { currentYear, yearsSince } from "../shared/years.ts";
 import { isEnabled, scaleParamOn } from "../../lib/flags.ts";
 import mathModule from "./index.ts";
 
