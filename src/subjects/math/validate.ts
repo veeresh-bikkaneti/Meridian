@@ -3,8 +3,9 @@
  *
  * Imports the records + schema from ./items.ts (down, Content) and zod
  * only. Checks per record: (a) schema parse, (b) answer present,
- * (c) giveaway — the lead (why) must not contain the answer, (d) every
- * media id exists, (e) no stored current year in child-read text.
+ * (c) giveaway — the lead (why) must not contain the answer, including
+ * any follow-up answer, (d) every media id exists, (e) no stored
+ * current year in child-read text, (f) no two records share an id.
  *
  * The giveaway and year checks mirror scripts/lint-subject-leads.mjs
  * (findGiveaway / findLiteralYear) exactly — same tokens, same stop list,
@@ -119,17 +120,31 @@ function childStrings(record: SubjectItem): string[] {
   return out;
 }
 
+/** The answer word or number a lead leaks from an answer or any of its
+ *  follow-ups, or null. The lead is shown before the whole case, so a
+ *  follow-up's answer counts the same as the main one. */
+function findGiveawayIn(lead: string, answer: SubjectItem["answer"]): string | null {
+  return findGiveaway(lead, answer) ?? (answer.followUp ? findGiveawayIn(lead, answer.followUp) : null);
+}
+
 /**
  * Validate records, throwing an Error naming the record id and the rule
  * on the first failure.
  */
 export function validateMathRecords(records: readonly unknown[]): void {
+  const seenIds = new Set<string>();
   for (const record of records) {
     const id =
       record !== null && typeof record === "object" && "id" in record &&
       typeof (record as { id: unknown }).id === "string"
         ? (record as { id: string }).id
         : "(missing id)";
+    if (id !== "(missing id)") {
+      if (seenIds.has(id)) {
+        throw new Error(`${id}: duplicate id`);
+      }
+      seenIds.add(id);
+    }
     if (
       record === null ||
       typeof record !== "object" ||
@@ -147,7 +162,7 @@ export function validateMathRecords(records: readonly unknown[]): void {
       const detail = error instanceof Error ? error.message : String(error);
       throw new Error(`${id}: invalid record — ${detail}`);
     }
-    const leaked = findGiveaway(parsed.why, parsed.answer);
+    const leaked = findGiveawayIn(parsed.why, parsed.answer);
     if (leaked) {
       throw new Error(
         `${id}: lead contains the answer (token "${leaked}"): the lead is shown before the question`,

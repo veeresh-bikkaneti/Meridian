@@ -69,9 +69,12 @@ For math: provenance is `UNVERIFIED` for all 53 records (no verifiedOn
 date exists for these rows), media is `[]` for all 53 (math carries no
 clip or still ids today), and leadPolicy is `answer-not-in-lead` for every
 record. A build-time validator (`src/subjects/math/validate.ts`, run from
-`prebuild`) parses every record and fails on a missing answer, an answer
-in the lead, an unknown media id, or a stored current year. Other subjects
-adopt `SubjectItem` in their own PRs; until then they keep `UnitItem` plus
+`prebuild` and `prebuild:pages`) parses every record and fails on a
+missing answer, an answer in the lead, an unknown media id, a stored
+current year, or a duplicate id. Transitional state: the 18 answer-less
+JSON rows stay JSON-backed via `allMathRows()` until they get answers;
+only the 53 playable items are records. Other subjects adopt
+`SubjectItem` in their own PRs; until then they keep `UnitItem` plus
 their own answers module.
 
 ## I3. Age group (owned by `feat/age-groups`)

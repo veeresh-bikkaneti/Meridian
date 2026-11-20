@@ -5,6 +5,8 @@
  * docs/scaling/math/number/items.json, docs/scaling/math/applied/items.json
  * and src/subjects/math/answers.ts (pre-move). Content bytes come from those
  * inputs only: do not hand-edit a record here, and do not retype one.
+ * That generator was a one-off scratch script, wiped with /tmp by a VM
+ * restart; the records are verified by the frozen-fixture test.
  * The next math PR deletes the answers.ts compatibility export.
  *
  * Each record is one SubjectItem: the UnitItem fields (contract I2) plus its

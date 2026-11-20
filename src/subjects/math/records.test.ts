@@ -3,20 +3,38 @@
  * Plain Node test runner, relative imports only (the src suite runs
  * under node --experimental-strip-types), same style as math.test.ts.
  *
- * (a)/(b) are failing-first: ./validate.ts does not exist yet, so this
- * file fails to load until the builder adds it. The validator contract
- * the builder must satisfy: validateMathRecords(records) throws an
- * Error naming the record id and the rule when any record fails.
- * (c) passes trivially pre-change: the fixture was captured by running
- * the old code, so it deep-equals the old exports by construction.
- * After the move it proves the new projection changed nothing.
+ * The validator contract: validateMathRecords(records) throws an Error
+ * naming the record id and the rule when any record fails. The
+ * projection test proves the move changed nothing: the fixture was
+ * captured by running the old code, so it deep-equals the old exports
+ * by construction, and the new projection deep-equals it.
  */
 import { it } from "node:test";
 import assert from "node:assert/strict";
 import { validateMathRecords } from "./validate.ts";
 import { mathUnits } from "./items.ts";
+import type { SubjectAnswer } from "./items.ts";
+import type { AnswerEntry } from "../shared/answer.ts";
 import { MATH_ANSWERS } from "./answers.ts";
 import fixture from "./__fixtures__/main-7bc4d8f2.json" with { type: "json" };
+
+// Pin: the zod mirror (SubjectAnswer) must stay the same shape as the
+// shared AnswerEntry. Strict type equality is impossible by design —
+// the mirror is one level only (a follow-up has no follow-up), while
+// AnswerEntry recurses — so the pin checks key equality plus
+// assignability in both directions. If any of these fail to compile,
+// the mirror has drifted. (Test files are exempt from the layer rule:
+// eslint/layer-rule.mjs classify() returns null for *.test.ts, so this
+// import adds no baseline entry.)
+type _EqualKeys<A, B> =
+  keyof A extends keyof B ? (keyof B extends keyof A ? true : false) : false;
+type _AnswerKeysPin = _EqualKeys<SubjectAnswer, AnswerEntry>;
+const _answerKeysPin: _AnswerKeysPin = true;
+type _MirrorFitsShared = SubjectAnswer extends AnswerEntry ? true : false;
+const _mirrorFitsShared: _MirrorFitsShared = true;
+type _SharedFitsMirrorOneLevel =
+  Omit<AnswerEntry, "followUp"> extends Omit<SubjectAnswer, "followUp"> ? true : false;
+const _sharedFitsMirrorOneLevel: _SharedFitsMirrorOneLevel = true;
 
 const EQUIV_ID = "math-number:fractions:equivalent";
 
@@ -56,6 +74,42 @@ it("validator rejects a record with no answer", () => {
     () => validateMathRecords([noAnswer as typeof good]),
     (error: unknown) =>
       error instanceof Error && error.message.includes(EQUIV_ID),
+  );
+});
+
+it("validator rejects two records sharing an id", () => {
+  const good = goodRecord();
+  assert.throws(
+    () => validateMathRecords([good, { ...good }]),
+    (error: unknown) =>
+      error instanceof Error &&
+      error.message.includes(EQUIV_ID) &&
+      error.message.includes("duplicate id"),
+  );
+});
+
+it("validator rejects a follow-up answer leaked in the lead", () => {
+  const good = goodRecord();
+  // The follow-up's correct choice ("The left pile") is unique to it:
+  // its token "left" sits in the lead, while the main answer stays
+  // clean, so only the follow-up check can fire.
+  const followUp = {
+    prompt: "After that, which pile holds more?",
+    choices: ["The left pile", "The right pile"],
+    correct: "The left pile",
+    derivation: "Both piles match, so the left pile is the bigger share.",
+  };
+  const leaked = {
+    ...good,
+    why: `${good.why} The left pile.`,
+    answer: { ...good.answer, followUp },
+  };
+  assert.throws(
+    () => validateMathRecords([leaked]),
+    (error: unknown) =>
+      error instanceof Error &&
+      error.message.includes(EQUIV_ID) &&
+      error.message.toLowerCase().includes("lead"),
   );
 });
 
