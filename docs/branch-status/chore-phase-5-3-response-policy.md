@@ -146,7 +146,7 @@ with `SyntaxError: ... does not provide an export named
 | `npm run build:pages` | PASS | (missing CONTACT_DISCORD_WEBHOOK_URL warning is pre-existing dev-only) |
 | `npm run lint:nav` | PASS | |
 | `npm run lint:subjects` | PASS | GATE PASSED |
-| `npm run check:provenance` | PASS | re-run after commit (see PR) |
+| `npm run check:provenance` | PASS | re-run after commit `39d6f970` |
 | `npm run check:entry-size` | PASS | entry JS gzip 317,740 B, limit 323,865 B |
 | `npm run lint:arch` | PASS | |
 | `npm run ci:required` | PASS | every row PASS except lint FAIL (report-only) and Playwright NOT RUN; see below |
