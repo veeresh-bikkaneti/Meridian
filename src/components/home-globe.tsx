@@ -191,6 +191,11 @@ function initGlobe(
     (t) => {
       t.colorSpace = THREE.SRGBColorSpace;
       t.anisotropy = 4;
+      // Paint one frame now: the loop parks while the hero is
+      // off-screen, and without this the canvas keeps the black
+      // pre-texture frame until the loop next runs (a full-page
+      // capture at 768px caught exactly that stale frame).
+      renderer.render(scene, camera);
       onTextured();
     },
     undefined,
@@ -418,6 +423,9 @@ function initGlobe(
     renderer.setSize(w, h);
     camera.aspect = w / h;
     camera.updateProjectionMatrix();
+    // setSize clears the drawing buffer; repaint one frame so a
+    // resize while the loop is parked cannot leave a blank canvas.
+    renderer.render(scene, camera);
   };
   const resizeObserver =
     typeof ResizeObserver !== "undefined" ? new ResizeObserver(onResize) : null;

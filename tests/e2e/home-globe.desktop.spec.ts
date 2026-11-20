@@ -31,9 +31,50 @@ async function expectGlobePainted(page: Page) {
   await expect(page.locator(".hv5-globe-orb")).toHaveCount(0, { timeout: 60_000 });
   await expect(page.locator(".hv5-globe-fallback")).toHaveCount(0);
   const shot = await canvas.screenshot();
-  // A painted, textured globe is tens of KB of PNG; a blank or
-  // never-painted canvas compresses to almost nothing.
-  expect(shot.length).toBeGreaterThan(10_000);
+  // Byte size alone cannot prove the texture painted (an untextured
+  // black sphere with landmarks exceeds any size floor — Wave 1
+  // re-vote, UX designer). Sample the disc interior's colours from
+  // the composited screenshot instead: the parchment texture is
+  // mid-luminance and many-coloured; a black or blank disc is not.
+  const stats = await page.evaluate(async (b64) => {
+    const img = new Image();
+    img.src = `data:image/png;base64,${b64}`;
+    await img.decode();
+    const c = document.createElement("canvas");
+    c.width = img.naturalWidth;
+    c.height = img.naturalHeight;
+    const ctx = c.getContext("2d")!;
+    ctx.drawImage(img, 0, 0);
+    const x0 = Math.floor(c.width * 0.3);
+    const x1 = Math.floor(c.width * 0.7);
+    const y0 = Math.floor(c.height * 0.3);
+    const y1 = Math.floor(c.height * 0.7);
+    const { data } = ctx.getImageData(x0, y0, x1 - x0, y1 - y0);
+    const w = x1 - x0;
+    let sampled = 0;
+    let painted = 0;
+    let nearBlack = 0;
+    const colours = new Set<string>();
+    for (let y = 0; y < y1 - y0; y += 7) {
+      for (let x = 0; x < w; x += 7) {
+        const i = (y * w + x) * 4;
+        sampled++;
+        if (data[i + 3] < 128) continue;
+        painted++;
+        const lum = 0.2126 * data[i] + 0.7152 * data[i + 1] + 0.0722 * data[i + 2];
+        if (lum < 25) nearBlack++;
+        colours.add(`${data[i] >> 5},${data[i + 1] >> 5},${data[i + 2] >> 5}`);
+      }
+    }
+    return {
+      paintedShare: painted / sampled,
+      nearBlackShare: painted ? nearBlack / painted : 1,
+      distinct: colours.size,
+    };
+  }, shot.toString("base64"));
+  expect(stats.paintedShare).toBeGreaterThan(0.9);
+  expect(stats.nearBlackShare).toBeLessThan(0.25);
+  expect(stats.distinct).toBeGreaterThanOrEqual(8);
 }
 
 test.describe("landmark globe cold load", () => {
