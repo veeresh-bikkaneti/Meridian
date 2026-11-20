@@ -44,12 +44,12 @@ import { createRequire } from "node:module";
 
 /** The layer map, lowest first. One source of truth. */
 export const LAYERS = [
-  { id: "content", level: 0, owns: ["src/game/data/**", "src/subjects/**/items.ts", "src/subjects/**/answers.ts"] },
-  { id: "domain", level: 1, owns: ["src/game/**/*.ts (not a screen)", "src/lib/** (pure helpers)"] },
-  { id: "platform", level: 2, owns: ["src/platform/**"] },
-  { id: "shared-ui", level: 3, owns: ["src/components/ui/**", "src/hooks/**"] },
-  { id: "feature", level: 4, owns: ["src/components/** (rest)", "src/game/**/*.tsx", "src/subjects/**/*.tsx (non-content)", "src/board/**", "src/map/**", "src/scenes/**"] },
-  { id: "shell", level: 5, owns: ["src/routes/**", "src/router.tsx"] },
+  { id: "content", level: 1, owns: ["src/game/data/**", "src/subjects/**/items.ts", "src/subjects/**/answers.ts"] },
+  { id: "domain", level: 2, owns: ["src/game/**/*.ts (not a screen)", "src/lib/** (pure helpers)"] },
+  { id: "platform", level: 3, owns: ["src/platform/**"] },
+  { id: "shared-ui", level: 4, owns: ["src/components/ui/**", "src/hooks/**"] },
+  { id: "feature", level: 5, owns: ["src/components/** (rest)", "src/game/**/*.tsx", "src/subjects/**/*.tsx (non-content)", "src/board/**", "src/map/**", "src/scenes/**"] },
+  { id: "shell", level: 6, owns: ["src/routes/**", "src/router.tsx"] },
 ];
 
 const LEVEL = Object.fromEntries(LAYERS.map((l) => [l.id, l.level]));

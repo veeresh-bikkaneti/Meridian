@@ -38,6 +38,19 @@ describe("layer/no-upward-import", () => {
     assert.equal(hits(messages, "layer/no-upward-import").length, 1, JSON.stringify(messages));
   });
 
+  it("names the ARCHITECTURE.md layer numbers in an upward-import message", () => {
+    const messages = lint(
+      'import { InfoPage } from "../grownups/info-page.tsx";\nconsole.log(InfoPage);\n',
+      "src/components/ui/fixture.tsx",
+    );
+    const found = hits(messages, "layer/no-upward-import");
+    assert.equal(found.length, 1, JSON.stringify(messages));
+    assert.equal(
+      found[0].message,
+      "Upward import: shared-ui (layer 4) must not import feature (layer 5). Imports point down only — move the shared code down a layer (see ARCHITECTURE.md).",
+    );
+  });
+
   it("fires on a feature screen importing another feature area", () => {
     const messages = lint(
       'import { InfoPage } from "../grownups/info-page.tsx";\nconsole.log(InfoPage);\n',
