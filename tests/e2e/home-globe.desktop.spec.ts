@@ -268,17 +268,19 @@ const DRAW_STATS_INIT = `(() => {
   window.__drawFrames = frames;
 })();`;
 
-/** The smallest positive per-frame draw-call count in the last n frames:
- *  a window holding exactly one app render reads that frame's true count,
- *  so the minimum positive sample is the settled frame's count. */
+/** The settled frame's draw counts: a sampler window holding exactly
+ *  one app render reads that frame's true counts, so the minimum-calls
+ *  positive sample in the tail is one whole settled frame (calls and
+ *  triangles paired from the same render). */
 async function settledDrawCalls(page: Page, lastN = 45) {
   return page.evaluate((n) => {
     const frames = (window as unknown as { __drawFrames: { calls: number; tris: number }[] }).__drawFrames;
     const tail = frames.slice(-n).filter((f) => f.calls > 0);
+    const min = tail.reduce((a, f) => (f.calls < a.calls ? f : a), { calls: Infinity, tris: -1 });
     return {
       samples: tail.length,
-      minCalls: tail.length ? Math.min(...tail.map((f) => f.calls)) : -1,
-      maxTris: tail.length ? Math.max(...tail.map((f) => f.tris)) : -1,
+      minCalls: tail.length ? min.calls : -1,
+      frameTris: tail.length ? min.tris : -1,
     };
   }, lastN);
 }
@@ -367,7 +369,7 @@ test.describe("landmark globe — tap to dive (real taps)", () => {
     // mock's first wave; the reveal keeps it at the Tier-A skin (~46).
     expect(frame.minCalls).toBeGreaterThan(0);
     expect(frame.minCalls).toBeLessThanOrEqual(60);
-    expect(frame.maxTris).toBeLessThan(45_000);
+    expect(frame.frameTris).toBeLessThan(45_000);
     await context.close();
   });
 
@@ -380,6 +382,10 @@ test.describe("landmark globe — tap to dive (real taps)", () => {
     await expect(canvas).toHaveCount(1, { timeout: 60_000 });
     await expect(page.locator(".hv5-globe-orb")).toHaveCount(0, { timeout: 60_000 });
     const card = page.getByTestId("tour-stop-editions");
+    // The card overlaps the canvas's lower reaches, below the fold at
+    // this viewport: scroll it into view first, then measure both
+    // boxes in the same viewport coordinates the hit test uses.
+    await card.scrollIntoViewIfNeeded();
     const cBox = (await canvas.boundingBox()) as Box;
     const eBox = (await card.boundingBox()) as Box;
     const ix = Math.max(cBox.x, eBox.x);
