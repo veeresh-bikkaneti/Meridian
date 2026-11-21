@@ -229,3 +229,80 @@ for (const driver of [browserDriver, fakeDriver]) {
     });
   });
 }
+
+describe("transport port — the caller's abort wins over a signal-ignoring fetch", () => {
+  const stubResponse = (json: () => Promise<unknown>): Response =>
+    ({ ok: true, status: 200, json }) as Response;
+
+  test("a fetch that resolves after the caller aborts rejects with an AbortError, not data", async () => {
+    // This fetch never looks at the attempt signal it is handed.
+    const stubbornFetch = (): Promise<Response> =>
+      new Promise((resolve) => {
+        setTimeout(() => {
+          resolve(stubResponse(() => Promise.resolve({ hello: "world" })));
+        }, 30);
+      });
+    const port = createBrowserTransportPort({
+      fetch: stubbornFetch as typeof fetch,
+      sleep: instantSleep,
+    });
+    const caller = new AbortController();
+    const pending = port.getJson(URL, GREETING, { signal: caller.signal });
+    await new Promise((resolve) => setTimeout(resolve, 5));
+    caller.abort();
+    await assert.rejects(pending, isAbortError);
+  });
+
+  test("a body that finishes parsing after the caller aborts rejects with an AbortError, not data", async () => {
+    const slowJsonFetch = (): Promise<Response> =>
+      Promise.resolve(
+        stubResponse(
+          () =>
+            new Promise((resolve) => {
+              setTimeout(() => {
+                resolve({ hello: "world" });
+              }, 30);
+            }),
+        ),
+      );
+    const port = createBrowserTransportPort({
+      fetch: slowJsonFetch as typeof fetch,
+      sleep: instantSleep,
+    });
+    const caller = new AbortController();
+    const pending = port.getJson(URL, GREETING, { signal: caller.signal });
+    await new Promise((resolve) => setTimeout(resolve, 5));
+    caller.abort();
+    await assert.rejects(pending, isAbortError);
+  });
+});
+
+describe("transport request controller — unexpected rejections are errors, not aborts", () => {
+  test("a port rejecting with a plain Error lands in error with a non-null error", async () => {
+    const boom = new Error("boom");
+    const port: TransportPort = {
+      getJson: () => Promise.reject(boom),
+      postJson: () => Promise.reject(boom),
+    };
+    const request = createTransportRequest(port);
+    await request.start(URL, GREETING);
+    assert.equal(request.getState().status, "error");
+    assert.ok(request.getState().error instanceof TransportError);
+    assert.equal(request.getState().error?.kind, "network");
+    assert.equal(request.getState().error?.cause, boom);
+    assert.equal(request.getState().data, null);
+  });
+
+  test("a port rejecting with an AbortError-named error lands in aborted", async () => {
+    const aborted = new DOMException("Aborted", "AbortError");
+    const port: TransportPort = {
+      getJson: () => Promise.reject(aborted),
+      postJson: () => Promise.reject(aborted),
+    };
+    const request = createTransportRequest(port);
+    await request.start(URL, GREETING);
+    assert.equal(request.getState().status, "aborted");
+    assert.equal(request.getState().error, null);
+    assert.equal(request.getState().data, null);
+  });
+});

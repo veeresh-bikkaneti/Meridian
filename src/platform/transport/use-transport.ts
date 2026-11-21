@@ -114,11 +114,23 @@ export function createTransportRequest<T>(
         if (gen !== generation) return;
         if (err instanceof TransportError) {
           setState({ status: "error", data: null, error: err });
-        } else {
-          // The port rejects with an AbortError only when the
-          // signal it heard aborted — that is this controller's
-          // own abort (or the caller's, forwarded above).
+        } else if (
+          (err instanceof Error && err.name === "AbortError") ||
+          controller.signal.aborted
+        ) {
+          // A cancellation — this controller's own abort (or the
+          // caller's, forwarded above) — is not a failure.
           setState({ status: "aborted", data: null, error: null });
+        } else {
+          // Anything else is unexpected, but it is a failure,
+          // not a cancellation: surface it as a network-kind
+          // error with the original as cause, so the error state
+          // never carries a null error.
+          setState({
+            status: "error",
+            data: null,
+            error: new TransportError("network", url, { cause: err }),
+          });
         }
       } finally {
         callerSignal?.removeEventListener("abort", onCallerAbort);

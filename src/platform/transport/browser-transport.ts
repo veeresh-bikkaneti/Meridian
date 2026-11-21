@@ -127,18 +127,27 @@ async function runAttempt(
       throw new TransportError("network", url, { cause: err });
     }
 
+    // A fetch that ignores its signal can still resolve after
+    // the caller aborted; the caller's abort wins over the data.
+    if (callerSignal?.aborted) throw abortErrorFrom(callerSignal);
+
     if (!response.ok) {
       throw new TransportError("http", url, { status: response.status });
     }
 
+    let parsed: unknown;
     try {
-      return await response.json();
+      parsed = await response.json();
     } catch (err) {
       if (callerSignal?.aborted) throw abortErrorFrom(callerSignal);
       if (timedOut) throw new TransportError("timeout", url, { cause: err });
       if (isAbortError(err)) throw err;
       throw new TransportError("parse", url, { cause: err });
     }
+    // Same check after the body lands: a slow parse must not
+    // hand back data the caller already cancelled.
+    if (callerSignal?.aborted) throw abortErrorFrom(callerSignal);
+    return parsed;
   } finally {
     if (timer !== null) clearTimeout(timer);
     callerSignal?.removeEventListener("abort", onCallerAbort);
