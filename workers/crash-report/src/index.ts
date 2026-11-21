@@ -14,6 +14,7 @@
  *
  * Behavior:
  * - GET  /health        → 200 { ok: true }
+ * - GET  /deploy-check  → 200 { ok, bindings, triggers } (names only)
  * - POST /  or /ingest  → validate one observability event; crash-class
  *                         events forward a compact alert immediately and
  *                         are counted; hiccup-class and funnel-class
@@ -2594,6 +2595,8 @@ export async function runHourlyDigest(
 // PROPOSED cron, not live until a separately approved deploy uploads it.
 
 export const HEALTH_CRON = "*/15 * * * *";
+/** Hourly digest cron this scheduled handler accepts (every other cron). */
+export const DIGEST_CRON = "15 * * * *";
 export const HEALTH_RECORD_KEY = "ops:health:last";
 const HEALTH_INCIDENT_KEY = "ops:health:incident";
 const HEALTH_PROBE_KEY = "ops:health:probe";
@@ -2994,6 +2997,16 @@ async function healthStatusBody(env: CrashReportEnv): Promise<Record<string, unk
   return { ...base, ...ev };
 }
 
+/** Names only: which of the two deploy bindings are present, and the crons this script accepts. */
+export function deployCheckBody(env: CrashReportEnv): { ok: true; bindings: string[]; triggers: string[] } {
+  const bindings: string[] = [];
+  if (env.TELEMETRY_COUNTS != null) bindings.push("TELEMETRY_COUNTS");
+  if (env.CRASH_RATE_LIMITER != null) bindings.push("CRASH_RATE_LIMITER");
+  bindings.sort();
+  const triggers = [DIGEST_CRON, HEALTH_CRON].sort();
+  return { ok: true, bindings, triggers };
+}
+
 // --- Request handling --------------------------------------------------
 
 function jsonResponse(
@@ -3054,6 +3067,12 @@ export async function handleRequest(
     // dependency health (the last trusted scheduled run, freshness-checked).
     // HTTP 200 means "alive"; monitors must read body.health.
     return jsonResponse(200, await healthStatusBody(env), { "cache-control": "no-store" });
+  }
+
+  if (path === "/deploy-check") {
+    // Names for the smoke script and monitors, not browsers: no CORS.
+    if (request.method !== "GET") return jsonResponse(405, { error: "method not allowed" });
+    return jsonResponse(200, deployCheckBody(env), { "cache-control": "no-store" });
   }
 
   if (path === "/" || path === "/ingest") {
