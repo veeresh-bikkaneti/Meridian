@@ -113,8 +113,18 @@ that did not ask to (A's weakness answered).
   dedupe tests that stub `globalThis.fetch`.
 - Baseline: the one `fetch()` entry for pack-shelf-data.ts
   removed; the two `localStorage reference` entries stay.
-- Gates and panel run at integration (see the PR body for the
-  recorded results).
+- Gates at integration: all unit/build gates PASS; entry-size
+  321,200 → 321,209 B (limit 323,865). Playwright (pack-shelf
+  specs only): mobile PASS alone; desktop 6/7 — the one failure
+  (:213) fails identically on the pristine base in this
+  environment and :199 flaked in both directions on both trees;
+  no slice-caused failure established, CI is the arbiter.
+- Panel: PASS WITH NOTES — two LOWs, both fixed with pinning
+  tests and re-verified (contract suite now 30/30): the caller's
+  abort now wins even when a fetch ignores its signal and
+  resolves late, and the hook's controller lands in the error
+  state (cause preserved) for unexpected rejections instead of
+  mislabelling them aborted.
 - Open questions: none for the owner at this point.
 
 ## Graph
