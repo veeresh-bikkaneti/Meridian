@@ -1,4 +1,6 @@
 import { assetBase } from "./storyteller-lines.ts";
+import { getJson } from "../platform/transport/browser-transport.ts";
+import type { SchemaLike } from "../platform/transport/transport.ts";
 
 /**
  * Pack shelf data: the one adapter between the shelf UI and the deck
@@ -404,13 +406,15 @@ export function readColdtrailClosed(
 
 type Fetcher = (url: string) => Promise<unknown>;
 
+/** The port is asked for the raw parsed JSON: validation stays with the
+ * callers' existing guards (isPackManifest and the loop-size check). */
+const rawJsonSchema: SchemaLike<unknown> = { parse: (input) => input };
+
 /** Fetch and parse JSON, or return null on any failure. */
 async function fetchJsonOrNull(url: string, fetcher?: Fetcher): Promise<unknown> {
   try {
     if (fetcher) return await fetcher(url);
-    const res = await fetch(url);
-    if (!res.ok) return null;
-    return (await res.json()) as unknown;
+    return await getJson(url, rawJsonSchema);
   } catch {
     return null;
   }
