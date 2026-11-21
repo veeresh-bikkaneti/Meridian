@@ -63,6 +63,32 @@ export function createLocalStorageBackend(): StorageBackend {
   };
 }
 
+/**
+ * The browser's local storage as a backend whose errors
+ * PROPAGATE. This backend is for the age-profile slot
+ * (register.ts): those stores own the failure policy — they
+ * try/catch every call and engage their in-memory fallback when
+ * a call throws — so a private-mode or quota failure must
+ * surface to them instead of being swallowed. The port's own
+ * backend above stays fail-soft. The global is still resolved
+ * lazily inside every call; a missing global throws like any
+ * other storage failure, and the stores' try/catch turns it
+ * into the same memory-fallback path.
+ */
+export function createSlotLocalStorageBackend(): StorageBackend {
+  return {
+    getItem(key: string): string | null {
+      return localStorage.getItem(key);
+    },
+    setItem(key: string, value: string): void {
+      localStorage.setItem(key, value);
+    },
+    removeItem(key: string): void {
+      localStorage.removeItem(key);
+    },
+  };
+}
+
 const localStorageBackend: StorageBackend = createLocalStorageBackend();
 
 /**

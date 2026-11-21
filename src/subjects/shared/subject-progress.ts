@@ -37,9 +37,8 @@ import {
 } from "../../game/subject-progress-store-key.ts";
 import {
   createBrowserStoragePort,
-  getStorageItem,
+  createLocalStorageBackend,
   notifyStorageChanged,
-  setStorageItem,
   subscribeStorage,
 } from "../../platform/storage/browser-storage.ts";
 import { STORAGE_KEYS } from "../../platform/storage/keys.ts";
@@ -63,23 +62,26 @@ type StorageLike = SubjectProgressStorage;
  * writes only ever append a new id to a subject's list, so
  * stored lists hold no duplicates to clean up.)
  *
- * With a caller-passed storage the read runs on a port over
- * that storage alone; with none it runs on the shared port.
+ * Every read and write runs on a fresh per-call port over the
+ * resolved storage — a port with no subscribers, so its writes
+ * never announce. Announcements are this module's own job, at
+ * exactly the emit points below (notifyStorageChanged on the
+ * shared port): routing these writes through the shared port
+ * announced every change a second time, and announced clears
+ * before their re-read proof.
  */
+function portFor(storage?: StorageLike) {
+  return createBrowserStoragePort({ backend: storage ?? createLocalStorageBackend() });
+}
+
 export function readSubjectProgress(storage?: StorageLike): SubjectProgress {
-  return storage
-    ? createBrowserStoragePort({ backend: storage }).getItem(STORAGE_KEYS.subjectProgress)
-    : getStorageItem(STORAGE_KEYS.subjectProgress);
+  return portFor(storage).getItem(STORAGE_KEYS.subjectProgress);
 }
 
 function writeSubjectProgress(progress: SubjectProgress, storage?: StorageLike): void {
   // The port never throws when storage is blocked or absent;
   // the game must never break on progress data.
-  if (storage) {
-    createBrowserStoragePort({ backend: storage }).setItem(STORAGE_KEYS.subjectProgress, progress);
-  } else {
-    setStorageItem(STORAGE_KEYS.subjectProgress, progress);
-  }
+  portFor(storage).setItem(STORAGE_KEYS.subjectProgress, progress);
 }
 
 // ---------------------------------------------------------------------------

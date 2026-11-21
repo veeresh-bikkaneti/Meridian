@@ -23,10 +23,14 @@ const subjectProgress: StorageKeyDef<Record<string, string[]>> = {
 };
 
 /**
- * The kid's read-aloud answer. The schema is the answer itself —
- * exactly the values the preference store accepts — and the
- * fallback is that store's own default: "unset", the answer not
- * yet given.
+ * The kid's read-aloud answer. This entry pins the key string
+ * and describes the parsed answer value — exactly the values
+ * the preference store accepts, with that store's own default
+ * ("unset", the answer not yet given) as the fallback. The
+ * stored record's shape and validation stay with the domain
+ * reader in read-aloud-pref.ts: on disk the answer sits inside
+ * a versioned record, so this def is not used to read the
+ * stored record.
  */
 const readAloudPref: StorageKeyDef<ReadAloudPrefOrUnset> = {
   key: "meridian.readAloudPref.v1",

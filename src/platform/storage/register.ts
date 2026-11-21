@@ -14,7 +14,7 @@
  */
 
 import { setAgeProfileStorageBackend } from "../../game/age-profile/storage-backend.ts";
-import { createLocalStorageBackend } from "./browser-storage.ts";
+import { createSlotLocalStorageBackend } from "./browser-storage.ts";
 
 let registered = false;
 
@@ -22,5 +22,5 @@ let registered = false;
 export function registerBrowserStorage(): void {
   if (registered) return;
   registered = true;
-  setAgeProfileStorageBackend(createLocalStorageBackend());
+  setAgeProfileStorageBackend(createSlotLocalStorageBackend());
 }

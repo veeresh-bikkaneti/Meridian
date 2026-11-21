@@ -127,9 +127,39 @@ for invalidation semantics.
     ×8, read-aloud-pref ×4). subject-progress-store-key.ts keeps
     its 1.
 - Verified locally: the port contract + registry tests, the
-  migrated stores' tests and subject-progress.test.ts (unchanged)
-  all pass; layer-baseline test and lint:arch pass; tsc clean.
-- Gates pending: the full §9 set (npm test, build:pages,
-  Playwright for age band + subject progress, provenance,
-  entry-size) runs at integration.
+  migrated stores' tests and subject-progress.test.ts all pass;
+  layer-baseline test and lint:arch pass; tsc clean.
+- Gates run on the integrated head: npm test PASS (1,250 +
+  3,080, 0 fail), test:worker 235/235, build:pages PASS,
+  lint-cards/nav/subjects/arch PASS, provenance PASS on the
+  commit range, entry-size 319,517 → 321,237 B gzip (limit
+  323,865), Playwright --workers=1 PASS 8/8 (age-profile-gate,
+  band-switch-in-session, subjects-picker). One suite needed the
+  slot re-wire after the migration: run-config-snapshot.test.ts
+  registers its seeded stub as the backend (assertions
+  unchanged).
+- Panel: first vote BLOCK, two real findings, both fixed and
+  re-verified — (1) the registered backend swallowed storage
+  errors, which would have starved the stores' memory fallback;
+  the slot now gets an error-propagating backend
+  (createSlotLocalStorageBackend) with composition tests through
+  registerBrowserStorage; (2) subject-progress announced twice
+  per record and before its clear proof; its reads/writes now
+  use a subscriber-less per-call port so announcements happen
+  only at the recorded emit points, pinned by emit-count tests.
+  Also: the registry's read-aloud entry now states plainly that
+  the def describes the parsed answer, not the stored record.
 - Open questions: none for the owner at this point.
+
+## Graph
+
+For the integrator to fold in at merge (branches never edit
+graph.json):
+
+- Node: `branch:refactor/phase-1-storage-port` (this branch).
+- Node: the storage port, path `src/platform/storage/`, summary:
+  typed Web Storage port (contract, browser impl, fake, key
+  registry) in the audio port's shape.
+- Edges: the port node `depends-on` `src/game/age-profile/`
+  (backend slot) and is depended on by
+  `src/subjects/shared/subject-progress.ts`.
