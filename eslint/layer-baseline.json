@@ -218,7 +218,6 @@
     "src/components/grandpa-coffee-run.tsx|sessionStorage reference",
     "src/components/map-error-boundary.tsx|window.sessionStorage access",
     "src/components/map-error-boundary.tsx|window.sessionStorage access",
-    "src/components/pack-shelf-data.ts|fetch()",
     "src/components/pack-shelf-data.ts|localStorage reference",
     "src/components/pack-shelf-data.ts|localStorage reference",
     "src/components/storyteller-home.tsx|fetch()",
