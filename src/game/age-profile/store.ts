@@ -28,6 +28,7 @@
 import type { AgeBandId, AgeGroup, AgeProfile, ProfileStatus } from "./types.ts";
 import { FULL_ACCESS_BAND, AGE_BAND_IDS } from "./bands.ts";
 import { emitAgeProfileChanged } from "./events.ts";
+import { resolveAgeProfileStorage } from "./storage-backend.ts";
 
 export const PROFILE_STORAGE_KEY = "meridian.ageProfile.v1";
 export const PROFILE_SCHEMA_VERSION = 2;
@@ -122,8 +123,9 @@ function storedBlobNeedsRewrite(parsed: unknown, profile: AgeProfile): boolean {
 
 function readStorage(): AgeProfile | null {
   try {
-    if (typeof localStorage === "undefined") return null;
-    const raw = localStorage.getItem(PROFILE_STORAGE_KEY);
+    const s = resolveAgeProfileStorage();
+    if (!s) return null;
+    const raw = s.getItem(PROFILE_STORAGE_KEY);
     if (raw === null) return null;
     const parsed = JSON.parse(raw) as unknown;
     const profile = validateProfile(parsed);
@@ -140,8 +142,9 @@ function readStorage(): AgeProfile | null {
 
 function writeStorage(profile: AgeProfile): boolean {
   try {
-    if (typeof localStorage === "undefined") throw new Error("no localStorage");
-    localStorage.setItem(PROFILE_STORAGE_KEY, JSON.stringify(profile));
+    const s = resolveAgeProfileStorage();
+    if (!s) throw new Error("no localStorage");
+    s.setItem(PROFILE_STORAGE_KEY, JSON.stringify(profile));
     memoryFallback = null;
     return true;
   } catch {
@@ -253,7 +256,8 @@ export function resetProfile(): AgeProfile {
   const previousBand = current.band;
   const profile = unsetProfile();
   try {
-    if (typeof localStorage !== "undefined") localStorage.removeItem(PROFILE_STORAGE_KEY);
+    const s = resolveAgeProfileStorage();
+    if (s) s.removeItem(PROFILE_STORAGE_KEY);
   } catch {
     // Removal failure is non-fatal: the in-memory profile is unset and
     // the stale blob fails validation on the next load anyway... no —
@@ -282,7 +286,8 @@ export function resetProfile(): AgeProfile {
  * clearSession's / clearDiscardedShadowFrom's injected-storage
  * discipline — with a storage argument it touches ONLY that
  * storage (never the globals), and with none it resolves the
- * global localStorage itself. Removal follows resetProfile()'s
+ * registered backend (storage-backend.ts). Removal follows
+ * resetProfile()'s
  * precedent: where removal fails, overwrite with the unset
  * profile so a stale valid blob cannot resurrect the band.
  * Returns true only when a re-read proves the stored profile is
@@ -295,14 +300,7 @@ export function resetProfile(): AgeProfile {
 export function clearAgeProfileForReset(
   storage?: Pick<Storage, "getItem" | "setItem" | "removeItem">,
 ): boolean {
-  let s = storage;
-  if (!s) {
-    try {
-      s = typeof localStorage === "undefined" ? undefined : localStorage;
-    } catch {
-      s = undefined;
-    }
-  }
+  const s = resolveAgeProfileStorage(storage);
   if (!s) return true; // No storage = nothing was ever persisted.
   let previousBand: AgeBandId | null = null;
   try {

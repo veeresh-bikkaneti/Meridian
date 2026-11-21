@@ -209,6 +209,60 @@ describe("subject-progress change events", () => {
   });
 });
 
+describe("subject-progress change events on the shared path (no storage argument)", () => {
+  // The app's own path: no caller-passed storage, so reads and
+  // writes resolve the browser backend — stubbed here with a
+  // FakeStorage on the global. The store's writes run on a
+  // subscriber-less per-call port, so the ONLY announcement a
+  // listener can hear is the store's own notify at its emit
+  // points: exactly once per proven change, never twice, and
+  // never for a clear the re-read has not proven.
+  function stubLocalStorage(): FakeStorage {
+    const s = new FakeStorage();
+    (globalThis as Record<string, unknown>).localStorage = s;
+    return s;
+  }
+  function unstubLocalStorage(): void {
+    delete (globalThis as Record<string, unknown>).localStorage;
+  }
+
+  it("recordUnitComplete announces exactly once", () => {
+    stubLocalStorage();
+    try {
+      let events = 0;
+      const off = onSubjectProgressChanged(() => {
+        events += 1;
+      });
+      recordUnitComplete("math", "fair-share");
+      off();
+      assert.equal(events, 1, "the write itself stays silent; the store's notify is the one announcement");
+      assert.deepEqual(readSubjectProgress(), { math: ["fair-share"] });
+    } finally {
+      unstubLocalStorage();
+    }
+  });
+
+  it("clearSubjectProgress announces exactly once for a recorded subject, and not at all for an absent one", () => {
+    stubLocalStorage();
+    try {
+      recordUnitComplete("math", "fair-share");
+      let events = 0;
+      const off = onSubjectProgressChanged(() => {
+        events += 1;
+      });
+      assert.equal(clearSubjectProgress("math"), true);
+      assert.equal(events, 1, "the proven clear announces exactly once, after the re-read");
+      assert.equal(clearSubjectProgress("math"), true);
+      assert.equal(clearSubjectProgress("chemistry"), true);
+      off();
+      assert.equal(events, 1, "clearing an absent subject announces nothing");
+      assert.deepEqual(readSubjectProgress(), {});
+    } finally {
+      unstubLocalStorage();
+    }
+  });
+});
+
 describe("subject-progress wiring (source pins)", () => {
   const subjectCase = read("./SubjectCase.tsx");
   const picker = read("./SubjectPicker.tsx");
