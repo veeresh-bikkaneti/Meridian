@@ -126,9 +126,7 @@ import {
   UnitFitScene,
 } from "./clue-scene-kinds-d";
 import { FractionFillScene, FractionSliceScene } from "./clue-scene-kinds-e";
-import { claimVoice, type VoiceClaim } from "../../game/audio/voice-channel";
-import { isSoundEnabled } from "../../game/audio/sfx";
-import { soundAudible } from "../../game/audio/play-guards";
+import { useVoice } from "../../platform/audio/use-voice";
 import { getReadAloudPref } from "../../game/age-profile/read-aloud-pref";
 
 export type { ClueScenePhase };
@@ -713,13 +711,12 @@ export function ClueScene({
   const [offScreen, setOffScreen] = useState(false);
   const [tabHidden, setTabHidden] = useState(false);
   const rootRef = useRef<HTMLDivElement | null>(null);
+  const voice = useVoice();
 
   // ── Act 3: the narrated summary performance ──────────────────
   const [summaryState, setSummaryState] = useState<SummaryState>("idle");
   const [captionStep, setCaptionStep] = useState(-1);
   const [paced, setPaced] = useState(false);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
-  const claimRef = useRef<VoiceClaim | null>(null);
   const timersRef = useRef<number[]>([]);
   const perfRef = useRef(0);
 
@@ -730,13 +727,7 @@ export function ClueScene({
   const clearPerformance = () => {
     for (const t of timersRef.current) window.clearTimeout(t);
     timersRef.current = [];
-    if (audioRef.current) {
-      audioRef.current.pause();
-      audioRef.current.removeAttribute("src");
-      audioRef.current = null;
-    }
-    claimRef.current?.release();
-    claimRef.current = null;
+    voice.stop();
   };
 
   const stopPerformance = (finished: boolean) => {
@@ -775,50 +766,38 @@ export function ClueScene({
     setPaced(!reduced);
     setRunKey((k) => k + 1);
     setSummaryState("playing");
-    let audioStarted = false;
-    if (isSoundEnabled() && soundAudible()) {
-      // One voice at a time: the summary claims the shared
-      // channel like every other speaker. A tap takes the
-      // channel; the automatic start waits its turn — if another
-      // voice holds it, the performance runs on captions alone
-      // and the Hear button can replay it with the voice later.
-      const claim = claimVoice(
-        "clue-summary",
-        () => {
-          if (perfRef.current === id) stopRef.current(false);
-        },
-        { userInitiated },
-      );
-      if (claim) {
-        claimRef.current = claim;
-        const audio = new Audio(summaryClipUrl(sum.clip));
-        audioRef.current = audio;
-        let fellBack = false;
-        const fallBackToCaptions = () => {
-          if (fellBack || perfRef.current !== id) return;
-          fellBack = true;
-          claimRef.current?.release();
-          claimRef.current = null;
-          if (audioRef.current === audio) audioRef.current = null;
-          runCaptionTimers(id, sum);
-        };
-        audio.addEventListener("timeupdate", () => {
-          if (perfRef.current !== id) return;
-          const t = audio.currentTime;
-          let step = -1;
-          for (let i = 0; i < sum.lines.length; i++) {
-            if (t >= (sum.lines[i]?.at ?? 0)) step = i;
-          }
-          setCaptionStep((prev) => (prev === step ? prev : step));
-        });
-        audio.addEventListener("ended", () => {
-          if (perfRef.current === id) stopRef.current(true);
-        });
-        audio.addEventListener("error", fallBackToCaptions);
-        audioStarted = true;
-        void audio.play().catch(fallBackToCaptions);
-      }
-    }
+    // The summary plays through the platform audio port, which
+    // claims the shared voice channel like every other speaker:
+    // a tap takes the channel, the automatic start waits its
+    // turn. If the port starts nothing (another voice holds the
+    // channel, the sound is off, or the tab is hidden), the
+    // performance runs on captions alone and the Hear button
+    // can replay it with the voice later.
+    let fellBack = false;
+    const fallBackToCaptions = () => {
+      if (fellBack || perfRef.current !== id) return;
+      fellBack = true;
+      runCaptionTimers(id, sum);
+    };
+    const audioStarted = voice.play(summaryClipUrl(sum.clip), {
+      owner: "clue-summary",
+      userInitiated,
+      onInterrupted: () => {
+        if (perfRef.current === id) stopRef.current(false);
+      },
+      onEnded: () => {
+        if (perfRef.current === id) stopRef.current(true);
+      },
+      onError: fallBackToCaptions,
+      onTimeUpdate: (t) => {
+        if (perfRef.current !== id) return;
+        let step = -1;
+        for (let i = 0; i < sum.lines.length; i++) {
+          if (t >= (sum.lines[i]?.at ?? 0)) step = i;
+        }
+        setCaptionStep((prev) => (prev === step ? prev : step));
+      },
+    });
     if (!audioStarted) runCaptionTimers(id, sum);
     // The performance ends with its last line even if the clip's
     // own end event is ever missed.
