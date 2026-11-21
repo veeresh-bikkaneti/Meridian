@@ -31,8 +31,8 @@ test.beforeEach(async ({ context, page }) => {
 test("GET INVOLVED sits inside the 390px viewport with no nav strip scroll", async ({
   page,
 }) => {
-  const nav = page.locator(".hv5-nav nav");
-  const items = page.locator(".hv5-nav nav button, .hv5-nav nav a");
+  const nav = page.locator("header.site-header nav");
+  const items = page.locator("header.site-header nav button, header.site-header nav a");
   await expect(items).toHaveCount(6);
   // getBoundingClientRect via evaluate: locator.boundingBox() flaked to
   // null on the nav buttons once (transient, during the header's

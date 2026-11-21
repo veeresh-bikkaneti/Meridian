@@ -469,7 +469,7 @@ test("Begin exploring starts a Globe round", async ({ page }) => {
  * (rollback note for the report).
  *
  * Shared-shell adoption (fix/ui-shared-shell): the header is now
- * header.site-header, not header.hv5-nav, and below 1024px its nav
+ * header.site-header, not the pre-adoption home header, and below 1024px its nav
  * collapses behind a Menu button — so this reads the VISIBLE header
  * controls only. The old selector matched nothing after adoption and
  * the wait timed out on an empty read.
@@ -562,7 +562,7 @@ test("home UX polish across 6 viewports: unified map-mode pill, whole-card journ
     await waitForNavLayoutSettled(page);
 
     // Header nav items >=44px tall and 0 overlap. The adopted shared
-    // shell header is header.site-header (was header.hv5-nav before the
+    // shell header is header.site-header (was the pre-adoption home header before the
     // fix/ui-shared-shell adoption); only visible controls are measured
     // — below 1024px the nav collapses behind the Menu button.
     const navItems = page.locator("header.site-header button:visible, header.site-header a:visible");

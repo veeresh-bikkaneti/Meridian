@@ -913,7 +913,7 @@ test("13-E: after a recovery reload the explanation notice shows exactly once", 
     for (const [width, height] of viewports) {
       await page.setViewportSize({ width, height });
       const nBox = (await notice.boundingBox())!;
-      const hBox = (await page.locator("header.hv5-nav").boundingBox())!;
+      const hBox = (await page.locator("header.site-header").boundingBox())!;
       const bBox = (await page.locator(".hv5-bento").boundingBox())!;
       const cBox = (await notice.getByRole("button", { name: "Close" }).boundingBox())!;
       expect(nBox.x).toBeGreaterThanOrEqual(0);
@@ -922,7 +922,7 @@ test("13-E: after a recovery reload the explanation notice shows exactly once", 
       expect(nBox.y + nBox.height).toBeLessThanOrEqual(bBox.y + 1);
       expect(cBox.width).toBeGreaterThanOrEqual(44);
       expect(cBox.height).toBeGreaterThanOrEqual(44);
-      const headerButtons = page.locator("header.hv5-nav button, header.hv5-nav a");
+      const headerButtons = page.locator("header.site-header button:visible, header.site-header a:visible");
       const count = await headerButtons.count();
       for (let i = 0; i < count; i += 1) {
         const hb = (await headerButtons.nth(i).boundingBox())!;
