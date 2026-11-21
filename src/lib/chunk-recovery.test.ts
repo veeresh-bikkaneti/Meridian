@@ -1745,6 +1745,20 @@ test("15-U: the module source pins both scoped sentences verbatim and bans the o
   assert.equal(src.includes("true exactly once"), false);
 });
 
+test("16-U: one failure reloads once when the boundary and the deferred handler both run", () => {
+  const f = fakeHost(T0);
+  installChunkLoadRecovery(f.host);
+  fireVite(f);
+  // The boundary's probe can resolve inside the 1_500 ms window and
+  // reload before the deferred decision. The stamp is the one latch:
+  // the later decision must not reload again.
+  assert.equal(chunkRecovery.attemptGuardedChunkReload({ ...f.host, buildId: "build-a" }), true);
+  assert.equal(f.state.reloads, 1);
+  f.advanceTimersBy(1_500);
+  assert.equal(f.state.reloads, 1, "two reload calls for one failure");
+  assert.equal(f.calls.setByKey[CHUNK_RELOAD_KEY] ?? 0, 1);
+});
+
 test("16-U: attemptGuardedChunkReload reloads once on a fresh episode and writes stamp, notice and marker together", () => {
   const f = fakeHost(T0);
   const attemptHost = { ...f.host, buildId: "build-a" };
