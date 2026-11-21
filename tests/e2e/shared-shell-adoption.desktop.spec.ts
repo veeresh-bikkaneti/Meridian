@@ -23,7 +23,7 @@ import { serveBuiltArtifact } from "./helpers";
  *   share one centre line, the header stays ≤88px tall (44px control
  *   + the row's 22/18 padding), and nothing overflows horizontally.
  *
- * On main both screens fail: Home's header is the bespoke .hv5-nav
+ * On main both screens fail: Home's header is the bespoke pre-adoption header
  * (brand named "Meridian home", no home-button testid in a shared
  * header) and GeoDetective's bar is a hand-rolled div.
  *
