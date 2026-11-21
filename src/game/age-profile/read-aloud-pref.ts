@@ -24,6 +24,8 @@
  * - "unset"     → today's band default: 5-7 auto, 8-10 / 11-13 tap-to-play.
  */
 
+import { resolveAgeProfileStorage } from "./storage-backend.ts";
+
 export const READ_ALOUD_PREF_KEY = "meridian.readAloudPref.v1";
 const PREF_SCHEMA_VERSION = 1;
 
@@ -42,9 +44,10 @@ interface StoredPref {
 let memoryFallback: StoredPref | null = null;
 
 function readStorage(): StoredPref | null {
-  if (typeof localStorage === "undefined") return null;
+  const s = resolveAgeProfileStorage();
+  if (!s) return null;
   try {
-    const raw = localStorage.getItem(READ_ALOUD_PREF_KEY);
+    const raw = s.getItem(READ_ALOUD_PREF_KEY);
     if (!raw) return null;
     const parsed = JSON.parse(raw) as unknown;
     // Migrate a legacy bare-string value into the v1 record.
@@ -76,8 +79,9 @@ function validatePref(input: unknown): StoredPref | null {
 
 function writeStorage(pref: StoredPref): void {
   try {
-    if (typeof localStorage === "undefined") throw new Error("no localStorage");
-    localStorage.setItem(READ_ALOUD_PREF_KEY, JSON.stringify(pref));
+    const s = resolveAgeProfileStorage();
+    if (!s) throw new Error("no localStorage");
+    s.setItem(READ_ALOUD_PREF_KEY, JSON.stringify(pref));
     memoryFallback = null;
   } catch {
     memoryFallback = pref;

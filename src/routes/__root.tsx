@@ -1,6 +1,7 @@
 import { BRAND } from "@/game/brand";
 import { createRootRoute, HeadContent, Outlet, Scripts } from "@tanstack/react-router";
 import { PreviewHostBridge } from "@/components/preview-host-bridge";
+import { registerBrowserStorage } from "@/platform/storage/register";
 import { registerServiceWorker, unregisterServiceWorker, type PwaUpdateHandle } from "@/lib/pwa";
 import { isEnabled, loadFlags } from "@/lib/flags";
 import { SHARE_DESCRIPTION, SHARE_TITLE, shareMetaTags, shareOrigin } from "@/lib/og/share-meta";
@@ -16,6 +17,13 @@ const APP_NAME = BRAND.name;
 // rejects. The effect awaits the shared promise before reading the flag,
 // so a remote kill decision wins the boot-time race deterministically.
 void loadFlags();
+
+// Storage wiring: the age-profile stores (domain) read their
+// storage through a slot that only the shell may fill — register
+// the browser backend once, here at startup. The backend resolves
+// the browser's storage lazily per call, so this is inert on the
+// server and in any environment where storage is blocked.
+registerBrowserStorage();
 
 /**
  * Non-blocking "update available" toast. Appears only after the player has

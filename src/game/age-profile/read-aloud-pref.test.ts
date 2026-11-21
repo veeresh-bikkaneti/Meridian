@@ -3,7 +3,7 @@ import test from "node:test";
 
 // --- Minimal localStorage shim (node has none), mirroring store.test.ts. ---
 const backing = new Map<string, string>();
-(globalThis as Record<string, unknown>).localStorage = {
+const storageStub = {
   getItem: (k: string) => (backing.has(k) ? backing.get(k)! : null),
   setItem: (k: string, v: string) => {
     backing.set(k, v);
@@ -13,6 +13,10 @@ const backing = new Map<string, string>();
   },
   clear: () => backing.clear(),
 };
+(globalThis as Record<string, unknown>).localStorage = storageStub;
+// The store reads storage through the registered backend now:
+// the same stub, registered into the domain slot.
+setAgeProfileStorageBackend(storageStub);
 
 import {
   READ_ALOUD_PREF_KEY,
@@ -22,6 +26,7 @@ import {
   shouldAutoPlayReadAloud,
   __resetReadAloudPrefMemory,
 } from "./read-aloud-pref.ts";
+import { setAgeProfileStorageBackend } from "./storage-backend.ts";
 
 function clearStorage() {
   backing.clear();
