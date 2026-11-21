@@ -28,6 +28,7 @@ const gkCase = read(join(here, "..", "general-knowledge", "GeneralKnowledgeCase.
 const physicsCase = read(join(here, "..", "physics", "PhysicsCase.tsx"));
 const chemistryCase = read(join(here, "..", "chemistry", "ChemistryCase.tsx"));
 const socialStudiesCase = read(join(here, "..", "social-studies", "SocialStudiesCase.tsx"));
+const audioPort = read(join(here, "..", "..", "platform", "audio", "browser-voice.ts"));
 const styles = read(join(here, "..", "..", "styles.css"));
 
 describe("clue scene wiring", () => {
@@ -139,10 +140,11 @@ describe("clue scene summary (act 3)", () => {
   });
 
   it("the narration plays only through the shared voice channel", () => {
-    assert.ok(scene.includes('claimVoice('), "the summary claims the voice channel");
+    assert.ok(scene.includes("useVoice("), "the summary plays through the platform audio port");
     assert.ok(scene.includes('"clue-summary"'), "under its own owner name");
     assert.ok(scene.includes("audio/subjects/"), "clips ship under public/audio/subjects/");
-    assert.ok(scene.includes("isSoundEnabled()"), "the sound toggle gates the voice");
+    assert.ok(audioPort.includes("claimVoice("), "the port claims the voice channel");
+    assert.ok(audioPort.includes("?? isSoundEnabled"), "the sound toggle gates the voice in the port");
   });
 
   it("autoplay respects the kid's read-aloud choice", () => {

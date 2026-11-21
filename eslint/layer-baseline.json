@@ -333,7 +333,6 @@
     "src/routes/board.tsx|window.localStorage access",
     "src/routes/board.tsx|window.localStorage access",
     "src/routes/board.tsx|window.localStorage access",
-    "src/subjects/shared/ClueScene.tsx|new Audio()",
     "src/subjects/shared/SubjectCase.tsx|new Audio()"
   ]
 }
