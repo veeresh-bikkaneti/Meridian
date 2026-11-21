@@ -1,5 +1,5 @@
 /**
- * Landmark globe — the twelve landmark models, the orbit-ring plane, the
+ * Landmark globe — the thirty-seven landmark models, the orbit-ring plane, the
  * brass halo and the contact-shadow texture.
  *
  * Ported from the approved mock (docs/mockups/landmark-globe.html): each
@@ -127,7 +127,7 @@ function tube(
   target.add(new THREE.TubeGeometry(curve, seg, radius, 5), material);
 }
 
-/* ----- the twelve builders (unit height ~1, base at y=0) ----- */
+/* ----- the thirty-seven builders (unit height ~1, base at y=0) ----- */
 
 type Builder = (mat: MaterialFactory, key: PaletteKey) => THREE.Group;
 
@@ -454,6 +454,568 @@ const BUILD: Record<string, Builder> = {
         b.add(new THREE.TorusGeometry(0.3, 0.006, 4, 14, Math.PI), sm, px, py, pz, 0, Math.PI / 2, -0.35 + (f - 1) * 0.3, 0.55 * s * f, 1.15 * s * f, 0.9 * s);
       }
     });
+    return b.build();
+  },
+
+  tajmahal(mat, key) {
+    const b = bag();
+    const m = mat(key);
+    const brass = mat("brass");
+    const ink = mat("ink");
+    b.add(bx(0.62, 0.06, 0.62), m, 0, 0.03);
+    b.add(bx(0.44, 0.34, 0.44), m, 0, 0.23);
+    // Dark arch insets on all four faces (the colosseum arch-shape trick).
+    const aw = 0.11;
+    const ah = 0.22;
+    const ar = aw / 2;
+    const archShape = new THREE.Shape();
+    archShape.moveTo(-ar, -ah / 2);
+    archShape.lineTo(-ar, ah / 2 - ar);
+    archShape.absarc(0, ah / 2 - ar, ar, Math.PI, 0, true);
+    archShape.lineTo(ar, -ah / 2);
+    archShape.closePath();
+    const archGeo = new THREE.ShapeGeometry(archShape, 6);
+    for (let i = 0; i < 4; i++) {
+      const a = (i * Math.PI) / 2;
+      b.add(archGeo.clone(), ink, Math.sin(a) * 0.223, 0.23, Math.cos(a) * 0.223, 0, a, 0);
+    }
+    // Central onion dome on its drum, with a brass finial.
+    b.add(cyl(0.13, 0.15, 0.07, 12), m, 0, 0.435);
+    b.add(sph(0.15, 14, 10), m, 0, 0.47, 0, 0, 0, 0, 1, 1.35, 1);
+    b.add(cyl(0.004, 0.01, 0.09, 6), brass, 0, 0.72);
+    b.add(sph(0.013, 8, 6), brass, 0, 0.775);
+    // Four chhatri domes on the main block's corners.
+    for (const sx of [-1, 1])
+      for (const sz of [-1, 1]) {
+        b.add(cyl(0.028, 0.028, 0.05, 8), m, sx * 0.16, 0.425, sz * 0.16);
+        b.add(sph(0.036, 10, 7), m, sx * 0.16, 0.455, sz * 0.16, 0, 0, 0, 1, 1.15, 1);
+      }
+    // Four corner minarets: slim shafts, a balcony ring, a dome cap.
+    for (const sx of [-1, 1])
+      for (const sz of [-1, 1]) {
+        b.add(cyl(0.019, 0.026, 0.62, 8), m, sx * 0.26, 0.37, sz * 0.26);
+        b.add(cyl(0.033, 0.033, 0.02, 8), m, sx * 0.26, 0.56, sz * 0.26);
+        b.add(sph(0.03, 10, 7), m, sx * 0.26, 0.685, sz * 0.26, 0, 0, 0, 1, 1.2, 1);
+        b.add(cyl(0.003, 0.007, 0.05, 5), brass, sx * 0.26, 0.735, sz * 0.26);
+      }
+    return b.build();
+  },
+
+  christ(mat, key) {
+    const b = bag();
+    const m = mat(key);
+    b.add(bx(0.34, 0.05, 0.34), m, 0, 0.025);
+    b.add(cyl(0.09, 0.115, 0.12, 8), m, 0, 0.11);
+    // Tapered robe body, head, and two outstretched arms angled slightly down.
+    b.add(cyl(0.055, 0.105, 0.52, 10), m, 0, 0.43);
+    b.add(bx(0.36, 0.05, 0.055), m, 0.2, 0.615, 0, 0, 0, -0.1);
+    b.add(bx(0.36, 0.05, 0.055), m, -0.2, 0.615, 0, 0, 0, 0.1);
+    b.add(sph(0.05, 10, 8), m, 0, 0.755);
+    return b.build();
+  },
+
+  ramasetu(mat, key) {
+    const b = bag();
+    const sand = mat(key);
+    const sage = mat("sage");
+    // A chain of flattened shoals along local X on a gentle S-curve,
+    // sunk to the waterline. Nothing stands on them: they are the
+    // limestone shallows of Adam's Bridge, not a structure.
+    for (let i = 0; i < 9; i++) {
+      const t = i / 8;
+      const x = -0.5 + t;
+      const z = Math.sin(t * Math.PI * 2) * 0.045;
+      const r = 0.07 + 0.03 * Math.sin(t * Math.PI);
+      b.add(sph(r, 8, 6), i === 2 || i === 6 ? sage : sand, x, -0.008, z, 0, 0, 0, 1, 0.22, 1);
+    }
+    return b.build();
+  },
+
+  /* ----- wave-1 additions (owner's full major-landmark canon) ----- */
+
+  stbasil(mat, key) {
+    const b = bag();
+    const m = mat(key);
+    const card = mat("card");
+    const brass = mat("brass");
+    b.add(bx(0.52, 0.3, 0.52), m, 0, 0.15);
+    b.add(bx(0.58, 0.05, 0.58), card, 0, 0.325);
+    // Central drum and the big gilded onion dome.
+    b.add(cyl(0.085, 0.1, 0.16, 10), m, 0, 0.43);
+    b.add(sph(0.115, 12, 9), brass, 0, 0.52, 0, 0, 0, 0, 1, 1.3, 1);
+    b.add(cyl(0.003, 0.008, 0.09, 5), brass, 0, 0.72);
+    // Four corner towers, each with its own coloured onion dome.
+    const domeKeys = ["sage", "steel", "brass", "clay"] as const;
+    let di = 0;
+    for (const sx of [-1, 1])
+      for (const sz of [-1, 1]) {
+        b.add(cyl(0.052, 0.062, 0.3, 8), card, sx * 0.17, 0.45, sz * 0.17);
+        b.add(sph(0.068, 10, 8), mat(domeKeys[di]), sx * 0.17, 0.62, sz * 0.17, 0, 0, 0, 1, 1.3, 1);
+        b.add(cyl(0.002, 0.006, 0.06, 5), brass, sx * 0.17, 0.755, sz * 0.17);
+        di++;
+      }
+    return b.build();
+  },
+
+  pisa(mat, key) {
+    const b = bag();
+    const m = mat(key);
+    const ink = mat("ink");
+    // The lean: each tier's centre rides ~4° off vertical.
+    const lean = Math.tan(0.07);
+    b.add(cyl(0.105, 0.115, 0.05, 12), m, 0, 0.025);
+    for (let i = 0; i < 6; i++) {
+      const y = 0.08 + i * 0.105;
+      const x = lean * (y + 0.05);
+      b.add(cyl(0.088, 0.092, 0.1, 10), m, x, y + 0.05, 0);
+      b.add(cyl(0.099, 0.099, 0.018, 12, true), m, x, y + 0.006, 0);
+      for (let k = 0; k < 6; k++) {
+        const a = (k * Math.PI) / 3;
+        b.add(bx(0.012, 0.07, 0.012), ink, x + Math.sin(a) * 0.094, y + 0.05, Math.cos(a) * 0.094);
+      }
+    }
+    const ty = 0.08 + 6 * 0.105;
+    const tx = lean * (ty + 0.05);
+    b.add(cyl(0.07, 0.085, 0.09, 10), m, tx, ty + 0.045, 0);
+    b.add(cone(0.075, 0.05, 10), m, tx, ty + 0.115, 0);
+    return b.build();
+  },
+
+  acropolis(mat, key) {
+    const b = bag();
+    const m = mat(key);
+    const rock = mat("sandstone");
+    // The rocky plateau, then the Parthenon on its stylobate.
+    b.add(bx(0.66, 0.16, 0.4), rock, 0, 0.08);
+    b.add(bx(0.56, 0.06, 0.32), rock, 0, 0.19);
+    b.add(bx(0.42, 0.03, 0.22), m, 0, 0.235);
+    for (let i = 0; i < 8; i++) {
+      const x = -0.185 + i * (0.37 / 7);
+      b.add(cyl(0.011, 0.013, 0.15, 6), m, x, 0.325, 0.095);
+      b.add(cyl(0.011, 0.013, 0.15, 6), m, x, 0.325, -0.095);
+    }
+    for (const sx of [-1, 1])
+      for (const z of [-0.0475, 0, 0.0475])
+        b.add(cyl(0.011, 0.013, 0.15, 6), m, sx * 0.185, 0.325, z);
+    b.add(bx(0.44, 0.03, 0.24), m, 0, 0.415);
+    b.add(cone(0.19, 0.08, 4), m, 0, 0.47, 0, 0, Math.PI / 4, 0, 1.25, 1, 0.68);
+    return b.build();
+  },
+
+  sagrada(mat, key) {
+    const b = bag();
+    const m = mat(key);
+    const brass = mat("brass");
+    b.add(bx(0.5, 0.14, 0.3), m, 0, 0.07);
+    const tower = (x: number, z: number, h: number, r: number) => {
+      b.add(cyl(r * 0.8, r, h, 8), m, x, h / 2 + 0.12, z);
+      b.add(cone(r * 0.82, h * 0.28, 8), m, x, h + 0.12 + h * 0.14, z);
+      b.add(sph(0.016, 8, 6), brass, x, h + 0.12 + h * 0.28 + 0.02, z);
+    };
+    for (const sx of [-1, 1])
+      for (const sz of [-1, 1]) tower(sx * 0.17, sz * 0.09, 0.52, 0.05);
+    for (const sx of [-1, 1]) {
+      tower(sx * 0.06, 0.09, 0.44, 0.042);
+      tower(sx * 0.06, -0.09, 0.44, 0.042);
+    }
+    tower(0, 0, 0.68, 0.055);
+    return b.build();
+  },
+
+  brandenburg(mat, key) {
+    const b = bag();
+    const m = mat(key);
+    const brass = mat("brass");
+    // The colonnade IS the landmark: six full columns a side, thick
+    // enough to read as columns at the dive finish (the first build's
+    // ten spindly rods vanished and left the roof slab reading alone).
+    // The face is local +Z; the row's spinDeg presents it at the finish.
+    b.add(bx(0.8, 0.04, 0.24), m, 0, 0.02);
+    for (let i = 0; i < 6; i++) {
+      const x = -0.325 + i * 0.13;
+      b.add(cyl(0.021, 0.024, 0.34, 8), m, x, 0.21, 0.075);
+      b.add(cyl(0.021, 0.024, 0.34, 8), m, x, 0.21, -0.075);
+    }
+    b.add(bx(0.82, 0.055, 0.24), m, 0, 0.407);
+    b.add(bx(0.7, 0.04, 0.02), brass, 0, 0.407, 0.125);
+    b.add(bx(0.36, 0.1, 0.2), m, 0, 0.485);
+    // The Quadriga: four brass horses abreast drawing the chariot,
+    // the goddess standing in it with her spear.
+    b.add(bx(0.2, 0.03, 0.1), brass, 0, 0.55);
+    for (const hx of [-0.075, -0.025, 0.025, 0.075])
+      b.add(bx(0.045, 0.09, 0.11), brass, hx, 0.6, 0.05);
+    b.add(bx(0.09, 0.05, 0.06), brass, 0, 0.59, -0.03);
+    b.add(cyl(0.01, 0.016, 0.09, 6), brass, 0, 0.64, -0.03);
+    b.add(cyl(0.004, 0.004, 0.14, 5), brass, 0.03, 0.68, -0.03, 0, 0, 0.3);
+    return b.build();
+  },
+
+  angkor(mat, key) {
+    const b = bag();
+    const m = mat(key);
+    const sage = mat("sage");
+    b.add(bx(0.72, 0.03, 0.72), sage, 0, 0.015);
+    b.add(bx(0.6, 0.05, 0.6), m, 0, 0.04);
+    b.add(bx(0.46, 0.06, 0.46), m, 0, 0.095);
+    b.add(bx(0.32, 0.06, 0.32), m, 0, 0.155);
+    // Five lotus-bud towers in quincunx on the top tier.
+    const lotus = (x: number, z: number, h: number, r: number, y: number) => {
+      b.add(cyl(r, r * 1.25, h * 0.45, 8), m, x, y + h * 0.225, z);
+      b.add(sph(r * 1.05, 10, 8), m, x, y + h * 0.5, z, 0, 0, 0, 1, 1.5, 1);
+      b.add(cone(r * 0.4, h * 0.3, 6), m, x, y + h * 0.88, z);
+    };
+    lotus(0, 0, 0.62, 0.075, 0.185);
+    for (const sx of [-1, 1])
+      for (const sz of [-1, 1]) lotus(sx * 0.11, sz * 0.11, 0.42, 0.055, 0.185);
+    return b.build();
+  },
+
+  forbidden(mat, key) {
+    const b = bag();
+    const wall = mat(key);
+    const roof = mat("brass");
+    const card = mat("card");
+    // A walled palace mass, not floating roofs: a solid wall ring on
+    // its terrace, corner towers, the great hall's double eave SEATED
+    // on its walls (every roof bottom touches the wall top below it —
+    // the first build's slabs hovered and read as loose lids), and
+    // the front gate given real mass on the terrace edge.
+    b.add(bx(0.84, 0.06, 0.64), card, 0, 0.03);
+    b.add(bx(0.8, 0.12, 0.6), wall, 0, 0.12);
+    for (const sx of [-1, 1])
+      for (const sz of [-1, 1]) {
+        b.add(bx(0.07, 0.16, 0.07), wall, sx * 0.36, 0.14, sz * 0.26);
+        b.add(cone(0.055, 0.05, 4), roof, sx * 0.36, 0.245, sz * 0.26, 0, Math.PI / 4, 0);
+      }
+    b.add(bx(0.56, 0.14, 0.4), wall, 0, 0.25);
+    b.add(bx(0.66, 0.04, 0.5), roof, 0, 0.34);
+    b.add(bx(0.42, 0.08, 0.3), wall, 0, 0.4);
+    b.add(bx(0.52, 0.035, 0.4), roof, 0, 0.457);
+    b.add(cone(0.27, 0.09, 4), roof, 0, 0.52, 0, 0, Math.PI / 4, 0, 1, 1, 0.74);
+    // The front gate, massed like the hall in miniature.
+    b.add(bx(0.3, 0.12, 0.1), wall, 0, 0.09, 0.36);
+    b.add(bx(0.38, 0.03, 0.16), roof, 0, 0.165, 0.36);
+    b.add(cone(0.2, 0.06, 4), roof, 0, 0.21, 0.36, 0, Math.PI / 4, 0, 1, 1, 0.45);
+    return b.build();
+  },
+
+  fuji(mat, key) {
+    const b = bag();
+    const rock = mat(key);
+    const snow = mat("card");
+    const ink = mat("ink");
+    // One honest cone; the snowcap is a second cone whose slope matches
+    // the mountain's, so it hugs the top (radii verified against the
+    // main cone's taper: 0.235 at the cap base = the cone's own radius
+    // at that height).
+    b.add(cone(0.52, 0.62, 18), rock, 0, 0.31);
+    b.add(cone(0.235, 0.28, 18), snow, 0, 0.48);
+    b.add(cyl(0.05, 0.05, 0.012, 10), ink, 0, 0.615);
+    return b.build();
+  },
+
+  petronas(mat, key) {
+    const b = bag();
+    const m = mat(key);
+    const ink = mat("ink");
+    b.add(bx(0.3, 0.04, 0.22), m, 0, 0.02);
+    for (const sx of [-1, 1]) {
+      b.add(cyl(0.055, 0.075, 0.78, 10), m, sx * 0.11, 0.39, 0);
+      for (const [fy, fr] of [
+        [0.25, 0.0705],
+        [0.45, 0.0653],
+        [0.62, 0.0609],
+      ] as const)
+        b.add(cyl(fr, fr, 0.014, 10), ink, sx * 0.11, fy, 0);
+      b.add(cyl(0.02, 0.05, 0.14, 8), m, sx * 0.11, 0.85, 0);
+      b.add(cyl(0.002, 0.012, 0.12, 6), m, sx * 0.11, 0.98, 0);
+    }
+    b.add(bx(0.17, 0.03, 0.05), m, 0, 0.44);
+    return b.build();
+  },
+
+  hagia(mat, key) {
+    const b = bag();
+    const m = mat(key);
+    const brass = mat("brass");
+    b.add(bx(0.52, 0.22, 0.44), m, 0, 0.11);
+    b.add(sph(0.21, 14, 10), m, 0, 0.22, 0, 0, 0, 0, 1, 0.78, 1);
+    b.add(cyl(0.004, 0.01, 0.07, 6), brass, 0, 0.42);
+    for (const sx of [-1, 1])
+      b.add(sph(0.115, 10, 7), m, sx * 0.2, 0.2, 0, 0, 0, 0, 1, 0.7, 1);
+    for (const sx of [-1, 1])
+      for (const sz of [-1, 1]) {
+        b.add(cyl(0.011, 0.017, 0.52, 6), m, sx * 0.3, 0.26, sz * 0.26);
+        b.add(cyl(0.02, 0.02, 0.015, 6), m, sx * 0.3, 0.4, sz * 0.26);
+        b.add(cone(0.016, 0.09, 6), brass, sx * 0.3, 0.565, sz * 0.26);
+      }
+    return b.build();
+  },
+
+  petra(mat, key) {
+    const b = bag();
+    const m = mat(key);
+    const cliff = mat("sandstone");
+    const ink = mat("ink");
+    // The Treasury as RELIEF in the cliff front: one facade plane set
+    // into the rock, its columns half-embedded so they read as carved,
+    // not built. The first build carried the facade on both faces of
+    // a free slab and the dive finish caught it edge-on; the row's
+    // spinDeg now presents this +Z face at the finish, with the two
+    // canyon cliffs framing it.
+    b.add(bx(0.72, 0.64, 0.26), cliff, 0, 0.32, -0.06);
+    for (const sx of [-1, 1])
+      b.add(bx(0.16, 0.7, 0.34), cliff, sx * 0.4, 0.35, -0.02, 0, 0, sx * -0.05);
+    b.add(bx(0.44, 0.52, 0.05), m, 0, 0.3, 0.075);
+    for (let i = 0; i < 6; i++)
+      b.add(cyl(0.017, 0.019, 0.3, 8), m, -0.175 + i * 0.07, 0.21, 0.105);
+    b.add(bx(0.42, 0.035, 0.03), m, 0, 0.375, 0.105);
+    b.add(cone(0.17, 0.08, 4), m, 0, 0.435, 0.1, 0, Math.PI / 4, 0, 1.3, 1, 0.3);
+    b.add(cyl(0.05, 0.055, 0.1, 8), m, 0, 0.5, 0.1);
+    b.add(cone(0.06, 0.05, 8), m, 0, 0.575, 0.1);
+    for (const sx of [-1, 1]) b.add(bx(0.11, 0.08, 0.03), m, sx * 0.135, 0.5, 0.1);
+    b.add(bx(0.09, 0.2, 0.02), ink, 0, 0.11, 0.105);
+    return b.build();
+  },
+
+  /* ----- wave-2 additions (canon completion) -----
+   * Face-detail models carry their read on local +Z; each row's
+   * spinDeg turns that face to the dive's finishing azimuth (solved
+   * numerically in MOCKUP-STATUS.md, wave 2). Mesh-lean on purpose:
+   * at most three materials per builder. */
+
+  sphinx(mat, key) {
+    const b = bag();
+    const m = mat(key);
+    const ink = mat("ink");
+    // Recumbent lion body along local Z, head at the +Z end, front
+    // paws reaching forward; the nemes headdress flares behind the
+    // face the dive presents.
+    b.add(bx(0.26, 0.2, 0.62), m, 0, 0.13, -0.06);
+    b.add(bx(0.09, 0.07, 0.3), m, 0.08, 0.035, 0.32);
+    b.add(bx(0.09, 0.07, 0.3), m, -0.08, 0.035, 0.32);
+    b.add(bx(0.24, 0.26, 0.08), m, 0, 0.36, 0.13);
+    b.add(bx(0.15, 0.2, 0.12), m, 0, 0.35, 0.22);
+    b.add(bx(0.11, 0.025, 0.02), ink, 0, 0.4, 0.285);
+    b.add(bx(0.03, 0.07, 0.025), ink, 0, 0.33, 0.285);
+    return b.build();
+  },
+
+  tablemountain(mat, key) {
+    const b = bag();
+    const rock = mat(key);
+    const sage = mat("sage");
+    // The flat top is the landmark: a broad sheer-fronted mesa,
+    // green on top, with the lower shoulder of the range behind.
+    b.add(bx(0.78, 0.3, 0.42), rock, 0, 0.15, 0);
+    b.add(bx(0.52, 0.2, 0.3), rock, -0.1, 0.1, -0.32);
+    b.add(bx(0.8, 0.035, 0.44), sage, 0, 0.317, 0);
+    return b.build();
+  },
+
+  victoriafalls(mat, key) {
+    const b = bag();
+    const rock = mat(key);
+    const water = mat("steel");
+    const sage = mat("sage");
+    // Cross-section of the falls, rebuilt so the curtain reads as
+    // WATER: a pale translucent sheet (backed by a fainter steel one
+    // for depth) hanging from the river lip into a real gorge slot
+    // between two cliff masses, foam and a mist plume where it lands.
+    // The first build's curtain was one opaque box among rock boxes —
+    // it read as another strata band.
+    b.add(bx(0.84, 0.34, 0.22), rock, 0, 0.17, -0.17);
+    b.add(bx(0.84, 0.03, 0.1), sage, 0, 0.355, -0.23);
+    b.add(bx(0.7, 0.02, 0.16), water, 0, 0.35, -0.19);
+    b.add(bx(0.7, 0.03, 0.03), water, 0, 0.345, -0.075);
+    // The sheets lean out over the gorge (0.2 rad, not a token 0.06):
+    // at the dive's ~50-degree finish elevation a vertical sheet
+    // foreshortens into one more strata band — the first rework's
+    // capture proved it — so the curtain tips its face up to the
+    // camera and hangs the full height of the slot.
+    b.add(
+      bx(0.66, 0.3, 0.01),
+      mat("steel", { transparent: true, opacity: 0.35 }),
+      0, 0.175, -0.052, 0.2, 0, 0,
+    );
+    b.add(
+      bx(0.66, 0.34, 0.014),
+      mat("card", { transparent: true, opacity: 0.55 }),
+      0, 0.185, -0.038, 0.2, 0, 0,
+    );
+    b.add(bx(0.84, 0.3, 0.2), rock, 0, 0.15, 0.16);
+    b.add(bx(0.66, 0.025, 0.1), mat("card"), 0, 0.013, 0.0);
+    b.add(
+      sph(0.22, 10, 8),
+      mat("card", { transparent: true, opacity: 0.4 }),
+      0, 0.1, 0.0, 0, 0, 0, 1.6, 0.55, 0.6,
+    );
+    return b.build();
+  },
+
+  rushmore(mat, key) {
+    const b = bag();
+    const rock = mat(key);
+    const panel = mat("sandstone");
+    const face = mat("card");
+    // The four presidents as RELIEF in the cliff face, not busts on
+    // a box: a carved panel band stands barely proud of the granite,
+    // each head a shallow cap sunk into the panel (only ~0.02 of it
+    // breaks the surface), with a nose and jaw cut beneath.
+    b.add(bx(0.72, 0.52, 0.3), rock, 0, 0.3, -0.06);
+    b.add(bx(0.8, 0.1, 0.4), rock, 0, 0.05, -0.04);
+    b.add(bx(0.64, 0.3, 0.03), panel, 0, 0.38, 0.095);
+    for (const x of [-0.24, -0.08, 0.08, 0.24]) {
+      b.add(sph(0.072, 10, 8), face, x, 0.4, 0.105, 0, 0, 0, 0.85, 1.05, 0.35);
+      b.add(bx(0.02, 0.045, 0.025), face, x, 0.372, 0.122);
+      b.add(bx(0.055, 0.03, 0.02), face, x, 0.322, 0.115);
+    }
+    return b.build();
+  },
+
+  chichen(mat, key) {
+    const b = bag();
+    const m = mat(key);
+    const card = mat("card");
+    const ink = mat("ink");
+    // El Castillo at the set's ~1-unit convention: the first build
+    // stood 0.375 tall where its neighbours stand 0.6-1.0, so it read
+    // as a toy among them. Nine terraces (the real pyramid has nine)
+    // climb to the summit temple; the great staircase, flanked by its
+    // balustrade rails, hugs the +Z slope at the slope's own angle.
+    const H = 0.058;
+    for (let i = 0; i < 9; i++) {
+      const w = 0.8 - i * 0.05;
+      b.add(bx(w, H, w), m, 0, H / 2 + i * H, 0);
+    }
+    const slope = Math.atan2(4 * 0.05, 9 * H);
+    b.add(bx(0.12, 0.62, 0.025), card, 0, 0.26, 0.3, -slope, 0, 0);
+    for (const sx of [-1, 1])
+      b.add(bx(0.03, 0.62, 0.045), m, sx * 0.078, 0.26, 0.3, -slope, 0, 0);
+    b.add(bx(0.24, 0.11, 0.22), m, 0, 0.577, 0);
+    b.add(bx(0.28, 0.03, 0.26), m, 0, 0.647, 0);
+    b.add(bx(0.07, 0.08, 0.02), ink, 0, 0.565, 0.115);
+    return b.build();
+  },
+
+  moai(mat, key) {
+    const b = bag();
+    const m = mat(key);
+    const clay = mat("clay");
+    // Ahu Tongariki: a long platform and a row of moai — tapered
+    // torsos, elongated heads, brow ridge and long nose on +Z;
+    // two wear their red pukao topknots.
+    b.add(bx(0.78, 0.07, 0.22), m, 0, 0.035, 0);
+    [-0.27, -0.09, 0.09, 0.27].forEach((x, i) => {
+      b.add(cyl(0.042, 0.058, 0.2, 8), m, x, 0.17, 0);
+      b.add(bx(0.085, 0.17, 0.08), m, x, 0.35, 0);
+      b.add(bx(0.09, 0.02, 0.02), m, x, 0.375, 0.045);
+      b.add(bx(0.018, 0.06, 0.025), m, x, 0.325, 0.05);
+      if (i === 1 || i === 2) b.add(cyl(0.035, 0.035, 0.035, 8), clay, x, 0.455, 0);
+    });
+    return b.build();
+  },
+
+  grandcanyon(mat, key) {
+    const b = bag();
+    const rim = mat(key);
+    const strata = mat("clay");
+    const deep = mat("ink");
+    const river = mat("steel");
+    // A gorge incised along local X, deepened until the dive finish
+    // looks INTO it: the slot is half its old width and the floor
+    // sits 0.32 below the rim (the first build's shallow tray read
+    // as terraced slabs, its gorge hidden behind the near rim).
+    // Strata ledges step down BOTH slot walls, and the Colorado
+    // runs as a steel ribbon on the shadowed floor.
+    b.add(bx(0.86, 0.34, 0.24), rim, 0, 0.17, 0.2);
+    b.add(bx(0.86, 0.34, 0.24), rim, 0, 0.17, -0.2);
+    for (const sz of [-1, 1]) {
+      b.add(bx(0.86, 0.045, 0.05), strata, 0, 0.265, sz * 0.068);
+      b.add(bx(0.86, 0.045, 0.04), rim, 0, 0.195, sz * 0.058);
+      b.add(bx(0.86, 0.045, 0.03), strata, 0, 0.125, sz * 0.048);
+    }
+    b.add(bx(0.86, 0.02, 0.09), deep, 0, 0.01, 0);
+    b.add(bx(0.86, 0.012, 0.035), river, 0, 0.024, 0);
+    return b.build();
+  },
+
+  niagara(mat, key) {
+    const b = bag();
+    const water = mat(key, { side: THREE.DoubleSide });
+    const foam = mat("card");
+    const rock = mat("sandstone");
+    const sage = mat("sage");
+    // The Horseshoe, rebuilt so it stops reading as a pale drum:
+    // the curtain is a double-sided arc (the first build's shell
+    // was invisible from inside, so the dive saw through it), the
+    // river runs in across the top to its lip, foam rings the crest
+    // and fills the basin, mist rises off the basin, and the gorge
+    // channel runs downstream between green-topped banks.
+    b.add(
+      new THREE.CylinderGeometry(0.19, 0.19, 0.24, 16, 1, true, -Math.PI / 2, Math.PI),
+      water,
+      0,
+      0.15,
+      -0.02,
+    );
+    b.add(bx(0.42, 0.02, 0.3), mat(key), 0, 0.275, -0.2);
+    b.add(cyl(0.195, 0.195, 0.02, 16), foam, 0, 0.272, -0.02);
+    b.add(cyl(0.23, 0.23, 0.03, 16), foam, 0, 0.015, 0);
+    b.add(
+      sph(0.16, 10, 8),
+      mat("card", { transparent: true, opacity: 0.35 }),
+      0, 0.1, 0.05, 0, 0, 0, 1.2, 0.6, 1,
+    );
+    b.add(bx(0.34, 0.02, 0.44), mat(key), 0, 0.012, 0.18);
+    for (const sx of [-1, 1]) {
+      b.add(bx(0.14, 0.2, 0.44), rock, sx * 0.26, 0.1, 0.14);
+      b.add(bx(0.15, 0.03, 0.45), sage, sx * 0.26, 0.215, 0.14);
+    }
+    return b.build();
+  },
+
+  gatewayarch(mat, key) {
+    const b = bag();
+    const m = mat(key);
+    // One catenary sweep (the Arch is as wide as it is tall) drawn
+    // as a tube, feet planted on two low plinths — a single mesh.
+    const pts: THREE.Vector3[] = [];
+    for (let i = 0; i <= 10; i++) {
+      const t = -1 + (i / 10) * 2;
+      pts.push(new THREE.Vector3(0.36 * t, 0.7 * Math.pow(1 - t * t, 0.75), 0));
+    }
+    tube(pts, 0.021, b, m, 40);
+    b.add(bx(0.07, 0.03, 0.07), m, 0.36, 0.015, 0);
+    b.add(bx(0.07, 0.03, 0.07), m, -0.36, 0.015, 0);
+    return b.build();
+  },
+
+  spaceneedle(mat, key) {
+    const b = bag();
+    const m = mat(key);
+    const card = mat("card");
+    // Three splayed legs and a slim shaft rising to the saucer —
+    // the disc is the read.
+    for (let i = 0; i < 3; i++) {
+      const a = (i * Math.PI * 2) / 3;
+      b.add(cyl(0.012, 0.016, 0.5, 6), m, Math.sin(a) * 0.055, 0.25, Math.cos(a) * 0.055, Math.cos(a) * 0.16, 0, -Math.sin(a) * 0.16);
+    }
+    b.add(cyl(0.02, 0.035, 0.52, 8), m, 0, 0.26, 0);
+    b.add(cyl(0.115, 0.09, 0.05, 12), card, 0, 0.55, 0);
+    b.add(sph(0.055, 10, 6), card, 0, 0.578, 0, 0, 0, 0, 1, 0.5, 1);
+    b.add(cyl(0.002, 0.008, 0.14, 5), m, 0, 0.66, 0);
+    return b.build();
+  },
+
+  uluru(mat, key) {
+    const b = bag();
+    const m = mat(key);
+    const band = mat("sandstone");
+    // One smooth red monolith, longer than it is tall, sunk into
+    // the plain; a paler strata band skirts its base.
+    b.add(sph(0.5, 18, 12), m, 0, 0.14, 0, 0, 0, 0, 1, 0.5, 0.66);
+    b.add(bx(0.94, 0.05, 0.6), band, 0, 0.012, 0);
     return b.build();
   },
 };

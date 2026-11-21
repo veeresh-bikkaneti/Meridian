@@ -143,6 +143,74 @@ describe("globe controls — inertia", () => {
   });
 });
 
+describe("globe controls — the park rule (dive and zoom park, rotation un-parks)", () => {
+  const dived = () =>
+    stepGlobeControls(createGlobeControlsState(), { type: "dive", targetDist: C.zoom.diveDist }).state;
+
+  it("a dive parks the slow turn for good: no resume however long the idle", () => {
+    const s = dived();
+    assert.equal(s.parked, true, "dive parks");
+    const idle = idleFor(s, 12);
+    assert.equal(idle.effects.autoSpinAngle, 0, "no slow turn while parked");
+    assert.equal(idle.state.parked, true, "still parked after a long idle");
+  });
+
+  it("a wheel zoom parks, so the turn cannot resume under a zooming player", () => {
+    const zoomed = stepGlobeControls(createGlobeControlsState(), {
+      type: "wheel",
+      deltaY: -120,
+      overSphere: true,
+    });
+    assert.equal(zoomed.effects.consumed, true, "wheel zoom consumed");
+    assert.equal(zoomed.state.parked, true, "wheel zoom parks");
+    const idle = idleFor(zoomed.state, 6);
+    assert.equal(idle.effects.autoSpinAngle, 0, "no slow turn resumes after a wheel zoom");
+  });
+
+  it("a wheel that does not zoom leaves the park exactly as it was", () => {
+    const offSphere = stepGlobeControls(dived(), { type: "wheel", deltaY: 120, overSphere: false });
+    assert.equal(offSphere.state.parked, true, "off-sphere wheel does not un-park a dive");
+    const atLimitState: GlobeControlsState = { ...createGlobeControlsState(), targetDist: C.zoom.min };
+    const atLimit = stepGlobeControls(atLimitState, { type: "wheel", deltaY: -240, overSphere: true });
+    assert.equal(atLimit.effects.consumed, false, "wheel at the limit is not consumed");
+    assert.equal(atLimit.state.parked, false, "wheel at the limit does not park either");
+  });
+
+  it("a pinch that zooms parks; a pinch that changes nothing does not", () => {
+    const zoomed = stepGlobeControls(createGlobeControlsState(), {
+      type: "pinch",
+      pinchStartTarget: C.zoom.start,
+      distanceRatio: 0.6,
+      midDx: 0,
+      midDy: 0,
+    });
+    assert.equal(zoomed.state.parked, true, "pinch zoom parks");
+    const still = stepGlobeControls(createGlobeControlsState(), {
+      type: "pinch",
+      pinchStartTarget: C.zoom.start,
+      distanceRatio: 1,
+      midDx: 0,
+      midDy: 0,
+    });
+    assert.equal(still.state.parked, false, "a no-change pinch leaves the park alone");
+  });
+
+  it("zoom keys park; arrow keys and a drag un-park, then the idle rule resumes the turn", () => {
+    const zoomKey = stepGlobeControls(createGlobeControlsState(), { type: "key", key: "+" });
+    assert.equal(zoomKey.state.parked, true, "+ parks");
+
+    const arrowed = stepGlobeControls(dived(), { type: "key", key: "ArrowRight" });
+    assert.equal(arrowed.state.parked, false, "an arrow key un-parks a dive");
+    const before = idleFor(arrowed.state, 2.9);
+    assert.equal(before.effects.autoSpinAngle, 0, "no turn before the resume delay");
+    const after = idleFor(before.state, 2.0);
+    assert.ok(after.effects.autoSpinAngle > 0, "the turn resumes under the idle rule");
+
+    const dragged = stepGlobeControls(dived(), { type: "dragStart" });
+    assert.equal(dragged.state.parked, false, "a drag un-parks a dive");
+  });
+});
+
 describe("globe controls — keys, pinch and reset", () => {
   it("arrows spin 0.18 rad, + and - step the zoom, unhandled keys do nothing", () => {
     const s0 = createGlobeControlsState();
@@ -177,7 +245,7 @@ describe("globe controls — keys, pinch and reset", () => {
     const clamped = stepGlobeControls(s0, {
       type: "pinch",
       pinchStartTarget: C.zoom.start,
-      distanceRatio: 0.5,
+      distanceRatio: 0.3,
       midDx: 0,
       midDy: 0,
     });
