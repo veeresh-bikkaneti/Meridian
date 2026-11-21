@@ -42,7 +42,7 @@ import { CURRENT_BUILD_ID } from "../game/build-staleness.ts";
 import { isUncleanShutdown, type CleanExitStorage } from "../game/clean-exit.ts";
 import { hasDurableMapCrashMarker, writeDurableMapCrashMarker } from "../map/capability.ts";
 import { parseRuntimeUA } from "./ua-parse.ts";
-import { isChunkLoadError, shouldReportChunkFailure } from "./chunk-recovery.ts";
+import { isChunkLoadError, shouldReportChunkFailure, CHUNK_RELOAD_KEY } from "./chunk-recovery.ts";
 
 export const BREADCRUMB_KEY = "meridian.breadcrumb";
 export const MAX_HISTORY = 12;
@@ -777,8 +777,12 @@ export function classifyCrashVerdict(
 
 /** sessionStorage key holding the recovery-outcome marker (Slice 2). */
 export const CHUNK_RECOVERY_KEY = "meridian.chunkRecovery";
-/** sessionStorage key holding the chunk-reload stamp (corroboration). */
-export const CHUNK_RELOAD_KEY = "meridian.chunkReloadAt";
+/**
+ * Chunk-reload stamp key. Defined once in chunk-recovery (the module
+ * that owns the reload decision) and re-exported here so corroboration
+ * reads the same string the reload writes.
+ */
+export { CHUNK_RELOAD_KEY };
 /** A valid marker older than this at init resolves unconfirmed_expired. */
 export const RECOVERY_MARKER_MAX_AGE_MS = 86_400_000;
 /** A fresh reload stamp (age ≤ this) corroborates an unreadable marker. */
