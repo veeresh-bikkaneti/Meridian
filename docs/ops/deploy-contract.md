@@ -52,3 +52,12 @@ One runner applies pending SQL. `applyPendingMigrations` lives in `scripts/migra
 | PGLite | `src/lib/db.ts` calls the same runner when the embedded database opens (`DATABASE_URL` unset). | Same test. The build adapter (BEGIN, file, INSERT, COMMIT) and the PGLite transaction adapter leave the same columns and the same `_migrations` names. A bad file rolls back on both. |
 | Worker | `wrangler.jsonc` `main` is `src/server.ts`. That entry does not import `src/lib/db.ts` and does not apply SQL. `workers/` has no migrator. `DATABASE_URL` is not a Worker binding. There is no third runner. | [tested] `grep` of `applyPendingMigrations` and `lib/db` in `src/server.ts` returns nothing. `grep` of `migrate`, `DATABASE_URL`, and `applyPending` in `workers/` returns nothing. `grep` of `DATABASE_URL` in `wrangler.jsonc` returns nothing. |
 
+## Crash-report deploy check
+
+`/health` returning 200 does not prove bindings or triggers. `scripts/crash-smoke.mjs` also GET `/deploy-check` and compares the names to `workers/crash-report/wrangler.toml`. The route returns binding names that are present and the crons this script accepts. It returns no values.
+
+| What | Where | Check |
+| :--- | :--- | :--- |
+| `TELEMETRY_COUNTS`, `CRASH_RATE_LIMITER`, and the two crons | `GET /deploy-check`, compared by `scripts/crash-smoke.mjs` | [tested] `node --test scripts/crash-smoke.test.mjs` |
+
+
