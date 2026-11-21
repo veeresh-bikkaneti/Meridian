@@ -9,6 +9,9 @@
  *      event never forwards, so the Discord channel stays quiet)
  *   3. GET <game>/flags.json          → has a valid observabilityEndpoint
  *   4. GET <game>/ (shell HTML)       → contains the crash-watchdog markers
+ *   5. GET <worker>/deploy-check      → names only. Fails when a binding
+ *      or trigger declared in workers/crash-report/wrangler.toml is
+ *      omitted. /health 200 is not enough.
  *
  * Usage:
  *   node scripts/crash-smoke.mjs <workerBase> <gameBase>
@@ -34,16 +37,65 @@
  * Exit 0 = all checks pass, non-zero = at least one failed.
  */
 
+import { readFileSync } from "node:fs";
+import { dirname, join } from "node:path";
+import { fileURLToPath, pathToFileURL } from "node:url";
 import { OBSERVABILITY_INGEST_HOSTS } from "./crash-watchdog.mjs";
 
-const [workerBase, gameBase] = process.argv.slice(2);
+const WRANGLER_TOML = join(
+  dirname(fileURLToPath(import.meta.url)),
+  "../workers/crash-report/wrangler.toml",
+);
+
+/**
+ * Binding and trigger names from the crash-report config record.
+ * Section-aware: top-level `name` is the script name, not a binding.
+ * kv `binding` and ratelimit `name` are bindings; `[triggers]` crons
+ * are triggers. Names only — values are never returned.
+ */
+function parseCrashWrangler(text) {
+  const bindings = [];
+  const triggers = [];
+  let section = "";
+  for (const raw of String(text).split(/\r?\n/)) {
+    const line = raw.replace(/#.*$/, "").trim();
+    if (!line) continue;
+    const arrayHeader = line.match(/^\[\[([^\]]+)\]\]$/);
+    const tableHeader = line.match(/^\[([^\]]+)\]$/);
+    if (arrayHeader || tableHeader) {
+      section = (arrayHeader || tableHeader)[1];
+      continue;
+    }
+    if (section === "kv_namespaces") {
+      const found = line.match(/^binding\s*=\s*"([^"]+)"\s*$/);
+      if (found) bindings.push(found[1]);
+    } else if (section === "ratelimits") {
+      const found = line.match(/^name\s*=\s*"([^"]+)"\s*$/);
+      if (found) bindings.push(found[1]);
+    } else if (section === "triggers") {
+      const found = line.match(/^crons\s*=\s*\[(.*)\]\s*$/);
+      if (found) {
+        for (const part of found[1].matchAll(/"([^"]*)"/g)) triggers.push(part[1]);
+      }
+    }
+  }
+  return { bindings, triggers };
+}
+
+function loadDeclared() {
+  try {
+    return parseCrashWrangler(readFileSync(WRANGLER_TOML, "utf8"));
+  } catch {
+    return { bindings: [], triggers: [] };
+  }
+}
 
 /** fetch with a hard timeout so a hung endpoint can't hang the script. */
-async function fetchT(url, init) {
+async function fetchT(fetchImpl, url, init) {
   const ctrl = new AbortController();
   const timer = setTimeout(() => ctrl.abort(), 15_000);
   try {
-    return await fetch(url, { ...init, signal: ctrl.signal });
+    return await fetchImpl(url, { ...init, signal: ctrl.signal });
   } finally {
     clearTimeout(timer);
   }
@@ -75,28 +127,31 @@ function isValidEndpoint(value) {
   }
 }
 
-let failures = 0;
-
-function check(name, ok, detail = "") {
-  if (ok) {
-    console.log(`PASS  ${name}`);
-  } else {
-    failures += 1;
-    console.log(`FAIL  ${name}${detail ? ` — ${detail}` : ""}`);
-  }
-}
-
-async function main() {
+/**
+ * Run every smoke check. Returns 0 when all pass, 1 when any fail, and
+ * 2 when a base URL is missing. Does not exit the process.
+ */
+export async function runSmoke(workerBase, gameBase, fetchImpl = globalThis.fetch) {
   if (!workerBase || !gameBase) {
     console.error("usage: node scripts/crash-smoke.mjs <workerBase> <gameBase>");
-    process.exit(2);
+    return 2;
   }
-  const worker = workerBase.replace(/\/$/, "");
-  const game = gameBase.replace(/\/$/, "");
+  const worker = String(workerBase).replace(/\/$/, "");
+  const game = String(gameBase).replace(/\/$/, "");
+  let failures = 0;
+
+  function check(name, ok, detail = "") {
+    if (ok) {
+      console.log(`PASS  ${name}`);
+    } else {
+      failures += 1;
+      console.log(`FAIL  ${name}${detail ? ` — ${detail}` : ""}`);
+    }
+  }
 
   // 1. Worker health.
   try {
-    const res = await fetchT(`${worker}/health`);
+    const res = await fetchT(fetchImpl, `${worker}/health`);
     const body = await res.json().catch(() => null);
     check("GET /health → 200 { ok: true }", res.status === 200 && body?.ok === true, `HTTP ${res.status}`);
   } catch (e) {
@@ -110,7 +165,7 @@ async function main() {
   try {
     // The worker refuses POSTs without an allow-listed Origin (review S4),
     // so send the game's own origin, as a browser would.
-    const res = await fetchT(`${worker}/ingest`, {
+    const res = await fetchT(fetchImpl, `${worker}/ingest`, {
       method: "POST",
       headers: { "content-type": "application/json", origin: new URL(game).origin },
       body: JSON.stringify({ nope: true }),
@@ -128,7 +183,7 @@ async function main() {
 
   // 3. flags.json carries the endpoint the game reports to (same gate as the app).
   try {
-    const res = await fetchT(`${game}/flags.json`);
+    const res = await fetchT(fetchImpl, `${game}/flags.json`);
     const flags = await res.json().catch(() => null);
     const ep = flags?.observabilityEndpoint;
     check("flags.json has valid observabilityEndpoint", res.status === 200 && isValidEndpoint(ep), `HTTP ${res.status}, endpoint=${JSON.stringify(ep)?.slice(0, 60)}`);
@@ -138,7 +193,7 @@ async function main() {
 
   // 4. Shell HTML contains the watchdog markers.
   try {
-    const res = await fetchT(`${game}/`);
+    const res = await fetchT(fetchImpl, `${game}/`);
     const html = await res.text();
     const hasWatchdog = html.includes("meridian-crash-watchdog") || html.includes("__meridian_ready");
     check("shell HTML contains crash-watchdog markers", res.status === 200 && hasWatchdog, `HTTP ${res.status}`);
@@ -146,8 +201,59 @@ async function main() {
     check("shell HTML contains crash-watchdog markers", false, String(e));
   }
 
+  // 5. Names only. /health 200 does not prove bindings or triggers.
+  const declared = loadDeclared();
+  if (declared.bindings.length === 0 || declared.triggers.length === 0) {
+    check("GET /deploy-check", false, "deploy-check unreachable");
+  } else {
+    try {
+      const res = await fetchT(fetchImpl, `${worker}/deploy-check`);
+      let body = null;
+      try {
+        body = await res.json();
+      } catch {
+        body = null;
+      }
+      const shapeOk =
+        res.status === 200 &&
+        body !== null &&
+        typeof body === "object" &&
+        !Array.isArray(body) &&
+        Array.isArray(body.bindings) &&
+        Array.isArray(body.triggers);
+      if (!shapeOk) {
+        check("GET /deploy-check", false, "deploy-check unreachable");
+      } else {
+        for (const name of declared.bindings) {
+          const present = body.bindings.includes(name);
+          check(
+            `GET /deploy-check binding ${name}`,
+            present,
+            present ? "" : `binding missing: ${name}`,
+          );
+        }
+        for (const cron of declared.triggers) {
+          const present = body.triggers.includes(cron);
+          check(
+            `GET /deploy-check trigger ${cron}`,
+            present,
+            present ? "" : `trigger missing: ${cron}`,
+          );
+        }
+      }
+    } catch (e) {
+      check("GET /deploy-check", false, `deploy-check unreachable (${String(e)})`);
+    }
+  }
+
   console.log(failures === 0 ? "\nSMOKE PASSED" : `\nSMOKE FAILED (${failures} check${failures === 1 ? "" : "s"})`);
-  process.exit(failures === 0 ? 0 : 1);
+  return failures === 0 ? 0 : 1;
 }
 
-main();
+const isCli = process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href;
+
+if (isCli) {
+  const [workerBase, gameBase] = process.argv.slice(2);
+  const code = await runSmoke(workerBase, gameBase);
+  process.exit(code);
+}

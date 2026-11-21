@@ -3,7 +3,7 @@ import test from "node:test";
 
 // --- Minimal localStorage shim (node has none). ---
 const backing = new Map<string, string>();
-(globalThis as Record<string, unknown>).localStorage = {
+const storageStub = {
   getItem: (k: string) => (backing.has(k) ? backing.get(k)! : null),
   setItem: (k: string, v: string) => {
     backing.set(k, v);
@@ -13,6 +13,10 @@ const backing = new Map<string, string>();
   },
   clear: () => backing.clear(),
 };
+(globalThis as Record<string, unknown>).localStorage = storageStub;
+// The stores read storage through the registered backend now:
+// the same stub, registered into the domain slot.
+setAgeProfileStorageBackend(storageStub);
 
 import {
   PROFILE_STORAGE_KEY,
@@ -26,6 +30,7 @@ import {
   __resetMemoryFallback,
 } from "./store.ts";
 import { onAgeProfileChanged } from "./events.ts";
+import { setAgeProfileStorageBackend } from "./storage-backend.ts";
 import * as ageProfile from "./index.ts";
 
 const STORED_AT = "2020-01-02T03:04:05.000Z";

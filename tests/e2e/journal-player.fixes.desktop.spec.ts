@@ -219,7 +219,7 @@ test("skip link: first Tab focuses it and shows it; Enter jumps focus to the jou
 test("nav at 1280px: single row, GET INVOLVED inside the viewport, no strip scroll", async ({
   page,
 }) => {
-  const nav = page.locator(".hv5-nav nav");
+  const nav = page.locator("header.site-header nav");
   const button = page.getByRole("button", { name: "GET INVOLVED" });
   await expect(button).toBeVisible();
   const navRect = await rectOf(nav);

@@ -1,5 +1,6 @@
 import { test, expect } from "playwright/test";
 import { serveBuiltArtifact, APP_NO_IDLE } from "./helpers";
+import { CHUNK_RELOAD_KEY } from "../../src/lib/chunk-recovery";
 
 /**
  * Stale-chunk auto-recovery E2E (src/lib/chunk-recovery.ts).
@@ -20,7 +21,7 @@ import { serveBuiltArtifact, APP_NO_IDLE } from "./helpers";
  * the episode latch engaged.
  */
 
-const GUARD_KEY = "meridian.chunkReloadAt";
+const GUARD_KEY = CHUNK_RELOAD_KEY;
 const NOTICE_KEY = "meridian.chunkReloadNotice";
 /** CHUNK_ANNOUNCE_DWELL_MS in src/lib/chunk-recovery.ts (manifest D3). */
 const DWELL_MS = 10_000;
@@ -202,9 +203,16 @@ test("3A-E: a seeded stamp blocks the reload; removing it re-arms and the return
  * delay, so a wrongly scheduled reload would already have fired.
  */
 function countNavigations(page: import("playwright/test").Page): () => number {
+  // Document loads only. `framenavigated` also fires for same-document
+  // history updates: on every boot the router commits its entry with
+  // replaceState, and the screen hash does too. Those are not reloads.
+  // A navigation request is issued for a new document and not for
+  // replaceState, so this count matches reloads.
   let count = 0;
-  page.on("framenavigated", (frame) => {
-    if (frame === page.mainFrame()) count += 1;
+  page.on("request", (request) => {
+    if (!request.isNavigationRequest()) return;
+    if (request.frame() !== page.mainFrame()) return;
+    count += 1;
   });
   return () => count;
 }
@@ -913,7 +921,7 @@ test("13-E: after a recovery reload the explanation notice shows exactly once", 
     for (const [width, height] of viewports) {
       await page.setViewportSize({ width, height });
       const nBox = (await notice.boundingBox())!;
-      const hBox = (await page.locator("header.hv5-nav").boundingBox())!;
+      const hBox = (await page.locator("header.site-header").boundingBox())!;
       const bBox = (await page.locator(".hv5-bento").boundingBox())!;
       const cBox = (await notice.getByRole("button", { name: "Close" }).boundingBox())!;
       expect(nBox.x).toBeGreaterThanOrEqual(0);
@@ -922,7 +930,7 @@ test("13-E: after a recovery reload the explanation notice shows exactly once", 
       expect(nBox.y + nBox.height).toBeLessThanOrEqual(bBox.y + 1);
       expect(cBox.width).toBeGreaterThanOrEqual(44);
       expect(cBox.height).toBeGreaterThanOrEqual(44);
-      const headerButtons = page.locator("header.hv5-nav button, header.hv5-nav a");
+      const headerButtons = page.locator("header.site-header button:visible, header.site-header a:visible");
       const count = await headerButtons.count();
       for (let i = 0; i < count; i += 1) {
         const hb = (await headerButtons.nth(i).boundingBox())!;

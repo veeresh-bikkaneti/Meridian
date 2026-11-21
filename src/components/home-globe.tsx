@@ -163,6 +163,13 @@ function initGlobe(
     onFail();
     return () => {};
   }
+  // three r160 trims gl.getProgramInfoLog / getShaderInfoLog inside
+  // WebGLProgram.getUniforms. Chromium returns null for an empty log, so the
+  // first draw throws "Cannot read properties of null (reading 'trim')"
+  // even when the program linked. That pageerror fails the end-game share
+  // e2e. The check is also the path three turns off once a program is known
+  // to link; leave diagnostics off here.
+  renderer.debug.checkShaderErrors = false;
   const DPR = Math.min(window.devicePixelRatio || 1, C.dprCap);
   renderer.setPixelRatio(DPR);
   const W = mount.clientWidth || 600;
