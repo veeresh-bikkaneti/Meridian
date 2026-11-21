@@ -15,9 +15,11 @@
  * validated on the way in (a corrupt or wrong-shaped blob reads
  * as empty, never as a crash — the age-profile store's whole-blob
  * fail-closed rule), writes that never throw when storage is
- * blocked or absent, and a tiny in-memory change bus in the
- * age-profile events pattern so the picker can re-render the
- * moment a case records a solve.
+ * blocked or absent, and the storage port's change announcements
+ * (src/platform/storage) so the picker can re-render the moment
+ * a case records a solve. The reads, writes and announcements
+ * all go through the port now: its registry entry for this key
+ * carries the same validation the hand-rolled reader used.
  *
  * One piece lives on the game side: clearAllSubjectProgress
  * (the "Start over" reset's step) is implemented in
@@ -30,10 +32,16 @@
 
 import {
   SUBJECT_PROGRESS_KEY,
-  resolveSubjectProgressStorage,
   setSubjectProgressClearedHook,
   type SubjectProgressStorage,
 } from "../../game/subject-progress-store-key.ts";
+import {
+  createBrowserStoragePort,
+  createLocalStorageBackend,
+  notifyStorageChanged,
+  subscribeStorage,
+} from "../../platform/storage/browser-storage.ts";
+import { STORAGE_KEYS } from "../../platform/storage/keys.ts";
 
 export {
   clearAllSubjectProgress,
@@ -48,100 +56,56 @@ type StorageLike = SubjectProgressStorage;
 /**
  * Read the whole store, validated on the way in. Fail closed to
  * empty: a corrupt blob, or a document whose values are not all
- * string arrays, is not progress. (Record writes only ever
- * append a new id to a subject's list, so stored lists hold no
- * duplicates to clean up.)
+ * string arrays, is not progress — the registry entry's schema
+ * checks exactly that, and the port reads anything missing,
+ * corrupt or off-schema back as the empty document. (Record
+ * writes only ever append a new id to a subject's list, so
+ * stored lists hold no duplicates to clean up.)
+ *
+ * Every read and write runs on a fresh per-call port over the
+ * resolved storage — a port with no subscribers, so its writes
+ * never announce. Announcements are this module's own job, at
+ * exactly the emit points below (notifyStorageChanged on the
+ * shared port): routing these writes through the shared port
+ * announced every change a second time, and announced clears
+ * before their re-read proof.
  */
+function portFor(storage?: StorageLike) {
+  return createBrowserStoragePort({ backend: storage ?? createLocalStorageBackend() });
+}
+
 export function readSubjectProgress(storage?: StorageLike): SubjectProgress {
-  try {
-    const s = resolveSubjectProgressStorage(storage);
-    if (!s) return {};
-    const raw = s.getItem(SUBJECT_PROGRESS_KEY);
-    if (!raw) return {};
-    const parsed: unknown = JSON.parse(raw);
-    if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) return {};
-    const doc = parsed as Record<string, unknown>;
-    for (const units of Object.values(doc)) {
-      if (!Array.isArray(units) || !units.every((u) => typeof u === "string")) return {};
-    }
-    return doc as SubjectProgress;
-  } catch {
-    return {};
-  }
+  return portFor(storage).getItem(STORAGE_KEYS.subjectProgress);
 }
 
 function writeSubjectProgress(progress: SubjectProgress, storage?: StorageLike): void {
-  try {
-    const s = resolveSubjectProgressStorage(storage);
-    if (s) s.setItem(SUBJECT_PROGRESS_KEY, JSON.stringify(progress));
-  } catch {
-    // Storage blocked or full; the game must never break on progress data.
-  }
+  // The port never throws when storage is blocked or absent;
+  // the game must never break on progress data.
+  portFor(storage).setItem(STORAGE_KEYS.subjectProgress, progress);
 }
 
 // ---------------------------------------------------------------------------
-// Change bus (the age-profile events pattern): the store emits, the
-// picker subscribes and re-reads. Listener errors are isolated — one
-// bad subscriber never breaks the store write that emitted.
+// Change announcements: the storage port owns the one event
+// system — its subscribe covers this tab's announcements and
+// other tabs' storage events alike (the port attaches its
+// cross-tab listener with the first subscriber and detaches it
+// with the last; where there is no window it never attaches).
+// Writers here announce through the port at exactly the points
+// the old in-memory bus emitted, and listener errors are
+// isolated by the port — one bad subscriber never breaks the
+// store write that announced.
 // ---------------------------------------------------------------------------
-
-const listeners = new Set<() => void>();
 
 /** Subscribe to progress changes. Returns an unsubscribe function. */
 export function onSubjectProgressChanged(listener: () => void): () => void {
-  listeners.add(listener);
-  syncCrossTabBridge();
-  return () => {
-    listeners.delete(listener);
-    syncCrossTabBridge();
-  };
-}
-
-function emitSubjectProgressChanged(): void {
-  for (const listener of listeners) {
-    try {
-      listener();
-    } catch {
-      // Deliberately swallowed, like the age-profile bus.
-    }
-  }
+  return subscribeStorage(SUBJECT_PROGRESS_KEY, listener);
 }
 
 // The game-side clear-all (subject-progress-store-key.ts) cannot
-// import this bus — subjects depend on game, never the reverse —
-// so it announces through a hook, wired here, once, at import.
-setSubjectProgressClearedHook(emitSubjectProgressChanged);
-
-// ---------------------------------------------------------------------------
-// Cross-tab bridge: the browser fires a `storage` event in every
-// OTHER tab when this key changes there, so a solve or a reset in
-// another tab reaches this tab's listeners too. The writing tab
-// gets no storage event for its own write — the bus emit above
-// covers it, so nothing double-fires. The bridge attaches with
-// the first subscriber and detaches with the last; where there
-// is no window (tests, server rendering) it never attaches.
-// ---------------------------------------------------------------------------
-
-let crossTabBridgeAttached = false;
-
-function onCrossTabStorage(event: StorageEvent): void {
-  if (event.key === SUBJECT_PROGRESS_KEY) emitSubjectProgressChanged();
-}
-
-function syncCrossTabBridge(): void {
-  try {
-    if (typeof window === "undefined" || typeof window.addEventListener !== "function") return;
-    if (listeners.size > 0 && !crossTabBridgeAttached) {
-      window.addEventListener("storage", onCrossTabStorage);
-      crossTabBridgeAttached = true;
-    } else if (listeners.size === 0 && crossTabBridgeAttached) {
-      window.removeEventListener("storage", onCrossTabStorage);
-      crossTabBridgeAttached = false;
-    }
-  } catch {
-    // No bridge available; same-tab events still flow.
-  }
-}
+// import this store's announcements — subjects depend on game,
+// never the reverse — so it announces through a hook, wired
+// here, once, at import.
+setSubjectProgressClearedHook(() => notifyStorageChanged(SUBJECT_PROGRESS_KEY));
 
 /**
  * Record one solved unit under its subject. Idempotent by set
@@ -149,12 +113,16 @@ function syncCrossTabBridge(): void {
  * emits nothing.
  */
 export function recordUnitComplete(subjectId: string, unitId: string, storage?: StorageLike): void {
-  const progress = readSubjectProgress(storage);
+  // Copy before writing: a read of an empty store hands back
+  // the registry's shared fallback object, which must never be
+  // mutated — the writers here only ever replace top-level
+  // entries, so a shallow copy is the whole fix.
+  const progress: SubjectProgress = { ...readSubjectProgress(storage) };
   const units = progress[subjectId] ?? [];
   if (units.includes(unitId)) return;
   progress[subjectId] = [...units, unitId];
   writeSubjectProgress(progress, storage);
-  emitSubjectProgressChanged();
+  notifyStorageChanged(SUBJECT_PROGRESS_KEY);
 }
 
 /** True when the subject has at least one recorded solved unit. */
@@ -167,15 +135,17 @@ export function hasSubjectProgress(subjectId: string, storage?: StorageLike): bo
  * byte-identical. Returns true only when a re-read proves that
  * subject is gone. A clear that actually removed the subject
  * emits exactly one change event — subscribers (the picker)
- * re-read on the bus alone — and clearing a subject with
+ * re-read on the announcement alone — and clearing a subject with
  * nothing recorded changes nothing and emits nothing.
  */
 export function clearSubjectProgress(subjectId: string, storage?: StorageLike): boolean {
-  const progress = readSubjectProgress(storage);
+  // Copy before deleting, for the same reason recordUnitComplete
+  // copies: the read may hand back the shared fallback object.
+  const progress: SubjectProgress = { ...readSubjectProgress(storage) };
   if (!(subjectId in progress)) return true; // Nothing recorded = already clear.
   delete progress[subjectId];
   writeSubjectProgress(progress, storage);
   const cleared = !(subjectId in readSubjectProgress(storage));
-  if (cleared) emitSubjectProgressChanged();
+  if (cleared) notifyStorageChanged(SUBJECT_PROGRESS_KEY);
   return cleared;
 }

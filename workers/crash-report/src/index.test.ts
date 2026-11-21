@@ -19,6 +19,7 @@ import {
   bucketKey,
   DEVICE_FIELD_ALLOWLIST,
   deriveVerdict,
+  deployCheckBody,
   emptyBucket,
   groupKeyOf,
   MAX_GROUP_KEYS,
@@ -836,6 +837,50 @@ test("GET /health returns 200 (no CORS: it is for curl and monitors)", async () 
   assert.equal(body.ok, true, "liveness kept for existing monitors");
   assert.equal(body.live, true);
   assert.equal(body.health, "unknown", "no store, no evidence: never healthy");
+});
+
+test("GET /deploy-check returns sorted binding names and crons and omits webhook values", async () => {
+  const webhook = "unit-test-webhook-value";
+  const env = {
+    TELEMETRY_COUNTS: {},
+    CRASH_RATE_LIMITER: { limit() {} },
+    DISCORD_WEBHOOK_URL: webhook,
+  } as unknown as CrashReportEnv;
+  const res = await handleRequest(new Request("https://worker.test/deploy-check"), env);
+  assert.equal(res.status, 200);
+  assert.equal(res.headers.get("access-control-allow-origin"), null);
+  assert.equal(res.headers.get("cache-control"), "no-store");
+  const text = await res.text();
+  assert.equal(text.includes(webhook), false);
+  const body = JSON.parse(text) as { ok: boolean; bindings: string[]; triggers: string[] };
+  assert.deepEqual(body, deployCheckBody(env));
+  assert.equal(body.ok, true);
+  assert.deepEqual(body.bindings, ["CRASH_RATE_LIMITER", "TELEMETRY_COUNTS"]);
+  assert.deepEqual(body.triggers, ["*/15 * * * *", "15 * * * *"]);
+});
+
+test("GET /deploy-check with env {} returns bindings []", async () => {
+  const res = await handleRequest(new Request("https://worker.test/deploy-check"), {});
+  assert.equal(res.status, 200);
+  const body = (await res.json()) as { bindings: string[] };
+  assert.deepEqual(body.bindings, []);
+});
+
+test("GET /deploy-check with only TELEMETRY_COUNTS omits CRASH_RATE_LIMITER", async () => {
+  const res = await handleRequest(new Request("https://worker.test/deploy-check"), {
+    TELEMETRY_COUNTS: {},
+  } as CrashReportEnv);
+  assert.equal(res.status, 200);
+  const body = (await res.json()) as { bindings: string[] };
+  assert.deepEqual(body.bindings, ["TELEMETRY_COUNTS"]);
+});
+
+test("POST /deploy-check returns 405", async () => {
+  const res = await handleRequest(new Request("https://worker.test/deploy-check", { method: "POST" }), {});
+  assert.equal(res.status, 405);
+  const body = (await res.json()) as { error: string };
+  assert.equal(body.error, "method not allowed");
+  assert.equal(res.headers.get("access-control-allow-origin"), null);
 });
 
 test("unknown path returns 404", async () => {

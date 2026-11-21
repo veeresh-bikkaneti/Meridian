@@ -4,6 +4,7 @@ import { resumeRun, startRun, type Run } from "./run.ts";
 import { getBandConfig } from "./age-profile/run-config.ts";
 import type { AgeBandId } from "./age-profile/types.ts";
 import { PROFILE_STORAGE_KEY, resolveBand } from "./age-profile/store.ts";
+import { setAgeProfileStorageBackend } from "./age-profile/storage-backend.ts";
 
 /**
  * Follow-up Item A: the quiz (main endless) run snapshots its band config
@@ -19,7 +20,7 @@ const hadLocalStorage = "localStorage" in globalThis;
 const savedLocalStorage = (globalThis as Record<string, unknown>).localStorage;
 
 function seedProfileBand(band: AgeBandId | null): void {
-  (globalThis as Record<string, unknown>).localStorage = {
+  const storageStub = {
     getItem: (k: string) => (storageBacking.has(k) ? storageBacking.get(k)! : null),
     setItem: (k: string, v: string) => {
       storageBacking.set(k, v);
@@ -29,6 +30,10 @@ function seedProfileBand(band: AgeBandId | null): void {
     },
     clear: () => storageBacking.clear(),
   };
+  (globalThis as Record<string, unknown>).localStorage = storageStub;
+  // The store reads storage through the registered backend now:
+  // the same stub, registered into the domain slot.
+  setAgeProfileStorageBackend(storageStub);
   storageBacking.clear();
   if (band !== null) {
     storageBacking.set(

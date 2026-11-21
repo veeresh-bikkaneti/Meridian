@@ -138,10 +138,11 @@ describe("(a) a wrong pick on fair-share reveals the answer line, then the summa
       "once the supportive line has been heard, the reveal puts the scene in its solved phase, so ClueScene's act 3 starts",
     );
     // ClueScene itself is untouched: its act 3 still starts only in
-    // the solved phase, through the one-voice channel, honouring
-    // the read-aloud preference and reduced motion.
+    // the solved phase, through the platform audio port (which claims
+    // the one-voice channel), honouring the read-aloud preference
+    // and reduced motion.
     assert.ok(clueScene.includes('if (!sum || phase !== "solved") return;'));
-    assert.ok(clueScene.includes('claimVoice('));
+    assert.ok(clueScene.includes("useVoice("));
     assert.ok(clueScene.includes("getReadAloudPref()"));
   });
 

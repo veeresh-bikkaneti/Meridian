@@ -11,7 +11,7 @@ import {
 
 /**
  * Landmark globe for the v5 home hero: the textured sphere from the
- * original globe, now carrying the twelve contract landmarks
+ * original globe, now carrying the thirty-seven contract landmarks
  * (docs/mockups/landmark-globe-contract.md), ported from the approved
  * mock. Perf contract:
  * - three is dynamically imported ONLY when the hero nears the viewport
@@ -146,6 +146,10 @@ export function HomeGlobe() {
 type ThreeModule = typeof import("three");
 type LandmarkModels = typeof import("./home-globe/landmark-models");
 
+/** The canvas label at rest; a dive swaps in the landmark's name and
+ *  cancelling the dive restores this (see startDive / cancelDive). */
+const GLOBE_LABEL_DEFAULT = "Globe. Drag or use arrow keys to spin.";
+
 function initGlobe(
   THREE: ThreeModule,
   mount: HTMLDivElement,
@@ -159,6 +163,13 @@ function initGlobe(
     onFail();
     return () => {};
   }
+  // three r160 trims gl.getProgramInfoLog / getShaderInfoLog inside
+  // WebGLProgram.getUniforms. Chromium returns null for an empty log, so the
+  // first draw throws "Cannot read properties of null (reading 'trim')"
+  // even when the program linked. That pageerror fails the end-game share
+  // e2e. The check is also the path three turns off once a program is known
+  // to link; leave diagnostics off here.
+  renderer.debug.checkShaderErrors = false;
   const DPR = Math.min(window.devicePixelRatio || 1, C.dprCap);
   renderer.setPixelRatio(DPR);
   const W = mount.clientWidth || 600;
@@ -225,12 +236,28 @@ function initGlobe(
     model: InstanceType<ThreeModule["Group"]>;
     n: InstanceType<ThreeModule["Vector3"]>;
     base: number;
+    lm: LandmarkSpecT;
+    /** 0..1 reveal progress, eased by the shared reveal path below. */
+    revealP: number;
   }> = [];
+  type LandmarkSpecT = (typeof LANDMARKS)[number];
+  const holders: Array<InstanceType<ThreeModule["Group"]>> = [];
+  const holderById = new Map<string, { holder: InstanceType<ThreeModule["Group"]>; lm: LandmarkSpecT }>();
   for (const lm of LANDMARKS) {
     const n = models.latLonToVec3(lm.drawnLat, lm.drawnLon, 1).normalize();
     const holder = new THREE.Group();
     holder.position.copy(n).multiplyScalar(R * 0.998);
     holder.quaternion.setFromUnitVectors(UP, n);
+    // Generic data prop, not a per-landmark path: an elongated model
+    // (Rama Setu's ridge) spins about the surface normal to its bearing.
+    if (lm.spinDeg) {
+      holder.quaternion.multiply(
+        new THREE.Quaternion().setFromAxisAngle(UP, lm.spinDeg * DEG),
+      );
+    }
+    holder.userData.lmId = lm.id;
+    holders.push(holder);
+    holderById.set(lm.id, { holder, lm });
     const model = models.buildLandmark(mat, lm);
     model.scale.setScalar(lm.scale);
     holder.add(model);
@@ -238,7 +265,7 @@ function initGlobe(
     shadow.rotation.x = -Math.PI / 2;
     shadow.position.y = 0.004;
     holder.add(shadow);
-    rise.push({ holder, model, n: n.clone(), base: lm.scale });
+    rise.push({ holder, model, n: n.clone(), base: lm.scale, lm, revealP: 0 });
     group.add(holder);
   }
 
@@ -283,6 +310,8 @@ function initGlobe(
 
   const tmpQ = new THREE.Quaternion();
   const tmpV = new THREE.Vector3();
+  const focusTmp = new THREE.Vector3();
+  const focusQ = new THREE.Quaternion();
   const applyRotation = (effects: GlobeControlsEffects) => {
     if (!effects.rotateAngle) return;
     tmpV.set(effects.rotateAxisX, effects.rotateAxisY, 0);
@@ -290,13 +319,107 @@ function initGlobe(
     group.quaternion.premultiply(tmpQ);
   };
 
+  /* Dive driver (one block): a tap on a landmark slerps the globe to
+   * face it while the controls ease covers the dive distance; the dive
+   * input parks auto-spin until the next real input. A real drag, wheel
+   * or key cancels the flight mid-way; reduced motion snaps. The flight
+   * always completes its arc or is stopped by real input — no timer
+   * cuts any motion off.
+   *
+   * Wave-1: the flight ends OBLIQUE, not plan. The target is the
+   * face-on pose pitched by diveTiltDeg about the screen-horizontal
+   * axis through the landmark's base point — a pivot rotation, so the
+   * group also eases to the compensating offset p − R·p and the
+   * landmark keeps its face-on screen spot while the view finishes
+   * ~50° above its horizon (Google-Earth style: the model stands in
+   * profile, large in frame). Verified numerically with the repo's
+   * own three math before it was coded (MOCKUP-STATUS.md, wave 1):
+   * at 53° and diveDist 2.05 the finish elevation is 50.3°, a
+   * unit-height model's top lands at NDC y ≈ +0.14…+0.28, and the
+   * nearest globe surface stays 0.94 from the camera (near = 0.1).
+   * Cancelling a dive eases the offset back to zero so plain browsing
+   * re-centres; starting a dive supersedes the return. */
+  const X_AXIS = new THREE.Vector3(1, 0, 0);
+  const ZERO_V = new THREE.Vector3();
+  let diveAnim: {
+    from: InstanceType<ThreeModule["Quaternion"]>;
+    to: InstanceType<ThreeModule["Quaternion"]>;
+    fromPos: InstanceType<ThreeModule["Vector3"]>;
+    toPos: InstanceType<ThreeModule["Vector3"]>;
+    t: number;
+    /** The dive's target: the reveal path force-reveals it in flight. */
+    id: string;
+  } | null = null;
+  let posReturn: {
+    from: InstanceType<ThreeModule["Vector3"]>;
+    t: number;
+  } | null = null;
+  /** The dive's target, in flight and while parked: the reveal path
+   *  treats it as the player's focus and always reveals it (reveal
+   *  v2). Cleared by cancelDive, i.e. by the next real input. */
+  let diveTarget: {
+    id: string;
+    n: InstanceType<ThreeModule["Vector3"]>;
+  } | null = null;
+  const startDive = (lm: LandmarkSpecT) => {
+    const face = qTilt
+      .clone()
+      .multiply(new THREE.Quaternion().setFromAxisAngle(X_AXIS, lm.drawnLat * DEG))
+      .multiply(
+        new THREE.Quaternion().setFromAxisAngle(UP, -Math.PI / 2 - lm.drawnLon * DEG),
+      );
+    const tilt = new THREE.Quaternion().setFromAxisAngle(X_AXIS, -C.zoom.diveTiltDeg * DEG);
+    const to = tilt.clone().multiply(face);
+    // The landmark's base in world space under the face-on pose; the
+    // pivot offset keeps that point fixed under the tilted pose.
+    const n = models.latLonToVec3(lm.drawnLat, lm.drawnLon, 1).normalize();
+    const base = n.clone().multiplyScalar(R * 0.998).applyQuaternion(face);
+    const toPos = base.clone().sub(base.clone().applyQuaternion(tilt));
+    diveTarget = { id: lm.id, n };
+    // The canvas is a labelled image; while a dive holds on a landmark
+    // the label names it, so a screen reader hears where the globe is
+    // pointing (and the state is readable in the DOM, not a test hook).
+    canvas.setAttribute("aria-label", `Globe. ${lm.name}, ${lm.place}.`);
+    step({ type: "dive", targetDist: C.zoom.diveDist });
+    posReturn = null;
+    if (reducedMotion()) {
+      group.quaternion.copy(to);
+      group.position.copy(toPos);
+      diveAnim = null;
+    } else {
+      diveAnim = {
+        from: group.quaternion.clone(),
+        to,
+        fromPos: group.position.clone(),
+        toPos,
+        t: 0,
+        id: lm.id,
+      };
+    }
+  };
+  const cancelDive = () => {
+    diveAnim = null;
+    diveTarget = null;
+    canvas.setAttribute("aria-label", GLOBE_LABEL_DEFAULT);
+    if (group.position.lengthSq() < 1e-10) {
+      posReturn = null;
+    } else if (reducedMotion()) {
+      group.position.copy(ZERO_V);
+      posReturn = null;
+    } else {
+      posReturn = { from: group.position.clone(), t: 0 };
+    }
+  };
+
   const canvas = renderer.domElement;
   canvas.tabIndex = 0;
   canvas.setAttribute("role", "img");
-  canvas.setAttribute("aria-label", "Globe. Drag or use arrow keys to spin.");
+  canvas.setAttribute("aria-label", GLOBE_LABEL_DEFAULT);
   canvas.style.cursor = "grab";
 
   const pointers = new Map<number, { x: number; y: number }>();
+  /** Press that may become a tap: origin, start time, whether it pinched. */
+  let downInfo: { x: number; y: number; t: number; pinch: boolean } | null = null;
   let pinchStartDist = 0;
   let pinchStartTarget: number = C.zoom.start;
   let lastMid: { x: number; y: number } | null = null;
@@ -309,8 +432,14 @@ function initGlobe(
       /* capture already released */
     }
     pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    cancelDive();
     step({ type: "dragStart" });
     lastMoveT = performance.now();
+    if (pointers.size === 1) {
+      downInfo = { x: e.clientX, y: e.clientY, t: lastMoveT, pinch: false };
+    } else if (downInfo) {
+      downInfo.pinch = true;
+    }
     if (pointers.size === 2) {
       const [a, b] = [...pointers.values()];
       pinchStartDist = Math.hypot(a.x - b.x, a.y - b.y) || 1;
@@ -346,9 +475,34 @@ function initGlobe(
       applyRotation(effects);
     }
   };
+  const handleTap = (clientX: number, clientY: number) => {
+    const r = canvas.getBoundingClientRect();
+    ndc.set(((clientX - r.left) / r.width) * 2 - 1, -((clientY - r.top) / r.height) * 2 + 1);
+    ray.setFromCamera(ndc, camera);
+    const hits = ray.intersectObjects(holders, true);
+    if (!hits.length) return;
+    // A far-side landmark must not win through the globe: the model has
+    // to be the first thing the ray meets (it stands proud of the skin).
+    const globeHit = ray.intersectObject(globe, false)[0];
+    if (globeHit && hits[0].distance > globeHit.distance + 0.05) return;
+    let obj: InstanceType<ThreeModule["Object3D"]> | null = hits[0].object;
+    while (obj && typeof obj.userData.lmId !== "string") obj = obj.parent;
+    const entry = obj ? holderById.get(obj.userData.lmId as string) : undefined;
+    if (entry) startDive(entry.lm);
+  };
+
   const endDrag = (e: PointerEvent) => {
     if (!pointers.has(e.pointerId)) return;
     pointers.delete(e.pointerId);
+    if (pointers.size === 0 && downInfo) {
+      // A tap is a press that stayed put and let go quickly (<6 px,
+      // <400 ms, never a pinch): it asks for the dive, not a drag end.
+      const travel = Math.hypot(e.clientX - downInfo.x, e.clientY - downInfo.y);
+      if (!downInfo.pinch && travel < 6 && performance.now() - downInfo.t < 400) {
+        handleTap(e.clientX, e.clientY);
+      }
+      downInfo = null;
+    }
     if (pointers.size === 1) {
       // Pinch 2 -> 1: the remaining finger is still dragging, so do not
       // end the drag (that would clear dragging, reset idleTime and let
@@ -382,6 +536,7 @@ function initGlobe(
   const ray = new THREE.Raycaster();
   const ndc = new THREE.Vector2();
   const onWheel = (e: WheelEvent) => {
+    cancelDive();
     const r = canvas.getBoundingClientRect();
     ndc.set(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
     ray.setFromCamera(ndc, camera);
@@ -393,6 +548,7 @@ function initGlobe(
   const HANDLED_KEYS = ["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "+", "=", "-", "_", "0"];
   const onKey = (e: KeyboardEvent) => {
     if (!HANDLED_KEYS.includes(e.key)) return;
+    cancelDive();
     const effects = step({ type: "key", key: e.key });
     if (effects.resetPose) group.quaternion.copy(startPose());
     applyRotation(effects);
@@ -435,7 +591,6 @@ function initGlobe(
   const clock = new THREE.Clock();
   let raf = 0;
   let elapsed = 0;
-  let riseDone = false;
   const qa = new THREE.Quaternion();
   const qi = new THREE.Quaternion();
   const poleNow = new THREE.Vector3();
@@ -455,20 +610,89 @@ function initGlobe(
     elapsed += dt;
     const rm = reducedMotion();
 
-    // Rise-in: landmarks ease into place over 0.8 s on first load,
-    // render-clock driven, skipped under reduced motion.
-    if (!riseDone) {
-      const rp = rm ? 1 : Math.min(elapsed / C.riseSeconds, 1);
-      const e = 1 - Math.pow(1 - rp, 3);
-      for (const item of rise) {
+    const effects = step({ type: "tick", dt, reducedMotion: rm });
+    applyRotation(effects);
+
+    // Progressive reveal (owner direction, wave 2) — the ONE shared
+    // reveal path for every landmark: a landmark is on the skin only
+    // while the camera sits at or inside its revealAt distance (Tier A
+    // from globe view, deeper tiers as the user dives), and the dive's
+    // target is revealed for the whole flight. The reveal rides the
+    // old rise-in's curve (scale 0.9 -> 1 while settling outward along
+    // the normal) and runs in reverse as the user zooms back out past
+    // a threshold, so landmarks settle away again. A landmark at zero
+    // progress is invisible — globe view sheds its draw calls whole.
+    // Snaps under reduced motion, like every other ease here.
+    //
+    // Reveal v2 (owner correction, Nov 20 2026): distance alone
+    // revealed a whole REGION at dive depth — the Grand Canyon's own
+    // frame filled with five neighbours at full size. A landmark must
+    // now ALSO sit within the focus radius (contract revealFocus,
+    // interpolated over distance, shrinking as the camera closes in)
+    // of where the player is looking: the dive target while a dive is
+    // in flight or parked, else the surface point at frame centre.
+    // Both directions live in group space, so the angles are the
+    // sphere's own. The target itself always reveals.
+    const bands = C.revealFocus.bands;
+    let focusDeg = bands[bands.length - 1][1];
+    if (controls.dist >= bands[0][0]) {
+      focusDeg = bands[0][1];
+    } else {
+      for (let i = 0; i < bands.length - 1; i++) {
+        const [d1, r1] = bands[i];
+        const [d2, r2] = bands[i + 1];
+        if (controls.dist <= d1 && controls.dist >= d2) {
+          focusDeg = r1 + ((r2 - r1) * (d1 - controls.dist)) / (d1 - d2);
+          break;
+        }
+      }
+    }
+    const focusN = diveTarget
+      ? diveTarget.n
+      : focusTmp
+          .copy(camera.position)
+          .sub(group.position)
+          .normalize()
+          .applyQuaternion(focusQ.copy(group.quaternion).invert());
+    const focusRad = focusDeg * DEG;
+    for (const item of rise) {
+      const want =
+        (controls.dist <= item.lm.revealAt && focusN.angleTo(item.n) <= focusRad) ||
+        (diveTarget !== null && diveTarget.id === item.lm.id)
+          ? 1
+          : 0;
+      if (rm) item.revealP = want;
+      else if (item.revealP < want)
+        item.revealP = Math.min(want, item.revealP + dt / C.riseSeconds);
+      else if (item.revealP > want)
+        item.revealP = Math.max(want, item.revealP - dt / C.riseSeconds);
+      item.holder.visible = item.revealP > 0;
+      if (item.holder.visible) {
+        const e = 1 - Math.pow(1 - item.revealP, 3);
         item.model.scale.setScalar(item.base * (0.9 + 0.1 * e));
         item.holder.position.copy(item.n).multiplyScalar(R * 0.998 - (1 - e) * 0.04);
       }
-      if (rp >= 1) riseDone = true;
     }
-
-    const effects = step({ type: "tick", dt, reducedMotion: rm });
-    applyRotation(effects);
+    // Dive flight: slerp the saved arc over diveSeconds with a
+    // smoothstep ease; the controls' zoom ease covers the distance in
+    // the same window. Completing the arc ends the flight — nothing
+    // here stops any other motion early.
+    if (diveAnim) {
+      diveAnim.t += dt / C.zoom.diveSeconds;
+      const u = Math.min(diveAnim.t, 1);
+      const k = u * u * (3 - 2 * u);
+      group.quaternion.slerpQuaternions(diveAnim.from, diveAnim.to, k);
+      group.position.lerpVectors(diveAnim.fromPos, diveAnim.toPos, k);
+      if (diveAnim.t >= 1) diveAnim = null;
+    } else if (posReturn) {
+      // A cancelled dive's offset eases home over 0.6 s on the same
+      // smoothstep; a fresh dive supersedes it (startDive clears it).
+      posReturn.t += dt / 0.6;
+      const u = Math.min(posReturn.t, 1);
+      const k = u * u * (3 - 2 * u);
+      group.position.lerpVectors(posReturn.from, ZERO_V, k);
+      if (posReturn.t >= 1) posReturn = null;
+    }
     if (effects.autoSpinAngle) {
       group.quaternion.multiply(tmpQ.setFromAxisAngle(UP, effects.autoSpinAngle));
       // Upright drift: the pole eases back to its tilt while turning.
@@ -486,6 +710,7 @@ function initGlobe(
 
     renderer.render(scene, camera);
   };
+
   loop();
 
   return () => {

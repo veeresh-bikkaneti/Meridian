@@ -1,4 +1,4 @@
-import { pendingMigrations } from "../../scripts/migration-plan.mjs";
+import { applyPendingMigrations, MIGRATIONS_LEDGER_SQL } from "../../scripts/migration-runner.mjs";
 
 /** Which database backend is active. */
 export type DbSource = "neon" | "pglite";
@@ -119,9 +119,6 @@ async function createPgliteSql(): Promise<Sql> {
       },
     });
     await pg.waitReady;
-    await pg.exec(
-      "create table if not exists _migrations (name text primary key, applied_at timestamptz not null default now())",
-    );
     return pg;
   })().catch((err) => {
     globalRef.__pgliteInstance__ = undefined;
@@ -142,18 +139,26 @@ async function createPgliteSql(): Promise<Sql> {
       import: "default",
       eager: true,
     }) as Record<string, string>;
+    await pg.exec(MIGRATIONS_LEDGER_SQL);
     const doneRows = await pg.query<{ name: string }>(
       "select name from _migrations",
     );
     const done = doneRows.rows.map((r) => r.name);
-    for (const { name, path } of pendingMigrations(Object.keys(migrations), done)) {
-      // Apply + record atomically (parity with scripts/migrate.mjs) so a failed
-      // statement can't leave a file half-applied but untracked.
-      await pg.transaction(async (tx) => {
-        await tx.exec(migrations[path]);
-        await tx.query("insert into _migrations (name) values ($1)", [name]);
-      });
-    }
+    const files = Object.entries(migrations).map(([path, sql]) => ({
+      name: path.split("/").pop() ?? path,
+      sql,
+    }));
+    await applyPendingMigrations({
+      files,
+      applied: done,
+      transaction: (run) =>
+        pg.transaction(async (tx) =>
+          run({
+            exec: (sql) => tx.exec(sql),
+            query: (sql, params) => tx.query(sql, params ?? []),
+          }),
+        ),
+    });
   };
   const pass = (globalRef.__pgliteMigrateChain__ ?? Promise.resolve())
     .catch(() => undefined) // an earlier failed pass must not wedge the chain
