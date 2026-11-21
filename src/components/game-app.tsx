@@ -146,7 +146,7 @@ import { JournalBoundary } from "./journal-boundary";
 // The settings screen is React.lazy: zero initial-bundle cost.
 import "./age-profile/age-profile.css";
 import { LockedLoop } from "./age-profile/LockedLoop";
-import { ReadAloudPrefPrompt } from "./age-profile/ReadAloudPrefPrompt";
+import { ReadAloudPrefPrompt, READ_ALOUD_PREF_HEADING_ID } from "./age-profile/ReadAloudPrefPrompt";
 import { shouldAskReadAloudPref } from "@/game/age-profile/read-aloud-pref";
 import { FirstVisitQueue, type FirstVisitPrompt } from "./ui/first-visit-queue";
 import { ReadAloudPrefSettings } from "./age-profile/ReadAloudPrefSettings";
@@ -1845,6 +1845,11 @@ export function GameApp() {
   // Item 9: bumped when the queued read-aloud sheet is answered, so the
   // first-visit queue recomputes which prompt wants to show next.
   const [, bumpPromptQueue] = useState(0);
+  // Arrival modal (owner direction, 2026-11-20): true while the
+  // read-aloud sheet is the queue's visible prompt — the queue drives
+  // it via onModalChange and the Home page below goes inert for
+  // exactly that span, the ask-first age gate's mechanism.
+  const [firstVisitModalOpen, setFirstVisitModalOpen] = useState(false);
   // E2E seam: ?idle-ms=<n> shortens the 2-minute timeout (see session.ts).
   const idleTimeoutMs = useMemo(
     () => (typeof window === "undefined" ? IDLE_TIMEOUT_MS : idleTimeoutFromSearch(window.location.search)),
@@ -4185,6 +4190,13 @@ export function GameApp() {
   if (shouldAskReadAloudPref()) {
     firstVisitPrompts.push({
       id: "read-aloud-sheet",
+      // Arrival modal (owner direction, 2026-11-20): the sheet holds
+      // the page until the kid picks one of the three choices — no
+      // backdrop-click or Escape dismiss. Arrival only: this list is
+      // built solely in the Home branch below, so the sheet can
+      // never surface over a run or a case.
+      modal: true,
+      labelledBy: READ_ALOUD_PREF_HEADING_ID,
       node: <ReadAloudPrefPrompt onAnswered={() => bumpPromptQueue((n) => n + 1)} />,
     });
   }
@@ -4197,8 +4209,11 @@ export function GameApp() {
         the home page underneath (incl. Comet's banner and the footer link)
         is inert — non-interactive and removed from the tab order. The
         ask-first age picker is the same class of overlay, so it makes
-        the page inert the same way while it is up. */}
-    <div inert={ageSettingsOpen || ageAsk !== null || undefined}>
+        the page inert the same way while it is up. The first-visit
+        arrival modal (the read-aloud sheet) holds the page the same
+        way; its layer renders through the queue's portal, outside
+        this subtree, so going inert never traps the sheet itself. */}
+    <div inert={ageSettingsOpen || ageAsk !== null || firstVisitModalOpen || undefined}>
     <Choose
       key={historyResetEpoch}
       onState={withCardTap("State", () => setMenu({ kind: "states" }))}
@@ -4246,7 +4261,7 @@ export function GameApp() {
           // header instead of rendering in-flow above it, where
           // they pushed the header down the page. placement="flow"
           // restores the old in-flow render in one line.
-          <FirstVisitQueue prompts={firstVisitPrompts} seenKey="meridian.firstVisitQueue.v1" placement="overlay" />
+          <FirstVisitQueue prompts={firstVisitPrompts} seenKey="meridian.firstVisitQueue.v1" placement="overlay" onModalChange={setFirstVisitModalOpen} />
         ) : null
       }
       tutorialInviteVisible={firstVisitPrompts.length > 0}
