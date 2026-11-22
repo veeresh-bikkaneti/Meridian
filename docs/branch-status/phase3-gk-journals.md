@@ -91,7 +91,7 @@ chemistry's exactly:
 | general-knowledge/scenes.ts, index.ts, Case | unchanged | — |
 | journals/items.ts | records added; adapter + captionRefFor kept | same shape as GK |
 | journals/answers.ts | year-parameterised projection over records; `journalAnswers(year)` signature preserved | ./items.ts, ../shared/answer.ts, ../shared/years.ts |
-| journals/validate.ts | NEW | ./items.ts |
+| journals/validate.ts | NEW | ./items.ts, ./answers.ts (the pinned-year projection assertion — records alone cannot prove a computed answer) |
 | journals/records.test.ts, __fixtures__ | NEW | as GK |
 | journals/captions.ts, caption-files.ts, index.ts, Case | unchanged | — |
 | package.json | prebuild + prebuild:pages appends only | — |
