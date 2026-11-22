@@ -339,14 +339,15 @@ describe("storage key registry (game-app ports, Part B B1)", () => {
   });
 
   test("the challenge marker factories pin game-app's marker keys for a fixture seed", () => {
-    const recordedPrefix = /`(meridian\.challenge\.recorded\.)\$\{run\.seed\}`/.exec(appSrc)?.[1];
-    const summaryPrefix = /`(meridian\.challenge\.recorded\.summary\.)\$\{run\.seed\}`/.exec(appSrc)?.[1];
+    // The factories are the source now (game-app calls them, Part B
+    // B2): their bytes are stated here once so an accidental edit to
+    // a factory's key fails this pin.
     const recorded = challengeRecordedKeyDef(12345);
-    assert.equal(recorded.key, `${recordedPrefix}12345`);
+    assert.equal(recorded.key, "meridian.challenge.recorded.12345");
     assert.equal(recorded.encoding, "raw");
     assert.equal(recorded.fallback, "");
     const summary = challengeRecordedSummaryKeyDef(12345);
-    assert.equal(summary.key, `${summaryPrefix}12345`);
+    assert.equal(summary.key, "meridian.challenge.recorded.summary.12345");
     assert.equal(summary.encoding, "raw");
     assert.equal(summary.fallback, "");
   });

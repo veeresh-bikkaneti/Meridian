@@ -89,8 +89,8 @@ describe("#210 boundary probes staleness and routes to the update prompt", () =>
       "the boundary must use the shared stale-refresh key",
     );
     assert.ok(
-      gameAppSource.includes('const STALE_REFRESH_KEY = "meridian.staleRefresh";'),
-      "game-app must use the same key — the two literals are pinned together",
+      gameAppSource.includes("setSessionStorageItem(STORAGE_KEYS.staleRefresh, Date.now())"),
+      "game-app must arm the same guard through the registry def (STORAGE_KEYS.staleRefresh carries the shared key)",
     );
     const probe = segment(boundarySource, "private startStaleProbe", "private focusAlert");
     assert.ok(
