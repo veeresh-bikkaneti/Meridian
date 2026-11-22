@@ -80,6 +80,7 @@ import { CardFilm } from "./card-film";
 import { usePrefersReducedMotion } from "../hooks/use-prefers-reduced-motion";
 import { Compass, Contrast, Flag, Globe2, MapPin, MoreHorizontal } from "lucide-react";
 import { SoundToggle } from "./SoundToggle";
+import { FIRST_VISIT_QUEUE_KEY } from "../platform/storage/keys.ts";
 import {
   initAudio,
   isSoundEnabled,
@@ -4261,7 +4262,7 @@ export function GameApp() {
           // header instead of rendering in-flow above it, where
           // they pushed the header down the page. placement="flow"
           // restores the old in-flow render in one line.
-          <FirstVisitQueue prompts={firstVisitPrompts} seenKey="meridian.firstVisitQueue.v1" placement="overlay" onModalChange={setFirstVisitModalOpen} />
+          <FirstVisitQueue prompts={firstVisitPrompts} seenKey={FIRST_VISIT_QUEUE_KEY} placement="overlay" onModalChange={setFirstVisitModalOpen} />
         ) : null
       }
       tutorialInviteVisible={firstVisitPrompts.length > 0}

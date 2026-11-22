@@ -18,7 +18,11 @@ import {
   setSessionStorageItem,
   setStorageItem,
 } from "../platform/storage/browser-storage.ts";
-import { STORAGE_KEYS } from "../platform/storage/keys.ts";
+import {
+  STORAGE_KEYS,
+  TOUR_LAST_DATE_KEY,
+  WALKED_SESSION_KEY,
+} from "../platform/storage/keys.ts";
 
 /**
  * Grandpa's Tasting Tour — animated donation scene on the Chart Room home.
@@ -123,12 +127,6 @@ const KETTLE_HOLD_MS = 4000;
 
 // --- Tasting-tour tuning (mobile) ---
 const MOBILE_QUERY = "(max-width: 1023.5px)";
-export const TOUR_LAST_DATE_KEY = "meridian.grandpaTour.lastDate";
-/** Once per session (owner, 2026-11-19): the footer scene mounts on every
- *  page, so without this flag each route change remounts the scene and
- *  replays the walk + trail lines. Set when a walk begins; any later mount
- *  in the same session starts seated. A new session walks again. */
-export const WALKED_SESSION_KEY = "meridian.grandpa.walkedSession";
 /** Total journey hard cap, measured from the first step. */
 const TOUR_JOURNEY_CAP_MS = 12_000;
 /** Normal journey target — comfortably under the cap. */
