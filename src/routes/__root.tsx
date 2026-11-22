@@ -18,11 +18,12 @@ const APP_NAME = BRAND.name;
 // so a remote kill decision wins the boot-time race deterministically.
 void loadFlags();
 
-// Storage wiring: the age-profile stores (domain) read their
-// storage through a slot that only the shell may fill — register
-// the browser backend once, here at startup. The backend resolves
-// the browser's storage lazily per call, so this is inert on the
-// server and in any environment where storage is blocked.
+// Storage wiring: the domain stores read their storage through
+// slots that only the shell may fill (the age-profile slot and
+// the game slot) — register the browser backends once, here at
+// startup. Each backend resolves the browser's storage lazily
+// per call, so this is inert on the server and in any
+// environment where storage is blocked.
 registerBrowserStorage();
 
 /**

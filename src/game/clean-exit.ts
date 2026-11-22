@@ -18,6 +18,8 @@
  *   the flag to "1", and lands on the menu.
  */
 
+import { resolveSession } from "./storage-slot.ts";
+
 export const CLEAN_EXIT_KEY = "meridian.cleanExit";
 
 /** Minimal storage surface the flag helpers need (keeps them unit-testable). */
@@ -29,8 +31,7 @@ export interface CleanExitStorage {
 
 function flagStorage(): CleanExitStorage | null {
   try {
-    if (typeof sessionStorage === "undefined") return null;
-    return sessionStorage;
+    return resolveSession() ?? null;
   } catch {
     return null;
   }

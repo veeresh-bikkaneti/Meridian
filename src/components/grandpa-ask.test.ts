@@ -1,6 +1,14 @@
 import { strict as assert } from "node:assert";
 import { test } from "node:test";
 import { playCough, playTrail } from "./grandpa-ask.ts";
+import {
+  currentVoiceOwner,
+  stopAllVoices,
+} from "../game/audio/voice-channel.ts";
+import {
+  setLocalBackend,
+  type GameEnumerableStorageBackend,
+} from "../game/storage-slot.ts";
 
 // ---------------------------------------------------------------------------
 // Old-Safari-semantics AudioContext fake.
@@ -97,10 +105,15 @@ function withOldSafariAudio(): void {
     clearTimeout: () => {},
   };
   (globalThis as Record<string, unknown>).Audio = class {
+    currentTime = 0;
+    duration = NaN;
     play(): Promise<void> {
       return Promise.resolve();
     }
     pause(): void {}
+    removeAttribute(): void {}
+    addEventListener(): void {}
+    removeEventListener(): void {}
   };
 }
 
@@ -143,5 +156,147 @@ test("playTrail: the cough under a trail line does not throw under the same sema
     );
   } finally {
     withoutAudio();
+  }
+});
+
+// ---------------------------------------------------------------------------
+// Ports slice: the sound toggle is read through the storage slot now
+// (isSoundEnabled), not the global localStorage — a slot-registered OFF
+// must silence both the cough and the clip. And the delayed clip play
+// still goes through the voice port: the 420ms cough delay, then play,
+// then the ended event releases the channel.
+// ---------------------------------------------------------------------------
+
+function totalCoughSources(): number {
+  return OldSafariFakeAudioContext.instances.reduce(
+    (n, inst) => n + inst.sources.length,
+    0,
+  );
+}
+
+function slotBackend(data: Map<string, string>): GameEnumerableStorageBackend {
+  return {
+    getItem: (k: string) => (data.has(k) ? (data.get(k) as string) : null),
+    setItem: (k: string, v: string) => {
+      data.set(k, v);
+    },
+    removeItem: (k: string) => {
+      data.delete(k);
+    },
+    get length() {
+      return data.size;
+    },
+    key: (i: number) => [...data.keys()][i] ?? null,
+  };
+}
+
+class CountingAudio {
+  static constructions = 0;
+  constructor() {
+    CountingAudio.constructions += 1;
+  }
+  play(): Promise<void> {
+    return Promise.resolve();
+  }
+  pause(): void {}
+}
+
+test("playTrail: a slot-registered sound toggle OFF silences the line and the cough", () => {
+  stopAllVoices(); // clear any claim the earlier tests left held
+  withOldSafariAudio();
+  (globalThis as Record<string, unknown>).Audio = CountingAudio;
+  setLocalBackend(
+    slotBackend(new Map<string, string>([["meridian.sound", "off"]])),
+  );
+  try {
+    const sourcesBefore = totalCoughSources();
+    const audioBefore = CountingAudio.constructions;
+    playTrail(0);
+    assert.equal(totalCoughSources(), sourcesBefore, "no cough while muted");
+    assert.equal(
+      CountingAudio.constructions,
+      audioBefore,
+      "no clip element while muted",
+    );
+    assert.equal(currentVoiceOwner(), null, "no channel claim while muted");
+  } finally {
+    setLocalBackend(undefined);
+    withoutAudio();
+    stopAllVoices();
+  }
+});
+
+class RecordingAudio {
+  static instances: RecordingAudio[] = [];
+  src: string;
+  currentTime = 0;
+  duration = NaN;
+  playCalls = 0;
+  pauseCalls = 0;
+  // The narration clip wires ended/error as element PROPERTIES
+  // (audio.onended), not listeners — the fake honours both shapes.
+  onended: (() => void) | null = null;
+  onerror: (() => void) | null = null;
+  private handlers = new Map<string, Set<() => void>>();
+  constructor(src: string) {
+    this.src = src;
+    RecordingAudio.instances.push(this);
+  }
+  play(): Promise<void> {
+    this.playCalls += 1;
+    return Promise.resolve();
+  }
+  pause(): void {
+    this.pauseCalls += 1;
+  }
+  removeAttribute(): void {}
+  addEventListener(type: string, listener: () => void): void {
+    let set = this.handlers.get(type);
+    if (!set) {
+      set = new Set();
+      this.handlers.set(type, set);
+    }
+    set.add(listener);
+  }
+  removeEventListener(type: string, listener: () => void): void {
+    this.handlers.get(type)?.delete(listener);
+  }
+  fire(type: string): void {
+    if (type === "ended") this.onended?.();
+    if (type === "error") this.onerror?.();
+    for (const listener of [...(this.handlers.get(type) ?? [])]) listener();
+  }
+}
+
+test("playTrail: the clip plays after the cough delay and the ended event releases the channel", () => {
+  stopAllVoices();
+  const timers: Array<() => void> = [];
+  (globalThis as Record<string, unknown>).window = {
+    AudioContext: OldSafariFakeAudioContext,
+    setTimeout: (cb: () => void) => {
+      timers.push(cb);
+      return timers.length;
+    },
+    clearTimeout: () => {},
+  };
+  (globalThis as Record<string, unknown>).Audio = RecordingAudio;
+  try {
+    const before = RecordingAudio.instances.length;
+    playTrail(0);
+    assert.equal(
+      RecordingAudio.instances.length,
+      before + 1,
+      "one clip element built",
+    );
+    const clip = RecordingAudio.instances[before]!;
+    assert.equal(clip.playCalls, 0, "nothing plays before the cough delay");
+    assert.equal(timers.length, 1, "the cough delay is armed");
+    timers[0]!();
+    assert.equal(clip.playCalls, 1, "the clip plays after the delay");
+    clip.fire("ended");
+    assert.equal(currentVoiceOwner(), null, "the ended clip releases the channel");
+  } finally {
+    withoutAudio();
+    stopAllVoices();
   }
 });

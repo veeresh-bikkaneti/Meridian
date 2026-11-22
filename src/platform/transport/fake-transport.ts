@@ -11,15 +11,17 @@
  *
  * Outcomes: "json" (a parsed body, 200 unless a status is set),
  * "http" (a failure status, no body read), "network" (fetch
- * rejects), "badJson" (a 200 whose body is not JSON) and "hang"
+ * rejects), "badJson" (a 200 whose body is not JSON), "text" (a
+ * plain-text body, 200 unless a status is set) and "hang"
  * (never settles until the attempt's signal aborts it, then
  * rejects with an AbortError — what a stalled request looks like
  * to the port). Every outcome honours the caller's signal: an
  * already-aborted signal rejects before anything is recorded
  * past the call itself.
  *
- * The calls log records each call's url, method, body and
- * headers, so a test can pin exactly what would have gone out.
+ * The calls log records each call's url, method, body, headers
+ * and keepalive flag, so a test can pin exactly what would have
+ * gone out.
  */
 
 import { createBrowserTransportPort } from "./browser-transport.ts";
@@ -31,6 +33,7 @@ export type FakeFetchOutcome =
   | { type: "http"; status: number }
   | { type: "network" }
   | { type: "badJson" }
+  | { type: "text"; text: string; status?: number }
   | { type: "hang" };
 
 /** One call the fake fetch received. */
@@ -39,6 +42,7 @@ export interface FakeFetchCall {
   method: string;
   body: string | null;
   headers: Record<string, string>;
+  keepalive?: boolean;
 }
 
 /** A scripted fetch plus the test's controls over it. */
@@ -60,11 +64,13 @@ function abortError(): Error {
 function fakeResponse(
   status: number,
   json: () => Promise<unknown>,
+  text: () => Promise<string>,
 ): Response {
   return {
     ok: status >= 200 && status < 300,
     status,
     json,
+    text,
   } as Response;
 }
 
@@ -84,6 +90,7 @@ export function createFakeFetch(): FakeFetch {
       method: init?.method ?? "GET",
       body: typeof init?.body === "string" ? init.body : null,
       headers: (init?.headers as Record<string, string> | undefined) ?? {},
+      keepalive: init?.keepalive,
     });
     if (signal?.aborted) return Promise.reject(abortError());
 
@@ -96,22 +103,44 @@ export function createFakeFetch(): FakeFetch {
         return Promise.reject(new TypeError("fetch failed"));
       case "http":
         return Promise.resolve(
-          fakeResponse(outcome.status, () =>
-            Promise.reject(new Error("no body on a failure response")),
+          fakeResponse(
+            outcome.status,
+            () => Promise.reject(new Error("no body on a failure response")),
+            () => Promise.resolve(""),
           ),
         );
       case "badJson":
         return Promise.resolve(
-          fakeResponse(200, () =>
-            Promise.reject(
-              new SyntaxError("Unexpected token, not valid JSON"),
-            ),
+          fakeResponse(
+            200,
+            () =>
+              Promise.reject(
+                new SyntaxError("Unexpected token, not valid JSON"),
+              ),
+            () => Promise.resolve("{not json"),
           ),
         );
       case "json": {
         const value = outcome.value;
         return Promise.resolve(
-          fakeResponse(outcome.status ?? 200, () => Promise.resolve(value)),
+          fakeResponse(
+            outcome.status ?? 200,
+            () => Promise.resolve(value),
+            () => Promise.resolve(JSON.stringify(value)),
+          ),
+        );
+      }
+      case "text": {
+        const text = outcome.text;
+        return Promise.resolve(
+          fakeResponse(
+            outcome.status ?? 200,
+            () =>
+              Promise.reject(
+                new SyntaxError("Unexpected token, not valid JSON"),
+              ),
+            () => Promise.resolve(text),
+          ),
         );
       }
       case "hang":

@@ -29,6 +29,10 @@ import {
   loadProfile,
   setBand,
 } from "../../game/age-profile/store.ts";
+import {
+  resolveVoiceFactory,
+  setVoiceFactory,
+} from "../../game/audio/voice-channel.ts";
 import { registerBrowserStorage } from "./register.ts";
 
 const globals = globalThis as Record<string, unknown>;
@@ -44,9 +48,20 @@ registerBrowserStorage();
 
 after(() => {
   setAgeProfileStorageBackend(undefined);
+  setVoiceFactory(undefined);
   resetStores();
   if (hadLocalStorage) globals.localStorage = originalLocalStorage;
   else delete globals.localStorage;
+});
+
+describe("the registered voice factory", () => {
+  it("registerBrowserStorage fills the domain voice factory with the audio port", () => {
+    assert.equal(
+      typeof resolveVoiceFactory(),
+      "function",
+      "the detective player resolves its voice through the registered factory",
+    );
+  });
 });
 
 describe("the registered age-profile storage path", () => {

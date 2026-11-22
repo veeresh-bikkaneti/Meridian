@@ -8,6 +8,7 @@ import {
   readRouteAttempts,
   recordRouteCompletion,
 } from "./challenge-attempts.ts";
+import { setLocalBackend } from "./storage-slot.ts";
 
 /** In-memory StorageLike stub (the house pattern for store tests). */
 function memoryStorage() {
@@ -95,4 +96,38 @@ test("attempts store: clear removes everything and reports true", () => {
   assert.equal(clearChallengeAttempts(s), true);
   assert.equal(readRouteAttempts(TUPLE, s), 0);
   assert.equal(s.map.has(CHALLENGE_ATTEMPTS_KEY), false);
+});
+
+// R2: clearChallengeAttempts pins the exact remove→verify sequence
+// through the registered slot, with no storage argument.
+test("R2: clearChallengeAttempts pins the exact remove→verify sequence", () => {
+  const seeded = memoryStorage();
+  recordRouteCompletion(TUPLE, seeded);
+  const map = seeded.map;
+  const log: string[] = [];
+  setLocalBackend({
+    getItem: (k: string) => {
+      log.push(`get:${k}`);
+      return map.has(k) ? map.get(k)! : null;
+    },
+    setItem: (k: string, v: string) => {
+      log.push(`set:${k}`);
+      map.set(k, v);
+    },
+    removeItem: (k: string) => {
+      log.push(`remove:${k}`);
+      map.delete(k);
+    },
+    get length(): number {
+      return map.size;
+    },
+    key: (index: number): string | null => [...map.keys()][index] ?? null,
+  });
+  try {
+    assert.equal(clearChallengeAttempts(), true);
+    assert.deepEqual(log, [`remove:${CHALLENGE_ATTEMPTS_KEY}`, `get:${CHALLENGE_ATTEMPTS_KEY}`]);
+    assert.equal(readRouteAttempts(TUPLE), 0);
+  } finally {
+    setLocalBackend(undefined);
+  }
 });

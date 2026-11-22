@@ -2,6 +2,7 @@ import type { Edition } from "./run.ts";
 import type { Run } from "./run.ts";
 import { backfillDifficultyChoice } from "./run.ts";
 import { PICKER_DIFFICULTIES, type PickerDifficulty } from "./tier-filter.ts";
+import { resolveLocal, resolveSession } from "./storage-slot.ts";
 
 /**
  * Session score: the score a player accumulates across edition switches.
@@ -426,8 +427,9 @@ function isRegionScore(value: unknown): value is RegionScore {
  */
 export function readSession(): Session | null {
   try {
-    if (typeof sessionStorage === "undefined") return null;
-    const raw = sessionStorage.getItem(SESSION_KEY);
+    const s = resolveSession();
+    if (!s) return null;
+    const raw = s.getItem(SESSION_KEY);
     if (!raw) return null;
     const parsed: unknown = JSON.parse(raw);
     if (!parsed || typeof parsed !== "object") return null;
@@ -550,8 +552,9 @@ export const SHADOW_MAX_AGE_MS = 24 * 3600 * 1000;
 /** Fail closed to null on anything malformed or tampered. */
 export function readDiscardedShadow(): DiscardedShadow | null {
   try {
-    if (typeof localStorage === "undefined") return null;
-    const raw = localStorage.getItem(DISCARDED_NOTICE_KEY);
+    const s = resolveLocal();
+    if (!s) return null;
+    const raw = s.getItem(DISCARDED_NOTICE_KEY);
     if (!raw) return null;
     const parsed: unknown = JSON.parse(raw);
     if (!isDiscardedShadow(parsed)) return null;
@@ -561,7 +564,7 @@ export function readDiscardedShadow(): DiscardedShadow | null {
     // showing, never toward silently dropping a fresh record).
     if (Date.now() - parsed.lastActivityAt > SHADOW_MAX_AGE_MS) {
       try {
-        localStorage.removeItem(DISCARDED_NOTICE_KEY);
+        s.removeItem(DISCARDED_NOTICE_KEY);
       } catch {
         // Best effort: the read still reports expired.
       }
@@ -575,7 +578,7 @@ export function readDiscardedShadow(): DiscardedShadow | null {
 
 export function writeDiscardedShadow(shadow: DiscardedShadow): void {
   try {
-    localStorage.setItem(DISCARDED_NOTICE_KEY, JSON.stringify(shadow));
+    resolveLocal()?.setItem(DISCARDED_NOTICE_KEY, JSON.stringify(shadow));
   } catch {
     // Best effort: the in-memory session still lives when storage is blocked.
   }
@@ -583,7 +586,7 @@ export function writeDiscardedShadow(shadow: DiscardedShadow): void {
 
 export function clearDiscardedShadow(): void {
   try {
-    localStorage.removeItem(DISCARDED_NOTICE_KEY);
+    resolveLocal()?.removeItem(DISCARDED_NOTICE_KEY);
   } catch {
     // A stale shadow is fail-closed at read time (shape-checked).
   }
@@ -591,7 +594,7 @@ export function clearDiscardedShadow(): void {
 
 export function writeSession(session: Session): void {
   try {
-    sessionStorage.setItem(SESSION_KEY, JSON.stringify(session));
+    resolveSession()?.setItem(SESSION_KEY, JSON.stringify(session));
   } catch {
     // The session still lives in memory when storage is blocked.
   }
@@ -627,14 +630,7 @@ type SessionStorageLike = {
  * the key is gone or emptied.
  */
 export function clearSession(target?: SessionStorageLike): boolean {
-  let s = target;
-  if (!s) {
-    try {
-      s = typeof sessionStorage === "undefined" ? undefined : sessionStorage;
-    } catch {
-      s = undefined;
-    }
-  }
+  const s = target ?? resolveSession();
   if (!s) return true; // No storage = nothing was ever persisted.
   // Fix round M1: only a session that actually existed may take its
   // shadow with it. A no-op clear (no stored session — e.g. the idle

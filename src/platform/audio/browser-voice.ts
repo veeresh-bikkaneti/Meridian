@@ -55,9 +55,13 @@ export function createBrowserVoicePort(deps: VoicePortDeps = {}): VoicePort {
   return {
     createVoice(src: string, opts: CreateVoiceOptions): VoiceHandle | null {
       // Gates first: a gated line claims nothing, builds nothing.
+      // A bypassed line skips the sound toggle only; the
+      // hidden-tab guard still applies.
       let gatesOpen = false;
       try {
-        gatesOpen = soundEnabled() && audible();
+        gatesOpen =
+          (opts.bypassSoundGate === true ? true : soundEnabled()) &&
+          audible();
       } catch {
         return null;
       }
@@ -66,6 +70,11 @@ export function createBrowserVoicePort(deps: VoicePortDeps = {}): VoicePort {
       let state: VoiceState = "idle";
       let element: VoiceAudioElement | null = null;
       let claim: VoiceClaim | null = null;
+      let started = false;
+      // A pause issued while play() is still pending owns the
+      // outcome: the play promise rejects with an abort, and
+      // that rejection is the pause working, not a failure.
+      let pausedWhileLoading = false;
 
       const fireEnded = (): void => {
         try {
@@ -74,9 +83,9 @@ export function createBrowserVoicePort(deps: VoicePortDeps = {}): VoicePort {
           // A listener must never break the voice's own cleanup.
         }
       };
-      const fireError = (): void => {
+      const fireError = (cause?: unknown): void => {
         try {
-          opts.onError?.();
+          opts.onError?.(cause);
         } catch {
           // A listener must never break the voice's own cleanup.
         }
@@ -86,6 +95,13 @@ export function createBrowserVoicePort(deps: VoicePortDeps = {}): VoicePort {
           opts.onInterrupted?.();
         } catch {
           // A listener must never break the voice's own cleanup.
+        }
+      };
+      const firePlaying = (): void => {
+        try {
+          opts.onPlaying?.();
+        } catch {
+          // A listener must never break playback.
         }
       };
       const fireTimeUpdate = (seconds: number): void => {
@@ -116,6 +132,7 @@ export function createBrowserVoicePort(deps: VoicePortDeps = {}): VoicePort {
       const onPlaying = (): void => {
         if (isTerminal(state)) return;
         state = "playing";
+        firePlaying();
       };
       const onTimeUpdate = (): void => {
         if (isTerminal(state) || !element) return;
@@ -128,13 +145,13 @@ export function createBrowserVoicePort(deps: VoicePortDeps = {}): VoicePort {
         claim?.release();
         fireEnded();
       };
-      const runErrorPath = (): void => {
+      const runErrorPath = (cause?: unknown): void => {
         if (isTerminal(state)) return;
         state = "error";
         removeListeners();
         teardownElement();
         claim?.release();
-        fireError();
+        fireError(cause);
       };
       const onErrorEvent = (): void => {
         runErrorPath();
@@ -180,19 +197,31 @@ export function createBrowserVoicePort(deps: VoicePortDeps = {}): VoicePort {
         fireInterrupted();
       };
 
-      claim = claimVoice(opts.owner, channelStop, {
-        userInitiated: opts.userInitiated,
-      });
-      if (!claim) return null;
+      // An adopted claim arrives already holding the channel:
+      // claiming again would stop its owner — the caller — so
+      // adopt it. Only a claim this call took itself is released
+      // on the failure paths below, where no handle is returned
+      // and the claim stays with the caller; once a handle is
+      // returned, every release path treats an adopted claim
+      // exactly like an owned one.
+      let ownsClaim = false;
+      claim = opts.claim ?? null;
+      if (!claim) {
+        claim = claimVoice(opts.owner, channelStop, {
+          userInitiated: opts.userInitiated,
+        });
+        if (!claim) return null;
+        ownsClaim = true;
+      }
 
       try {
         element = createAudio(src);
       } catch {
-        claim.release();
+        if (ownsClaim) claim.release();
         return null;
       }
       if (!element) {
-        claim.release();
+        if (ownsClaim) claim.release();
         return null;
       }
 
@@ -203,7 +232,7 @@ export function createBrowserVoicePort(deps: VoicePortDeps = {}): VoicePort {
         element.addEventListener("ended", onEnded);
         element.addEventListener("error", onErrorEvent);
       } catch {
-        claim.release();
+        if (ownsClaim) claim.release();
         return null;
       }
 
@@ -214,22 +243,56 @@ export function createBrowserVoicePort(deps: VoicePortDeps = {}): VoicePort {
         play(): void {
           if (state !== "idle" && state !== "ready") return;
           if (!element) return;
+          // The start position applies to the first play only; a
+          // resume after pause() keeps the kept position.
+          if (!started) {
+            started = true;
+            if (opts.startAtSeconds !== undefined) {
+              try {
+                element.currentTime = opts.startAtSeconds;
+              } catch {
+                // Positioning failed; play from the start.
+              }
+            }
+          }
           state = "loading";
           let result: Promise<void> | void;
           try {
             result = element.play();
-          } catch {
-            runErrorPath();
+          } catch (err) {
+            runErrorPath(err);
             return;
           }
           if (
             result &&
             typeof (result as Promise<void>).catch === "function"
           ) {
-            (result as Promise<void>).catch(() => {
-              runErrorPath();
+            (result as Promise<void>).catch((reason: unknown) => {
+              // A rejection that arrives after an explicit pause
+              // is the pause working, not a failure: stay ready
+              // and fire nothing, so the line stays resumable.
+              if (pausedWhileLoading) {
+                pausedWhileLoading = false;
+                return;
+              }
+              runErrorPath(reason);
             });
           }
+        },
+        pause(): void {
+          // Only a live voice pauses: a voice already ready,
+          // idle or terminal is untouched, so calling pause()
+          // twice is a no-op. The channel and the listeners
+          // stay, and the position is kept for the resume.
+          if (state !== "loading" && state !== "playing") return;
+          if (state === "loading") pausedWhileLoading = true;
+          if (!element) return;
+          try {
+            element.pause();
+          } catch {
+            // Pausing a gone element changes nothing.
+          }
+          state = "ready";
         },
         stop(): void {
           if (isTerminal(state)) return;
@@ -240,6 +303,9 @@ export function createBrowserVoicePort(deps: VoicePortDeps = {}): VoicePort {
         },
         currentTime(): number {
           return element ? element.currentTime : 0;
+        },
+        duration(): number {
+          return element ? element.duration : 0;
         },
       };
       return handle;

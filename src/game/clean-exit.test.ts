@@ -8,6 +8,7 @@ import {
   stampCleanExitDirty,
   type CleanExitStorage,
 } from "./clean-exit.ts";
+import { setSessionBackend } from "./storage-slot.ts";
 
 function makeStorage(): CleanExitStorage & { raw: Map<string, string> } {
   const raw = new Map<string, string>();
@@ -75,6 +76,31 @@ test("helpers tolerate a null/unavailable storage without throwing", () => {
   assert.doesNotThrow(() => handlePageHide(null));
   assert.doesNotThrow(() => clearRunAfterUncleanShutdown("meridian.run", null));
   assert.equal(isUncleanShutdown(null), false, "no storage fails toward clean/resume");
+});
+
+test("no-arg helpers round-trip through the session slot; unregistered reads as clean", () => {
+  const raw = new Map<string, string>();
+  setSessionBackend({
+    getItem: (k: string) => (raw.has(k) ? raw.get(k)! : null),
+    setItem: (k: string, v: string) => {
+      raw.set(k, v);
+    },
+    removeItem: (k: string) => {
+      raw.delete(k);
+    },
+  });
+  try {
+    stampCleanExitDirty();
+    assert.equal(raw.get(CLEAN_EXIT_KEY), "0");
+    assert.equal(isUncleanShutdown(), true);
+    handlePageHide();
+    assert.equal(raw.get(CLEAN_EXIT_KEY), "1");
+    assert.equal(isUncleanShutdown(), false);
+  } finally {
+    setSessionBackend(undefined);
+  }
+  assert.equal(isUncleanShutdown(), false, "unregistered slot fails toward clean");
+  assert.doesNotThrow(() => stampCleanExitDirty());
 });
 
 test("helpers tolerate throwing storage without throwing", () => {

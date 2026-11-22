@@ -12,6 +12,7 @@ import {
   rearmPersistedScreenOpen,
 } from "@/lib/persisted-screen";
 import { emitMapError } from "@/lib/observability";
+import { resolveSession } from "../game/storage-slot.ts";
 import { isNewBuildDeployed } from "@/game/build-staleness";
 import { CURRENT_BUILD_ID } from "@/game/build-staleness";
 import { staleRefreshRecentlyUsed } from "@/game/build-staleness";
@@ -180,7 +181,7 @@ export class MapErrorBoundary extends Component<
     let report: boolean;
     try {
       report = shouldReportChunkFailure(
-        window.sessionStorage,
+        resolveSession() ?? null,
         Date.now(),
         this.props.surface ?? "the map",
       );
@@ -257,8 +258,9 @@ export class MapErrorBoundary extends Component<
     if (this.state.staleBuild) {
       try {
         // F6: a timestamp, not "1" — readers honour it only inside
-        // the freshness window (staleRefreshRecentlyUsed).
-        window.sessionStorage.setItem(STALE_REFRESH_KEY, String(Date.now()));
+        // the freshness window (staleRefreshRecentlyUsed). The slot
+        // backend writes the same bare bytes the global did.
+        resolveSession()?.setItem(STALE_REFRESH_KEY, String(Date.now()));
       } catch {
         // Storage full/blocked — the reload still happens.
       }

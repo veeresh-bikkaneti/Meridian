@@ -21,16 +21,17 @@ import {
   writeLoopStoreV2,
   type PackDeckCase,
 } from "./store.ts";
-import { LOOP_STORAGE_KEY_V2, type LoopGuess, type LoopPuzzleProgress, type LoopPuzzleState, type LoopUnlimitedStore } from "./types.ts";
+import { LOOP_OPEN_KEY, LOOP_STORAGE_KEY_V2, type LoopGuess, type LoopPuzzleProgress, type LoopPuzzleState, type LoopUnlimitedStore } from "./types.ts";
+import { setLocalBackend } from "../storage-slot.ts";
 import { submitGuess } from "./engine.ts";
 import { geodetectiveConfig } from "../age-profile/difficulty.ts";
 import { getBandConfig } from "../age-profile/run-config.ts";
 import { loadProfile } from "../age-profile/store.ts";
 
-/** Minimal in-memory localStorage stand-in. */
+/** Minimal in-memory storage stand-in, installed as the slot's local backend. */
 function installStorage(initial: Record<string, string> = {}) {
   const data = new Map<string, string>(Object.entries(initial));
-  const fake = {
+  setLocalBackend({
     getItem: (key: string) => (data.has(key) ? data.get(key)! : null),
     setItem: (key: string, value: string) => {
       data.set(key, String(value));
@@ -38,14 +39,17 @@ function installStorage(initial: Record<string, string> = {}) {
     removeItem: (key: string) => {
       data.delete(key);
     },
-  };
-  (globalThis as unknown as { localStorage: unknown }).localStorage = fake;
+    get length(): number {
+      return data.size;
+    },
+    key: (index: number): string | null => [...data.keys()][index] ?? null,
+  });
   return data;
 }
 
-/** localStorage whose writes/reads throw (private window, quota). */
+/** Storage whose writes/reads throw (private window, quota). */
 function installBlockedStorage() {
-  const fake = {
+  setLocalBackend({
     getItem: (_key: string): string | null => {
       throw new Error("blocked");
     },
@@ -55,8 +59,13 @@ function installBlockedStorage() {
     removeItem: (_key: string): void => {
       throw new Error("blocked");
     },
-  };
-  (globalThis as unknown as { localStorage: unknown }).localStorage = fake;
+    get length(): number {
+      throw new Error("blocked");
+    },
+    key: (_index: number): string | null => {
+      throw new Error("blocked");
+    },
+  });
 }
 
 function isPermutation(deck: number[], size: number): boolean {
@@ -984,5 +993,48 @@ test("loopSessionSummary: a won or lost current is not an open case on any deck"
         "openCase is false on all decks",
       );
     }
+  }
+});
+
+// R2: clearLoopStore pins the exact remove→verify sequence — the v2
+// store first, then the open flag — so a reset can never leave a
+// half-cleared pair behind.
+test("R2: clearLoopStore pins the exact remove→verify sequence (store, then flag)", () => {
+  const map = new Map<string, string>([
+    [LOOP_STORAGE_KEY_V2, JSON.stringify(freshLoopUnlimitedStore(10))],
+    [LOOP_OPEN_KEY, "1"],
+  ]);
+  const log: string[] = [];
+  setLocalBackend({
+    getItem: (k: string) => {
+      log.push(`get:${k}`);
+      return map.has(k) ? map.get(k)! : null;
+    },
+    setItem: (k: string, v: string) => {
+      log.push(`set:${k}`);
+      map.set(k, v);
+    },
+    removeItem: (k: string) => {
+      log.push(`remove:${k}`);
+      map.delete(k);
+    },
+    get length(): number {
+      return map.size;
+    },
+    key: (index: number): string | null => [...map.keys()][index] ?? null,
+  });
+  try {
+    assert.equal(clearLoopStore(), true);
+    assert.deepEqual(log, [
+      `remove:${LOOP_STORAGE_KEY_V2}`,
+      `remove:${LOOP_OPEN_KEY}`,
+      `get:${LOOP_STORAGE_KEY_V2}`,
+      `get:${LOOP_OPEN_KEY}`,
+    ]);
+    assert.equal(readLoopStoreV2(), null);
+    assert.equal(map.has(LOOP_STORAGE_KEY_V2), false);
+    assert.equal(map.has(LOOP_OPEN_KEY), false);
+  } finally {
+    setLocalBackend(undefined);
   }
 });

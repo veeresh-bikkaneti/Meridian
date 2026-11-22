@@ -24,6 +24,30 @@ import {
 } from "./session.ts";
 import { startRun, dropPin } from "./run.ts";
 import { SCORING_VERSION, type ScoredPlace } from "./scoring.ts";
+import { setLocalBackend, setSessionBackend } from "./storage-slot.ts";
+
+/** Fill both storage slots with Map-backed fakes (separate stores, the way a closed tab separates them). */
+function stubSlots(): { sessionStore: Map<string, string>; localStore: Map<string, string> } {
+  const sessionStore = new Map<string, string>();
+  const localStore = new Map<string, string>();
+  const backend = (store: Map<string, string>) => ({
+    getItem: (k: string) => (store.has(k) ? store.get(k)! : null),
+    setItem: (k: string, v: string) => void store.set(k, v),
+    removeItem: (k: string) => void store.delete(k),
+    get length(): number {
+      return store.size;
+    },
+    key: (index: number): string | null => [...store.keys()][index] ?? null,
+  });
+  setSessionBackend(backend(sessionStore));
+  setLocalBackend(backend(localStore));
+  return { sessionStore, localStore };
+}
+
+function unplugSlots(): void {
+  setSessionBackend(undefined);
+  setLocalBackend(undefined);
+}
 
 function fakeScored(score: number): ScoredPlace {
   return {
@@ -190,13 +214,7 @@ test("idleWarnMsFor: 30s before the kick, halfway for short E2E timeouts", () =>
 });
 
 test("storage round-trip: write/read preserves the session; garbage reads as null", () => {
-  // node:test has no sessionStorage; emulate the DOM API surface used.
-  const store = new Map<string, string>();
-  (globalThis as Record<string, unknown>).sessionStorage = {
-    getItem: (k: string) => (store.has(k) ? store.get(k)! : null),
-    setItem: (k: string, v: string) => void store.set(k, v),
-    removeItem: (k: string) => void store.delete(k),
-  };
+  const { sessionStore: store } = stubSlots();
   try {
     assert.equal(readSession(), null);
     let s = startSession("2026-10-02", NOW);
@@ -218,7 +236,7 @@ test("storage round-trip: write/read preserves the session; garbage reads as nul
     store.set("meridian.session", JSON.stringify({ ...s, byEdition: { globe: { score: 1 } } }));
     assert.equal(readSession(), null);
   } finally {
-    delete (globalThis as Record<string, unknown>).sessionStorage;
+    unplugSlots();
   }
 });
 
@@ -304,13 +322,7 @@ test("successRate / formatSuccessRate: whole percent; em-dash for zero places", 
 });
 
 test("readSession: old-format sessions backfill the new breakdowns (fail-open)", () => {
-  // node:test has no sessionStorage; emulate the DOM API surface used.
-  const store = new Map<string, string>();
-  (globalThis as Record<string, unknown>).sessionStorage = {
-    getItem: (k: string) => (store.has(k) ? store.get(k)! : null),
-    setItem: (k: string, v: string) => void store.set(k, v),
-    removeItem: (k: string) => void store.delete(k),
-  };
+  const { sessionStore: store } = stubSlots();
   try {
     // Old-format payload: no byDifficulty/regions keys at all.
     const legacy = {
@@ -369,18 +381,12 @@ test("readSession: old-format sessions backfill the new breakdowns (fail-open)",
     store.set("meridian.session", JSON.stringify({ ...legacy, byEdition: { globe: { score: 1 } } }));
     assert.equal(readSession(), null);
   } finally {
-    delete (globalThis as Record<string, unknown>).sessionStorage;
+    unplugSlots();
   }
 });
 
 test("storage round-trip: session JSON preserves the new breakdown fields", () => {
-  // node:test has no sessionStorage; emulate the DOM API surface used.
-  const store = new Map<string, string>();
-  (globalThis as Record<string, unknown>).sessionStorage = {
-    getItem: (k: string) => (store.has(k) ? store.get(k)! : null),
-    setItem: (k: string, v: string) => void store.set(k, v),
-    removeItem: (k: string) => void store.delete(k),
-  };
+  const { sessionStore: store } = stubSlots();
   try {
     let s = startSession("2026-10-02", NOW);
     s = bankPlace(s, { edition: "globe", score: 100, hit: true, distanceKm: 40, streakAfter: 1, difficultyChoice: "easy", regionId: "globe", regionName: "Globe" });
@@ -397,7 +403,7 @@ test("storage round-trip: session JSON preserves the new breakdown fields", () =
       { edition: "state", regionId: "ne", regionName: "Nebraska", score: 140, places: 2, hits: 1 },
     ]);
   } finally {
-    delete (globalThis as Record<string, unknown>).sessionStorage;
+    unplugSlots();
   }
 });
 
@@ -406,18 +412,7 @@ test("storage round-trip: session JSON preserves the new breakdown fields", () =
 // way a closed tab separates them (sessionStorage dies, localStorage
 // survives).
 test("discarded shadow: live writes shadow, ended clears it, garbage reads null", () => {
-  const sessionStore = new Map<string, string>();
-  const localStore = new Map<string, string>();
-  (globalThis as Record<string, unknown>).sessionStorage = {
-    getItem: (k: string) => (sessionStore.has(k) ? sessionStore.get(k)! : null),
-    setItem: (k: string, v: string) => void sessionStore.set(k, v),
-    removeItem: (k: string) => void sessionStore.delete(k),
-  };
-  (globalThis as Record<string, unknown>).localStorage = {
-    getItem: (k: string) => (localStore.has(k) ? localStore.get(k)! : null),
-    setItem: (k: string, v: string) => void localStore.set(k, v),
-    removeItem: (k: string) => void localStore.delete(k),
-  };
+  const { sessionStore, localStore } = stubSlots();
   try {
     assert.equal(readDiscardedShadow(), null);
     // Fix round L3: time-anchored fixture. The shadow now expires
@@ -454,8 +449,7 @@ test("discarded shadow: live writes shadow, ended clears it, garbage reads null"
     assert.equal(readSession(), null);
     assert.equal(readDiscardedShadow(), null);
   } finally {
-    delete (globalThis as Record<string, unknown>).sessionStorage;
-    delete (globalThis as Record<string, unknown>).localStorage;
+    unplugSlots();
   }
 });
 
@@ -464,18 +458,7 @@ test("discarded shadow: live writes shadow, ended clears it, garbage reads null"
 // notice dismissed (any click persists a null session via the idle
 // activity listener) must leave the deferred shadow for the next boot.
 test("clearSession with no stored session leaves a preserved shadow intact", () => {
-  const sessionStore = new Map<string, string>();
-  const localStore = new Map<string, string>();
-  (globalThis as Record<string, unknown>).sessionStorage = {
-    getItem: (k: string) => (sessionStore.has(k) ? sessionStore.get(k)! : null),
-    setItem: (k: string, v: string) => void sessionStore.set(k, v),
-    removeItem: (k: string) => void sessionStore.delete(k),
-  };
-  (globalThis as Record<string, unknown>).localStorage = {
-    getItem: (k: string) => (localStore.has(k) ? localStore.get(k)! : null),
-    setItem: (k: string, v: string) => void localStore.set(k, v),
-    removeItem: (k: string) => void localStore.delete(k),
-  };
+  const { sessionStore, localStore } = stubSlots();
   try {
     // Fix round L3: the shadow's timestamp is anchored at run time —
     // a fixed 2023 timestamp would read as expired under the 24h
@@ -507,8 +490,7 @@ test("clearSession with no stored session leaves a preserved shadow intact", () 
     assert.equal(clearSession(), true);
     assert.equal(readDiscardedShadow(), null);
   } finally {
-    delete (globalThis as Record<string, unknown>).sessionStorage;
-    delete (globalThis as Record<string, unknown>).localStorage;
+    unplugSlots();
   }
 });
 
@@ -516,18 +498,7 @@ test("clearSession with no stored session leaves a preserved shadow intact", () 
 // after 24h, even for a new-day discard — the stale record reads as
 // null AND clears the key, so it can never fire on a later boot.
 test("discarded shadow expiry: 24h boundary, future, malformed, 25h new-day", () => {
-  const sessionStore = new Map<string, string>();
-  const localStore = new Map<string, string>();
-  (globalThis as Record<string, unknown>).sessionStorage = {
-    getItem: (k: string) => (sessionStore.has(k) ? sessionStore.get(k)! : null),
-    setItem: (k: string, v: string) => void sessionStore.set(k, v),
-    removeItem: (k: string) => void sessionStore.delete(k),
-  };
-  (globalThis as Record<string, unknown>).localStorage = {
-    getItem: (k: string) => (localStore.has(k) ? localStore.get(k)! : null),
-    setItem: (k: string, v: string) => void localStore.set(k, v),
-    removeItem: (k: string) => void localStore.delete(k),
-  };
+  const { sessionStore, localStore } = stubSlots();
   const HOUR = 3600 * 1000;
   const seed = (ageMs: number, dateKey = "2026-10-02") => {
     writeDiscardedShadow({
@@ -571,7 +542,55 @@ test("discarded shadow expiry: 24h boundary, future, malformed, 25h new-day", ()
     assert.equal(readDiscardedShadow(), null);
     assert.equal(localStore.has(DISCARDED_NOTICE_KEY), false);
   } finally {
-    delete (globalThis as Record<string, unknown>).sessionStorage;
-    delete (globalThis as Record<string, unknown>).localStorage;
+    unplugSlots();
+  }
+});
+
+// R2: clearSession pins the exact remove→verify sequence — the session
+// record first, then the local shadow — so a reset can never leave a
+// half-cleared pair behind.
+test("R2: clearSession pins the exact remove→verify sequence (session, then shadow)", () => {
+  const sessionMap = new Map<string, string>();
+  const localMap = new Map<string, string>();
+  const log: string[] = [];
+  const recording = (tag: string, map: Map<string, string>) => ({
+    getItem: (k: string) => {
+      log.push(`${tag}:get:${k}`);
+      return map.has(k) ? map.get(k)! : null;
+    },
+    setItem: (k: string, v: string) => {
+      log.push(`${tag}:set:${k}`);
+      map.set(k, v);
+    },
+    removeItem: (k: string) => {
+      log.push(`${tag}:remove:${k}`);
+      map.delete(k);
+    },
+    get length(): number {
+      return map.size;
+    },
+    key: (index: number): string | null => [...map.keys()][index] ?? null,
+  });
+  setSessionBackend(recording("session", sessionMap));
+  setLocalBackend(recording("local", localMap));
+  try {
+    const anchoredNow = Date.now();
+    const todayKey = new Date(anchoredNow).toISOString().slice(0, 10);
+    let s = startSession(todayKey, anchoredNow);
+    s = bankPlace(s, { edition: "globe", score: 100, hit: true, distanceKm: 40, streakAfter: 1, difficultyChoice: "easy", regionId: "globe", regionName: "Globe" });
+    writeSession(s);
+    assert.ok(readDiscardedShadow());
+    log.length = 0;
+    assert.equal(clearSession(), true);
+    assert.deepEqual(log, [
+      "session:get:meridian.session",
+      "session:remove:meridian.session",
+      "session:get:meridian.session",
+      "local:remove:meridian.discarded-notice",
+    ]);
+    assert.equal(readSession(), null);
+    assert.equal(readDiscardedShadow(), null);
+  } finally {
+    unplugSlots();
   }
 });

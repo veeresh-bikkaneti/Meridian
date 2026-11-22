@@ -30,6 +30,7 @@
  */
 import { writeColdTrailOpen } from "../game/coldtrail/store.ts";
 import { writeLoopOpen } from "../game/loop/store.ts";
+import { resolveSession } from "../game/storage-slot.ts";
 
 const OPEN_WRITERS: Record<string, (open: boolean) => void> = {
   "Cold Trail": writeColdTrailOpen,
@@ -48,11 +49,12 @@ const OPEN_WRITERS: Record<string, (open: boolean) => void> = {
  * the right store for it: it survives the retry reload but not a
  * new visit, which is precisely the bare-visit line.
  */
-const RETRY_SCREEN_KEY = "meridian.retry-screen";
+/** One-shot retry marker key, pinned by the storage key registry. */
+export const RETRY_SCREEN_KEY = "meridian.retry-screen";
 
 function readRetryMarker(): string | null {
   try {
-    return sessionStorage.getItem(RETRY_SCREEN_KEY);
+    return resolveSession()?.getItem(RETRY_SCREEN_KEY) ?? null;
   } catch {
     return null;
   }
@@ -60,7 +62,7 @@ function readRetryMarker(): string | null {
 
 function writeRetryMarker(surface: string): void {
   try {
-    sessionStorage.setItem(RETRY_SCREEN_KEY, surface);
+    resolveSession()?.setItem(RETRY_SCREEN_KEY, surface);
   } catch {
     // Storage blocked: the retry reload lands on Home, where the
     // case is offered again — fail-open, never a trap.
@@ -69,7 +71,7 @@ function writeRetryMarker(surface: string): void {
 
 function clearRetryMarker(): void {
   try {
-    sessionStorage.removeItem(RETRY_SCREEN_KEY);
+    resolveSession()?.removeItem(RETRY_SCREEN_KEY);
   } catch {
     // Fail-open, as above.
   }

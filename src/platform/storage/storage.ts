@@ -12,9 +12,12 @@
  * - Values are stored as JSON text. A read parses the text and
  *   checks it against the key's schema; anything missing,
  *   unreadable, corrupt or off-schema reads back as the key's
- *   fallback. Storage is enhancement only: no path here throws
- *   into the caller, on the server, in private mode, or anywhere
- *   else storage is missing or refuses.
+ *   fallback. A key marked raw-encoded also accepts its literal
+ *   text when the text itself matches the schema, so bytes
+ *   written before the port keep reading; writes always store
+ *   JSON either way. Storage is enhancement only: no path here
+ *   throws into the caller, on the server, in private mode, or
+ *   anywhere else storage is missing or refuses.
  * - A write announces itself after the write attempt, whether or
  *   not the write landed — a store that swallowed a storage
  *   failure today still told its listeners, and that does not
@@ -48,6 +51,40 @@ export interface StorageKeyDef<T> {
   schema: ZodType<T>;
   /** What a read returns when nothing trustworthy is stored. */
   fallback: T;
+  /**
+   * How the stored bytes are read. "json" (the default) trusts
+   * JSON text only; "raw" also trusts the literal text when it
+   * matches the schema, for keys whose bytes predate the port
+   * (a bare flag, a bare sentence). Writes always store JSON.
+   */
+  encoding?: "json" | "raw";
+}
+
+/**
+ * Decode one stored string under a key's rules: JSON text
+ * checked against the schema first; when the key is
+ * raw-encoded, the literal text itself is checked next, so
+ * legacy bytes keep reading. `fallback` supplies the fallback
+ * when nothing trustworthy is stored.
+ */
+export function decodeStoredText<T>(
+  def: StorageKeyDef<T>,
+  raw: string | null,
+  fallback: () => T,
+): T {
+  if (raw === null) return fallback();
+  try {
+    const parsed: unknown = JSON.parse(raw);
+    const result = def.schema.safeParse(parsed);
+    if (result.success) return result.data;
+  } catch {
+    // Not JSON text: a raw-encoded key may still match literally.
+  }
+  if (def.encoding === "raw") {
+    const result = def.schema.safeParse(raw);
+    if (result.success) return result.data;
+  }
+  return fallback();
 }
 
 /** A source of cross-tab change events, such as window "storage". */

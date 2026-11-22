@@ -231,3 +231,21 @@ describe("handler", () => {
     assert.equal(captured.length, 0);
   });
 });
+
+describe("handler default fetch seam", () => {
+  it("delivers through the runtime fetch when no fetchFn is injected", async () => {
+    const realFetch = globalThis.fetch;
+    const captured: CapturedPost[] = [];
+    globalThis.fetch = capturingFetch(captured);
+    try {
+      const res = await handleFeatureRequest(request(VALID), env(), NOW, {
+        verifyTurnstile: verifyOk,
+      });
+      assert.equal(res.status, 200);
+      assert.equal(captured.length, 1);
+      assert.equal(captured[0]?.url, WEBHOOK);
+    } finally {
+      globalThis.fetch = realFetch;
+    }
+  });
+});

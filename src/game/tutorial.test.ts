@@ -10,6 +10,7 @@ import {
   type TutorialStorage,
 } from "./tutorial.ts";
 import { STARTERS } from "./starters.ts";
+import { setLocalBackend } from "./storage-slot.ts";
 
 /** In-memory Storage stand-in (node --test has no DOM). */
 function fakeStorage(initial: Record<string, string> = {}): TutorialStorage {
@@ -70,6 +71,36 @@ describe("tutorial seen flag", () => {
     assert.equal(hasSeenTutorial(null), true);
     assert.doesNotThrow(() => markTutorialSeen(null));
     assert.doesNotThrow(() => clearTutorialSeen(null));
+  });
+});
+
+describe("tutorial seen flag via the storage slot", () => {
+  it("no-arg calls round-trip through the registered slot", () => {
+    const store = fakeStorage();
+    setLocalBackend({
+      ...store,
+      get length(): number {
+        return 0;
+      },
+      key: () => null,
+    });
+    try {
+      assert.equal(hasSeenTutorial(), false);
+      markTutorialSeen();
+      assert.equal(store.getItem(TUTORIAL_SEEN_KEY), "1");
+      assert.equal(hasSeenTutorial(), true);
+      clearTutorialSeen();
+      assert.equal(hasSeenTutorial(), false);
+    } finally {
+      setLocalBackend(undefined);
+    }
+  });
+
+  it("unregistered slot reads as seen and writes are no-ops", () => {
+    setLocalBackend(undefined);
+    assert.equal(hasSeenTutorial(), true);
+    assert.doesNotThrow(() => markTutorialSeen());
+    assert.doesNotThrow(() => clearTutorialSeen());
   });
 });
 

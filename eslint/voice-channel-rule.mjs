@@ -107,20 +107,30 @@ const noPlayAfterAwait = {
         automatic: inherit ? parent.automatic : false,
       });
     };
-    // `claimVoice(owner, stop, { userInitiated: false })`: an automatic
-    // line has no tap to lose, so it may load first and play later.
-    const isAutomaticClaim = (node) =>
-      node.callee.type === "Identifier" &&
-      node.callee.name === "claimVoice" &&
-      node.arguments[2]?.type === "ObjectExpression" &&
-      node.arguments[2].properties.some(
-        (p) =>
-          p.type === "Property" &&
-          p.key.type === "Identifier" &&
-          p.key.name === "userInitiated" &&
-          p.value.type === "Literal" &&
-          p.value.value === false,
+    // `claimVoice(owner, stop, { userInitiated: false })` — or the
+    // voice port's `createVoice(src, { userInitiated: false })`, which
+    // claims the same channel — an automatic line has no tap to
+    // lose, so it may load first and play later.
+    const isAutomaticClaim = (node) => {
+      if (node.callee.type !== "Identifier") return false;
+      const optsArg =
+        node.callee.name === "claimVoice"
+          ? node.arguments[2]
+          : node.callee.name === "createVoice"
+            ? node.arguments[1]
+            : undefined;
+      return (
+        optsArg?.type === "ObjectExpression" &&
+        optsArg.properties.some(
+          (p) =>
+            p.type === "Property" &&
+            p.key.type === "Identifier" &&
+            p.key.name === "userInitiated" &&
+            p.value.type === "Literal" &&
+            p.value.value === false,
+        )
       );
+    };
     const exit = () => stack.pop();
     return {
       FunctionDeclaration: enter,

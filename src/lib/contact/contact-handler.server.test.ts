@@ -779,3 +779,20 @@ test("delivered Discord copy carries the stripped message (no email, no phone)",
     globalThis.fetch = realFetch;
   }
 });
+
+test("DiscordWebhookSink without an injected fetchFn uses the runtime fetch", async () => {
+  const realFetch = globalThis.fetch;
+  const calls: Array<{ url: string; init?: RequestInit }> = [];
+  globalThis.fetch = (async (input: unknown, init?: RequestInit) => {
+    calls.push({ url: String(input), init });
+    return new Response(null, { status: 204 });
+  }) as unknown as typeof fetch;
+  try {
+    const sink = new DiscordWebhookSink("https://discord.com/api/webhooks/2/hook");
+    assert.deepEqual(await sink.deliver({ topic: "bug", message: "x", receivedAt: "t" }), { ok: true, stored: true });
+    assert.equal(calls.length, 1);
+    assert.equal(calls[0]?.url, "https://discord.com/api/webhooks/2/hook");
+  } finally {
+    globalThis.fetch = realFetch;
+  }
+});

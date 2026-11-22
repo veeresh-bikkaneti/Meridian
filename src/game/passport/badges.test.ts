@@ -1,9 +1,11 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-// --- Minimal localStorage shim (node has none), mirroring store.test.ts. ---
+import { setLocalBackend } from "../storage-slot.ts";
+
+// --- Storage shim (node has none): the slot's local backend over a Map. ---
 const backing = new Map<string, string>();
-(globalThis as Record<string, unknown>).localStorage = {
+const slotBackend = {
   getItem: (k: string) => (backing.has(k) ? backing.get(k)! : null),
   setItem: (k: string, v: string) => {
     backing.set(k, v);
@@ -11,12 +13,17 @@ const backing = new Map<string, string>();
   removeItem: (k: string) => {
     backing.delete(k);
   },
-  clear: () => backing.clear(),
+  get length(): number {
+    return backing.size;
+  },
+  key: (index: number): string | null => [...backing.keys()][index] ?? null,
 };
+setLocalBackend(slotBackend);
 
 import {
   CLEAN_ROUND_BADGE_ID,
   PASSPORT_BADGES,
+  PASSPORT_BADGES_KEY,
   awardCleanRoundBadge,
   awardPassportBadge,
   earnedPassportBadges,
@@ -149,4 +156,28 @@ test("unknown badge id → null, nothing stored", () => {
   assert.equal(awardPassportBadge("nope"), null);
   assert.equal(getPassportBadge("nope"), null);
   assert.equal(earnedPassportBadges().length, 0);
+});
+
+test("a badge persisted in storage reads back (slot-driven, not memory)", () => {
+  clearStorage();
+  backing.set(
+    PASSPORT_BADGES_KEY,
+    JSON.stringify([{ id: CLEAN_ROUND_BADGE_ID, earnedAt: "2026-01-01T00:00:00.000Z", schemaVersion: 1 }]),
+  );
+  const earned = earnedPassportBadges();
+  assert.equal(earned.length, 1);
+  assert.equal(earned[0].id, CLEAN_ROUND_BADGE_ID);
+});
+
+test("unregistered slot: awards land in the memory fallback, nothing persists", () => {
+  clearStorage();
+  setLocalBackend(undefined);
+  try {
+    awardCleanRoundBadge({ band: "10-18", hintsUsed: 0, loopId: "quiz", won: true });
+    assert.equal(earnedPassportBadges().length, 1);
+    assert.equal(backing.size, 0, "nothing persisted without storage");
+  } finally {
+    setLocalBackend(slotBackend);
+    clearStorage();
+  }
 });

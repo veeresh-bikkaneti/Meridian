@@ -27,12 +27,15 @@ import {
   stopGlobeSpin,
 } from "./sfx.ts";
 
-// Node has no DOM: provide a minimal localStorage so toggle persistence
-// can be exercised. The module must also survive with NO localStorage at
-// all (that's the SSR/jsdom case) — see the no-crash tests below.
+// Node has no DOM: fill the storage slot with a Map-backed backend so
+// toggle persistence can be exercised. The module must also survive
+// with NO storage at all (that's the SSR/jsdom case) — see the
+// no-crash tests below.
+import { setLocalBackend } from "../storage-slot.ts";
+
 function stubStorage(): Map<string, string> {
   const data = new Map<string, string>();
-  (globalThis as Record<string, unknown>).localStorage = {
+  setLocalBackend({
     getItem: (k: string) => (data.has(k) ? (data.get(k) as string) : null),
     setItem: (k: string, v: string) => {
       data.set(k, String(v));
@@ -40,13 +43,17 @@ function stubStorage(): Map<string, string> {
     removeItem: (k: string) => {
       data.delete(k);
     },
-    clear: () => data.clear(),
-  };
+    get length(): number {
+      return data.size;
+    },
+    key: (index: number): string | null => [...data.keys()][index] ?? null,
+  });
   return data;
 }
 
 function unplugStorage(): void {
   delete (globalThis as Record<string, unknown>).localStorage;
+  setLocalBackend(undefined);
 }
 
 test("distanceToFrequencyKm: spec endpoints", () => {
@@ -94,20 +101,13 @@ test("sound toggle: default ON with empty storage", () => {
 });
 
 test("sound toggle: persistence round-trip", () => {
-  stubStorage();
+  const data = stubStorage();
   setSoundEnabled(false);
   assert.equal(isSoundEnabled(), false);
-  assert.equal(
-    (globalThis as Record<string, unknown>).localStorage &&
-      ((globalThis as Record<string, unknown>).localStorage as Storage).getItem("meridian.sound"),
-    "off",
-  );
+  assert.equal(data.get("meridian.sound"), "off");
   setSoundEnabled(true);
   assert.equal(isSoundEnabled(), true);
-  assert.equal(
-    ((globalThis as Record<string, unknown>).localStorage as Storage).getItem("meridian.sound"),
-    "on",
-  );
+  assert.equal(data.get("meridian.sound"), "on");
 });
 
 test("sound toggle: garbage value reads as off, missing reads as on", () => {

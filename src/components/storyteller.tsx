@@ -7,8 +7,8 @@ import {
 } from "react";
 import { RotateCcw, Volume2, VolumeX } from "lucide-react";
 import { isSoundEnabled } from "@/game/audio/sfx";
-import { type VoiceClaim } from "@/game/audio/voice-channel";
-import { claimStorytellerVoice } from "./storyteller-voice";
+import { createVoice } from "../platform/audio/browser-voice.ts";
+import type { VoiceHandle } from "../platform/audio/voice.ts";
 import { CURRENT_BUILD_ID } from "@/game/build-staleness";
 import {
   getObservability,
@@ -25,7 +25,6 @@ import {
 import {
   decideFirstGesture,
   fallbackLine,
-  resolvePlayAbort,
 } from "./storyteller-audio-guards";
 import { GrandpaMascot } from "./grandpa-mascot";
 import { BoundedText } from "./bounded-text";
@@ -231,9 +230,13 @@ export function StorytellerNarration({
   const gestureDoneRef = useRef(false);
   const dismissedRef = useRef(false);
   const audioStartTimeRef = useRef(0);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
-  /** The app-wide voice channel claim for the clip now sounding. */
-  const voiceRef = useRef<VoiceClaim | null>(null);
+  /** The voice-port handle for the line now sounding, if any.
+   * stop() tears the line down and gives the channel back, and
+   * fires no callbacks — on a terminal voice it is a no-op, so
+   * releasing after a natural end is safe. A pause keeps the
+   * channel and the position; only a terminal handle (another
+   * voice took the channel while paused) cannot resume. */
+  const voiceRef = useRef<VoiceHandle | null>(null);
   const revealTimer = useRef(0);
   const dismissTimer = useRef(0);
   // Narration-silence watchdogs (Fix B) — ref-held so dismiss()/unmount
@@ -278,9 +281,7 @@ export function StorytellerNarration({
       window.clearTimeout(dismissTimer.current);
       window.clearTimeout(playHangTimer.current);
       window.clearTimeout(playStallTimer.current);
-      audioRef.current?.pause();
-      audioRef.current = null;
-      voiceRef.current?.release();
+      voiceRef.current?.stop();
       voiceRef.current = null;
       emitStoryteller("narration_dismissed", {
         screen,
@@ -334,33 +335,18 @@ export function StorytellerNarration({
     (telemetryTrigger: "first_gesture" | "speaker" | "replay" | "summary") => {
       if (dismissedRef.current) return;
       // A replay stops the current line first.
-      audioRef.current?.pause();
-      audioRef.current = null;
+      voiceRef.current?.stop();
+      voiceRef.current = null;
       // One voice at a time: a tap (speaker, replay) takes the channel
       // from whoever is speaking; the automatic lines wait their turn and
-      // stay text-only if someone else has it.
-      const claim = claimStorytellerVoice(
-        voiceRef.current,
-        () => {
-          // Another voice took over: pause (not mute) so a tap can resume.
-          audioRef.current?.pause();
-          setAudioState("paused");
-        },
-        {
-          userInitiated:
-            telemetryTrigger === "speaker" || telemetryTrigger === "replay",
-        },
-      );
-      if (!claim) {
-        voiceRef.current = null;
-        return;
-      }
-      voiceRef.current = claim;
+      // stay text-only if someone else has it. The port owns the claim
+      // and the element. Speaker/replay lines bypass the sound-toggle
+      // gate (Decision 2) — they play once on the tap — while the
+      // hidden-tab guard still applies.
+      const userInitiated =
+        telemetryTrigger === "speaker" || telemetryTrigger === "replay";
       window.clearTimeout(dismissTimer.current);
       audioStartTimeRef.current = Date.now();
-      const audio = new Audio(audioUrl.current);
-      audioRef.current = audio;
-      setAudioState("playing");
       const startAt = Date.now();
       emitStoryteller("narration_started", {
         screen,
@@ -371,10 +357,8 @@ export function StorytellerNarration({
       const onEnded = () => {
         window.clearTimeout(playHangTimer.current);
         window.clearTimeout(playStallTimer.current);
-        voiceRef.current?.release();
-        voiceRef.current = null;
+        voiceRef.current = null; // natural end — unmount must not emit screen_exit
         setAudioState("ended");
-        audioRef.current = null; // natural end — unmount must not emit screen_exit
         emitStoryteller("narration_completed", {
           screen,
           duration_ms: Date.now() - startAt,
@@ -386,10 +370,9 @@ export function StorytellerNarration({
         // Audio unavailable — degrade to silent text-only, never device-shame.
         window.clearTimeout(playHangTimer.current);
         window.clearTimeout(playStallTimer.current);
-        voiceRef.current?.release();
+        voiceRef.current?.stop();
         voiceRef.current = null;
         setAudioState("failed");
-        audioRef.current = null;
         emitStoryteller("narration_failed", {
           screen,
           error_name: sanitizeError(err ?? "audio_error").name,
@@ -410,6 +393,17 @@ export function StorytellerNarration({
         // job is done. (The stall check arms on the playing event, below.)
         window.clearTimeout(playHangTimer.current);
       };
+      // Fix E — the port's onError fires for both a load failure (the
+      // element error event: no cause) and a play() rejection (a cause).
+      // Only the rejection is the retryable shape; a load failure sets
+      // the no-retry flag instead. The port fires at most one terminal
+      // callback, so the first arrival wins — the same order the
+      // element's error/play() race had.
+      const onVoiceError = (cause?: unknown) => {
+        if (cause === undefined) loadErrorRef.current = true;
+        else playRejectedRef.current = true;
+        onFail(cause);
+      };
       // Fix B — stall check: the "playing" event fired but the media clock
       // never advances (a second silent-stall shape). Anchored to the
       // playing event — not to play()-resolve — so a slow media-pipeline
@@ -417,14 +411,17 @@ export function StorytellerNarration({
       // Refs + cleanup only — no timers chained across renders.
       const armStallCheck = () => {
         window.clearTimeout(playStallTimer.current);
-        const anchor = audio.currentTime;
+        const live = voiceRef.current;
+        if (!live) return;
+        const anchor = live.currentTime();
         playStallTimer.current = window.setTimeout(() => {
           if (dismissedRef.current) return;
-          if (audioRef.current !== audio || audio.paused) return;
-          if (audio.currentTime <= anchor) {
+          if (voiceRef.current !== live) return;
+          if (live.state !== "playing") return;
+          if (live.currentTime() <= anchor) {
             playRejectedRef.current = true;
             try {
-              audio.pause();
+              live.pause();
             } catch {
               // Never break gameplay.
             }
@@ -432,85 +429,72 @@ export function StorytellerNarration({
           }
         }, PLAY_STALL_WATCHDOG_MS);
       };
-      audio.addEventListener("ended", onEnded, { once: true });
-      audio.addEventListener(
-        "error",
-        () => {
-          // The clip failed to load — the play() promise rejects too, but
-          // this is a network failure, not a playback stall (Fix E).
-          loadErrorRef.current = true;
-          onFail();
-        },
-        { once: true },
-      );
-      // The stall check arms here — on the playing event, per the fix
-      // contract — so a play() that resolves while the pipeline is still
-      // spinning up can't trip it.
-      audio.addEventListener("playing", () => {
-        onSettled();
-        armStallCheck();
-      });
-      // An intentional pause ends the stall question — a resume re-arms it
-      // via the "playing" listener above.
-      audio.addEventListener("pause", () =>
-        window.clearTimeout(playStallTimer.current),
-      );
-      playRejectedRef.current = false;
-      loadErrorRef.current = false;
-      void audio
-        .play()
-        .then(() => {
+      // The synced text reveal runs once per attempt, the audio leading
+      // by ~150ms, timed to the clip's duration.
+      let revealScheduled = false;
+      const scheduleReveal = () => {
+        if (revealScheduled || dismissedRef.current) return;
+        revealScheduled = true;
+        window.setTimeout(() => {
           if (dismissedRef.current) return;
-          // play() settled — the hang watchdog stands down. The stall
-          // check arms on the playing event, not here.
-          onSettled();
-          window.setTimeout(() => {
-            if (dismissedRef.current) return;
-            if (reducedMotion) {
-              setWordsShown(wordsRef.current.length);
-              return;
-            }
-            const perWord = wordMsFromDuration(
-              (audio.duration || 0) * 1000,
-              wordsRef.current.length,
-              FALLBACK_WORD_MS,
-            );
-            beginReveal(perWord, false);
-          }, AUDIO_LEAD_MS);
-        })
-        .catch((err: unknown) => {
-          // Pausing (or dismissing) while play() is still pending aborts it —
-          // that is the pause working, not an audio failure. Fix C: don't
-          // strand audioState "playing" on the dead element — "paused" is
-          // recoverable via replay / speaker / figure tap.
-          if (isPlayAbort(err)) {
-            onSettled();
-            if (
-              resolvePlayAbort({
-                isCurrentAttempt: audioRef.current === audio,
-                elementPaused: audio.paused,
-                dismissed: dismissedRef.current,
-              }) === "mark-paused"
-            ) {
-              setAudioState("paused");
-            }
+          if (reducedMotion) {
+            setWordsShown(wordsRef.current.length);
             return;
           }
-          // No resource error: the clip is fine but playback never started
-          // (autoplay policy / stall) — retrying may help (Fix E).
-          if (!loadErrorRef.current) playRejectedRef.current = true;
-          onFail(err);
-        });
-      // Fix B — hang watchdog: a play() promise that never settles (iOS
-      // stall) leaves audioState "playing" with captions advancing and zero
+          // The clip URL is fixed for the mount, so the live
+          // handle's duration is this attempt's duration.
+          const perWord = wordMsFromDuration(
+            (voiceRef.current?.duration() ?? 0) * 1000,
+            wordsRef.current.length,
+            FALLBACK_WORD_MS,
+          );
+          beginReveal(perWord, false);
+        }, AUDIO_LEAD_MS);
+      };
+      // The stall check arms on the playing event, per the fix contract
+      // — so a play() that resolves while the pipeline is still
+      // spinning up can't trip it. Pausing (or dismissing) while play()
+      // is still pending is the pause working, not a failure: the port
+      // swallows that rejection and the voice stays resumable (Fix C),
+      // so no abort branch is needed here. A rejected play() reaches
+      // onError with its cause instead (Fix E).
+      const voice = createVoice(audioUrl.current, {
+        owner: "storyteller",
+        userInitiated,
+        bypassSoundGate: userInitiated,
+        onEnded,
+        onError: onVoiceError,
+        onInterrupted: () => {
+          // Another voice took over: paused (not muted) so a tap can
+          // resume — or restart — the line.
+          window.clearTimeout(playStallTimer.current);
+          setAudioState("paused");
+        },
+        onPlaying: () => {
+          onSettled();
+          armStallCheck();
+          scheduleReveal();
+        },
+      });
+      if (!voice) {
+        voiceRef.current = null;
+        return;
+      }
+      voiceRef.current = voice;
+      setAudioState("playing");
+      playRejectedRef.current = false;
+      loadErrorRef.current = false;
+      voice.play();
+      // Fix B — hang watchdog: a play() that never starts (iOS stall)
+      // leaves audioState "playing" with captions advancing and zero
       // audio. After the window, fail loud into the text-only path instead.
       window.clearTimeout(playHangTimer.current);
       playHangTimer.current = window.setTimeout(() => {
         if (dismissedRef.current) return;
-        if (audioRef.current !== audio) return; // superseded by a newer attempt
+        if (voiceRef.current !== voice) return; // superseded by a newer attempt
         playRejectedRef.current = true;
         try {
-          audio.pause();
+          voice.pause();
         } catch {
           // Never break gameplay.
         }
@@ -575,10 +559,8 @@ export function StorytellerNarration({
       window.clearTimeout(dismissTimer.current);
       window.clearTimeout(playHangTimer.current);
       window.clearTimeout(playStallTimer.current);
-      const wasPlaying = audioRef.current !== null;
-      audioRef.current?.pause();
-      audioRef.current = null;
-      voiceRef.current?.release();
+      const wasPlaying = voiceRef.current !== null;
+      voiceRef.current?.stop();
       voiceRef.current = null;
       if (wasPlaying && !dismissedRef.current) {
         dismissedRef.current = true;
@@ -629,55 +611,46 @@ export function StorytellerNarration({
       playNarrationAudio("replay");
       return;
     }
-    const audio = audioRef.current;
-    if (!audio) return;
+    const voice = voiceRef.current;
+    if (!voice) return;
     if (audioState === "playing") {
-      audio.pause();
+      voice.pause();
+      // An intentional pause ends the stall question — a resume
+      // re-arms it via the playing callback.
+      window.clearTimeout(playStallTimer.current);
       setAudioState("paused");
     } else if (audioState === "paused") {
-      // Reclaim first: if another voice took over while we were paused,
-      // play() alone would talk over them. A figure tap is a user
-      // gesture, so this stops whoever is speaking.
-      const claim = claimStorytellerVoice(
-        voiceRef.current,
-        () => {
-          audioRef.current?.pause();
-          setAudioState("paused");
-        },
-        { userInitiated: true },
-      );
-      if (!claim) {
-        voiceRef.current = null;
+      // Resume on the SAME voice when it is still live: a pause keeps
+      // the channel and the position, so no reclaim is needed. If
+      // another voice took the channel while paused, this handle is
+      // terminal and the line restarts through the replay path
+      // instead — never silent, never stuck, never talking over the
+      // voice that took over. A rejected resume reaches the
+      // attempt's onError with its cause (Fix E); a pause that lands
+      // while play() is pending is swallowed by the port (Fix C).
+      if (voice.state !== "ready") {
+        playNarrationAudio("replay");
         return;
       }
-      voiceRef.current = claim;
       // Non-blocking concern #1 (scrum 2026-10-11): guard the resume
       // play() with the hang watchdog — a hung resume must not strand
       // "playing" with no recovery (speaker/replay/figure all bail while
-      // "playing"). The "playing" listener armed on this element at
-      // attempt creation stands the watchdog down via onSettled; refs
-      // only, no timers chained across renders.
+      // "playing"). The playing callback armed at attempt creation
+      // stands the watchdog down via onSettled; refs only, no timers
+      // chained across renders.
       window.clearTimeout(playHangTimer.current);
       playHangTimer.current = window.setTimeout(() => {
         if (dismissedRef.current) return;
-        if (audioRef.current !== audio) return; // superseded by a newer attempt
+        if (voiceRef.current !== voice) return; // superseded by a newer attempt
         playRejectedRef.current = true;
         try {
-          audio.pause();
+          voice.pause();
         } catch {
           // Never break gameplay.
         }
         onFailRef.current?.(new Error("play_resume_hang_watchdog"));
       }, PLAY_HANG_WATCHDOG_MS);
-      void audio.play().catch((err: unknown) => {
-        window.clearTimeout(playHangTimer.current);
-        if (isPlayAbort(err)) return;
-        // The clip is loaded on this element — a rejected resume is the
-        // same retryable shape as Fix E, so the hint renders alongside
-        // the replay button (BLOCK 1a).
-        playRejectedRef.current = true;
-        onFailRef.current?.(new Error("play_resume_rejected"));
-      });
+      voice.play();
       setAudioState("playing");
     }
   }, [audioState, playNarrationAudio]);

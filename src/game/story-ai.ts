@@ -49,6 +49,7 @@ import {
   geonameIdOf,
   type PromptSession,
 } from "./sports-ai.ts";
+import { resolveLocal, type GameEnumerableStorageBackend } from "./storage-slot.ts";
 
 /** Re-exported so tests/consumers get the session type from this module. */
 export type { PromptSession };
@@ -500,10 +501,9 @@ export async function queryAiStory(
 const CACHE_PREFIX = "meridian.ai-story.v1.";
 const CACHE_TTL_MS = 180 * 24 * 60 * 60 * 1000;
 
-function storage(): Storage | null {
+function storage(): GameEnumerableStorageBackend | null {
   try {
-    if (typeof localStorage === "undefined") return null;
-    return localStorage;
+    return resolveLocal() ?? null;
   } catch {
     return null;
   }

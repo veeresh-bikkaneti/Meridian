@@ -12,6 +12,7 @@ import {
   cityLabelForPlace,
   type PromptSession,
 } from "./sports-ai.ts";
+import { setLocalBackend } from "./storage-slot.ts";
 
 const GREEN_BAY_GID = "5254962";
 const NYC_GID = "5128581";
@@ -269,6 +270,32 @@ test("queryAiTeams rejects a valid team for the wrong city", async () => {
 test("sports cache is a safe no-op without localStorage (node)", () => {
   writeCachedTeams("123", [{ team: "Green Bay Packers", league: "NFL" }]);
   assert.equal(readCachedTeams("123"), null);
+});
+
+test("sports cache round-trips through the registered slot", () => {
+  const map = new Map<string, string>();
+  setLocalBackend({
+    getItem: (k: string) => (map.has(k) ? map.get(k)! : null),
+    setItem: (k: string, v: string) => {
+      map.set(k, String(v));
+    },
+    removeItem: (k: string) => {
+      map.delete(k);
+    },
+    get length(): number {
+      return map.size;
+    },
+    key: (index: number): string | null => [...map.keys()][index] ?? null,
+  });
+  try {
+    assert.equal(readCachedTeams(GREEN_BAY_GID), null, "miss → null");
+    writeCachedTeams(GREEN_BAY_GID, [{ team: "Green Bay Packers", league: "NFL" }]);
+    assert.deepEqual(readCachedTeams(GREEN_BAY_GID), [{ team: "Green Bay Packers", league: "NFL" }]);
+    writeCachedTeams(GREEN_BAY_GID, []);
+    assert.deepEqual(readCachedTeams(GREEN_BAY_GID), [], "cached empty survives validation");
+  } finally {
+    setLocalBackend(undefined);
+  }
 });
 
 test("cityLabelForPlace prettifies the region", () => {

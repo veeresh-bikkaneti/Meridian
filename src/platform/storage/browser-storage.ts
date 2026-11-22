@@ -1,6 +1,7 @@
 /**
  * The browser storage port — the one real implementation of the
- * storage port, backed by the browser's local storage.
+ * storage port, backed by the browser's local storage, plus a
+ * session port backed by the browser's session storage.
  *
  * Two rules shape this file:
  *
@@ -20,6 +21,7 @@
  * subscriber attaches it, the last unsubscribe detaches it.
  */
 
+import { decodeStoredText } from "./storage.ts";
 import type {
   StorageBackend,
   StorageEventSource,
@@ -92,6 +94,42 @@ export function createSlotLocalStorageBackend(): StorageBackend {
 const localStorageBackend: StorageBackend = createLocalStorageBackend();
 
 /**
+ * The browser's session storage as a backend. The same fail-soft
+ * mirror as the local backend: the global is resolved lazily
+ * inside every call, so building one anywhere is harmless.
+ */
+export function createSessionStorageBackend(): StorageBackend {
+  return {
+    getItem(key: string): string | null {
+      try {
+        if (typeof sessionStorage === "undefined") return null;
+        return sessionStorage.getItem(key);
+      } catch {
+        return null;
+      }
+    },
+    setItem(key: string, value: string): void {
+      try {
+        if (typeof sessionStorage === "undefined") return;
+        sessionStorage.setItem(key, value);
+      } catch {
+        // Private mode or a full store: the write is dropped.
+      }
+    },
+    removeItem(key: string): void {
+      try {
+        if (typeof sessionStorage === "undefined") return;
+        sessionStorage.removeItem(key);
+      } catch {
+        // Same as a write: removal is dropped, never thrown.
+      }
+    },
+  };
+}
+
+const sessionStorageBackend: StorageBackend = createSessionStorageBackend();
+
+/**
  * A fresh copy of a key's fallback, so a caller that mutates
  * what it read cannot poison the fallback for the next read.
  * Cloning itself can fail (a fallback holding something
@@ -122,6 +160,21 @@ const windowEventSource: StorageEventSource = {
         // The window is gone; detaching is already done.
       }
     };
+  },
+};
+
+/**
+ * An event source that never fires. Session storage has no
+ * cross-tab events, so the session port must not share the
+ * window "storage" listener: another tab clearing its local
+ * storage would re-emit every subscribed session key as
+ * changed, wrongly. Subscribing still attaches this source
+ * through the port's usual first-subscriber path, and the
+ * returned stop function is a no-op.
+ */
+export const inertStorageEventSource: StorageEventSource = {
+  addListener(): () => void {
+    return () => {};
   },
 };
 
@@ -166,15 +219,7 @@ export function createBrowserStoragePort(
       } catch {
         return freshFallback(def.fallback);
       }
-      if (raw === null) return freshFallback(def.fallback);
-      let parsed: unknown;
-      try {
-        parsed = JSON.parse(raw);
-      } catch {
-        return freshFallback(def.fallback);
-      }
-      const result = def.schema.safeParse(parsed);
-      return result.success ? result.data : freshFallback(def.fallback);
+      return decodeStoredText(def, raw, () => freshFallback(def.fallback));
     },
 
     setItem<T>(def: StorageKeyDef<T>, value: T): void {
@@ -263,4 +308,48 @@ export function subscribeStorage(key: string, cb: () => void): () => void {
 /** Announce one key's change on the shared browser port. */
 export function notifyStorageChanged(key: string): void {
   defaultPort.notifyChanged(key);
+}
+
+/**
+ * Make the browser session port: the same port over session
+ * storage, with the inert event source — session values never
+ * arrive from another tab. Seams in deps are for tests.
+ */
+export function createSessionStoragePort(
+  deps: StoragePortDeps = {},
+): StoragePort {
+  return createBrowserStoragePort({
+    backend: deps.backend ?? sessionStorageBackend,
+    eventSource: deps.eventSource ?? inertStorageEventSource,
+  });
+}
+
+const defaultSessionPort = createSessionStoragePort();
+
+/** Read one value on the shared browser session port. */
+export function getSessionStorageItem<T>(def: StorageKeyDef<T>): T {
+  return defaultSessionPort.getItem(def);
+}
+
+/** Write one value on the shared browser session port. */
+export function setSessionStorageItem<T>(def: StorageKeyDef<T>, value: T): void {
+  defaultSessionPort.setItem(def, value);
+}
+
+/** Remove one value on the shared browser session port. */
+export function removeSessionStorageItem<T>(def: StorageKeyDef<T>): void {
+  defaultSessionPort.removeItem(def);
+}
+
+/** Hear about one key's changes on the shared browser session port. */
+export function subscribeSessionStorage(
+  key: string,
+  cb: () => void,
+): () => void {
+  return defaultSessionPort.subscribe(key, cb);
+}
+
+/** Announce one key's change on the shared browser session port. */
+export function notifySessionStorageChanged(key: string): void {
+  defaultSessionPort.notifyChanged(key);
 }

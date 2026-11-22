@@ -25,6 +25,8 @@ function baseUrl(): string {
   return base.endsWith("/") ? base : `${base}/`;
 }
 
+import { resolveSession } from "./storage-slot.ts";
+
 export interface StalenessDeps {
   fetchFn?: typeof fetch;
   base?: string;
@@ -61,11 +63,7 @@ export function staleRefreshRecentlyUsed(
 ): boolean {
   let store = storage;
   if (store === undefined) {
-    try {
-      store = window.sessionStorage;
-    } catch {
-      return false;
-    }
+    store = resolveSession() ?? null;
   }
   if (!store) return false;
   let raw: string | null;

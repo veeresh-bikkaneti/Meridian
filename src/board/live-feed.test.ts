@@ -339,3 +339,65 @@ describe("loadLiveBoard — one sequence per page load", () => {
     assert.equal(calls.length, 1);
   });
 });
+
+describe("fetchLiveStates — transport port path (no injected fetchFn)", () => {
+  function stubGlobalFetch(
+    handler: (url: string, init?: RequestInit) => { status: number; body: unknown } | "throw",
+  ) {
+    const realFetch = globalThis.fetch;
+    const calls: Array<{ url: string; init?: RequestInit }> = [];
+    globalThis.fetch = (async (input: unknown, init?: RequestInit) => {
+      const url = String(input);
+      calls.push({ url, init });
+      const r = handler(url, init);
+      if (r === "throw") throw new Error("network down");
+      return {
+        ok: r.status >= 200 && r.status < 300,
+        status: r.status,
+        json: async () => r.body,
+      };
+    }) as unknown as typeof fetch;
+    return { calls, restore: () => void (globalThis.fetch = realFetch) };
+  }
+
+  const urls = {
+    pullsUrl: "https://example.test/pulls?per_page=100",
+    issuesUrl: "https://example.test/issues?per_page=100",
+  };
+
+  it("goes through the transport port: an explicit GET carrying the GitHub accept header", async () => {
+    const stub = stubGlobalFetch(() => ({ status: 200, body: [pr(9, "closed", true)] }));
+    try {
+      const result = await fetchLiveStates({ wanted: [9], storage: null, ...urls });
+      assert.equal(result.kind, "live");
+      assert.equal(stub.calls.length, 1);
+      assert.equal(stub.calls[0]?.init?.method, "GET");
+      const headers = stub.calls[0]?.init?.headers as Record<string, string> | undefined;
+      assert.equal(headers?.["accept"], "application/vnd.github+json");
+    } finally {
+      stub.restore();
+    }
+  });
+
+  it("a network failure is retried exactly once through the port", async () => {
+    const throwing = stubGlobalFetch(() => "throw");
+    try {
+      const result = await fetchLiveStates({ wanted: [9], storage: null, ...urls });
+      assert.equal(result.kind, "unavailable");
+      assert.equal(throwing.calls.length, 2, "one retry of a network error, never more");
+    } finally {
+      throwing.restore();
+    }
+  });
+
+  it("an HTTP error status is never retried through the port", async () => {
+    const stub = stubGlobalFetch(() => ({ status: 403, body: { message: "rate limited" } }));
+    try {
+      const result = await fetchLiveStates({ wanted: [9], storage: null, ...urls });
+      assert.equal(result.kind, "unavailable");
+      assert.equal(stub.calls.length, 1, "a 403 is the rate limit answering — never asked twice");
+    } finally {
+      stub.restore();
+    }
+  });
+});

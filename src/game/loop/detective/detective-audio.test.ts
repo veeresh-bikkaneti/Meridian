@@ -2,13 +2,22 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import {
+  __resetDetectiveManifestCache,
   createDetectiveSpeech,
   isEndingRef,
+  loadDetectiveManifest,
   resolveDetectiveClip,
   type DetectiveManifest,
+  type DetectiveSpeechOptions,
   type DetectiveSpeaker,
 } from "./detective-audio.ts";
 import type { SpeakRef } from "./detective-state.ts";
+import {
+  setVoiceFactory,
+  stopAllVoices,
+} from "../../audio/voice-channel.ts";
+import { createVoice } from "../../../platform/audio/browser-voice.ts";
+import { createFakeVoicePort } from "../../../platform/audio/fake-voice.ts";
 
 const MANIFEST: DetectiveManifest = {
   v: 1,
@@ -730,7 +739,8 @@ test("Unit A auto mode: sound off at replay time still drops the replay", async 
 /* in that window (a mute, a case change) settles the parked clip    */
 /* exactly like a playing one, and the sound gate is re-checked at   */
 /* wake. These tests drive the real default player with a stubbed    */
-/* window/Audio.                                                      */
+/* window/Audio and the real voice factory registered, so the        */
+/* default player sounds through the port.                           */
 /* ------------------------------------------------------------------ */
 
 function stubBrowserAudio(playedUrls: string[]): () => void {
@@ -762,6 +772,9 @@ function stubBrowserAudio(playedUrls: string[]): () => void {
     },
   };
   g.Audio = FakeAudio;
+  // The default player sounds through the registered voice factory;
+  // the factory's element is this stub (the port's default).
+  setVoiceFactory(createVoice);
   return () => {
     // Fire the parked first-gesture listener, if one is armed.
     listeners.get("pointerdown")?.();
@@ -772,6 +785,8 @@ function unplugBrowserAudio(): void {
   const g = globalThis as Record<string, unknown>;
   delete g.window;
   delete g.Audio;
+  setVoiceFactory(undefined);
+  stopAllVoices();
 }
 
 test("gesture wait: a stopAll during the wait keeps the parked clip silent when the gesture lands", async () => {
@@ -1086,4 +1101,135 @@ test("one voice: exactly one drain per finished line, none from a superseded loo
   await tick();
   assert.equal(h.speaking.filter((w) => w === null).length, 1);
   h.player.dispose();
+});
+
+/* ------------------------------------------------------------------ */
+/* Default clip player through the voice port (ports slice)            */
+/* The default player no longer builds its own Audio element: it       */
+/* sounds through a voice factory — injected per player, or the       */
+/* startup-registered one — and a clip with no factory resolves as     */
+/* skipped, never a stall.                                             */
+/* ------------------------------------------------------------------ */
+
+function defaultPlayerHarness(overrides: {
+  createVoice?: DetectiveSpeechOptions["createVoice"];
+} = {}) {
+  const { port, handles } = createFakeVoicePort({
+    soundEnabled: () => true,
+    audible: () => true,
+  });
+  const speaking: Array<DetectiveSpeaker | null> = [];
+  const player = createDetectiveSpeech({
+    caseIndex: 387,
+    loadManifest: async () => MANIFEST,
+    createVoice: overrides.createVoice ?? port.createVoice,
+    isSoundOn: () => true,
+    canAutoPlay: () => true,
+    onSpeakingChange: (who) => speaking.push(who),
+  });
+  return { player, handles, speaking };
+}
+
+test("default clip player: the clip plays through the injected voice factory and drains", async () => {
+  const { player, handles, speaking } = defaultPlayerHarness();
+  try {
+    player.enqueue({ kind: "clue", clueIndex: 1 });
+    await tick();
+    assert.equal(handles.length, 1);
+    assert.equal(
+      handles[0]!.src,
+      "/audio/detective/case-387/clue-1.mp3",
+    );
+    assert.equal(handles[0]!.playCalls, 1);
+    handles[0]!.simulateEnded();
+    await tick();
+    assert.deepEqual(speaking, ["watson", null]);
+  } finally {
+    player.dispose();
+    stopAllVoices();
+  }
+});
+
+test("default clip player: without an options factory it uses the startup-registered voice factory", async () => {
+  const { port, handles } = createFakeVoicePort({
+    soundEnabled: () => true,
+    audible: () => true,
+  });
+  setVoiceFactory(port.createVoice);
+  const speaking: Array<DetectiveSpeaker | null> = [];
+  const player = createDetectiveSpeech({
+    caseIndex: 387,
+    loadManifest: async () => MANIFEST,
+    isSoundOn: () => true,
+    canAutoPlay: () => true,
+    onSpeakingChange: (who) => speaking.push(who),
+  });
+  try {
+    player.enqueue({ kind: "clue", clueIndex: 1 });
+    await tick();
+    assert.equal(handles.length, 1);
+    handles[0]!.simulateEnded();
+    await tick();
+    assert.deepEqual(speaking, ["watson", null]);
+  } finally {
+    player.dispose();
+    setVoiceFactory(undefined);
+    stopAllVoices();
+  }
+});
+
+test("default clip player: with no voice factory the clip resolves as skipped and the queue drains", async () => {
+  setVoiceFactory(undefined);
+  const speaking: Array<DetectiveSpeaker | null> = [];
+  const player = createDetectiveSpeech({
+    caseIndex: 387,
+    loadManifest: async () => MANIFEST,
+    isSoundOn: () => true,
+    canAutoPlay: () => true,
+    onSpeakingChange: (who) => speaking.push(who),
+  });
+  try {
+    player.enqueue({ kind: "clue", clueIndex: 1 });
+    await tick();
+    assert.deepEqual(speaking, ["watson", null]);
+  } finally {
+    player.dispose();
+    stopAllVoices();
+  }
+});
+
+test("default clip player: stopAll aborts the sounding clip", async () => {
+  const { player, handles, speaking } = defaultPlayerHarness();
+  try {
+    player.enqueue({ kind: "clue", clueIndex: 1 });
+    await tick();
+    assert.equal(handles.length, 1);
+    player.stopAll();
+    await tick();
+    assert.equal(handles[0]!.stopCalls, 1);
+    assert.deepEqual(speaking, ["watson", null]);
+  } finally {
+    player.dispose();
+    stopAllVoices();
+  }
+});
+
+test("loadDetectiveManifest: an injected fetch supplies the manifest; a failed load degrades to null", async () => {
+  const fetchOk = (async () =>
+    ({
+      ok: true,
+      json: async () => MANIFEST,
+    }) as unknown as Response) as typeof fetch;
+  const fetchDown = (async () => {
+    throw new Error("offline");
+  }) as typeof fetch;
+  try {
+    __resetDetectiveManifestCache();
+    const manifest = await loadDetectiveManifest(fetchOk);
+    assert.equal(manifest?.v, 1);
+    __resetDetectiveManifestCache();
+    assert.equal(await loadDetectiveManifest(fetchDown), null);
+  } finally {
+    __resetDetectiveManifestCache();
+  }
 });

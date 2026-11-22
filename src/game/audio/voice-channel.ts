@@ -64,6 +64,80 @@ export function stopAllVoices(): void {
   if (current) stopHolder(current);
 }
 
+/**
+ * The voice factory: how a domain player that may not import the
+ * platform port still sounds through it. The shape is structural
+ * (no platform import — the layer rule forbids it): the port's
+ * createVoice satisfies it exactly.
+ *
+ * The shell registers the real factory once at startup
+ * (src/platform/storage/register.ts); a player may also take one
+ * per instance, which wins over the registered one (the storage
+ * slot's explicit-beats-registered discipline). Unregistered
+ * resolves to nothing: the player degrades to silence, never a
+ * raw element.
+ */
+export type VoiceFactoryState =
+  | "idle"
+  | "loading"
+  | "ready"
+  | "playing"
+  | "ended"
+  | "error"
+  | "interrupted"
+  | "aborted";
+
+export interface VoiceFactoryOptions {
+  owner: string;
+  userInitiated: boolean;
+  /** A channel claim the caller already holds, for the factory to
+   * adopt instead of claiming again: claiming twice would stop
+   * the first claim's owner — the caller itself. The factory
+   * releases an adopted claim on exactly the paths it releases
+   * a claim it took itself; when the factory returns null the
+   * claim stays with the caller. */
+  claim?: VoiceClaim;
+  bypassSoundGate?: boolean;
+  startAtSeconds?: number;
+  onEnded?: () => void;
+  onError?: (cause?: unknown) => void;
+  onInterrupted?: () => void;
+  onPlaying?: () => void;
+  onTimeUpdate?: (seconds: number) => void;
+}
+
+export interface VoiceFactoryHandle {
+  readonly state: VoiceFactoryState;
+  play(): void;
+  pause(): void;
+  stop(): void;
+  currentTime(): number;
+  duration(): number;
+}
+
+export type VoiceFactory = (
+  src: string,
+  opts: VoiceFactoryOptions,
+) => VoiceFactoryHandle | null;
+
+let registeredVoiceFactory: VoiceFactory | undefined;
+
+/** Register the voice factory (called once, from above, at startup). */
+export function setVoiceFactory(factory: VoiceFactory | undefined): void {
+  registeredVoiceFactory = factory;
+}
+
+/**
+ * Resolve the voice factory to use: the explicit one when given,
+ * else the registered factory, else undefined — no factory at
+ * all, and the caller's silent-skip path carries the session.
+ */
+export function resolveVoiceFactory(
+  explicit?: VoiceFactory,
+): VoiceFactory | undefined {
+  return explicit ?? registeredVoiceFactory;
+}
+
 /** Who holds the channel right now, or null. For tests and debugging. */
 export function currentVoiceOwner(): string | null {
   return holder ? holder.owner : null;

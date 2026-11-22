@@ -1,3 +1,13 @@
+import {
+  getSessionStorageItem,
+  getStorageItem,
+  removeSessionStorageItem,
+  removeStorageItem,
+  setSessionStorageItem,
+  setStorageItem,
+} from "../platform/storage/browser-storage.ts";
+import { STORAGE_KEYS } from "../platform/storage/keys.ts";
+
 /**
  * Storyteller home handoff (H1) — session + day storage.
  *
@@ -12,49 +22,9 @@
  * when storage is unavailable the flags degrade to module memory.
  */
 
-const AUTO_NARRATION_KEY = "meridian.storyteller.sessionAutoNarration.v1";
-const TOUR_RETURN_KEY = "meridian.storyteller.tourReturn.v1";
-const GREET_DAY_KEY = "meridian.storyteller.greetDay.v1";
-
-function sessionStore(): Storage | null {
-  try {
-    return typeof sessionStorage === "undefined" ? null : sessionStorage;
-  } catch {
-    return null;
-  }
-}
-
-function localStore(): Storage | null {
-  try {
-    return typeof localStorage === "undefined" ? null : localStorage;
-  } catch {
-    return null;
-  }
-}
-
-function read(store: Storage | null, key: string): string | null {
-  try {
-    return store?.getItem(key) ?? null;
-  } catch {
-    return null;
-  }
-}
-
-function write(store: Storage | null, key: string, value: string): void {
-  try {
-    store?.setItem(key, value);
-  } catch {
-    // Storage unavailable — the memory fallback below keeps working.
-  }
-}
-
-function remove(store: Storage | null, key: string): void {
-  try {
-    store?.removeItem(key);
-  } catch {
-    // Ignore — fail closed.
-  }
-}
+export const AUTO_NARRATION_KEY = "meridian.storyteller.sessionAutoNarration.v1";
+export const TOUR_RETURN_KEY = "meridian.storyteller.tourReturn.v1";
+export const GREET_DAY_KEY = "meridian.storyteller.greetDay.v1";
 
 // Memory fallbacks for environments without storage (private mode, node).
 let memoryAutoNarration = false;
@@ -63,7 +33,10 @@ let memoryGreetDay: string | null = null;
 
 /** True once the session's one auto-narration has been consumed. */
 export function isSessionAutoNarrationConsumed(): boolean {
-  return read(sessionStore(), AUTO_NARRATION_KEY) === "1" || memoryAutoNarration;
+  return (
+    getSessionStorageItem(STORAGE_KEYS.storytellerSessionAutoNarration) === "1" ||
+    memoryAutoNarration
+  );
 }
 
 /**
@@ -73,14 +46,14 @@ export function isSessionAutoNarrationConsumed(): boolean {
  */
 export function consumeSessionAutoNarration(): boolean {
   if (isSessionAutoNarrationConsumed()) return false;
-  write(sessionStore(), AUTO_NARRATION_KEY, "1");
+  setSessionStorageItem(STORAGE_KEYS.storytellerSessionAutoNarration, "1");
   memoryAutoNarration = true;
   return true;
 }
 
 /** Arm the post-tour return line for `dayKey` (tour walk ended after a yield). */
 export function armTourReturnLine(dayKey: string): void {
-  write(sessionStore(), TOUR_RETURN_KEY, dayKey);
+  setSessionStorageItem(STORAGE_KEYS.storytellerTourReturn, dayKey);
   memoryTourReturn = dayKey;
 }
 
@@ -89,32 +62,29 @@ export function armTourReturnLine(dayKey: string): void {
  * is due today — exactly-once per arming (copy G2).
  */
 export function takeTourReturnLine(dayKey: string): boolean {
-  const store = sessionStore();
-  const stored = read(store, TOUR_RETURN_KEY);
+  const stored = getSessionStorageItem(STORAGE_KEYS.storytellerTourReturn);
   const due = stored === dayKey || memoryTourReturn === dayKey;
-  remove(store, TOUR_RETURN_KEY);
+  removeSessionStorageItem(STORAGE_KEYS.storytellerTourReturn);
   memoryTourReturn = null;
   return due;
 }
 
 /** The local day key of the last shown greeting ("YYYY-MM-DD" or null). */
 export function readHomeGreetDay(): string | null {
-  return read(localStore(), GREET_DAY_KEY) ?? memoryGreetDay;
+  return getStorageItem(STORAGE_KEYS.storytellerGreetDay) ?? memoryGreetDay;
 }
 
 /** Record that today's greeting was shown. */
 export function writeHomeGreetDay(dayKey: string): void {
-  write(localStore(), GREET_DAY_KEY, dayKey);
+  setStorageItem(STORAGE_KEYS.storytellerGreetDay, dayKey);
   memoryGreetDay = dayKey;
 }
 
 /** Test-only: drop every flag. */
 export function resetStorytellerSessionForTests(): void {
-  const s = sessionStore();
-  const l = localStore();
-  remove(s, AUTO_NARRATION_KEY);
-  remove(s, TOUR_RETURN_KEY);
-  remove(l, GREET_DAY_KEY);
+  removeSessionStorageItem(STORAGE_KEYS.storytellerSessionAutoNarration);
+  removeSessionStorageItem(STORAGE_KEYS.storytellerTourReturn);
+  removeStorageItem(STORAGE_KEYS.storytellerGreetDay);
   memoryAutoNarration = false;
   memoryTourReturn = null;
   memoryGreetDay = null;

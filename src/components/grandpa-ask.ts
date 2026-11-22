@@ -17,7 +17,9 @@
  * or the figure is hovered or clicked. The speaker toggle is the only mute.
  */
 
-import { claimVoice, type VoiceClaim } from "../game/audio/voice-channel.ts";
+import { isSoundEnabled } from "../game/audio/sfx.ts";
+import { createVoice } from "../platform/audio/browser-voice.ts";
+import type { VoiceHandle } from "../platform/audio/voice.ts";
 
 export const TRAIL_QUIPS = [
   "These hills did not ask my knees for permission.",
@@ -29,17 +31,8 @@ export const TRAIL_QUIPS = [
 const TRAIL_FILES = ["trail-01.mp3", "trail-02.mp3", "trail-03.mp3", "trail-04.mp3"];
 const ASK_FILE = "ask-01.mp3";
 
-let current: HTMLAudioElement | null = null;
+let currentVoice: VoiceHandle | null = null;
 let coughTimer = 0;
-
-function soundOn(): boolean {
-  try {
-    const v = localStorage.getItem("meridian.sound");
-    return v == null || v === "on";
-  } catch {
-    return true;
-  }
-}
 
 function clipUrl(file: string): string {
   const env = (import.meta as unknown as { env?: { BASE_URL?: string } }).env;
@@ -47,15 +40,13 @@ function clipUrl(file: string): string {
   return `${base.endsWith("/") ? base : `${base}/`}audio/grandpa/${file}`;
 }
 
-/** The app-wide voice channel claim for the line now sounding. */
-let voiceClaim: VoiceClaim | null = null;
-
+/** The voice port handle for the line now sounding, if any.
+ * stop() fires no callbacks and gives the channel back, so
+ * stopping is the whole teardown — no claim to release. */
 function stopNarration(): void {
   window.clearTimeout(coughTimer);
-  current?.pause();
-  current = null;
-  voiceClaim?.release();
-  voiceClaim = null;
+  currentVoice?.stop();
+  currentVoice = null;
 }
 
 /** One lazily-created AudioContext shared by all coughs. Kept alive
@@ -86,7 +77,7 @@ function getSharedCtx(): AudioContext | null {
  * sfx.ts play function: if anything in the graph throws, the cough is
  * a silent no-op — sound is an enhancement, never a crash. */
 export function playCough(): void {
-  if (!soundOn() || typeof window === "undefined") return;
+  if (!isSoundEnabled() || typeof window === "undefined") return;
   try {
     const ctx = getSharedCtx();
     if (!ctx) return;
@@ -122,33 +113,30 @@ export function playCough(): void {
 }
 
 function playFile(file: string, userInitiated: boolean): void {
-  if (!soundOn()) return;
+  if (!isSoundEnabled()) return;
   stopNarration();
   // One voice at a time. A trail line is timer-driven, so it waits its
   // turn and is dropped (not queued) if someone is speaking; the coffee
-  // ask is a hover/click, so it takes the channel.
-  const claim = claimVoice("grandpa-ask", stopNarration, { userInitiated });
-  if (!claim) return;
-  voiceClaim = claim;
+  // ask is a hover/click, so it takes the channel. The port owns the
+  // claim and the element: a null voice means the line stays silent
+  // (sound off, tab hidden, channel held, or no Audio available) and
+  // the channel is never held by a sound that cannot play.
+  const voice = createVoice(clipUrl(file), {
+    owner: "grandpa-ask",
+    userInitiated,
+    onEnded: stopNarration,
+    onError: stopNarration,
+    onInterrupted: stopNarration,
+  });
+  if (!voice) return;
+  currentVoice = voice;
   playCough();
-  try {
-    const audio = new Audio(clipUrl(file));
-    current = audio;
-    const settle = () => {
-      if (current === audio) stopNarration();
-    };
-    audio.onended = settle;
-    audio.onerror = settle;
-    coughTimer = window.setTimeout(() => {
-      if (current !== audio || !soundOn()) return;
-      void audio.play().catch(settle);
-    }, 420);
-  } catch {
-    // Audio unavailable (no Audio constructor in this environment) —
-    // the line is a silent no-op, and the voice claim is released so
-    // the channel is never held by a sound that cannot play.
-    stopNarration();
-  }
+  // The cough sounds first; the clip starts 420ms later. The timer
+  // re-checks the toggle and that this voice is still current.
+  coughTimer = window.setTimeout(() => {
+    if (currentVoice !== voice || !isSoundEnabled()) return;
+    voice.play();
+  }, 420);
 }
 
 /** The trail line that matches the caption on screen. */

@@ -192,6 +192,119 @@ for (const driver of [browserDriver, fakeDriver]) {
       assert.equal(h.calls[0]?.headers["content-type"], "application/json");
     });
 
+    test("postText resolves with status and text for any completed exchange, including 4xx/5xx", async () => {
+      const h = driver.setup();
+      h.queue(URL, { type: "text", text: "hello", status: 200 });
+      const ok = await h.port.postText(URL, "ping");
+      assert.deepEqual(ok, { status: 200, text: "hello" });
+      assert.equal(h.calls[0]?.method, "POST");
+      assert.equal(h.calls[0]?.body, "ping");
+      h.queue(URL, { type: "text", text: "nope", status: 404 });
+      const notFound = await h.port.postText(URL, "ping", { retries: 2 });
+      assert.deepEqual(notFound, { status: 404, text: "nope" });
+      assert.equal(h.calls.length, 2);
+      h.queue(URL, { type: "text", text: "boom", status: 500 });
+      const serverError = await h.port.postText(URL, "ping");
+      assert.deepEqual(serverError, { status: 500, text: "boom" });
+      assert.equal(h.calls.length, 3);
+    });
+
+    test("postText retries a 5xx, resolving with the first success or the last failure", async () => {
+      const h = driver.setup();
+      h.queue(URL, { type: "text", text: "boom", status: 500 });
+      h.queue(URL, { type: "text", text: "recovered", status: 200 });
+      const recovered = await h.port.postText(URL, "ping", { retries: 1 });
+      assert.deepEqual(recovered, { status: 200, text: "recovered" });
+      assert.equal(h.calls.length, 2);
+      h.queue(URL, { type: "text", text: "boom", status: 500 });
+      h.queue(URL, { type: "text", text: "boom", status: 500 });
+      h.queue(URL, { type: "text", text: "boom", status: 500 });
+      const last = await h.port.postText(URL, "ping", { retries: 2 });
+      assert.deepEqual(last, { status: 500, text: "boom" });
+      assert.equal(h.calls.length, 5);
+    });
+
+    test("postText retries a network failure and succeeds", async () => {
+      const h = driver.setup();
+      h.queue(URL, { type: "network" });
+      h.queue(URL, { type: "text", text: "again", status: 200 });
+      const value = await h.port.postText(URL, "ping", { retries: 1 });
+      assert.deepEqual(value, { status: 200, text: "again" });
+      assert.equal(h.calls.length, 2);
+    });
+
+    test("postForm sends a urlencoded body and returns the schema-checked value", async () => {
+      const h = driver.setup();
+      h.queue(URL, { type: "json", value: { ok: true } });
+      const value = await h.port.postForm(URL, { token: "a b", next: "x&y" }, OK);
+      assert.deepEqual(value, { ok: true });
+      assert.equal(h.calls.length, 1);
+      assert.equal(h.calls[0]?.method, "POST");
+      assert.equal(h.calls[0]?.body, "token=a+b&next=x%26y");
+      assert.equal(
+        h.calls[0]?.headers["content-type"],
+        "application/x-www-form-urlencoded",
+      );
+    });
+
+    test("postForm schema rejection is a parse failure and is not retried", async () => {
+      const h = driver.setup();
+      h.queue(URL, { type: "json", value: { ok: "yes" } });
+      await assert.rejects(
+        h.port.postForm(URL, { token: "t" }, OK, { retries: 2 }),
+        isTransportError("parse"),
+      );
+      assert.equal(h.calls.length, 1);
+    });
+
+    test("getRaw resolves on success with ok, status and an awaitable json", async () => {
+      const h = driver.setup();
+      h.queue(URL, { type: "json", value: { hello: "world" } });
+      const raw = await h.port.getRaw(URL);
+      assert.equal(raw.ok, true);
+      assert.equal(raw.status, 200);
+      assert.deepEqual(await raw.json, { hello: "world" });
+      assert.equal(h.calls.length, 1);
+    });
+
+    test("getRaw never throws on !ok: a 404 resolves with ok false", async () => {
+      const h = driver.setup();
+      h.queue(URL, { type: "json", value: { error: "gone" }, status: 404 });
+      const raw = await h.port.getRaw(URL, { retries: 2 });
+      assert.equal(raw.ok, false);
+      assert.equal(raw.status, 404);
+      assert.deepEqual(await raw.json, { error: "gone" });
+      assert.equal(h.calls.length, 1);
+    });
+
+    test("getRaw retries a 5xx, resolving with the first success or the last failure", async () => {
+      const h = driver.setup();
+      h.queue(URL, { type: "http", status: 500 });
+      h.queue(URL, { type: "json", value: { hello: "world" } });
+      const recovered = await h.port.getRaw(URL, { retries: 1 });
+      assert.equal(recovered.ok, true);
+      assert.equal(recovered.status, 200);
+      assert.deepEqual(await recovered.json, { hello: "world" });
+      assert.equal(h.calls.length, 2);
+      h.queue(URL, { type: "http", status: 500 });
+      h.queue(URL, { type: "http", status: 500 });
+      h.queue(URL, { type: "http", status: 500 });
+      const last = await h.port.getRaw(URL, { retries: 2 });
+      assert.equal(last.ok, false);
+      assert.equal(last.status, 500);
+      assert.equal(h.calls.length, 5);
+    });
+
+    test("keepalive passes through to the request", async () => {
+      const h = driver.setup();
+      h.queue(URL, { type: "json", value: { hello: "world" } });
+      await h.port.getJson(URL, GREETING, { keepalive: true });
+      assert.equal(h.calls[0]?.keepalive, true);
+      h.queue(URL, { type: "json", value: { hello: "world" } });
+      await h.port.getJson(URL, GREETING);
+      assert.equal(h.calls[1]?.keepalive, undefined);
+    });
+
     test("the request controller walks idle → loading → ready on success", async () => {
       const h = driver.setup();
       h.queue(URL, { type: "json", value: { hello: "world" } });
@@ -283,6 +396,9 @@ describe("transport request controller — unexpected rejections are errors, not
     const port: TransportPort = {
       getJson: () => Promise.reject(boom),
       postJson: () => Promise.reject(boom),
+      postText: () => Promise.reject(boom),
+      postForm: () => Promise.reject(boom),
+      getRaw: () => Promise.reject(boom),
     };
     const request = createTransportRequest(port);
     await request.start(URL, GREETING);
@@ -298,6 +414,9 @@ describe("transport request controller — unexpected rejections are errors, not
     const port: TransportPort = {
       getJson: () => Promise.reject(aborted),
       postJson: () => Promise.reject(aborted),
+      postText: () => Promise.reject(aborted),
+      postForm: () => Promise.reject(aborted),
+      getRaw: () => Promise.reject(aborted),
     };
     const request = createTransportRequest(port);
     await request.start(URL, GREETING);

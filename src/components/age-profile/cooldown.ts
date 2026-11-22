@@ -18,13 +18,14 @@
  * stale timestamp self-resolves on the first tick (no stuck state).
  */
 
+import { resolveLocal } from "../../game/storage-slot.ts";
+
 export const GROWNUP_COOLDOWN_KEY = "meridian.grownupCooldown.v1";
 
 /** Persist the cooldown deadline (epoch ms). Best-effort: localStorage may be unavailable. */
 export function writeCooldown(until: number): void {
   try {
-    if (typeof localStorage === "undefined") return;
-    localStorage.setItem(GROWNUP_COOLDOWN_KEY, String(until));
+    resolveLocal()?.setItem(GROWNUP_COOLDOWN_KEY, String(until));
   } catch {
     // Private mode / quota: the cooldown just won't survive remount.
   }
@@ -37,12 +38,13 @@ export function writeCooldown(until: number): void {
  */
 export function readCooldown(now: number = Date.now()): number | null {
   try {
-    if (typeof localStorage === "undefined") return null;
-    const raw = localStorage.getItem(GROWNUP_COOLDOWN_KEY);
+    const s = resolveLocal();
+    if (!s) return null;
+    const raw = s.getItem(GROWNUP_COOLDOWN_KEY);
     if (raw === null) return null;
     const until = Number(raw);
     if (!Number.isFinite(until) || until <= now) {
-      localStorage.removeItem(GROWNUP_COOLDOWN_KEY);
+      s.removeItem(GROWNUP_COOLDOWN_KEY);
       return null;
     }
     return until;
@@ -54,8 +56,7 @@ export function readCooldown(now: number = Date.now()): number | null {
 /** Delete the stored deadline (cooldown over — expiry leaves no key behind). */
 export function clearCooldown(): void {
   try {
-    if (typeof localStorage === "undefined") return;
-    localStorage.removeItem(GROWNUP_COOLDOWN_KEY);
+    resolveLocal()?.removeItem(GROWNUP_COOLDOWN_KEY);
   } catch {
     // Non-fatal: a stale key self-resolves via readCooldown on next mount.
   }
@@ -76,14 +77,15 @@ export const STRIKE_WINDOW_MS = 15 * 60_000;
 /** Failed attempts still counting toward the cooldown (0 when none/expired). */
 export function readStrikes(now: number = Date.now()): number {
   try {
-    if (typeof localStorage === "undefined") return 0;
-    const raw = localStorage.getItem(GROWNUP_STRIKES_KEY);
+    const s = resolveLocal();
+    if (!s) return 0;
+    const raw = s.getItem(GROWNUP_STRIKES_KEY);
     if (raw === null) return 0;
     const parsed = JSON.parse(raw) as { n?: unknown; at?: unknown };
     const n = typeof parsed.n === "number" && Number.isInteger(parsed.n) && parsed.n > 0 ? parsed.n : 0;
     const at = typeof parsed.at === "number" && Number.isFinite(parsed.at) ? parsed.at : 0;
     if (n === 0 || now - at > STRIKE_WINDOW_MS || at > now + 60_000) {
-      localStorage.removeItem(GROWNUP_STRIKES_KEY);
+      s.removeItem(GROWNUP_STRIKES_KEY);
       return 0;
     }
     return n;
@@ -95,8 +97,7 @@ export function readStrikes(now: number = Date.now()): number {
 /** Persist the current strike count (best-effort). */
 export function writeStrikes(n: number, now: number = Date.now()): void {
   try {
-    if (typeof localStorage === "undefined") return;
-    localStorage.setItem(GROWNUP_STRIKES_KEY, JSON.stringify({ n, at: now }));
+    resolveLocal()?.setItem(GROWNUP_STRIKES_KEY, JSON.stringify({ n, at: now }));
   } catch {
     // Private mode / quota: strikes just won't survive a remount.
   }
@@ -105,8 +106,7 @@ export function writeStrikes(n: number, now: number = Date.now()): void {
 /** Forget strikes (on a pass, or when the cooldown takes over). */
 export function clearStrikes(): void {
   try {
-    if (typeof localStorage === "undefined") return;
-    localStorage.removeItem(GROWNUP_STRIKES_KEY);
+    resolveLocal()?.removeItem(GROWNUP_STRIKES_KEY);
   } catch {
     // best-effort
   }

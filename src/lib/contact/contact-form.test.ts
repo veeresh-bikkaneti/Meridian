@@ -57,3 +57,21 @@ test("requests omit credentials and referrer", async () => {
   assert.equal(seen?.credentials, "omit");
   assert.equal(seen?.referrerPolicy, "no-referrer");
 });
+
+test("without an injected fetchFn the runtime fetch is used, credentials still omitted", async () => {
+  const realFetch = globalThis.fetch;
+  const calls: Array<{ url: string; init?: RequestInit }> = [];
+  globalThis.fetch = (async (input: unknown, init?: RequestInit) => {
+    calls.push({ url: String(input), init });
+    return new Response('{"ok":true,"stored":true}', { status: 200 });
+  }) as unknown as typeof fetch;
+  try {
+    const r = await sendContact("https://c.test/contact", { topic: "bug", message: "x", website: "" });
+    assert.deepEqual(r, { status: "sent", stored: true });
+    assert.equal(calls.length, 1);
+    assert.equal(calls[0]?.init?.credentials, "omit");
+    assert.equal(calls[0]?.init?.referrerPolicy, "no-referrer");
+  } finally {
+    globalThis.fetch = realFetch;
+  }
+});

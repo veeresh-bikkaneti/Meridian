@@ -23,13 +23,34 @@ import {
   isPersistedScreen,
   rearmPersistedScreenOpen,
 } from "./persisted-screen.ts";
+import { setLocalBackend, setSessionBackend } from "../game/storage-slot.ts";
 
 // localStorage is undefined under node:test; stub it per-test
-// (the coldtrail store.test.ts pattern).
+// (the coldtrail store.test.ts pattern). The helpers drive BOTH the
+// global and the storage slot: persisted-screen itself reads the
+// session slot, while the open-flag readers it delegates to still
+// read the global until their own conversion lands.
 interface FakeStorage {
   getItem(key: string): string | null;
   setItem(key: string, value: string): void;
   removeItem(key: string): void;
+}
+
+function slotBackend(data: Record<string, string>, throwing = false) {
+  return {
+    getItem: (k: string) => (k in data ? data[k]! : null),
+    setItem: (k: string, v: string) => {
+      if (throwing) throw new Error("quota exceeded");
+      data[k] = v;
+    },
+    removeItem: (k: string) => {
+      delete data[k];
+    },
+    get length(): number {
+      return Object.keys(data).length;
+    },
+    key: (index: number): string | null => Object.keys(data)[index] ?? null,
+  };
 }
 
 function stubStorage(initial: Record<string, string> = {}, throwing = false) {
@@ -46,10 +67,12 @@ function stubStorage(initial: Record<string, string> = {}, throwing = false) {
   };
   const prev = (globalThis as Record<string, unknown>).localStorage;
   (globalThis as Record<string, unknown>).localStorage = fake;
+  setLocalBackend(slotBackend(data, throwing));
   return {
     data,
     restore: () => {
       (globalThis as Record<string, unknown>).localStorage = prev;
+      setLocalBackend(undefined);
     },
   };
 }
@@ -158,10 +181,24 @@ function stubSession(initial: Record<string, string> = {}) {
   };
   const prev = (globalThis as Record<string, unknown>).sessionStorage;
   (globalThis as Record<string, unknown>).sessionStorage = fake;
+  setSessionBackend(slotBackend(data));
   return {
     data,
     restore: () => {
       (globalThis as Record<string, unknown>).sessionStorage = prev;
+      setSessionBackend(undefined);
+    },
+  };
+}
+
+/** Fill ONLY the session slot (no global): proves the retry marker is slot-driven. */
+function stubSessionSlotOnly(initial: Record<string, string> = {}) {
+  const data = { ...initial };
+  setSessionBackend(slotBackend(data));
+  return {
+    data,
+    restore: () => {
+      setSessionBackend(undefined);
     },
   };
 }
@@ -202,6 +239,22 @@ test("368 rule: a retry marker for an unknown surface restores nothing", () => {
   try {
     assert.equal(consumeRetryScreen(), null);
   } finally {
+    sess.restore();
+  }
+});
+
+test("slot-only session: the retry marker round-trips through the session slot", () => {
+  // The open flag still comes from the stubbed global (its reader's
+  // conversion lands separately); the retry marker must come from
+  // the session slot alone — no global sessionStorage is stubbed here.
+  const s = stubStorage({ [COLDTRAIL_OPEN_KEY]: "1" });
+  const sess = stubSessionSlotOnly();
+  try {
+    rearmPersistedScreenOpen("Cold Trail");
+    assert.equal(consumeRetryScreen(), "Cold Trail");
+    assert.equal(consumeRetryScreen(), null, "the marker is one-shot");
+  } finally {
+    s.restore();
     sess.restore();
   }
 });

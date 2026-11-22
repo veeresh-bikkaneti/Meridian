@@ -13,6 +13,7 @@ import {
 import { maxGuessCap } from "../age-profile/difficulty.ts";
 import { getBandConfig, isBandRunConfig } from "../age-profile/run-config.ts";
 import { loadProfile } from "../age-profile/store.ts";
+import { resolveLocal, type GameEnumerableStorageBackend } from "../storage-slot.ts";
 
 /**
  * localStorage persistence for the GeoDetective's unlimited mode,
@@ -692,9 +693,9 @@ export function loopSessionSummary(store: LoopUnlimitedStore): LoopSessionSummar
   };
 }
 
-function storage(): Storage | null {
+function storage(): GameEnumerableStorageBackend | null {
   try {
-    return typeof localStorage === "undefined" ? null : localStorage;
+    return resolveLocal() ?? null;
   } catch {
     return null;
   }
@@ -782,7 +783,7 @@ export function peekLoopProgress(): {
 
 function storageAvailable(): boolean {
   try {
-    return typeof localStorage !== "undefined";
+    return resolveLocal() !== undefined;
   } catch {
     return false;
   }
@@ -798,7 +799,7 @@ function storageAvailable(): boolean {
 export function readLoopOpen(): boolean {
   if (!storageAvailable()) return false;
   try {
-    return localStorage.getItem(LOOP_OPEN_KEY) === "1";
+    return resolveLocal()?.getItem(LOOP_OPEN_KEY) === "1";
   } catch {
     return false;
   }
@@ -808,8 +809,10 @@ export function readLoopOpen(): boolean {
 export function writeLoopOpen(open: boolean): void {
   if (!storageAvailable()) return;
   try {
-    if (open) localStorage.setItem(LOOP_OPEN_KEY, "1");
-    else localStorage.removeItem(LOOP_OPEN_KEY);
+    const s = resolveLocal();
+    if (!s) return;
+    if (open) s.setItem(LOOP_OPEN_KEY, "1");
+    else s.removeItem(LOOP_OPEN_KEY);
   } catch {
     /* private-mode storage: the loop screen still works for the session */
   }

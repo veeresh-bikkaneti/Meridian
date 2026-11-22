@@ -11,6 +11,7 @@
  * event the way another tab would.
  */
 
+import { decodeStoredText } from "./storage.ts";
 import type {
   StorageBackend,
   StorageEventSource,
@@ -110,15 +111,7 @@ export function createFakeStoragePort(
       } catch {
         return freshFallback(def.fallback);
       }
-      if (raw === null) return freshFallback(def.fallback);
-      let parsed: unknown;
-      try {
-        parsed = JSON.parse(raw);
-      } catch {
-        return freshFallback(def.fallback);
-      }
-      const result = def.schema.safeParse(parsed);
-      return result.success ? result.data : freshFallback(def.fallback);
+      return decodeStoredText(def, raw, () => freshFallback(def.fallback));
     },
 
     setItem<T>(def: StorageKeyDef<T>, value: T): void {

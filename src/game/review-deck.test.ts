@@ -21,6 +21,7 @@ import {
   type DeckPlaceSnapshot,
   type ReviewDeckStore,
 } from "./review-deck.ts";
+import { setLocalBackend } from "./storage-slot.ts";
 
 /**
  * Unit tests for the misses-review deck (game-review improvement #1):
@@ -343,4 +344,37 @@ test("clearReviewDeck: fully blocked storage reports failure, never throws", () 
     result = clearReviewDeck(bad);
   });
   assert.equal(result, false);
+});
+
+// R2: clearReviewDeck pins the exact remove→verify sequence through
+// the registered slot, with no storage argument.
+test("R2: clearReviewDeck pins the exact remove→verify sequence", () => {
+  const seeded = upsertMiss(emptyReviewDeck(), snapshot("a"), NOW);
+  const map = new Map<string, string>([[REVIEW_DECK_STORE_KEY, JSON.stringify(seeded)]]);
+  const log: string[] = [];
+  setLocalBackend({
+    getItem: (k: string) => {
+      log.push(`get:${k}`);
+      return map.has(k) ? map.get(k)! : null;
+    },
+    setItem: (k: string, v: string) => {
+      log.push(`set:${k}`);
+      map.set(k, v);
+    },
+    removeItem: (k: string) => {
+      log.push(`remove:${k}`);
+      map.delete(k);
+    },
+    get length(): number {
+      return map.size;
+    },
+    key: (index: number): string | null => [...map.keys()][index] ?? null,
+  });
+  try {
+    assert.equal(clearReviewDeck(), true);
+    assert.deepEqual(log, [`remove:${REVIEW_DECK_STORE_KEY}`, `get:${REVIEW_DECK_STORE_KEY}`]);
+    assert.equal(readReviewDeck(), null);
+  } finally {
+    setLocalBackend(undefined);
+  }
 });

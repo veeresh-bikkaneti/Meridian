@@ -25,6 +25,7 @@
 // ---------------------------------------------------------------------------
 
 import { stopAllVoices } from "./voice-channel.ts";
+import { resolveLocal, type GameEnumerableStorageBackend } from "../storage-slot.ts";
 
 /**
  * Pitch = distance, mapped logarithmically (power law = linear in log–log
@@ -43,11 +44,12 @@ export function distanceToFrequencyKm(km: number): number {
 // Toggle (localStorage, default ON)
 // ---------------------------------------------------------------------------
 
-const SOUND_KEY = "meridian.sound";
+/** Sound-toggle key, pinned by the storage key registry. */
+export const SOUND_KEY = "meridian.sound";
 
-function storage(): Storage | null {
+function storage(): GameEnumerableStorageBackend | null {
   try {
-    return typeof localStorage === "undefined" ? null : localStorage;
+    return resolveLocal() ?? null;
   } catch {
     return null;
   }

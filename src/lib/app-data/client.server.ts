@@ -122,6 +122,8 @@ async function gatePost(
   ctx: InboundContext,
   body: Record<string, unknown>,
   token: string,
+  /** The fetch to call, supplied as a value by the caller — gatePost never calls fetch() itself. */
+  fetchFn: typeof fetch,
 ): Promise<{ status: number; json: GateJson }> {
   const base = ctx.connectorsBase;
   if (!base) {
@@ -146,7 +148,7 @@ async function gatePost(
     headers["x-forwarded-host"] = ctx.publicHost;
   }
 
-  const res = await fetch(`${base}/call-tool`, {
+  const res = await fetchFn(`${base}/call-tool`, {
     method: "POST",
     headers,
     body: JSON.stringify(body),
@@ -388,6 +390,9 @@ export async function callTool(
         connector_catalog_id: options.connectorCatalogId,
       },
       token,
+      // The runtime fetch, supplied as a value — resolved lazily here,
+      // so a stub installed by tests applies.
+      fetch,
     );
 
     if (status === 401) {

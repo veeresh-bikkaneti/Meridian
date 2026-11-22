@@ -44,6 +44,10 @@ export interface PeerInfo {
 export interface P2PRoomOptions {
   room: string;
   selfId: string;
+  /** Signaling fetch. When absent, the runtime fetch is resolved
+   *  lazily on every call, so a stub installed after construction
+   *  still applies. Tests inject a fake; production passes nothing. */
+  fetchFn?: typeof fetch;
   name?: string;
   /** Defaults to VITE_STUN_URLS (comma-separated) or Google public STUN. */
   iceServers?: RTCIceServer[];
@@ -111,6 +115,11 @@ export class P2PRoom {
     this.opts = opts;
   }
 
+  /** The signaling fetch for this call: injected, else the runtime's. */
+  private signalingFetch(): typeof fetch {
+    return this.opts.fetchFn ?? fetch;
+  }
+
   /**
    * The first poll IS the join: it registers this peer and returns the
    * roster. A failed first poll (cold DB, offline tab) must not strand the
@@ -138,7 +147,7 @@ export class P2PRoom {
     this.peers.clear();
     // Leaving the roster is the teardown broadcast: everyone's next poll
     // drops this peer and closes their side of the pair.
-    void fetch("/api/rtc", {
+    void this.signalingFetch()("/api/rtc", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({ op: "leave", room: this.opts.room, peer: this.opts.selfId }),
@@ -192,7 +201,7 @@ export class P2PRoom {
       name: this.opts.name ?? "",
       since: String(this.cursor),
     });
-    const res = await fetch(`/api/rtc?${params}`);
+    const res = await this.signalingFetch()(`/api/rtc?${params}`);
     if (this.closed) return;
     if (!res.ok) throw new Error(`signaling poll failed: ${res.status}`);
     const body = (await res.json()) as RtcPollResponse;
@@ -448,7 +457,7 @@ export class P2PRoom {
     for (let attempt = 0; ; attempt++) {
       if (this.closed) return;
       try {
-        const res = await fetch("/api/rtc", {
+        const res = await this.signalingFetch()("/api/rtc", {
           method: "POST",
           headers: { "content-type": "application/json" },
           body: JSON.stringify({

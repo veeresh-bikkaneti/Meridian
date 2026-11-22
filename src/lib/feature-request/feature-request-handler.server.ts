@@ -279,7 +279,7 @@ export async function handleFeatureRequest(
     });
   }
 
-  const fetchFn = deps.fetchFn ?? ((input, init) => fetch(input, init));
+  const fetchFn = deps.fetchFn ?? fetch;
   const ctrl = new AbortController();
   const timer = setTimeout(() => ctrl.abort(), FORWARD_TIMEOUT_MS);
   try {

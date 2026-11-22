@@ -24,6 +24,8 @@
  * public API still lives in one place.
  */
 
+import { resolveLocal } from "./storage-slot.ts";
+
 export const SUBJECT_PROGRESS_KEY = "meridian.subject-progress.v1";
 
 /** The storage shape every progress-store function accepts. */
@@ -33,16 +35,11 @@ export type SubjectProgressStorage = {
   removeItem(key: string): void;
 };
 
-/** Resolve the storage to use: the injected one, else the global. */
+/** Resolve the storage to use: the injected one, else the registered slot. */
 export function resolveSubjectProgressStorage(
   explicit?: SubjectProgressStorage,
 ): SubjectProgressStorage | undefined {
-  if (explicit) return explicit;
-  try {
-    return localStorage;
-  } catch {
-    return undefined;
-  }
+  return explicit ?? resolveLocal();
 }
 
 // ---------------------------------------------------------------------------

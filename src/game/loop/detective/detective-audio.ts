@@ -67,7 +67,13 @@ import { assetBase } from "../../../components/storyteller-lines.ts";
 import { decideFirstGesture } from "../../../components/storyteller-audio-guards.ts";
 import { isSoundEnabled } from "../../audio/sfx.ts";
 import { soundAudible } from "../../audio/play-guards.ts";
-import { claimVoice, type VoiceClaim } from "../../audio/voice-channel.ts";
+import {
+  claimVoice,
+  resolveVoiceFactory,
+  type VoiceClaim,
+  type VoiceFactory,
+  type VoiceFactoryHandle,
+} from "../../audio/voice-channel.ts";
 import {
   getReadAloudPref,
   shouldAutoPlayReadAloud,
@@ -169,7 +175,7 @@ export function resolveDetectiveClip(
 let manifestPromise: Promise<DetectiveManifest | null> | null = null;
 
 export function loadDetectiveManifest(
-  fetchImpl: typeof fetch = (...args) => fetch(...args),
+  fetchImpl: typeof fetch = fetch,
 ): Promise<DetectiveManifest | null> {
   if (!manifestPromise) {
     manifestPromise = (async () => {
@@ -219,6 +225,11 @@ export interface DetectiveSpeechOptions {
   /** Play one clip. `signal` aborts when something else needs the
    * voice (a pick, a replay, stopAll): stop sounding and resolve. */
   playClip?: (clip: ResolvedClip, signal: AbortSignal) => Promise<void>;
+  /** Make one voice for a clip, for the default clip player. The
+   * domain may not import the audio port, so the factory arrives
+   * here: per player, or the startup-registered one. With no
+   * factory the default player resolves clips as skipped. */
+  createVoice?: VoiceFactory;
   isSoundOn?: () => boolean;
   canAutoPlay?: () => boolean;
 }
@@ -440,23 +451,42 @@ export function createDetectiveSpeech(
       /* stopping must never throw into game flow */
     }
   }
+  /** The runClip claim waiting for the default player to adopt:
+   * set synchronously by runClip before it awaits the clip
+   * player, taken once by defaultPlayClip. A custom playClip
+   * never reads it, so the claim stays with runClip's release
+   * paths; a stale value names a claim runClip already
+   * released, and is only ever overwritten, never consumed
+   * twice — consumption happens only on the path that hands
+   * the claim to a voice, after the settled checks. */
+  let pendingClaim: VoiceClaim | null = null;
   async function runClip(clip: ResolvedClip): Promise<void> {
     stopActive(); // never two clips open at once, from either loop
     const ctrl = new AbortController();
-    // The app-wide channel: a detective line is part of the kid's own
-    // play (a pick, a confirm, Listen, or the ladder they are driving),
-    // so it takes the channel from any other voice rather than waiting.
+    // The channel is claimed HERE, synchronously, before any clip
+    // sounds — whichever clip player runs. A detective line is
+    // part of the kid's own play (a pick, a confirm, Listen, or
+    // the ladder they are driving), so the claim takes the
+    // channel from any other voice first: the stop-then-start
+    // order holds, and the owner reads "detective" while the
+    // clip is in flight, for the default player and injected
+    // seams alike. The default player adopts this claim (it
+    // must not claim again: a second claim would stop this
+    // clip itself); a custom player leaves it to the release
+    // paths below.
     const claim = claimVoice("detective", () => stopActive(), {
       userInitiated: true,
     });
+    if (!claim) return; // channel held by a line this one may not take: skipped
     const mine = { ctrl, who: clip.who, claim };
     active = mine;
+    pendingClaim = claim;
     try {
       await playClip(clip, ctrl.signal);
     } finally {
       if (active === mine) {
         active = null;
-        claim?.release();
+        claim.release();
       }
     }
   }
@@ -492,7 +522,7 @@ export function createDetectiveSpeech(
     // re-checked at wake for a gate that closed without a stop.
     await new Promise<void>((resolve) => {
       let settled = false;
-      let audio: HTMLAudioElement | null = null;
+      let voice: VoiceFactoryHandle | null = null;
       const done = () => {
         if (settled) return;
         settled = true;
@@ -501,9 +531,9 @@ export function createDetectiveSpeech(
       };
       const onAbort = () => {
         try {
-          audio?.pause();
+          voice?.stop();
         } catch {
-          /* element already gone — nothing to stop */
+          /* voice already gone — nothing to stop */
         }
         done();
       };
@@ -518,23 +548,40 @@ export function createDetectiveSpeech(
           done();
           return;
         }
+        // The clip sounds through the voice port: the factory is
+        // the player's own or the startup-registered one. No
+        // factory (or a gated line) resolves as SKIPPED — the
+        // queue must never stall (fallback law). An erroring
+        // clip (404 / codec) resolves the same way, via onError.
+        const makeVoice = resolveVoiceFactory(opts.createVoice);
+        if (!makeVoice) {
+          done();
+          return;
+        }
+        // Adopt runClip's claim, taken synchronously before this
+        // clip sounded: the voice must not claim again. If no
+        // voice is made, the claim stays with runClip's release
+        // paths — it is only ever handed over, never dropped.
+        const adopted = pendingClaim;
+        pendingClaim = null;
         try {
-          audio = new Audio(clip.url);
-          audio.addEventListener("ended", done, { once: true });
-          // An erroring clip (404 / codec) resolves as SKIPPED — the
-          // queue must never stall (fallback law).
-          audio.addEventListener("error", done, { once: true });
-          const playPromise = audio.play();
-          if (playPromise) {
-            playPromise.catch(() => {
-              // Autoplay refusal after the gesture wait (or a raced
-              // pause from stopAll): treat as skipped, never a stall.
-              done();
-            });
-          }
+          voice = makeVoice(clip.url, {
+            owner: "detective",
+            userInitiated: true,
+            ...(adopted ? { claim: adopted } : {}),
+            onEnded: done,
+            onError: done,
+            onInterrupted: done,
+          });
         } catch {
           done();
+          return;
         }
+        if (!voice) {
+          done();
+          return;
+        }
+        voice.play();
       });
     });
   }

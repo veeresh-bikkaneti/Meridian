@@ -8,6 +8,7 @@ import {
   readPalettePreference,
   setHighContrastEnabled,
 } from "./palette-preference.ts";
+import { setLocalBackend, type GameEnumerableStorageBackend } from "./storage-slot.ts";
 
 /**
  * Contracts for the palette preference module (Council manifest
@@ -15,7 +16,9 @@ import {
  * sfx.ts sound-toggle pattern: safe storage behind try/catch, the
  * selectPalette token language, a data-palette attribute on the root
  * element, and a "meridian:palette-change" CustomEvent. Fakes are
- * installed on globalThis, the trail.test.ts precedent.
+ * installed on globalThis and registered in the game slot (the module
+ * reads through the slot, so the globals alone no longer reach it),
+ * the trail.test.ts precedent.
  */
 
 type FakeGlobals = {
@@ -27,7 +30,7 @@ type FakeGlobals = {
 function installStorage(data: Map<string, string>, opts: { throws?: boolean } = {}) {
   const g = globalThis as FakeGlobals;
   const prev = g.localStorage;
-  g.localStorage = {
+  const fake = {
     getItem(key: string) {
       if (opts.throws) throw new Error("storage denied");
       return data.has(key) ? data.get(key)! : null;
@@ -40,7 +43,17 @@ function installStorage(data: Map<string, string>, opts: { throws?: boolean } = 
       data.delete(key);
     },
   };
+  g.localStorage = fake;
+  const backend: GameEnumerableStorageBackend = {
+    ...fake,
+    get length() {
+      return data.size;
+    },
+    key: (i: number) => [...data.keys()][i] ?? null,
+  };
+  setLocalBackend(backend);
   return () => {
+    setLocalBackend(undefined);
     if (prev === undefined) delete g.localStorage;
     else g.localStorage = prev;
   };

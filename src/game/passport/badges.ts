@@ -12,6 +12,7 @@
  */
 
 import type { AgeBandId, LoopId } from "@/game/age-profile/types.ts";
+import { resolveLocal } from "../storage-slot.ts";
 
 export const PASSPORT_BADGES_KEY = "meridian.passport.badges.v1";
 const BADGE_SCHEMA_VERSION = 1;
@@ -54,8 +55,9 @@ let memoryFallback: EarnedBadge[] | null = null;
 
 function readStorage(): EarnedBadge[] {
   try {
-    if (typeof localStorage === "undefined") throw new Error("no localStorage");
-    const raw = localStorage.getItem(PASSPORT_BADGES_KEY);
+    const s = resolveLocal();
+    if (!s) throw new Error("no localStorage");
+    const raw = s.getItem(PASSPORT_BADGES_KEY);
     if (!raw) return [];
     const parsed = JSON.parse(raw) as unknown;
     if (!Array.isArray(parsed)) return [];
@@ -73,8 +75,9 @@ function readStorage(): EarnedBadge[] {
 
 function writeStorage(earned: EarnedBadge[]): void {
   try {
-    if (typeof localStorage === "undefined") throw new Error("no localStorage");
-    localStorage.setItem(PASSPORT_BADGES_KEY, JSON.stringify(earned));
+    const s = resolveLocal();
+    if (!s) throw new Error("no localStorage");
+    s.setItem(PASSPORT_BADGES_KEY, JSON.stringify(earned));
     memoryFallback = null;
   } catch {
     memoryFallback = earned;

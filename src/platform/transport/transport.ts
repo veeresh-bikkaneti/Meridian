@@ -2,12 +2,13 @@
  * The transport port's types — one place owns each HTTP request.
  *
  * A caller asks the port for JSON at a URL, naming the shape it
- * expects as a schema. The port owns the attempt loop: composing
- * the caller's abort signal with a per-attempt timeout, retrying
- * only the failures the arena allowed, and classifying every
- * failure into one error type. Callers own the policy numbers
- * (retries, timeout) — the port has no defaults that could fail
- * silently.
+ * expects as a schema — or for plain text, a form post, or a raw
+ * response it reads itself. The port owns the attempt loop:
+ * composing the caller's abort signal with a per-attempt
+ * timeout, retrying only the failures the arena allowed, and
+ * classifying every failure into one error type. Callers own
+ * the policy numbers (retries, timeout) — the port has no
+ * defaults that could fail silently.
  *
  * The rules, in plain words:
  *
@@ -25,7 +26,15 @@
  *   never a TransportError, and no further attempt is made.
  * - Retries are the caller's count of extra attempts, and only
  *   network failures, timeouts and http 5xx responses are
- *   eligible. Parse failures and http 4xx are final.
+ *   eligible. Parse failures and http 4xx are final. The
+ *   resolving methods (postText, getRaw) retry a 5xx while
+ *   attempts remain and resolve with it once they run out; they
+ *   never throw for a failure status on their own.
+ * - postText resolves with the status and text of any completed
+ *   HTTP exchange, with no parse step; only network, timeout and
+ *   retry-exhausted failures reject. getRaw never throws on a
+ *   failure status either: it resolves with the status and the
+ *   body's async parse, which the caller awaits or drops.
  */
 
 /** The four ways a request can fail, as one closed set. */
@@ -82,6 +91,22 @@ export interface TransportOptions {
   timeoutMs?: number;
   /** Extra headers, merged over the port's own. */
   headers?: Record<string, string>;
+  /** Keep the request alive past the page's unload, for
+   * fire-and-forget beacons. Passed into the request as-is. */
+  keepalive?: boolean;
+}
+
+/** A response the caller reads itself: status, plus the body's
+ * async parse. The parse promise rejects when the body is not
+ * JSON; awaiting it is the caller's choice. */
+export interface RawResponse {
+  /** True for a 2xx status. */
+  ok: boolean;
+  /** The response's HTTP status. */
+  status: number;
+  /** The body's JSON parse, started on first read and memoized:
+   * reading it twice awaits the one parse. */
+  json: Promise<unknown>;
 }
 
 /** The port itself: callers depend on this, not on fetch. */
@@ -100,6 +125,26 @@ export interface TransportPort {
     schema: SchemaLike<T>,
     opts?: TransportOptions,
   ): Promise<T>;
+  /** POST a text body and resolve with the response's status
+   * and text, for any completed HTTP exchange — no parse step,
+   * no schema. Only network, timeout and retry-exhausted
+   * failures reject. */
+  postText(
+    url: string,
+    body: string,
+    opts?: TransportOptions,
+  ): Promise<{ status: number; text: string }>;
+  /** POST urlencoded params and return the response checked by
+   * the schema. */
+  postForm<T>(
+    url: string,
+    params: Record<string, string>,
+    schema: SchemaLike<T>,
+    opts?: TransportOptions,
+  ): Promise<T>;
+  /** GET a URL and resolve with its status and body parse,
+   * without throwing on a failure status. */
+  getRaw(url: string, opts?: TransportOptions): Promise<RawResponse>;
 }
 
 /** Injectable seams for the port, so tests can drive it with no
