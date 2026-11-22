@@ -11,6 +11,7 @@
 - [x] Listed non-test files that mention `game-app` and what each points at.
 - [x] Recorded option A (split by screen) and option B (split by concern), then the chosen hybrid order.
 - [x] Drew the top-level screen statechart and a transition table with triggers at `path:line`.
+- [x] Round 1 review: corrected Subjects I/O, the celebration primary spec, the chosen order (fewest shared-state rows first, with reasons where a dependency forced a step), and step 1 import-rewrite wording. Also the §1 row references, the BootSplash test command, the Choose range, the Cold Trail `pageshow` cite, the out-of-scope t2-rebase note, and this provenance record.
 
 ## Gates
 
@@ -18,7 +19,7 @@ Run in this worktree at `384689534353bbda4920edaa938d9a5a40d4ab51`.
 
 - [x] `npm ci` (needed; `node_modules` was missing). 458 packages added. The lockfile did not change.
 - [x] `npm run lint:arch`. PASS.
-- [x] `npm run check:provenance`. PASS (`check-provenance: PASSED for origin/main..HEAD`).
+- [x] `npm run check:provenance`. PASS. Re-run after the first commit (`59c8d414`). Re-run again after the round 1 commit.
 - [x] `git diff --name-only origin/main`. Exactly the two files below, after this commit.
 
 ## Files added
@@ -51,4 +52,4 @@ These were found while mapping. They are not fixed in this PR.
 
 - Draft PR only. Do not mark it ready and do not merge until the owner says so.
 - Do not rebase or force-push.
-- PR 2 is the composer path move, not more docs. Prove the baseline claim with `lint:arch` before stating that the 21 rows are gone.
+- PR 2 is the composer move, not more docs. That step must also rewrite relative `./age-profile/*` and `./passport/*` imports to `@/components/...`. Prove the baseline claim with `lint:arch` before stating that the 21 rows are gone.

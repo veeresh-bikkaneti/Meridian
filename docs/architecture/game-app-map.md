@@ -55,7 +55,7 @@ A run in progress has sub-phases from `src/game/run.ts` [tested, `rg -n "export 
 | Component | Lines | Role |
 | :--- | :--- | :--- |
 | `GameApp` | 1207-4330 | Shell, boot, routing, early returns |
-| `Choose` | 4771-5627 | Home |
+| `Choose` | 4771-5622 | Home |
 | `HeroTrailOverlay` / `HeroTrekkerOverlay` / `AtlasBackdrop` | 4389-, 4595-, 5628- | Home hero decoration |
 | `RegionList` | 6590-6672 | Country, state, and admin1 lists |
 | `Play` | 6673-6969 | Run loader, pool error, places loading |
@@ -75,7 +75,7 @@ Shared shell hooks are listed once in the state table at the end of this section
 - Selects on: `ready === false` at 1230.
 - State and refs: `readySignaledRef` at 1232. The boot effect at 2119-2903 calls `setReady(true)` on every exit path, including 2410, 2515, 2555, 2600, 2681, 2718, 2733, 2747, 2773, 2818, 2865, and 2900.
 - I/O before first real paint: `consumeRetryScreen()` at 1469 (`meridian.retry-screen`); observability and chunk-recovery install at 2128-2134; map-mode qualify and store at 2170+; `loadFlags`; `pagehide` at 2395; unclean-shutdown handling; `readRun` / `readMc2Run` / `readMc3Run`; session and discarded-shadow reads; challenge hash decode; `preloadTerritory` on some challenge paths; `initAudio()` on first pointer or key at 1214. No `fetch(` here.
-- Tests: `src/components/game-app-lazy-boundary.test.ts` (boot does not auto-open GeoDetective). `tests/e2e/geodetective-boot-home.desktop.spec.ts` (bare `/` lands on Home). `tests/e2e/chunk-recovery.desktop.spec.ts`. `tests/e2e/loading-orbs.desktop.spec.ts`. [tested, `rg -l 'BootSplash|boot-splash|geodetective-boot-home' tests src --glob '*.spec.ts' --glob '*.test.ts'`]
+- Tests (source, the command below lists these three): `src/components/game-app-lazy-boundary.test.ts` (boot does not auto-open GeoDetective), `src/components/home-loading-orbs.test.ts`, and `src/components/ui/shared-shell.test.ts`. [tested, `rg -l 'BootSplash|boot-splash' src --glob '*.test.ts'`]. E2e coverage, cited by path rather than that grep: `tests/e2e/geodetective-boot-home.desktop.spec.ts` (bare `/` lands on Home), `tests/e2e/chunk-recovery.desktop.spec.ts`, and `tests/e2e/loading-orbs.desktop.spec.ts`.
 
 ### home: Choose
 
@@ -132,15 +132,15 @@ Shared shell hooks are listed once in the state table at the end of this section
 ### coldtrail: lazy TrailScreen
 
 - Render: 3701-3714, `MapErrorBoundary surface="Cold Trail"` and Suspense.
-- Selects on: `coldTrailOpen`. Init from the retry marker only (`bootRetryRef === "Cold Trail"` at 1624). The open flag is still written on tap-in and leave, but boot does not auto-open. Not closed on bfcache `pageshow` at 1493-1495. Subjects, loop, and age-ask are.
+- Selects on: `coldTrailOpen`. Init from the retry marker only (`bootRetryRef === "Cold Trail"` at 1624). The open flag is still written on tap-in and leave, but boot does not auto-open. Not closed on bfcache `pageshow`. The effect at 1496-1506 closes subjects, age-ask, and loop, and deliberately leaves Cold Trail open.
 - I/O: `writeColdTrailOpen` + `setColdTrailOpen` at 4240, 3534-3535, 3707, and force-home at 2305-2306.
 - Tests: `tests/e2e/coldtrail.spec.ts`, `coldtrail.mobile.spec.ts`, `coldtrail.reduced.spec.ts`, `nav-back-first-visit.desktop.spec.ts`, `src/components/game-app-lazy-boundary.test.ts`, `src/lib/persisted-screen.test.ts`.
 
 ### subjects: lazy SubjectPickerScreen
 
 - Render: 3719-3794, `MapErrorBoundary surface="Subjects"` and Suspense. Age settings and age-ask can overlay. The page is `inert` while they are open, at 3723.
-- Selects on: `subjectsOpen` at 1475. Session-only. Never persisted. Reload and bfcache land on Home, at 1473-1500.
-- I/O: none of its own in `GameApp`. `onResetHistory`, `onEndGame`, and `onResumeCase` go through `askAgeFirst` + `openGeoDetective`.
+- Selects on: `subjectsOpen` at 1475. Session-only. Never persisted. A reload lands on Home. The `pageshow` effect at 1496-1506 closes this screen on a bfcache restore.
+- I/O: none of its own in `GameApp`. Only `onResumeCase` goes through `askAgeFirst` + `openGeoDetective` (3756-3758). `onEndGame` calls `handleEndGame()` then `setSubjectsOpen(false)` (3731-3734). `onResetHistory` calls `handleResetHistory()` and closes the screen on success (3735-3738).
 - Tests: `tests/e2e/subjects-picker.desktop.spec.ts`, `why-learn-page.desktop.spec.ts`, `why-learn-card.desktop.spec.ts`, `why-learn-band-switch.desktop.spec.ts`, `subject-case-navigation.spec.ts`, `ask-age-first.spec.ts`, plus per-subject specs. Hash `#why-learn`: `src/lib/screen-hash.test.ts`, `nav-back-first-visit.desktop.spec.ts`.
 
 ### Overlays and notices
@@ -153,7 +153,7 @@ These mount on top of a screen, usually Home or a run. They are not `inAppScreen
 | Age ask gate | `ageAsk` | profile pick, then `proceed()` | `tests/e2e/ask-age-first.spec.ts`, `src/subjects/shared/ask-age-first.test.ts` |
 | First-visit queue | 4259-4264 | `meridian.firstVisitQueue.v1`; tutorial seen flag | `tests/e2e/tutorial.spec.ts`, read-aloud specs, `src/components/first-visit-queue-wiring.test.ts` |
 | Tutorial overlay, in-run | 8856, `tutorial` | `markTutorialSeen` on end | `tests/e2e/tutorial.spec.ts` |
-| Celebration overlay | `celebration` at 1724 | first-win flags; celebration SFX | no e2e filename matches the overlay name [tested, celebration grep in tests was empty for the overlay name]; `cleared-mode.spec.ts` covers band-cleared |
+| Celebration overlay | `celebration` at 1724 | first-win flags; celebration SFX | `tests/e2e/celebration.spec.ts` (`getByTestId("celebration-overlay")`). `cleared-mode.spec.ts` covers band-cleared |
 | Cleared-band dialog | `cleared` at 1718, on-run branch 3639-3668 | celebration SFX; `openRun(..., {fresh:true})` | `tests/e2e/cleared-mode.spec.ts` |
 | Challenge welcome | `pendingChallenge` at 3957-3970 | `startPendingChallenge`; map pick writes stored map mode | `tests/e2e/friend-challenge-mc2-receive.desktop.spec.ts`, `friend-challenge-mc2-boot.desktop.spec.ts`. Testid `challenge-welcome` |
 | Challenge preview sheets | `challengePreview` on Home or menus; `runChallengePreview` in-run at 8250 / 8302 | ShareButton / clipboard | friend-challenge create and package-b specs |
@@ -167,7 +167,7 @@ These mount on top of a screen, usually Home or a run. They are not `inAppScreen
 
 ### Shared state, for the module split
 
-Legend: R means read, W means written, RW means both. "Run" is all `globe` surfaces. Counts in §4 use these table rows. [tested, hook declarations 1230-1852 + 1809 + 3156; setters grepped against the transitions in §5]
+Legend: R means read, W means written, RW means both. "Run" is all `globe` surfaces. Shared-state row counts in §4 use this table, which lives here in §1, not in §5. [tested, hook declarations 1230-1852 + 1809 + 3156; setters grepped against the transitions in §5]
 
 | State (decl line) | Boot | Home | starting | Menus | Run (globe) | GeoDetective | Cold Trail | Subjects |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
@@ -300,7 +300,7 @@ Related, not counted in the 21 upward-import rows: `noRawIo` lists 32 game-app r
 | `eslint/layer-baseline.json` | The 21 upward imports and 32 raw-I/O rows |
 | `eslint/shell-ban-baseline.json` | File listed under `homeButtonImport` and `pageLocalMain` |
 
-`src/lib/persisted-screen.ts` has no "game-app" string. GameApp is the boot client for its retry marker and open flags, so it is noted here, but it is not in the grep hit list. Out of scope, but also matched: `BRANCH_STATUS.md` and various `docs/**` files. No `package.json` or workflow hit.
+`src/lib/persisted-screen.ts` has no "game-app" string. GameApp is the boot client for its retry marker and open flags, so it is noted here, but it is not in the grep hit list. Out of scope, but also matched: `BRANCH_STATUS.md`, various `docs/**` files, and `scripts/clues/production/reviews/t2-rebase-integrity-certification.md`. No `package.json` or workflow hit.
 
 ## 4. Arena
 
@@ -310,11 +310,11 @@ Two split plans were written against the same inventory and the same SHA. Shared
 
 Each top-level screen or run surface becomes its own module. A thin shell remains. Feature files may not import another feature area, so the composer must move to layer 6 (`src/routes/game-app.tsx`) before or as screens are extracted. A shim left at `src/components/game-app.tsx` that re-exports the route module would be an upward import and is not allowed. `src/routes/index.tsx` points at the new path. The `Drop` type import in `result-card.tsx` retargets to `@/game/shell-helpers`. Screens stay in layer 5 and take callbacks and slots. Cross-cutting overlays stay in the shell. Raw browser I/O is out of this split's scope.
 
-Modules, in migration order, with §5 row counts and approximate lines:
+Modules, in migration order, with shared-state row counts from the §1 table and approximate lines:
 
-| Step | Module | §5 rows | Approx. lines |
+| Step | Module | Shared-state rows (§1) | Approx. lines |
 | ---: | :--- | ---: | ---: |
-| 1 | Composer path move to `src/routes/game-app.tsx`, plus the `Drop` import fix. High-contrast toggle extracted as a slot in this step or immediately after. | 0 | 8894, path move only |
+| 1 | Composer move to `src/routes/game-app.tsx`, plus the `Drop` import fix. High-contrast toggle extracted as a slot in this step or immediately after. | 0 | 8894, plus import rewrites (see the chosen plan) |
 | 2 | Cold Trail host, `src/game/coldtrail/ColdTrailHost.tsx` | 4 | ~110 |
 | 3 | GeoDetective host, `src/game/loop/GeoDetectiveHost.tsx` | 6 | ~100 |
 | 4 | Starting view, `src/components/region-loading.tsx`. `openRun` stays in the shell. | 9, view uses 1 | ~40 |
@@ -327,7 +327,7 @@ Modules, in migration order, with §5 row counts and approximate lines:
 | 11 | Play and PlayLoaded, `src/map/run/play.tsx` and `play-loaded.tsx` | 23 | ~2370 |
 | 12 | Home, `src/components/home-screen.tsx` | 28 | ~1270 |
 
-Step 1 alone drops every `noUpwardImport` key, because the importer is no longer `src/components/game-app.tsx` and the new importer is layer 6. About 5270 lines leave the composer. About 3600 stay in the route shell: boot, `openRun`, hash router, session, map, challenge, idle, and the overlay host. Home and Play are last because they share the most state. Risks called out: keep `SatelliteMap` lazy; keep `handleManualMapMode` in the shell; extract timers with their owner; update `shell-registry.ts` and `game-app-lazy-boundary.test.ts` when a screen leaves the file.
+A called step 1 a path-only move. Relative `./age-profile/*` and `./passport/*` imports (static, CSS, and lazy) must be rewritten to `@/components/age-profile/*` and `@/components/passport/*` in that same step, or they break after the file leaves `src/components/`. Step 1 still drops every `noUpwardImport` key, because the importer is no longer `src/components/game-app.tsx` and the new importer is layer 6. About 5270 lines leave the composer. About 3600 stay in the route shell: boot, `openRun`, hash router, session, map, challenge, idle, and the overlay host. Home and Play are last because they share the most state. Risks called out: keep `SatelliteMap` lazy; keep `handleManualMapMode` in the shell; extract timers with their owner; update `shell-registry.ts` and `game-app-lazy-boundary.test.ts` when a screen leaves the file.
 
 ### Option B, split by concern and state ownership
 
@@ -335,7 +335,7 @@ Hooks and controllers move first, then thin views. I/O hooks go in `src/platform
 
 Modules, in migration order:
 
-| Step | Module | §5 rows owned | Approx. lines |
+| Step | Module | Shared-state rows (§1) | Approx. lines |
 | ---: | :--- | ---: | ---: |
 | 1 | Ports: storage (including difficulty and the story prefix), history, saveData, language-model rewrite, in `src/platform/` | 0 | ~400 |
 | 2 | Map view types and tile copy down to `src/lib`. Reclassify `src/assets/**` as level 1. | 0 | ~80 |
@@ -354,41 +354,41 @@ Steps 1-10 mostly clear `noRawIo` rows, not the 21 upward imports. Step 2 can cl
 
 ### Chosen plan, a hybrid
 
-Step 1 comes from option A. Move the composer from `components/root` (layer 5) to `src/routes/` (layer 6) as a path move only. Shared state rows: 0. This should clear all 21 `noUpwardImport` rows. PR 2 must prove that with `lint:arch` before claiming it. In the same step, retarget `src/routes/index.tsx` and move the `Drop` type import in `result-card.tsx` to `@/game/shell-helpers`. Extract the high-contrast toggle as a slot in this step or immediately after.
+Step 1 comes from option A. Move the composer from `components/root` (layer 5) to `src/routes/game-app.tsx` (layer 6). This is not only a path change. In the same step, rewrite relative imports `./age-profile/*` and `./passport/*` (static, CSS, and lazy) to `@/components/age-profile/*` and `@/components/passport/*`, retarget `src/routes/index.tsx`, and move the `Drop` type import in `result-card.tsx` to `@/game/shell-helpers`. Extract the high-contrast toggle as a slot in this step or immediately after. Shared-state rows: 0. This should clear all 21 `noUpwardImport` rows. PR 2 must prove that with `lint:arch` before claiming it.
 
-Steps 2 onward come from option B. Extract state owners in B's fewest-shared-first order: leaf hooks, then age-profile, session / idle / discarded, overlay queue, map-mode, challenge receive and preview, run controller, then router / boot / hash-history.
+State owners then come from option B, sorted by the published shared-state row counts in the §1 table, fewest first: leaf hooks (1 each), age-profile (2), the three 3-row hooks (session / idle / discarded, overlay queue, run controller), map-mode (4), challenge receive and preview (5), then router / boot / hash-history (6). The run controller (3 rows) comes before the challenge hook (5 rows). B had placed it later.
 
 Option B's step 1, the storage and history ports in `src/platform`, is deferred until edge's Part B storage-port work lands. That lane owns those files now and would conflict.
 
-Last, the thin views (lists, Home, the Play stack) move into feature folders, as in option A's screen modules, once their state owners exist. Keep asset and map imports in the shell, passed as slots, unless a later PR reclassifies `src/assets/**` as layer 1. Home and Play go last because they share the most state, 28 and 23 rows.
+Thin views move after their state owners exist, then fewest shared-state rows first, using option A's screen modules: challenge welcome and challenge complete (3), review complete and the Cold Trail host (4), the GeoDetective host (6), region list (7), starting view (9; the view itself uses 1), subjects host and challenge menu (10), Play (23), Home (28). Keep asset and map imports in the shell, passed as slots, unless a later PR reclassifies `src/assets/**` as layer 1.
 
 Why this mix: A's composer move cures the baseline at once for almost no risk. B's hooks-first order shrinks the shared state before the big views move, so the split avoids A's heavy prop-drilling for Home and Play. Deferring B's port step keeps this lane out of another lane's files.
 
-Final order:
+Final order. Steps follow published shared-state row counts, fewest first, except where the Reason column records a real dependency.
 
-| Step | Work | §5 rows | Approx. lines |
-| ---: | :--- | ---: | ---: |
-| 1 | Composer path move to `src/routes/game-app.tsx`. Retarget `index.tsx` and the `Drop` type import. High-contrast toggle as a slot. | 0 | 8894, path move only |
-| later | Deferred: storage, history, saveData, and language-model ports in `src/platform`. Wait for edge's Part B. | 0 | ~400 |
-| 2 | Leaf hooks: difficulty, deck status, chunk-reload notice, reset toast | 1 each | ~130 |
-| 3 | Age-profile hook and overlay host | 2 | ~150 |
-| 4 | Session hook, idle watchdog, discarded notice | 3 | ~220 |
-| 5 | Overlay queue: first-visit, tutorial or invite, celebration or cleared | 3 | ~200 |
-| 6 | Map-mode hook in `src/map` | 4 | ~280 |
-| 7 | Challenge receive and preview hook | 5 | ~280 |
-| 8 | Run controller (`commit`, `openRun`, `startReview`) | 3 | ~350 |
-| 9 | Router hook and remaining boot, `inAppScreen` and hash or history | 6 | ~700 |
-| 10 | Cold Trail host, `src/game/coldtrail/ColdTrailHost.tsx` | 4 | ~110 |
-| 11 | GeoDetective host, `src/game/loop/GeoDetectiveHost.tsx` | 6 | ~100 |
-| 12 | Starting view. `openRun` stays with the run controller. | 9, view uses 1 | ~40 |
-| 13 | Subjects host, `src/subjects/shared/SubjectsHost.tsx` | 10 | ~180 |
-| 14 | Region list | 7 | ~160 |
-| 15 | Challenge menu | 10 | ~60 |
-| 16 | Review complete | 4 | ~85 |
-| 17 | Challenge welcome | 3 | ~170 |
-| 18 | Challenge complete and verdict | 3 | ~675 |
-| 19 | Play and PlayLoaded | 23 | ~2370 |
-| 20 | Home, Choose and heroes | 28 | ~1270 |
+| Step | Work | Shared-state rows (§1) | Approx. lines | Reason if not purely fewest-first |
+| ---: | :--- | ---: | ---: | :--- |
+| 1 | Composer move to `src/routes/game-app.tsx`. Rewrite `./age-profile/*` and `./passport/*` to `@/components/...`. Retarget `index.tsx` and the `Drop` type import. High-contrast toggle as a slot. | 0 | 8894, plus import rewrites | Must be first: the composer has to sit in layer 6 before later extracts, and the relative imports would break in a path-only move. |
+| later | Deferred: storage, history, saveData, and language-model ports in `src/platform`. | 0 | ~400 | Wait for edge's Part B. That lane owns those files now. |
+| 2 | Leaf hooks: difficulty, deck status, chunk-reload notice, reset toast | 1 each | ~130 | |
+| 3 | Age-profile hook and overlay host | 2 | ~150 | |
+| 4 | Session hook, idle watchdog, discarded notice | 3 | ~220 | |
+| 5 | Overlay queue: first-visit, tutorial or invite, celebration or cleared | 3 | ~200 | |
+| 6 | Run controller (`commit`, `openRun`, `startReview`) | 3 | ~350 | Pulled forward of the challenge hook. B had placed this after a 5-row step. |
+| 7 | Map-mode hook in `src/map` | 4 | ~280 | |
+| 8 | Challenge receive and preview hook | 5 | ~280 | |
+| 9 | Router hook and remaining boot, `inAppScreen` and hash or history | 6 | ~700 | |
+| 10 | Challenge welcome | 3 | ~170 | Views start here, after their state owners exist. Then fewest shared-state rows first among views. |
+| 11 | Challenge complete and verdict | 3 | ~675 | Same view-after-owners rule. |
+| 12 | Review complete | 4 | ~85 | Same view-after-owners rule. |
+| 13 | Cold Trail host, `src/game/coldtrail/ColdTrailHost.tsx` | 4 | ~110 | Same view-after-owners rule. |
+| 14 | GeoDetective host, `src/game/loop/GeoDetectiveHost.tsx` | 6 | ~100 | Same view-after-owners rule. |
+| 15 | Region list | 7 | ~160 | Same view-after-owners rule. |
+| 16 | Starting view | 9, view uses 1 | ~40 | Same view-after-owners rule. `openRun` stays with the run controller. |
+| 17 | Subjects host, `src/subjects/shared/SubjectsHost.tsx` | 10 | ~180 | Same view-after-owners rule. Tied with the challenge menu at 10 rows. |
+| 18 | Challenge menu | 10 | ~60 | Same view-after-owners rule. Tied with the subjects host at 10 rows. |
+| 19 | Play and PlayLoaded | 23 | ~2370 | |
+| 20 | Home, Choose and heroes | 28 | ~1270 | |
 
 ## 5. Statechart of top-level screen routing
 
@@ -478,5 +478,5 @@ stateDiagram-v2
 | geodetective / coldtrail / subjects → Home | `onLeave` / `onExit` / reset success / End game on subjects | Flag writes as above | 3687, 3707, 3729-3737 |
 | any full-screen → Home | `handleManualMapMode` | Cancels `openRun` gen, deletes `RUN_KEY`, closes loop, coldtrail, starting, tutorial, and menu. No-op during a challenge run, 2269. | 2260-2308 |
 | any session-bearing screen → Home | Idle watchdog → `killIdleSession` | Drops run and session, sets discarded and idle-ended | 2069-2110, 3393 |
-| pageshow (bfcache) | Close subjects, age-ask, and loop, not Cold Trail, then Home | New arrival rule | 1496-1502 |
+| pageshow (bfcache) | Close subjects, age-ask, and loop, not Cold Trail, then Home | New arrival rule | 1496-1506 |
 | popstate / Back | `applyHashScreen` if no run | Mid-run Back does nothing to the machine | 3546-3554 |
