@@ -18,11 +18,7 @@ import {
   setSessionStorageItem,
   setStorageItem,
 } from "../platform/storage/browser-storage.ts";
-import {
-  STORAGE_KEYS,
-  TOUR_LAST_DATE_KEY,
-  WALKED_SESSION_KEY,
-} from "../platform/storage/keys.ts";
+import { STORAGE_KEYS } from "../platform/storage/keys.ts";
 
 /**
  * Grandpa's Tasting Tour — animated donation scene on the Chart Room home.

@@ -7993,9 +7993,9 @@ function PlayLoaded({
       ids: exactIds,
     });
     let summaryAttempts = readRouteAttempts(summaryTuple) + 1;
-    // The port reads a blocked marker as absent, which is the old
-    // catch's outcome too: report stored+1 unstored (the effect's
-    // recording will have failed the same way).
+    // Split-failure edge: with session storage blocked and local
+    // storage working, the recording effect can record a completion
+    // this read saw as absent, so this count can over-report by one.
     if (getSessionStorageItem(challengeRecordedSummaryKeyDef(run.seed))) {
       summaryAttempts = readRouteAttempts(summaryTuple);
     }
