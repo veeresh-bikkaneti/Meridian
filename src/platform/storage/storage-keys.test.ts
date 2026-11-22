@@ -1,5 +1,4 @@
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
 import test, { describe } from "node:test";
 
 import { PROFILE_STORAGE_KEY } from "../../game/age-profile/store.ts";
@@ -307,21 +306,11 @@ describe("storage key registry (feature storage ports, slice A2)", () => {
 });
 
 describe("storage key registry (game-app ports, Part B B1)", () => {
-  // The difficulty, story and challenge builders still live in
-  // game-app.tsx, which node:test cannot import (JSX/CSS), so
-  // their pins read the source text — the same source-text
-  // pinning the grandpa entries used before their consts were
-  // hoisted into this registry.
-  const appSrc = readFileSync(
-    new URL("../../components/game-app.tsx", import.meta.url),
-    "utf8",
-  );
-
   test("the difficulty entry pins the key game-app writes, raw with the medium fallback", () => {
-    assert.equal(
-      STORAGE_KEYS.difficulty.key,
-      /const DIFFICULTY_KEY = "([^"]+)"/.exec(appSrc)?.[1],
-    );
+    // The entry is the source now (game-app reads and writes
+    // through it, Part B B3): its bytes are stated here once so
+    // an accidental edit to the registry value fails this pin.
+    assert.equal(STORAGE_KEYS.difficulty.key, "meridian.difficulty");
     assert.equal(STORAGE_KEYS.difficulty.encoding, "raw");
     assert.equal(STORAGE_KEYS.difficulty.fallback, "medium");
     assert.equal(decodeStoredText(STORAGE_KEYS.difficulty, "hard", () => "medium"), "hard");
@@ -329,9 +318,11 @@ describe("storage key registry (game-app ports, Part B B1)", () => {
   });
 
   test("the story factory pins game-app's story key builder for a fixture id", () => {
-    const prefix = /return `(meridian\.story\.)\$\{placeId\}`/.exec(appSrc)?.[1];
+    // The factory is the source now (game-app calls it, Part B
+    // B3): its bytes are stated here once so an accidental edit
+    // to the factory's key fails this pin.
     const def = storyKeyDef("fixture-place");
-    assert.equal(def.key, `${prefix}fixture-place`);
+    assert.equal(def.key, "meridian.story.fixture-place");
     assert.equal(def.encoding, "raw");
     assert.equal(def.fallback, null);
     assert.equal(decodeStoredText(def, "A story.", () => null), "A story.");

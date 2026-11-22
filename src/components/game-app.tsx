@@ -85,11 +85,14 @@ import {
   STORAGE_KEYS,
   challengeRecordedKeyDef,
   challengeRecordedSummaryKeyDef,
+  storyKeyDef,
 } from "../platform/storage/keys.ts";
 import {
   getSessionStorageItem,
+  getStorageItem,
   removeSessionStorageItem,
   setSessionStorageItem,
+  setStorageItem,
 } from "../platform/storage/browser-storage.ts";
 import type { StorageKeyDef } from "../platform/storage/storage.ts";
 import { resolveSession } from "../game/storage-slot.ts";
@@ -659,29 +662,25 @@ type LanguageModelGlobal = {
   create: () => Promise<NanoSession>;
 };
 
-const DIFFICULTY_KEY = "meridian.difficulty";
-
 /**
  * The picker's difficulty choice, persisted across page loads. Invalid or
  * missing values fall back to "medium" — the choice applies across
  * Globe → Country → State and survives edition switches.
+ *
+ * The port's difficulty def returns the stored string as-is (or the
+ * "medium" fallback when the value is missing, unreadable or blocked),
+ * so the isPickerDifficulty check below is the one validation, exactly
+ * where it ran before the port.
  */
 function readDifficultyChoice(): PickerDifficulty {
-  try {
-    if (typeof localStorage === "undefined") return "medium";
-    const raw = localStorage.getItem(DIFFICULTY_KEY);
-    return isPickerDifficulty(raw) ? raw : "medium";
-  } catch {
-    return "medium";
-  }
+  const raw = getStorageItem(STORAGE_KEYS.difficulty);
+  return isPickerDifficulty(raw) ? raw : "medium";
 }
 
 function writeDifficultyChoice(choice: PickerDifficulty) {
-  try {
-    localStorage.setItem(DIFFICULTY_KEY, choice);
-  } catch {
-    // Storage blocked: the in-memory choice still applies this session.
-  }
+  // The port swallows a blocked write: the in-memory choice still
+  // applies this session.
+  setStorageItem(STORAGE_KEYS.difficulty, choice);
 }
 
 function readRunFrom(def: StorageKeyDef<unknown>): Run | null {
@@ -1026,27 +1025,18 @@ async function modelAvailability(): Promise<ModelAvailability> {
   }
 }
 
-function storyKey(placeId: string): string {
-  return `meridian.story.${placeId}`;
-}
-
 function readCachedStory(placeId: string): string | null {
-  try {
-    if (typeof localStorage === "undefined") return null;
-    const cached = localStorage.getItem(storyKey(placeId));
-    if (cached === null || cached.trim() === "") return null;
-    return cached;
-  } catch {
-    return null;
-  }
+  // The port's story def reads missing, unreadable or blocked as
+  // null — a miss, so the story is built, as before.
+  const cached = getStorageItem(storyKeyDef(placeId));
+  if (cached === null || cached.trim() === "") return null;
+  return cached;
 }
 
 function writeCachedStory(placeId: string, text: string) {
-  try {
-    localStorage.setItem(storyKey(placeId), text);
-  } catch {
-    // A private window can refuse the cache. The story still shows once.
-  }
+  // A private window can refuse the cache; the port swallows that.
+  // The story still shows once.
+  setStorageItem(storyKeyDef(placeId), text);
 }
 
 async function askRewrite(authored: string): Promise<string> {
@@ -1824,7 +1814,7 @@ export function GameApp() {
   // share one source of truth; Play/PlayLoaded only render from it.
   const [tutorial, setTutorial] = useState<TutorialBeat | null>(null);
   // The menu invitation is shown at most once per page load; the
-  // localStorage seen-flag persists the decision across visits.
+  // local-storage seen-flag persists the decision across visits.
   const [inviteDismissed, setInviteDismissed] = useState(false);
   // Item 9: bumped when the queued read-aloud sheet is answered, so the
   // first-visit queue recomputes which prompt wants to show next.
@@ -2718,7 +2708,7 @@ export function GameApp() {
       });
       return;
     }
-    // Review sessions never resume across reloads: the deck (localStorage)
+    // Review sessions never resume across reloads: the deck (local storage)
     // is the durable state; the session queue is rebuilt fresh on every
     // start. Fail closed to the edition picker.
     if (saved && saved.regionId === REVIEW_DECK_REGION_ID) {
@@ -2853,7 +2843,7 @@ export function GameApp() {
     }
     if (!saved) {
       // Wave 1 P0 Item 1B: no session storage run survived (a closed tab
-      // kills session storage), but the localStorage shadow may have.
+      // kills session storage), but the local-storage shadow may have.
       // A shadow from a previous UTC day is a new-day discard; an
       // expired shadow is an inactivity discard. A fresh shadow is
       // left alone — the game may still be open in another tab, and
@@ -7093,7 +7083,7 @@ function PlayLoaded({
   );
   // Endless dealer: per-session shuffle (fresh seed per run, so restarts no
   // longer deterministically repeat the same first question), per-cycle
-  // reseed, and a persistent no-repeat history in localStorage. The dealer
+  // reseed, and a persistent no-repeat history in local storage. The dealer
   // is created once per run
   // identity (seed); run.index advances within it. A reload restores the same
   // seed and pool, so the resumed run keeps dealing the same session's order.
@@ -7105,7 +7095,7 @@ function PlayLoaded({
         // Review and challenge runs get a throwaway in-memory seen
         // store: their places must never enter the player's persistent
         // no-repeat history (a friend's picks are not places this
-        // player was dealt). Normal runs use the real localStorage
+        // player was dealt). Normal runs use the real local-storage
         // store, scoped to edition/region/band.
         review || challenge
           ? memorySeenStore()
