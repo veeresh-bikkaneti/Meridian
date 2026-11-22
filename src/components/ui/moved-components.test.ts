@@ -51,6 +51,10 @@ const { FlagImg } = (await import("./flag-img.tsx")) as typeof import("./flag-im
 const { FlagImg: FlagImgViaShim } = (await import("../flag-img.tsx")) as typeof import("../flag-img.tsx");
 const pair = (await import("./DetectivePair.tsx")) as typeof import("./DetectivePair.tsx");
 const pairViaShim = (await import("../../game/loop/detective/DetectivePair.tsx")) as typeof import("../../game/loop/detective/DetectivePair.tsx");
+const { BoundedText } = (await import("./bounded-text.tsx")) as typeof import("./bounded-text.tsx");
+const { BoundedText: BoundedTextViaShim } = (await import("../bounded-text.tsx")) as typeof import("../bounded-text.tsx");
+const { GrownUpGate } = (await import("./GrownUpGate.tsx")) as typeof import("./GrownUpGate.tsx");
+const { GrownUpGate: GrownUpGateViaShim } = (await import("../age-profile/GrownUpGate.tsx")) as typeof import("../age-profile/GrownUpGate.tsx");
 
 describe("components moved to ui keep working", () => {
   it("DropPinButton renders disabled with no aim, as satellite-map passes it", () => {
@@ -65,6 +69,12 @@ describe("components moved to ui keep working", () => {
   });
   it("flag-img shim re-exports the same component", () => {
     assert.equal(FlagImgViaShim, FlagImg);
+  });
+  it("bounded-text shim re-exports the same component", () => {
+    assert.equal(BoundedTextViaShim, BoundedText);
+  });
+  it("GrownUpGate shim re-exports the same component", () => {
+    assert.equal(GrownUpGateViaShim, GrownUpGate);
   });
   it("DetectivePair shim re-exports the same rigs and celebrate layout", () => {
     assert.equal(pairViaShim.HolmesRig, pair.HolmesRig);
