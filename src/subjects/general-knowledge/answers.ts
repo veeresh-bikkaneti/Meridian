@@ -1,16 +1,30 @@
 /**
- * General knowledge answers — the I2 rows carry no answer field, so
- * each answer lives here, keyed by item id, derived from that row's
- * why and objective. Every derivation is listed in the PR body for
- * educator review (review runs alongside release, owner rule Nov 13).
+ * General-knowledge answers — thin compatibility export from the
+ * Phase 3 records.
  *
- * The opera-years-ago entry is a year-gap answer: it is built at play
- * time from the shared yearsSince mechanism and the device's current
- * year — the answer is never typed into content (owner rule). All
- * other entries are static.
+ * The records live in ./items.ts (GENERAL_KNOWLEDGE_RECORDS); this
+ * module projects them into the GENERAL_KNOWLEDGE_ANSWERS shape
+ * existing consumers import. One release only: the next
+ * general-knowledge PR deletes this file.
+ *
+ * The opera-years-ago entry is the one computed case and is NOT in
+ * the static map: it is a year-gap answer, built at play time from
+ * the shared yearsSince mechanism and the device's current year —
+ * the answer is never typed into content (owner rule). answerFor
+ * builds it through operaYearsEntry below, exactly as before the
+ * records move; the record in items.ts carries only the specimen
+ * of its shape at the lint system's pinned year.
+ *
+ * Every derivation is listed in the PR body for educator review
+ * (review runs alongside release, owner rule Nov 13).
  */
+import { GENERAL_KNOWLEDGE_RECORDS, toAnswerEntry } from "./items.ts";
 import type { AnswerEntry } from "../shared/answer.ts";
 import { currentYear, yearsSince } from "../shared/years.ts";
+
+export type GeneralKnowledgeAnswerEntry = AnswerEntry;
+
+const OPERA_ITEM_ID = "general-knowledge:mixed:opera-years-ago";
 
 /** The year the Sydney Opera House opened (from the item's why). */
 export const OPERA_OPENED_YEAR = 1973;
@@ -30,82 +44,17 @@ export function operaYearsEntry(year: number): AnswerEntry {
   };
 }
 
-export const GENERAL_KNOWLEDGE_ANSWERS: Record<string, AnswerEntry> = {
-  "general-knowledge:mixed:eiffel-antennas": {
-    prompt:
-      "When it opened in 1889, the Eiffel Tower was 1,024 feet tall. With today's antennas it is 1,083 feet. How much taller is it now?",
-    choices: ["49 feet", "59 feet", "69 feet"],
-    correct: "59 feet",
-    value: 59,
-    derivation: "1,083 − 1,024 = 59 feet.",
-  },
-  "general-knowledge:mixed:older-landmark": {
-    prompt:
-      "The Eiffel Tower was finished in 1889 and the Sydney Opera House opened in 1973. Which landmark is older?",
-    choices: [
-      "The Eiffel Tower",
-      "The Sydney Opera House",
-      "They were finished in the same year",
-    ],
-    correct: "The Eiffel Tower",
-    derivation: "1889 < 1973, so the Eiffel Tower, finished in 1889, is the older landmark.",
-  },
-  "general-knowledge:mixed:falls-in-km": {
-    prompt:
-      "Victoria Falls is about 1,708 metres wide. A trail sign says 2 km. Is the falls wider or narrower than 2 km?",
-    choices: ["Wider than 2 km", "Narrower than 2 km", "Exactly 2 km wide"],
-    correct: "Narrower than 2 km",
-    derivation: "2 km = 2,000 m, and 1,708 m < 2,000 m, so the falls is narrower than 2 km.",
-  },
-  "general-knowledge:mixed:trip-buses": {
-    prompt:
-      "A class of 30 children and 4 adults is going to see a waterfall. Each minibus seats 8. How many minibuses do they book?",
-    choices: ["4", "5", "6"],
-    correct: "5",
-    value: 5,
-    derivation: "30 + 4 = 34 people; 34 ÷ 8 = 4 remainder 4, so one more bus is needed: 5 minibuses.",
-  },
-  "general-knowledge:mixed:everest-vs-falls": {
-    prompt:
-      "Mount Everest is 8,848.86 m high. The main drop at Victoria Falls is 108 m high. About how many of those drops, stacked up, would reach the top of Everest?",
-    choices: ["About 8", "About 80", "About 800"],
-    correct: "About 80",
-    derivation: "8,848.86 ÷ 108 ≈ 82, so about 80 drops.",
-  },
-  "general-knowledge:mixed:paris-sydney-flight": {
-    prompt:
-      "Paris to Sydney is about 17,000 km. A plane keeps a steady 850 km/h. About how long is the trip?",
-    choices: ["About 2 hours", "About 20 hours", "About 200 hours"],
-    correct: "About 20 hours",
-    value: 20,
-    derivation: "17,000 ÷ 850 = 20 hours.",
-  },
-  "general-knowledge:mixed:tower-angle": {
-    prompt:
-      "Standing 1,000 feet from the Eiffel Tower's centre, the top is about 47 degrees up. About how tall is the tower?",
-    choices: ["About 470 feet", "About 1,072 feet", "About 2,140 feet"],
-    correct: "About 1,072 feet",
-    derivation: "Height ≈ 1,000 × tan(47°) ≈ 1,000 × 1.07 ≈ 1,072 feet.",
-  },
-  "general-knowledge:mixed:great-circle": {
-    prompt:
-      "On a globe, the shortest route between two places follows a great circle, not a straight line on a flat map. About how far is it from Mount Everest to Victoria Falls along the surface?",
-    choices: ["800 to 850 km", "8,000 to 8,500 km", "80,000 to 85,000 km"],
-    correct: "8,000 to 8,500 km",
-    derivation:
-      "The haversine formula on the two pins' latitude and longitude gives a surface distance in the 8,000 to 8,500 km band.",
-  },
-  "general-knowledge:mixed:falls-flow": {
-    prompt:
-      "At its highest flood, up to about 500 million litres a minute go over Victoria Falls. How much is that in one day, in scientific notation?",
-    choices: ["7.2 × 10^9 litres", "7.2 × 10^11 litres", "7.2 × 10^13 litres"],
-    correct: "7.2 × 10^11 litres",
-    derivation: "500,000,000 × 1,440 minutes = 720,000,000,000 = 7.2 × 10^11 litres in a day.",
-  },
-};
+/** The nine static entries, projected from the records. The computed
+ *  opera entry is deliberately absent — see the header. */
+export const GENERAL_KNOWLEDGE_ANSWERS: Record<string, GeneralKnowledgeAnswerEntry> =
+  Object.fromEntries(
+    GENERAL_KNOWLEDGE_RECORDS.filter((record) => record.id !== OPERA_ITEM_ID).map(
+      (record) => [record.id, toAnswerEntry(record)],
+    ),
+  );
 
-export function answerFor(itemId: string): AnswerEntry | null {
-  if (itemId === "general-knowledge:mixed:opera-years-ago") {
+export function answerFor(itemId: string): GeneralKnowledgeAnswerEntry | null {
+  if (itemId === OPERA_ITEM_ID) {
     return operaYearsEntry(currentYear());
   }
   return GENERAL_KNOWLEDGE_ANSWERS[itemId] ?? null;
