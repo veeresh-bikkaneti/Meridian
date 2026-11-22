@@ -230,7 +230,7 @@ function getUsStates10m(): Promise<FeatureCollection<Geometry> | Feature<Geometr
 let neAdmin1Promise: Promise<FeatureCollection<Geometry>> | null = null;
 function getNeAdmin1(): Promise<FeatureCollection<Geometry>> {
   if (!neAdmin1Promise) {
-    neAdmin1Promise = import("./data/ne-50m-admin-1.json", { with: { type: "json" } }).then(
+    neAdmin1Promise = import("../game/data/ne-50m-admin-1.json", { with: { type: "json" } }).then(
       (mod) => mod.default as unknown as FeatureCollection<Geometry>
     );
   }

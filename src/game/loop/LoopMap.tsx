@@ -4,13 +4,15 @@ import "maplibre-gl/dist/maplibre-gl.css";
 import { clampLat, initialBearing, normalizeLon } from "@/game/geo";
 import { formatLength, type LengthUnit } from "@/game/units";
 import { playCelebrationSound } from "@/game/audio/play-guards";
-import { IMAGERY_TILES } from "@/map/imagery";
+import { IMAGERY_TILES } from "@/lib/imagery";
 import { isWebgl2Unavailable } from "@/lib/webgl2-unavailable";
 import { LOOP_LABELS_ATTRIBUTION, LOOP_LABELS_TILES } from "./map-labels";
 import { buildPlaceGrid, nearestPlace, type PlaceGrid } from "./place-resolve";
 import { destination, guessArrow, ringPolygon } from "./rings";
 import { displayLoopName, fetchLoopIndex, unlabeledSpotEntry } from "./evaluate";
 import type { LoopGuess, LoopNameEntry } from "./types";
+import type { TrailEvidenceMark, TrailEvidenceRing } from "./trail-evidence.ts";
+export type { TrailEvidenceMark, TrailEvidenceRing } from "./trail-evidence.ts";
 
 /**
  * The Detective's Atlas: full-screen satellite + Esri reference labels,
@@ -69,32 +71,7 @@ export interface LoopMapHandle {
   flyToEntry(entry: LoopNameEntry): void;
 }
 
-/**
- * Cold-Trail evidence overlay: a witness sighting's radius ring.
- * Painted through the same ring source/layers as the loop's deduction
- * surface (ringPolygon), with a km label at the northmost point.
- */
-export interface TrailEvidenceRing {
-  lon: number;
-  lat: number;
-  radiusKm: number;
-  label: string;
-  /**
-   * Draft (unconfirmed) ring: drawn dashed + lower opacity through the
-   * `loop-ring-line-preview` layer, excluded from the solid `loop-ring-line`
-   * layer by its filter. Dashed = "not locked yet" (shape-based, not
-   * color-only — safe for colorblind players).
-   */
-  preview?: boolean;
-}
 
-/** Cold-Trail evidence mark: "witness" = gold dot at the witness city,
- * "x" = the player's interception guess (reuses the loop's ✕ layer). */
-export interface TrailEvidenceMark {
-  lon: number;
-  lat: number;
-  kind: "witness" | "x";
-}
 
 /**
  * Cold-Trail F11 overlap lens: the region where all locked player rings

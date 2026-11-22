@@ -34,7 +34,7 @@
  * TopoJSON (quantization 1e4; topojson-server, pinned in package.json) →
  * src/map/data/admin1/<iso2>.json.
  *
- * The existing src/map/data/ne-50m-admin-1.json (AU/BR/CA/CN/IN, GeoJSON) is
+ * The existing src/game/data/ne-50m-admin-1.json (AU/BR/CA/CN/IN, GeoJSON) is
  * rewritten in place with the same slim schema {name, iso_a2, bbox, geometry}
  * (GeoJSON-native top-level bbox). It stays GeoJSON; only the 7 new chunks
  * are TopoJSON (repo convention for vendored boundaries: world-atlas,
@@ -298,7 +298,7 @@ function main() {
   // Derived from the repo's own vendored file (geometry preserved
   // byte-identically; only the 119 dead properties are dropped and the
   // per-feature bbox is recomputed from the shipped geometry).
-  const legacyPath = join(ROOT, "src", "map", "data", "ne-50m-admin-1.json");
+  const legacyPath = join(ROOT, "src", "game", "data", "ne-50m-admin-1.json");
   const legacy50m = JSON.parse(readFileSync(legacyPath, "utf8"));
   const legacyFeats = legacy50m.features.filter((f) =>
     LEGACY_KEPT.includes(String(f.properties?.iso_a2 ?? "").toLowerCase()),
@@ -396,7 +396,7 @@ function verifyOutputs(summary, legacyCount) {
   }
 
   const legacy = JSON.parse(
-    readFileSync(join(ROOT, "src", "map", "data", "ne-50m-admin-1.json"), "utf8"),
+    readFileSync(join(ROOT, "src", "game", "data", "ne-50m-admin-1.json"), "utf8"),
   );
   if (legacy.features.length !== legacyCount) {
     failures.push(`legacy: ${legacy.features.length} features, expected ${legacyCount}`);

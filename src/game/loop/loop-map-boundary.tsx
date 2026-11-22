@@ -1,5 +1,5 @@
 import { Component, type JSX, type ReactNode } from "react";
-import { TILE_FALLBACK_COPY } from "@/map/tile-fallback-copy.ts";
+import { TILE_FALLBACK_COPY } from "@/lib/tile-fallback-copy.ts";
 import { emitMapError } from "@/lib/observability";
 import { isWebgl2Unavailable } from "@/lib/webgl2-unavailable";
 

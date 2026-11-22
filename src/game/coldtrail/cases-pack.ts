@@ -1,4 +1,4 @@
-import capitalsJson from "./cases.capitals.generated.json" with { type: "json" };
+import capitalsJson from "../data/coldtrail/cases.capitals.generated.json" with { type: "json" };
 import { isCase } from "./cases.ts";
 import type { ColdTrailCase } from "./types.ts";
 

@@ -24,6 +24,9 @@
  * loudness, so a stray re-render cannot ship silently.
  */
 
+import { assetBase } from "../lib/asset-base.ts";
+export { assetBase } from "../lib/asset-base.ts";
+
 export interface StorytellerLine {
   /** Exact caption text shown in the caption card. */
   text: string;
@@ -67,12 +70,6 @@ export const STORYTELLER_RETRY_HINT = "Tap the replay button to try again.";
  * storyteller figure replays the greeting (Fix D). Same sign-off note. */
 export const STORYTELLER_HOME_RETRY_HINT = "Tap me to try again.";
 
-/** Safe import.meta.env read (undefined under node --test — same seam as pwa.ts's viteEnv). */
-export function assetBase(): string {
-  const env = (import.meta as unknown as { env?: { BASE_URL?: string } }).env;
-  const base = env?.BASE_URL ?? "/";
-  return base.endsWith("/") ? base : `${base}/`;
-}
 
 /** Public asset URL for a storyteller mp3 (same pattern as comet's greetingAudioUrl). */
 export function storytellerAudioUrl(audioFile: string): string {

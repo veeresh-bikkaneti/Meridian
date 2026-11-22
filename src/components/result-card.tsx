@@ -23,7 +23,7 @@ import { useAiStory, AI_STORY_BADGE } from "@/game/story-ai";
 import { revealPinCompare } from "@/game/reverse-geocode";
 import { preloadTerritory } from "@/game/territory";
 import { ScrollCue, useMoreBelow } from "@/components/scroll-cue";
-import { ReadAloudButton } from "./age-profile/ReadAloudButton";
+import { ReadAloudButton } from "@/components/ui/ReadAloudButton";
 import { audioMode, resolveBand } from "@/game/age-profile";
 import { storyForBand } from "@/game/generated-places";
 

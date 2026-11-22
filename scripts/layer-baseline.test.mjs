@@ -80,8 +80,8 @@ describe("layer baseline (KNOWN/STALE)", () => {
   });
 
   it("a NEW upward import in an already-baselined file still fails the rule", () => {
-    // src/game/coldtrail/SightingCard.tsx is baselined for
-    // "@/components/bounded-text" (cross-area). The baselined
+    // src/components/atlas-map.tsx is baselined for
+    // "../map/atlas-data.ts" (cross-area). The baselined
     // import is suppressed; a second, unlisted cross-area import
     // in the same file is not covered and must be reported.
     const linter = new Linter();
@@ -97,11 +97,11 @@ describe("layer baseline (KNOWN/STALE)", () => {
         ],
         { filename },
       );
-    const file = "src/game/coldtrail/SightingCard.tsx";
+    const file = "src/components/atlas-map.tsx";
     const hits = (messages) => messages.filter((m) => m.ruleId === "layer/no-upward-import");
-    const baselinedOnly = lint('import "@/components/bounded-text";\n', file);
+    const baselinedOnly = lint('import "../map/atlas-data.ts";\n', file);
     assert.deepEqual(hits(baselinedOnly), [], JSON.stringify(baselinedOnly));
-    const withNew = lint('import "@/components/bounded-text";\nimport "@/components/place-name";\n', file);
+    const withNew = lint('import "../map/atlas-data.ts";\nimport "@/components/age-profile/GrownUpGate.tsx";\n', file);
     assert.equal(hits(withNew).length, 1, JSON.stringify(withNew));
   });
 

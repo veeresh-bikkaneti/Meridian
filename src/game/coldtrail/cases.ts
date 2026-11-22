@@ -1,4 +1,4 @@
-import casesJson from "./cases.generated.json" with { type: "json" };
+import casesJson from "../data/coldtrail/cases.generated.json" with { type: "json" };
 import type { ColdTrailCase, ColdTrailSighting } from "./types.ts";
 
 /**

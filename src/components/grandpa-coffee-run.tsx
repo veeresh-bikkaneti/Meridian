@@ -106,7 +106,7 @@ import { STORAGE_KEYS } from "../platform/storage/keys.ts";
 const KOFI_URL = import.meta.env?.VITE_KOFI_URL?.trim() || undefined;
 
 const GrownUpGate = lazy(() =>
-  import("./age-profile/GrownUpGate.tsx").then((m) => ({ default: m.GrownUpGate })),
+  import("./ui/GrownUpGate.tsx").then((m) => ({ default: m.GrownUpGate })),
 );
 
 // Slow stroll across the dotted path (the kettle pause freezes the

@@ -38,8 +38,9 @@ import {
   setStorageItem,
 } from "../platform/storage/browser-storage.ts";
 import { STORAGE_KEYS } from "../platform/storage/keys.ts";
+import type { MapMode } from "../lib/map-mode.ts";
+export type { MapMode } from "../lib/map-mode.ts";
 
-export type MapMode = "full" | "scout";
 
 /** Single map-attributed storage key — never shared with other features. */
 export const MAP_MODE_STORAGE_KEY = "meridian:map-mode";

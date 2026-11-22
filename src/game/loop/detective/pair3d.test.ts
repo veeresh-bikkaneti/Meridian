@@ -4,9 +4,9 @@ import { pair3dAllowed, pose3dFor } from "./pair3d.ts";
 import { readFileSync } from "node:fs";
 import { FRAME_3D, HOLMES_POSES_3D, WATSON_POSES_3D } from "./pair3d-poses.ts";
 
-// The rig pose lists, read from DetectivePair.tsx's source (a .tsx this
-// plain node test can't import).
-const RIG_SRC = readFileSync(new URL("./DetectivePair.tsx", import.meta.url), "utf8");
+// The rig pose lists, read from detective-poses.ts's source (extracted
+// from DetectivePair.tsx, which this plain node test can't import).
+const RIG_SRC = readFileSync(new URL("./detective-poses.ts", import.meta.url), "utf8");
 function poseList(name: string): string[] {
   const m = RIG_SRC.match(new RegExp(`export const ${name} = \\[([^\\]]*)\\]`));
   assert.ok(m, name);
