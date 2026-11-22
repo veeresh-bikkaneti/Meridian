@@ -1,6 +1,6 @@
 # Map of game-app.tsx for the Phase 4 split
 
-Line numbers in this map are from `384689534353bbda4920edaa938d9a5a40d4ab51` (`38468953`). Edge's Part B will move storage ports in this file and will shift those numbers. Re-check the map against main before PR 2.
+Line numbers in this map are from `384689534353bbda4920edaa938d9a5a40d4ab51` (`38468953`). Edge's Part B will move storage ports in this file and will shift those numbers. Re-check the map against main after Part B lands, and before PR 2 (the shrink-only size budget).
 
 This SHA is Phase 1 ports sweep Part A (`#569`), all files except `game-app.tsx`. The file is 8894 lines [tested, `wc -l src/components/game-app.tsx`]. It still talks to `localStorage` and `sessionStorage` directly. It has no `fetch(` and no `new Audio(` [tested, `rg -n '\bfetch\s*\(|new Audio' src/components/game-app.tsx`, no hits]. Audio goes through `@/game/audio/sfx` and `play-guards`. There is no `src/platform` import [tested, `rg -n "from [\"']@/platform" src/components/game-app.tsx`, no hits].
 
@@ -227,31 +227,31 @@ Related, not counted in the 21 upward-import rows: `noRawIo` lists 32 game-app r
 
 [tested, `python3` filter of `eslint/layer-baseline.json` `"noUpwardImport"` where the key starts with `src/components/game-app.tsx|`, count 21]
 
-`game-app.tsx` lives in `components/root` (layer 5). Each entry is a sideways or upward import of another feature area, the map area, or assets. Under the chosen plan, step 1 moves the composer to `src/routes/game-app.tsx` (layer 6). That path change should drop every baseline key, because layer 6 may import layer 5. PR 2 must prove this with `lint:arch` before claiming it. The "curing module" column is who should hold the import after that move, without creating a new feature-to-feature row.
+`game-app.tsx` lives in `components/root` (layer 5). Each entry is a sideways or upward import of another feature area, the map area, or assets. These 21 rows are the extraction checklist. A row is cured when this specifier leaves `src/components/game-app.tsx` and the new import site is legal (same feature area, or a lower layer). We do not move this file to `src/routes` first: that layer may import anything, so the move would hide the 21 keys without extracting the modules. A leftover host or hook import on the remaining composer is a new row, cleared only in the last PR, when the thin router sits in layer 6. The "Curing PR" column names the extraction step that removes this specifier.
 
-| # | Specifier | Import site | Curing module |
+| # | Specifier | Import site | Curing PR |
 | ---: | :--- | :--- | :--- |
-| 1 | `./age-profile/AgeAskGate` | 180 | Route shell. Overlays Home and Subjects via `ageAsk`. |
-| 2 | `./age-profile/AgeProfileSettings` | 179 | Route shell (`ageSettingsOpen`, 4308-4318, 3773+). |
-| 3 | `./age-profile/LockedLoop` | 148 | Route shell, passed into Home as a slot at 5261. Home must not import it. |
-| 4 | `./age-profile/ReadAloudPrefPrompt` | 149 | Route shell, first-visit queue at 4259-4264. |
-| 5 | `./age-profile/ReadAloudPrefSettings` | 152 | Route shell, same queue. |
-| 6 | `./age-profile/age-profile.css` | 147 | Route shell, or the age-profile area itself, not Home. |
-| 7 | `./passport/EarnedBadgeRow` | 153 | Route shell slot into Home at 5298. |
-| 8 | `@/assets/home-v5/card-media` | 78 | Route shell passes URLs or media objects into Home. |
-| 9 | `@/assets/home-v5/globe-fallback.webp` | 73, used 199 | Route shell passes the URL into Home. |
-| 10 | `@/assets/home-v5/hero-mountain.webp` | 72 | Route shell passes the URL into Home. |
-| 11 | `@/assets/verdict/grandpa-media` | 74-77 | Route shell passes poster and video URLs into Challenge complete, used at 6066-6077. |
-| 12 | `@/game/coldtrail/TrailScreen` | 304, 315 | Cold Trail host in `src/game/coldtrail/`, same area, once that host exists. Until then, the shell. |
-| 13 | `@/game/loop/LoopScreen` | 303, 310 | GeoDetective host in `src/game/loop/`, same area, once that host exists. Until then, the shell. |
-| 14 | `@/map/capability` types | 253 | Map-mode hook in `src/map/`, same area as `capability.ts`. Until then, the shell. |
-| 15 | `@/map/capability` values | 254-261 | Same map-mode hook. |
-| 16 | `@/map/map-options` | 263 | Same map-mode hook (`isCoarsePointer`). |
-| 17 | `@/map/satellite-map` types `MapMark`, `MapVariation` | 68 | Stay legal on the route shell, or move the types down to `src/lib` later. Play receives the map as a slot. |
+| 1 | `./age-profile/AgeAskGate` | 180 | Age-profile host. The import moves into `src/components/age-profile/` (same area). Overlays Home and Subjects via `ageAsk`. |
+| 2 | `./age-profile/AgeProfileSettings` | 179 | Age-profile host (`ageSettingsOpen`, 4308-4318, 3773+). |
+| 3 | `./age-profile/LockedLoop` | 148 | Age-profile host, passed into Home as a slot at 5261. Home must not import it. |
+| 4 | `./age-profile/ReadAloudPrefPrompt` | 149 | Age-profile host, first-visit queue at 4259-4264. |
+| 5 | `./age-profile/ReadAloudPrefSettings` | 152 | Age-profile host, same queue. |
+| 6 | `./age-profile/age-profile.css` | 147 | Age-profile host, not Home. |
+| 7 | `./passport/EarnedBadgeRow` | 153 | Last PR: the thin layer-6 router passes a slot into Home at 5298. Home must not import passport. |
+| 8 | `@/assets/home-v5/card-media` | 78 | Last PR: the thin router passes URLs or media objects into Home, unless `src/assets/**` has already been reclassified as layer 1. |
+| 9 | `@/assets/home-v5/globe-fallback.webp` | 73, used 199 | Last PR, same slot rule as 8. |
+| 10 | `@/assets/home-v5/hero-mountain.webp` | 72 | Last PR, same slot rule as 8. |
+| 11 | `@/assets/verdict/grandpa-media` | 74-77 | Last PR: the thin router passes poster and video URLs into Challenge complete, used at 6066-6077, unless assets have been reclassified. |
+| 12 | `@/game/coldtrail/TrailScreen` | 304, 315 | Cold Trail host PR. The import moves into `src/game/coldtrail/ColdTrailHost.tsx` (same area). |
+| 13 | `@/game/loop/LoopScreen` | 303, 310 | GeoDetective host PR. The import moves into `src/game/loop/GeoDetectiveHost.tsx` (same area). |
+| 14 | `@/map/capability` types | 253 | Map-mode hook PR. The import moves into `src/map/` (same area as `capability.ts`). |
+| 15 | `@/map/capability` values | 254-261 | Same map-mode hook PR. |
+| 16 | `@/map/map-options` | 263 | Same map-mode hook PR (`isCoarsePointer`). |
+| 17 | `@/map/satellite-map` types `MapMark`, `MapVariation` | 68 | Map-mode PR, by moving the types down to `src/lib`. That is a legal downward import from this file. Play receives the map as a slot. |
 | 18 | `@/map/satellite-map` type `ScoutRestoreView` | 262 | Same as 17. |
-| 19 | `@/map/satellite-map` lazy `SatelliteMap` | 619-620 | Route shell, or a `src/map/` host the shell imports. Must stay lazy. `components/play` must not import `map`. |
-| 20 | `@/map/tile-fallback-copy.ts` | 265 | Stay legal on the route shell, or move the copy down to `src/lib` later. |
-| 21 | `@/subjects/shared/SubjectPicker` | 305, 323 | Subjects host in `src/subjects/shared/`, same area, once that host exists. Until then, the shell. |
+| 19 | `@/map/satellite-map` lazy `SatelliteMap` | 619-620 | Play PR. The lazy import moves into a `src/map/` host. Must stay lazy. A play view under `components/` must not import `map`. |
+| 20 | `@/map/tile-fallback-copy.ts` | 265 | Map-mode PR, by moving the copy down to `src/lib`. |
+| 21 | `@/subjects/shared/SubjectPicker` | 305, 323 | Subjects host PR. The import moves into `src/subjects/shared/SubjectsHost.tsx` (same area). |
 
 ## 3. Non-test files that mention game-app
 
@@ -314,7 +314,7 @@ Modules, in migration order, with shared-state row counts from the §1 table and
 
 | Step | Module | Shared-state rows (§1) | Approx. lines |
 | ---: | :--- | ---: | ---: |
-| 1 | Composer move to `src/routes/game-app.tsx`, plus the `Drop` import fix. High-contrast toggle extracted as a slot in this step or immediately after. | 0 | 8894, plus import rewrites (see the chosen plan) |
+| 1 | Composer move to `src/routes/game-app.tsx`, plus the `Drop` import fix. High-contrast toggle extracted as a slot in this step or immediately after. | 0 | 8894, path move (as proposed) |
 | 2 | Cold Trail host, `src/game/coldtrail/ColdTrailHost.tsx` | 4 | ~110 |
 | 3 | GeoDetective host, `src/game/loop/GeoDetectiveHost.tsx` | 6 | ~100 |
 | 4 | Starting view, `src/components/region-loading.tsx`. `openRun` stays in the shell. | 9, view uses 1 | ~40 |
@@ -327,7 +327,7 @@ Modules, in migration order, with shared-state row counts from the §1 table and
 | 11 | Play and PlayLoaded, `src/map/run/play.tsx` and `play-loaded.tsx` | 23 | ~2370 |
 | 12 | Home, `src/components/home-screen.tsx` | 28 | ~1270 |
 
-A called step 1 a path-only move. Relative `./age-profile/*` and `./passport/*` imports (static, CSS, and lazy) must be rewritten to `@/components/age-profile/*` and `@/components/passport/*` in that same step, or they break after the file leaves `src/components/`. Step 1 still drops every `noUpwardImport` key, because the importer is no longer `src/components/game-app.tsx` and the new importer is layer 6. About 5270 lines leave the composer. About 3600 stay in the route shell: boot, `openRun`, hash router, session, map, challenge, idle, and the overlay host. Home and Play are last because they share the most state. Risks called out: keep `SatelliteMap` lazy; keep `handleManualMapMode` in the shell; extract timers with their owner; update `shell-registry.ts` and `game-app-lazy-boundary.test.ts` when a screen leaves the file.
+Option A called step 1 a path-only move, and claimed it would drop every `noUpwardImport` key because the new importer would be layer 6. The chosen plan does not take that step first. `src/routes` may import anything, so moving the 8,894-line file there would hide the 21 rows without curing them. About 5270 lines would still leave the composer over later extract PRs. Home and Play are last because they share the most state. Risks called out: keep `SatelliteMap` lazy; keep `handleManualMapMode` in the shell; extract timers with their owner; update `shell-registry.ts` and `game-app-lazy-boundary.test.ts` when a screen leaves the file.
 
 ### Option B, split by concern and state ownership
 
@@ -354,41 +354,46 @@ Steps 1-10 mostly clear `noRawIo` rows, not the 21 upward imports. Step 2 can cl
 
 ### Chosen plan, a hybrid
 
-Step 1 comes from option A. Move the composer from `components/root` (layer 5) to `src/routes/game-app.tsx` (layer 6). This is not only a path change. In the same step, rewrite relative imports `./age-profile/*` and `./passport/*` (static, CSS, and lazy) to `@/components/age-profile/*` and `@/components/passport/*`, retarget `src/routes/index.tsx`, and move the `Drop` type import in `result-card.tsx` to `@/game/shell-helpers`. Extract the high-contrast toggle as a slot in this step or immediately after. Shared-state rows: 0. This should clear all 21 `noUpwardImport` rows. PR 2 must prove that with `lint:arch` before claiming it.
+Do not move `game-app.tsx` to `src/routes` first. That folder is layer 6 and may import anything, so moving the 8,894-line file there would hide the 21 `noUpwardImport` rows without curing them. Option A proposed that move as its step 1. The lead no longer takes it first, for that reason. The 21 rows stay as the extraction checklist: each module PR cures its own rows, as mapped in §2.
 
-State owners then come from option B, sorted by the published shared-state row counts in the §1 table, fewest first: leaf hooks (1 each), age-profile (2), the three 3-row hooks (session / idle / discarded, overlay queue, run controller), map-mode (4), challenge receive and preview (5), then router / boot / hash-history (6). The run controller (3 rows) comes before the challenge hook (5 rows). B had placed it later.
+Option B's storage and history ports in `src/platform` stay deferred until edge's Part B lands. That lane owns those files now and would conflict.
 
-Option B's step 1, the storage and history ports in `src/platform`, is deferred until edge's Part B storage-port work lands. That lane owns those files now and would conflict.
+PR 2, after Part B merges, adds a shrink-only size budget test for `game-app.tsx`. It does not extract a module. It locks that the file only gets smaller from then on.
 
-Thin views move after their state owners exist, then fewest shared-state rows first, using option A's screen modules: challenge welcome and challenge complete (3), review complete and the Cold Trail host (4), the GeoDetective host (6), region list (7), starting view (9; the view itself uses 1), subjects host and challenge menu (10), Play (23), Home (28). Keep asset and map imports in the shell, passed as slots, unless a later PR reclassifies `src/assets/**` as layer 1.
+State owners then come out in option B's fewest-shared-first order, using the published shared-state row counts in the §1 table: leaf hooks (1 each), age-profile (2), the three 3-row hooks (session / idle / discarded, overlay queue, run controller), map-mode (4), challenge receive and preview (5), then a router hook for boot, `inAppScreen`, and hash or history (6). The run controller (3 rows) comes before the challenge hook (5 rows). That router hook stays in this file for now. It is not a move to `src/routes`.
 
-Why this mix: A's composer move cures the baseline at once for almost no risk. B's hooks-first order shrinks the shared state before the big views move, so the split avoids A's heavy prop-drilling for Home and Play. Deferring B's port step keeps this lane out of another lane's files.
+Thin views move after their state owners exist, then fewest shared-state rows first, using option A's screen modules: challenge welcome and challenge complete (3), review complete and the Cold Trail host (4), the GeoDetective host (6), region list (7), starting view (9; the view itself uses 1), subjects host and challenge menu (10), Play (23), Home (28). Extract the high-contrast toggle as a slot before Home and Play, because both use it. Keep asset and passport imports on the remaining composer, passed as slots, unless a later PR reclassifies `src/assets/**` as layer 1.
 
-Final order. Steps follow published shared-state row counts, fewest first, except where the Reason column records a real dependency.
+The last PR moves the remaining thin router to `src/routes`, and only once it routes and holds no screen state. In that PR, retarget `src/routes/index.tsx`, move the `Drop` type import in `result-card.tsx` to `@/game/shell-helpers`, and rewrite any relative imports still on the file. Prove with `lint:arch` that no `src/components/game-app.tsx|` rows remain, and that leftover host imports are legal from layer 6.
+
+Why this mix: extracting first means each PR has to cure its own baseline rows, instead of hiding them in layer 6. B's hooks-first order shrinks the shared state before the big views move, so the split avoids A's heavy prop-drilling for Home and Play. Deferring B's port step keeps this lane out of another lane's files.
+
+Final order. Extraction steps follow published shared-state row counts, fewest first, except where the Reason column records a real dependency.
 
 | Step | Work | Shared-state rows (§1) | Approx. lines | Reason if not purely fewest-first |
 | ---: | :--- | ---: | ---: | :--- |
-| 1 | Composer move to `src/routes/game-app.tsx`. Rewrite `./age-profile/*` and `./passport/*` to `@/components/...`. Retarget `index.tsx` and the `Drop` type import. High-contrast toggle as a slot. | 0 | 8894, plus import rewrites | Must be first: the composer has to sit in layer 6 before later extracts, and the relative imports would break in a path-only move. |
 | later | Deferred: storage, history, saveData, and language-model ports in `src/platform`. | 0 | ~400 | Wait for edge's Part B. That lane owns those files now. |
-| 2 | Leaf hooks: difficulty, deck status, chunk-reload notice, reset toast | 1 each | ~130 | |
-| 3 | Age-profile hook and overlay host | 2 | ~150 | |
-| 4 | Session hook, idle watchdog, discarded notice | 3 | ~220 | |
-| 5 | Overlay queue: first-visit, tutorial or invite, celebration or cleared | 3 | ~200 | |
-| 6 | Run controller (`commit`, `openRun`, `startReview`) | 3 | ~350 | Pulled forward of the challenge hook. B had placed this after a 5-row step. |
-| 7 | Map-mode hook in `src/map` | 4 | ~280 | |
-| 8 | Challenge receive and preview hook | 5 | ~280 | |
-| 9 | Router hook and remaining boot, `inAppScreen` and hash or history | 6 | ~700 | |
-| 10 | Challenge welcome | 3 | ~170 | Views start here, after their state owners exist. Then fewest shared-state rows first among views. |
-| 11 | Challenge complete and verdict | 3 | ~675 | Same view-after-owners rule. |
-| 12 | Review complete | 4 | ~85 | Same view-after-owners rule. |
-| 13 | Cold Trail host, `src/game/coldtrail/ColdTrailHost.tsx` | 4 | ~110 | Same view-after-owners rule. |
-| 14 | GeoDetective host, `src/game/loop/GeoDetectiveHost.tsx` | 6 | ~100 | Same view-after-owners rule. |
-| 15 | Region list | 7 | ~160 | Same view-after-owners rule. |
-| 16 | Starting view | 9, view uses 1 | ~40 | Same view-after-owners rule. `openRun` stays with the run controller. |
-| 17 | Subjects host, `src/subjects/shared/SubjectsHost.tsx` | 10 | ~180 | Same view-after-owners rule. Tied with the challenge menu at 10 rows. |
-| 18 | Challenge menu | 10 | ~60 | Same view-after-owners rule. Tied with the subjects host at 10 rows. |
-| 19 | Play and PlayLoaded | 23 | ~2370 | |
-| 20 | Home, Choose and heroes | 28 | ~1270 | |
+| 2 | Shrink-only size budget test for `game-app.tsx` | 0 | test only | After Part B merges. Locks that this file only shrinks from then on. |
+| 3 | Leaf hooks: difficulty, deck status, chunk-reload notice, reset toast | 1 each | ~130 | |
+| 4 | Age-profile hook and overlay host | 2 | ~150 | Cures checklist rows 1-6. |
+| 5 | Session hook, idle watchdog, discarded notice | 3 | ~220 | |
+| 6 | Overlay queue: first-visit, tutorial or invite, celebration or cleared | 3 | ~200 | |
+| 7 | Run controller (`commit`, `openRun`, `startReview`) | 3 | ~350 | Pulled forward of the challenge hook. B had placed this after a 5-row step. |
+| 8 | Map-mode hook in `src/map` | 4 | ~280 | Cures checklist rows 14-18 and 20. |
+| 9 | Challenge receive and preview hook | 5 | ~280 | |
+| 10 | Router hook and remaining boot, `inAppScreen` and hash or history | 6 | ~700 | Hook extract only. The file stays in `src/components/`. |
+| 11 | Challenge welcome | 3 | ~170 | Views start here, after their state owners exist. Then fewest shared-state rows first among views. |
+| 12 | Challenge complete and verdict | 3 | ~675 | Same view-after-owners rule. |
+| 13 | Review complete | 4 | ~85 | Same view-after-owners rule. |
+| 14 | Cold Trail host, `src/game/coldtrail/ColdTrailHost.tsx` | 4 | ~110 | Same view-after-owners rule. Cures checklist row 12. |
+| 15 | GeoDetective host, `src/game/loop/GeoDetectiveHost.tsx` | 6 | ~100 | Same view-after-owners rule. Cures checklist row 13. |
+| 16 | Region list | 7 | ~160 | Same view-after-owners rule. |
+| 17 | Starting view | 9, view uses 1 | ~40 | Same view-after-owners rule. `openRun` stays with the run controller. |
+| 18 | Subjects host, `src/subjects/shared/SubjectsHost.tsx` | 10 | ~180 | Same view-after-owners rule. Cures checklist row 21. Tied with the challenge menu at 10 rows. |
+| 19 | Challenge menu | 10 | ~60 | Same view-after-owners rule. Tied with the subjects host at 10 rows. |
+| 20 | Play and PlayLoaded | 23 | ~2370 | Cures checklist row 19. Extract the high-contrast toggle as a slot before this step and Home. |
+| 21 | Home, Choose and heroes | 28 | ~1270 | |
+| last | Move the remaining thin router to `src/routes`. Retarget `index.tsx` and the `Drop` type import. Rewrite any relative imports still on the file. | 0 | remaining glue | Only once the file routes and holds no screen state. Cures leftover slot imports (rows 7-11) from layer 6. |
 
 ## 5. Statechart of top-level screen routing
 
