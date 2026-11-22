@@ -9,6 +9,7 @@ import {
   type ChunkRecoveryHost,
 } from "./chunk-recovery.ts";
 import * as chunkRecovery from "./chunk-recovery.ts";
+import { setSessionBackend, type GameStorageBackend } from "../game/storage-slot.ts";
 
 /** The notice key, as a literal: contracts pin the exported constant to it. */
 const NOTICE_KEY = "meridian.chunkReloadNotice";
@@ -337,6 +338,10 @@ function stubWindow(
       : bodyText === null
         ? {}
         : { body: { innerText: bodyText, textContent: bodyText } };
+  // The default host resolves storage from the session slot, not from
+  // the window object: fill the slot with the same stub the window
+  // advertises, so no-arg installs read this store.
+  setSessionBackend(sessionStorageStub as GameStorageBackend);
   return {
     registrations,
     timers,
@@ -346,6 +351,7 @@ function stubWindow(
     cleanup: () => {
       delete g.window;
       delete g.document;
+      setSessionBackend(undefined);
     },
   };
 }
@@ -380,6 +386,35 @@ test("2-U: two no-arg installs register exactly 3 listeners; one dispatch reload
   assert.deepEqual(timerMs, [1_500]);
   assert.equal(reloads, 1);
   assert.equal(setsByKey[CHUNK_RELOAD_KEY] ?? 0, 1);
+});
+
+test("R1: a bare-epoch stamp seeded in the session slot starts an episode (legacy bytes)", () => {
+  // The window stub's store is EMPTY: the decision must read the stamp
+  // from the session slot, where older builds wrote it as a bare epoch
+  // (never JSON) — a stamp read as fallback would reload unboundedly.
+  const { m, ss } = stubStorageMap();
+  const w = stubWindow(ss);
+  const seeded = new Map<string, string>([[CHUNK_RELOAD_KEY, String(Date.now())]]);
+  setSessionBackend({
+    getItem: (k: string) => seeded.get(k) ?? null,
+    setItem: (k: string, v: string) => {
+      seeded.set(k, v);
+    },
+    removeItem: (k: string) => {
+      seeded.delete(k);
+    },
+  });
+  installChunkLoadRecovery();
+  w.dispatch("vite:preloadError");
+  // Fire only the 1_500 ms decision timer: the install-time 30 s clear
+  // countdown must not run first (it would clear the episode early).
+  const decisionTimer = w.timers.find((t) => t.ms === 1_500);
+  assert.ok(decisionTimer, "a decision timer is scheduled");
+  decisionTimer.fn();
+  const reloads = w.state.reloads;
+  w.cleanup();
+  assert.equal(reloads, 0, "a fresh bare-epoch stamp is an active episode, not a fallback");
+  assert.equal(m.has(CHUNK_RELOAD_KEY), false, "the window store was never consulted");
 });
 
 test("2-U-blocked: blocked storage via the default host — no dispatch reloads, second dispatch still zero", () => {

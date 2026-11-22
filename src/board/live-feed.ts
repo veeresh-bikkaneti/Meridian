@@ -38,6 +38,9 @@ import {
   type PublishedBoard,
   type RecordState,
 } from "./status-core.ts";
+import { resolveSession } from "../game/storage-slot.ts";
+import { getRaw } from "../platform/transport/browser-transport.ts";
+import { TransportError } from "../platform/transport/transport.ts";
 
 /* ------------------------------------------------------------------ */
 /* Links file (published beside the status file)                       */
@@ -175,7 +178,7 @@ export interface KeyValueStorage {
 function safeStorage(storage: KeyValueStorage | null | undefined): KeyValueStorage | null {
   if (storage) return storage;
   try {
-    return typeof sessionStorage !== "undefined" ? sessionStorage : null;
+    return resolveSession() ?? null;
   } catch {
     return null;
   }
@@ -266,13 +269,37 @@ async function fetchPage(fetchFn: FetchFn, url: string): Promise<unknown> {
 }
 
 /**
+ * One page fetch through the transport port (the default when no
+ * fetchFn is injected): getRaw never throws for a failure status
+ * and is asked for no retries of its own, so the retry discipline
+ * matches fetchPage exactly — a network/timeout failure is retried
+ * once, an HTTP status never is, and a body that is not JSON fails
+ * without retry. Throws on failure; the caller falls back whole.
+ */
+async function fetchPageViaPort(url: string): Promise<unknown> {
+  const headers = { accept: "application/vnd.github+json" };
+  let outcome: Awaited<ReturnType<typeof getRaw>>;
+  try {
+    outcome = await getRaw(url, { headers, retries: 0 });
+  } catch (err) {
+    if (err instanceof TransportError && (err.kind === "network" || err.kind === "timeout")) {
+      outcome = await getRaw(url, { headers, retries: 0 });
+    } else {
+      throw err;
+    }
+  }
+  if (!outcome.ok) throw new Error(`GitHub returned ${outcome.status} for ${url}`);
+  return outcome.json;
+}
+
+/**
  * Page one endpoint into `seen` until every number in `missing` has
  * been seen, the list ends (a short page), or the cap is hit. Pages
  * are de-duplicated by the caller's Map (sort=updated can overlap
  * pages when the list shifts mid-fetch).
  */
 async function collectPages<T extends { number: number }>(
-  fetchFn: FetchFn,
+  fetchPageFn: (url: string) => Promise<unknown>,
   base: string,
   parse: (payload: unknown) => T[],
   missing: ReadonlySet<number>,
@@ -280,7 +307,7 @@ async function collectPages<T extends { number: number }>(
 ): Promise<void> {
   let page = 1;
   for (;;) {
-    const payload = await fetchPage(fetchFn, pagedUrl(base, page));
+    const payload = await fetchPageFn(pagedUrl(base, page));
     const rawCount = Array.isArray(payload) ? payload.length : 0;
     for (const item of parse(payload)) if (!seen.has(item.number)) seen.set(item.number, item);
     let covered = true;
@@ -307,8 +334,10 @@ export async function fetchLiveStates(options: {
   const wanted = [...options.wanted];
   const wantedSet = new Set(wanted);
   const now = options.now ?? Date.now();
-  const fetchFn =
-    options.fetchFn ?? ((u: string, i?: RequestInit) => fetch(u, i));
+  const fetchPageFn =
+    options.fetchFn !== undefined
+      ? (url: string) => fetchPage(options.fetchFn as FetchFn, url)
+      : fetchPageViaPort;
 
   const cached = readLiveCache(options.storage, wanted, now);
   if (cached) {
@@ -326,7 +355,7 @@ export async function fetchLiveStates(options: {
   const states = new Map<number, RecordState>();
   try {
     const prs = new Map<number, GithubPr>();
-    await collectPages(fetchFn, options.pullsUrl ?? GITHUB_PULLS_URL, parseGithubPrs, wantedSet, prs);
+    await collectPages(fetchPageFn, options.pullsUrl ?? GITHUB_PULLS_URL, parseGithubPrs, wantedSet, prs);
     for (const [n, pr] of prs)
       states.set(n, { merged: pr.merged, open: pr.state === "open" });
 
@@ -334,7 +363,7 @@ export async function fetchLiveStates(options: {
     if (missing.length > 0) {
       const issues = new Map<number, GithubIssue>();
       await collectPages(
-        fetchFn,
+        fetchPageFn,
         options.issuesUrl ?? GITHUB_ISSUES_URL,
         parseGithubIssues,
         new Set(missing),

@@ -24,6 +24,7 @@ import {
   type LearningStore,
   type RecordLearningInput,
 } from "./learning.ts";
+import { setLocalBackend } from "./storage-slot.ts";
 
 /**
  * Unit tests for the learning-outcomes module (docs/learning-outcomes.md):
@@ -637,4 +638,37 @@ test("constants: schema version matches the shipped key", () => {
   assert.equal(MAX_PLACE_RECORDS, 1000);
   assert.equal(MAX_ATTEMPTS_PER_PLACE, 8);
   assert.equal(MAX_DAYS_PLAYED, 90);
+});
+
+// R2: clearLearningStore pins the exact remove→verify sequence through
+// the registered slot, with no storage argument.
+test("R2: clearLearningStore pins the exact remove→verify sequence", () => {
+  const seeded = recordAnswer(emptyLearningStore(), input({ hit: true, distanceKm: 30 })).store;
+  const map = new Map<string, string>([[LEARNING_STORE_KEY, JSON.stringify(seeded)]]);
+  const log: string[] = [];
+  setLocalBackend({
+    getItem: (k: string) => {
+      log.push(`get:${k}`);
+      return map.has(k) ? map.get(k)! : null;
+    },
+    setItem: (k: string, v: string) => {
+      log.push(`set:${k}`);
+      map.set(k, v);
+    },
+    removeItem: (k: string) => {
+      log.push(`remove:${k}`);
+      map.delete(k);
+    },
+    get length(): number {
+      return map.size;
+    },
+    key: (index: number): string | null => [...map.keys()][index] ?? null,
+  });
+  try {
+    assert.equal(clearLearningStore(), true);
+    assert.deepEqual(log, [`remove:${LEARNING_STORE_KEY}`, `get:${LEARNING_STORE_KEY}`]);
+    assert.equal(readLearningStore(), null);
+  } finally {
+    setLocalBackend(undefined);
+  }
 });

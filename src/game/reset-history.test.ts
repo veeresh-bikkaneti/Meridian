@@ -7,6 +7,11 @@ import { LEARNING_STORE_KEY } from "./learning.ts";
 import { seenStoreFor } from "./trail.ts";
 import { loadColdtrail } from "./coldtrail/store.ts";
 import { STARTING_STARS } from "./coldtrail/engine.ts";
+import {
+  SUBJECT_PROGRESS_KEY,
+  clearAllSubjectProgress,
+} from "./subject-progress-store-key.ts";
+import { setLocalBackend, setSessionBackend } from "./storage-slot.ts";
 
 /**
  * Unit tests for the "Start over" reset (manifest 2026-10-28, §6):
@@ -285,31 +290,26 @@ test("U-R5: one blocked store does not abort the others", () => {
   assertKept(local, session);
 });
 
-test("U-R6: injected storage is honoured — the globals are never touched", () => {
+test("U-R6: injected storage is honoured — the registered slots are never touched", () => {
   const local = new FakeStorage();
   const session = new FakeStorage();
   seedAll(local, session);
-  const globalLocal = new FakeStorage();
-  const globalSession = new FakeStorage();
-  globalLocal.data.set(REVIEW_DECK_STORE_KEY, DECK_JSON);
-  globalSession.data.set("meridian.session", '{"id":"global"}');
-  const g = globalThis as Record<string, unknown>;
-  const prevLocal = g.localStorage;
-  const prevSession = g.sessionStorage;
-  g.localStorage = globalLocal;
-  g.sessionStorage = globalSession;
+  const slotLocal = new FakeStorage();
+  const slotSession = new FakeStorage();
+  slotLocal.data.set(REVIEW_DECK_STORE_KEY, DECK_JSON);
+  slotSession.data.set("meridian.session", '{"id":"slot"}');
+  setLocalBackend(slotLocal);
+  setSessionBackend(slotSession);
   try {
     const result = resetHistory(local, session);
     assert.deepEqual(result.failed, []);
     assertCleared(local, session);
-    // The global stores keep their data byte-identical.
-    assert.equal(globalLocal.getItem(REVIEW_DECK_STORE_KEY), DECK_JSON);
-    assert.equal(globalSession.getItem("meridian.session"), '{"id":"global"}');
+    // The slot-backed stores keep their data byte-identical.
+    assert.equal(slotLocal.getItem(REVIEW_DECK_STORE_KEY), DECK_JSON);
+    assert.equal(slotSession.getItem("meridian.session"), '{"id":"slot"}');
   } finally {
-    if (prevLocal === undefined) delete g.localStorage;
-    else g.localStorage = prevLocal;
-    if (prevSession === undefined) delete g.sessionStorage;
-    else g.sessionStorage = prevSession;
+    setLocalBackend(undefined);
+    setSessionBackend(undefined);
   }
 });
 
@@ -333,6 +333,7 @@ test("U-R8: coldtrail v1-only seed cannot resurrect after reset", () => {
   const g = globalThis as Record<string, unknown>;
   const prev = g.localStorage;
   g.localStorage = local;
+  setLocalBackend(local);
   try {
     const result = resetHistory(local, session);
     assert.deepEqual(result.failed, []);
@@ -347,6 +348,7 @@ test("U-R8: coldtrail v1-only seed cannot resurrect after reset", () => {
   } finally {
     if (prev === undefined) delete g.localStorage;
     else g.localStorage = prev;
+    setLocalBackend(undefined);
   }
 });
 
@@ -379,6 +381,8 @@ test("resetHistory with no storage at all never throws", () => {
   const prevSession = g.sessionStorage;
   delete g.localStorage;
   delete g.sessionStorage;
+  setLocalBackend(undefined);
+  setSessionBackend(undefined);
   try {
     let result: ReturnType<typeof resetHistory> | undefined;
     assert.doesNotThrow(() => {
@@ -486,4 +490,34 @@ test("U-R13: blocked profile removal falls back to the unset overwrite; blocked 
   });
   assert.deepEqual(second!.failed, [{ store: "age-profile" }]);
   assert.equal(local2.getItem("meridian.ageProfile.v1"), profile, "active profile survives a blocked clear, honestly reported");
+});
+
+test("clearAllSubjectProgress with no argument uses the registered slot", () => {
+  const local = new FakeStorage();
+  local.data.set(SUBJECT_PROGRESS_KEY, '{"math":["fair-share"]}');
+  setLocalBackend(local);
+  try {
+    assert.equal(clearAllSubjectProgress(), true);
+    assert.equal(local.getItem(SUBJECT_PROGRESS_KEY), null);
+  } finally {
+    setLocalBackend(undefined);
+  }
+  // Unregistered: no storage, nothing persisted, reports success.
+  assert.equal(clearAllSubjectProgress(), true);
+});
+
+test("no-arg resetHistory clears through the registered slots (subject-progress included)", () => {
+  const local = new FakeStorage();
+  const session = new FakeStorage();
+  seedAll(local, session);
+  setLocalBackend(local);
+  setSessionBackend(session);
+  try {
+    const result = resetHistory();
+    assert.deepEqual(result.failed, []);
+    assertCleared(local, session);
+  } finally {
+    setLocalBackend(undefined);
+    setSessionBackend(undefined);
+  }
 });

@@ -17,6 +17,7 @@ import {
   wasClearedCelebrated,
   weightedShufflePlaces,
 } from "./trail.ts";
+import { setLocalBackend } from "./storage-slot.ts";
 
 const ids = (places: { id: string }[]) => places.map((p) => p.id);
 
@@ -281,9 +282,7 @@ test("seenStoreFor uses a day-independent key and migrates v1 entries", () => {
     },
     key: (i: number) => [...backing.keys()][i] ?? null,
   };
-  const g = globalThis as { localStorage?: unknown };
-  const prev = g.localStorage;
-  g.localStorage = fakeStorage;
+  setLocalBackend(fakeStorage);
   try {
     // Legacy v1 day-keyed entries from the old per-day scheme.
     backing.set("meridian:seen:v1:2026-09-29:globe:globe", JSON.stringify(["a"]));
@@ -308,8 +307,7 @@ test("seenStoreFor uses a day-independent key and migrates v1 entries", () => {
     // Other editions/regions are independent.
     assert.deepEqual(seenStoreFor("country", "in", "medium").read(), []);
   } finally {
-    if (prev === undefined) delete g.localStorage;
-    else g.localStorage = prev;
+    setLocalBackend(undefined);
   }
 });
 
@@ -328,9 +326,7 @@ test("v1 migration routes each entry to its own edition/region", () => {
     },
     key: (i: number) => [...backing.keys()][i] ?? null,
   };
-  const g = globalThis as { localStorage?: unknown };
-  const prev = g.localStorage;
-  g.localStorage = fakeStorage;
+  setLocalBackend(fakeStorage);
   try {
     backing.set("meridian:seen:v1:2026-09-30:country:in", JSON.stringify(["mumbai"]));
     backing.set("meridian:seen:v1:not-a-day", JSON.stringify(["junk"]));
@@ -345,8 +341,7 @@ test("v1 migration routes each entry to its own edition/region", () => {
       "legacy v1 keys pruned",
     );
   } finally {
-    if (prev === undefined) delete g.localStorage;
-    else g.localStorage = prev;
+    setLocalBackend(undefined);
   }
 });
 
@@ -531,14 +526,11 @@ function withFakeStorage(run: (backing: Map<string, string>) => void): void {
     },
     key: (i: number) => [...backing.keys()][i] ?? null,
   };
-  const g = globalThis as { localStorage?: unknown };
-  const prev = g.localStorage;
-  g.localStorage = fakeStorage;
+  setLocalBackend(fakeStorage);
   try {
     run(backing);
   } finally {
-    if (prev === undefined) delete g.localStorage;
-    else g.localStorage = prev;
+    setLocalBackend(undefined);
   }
 }
 
@@ -741,9 +733,7 @@ test("cleared marks fail open when storage throws", () => {
       throw new Error("storage denied");
     },
   };
-  const g = globalThis as { localStorage?: unknown };
-  const prev = g.localStorage;
-  g.localStorage = throwing;
+  setLocalBackend(throwing);
   try {
     // A storage hiccup degrades to "not celebrated" and must never throw —
     // dealing and the game keep working.
@@ -752,25 +742,18 @@ test("cleared marks fail open when storage throws", () => {
     clearClearedMark("state", "ark", "easy");
     assert.equal(wasClearedCelebrated("state", "ark", "easy"), false);
   } finally {
-    if (prev === undefined) delete g.localStorage;
-    else g.localStorage = prev;
+    setLocalBackend(undefined);
   }
 });
 
 test("cleared marks fail open when storage is unavailable", () => {
-  const g = globalThis as { localStorage?: unknown };
-  const prev = g.localStorage;
-  delete g.localStorage;
-  try {
-    // Node has no localStorage: safeStorage() returns null, every helper
-    // degrades silently.
-    assert.equal(wasClearedCelebrated("state", "ark", "easy"), false);
-    markClearedCelebrated("state", "ark", "easy");
-    clearClearedMark("state", "ark", "easy");
-  } finally {
-    if (prev === undefined) delete g.localStorage;
-    else g.localStorage = prev;
-  }
+  delete (globalThis as { localStorage?: unknown }).localStorage;
+  setLocalBackend(undefined);
+  // No storage is registered: safeStorage() returns null, every helper
+  // degrades silently.
+  assert.equal(wasClearedCelebrated("state", "ark", "easy"), false);
+  markClearedCelebrated("state", "ark", "easy");
+  clearClearedMark("state", "ark", "easy");
 });
 
 test("isBandCleared is true when the store covers the catalog", () => {
@@ -859,4 +842,58 @@ test("clearTrailHistory: throwing enumeration reports failure, never throws", ()
     result = clearTrailHistory(throwing);
   });
   assert.equal(result, false);
+});
+
+// R2: clearTrailHistory pins the exact sweep — snapshot enumeration of
+// the three owned prefixes first, removals in snapshot order, then a
+// re-read proving every target gone or emptied. Near-miss foreign keys
+// are never touched.
+test("R2: clearTrailHistory pins the snapshot-enumerate → remove → verify sequence", () => {
+  const map = new Map<string, string>([
+    ["meridian:seen:v2:globe:globe:medium", JSON.stringify(["a"])],
+    ["meridian:seen:v2:globe:globe", JSON.stringify(["b"])],
+    ["meridian:seen:v1:2026-09-30:globe:globe", JSON.stringify(["c"])],
+    ["meridian:cleared:v1:globe:globe:medium", "1"],
+    ["meridian:seen:v3:globe:globe", JSON.stringify(["keep"])],
+    ["meridian:cleared:v2:globe:globe", "1"],
+    ["meridian.palette", "standard"],
+  ]);
+  const log: string[] = [];
+  setLocalBackend({
+    getItem: (k: string) => {
+      log.push(`get:${k}`);
+      return map.has(k) ? map.get(k)! : null;
+    },
+    setItem: (k: string, v: string) => {
+      log.push(`set:${k}`);
+      map.set(k, v);
+    },
+    removeItem: (k: string) => {
+      log.push(`remove:${k}`);
+      map.delete(k);
+    },
+    get length(): number {
+      return map.size;
+    },
+    key: (index: number): string | null => [...map.keys()][index] ?? null,
+  });
+  try {
+    assert.equal(clearTrailHistory(), true);
+    assert.deepEqual(log, [
+      "remove:meridian:seen:v2:globe:globe:medium",
+      "remove:meridian:seen:v2:globe:globe",
+      "remove:meridian:seen:v1:2026-09-30:globe:globe",
+      "remove:meridian:cleared:v1:globe:globe:medium",
+      "get:meridian:seen:v2:globe:globe:medium",
+      "get:meridian:seen:v2:globe:globe",
+      "get:meridian:seen:v1:2026-09-30:globe:globe",
+      "get:meridian:cleared:v1:globe:globe:medium",
+    ]);
+    assert.deepEqual(seenStoreFor("globe", "globe", "medium").read(), []);
+    assert.equal(map.get("meridian:seen:v3:globe:globe"), JSON.stringify(["keep"]));
+    assert.equal(map.get("meridian:cleared:v2:globe:globe"), "1");
+    assert.equal(map.get("meridian.palette"), "standard");
+  } finally {
+    setLocalBackend(undefined);
+  }
 });

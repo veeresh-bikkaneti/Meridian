@@ -20,7 +20,16 @@
  * - stop() moves a live voice to "aborted", tears the element
  *   down and gives the channel back. It fires no callbacks, and
  *   calling it again is a no-op: stop() is idempotent.
+ * - pause() moves a live voice (loading or playing) back to
+ *   "ready" with its position kept, holding the channel, so
+ *   play() resumes it. It fires no callbacks, and calling it on
+ *   a voice already ready, idle or terminal is a no-op: pause()
+ *   is idempotent. A play() rejection that arrives after such a
+ *   pause is the pause working, not a failure: the voice stays
+ *   "ready" and no error fires.
  */
+
+import type { VoiceClaim } from "../../game/audio/voice-channel.ts";
 
 /** Where a voice is in its life, from the statechart above. */
 export type VoiceState =
@@ -37,6 +46,8 @@ export type VoiceState =
 export interface VoiceAudioElement {
   src: string;
   currentTime: number;
+  /** Clip length in seconds; NaN until the metadata loads. */
+  duration: number;
   play(): Promise<void> | void;
   pause(): void;
   removeAttribute(name: string): void;
@@ -52,12 +63,33 @@ export interface CreateVoiceOptions {
    * the channel from whoever holds it. False lines wait their
    * turn and stay silent while another voice holds the channel. */
   userInitiated: boolean;
+  /** A channel claim the caller already holds, for the port to
+   * adopt instead of claiming again: claiming twice would stop
+   * the first claim's owner — the caller itself. The port
+   * releases an adopted claim on exactly the paths it releases
+   * a claim it took itself; when creation returns null the
+   * claim stays with the caller. */
+  claim?: VoiceClaim;
+  /** True for a deliberate once-only line (a speaker button) that
+   * plays despite the sound toggle being off. The hidden-tab
+   * guard still applies: a bypassed line never sounds in a
+   * hidden tab. Automatic lines never set this. */
+  bypassSoundGate?: boolean;
+  /** Where playback starts, in seconds, on the first play()
+   * only. A resume after pause() keeps its position instead. */
+  startAtSeconds?: number;
   /** The clip played to its end. Fires at most once. */
   onEnded?: () => void;
-  /** The clip failed to load or play. Fires at most once. */
-  onError?: () => void;
+  /** The clip failed to load or play. Fires at most once. The
+   * cause carries the refusal or failure behind it where one
+   * is known; a handler that takes no argument keeps working. */
+  onError?: (cause?: unknown) => void;
   /** Another voice took the channel. Fires at most once. */
   onInterrupted?: () => void;
+  /** Playback started (or resumed): the element's playing event.
+   * Fires on every playing event, so a resume re-arms stall
+   * checks exactly like the first start. */
+  onPlaying?: () => void;
   /** Playback position moved, in seconds. */
   onTimeUpdate?: (seconds: number) => void;
 }
@@ -68,11 +100,16 @@ export interface VoiceHandle {
   readonly state: VoiceState;
   /** Start the line. Works only from "idle" or "ready". */
   play(): void;
+  /** Pause a live voice, keeping its position and the channel,
+   * so play() resumes it. Idempotent, and fires no callbacks. */
+  pause(): void;
   /** Stop the line and give the channel back. Idempotent, and
    * fires no callbacks. */
   stop(): void;
   /** Playback position, in seconds. */
   currentTime(): number;
+  /** Clip length in seconds; NaN until the metadata loads. */
+  duration(): number;
 }
 
 /** The port itself: screens depend on this, not on an element. */

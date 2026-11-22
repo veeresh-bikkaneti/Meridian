@@ -71,11 +71,15 @@ export type FeatureSendResult =
   | { status: "rate-limited" }
   | { status: "error" };
 
-/** POST the payload. Never throws. 503 maps to the honest "not open yet". */
+/** POST the payload. Never throws. 503 maps to the honest "not open yet".
+ *  The fetch seam defaults to the runtime fetch, supplied as a bare
+ *  value reference (never a fetch() call in this file); the seam stays
+ *  fetch-shaped so the credentials:"omit" / referrerPolicy:"no-referrer"
+ *  init rides along exactly — the transport port cannot express those. */
 export async function sendFeatureRequest(
   endpoint: string | null,
   payload: FeatureRequestPayload,
-  fetchFn: (url: string, init: RequestInit) => Promise<Response> = (u, i) => fetch(u, i),
+  fetchFn: (url: string, init: RequestInit) => Promise<Response> = fetch,
 ): Promise<FeatureSendResult> {
   if (!endpoint) return { status: "not-open" };
   try {

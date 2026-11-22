@@ -2,7 +2,8 @@ import { useCallback, useEffect, useRef, useState, type MouseEvent as ReactMouse
 import { createPortal } from "react-dom";
 import { Volume2 } from "lucide-react";
 import { isSoundEnabled } from "@/game/audio/sfx";
-import { claimVoice, type VoiceClaim } from "@/game/audio/voice-channel";
+import { createVoice } from "../platform/audio/browser-voice.ts";
+import type { VoiceHandle } from "../platform/audio/voice.ts";
 import {
   COMET_GREETING_LINES,
   greetingAudioUrl,
@@ -63,11 +64,13 @@ export function CometGreeting({
   const dismissedRef = useRef(false);
   const revealTimer = useRef(0);
   const dismissTimer = useRef(0);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
-  /** The app-wide voice channel claim for the clip now sounding. */
-  const voiceRef = useRef<VoiceClaim | null>(null);
+  /** The voice-port handle for the clip now sounding, if any.
+   * stop() tears the line down and gives the channel back, and
+   * fires no callbacks — on a terminal voice it is a no-op, so
+   * releasing after a natural end is safe. */
+  const voiceRef = useRef<VoiceHandle | null>(null);
   const releaseVoice = () => {
-    voiceRef.current?.release();
+    voiceRef.current?.stop();
     voiceRef.current = null;
   };
   // Veeresh 2026-10-06: the tap that starts audio must not dismiss the bubble.
@@ -79,9 +82,7 @@ export function CometGreeting({
     dismissedRef.current = true;
     window.clearTimeout(revealTimer.current);
     window.clearTimeout(dismissTimer.current);
-    audioRef.current?.pause();
-    audioRef.current = null;
-    voiceRef.current?.release();
+    voiceRef.current?.stop();
     voiceRef.current = null;
     setVisible(false);
     onOpenChange?.(false);
@@ -126,58 +127,56 @@ export function CometGreeting({
       audioStartTimeRef.current = Date.now();
       // One voice at a time: the greeting is automatic, so it waits its
       // turn. If someone is speaking it degrades to the text-only path.
-      const claim = claimVoice(
-        "comet-greeting",
-        () => {
-          audioRef.current?.pause();
-          audioRef.current = null;
+      // The port owns the claim and the element; a null voice is the
+      // same degrade. Another voice taking the channel ends the
+      // greeting exactly like the claim's stop callback did.
+      let revealScheduled = false;
+      const voice = createVoice(greetingAudioUrl(indexRef.current), {
+        owner: "comet-greeting",
+        userInitiated: false,
+        onEnded: () => {
+          releaseVoice();
           setAudioState("ended");
           if (!dismissedRef.current) scheduleDismiss(DISMISS_AFTER_AUDIO_MS);
         },
-        { userInitiated: false },
-      );
-      if (!claim) {
-        setAudioState("failed");
-        modeRef.current = "text";
-        if (!dismissedRef.current) beginReveal(FALLBACK_WORD_MS);
-        return;
-      }
-      voiceRef.current = claim;
-      const audio = new Audio(greetingAudioUrl(indexRef.current));
-      audioRef.current = audio;
-      setAudioState("playing");
-      const onEnded = () => {
-        releaseVoice();
-        setAudioState("ended");
-        if (!dismissedRef.current) scheduleDismiss(DISMISS_AFTER_AUDIO_MS);
-      };
-      const onFail = () => {
-        // Audio unavailable — degrade to the text-only path, never silence the greeting.
-        releaseVoice();
-        setAudioState("failed");
-        audioRef.current = null;
-        modeRef.current = "text";
-        if (!dismissedRef.current) beginReveal(FALLBACK_WORD_MS);
-      };
-      audio.addEventListener("ended", onEnded, { once: true });
-      audio.addEventListener("error", onFail, { once: true });
-      void audio
-        .play()
-        .then(() => {
-          if (!synced || dismissedRef.current) return;
+        onError: () => {
+          // Audio unavailable — degrade to the text-only path, never silence the greeting.
+          releaseVoice();
+          setAudioState("failed");
+          modeRef.current = "text";
+          if (!dismissedRef.current) beginReveal(FALLBACK_WORD_MS);
+        },
+        onInterrupted: () => {
+          setAudioState("ended");
+          if (!dismissedRef.current) scheduleDismiss(DISMISS_AFTER_AUDIO_MS);
+        },
+        onPlaying: () => {
+          // Playback started: the synced text reveal runs once, the
+          // audio leading by ~150ms, timed to the clip's duration.
+          if (revealScheduled || !synced || dismissedRef.current) return;
+          revealScheduled = true;
           window.setTimeout(() => {
             if (dismissedRef.current) return;
             if (reducedMotion) {
               setWordsShown(wordsRef.current.length);
               return;
             }
-            const d = audio.duration;
+            const d = voiceRef.current?.duration() ?? NaN;
             const perWord =
               Number.isFinite(d) && d > 0 ? (d * 1000) / wordsRef.current.length : FALLBACK_WORD_MS;
             beginReveal(perWord);
           }, AUDIO_LEAD_MS);
-        })
-        .catch(onFail);
+        },
+      });
+      if (!voice) {
+        setAudioState("failed");
+        modeRef.current = "text";
+        if (!dismissedRef.current) beginReveal(FALLBACK_WORD_MS);
+        return;
+      }
+      voiceRef.current = voice;
+      setAudioState("playing");
+      voice.play();
     },
     [beginReveal, reducedMotion, scheduleDismiss],
   );
@@ -252,9 +251,7 @@ export function CometGreeting({
       window.removeEventListener("meridian:tour-walk-start", onTourWalkStart);
       window.clearTimeout(revealTimer.current);
       window.clearTimeout(dismissTimer.current);
-      audioRef.current?.pause();
-      audioRef.current = null;
-      voiceRef.current?.release();
+      voiceRef.current?.stop();
       voiceRef.current = null;
     };
     // Mount-once orchestration; all live values flow through refs.
@@ -268,40 +265,35 @@ export function CometGreeting({
     e.stopPropagation();
     if (speakerPlaying || dismissedRef.current) return;
     // A tap wins: it stops whoever is speaking, then takes the channel.
-    const claim = claimVoice(
-      "comet-greeting",
-      () => {
-        audioRef.current?.pause();
-        audioRef.current = null;
-        setSpeakerPlaying(false);
-        setAudioState("ended");
-      },
-      { userInitiated: true },
-    );
-    voiceRef.current = claim;
-    const audio = new Audio(greetingAudioUrl(indexRef.current));
-    audioRef.current = audio;
-    setSpeakerPlaying(true);
-    setAudioState("playing");
-    window.clearTimeout(dismissTimer.current); // don't cut the audio mid-play
-    audio.addEventListener(
-      "ended",
-      () => {
+    // The speaker plays once despite the sound toggle (Decision 2),
+    // so the line bypasses the toggle gate — the hidden-tab guard
+    // still applies.
+    const voice = createVoice(greetingAudioUrl(indexRef.current), {
+      owner: "comet-greeting",
+      userInitiated: true,
+      bypassSoundGate: true,
+      onEnded: () => {
         releaseVoice();
         setSpeakerPlaying(false);
         setAudioState("ended");
         if (!dismissedRef.current) scheduleDismiss(DISMISS_AFTER_SPEAKER_MS);
       },
-      { once: true },
-    );
-    const onFail = () => {
-      releaseVoice();
-      setSpeakerPlaying(false);
-      setAudioState("failed");
-      audioRef.current = null;
-    };
-    audio.addEventListener("error", onFail, { once: true });
-    void audio.play().catch(onFail);
+      onError: () => {
+        releaseVoice();
+        setSpeakerPlaying(false);
+        setAudioState("failed");
+      },
+      onInterrupted: () => {
+        setSpeakerPlaying(false);
+        setAudioState("ended");
+      },
+    });
+    if (!voice) return;
+    voiceRef.current = voice;
+    setSpeakerPlaying(true);
+    setAudioState("playing");
+    window.clearTimeout(dismissTimer.current); // don't cut the audio mid-play
+    voice.play();
   };
 
   if (!visible) return null;

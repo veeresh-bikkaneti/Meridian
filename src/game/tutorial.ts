@@ -35,13 +35,14 @@ export const TUTORIAL_REGION_NAME = "France";
 /** The tutorial's three beats: aim instruction → reveal feedback → hook. */
 export type TutorialBeat = 1 | 2 | 3;
 
+import { resolveLocal } from "./storage-slot.ts";
+
 /** Minimal storage surface, so unit tests can inject a fake. */
 export type TutorialStorage = Pick<Storage, "getItem" | "setItem" | "removeItem">;
 
 function defaultStorage(): TutorialStorage | null {
   try {
-    if (typeof localStorage === "undefined") return null;
-    return localStorage;
+    return resolveLocal() ?? null;
   } catch {
     return null;
   }

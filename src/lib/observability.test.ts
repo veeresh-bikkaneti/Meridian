@@ -32,6 +32,7 @@ import {
   type ObservabilityEvent,
 } from "./observability.ts";
 import { TELEMETRY_MANIFEST } from "./telemetry-manifest.ts";
+import { setSessionBackend } from "../game/storage-slot.ts";
 
 function makeStorage(initial: Record<string, string> = {}): ObsStorage & { raw: Map<string, string> } {
   const raw = new Map(Object.entries(initial));
@@ -1864,4 +1865,43 @@ test("F3 handlers: a ChunkLoadTimeoutError rejection is a chunk failure (silent 
   handlers["unhandledrejection"]({ reason: err });
   assert.equal(sent(), 0);
   assert.equal(obs.getQueueLength(), 0);
+});
+
+test("default session storage comes from the game slot (no injected storage)", () => {
+  const store = makeStorage();
+  const { transport } = makeTransport();
+  setSessionBackend(store);
+  try {
+    const obs = createObservability({
+      transport, now: () => 5000, randomId: () => "sess-slot", device: DEVICE, buildId: "b1", isUnclean: () => false,
+    });
+    obs.init();
+    obs.recordMilestone("run_start");
+    const stored = store.getItem(BREADCRUMB_KEY);
+    assert.ok(stored, "breadcrumb persisted through the slot backend");
+    assert.equal(JSON.parse(stored as string).sessionId, "sess-slot");
+  } finally {
+    setSessionBackend(undefined);
+  }
+});
+
+test("default transport posts through the runtime fetch when no transport is injected", () => {
+  const realFetch = globalThis.fetch;
+  const calls: Array<{ url: string; init: unknown }> = [];
+  globalThis.fetch = (async (url: unknown, init: unknown) => {
+    calls.push({ url: String(url), init });
+    return {};
+  }) as unknown as typeof fetch;
+  try {
+    const obs = createObservability({
+      storage: makeStorage(), endpoint: "https://example.com/ingest",
+      now: () => 1, randomId: () => "s", device: DEVICE, buildId: "b", isUnclean: () => false,
+    });
+    obs.emit({ type: "tile_failed", ts: 1, buildId: "b" });
+    assert.equal(calls.length, 1);
+    assert.equal(calls[0]?.url, "https://example.com/ingest");
+    assert.equal((calls[0]?.init as { keepalive?: boolean })?.keepalive, true);
+  } finally {
+    globalThis.fetch = realFetch;
+  }
 });

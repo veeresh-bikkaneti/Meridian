@@ -182,11 +182,13 @@ describe("platform/no-raw-io", () => {
   });
 
   it("baseline is per-violation: the one baselined fetch() is suppressed, a second unlisted one fires", () => {
-    // eslint/layer-baseline.json holds exactly one entry for this
-    // file: "src/lib/contact/contact-form.ts|fetch()" (its only raw
-    // I/O is a single fetch(). A new call site in the same file is
-    // NOT covered by that entry and must fail.
-    const file = "src/lib/contact/contact-form.ts";
+    // eslint/layer-baseline.json holds exactly one fetch() entry for
+    // this file: "src/components/storyteller-home.tsx|fetch()".
+    // (The contact form's entry was cured by the Phase 1 ports
+    // sweep; this file is excluded from that sweep, so its entry
+    // stays.) A new call site in the same file is NOT covered by
+    // that entry and must fail.
+    const file = "src/components/storyteller-home.tsx";
     const one = lint('fetch("/api/x");\n', file);
     assert.deepEqual(hits(one, "platform/no-raw-io"), [], JSON.stringify(one));
     const two = lint('fetch("/api/x");\nfetch("/api/y");\n', file);

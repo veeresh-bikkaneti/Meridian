@@ -90,11 +90,16 @@ export function sendOutcome(result: SendResult | null): SendOutcome | null {
   return result.status;
 }
 
-/** POST the payload. Never throws; maps server answers to page states. */
+/** POST the payload. Never throws; maps server answers to page states.
+ *  The fetch seam defaults to the runtime fetch, supplied as a bare
+ *  value reference (never a fetch() call in this file); callers and
+ *  tests inject their own. The seam stays fetch-shaped so the
+ *  credentials:"omit" / referrerPolicy:"no-referrer" init rides along
+ *  exactly — the transport port cannot express those. */
 export async function sendContact(
   endpoint: string | null,
   payload: ContactPayload,
-  fetchFn: (url: string, init: RequestInit) => Promise<Response> = (u, i) => fetch(u, i),
+  fetchFn: (url: string, init: RequestInit) => Promise<Response> = fetch,
 ): Promise<SendResult> {
   if (!endpoint) return { status: "not-configured" };
   try {

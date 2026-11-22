@@ -16,7 +16,7 @@ export type TurnstileVerifyFn = (token: string, remoteIp?: string) => Promise<bo
 export async function verifyTurnstileToken(
   token: string,
   secret: string | undefined,
-  fetchFn: typeof fetch = (input, init) => fetch(input, init),
+  fetchFn: typeof fetch = fetch,
   remoteIp?: string,
 ): Promise<boolean> {
   if (!secret || !token) return false;

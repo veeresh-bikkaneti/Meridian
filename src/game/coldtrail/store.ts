@@ -1,4 +1,5 @@
 import { clampLat, normalizeLon, STORE_LAT_LIMIT } from "../geo.ts";
+import { resolveLocal } from "../storage-slot.ts";
 import { STARTING_STARS } from "./engine.ts";
 import type {
   ColdTrailProgress,
@@ -29,7 +30,7 @@ export const COLDTRAIL_STORAGE_KEY = "meridian.coldtrail.v2";
  * data module; pack-shelf-data.test.ts pins the literals against
  * each other. The pack store holds the same ColdTrailStore shape.
  */
-const COLDTRAIL_PACK_STORAGE_KEY = "meridian.coldtrail.pack.capitals.v1";
+export const COLDTRAIL_PACK_STORAGE_KEY = "meridian.coldtrail.pack.capitals.v1";
 /**
  * Pack shelf selection key (owner: PACK_SHELF_SELECTION_KEY in
  * src/components/pack-shelf-data.ts), restated for the same reason as
@@ -38,9 +39,9 @@ const COLDTRAIL_PACK_STORAGE_KEY = "meridian.coldtrail.pack.capitals.v1";
  * the pack selection after "Start over", unlike the GeoDetective
  * reset, whose selection dies with its loop store.
  */
-const PACK_SHELF_SELECTION_KEY = "meridian.pack-shelf.v1";
+export const PACK_SHELF_SELECTION_KEY = "meridian.pack-shelf.v1";
 /** Previous-generation key: read once for migration, then deleted. */
-const LEGACY_STORAGE_KEY = "meridian.coldtrail.v1";
+export const LEGACY_STORAGE_KEY = "meridian.coldtrail.v1";
 /**
  * Whether the Cold Trail screen was open when the tab last closed or
  * reloaded (PR #203 panel: recovery parity with the loop's open flag).
@@ -53,7 +54,7 @@ export const COLDTRAIL_OPEN_KEY = "meridian.coldtrail.open";
 /** Whether the Cold Trail screen was open at last close/reload. */
 export function readColdTrailOpen(): boolean {
   try {
-    return localStorage.getItem(COLDTRAIL_OPEN_KEY) === "1";
+    return resolveLocal()?.getItem(COLDTRAIL_OPEN_KEY) === "1";
   } catch {
     return false;
   }
@@ -62,8 +63,10 @@ export function readColdTrailOpen(): boolean {
 /** Record the Cold Trail screen's open state (fail-silent when storage is blocked). */
 export function writeColdTrailOpen(open: boolean): void {
   try {
-    if (open) localStorage.setItem(COLDTRAIL_OPEN_KEY, "1");
-    else localStorage.removeItem(COLDTRAIL_OPEN_KEY);
+    const s = resolveLocal();
+    if (!s) return;
+    if (open) s.setItem(COLDTRAIL_OPEN_KEY, "1");
+    else s.removeItem(COLDTRAIL_OPEN_KEY);
   } catch {
     /* private-mode storage: the trail screen still works for the session */
   }
@@ -175,8 +178,9 @@ function migrateV1(legacy: Record<string, unknown>): ColdTrailStore {
  */
 export function loadColdtrail(key: string = COLDTRAIL_STORAGE_KEY): ColdTrailStore {
   try {
-    if (typeof localStorage === "undefined") return freshStore();
-    const raw = localStorage.getItem(key);
+    const s = resolveLocal();
+    if (!s) return freshStore();
+    const raw = s.getItem(key);
     if (raw) {
       let parsed: Partial<ColdTrailStore>;
       try {
@@ -202,7 +206,7 @@ export function loadColdtrail(key: string = COLDTRAIL_STORAGE_KEY): ColdTrailSto
     // No save at this key: the core key runs the one-time migration
     // from the v1 key. Other keys (the pack store) just start fresh.
     if (key !== COLDTRAIL_STORAGE_KEY) return freshStore();
-    const legacyRaw = localStorage.getItem(LEGACY_STORAGE_KEY);
+    const legacyRaw = s.getItem(LEGACY_STORAGE_KEY);
     if (legacyRaw) {
       try {
         const legacy = JSON.parse(legacyRaw) as Record<string, unknown>;
@@ -210,7 +214,7 @@ export function loadColdtrail(key: string = COLDTRAIL_STORAGE_KEY): ColdTrailSto
           const migrated = migrateV1(legacy);
           saveColdtrail(migrated);
           try {
-            localStorage.removeItem(LEGACY_STORAGE_KEY);
+            s.removeItem(LEGACY_STORAGE_KEY);
           } catch {
             // Best-effort cleanup; a leftover legacy key is harmless (it is
             // only consulted when the v2 key is absent).
@@ -231,8 +235,7 @@ export function loadColdtrail(key: string = COLDTRAIL_STORAGE_KEY): ColdTrailSto
 /** Write the store at a key; storage failures are swallowed (game continues in memory). */
 export function saveColdtrail(store: ColdTrailStore, key: string = COLDTRAIL_STORAGE_KEY): void {
   try {
-    if (typeof localStorage === "undefined") return;
-    localStorage.setItem(key, JSON.stringify(store));
+    resolveLocal()?.setItem(key, JSON.stringify(store));
   } catch {
     // Quota or blocked storage: the game continues in memory.
   }
@@ -253,14 +256,7 @@ export function saveColdtrail(store: ColdTrailStore, key: string = COLDTRAIL_STO
 export function clearColdtrailStore(
   target?: Pick<Storage, "getItem" | "setItem" | "removeItem">,
 ): boolean {
-  let s = target;
-  if (!s) {
-    try {
-      s = typeof localStorage === "undefined" ? undefined : localStorage;
-    } catch {
-      s = undefined;
-    }
-  }
+  const s = target ?? resolveLocal();
   if (!s) return true; // No storage = nothing was ever persisted.
   try {
     s.removeItem(LEGACY_STORAGE_KEY);

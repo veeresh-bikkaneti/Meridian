@@ -28,6 +28,8 @@ export interface FakeVoiceHandle extends VoiceHandle {
   readonly src: string;
   /** How many times play() reached the line. */
   playCalls: number;
+  /** How many times pause() paused a live voice. */
+  pauseCalls: number;
   /** How many times stop() ended a live voice. */
   stopCalls: number;
   /** The element can play now: idle/loading moves to ready. */
@@ -39,9 +41,13 @@ export interface FakeVoiceHandle extends VoiceHandle {
   /** The clip played to its end. */
   simulateEnded(): void;
   /** The clip failed. */
-  simulateError(): void;
+  simulateError(cause?: unknown): void;
   /** The play() call itself was refused. */
-  simulatePlayRejection(): void;
+  simulatePlayRejection(cause?: unknown): void;
+  /** Clip length in seconds; NaN until the metadata loads. */
+  duration(): number;
+  /** Pretend the metadata loaded with this clip length. */
+  simulateDuration(seconds: number): void;
 }
 
 function isTerminal(state: VoiceState): boolean {
@@ -65,9 +71,13 @@ export function createFakeVoicePort(deps?: {
   const port: VoicePort = {
     createVoice(src: string, opts: CreateVoiceOptions): VoiceHandle | null {
       // Gates first: a gated line claims nothing, builds nothing.
+      // A bypassed line skips the sound toggle only; the
+      // hidden-tab guard still applies.
       let gatesOpen = false;
       try {
-        gatesOpen = soundEnabled() && audible();
+        gatesOpen =
+          (opts.bypassSoundGate === true ? true : soundEnabled()) &&
+          audible();
       } catch {
         return null;
       }
@@ -75,7 +85,9 @@ export function createFakeVoicePort(deps?: {
 
       let state: VoiceState = "idle";
       let currentTimeValue = 0;
+      let durationValue = NaN;
       let claim: VoiceClaim | null = null;
+      let started = false;
 
       const fireEnded = (): void => {
         try {
@@ -84,9 +96,9 @@ export function createFakeVoicePort(deps?: {
           // A listener must never break the voice's own cleanup.
         }
       };
-      const fireError = (): void => {
+      const fireError = (cause?: unknown): void => {
         try {
-          opts.onError?.();
+          opts.onError?.(cause);
         } catch {
           // A listener must never break the voice's own cleanup.
         }
@@ -98,6 +110,13 @@ export function createFakeVoicePort(deps?: {
           // A listener must never break the voice's own cleanup.
         }
       };
+      const firePlaying = (): void => {
+        try {
+          opts.onPlaying?.();
+        } catch {
+          // A listener must never break playback.
+        }
+      };
       const fireTimeUpdate = (seconds: number): void => {
         try {
           opts.onTimeUpdate?.(seconds);
@@ -106,11 +125,11 @@ export function createFakeVoicePort(deps?: {
         }
       };
 
-      const runErrorPath = (): void => {
+      const runErrorPath = (cause?: unknown): void => {
         if (isTerminal(state)) return;
         state = "error";
         claim?.release();
-        fireError();
+        fireError(cause);
       };
       const runEndedPath = (): void => {
         if (isTerminal(state)) return;
@@ -129,22 +148,42 @@ export function createFakeVoicePort(deps?: {
         fireInterrupted();
       };
 
-      claim = claimVoice(opts.owner, channelStop, {
-        userInitiated: opts.userInitiated,
-      });
+      // Adopted claims mirror the browser port: an adopted claim
+      // arrives already holding the channel, so claiming again
+      // would stop its owner. Every release path below treats an
+      // adopted claim exactly like an owned one.
+      claim =
+        opts.claim ??
+        claimVoice(opts.owner, channelStop, {
+          userInitiated: opts.userInitiated,
+        });
       if (!claim) return null;
 
       const handle: FakeVoiceHandle = {
         src,
         playCalls: 0,
+        pauseCalls: 0,
         stopCalls: 0,
         get state(): VoiceState {
           return state;
         },
         play(): void {
           if (state !== "idle" && state !== "ready") return;
+          // The start position applies to the first play only; a
+          // resume after pause() keeps the kept position.
+          if (!started) {
+            started = true;
+            if (opts.startAtSeconds !== undefined) {
+              currentTimeValue = opts.startAtSeconds;
+            }
+          }
           handle.playCalls++;
           state = "loading";
+        },
+        pause(): void {
+          if (state !== "loading" && state !== "playing") return;
+          handle.pauseCalls++;
+          state = "ready";
         },
         stop(): void {
           if (isTerminal(state)) return;
@@ -161,6 +200,7 @@ export function createFakeVoicePort(deps?: {
         simulatePlaying(): void {
           if (isTerminal(state)) return;
           state = "playing";
+          firePlaying();
         },
         simulateTimeUpdate(t: number): void {
           if (isTerminal(state)) return;
@@ -170,11 +210,17 @@ export function createFakeVoicePort(deps?: {
         simulateEnded(): void {
           runEndedPath();
         },
-        simulateError(): void {
-          runErrorPath();
+        simulateError(cause?: unknown): void {
+          runErrorPath(cause);
         },
-        simulatePlayRejection(): void {
-          runErrorPath();
+        simulatePlayRejection(cause?: unknown): void {
+          runErrorPath(cause);
+        },
+        duration(): number {
+          return durationValue;
+        },
+        simulateDuration(seconds: number): void {
+          durationValue = seconds;
         },
       };
       handles.push(handle);

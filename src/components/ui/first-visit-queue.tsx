@@ -41,6 +41,8 @@ import {
   type RefObject,
 } from "react";
 import { createPortal } from "react-dom";
+import { getStorageItem, setStorageItem } from "../../platform/storage/browser-storage.ts";
+import { firstVisitSeenKeyDef } from "../../platform/storage/keys.ts";
 
 const AdvanceContext = createContext<() => void>(() => {});
 
@@ -67,22 +69,14 @@ export type FirstVisitPrompt = {
 };
 
 function readSeen(seenKey: string): ReadonlySet<string> {
-  try {
-    const raw = localStorage.getItem(seenKey);
-    const parsed: unknown = raw ? JSON.parse(raw) : [];
-    return new Set(Array.isArray(parsed) ? parsed.filter((id): id is string => typeof id === "string") : []);
-  } catch {
-    return new Set();
-  }
+  return new Set(getStorageItem(firstVisitSeenKeyDef(seenKey)));
 }
 
 function writeSeen(seenKey: string, seen: ReadonlySet<string>) {
-  try {
-    localStorage.setItem(seenKey, JSON.stringify([...seen]));
-  } catch {
-    /* Storage unavailable (private mode): the queue still advances
-     * for this visit; prompts may re-show next visit. */
-  }
+  /* Storage unavailable (private mode): the port drops the write
+   * silently, the queue still advances for this visit; prompts may
+   * re-show next visit. */
+  setStorageItem(firstVisitSeenKeyDef(seenKey), [...seen]);
 }
 
 export type FirstVisitQueueProps = {

@@ -40,6 +40,7 @@
 
 import { CURRENT_BUILD_ID } from "../game/build-staleness.ts";
 import { isUncleanShutdown, type CleanExitStorage } from "../game/clean-exit.ts";
+import { resolveLocal, resolveSession } from "../game/storage-slot.ts";
 import { hasDurableMapCrashMarker, writeDurableMapCrashMarker } from "../map/capability.ts";
 import { parseRuntimeUA } from "./ua-parse.ts";
 import { isChunkLoadError, shouldReportChunkFailure, CHUNK_RELOAD_KEY } from "./chunk-recovery.ts";
@@ -261,8 +262,7 @@ export interface ObservabilityDeps {
 
 function defaultStorage(): ObsStorage | null {
   try {
-    if (typeof sessionStorage === "undefined") return null;
-    return sessionStorage;
+    return resolveSession() ?? null;
   } catch {
     return null;
   }
@@ -270,8 +270,7 @@ function defaultStorage(): ObsStorage | null {
 
 function defaultDurableStorage(): ObsStorage | null {
   try {
-    if (typeof localStorage === "undefined") return null;
-    return localStorage;
+    return resolveLocal() ?? null;
   } catch {
     return null;
   }
@@ -288,7 +287,7 @@ function defaultTransport(): ObsTransport {
   }
   try {
     if (typeof fetch === "function") {
-      t.fetchFn = (url, init) => fetch(url, init);
+      t.fetchFn = fetch;
     }
   } catch {
     // no fetch available

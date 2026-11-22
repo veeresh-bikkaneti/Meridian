@@ -30,6 +30,7 @@
  */
 import { useEffect, useState } from "react";
 import sportsNotesJson from "./data/sports-notes.json" with { type: "json" };
+import { resolveLocal, type GameEnumerableStorageBackend } from "./storage-slot.ts";
 
 export interface AiSportsTeam {
   team: string;
@@ -162,10 +163,14 @@ export function geonameIdOf(placeId: string): string | null {
 const CACHE_PREFIX = "meridian:sports-ai:v1:";
 const CACHE_TTL_MS = 180 * 24 * 60 * 60 * 1000;
 
-function storage(): Storage | null {
+/** Cache key for a place's teams, pinned by the storage key registry. */
+export function sportsAiCacheKey(geonameId: string): string {
+  return CACHE_PREFIX + geonameId;
+}
+
+function storage(): GameEnumerableStorageBackend | null {
   try {
-    if (typeof localStorage === "undefined") return null;
-    return localStorage;
+    return resolveLocal() ?? null;
   } catch {
     return null;
   }
@@ -175,11 +180,11 @@ export function readCachedTeams(geonameId: string): AiSportsTeam[] | null {
   const s = storage();
   if (!s) return null;
   try {
-    const raw = s.getItem(CACHE_PREFIX + geonameId);
+    const raw = s.getItem(sportsAiCacheKey(geonameId));
     if (!raw) return null;
     const parsed = JSON.parse(raw) as { teams?: unknown; at?: unknown };
     if (typeof parsed.at !== "number" || Date.now() - parsed.at > CACHE_TTL_MS) {
-      s.removeItem(CACHE_PREFIX + geonameId);
+      s.removeItem(sportsAiCacheKey(geonameId));
       return null;
     }
     const teams = validateAiTeams(parsed.teams, geonameId);
@@ -196,7 +201,7 @@ export function writeCachedTeams(geonameId: string, teams: AiSportsTeam[]): void
   const s = storage();
   if (!s) return;
   try {
-    s.setItem(CACHE_PREFIX + geonameId, JSON.stringify({ teams, at: Date.now() }));
+    s.setItem(sportsAiCacheKey(geonameId), JSON.stringify({ teams, at: Date.now() }));
   } catch {
     // Quota or private mode — the cache is best-effort; the curated line
     // still renders.

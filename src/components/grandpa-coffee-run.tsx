@@ -12,6 +12,13 @@ import {
   type TourMeasurements,
   type TourStop,
 } from "./grandpa-tour.ts";
+import {
+  getSessionStorageItem,
+  getStorageItem,
+  setSessionStorageItem,
+  setStorageItem,
+} from "../platform/storage/browser-storage.ts";
+import { STORAGE_KEYS } from "../platform/storage/keys.ts";
 
 /**
  * Grandpa's Tasting Tour — animated donation scene on the Chart Room home.
@@ -116,12 +123,12 @@ const KETTLE_HOLD_MS = 4000;
 
 // --- Tasting-tour tuning (mobile) ---
 const MOBILE_QUERY = "(max-width: 1023.5px)";
-const TOUR_LAST_DATE_KEY = "meridian.grandpaTour.lastDate";
+export const TOUR_LAST_DATE_KEY = "meridian.grandpaTour.lastDate";
 /** Once per session (owner, 2026-11-19): the footer scene mounts on every
  *  page, so without this flag each route change remounts the scene and
  *  replays the walk + trail lines. Set when a walk begins; any later mount
  *  in the same session starts seated. A new session walks again. */
-const WALKED_SESSION_KEY = "meridian.grandpa.walkedSession";
+export const WALKED_SESSION_KEY = "meridian.grandpa.walkedSession";
 /** Total journey hard cap, measured from the first step. */
 const TOUR_JOURNEY_CAP_MS = 12_000;
 /** Normal journey target — comfortably under the cap. */
@@ -174,23 +181,9 @@ function isMobileViewport(): boolean {
   );
 }
 
-function readStorage(key: string, store: "local" | "session"): string | null {
-  try {
-    const s = store === "local" ? localStorage : sessionStorage;
-    return s.getItem(key);
-  } catch {
-    return null;
-  }
-}
-
-function writeStorage(key: string, value: string, store: "local" | "session"): void {
-  try {
-    const s = store === "local" ? localStorage : sessionStorage;
-    s.setItem(key, value);
-  } catch {
-    /* storage unavailable — the tour still plays; gating just retries */
-  }
-}
+// Reads and writes go through the storage port; a dropped write
+// (private mode) only means the gating retries next visit — the
+// tour still plays.
 
 /* ================= Grandpa figure (shared SVG, three poses) ================= */
 
@@ -1236,7 +1229,7 @@ export function GrandpaCoffeeRun({ tastingTour = true }: { tastingTour?: boolean
       return "seated";
     // This session already had its one walk (any page, any viewport):
     // start at the seated finale, no replay.
-    if (readStorage(WALKED_SESSION_KEY, "session") === "1") return "seated";
+    if (getSessionStorageItem(STORAGE_KEYS.grandpaWalkedSession) === 1) return "seated";
     // Footer hosts (every page but Home) run the strip only: the
     // tasting tour measures Home's own cards, so it is Home's alone.
     // With tastingTour off the scene still strolls, pours and
@@ -1244,7 +1237,7 @@ export function GrandpaCoffeeRun({ tastingTour = true }: { tastingTour?: boolean
     if (!tastingTour) return "strip";
     if (isMobileViewport()) {
       // Return visits (same calendar day): no replay — already seated.
-      if (readStorage(TOUR_LAST_DATE_KEY, "local") === localDateKey())
+      if (getStorageItem(STORAGE_KEYS.grandpaTourLastDate) === localDateKey())
         return "seated";
       return "tour";
     }
@@ -1273,7 +1266,7 @@ export function GrandpaCoffeeRun({ tastingTour = true }: { tastingTour?: boolean
   const mountModeRef = useRef(mode);
   useEffect(() => {
     if (mountModeRef.current === "strip" || mountModeRef.current === "tour")
-      writeStorage(WALKED_SESSION_KEY, "1", "session");
+      setSessionStorageItem(STORAGE_KEYS.grandpaWalkedSession, 1);
   }, []);
 
   // Beat machine for the "strip" mode: the previous behavior — desktop's
@@ -1417,7 +1410,7 @@ export function GrandpaCoffeeRun({ tastingTour = true }: { tastingTour?: boolean
     // it appears at full opacity (no CSS transition from a prior hidden
     // state) — matching the strip's original finale behavior.
     setBeat("seated");
-    writeStorage(TOUR_LAST_DATE_KEY, localDateKey(), "local");
+    setStorageItem(STORAGE_KEYS.grandpaTourLastDate, localDateKey());
     // The once-per-session cloud gate lives in the effect below — it runs on
     // the mode change and owns the session flag, so the cloud shows on the
     // first visit and stays hidden on later ones.
@@ -1439,7 +1432,7 @@ export function GrandpaCoffeeRun({ tastingTour = true }: { tastingTour?: boolean
   // Measured after fonts so the ghost of the tour lines up with the cards.
   useEffect(() => {
     if (mode !== "seated" || !isMobile || reducedMotion) return;
-    if (readStorage(TOUR_LAST_DATE_KEY, "local") !== localDateKey()) return;
+    if (getStorageItem(STORAGE_KEYS.grandpaTourLastDate) !== localDateKey()) return;
     let cancelled = false;
     const timers: number[] = [];
     const wait = (ms: number) =>

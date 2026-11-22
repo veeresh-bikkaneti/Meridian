@@ -1,4 +1,7 @@
 import { assetBase } from "./storyteller-lines.ts";
+import { getStorageItem, setStorageItem } from "../platform/storage/browser-storage.ts";
+import { STORAGE_KEYS } from "../platform/storage/keys.ts";
+import type { StorageKeyDef } from "../platform/storage/storage.ts";
 import { getJson } from "../platform/transport/browser-transport.ts";
 import type { SchemaLike } from "../platform/transport/transport.ts";
 
@@ -285,11 +288,53 @@ export function initialTrailDeck(input: {
 type StoragePeek = Pick<Storage, "getItem">;
 type StorageWrite = Pick<Storage, "getItem" | "setItem">;
 
-function defaultStorage(): Storage | null {
+/**
+ * The blob for a registry key through the port (the default path,
+ * when no storage is injected): the port already parsed the JSON,
+ * so only the record shape is checked here — the same
+ * object/array guard the raw reader applies below.
+ */
+function readPortBlob(def: StorageKeyDef<unknown>): Record<string, unknown> | null {
+  const value: unknown = getStorageItem(def);
+  if (!value || typeof value !== "object" || Array.isArray(value)) return null;
+  return value as Record<string, unknown>;
+}
+
+/**
+ * The blob under a key: the port when no storage is given, the
+ * given storage otherwise; an explicit null reads as absent, as
+ * the raw reader's null-storage path always did.
+ */
+function readBlob(
+  storage: StoragePeek | null | undefined,
+  key: string,
+  def: StorageKeyDef<unknown>,
+): Record<string, unknown> | null {
+  if (storage === undefined) return readPortBlob(def);
+  if (storage === null) return null;
+  return readJsonBlob(storage, key);
+}
+
+/**
+ * The blob under a key, written: the port when no storage is
+ * given, the given storage otherwise; an explicit null writes
+ * nothing, as before.
+ */
+function writeBlob(
+  storage: StorageWrite | null | undefined,
+  key: string,
+  def: StorageKeyDef<unknown>,
+  value: Record<string, unknown>,
+): void {
+  if (storage === undefined) {
+    setStorageItem(def, value);
+    return;
+  }
+  if (storage === null) return;
   try {
-    return typeof localStorage === "undefined" ? null : localStorage;
+    storage.setItem(key, JSON.stringify(value));
   } catch {
-    return null;
+    // Blocked storage: the pick lasts for this screen visit only.
   }
 }
 
@@ -320,16 +365,16 @@ const DECK_ID_RE = /^[a-z0-9-]+$/;
  */
 export function readSelectedDeck(
   edition: PackEditionId,
-  storage: StoragePeek | null = defaultStorage(),
+  storage?: StoragePeek | null,
 ): string {
   if (edition === "geodetective") {
-    const blob = readJsonBlob(storage, LOOP_STORE_KEY);
+    const blob = readBlob(storage, LOOP_STORE_KEY, STORAGE_KEYS.loopStore);
     const active = blob?.activeDeckId;
     return typeof active === "string" && DECK_ID_RE.test(active) && active !== LOOP_CORE_DECK_ID
       ? active
       : CORE_DECK_ID;
   }
-  const blob = readJsonBlob(storage, PACK_SHELF_SELECTION_KEY);
+  const blob = readBlob(storage, PACK_SHELF_SELECTION_KEY, STORAGE_KEYS.packShelfSelection);
   if (!blob || blob.v !== 1) return CORE_DECK_ID;
   const decks = blob.decks as Record<string, unknown> | undefined;
   const value = decks?.[edition];
@@ -346,20 +391,16 @@ export function readSelectedDeck(
 export function writeSelectedDeck(
   edition: PackEditionId,
   deckId: string,
-  storage: StorageWrite | null = defaultStorage(),
+  storage?: StorageWrite | null,
 ): void {
   if (edition === "geodetective") return;
-  if (!storage || !DECK_ID_RE.test(deckId)) return;
-  const blob = readJsonBlob(storage, PACK_SHELF_SELECTION_KEY);
+  if (!DECK_ID_RE.test(deckId)) return;
+  const blob = readBlob(storage, PACK_SHELF_SELECTION_KEY, STORAGE_KEYS.packShelfSelection);
   const decks: Record<string, unknown> = {
     ...((blob?.decks as Record<string, unknown> | undefined) ?? {}),
     [edition]: deckId,
   };
-  try {
-    storage.setItem(PACK_SHELF_SELECTION_KEY, JSON.stringify({ v: 1, decks }));
-  } catch {
-    // Blocked storage: the pick lasts for this screen visit only.
-  }
+  writeBlob(storage, PACK_SHELF_SELECTION_KEY, STORAGE_KEYS.packShelfSelection, { v: 1, decks });
 }
 
 /**
@@ -370,9 +411,9 @@ export function writeSelectedDeck(
  */
 export function readLoopDeckClosed(
   deckId: string,
-  storage: StoragePeek | null = defaultStorage(),
+  storage?: StoragePeek | null,
 ): number | null {
-  const blob = readJsonBlob(storage, LOOP_STORE_KEY);
+  const blob = readBlob(storage, LOOP_STORE_KEY, STORAGE_KEYS.loopStore);
   if (!blob) return null;
   if (deckId === CORE_DECK_ID || deckId === LOOP_CORE_DECK_ID) {
     const deck = blob.deck as Record<string, unknown> | undefined;
@@ -384,7 +425,7 @@ export function readLoopDeckClosed(
 }
 
 /** GeoDetective core deck progress: cases closed in the current cycle. */
-export function readLoopCoreClosed(storage: StoragePeek | null = defaultStorage()): number | null {
+export function readLoopCoreClosed(storage?: StoragePeek | null): number | null {
   return readLoopDeckClosed(CORE_DECK_ID, storage);
 }
 
@@ -394,11 +435,12 @@ export function readLoopCoreClosed(storage: StoragePeek | null = defaultStorage(
  */
 export function readColdtrailClosed(
   storeKey: "core" | "pack",
-  storage: StoragePeek | null = defaultStorage(),
+  storage?: StoragePeek | null,
 ): number | null {
-  const blob = readJsonBlob(
+  const blob = readBlob(
     storage,
     storeKey === "core" ? COLDTRAIL_STORE_KEY : COLDTRAIL_PACK_STORE_KEY,
+    storeKey === "core" ? STORAGE_KEYS.coldtrailStore : STORAGE_KEYS.coldtrailPack,
   );
   if (!blob || blob.v !== 2) return null;
   return isNonNegativeInt(blob.solved) ? blob.solved : null;

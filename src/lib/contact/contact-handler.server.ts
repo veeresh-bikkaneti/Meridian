@@ -320,7 +320,7 @@ export class DiscordWebhookSink implements ContactSink {
   // node --experimental-strip-types in tests.
   private readonly webhookUrl: string;
   private readonly fetchFn: typeof fetch;
-  constructor(webhookUrl: string, fetchFn: typeof fetch = (input, init) => fetch(input, init)) {
+  constructor(webhookUrl: string, fetchFn: typeof fetch = fetch) {
     this.webhookUrl = webhookUrl;
     this.fetchFn = fetchFn;
   }

@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test, { afterEach, describe } from "node:test";
 
 import {
+  claimVoice,
   currentVoiceOwner,
   stopAllVoices,
 } from "../../game/audio/voice-channel.ts";
@@ -34,17 +35,30 @@ interface Counts {
   ended: number;
   error: number;
   interrupted: number;
+  playing: number;
   times: number[];
+  errorCauses: unknown[];
 }
 
 function trackedOpts(owner: string, userInitiated: boolean) {
-  const counts: Counts = { ended: 0, error: 0, interrupted: 0, times: [] };
+  const counts: Counts = {
+    ended: 0,
+    error: 0,
+    interrupted: 0,
+    playing: 0,
+    times: [],
+    errorCauses: [],
+  };
   const opts: CreateVoiceOptions = {
     owner,
     userInitiated,
     onEnded: () => counts.ended++,
-    onError: () => counts.error++,
+    onError: (cause) => {
+      counts.error++;
+      counts.errorCauses.push(cause);
+    },
     onInterrupted: () => counts.interrupted++,
+    onPlaying: () => counts.playing++,
     onTimeUpdate: (s) => counts.times.push(s),
   };
   return { opts, counts };
@@ -53,10 +67,13 @@ function trackedOpts(owner: string, userInitiated: boolean) {
 class FakeAudioElement implements VoiceAudioElement {
   src: string;
   currentTime = 0;
+  duration = NaN;
   playCalls = 0;
   pauseCalls = 0;
   removedAttributes: string[] = [];
   rejectNextPlay = false;
+  rejectNextPlayCause: unknown = undefined;
+  positionAtPlay = 0;
   private handlers = new Map<string, Set<() => void>>();
 
   constructor(src: string) {
@@ -65,9 +82,12 @@ class FakeAudioElement implements VoiceAudioElement {
 
   play(): Promise<void> {
     this.playCalls++;
+    this.positionAtPlay = this.currentTime;
     if (this.rejectNextPlay) {
       this.rejectNextPlay = false;
-      return Promise.reject(new Error("play rejected"));
+      const cause = this.rejectNextPlayCause;
+      this.rejectNextPlayCause = undefined;
+      return Promise.reject(cause ?? new Error("play rejected"));
     }
     return Promise.resolve();
   }
@@ -103,13 +123,16 @@ interface Ctl {
   playCalls(): number;
   pauseCalls(): number;
   removedSrc(): boolean;
-  armPlayRejection(): void;
+  positionAtPlay(): number;
+  armPlayRejection(cause?: unknown): void;
   triggerPlayRejection(): void;
   simulateReady(): void;
   simulatePlaying(): void;
   simulateTimeUpdate(t: number): void;
   simulateEnded(): void;
   simulateError(): void;
+  setDuration(d: number): void;
+  duration(): number;
 }
 
 interface Created {
@@ -156,8 +179,10 @@ const browserDriver: Driver = {
           playCalls: () => el.playCalls,
           pauseCalls: () => el.pauseCalls,
           removedSrc: () => el.removedAttributes.includes("src"),
-          armPlayRejection: () => {
+          positionAtPlay: () => el.positionAtPlay,
+          armPlayRejection: (cause?: unknown) => {
             el.rejectNextPlay = true;
+            el.rejectNextPlayCause = cause;
           },
           triggerPlayRejection: () => {},
           simulateReady: () => el.fire("canplay"),
@@ -168,6 +193,10 @@ const browserDriver: Driver = {
           },
           simulateEnded: () => el.fire("ended"),
           simulateError: () => el.fire("error"),
+          setDuration: (d) => {
+            el.duration = d;
+          },
+          duration: () => el.duration,
         };
         return { handle, ctl };
       },
@@ -186,18 +215,24 @@ const fakeDriver: Driver = {
         const handle = port.createVoice(src, opts);
         if (!handle) return { handle: null, ctl: null };
         const fake: FakeVoiceHandle = handles[handles.length - 1]!;
+        let armedCause: unknown = undefined;
         const ctl: Ctl = {
           isBrowser: false,
           playCalls: () => fake.playCalls,
-          pauseCalls: () => 0,
+          pauseCalls: () => fake.pauseCalls,
           removedSrc: () => false,
-          armPlayRejection: () => {},
-          triggerPlayRejection: () => fake.simulatePlayRejection(),
+          positionAtPlay: () => fake.currentTime(),
+          armPlayRejection: (cause?: unknown) => {
+            armedCause = cause;
+          },
+          triggerPlayRejection: () => fake.simulatePlayRejection(armedCause),
           simulateReady: () => fake.simulateReady(),
           simulatePlaying: () => fake.simulatePlaying(),
           simulateTimeUpdate: (t) => fake.simulateTimeUpdate(t),
           simulateEnded: () => fake.simulateEnded(),
           simulateError: () => fake.simulateError(),
+          setDuration: (d) => fake.simulateDuration(d),
+          duration: () => fake.duration(),
         };
         return { handle, ctl };
       },
@@ -253,6 +288,33 @@ for (const driver of [browserDriver, fakeDriver]) {
       assert.equal(first.counts.interrupted, 1);
       if (first.ctl.isBrowser) assert.equal(first.ctl.pauseCalls(), 1);
       assert.equal(currentVoiceOwner(), "second");
+    });
+
+    test("createVoice adopts an already-held claim instead of claiming again", () => {
+      const harness = driver.setup();
+      // A caller that claimed the channel before it knew which
+      // line sounds hands its claim to the port: claiming again
+      // would stop the caller itself, so the claim's stop must
+      // never fire, the channel stays held, and the voice's own
+      // stop gives it back.
+      let stops = 0;
+      const claim = claimVoice("detective", () => stops++, {
+        userInitiated: true,
+      });
+      assert.ok(claim);
+      const { opts } = trackedOpts("detective", true);
+      const { handle } = mustCreate(harness, "line.mp3", {
+        ...opts,
+        claim,
+      });
+      assert.equal(stops, 0);
+      assert.equal(currentVoiceOwner(), "detective");
+      handle.play();
+      handle.stop();
+      assert.equal(stops, 0);
+      assert.equal(currentVoiceOwner(), null);
+      claim.release();
+      assert.equal(currentVoiceOwner(), null);
     });
 
     test("play() calls the element's play() synchronously, then loading -> ready -> playing", () => {
@@ -351,6 +413,122 @@ for (const driver of [browserDriver, fakeDriver]) {
       assert.equal(currentVoiceOwner(), null);
     });
 
+    test("pause() during play: ready, position kept, no callbacks, channel kept; play() resumes", () => {
+      const harness = driver.setup();
+      const { handle, ctl, counts } = toPlaying(harness, "clue-scene");
+      ctl.simulateTimeUpdate(3.25);
+      handle.pause();
+      assert.equal(handle.state, "ready");
+      assert.equal(handle.currentTime(), 3.25);
+      assert.equal(counts.ended, 0);
+      assert.equal(counts.error, 0);
+      assert.equal(counts.interrupted, 0);
+      assert.equal(currentVoiceOwner(), "clue-scene");
+      const pauses = ctl.pauseCalls();
+      handle.pause();
+      assert.equal(handle.state, "ready");
+      assert.equal(ctl.pauseCalls(), pauses);
+      handle.play();
+      assert.equal(ctl.playCalls(), 2);
+      ctl.simulatePlaying();
+      assert.equal(handle.state, "playing");
+      assert.equal(handle.currentTime(), 3.25);
+    });
+
+    test("pause() is a no-op when idle or terminal", () => {
+      const harness = driver.setup();
+      const { opts } = trackedOpts("clue-scene", true);
+      const { handle, ctl } = mustCreate(harness, "line.mp3", opts);
+      handle.pause();
+      assert.equal(handle.state, "idle");
+      assert.equal(ctl.pauseCalls(), 0);
+      handle.play();
+      ctl.simulateReady();
+      ctl.simulatePlaying();
+      ctl.simulateEnded();
+      const pauses = ctl.pauseCalls();
+      handle.pause();
+      assert.equal(handle.state, "ended");
+      assert.equal(ctl.pauseCalls(), pauses);
+    });
+
+    test("startAtSeconds positions the line before the first play, and a resume keeps its position", () => {
+      const harness = driver.setup();
+      const tracked = trackedOpts("clue-scene", true);
+      const { handle, ctl } = mustCreate(harness, "line.mp3", {
+        ...tracked.opts,
+        startAtSeconds: 12.5,
+      });
+      handle.play();
+      assert.equal(ctl.positionAtPlay(), 12.5);
+      ctl.simulateReady();
+      ctl.simulatePlaying();
+      ctl.simulateTimeUpdate(20);
+      handle.pause();
+      handle.play();
+      assert.equal(ctl.positionAtPlay(), 20);
+      assert.equal(handle.currentTime(), 20);
+    });
+
+    test("duration() reports the clip length (NaN until metadata), for per-word reveal timing", () => {
+      const harness = driver.setup();
+      const { opts } = trackedOpts("clue-scene", true);
+      const { handle, ctl } = mustCreate(harness, "line.mp3", opts);
+      assert.ok(Number.isNaN(handle.duration()));
+      ctl.setDuration(42);
+      assert.equal(handle.duration(), 42);
+      assert.equal(ctl.duration(), 42);
+    });
+
+    test("onPlaying fires on every playing event, including after a pause/resume", () => {
+      const harness = driver.setup();
+      const { handle, ctl, counts } = toPlaying(harness, "clue-scene");
+      assert.equal(counts.playing, 1);
+      ctl.simulateTimeUpdate(3.25);
+      handle.pause();
+      handle.play();
+      ctl.simulatePlaying();
+      assert.equal(counts.playing, 2);
+      assert.equal(handle.state, "playing");
+    });
+
+    test("bypassSoundGate: a deliberate once-only line plays despite the sound toggle", () => {
+      const harness = driver.setup({ soundEnabled: () => false });
+      const { opts, counts } = trackedOpts("clue-scene", true);
+      const { handle } = harness.create("line.mp3", {
+        ...opts,
+        bypassSoundGate: true,
+      });
+      assert.ok(handle);
+      assert.equal(currentVoiceOwner(), "clue-scene");
+      assert.equal(counts.error, 0);
+    });
+
+    test("bypassSoundGate: the hidden-tab guard still applies", () => {
+      const harness = driver.setup({ audible: () => false });
+      const { opts } = trackedOpts("clue-scene", true);
+      const { handle } = harness.create("line.mp3", {
+        ...opts,
+        bypassSoundGate: true,
+      });
+      assert.equal(handle, null);
+      assert.equal(currentVoiceOwner(), null);
+    });
+
+    test("a refused play() reports the refusal as the onError cause", async () => {
+      const harness = driver.setup();
+      const cause = new Error("play refused");
+      const { opts, counts } = trackedOpts("clue-scene", true);
+      const { handle, ctl } = mustCreate(harness, "line.mp3", opts);
+      ctl.armPlayRejection(cause);
+      handle.play();
+      ctl.triggerPlayRejection();
+      await flush();
+      assert.equal(handle.state, "error");
+      assert.equal(counts.error, 1);
+      assert.deepEqual(counts.errorCauses, [cause]);
+    });
+
     test("play() on a terminal (ended) handle is a no-op", () => {
       const harness = driver.setup();
       const { handle, ctl } = toPlaying(harness, "clue-scene");
@@ -363,6 +541,24 @@ for (const driver of [browserDriver, fakeDriver]) {
     });
   });
 }
+
+describe("browser voice port: pause during a pending play()", () => {
+  test("pausing while play() is pending swallows the abort rejection: ready, channel kept, no error", async () => {
+    const harness = browserDriver.setup();
+    const { opts, counts } = trackedOpts("clue-scene", true);
+    const { handle, ctl } = mustCreate(harness, "line.mp3", opts);
+    ctl.armPlayRejection(new Error("play aborted by pause"));
+    handle.play();
+    handle.pause(); // the pause owns the outcome before the rejection lands
+    await flush();
+    assert.equal(handle.state, "ready");
+    assert.equal(counts.error, 0);
+    assert.equal(currentVoiceOwner(), "clue-scene");
+    // The voice is resumable: a fresh play() reaches the element again.
+    handle.play();
+    assert.equal(ctl.playCalls(), 2);
+  });
+});
 
 describe("browser voice port without a DOM Audio constructor", () => {
   test("createVoice with no injected createAudio in node returns null instead of throwing", () => {

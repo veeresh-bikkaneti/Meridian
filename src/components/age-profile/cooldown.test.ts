@@ -1,9 +1,11 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-// --- Minimal localStorage shim (node has none). ---
+import { setLocalBackend } from "../../game/storage-slot.ts";
+
+// --- Storage shim (node has none): the slot's local backend over a Map. ---
 const backing = new Map<string, string>();
-(globalThis as Record<string, unknown>).localStorage = {
+const slotBackend = {
   getItem: (k: string) => (backing.has(k) ? backing.get(k)! : null),
   setItem: (k: string, v: string) => {
     backing.set(k, v);
@@ -11,8 +13,12 @@ const backing = new Map<string, string>();
   removeItem: (k: string) => {
     backing.delete(k);
   },
-  clear: () => backing.clear(),
+  get length(): number {
+    return backing.size;
+  },
+  key: (index: number): string | null => [...backing.keys()][index] ?? null,
 };
+setLocalBackend(slotBackend);
 
 import { GROWNUP_COOLDOWN_KEY, readCooldown, writeCooldown, clearCooldown } from "./cooldown.ts";
 
@@ -92,4 +98,19 @@ test("malformed strike records read as 0; clearStrikes removes the key", () => {
   writeStrikes(1, NOW);
   clearStrikes();
   assert.equal(backing.has(GROWNUP_STRIKES_KEY), false);
+});
+
+test("unregistered slot reads as absent and writes are no-ops", () => {
+  clear();
+  setLocalBackend(undefined);
+  try {
+    assert.equal(readCooldown(NOW), null);
+    writeCooldown(NOW + 60_000);
+    assert.equal(backing.has(GROWNUP_COOLDOWN_KEY), false);
+    assert.equal(readStrikes(NOW), 0);
+    writeStrikes(2, NOW);
+    assert.equal(backing.has(GROWNUP_STRIKES_KEY), false);
+  } finally {
+    setLocalBackend(slotBackend);
+  }
 });

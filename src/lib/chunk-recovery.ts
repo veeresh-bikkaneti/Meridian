@@ -107,6 +107,8 @@
  * SW absent or killed (?nosw=1) plain reload semantics apply unchanged.
  */
 
+import { resolveSession } from "../game/storage-slot.ts";
+
 /** sessionStorage key holding the last auto-reload time (ms epoch). */
 export const CHUNK_RELOAD_KEY = "meridian.chunkReloadAt";
 
@@ -365,7 +367,7 @@ function defaultHost(): ChunkRecoveryHost | null {
   if (typeof window === "undefined") return null;
   let storage: ChunkRecoveryHost["storage"] = null;
   try {
-    storage = window.sessionStorage;
+    storage = resolveSession() ?? null;
   } catch {
     // Old Safari can throw on mere access; the in-memory stamp remains.
     storage = null;
@@ -937,7 +939,7 @@ function defaultAttemptHost(): ChunkReloadAttemptHost | null {
   if (typeof window === "undefined") return null;
   let storage: ChunkRecoveryHost["storage"] = null;
   try {
-    storage = window.sessionStorage;
+    storage = resolveSession() ?? null;
   } catch {
     storage = null;
   }
@@ -1073,7 +1075,7 @@ export function attemptGuardedChunkReload(hostArg?: Partial<ChunkReloadAttemptHo
 export function markChunkReloadNotice(): void {
   try {
     if (typeof window === "undefined") return;
-    window.sessionStorage.setItem(CHUNK_RELOAD_NOTICE_KEY, String(Date.now()));
+    resolveSession()?.setItem(CHUNK_RELOAD_NOTICE_KEY, String(Date.now()));
   } catch {
     // Storage unavailable — the reload proceeds without a notice.
   }
@@ -1099,7 +1101,7 @@ export function consumeChunkReloadNotice(
   } else {
     if (typeof window === "undefined") return false;
     try {
-      storage = window.sessionStorage;
+      storage = resolveSession() ?? null;
     } catch {
       return false;
     }

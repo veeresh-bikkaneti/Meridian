@@ -3,7 +3,17 @@ import test, { describe } from "node:test";
 
 import { z } from "zod";
 
-import { createBrowserStoragePort } from "./browser-storage.ts";
+import {
+  createBrowserStoragePort,
+  createSessionStorageBackend,
+  createSessionStoragePort,
+  getSessionStorageItem,
+  inertStorageEventSource,
+  notifySessionStorageChanged,
+  removeSessionStorageItem,
+  setSessionStorageItem,
+  subscribeSessionStorage,
+} from "./browser-storage.ts";
 import { createFakeStoragePort } from "./fake-storage.ts";
 import type {
   StorageBackend,
@@ -38,6 +48,45 @@ const PROGRESS: StorageKeyDef<Record<string, string[]>> = {
   key: "test.progress",
   schema: z.record(z.string(), z.array(z.string())),
   fallback: {},
+};
+
+const FLAG_RAW: StorageKeyDef<string> = {
+  key: "test.flag-raw",
+  schema: z.string(),
+  fallback: "off",
+  encoding: "raw",
+};
+
+const FLAG_JSON: StorageKeyDef<string> = {
+  key: "test.flag-raw",
+  schema: z.string(),
+  fallback: "off",
+};
+
+const STAMP_RAW: StorageKeyDef<number> = {
+  key: "test.stamp-raw",
+  schema: z.number(),
+  fallback: 0,
+  encoding: "raw",
+};
+
+const STAMP_JSON: StorageKeyDef<number> = {
+  key: "test.stamp-raw",
+  schema: z.number(),
+  fallback: 0,
+};
+
+const SENTENCE_RAW: StorageKeyDef<string> = {
+  key: "test.sentence-raw",
+  schema: z.string(),
+  fallback: "",
+  encoding: "raw",
+};
+
+const SENTENCE_JSON: StorageKeyDef<string> = {
+  key: "test.sentence-raw",
+  schema: z.string(),
+  fallback: "",
 };
 
 class MapBackend implements StorageBackend {
@@ -197,6 +246,28 @@ for (const driver of [browserDriver, fakeDriver]) {
       assert.deepEqual(harness.port.getItem(PROGRESS), {});
     });
 
+    test("a raw-encoded key reads literal legacy bytes; a JSON key falls back on the same bytes", () => {
+      const harness = driver.setup();
+      harness.setRaw(FLAG_RAW.key, "1");
+      assert.equal(harness.port.getItem(FLAG_RAW), "1");
+      assert.equal(harness.port.getItem(FLAG_JSON), "off");
+      harness.setRaw(STAMP_RAW.key, "1712345678");
+      assert.equal(harness.port.getItem(STAMP_RAW), 1712345678);
+      assert.equal(harness.port.getItem(STAMP_JSON), 1712345678);
+      harness.setRaw(SENTENCE_RAW.key, "hello world");
+      assert.equal(harness.port.getItem(SENTENCE_RAW), "hello world");
+      assert.equal(harness.port.getItem(SENTENCE_JSON), "");
+    });
+
+    test("a raw-encoded write stores canonical JSON bytes", () => {
+      const harness = driver.setup();
+      harness.port.setItem(FLAG_RAW, "1");
+      assert.equal(harness.getRaw(FLAG_RAW.key), '"1"');
+      assert.equal(harness.port.getItem(FLAG_RAW), "1");
+      harness.port.setItem(SENTENCE_RAW, "say hi");
+      assert.equal(harness.getRaw(SENTENCE_RAW.key), '"say hi"');
+    });
+
     test("set emits only to that key's subscribers", () => {
       const { port } = driver.setup();
       let greetingCalls = 0;
@@ -313,6 +384,65 @@ describe("browser storage port with no backend available (node)", () => {
     assert.equal(port.getItem(GREETING), "hello");
     assert.doesNotThrow(() => port.removeItem(GREETING));
     assert.equal(calls, 2);
+    unsubscribe();
+  });
+});
+
+describe("session storage port", () => {
+  test("the session backend fails soft where there is no session storage (node)", () => {
+    const backend = createSessionStorageBackend();
+    assert.equal(backend.getItem("test.greeting"), null);
+    assert.doesNotThrow(() => backend.setItem("test.greeting", '"hi"'));
+    assert.doesNotThrow(() => backend.removeItem("test.greeting"));
+  });
+
+  test("the session port round-trips through an injected backend and emits same-tab", () => {
+    const backend = new MapBackend();
+    const port = createSessionStoragePort({ backend });
+    port.setItem(GREETING, "hi");
+    assert.equal(port.getItem(GREETING), "hi");
+    assert.equal(backend.getItem(GREETING.key), '"hi"');
+    let calls = 0;
+    const unsubscribe = port.subscribe(GREETING.key, () => calls++);
+    port.setItem(GREETING, "yo");
+    assert.equal(calls, 1);
+    port.removeItem(GREETING);
+    assert.equal(calls, 2);
+    assert.equal(port.getItem(GREETING), "hello");
+    unsubscribe();
+  });
+
+  test("the session port's default event source is inert: it never calls back", () => {
+    let calls = 0;
+    const detach = inertStorageEventSource.addListener(() => calls++);
+    assert.equal(typeof detach, "function");
+    assert.doesNotThrow(() => detach());
+    assert.equal(calls, 0);
+  });
+
+  test("the default session port fails soft in node and still emits same-tab", () => {
+    const port = createSessionStoragePort();
+    assert.equal(port.getItem(GREETING), "hello");
+    let calls = 0;
+    const unsubscribe = port.subscribe(GREETING.key, () => calls++);
+    assert.doesNotThrow(() => port.setItem(GREETING, "hi"));
+    assert.equal(calls, 1);
+    assert.equal(port.getItem(GREETING), "hello");
+    assert.doesNotThrow(() => port.removeItem(GREETING));
+    assert.equal(calls, 2);
+    unsubscribe();
+  });
+
+  test("the session module functions fail soft in node and emit same-tab", () => {
+    assert.equal(getSessionStorageItem(GREETING), "hello");
+    let calls = 0;
+    const unsubscribe = subscribeSessionStorage(GREETING.key, () => calls++);
+    assert.doesNotThrow(() => setSessionStorageItem(GREETING, "hi"));
+    assert.equal(calls, 1);
+    assert.doesNotThrow(() => removeSessionStorageItem(GREETING));
+    assert.equal(calls, 2);
+    assert.doesNotThrow(() => notifySessionStorageChanged(GREETING.key));
+    assert.equal(calls, 3);
     unsubscribe();
   });
 });

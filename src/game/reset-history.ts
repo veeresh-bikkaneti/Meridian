@@ -54,6 +54,11 @@ import {
   PROFILE_STORAGE_KEY,
 } from "./age-profile/store.ts";
 import { clearAllSubjectProgress } from "./subject-progress-store-key.ts";
+import {
+  resolveLocal as resolveSlotLocal,
+  resolveSession as resolveSlotSession,
+  type GameStorageBackend,
+} from "./storage-slot.ts";
 
 export type ResetStorage = {
   getItem(key: string): string | null;
@@ -70,24 +75,27 @@ export type ResetHistoryResult = {
   failed: { store: string }[];
 };
 
-const RUN_KEY = "meridian.run";
-const RUN_MC2_KEY = "meridian.run.mc2";
-const RUN_MC3_KEY = "meridian.run.mc3";
-const DROP_KEY = "meridian.drop";
+/** Paused-run keys, pinned by the storage key registry. */
+export const RUN_KEY = "meridian.run";
+export const RUN_MC2_KEY = "meridian.run.mc2";
+export const RUN_MC3_KEY = "meridian.run.mc3";
+export const DROP_KEY = "meridian.drop";
 
 function resolveLocal(explicit?: ResetStorage): ResetStorage | undefined {
   if (explicit) return explicit;
   try {
-    return localStorage;
+    return resolveSlotLocal();
   } catch {
     return undefined;
   }
 }
 
-function resolveSession(explicit?: ResetStorage): ResetStorage | undefined {
+function resolveSession(
+  explicit?: ResetStorage,
+): GameStorageBackend | undefined {
   if (explicit) return explicit;
   try {
-    return sessionStorage;
+    return resolveSlotSession();
   } catch {
     return undefined;
   }
@@ -100,7 +108,7 @@ function resolveSession(explicit?: ResetStorage): ResetStorage | undefined {
  * more honestly than a failed report, so a blocked removal fails the
  * step and the player can retry.
  */
-function clearPausedRun(session: ResetStorage | undefined): boolean {
+function clearPausedRun(session: GameStorageBackend | undefined): boolean {
   if (!session) return true; // No storage = nothing was ever persisted.
   let ok = true;
   for (const key of [RUN_KEY, RUN_MC2_KEY, RUN_MC3_KEY, DROP_KEY]) {
@@ -120,16 +128,18 @@ export function resetHistory(
 ): ResetHistoryResult {
   const local = resolveLocal(storage);
   const session = resolveSession(sessionStorageArg);
-  // Each step: the store's name, its owner module's clear, and
-  // the storage that clear takes (injected only — U-R6).
-  const steps: [string, (s: ResetStorage | undefined) => boolean, ResetStorage | undefined][] = [
-    ["review-deck", clearReviewDeck, local],
-    ["learning", clearLearningStore, local],
-    ["trail", clearTrailHistory, local],
-    ["geodetective", clearLoopStore, local],
-    ["coldtrail", clearColdtrailStore, local],
-    ["challenge-attempts", clearChallengeAttempts, local],
-    ["session", clearSession, session],
+  // Each step: the store's name and a thunk calling its owner
+  // module's clear with the injected storage (U-R6). Thunks keep
+  // the local (enumerable) and session (three-method) shapes
+  // apart — no step's storage is ever widened to fit the other.
+  const steps: [string, () => boolean][] = [
+    ["review-deck", () => clearReviewDeck(local)],
+    ["learning", () => clearLearningStore(local)],
+    ["trail", () => clearTrailHistory(local)],
+    ["geodetective", () => clearLoopStore(local)],
+    ["coldtrail", () => clearColdtrailStore(local)],
+    ["challenge-attempts", () => clearChallengeAttempts(local)],
+    ["session", () => clearSession(session)],
     // Fix round 2: a Start-over reset with no stored session used to
     // leave a preserved shadow behind (clearSession's hadStoredSession
     // gate, correctly, does not touch it) — and that shadow would fire
@@ -138,25 +148,25 @@ export function resetHistory(
     // (never the globals — U-R6); the global clearDiscardedShadow()
     // cannot serve reset, and a raw-key removal here would violate
     // this module's documented no-raw-key rule (paused-run keys only).
-    ["discarded-shadow", clearDiscardedShadowFrom, local],
-    ["paused-run", clearPausedRun, session],
+    ["discarded-shadow", () => clearDiscardedShadowFrom(local)],
+    ["paused-run", () => clearPausedRun(session)],
     // Amendment (2026-11-15, see the header note): the age-band
     // profile is part of the full clean-out, cleared through its
     // owner module's reset clear (injected local storage only —
     // U-R6). Its change event is what drops the picker back to
     // the first-run band pills in place.
-    ["age-profile", clearAgeProfileForReset, local],
+    ["age-profile", () => clearAgeProfileForReset(local)],
     // Per-subject progress (the Why Learn picker's solved-unit
     // records) joins the wipe through its owner module's
     // clear-all, in this composition's injected-storage pattern.
-    ["subject-progress", clearAllSubjectProgress, local],
+    ["subject-progress", () => clearAllSubjectProgress(local)],
   ];
   const cleared: string[] = [];
   const failed: { store: string }[] = [];
-  for (const [store, clear, storage] of steps) {
+  for (const [store, clear] of steps) {
     let ok = false;
     try {
-      ok = clear(storage);
+      ok = clear();
     } catch {
       ok = false; // A clear that throws is a failed store, never a crash.
     }

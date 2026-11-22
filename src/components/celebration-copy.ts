@@ -1,3 +1,6 @@
+import { getStorageItem, setStorageItem } from "../platform/storage/browser-storage.ts";
+import { STORAGE_KEYS } from "../platform/storage/keys.ts";
+
 import type { CharacterName } from "./characters";
 
 /**
@@ -226,15 +229,7 @@ export function celebrationSeamSpec(search: string): CelebrationSpec | null {
   return variant ? celebrationSpec(variant, SEAM_MOMENTS[variant]) : null;
 }
 
-const FIRST_WIN_KEY = "meridian.firstWinCelebrated";
-
-function celebrationStorage(): Storage | null {
-  try {
-    return typeof localStorage === "undefined" ? null : localStorage;
-  } catch {
-    return null;
-  }
-}
+export const FIRST_WIN_KEY = "meridian.firstWinCelebrated";
 
 /**
  * First-ever win, once per lifetime across every edition. A dedicated flag
@@ -242,17 +237,11 @@ function celebrationStorage(): Storage | null {
  * loop store only counts GeoDetective.
  */
 export function hasCelebratedFirstWin(): boolean {
-  try {
-    return celebrationStorage()?.getItem(FIRST_WIN_KEY) === "1";
-  } catch {
-    return false;
-  }
+  return getStorageItem(STORAGE_KEYS.firstWinCelebrated) === "1";
 }
 
 export function markFirstWinCelebrated(): void {
-  try {
-    celebrationStorage()?.setItem(FIRST_WIN_KEY, "1");
-  } catch {
-    // Storage blocked — the overlay simply may fire again next win.
-  }
+  // Storage blocked — the port drops the write silently, and the
+  // overlay simply may fire again next win.
+  setStorageItem(STORAGE_KEYS.firstWinCelebrated, "1");
 }

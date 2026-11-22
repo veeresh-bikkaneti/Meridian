@@ -4,15 +4,19 @@ import { STARTING_STARS } from "./engine.ts";
 import {
   clearColdtrailStore,
   COLDTRAIL_OPEN_KEY,
+  COLDTRAIL_PACK_STORAGE_KEY,
   COLDTRAIL_STORAGE_KEY,
   freshProgress,
+  LEGACY_STORAGE_KEY,
   loadColdtrail,
+  PACK_SHELF_SELECTION_KEY,
   readColdTrailOpen,
   saveColdtrail,
   takeLegacyMigrationNotice,
   writeColdTrailOpen,
 } from "./store.ts";
 import type { ColdTrailProgress, ColdTrailStore } from "./types.ts";
+import { setLocalBackend } from "../storage-slot.ts";
 
 // localStorage is undefined under node:test; stub it per-test.
 interface FakeStorage {
@@ -37,10 +41,25 @@ function stubStorage(initial: Record<string, string> = {}, throwing = false) {
   };
   const prev = (globalThis as Record<string, unknown>).localStorage;
   (globalThis as Record<string, unknown>).localStorage = fake;
+  setLocalBackend({
+    getItem: (k: string) => (k in data ? data[k]! : null),
+    setItem: (k: string, v: string) => {
+      if (throwing) throw new Error("quota exceeded");
+      data[k] = v;
+    },
+    removeItem: (k: string) => {
+      delete data[k];
+    },
+    get length(): number {
+      return Object.keys(data).length;
+    },
+    key: (index: number): string | null => Object.keys(data)[index] ?? null,
+  });
   return {
     data,
     restore: () => {
       (globalThis as Record<string, unknown>).localStorage = prev;
+      setLocalBackend(undefined);
     },
   };
 }
@@ -203,8 +222,8 @@ test("saveColdtrail swallows storage failures (game continues in memory)", () =>
   }
 });
 
-test("loadColdtrail is a no-op returning fresh when localStorage is absent", () => {
-  assert.equal(typeof localStorage, "undefined");
+test("loadColdtrail is a no-op returning fresh when no storage is registered", () => {
+  setLocalBackend(undefined);
   const s = loadColdtrail();
   assert.equal(s.stars, STARTING_STARS);
   assert.doesNotThrow(() => saveColdtrail(s));
@@ -377,15 +396,10 @@ test("cold trail open flag fails silent when storage throws", () => {
   }
 });
 
-test("cold trail open flag is a no-op without localStorage", () => {
-  const prev = (globalThis as Record<string, unknown>).localStorage;
-  delete (globalThis as Record<string, unknown>).localStorage;
-  try {
-    writeColdTrailOpen(true); // must not throw
-    assert.equal(readColdTrailOpen(), false);
-  } finally {
-    (globalThis as Record<string, unknown>).localStorage = prev;
-  }
+test("cold trail open flag is a no-op without storage", () => {
+  setLocalBackend(undefined);
+  writeColdTrailOpen(true); // must not throw
+  assert.equal(readColdTrailOpen(), false);
 });
 
 test("clearColdtrailStore removes v1 before v2, plus the open flag; load is fresh", () => {
@@ -492,5 +506,56 @@ test("clearColdtrailStore removes the pack store too", () => {
     assert.equal(loadColdtrail(PACK_KEY).solved, 0);
   } finally {
     restore();
+  }
+});
+
+// R2: clearColdtrailStore pins the exact remove→verify sequence —
+// legacy v1 FIRST (so no later load can migrate it back), then the
+// v2 store, the pack store, the shelf selection, and the open flag.
+test("R2: clearColdtrailStore pins the exact remove→verify sequence (v1 first)", () => {
+  const map = new Map<string, string>([
+    [LEGACY_STORAGE_KEY, JSON.stringify({ v: 1, caseIndex: 2, stars: 9, solved: 3 })],
+    [COLDTRAIL_STORAGE_KEY, JSON.stringify(baseStore())],
+    [COLDTRAIL_PACK_STORAGE_KEY, JSON.stringify(baseStore())],
+    [PACK_SHELF_SELECTION_KEY, JSON.stringify({ v: 1, decks: { coldtrail: "capitals" } })],
+    [COLDTRAIL_OPEN_KEY, "1"],
+  ]);
+  const log: string[] = [];
+  setLocalBackend({
+    getItem: (k: string) => {
+      log.push(`get:${k}`);
+      return map.has(k) ? map.get(k)! : null;
+    },
+    setItem: (k: string, v: string) => {
+      log.push(`set:${k}`);
+      map.set(k, v);
+    },
+    removeItem: (k: string) => {
+      log.push(`remove:${k}`);
+      map.delete(k);
+    },
+    get length(): number {
+      return map.size;
+    },
+    key: (index: number): string | null => [...map.keys()][index] ?? null,
+  });
+  try {
+    assert.equal(clearColdtrailStore(), true);
+    assert.deepEqual(log, [
+      `remove:${LEGACY_STORAGE_KEY}`,
+      `remove:${COLDTRAIL_STORAGE_KEY}`,
+      `remove:${COLDTRAIL_PACK_STORAGE_KEY}`,
+      `remove:${PACK_SHELF_SELECTION_KEY}`,
+      `remove:${COLDTRAIL_OPEN_KEY}`,
+      `get:${LEGACY_STORAGE_KEY}`,
+      `get:${COLDTRAIL_STORAGE_KEY}`,
+      `get:${COLDTRAIL_PACK_STORAGE_KEY}`,
+      `get:${PACK_SHELF_SELECTION_KEY}`,
+      `get:${COLDTRAIL_OPEN_KEY}`,
+    ]);
+    assert.equal(loadColdtrail().caseIndex, 0);
+    assert.equal(readColdTrailOpen(), false);
+  } finally {
+    setLocalBackend(undefined);
   }
 });

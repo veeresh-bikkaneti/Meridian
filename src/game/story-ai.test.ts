@@ -26,6 +26,7 @@ import {
   type PromptSession,
   type StoryPlace,
 } from "./story-ai.ts";
+import { setLocalBackend } from "./storage-slot.ts";
 
 // ---------------------------------------------------------------------------
 // Prompt construction
@@ -322,7 +323,7 @@ test("queryAiStory aborts a hung prompt on place change", async () => {
 
 function installMemoryStorage(): Map<string, string> {
   const map = new Map<string, string>();
-  (globalThis as Record<string, unknown>).localStorage = {
+  setLocalBackend({
     getItem: (k: string) => (map.has(k) ? map.get(k)! : null),
     setItem: (k: string, v: string) => {
       map.set(k, String(v));
@@ -330,13 +331,16 @@ function installMemoryStorage(): Map<string, string> {
     removeItem: (k: string) => {
       map.delete(k);
     },
-    clear: () => map.clear(),
-  };
+    get length(): number {
+      return map.size;
+    },
+    key: (index: number): string | null => [...map.keys()][index] ?? null,
+  });
   return map;
 }
 
 function uninstallMemoryStorage(): void {
-  delete (globalThis as Record<string, unknown>).localStorage;
+  setLocalBackend(undefined);
 }
 
 test("storyCacheKey namespaces by GeoNames id, falling back to the raw id", () => {

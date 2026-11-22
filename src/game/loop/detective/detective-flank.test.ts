@@ -20,6 +20,11 @@ import {
   type DetectiveManifest,
 } from "./detective-audio.ts";
 import {
+  setVoiceFactory,
+  stopAllVoices,
+} from "../../audio/voice-channel.ts";
+import { createVoice } from "../../../platform/audio/browser-voice.ts";
+import {
   FLANK_CARD_GAP_PX,
   FLANK_PAGE_PAD_PX,
   FLANK_ROW_CARD_MARGIN_LEFT_PX,
@@ -162,6 +167,9 @@ function stubBrowserAudio(playedUrls: string[]): () => void {
     },
   };
   g.Audio = FakeAudio;
+  // The default player sounds through the registered voice factory;
+  // the factory's element is this stub (the port's default).
+  setVoiceFactory(createVoice);
   return () => {
     listeners.get("pointerdown")?.();
   };
@@ -171,6 +179,8 @@ function unplugBrowserAudio(): void {
   const g = globalThis as Record<string, unknown>;
   delete g.window;
   delete g.Audio;
+  setVoiceFactory(undefined);
+  stopAllVoices();
 }
 
 describe("Listen first-tap cure (STAGE step 6)", () => {

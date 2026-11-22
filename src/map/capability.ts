@@ -32,6 +32,13 @@
  * guarded for SSR / no-window environments and never throw.
  */
 
+import {
+  getStorageItem,
+  removeStorageItem,
+  setStorageItem,
+} from "../platform/storage/browser-storage.ts";
+import { STORAGE_KEYS } from "../platform/storage/keys.ts";
+
 export type MapMode = "full" | "scout";
 
 /** Single map-attributed storage key — never shared with other features. */
@@ -175,33 +182,43 @@ export function qualifyMapMode(signals: CapabilitySignals = {}): MapModeDecision
  * person's own answer) never decay.
  * Returns null when nothing valid is stored. Never throws.
  */
+/** Parse one stored JSON text, or null when absent/unparseable — the raw reader's half of the port's decode. */
+function readJsonValue(raw: string | null): unknown {
+  if (!raw) return null;
+  try {
+    return JSON.parse(raw) as unknown;
+  } catch {
+    return null;
+  }
+}
+
 export function readStoredMapMode(
   storage?: Pick<Storage, "getItem"> | null,
   now: number = Date.now(),
 ): StoredMapMode | null {
   try {
-    const store = storage ?? defaultLocalStorage();
-    if (!store) return null;
-    const raw = store.getItem(MAP_MODE_STORAGE_KEY);
-    if (!raw) return null;
-    const parsed = JSON.parse(raw) as Partial<StoredMapMode>;
-    if (parsed.mode !== "full" && parsed.mode !== "scout") return null;
-    if (typeof parsed.setAt !== "number" || !Number.isFinite(parsed.setAt)) return null;
+    const parsed: unknown = storage
+      ? readJsonValue(storage.getItem(MAP_MODE_STORAGE_KEY))
+      : getStorageItem(STORAGE_KEYS.mapMode);
+    if (!parsed || typeof parsed !== "object") return null;
+    const record = parsed as Partial<StoredMapMode>;
+    if (record.mode !== "full" && record.mode !== "scout") return null;
+    if (typeof record.setAt !== "number" || !Number.isFinite(record.setAt)) return null;
     const source: MapModeSource =
-      parsed.source === "manual"
+      record.source === "manual"
         ? "manual"
-        : parsed.source === "prior-crash" ||
-            parsed.source === "probe" ||
-            parsed.source === "low-memory" ||
-            parsed.source === "unknown-memory" ||
-            parsed.source === "contextlost"
-          ? parsed.source
+        : record.source === "prior-crash" ||
+            record.source === "probe" ||
+            record.source === "low-memory" ||
+            record.source === "unknown-memory" ||
+            record.source === "contextlost"
+          ? record.source
           : "default";
-    const accepted = parsed.accepted === true;
-    if (source !== "manual" && !accepted && now - parsed.setAt > MAP_MODE_DECAY_MS) return null;
+    const accepted = record.accepted === true;
+    if (source !== "manual" && !accepted && now - record.setAt > MAP_MODE_DECAY_MS) return null;
     return accepted
-      ? { mode: parsed.mode, source, setAt: parsed.setAt, accepted: true }
-      : { mode: parsed.mode, source, setAt: parsed.setAt };
+      ? { mode: record.mode, source, setAt: record.setAt, accepted: true }
+      : { mode: record.mode, source, setAt: record.setAt };
   } catch {
     return null;
   }
@@ -226,12 +243,12 @@ export function writeStoredMapMode(
   now: number = Date.now(),
 ): void {
   try {
-    const store = storage ?? defaultLocalStorage();
-    if (!store) return;
-    store.setItem(
-      MAP_MODE_STORAGE_KEY,
-      JSON.stringify({ mode, source, setAt: now } satisfies StoredMapMode),
-    );
+    const record = { mode, source, setAt: now } satisfies StoredMapMode;
+    if (storage) {
+      storage.setItem(MAP_MODE_STORAGE_KEY, JSON.stringify(record));
+    } else {
+      setStorageItem(STORAGE_KEYS.mapMode, record);
+    }
   } catch {
     // Storage blocked/full — the session still qualifies correctly in memory.
   }
@@ -240,19 +257,13 @@ export function writeStoredMapMode(
 /** Clear the stored assignment (used by the settings toggle reset). */
 export function clearStoredMapMode(storage?: Pick<Storage, "removeItem"> | null): void {
   try {
-    const store = storage ?? defaultLocalStorage();
-    if (!store) return;
-    store.removeItem(MAP_MODE_STORAGE_KEY);
+    if (storage) {
+      storage.removeItem(MAP_MODE_STORAGE_KEY);
+    } else {
+      removeStorageItem(STORAGE_KEYS.mapMode);
+    }
   } catch {
     // best-effort
-  }
-}
-
-function defaultLocalStorage(): Storage | null {
-  try {
-    return typeof localStorage !== "undefined" ? localStorage : null;
-  } catch {
-    return null;
   }
 }
 
@@ -357,9 +368,11 @@ export function writeDurableMapCrashMarker(
   now: number = Date.now(),
 ): void {
   try {
-    const store = storage ?? defaultLocalStorage();
-    if (!store) return;
-    store.setItem(MAP_CRASH_MARKER_KEY, JSON.stringify({ at: now }));
+    if (storage) {
+      storage.setItem(MAP_CRASH_MARKER_KEY, JSON.stringify({ at: now }));
+    } else {
+      setStorageItem(STORAGE_KEYS.mapCrashMarker, { at: now });
+    }
   } catch {
     // Storage blocked/full — the session signal still works for this tab.
   }
@@ -375,13 +388,13 @@ export function hasDurableMapCrashMarker(
   now: number = Date.now(),
 ): boolean {
   try {
-    const store = storage ?? defaultLocalStorage();
-    if (!store) return false;
-    const raw = store.getItem(MAP_CRASH_MARKER_KEY);
-    if (!raw) return false;
-    const parsed = JSON.parse(raw) as { at?: unknown };
-    if (typeof parsed.at !== "number" || !Number.isFinite(parsed.at)) return false;
-    return now - parsed.at <= MAP_MODE_DECAY_MS;
+    const parsed: unknown = storage
+      ? readJsonValue(storage.getItem(MAP_CRASH_MARKER_KEY))
+      : getStorageItem(STORAGE_KEYS.mapCrashMarker);
+    if (!parsed || typeof parsed !== "object") return false;
+    const at = (parsed as { at?: unknown }).at;
+    if (typeof at !== "number" || !Number.isFinite(at)) return false;
+    return now - at <= MAP_MODE_DECAY_MS;
   } catch {
     return false;
   }

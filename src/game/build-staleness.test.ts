@@ -37,7 +37,8 @@ test("isNewBuildDeployed: false on non-OK response or missing buildId", async ()
 
 // F6: the stale-refresh mark is a timestamp, honoured only inside
 // its freshness window; the legacy "1" parses as epoch (probe runs).
-import { staleRefreshRecentlyUsed, STALE_REFRESH_MAX_AGE_MS } from "./build-staleness.ts";
+import { STALE_REFRESH_KEY, staleRefreshRecentlyUsed, STALE_REFRESH_MAX_AGE_MS } from "./build-staleness.ts";
+import { setSessionBackend } from "./storage-slot.ts";
 
 const NOW = 1_800_000_000_000;
 const storeOf = (v: string | null, throwing = false) => ({
@@ -51,6 +52,28 @@ test("staleRefreshRecentlyUsed: a fresh timestamp skips the probe; the window ed
   assert.equal(staleRefreshRecentlyUsed(storeOf(String(NOW - 1_000)), NOW), true);
   assert.equal(staleRefreshRecentlyUsed(storeOf(String(NOW - STALE_REFRESH_MAX_AGE_MS)), NOW), true);
   assert.equal(staleRefreshRecentlyUsed(storeOf(String(NOW - STALE_REFRESH_MAX_AGE_MS - 1)), NOW), false);
+});
+
+test("staleRefreshRecentlyUsed: no-arg reads the session slot; unregistered runs the probe", () => {
+  const raw = new Map<string, string>();
+  setSessionBackend({
+    getItem: (k: string) => (raw.has(k) ? raw.get(k)! : null),
+    setItem: (k: string, v: string) => {
+      raw.set(k, v);
+    },
+    removeItem: (k: string) => {
+      raw.delete(k);
+    },
+  });
+  try {
+    raw.set(STALE_REFRESH_KEY, String(NOW - 1_000));
+    assert.equal(staleRefreshRecentlyUsed(undefined, NOW), true);
+    raw.delete(STALE_REFRESH_KEY);
+    assert.equal(staleRefreshRecentlyUsed(undefined, NOW), false);
+  } finally {
+    setSessionBackend(undefined);
+  }
+  assert.equal(staleRefreshRecentlyUsed(undefined, NOW), false);
 });
 
 test("staleRefreshRecentlyUsed: legacy '1', future, malformed, absent and blocked all run the probe", () => {

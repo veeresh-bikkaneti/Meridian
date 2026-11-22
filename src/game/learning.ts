@@ -26,6 +26,8 @@
  * try/catch wrapper; mastery/trend/engagement are pure derivations.
  */
 
+import { resolveLocal } from "./storage-slot.ts";
+
 /** One pin commit, recorded at the answer-event hook. */
 export type LearningAttempt = {
   /** Epoch ms of the commit. */
@@ -290,12 +292,7 @@ type StorageLike = {
 };
 
 function resolveStorage(explicit?: StorageLike): StorageLike | undefined {
-  if (explicit) return explicit;
-  try {
-    return typeof localStorage !== "undefined" ? localStorage : undefined;
-  } catch {
-    return undefined;
-  }
+  return explicit ?? resolveLocal();
 }
 
 function isFiniteNumber(v: unknown): v is number {

@@ -25,6 +25,8 @@
  * store that cannot persist simply behaves as session-only.
  */
 
+import { resolveLocal } from "./storage-slot.ts";
+
 export const CHALLENGE_ATTEMPTS_KEY = "meridian.challenge.attempts.v1";
 export const CHALLENGE_ATTEMPTS_CAP = 512;
 
@@ -35,12 +37,7 @@ type StorageLike = {
 };
 
 function resolveStorage(explicit?: StorageLike): StorageLike | undefined {
-  if (explicit) return explicit;
-  try {
-    return typeof localStorage !== "undefined" ? localStorage : undefined;
-  } catch {
-    return undefined;
-  }
+  return explicit ?? resolveLocal();
 }
 
 /** The canonical route tuple a completion count belongs to. */

@@ -1,5 +1,6 @@
 import { hashString } from "./daily.ts";
 import { asFameTier, type PickerDifficulty } from "./tier-filter.ts";
+import { resolveLocal } from "./storage-slot.ts";
 
 /**
  * Mint a per-session random seed. Crypto-backed when available; Math.random
@@ -129,7 +130,8 @@ const LEGACY_SEEN_KEY_PREFIX = "meridian:seen:v1:";
  * band's dealt places shrink another band's pool until it cycles a handful
  * of places ("repeat mode"). Each band now cycles independently.
  */
-function seenKey(edition: string, regionId: string, choice: PickerDifficulty): string {
+/** Band-scoped seen key builder, pinned by the storage key registry. */
+export function seenKey(edition: string, regionId: string, choice: PickerDifficulty): string {
   return `${SEEN_KEY_PREFIX}${edition}:${regionId}:${choice}`;
 }
 
@@ -139,7 +141,8 @@ function seenKey(edition: string, regionId: string, choice: PickerDifficulty): s
  * key by the lazy migration inside seenStoreFor, then pruned. Nothing else
  * reads it.
  */
-function unscopedSeenKey(edition: string, regionId: string): string {
+/** Pre-band unscoped seen key builder, pinned by the storage key registry. */
+export function unscopedSeenKey(edition: string, regionId: string): string {
   return `${SEEN_KEY_PREFIX}${edition}:${regionId}`;
 }
 
@@ -191,7 +194,7 @@ function safeStorage(): Pick<
   "getItem" | "setItem" | "removeItem" | "length" | "key"
 > | null {
   try {
-    return typeof localStorage === "undefined" ? null : localStorage;
+    return resolveLocal() ?? null;
   } catch {
     return null;
   }

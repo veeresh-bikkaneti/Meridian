@@ -32,6 +32,7 @@
 
 import type { Starter } from "./starters.ts";
 import type { Difficulty } from "./scoring.ts";
+import { resolveLocal } from "./storage-slot.ts";
 
 export const REVIEW_DECK_STORE_KEY = "meridian:review-deck:v1";
 export const REVIEW_DECK_SCHEMA_VERSION = 1;
@@ -288,12 +289,7 @@ type StorageLike = {
 };
 
 function resolveStorage(explicit?: StorageLike): StorageLike | undefined {
-  if (explicit) return explicit;
-  try {
-    return typeof localStorage !== "undefined" ? localStorage : undefined;
-  } catch {
-    return undefined;
-  }
+  return explicit ?? resolveLocal();
 }
 
 function isFiniteNumber(v: unknown): v is number {

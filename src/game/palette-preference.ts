@@ -24,13 +24,11 @@ import {
   selectPalette,
   type MapPalette,
 } from "./palette.ts";
+import { resolveLocal, type GameEnumerableStorageBackend } from "./storage-slot.ts";
 
-function storage(): Storage | null {
-  try {
-    return typeof localStorage === "undefined" ? null : localStorage;
-  } catch {
-    return null;
-  }
+/** The registered local backend, or undefined when the slot is unfilled (tests, SSR) — the callers' fail-closed path. */
+function storage(): GameEnumerableStorageBackend | undefined {
+  return resolveLocal();
 }
 
 /** The stored palette, fail-closed: anything but the exact token is STANDARD. */

@@ -26,10 +26,12 @@ import {
   type LoopUnlimitedStore,
 } from "./types.ts";
 
-/** Minimal in-memory localStorage stand-in (same shape as store.test.ts). */
+import { setLocalBackend } from "../storage-slot.ts";
+
+/** Minimal in-memory storage stand-in (same shape as store.test.ts). */
 function installStorage(initial: Record<string, string> = {}) {
   const data = new Map<string, string>(Object.entries(initial));
-  const fake = {
+  setLocalBackend({
     getItem: (key: string) => (data.has(key) ? data.get(key)! : null),
     setItem: (key: string, value: string) => {
       data.set(key, String(value));
@@ -37,8 +39,11 @@ function installStorage(initial: Record<string, string> = {}) {
     removeItem: (key: string) => {
       data.delete(key);
     },
-  };
-  (globalThis as unknown as { localStorage: unknown }).localStorage = fake;
+    get length(): number {
+      return data.size;
+    },
+    key: (index: number): string | null => [...data.keys()][index] ?? null,
+  });
   return data;
 }
 
