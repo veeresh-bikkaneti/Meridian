@@ -4,7 +4,7 @@ import { serveBuiltArtifact } from "./helpers";
 import {
   GLOBE_CONTRACT as C,
   LANDMARKS,
-} from "../../src/components/home-globe/globe-contract.ts";
+} from "../../src/lib/home-globe/globe-contract.ts";
 
 const APP_URL = "http://127.0.0.1:4123/Meridian/?idle-ms=3600000";
 

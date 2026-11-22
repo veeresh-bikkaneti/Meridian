@@ -7,7 +7,7 @@ import { READ_ALOUD_PREF_KEY } from "../../game/age-profile/read-aloud-pref.ts";
 import {
   GROWNUP_COOLDOWN_KEY,
   GROWNUP_STRIKES_KEY,
-} from "../../components/age-profile/cooldown.ts";
+} from "../../components/ui/cooldown.ts";
 import { SUBJECT_PROGRESS_KEY } from "../../game/subject-progress-store-key.ts";
 import {
   COLDTRAIL_OPEN_KEY,

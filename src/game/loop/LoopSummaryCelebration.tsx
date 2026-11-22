@@ -39,7 +39,7 @@ import {
   readConnectionSignals,
   resolveSummaryCelebrationMode,
 } from "@/game/loop/detective/detective-degradation";
-import { createCelebrationLinePlayer } from "@/components/summary-celebration-line";
+import { createCelebrationLinePlayer } from "@/components/ui/summary-celebration-line";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 import { isEnabled } from "@/lib/flags";
 import "@/game/loop/detective/detective.css";

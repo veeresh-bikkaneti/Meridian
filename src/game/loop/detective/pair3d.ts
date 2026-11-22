@@ -25,7 +25,7 @@
  *   mounts, so it never touches the initial bundle or node unit tests.
  */
 import { isEnabled } from "../../../lib/flags.ts";
-import { assetBase } from "../../../components/storyteller-lines.ts";
+import { assetBase } from "../../../lib/asset-base.ts";
 import {
   FACING_TURN_DEG,
   FRAME_3D,

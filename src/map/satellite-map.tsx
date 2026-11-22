@@ -2,8 +2,8 @@ import { useEffect, useReducer, useRef, useState, type JSX, type KeyboardEvent }
 import { Info } from "lucide-react";
 import { Map, Marker, type GeoJSONSource, type LngLat, type ProjectionSpecification } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
-import { DropPinButton } from "@/components/drop-pin-button.tsx";
-import { ZoomControls } from "@/components/zoom-controls.tsx";
+import { DropPinButton } from "@/components/ui/drop-pin-button.tsx";
+import { ZoomControls } from "@/components/ui/zoom-controls.tsx";
 import { disk } from "@/game/geo";
 import { isHit } from "@/game/radius";
 import { startGlobeSpin, stopGlobeSpin } from "@/game/audio/sfx";

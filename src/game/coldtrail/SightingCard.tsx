@@ -1,7 +1,7 @@
 import type { JSX, Ref } from "react";
 import { Button } from "@/components/ui/button";
-import { FlagImg } from "@/components/flag-img";
-import { BoundedText } from "@/components/bounded-text";
+import { FlagImg } from "@/components/ui/flag-img";
+import { BoundedText } from "@/components/ui/bounded-text";
 import { formatLength, type LengthUnit } from "@/game/units";
 import { effectiveRadius, INFORMANT_COST } from "./engine.ts";
 import type { ColdTrailTheme } from "./themes.ts";

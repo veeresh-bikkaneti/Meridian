@@ -26,7 +26,7 @@
  * The quiet register's name is "hushed" everywhere in this feature.
  */
 
-import type { HolmesPose, WatsonPose } from "./DetectivePair.tsx";
+import type { HolmesPose, WatsonPose } from "./detective-poses.ts";
 
 /* ------------------------------------------------------------------ */
 /* Vocabulary                                                          */

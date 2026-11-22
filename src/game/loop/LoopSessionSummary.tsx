@@ -1,6 +1,6 @@
 import { Suspense, lazy, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { deckLabelForId } from "@/components/pack-shelf-data";
+import { deckLabelForId } from "@/components/ui/pack-shelf-data";
 import { isEnabled } from "@/lib/flags";
 import type { LoopEndFate, LoopSessionSummary } from "./store.ts";
 

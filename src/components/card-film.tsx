@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from "react";
+import type { CardFilmMedia } from "@/lib/card-film-media";
+export type { CardFilmMedia } from "@/lib/card-film-media";
 import { usePrefersReducedMotion } from "../hooks/use-prefers-reduced-motion";
 import type { AgeBandId } from "@/game/age-profile";
 
@@ -84,11 +86,6 @@ import type { AgeBandId } from "@/game/age-profile";
  *   still) with no work here. The `.hv5-art` slots are
  *   full-bleed banners and carry no fade at all.
  */
-export type CardFilmMedia = {
-  videoUrl: string;
-  posterUrl: string;
-  stillUrl: string;
-};
 
 function staticGateAtMount(): boolean {
   if (typeof navigator === "undefined") return false;

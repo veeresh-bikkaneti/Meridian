@@ -1,4 +1,4 @@
-import type { CardFilmMedia } from "@/components/card-film";
+import type { CardFilmMedia } from "@/lib/card-film-media";
 import mathVideoUrl from "./math-film.mp4";
 import mathPosterUrl from "./math-poster.webp";
 import mathStillUrl from "./math-still.webp";
