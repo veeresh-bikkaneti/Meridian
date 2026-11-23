@@ -1,202 +1,450 @@
 /**
  * /kanban — the build board view (Option A mockup, ported): the
- * shared shell, the three baseline gauges, the lane segment with
- * counts, a free-to-claim toggle, and the five columns of handover
- * work items.
+ * board content only — the route wraps it in the shared PageShell
+ * (round 2), so this file renders no header, footer, column or
+ * main landmark of its own. Inside: the three baseline gauges,
+ * the lane segment with story and subtask counts, the
+ * free-to-claim and Calm toggles, and the five columns of STORY
+ * cards. A story expands into its subtasks; subtasks never
+ * render as top-level cards.
  *
- * The bundled snapshot (kanban.json, via loadSnapshot) renders
- * first, labelled with its as-of stamp. On mount the live overlay
- * (kanban-live) checks GitHub; when the check completes, its
- * states go through applyOverlay, the cards swap state, any card
- * whose column changed FLIP-animates to its new home (the mock's
- * 650 ms move), and the stamp turns into a live label. When the
- * check cannot complete — offline, rate limited — the snapshot
- * simply stays, under its snapshot stamp: the board never claims
- * to be live when it is not.
+ * Data flow, three stages, each labelled by the stamp:
+ *  1. The bundled snapshot (kanban.json, via loadSnapshot)
+ *     renders first — "snapshot from <asOf>".
+ *  2. On mount the per-deploy public snapshot
+ *     (loadPublicSnapshot: build-board.json, refreshed every
+ *     deploy) swaps in when it validates — "snapshot · built
+ *     <builtAt>". Any failure keeps the bundled copy.
+ *  3. The live overlay (loadKanbanLive) applies on top of
+ *     whichever snapshot is showing: applyOverlay moves
+ *     subtasks, story columns are recomputed with storyRollup
+ *     (the stored rollup is never trusted), stories whose
+ *     column changed FLIP to their new home within the motion
+ *     budget, and the stamp turns live — "live · checked
+ *     <time>". A failed check keeps the last good state under
+ *     its snapshot label: the board never claims to be live
+ *     when it is not.
  */
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
-import { PageColumn } from "@/components/ui/page-column";
-import { SiteFooter } from "@/components/ui/site-footer";
-import { SiteHeader } from "@/components/ui/site-header";
 import {
   applyOverlay,
-  COLUMNS,
   freeToClaim,
-  laneCounts,
   loadSnapshot,
-  type Card,
+  storyRollup,
+  type Column,
   type Lane,
   type Snapshot,
+  type Story,
+  type Subtask,
 } from "./kanban-data";
-import { loadKanbanLive } from "./kanban-live";
+import { loadKanbanLive, loadPublicSnapshot } from "./kanban-live";
 import { Gauges } from "./gauges";
+import { beginMotion, endMotion, motionSettled } from "./motion-budget";
 import snapshotJson from "./kanban.json";
 import "./kanban.css";
 
-const SNAPSHOT: Snapshot = loadSnapshot(snapshotJson);
+const BUNDLED: Snapshot = loadSnapshot(snapshotJson);
 
-const LANE_FILTERS: { key: Lane | "all"; label: string }[] = [
-  { key: "all", label: "All" },
-  { key: "tech-debt", label: "Tech debt" },
-  { key: "architecture", label: "Architecture" },
-  { key: "product", label: "Product" },
-];
+type Stamp =
+  | { kind: "bundled" }
+  | { kind: "public"; builtAt?: string; asOf: string }
+  | { kind: "live"; at: number };
 
-function KanbanCard({ card }: { card: Card }) {
+function stampText(stamp: Stamp, bundledAsOf: string): string {
+  switch (stamp.kind) {
+    case "bundled":
+      return `snapshot from ${bundledAsOf}`;
+    case "public": {
+      if (!stamp.builtAt) return `snapshot · built ${stamp.asOf}`;
+      const built = new Date(stamp.builtAt);
+      return Number.isNaN(built.getTime())
+        ? `snapshot · built ${stamp.builtAt}`
+        : `snapshot · built ${built.toLocaleString("en-US", {
+            month: "short",
+            day: "numeric",
+            hour: "numeric",
+            minute: "2-digit",
+          })}`;
+    }
+    case "live":
+      return `live · checked ${new Date(stamp.at).toLocaleTimeString("en-US", {
+        hour: "numeric",
+        minute: "2-digit",
+      })}`;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Subtask rows (rendered only inside an expanded story)               */
+/* ------------------------------------------------------------------ */
+
+function SubtaskRow({ sub, free }: { sub: Subtask; free: boolean }) {
   return (
-    <article className="kb-card" data-lane={card.lane} data-card-id={card.id}>
-      <div className="kb-card-lane">
-        {card.owner}
-        {card.prompt ? <span className="kb-card-prompt">Prompt {card.prompt}</span> : null}
+    <li className={`kb-sub${free ? " kb-sub-free" : ""}`}>
+      <div className="kb-sub-head">
+        <span className="kb-sub-title">{sub.title}</span>
+        <span className="kb-chip kb-chip-col" data-col={sub.col}>
+          {sub.col}
+        </span>
+        {free ? <span className="kb-chip kb-chip-free">free</span> : null}
       </div>
-      <div className="kb-card-title">{card.title}</div>
-      {card.evidence ? <div className="kb-card-evidence">{card.evidence}</div> : null}
-      {card.col === "Blocked" && card.blockedBy ? (
-        <div className="kb-card-blocked">Blocked: {card.blockedBy}</div>
-      ) : null}
-      {card.note ? <div className="kb-card-note">{card.note}</div> : null}
-      {card.links.length > 0 ? (
+      <div className="kb-sub-meta">
+        <span className="kb-sub-owner">{sub.owner}</span>
+        {sub.prompt ? <span className="kb-chip">Prompt {sub.prompt}</span> : null}
+        {sub.gate ? <span className="kb-chip kb-chip-gate">Gate: {sub.gate}</span> : null}
+        {sub.blockedBy ? (
+          <span className="kb-chip kb-chip-blocked">Blocked: {sub.blockedBy}</span>
+        ) : null}
+        {sub.note ? <span className="kb-chip kb-chip-note">{sub.note}</span> : null}
+        {sub.ownsStatus === "unknown" ? (
+          <span className="kb-chip kb-chip-unknown">
+            files not mapped, check before you start
+          </span>
+        ) : null}
+      </div>
+      {sub.prs.length > 0 || sub.issues.length > 0 || sub.branches.length > 0 ? (
         <div className="kb-card-links">
-          {card.links.map((link) => (
-            <a key={link.href} href={link.href}>
-              {link.label}
+          {sub.prs.map((pr) => (
+            <a key={`pr-${pr.number}`} href={pr.href}>
+              {pr.role === "closes" ? `finishes #${pr.number}` : `context #${pr.number}`}
             </a>
           ))}
+          {sub.issues.map((issue) => (
+            <a key={`issue-${issue.number}`} href={issue.href}>
+              {`issue #${issue.number}`}
+            </a>
+          ))}
+          {sub.branches.map((branch) =>
+            branch.href ? (
+              <a key={`branch-${branch.name}`} href={branch.href}>
+                {branch.role === "work"
+                  ? `branch ${branch.name}`
+                  : `context branch ${branch.name}`}
+              </a>
+            ) : (
+              <span key={`branch-${branch.name}`} className="kb-link-chip">
+                {branch.role === "work"
+                  ? `branch ${branch.name}`
+                  : `context branch ${branch.name}`}
+              </span>
+            ),
+          )}
         </div>
+      ) : null}
+      {sub.evidence ? <div className="kb-sub-evidence">{sub.evidence}</div> : null}
+      {sub.owns.length > 0 ? (
+        <details className="kb-sub-owns">
+          <summary>Files it touches ({sub.owns.length})</summary>
+          <ul>
+            {sub.owns.map((path) => (
+              <li key={path}>
+                <code>{path}</code>
+              </li>
+            ))}
+          </ul>
+          {sub.ownsNote ? <p className="kb-sub-owns-note">{sub.ownsNote}</p> : null}
+        </details>
+      ) : sub.ownsNote ? (
+        <p className="kb-sub-owns-note">{sub.ownsNote}</p>
+      ) : sub.ownsStatus === "none" ? (
+        <p className="kb-sub-owns-note">No files change.</p>
+      ) : null}
+    </li>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Story cards (the only top-level cards)                              */
+/* ------------------------------------------------------------------ */
+
+function StoryCard({
+  story,
+  laneLabel,
+  rollup,
+  subtasks,
+  open,
+  onToggle,
+  freeIds,
+}: {
+  story: Story;
+  laneLabel: string;
+  rollup: { col: Column; done: number; total: number };
+  subtasks: Subtask[];
+  open: boolean;
+  onToggle: () => void;
+  freeIds: ReadonlySet<string>;
+}) {
+  const listId = `kb-subs-${story.id}`;
+  return (
+    <article className="kb-card kb-story" data-lane={story.lane} data-story-id={story.id}>
+      <div className="kb-story-top">
+        <div className="kb-story-main">
+          <div className="kb-card-lane">{laneLabel}</div>
+          <div className="kb-card-title">{story.title}</div>
+          {story.why ? <div className="kb-story-why">{story.why}</div> : null}
+          {story.phase || story.prompts.length > 0 ? (
+            <div className="kb-story-meta">
+              {story.phase ? `Phase ${story.phase}` : null}
+              {story.phase && story.prompts.length > 0 ? " · " : null}
+              {story.prompts.length > 0 ? `Prompts ${story.prompts.join(", ")}` : null}
+            </div>
+          ) : null}
+          <div className="kb-story-progress">
+            <span>
+              {rollup.done}/{rollup.total} done
+            </span>
+            <span className="kb-bar" aria-hidden="true">
+              <span
+                className="kb-bar-fill"
+                style={{
+                  width: `${rollup.total > 0 ? (rollup.done / rollup.total) * 100 : 0}%`,
+                }}
+              />
+            </span>
+          </div>
+        </div>
+        <button
+          type="button"
+          className="kb-expand"
+          aria-expanded={open}
+          aria-controls={listId}
+          aria-label={`${open ? "Hide" : "Show"} subtasks for ${story.title}`}
+          onClick={onToggle}
+        >
+          <span className={`kb-chevron${open ? " kb-chevron-open" : ""}`} aria-hidden="true">
+            ▾
+          </span>
+        </button>
+      </div>
+      {open ? (
+        <ul className="kb-subs" id={listId}>
+          {subtasks.map((sub) => (
+            <SubtaskRow key={sub.id} sub={sub} free={freeIds.has(sub.id)} />
+          ))}
+        </ul>
       ) : null}
     </article>
   );
 }
 
+/* ------------------------------------------------------------------ */
+/* The view                                                            */
+/* ------------------------------------------------------------------ */
+
 export function KanbanView() {
-  const [cards, setCards] = useState<Card[]>(SNAPSHOT.cards);
-  const [liveAt, setLiveAt] = useState<number | null>(null);
+  const [snapshot, setSnapshot] = useState<Snapshot>(BUNDLED);
+  const [subtasks, setSubtasks] = useState<Subtask[]>(BUNDLED.subtasks);
+  const [stamp, setStamp] = useState<Stamp>({ kind: "bundled" });
   const [lane, setLane] = useState<Lane | "all">("all");
   const [claimOnly, setClaimOnly] = useState(false);
+  const [calm, setCalm] = useState(false);
+  const [expanded, setExpanded] = useState<ReadonlySet<string>>(new Set());
   const boardRef = useRef<HTMLDivElement>(null);
-  /* Card positions captured just before the overlay swap, consumed
-   * by the layout effect below to FLIP the moved cards. */
+  /* Story positions captured just before the overlay swap,
+   * consumed by the layout effect below to FLIP the moved ones. */
   const firstRects = useRef<Map<string, DOMRect> | null>(null);
+  /* Each story's column as last rendered, so the FLIP pass can
+   * tell a real column change from a same-column re-render. */
+  const prevCols = useRef<Map<string, Column>>(new Map());
+  const calmRef = useRef(calm);
+  calmRef.current = calm;
 
-  /* The live overlay: one check per mount (loadKanbanLive shares
-   * it across mounts). Success swaps in applyOverlay's cards and
-   * the live stamp; null keeps the snapshot and its stamp. */
+  /* Stages 2 and 3 of the data flow (see the header note): the
+   * per-deploy public snapshot first, then the live overlay on
+   * top of whichever snapshot won. Each failure keeps the last
+   * good state and its label. */
   useEffect(() => {
     let active = true;
-    void loadKanbanLive().then((live) => {
+    void (async () => {
+      let base = BUNDLED;
+      const pub = await loadPublicSnapshot();
+      if (!active) return;
+      if (pub) {
+        base = pub;
+        setSnapshot(pub);
+        setSubtasks(pub.subtasks);
+        setStamp({ kind: "public", builtAt: pub.builtAt, asOf: pub.asOf });
+      }
+      const live = await loadKanbanLive();
       if (!active || !live) return;
       const rects = new Map<string, DOMRect>();
       boardRef.current
-        ?.querySelectorAll<HTMLElement>("[data-card-id]")
-        .forEach((el) => rects.set(el.dataset.cardId as string, el.getBoundingClientRect()));
+        ?.querySelectorAll<HTMLElement>("[data-story-id]")
+        .forEach((el) => rects.set(el.dataset.storyId as string, el.getBoundingClientRect()));
       firstRects.current = rects;
-      setCards((prev) => applyOverlay(prev, live.pulls, live.branches));
-      setLiveAt(live.fetchedAt);
-    });
+      setSubtasks(applyOverlay(base.subtasks, live.pulls, live.branches));
+      setStamp({ kind: "live", at: live.fetchedAt });
+    })();
     return () => {
       active = false;
     };
   }, []);
 
-  /* FLIP (the mock's kanban.js move, ported): after the overlay
-   * swap renders, each card that actually changed position is
-   * played back from its old spot over 650 ms with the mock's
-   * easing; unmoved cards are never touched. Skipped entirely
-   * under prefers-reduced-motion — the still board is the board. */
+  /* FLIP (the mock's kanban.js move, budgeted): after a swap
+   * renders, each story whose column actually changed is played
+   * back from its old spot over 650 ms with the mock's easing —
+   * but only within the motion budget (motion-budget.ts: at most
+   * 1 moving card on phones, 2 on desktop; the rest rest at
+   * their end pose), and never under Calm or reduced motion. */
   useLayoutEffect(() => {
+    const byId = new Map(subtasks.map((s) => [s.id, s]));
+    const cols = new Map(
+      snapshot.stories.map((story) => [story.id, storyRollup(story, byId).col]),
+    );
     const first = firstRects.current;
-    if (!first) return;
     firstRects.current = null;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    boardRef.current
-      ?.querySelectorAll<HTMLElement>("[data-card-id]")
-      .forEach((el) => {
-        const from = first.get(el.dataset.cardId as string);
-        if (!from) return;
-        const last = el.getBoundingClientRect();
-        const dx = from.left - last.left;
-        const dy = from.top - last.top;
-        if (dx || dy) {
-          el.animate(
+    if (first && !motionSettled(calmRef.current)) {
+      boardRef.current
+        ?.querySelectorAll<HTMLElement>("[data-story-id]")
+        .forEach((el) => {
+          const id = el.dataset.storyId as string;
+          if (prevCols.current.get(id) === cols.get(id)) return;
+          const from = first.get(id);
+          if (!from) return;
+          const last = el.getBoundingClientRect();
+          const dx = from.left - last.left;
+          const dy = from.top - last.top;
+          if (!dx && !dy) return;
+          if (!beginMotion(el)) return;
+          const anim = el.animate(
             [{ transform: `translate(${dx}px, ${dy}px)` }, { transform: "none" }],
             { duration: 650, easing: "cubic-bezier(.16,.8,.26,1)" },
           );
-        }
-      });
-  }, [cards]);
+          anim.onfinish = () => endMotion(el);
+          anim.oncancel = () => endMotion(el);
+        });
+    }
+    prevCols.current = cols;
+  }, [subtasks, snapshot]);
 
-  const counts = useMemo(() => laneCounts(cards), [cards]);
-  const claimableIds = useMemo(
-    () => new Set(freeToClaim(cards).map((card) => card.id)),
-    [cards],
+  const subtasksById = useMemo(() => new Map(subtasks.map((s) => [s.id, s])), [subtasks]);
+  const rollups = useMemo(() => {
+    const out = new Map<string, { col: Column; done: number; total: number }>();
+    for (const story of snapshot.stories) out.set(story.id, storyRollup(story, subtasksById));
+    return out;
+  }, [snapshot, subtasksById]);
+
+  const freeSubs = useMemo(
+    () => freeToClaim(subtasks, snapshot.hotFiles),
+    [subtasks, snapshot],
   );
-  const visible = cards.filter(
-    (card) =>
-      (lane === "all" || card.lane === lane) && (!claimOnly || claimableIds.has(card.id)),
+  const freeIds = useMemo(() => new Set(freeSubs.map((s) => s.id)), [freeSubs]);
+  const freeStoryIds = useMemo(
+    () => new Set(freeSubs.map((s) => s.story)),
+    [freeSubs],
   );
+
+  const laneLabel = (id: Lane) => snapshot.lanes.find((l) => l.id === id)?.label ?? id;
+  const laneCountsFor = (key: Lane | "all") => ({
+    stories:
+      key === "all"
+        ? snapshot.stories.length
+        : snapshot.stories.filter((s) => s.lane === key).length,
+    tasks:
+      key === "all" ? subtasks.length : subtasks.filter((s) => s.lane === key).length,
+  });
+
+  const visibleStories = snapshot.stories.filter(
+    (story) =>
+      (lane === "all" || story.lane === lane) &&
+      (!claimOnly || freeStoryIds.has(story.id)),
+  );
+  /* In free-to-claim mode the matching stories render
+   * auto-expanded; outside it, expansion is the reader's own. */
+  const openStories: ReadonlySet<string> = claimOnly ? freeStoryIds : expanded;
+  const toggleStory = (id: string) =>
+    setExpanded((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+
+  const LANE_FILTERS: { key: Lane | "all"; label: string }[] = [
+    { key: "all", label: "All" },
+    ...snapshot.lanes.map((l) => ({ key: l.id as Lane | "all", label: l.label })),
+  ];
 
   return (
-    <div className="build-board">
-      <SiteHeader to="/" status={null} mute={null} />
-      <PageColumn width="wide">
-        <div className="kb-main">
-          <h1>Build board</h1>
-          <p className="kb-sub">
-            The handover work items — what is queued, blocked, being built, in review and
-            done — for the people and agents building Meridian.
-          </p>
-          <span className="kb-stamp">
-            {liveAt !== null
-              ? `live · checked ${new Date(liveAt).toLocaleTimeString("en-US", {
-                  hour: "numeric",
-                  minute: "2-digit",
-                })}`
-              : `snapshot from ${SNAPSHOT.asOf}`}
-          </span>
-          <Gauges gauges={SNAPSHOT.gauges} />
-          <div className="kb-controls">
-            <div className="kb-seg" role="group" aria-label="Swimlane">
-              {LANE_FILTERS.map((filter) => (
+    <div className={`build-board${calm ? " kb-calm" : ""}`}>
+      <div className="kb-main">
+        <h1>Build board</h1>
+        <p className="kb-sub">
+          The handover work, as plain-English stories with their subtasks — what is
+          queued, blocked, being built, in review and done — for the people and agents
+          building Meridian.
+        </p>
+        <span className="kb-stamp">{stampText(stamp, snapshot.asOf)}</span>
+        <Gauges gaugeInfo={snapshot.gaugeInfo} calm={calm} />
+        <div className="kb-controls">
+          <div className="kb-seg" role="group" aria-label="Swimlane">
+            {LANE_FILTERS.map((filter) => {
+              const counts = laneCountsFor(filter.key);
+              return (
                 <button
                   key={filter.key}
                   type="button"
                   aria-pressed={lane === filter.key}
                   onClick={() => setLane(filter.key)}
                 >
-                  {filter.label} {filter.key === "all" ? cards.length : counts[filter.key]}
+                  {filter.label} · {counts.stories} stories, {counts.tasks} tasks
                 </button>
-              ))}
-            </div>
+              );
+            })}
+          </div>
+          <div className="kb-toggles">
             <button
               type="button"
               className="kb-claim"
               aria-pressed={claimOnly}
               onClick={() => setClaimOnly((on) => !on)}
             >
-              Free to claim {claimableIds.size}
+              Free to claim {freeSubs.length}
+            </button>
+            <button
+              type="button"
+              className="kb-calm-toggle"
+              aria-pressed={calm}
+              onClick={() => setCalm((on) => !on)}
+            >
+              Calm
             </button>
           </div>
-          <div className="kb-board" ref={boardRef}>
-            {COLUMNS.map((col) => {
-              const colCards = visible.filter((card) => card.col === col);
-              return (
-                <section key={col} className="kb-col" data-col={col} aria-label={col}>
-                  <h2>
-                    {col}
-                    <span>{colCards.length}</span>
-                  </h2>
-                  {colCards.length > 0 ? (
-                    colCards.map((card) => <KanbanCard key={card.id} card={card} />)
-                  ) : (
-                    <div className="kb-empty">Nothing here yet</div>
-                  )}
-                </section>
-              );
-            })}
-          </div>
         </div>
-      </PageColumn>
-      <SiteFooter />
+        <div className="kb-board" ref={boardRef}>
+          {snapshot.columns.map((col) => {
+            const colStories = visibleStories.filter(
+              (story) => rollups.get(story.id)?.col === col,
+            );
+            return (
+              <section key={col} className="kb-col" data-col={col} aria-label={col}>
+                <h2>
+                  {col}
+                  <span>{colStories.length}</span>
+                </h2>
+                {colStories.length > 0 ? (
+                  colStories.map((story) => (
+                    <StoryCard
+                      key={story.id}
+                      story={story}
+                      laneLabel={laneLabel(story.lane)}
+                      rollup={rollups.get(story.id) as { col: Column; done: number; total: number }}
+                      subtasks={story.subtasks
+                        .map((id) => subtasksById.get(id))
+                        .filter((s): s is Subtask => Boolean(s))}
+                      open={openStories.has(story.id)}
+                      onToggle={() => toggleStory(story.id)}
+                      freeIds={freeIds}
+                    />
+                  ))
+                ) : (
+                  <div className="kb-empty">Nothing here yet</div>
+                )}
+              </section>
+            );
+          })}
+        </div>
+      </div>
     </div>
   );
 }

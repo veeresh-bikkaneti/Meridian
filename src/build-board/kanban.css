@@ -31,10 +31,15 @@
   font-size: 15px;
   line-height: 1.45;
   min-height: 100%;
+  /* Belt and braces for fix 4: nothing inside the board may
+   * widen the page itself. The board's own horizontal scroll
+   * lives on .kb-board below. */
+  overflow-x: clip;
 }
 
 .build-board .kb-main {
   padding: 20px 0 8px;
+  min-width: 0;
 }
 
 .build-board h1 {
@@ -79,6 +84,7 @@
   display: flex;
   gap: 12px;
   align-items: center;
+  min-width: 0;
 }
 
 .build-board .kb-ring {
@@ -119,7 +125,8 @@
   color: var(--hv5-ink-soft);
 }
 
-/* Controls: the lane segment + the free-to-claim toggle */
+/* Controls: the lane segment + the free-to-claim and Calm toggles.
+ * Every button is at least 44 px tall (fix 6). */
 
 .build-board .kb-controls {
   display: flex;
@@ -131,6 +138,7 @@
 
 .build-board .kb-seg {
   display: inline-flex;
+  flex-wrap: wrap;
   background: var(--hv5-card);
   border: 1px solid var(--hv5-line-warm);
   border-radius: 999px;
@@ -140,7 +148,7 @@
 .build-board .kb-seg button {
   border: 0;
   background: none;
-  min-height: 38px;
+  min-height: 44px;
   padding: 0 14px;
   border-radius: 999px;
   font: inherit;
@@ -154,17 +162,27 @@
   color: #fff;
 }
 
-.build-board .kb-claim {
+.build-board .kb-toggles {
   margin-left: auto;
-  min-height: 40px;
-  border: 1px solid var(--hv5-brown);
-  background: none;
-  color: var(--hv5-brown);
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.build-board .kb-claim,
+.build-board .kb-calm-toggle {
+  min-height: 44px;
   border-radius: 999px;
   padding: 0 14px;
   font: inherit;
   font-size: 14px;
   cursor: pointer;
+  background: none;
+}
+
+.build-board .kb-claim {
+  border: 1px solid var(--hv5-brown);
+  color: var(--hv5-brown);
 }
 
 .build-board .kb-claim[aria-pressed="true"] {
@@ -172,13 +190,47 @@
   color: var(--hv5-card);
 }
 
-/* Board + cards */
+.build-board .kb-calm-toggle {
+  border: 1px solid var(--hv5-forest);
+  color: var(--hv5-forest);
+}
+
+.build-board .kb-calm-toggle[aria-pressed="true"] {
+  background: var(--hv5-forest);
+  color: var(--hv5-card);
+}
+
+/* Board + columns. Fix 4: five columns of min 200 px need about
+ * 1,050 px, so at every narrower width the board scrolls
+ * horizontally INSIDE this container (snap + a styled, always
+ * visible scrollbar as the affordance) and the page itself
+ * never scrolls sideways. */
 
 .build-board .kb-board {
   display: grid;
   grid-template-columns: repeat(5, minmax(200px, 1fr));
   gap: 12px;
   align-items: start;
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
+  padding-bottom: 10px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--hv5-line-warm) transparent;
+}
+
+.build-board .kb-board::-webkit-scrollbar {
+  height: 8px;
+}
+
+.build-board .kb-board::-webkit-scrollbar-thumb {
+  background: var(--hv5-line-warm);
+  border-radius: 999px;
+}
+
+.build-board .kb-board::-webkit-scrollbar-track {
+  background: transparent;
 }
 
 .build-board .kb-col {
@@ -187,6 +239,8 @@
   border-radius: 16px;
   padding: 10px;
   min-height: 120px;
+  min-width: 0;
+  scroll-snap-align: start;
 }
 
 .build-board .kb-col h2 {
@@ -218,6 +272,8 @@
   color: var(--hv5-forest);
 }
 
+/* Story cards (the only top-level cards) */
+
 .build-board .kb-card {
   background: var(--hv5-card);
   border: 1px solid var(--hv5-line);
@@ -227,6 +283,7 @@
   margin-bottom: 8px;
   box-shadow: var(--hv5-shadow-card);
   font-size: 13px;
+  min-width: 0;
 }
 
 .build-board .kb-card[data-lane="tech-debt"] {
@@ -244,46 +301,199 @@
   color: var(--hv5-ink-soft);
 }
 
-.build-board .kb-card-prompt {
-  display: inline-block;
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  color: var(--hv5-forest);
-  background: color-mix(in srgb, var(--hv5-sage) 22%, var(--hv5-card));
-  border-radius: 6px;
-  padding: 1px 6px;
-  margin-left: 6px;
-  vertical-align: 1px;
-}
-
 .build-board .kb-card-title {
   font-weight: 600;
   line-height: 1.3;
+  overflow-wrap: break-word;
 }
 
-.build-board .kb-card-evidence {
+.build-board .kb-story-top {
+  display: flex;
+  gap: 6px;
+  align-items: flex-start;
+}
+
+.build-board .kb-story-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.build-board .kb-story-why {
   color: var(--hv5-ink-soft);
   font-size: 12px;
   margin-top: 4px;
 }
 
-.build-board .kb-card-blocked,
-.build-board .kb-card-note {
+.build-board .kb-story-meta {
+  color: var(--hv5-ink-soft);
   font-size: 12px;
-  margin-top: 6px;
-  border-radius: 8px;
-  padding: 5px 8px;
+  margin-top: 4px;
 }
 
-.build-board .kb-card-blocked {
+.build-board .kb-story-progress {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--hv5-forest);
+}
+
+.build-board .kb-bar {
+  flex: 1;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--hv5-line);
+  overflow: hidden;
+}
+
+.build-board .kb-bar-fill {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: var(--hv5-forest);
+  transition: width 0.65s var(--hv5-ease);
+}
+
+/* The expand control is a real button, at least 44x44 px (fix 5/6). */
+.build-board .kb-expand {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  margin: -4px -4px 0 0;
+  border: 0;
+  border-radius: 10px;
+  background: none;
+  color: var(--hv5-forest);
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.build-board .kb-expand:hover {
+  background: color-mix(in srgb, var(--hv5-sage) 22%, var(--hv5-card));
+}
+
+.build-board .kb-chevron {
+  display: inline-block;
+  transform: rotate(-90deg);
+  transition: transform 0.3s var(--hv5-ease);
+}
+
+.build-board .kb-chevron-open {
+  transform: none;
+}
+
+/* Subtasks, inside an expanded story */
+
+.build-board .kb-subs {
+  list-style: none;
+  margin: 10px 0 2px;
+  padding: 10px 0 0;
+  border-top: 1px dashed var(--hv5-line-warm);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.build-board .kb-sub {
+  border-left: 3px solid var(--hv5-line-warm);
+  padding-left: 8px;
+  min-width: 0;
+}
+
+.build-board .kb-sub-free {
+  border-left-color: var(--hv5-forest);
+  background: color-mix(in srgb, var(--hv5-sage) 12%, var(--hv5-card));
+  border-radius: 0 8px 8px 0;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.build-board .kb-sub-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: baseline;
+}
+
+.build-board .kb-sub-title {
+  font-weight: 600;
+  line-height: 1.3;
+  overflow-wrap: break-word;
+}
+
+.build-board .kb-sub-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  align-items: center;
+  margin-top: 5px;
+  font-size: 12px;
+}
+
+.build-board .kb-sub-owner {
+  color: var(--hv5-ink-soft);
+  margin-right: 2px;
+}
+
+.build-board .kb-chip {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--hv5-forest);
+  background: color-mix(in srgb, var(--hv5-sage) 22%, var(--hv5-card));
+  border-radius: 6px;
+  padding: 2px 6px;
+}
+
+.build-board .kb-chip-col {
+  color: var(--hv5-ink);
+  background: var(--hv5-line);
+}
+
+.build-board .kb-chip-col[data-col="Blocked"] {
+  color: #8a3b2a;
+  background: color-mix(in srgb, #8a3b2a 10%, var(--hv5-card));
+}
+
+.build-board .kb-chip-col[data-col="In progress"] {
+  color: var(--hv5-brown);
+  background: color-mix(in srgb, var(--hv5-brown) 12%, var(--hv5-card));
+}
+
+.build-board .kb-chip-col[data-col="In review"] {
+  color: #42557a;
+  background: color-mix(in srgb, #6b7fa8 18%, var(--hv5-card));
+}
+
+.build-board .kb-chip-col[data-col="Done"] {
+  color: var(--hv5-forest);
+  background: color-mix(in srgb, var(--hv5-sage) 30%, var(--hv5-card));
+}
+
+.build-board .kb-chip-free {
+  color: var(--hv5-card);
+  background: var(--hv5-forest);
+}
+
+.build-board .kb-chip-gate {
+  color: var(--hv5-brown);
+  background: color-mix(in srgb, var(--hv5-brown) 12%, var(--hv5-card));
+}
+
+.build-board .kb-chip-blocked {
   color: #8a3b2a;
   background: color-mix(in srgb, #8a3b2a 8%, var(--hv5-card));
 }
 
-.build-board .kb-card-note {
+.build-board .kb-chip-note {
   color: var(--hv5-forest);
-  background: color-mix(in srgb, var(--hv5-sage) 22%, var(--hv5-card));
+}
+
+.build-board .kb-chip-unknown {
+  color: #8a3b2a;
+  background: color-mix(in srgb, #8a3b2a 8%, var(--hv5-card));
 }
 
 .build-board .kb-card-links {
@@ -293,13 +503,49 @@
   gap: 4px;
 }
 
-.build-board .kb-card-links a {
+.build-board .kb-card-links a,
+.build-board .kb-link-chip {
   font-size: 11px;
   color: var(--hv5-forest);
   background: color-mix(in srgb, var(--hv5-sage) 22%, var(--hv5-card));
   border-radius: 6px;
   padding: 2px 6px;
   text-decoration: none;
+}
+
+.build-board .kb-sub-evidence {
+  color: var(--hv5-ink-soft);
+  font-size: 12px;
+  margin-top: 5px;
+  overflow-wrap: break-word;
+}
+
+.build-board .kb-sub-owns {
+  margin-top: 6px;
+  font-size: 12px;
+}
+
+.build-board .kb-sub-owns summary {
+  cursor: pointer;
+  color: var(--hv5-forest);
+  font-weight: 600;
+  padding: 4px 0;
+}
+
+.build-board .kb-sub-owns ul {
+  margin: 4px 0;
+  padding-left: 18px;
+}
+
+.build-board .kb-sub-owns code {
+  font-size: 11px;
+  overflow-wrap: anywhere;
+}
+
+.build-board .kb-sub-owns-note {
+  color: var(--hv5-ink-soft);
+  font-size: 12px;
+  margin: 4px 0 0;
 }
 
 .build-board .kb-empty {
@@ -311,9 +557,16 @@
   border-radius: 10px;
 }
 
-/* Reduced motion: every animation and transition rests — the same
- * still version Calm mode shows on /board. The gauges then simply
- * paint at their final offset. */
+/* Calm mode (the view's toggle, held in component state) and
+ * reduced motion: every animation and transition rests — cards
+ * sit at their end poses and the gauges paint at their final
+ * offset. */
+.build-board.kb-calm *,
+.build-board.kb-calm {
+  animation: none !important;
+  transition: none !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .build-board * {
     animation: none !important;
@@ -345,17 +598,10 @@
   }
 
   .build-board .kb-board {
-    grid-template-columns: repeat(5, 82%);
-    overflow-x: auto;
     scroll-snap-type: x mandatory;
-    padding-bottom: 8px;
   }
 
-  .build-board .kb-col {
-    scroll-snap-align: start;
-  }
-
-  .build-board .kb-claim {
+  .build-board .kb-toggles {
     margin-left: 0;
   }
 }
