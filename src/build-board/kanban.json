@@ -63,6 +63,7 @@
  "stories": [
   {
    "id": "td-dead-code",
+   "num": "TD-10",
    "lane": "tech-debt",
    "title": "Remove dead code and unused packages",
    "phase": null,
@@ -85,6 +86,7 @@
   },
   {
    "id": "td-forms",
+   "num": "TD-11",
    "lane": "tech-debt",
    "title": "Make the site's forms send data safely",
    "phase": null,
@@ -105,6 +107,7 @@
   },
   {
    "id": "td-tooling",
+   "num": "TD-12",
    "lane": "tech-debt",
    "title": "Make a fresh checkout pass every check",
    "phase": null,
@@ -124,6 +127,7 @@
   },
   {
    "id": "td-pipeline",
+   "num": "TD-13",
    "lane": "tech-debt",
    "title": "Fix the broken publish job and slim the repo",
    "phase": null,
@@ -143,6 +147,7 @@
   },
   {
    "id": "td-prod-checks",
+   "num": "TD-16",
    "lane": "tech-debt",
    "title": "Prove recent fixes on real devices and in production",
    "phase": null,
@@ -160,6 +165,7 @@
   },
   {
    "id": "td-tests",
+   "num": "TD-14",
    "lane": "tech-debt",
    "title": "Fix failing and flaky tests",
    "phase": null,
@@ -177,6 +183,7 @@
   },
   {
    "id": "td-a11y",
+   "num": "TD-15",
    "lane": "tech-debt",
    "title": "Make the answer reveal work with screen readers",
    "phase": null,
@@ -195,6 +202,7 @@
   },
   {
    "id": "arch-rules",
+   "num": "TD-01",
    "lane": "architecture",
    "title": "Agree the ground rules and add architecture guardrails",
    "phase": "0a, 0",
@@ -212,6 +220,7 @@
   },
   {
    "id": "arch-ports",
+   "num": "TD-02",
    "lane": "architecture",
    "title": "Send all storage, network and sound through shared ports",
    "phase": "1",
@@ -237,6 +246,7 @@
   },
   {
    "id": "arch-shell",
+   "num": "TD-05",
    "lane": "architecture",
    "title": "Put every screen inside the shared page layout",
    "phase": "2",
@@ -256,6 +266,7 @@
   },
   {
    "id": "arch-content",
+   "num": "TD-03",
    "lane": "architecture",
    "title": "Turn every subject's questions into checked content",
    "phase": "3",
@@ -272,6 +283,7 @@
   },
   {
    "id": "arch-split",
+   "num": "TD-06",
    "lane": "architecture",
    "title": "Break the giant game screen into small modules",
    "phase": "4",
@@ -293,6 +305,7 @@
   },
   {
    "id": "arch-imports",
+   "num": "TD-04",
    "lane": "architecture",
    "title": "Stop low-level code importing from higher layers",
    "phase": null,
@@ -314,6 +327,7 @@
   },
   {
    "id": "arch-gates",
+   "num": "TD-07",
    "lane": "architecture",
    "title": "Lock in backend contracts and make the checks blocking",
    "phase": "5",
@@ -333,6 +347,7 @@
   },
   {
    "id": "arch-pages",
+   "num": "TD-09",
    "lane": "architecture",
    "title": "Retire the old GitHub Pages site",
    "phase": null,
@@ -352,6 +367,7 @@
   },
   {
    "id": "prod-3d",
+   "num": "FW-08",
    "lane": "product",
    "title": "Make the 3D world and clue scenes feel cinematic",
    "phase": null,
@@ -369,6 +385,7 @@
   },
   {
    "id": "prod-live",
+   "num": "FW-09",
    "lane": "product",
    "title": "Fix problems seen on the live site",
    "phase": null,
@@ -386,6 +403,7 @@
   },
   {
    "id": "prod-grow",
+   "num": "FW-10",
    "lane": "product",
    "title": "Grow subjects, age bands and shared play",
    "phase": null,
@@ -406,6 +424,7 @@
  "subtasks": [
   {
    "id": "td-dead-code.pack-shelf-move",
+   "num": "TD-10.1",
    "story": "td-dead-code",
    "title": "Move the pack shelf data into the shared library and delete the leftover forwarding files",
    "lane": "tech-debt",
@@ -442,6 +461,7 @@
   },
   {
    "id": "td-forms.contact",
+   "num": "TD-11.1",
    "story": "td-forms",
    "title": "Send the contact form through the shared network layer without cookies or referrer",
    "lane": "tech-debt",
@@ -470,6 +490,7 @@
   },
   {
    "id": "td-forms.board",
+   "num": "TD-11.2",
    "story": "td-forms",
    "title": "Do the same for the board page's form once that page uses the shared layout",
    "lane": "tech-debt",
@@ -500,6 +521,7 @@
   },
   {
    "id": "td-dead-code.cva",
+   "num": "TD-10.2",
    "story": "td-dead-code",
    "title": "Remove a styling package nothing uses",
    "lane": "tech-debt",
@@ -528,6 +550,7 @@
   },
   {
    "id": "td-dead-code.transport-hook",
+   "num": "TD-10.3",
    "story": "td-dead-code",
    "title": "Delete the network hook nothing calls",
    "lane": "tech-debt",
@@ -562,6 +585,7 @@
   },
   {
    "id": "td-dead-code.test-stubs",
+   "num": "TD-10.4",
    "story": "td-dead-code",
    "title": "Take test-only shortcuts out of the shipped app",
    "lane": "tech-debt",
@@ -588,6 +612,7 @@
   },
   {
    "id": "td-tooling.storybook-types",
+   "num": "TD-12.1",
    "story": "td-tooling",
    "title": "Add the missing Storybook package so type checks pass on component stories",
    "lane": "tech-debt",
@@ -622,6 +647,7 @@
   },
   {
    "id": "td-tooling.validators-zod",
+   "num": "TD-12.2",
    "story": "td-tooling",
    "title": "Let the content checks run in a fresh checkout without a manual install step",
    "lane": "tech-debt",
@@ -648,6 +674,7 @@
   },
   {
    "id": "td-prod-checks.private-mode",
+   "num": "TD-16.1",
    "story": "td-prod-checks",
    "title": "Confirm saved progress works in private browsing on a real phone",
    "lane": "tech-debt",
@@ -680,6 +707,7 @@
   },
   {
    "id": "td-prod-checks.crash-redeploy",
+   "num": "TD-16.2",
    "story": "td-prod-checks",
    "title": "Redeploy the crash reporter and run its health check",
    "lane": "tech-debt",
@@ -712,6 +740,7 @@
   },
   {
    "id": "td-tests.detective-flake",
+   "num": "TD-14.1",
    "story": "td-tests",
    "title": "Fix the detective endings test that fails only in CI",
    "lane": "tech-debt",
@@ -745,6 +774,7 @@
   },
   {
    "id": "td-tests.known-failures",
+   "num": "TD-14.2",
    "story": "td-tests",
    "title": "Clear the known failing tests and lint errors on main",
    "lane": "tech-debt",
@@ -771,6 +801,7 @@
   },
   {
    "id": "td-a11y.lose-reveal",
+   "num": "TD-15.1",
    "story": "td-a11y",
    "title": "Move focus to the revealed answer and read it out to screen readers",
    "lane": "tech-debt",
@@ -804,6 +835,7 @@
   },
   {
    "id": "td-pipeline.repo-weight",
+   "num": "TD-13.1",
    "story": "td-pipeline",
    "title": "Shrink the repository by moving large screenshot files out",
    "lane": "tech-debt",
@@ -843,6 +875,7 @@
   },
   {
    "id": "td-pipeline.pages-failing",
+   "num": "TD-13.2",
    "story": "td-pipeline",
    "title": "Stop the old site's publish job from failing on every run",
    "lane": "tech-debt",
@@ -873,6 +906,7 @@
   },
   {
    "id": "arch-rules.amend",
+   "num": "TD-01.1",
    "story": "arch-rules",
    "title": "Let agents pull shared code out of pages instead of copying it",
    "lane": "architecture",
@@ -908,6 +942,7 @@
   },
   {
    "id": "arch-rules.guardrails",
+   "num": "TD-01.2",
    "story": "arch-rules",
    "title": "Add architecture docs, the layer lint, a one-command check runner and Storybook",
    "lane": "architecture",
@@ -966,6 +1001,7 @@
   },
   {
    "id": "arch-ports.audio",
+   "num": "TD-02.1",
    "story": "arch-ports",
    "title": "Play clue scene sound through the shared one-voice sound port",
    "lane": "architecture",
@@ -1003,6 +1039,7 @@
   },
   {
    "id": "arch-ports.storage",
+   "num": "TD-02.2",
    "story": "arch-ports",
    "title": "Save age band and progress through the shared storage port",
    "lane": "architecture",
@@ -1040,6 +1077,7 @@
   },
   {
    "id": "arch-ports.transport",
+   "num": "TD-02.3",
    "story": "arch-ports",
    "title": "Load the pack shelf through the shared network port",
    "lane": "architecture",
@@ -1077,6 +1115,7 @@
   },
   {
    "id": "arch-ports.sweep-a",
+   "num": "TD-02.4",
    "story": "arch-ports",
    "title": "Move every screen except the main game onto the ports",
    "lane": "architecture",
@@ -1113,6 +1152,7 @@
   },
   {
    "id": "arch-ports.game-app",
+   "num": "TD-02.5",
    "story": "arch-ports",
    "title": "Move the main game's saved data onto the storage port",
    "lane": "architecture",
@@ -1159,6 +1199,7 @@
   },
   {
    "id": "arch-ports.storyteller-home",
+   "num": "TD-02.6",
    "story": "arch-ports",
    "title": "Move the storyteller home screen's download and sounds onto the ports",
    "lane": "architecture",
@@ -1196,6 +1237,7 @@
   },
   {
    "id": "arch-ports.last-ten",
+   "num": "TD-02.7",
    "story": "arch-ports",
    "title": "Move the last ten raw storage, network and sound calls onto the ports",
    "lane": "architecture",
@@ -1228,6 +1270,7 @@
   },
   {
    "id": "arch-shell.nav-tests",
+   "num": "TD-05.1",
    "story": "arch-shell",
    "title": "Point the header tests at the shared site header",
    "lane": "architecture",
@@ -1271,6 +1314,7 @@
   },
   {
    "id": "arch-shell.sweep",
+   "num": "TD-05.2",
    "story": "arch-shell",
    "title": "Move each screen into the shared page layout, one screen at a time",
    "lane": "architecture",
@@ -1318,6 +1362,7 @@
   },
   {
    "id": "arch-content.records",
+   "num": "TD-03.1",
    "story": "arch-content",
    "title": "Store every subject's questions as validated content records",
    "lane": "architecture",
@@ -1380,6 +1425,7 @@
   },
   {
    "id": "arch-split.map",
+   "num": "TD-06.1",
    "story": "arch-split",
    "title": "Map what the giant game screen does before splitting it",
    "lane": "architecture",
@@ -1414,6 +1460,7 @@
   },
   {
    "id": "arch-split.size-budget",
+   "num": "TD-06.2",
    "story": "arch-split",
    "title": "Add a size limit so the game screen file can only shrink",
    "lane": "architecture",
@@ -1452,6 +1499,7 @@
   },
   {
    "id": "arch-split.modules",
+   "num": "TD-06.3",
    "story": "arch-split",
    "title": "Move each game screen into its own module, one change at a time",
    "lane": "architecture",
@@ -1493,6 +1541,7 @@
   },
   {
    "id": "arch-split.router",
+   "num": "TD-06.4",
    "story": "arch-split",
    "title": "Move the slimmed-down game router into the routes folder",
    "lane": "architecture",
@@ -1524,6 +1573,7 @@
   },
   {
    "id": "arch-imports.batch-a",
+   "num": "TD-04.1",
    "story": "arch-imports",
    "title": "Clear the first batch of wrong-direction imports",
    "lane": "architecture",
@@ -1558,6 +1608,7 @@
   },
   {
    "id": "arch-imports.rulings",
+   "num": "TD-04.2",
    "story": "arch-imports",
    "title": "Apply the owner's three rulings on the leftover import rows",
    "lane": "architecture",
@@ -1596,6 +1647,7 @@
   },
   {
    "id": "arch-imports.subject-contracts",
+   "num": "TD-04.3",
    "story": "arch-imports",
    "title": "Give all subjects one shared set of lower-level type contracts",
    "lane": "architecture",
@@ -1633,6 +1685,7 @@
   },
   {
    "id": "arch-gates.contracts",
+   "num": "TD-07.1",
    "story": "arch-gates",
    "title": "Keep secrets, database migrations, response headers and the crash check in one place each",
    "lane": "architecture",
@@ -1692,6 +1745,7 @@
   },
   {
    "id": "arch-gates.flip",
+   "num": "TD-07.2",
    "story": "arch-gates",
    "title": "Make the architecture checks hard failures once every count reaches zero",
    "lane": "architecture",
@@ -1734,6 +1788,7 @@
   },
   {
    "id": "arch-pages.retire",
+   "num": "TD-09.1",
    "story": "arch-pages",
    "title": "Delete the old GitHub Pages publish job",
    "lane": "architecture",
@@ -1769,6 +1824,7 @@
   },
   {
    "id": "arch-pages.links",
+   "num": "TD-09.2",
    "story": "arch-pages",
    "title": "Point old Pages links at the live site or remove them",
    "lane": "architecture",
@@ -1807,6 +1863,7 @@
   },
   {
    "id": "prod-3d.globe",
+   "num": "FW-08.1",
    "story": "prod-3d",
    "title": "Let children spin, zoom and touch the landmark globe",
    "lane": "product",
@@ -1844,6 +1901,7 @@
   },
   {
    "id": "prod-live.walk-fixes",
+   "num": "FW-09.1",
    "story": "prod-live",
    "title": "Fix the coffee bubble and tour card covering controls, and the flat-looking detective pair",
    "lane": "product",
@@ -1870,6 +1928,7 @@
   },
   {
    "id": "prod-3d.clue-films",
+   "num": "FW-08.2",
    "story": "prod-3d",
    "title": "Make clue films and stills from the existing artwork",
    "lane": "product",
@@ -1896,6 +1955,7 @@
   },
   {
    "id": "prod-grow.pennant",
+   "num": "FW-10.1",
    "story": "prod-grow",
    "title": "Bring the parked pennant feature up to date with the main code",
    "lane": "product",
@@ -1929,6 +1989,7 @@
   },
   {
    "id": "prod-grow.science-review",
+   "num": "FW-10.2",
    "story": "prod-grow",
    "title": "Get an educator to review the science subject plan",
    "lane": "product",
@@ -1961,6 +2022,7 @@
   },
   {
    "id": "prod-live.open-issues",
+   "num": "FW-09.2",
    "story": "prod-live",
    "title": "Work through three open requests: a skipped narrator line and two capitals quiz ideas",
    "lane": "product",
@@ -2000,6 +2062,7 @@
   },
   {
    "id": "prod-grow.adult-band",
+   "num": "FW-10.3",
    "story": "prod-grow",
    "title": "Make the adult age band's rows playable",
    "lane": "product",

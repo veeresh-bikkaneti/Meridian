@@ -307,6 +307,11 @@
   overflow-wrap: break-word;
 }
 
+.build-board .kb-num {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
 .build-board .kb-story-top {
   display: flex;
   gap: 6px;

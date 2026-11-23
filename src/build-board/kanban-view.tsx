@@ -82,7 +82,9 @@ function SubtaskRow({ sub, free }: { sub: Subtask; free: boolean }) {
   return (
     <li className={`kb-sub${free ? " kb-sub-free" : ""}`}>
       <div className="kb-sub-head">
-        <span className="kb-sub-title">{sub.title}</span>
+        <span className="kb-sub-title">
+          <span className="kb-num">{sub.num}</span> {sub.title}
+        </span>
         <span className="kb-chip kb-chip-col" data-col={sub.col}>
           {sub.col}
         </span>
@@ -180,7 +182,9 @@ function StoryCard({
       <div className="kb-story-top">
         <div className="kb-story-main">
           <div className="kb-card-lane">{laneLabel}</div>
-          <div className="kb-card-title">{story.title}</div>
+          <div className="kb-card-title">
+            <span className="kb-num">{story.num}</span> {story.title}
+          </div>
           {story.why ? <div className="kb-story-why">{story.why}</div> : null}
           {story.phase || story.prompts.length > 0 ? (
             <div className="kb-story-meta">
@@ -208,7 +212,7 @@ function StoryCard({
           className="kb-expand"
           aria-expanded={open}
           aria-controls={listId}
-          aria-label={`${open ? "Hide" : "Show"} subtasks for ${story.title}`}
+          aria-label={`${open ? "Hide" : "Show"} subtasks for ${story.num} ${story.title}`}
           onClick={onToggle}
         >
           <span className={`kb-chevron${open ? " kb-chevron-open" : ""}`} aria-hidden="true">
