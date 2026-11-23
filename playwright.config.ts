@@ -593,6 +593,15 @@ export default defineConfig({
         reducedMotion: "reduce",
       },
     },
+    {
+      // Item 10: the /kanban build board — flag-gated render at four
+      // viewports, the snapshot fallback label, the live overlay and
+      // free-to-claim. The spec drives its own viewports; the project
+      // viewport is only a default.
+      name: "kanban",
+      testMatch: /kanban\.spec\.ts/,
+      use: { viewport: { width: 1280, height: 800 } },
+    },
   ],
   reporter: [["list"], ["html", { open: "never", outputFolder: "playwright-report" }]],
 });

@@ -1,0 +1,361 @@
+/* /kanban — the build board. Ported from the approved Option A
+ * mockup's stylesheet, with the mock's local custom properties
+ * renamed to the repo's real --hv5-* tokens. The tokens are
+ * declared under .home-v5 in src/components/home-v5.css, which a
+ * feature area may not import (layer rule) — so, exactly as
+ * src/board/board.css does for .board-v3, the values are
+ * re-declared here under .build-board, copied verbatim. Keep them
+ * in step with home-v5.css. Everything is scoped under
+ * .build-board so nothing leaks into other screens. The header
+ * and footer are the shared shell components and keep their own
+ * styles; only the board's own furniture lives here. */
+
+.build-board {
+  --hv5-parchment: #f6f1e3;
+  --hv5-card: #fdfbf3;
+  --hv5-ink: #33302a;
+  --hv5-ink-soft: #5c564a;
+  --hv5-brown: #8a6d2f;
+  --hv5-forest: #33503f;
+  --hv5-sage: #8fa382;
+  --hv5-line: #e3d9c3;
+  --hv5-line-warm: #d8cbae;
+  --hv5-ease: cubic-bezier(0.16, 0.8, 0.26, 1);
+  --hv5-shadow-card: 0 1px 2px rgba(94, 76, 32, 0.05), 0 14px 34px -18px rgba(94, 76, 32, 0.28);
+  --hv5-display: "Fraunces", Georgia, serif;
+  --hv5-body: "Karla", system-ui, sans-serif;
+
+  background: var(--hv5-parchment);
+  color: var(--hv5-ink);
+  font-family: var(--hv5-body);
+  font-size: 15px;
+  line-height: 1.45;
+  min-height: 100%;
+}
+
+.build-board .kb-main {
+  padding: 20px 0 8px;
+}
+
+.build-board h1 {
+  font-family: var(--hv5-display);
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 1.15;
+  margin: 4px 0;
+}
+
+.build-board .kb-sub {
+  color: var(--hv5-ink-soft);
+  margin: 0 0 14px;
+  font-size: 14px;
+}
+
+.build-board .kb-stamp {
+  display: inline-block;
+  font-size: 12px;
+  color: var(--hv5-forest);
+  background: color-mix(in srgb, var(--hv5-sage) 22%, var(--hv5-card));
+  border-radius: 999px;
+  padding: 3px 10px;
+  margin-bottom: 12px;
+}
+
+/* Gauges */
+
+.build-board .kb-gauges {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 8px 0 16px;
+}
+
+.build-board .kb-gauge {
+  background: var(--hv5-card);
+  border: 1px solid var(--hv5-line);
+  border-radius: 16px;
+  padding: 12px 14px;
+  box-shadow: var(--hv5-shadow-card);
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.build-board .kb-ring {
+  width: 64px;
+  height: 64px;
+  flex: none;
+}
+
+.build-board .kb-ring circle {
+  fill: none;
+  stroke-width: 8;
+}
+
+.build-board .kb-ring-bg {
+  stroke: var(--hv5-line);
+}
+
+.build-board .kb-ring-fg {
+  stroke: var(--hv5-forest);
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1.2s var(--hv5-ease);
+}
+
+.build-board .kb-gauge-name {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.build-board .kb-gauge-now {
+  font-family: var(--hv5-display);
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 1;
+}
+
+.build-board .kb-gauge-sub {
+  font-size: 12px;
+  color: var(--hv5-ink-soft);
+}
+
+/* Controls: the lane segment + the free-to-claim toggle */
+
+.build-board .kb-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.build-board .kb-seg {
+  display: inline-flex;
+  background: var(--hv5-card);
+  border: 1px solid var(--hv5-line-warm);
+  border-radius: 999px;
+  padding: 3px;
+}
+
+.build-board .kb-seg button {
+  border: 0;
+  background: none;
+  min-height: 38px;
+  padding: 0 14px;
+  border-radius: 999px;
+  font: inherit;
+  font-size: 14px;
+  color: var(--hv5-ink-soft);
+  cursor: pointer;
+}
+
+.build-board .kb-seg button[aria-pressed="true"] {
+  background: var(--hv5-forest);
+  color: #fff;
+}
+
+.build-board .kb-claim {
+  margin-left: auto;
+  min-height: 40px;
+  border: 1px solid var(--hv5-brown);
+  background: none;
+  color: var(--hv5-brown);
+  border-radius: 999px;
+  padding: 0 14px;
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.build-board .kb-claim[aria-pressed="true"] {
+  background: var(--hv5-brown);
+  color: var(--hv5-card);
+}
+
+/* Board + cards */
+
+.build-board .kb-board {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(200px, 1fr));
+  gap: 12px;
+  align-items: start;
+}
+
+.build-board .kb-col {
+  background: rgba(255, 255, 255, 0.35);
+  border: 1px solid var(--hv5-line);
+  border-radius: 16px;
+  padding: 10px;
+  min-height: 120px;
+}
+
+.build-board .kb-col h2 {
+  font-family: var(--hv5-display);
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 1.2;
+  margin: 2px 4px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.build-board .kb-col h2 span {
+  font-family: var(--hv5-body);
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1;
+  background: var(--hv5-line);
+  border-radius: 999px;
+  padding: 4px 8px;
+}
+
+.build-board .kb-col[data-col="Blocked"] h2 {
+  color: #8a3b2a;
+}
+
+.build-board .kb-col[data-col="Done"] h2 {
+  color: var(--hv5-forest);
+}
+
+.build-board .kb-card {
+  background: var(--hv5-card);
+  border: 1px solid var(--hv5-line);
+  border-left: 4px solid var(--hv5-sage);
+  border-radius: 12px;
+  padding: 9px 10px;
+  margin-bottom: 8px;
+  box-shadow: var(--hv5-shadow-card);
+  font-size: 13px;
+}
+
+.build-board .kb-card[data-lane="tech-debt"] {
+  border-left-color: var(--hv5-brown);
+}
+
+.build-board .kb-card[data-lane="product"] {
+  border-left-color: #6b7fa8;
+}
+
+.build-board .kb-card-lane {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--hv5-ink-soft);
+}
+
+.build-board .kb-card-prompt {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--hv5-forest);
+  background: color-mix(in srgb, var(--hv5-sage) 22%, var(--hv5-card));
+  border-radius: 6px;
+  padding: 1px 6px;
+  margin-left: 6px;
+  vertical-align: 1px;
+}
+
+.build-board .kb-card-title {
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.build-board .kb-card-evidence {
+  color: var(--hv5-ink-soft);
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.build-board .kb-card-blocked,
+.build-board .kb-card-note {
+  font-size: 12px;
+  margin-top: 6px;
+  border-radius: 8px;
+  padding: 5px 8px;
+}
+
+.build-board .kb-card-blocked {
+  color: #8a3b2a;
+  background: color-mix(in srgb, #8a3b2a 8%, var(--hv5-card));
+}
+
+.build-board .kb-card-note {
+  color: var(--hv5-forest);
+  background: color-mix(in srgb, var(--hv5-sage) 22%, var(--hv5-card));
+}
+
+.build-board .kb-card-links {
+  margin-top: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.build-board .kb-card-links a {
+  font-size: 11px;
+  color: var(--hv5-forest);
+  background: color-mix(in srgb, var(--hv5-sage) 22%, var(--hv5-card));
+  border-radius: 6px;
+  padding: 2px 6px;
+  text-decoration: none;
+}
+
+.build-board .kb-empty {
+  font-size: 12px;
+  color: var(--hv5-ink-soft);
+  text-align: center;
+  padding: 16px 4px;
+  border: 1px dashed var(--hv5-line-warm);
+  border-radius: 10px;
+}
+
+/* Reduced motion: every animation and transition rests — the same
+ * still version Calm mode shows on /board. The gauges then simply
+ * paint at their final offset. */
+@media (prefers-reduced-motion: reduce) {
+  .build-board * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .build-board .kb-main {
+    padding-top: 14px;
+  }
+
+  .build-board h1 {
+    font-size: 24px;
+  }
+
+  .build-board .kb-gauges {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .build-board .kb-gauge {
+    padding: 8px 12px;
+  }
+
+  .build-board .kb-ring {
+    width: 48px;
+    height: 48px;
+  }
+
+  .build-board .kb-board {
+    grid-template-columns: repeat(5, 82%);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 8px;
+  }
+
+  .build-board .kb-col {
+    scroll-snap-align: start;
+  }
+
+  .build-board .kb-claim {
+    margin-left: 0;
+  }
+}

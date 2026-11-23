@@ -44,6 +44,7 @@ export type FlagName =
   | "pair3d"
   | "board3d"
   | "boardLiveFeed"
+  | "buildKanban"
   | "scalePlay";
 
 /**
@@ -160,6 +161,14 @@ export const FLAG_DEFAULTS: Record<FlagName, boolean> = {
   // board reads the published status file alone, exactly as board
   // v3 shipped.
   boardLiveFeed: true,
+  // Build Kanban (/kanban): the internal, noindexed board of handover
+  // work items for the people and agents building Meridian. false =
+  // today's behavior: the route renders its not-available shell and
+  // the board never mounts. true = the board is reachable at /kanban
+  // (still noindex, still out of the sitemap and every nav). The
+  // baked default stays false so a failed flags fetch never exposes
+  // an internal surface.
+  buildKanban: false,
 };
 
 /** The one URL turn-on: `?scale=1` turns scalePlay on, nothing else. */
