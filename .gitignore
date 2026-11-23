@@ -27,3 +27,4 @@ why-learn-shots/
 
 # Generated at build time (prebuild) — never commit
 public/build-meta.json
+public/build-board.json

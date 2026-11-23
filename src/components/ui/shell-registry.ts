@@ -54,6 +54,7 @@ export const SHELL_REGISTRY: readonly ShellRegistryEntry[] = [
   // Routes
   { id: "home", file: "src/components/game-app.tsx", header: "SiteHeader", needle: "<SiteHeader", footer: "shell", footerNeedle: "<SiteFooter" },
   { id: "board", file: "src/routes/board.tsx", header: "SiteHeader", needle: "<SiteHeader", footer: "shell", footerNeedle: "<SiteFooter" },
+  { id: "kanban", file: "src/routes/kanban.tsx", header: "PageShell", needle: "<PageShell", footer: "shell" },
   { id: "grownups-pages", file: "src/components/grownups/info-page.tsx", header: "PageShell", needle: "<PageShell", footer: "shell" },
   { id: "root-layout", file: "src/routes/__root.tsx", header: "baseline", footer: "none", reason: "The router root layout (outlet + update toast), not a screen; screens render inside it." },
   // In-app screens

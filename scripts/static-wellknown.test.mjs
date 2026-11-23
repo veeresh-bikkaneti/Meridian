@@ -54,7 +54,8 @@ test("robots.txt allows crawling and points at the sitemap", () => {
  * Page routes that are deliberately noindex. They must NOT appear
  * in the sitemap — listing a URL there while its page says noindex
  * would contradict the noindex. Every other page route MUST be in
- * the sitemap. The map is empty today: /board was the only entry,
+ * the sitemap. The map held only /board once; /kanban joined it on
+ * 2026-11-23 (item 10 — the internal build board, ruled hidden),
  * and the owner ruled on 2026-11-15 that the board is a discovery
  * surface for parents — it IS listed in the sitemap and does NOT
  * serve noindex (asserted explicitly below; supersedes board v2
@@ -64,7 +65,11 @@ test("robots.txt allows crawling and points at the sitemap", () => {
  * below only yields routes that exist, and every sitemap entry is
  * checked against the scan in "sitemap entries are real routes").
  */
-const NOINDEX_ROUTES = new Map();
+const NOINDEX_ROUTES = new Map([
+  // /kanban (item 10, owner rulings 2026-11-23): the internal build
+  // board is noindex and unlisted — the opposite ruling from /board's.
+  ["/kanban", "../src/routes/kanban.tsx"],
+]);
 
 /** Recursively list page routes (.tsx pages only; api/*.ts are server routes). */
 function pageRoutes(dirUrl, prefix = "") {

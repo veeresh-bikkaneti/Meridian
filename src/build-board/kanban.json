@@ -1,0 +1,2028 @@
+{
+ "schemaVersion": 2,
+ "asOf": "2026-11-23",
+ "mainSha": "5930e9304bccb9eb38db7ce57bd04698c416be61",
+ "sources": [
+  "handover-docs/HANDOVER.md",
+  "handover-docs/plan/",
+  "handover-docs/prompts/",
+  "live GitHub 2026-11-23 (kanban-mock/fixtures/github/)"
+ ],
+ "columns": [
+  "Backlog",
+  "Blocked",
+  "In progress",
+  "In review",
+  "Done"
+ ],
+ "lanes": [
+  {
+   "id": "tech-debt",
+   "label": "Tech debt"
+  },
+  {
+   "id": "architecture",
+   "label": "Architecture"
+  },
+  {
+   "id": "product",
+   "label": "Product"
+  }
+ ],
+ "gauges": {
+  "noRawIo": {
+   "label": "Raw browser I/O outside the ports",
+   "start": 178,
+   "startRef": "first baseline, #548 (7bc4d8f2)",
+   "now": 45,
+   "target": 0
+  },
+  "noUpwardImport": {
+   "label": "Wrong-direction imports",
+   "start": 154,
+   "startRef": "before upward imports A (#573); the very first baseline in #548 had 157",
+   "now": 129,
+   "target": 0
+  },
+  "shellBan": {
+   "label": "Screens building their own layout",
+   "start": 15,
+   "startRef": "main cbc119c3, 2026-11-18",
+   "now": 14,
+   "target": 0
+  }
+ },
+ "hotFiles": [
+  "eslint/layer-baseline.json",
+  "eslint/shell-ban-baseline.json",
+  "src/platform/storage/keys.ts",
+  "package.json",
+  "eslint.arch.config.mjs",
+  "docs/ops/deploy-contract.md"
+ ],
+ "stories": [
+  {
+   "id": "td-dead-code",
+   "lane": "tech-debt",
+   "title": "Remove dead code and unused packages",
+   "phase": null,
+   "why": "Less code to read and ship: delete what nothing uses and move test-only shortcuts out of the app.",
+   "prompts": [
+    "02",
+    "09"
+   ],
+   "subtasks": [
+    "td-dead-code.pack-shelf-move",
+    "td-dead-code.cva",
+    "td-dead-code.transport-hook",
+    "td-dead-code.test-stubs"
+   ],
+   "rollup": {
+    "col": "Backlog",
+    "done": 0,
+    "total": 4
+   }
+  },
+  {
+   "id": "td-forms",
+   "lane": "tech-debt",
+   "title": "Make the site's forms send data safely",
+   "phase": null,
+   "why": "Forms post through the shared network layer with no cookies or referrer leaking.",
+   "prompts": [
+    "03",
+    "09"
+   ],
+   "subtasks": [
+    "td-forms.contact",
+    "td-forms.board"
+   ],
+   "rollup": {
+    "col": "Backlog",
+    "done": 0,
+    "total": 2
+   }
+  },
+  {
+   "id": "td-tooling",
+   "lane": "tech-debt",
+   "title": "Make a fresh checkout pass every check",
+   "phase": null,
+   "why": "A new contributor can clone, install and run every gate with no manual fixes.",
+   "prompts": [
+    "09"
+   ],
+   "subtasks": [
+    "td-tooling.storybook-types",
+    "td-tooling.validators-zod"
+   ],
+   "rollup": {
+    "col": "Backlog",
+    "done": 0,
+    "total": 2
+   }
+  },
+  {
+   "id": "td-pipeline",
+   "lane": "tech-debt",
+   "title": "Fix the broken publish job and slim the repo",
+   "phase": null,
+   "why": "CI stops reporting a failing job, and clones get faster.",
+   "prompts": [
+    "05"
+   ],
+   "subtasks": [
+    "td-pipeline.repo-weight",
+    "td-pipeline.pages-failing"
+   ],
+   "rollup": {
+    "col": "Backlog",
+    "done": 0,
+    "total": 2
+   }
+  },
+  {
+   "id": "td-prod-checks",
+   "lane": "tech-debt",
+   "title": "Prove recent fixes on real devices and in production",
+   "phase": null,
+   "why": "Checks that code alone can't prove.",
+   "prompts": [],
+   "subtasks": [
+    "td-prod-checks.private-mode",
+    "td-prod-checks.crash-redeploy"
+   ],
+   "rollup": {
+    "col": "Backlog",
+    "done": 0,
+    "total": 2
+   }
+  },
+  {
+   "id": "td-tests",
+   "lane": "tech-debt",
+   "title": "Fix failing and flaky tests",
+   "phase": null,
+   "why": "A red test means a real bug again.",
+   "prompts": [],
+   "subtasks": [
+    "td-tests.detective-flake",
+    "td-tests.known-failures"
+   ],
+   "rollup": {
+    "col": "Backlog",
+    "done": 0,
+    "total": 2
+   }
+  },
+  {
+   "id": "td-a11y",
+   "lane": "tech-debt",
+   "title": "Make the answer reveal work with screen readers",
+   "phase": null,
+   "why": "Children using keyboards or screen readers hear the answer when it is revealed.",
+   "prompts": [
+    "09"
+   ],
+   "subtasks": [
+    "td-a11y.lose-reveal"
+   ],
+   "rollup": {
+    "col": "Backlog",
+    "done": 0,
+    "total": 1
+   }
+  },
+  {
+   "id": "arch-rules",
+   "lane": "architecture",
+   "title": "Agree the ground rules and add architecture guardrails",
+   "phase": "0a, 0",
+   "why": "The rules and lint checks that every later phase relies on.",
+   "prompts": [],
+   "subtasks": [
+    "arch-rules.amend",
+    "arch-rules.guardrails"
+   ],
+   "rollup": {
+    "col": "Done",
+    "done": 2,
+    "total": 2
+   }
+  },
+  {
+   "id": "arch-ports",
+   "lane": "architecture",
+   "title": "Send all storage, network and sound through shared ports",
+   "phase": "1",
+   "why": "One place owns each kind of browser I/O, so screens stop repeating error handling.",
+   "prompts": [
+    "01",
+    "04"
+   ],
+   "subtasks": [
+    "arch-ports.audio",
+    "arch-ports.storage",
+    "arch-ports.transport",
+    "arch-ports.sweep-a",
+    "arch-ports.game-app",
+    "arch-ports.storyteller-home",
+    "arch-ports.last-ten"
+   ],
+   "rollup": {
+    "col": "In review",
+    "done": 4,
+    "total": 7
+   }
+  },
+  {
+   "id": "arch-shell",
+   "lane": "architecture",
+   "title": "Put every screen inside the shared page layout",
+   "phase": "2",
+   "why": "Every screen uses the same header, footer and column instead of its own.",
+   "prompts": [
+    "03"
+   ],
+   "subtasks": [
+    "arch-shell.nav-tests",
+    "arch-shell.sweep"
+   ],
+   "rollup": {
+    "col": "Backlog",
+    "done": 1,
+    "total": 2
+   }
+  },
+  {
+   "id": "arch-content",
+   "lane": "architecture",
+   "title": "Turn every subject's questions into checked content",
+   "phase": "3",
+   "why": "Questions are validated records, so a typo fails the build instead of a child's game.",
+   "prompts": [],
+   "subtasks": [
+    "arch-content.records"
+   ],
+   "rollup": {
+    "col": "Done",
+    "done": 1,
+    "total": 1
+   }
+  },
+  {
+   "id": "arch-split",
+   "lane": "architecture",
+   "title": "Break the giant game screen into small modules",
+   "phase": "4",
+   "why": "The 8,894-line game file becomes a thin router plus one module per screen.",
+   "prompts": [
+    "06"
+   ],
+   "subtasks": [
+    "arch-split.map",
+    "arch-split.size-budget",
+    "arch-split.modules",
+    "arch-split.router"
+   ],
+   "rollup": {
+    "col": "Blocked",
+    "done": 1,
+    "total": 4
+   }
+  },
+  {
+   "id": "arch-imports",
+   "lane": "architecture",
+   "title": "Stop low-level code importing from higher layers",
+   "phase": null,
+   "why": "Imports point one way only, so changing a screen can't break the core.",
+   "prompts": [
+    "02",
+    "07"
+   ],
+   "subtasks": [
+    "arch-imports.batch-a",
+    "arch-imports.rulings",
+    "arch-imports.subject-contracts"
+   ],
+   "rollup": {
+    "col": "Blocked",
+    "done": 1,
+    "total": 3
+   }
+  },
+  {
+   "id": "arch-gates",
+   "lane": "architecture",
+   "title": "Lock in backend contracts and make the checks blocking",
+   "phase": "5",
+   "why": "Secrets, migrations and headers have one source each; then the baselines become hard gates.",
+   "prompts": [
+    "08"
+   ],
+   "subtasks": [
+    "arch-gates.contracts",
+    "arch-gates.flip"
+   ],
+   "rollup": {
+    "col": "Blocked",
+    "done": 1,
+    "total": 2
+   }
+  },
+  {
+   "id": "arch-pages",
+   "lane": "architecture",
+   "title": "Retire the old GitHub Pages site",
+   "phase": null,
+   "why": "The live site is the workers.dev one only.",
+   "prompts": [
+    "05"
+   ],
+   "subtasks": [
+    "arch-pages.retire",
+    "arch-pages.links"
+   ],
+   "rollup": {
+    "col": "Backlog",
+    "done": 0,
+    "total": 2
+   }
+  },
+  {
+   "id": "prod-3d",
+   "lane": "product",
+   "title": "Make the 3D world and clue scenes feel cinematic",
+   "phase": null,
+   "why": "Richer motion for the globe and clue scenes.",
+   "prompts": [],
+   "subtasks": [
+    "prod-3d.globe",
+    "prod-3d.clue-films"
+   ],
+   "rollup": {
+    "col": "Backlog",
+    "done": 0,
+    "total": 2
+   }
+  },
+  {
+   "id": "prod-live",
+   "lane": "product",
+   "title": "Fix problems seen on the live site",
+   "phase": null,
+   "why": "Bugs and requests from real use.",
+   "prompts": [],
+   "subtasks": [
+    "prod-live.walk-fixes",
+    "prod-live.open-issues"
+   ],
+   "rollup": {
+    "col": "Backlog",
+    "done": 0,
+    "total": 2
+   }
+  },
+  {
+   "id": "prod-grow",
+   "lane": "product",
+   "title": "Grow subjects, age bands and shared play",
+   "phase": null,
+   "why": "New content and modes for more children.",
+   "prompts": [],
+   "subtasks": [
+    "prod-grow.pennant",
+    "prod-grow.science-review",
+    "prod-grow.adult-band"
+   ],
+   "rollup": {
+    "col": "Backlog",
+    "done": 0,
+    "total": 3
+   }
+  }
+ ],
+ "subtasks": [
+  {
+   "id": "td-dead-code.pack-shelf-move",
+   "story": "td-dead-code",
+   "title": "Move the pack shelf data into the shared library and delete the leftover forwarding files",
+   "lane": "tech-debt",
+   "col": "Blocked",
+   "phase": null,
+   "prompt": "02",
+   "owner": "agent (prompt 02)",
+   "owns": [
+    "src/components/pack-shelf-data.ts",
+    "src/components/ui/pack-shelf-data.ts",
+    "src/lib/"
+   ],
+   "ownsStatus": "partial",
+   "ownsNote": "Prompt 02 item 4 also deletes 9 re-export shims and updates importers; the shim paths are not listed in the docs and could not be counted by grep.",
+   "dependsOn": [],
+   "blockedBy": "Bundled into prompt 02, which waits on Veeresh's 3 rulings",
+   "gate": null,
+   "prs": [
+    {
+     "number": 573,
+     "role": "ref",
+     "href": "https://github.com/veeresh-bikkaneti/Meridian/pull/573"
+    }
+   ],
+   "issues": [],
+   "branches": [],
+   "evidence": "pack-shelf-data still at src/components/ (plus ui shim). Shim count not verifiable by grep: unknown.",
+   "v1": {
+    "index": 0,
+    "id": "573-follow-ups-move-pack-shelf-data-to-src-lib-delete-9-re-export-shims",
+    "title": "#573 follow-ups: move pack-shelf-data to src/lib, delete 9 re-export shims",
+    "dep": "Bundled in prompt 02, which waits on 3 owner rulings"
+   }
+  },
+  {
+   "id": "td-forms.contact",
+   "story": "td-forms",
+   "title": "Send the contact form through the shared network layer without cookies or referrer",
+   "lane": "tech-debt",
+   "col": "Backlog",
+   "phase": null,
+   "prompt": "09",
+   "owner": "agent (prompt 09)",
+   "owns": [
+    "src/routes/contact.tsx"
+   ],
+   "ownsStatus": "known",
+   "ownsNote": null,
+   "dependsOn": [],
+   "blockedBy": null,
+   "gate": null,
+   "prs": [],
+   "issues": [],
+   "branches": [],
+   "evidence": "src/routes/contact.tsx has no credentials or referrer setting on main.",
+   "v1": {
+    "index": 1,
+    "id": "contact-tsx-form-seam-port-wiring-credentials-omit-no-referrer",
+    "title": "contact.tsx form-seam port wiring (credentials omit, no-referrer)",
+    "dep": "Prompt 09 item 3; none"
+   }
+  },
+  {
+   "id": "td-forms.board",
+   "story": "td-forms",
+   "title": "Do the same for the board page's form once that page uses the shared layout",
+   "lane": "tech-debt",
+   "col": "Blocked",
+   "phase": null,
+   "prompt": "03",
+   "owner": "agent (prompt 03)",
+   "owns": [
+    "src/routes/board.tsx"
+   ],
+   "ownsStatus": "known",
+   "ownsNote": null,
+   "dependsOn": [
+    "arch-shell.sweep"
+   ],
+   "blockedBy": "Waits for the board page's layout move (prompt 03)",
+   "gate": null,
+   "prs": [],
+   "issues": [],
+   "branches": [],
+   "evidence": "board.tsx still holds 6 raw localStorage rows.",
+   "v1": {
+    "index": 2,
+    "id": "board-tsx-side-of-the-form-seam",
+    "title": "board.tsx side of the form seam",
+    "dep": "Phase 2 (prompt 03)"
+   }
+  },
+  {
+   "id": "td-dead-code.cva",
+   "story": "td-dead-code",
+   "title": "Remove a styling package nothing uses",
+   "lane": "tech-debt",
+   "col": "Backlog",
+   "phase": null,
+   "prompt": "09",
+   "owner": "agent (prompt 09)",
+   "owns": [
+    "package.json"
+   ],
+   "ownsStatus": "known",
+   "ownsNote": "npm will also rewrite package-lock.json.",
+   "dependsOn": [],
+   "blockedBy": null,
+   "gate": "Prove it is unused with grep first (prompt 09 item 2)",
+   "prs": [],
+   "issues": [],
+   "branches": [],
+   "evidence": "Still in dependencies, package.json:63.",
+   "v1": {
+    "index": 3,
+    "id": "remove-unused-class-variance-authority",
+    "title": "Remove unused class-variance-authority",
+    "dep": "Prompt 09 item 2; none"
+   }
+  },
+  {
+   "id": "td-dead-code.transport-hook",
+   "story": "td-dead-code",
+   "title": "Delete the network hook nothing calls",
+   "lane": "tech-debt",
+   "col": "Backlog",
+   "phase": null,
+   "prompt": "09",
+   "owner": "agent (prompt 09)",
+   "owns": [
+    "src/platform/transport/use-transport.ts"
+   ],
+   "ownsStatus": "known",
+   "ownsNote": null,
+   "dependsOn": [],
+   "blockedBy": null,
+   "gate": "Prove it is unused with grep first (prompt 09 item 2)",
+   "prs": [
+    {
+     "number": 565,
+     "role": "ref",
+     "href": "https://github.com/veeresh-bikkaneti/Meridian/pull/565"
+    }
+   ],
+   "issues": [],
+   "branches": [],
+   "evidence": "No callers outside src/platform on main.",
+   "v1": {
+    "index": 4,
+    "id": "remove-unused-use-transport-ts",
+    "title": "Remove unused use-transport.ts",
+    "dep": "Prompt 09 item 2; none"
+   }
+  },
+  {
+   "id": "td-dead-code.test-stubs",
+   "story": "td-dead-code",
+   "title": "Take test-only shortcuts out of the shipped app",
+   "lane": "tech-debt",
+   "col": "Backlog",
+   "phase": null,
+   "prompt": "09",
+   "owner": "agent (prompt 09)",
+   "owns": [],
+   "ownsStatus": "unknown",
+   "ownsNote": "The docs give a count (534 guards) but no file list; the count was not re-measured.",
+   "dependsOn": [],
+   "blockedBy": null,
+   "gate": "Tier 2: write a plan first and wait for Veeresh's OK (prompt 09 item 4)",
+   "prs": [],
+   "issues": [],
+   "branches": [],
+   "evidence": "Count of 534: unknown (not re-measured).",
+   "v1": {
+    "index": 5,
+    "id": "move-534-test-stub-guards-out-of-production-code",
+    "title": "Move 534 test-stub guards out of production code",
+    "dep": "Prompt 09 item 4; Tier 2, plan first, owner OK"
+   }
+  },
+  {
+   "id": "td-tooling.storybook-types",
+   "story": "td-tooling",
+   "title": "Add the missing Storybook package so type checks pass on component stories",
+   "lane": "tech-debt",
+   "col": "Blocked",
+   "phase": null,
+   "prompt": "09",
+   "owner": "agent (prompt 09)",
+   "owns": [
+    "package.json"
+   ],
+   "ownsStatus": "known",
+   "ownsNote": "npm will also rewrite package-lock.json.",
+   "dependsOn": [],
+   "blockedBy": "Install approval from Veeresh (AGENTS.md §12)",
+   "gate": null,
+   "prs": [
+    {
+     "number": 552,
+     "role": "ref",
+     "href": "https://github.com/veeresh-bikkaneti/Meridian/pull/552"
+    }
+   ],
+   "issues": [],
+   "branches": [],
+   "evidence": "Absent; @storybook/react-vite 10.6.8 present.",
+   "v1": {
+    "index": 6,
+    "id": "add-storybook-react-devdependency",
+    "title": "Add @storybook/react devDependency",
+    "dep": "Install gate: owner approval (AGENTS.md §12)"
+   }
+  },
+  {
+   "id": "td-tooling.validators-zod",
+   "story": "td-tooling",
+   "title": "Let the content checks run in a fresh checkout without a manual install step",
+   "lane": "tech-debt",
+   "col": "Backlog",
+   "phase": null,
+   "prompt": null,
+   "owner": "unassigned",
+   "owns": [],
+   "ownsStatus": "unknown",
+   "ownsNote": "The docs name the symptom (npm i --no-save zod) but no file or fix.",
+   "dependsOn": [],
+   "blockedBy": null,
+   "gate": null,
+   "prs": [],
+   "issues": [],
+   "branches": [],
+   "evidence": "Live behaviour: unknown (not run).",
+   "v1": {
+    "index": 7,
+    "id": "fresh-worktree-validators-need-npm-i-no-save-zod",
+    "title": "Fresh worktree validators need npm i --no-save zod",
+    "dep": "None"
+   }
+  },
+  {
+   "id": "td-prod-checks.private-mode",
+   "story": "td-prod-checks",
+   "title": "Confirm saved progress works in private browsing on a real phone",
+   "lane": "tech-debt",
+   "col": "Backlog",
+   "phase": null,
+   "prompt": null,
+   "owner": "Veeresh or a tester with a device",
+   "owns": [],
+   "ownsStatus": "none",
+   "ownsNote": "A manual device check; no files change unless it finds a bug.",
+   "dependsOn": [],
+   "blockedBy": null,
+   "gate": "Needs a real device",
+   "prs": [
+    {
+     "number": 563,
+     "role": "ref",
+     "href": "https://github.com/veeresh-bikkaneti/Meridian/pull/563"
+    }
+   ],
+   "issues": [],
+   "branches": [],
+   "evidence": "Unknown: needs a real-device check.",
+   "v1": {
+    "index": 8,
+    "id": "storage-slice-prove-private-mode-on-a-real-device",
+    "title": "Storage slice: prove private mode on a real device",
+    "dep": "Real device"
+   }
+  },
+  {
+   "id": "td-prod-checks.crash-redeploy",
+   "story": "td-prod-checks",
+   "title": "Redeploy the crash reporter and run its health check",
+   "lane": "tech-debt",
+   "col": "Blocked",
+   "phase": null,
+   "prompt": null,
+   "owner": "Veeresh",
+   "owns": [],
+   "ownsStatus": "none",
+   "ownsNote": "A production action; no repo files change.",
+   "dependsOn": [],
+   "blockedBy": "Owner's production step",
+   "gate": null,
+   "prs": [
+    {
+     "number": 560,
+     "role": "ref",
+     "href": "https://github.com/veeresh-bikkaneti/Meridian/pull/560"
+    }
+   ],
+   "issues": [],
+   "branches": [],
+   "evidence": "Unknown: production action.",
+   "v1": {
+    "index": 9,
+    "id": "crash-worker-redeploy-then-run-smoke",
+    "title": "Crash worker: redeploy, then run smoke",
+    "dep": "Owner's step"
+   }
+  },
+  {
+   "id": "td-tests.detective-flake",
+   "story": "td-tests",
+   "title": "Fix the detective endings test that fails only in CI",
+   "lane": "tech-debt",
+   "col": "Backlog",
+   "phase": null,
+   "prompt": null,
+   "owner": "unassigned",
+   "owns": [
+    "tests/e2e/detective-endings.spec.ts"
+   ],
+   "ownsStatus": "known",
+   "ownsNote": null,
+   "dependsOn": [],
+   "blockedBy": null,
+   "gate": null,
+   "prs": [],
+   "issues": [
+    {
+     "number": 460,
+     "href": "https://github.com/veeresh-bikkaneti/Meridian/issues/460"
+    }
+   ],
+   "branches": [],
+   "evidence": "#460 OPEN.",
+   "v1": {
+    "index": 10,
+    "id": "detective-endings-spec-ci-flake-460",
+    "title": "detective-endings spec + CI flake #460",
+    "dep": "None"
+   }
+  },
+  {
+   "id": "td-tests.known-failures",
+   "story": "td-tests",
+   "title": "Clear the known failing tests and lint errors on main",
+   "lane": "tech-debt",
+   "col": "Backlog",
+   "phase": null,
+   "prompt": null,
+   "owner": "unassigned",
+   "owns": [],
+   "ownsStatus": "unknown",
+   "ownsNote": "HANDOVER lists grandpa-coffee-run desktop (7 tests), 1 math e2e, 28 lint errors and 4 browser failures (chunk 13-E, storyteller-audible, tap-pending R and W) but no spec paths; counts not re-measured.",
+   "dependsOn": [],
+   "blockedBy": null,
+   "gate": null,
+   "prs": [],
+   "issues": [],
+   "branches": [],
+   "evidence": "Counts unknown (full suite not run, by rule).",
+   "v1": {
+    "index": 11,
+    "id": "test-debt-grandpa-coffee-run-desktop-7-1-math-e2e-28-lint-errors-4-browser-failures",
+    "title": "Test debt: grandpa-coffee-run desktop 7, 1 math e2e, 28 lint errors, 4 browser failures",
+    "dep": "None"
+   }
+  },
+  {
+   "id": "td-a11y.lose-reveal",
+   "story": "td-a11y",
+   "title": "Move focus to the revealed answer and read it out to screen readers",
+   "lane": "tech-debt",
+   "col": "Backlog",
+   "phase": null,
+   "prompt": "09",
+   "owner": "agent (prompt 09)",
+   "owns": [],
+   "ownsStatus": "unknown",
+   "ownsNote": "Mockup lives on a protected branch; the docs name no component file.",
+   "dependsOn": [],
+   "blockedBy": null,
+   "gate": "Mockup first, wait for Veeresh's approval (prompt 09 item 5)",
+   "prs": [],
+   "issues": [],
+   "branches": [
+    {
+     "name": "mockup/514-lose-path-reveal",
+     "role": "ref",
+     "match": "exact",
+     "href": "https://github.com/veeresh-bikkaneti/Meridian/tree/mockup/514-lose-path-reveal"
+    }
+   ],
+   "evidence": "Mockup branch exists (last commit 2026-11-18 23:39 CST); no PR.",
+   "v1": {
+    "index": 12,
+    "id": "lose-path-reveal-focus-move-screen-reader-announce",
+    "title": "Lose-path reveal: focus move + screen-reader announce",
+    "dep": "Prompt 09 item 5; mockup approval"
+   }
+  },
+  {
+   "id": "td-pipeline.repo-weight",
+   "story": "td-pipeline",
+   "title": "Shrink the repository by moving large screenshot files out",
+   "lane": "tech-debt",
+   "col": "Backlog",
+   "phase": null,
+   "prompt": null,
+   "owner": "unassigned",
+   "owns": [
+    "docs/motion-verify/"
+   ],
+   "ownsStatus": "known",
+   "ownsNote": "28.8 MB in 39 files on main (HANDOVER says about 14 MB).",
+   "dependsOn": [],
+   "blockedBy": null,
+   "gate": null,
+   "prs": [
+    {
+     "number": 551,
+     "role": "ref",
+     "href": "https://github.com/veeresh-bikkaneti/Meridian/pull/551"
+    },
+    {
+     "number": 547,
+     "role": "ref",
+     "href": "https://github.com/veeresh-bikkaneti/Meridian/pull/547"
+    }
+   ],
+   "issues": [],
+   "branches": [],
+   "evidence": "28.8 MB in 39 files on main (doc says about 14 MB).",
+   "v1": {
+    "index": 13,
+    "id": "repo-weight-screenshots-in-docs-motion-verify",
+    "title": "Repo weight: screenshots in docs/motion-verify",
+    "dep": "None"
+   }
+  },
+  {
+   "id": "td-pipeline.pages-failing",
+   "story": "td-pipeline",
+   "title": "Stop the old site's publish job from failing on every run",
+   "lane": "tech-debt",
+   "col": "Backlog",
+   "phase": null,
+   "prompt": "05",
+   "owner": "agent (prompt 05)",
+   "owns": [
+    ".github/workflows/pages.yml"
+   ],
+   "ownsStatus": "known",
+   "ownsNote": "Same file and same PR as arch-pages.retire; this card closes when that PR merges.",
+   "dependsOn": [
+    "arch-pages.retire"
+   ],
+   "blockedBy": null,
+   "gate": null,
+   "prs": [],
+   "issues": [],
+   "branches": [],
+   "evidence": "pages.yml on main; last 2 runs failed (2026-11-22 9:24 and 11:27 CST).",
+   "v1": {
+    "index": 14,
+    "id": "pages-workflow-fails-every-run",
+    "title": "Pages workflow fails every run",
+    "dep": "Fixed by prompt 05 PR 1"
+   }
+  },
+  {
+   "id": "arch-rules.amend",
+   "story": "arch-rules",
+   "title": "Let agents pull shared code out of pages instead of copying it",
+   "lane": "architecture",
+   "col": "Done",
+   "phase": "0a",
+   "prompt": null,
+   "owner": "unassigned",
+   "owns": [
+    "AGENTS.md",
+    "docs/ops/agents-reference.md"
+   ],
+   "ownsStatus": "known",
+   "ownsNote": null,
+   "dependsOn": [],
+   "blockedBy": null,
+   "gate": null,
+   "prs": [
+    {
+     "number": 543,
+     "role": "closes",
+     "href": "https://github.com/veeresh-bikkaneti/Meridian/pull/543"
+    }
+   ],
+   "issues": [],
+   "branches": [],
+   "evidence": "Merged 2026-11-19 22:31 CST.",
+   "v1": {
+    "index": 15,
+    "id": "phase-0a-constitution-amendment",
+    "title": "Phase 0a: constitution amendment",
+    "dep": "None"
+   }
+  },
+  {
+   "id": "arch-rules.guardrails",
+   "story": "arch-rules",
+   "title": "Add architecture docs, the layer lint, a one-command check runner and Storybook",
+   "lane": "architecture",
+   "col": "Done",
+   "phase": "0",
+   "prompt": null,
+   "owner": "unassigned",
+   "owns": [
+    "ARCHITECTURE.md",
+    ".github/pull_request_template.md",
+    "docs/ops/branch-disposition-2026-11.md",
+    "eslint/layer-rule.mjs",
+    "eslint/layer-baseline.json",
+    "eslint.arch.config.mjs",
+    "scripts/ci-required.mjs",
+    "package.json"
+   ],
+   "ownsStatus": "known",
+   "ownsNote": null,
+   "dependsOn": [
+    "arch-rules.amend"
+   ],
+   "blockedBy": null,
+   "gate": null,
+   "prs": [
+    {
+     "number": 544,
+     "role": "closes",
+     "href": "https://github.com/veeresh-bikkaneti/Meridian/pull/544"
+    },
+    {
+     "number": 548,
+     "role": "closes",
+     "href": "https://github.com/veeresh-bikkaneti/Meridian/pull/548"
+    },
+    {
+     "number": 549,
+     "role": "closes",
+     "href": "https://github.com/veeresh-bikkaneti/Meridian/pull/549"
+    },
+    {
+     "number": 552,
+     "role": "closes",
+     "href": "https://github.com/veeresh-bikkaneti/Meridian/pull/552"
+    }
+   ],
+   "issues": [],
+   "branches": [],
+   "evidence": "All 4 merged 2026-11-20 (11:46 to 19:18 CST).",
+   "v1": {
+    "index": 16,
+    "id": "phase-0-guardrails-prs-0-1-to-0-4",
+    "title": "Phase 0: guardrails PRs 0.1 to 0.4",
+    "dep": "0a"
+   }
+  },
+  {
+   "id": "arch-ports.audio",
+   "story": "arch-ports",
+   "title": "Play clue scene sound through the shared one-voice sound port",
+   "lane": "architecture",
+   "col": "Done",
+   "phase": "1",
+   "prompt": null,
+   "owner": "unassigned",
+   "owns": [
+    "src/platform/audio/",
+    "src/subjects/shared/ClueScene.tsx"
+   ],
+   "ownsStatus": "known",
+   "ownsNote": null,
+   "dependsOn": [
+    "arch-rules.guardrails"
+   ],
+   "blockedBy": null,
+   "gate": null,
+   "prs": [
+    {
+     "number": 559,
+     "role": "closes",
+     "href": "https://github.com/veeresh-bikkaneti/Meridian/pull/559"
+    }
+   ],
+   "issues": [],
+   "branches": [],
+   "evidence": "Merged 2026-11-20 19:11 CST.",
+   "v1": {
+    "index": 17,
+    "id": "phase-1-audio-port-cluescene",
+    "title": "Phase 1: audio port + ClueScene",
+    "dep": "Phase 0"
+   }
+  },
+  {
+   "id": "arch-ports.storage",
+   "story": "arch-ports",
+   "title": "Save age band and progress through the shared storage port",
+   "lane": "architecture",
+   "col": "Done",
+   "phase": "1",
+   "prompt": null,
+   "owner": "unassigned",
+   "owns": [
+    "src/platform/storage/",
+    "src/game/age-profile/"
+   ],
+   "ownsStatus": "known",
+   "ownsNote": null,
+   "dependsOn": [
+    "arch-rules.guardrails"
+   ],
+   "blockedBy": null,
+   "gate": null,
+   "prs": [
+    {
+     "number": 563,
+     "role": "closes",
+     "href": "https://github.com/veeresh-bikkaneti/Meridian/pull/563"
+    }
+   ],
+   "issues": [],
+   "branches": [],
+   "evidence": "Merged 2026-11-21 04:25 CST.",
+   "v1": {
+    "index": 18,
+    "id": "phase-1-storage-port-age-band-progress-keys",
+    "title": "Phase 1: storage port (age-band, progress keys)",
+    "dep": "Phase 0"
+   }
+  },
+  {
+   "id": "arch-ports.transport",
+   "story": "arch-ports",
+   "title": "Load the pack shelf through the shared network port",
+   "lane": "architecture",
+   "col": "Done",
+   "phase": "1",
+   "prompt": null,
+   "owner": "unassigned",
+   "owns": [
+    "src/platform/transport/",
+    "src/components/pack-shelf-data.ts"
+   ],
+   "ownsStatus": "known",
+   "ownsNote": null,
+   "dependsOn": [
+    "arch-rules.guardrails"
+   ],
+   "blockedBy": null,
+   "gate": null,
+   "prs": [
+    {
+     "number": 565,
+     "role": "closes",
+     "href": "https://github.com/veeresh-bikkaneti/Meridian/pull/565"
+    }
+   ],
+   "issues": [],
+   "branches": [],
+   "evidence": "Merged 2026-11-21 11:42 CST.",
+   "v1": {
+    "index": 19,
+    "id": "phase-1-transport-port-pack-shelf-data",
+    "title": "Phase 1: transport port (pack-shelf-data)",
+    "dep": "Phase 0"
+   }
+  },
+  {
+   "id": "arch-ports.sweep-a",
+   "story": "arch-ports",
+   "title": "Move every screen except the main game onto the ports",
+   "lane": "architecture",
+   "col": "Done",
+   "phase": "1",
+   "prompt": null,
+   "owner": "unassigned",
+   "owns": [],
+   "ownsStatus": "unknown",
+   "ownsNote": "The docs say 'all files except game-app.tsx' with no list; see the merged PR's file list.",
+   "dependsOn": [
+    "arch-ports.audio",
+    "arch-ports.storage",
+    "arch-ports.transport"
+   ],
+   "blockedBy": null,
+   "gate": null,
+   "prs": [
+    {
+     "number": 569,
+     "role": "closes",
+     "href": "https://github.com/veeresh-bikkaneti/Meridian/pull/569"
+    }
+   ],
+   "issues": [],
+   "branches": [],
+   "evidence": "Merge 38468953, 2026-11-22 05:56 CST.",
+   "v1": {
+    "index": 20,
+    "id": "phase-1-part-a-ports-sweep-all-files-except-game-app",
+    "title": "Phase 1 Part A: ports sweep, all files except game-app",
+    "dep": "Ports"
+   }
+  },
+  {
+   "id": "arch-ports.game-app",
+   "story": "arch-ports",
+   "title": "Move the main game's saved data onto the storage port",
+   "lane": "architecture",
+   "col": "In review",
+   "phase": "1",
+   "prompt": "01",
+   "owner": "agent (prompt 01) reviews; Veeresh merges",
+   "owns": [
+    "src/components/game-app.tsx",
+    "src/platform/storage/keys.ts",
+    "eslint/layer-baseline.json",
+    "docs/branch-status/phase1-ports-part-b.md"
+   ],
+   "ownsStatus": "known",
+   "ownsNote": null,
+   "dependsOn": [
+    "arch-ports.sweep-a"
+   ],
+   "blockedBy": null,
+   "gate": "Full review, then Veeresh's merge word",
+   "prs": [
+    {
+     "number": 571,
+     "role": "closes",
+     "href": "https://github.com/veeresh-bikkaneti/Meridian/pull/571"
+    }
+   ],
+   "issues": [],
+   "branches": [
+    {
+     "name": "phase1/ports-part-b",
+     "role": "work",
+     "match": "exact",
+     "href": "https://github.com/veeresh-bikkaneti/Meridian/tree/phase1/ports-part-b"
+    }
+   ],
+   "evidence": "OPEN draft, head acf8b24d, 8 files, CLEAN, 3 behind main; build, e2e, GitGuardian pass; tip noRawIo 13. Status doc still stale.",
+   "v1": {
+    "index": 21,
+    "id": "phase-1-part-b-game-app-onto-storage-port-prompt-01",
+    "title": "Phase 1 Part B: game-app onto storage port (prompt 01)",
+    "dep": "Review then owner merge word"
+   }
+  },
+  {
+   "id": "arch-ports.storyteller-home",
+   "story": "arch-ports",
+   "title": "Move the storyteller home screen's download and sounds onto the ports",
+   "lane": "architecture",
+   "col": "Backlog",
+   "phase": "1",
+   "prompt": "04",
+   "owner": "agent (prompt 04)",
+   "owns": [
+    "src/components/storyteller-home.tsx",
+    "src/components/storyteller-home.test.ts",
+    "eslint/layer-baseline.json"
+   ],
+   "ownsStatus": "known",
+   "ownsNote": null,
+   "dependsOn": [],
+   "blockedBy": null,
+   "gate": null,
+   "prs": [],
+   "issues": [],
+   "branches": [
+    {
+     "name": "phase1/storyteller-home-ports",
+     "role": "work",
+     "match": "exact",
+     "href": "https://github.com/veeresh-bikkaneti/Meridian/tree/phase1/storyteller-home-ports"
+    }
+   ],
+   "evidence": "Branch phase1/storyteller-home-ports not on origin. 3 rows still baselined.",
+   "v1": {
+    "index": 22,
+    "id": "storyteller-home-to-ports-prompt-04",
+    "title": "storyteller-home to ports (prompt 04)",
+    "dep": "None (runs now)"
+   }
+  },
+  {
+   "id": "arch-ports.last-ten",
+   "story": "arch-ports",
+   "title": "Move the last ten raw storage, network and sound calls onto the ports",
+   "lane": "architecture",
+   "col": "Blocked",
+   "phase": "1",
+   "prompt": null,
+   "owner": "unassigned",
+   "owns": [
+    "src/routes/board.tsx",
+    "src/game/loop/LoopScreen.tsx",
+    "src/lib/error-component.tsx",
+    "src/subjects/shared/SubjectCase.tsx",
+    "eslint/layer-baseline.json"
+   ],
+   "ownsStatus": "known",
+   "ownsNote": "Files from the live baseline (verification 2026-11-23), not from a prompt: board 6 rows, LoopScreen 2, error-component 1, SubjectCase 1.",
+   "dependsOn": [],
+   "blockedBy": "No prompt owns these rows; Veeresh to confirm (likely the layout PRs in prompt 03)",
+   "gate": null,
+   "prs": [],
+   "issues": [],
+   "branches": [],
+   "evidence": "board.tsx 6, LoopScreen 2, error-component 1, SubjectCase 1. No prompt names these rows.",
+   "v1": {
+    "index": 23,
+    "id": "phase-1-tail-last-10-norawio-rows",
+    "title": "Phase 1 tail: last 10 noRawIo rows",
+    "dep": "Unassigned; likely Phase 2 screen PRs (owner to confirm)"
+   }
+  },
+  {
+   "id": "arch-shell.nav-tests",
+   "story": "arch-shell",
+   "title": "Point the header tests at the shared site header",
+   "lane": "architecture",
+   "col": "Done",
+   "phase": "2",
+   "prompt": null,
+   "owner": "unassigned",
+   "owns": [
+    "tests/e2e/journal-player.fixes.mobile.spec.ts",
+    "tests/e2e/chunk-recovery.desktop.spec.ts",
+    "tests/e2e/shared-shell-adoption.desktop.spec.ts",
+    "tests/e2e/journal-player.fixes.desktop.spec.ts",
+    "tests/e2e/grownups-privacy-contact.desktop.spec.ts"
+   ],
+   "ownsStatus": "partial",
+   "ownsNote": "Spec list from plan/phase-2 (Nov 18); the merged PRs are the record.",
+   "dependsOn": [],
+   "blockedBy": null,
+   "gate": null,
+   "prs": [
+    {
+     "number": 561,
+     "role": "closes",
+     "href": "https://github.com/veeresh-bikkaneti/Meridian/pull/561"
+    },
+    {
+     "number": 564,
+     "role": "closes",
+     "href": "https://github.com/veeresh-bikkaneti/Meridian/pull/564"
+    }
+   ],
+   "issues": [],
+   "branches": [],
+   "evidence": "Merged 2026-11-21. No spec under tests/ queries .hv5-nav now.",
+   "v1": {
+    "index": 24,
+    "id": "phase-2-retarget-hv5-nav-selectors-nav-count-asserts",
+    "title": "Phase 2: retarget .hv5-nav selectors, nav count asserts",
+    "dep": "None"
+   }
+  },
+  {
+   "id": "arch-shell.sweep",
+   "story": "arch-shell",
+   "title": "Move each screen into the shared page layout, one screen at a time",
+   "lane": "architecture",
+   "col": "Backlog",
+   "phase": "2",
+   "prompt": "03",
+   "owner": "agent (prompt 03)",
+   "owns": [
+    "src/components/boot-splash.tsx",
+    "src/components/grownups/info-page.tsx",
+    "src/game/coldtrail/TrailScreen.tsx",
+    "src/game/loop/LoopScreen.tsx",
+    "src/lib/error-component.tsx",
+    "src/routes/board.tsx",
+    "src/subjects/shared/",
+    "src/subjects/registry.ts",
+    "src/components/ui/page-shell.tsx",
+    "src/components/ui/shell-registry.ts",
+    "src/components/ui/site-footer.tsx",
+    "eslint/shell-ban-baseline.json",
+    "eslint/layer-baseline.json"
+   ],
+   "ownsStatus": "known",
+   "ownsNote": "Plus each screen's CSS and specs. Not game-app.tsx (that is the module split).",
+   "dependsOn": [],
+   "blockedBy": null,
+   "gate": "Mockup batch first, wait for Veeresh's OK",
+   "prs": [],
+   "issues": [],
+   "branches": [
+    {
+     "name": "phase2/",
+     "role": "work",
+     "match": "prefix",
+     "href": null
+    }
+   ],
+   "evidence": "No phase2/* branch on origin. shell-ban 14 on main.",
+   "v1": {
+    "index": 25,
+    "id": "phase-2-shell-sweep-prompt-03-shell-ban-14-to-0-36-2-upward-rows",
+    "title": "Phase 2 shell sweep (prompt 03): shell-ban 14 to 0, 36 + 2 upward rows",
+    "dep": "Mockup first, owner OK before code"
+   }
+  },
+  {
+   "id": "arch-content.records",
+   "story": "arch-content",
+   "title": "Store every subject's questions as validated content records",
+   "lane": "architecture",
+   "col": "Done",
+   "phase": "3",
+   "prompt": null,
+   "owner": "unassigned",
+   "owns": [
+    "src/subjects/math/",
+    "src/subjects/physics/",
+    "src/subjects/chemistry/",
+    "src/subjects/general-knowledge/",
+    "src/subjects/journals/",
+    "src/subjects/social-studies/",
+    "docs/scaling/contracts.md"
+   ],
+   "ownsStatus": "known",
+   "ownsNote": null,
+   "dependsOn": [
+    "arch-rules.guardrails"
+   ],
+   "blockedBy": null,
+   "gate": null,
+   "prs": [
+    {
+     "number": 555,
+     "role": "closes",
+     "href": "https://github.com/veeresh-bikkaneti/Meridian/pull/555"
+    },
+    {
+     "number": 562,
+     "role": "closes",
+     "href": "https://github.com/veeresh-bikkaneti/Meridian/pull/562"
+    },
+    {
+     "number": 566,
+     "role": "closes",
+     "href": "https://github.com/veeresh-bikkaneti/Meridian/pull/566"
+    },
+    {
+     "number": 568,
+     "role": "closes",
+     "href": "https://github.com/veeresh-bikkaneti/Meridian/pull/568"
+    },
+    {
+     "number": 572,
+     "role": "closes",
+     "href": "https://github.com/veeresh-bikkaneti/Meridian/pull/572"
+    }
+   ],
+   "issues": [],
+   "branches": [],
+   "evidence": "All merged; prebuild:pages runs 6 validators. Last merge 9b32d31a.",
+   "v1": {
+    "index": 26,
+    "id": "phase-3-content-projection-6-subject-folders",
+    "title": "Phase 3: content projection, 6 subject folders",
+    "dep": "Phase 0"
+   }
+  },
+  {
+   "id": "arch-split.map",
+   "story": "arch-split",
+   "title": "Map what the giant game screen does before splitting it",
+   "lane": "architecture",
+   "col": "Done",
+   "phase": "4",
+   "prompt": null,
+   "owner": "unassigned",
+   "owns": [
+    "docs/architecture/game-app-map.md"
+   ],
+   "ownsStatus": "known",
+   "ownsNote": null,
+   "dependsOn": [],
+   "blockedBy": null,
+   "gate": null,
+   "prs": [
+    {
+     "number": 570,
+     "role": "closes",
+     "href": "https://github.com/veeresh-bikkaneti/Meridian/pull/570"
+    }
+   ],
+   "issues": [],
+   "branches": [],
+   "evidence": "Merge b1185a25, 2026-11-22 09:24 CST.",
+   "v1": {
+    "index": 27,
+    "id": "phase-4-pr-1-game-app-map",
+    "title": "Phase 4 PR 1: game-app map",
+    "dep": "None"
+   }
+  },
+  {
+   "id": "arch-split.size-budget",
+   "story": "arch-split",
+   "title": "Add a size limit so the game screen file can only shrink",
+   "lane": "architecture",
+   "col": "Blocked",
+   "phase": "4",
+   "prompt": "06",
+   "owner": "agent (prompt 06)",
+   "owns": [
+    "src/components/game-app.tsx"
+   ],
+   "ownsStatus": "partial",
+   "ownsNote": "Plus one new size-budget test; the docs name no path for it.",
+   "dependsOn": [
+    "arch-ports.game-app",
+    "arch-shell.sweep"
+   ],
+   "blockedBy": "Waits for the main game's storage move and the layout sweep to merge",
+   "gate": null,
+   "prs": [],
+   "issues": [],
+   "branches": [
+    {
+     "name": "phase4/",
+     "role": "work",
+     "match": "prefix",
+     "href": null
+    }
+   ],
+   "evidence": "game-app.tsx 8,894 lines. No phase4/* branch.",
+   "v1": {
+    "index": 28,
+    "id": "phase-4-pr-2-shrink-only-size-budget-for-game-app-prompt-06",
+    "title": "Phase 4 PR 2: shrink-only size budget for game-app (prompt 06)",
+    "dep": "#571 + Phase 2 merged"
+   }
+  },
+  {
+   "id": "arch-split.modules",
+   "story": "arch-split",
+   "title": "Move each game screen into its own module, one change at a time",
+   "lane": "architecture",
+   "col": "Blocked",
+   "phase": "4",
+   "prompt": "06",
+   "owner": "agent (prompt 06)",
+   "owns": [
+    "src/components/game-app.tsx",
+    "src/components/atlas-map.tsx",
+    "src/features/",
+    "eslint/layer-baseline.json",
+    "eslint/shell-ban-baseline.json"
+   ],
+   "ownsStatus": "partial",
+   "ownsNote": "New module folder is src/features/<name>/ or whatever ARCHITECTURE.md names. 6 to 8 serial PRs; checklist is 21 game-app + 9 atlas-map upward rows.",
+   "dependsOn": [
+    "arch-split.size-budget"
+   ],
+   "blockedBy": "Waits for the size limit change",
+   "gate": null,
+   "prs": [],
+   "issues": [],
+   "branches": [
+    {
+     "name": "phase4/",
+     "role": "work",
+     "match": "prefix",
+     "href": null
+    }
+   ],
+   "evidence": "21 game-app rows, 9 atlas-map rows on main.",
+   "v1": {
+    "index": 29,
+    "id": "phase-4-module-prs-6-to-8-serial-21-9-upward-rows",
+    "title": "Phase 4 module PRs (6 to 8, serial; 21 + 9 upward rows)",
+    "dep": "#571 + Phase 2 merged"
+   }
+  },
+  {
+   "id": "arch-split.router",
+   "story": "arch-split",
+   "title": "Move the slimmed-down game router into the routes folder",
+   "lane": "architecture",
+   "col": "Blocked",
+   "phase": "4",
+   "prompt": "06",
+   "owner": "agent (prompt 06)",
+   "owns": [
+    "src/components/game-app.tsx",
+    "src/routes/"
+   ],
+   "ownsStatus": "partial",
+   "ownsNote": "New route file name not given.",
+   "dependsOn": [
+    "arch-split.modules"
+   ],
+   "blockedBy": "Last step, after every module move",
+   "gate": null,
+   "prs": [],
+   "issues": [],
+   "branches": [],
+   "evidence": "Not started.",
+   "v1": {
+    "index": 30,
+    "id": "phase-4-last-pr-move-thin-router-to-src-routes",
+    "title": "Phase 4 last PR: move thin router to src/routes",
+    "dep": "All module PRs"
+   }
+  },
+  {
+   "id": "arch-imports.batch-a",
+   "story": "arch-imports",
+   "title": "Clear the first batch of wrong-direction imports",
+   "lane": "architecture",
+   "col": "Done",
+   "phase": null,
+   "prompt": null,
+   "owner": "unassigned",
+   "owns": [
+    "eslint/layer-baseline.json"
+   ],
+   "ownsStatus": "partial",
+   "ownsNote": "The merged PR is the record of every file it moved.",
+   "dependsOn": [],
+   "blockedBy": null,
+   "gate": null,
+   "prs": [
+    {
+     "number": 573,
+     "role": "closes",
+     "href": "https://github.com/veeresh-bikkaneti/Meridian/pull/573"
+    }
+   ],
+   "issues": [],
+   "branches": [],
+   "evidence": "noUpwardImport 154 to 129; merge 5930e930, 2026-11-22 11:27 CST.",
+   "v1": {
+    "index": 31,
+    "id": "upward-imports-a",
+    "title": "Upward imports A",
+    "dep": "None"
+   }
+  },
+  {
+   "id": "arch-imports.rulings",
+   "story": "arch-imports",
+   "title": "Apply the owner's three rulings on the leftover import rows",
+   "lane": "architecture",
+   "col": "Blocked",
+   "phase": null,
+   "prompt": "02",
+   "owner": "agent (prompt 02)",
+   "owns": [
+    "eslint/layer-rule.mjs",
+    "src/lib/observability.ts",
+    "src/map/capability.ts",
+    "eslint/layer-baseline.json"
+   ],
+   "ownsStatus": "partial",
+   "ownsNote": "Plus one new domain module for the map crash marker; path not given.",
+   "dependsOn": [],
+   "blockedBy": "Veeresh's 3 rulings (HANDOVER §3)",
+   "gate": null,
+   "prs": [],
+   "issues": [],
+   "branches": [
+    {
+     "name": "arch/573-rulings",
+     "role": "work",
+     "match": "exact",
+     "href": "https://github.com/veeresh-bikkaneti/Meridian/tree/arch/573-rulings"
+    }
+   ],
+   "evidence": "Branch arch/573-rulings not on origin.",
+   "v1": {
+    "index": 32,
+    "id": "573-leftover-rulings-prompt-02",
+    "title": "#573 leftover rulings (prompt 02)",
+    "dep": "3 owner rulings"
+   }
+  },
+  {
+   "id": "arch-imports.subject-contracts",
+   "story": "arch-imports",
+   "title": "Give all subjects one shared set of lower-level type contracts",
+   "lane": "architecture",
+   "col": "Blocked",
+   "phase": null,
+   "prompt": "07",
+   "owner": "agent (prompt 07)",
+   "owns": [
+    "src/subjects/"
+   ],
+   "ownsStatus": "partial",
+   "ownsNote": "Plus a new lower-layer contracts module; path not given.",
+   "dependsOn": [
+    "arch-shell.sweep"
+   ],
+   "blockedBy": "Waits for the layout sweep, then Veeresh's runtime-kit ruling",
+   "gate": null,
+   "prs": [],
+   "issues": [],
+   "branches": [
+    {
+     "name": "arch/upward-imports-b",
+     "role": "work",
+     "match": "exact",
+     "href": "https://github.com/veeresh-bikkaneti/Meridian/tree/arch/upward-imports-b"
+    }
+   ],
+   "evidence": "45 subject rows + 9 social studies rows on main. No arch/upward-imports-b branch.",
+   "v1": {
+    "index": 33,
+    "id": "upward-imports-b-subject-contracts-prompt-07",
+    "title": "Upward imports B: subject contracts (prompt 07)",
+    "dep": "Phase 2 merged; runtime-kit ruling"
+   }
+  },
+  {
+   "id": "arch-gates.contracts",
+   "story": "arch-gates",
+   "title": "Keep secrets, database migrations, response headers and the crash check in one place each",
+   "lane": "architecture",
+   "col": "Done",
+   "phase": "5.1-5.4",
+   "prompt": null,
+   "owner": "unassigned",
+   "owns": [
+    "vite.config.ts",
+    "wrangler.jsonc",
+    "docs/ops/deploy-contract.md",
+    "scripts/migrate.mjs",
+    "src/lib/db.ts",
+    "src/server.ts",
+    "src/start.ts",
+    "public/_headers",
+    "workers/crash-report/"
+   ],
+   "ownsStatus": "known",
+   "ownsNote": null,
+   "dependsOn": [
+    "arch-rules.guardrails"
+   ],
+   "blockedBy": null,
+   "gate": null,
+   "prs": [
+    {
+     "number": 550,
+     "role": "closes",
+     "href": "https://github.com/veeresh-bikkaneti/Meridian/pull/550"
+    },
+    {
+     "number": 558,
+     "role": "closes",
+     "href": "https://github.com/veeresh-bikkaneti/Meridian/pull/558"
+    },
+    {
+     "number": 554,
+     "role": "closes",
+     "href": "https://github.com/veeresh-bikkaneti/Meridian/pull/554"
+    },
+    {
+     "number": 560,
+     "role": "closes",
+     "href": "https://github.com/veeresh-bikkaneti/Meridian/pull/560"
+    }
+   ],
+   "issues": [],
+   "branches": [],
+   "evidence": "All 4 merged 2026-11-20 (14:00 to 21:06 CST).",
+   "v1": {
+    "index": 34,
+    "id": "phase-5-1-to-5-4-secrets-migrations-headers-crash-check",
+    "title": "Phase 5.1 to 5.4: secrets, migrations, headers, crash check",
+    "dep": "Phase 0"
+   }
+  },
+  {
+   "id": "arch-gates.flip",
+   "story": "arch-gates",
+   "title": "Make the architecture checks hard failures once every count reaches zero",
+   "lane": "architecture",
+   "col": "Blocked",
+   "phase": "5.5",
+   "prompt": "08",
+   "owner": "agent (prompt 08)",
+   "owns": [
+    "eslint/layer-baseline.json",
+    "eslint/shell-ban-baseline.json",
+    "eslint.config.mjs",
+    "package.json",
+    ".github/workflows/node.js.yml",
+    ".github/workflows/detective-e2e.yml"
+   ],
+   "ownsStatus": "known",
+   "ownsNote": null,
+   "dependsOn": [
+    "arch-ports.game-app",
+    "arch-ports.storyteller-home",
+    "arch-ports.last-ten",
+    "arch-shell.sweep",
+    "arch-split.modules",
+    "arch-split.router",
+    "arch-imports.rulings",
+    "arch-imports.subject-contracts"
+   ],
+   "blockedBy": "All three baselines must be 0 (today 45, 129, 14)",
+   "gate": null,
+   "prs": [],
+   "issues": [],
+   "branches": [],
+   "evidence": "Needs all 3 baselines at 0; today 45, 129, 14.",
+   "v1": {
+    "index": 35,
+    "id": "phase-5-5-flip-the-gates-prompt-08",
+    "title": "Phase 5.5: flip the gates (prompt 08)",
+    "dep": "Every baseline at 0"
+   }
+  },
+  {
+   "id": "arch-pages.retire",
+   "story": "arch-pages",
+   "title": "Delete the old GitHub Pages publish job",
+   "lane": "architecture",
+   "col": "Backlog",
+   "phase": null,
+   "prompt": "05",
+   "owner": "agent (prompt 05)",
+   "owns": [
+    ".github/workflows/pages.yml"
+   ],
+   "ownsStatus": "known",
+   "ownsNote": "Keep the build:pages script; it is a CI gate.",
+   "dependsOn": [],
+   "blockedBy": null,
+   "gate": null,
+   "prs": [],
+   "issues": [],
+   "branches": [
+    {
+     "name": "chore/retire-pages",
+     "role": "work",
+     "match": "exact",
+     "href": "https://github.com/veeresh-bikkaneti/Meridian/tree/chore/retire-pages"
+    }
+   ],
+   "evidence": ".github/workflows/pages.yml still on main; chore/retire-pages not on origin.",
+   "v1": {
+    "index": 36,
+    "id": "retire-github-pages-pr-1-prompt-05",
+    "title": "Retire GitHub Pages, PR 1 (prompt 05)",
+    "dep": "None (runs now)"
+   }
+  },
+  {
+   "id": "arch-pages.links",
+   "story": "arch-pages",
+   "title": "Point old Pages links at the live site or remove them",
+   "lane": "architecture",
+   "col": "Blocked",
+   "phase": null,
+   "prompt": "05",
+   "owner": "agent (prompt 05)",
+   "owns": [
+    "README.md",
+    "docs/"
+   ],
+   "ownsStatus": "partial",
+   "ownsNote": "84 github.io lines in 46 files on main; get the list with grep -rn github.io.",
+   "dependsOn": [
+    "arch-pages.retire"
+   ],
+   "blockedBy": "Waits for the publish job removal",
+   "gate": null,
+   "prs": [],
+   "issues": [],
+   "branches": [
+    {
+     "name": "chore/drop-github-io-links",
+     "role": "work",
+     "match": "exact",
+     "href": "https://github.com/veeresh-bikkaneti/Meridian/tree/chore/drop-github-io-links"
+    }
+   ],
+   "evidence": "84 github.io lines in 46 files on main.",
+   "v1": {
+    "index": 37,
+    "id": "drop-github-io-links-pr-2-prompt-05",
+    "title": "Drop github.io links, PR 2 (prompt 05)",
+    "dep": "PR 1 merged"
+   }
+  },
+  {
+   "id": "prod-3d.globe",
+   "story": "prod-3d",
+   "title": "Let children spin, zoom and touch the landmark globe",
+   "lane": "product",
+   "col": "Backlog",
+   "phase": null,
+   "prompt": null,
+   "owner": "unassigned",
+   "owns": [],
+   "ownsStatus": "unknown",
+   "ownsNote": null,
+   "dependsOn": [],
+   "blockedBy": null,
+   "gate": null,
+   "prs": [
+    {
+     "number": 542,
+     "role": "ref",
+     "href": "https://github.com/veeresh-bikkaneti/Meridian/pull/542"
+    },
+    {
+     "number": 551,
+     "role": "ref",
+     "href": "https://github.com/veeresh-bikkaneti/Meridian/pull/551"
+    }
+   ],
+   "issues": [],
+   "branches": [],
+   "evidence": "Stage 1 mockup (#542) and canon (#551) merged; no open PR for the rest.",
+   "v1": {
+    "index": 38,
+    "id": "landmark-globe-360-spin-zoom-touch-slow-loop",
+    "title": "Landmark globe: 360 spin, zoom, touch, slow loop",
+    "dep": "None"
+   }
+  },
+  {
+   "id": "prod-live.walk-fixes",
+   "story": "prod-live",
+   "title": "Fix the coffee bubble and tour card covering controls, and the flat-looking detective pair",
+   "lane": "product",
+   "col": "Backlog",
+   "phase": null,
+   "prompt": null,
+   "owner": "unassigned",
+   "owns": [],
+   "ownsStatus": "unknown",
+   "ownsNote": null,
+   "dependsOn": [],
+   "blockedBy": null,
+   "gate": "Claims need a real browser walk",
+   "prs": [],
+   "issues": [],
+   "branches": [],
+   "evidence": "Unknown: needs a real browser walk.",
+   "v1": {
+    "index": 39,
+    "id": "live-site-fixes-from-2026-11-19-walk-coffee-bubble-tour-card-flat-pair",
+    "title": "Live-site fixes from 2026-11-19 walk (coffee bubble, tour card, flat pair)",
+    "dep": "None"
+   }
+  },
+  {
+   "id": "prod-3d.clue-films",
+   "story": "prod-3d",
+   "title": "Make clue films and stills from the existing artwork",
+   "lane": "product",
+   "col": "Blocked",
+   "phase": null,
+   "prompt": null,
+   "owner": "unassigned",
+   "owns": [],
+   "ownsStatus": "unknown",
+   "ownsNote": null,
+   "dependsOn": [],
+   "blockedBy": "Needs the GPU media download",
+   "gate": null,
+   "prs": [],
+   "issues": [],
+   "branches": [],
+   "evidence": "Unknown.",
+   "v1": {
+    "index": 40,
+    "id": "clue-films-and-stills-ffmpeg-from-stills",
+    "title": "Clue films and stills (ffmpeg from stills)",
+    "dep": "GPU media download"
+   }
+  },
+  {
+   "id": "prod-grow.pennant",
+   "story": "prod-grow",
+   "title": "Bring the parked pennant feature up to date with the main code",
+   "lane": "product",
+   "col": "Backlog",
+   "phase": null,
+   "prompt": null,
+   "owner": "unassigned",
+   "owns": [],
+   "ownsStatus": "unknown",
+   "ownsNote": "Branch is protected (never delete); 6 ahead, 522 behind main.",
+   "dependsOn": [],
+   "blockedBy": null,
+   "gate": null,
+   "prs": [],
+   "issues": [],
+   "branches": [
+    {
+     "name": "feat/pair-session-moments",
+     "role": "ref",
+     "match": "exact",
+     "href": "https://github.com/veeresh-bikkaneti/Meridian/tree/feat/pair-session-moments"
+    }
+   ],
+   "evidence": "Branch parked: 6 ahead, 522 behind main, last commit 2026-11-10 06:40 CST; no PR.",
+   "v1": {
+    "index": 41,
+    "id": "pennant-port",
+    "title": "Pennant port",
+    "dep": "None"
+   }
+  },
+  {
+   "id": "prod-grow.science-review",
+   "story": "prod-grow",
+   "title": "Get an educator to review the science subject plan",
+   "lane": "product",
+   "col": "Blocked",
+   "phase": null,
+   "prompt": null,
+   "owner": "Veeresh (find an educator)",
+   "owns": [],
+   "ownsStatus": "unknown",
+   "ownsNote": null,
+   "dependsOn": [],
+   "blockedBy": "Educator review; the spec PR was closed without merging on 2026-11-16",
+   "gate": null,
+   "prs": [
+    {
+     "number": 429,
+     "role": "ref",
+     "href": "https://github.com/veeresh-bikkaneti/Meridian/pull/429"
+    }
+   ],
+   "issues": [],
+   "branches": [],
+   "evidence": "#429 CLOSED unmerged 2026-11-16 14:53 CST (doc treats it as pending).",
+   "v1": {
+    "index": 42,
+    "id": "science-spec-needs-educator-review",
+    "title": "Science spec needs educator review",
+    "dep": "Educator review"
+   }
+  },
+  {
+   "id": "prod-live.open-issues",
+   "story": "prod-live",
+   "title": "Work through three open requests: a skipped narrator line and two capitals quiz ideas",
+   "lane": "product",
+   "col": "Backlog",
+   "phase": null,
+   "prompt": null,
+   "owner": "unassigned",
+   "owns": [],
+   "ownsStatus": "unknown",
+   "ownsNote": null,
+   "dependsOn": [],
+   "blockedBy": null,
+   "gate": null,
+   "prs": [],
+   "issues": [
+    {
+     "number": 478,
+     "href": "https://github.com/veeresh-bikkaneti/Meridian/issues/478"
+    },
+    {
+     "number": 344,
+     "href": "https://github.com/veeresh-bikkaneti/Meridian/issues/344"
+    },
+    {
+     "number": 319,
+     "href": "https://github.com/veeresh-bikkaneti/Meridian/issues/319"
+    }
+   ],
+   "branches": [],
+   "evidence": "All 3 OPEN.",
+   "v1": {
+    "index": 43,
+    "id": "open-issues-478-344-319",
+    "title": "Open issues #478, #344, #319",
+    "dep": "None"
+   }
+  },
+  {
+   "id": "prod-grow.adult-band",
+   "story": "prod-grow",
+   "title": "Make the adult age band's rows playable",
+   "lane": "product",
+   "col": "Backlog",
+   "phase": null,
+   "prompt": null,
+   "owner": "unassigned",
+   "owns": [],
+   "ownsStatus": "unknown",
+   "ownsNote": null,
+   "dependsOn": [],
+   "blockedBy": null,
+   "gate": null,
+   "prs": [],
+   "issues": [],
+   "branches": [],
+   "evidence": "Unknown.",
+   "v1": {
+    "index": 44,
+    "id": "adult-band-rows-playable",
+    "title": "Adult-band rows playable",
+    "dep": "None"
+   }
+  }
+ ]
+}
