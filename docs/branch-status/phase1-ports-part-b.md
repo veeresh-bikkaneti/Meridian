@@ -146,8 +146,15 @@ designed.)
 
 ## Status
 
-- Fact-find done. B1 (registry + hoists + pin swaps) next,
-  then B2 (session paths), B3 (local paths + baseline).
+- TD-02.5 (Phase 1 Part B: game-app.tsx onto the storage
+  port) is COMPLETE on this tip. B1 (registry + hoists +
+  pin swaps), B2 (session paths) and B3 (local paths +
+  baseline) all landed; the branch was then caught up to
+  origin/main 6d537810a8a316cb686ae434191af201cd5009f6 by
+  merge commit 3811c24207e2d22c919516c0bdfea9b8118a6eb2.
+- Ratchets on this tip: noRawIo 13, noUpwardImport 129,
+  zero src/components/game-app.tsx noRawIo rows.
+- PR #571 remains a draft, awaiting Veeresh's merge word.
 - Open questions: none for the owner at this point.
 
 ## Graph
