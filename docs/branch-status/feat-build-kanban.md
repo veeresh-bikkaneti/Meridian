@@ -169,3 +169,71 @@ graph.json):
 - Edges: the branch `depends-on` the transport port and the
   flags module on main, and `relates-to` PR #571 (its card
   is the overlay's worked example).
+
+## Round 2 (2026-11-23, prompt 11, REQUEST CHANGES on #574)
+
+Tier 2, cap 400k, estimate 180k. New commits only on
+feat/build-kanban (head db1caef8); main still 5930e930.
+Fixes: (1) overlay moves a card only via a `closes` PR or
+a `work` branch, forward-only (rank Backlog = Blocked <
+In progress < In review < Done); per-number pulls/{n}
+lookups for closes PRs on not-Done subtasks, branches
+paginated; fixtures recorded in the pack prove the counts
+(round-1 rule gives 18 Done, truth 11). (2) Snapshot per
+deploy: publish-kanban.mjs joins prebuild/prebuild:pages,
+refreshes only gauges.now + builtAt in the public file,
+validates the v2 envelope, never rewrites kanban.json at
+build. Choice: STOP committing public/build-board.json
+(+ .gitignore line) — it is a build artifact regenerated
+every deploy; a committed copy can only go stale, which
+was the round-1 failure. (3) Shell-ban back to main's 14
+(baseline + frozen test reverted byte-for-byte); page
+renders in PageShell, no page-local <main> anywhere;
+missing <main> landmark is Phase 2 / prompt 03's gap,
+noted in the PR body, not fixed here. (4) Board scrolls
+inside its own container wherever 5 columns don't fit;
+page never scrolls sideways (e2e asserts at 5 viewports).
+(5) Schema v2 seed verbatim: 18 stories hold the columns
+(rollup computed in code), 45 subtasks inside, plain
+titles, role-labelled links, free-to-claim on subtasks
+(18 on the snapshot, hotFiles excluded). (6) Gauges show
+cleared-since-start from gauges.<name>.start; buttons
+>= 44 px; Calm toggle in component state only, motion
+registry mirrored in src/build-board/ (no src/board
+import). Statechart additions: page data states are now
+bundled-snapshot -> public-snapshot (fetched, labelled)
+-> live overlay (labelled), any failure keeps the last
+good snapshot with the "snapshot from <date>" label.
+
+## Round 2 (PR #574 review fixes)
+
+Fixes 1–6 done: (1) overlay forward-only — a live column
+replaces the snapshot column only when it ranks higher;
+(2) snapshot per deploy — the bundled kanban.json stays
+the offline fallback, publish-kanban.mjs writes the
+per-deploy public snapshot at build, public/build-board.json
+is gitignored and no longer committed; (3) shell-ban back
+to 14 — shell-ban-baseline.json and shared-shell.test.ts
+are byte-identical to main again (no baseline growth);
+(4) no horizontal overflow at 768; (5) stories with
+subtasks — 18 stories / 45 subtasks, human-readable
+titles, prRole closes/ref; (6) gauges read the snapshot's
+gaugeInfo and all buttons meet the 44px target.
+
+Gates (final run on the round-2 tree): tsc PASS;
+npm test PASS (scripts 1,243 pass / 0 fail of 1,254,
+src 3,332/3,332); test:worker 239/239 PASS; lint-cards
+PASS; build:pages PASS; lint:nav PASS; lint:subjects
+PASS; lint:arch PASS (noRawIo 45, layer-baseline
+untouched); check:entry-size PASS (323,392 B of
+323,865); check:provenance NOT RUN locally — the local
+diffing repo has no origin refs ("cannot read
+origin/main..HEAD"), CI arbitrates.
+
+Live-data run against real GitHub (parseGithubPull /
+parseGithubBranches / applyOverlay on the bundled
+snapshot): PR #571 is open + draft; Done stories 2,
+architecture Done subtasks 11, and PR #571's subtask
+(arch-ports.game-app) holds In review — the forward-only
+rule keeps the draft PR from pulling it back to
+In progress. Screenshots taken at 320, 390, 768, 1280.
