@@ -659,7 +659,6 @@ describe("shell-ban baseline (KNOWN/STALE)", () => {
       "src/game/loop/LoopScreen.tsx",
       "src/lib/error-component.tsx",
       "src/routes/board.tsx",
-      "src/routes/kanban.tsx",
       "src/subjects/shared/SubjectCase.tsx",
       "src/subjects/shared/SubjectPicker.tsx",
     ],

@@ -1,8 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Suspense, lazy, useEffect, useState } from "react";
-import { PageColumn } from "@/components/ui/page-column";
-import { SiteFooter } from "@/components/ui/site-footer";
-import { SiteHeader } from "@/components/ui/site-header";
+import { PageShell } from "@/components/ui/page-shell";
 import { isEnabled, loadFlags } from "@/lib/flags";
 
 const KanbanView = lazy(() =>
@@ -19,6 +17,12 @@ const KanbanView = lazy(() =>
  * head(), and absent from public/sitemap.xml and every nav and
  * footer link set. The home control is the shared shell's brand
  * lockup ("Meridian home"), as everywhere.
+ *
+ * The page sits in the shared PageShell (round 2): the route owns
+ * the shell in both flag states, and neither the route nor the
+ * view renders a page-local <main>. PageShell renders no <main>
+ * landmark today — that gap is Phase 2's first-PR decision
+ * (prompt 03), noted in the PR body; it is not worked around here.
  *
  * The view itself is lazy: the board's data and styles ride in
  * their own chunk and never touch the entry bundle. The flag read
@@ -52,24 +56,18 @@ function KanbanPage() {
 
   if (!on) {
     return (
-      <div>
-        <SiteHeader to="/" status={null} mute={null} />
-        <PageColumn width="wide">
-          <main>
-            <h1>Build board</h1>
-            <p>This page is not available.</p>
-          </main>
-        </PageColumn>
-        <SiteFooter />
-      </div>
+      <PageShell header={{ to: "/", status: null, mute: null }} width="wide">
+        <h1>Build board</h1>
+        <p>This page is not available.</p>
+      </PageShell>
     );
   }
 
   return (
-    <main>
+    <PageShell header={{ to: "/", status: null, mute: null }} width="wide">
       <Suspense fallback={null}>
         <KanbanView />
       </Suspense>
-    </main>
+    </PageShell>
   );
 }
