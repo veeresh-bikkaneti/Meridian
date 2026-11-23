@@ -100,7 +100,7 @@ function getUsStates(): Promise<Admin1Feature[]> {
 function getNeAdmin1(): Promise<Admin1Feature[]> {
   if (!neAdmin1Promise) {
     neLoadRuns += 1;
-    neAdmin1Promise = import("../map/data/ne-50m-admin-1.json", {
+    neAdmin1Promise = import("./data/ne-50m-admin-1.json", {
       with: { type: "json" },
     }).then((mod) => (mod.default as unknown as { features: Admin1Feature[] }).features);
   }

@@ -63,8 +63,8 @@
 
 // Relative imports with extensions, so this module loads under the
 // repo's node --test runner (no bundler alias resolution) as well as Vite.
-import { assetBase } from "../../../components/storyteller-lines.ts";
-import { decideFirstGesture } from "../../../components/storyteller-audio-guards.ts";
+import { assetBase } from "../../../lib/asset-base.ts";
+import { decideFirstGesture } from "../../../lib/storyteller-first-gesture.ts";
 import { isSoundEnabled } from "../../audio/sfx.ts";
 import { soundAudible } from "../../audio/play-guards.ts";
 import {

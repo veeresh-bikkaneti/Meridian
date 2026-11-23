@@ -44,7 +44,7 @@ import {
   WatsonRig,
   type HolmesPose,
   type WatsonPose,
-} from "@/game/loop/detective/DetectivePair";
+} from "@/components/ui/DetectivePair";
 import {
   CELEBRATE_JUMP_MS,
   CLAP_HOLD_MS,

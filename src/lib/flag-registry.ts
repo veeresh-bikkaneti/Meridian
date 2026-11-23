@@ -16,7 +16,7 @@
 import {
   FLAG_ENTRIES,
   type FlagEntry,
-} from "@/assets/flags/registry.generated";
+} from "./flags/registry.generated.ts";
 
 export type { FlagEntry };
 

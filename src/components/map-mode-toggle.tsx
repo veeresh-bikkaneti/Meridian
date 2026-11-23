@@ -43,7 +43,7 @@
 
 import { useCallback, useEffect, useLayoutEffect, useRef, useState, type JSX, type KeyboardEvent } from "react";
 import { Layers } from "lucide-react";
-import type { MapMode } from "@/map/capability";
+import type { MapMode } from "@/lib/map-mode";
 import { SCOUT_COPY } from "./scout-copy.ts";
 
 export function MapModeToggle(props: {

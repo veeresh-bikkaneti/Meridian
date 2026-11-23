@@ -1,0 +1,101 @@
+{
+ "_note": "Recorded 2026-11-23T12:32:17-06:00 with GET /repos/veeresh-bikkaneti/Meridian/branches?per_page=100 (trimmed).",
+ "branches": [
+  {
+   "name": "chore/graphify-ignore",
+   "commit": {
+    "sha": "73d85e4b2b132321e39ac2f4219ab27a5da03b6e"
+   }
+  },
+  {
+   "name": "design/detective-moments-prototype",
+   "commit": {
+    "sha": "f57f2a34b08ab65e28e23bdf3cc52b31eec8169b"
+   }
+  },
+  {
+   "name": "design/hero-trekker-prototype",
+   "commit": {
+    "sha": "5ec0fdf5ca33165646631542f00c98807508a851"
+   }
+  },
+  {
+   "name": "design/home-rework-variants",
+   "commit": {
+    "sha": "9eba1fb05fb29d1b84a609ce29f2247e03102ee2"
+   }
+  },
+  {
+   "name": "docs/handover-2026-11-22",
+   "commit": {
+    "sha": "4c0d57356268a18c50eab3be981e0b7ce21004c1"
+   }
+  },
+  {
+   "name": "feat/board-controls",
+   "commit": {
+    "sha": "75c500e6e285f72992904a33d614eb3a9645f66b"
+   }
+  },
+  {
+   "name": "feat/build-kanban",
+   "commit": {
+    "sha": "db1caef84ca908a81833263621215e5d7f656aeb"
+   }
+  },
+  {
+   "name": "feat/pair-session-moments",
+   "commit": {
+    "sha": "33b095a10f00aaa830b64581d0b5a57c553e915e"
+   }
+  },
+  {
+   "name": "feat/why-learn-film-dolly",
+   "commit": {
+    "sha": "4bf5d106ca2a40625498e22106afdd414ec74e6a"
+   }
+  },
+  {
+   "name": "feat/why-learn-film-redo",
+   "commit": {
+    "sha": "7c93a5160e358992674b7ca87b06893bbb80058f"
+   }
+  },
+  {
+   "name": "fix/e2e-offline-preload-assertion",
+   "commit": {
+    "sha": "e584c55e4c7ca3fc05568bfdb813a8949a84a68a"
+   }
+  },
+  {
+   "name": "fix/endgame-editions",
+   "commit": {
+    "sha": "9c15af9c5d52d2fd0cc2b61ba8ab052c30c0bed7"
+   }
+  },
+  {
+   "name": "main",
+   "commit": {
+    "sha": "5930e9304bccb9eb38db7ce57bd04698c416be61"
+   }
+  },
+  {
+   "name": "mockup/scale-play-v2",
+   "commit": {
+    "sha": "ef17c6f5619af4baf0ffe32011c11b506911eed4"
+   }
+  },
+  {
+   "name": "mockup/514-lose-path-reveal",
+   "commit": {
+    "sha": "8429b1d337abc77848b267be781a2ec70bef6d74"
+   }
+  },
+  {
+   "name": "phase1/ports-part-b",
+   "commit": {
+    "sha": "acf8b24d32ce88d5a3f4ccb1ae2fc0b04c17733b"
+   }
+  }
+ ]
+}

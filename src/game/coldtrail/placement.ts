@@ -1,5 +1,5 @@
 import { normalizeLon } from "../geo.ts";
-import type { TrailEvidenceRing, TrailEvidenceMark } from "../loop/LoopMap.tsx";
+import type { TrailEvidenceRing, TrailEvidenceMark } from "../loop/trail-evidence.ts";
 import { formatLength, unitForLoopTarget } from "../units.ts";
 import { ringPolygon } from "../loop/rings.ts";
 import { effectiveRadius } from "./engine.ts";

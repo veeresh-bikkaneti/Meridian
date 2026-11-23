@@ -486,7 +486,7 @@ describe("deckLabelForId (the open case's deck name, issue #336)", () => {
 
 describe("storage key literals match their owner files", () => {
   it("loop and coldtrail core keys match the engine sources", () => {
-    const dataSrc = readSrc("pack-shelf-data.ts");
+    const dataSrc = readSrc("ui/pack-shelf-data.ts");
     const loopTypes = readSrc("../game/loop/types.ts");
     const trailStore = readSrc("../game/coldtrail/store.ts");
     assert.ok(loopTypes.includes('"meridian.loop.v2"'), "loop key owner");
@@ -496,7 +496,7 @@ describe("storage key literals match their owner files", () => {
   });
 
   it("the pack store key matches its owner in cases-pack.ts and its restatement in store.ts", () => {
-    const dataSrc = readSrc("pack-shelf-data.ts");
+    const dataSrc = readSrc("ui/pack-shelf-data.ts");
     const casesPack = readSrc("../game/coldtrail/cases-pack.ts");
     const trailStore = readSrc("../game/coldtrail/store.ts");
     assert.ok(casesPack.includes('"meridian.coldtrail.pack.capitals.v1"'), "pack key owner");

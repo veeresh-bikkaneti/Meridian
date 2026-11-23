@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as BoardRouteImport } from './routes/board'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CreditsRouteImport } from './routes/credits'
+import { Route as KanbanRouteImport } from './routes/kanban'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ApiContactRouteImport } from './routes/api/contact'
 import { Route as ApiFeatureRequestRouteImport } from './routes/api/feature-request'
@@ -37,6 +38,11 @@ const CreditsRoute = CreditsRouteImport.update({
   path: '/credits',
   getParentRoute: () => rootRouteImport,
 } as any)
+const KanbanRoute = KanbanRouteImport.update({
+  id: '/kanban',
+  path: '/kanban',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
@@ -58,6 +64,7 @@ export interface FileRoutesByFullPath {
   '/board': typeof BoardRoute
   '/contact': typeof ContactRoute
   '/credits': typeof CreditsRoute
+  '/kanban': typeof KanbanRoute
   '/privacy': typeof PrivacyRoute
   '/api/contact': typeof ApiContactRoute
   '/api/feature-request': typeof ApiFeatureRequestRoute
@@ -67,6 +74,7 @@ export interface FileRoutesByTo {
   '/board': typeof BoardRoute
   '/contact': typeof ContactRoute
   '/credits': typeof CreditsRoute
+  '/kanban': typeof KanbanRoute
   '/privacy': typeof PrivacyRoute
   '/api/contact': typeof ApiContactRoute
   '/api/feature-request': typeof ApiFeatureRequestRoute
@@ -77,6 +85,7 @@ export interface FileRoutesById {
   '/board': typeof BoardRoute
   '/contact': typeof ContactRoute
   '/credits': typeof CreditsRoute
+  '/kanban': typeof KanbanRoute
   '/privacy': typeof PrivacyRoute
   '/api/contact': typeof ApiContactRoute
   '/api/feature-request': typeof ApiFeatureRequestRoute
@@ -88,6 +97,7 @@ export interface FileRouteTypes {
     | '/board'
     | '/contact'
     | '/credits'
+    | '/kanban'
     | '/privacy'
     | '/api/contact'
     | '/api/feature-request'
@@ -97,6 +107,7 @@ export interface FileRouteTypes {
     | '/board'
     | '/contact'
     | '/credits'
+    | '/kanban'
     | '/privacy'
     | '/api/contact'
     | '/api/feature-request'
@@ -106,6 +117,7 @@ export interface FileRouteTypes {
     | '/board'
     | '/contact'
     | '/credits'
+    | '/kanban'
     | '/privacy'
     | '/api/contact'
     | '/api/feature-request'
@@ -116,6 +128,7 @@ export interface RootRouteChildren {
   BoardRoute: typeof BoardRoute
   ContactRoute: typeof ContactRoute
   CreditsRoute: typeof CreditsRoute
+  KanbanRoute: typeof KanbanRoute
   PrivacyRoute: typeof PrivacyRoute
   ApiContactRoute: typeof ApiContactRoute
   ApiFeatureRequestRoute: typeof ApiFeatureRequestRoute
@@ -151,6 +164,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CreditsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/kanban': {
+      id: '/kanban'
+      path: '/kanban'
+      fullPath: '/kanban'
+      preLoaderRoute: typeof KanbanRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/privacy': {
       id: '/privacy'
       path: '/privacy'
@@ -180,6 +200,7 @@ const rootRouteChildren: RootRouteChildren = {
   BoardRoute: BoardRoute,
   ContactRoute: ContactRoute,
   CreditsRoute: CreditsRoute,
+  KanbanRoute: KanbanRoute,
   PrivacyRoute: PrivacyRoute,
   ApiContactRoute: ApiContactRoute,
   ApiFeatureRequestRoute: ApiFeatureRequestRoute,

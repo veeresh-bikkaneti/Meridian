@@ -6,7 +6,7 @@
  * with its source page, licence, attribution, story line and the
  * SHA-256 of the shipped SVG. This script verifies every entry against
  * the actual file in src/assets/flags/ and generates the runtime
- * metadata module (src/assets/flags/registry.generated.ts) the flag
+ * metadata module (src/lib/flags/registry.generated.ts) the flag
  * resolver reads. Fail closed: any mismatch writes nothing.
  *
  * A land with no verified flag is NOT an entry here — it is listed in
@@ -30,7 +30,7 @@ export const FLAG_REGISTRY_PATH = join(
   "scripts/packs/capitals/flags/registry.json",
 );
 export const FLAG_ASSETS_DIR = join(ROOT, "src/assets/flags");
-export const FLAG_GENERATED_PATH = join(FLAG_ASSETS_DIR, "registry.generated.ts");
+export const FLAG_GENERATED_PATH = join(ROOT, "src/lib/flags/registry.generated.ts");
 
 /** Per-file hard cap from the design budget (10 KB). */
 export const FLAG_FILE_MAX_BYTES = 10_240;

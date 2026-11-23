@@ -2,7 +2,7 @@
  * Cold Trail capitals pack generator. This is an isolated second pass
  * next to scripts/build-coldtrail.mjs, and it emits:
  *
- *   src/game/coldtrail/cases.capitals.generated.json
+ *   src/game/data/coldtrail/cases.capitals.generated.json
  *
  * One pack case is an ordinary Cold Trail case (a difficulty-2 hideout
  * plus 3 witness sightings) whose witnesses are famous capitals. The
@@ -79,7 +79,7 @@ const ROOT = dirname(SCRIPTS_DIR);
 const CHUNKS_DIR = join(ROOT, "src/game/data/geonames/chunks");
 const NAMES_INDEX = join(ROOT, "public/loop/names.v2.json");
 const RECORDS_DIR = join(ROOT, "scripts/packs/capitals/cases");
-const OUT_DIR = join(ROOT, "src/game/coldtrail");
+const OUT_DIR = join(ROOT, "src/game/data/coldtrail");
 const OUT_FILE = join(OUT_DIR, "cases.capitals.generated.json");
 
 export const CAPITALS_PACK_ID = "capitals";

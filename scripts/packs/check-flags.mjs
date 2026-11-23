@@ -88,9 +88,9 @@ function main() {
 
   // (3) Generated module in sync.
   if (!existsSync(FLAG_GENERATED_PATH)) {
-    problems.push("src/assets/flags/registry.generated.ts missing — run build-flags");
+    problems.push("src/lib/flags/registry.generated.ts missing — run build-flags");
   } else if (readFileSync(FLAG_GENERATED_PATH, "utf8") !== renderFlagModule(registry)) {
-    problems.push("src/assets/flags/registry.generated.ts is stale — run build-flags");
+    problems.push("src/lib/flags/registry.generated.ts is stale — run build-flags");
   }
 
   // (4) Sidecar consistency.

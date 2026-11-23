@@ -9,25 +9,9 @@ import {
   STORYTELLER_AUDIO_FALLBACK_LINE,
   STORYTELLER_RETRY_HINT,
 } from "./storyteller-lines.ts";
+import { decideFirstGesture } from "../lib/storyteller-first-gesture.ts";
+export { decideFirstGesture, type FirstGestureDecision } from "../lib/storyteller-first-gesture.ts";
 
-/** Fix A — card one-shot gesture decision. */
-export type FirstGestureDecision = "ignore" | "keep-armed" | "consume";
-export function decideFirstGesture(opts: {
-  alreadyDone: boolean;
-  dismissed: boolean;
-  celebrationActive: boolean;
-  soundOn: boolean;
-}): FirstGestureDecision {
-  if (opts.alreadyDone || opts.dismissed) return "ignore";
-  // A gesture that lands while the celebration overlay owns the screen
-  // belongs to the overlay — don't consume it for narration.
-  if (opts.celebrationActive) return "ignore";
-  // Sound off: do NOT consume the one-shot. Captions advancing with no
-  // audio and no path back is the silent-narration trap — the listener
-  // stays armed so the next gesture (or unmute) gets another chance.
-  if (!opts.soundOn) return "keep-armed";
-  return "consume";
-}
 
 /** Fix C — what to do when play() rejects with AbortError. */
 export type PlayAbortResolution = "mark-paused" | "leave";

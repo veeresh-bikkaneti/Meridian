@@ -5,7 +5,7 @@
  * Reads the 124,690 GeoNames places in src/game/data/geonames/chunks/*.json
  * and emits:
  *
- *   src/game/coldtrail/cases.generated.json   [{caseNo, hideout, sightings[3]}]
+ *   src/game/data/coldtrail/cases.generated.json   [{caseNo, hideout, sightings[3]}]
  *
  * One case = a difficulty-2/3 hideout city plus 3 sightings. Each sighting
  * names a DIFFERENT witness city, the true distance from that city to the
@@ -42,7 +42,7 @@ const CHUNKS_DIR = join(ROOT, "src/game/data/geonames/chunks");
 // by scripts/build-loop.mjs from the same GeoNames dump): chunk ids are
 // "gn-<n>" and index ids "geonames:<n>", joined on the numeric part.
 const NAMES_INDEX = join(ROOT, "public/loop/names.v2.json");
-const OUT_DIR = join(ROOT, "src/game/coldtrail");
+const OUT_DIR = join(ROOT, "src/game/data/coldtrail");
 const OUT_FILE = join(OUT_DIR, "cases.generated.json");
 
 /** Witness cities must be well-known anchors; hideouts recognizable. */

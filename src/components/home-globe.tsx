@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import globeTextureUrl from "@/assets/home-v5/globe-texture.webp";
 import globeFallbackUrl from "@/assets/home-v5/globe-fallback.webp";
-import { DEG, GLOBE_CONTRACT as C, LANDMARKS } from "./home-globe/globe-contract.ts";
+import { DEG, GLOBE_CONTRACT as C, LANDMARKS } from "@/lib/home-globe/globe-contract.ts";
 import {
   createGlobeControlsState,
   stepGlobeControls,
   type GlobeControlsEffects,
   type GlobeControlsState,
-} from "./home-globe/globe-controls.ts";
+} from "@/lib/home-globe/globe-controls.ts";
 
 /**
  * Landmark globe for the v5 home hero: the textured sphere from the
@@ -74,7 +74,7 @@ export function HomeGlobe() {
     let cleanup: (() => void) | null = null;
 
     const start = () => {
-      Promise.all([import("three"), import("./home-globe/landmark-models")])
+      Promise.all([import("three"), import("@/lib/home-globe/landmark-models")])
         .then(([THREE, models]) => {
           if (disposed) return;
           try {
@@ -144,7 +144,7 @@ export function HomeGlobe() {
 }
 
 type ThreeModule = typeof import("three");
-type LandmarkModels = typeof import("./home-globe/landmark-models");
+type LandmarkModels = typeof import("@/lib/home-globe/landmark-models");
 
 /** The canvas label at rest; a dive swaps in the landmark's name and
  *  cancelling the dive restores this (see startDive / cancelDive). */

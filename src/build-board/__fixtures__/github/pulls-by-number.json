@@ -1,0 +1,383 @@
+{
+ "_note": "Recorded 2026-11-23T12:32:17-06:00 with GET /repos/veeresh-bikkaneti/Meridian/pulls/{n} per PR; trimmed to the fields the overlay reads. main=5930e930.",
+ "pulls": {
+  "573": {
+   "number": 573,
+   "state": "closed",
+   "draft": false,
+   "merged_at": "2026-11-22T17:27:13Z",
+   "closed_at": "2026-11-22T17:27:13Z",
+   "title": "refactor(arch): upward imports A \u2014 move shared modules down a layer",
+   "html_url": "https://github.com/veeresh-bikkaneti/Meridian/pull/573",
+   "updated_at": "2026-11-22T17:27:16Z",
+   "head": {
+    "ref": "arch/upward-imports-a",
+    "sha": "e352fb95f660d7a48e397ca9ddafcecf7619d1c3"
+   }
+  },
+  "565": {
+   "number": 565,
+   "state": "closed",
+   "draft": false,
+   "merged_at": "2026-11-21T17:42:58Z",
+   "closed_at": "2026-11-21T17:42:58Z",
+   "title": "refactor(platform): transport port \u2014 pack-shelf-data (Phase 1 slice 3)",
+   "html_url": "https://github.com/veeresh-bikkaneti/Meridian/pull/565",
+   "updated_at": "2026-11-21T17:43:00Z",
+   "head": {
+    "ref": "refactor/phase-1-transport-port",
+    "sha": "920109c628a0438c89e37dd8851c0e6ca62a37f0"
+   }
+  },
+  "552": {
+   "number": 552,
+   "state": "closed",
+   "draft": false,
+   "merged_at": "2026-11-21T01:18:25Z",
+   "closed_at": "2026-11-21T01:18:25Z",
+   "title": "chore: add Storybook with stories for the shared UI parts",
+   "html_url": "https://github.com/veeresh-bikkaneti/Meridian/pull/552",
+   "updated_at": "2026-11-21T01:18:27Z",
+   "head": {
+    "ref": "chore/storybook-mockups",
+    "sha": "af687928384c68db4dc4f9262df2abf777e58019"
+   }
+  },
+  "563": {
+   "number": 563,
+   "state": "closed",
+   "draft": false,
+   "merged_at": "2026-11-21T10:25:49Z",
+   "closed_at": "2026-11-21T10:25:49Z",
+   "title": "refactor(platform): storage port \u2014 age-band and progress keys (Phase 1 slice 2)",
+   "html_url": "https://github.com/veeresh-bikkaneti/Meridian/pull/563",
+   "updated_at": "2026-11-21T10:25:51Z",
+   "head": {
+    "ref": "refactor/phase-1-storage-port",
+    "sha": "339fd40def15c89492df4f354dad35e005bd8dca"
+   }
+  },
+  "560": {
+   "number": 560,
+   "state": "closed",
+   "draft": false,
+   "merged_at": "2026-11-21T03:06:34Z",
+   "closed_at": "2026-11-21T03:06:34Z",
+   "title": "feat: fail crash smoke when a binding or trigger is missing",
+   "html_url": "https://github.com/veeresh-bikkaneti/Meridian/pull/560",
+   "updated_at": "2026-11-21T03:06:37Z",
+   "head": {
+    "ref": "chore/phase-5-4-crash-deploy-check",
+    "sha": "68b10d0da07bcceac363a3f5007a4c87568fcde3"
+   }
+  },
+  "551": {
+   "number": 551,
+   "state": "closed",
+   "draft": false,
+   "merged_at": "2026-11-21T20:18:25Z",
+   "closed_at": "2026-11-21T20:18:25Z",
+   "title": "Landmark canon: 37 landmarks, oblique tap-to-dive, progressive reveal",
+   "html_url": "https://github.com/veeresh-bikkaneti/Meridian/pull/551",
+   "updated_at": "2026-11-21T20:18:27Z",
+   "head": {
+    "ref": "feat/landmark-canon",
+    "sha": "ec2e4179cd041e7ea157de36e3fe2678bdd68abd"
+   }
+  },
+  "547": {
+   "number": 547,
+   "state": "closed",
+   "draft": false,
+   "merged_at": "2026-11-21T20:27:31Z",
+   "closed_at": "2026-11-21T20:27:31Z",
+   "title": "Read-aloud sheet as a true arrival modal (branch evaluation)",
+   "html_url": "https://github.com/veeresh-bikkaneti/Meridian/pull/547",
+   "updated_at": "2026-11-21T20:27:34Z",
+   "head": {
+    "ref": "feat/read-aloud-modal",
+    "sha": "72d37713f8c8b1e08e537c12c689ea8f59041c9f"
+   }
+  },
+  "542": {
+   "number": 542,
+   "state": "closed",
+   "draft": false,
+   "merged_at": "2026-11-20T03:19:44Z",
+   "closed_at": "2026-11-20T03:19:44Z",
+   "title": "Landmark globe mockup: premium cinematic finish (Stage 1)",
+   "html_url": "https://github.com/veeresh-bikkaneti/Meridian/pull/542",
+   "updated_at": "2026-11-20T03:28:40Z",
+   "head": {
+    "ref": "feat/landmark-globe",
+    "sha": "43253de76b73dde9ff1a7ed2841704df1511558d"
+   }
+  },
+  "543": {
+   "number": 543,
+   "state": "closed",
+   "draft": false,
+   "merged_at": "2026-11-20T04:31:38Z",
+   "closed_at": "2026-11-20T04:31:38Z",
+   "title": "docs: amend constitution to allow shared-code extraction",
+   "html_url": "https://github.com/veeresh-bikkaneti/Meridian/pull/543",
+   "updated_at": "2026-11-20T04:31:40Z",
+   "head": {
+    "ref": "docs/amend-constitution-extraction",
+    "sha": "a8bd4453543e0f8231b8157bafd030638becde47"
+   }
+  },
+  "544": {
+   "number": 544,
+   "state": "closed",
+   "draft": false,
+   "merged_at": "2026-11-20T17:46:54Z",
+   "closed_at": "2026-11-20T17:46:54Z",
+   "title": "docs: architecture guardrails docs (ARCHITECTURE, PR template, branch disposition)",
+   "html_url": "https://github.com/veeresh-bikkaneti/Meridian/pull/544",
+   "updated_at": "2026-11-20T17:46:57Z",
+   "head": {
+    "ref": "docs/architecture-guardrails-docs",
+    "sha": "033da41cf2ed1c2ec505003ba358ada82b4c5df1"
+   }
+  },
+  "548": {
+   "number": 548,
+   "state": "closed",
+   "draft": false,
+   "merged_at": "2026-11-20T18:52:52Z",
+   "closed_at": "2026-11-20T18:52:52Z",
+   "title": "chore: lint:arch on the corrected layer map, per-violation baseline (replaces #545)",
+   "html_url": "https://github.com/veeresh-bikkaneti/Meridian/pull/548",
+   "updated_at": "2026-11-20T18:52:55Z",
+   "head": {
+    "ref": "chore/lint-arch-r2",
+    "sha": "d34d21a303342e4c729858b799da7fb914f6f982"
+   }
+  },
+  "549": {
+   "number": 549,
+   "state": "closed",
+   "draft": false,
+   "merged_at": "2026-11-20T19:18:47Z",
+   "closed_at": "2026-11-20T19:18:47Z",
+   "title": "chore: add ci:required gate runner (replaces #546)",
+   "html_url": "https://github.com/veeresh-bikkaneti/Meridian/pull/549",
+   "updated_at": "2026-11-20T19:18:49Z",
+   "head": {
+    "ref": "chore/ci-required-r2",
+    "sha": "5ed7d34f1e2a2c8d81376fa1555adfb71512a5af"
+   }
+  },
+  "559": {
+   "number": 559,
+   "state": "closed",
+   "draft": false,
+   "merged_at": "2026-11-21T01:11:21Z",
+   "closed_at": "2026-11-21T01:11:21Z",
+   "title": "feat(audio): move ClueScene audio onto the shared voice gate (phase 1 slice)",
+   "html_url": "https://github.com/veeresh-bikkaneti/Meridian/pull/559",
+   "updated_at": "2026-11-21T01:11:24Z",
+   "head": {
+    "ref": "feat/phase1-audio-clue-scene",
+    "sha": "caaf41e17ea7a5c2c2221258e4165283728e88c5"
+   }
+  },
+  "569": {
+   "number": 569,
+   "state": "closed",
+   "draft": false,
+   "merged_at": "2026-11-22T11:56:11Z",
+   "closed_at": "2026-11-22T11:56:11Z",
+   "title": "feat(platform): Phase 1 ports sweep, Part A (all files except game-app.tsx)",
+   "html_url": "https://github.com/veeresh-bikkaneti/Meridian/pull/569",
+   "updated_at": "2026-11-22T11:56:13Z",
+   "head": {
+    "ref": "phase1/ports-sweep",
+    "sha": "36ff931d8b448631f262ef2ec841b2731f49d143"
+   }
+  },
+  "571": {
+   "number": 571,
+   "state": "open",
+   "draft": true,
+   "merged_at": null,
+   "closed_at": null,
+   "title": "Phase 1 Part B: game-app onto the storage port (noRawIo 45 to 13)",
+   "html_url": "https://github.com/veeresh-bikkaneti/Meridian/pull/571",
+   "updated_at": "2026-11-22T14:47:06Z",
+   "head": {
+    "ref": "phase1/ports-part-b",
+    "sha": "acf8b24d32ce88d5a3f4ccb1ae2fc0b04c17733b"
+   }
+  },
+  "561": {
+   "number": 561,
+   "state": "closed",
+   "draft": false,
+   "merged_at": "2026-11-21T10:31:50Z",
+   "closed_at": "2026-11-21T10:31:50Z",
+   "title": "test: retarget leftover nav locators to the shared site header",
+   "html_url": "https://github.com/veeresh-bikkaneti/Meridian/pull/561",
+   "updated_at": "2026-11-21T10:31:51Z",
+   "head": {
+    "ref": "test/phase-2-hv5-nav-selectors",
+    "sha": "34f49e0372815bec3919b0ac94e67d25193ed9c5"
+   }
+  },
+  "564": {
+   "number": 564,
+   "state": "closed",
+   "draft": false,
+   "merged_at": "2026-11-21T17:21:56Z",
+   "closed_at": "2026-11-21T17:21:56Z",
+   "title": "test: phone header nav asserted via the menu panel (7 items)",
+   "html_url": "https://github.com/veeresh-bikkaneti/Meridian/pull/564",
+   "updated_at": "2026-11-21T17:21:58Z",
+   "head": {
+    "ref": "test/phase-2-nav-count-assertions",
+    "sha": "776e1a23b2b827c2383af3d941176fe61c61846c"
+   }
+  },
+  "555": {
+   "number": 555,
+   "state": "closed",
+   "draft": false,
+   "merged_at": "2026-11-20T21:54:02Z",
+   "closed_at": "2026-11-20T21:54:02Z",
+   "title": "feat(math): single validated SubjectItem content source",
+   "html_url": "https://github.com/veeresh-bikkaneti/Meridian/pull/555",
+   "updated_at": "2026-11-20T21:54:06Z",
+   "head": {
+    "ref": "feat/phase-3-math-content-source",
+    "sha": "fd24084748379ab3946bb4b0150d0dbfc84c6e36"
+   }
+  },
+  "562": {
+   "number": 562,
+   "state": "closed",
+   "draft": false,
+   "merged_at": "2026-11-21T05:20:49Z",
+   "closed_at": "2026-11-21T05:20:49Z",
+   "title": "refactor(physics): move physics items to validated SubjectItem records",
+   "html_url": "https://github.com/veeresh-bikkaneti/Meridian/pull/562",
+   "updated_at": "2026-11-21T05:20:52Z",
+   "head": {
+    "ref": "refactor/phase-3-physics-records",
+    "sha": "fce6a19fb39012c90a492c928f7e3ebbe7fe5a66"
+   }
+  },
+  "566": {
+   "number": 566,
+   "state": "closed",
+   "draft": false,
+   "merged_at": "2026-11-21T17:30:16Z",
+   "closed_at": "2026-11-21T17:30:16Z",
+   "title": "refactor(chemistry): move chemistry items to validated SubjectItem records",
+   "html_url": "https://github.com/veeresh-bikkaneti/Meridian/pull/566",
+   "updated_at": "2026-11-21T17:30:18Z",
+   "head": {
+    "ref": "refactor/phase-3-chemistry-records",
+    "sha": "7c1a4eb85189785970d3fc514acf18af3158d6d4"
+   }
+  },
+  "568": {
+   "number": 568,
+   "state": "closed",
+   "draft": false,
+   "merged_at": "2026-11-22T11:56:04Z",
+   "closed_at": "2026-11-22T11:56:04Z",
+   "title": "Phase 3: general-knowledge and journals items as validated records",
+   "html_url": "https://github.com/veeresh-bikkaneti/Meridian/pull/568",
+   "updated_at": "2026-11-22T11:56:07Z",
+   "head": {
+    "ref": "phase3/gk-journals",
+    "sha": "50d1c1245ba333b0d8abed6237f590c089b4f0a7"
+   }
+  },
+  "572": {
+   "number": 572,
+   "state": "closed",
+   "draft": false,
+   "merged_at": "2026-11-22T15:23:01Z",
+   "closed_at": "2026-11-22T15:23:01Z",
+   "title": "refactor(social-studies): move social studies items to validated SubjectItem records",
+   "html_url": "https://github.com/veeresh-bikkaneti/Meridian/pull/572",
+   "updated_at": "2026-11-22T15:23:03Z",
+   "head": {
+    "ref": "refactor/phase-3-social-studies-records",
+    "sha": "0497e088e11c851924254fcd9f97594a4faa5f0a"
+   }
+  },
+  "570": {
+   "number": 570,
+   "state": "closed",
+   "draft": false,
+   "merged_at": "2026-11-22T15:24:11Z",
+   "closed_at": "2026-11-22T15:24:11Z",
+   "title": "docs(architecture): map game-app.tsx for the phase 4 split",
+   "html_url": "https://github.com/veeresh-bikkaneti/Meridian/pull/570",
+   "updated_at": "2026-11-22T15:24:13Z",
+   "head": {
+    "ref": "phase4/game-app-map",
+    "sha": "21bfd28afd20e8772cd134336a652e38e9eafad6"
+   }
+  },
+  "550": {
+   "number": 550,
+   "state": "closed",
+   "draft": false,
+   "merged_at": "2026-11-20T20:00:58Z",
+   "closed_at": "2026-11-20T20:00:58Z",
+   "title": "fix: read the contact webhook secret at runtime only",
+   "html_url": "https://github.com/veeresh-bikkaneti/Meridian/pull/550",
+   "updated_at": "2026-11-20T20:01:00Z",
+   "head": {
+    "ref": "feat/phase-5-1-runtime-secrets",
+    "sha": "a245abc0def6330f8731eb1aaabe8febe042bb4e"
+   }
+  },
+  "558": {
+   "number": 558,
+   "state": "closed",
+   "draft": false,
+   "merged_at": "2026-11-21T01:04:20Z",
+   "closed_at": "2026-11-21T01:04:20Z",
+   "title": "refactor: share one migration runner for build and pglite (phase 5.2)",
+   "html_url": "https://github.com/veeresh-bikkaneti/Meridian/pull/558",
+   "updated_at": "2026-11-21T01:04:22Z",
+   "head": {
+    "ref": "chore/phase-5-2-migrations-v2",
+    "sha": "35361cbd4f863b4a7784374c4b07fbb8b36e9d6f"
+   }
+  },
+  "554": {
+   "number": 554,
+   "state": "closed",
+   "draft": false,
+   "merged_at": "2026-11-20T21:01:52Z",
+   "closed_at": "2026-11-20T21:01:52Z",
+   "title": "test: pin response headers to one module and public/_headers",
+   "html_url": "https://github.com/veeresh-bikkaneti/Meridian/pull/554",
+   "updated_at": "2026-11-20T21:01:54Z",
+   "head": {
+    "ref": "chore/phase-5-3-response-policy",
+    "sha": "2aad1307b32e5c4463a7f5598514d9f99eda6a98"
+   }
+  },
+  "429": {
+   "number": 429,
+   "state": "closed",
+   "draft": true,
+   "merged_at": null,
+   "closed_at": "2026-11-16T20:53:35Z",
+   "title": "docs(scaling): science map spec (needs educator and subject-expert review)",
+   "html_url": "https://github.com/veeresh-bikkaneti/Meridian/pull/429",
+   "updated_at": "2026-11-22T04:46:26Z",
+   "head": {
+    "ref": "feat/science-spec",
+    "sha": "37e7e752b171e2d217167123d3b70decbe142ac1"
+   }
+  }
+ }
+}
