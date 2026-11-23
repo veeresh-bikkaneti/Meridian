@@ -1,31 +1,88 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import { parseGithubBranches, parseGithubPulls } from "./kanban-live.ts";
+import branchesFixture from "./__fixtures__/github/branches.json" with { type: "json" };
+import pullsFixture from "./__fixtures__/github/pulls-by-number.json" with { type: "json" };
+import snapshotJson from "./kanban.json" with { type: "json" };
+import { loadSnapshot, type Subtask } from "./kanban-data.ts";
+import {
+  buildBoardUrl,
+  collectClosesPullNumbers,
+  fetchKanbanLive,
+  loadKanbanLive,
+  loadPublicSnapshot,
+  parseGithubBranches,
+  parseGithubPull,
+  parseGithubPulls,
+  type KeyValueStorage,
+} from "./kanban-live.ts";
+
+const pull571 = pullsFixture.pulls["571"];
+const branchesBody = branchesFixture.branches;
+
+/* The live-feed test discipline: drive the real transport port by
+ * stubbing the global fetch it resolves lazily per call. */
+function stubGlobalFetch(
+  handler: (url: string) => { status: number; body: unknown } | "throw",
+) {
+  const realFetch = globalThis.fetch;
+  const calls: Array<{ url: string; init?: RequestInit }> = [];
+  globalThis.fetch = (async (input: unknown, init?: RequestInit) => {
+    const url = String(input);
+    calls.push({ url, init });
+    const r = handler(url);
+    if (r === "throw") throw new Error("network down");
+    return {
+      ok: r.status >= 200 && r.status < 300,
+      status: r.status,
+      json: async () => r.body,
+    };
+  }) as unknown as typeof fetch;
+  return { calls, restore: () => void (globalThis.fetch = realFetch) };
+}
+
+function fixtureHandler(url: string) {
+  if (url.includes("/pulls/571")) return { status: 200, body: pull571 };
+  if (url.includes("/branches")) return { status: 200, body: branchesBody };
+  return { status: 404, body: { message: "not stubbed" } };
+}
+
+function memoryStorage(): KeyValueStorage & { map: Map<string, string> } {
+  const map = new Map<string, string>();
+  return {
+    map,
+    getItem: (k) => map.get(k) ?? null,
+    setItem: (k, v) => void map.set(k, v),
+  };
+}
+
+function snapshotSubtasks(): Subtask[] {
+  return loadSnapshot(snapshotJson).subtasks;
+}
+
+describe("parseGithubPull", () => {
+  it("parses one recorded pull (the pulls/{n} shape)", () => {
+    assert.deepEqual(parseGithubPull(pull571), {
+      number: 571,
+      info: { state: "open", draft: true, merged: false },
+    });
+    const merged = parseGithubPull(pullsFixture.pulls["565"]);
+    assert.deepEqual(merged?.info, { state: "closed", draft: false, merged: true });
+  });
+
+  it("returns null on malformed payloads", () => {
+    assert.equal(parseGithubPull(null), null);
+    assert.equal(parseGithubPull({ state: "open" }), null);
+    assert.equal(parseGithubPull({ number: "571", state: "open" }), null);
+    assert.equal(parseGithubPull({ number: 1, state: "weird" }), null);
+  });
+});
 
 describe("parseGithubPulls", () => {
-  it("maps the slice applyOverlay reads, keyed by PR number", () => {
+  it("maps the list shape, keyed by PR number", () => {
     const pulls = parseGithubPulls([
-      {
-        number: 571,
-        state: "open",
-        draft: true,
-        merged_at: null,
-        head: { ref: "phase1/ports-part-b" },
-      },
-      {
-        number: 565,
-        state: "closed",
-        draft: false,
-        merged_at: "2026-11-21T17:42:00Z",
-        head: { ref: "phase1/transport" },
-      },
-      {
-        number: 573,
-        state: "closed",
-        draft: false,
-        merged_at: null,
-        head: { ref: "fix/closed-unmerged" },
-      },
+      { number: 571, state: "open", draft: true, merged_at: null },
+      { number: 565, state: "closed", draft: false, merged_at: "2026-11-21T17:42:00Z" },
+      { number: 573, state: "closed", draft: false, merged_at: null },
     ]);
     assert.deepEqual(pulls.get(571), { state: "open", draft: true, merged: false });
     assert.deepEqual(pulls.get(565), { state: "closed", draft: false, merged: true });
@@ -42,7 +99,6 @@ describe("parseGithubPulls", () => {
       { number: 42, state: "open" },
     ]);
     assert.equal(pulls.size, 1);
-    // A missing draft flag reads as not-a-draft, never as a crash.
     assert.deepEqual(pulls.get(42), { state: "open", draft: false, merged: false });
     assert.equal(parseGithubPulls({ message: "rate limited" }).size, 0);
     assert.equal(parseGithubPulls(undefined).size, 0);
@@ -50,18 +106,237 @@ describe("parseGithubPulls", () => {
 });
 
 describe("parseGithubBranches", () => {
-  it("collects branch names into a set", () => {
-    const branches = parseGithubBranches([
-      { name: "main" },
-      { name: "phase1/ports-part-b" },
-      { name: "main" },
-    ]);
-    assert.deepEqual([...branches].sort(), ["main", "phase1/ports-part-b"]);
+  it("collects the recorded branch names into a set", () => {
+    const branches = parseGithubBranches(branchesBody);
+    assert.ok(branches.has("phase1/ports-part-b"));
+    assert.ok(branches.has("main"));
   });
 
   it("skips malformed entries and survives a non-array payload", () => {
     const branches = parseGithubBranches([null, {}, { name: 7 }, { name: "" }, { name: "ok" }]);
     assert.deepEqual([...branches], ["ok"]);
     assert.equal(parseGithubBranches("nope").size, 0);
+  });
+});
+
+describe("collectClosesPullNumbers", () => {
+  it("on the real snapshot only PR 571 needs a lookup (every other closes PR is already Done)", () => {
+    assert.deepEqual(collectClosesPullNumbers(snapshotSubtasks()), [571]);
+  });
+});
+
+describe("fetchKanbanLive — by-number lookups", () => {
+  it("fetches pulls/{n} for the needed closes PRs plus one branches call", async () => {
+    const stub = stubGlobalFetch(fixtureHandler);
+    try {
+      const state = await fetchKanbanLive({
+        subtasks: snapshotSubtasks(),
+        storage: null,
+        now: 1_000_000,
+      });
+      assert.ok(state);
+      assert.deepEqual(state.pulls.get(571), { state: "open", draft: true, merged: false });
+      assert.ok(state.branches.has("phase1/ports-part-b"));
+      assert.equal(state.fetchedAt, 1_000_000);
+      assert.equal(stub.calls.length, 2);
+      assert.ok(stub.calls.some((c) => c.url.endsWith("/pulls/571")));
+      assert.ok(stub.calls.some((c) => c.url.includes("/branches?per_page=100")));
+      const headers = stub.calls[0]?.init?.headers as Record<string, string> | undefined;
+      assert.equal(headers?.["accept"], "application/vnd.github+json");
+    } finally {
+      stub.restore();
+    }
+  });
+
+  it("resolves null on a 403 (the unauthenticated rate limit answering)", async () => {
+    const stub = stubGlobalFetch(() => ({ status: 403, body: { message: "rate limited" } }));
+    try {
+      const state = await fetchKanbanLive({ subtasks: snapshotSubtasks(), storage: null });
+      assert.equal(state, null);
+    } finally {
+      stub.restore();
+    }
+  });
+
+  it("retries a network error exactly once, then succeeds", async () => {
+    let pullCalls = 0;
+    const stub = stubGlobalFetch((url) => {
+      if (url.includes("/pulls/571")) {
+        pullCalls += 1;
+        if (pullCalls === 1) return "throw";
+        return { status: 200, body: pull571 };
+      }
+      return fixtureHandler(url);
+    });
+    try {
+      const state = await fetchKanbanLive({ subtasks: snapshotSubtasks(), storage: null });
+      assert.ok(state);
+      assert.equal(pullCalls, 2);
+    } finally {
+      stub.restore();
+    }
+  });
+
+  it("resolves null when the network stays down (one retry, no more)", async () => {
+    let calls = 0;
+    const stub = stubGlobalFetch(() => {
+      calls += 1;
+      return "throw";
+    });
+    try {
+      const state = await fetchKanbanLive({ subtasks: snapshotSubtasks(), storage: null });
+      assert.equal(state, null);
+      assert.equal(calls, 2);
+    } finally {
+      stub.restore();
+    }
+  });
+
+  it("resolves null when a payload is not the expected shape", async () => {
+    const stub = stubGlobalFetch((url) =>
+      url.includes("/branches")
+        ? { status: 200, body: { message: "not an array" } }
+        : fixtureHandler(url),
+    );
+    try {
+      const state = await fetchKanbanLive({ subtasks: snapshotSubtasks(), storage: null });
+      assert.equal(state, null);
+    } finally {
+      stub.restore();
+    }
+  });
+
+  it("serves the 5-minute session cache instead of refetching", async () => {
+    const storage = memoryStorage();
+    const stub = stubGlobalFetch(fixtureHandler);
+    try {
+      const first = await fetchKanbanLive({
+        subtasks: snapshotSubtasks(),
+        storage,
+        now: 1_000_000,
+      });
+      assert.ok(first);
+      assert.equal(stub.calls.length, 2);
+      const second = await fetchKanbanLive({
+        subtasks: snapshotSubtasks(),
+        storage,
+        now: 1_000_000 + 4 * 60_000,
+      });
+      assert.ok(second);
+      assert.equal(stub.calls.length, 2);
+      const third = await fetchKanbanLive({
+        subtasks: snapshotSubtasks(),
+        storage,
+        now: 1_000_000 + 6 * 60_000,
+      });
+      assert.ok(third);
+      assert.equal(stub.calls.length, 4);
+    } finally {
+      stub.restore();
+    }
+  });
+});
+
+describe("fetchKanbanLive — the paginated path (more than 10 lookups)", () => {
+  it("pages pulls?state=all until every needed number has been seen", async () => {
+    const subtasks: Subtask[] = [];
+    for (let n = 101; n <= 112; n++) {
+      subtasks.push({
+        ...snapshotSubtasks()[0],
+        id: `s.t${n}`,
+        col: "Backlog",
+        prs: [{ number: n, role: "closes", href: `https://example.test/pull/${n}` }],
+      });
+    }
+    const page1 = [
+      ...Array.from({ length: 89 }, (_, i) => ({
+        number: 1000 + i,
+        state: "closed",
+        draft: false,
+        merged_at: "2026-01-01T00:00:00Z",
+      })),
+      ...Array.from({ length: 11 }, (_, i) => ({
+        number: 101 + i,
+        state: "closed",
+        draft: false,
+        merged_at: "2026-01-01T00:00:00Z",
+      })),
+    ];
+    const page2 = [{ number: 112, state: "open", draft: true, merged_at: null }];
+    const stub = stubGlobalFetch((url) => {
+      if (url.includes("/branches")) return { status: 200, body: branchesBody };
+      if (url.includes("&page=1")) return { status: 200, body: page1 };
+      if (url.includes("&page=2")) return { status: 200, body: page2 };
+      return { status: 404, body: { message: "unexpected" } };
+    });
+    try {
+      const state = await fetchKanbanLive({ subtasks, storage: null });
+      assert.ok(state);
+      for (let n = 101; n <= 112; n++) assert.ok(state.pulls.has(n), `pull ${n} seen`);
+      assert.deepEqual(state.pulls.get(112), { state: "open", draft: true, merged: false });
+      assert.ok(!stub.calls.some((c) => /\/pulls\/\d+$/.test(c.url)), "no by-number calls");
+      assert.equal(stub.calls.filter((c) => c.url.includes("state=all")).length, 2);
+    } finally {
+      stub.restore();
+    }
+  });
+});
+
+describe("loadPublicSnapshot", () => {
+  it("fetches build-board.json under the base URL and validates the envelope", async () => {
+    const stub = stubGlobalFetch((url) =>
+      url.endsWith("build-board.json")
+        ? { status: 200, body: { ...snapshotJson, builtAt: "2026-11-23T18:00:00.000Z" } }
+        : { status: 404, body: { message: "not stubbed" } },
+    );
+    try {
+      const snap = await loadPublicSnapshot();
+      assert.ok(snap);
+      assert.equal(snap.schemaVersion, 2);
+      assert.equal(snap.stories.length, 18);
+      assert.equal(snap.subtasks.length, 45);
+      assert.equal(stub.calls.length, 1);
+      assert.equal(stub.calls[0]?.url, buildBoardUrl());
+    } finally {
+      stub.restore();
+    }
+  });
+
+  it("resolves null on a failure status, a network error and an invalid envelope", async () => {
+    const notFound = stubGlobalFetch(() => ({ status: 404, body: { message: "missing" } }));
+    try {
+      assert.equal(await loadPublicSnapshot(), null);
+    } finally {
+      notFound.restore();
+    }
+    const down = stubGlobalFetch(() => "throw");
+    try {
+      assert.equal(await loadPublicSnapshot(), null);
+    } finally {
+      down.restore();
+    }
+    const invalid = stubGlobalFetch(() => ({ status: 200, body: { schemaVersion: 1, cards: [] } }));
+    try {
+      assert.equal(await loadPublicSnapshot(), null);
+    } finally {
+      invalid.restore();
+    }
+  });
+});
+
+describe("loadKanbanLive", () => {
+  it("shares one fetch sequence across concurrent calls", async () => {
+    const stub = stubGlobalFetch(fixtureHandler);
+    try {
+      const [a, b] = await Promise.all([
+        loadKanbanLive({ storage: null }),
+        loadKanbanLive({ storage: null }),
+      ]);
+      assert.ok(a);
+      assert.equal(a, b);
+      assert.equal(stub.calls.length, 2);
+    } finally {
+      stub.restore();
+    }
   });
 });
