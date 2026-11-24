@@ -171,8 +171,10 @@ function applyDenylist(ua: string, hit: OsHit): string {
     if (osVersion === "10" || osVersion === "10.0") {
       const chromeFrozen = /Chrome\/[0-9]+\.0\.0\.0/.test(ua);
       const modelPlaceholder = /;\s*K\)/.test(ua);
-      const samsungFrozen = /SamsungBrowser\//.test(ua) && chromeFrozen;
-      if (chromeFrozen || modelPlaceholder || samsungFrozen) return "unknown";
+      // SamsungBrowser/ plus a frozen Chrome token cannot fire on its
+      // own: chromeFrozen already covers that UA. Left out so the
+      // disjunct is not dead (issue #342).
+      if (chromeFrozen || modelPlaceholder) return "unknown";
     }
     return osVersion;
   }

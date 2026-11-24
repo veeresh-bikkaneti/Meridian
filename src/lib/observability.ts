@@ -190,17 +190,20 @@ export interface Breadcrumb {
    */
   runtime?: DeviceInfo;
   /**
-   * §2.2: persisted terminal-visibility state, written by the
-   * visibility listener AT the transition (init false) — classifier
-   * stamps read this state instead of re-deriving from history.
+   * Persisted terminal-visibility state. Stamped at trail creation from
+   * document.visibilityState — a tab that boots already hidden never
+   * fires visibilitychange — and rewritten by the visibility listener
+   * at each transition. Classifier stamps read this instead of
+   * re-deriving from history.
    */
   bgTerminal?: boolean;
   /** §2.2: persisted stuck state, evaluated at backgrounding time. */
   trailStuck?: boolean;
   /**
-   * [GRAFT] Set at trail creation by builds that install visibility
-   * tracking in the same init() — a marker-carrying trail provably had
-   * tracking its whole life, so silent history means never-backgrounded.
+   * Set only when init() installed the visibility listener. A
+   * marker-carrying trail had tracking for its whole life, so silent
+   * history means never-backgrounded. recordMilestone must not set this
+   * before that listener exists (issue #342).
    */
   vis?: true;
 }
@@ -377,6 +380,21 @@ function readDisplayMode(engine: string, os: string): string {
   }
 }
 
+/** os → form. android and ios are mobile; every other os is desktop. */
+function formFromOs(os: string | undefined): "mobile" | "desktop" {
+  return os === "android" || os === "ios" ? "mobile" : "desktop";
+}
+
+/**
+ * Enriched form. Device class wins. An unknown class falls back to
+ * formFromOs so the legacy vocabulary stays the fallback.
+ */
+function formFromParsed(parsed: { deviceClass?: string; os?: string }): "mobile" | "desktop" {
+  if (parsed.deviceClass === "phone" || parsed.deviceClass === "tablet") return "mobile";
+  if (parsed.deviceClass === "desktop") return "desktop";
+  return formFromOs(parsed.os);
+}
+
 /**
  * The session's runtime facts (§§2.1, 3.3): the parsed UA snapshot
  * merged with the per-session API reads. EVERY manifest device key
@@ -415,18 +433,7 @@ export function runtimeFacts(): DeviceInfo {
     hasClientHints = false;
   }
   const parsed = parseRuntimeUA(ua, { maxTouchPoints, hasClientHints });
-
-  // Form (§1.2 row 19): derived from deviceClass; the unknown class
-  // falls back to today's os-derived rule (keeps the legacy vocabulary
-  // — and the iPad-as-Mac trail now reports mobile via its class).
-  const form =
-    parsed.deviceClass === "phone" || parsed.deviceClass === "tablet"
-      ? "mobile"
-      : parsed.deviceClass === "desktop"
-        ? "desktop"
-        : parsed.os === "android" || parsed.os === "ios"
-          ? "mobile"
-          : "desktop";
+  const form = formFromParsed(parsed);
 
   const raw = collectDeviceInfo();
 
@@ -513,7 +520,7 @@ function legacyCoarseFacts(): DeviceInfo {
   const d = collectDeviceInfo();
   return {
     os: parsed.os,
-    form: parsed.os === "android" || parsed.os === "ios" ? "mobile" : "desktop",
+    form: formFromOs(parsed.os),
     dpr: dprBucket(d.dpr),
     screen: screenBucket(d.screenW, d.screenH),
   };
@@ -911,6 +918,37 @@ export function trailWasStuck(prev: Breadcrumb): boolean {
   return false;
 }
 
+/**
+ * One trail seed for both creation sites (issue #342). `tracked` is
+ * true only after the visibility listener is installed — a trail
+ * created by recordMilestone before init must not claim `vis`.
+ * `visibilityState === "hidden"` stamps bgTerminal at creation, because
+ * a tab that boots already hidden never fires visibilitychange.
+ */
+function seedBreadcrumb(input: {
+  sessionId: string;
+  buildId: string;
+  startedAt: number;
+  lastMilestone: string;
+  history: MilestoneEntry[];
+  visibilityState: string | undefined;
+  tracked: boolean;
+}): Breadcrumb {
+  const hidden = input.visibilityState === "hidden";
+  const trail: Breadcrumb = {
+    sessionId: input.sessionId,
+    buildId: input.buildId,
+    startedAt: input.startedAt,
+    lastMilestone: input.lastMilestone,
+    history: input.history,
+    runtime: runtimeFacts(),
+    bgTerminal: hidden,
+    trailStuck: hidden && START_MILESTONES.has(input.lastMilestone),
+  };
+  if (input.tracked) trail.vis = true;
+  return trail;
+}
+
 function byteLength(s: string): number {
   try {
     return new TextEncoder().encode(s).length;
@@ -1097,6 +1135,8 @@ const STAMPED_TYPES = new Set([...CRASH_CLASS_TYPES, "recovery_outcome"]);
 
 /** localStorage key for the §4.3 durable unfinished-boot counter. */
 export const BOOT_HEALTH_KEY = "meridian:boot-health";
+/** Manifest range for unfinishedBoots. Cap on read, not only on write. */
+const UNFINISHED_BOOT_CAP = 99;
 
 export function createObservability(deps: ObservabilityDeps = {}): Observability {
   const storage: ObsStorage | null = deps.storage !== undefined ? deps.storage : defaultStorage();
@@ -1216,7 +1256,7 @@ export function createObservability(deps: ObservabilityDeps = {}): Observability
       return {
         unfinished:
           typeof p.unfinished === "number" && Number.isFinite(p.unfinished)
-            ? Math.max(0, Math.floor(p.unfinished))
+            ? Math.min(UNFINISHED_BOOT_CAP, Math.max(0, Math.floor(p.unfinished)))
             : 0,
         lastUnfinishedAt:
           typeof p.lastUnfinishedAt === "number" && Number.isFinite(p.lastUnfinishedAt)
@@ -1390,7 +1430,9 @@ export function createObservability(deps: ObservabilityDeps = {}): Observability
         // parsed runtimeFacts(). An explicitly supplied device (the
         // crashed session's persisted snapshot on suspected_crash)
         // always wins over both levels.
-        device: event.device ?? (isFunnel ? legacyCoarseFacts() : runtimeFacts()),
+        device:
+          event.device ??
+          (isFunnel ? legacyCoarseFacts() : (breadcrumb?.runtime ?? runtimeFacts())),
         // PBI-8: every event (including crash reports) carries the game
         // map mode — the Scout adoption / crash-delta signal. An
         // explicit value (incl. "unknown" on crashed-session reports,
@@ -1507,23 +1549,36 @@ export function createObservability(deps: ObservabilityDeps = {}): Observability
     if (endpoint) void flushQueue();
   }
 
+  function currentDocument(): NonNullable<ObservabilityDeps["document"]> | null {
+    try {
+      if (deps.document !== undefined) return deps.document;
+      return typeof document !== "undefined" ? document : null;
+    } catch {
+      return null;
+    }
+  }
+
+  function currentVisibilityState(): string | undefined {
+    try {
+      const state = currentDocument()?.visibilityState;
+      return typeof state === "string" ? state : undefined;
+    } catch {
+      return undefined;
+    }
+  }
+
   function recordMilestone(name: string, context?: { edition?: string; regionId?: string; chunkId?: string }): void {
     try {
       if (!breadcrumb) {
-        breadcrumb = {
+        breadcrumb = seedBreadcrumb({
           sessionId: randomId(),
           buildId,
           startedAt: now(),
           lastMilestone: name,
           history: [],
-          // §4.1: the parsed snapshot replaces the raw-UA device slot.
-          runtime: runtimeFacts(),
-          // §2.2: classifier state starts false; the visibility
-          // listener updates it at each transition from here on.
-          bgTerminal: false,
-          trailStuck: false,
-          vis: true,
-        };
+          visibilityState: currentVisibilityState(),
+          tracked: false,
+        });
       }
       const at = now();
       breadcrumb.lastMilestone = name;
@@ -1580,7 +1635,7 @@ export function createObservability(deps: ObservabilityDeps = {}): Observability
       try {
         const storedHealth = readBootHealth();
         if (unclean && prev) {
-          unfinishedBoots = Math.min(99, storedHealth.unfinished + 1);
+          unfinishedBoots = Math.min(UNFINISHED_BOOT_CAP, storedHealth.unfinished + 1);
           writeBootHealth({ unfinished: unfinishedBoots, lastUnfinishedAt: now() });
         } else if (!unclean && prev && storedHealth.unfinished > 0) {
           unfinishedBoots = 0;
@@ -1816,26 +1871,21 @@ export function createObservability(deps: ObservabilityDeps = {}): Observability
     } catch {
       // Detection failure must never block boot.
     }
-    breadcrumb = {
+    const started = now();
+    breadcrumb = seedBreadcrumb({
       sessionId: randomId(),
       buildId,
-      startedAt: now(),
+      startedAt: started,
       lastMilestone: "boot_start",
-      history: [{ name: "boot_start", at: now() }],
-      // §4.1: this session's parsed snapshot, taken once at creation.
-      // The raw-UA device slot is gone from the trail (§4.1).
-      runtime: runtimeFacts(),
-      // §2.2: state stamps start false; the listener installed below
-      // (same init) updates them at every transition from here on.
-      bgTerminal: false,
-      trailStuck: false,
-      // [GRAFT] This build installs visibility tracking in this same
-      // init() — the marker is what licenses the vis-gated false in
-      // the next boot's bgTerminal precedence.
-      vis: true,
-    };
+      history: [{ name: "boot_start", at: started }],
+      visibilityState: currentVisibilityState(),
+      tracked: false,
+    });
     persist();
-    installVisibilityTracking();
+    if (installVisibilityTracking() && breadcrumb) {
+      breadcrumb.vis = true;
+      persist();
+    }
   }
 
   /**
@@ -1844,17 +1894,12 @@ export function createObservability(deps: ObservabilityDeps = {}): Observability
    * lastMilestone "backgrounded" — distinguishable from a genuine
    * foreground kill. Installed once; total (never throws into boot).
    */
-  function installVisibilityTracking(): void {
-    if (visibilityTracked) return;
+  function installVisibilityTracking(): boolean {
+    if (visibilityTracked) return breadcrumb?.vis === true;
     visibilityTracked = true;
     try {
-      const doc =
-        deps.document !== undefined
-          ? deps.document
-          : typeof document !== "undefined"
-            ? document
-            : null;
-      if (!doc || typeof doc.addEventListener !== "function") return;
+      const doc = currentDocument();
+      if (!doc || typeof doc.addEventListener !== "function") return false;
       doc.addEventListener("visibilitychange", () => {
         try {
           const hidden = doc.visibilityState === "hidden";
@@ -1890,8 +1935,10 @@ export function createObservability(deps: ObservabilityDeps = {}): Observability
           // Trail bookkeeping never breaks gameplay.
         }
       });
+      return true;
     } catch {
       // Visibility tracking is best-effort.
+      return false;
     }
   }
 

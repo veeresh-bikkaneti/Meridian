@@ -1637,6 +1637,27 @@ test("boot-health counter: increments per unfinished boot, resets only on a posi
   assert.equal(capPayload?.unfinishedBoots, 99, "streak capped at 99");
 });
 
+test("boot-health read caps a tampered streak above 99 before a live stamp", () => {
+  const durable = makeStorage({
+    [BOOT_HEALTH_KEY]: JSON.stringify({ v: 1, unfinished: 250, lastUnfinishedAt: 5 }),
+  });
+  const store = makeStorage();
+  const { transport, beacons } = makeTransport(true);
+  const obs = createObservability({
+    storage: store, durableStorage: durable, transport, endpoint: "https://example.com/ingest",
+    now: () => 9000, randomId: () => "cap-read", device: DEVICE, buildId: "b", isUnclean: () => false,
+  });
+  obs.init();
+  obs.emit({ type: "js_error", ts: 9000, buildId: "b", error: { name: "Error", message: "x" } });
+  const payload = JSON.parse(beacons.at(-1)!.body) as ObservabilityEvent;
+  assert.equal(payload.unfinishedBoots, 99, "a stored 250 cannot ride a live stamp");
+  assert.equal(
+    (JSON.parse(durable.getItem(BOOT_HEALTH_KEY) as string) as { unfinished: number }).unfinished,
+    250,
+    "cap is on read; the stored record is not rewritten",
+  );
+});
+
 test("boot-health counter never touches the #331 map-crash marker", () => {
   const durable = makeStorage();
   const store = makeStorage({ [BREADCRUMB_KEY]: prevBreadcrumbJson({ lastMilestone: "map_init_start" }) });
@@ -1759,6 +1780,45 @@ test("visibility listener writes PERSISTED state at the transition (bgTerminal +
   stored = JSON.parse(store.getItem(BREADCRUMB_KEY) as string) as { bgTerminal?: boolean; trailStuck?: boolean };
   assert.equal(stored.bgTerminal, false, "foregrounded transition resets the state");
   assert.equal(stored.trailStuck, false);
+});
+
+test("init stamps an already-hidden document without waiting for visibilitychange", () => {
+  const store = makeStorage();
+  const { transport } = makeTransport();
+  const doc = makeDocument();
+  doc.visibilityState = "hidden";
+  const obs = createObservability({
+    storage: store, transport, document: doc,
+    now: () => 1000, randomId: () => "boot-hidden", device: DEVICE, buildId: "b", isUnclean: () => false,
+  });
+  obs.init();
+  const stored = JSON.parse(store.getItem(BREADCRUMB_KEY) as string) as {
+    vis?: boolean; bgTerminal?: boolean; trailStuck?: boolean; lastMilestone?: string;
+  };
+  assert.equal(stored.vis, true, "init installed the listener");
+  assert.equal(stored.bgTerminal, true, "hidden at creation is a background terminal");
+  assert.equal(stored.trailStuck, false, "boot_start is not a stuck start milestone");
+  assert.equal(stored.lastMilestone, "boot_start", "no synthetic visibility milestone");
+  assert.equal(doc.listenerCount("visibilitychange"), 1);
+});
+
+test("recordMilestone before init does not claim vis, and stamps a hidden document", () => {
+  const store = makeStorage();
+  const { transport } = makeTransport();
+  const doc = makeDocument();
+  doc.visibilityState = "hidden";
+  const obs = createObservability({
+    storage: store, transport, document: doc,
+    now: () => 1000, randomId: () => "pre-init", device: DEVICE, buildId: "b", isUnclean: () => false,
+  });
+  obs.recordMilestone("map_init_start");
+  const stored = JSON.parse(store.getItem(BREADCRUMB_KEY) as string) as {
+    vis?: boolean; bgTerminal?: boolean; trailStuck?: boolean;
+  };
+  assert.equal("vis" in stored, false, "the marker claims tracking only after init installs it");
+  assert.equal(stored.bgTerminal, true);
+  assert.equal(stored.trailStuck, true, "map_init_start while hidden is stuck");
+  assert.equal(doc.listenerCount("visibilitychange"), 0, "recordMilestone does not install the listener");
 });
 
 test("trim order (§7.4): an oversized enriched suspected_crash keeps device.osVersion, mapMode and msSinceBootStart under the cap", () => {
