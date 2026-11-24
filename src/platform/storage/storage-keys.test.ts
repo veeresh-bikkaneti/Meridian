@@ -1,5 +1,4 @@
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
 import test, { describe } from "node:test";
 
 import { PROFILE_STORAGE_KEY } from "../../game/age-profile/store.ts";
@@ -66,10 +65,16 @@ import {
 import { sportsAiCacheKey } from "../../game/sports-ai.ts";
 import { storyCacheKey } from "../../game/story-ai.ts";
 import {
+  FIRST_VISIT_QUEUE_KEY,
   STORAGE_KEYS,
+  TOUR_LAST_DATE_KEY,
+  WALKED_SESSION_KEY,
+  challengeRecordedKeyDef,
+  challengeRecordedSummaryKeyDef,
   firstVisitSeenKeyDef,
   sportsAiCacheKeyDef,
   storyCacheKeyDef,
+  storyKeyDef,
   trailClearedMarkKeyDef,
   trailSeenKeyDef,
   trailUnscopedSeenKeyDef,
@@ -246,23 +251,9 @@ describe("storage key registry (feature storage ports, slice A2)", () => {
     assert.equal(decodeStoredText(STORAGE_KEYS.storytellerGreetDay, null, () => null), null);
   });
 
-  test("the grandpa entries pin the tour keys declared in the component", () => {
-    // The consts live in a .tsx node:test cannot import (JSX/CSS), so
-    // the pin reads their declaration lines — the same source-text
-    // pinning map-error-boundary.test.ts already uses. Hoisting the
-    // consts into a domain .ts module is the follow-up.
-    const grandpaSrc = readFileSync(
-      new URL("../../components/grandpa-coffee-run.tsx", import.meta.url),
-      "utf8",
-    );
-    assert.equal(
-      STORAGE_KEYS.grandpaTourLastDate.key,
-      /TOUR_LAST_DATE_KEY = "([^"]+)"/.exec(grandpaSrc)?.[1],
-    );
-    assert.equal(
-      STORAGE_KEYS.grandpaWalkedSession.key,
-      /WALKED_SESSION_KEY = "([^"]+)"/.exec(grandpaSrc)?.[1],
-    );
+  test("the grandpa entries pin the tour keys owned in the registry", () => {
+    assert.equal(STORAGE_KEYS.grandpaTourLastDate.key, TOUR_LAST_DATE_KEY);
+    assert.equal(STORAGE_KEYS.grandpaWalkedSession.key, WALKED_SESSION_KEY);
     assert.equal(STORAGE_KEYS.grandpaTourLastDate.encoding, "raw");
     assert.equal(STORAGE_KEYS.grandpaTourLastDate.fallback, "");
     assert.equal(STORAGE_KEYS.grandpaWalkedSession.encoding, undefined);
@@ -311,5 +302,51 @@ describe("storage key registry (feature storage ports, slice A2)", () => {
 
   test("the pack-shelf entry is the selection key pack-shelf-data reads", () => {
     assert.equal(STORAGE_KEYS.packShelfSelection.key, SHELF_PACK_SHELF_SELECTION_KEY);
+  });
+});
+
+describe("storage key registry (game-app ports, Part B B1)", () => {
+  test("the difficulty entry pins the key game-app writes, raw with the medium fallback", () => {
+    // The entry is the source now (game-app reads and writes
+    // through it, Part B B3): its bytes are stated here once so
+    // an accidental edit to the registry value fails this pin.
+    assert.equal(STORAGE_KEYS.difficulty.key, "meridian.difficulty");
+    assert.equal(STORAGE_KEYS.difficulty.encoding, "raw");
+    assert.equal(STORAGE_KEYS.difficulty.fallback, "medium");
+    assert.equal(decodeStoredText(STORAGE_KEYS.difficulty, "hard", () => "medium"), "hard");
+    assert.equal(decodeStoredText(STORAGE_KEYS.difficulty, null, () => "medium"), "medium");
+  });
+
+  test("the story factory pins game-app's story key builder for a fixture id", () => {
+    // The factory is the source now (game-app calls it, Part B
+    // B3): its bytes are stated here once so an accidental edit
+    // to the factory's key fails this pin.
+    const def = storyKeyDef("fixture-place");
+    assert.equal(def.key, "meridian.story.fixture-place");
+    assert.equal(def.encoding, "raw");
+    assert.equal(def.fallback, null);
+    assert.equal(decodeStoredText(def, "A story.", () => null), "A story.");
+    assert.equal(decodeStoredText(def, null, () => null), null);
+  });
+
+  test("the challenge marker factories pin game-app's marker keys for a fixture seed", () => {
+    // The factories are the source now (game-app calls them, Part B
+    // B2): their bytes are stated here once so an accidental edit to
+    // a factory's key fails this pin.
+    const recorded = challengeRecordedKeyDef(12345);
+    assert.equal(recorded.key, "meridian.challenge.recorded.12345");
+    assert.equal(recorded.encoding, "raw");
+    assert.equal(recorded.fallback, "");
+    const summary = challengeRecordedSummaryKeyDef(12345);
+    assert.equal(summary.key, "meridian.challenge.recorded.summary.12345");
+    assert.equal(summary.encoding, "raw");
+    assert.equal(summary.fallback, "");
+  });
+
+  test("the first-visit queue key const is the seen def's key", () => {
+    // The const is the source: its bytes are stated here once so
+    // an accidental edit to the registry value fails this pin.
+    assert.equal(FIRST_VISIT_QUEUE_KEY, "meridian.firstVisitQueue.v1");
+    assert.equal(firstVisitSeenKeyDef(FIRST_VISIT_QUEUE_KEY).key, FIRST_VISIT_QUEUE_KEY);
   });
 });

@@ -306,6 +306,9 @@ const storytellerGreetDay: StorageKeyDef<string | null> = {
   encoding: "raw",
 };
 
+/** The grandpa tasting-tour last-date key string, owned here so callers and tests import it instead of repeating it. */
+export const TOUR_LAST_DATE_KEY = "meridian.grandpaTour.lastDate";
+
 /** Grandpa tasting-tour last-date: a bare "YYYY-MM-DD", predating the port. */
 const grandpaTourLastDate: StorageKeyDef<string> = {
   key: "meridian.grandpaTour.lastDate",
@@ -313,6 +316,16 @@ const grandpaTourLastDate: StorageKeyDef<string> = {
   fallback: "",
   encoding: "raw",
 };
+
+/**
+ * The grandpa walked-session key string, owned here so callers and
+ * tests import it instead of repeating it. Once per session (owner,
+ * 2026-11-19): the footer scene mounts on every page, so without
+ * this flag each route change remounts the scene and replays the
+ * walk + trail lines. Set when a walk begins; any later mount in
+ * the same session starts seated. A new session walks again.
+ */
+export const WALKED_SESSION_KEY = "meridian.grandpa.walkedSession";
 
 /**
  * Grandpa once-per-session walk flag: decimal-number bytes ("1"),
@@ -344,6 +357,19 @@ const palettePreference: StorageKeyDef<string> = {
   key: "meridian.palette",
   schema: z.string(),
   fallback: "standard",
+  encoding: "raw",
+};
+
+/**
+ * Picker difficulty choice: the bare "easy"/"medium"/"hard" bytes
+ * predate the port. Validation stays in the domain reader
+ * (isPickerDifficulty); the fallback is that reader's
+ * missing-or-invalid default.
+ */
+const difficulty: StorageKeyDef<string> = {
+  key: "meridian.difficulty",
+  schema: z.string(),
+  fallback: "medium",
   encoding: "raw",
 };
 
@@ -389,6 +415,7 @@ export const STORAGE_KEYS = {
   mapMode,
   mapCrashMarker,
   palettePreference,
+  difficulty,
 };
 
 /**
@@ -473,5 +500,47 @@ export function firstVisitSeenKeyDef(seenKey: string): StorageKeyDef<string[]> {
       .array(z.unknown())
       .transform((ids) => ids.filter((id): id is string => typeof id === "string")),
     fallback: [],
+  };
+}
+
+/**
+ * The first-visit queue's seen key — the one queue key game-app
+ * passes to FirstVisitQueue. Owned here so the call site imports
+ * it instead of repeating the string; firstVisitSeenKeyDef above
+ * builds the def for it.
+ */
+export const FIRST_VISIT_QUEUE_KEY = "meridian.firstVisitQueue.v1";
+
+/**
+ * Cached story text for one place: the bare story bytes predate
+ * the port. The null fallback keeps the reader's
+ * missing-means-build shape.
+ */
+export function storyKeyDef(placeId: string): StorageKeyDef<string | null> {
+  return {
+    key: `meridian.story.${placeId}`,
+    schema: z.string().nullable(),
+    fallback: null,
+    encoding: "raw",
+  };
+}
+
+/** Challenge recorded marker for one seed: the bare route-tuple bytes predate the port. Session side. */
+export function challengeRecordedKeyDef(seed: number): StorageKeyDef<string> {
+  return {
+    key: `meridian.challenge.recorded.${seed}`,
+    schema: z.string(),
+    fallback: "",
+    encoding: "raw",
+  };
+}
+
+/** Challenge recorded-summary marker for one seed: the bare "1" bytes predate the port. Session side. */
+export function challengeRecordedSummaryKeyDef(seed: number): StorageKeyDef<string> {
+  return {
+    key: `meridian.challenge.recorded.summary.${seed}`,
+    schema: z.string(),
+    fallback: "",
+    encoding: "raw",
   };
 }

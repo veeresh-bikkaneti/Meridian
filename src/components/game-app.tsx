@@ -81,6 +81,22 @@ import { usePrefersReducedMotion } from "../hooks/use-prefers-reduced-motion";
 import { Compass, Contrast, Flag, Globe2, MapPin, MoreHorizontal } from "lucide-react";
 import { SoundToggle } from "./SoundToggle";
 import {
+  FIRST_VISIT_QUEUE_KEY,
+  STORAGE_KEYS,
+  challengeRecordedKeyDef,
+  challengeRecordedSummaryKeyDef,
+  storyKeyDef,
+} from "../platform/storage/keys.ts";
+import {
+  getSessionStorageItem,
+  getStorageItem,
+  removeSessionStorageItem,
+  setSessionStorageItem,
+  setStorageItem,
+} from "../platform/storage/browser-storage.ts";
+import type { StorageKeyDef } from "../platform/storage/storage.ts";
+import { resolveSession } from "../game/storage-slot.ts";
+import {
   initAudio,
   isSoundEnabled,
   playCardTap,
@@ -565,44 +581,6 @@ function snapshotForDeck(
 }
 
 /**
- * Session flag marking that this tab already reloaded for a stale build.
- * Prevents a refresh loop when a chunk is genuinely missing rather than
- * merely outdated.
- */
-const STALE_REFRESH_KEY = "meridian.staleRefresh";
-
-const RUN_KEY = "meridian.run";
-
-/**
- * Saved mc2 challenge runs live under their OWN key (manifest C8): a
- * build from before mc2 existed never reads this key, so an mc2 save
- * can never be reinterpreted as a globe run by an old build — it is
- * simply invisible to it, and the old build boots whatever normal run
- * it finds under RUN_KEY. mc1 challenge saves keep using RUN_KEY,
- * exactly as the shipped build wrote them.
- */
-const RUN_MC2_KEY = "meridian.run.mc2";
-
-/**
- * Saved mc3 challenge runs live under their OWN key again (governing
- * manifest §Q1-A4): a build from before mc3 existed never reads this
- * key, so an mc3 save — winner block included — can never be picked
- * up by an mc2-era build and silently re-shared with the winner
- * block dropped. mc3 builds read mc3 → mc2 → mc1 slots, in order.
- */
-const RUN_MC3_KEY = "meridian.run.mc3";
-
-/**
- * Persisted pin-drop for the in-progress place. `drop`/`revealDone` are
- * React state only, so a page reload during the result card used to strand
- * the run (phase "done"/"story" restored, but no card and no Next place).
- * The drop is written on pin commit and cleared on continue/replay/end/leave;
- * on reload the mount restore rehydrates it when it matches the dealt
- * place, else fails safe by advancing (the result is already scored).
- */
-const RUN_DROP_KEY = "meridian.drop";
-
-/**
  * The satellite map (maplibre-gl + the atlas payloads) is the heaviest
  * module in the app and is only needed once a run starts. Loading it lazily
  * keeps it out of the boot bundle, so the menu paints on a fraction of the
@@ -614,7 +592,7 @@ const RUN_DROP_KEY = "meridian.drop";
  * rethrows its cached rejection, and even a fresh import() of the same
  * failed URL is negatively cached by the browser for the life of the
  * document — only a reload genuinely re-fetches the chunk. The run is
- * restored from sessionStorage on boot, so the game survives the reload.
+ * restored from session storage on boot, so the game survives the reload.
  */
 const SatelliteMap = lazy(() =>
   withChunkTimeout(import("@/map/satellite-map"), "Satellite map"),
@@ -684,37 +662,30 @@ type LanguageModelGlobal = {
   create: () => Promise<NanoSession>;
 };
 
-const DIFFICULTY_KEY = "meridian.difficulty";
-
 /**
  * The picker's difficulty choice, persisted across page loads. Invalid or
  * missing values fall back to "medium" — the choice applies across
  * Globe → Country → State and survives edition switches.
+ *
+ * The port's difficulty def returns the stored string as-is (or the
+ * "medium" fallback when the value is missing, unreadable or blocked),
+ * so the isPickerDifficulty check below is the one validation, exactly
+ * where it ran before the port.
  */
 function readDifficultyChoice(): PickerDifficulty {
-  try {
-    if (typeof localStorage === "undefined") return "medium";
-    const raw = localStorage.getItem(DIFFICULTY_KEY);
-    return isPickerDifficulty(raw) ? raw : "medium";
-  } catch {
-    return "medium";
-  }
+  const raw = getStorageItem(STORAGE_KEYS.difficulty);
+  return isPickerDifficulty(raw) ? raw : "medium";
 }
 
 function writeDifficultyChoice(choice: PickerDifficulty) {
-  try {
-    localStorage.setItem(DIFFICULTY_KEY, choice);
-  } catch {
-    // Storage blocked: the in-memory choice still applies this session.
-  }
+  // The port swallows a blocked write: the in-memory choice still
+  // applies this session.
+  setStorageItem(STORAGE_KEYS.difficulty, choice);
 }
 
-function readRunFrom(key: string): Run | null {
+function readRunFrom(def: StorageKeyDef<unknown>): Run | null {
   try {
-    if (typeof sessionStorage === "undefined") return null;
-    const raw = sessionStorage.getItem(key);
-    if (!raw) return null;
-    const parsed: unknown = JSON.parse(raw);
+    const parsed: unknown = getSessionStorageItem(def);
     if (!parsed || typeof parsed !== "object") return null;
     const record = parsed as Record<string, unknown>;
     if (
@@ -728,7 +699,7 @@ function readRunFrom(key: string): Run | null {
     ) {
       return null;
     }
-    // Range-check the restored numbers: a tampered sessionStorage index
+    // Range-check the restored numbers: a tampered saved index
     // (e.g. 1e15) would otherwise send the dealer spinning through billions
     // of cycles; a non-finite seed is meaningless. The cap is 20k (not 1M):
     // the dealer's resume re-derive is O(N^2/pool), measured ~52ms at 20k
@@ -829,47 +800,53 @@ function readRunFrom(key: string): Run | null {
 }
 
 function readRun(): Run | null {
-  return readRunFrom(RUN_KEY);
+  return readRunFrom(STORAGE_KEYS.pausedRun);
 }
 
-/** The saved mc2 challenge run, if one is in progress (see RUN_MC2_KEY). */
+/** The saved mc2 challenge run, if one is in progress. Saved mc2 runs
+ * live under their OWN key (manifest C8): a build from before mc2
+ * existed never reads this key, so an mc2 save can never be
+ * reinterpreted as a globe run by an old build — it is simply
+ * invisible to it. mc1 challenge saves keep using the shipped slot,
+ * exactly as the shipped build wrote them. */
 function readMc2Run(): Run | null {
-  return readRunFrom(RUN_MC2_KEY);
+  return readRunFrom(STORAGE_KEYS.pausedRunMc2);
 }
 
 function clearMc2Run() {
   try {
-    sessionStorage.removeItem(RUN_MC2_KEY);
+    removeSessionStorageItem(STORAGE_KEYS.pausedRunMc2);
   } catch {
     // Storage blocked; the in-memory state is dropped regardless.
   }
 }
 
-/** The saved mc3 challenge run, if one is in progress (see RUN_MC3_KEY).
+/** The saved mc3 challenge run, if one is in progress. Saved mc3 runs
+ * live under their OWN key again (governing manifest §Q1-A4): a build
+ * from before mc3 existed never reads this key, so an mc3 save —
+ * winner block included — can never be picked up by an mc2-era build
+ * and silently re-shared with the winner block dropped. mc3 builds
+ * read mc3 → mc2 → mc1 slots, in order.
  * A save whose winner block read as partial or implausible was already
  * discarded by readRunFrom (§Q1-A4); the slot itself is removed here
- * when its raw contents name an mc3 save that no longer validates, so
+ * when its contents name an mc3 save that no longer validates, so
  * the discarded save is never re-read on the next boot. */
 function readMc3Run(): Run | null {
-  const run = readRunFrom(RUN_MC3_KEY);
+  const run = readRunFrom(STORAGE_KEYS.pausedRunMc3);
   if (run) return run;
   try {
-    const raw = sessionStorage.getItem(RUN_MC3_KEY);
-    if (raw) {
-      const parsed: unknown = JSON.parse(raw);
+    const parsed: unknown = getSessionStorageItem(STORAGE_KEYS.pausedRunMc3);
+    if (parsed && typeof parsed === "object") {
+      const record = parsed as Record<string, unknown>;
       if (
-        parsed &&
-        typeof parsed === "object" &&
-        (parsed as Record<string, unknown>).challengeOrigin === "mc3" &&
-        (parsed as Record<string, unknown>).challengeWinner !== undefined &&
+        record.challengeOrigin === "mc3" &&
+        record.challengeWinner !== undefined &&
         !isLegalWinnerBlock(
-          (parsed as Record<string, unknown>).challengeWinner,
-          Array.isArray((parsed as Record<string, unknown>).poolIds)
-            ? ((parsed as Record<string, unknown>).poolIds as unknown[]).length
-            : 0,
+          record.challengeWinner,
+          Array.isArray(record.poolIds) ? record.poolIds.length : 0,
         )
       ) {
-        sessionStorage.removeItem(RUN_MC3_KEY);
+        removeSessionStorageItem(STORAGE_KEYS.pausedRunMc3);
       }
     }
   } catch {
@@ -880,7 +857,7 @@ function readMc3Run(): Run | null {
 
 function clearMc3Run() {
   try {
-    sessionStorage.removeItem(RUN_MC3_KEY);
+    removeSessionStorageItem(STORAGE_KEYS.pausedRunMc3);
   } catch {
     // Storage blocked; the in-memory state is dropped regardless.
   }
@@ -889,7 +866,7 @@ function clearMc3Run() {
 /**
  * Package B (§Q2-B3): record a challenge completion exactly once per
  * run, however often the completion screen remounts or the tab
- * reloads at it. The marker lives in sessionStorage — the same
+ * reloads at it. The marker lives in session storage — the same
  * lifetime as the run slots themselves — keyed by the run's seed, so
  * one play-through can never count twice and a retried route (a new
  * run, a new seed) always counts again. Returns the player's
@@ -909,17 +886,17 @@ function recordChallengeCompletion(run: Run): {
     regionId: run.challengeRegionId ?? "globe",
     ids: run.poolIds,
   });
-  const markerKey = `meridian.challenge.recorded.${run.seed}`;
+  const marker = challengeRecordedKeyDef(run.seed);
   let attempts: number;
-  try {
-    if (sessionStorage.getItem(markerKey)) {
-      attempts = readRouteAttempts(tuple);
-    } else {
-      attempts = recordRouteCompletion(tuple);
-      sessionStorage.setItem(markerKey, tuple);
-    }
-  } catch {
-    attempts = readRouteAttempts(tuple) + 1;
+  // The port reads a blocked or missing marker as absent and never
+  // throws, so the old catch's outcome (the stored count + 1, which
+  // is exactly what recordRouteCompletion returns when its own
+  // store is unreadable) is the else branch's outcome too.
+  if (getSessionStorageItem(marker)) {
+    attempts = readRouteAttempts(tuple);
+  } else {
+    attempts = recordRouteCompletion(tuple);
+    setSessionStorageItem(marker, tuple);
   }
   const minted = mintWinnerBlock({
     myScore: run.results.reduce((s, r) => s + r.score, 0),
@@ -932,16 +909,16 @@ function recordChallengeCompletion(run: Run): {
 
 function writeRun(run: Run) {
   try {
-    // Each challenge format persists to its OWN key (RUN_MC2_KEY,
-    // RUN_MC3_KEY) so a build from before that format existed never
-    // sees its saves (§Q1-A4); everything else keeps the shipped key.
-    const key =
+    // Each challenge format persists to its OWN slot (pausedRunMc3,
+    // pausedRunMc2) so a build from before that format existed never
+    // sees its saves (§Q1-A4); everything else keeps the shipped slot.
+    const def =
       run.challengeOrigin === "mc3"
-        ? RUN_MC3_KEY
+        ? STORAGE_KEYS.pausedRunMc3
         : run.challengeOrigin === "mc2"
-          ? RUN_MC2_KEY
-          : RUN_KEY;
-    sessionStorage.setItem(key, JSON.stringify(run));
+          ? STORAGE_KEYS.pausedRunMc2
+          : STORAGE_KEYS.pausedRun;
+    setSessionStorageItem(def, run);
     // Crash-loop breaker: this page now holds unsaved-crash state. If the
     // process is killed without unloading, the next boot must not
     // auto-resume; `pagehide` clears this flag on every clean unload.
@@ -951,13 +928,19 @@ function writeRun(run: Run) {
   }
 }
 
-/** Fail closed to null on anything malformed or tampered. */
+/**
+ * The persisted pin-drop for the in-progress place. `drop`/`revealDone`
+ * are React state only, so a page reload during the result card used to
+ * strand the run (phase "done"/"story" restored, but no card and no
+ * Next place). The drop is written on pin commit and cleared on
+ * continue/replay/end/leave; on reload the mount restore rehydrates it
+ * when it matches the dealt place, else fails safe by advancing (the
+ * result is already scored).
+ * Fail closed to null on anything malformed or tampered.
+ */
 function readDrop(): Drop | null {
   try {
-    if (typeof sessionStorage === "undefined") return null;
-    const raw = sessionStorage.getItem(RUN_DROP_KEY);
-    if (!raw) return null;
-    const parsed: unknown = JSON.parse(raw);
+    const parsed: unknown = getSessionStorageItem(STORAGE_KEYS.pausedDrop);
     return isDrop(parsed) ? parsed : null;
   } catch {
     return null;
@@ -966,7 +949,7 @@ function readDrop(): Drop | null {
 
 function writeDrop(drop: Drop) {
   try {
-    sessionStorage.setItem(RUN_DROP_KEY, JSON.stringify(drop));
+    setSessionStorageItem(STORAGE_KEYS.pausedDrop, drop);
   } catch {
     // The drop still lives in memory when storage is blocked.
   }
@@ -974,7 +957,7 @@ function writeDrop(drop: Drop) {
 
 function clearDrop() {
   try {
-    sessionStorage.removeItem(RUN_DROP_KEY);
+    removeSessionStorageItem(STORAGE_KEYS.pausedDrop);
   } catch {
     // Absent or blocked storage: nothing to clear.
   }
@@ -1042,27 +1025,18 @@ async function modelAvailability(): Promise<ModelAvailability> {
   }
 }
 
-function storyKey(placeId: string): string {
-  return `meridian.story.${placeId}`;
-}
-
 function readCachedStory(placeId: string): string | null {
-  try {
-    if (typeof localStorage === "undefined") return null;
-    const cached = localStorage.getItem(storyKey(placeId));
-    if (cached === null || cached.trim() === "") return null;
-    return cached;
-  } catch {
-    return null;
-  }
+  // The port's story def reads missing, unreadable or blocked as
+  // null — a miss, so the story is built, as before.
+  const cached = getStorageItem(storyKeyDef(placeId));
+  if (cached === null || cached.trim() === "") return null;
+  return cached;
 }
 
 function writeCachedStory(placeId: string, text: string) {
-  try {
-    localStorage.setItem(storyKey(placeId), text);
-  } catch {
-    // A private window can refuse the cache. The story still shows once.
-  }
+  // A private window can refuse the cache; the port swallows that.
+  // The story still shows once.
+  setStorageItem(storyKeyDef(placeId), text);
 }
 
 async function askRewrite(authored: string): Promise<string> {
@@ -1110,7 +1084,7 @@ type Menu =
 /**
  * Session state: the score accumulator that survives edition switches.
  * All mutations go through `update`/`replace`, which persist to
- * sessionStorage and keep `ref` (the read-current-value handle for event
+ * session storage and keep `ref` (the read-current-value handle for event
  * handlers and the idle timer) in sync with the rendered state.
  */
 function useSessionState() {
@@ -1840,7 +1814,7 @@ export function GameApp() {
   // share one source of truth; Play/PlayLoaded only render from it.
   const [tutorial, setTutorial] = useState<TutorialBeat | null>(null);
   // The menu invitation is shown at most once per page load; the
-  // localStorage seen-flag persists the decision across visits.
+  // local-storage seen-flag persists the decision across visits.
   const [inviteDismissed, setInviteDismissed] = useState(false);
   // Item 9: bumped when the queued read-aloud sheet is answered, so the
   // first-visit queue recomputes which prompt wants to show next.
@@ -1870,7 +1844,7 @@ export function GameApp() {
    * The welcome card's Start tap — the moment a received mc2 challenge
    * commits (manifest C6). The run is built from the validated route
    * and persisted through commit/writeRun, which routes it to the mc2
-   * key; the player's saved normal run under RUN_KEY is never touched,
+   * key; the player's saved normal run (STORAGE_KEYS.pausedRun) is never touched,
    * so it survives underneath and is offered back when the challenge
    * ends. The challenge never banks into the session (ensureSession is
    * deliberately not called — the same isolation as mc1).
@@ -1930,7 +1904,7 @@ export function GameApp() {
     // underneath and is offered back on Done.
     const savedNormal = readRun();
     if (savedNormal && savedNormal.regionId === CHALLENGE_REGION_ID) {
-      sessionStorage.removeItem(RUN_KEY);
+      removeSessionStorageItem(STORAGE_KEYS.pausedRun);
     }
     const run: Run = {
       ...startRun(
@@ -2080,7 +2054,7 @@ export function GameApp() {
       (killedRun.regionId === CHALLENGE_REGION_ID || killedRun.challengeOrigin === "mc2");
     // Boot fallback: at boot the session ref is still null (useSessionState
     // starts null with no hydration) while the persisted session survives
-    // in sessionStorage, so a reload-after-expiry kill must total the whole
+    // in session storage, so a reload-after-expiry kill must total the whole
     // persisted session, not just the killed run. Challenge kills stay
     // run-only (challenges never bank). Live play is unchanged: the ref
     // is non-null during play, so the fallback never runs there.
@@ -2096,7 +2070,7 @@ export function GameApp() {
     // later boot (at most one notice per discarded game).
     clearDiscardedShadow();
     try {
-      sessionStorage.removeItem(RUN_KEY);
+      removeSessionStorageItem(STORAGE_KEYS.pausedRun);
       clearMc2Run();
       clearMc3Run();
     } catch {
@@ -2260,7 +2234,7 @@ export function GameApp() {
   const handleManualMapMode = useCallback((mode: MapMode) => {
     // A challenge run is NEVER ended by the map switch (owner ruling,
     // 2026-10-29): the force-home below would kill the challenge AND
-    // delete the player's preserved normal run under RUN_KEY — the run
+    // delete the player's preserved normal run (STORAGE_KEYS.pausedRun) — the run
     // the challenge promised to keep safe underneath. A challenge's
     // map is picked at challenge open (the welcome card), and the
     // in-challenge toggle renders its challenge context with no switch
@@ -2283,7 +2257,7 @@ export function GameApp() {
     setStartError(null);
     clearDrop();
     try {
-      sessionStorage.removeItem(RUN_KEY);
+      removeSessionStorageItem(STORAGE_KEYS.pausedRun);
     } catch {
       // Storage blocked; the in-memory run is dropped below regardless.
     }
@@ -2404,9 +2378,9 @@ export function GameApp() {
     // flag (runs saved before this fix) counts as clean and resumes as
     // before.
     if (isUncleanShutdown()) {
-      clearRunAfterUncleanShutdown(RUN_KEY);
-      clearRunAfterUncleanShutdown(RUN_MC2_KEY);
-      clearRunAfterUncleanShutdown(RUN_MC3_KEY);
+      clearRunAfterUncleanShutdown(STORAGE_KEYS.pausedRun.key);
+      clearRunAfterUncleanShutdown(STORAGE_KEYS.pausedRunMc2.key);
+      clearRunAfterUncleanShutdown(STORAGE_KEYS.pausedRunMc3.key);
       setReady(true);
       return;
     }
@@ -2711,7 +2685,7 @@ export function GameApp() {
             setDiscardedNotice({ reason: "challenges", ...challengeTotals });
           }
           try {
-            sessionStorage.removeItem(RUN_KEY);
+            removeSessionStorageItem(STORAGE_KEYS.pausedRun);
           } catch {
             // Storage blocked.
           }
@@ -2734,13 +2708,13 @@ export function GameApp() {
       });
       return;
     }
-    // Review sessions never resume across reloads: the deck (localStorage)
+    // Review sessions never resume across reloads: the deck (local storage)
     // is the durable state; the session queue is rebuilt fresh on every
     // start. Fail closed to the edition picker.
     if (saved && saved.regionId === REVIEW_DECK_REGION_ID) {
       clearDrop();
       try {
-        sessionStorage.removeItem(RUN_KEY);
+        removeSessionStorageItem(STORAGE_KEYS.pausedRun);
       } catch {
         // Storage blocked; the in-memory run is dropped regardless.
       }
@@ -2755,7 +2729,7 @@ export function GameApp() {
     let resumable = saved;
     if (resumable && isTutorialRunPool(resumable.poolIds)) {
       try {
-        sessionStorage.removeItem(RUN_KEY);
+        removeSessionStorageItem(STORAGE_KEYS.pausedRun);
       } catch {
         // Storage blocked; treating it as absent is enough.
       }
@@ -2856,7 +2830,7 @@ export function GameApp() {
           }
           clearDrop();
           try {
-            sessionStorage.removeItem(RUN_KEY);
+            removeSessionStorageItem(STORAGE_KEYS.pausedRun);
           } catch {
             // Storage blocked; the in-memory run is dropped regardless.
           }
@@ -2868,8 +2842,8 @@ export function GameApp() {
       }
     }
     if (!saved) {
-      // Wave 1 P0 Item 1B: no sessionStorage run survived (a closed tab
-      // kills sessionStorage), but the localStorage shadow may have.
+      // Wave 1 P0 Item 1B: no session storage run survived (a closed tab
+      // kills session storage), but the local-storage shadow may have.
       // A shadow from a previous UTC day is a new-day discard; an
       // expired shadow is an inactivity discard. A fresh shadow is
       // left alone — the game may still be open in another tab, and
@@ -2906,7 +2880,11 @@ export function GameApp() {
     try {
       // F6: a timestamp, not "1" — readers honour the mark only
       // inside the freshness window (staleRefreshRecentlyUsed).
-      sessionStorage.setItem(STALE_REFRESH_KEY, String(Date.now()));
+      // The stamp also prevents a refresh loop when a chunk is
+      // genuinely missing rather than merely outdated. The port
+      // stores the number as JSON text — the same digit bytes
+      // String(Date.now()) wrote here before the port.
+      setSessionStorageItem(STORAGE_KEYS.staleRefresh, Date.now());
     } catch {
       // Storage unavailable — reload anyway; the prompt simply reappears.
     }
@@ -3100,7 +3078,7 @@ export function GameApp() {
         let reportStartError = true;
         if (isChunkLoadError(err) || isChunkLoadError(message)) {
           try {
-            reportStartError = shouldReportChunkFailure(window.sessionStorage, Date.now());
+            reportStartError = shouldReportChunkFailure(resolveSession() ?? null, Date.now());
           } catch {
             reportStartError = true;
           }
@@ -3127,7 +3105,7 @@ export function GameApp() {
   // not even request the URL again), so calling openRun again in THIS document
   // cannot recover once a tier file failed to load: reload instead. The picker
   // opens with the chosen band still selected (onPlayBand persisted it). Do NOT
-  // reuse refreshForNewBuild: it sets STALE_REFRESH_KEY, which would disable
+  // reuse refreshForNewBuild: it arms the stale-refresh stamp, which would disable
   // later stale-build detection.
   const retryLastOpen = useCallback(() => window.location.reload(), []);
   // "Keep playing": close the box and hand focus back to the game (the box had
@@ -3161,7 +3139,7 @@ export function GameApp() {
    * result (failed empty) drop the in-memory session, notify listeners,
    * bump the epoch that remounts the home surfaces, and show the
    * success toast. The run/drop pair is already gone at that point —
-   * resetHistory clears it from sessionStorage (D13), so a paused run
+   * resetHistory clears it from session storage (D13), so a paused run
    * can never re-seed a session after the wipe. A partial failure
    * changes nothing on screen: the dialog stays open with its retry.
    */
@@ -3275,7 +3253,7 @@ export function GameApp() {
     setStartError(null);
     clearDrop();
     try {
-      sessionStorage.removeItem(RUN_KEY);
+      removeSessionStorageItem(STORAGE_KEYS.pausedRun);
     } catch {
       // Storage blocked; the in-memory run is dropped below regardless.
     }
@@ -4261,7 +4239,7 @@ export function GameApp() {
           // header instead of rendering in-flow above it, where
           // they pushed the header down the page. placement="flow"
           // restores the old in-flow render in one line.
-          <FirstVisitQueue prompts={firstVisitPrompts} seenKey="meridian.firstVisitQueue.v1" placement="overlay" onModalChange={setFirstVisitModalOpen} />
+          <FirstVisitQueue prompts={firstVisitPrompts} seenKey={FIRST_VISIT_QUEUE_KEY} placement="overlay" onModalChange={setFirstVisitModalOpen} />
         ) : null
       }
       tutorialInviteVisible={firstVisitPrompts.length > 0}
@@ -7105,7 +7083,7 @@ function PlayLoaded({
   );
   // Endless dealer: per-session shuffle (fresh seed per run, so restarts no
   // longer deterministically repeat the same first question), per-cycle
-  // reseed, and a persistent no-repeat history in localStorage. The dealer
+  // reseed, and a persistent no-repeat history in local storage. The dealer
   // is created once per run
   // identity (seed); run.index advances within it. A reload restores the same
   // seed and pool, so the resumed run keeps dealing the same session's order.
@@ -7117,7 +7095,7 @@ function PlayLoaded({
         // Review and challenge runs get a throwaway in-memory seen
         // store: their places must never enter the player's persistent
         // no-repeat history (a friend's picks are not places this
-        // player was dealt). Normal runs use the real localStorage
+        // player was dealt). Normal runs use the real local-storage
         // store, scoped to edition/region/band.
         review || challenge
           ? memorySeenStore()
@@ -7187,7 +7165,7 @@ function PlayLoaded({
   // screen-reader users get feedback for place/move/clear. Cleared whenever
   // the phase changes, at which point phase messaging takes over.
   const [aimAnnouncement, setAimAnnouncement] = useState<string | null>(null);
-  // Pairing rule: every writeDrop/setDrop site must pair with clearDrop — see RUN_DROP_KEY.
+  // Pairing rule: every writeDrop/setDrop site must pair with clearDrop — see STORAGE_KEYS.pausedDrop.
   const [drop, setDrop] = useState<Drop | null>(null);
   // Ref mirror of the drop's hit outcome for the reveal-complete sound.
   // (Avoids stale closure: onRevealComplete fires from the map's animation
@@ -7365,7 +7343,7 @@ function PlayLoaded({
 
   // Reload-mid-reveal restore: `drop`/`revealDone` are in-memory only, so a
   // page reload during the result card used to strand the run — phase
-  // "done"/"story" restored from sessionStorage, but no card and no Next
+  // "done"/"story" restored from session storage, but no card and no Next
   // place button. Rehydrate the persisted drop when it matches the dealt
   // place (the reveal animation already played pre-reload, so the card
   // shows immediately); otherwise fail safe by advancing to the next
@@ -8015,13 +7993,11 @@ function PlayLoaded({
       ids: exactIds,
     });
     let summaryAttempts = readRouteAttempts(summaryTuple) + 1;
-    try {
-      if (sessionStorage.getItem(`meridian.challenge.recorded.summary.${run.seed}`)) {
-        summaryAttempts = readRouteAttempts(summaryTuple);
-      }
-    } catch {
-      // Storage blocked: report stored+1 unstored (the effect's
-      // recording will have failed the same way).
+    // Split-failure edge: with session storage blocked and local
+    // storage working, the recording effect can record a completion
+    // this read saw as absent, so this count can over-report by one.
+    if (getSessionStorageItem(challengeRecordedSummaryKeyDef(run.seed))) {
+      summaryAttempts = readRouteAttempts(summaryTuple);
     }
     const summaryWinner =
       run.edition === "globe"
@@ -8138,7 +8114,7 @@ function PlayLoaded({
 
   // Package B (§Q2-B3): arriving at a normal run's summary records
   // the completion that stands behind the exact-route mint — once
-  // per run, guarded by a sessionStorage marker with the run slots'
+  // per run, guarded by a session storage marker with the run slots'
   // own lifetime (a reload at the summary cannot count the same play
   // twice; a genuinely replayed route is a new run and counts). Only
   // where a mint can exist: non-Globe (Globe exact is the frozen mc1
@@ -8153,21 +8129,20 @@ function PlayLoaded({
       if (dealt) ids.push(dealt.id);
     }
     if (ids.length < CHALLENGE_MIN_PLACES) return;
-    const markerKey = `meridian.challenge.recorded.summary.${run.seed}`;
-    try {
-      if (sessionStorage.getItem(markerKey)) return;
-      recordRouteCompletion(
-        challengeRouteTuple({
-          scoringVersion: SCORING_VERSION,
-          edition: run.edition,
-          regionId: run.regionId,
-          ids,
-        }),
-      );
-      sessionStorage.setItem(markerKey, "1");
-    } catch {
-      // Storage blocked: the mint simply reports stored+1 unstored.
-    }
+    const marker = challengeRecordedSummaryKeyDef(run.seed);
+    // The port never throws and reads a blocked marker as absent;
+    // recordRouteCompletion's own store fails just as softly, so a
+    // blocked tab still ends at the mint reporting stored+1 unstored.
+    if (getSessionStorageItem(marker)) return;
+    recordRouteCompletion(
+      challengeRouteTuple({
+        scoringVersion: SCORING_VERSION,
+        edition: run.edition,
+        regionId: run.regionId,
+        ids,
+      }),
+    );
+    setSessionStorageItem(marker, "1");
   }, [
     challenge,
     review,

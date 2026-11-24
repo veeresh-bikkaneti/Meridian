@@ -19,6 +19,8 @@ import { dirname, join } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { createRequire } from "node:module";
 
+import { FIRST_VISIT_QUEUE_KEY } from "../platform/storage/keys.ts";
+
 const req = createRequire(import.meta.url);
 import type { createElement, ReactNode } from "react";
 import type { renderToStaticMarkup } from "react-dom/server";
@@ -106,7 +108,7 @@ describe("FirstVisitQueue wiring (item 9)", () => {
     const tour = app.indexOf('id: "tour-invite"');
     const sheet = app.indexOf('id: "read-aloud-sheet"');
     assert.ok(scout >= 0 && tour > scout && sheet > tour, "queue order: scout → tour → read-aloud");
-    assert.match(app, /<FirstVisitQueue prompts=\{firstVisitPrompts\} seenKey="meridian\.firstVisitQueue\.v1" placement="overlay" onModalChange=\{setFirstVisitModalOpen\} \/>/);
+    assert.match(app, /<FirstVisitQueue prompts=\{firstVisitPrompts\} seenKey=\{FIRST_VISIT_QUEUE_KEY\} placement="overlay" onModalChange=\{setFirstVisitModalOpen\} \/>/);
     // Arrival modal (2026-11-20): the read-aloud sheet — and only the
     // sheet — is flagged modal, and the Home page goes inert while
     // the queue reports a modal prompt up.
