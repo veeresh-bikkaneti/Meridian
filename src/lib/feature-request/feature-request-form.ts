@@ -71,26 +71,39 @@ export type FeatureSendResult =
   | { status: "rate-limited" }
   | { status: "error" };
 
-/** POST the payload. Never throws. 503 maps to the honest "not open yet".
- *  The fetch seam defaults to the runtime fetch, supplied as a bare
- *  value reference (never a fetch() call in this file); the seam stays
- *  fetch-shaped so the credentials:"omit" / referrerPolicy:"no-referrer"
- *  init rides along exactly — the transport port cannot express those. */
+/** The slice of the shared transport port this form posts through.
+ * Structural on purpose: this module is domain code and must not
+ * import the platform layer. The board page passes postText from the
+ * browser transport; tests pass a fake transport's postText. */
+export type FeaturePost = (
+  url: string,
+  body: string,
+  opts?: {
+    headers?: Record<string, string>;
+    credentials?: RequestCredentials;
+    referrerPolicy?: ReferrerPolicy;
+    retries?: number;
+  },
+) => Promise<{ status: number; text: string }>;
+
+/** POST the payload through `post`. Never throws. 503 maps to the
+ * honest "not open yet". No cookies and no referrer leave with the
+ * request. A null endpoint fails closed (not-open) and does not call
+ * the transport. */
 export async function sendFeatureRequest(
   endpoint: string | null,
   payload: FeatureRequestPayload,
-  fetchFn: (url: string, init: RequestInit) => Promise<Response> = fetch,
+  post: FeaturePost,
 ): Promise<FeatureSendResult> {
   if (!endpoint) return { status: "not-open" };
   try {
-    const res = await fetchFn(endpoint, {
-      method: "POST",
+    const res = await post(endpoint, JSON.stringify(payload), {
       headers: { "content-type": "application/json" },
-      body: JSON.stringify(payload),
       credentials: "omit",
       referrerPolicy: "no-referrer",
+      retries: 0,
     });
-    if (res.ok) return { status: "sent" };
+    if (res.status >= 200 && res.status < 300) return { status: "sent" };
     if (res.status === 503) return { status: "not-open" };
     if (res.status === 429) return { status: "rate-limited" };
     return { status: "error" };

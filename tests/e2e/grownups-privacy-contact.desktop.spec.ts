@@ -155,6 +155,13 @@ test("full-stack E2E: contact form exercises all moving parts (flags, gate, real
   let simulatedClientIp = "198.51.100.10";
   const serverResponses: Array<{ status: number; body: unknown; headers: Record<string, string> }> =
     [];
+  const browserPosts: Array<{
+    method: string;
+    contentType: string | null;
+    cookie: string | null;
+    referer: string | null;
+    origin: string | null;
+  }> = [];
 
   try {
     // Wire the browser's requests to https://meridian.knowledgetest.workers.dev/api/contact
@@ -168,6 +175,13 @@ test("full-stack E2E: contact form exercises all moving parts (flags, gate, real
       }
       const method = pwReq.method();
       const rawBody = pwReq.postDataBuffer();
+      browserPosts.push({
+        method,
+        contentType: headers.get("content-type"),
+        cookie: headers.get("cookie"),
+        referer: headers.get("referer"),
+        origin: headers.get("origin"),
+      });
       const webReq = new Request(pwReq.url(), {
         method,
         headers,
@@ -251,6 +265,13 @@ test("full-stack E2E: contact form exercises all moving parts (flags, gate, real
     expect(serverResponses[0].status).toBe(200);
     expect(serverResponses[0].body).toEqual({ ok: true, stored: true });
     expect(serverResponses[0].headers["access-control-allow-origin"]).toBe("http://127.0.0.1:4123");
+    // The post rides the shared transport with no cookies and no referrer.
+    // Origin stays: the server's CORS and Origin guard still sees the page.
+    expect(browserPosts[0]?.method).toBe("POST");
+    expect(browserPosts[0]?.contentType).toContain("application/json");
+    expect(browserPosts[0]?.cookie).toBeNull();
+    expect(browserPosts[0]?.referer).toBeNull();
+    expect(browserPosts[0]?.origin).toBe("http://127.0.0.1:4123");
 
     expect(webhookReceiver.calls).toHaveLength(1);
     expect(webhookReceiver.calls[0].method).toBe("POST");

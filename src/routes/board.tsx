@@ -27,6 +27,7 @@ import { computeLayout } from "@/board/status-core";
 import { TrailView, lowerFirst } from "@/board/trail-view";
 import { FeatureRequestForm } from "@/board/feature-request-form";
 import { flagsRemoteApplied, isEnabled, loadFlags } from "@/lib/flags";
+import { postText } from "../platform/transport/browser-transport.ts";
 import { SiteHeader } from "@/components/ui/site-header";
 import { SiteFooter } from "@/components/ui/site-footer";
 import "@/board/board.css";
@@ -547,7 +548,7 @@ function BoardPage() {
           )
         ) : (
           <section className="v3-tip" aria-label="Ask for something new">
-            <FeatureRequestForm />
+            <FeatureRequestForm post={postText} />
           </section>
         )}
 
