@@ -336,3 +336,52 @@ code the error names; never weaken the check.
 | Never store the current year in child-read text: subjects read it at play time (`currentYear()` / `yearsSince()` in `src/subjects/shared/years.ts`); clip rows write `currentYear - <year>` | `npm run lint:subjects` (YEAR rule; subjects evaluated with the clock pinned to 2091) | `YEAR <where>: "<year>" -> never store the current year …` |
 | A lead shown before the question (a subject's `why`, or a caption used as the lead) never contains the answer | `npm run lint:subjects` (GIVEAWAY rule) | `GIVEAWAY <where>: "<token>" -> the lead is shown before the question …` |
 | One voice at a time: a file that creates an audio element imports `claimVoice()` (`src/game/audio/voice-channel.ts`); a tapped line calls `play()` before any `await` in its function (iOS gesture) | `npm run lint:nav` (`eslint/voice-channel-rule.mjs`, CI `build`) | `… never imports the voice channel …` / `play() after an await in the same function …` |
+
+## 13. Local markdown knowledge base
+
+This repo keeps a local markdown knowledge base in `raw/` and `wiki/`,
+following the [LLM Wiki pattern](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f).
+
+`raw/` is the source of truth. Never modify files inside `raw/`.
+
+`wiki/` is the maintained, interlinked markdown layer between readers
+and the raw sources. It holds `index.md`, `log.md`, `overview.md`, and
+the `sources/`, `entities/`, `concepts/`, and `analyses/` folders.
+
+### Strict Citation Rule (mandatory)
+
+Every factual claim, number, quote, or code reference written in
+`wiki/` MUST include an inline source pointer to the exact raw file
+and location, for example `(source: raw/filename.md#section-or-line)`
+or `(source: raw/doc.pdf, p. 4)`. Never summarize away exact figures
+without linking back to where they live.
+
+### Ingest
+
+When a new file is added to `raw/`:
+
+1. Read the new file in `raw/`.
+2. Write a summary in `wiki/sources/` with full inline citations.
+3. Create or update relevant pages in `wiki/entities/` and
+   `wiki/concepts/` using `[[wikilinks]]` and source citations.
+4. Update `wiki/index.md`.
+5. Append a timestamped entry `## [YYYY-MM-DD] ingest | Title` to
+   `wiki/log.md`.
+
+### Query
+
+1. Read `wiki/index.md` first.
+2. Read the relevant `wiki/` pages.
+3. Follow the `(source: raw/...)` citations back into `raw/` whenever
+   exact numbers, code, or fine-grained details are needed.
+4. Cite both the wiki page and the raw file in the answer.
+
+### Lint
+
+Periodically check the wiki for:
+
+- uncited claims
+- broken `(source: raw/...)` file paths
+- broken `[[wikilinks]]`
+- orphan pages
+- contradictions across pages
