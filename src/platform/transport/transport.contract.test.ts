@@ -12,7 +12,7 @@ import {
   type FakeFetchOutcome,
 } from "./fake-transport.ts";
 import { TransportError, type TransportPort } from "./transport.ts";
-import { createTransportRequest } from "./use-transport.ts";
+import { createTransportRequest } from "./transport-request.ts";
 
 /**
  * Contract tests for the Phase 1 transport port. One shared

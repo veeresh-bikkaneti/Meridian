@@ -1,20 +1,13 @@
 /**
  * One request's state, live, for one screen.
  *
- * The controller under the hook is plain TypeScript — no React —
- * so the state machine is testable on its own: idle → loading →
- * ready | error | aborted, and any settled state → loading again
- * on a new start. It owns one AbortController per start; abort()
- * cancels the in-flight call, and the port's AbortError lands
- * here as the aborted state, never as an error.
- *
- * The hook is thin over the controller: it starts a request when
- * the URL changes, aborts on unmount and on URL change, and
- * re-renders when the controller announces a new state. A null
- * URL means no request — the state stays idle.
+ * The controller is plain TypeScript — no React — so the state
+ * machine is testable on its own: idle → loading → ready | error
+ * | aborted, and any settled state → loading again on a new
+ * start. It owns one AbortController per start; abort() cancels
+ * the in-flight call, and the port's AbortError lands here as the
+ * aborted state, never as an error.
  */
-
-import { useCallback, useEffect, useRef, useState } from "react";
 
 import { createBrowserTransportPort } from "./browser-transport.ts";
 import {
@@ -142,55 +135,4 @@ export function createTransportRequest<T>(
       inFlight?.abort();
     },
   };
-}
-
-/** The state of one GET, plus a refetch, for one screen. */
-export interface UseGetJsonResult<T> extends TransportState<T> {
-  /** Run the request again with the same URL, schema and options. */
-  refetch(): void;
-}
-
-/**
- * GET JSON for a screen: starts when the URL is set, aborts on
- * unmount and whenever the URL changes, and stays idle while the
- * URL is null. Options are read at each start and are not an
- * effect dependency — pass a new URL (or call refetch) to run
- * again.
- */
-export function useGetJson<T>(
-  url: string | null,
-  schema: SchemaLike<T>,
-  opts?: TransportOptions,
-): UseGetJsonResult<T> {
-  const ref = useRef<TransportRequest<T> | null>(null);
-  if (ref.current === null) {
-    ref.current = createTransportRequest<T>();
-  }
-  const controller = ref.current;
-  const [state, setState] = useState<TransportState<T>>(() =>
-    controller.getState(),
-  );
-
-  useEffect(
-    () => controller.subscribe(() => setState(controller.getState())),
-    [controller],
-  );
-
-  useEffect(() => {
-    if (url === null) return;
-    void controller.start(url, schema, opts);
-    return () => {
-      controller.abort();
-    };
-    // Options are intentionally not a dependency (see above).
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [controller, url, schema]);
-
-  const refetch = useCallback((): void => {
-    if (url === null) return;
-    void controller.start(url, schema, opts);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [controller, url, schema]);
-
-  return { ...state, refetch };
 }
