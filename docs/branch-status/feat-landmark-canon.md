@@ -51,10 +51,14 @@ the PR is a draft and merge waits for the owner's word + freeze lift
       card over the canvas swallows the tap (no dive); globe view
       draws the skin tier only (no B/C crowd, frame budget holds);
       e2e readings fixed in `153804d2`.
-- [x] Captures committed (12 of 13 — see the Rushmore gap) + DRAFT
+- [x] Captures generated locally (12 of 13 — see the Rushmore gap) + DRAFT
       PR opened at close-out.
 
 ## Captures (docs/motion-verify/) — close-out verdicts, read first-hand
+
+Captures are generated locally and are not stored in git (TD-13.1);
+regenerate with `node scripts/record-motion-verify.mjs`. Filenames
+below are the historical capture names.
 
 - home-full-1280 / 768 / 390 / 320: PASS — page populated end to
   end at all four widths; Tier-A-only globe skin; footer complete.
