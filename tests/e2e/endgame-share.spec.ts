@@ -310,7 +310,13 @@ test("end-game share: mocked navigator.share is called once, clipboard untouched
       () => (window as unknown as { __shareCalls: unknown[] }).__shareCalls,
     );
     expect(calls).toHaveLength(1);
-    expect(calls[0]).toEqual({ title: "Meridian score", text: expected, url: SITE_URL });
+    // The native payload no longer carries `url`: the score text already
+    // ends with the link, and share sheets append `url` after `text`, which
+    // showed the friend the same URL twice (#590 AC1). toEqual is exact, so
+    // a payload that regains `url` fails here — no toMatchObject weasel.
+    expect(calls[0]).toEqual({ title: "Meridian score", text: expected });
+    // The link appears exactly once — a duplicate cannot come back unnoticed.
+    expect(expected.split(SITE_URL).length - 1).toBe(1);
 
     await expect(
       dialog.getByRole("button", { name: "Shared ✓", exact: true }),
