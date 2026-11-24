@@ -3,16 +3,16 @@ import { LocateFixed, Minus, Plus } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import type { LonLat, MapStyle, RingId } from "../game/types.ts";
-import { counties } from "../map/atlas-data.ts";
-import { readColors } from "../map/colors.ts";
-import { GestureController, nearPin, TOUCH_LIFT, type GestureEffect, type PointerKind } from "../map/gesture.ts";
-import { locateCounty, locateHighlight } from "../map/highlight.ts";
-import { smoothstep, spring01 } from "../map/motion.ts";
-import { paintBasemap, paintOverlay } from "../map/paint-scene.ts";
+import { counties } from "./atlas-data.ts";
+import { readColors } from "./colors.ts";
+import { GestureController, nearPin, TOUCH_LIFT, type GestureEffect, type PointerKind } from "./gesture.ts";
+import { locateCounty, locateHighlight } from "./highlight.ts";
+import { smoothstep, spring01 } from "./motion.ts";
+import { paintBasemap, paintOverlay } from "./paint-scene.ts";
 import { observeResize } from "../lib/observe-resize.ts";
-import { createPresenter } from "../map/present/create-presenter.ts";
-import type { MapPresenter } from "../map/present/types.ts";
-import { affineTransform, cloneView, fitView, invertView, panView, projectView, type View } from "../map/view.ts";
+import { createPresenter } from "./present/create-presenter.ts";
+import type { MapPresenter } from "./present/types.ts";
+import { affineTransform, cloneView, fitView, invertView, panView, projectView, type View } from "./view.ts";
 
 function buzz(ms: number) {
   try {

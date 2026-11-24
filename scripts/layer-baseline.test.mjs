@@ -80,8 +80,8 @@ describe("layer baseline (KNOWN/STALE)", () => {
   });
 
   it("a NEW upward import in an already-baselined file still fails the rule", () => {
-    // src/components/atlas-map.tsx is baselined for
-    // "../map/atlas-data.ts" (cross-area). The baselined
+    // src/components/home-globe.tsx is baselined for
+    // "@/assets/home-v5/globe-fallback.webp" (cross-area). The baselined
     // import is suppressed; a second, unlisted cross-area import
     // in the same file is not covered and must be reported.
     const linter = new Linter();
@@ -97,12 +97,23 @@ describe("layer baseline (KNOWN/STALE)", () => {
         ],
         { filename },
       );
-    const file = "src/components/atlas-map.tsx";
+    const file = "src/components/home-globe.tsx";
     const hits = (messages) => messages.filter((m) => m.ruleId === "layer/no-upward-import");
-    const baselinedOnly = lint('import "../map/atlas-data.ts";\n', file);
+    const baselinedOnly = lint('import "@/assets/home-v5/globe-fallback.webp";\n', file);
     assert.deepEqual(hits(baselinedOnly), [], JSON.stringify(baselinedOnly));
-    const withNew = lint('import "../map/atlas-data.ts";\nimport "@/components/age-profile/GrownUpGate.tsx";\n', file);
+    const withNew = lint(
+      'import "@/assets/home-v5/globe-fallback.webp";\nimport "@/components/age-profile/GrownUpGate.tsx";\n',
+      file,
+    );
     assert.equal(hits(withNew).length, 1, JSON.stringify(withNew));
+  });
+
+  it("the atlas-map module lives in src/map and imports no other feature area", () => {
+    // TD-06.3 cured the nine baselined cross-area rows by moving the
+    // component into src/map/. The detector must find nothing there.
+    const file = "src/map/atlas-map.tsx";
+    const source = readFileSync(new URL(`../${file}`, import.meta.url), "utf8");
+    assert.deepEqual(importViolationKeys(file, source), []);
   });
 
   it("detector keys equal rule firings on computed-access shapes", () => {
