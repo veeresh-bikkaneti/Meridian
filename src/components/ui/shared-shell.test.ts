@@ -375,6 +375,8 @@ describe("PageShell and PageIntro (PR 3 Step 2)", () => {
   it("the grown-ups pages sit on PageShell (PR 3 Step 3.1): header Home + footer, no hand-built frame", () => {
     const src = read("src/components/grownups/info-page.tsx");
     assert.match(src, /<PageShell header=\{\{ to: "\/", status: null, mute: null \}\} width="narrow">/);
+    assert.match(src, /<nav className="gp-doors"/);
+    assert.doesNotMatch(src, /<main[\s>]/);
     assert.doesNotMatch(src, /gp-wrap/);
   });
 
@@ -660,7 +662,6 @@ describe("shell-ban baseline (KNOWN/STALE)", () => {
     pageLocalNav: ["src/components/grownups/info-page.tsx", "src/routes/board.tsx"],
     pageLocalMain: [
       "src/components/game-app.tsx",
-      "src/components/grownups/info-page.tsx",
       "src/game/coldtrail/TrailScreen.tsx",
       "src/game/loop/LoopScreen.tsx",
       "src/lib/error-component.tsx",

@@ -16,9 +16,10 @@
  * (with the one "Home" control) on top and SiteFooter at the bottom,
  * as AGENTS.md requires on every screen. These pages carried no
  * header, footer or Home before. The parchment wrapper (.grown-page)
- * stays: it is the pages' theme surface, not a shell fork. The doors
- * nav stays as page content under the header — it is this family's
- * own cross-nav, and its entries come from the one shared link list.
+ * stays: it is the pages' theme surface, not a shell fork, and it is
+ * a plain wrapper rather than its own landmark. The doors nav stays as page content under
+ * the header — it is this family's own cross-nav, and its entries
+ * come from the one shared link list.
  */
 import type { ReactNode } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
@@ -86,7 +87,7 @@ export function InfoPage({
 }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   return (
-    <main className="grown-page">
+    <div className="grown-page">
       <div className="gp-shell-pad">
         <PageShell header={{ to: "/", status: null, mute: null }} width="narrow">
           <nav className="gp-doors" aria-label="Grown-ups pages">
@@ -111,6 +112,6 @@ export function InfoPage({
           </div>
         </PageShell>
       </div>
-    </main>
+    </div>
   );
 }
