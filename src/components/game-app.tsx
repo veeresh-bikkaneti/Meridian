@@ -408,6 +408,7 @@ import {
 } from "@/game/review-deck";
 import { resetHistory, type ResetHistoryResult } from "@/game/reset-history";
 import { ResetHistoryControl } from "./reset-history-control";
+import { useDifficultyChoice } from "./use-difficulty-choice";
 
 /**
  * Watched by the inline crash watchdog injected into _shell.html
@@ -661,27 +662,6 @@ type LanguageModelGlobal = {
   availability: () => Promise<string>;
   create: () => Promise<NanoSession>;
 };
-
-/**
- * The picker's difficulty choice, persisted across page loads. Invalid or
- * missing values fall back to "medium" — the choice applies across
- * Globe → Country → State and survives edition switches.
- *
- * The port's difficulty def returns the stored string as-is (or the
- * "medium" fallback when the value is missing, unreadable or blocked),
- * so the isPickerDifficulty check below is the one validation, exactly
- * where it ran before the port.
- */
-function readDifficultyChoice(): PickerDifficulty {
-  const raw = getStorageItem(STORAGE_KEYS.difficulty);
-  return isPickerDifficulty(raw) ? raw : "medium";
-}
-
-function writeDifficultyChoice(choice: PickerDifficulty) {
-  // The port swallows a blocked write: the in-memory choice still
-  // applies this session.
-  setStorageItem(STORAGE_KEYS.difficulty, choice);
-}
 
 function readRunFrom(def: StorageKeyDef<unknown>): Run | null {
   try {
@@ -1728,11 +1708,7 @@ export function GameApp() {
   }, [cleared]);
   // Difficulty picker: one choice applies across Globe → Country → State and
   // survives edition switches. Persisted so it survives reloads too.
-  const [difficultyChoice, setDifficultyChoiceState] = useState<PickerDifficulty>(readDifficultyChoice);
-  const setDifficultyChoice = useCallback((choice: PickerDifficulty) => {
-    setDifficultyChoiceState(choice);
-    writeDifficultyChoice(choice);
-  }, []);
+  const [difficultyChoice, setDifficultyChoice] = useDifficultyChoice();
   /** Edition card press: the cartographer's tap, then open (SFX audio spec §2.6). */
   const withCardTap = useCallback(
     (edition: string, open: () => void) => (e: ReactMouseEvent) => {
