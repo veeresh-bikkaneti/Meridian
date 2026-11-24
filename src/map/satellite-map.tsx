@@ -24,6 +24,7 @@ import { ScoutFallbackMap } from "./scout-fallback.tsx";
 import { isCoarsePointer, mapOptionsForDevice, revealZoomCap, settleZoomCap, SCOUT_MAX_ZOOM_FLAT, SCOUT_MAX_ZOOM_GLOBE } from "./map-options.ts";
 import { SCOUT_UPGRADE_SOAK_MS, type MapMode } from "./capability.ts";
 import { emitTileFailed, emitWebglContextLost, recordMilestone, recordTileErrors } from "@/lib/observability";
+import { harnessAttachMap } from "@/lib/harness-bus";
 import { isWebgl2Unavailable } from "@/lib/webgl2-unavailable";
 export { isWebgl2Unavailable } from "@/lib/webgl2-unavailable";
 import { createTapTracker } from "./tap-tracker.ts";
@@ -1036,9 +1037,7 @@ export function SatelliteMap(props: {
     }
 
     const wrapperEl = wrapperRef.current!;
-    (globalThis as { mh?: { attachMap?: (el: object, handles: object) => void } }).mh?.attachMap?.(
-      wrapperEl,
-      {
+    harnessAttachMap(wrapperEl, {
       spotScreen: () => {
         const spot = spotRef.current;
         const liveMap = mapRef.current;
