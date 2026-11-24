@@ -31,6 +31,7 @@ export const GATES = [
   { name: "lint:subjects", script: "lint:subjects" },
   { name: "check:provenance", script: "check:provenance", needsGitRange: true },
   { name: "check:entry-size", script: "check:entry-size" },
+  { name: "check:seam-bundle", script: "check:seam-bundle" },
   { name: "Playwright e2e", notRunReason: "no browser in this runner" },
   { name: "lint", script: "lint", reportOnly: true },
 ];

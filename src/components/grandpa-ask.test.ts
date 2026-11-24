@@ -1,8 +1,8 @@
+import { currentVoiceOwner } from "../../tests/harness/module-seams.ts";
 import { strict as assert } from "node:assert";
 import { test } from "node:test";
 import { playCough, playTrail } from "./grandpa-ask.ts";
 import {
-  currentVoiceOwner,
   stopAllVoices,
 } from "../game/audio/voice-channel.ts";
 import {

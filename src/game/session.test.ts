@@ -197,14 +197,11 @@ test("seedSessionFromRun: backfills a pre-session run's results exactly once", (
   assert.equal(double.totalScore, 240);
 });
 
-test("idleTimeoutFromSearch: ?idle-ms= seam with safe fallbacks", () => {
+test("idleTimeoutFromSearch ignores the query when no harness is installed", () => {
   assert.equal(idleTimeoutFromSearch("", 999), 999);
-  assert.equal(idleTimeoutFromSearch("?idle-ms=3000"), 3000);
-  assert.equal(idleTimeoutFromSearch("?foo=1&idle-ms=4500"), 4500);
-  assert.equal(idleTimeoutFromSearch("?idle-ms=0"), IDLE_TIMEOUT_MS);
-  assert.equal(idleTimeoutFromSearch("?idle-ms=-5"), IDLE_TIMEOUT_MS);
-  assert.equal(idleTimeoutFromSearch("?idle-ms=abc"), IDLE_TIMEOUT_MS);
-  assert.equal(idleTimeoutFromSearch("?IDLE-MS=3000"), IDLE_TIMEOUT_MS);
+  assert.equal(idleTimeoutFromSearch("?idle-ms=3000"), IDLE_TIMEOUT_MS);
+  assert.equal(idleTimeoutFromSearch("?foo=1&idle-ms=4500", 999), 999);
+  assert.equal(idleTimeoutFromSearch("?idle-ms=0", 111), 111);
 });
 
 test("idleWarnMsFor: 30s before the kick, halfway for short E2E timeouts", () => {

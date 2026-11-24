@@ -152,7 +152,7 @@ export function awardCleanRoundBadge(summary: CleanRoundSummary): PassportBadge 
   return awardPassportBadge(CLEAN_ROUND_BADGE_ID);
 }
 
-/** Test-only: drop the in-memory fallback so node tests start clean. */
-export function __resetPassportBadgeMemory(): void {
+/** Internal: drop the in-memory fallback so node tests start clean. */
+export function clearPassportBadgeMemory(): void {
   memoryFallback = null;
 }

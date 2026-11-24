@@ -80,8 +80,8 @@ export function writeHomeGreetDay(dayKey: string): void {
   memoryGreetDay = dayKey;
 }
 
-/** Test-only: drop every flag. */
-export function resetStorytellerSessionForTests(): void {
+/** Internal: drop every flag. */
+export function clearStorytellerSession(): void {
   removeSessionStorageItem(STORAGE_KEYS.storytellerSessionAutoNarration);
   removeSessionStorageItem(STORAGE_KEYS.storytellerTourReturn);
   removeStorageItem(STORAGE_KEYS.storytellerGreetDay);

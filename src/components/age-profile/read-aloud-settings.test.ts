@@ -58,9 +58,8 @@ register("data:text/javascript," + encodeURIComponent(HOOKS_SOURCE));
 const { ReadAloudPrefSettings } = (await import(
   "./ReadAloudPrefSettings.tsx"
 )) as typeof import("./ReadAloudPrefSettings.tsx");
-const { setReadAloudPref, __resetReadAloudPrefMemory } = await import(
-  "@/game/age-profile/read-aloud-pref.ts"
-);
+const { setReadAloudPref } = await import("@/game/age-profile/read-aloud-pref.ts");
+const { __resetReadAloudPrefMemory } = await import("../../../tests/harness/module-seams.ts");
 
 function clearStorage() {
   backing.clear();

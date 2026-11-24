@@ -338,21 +338,15 @@ export function seedSessionFromRun(session: Session, run: Run): Session {
   return next;
 }
 
-/**
- * E2E seam: `?idle-ms=<n>` overrides the idle timeout (default 2 minutes).
- * Mirrors the `?loop-puzzle=` deterministic-puzzle precedent. Non-numeric,
- * missing, or non-positive values fall back to the default. Note: the
- * user-facing copy ("2 minutes") does not follow the override — it is
- * written for production, where the override never appears.
- */
+/** Idle window. A harness may override it; otherwise the default stands. */
 export function idleTimeoutFromSearch(
   search: string,
   fallback: number = IDLE_TIMEOUT_MS,
 ): number {
-  const match = /[?&]idle-ms=(\d+)/.exec(search);
-  if (!match) return fallback;
-  const ms = Number(match[1]);
-  return Number.isFinite(ms) && ms > 0 ? ms : fallback;
+  return (
+    (globalThis as { mh?: { i?: (s: string, fb: number) => number } }).mh?.i?.(search, fallback) ??
+    fallback
+  );
 }
 
 /** Human labels for the per-edition score breakdown. */

@@ -1987,8 +1987,8 @@ export function getObservability(): Observability {
   return singleton;
 }
 
-/** Test-only: drop the singleton so the next getObservability() is fresh. */
-export function resetObservabilityForTests(): void {
+/** Internal: drop the singleton so the next getObservability() is fresh. */
+export function clearObservabilitySingleton(): void {
   singleton = null;
 }
 

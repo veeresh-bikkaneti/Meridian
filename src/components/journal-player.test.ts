@@ -63,18 +63,35 @@ const MOVIE_URL = "https://veeresh-bikkaneti.github.io/meridian-media/journal/ol
 const STILL = "/images/journal/old-faithful.webp";
 
 function renderPlayer(overrides: Record<string, unknown> = {}) {
-  return renderToString(
-    createElement(JournalPlayer, {
-      noteId: "old-faithful",
-      place: "Old Faithful",
-      imageSrc: STILL,
-      imageAlt: "Storybook drawing of Old Faithful geyser",
-      open: false,
-      onOpen: () => {},
-      onClose: () => {},
-      ...overrides,
-    }),
-  );
+  const g = globalThis as { mh?: Record<string, unknown> };
+  const prev = g.mh;
+  const movieProvided = Object.prototype.hasOwnProperty.call(overrides, "movieUrlOverride");
+  const transcriptProvided = Object.prototype.hasOwnProperty.call(overrides, "transcriptOverride");
+  g.mh = {
+    ...(prev ?? {}),
+    ...(movieProvided ? { journalMovie: () => overrides.movieUrlOverride } : {}),
+    ...(transcriptProvided ? { journalTranscript: () => overrides.transcriptOverride } : {}),
+  };
+  const props = { ...overrides };
+  delete props.movieUrlOverride;
+  delete props.transcriptOverride;
+  try {
+    return renderToString(
+      createElement(JournalPlayer, {
+        noteId: "old-faithful",
+        place: "Old Faithful",
+        imageSrc: STILL,
+        imageAlt: "Storybook drawing of Old Faithful geyser",
+        open: false,
+        onOpen: () => {},
+        onClose: () => {},
+        ...props,
+      }),
+    );
+  } finally {
+    if (prev === undefined) delete g.mh;
+    else g.mh = prev;
+  }
 }
 
 // --- Closed: the picture IS the button, no video bytes -------------------

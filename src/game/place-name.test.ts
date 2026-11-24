@@ -1,9 +1,9 @@
+import { recognizedCountryCountForTests } from "../../tests/harness/module-seams.ts";
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
 import {
   anchorTail,
   nameTier,
-  recognizedCountryCountForTests,
   refineDisplayString,
 } from "./place-name.ts";
 

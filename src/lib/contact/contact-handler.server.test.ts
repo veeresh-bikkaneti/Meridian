@@ -1,6 +1,7 @@
 /**
  * /api/contact handler unit tests (runs in `npm test` with the src suite).
  */
+import { resetContactStateForTests } from "../../../tests/harness/module-seams.ts";
 import assert from "node:assert/strict";
 import test, { beforeEach } from "node:test";
 import { readFileSync } from "node:fs";
@@ -9,7 +10,6 @@ import {
   readContactEnv,
   validateContact,
   readContactRuntimeEnv,
-  resetContactStateForTests,
   selectSink,
   DiscordWebhookSink,
   NoopSink,

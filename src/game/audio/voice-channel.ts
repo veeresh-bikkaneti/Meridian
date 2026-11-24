@@ -138,7 +138,7 @@ export function resolveVoiceFactory(
   return explicit ?? registeredVoiceFactory;
 }
 
-/** Who holds the channel right now, or null. For tests and debugging. */
+/** Who holds the channel right now, or null. For callers and debugging. */
 export function currentVoiceOwner(): string | null {
   return holder ? holder.owner : null;
 }

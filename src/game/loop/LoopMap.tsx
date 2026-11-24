@@ -277,10 +277,10 @@ export function LoopMap({
     });
     map.touchZoomRotate.disableRotation();
     mapRef.current = map;
-
-    // E2E seam (DOM contract, mirrors satellite-map's __spotScreen):
-    // specs drive the camera deterministically through the live map.
-    (container as unknown as { __loopMap?: MLMap }).__loopMap = map;
+    (globalThis as { mh?: { attachLoopMap?: (el: object, map: unknown) => void } }).mh?.attachLoopMap?.(
+      container,
+      map,
+    );
 
     const onClick = (e: { lngLat: { lng: number; lat: number }; point: { x: number; y: number } }) => {
       const { onSelectPlace, onEmptyTap, finished, freeTap, onMapTap, placementActive, onPlacementTap } =

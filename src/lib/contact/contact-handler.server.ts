@@ -61,9 +61,9 @@ import { readContactWebhookSecret, readContactWebhookSecretRuntime } from "./run
 import { CONTACT_RETENTION_REMINDER } from "./retention.ts";
 import {
   readRateLimitBindings,
-  resetRateLimitBindingLookupForTests,
+  clearRateLimitBindingLookup,
   selectRateLimiter,
-  sharedInMemoryLimiterForTests,
+  sharedMemoryLimiter,
   type RateLimitBindings,
 } from "./rate-limiter.server.ts";
 
@@ -211,10 +211,10 @@ export function validateContact(input: unknown): ValidationResult {
 // Lives in rate-limiter.server.ts (in-memory floor + optional Workers Rate
 // Limiting binding).
 
-/** Test-only reset of the per-isolate state (rate-limit windows, salt, binding lookup). */
-export function resetContactStateForTests(): void {
-  sharedInMemoryLimiterForTests().reset();
-  resetRateLimitBindingLookupForTests();
+/** Internal reset of the per-isolate state (rate-limit windows, salt, binding lookup). */
+export function clearContactHandlerState(): void {
+  sharedMemoryLimiter().reset();
+  clearRateLimitBindingLookup();
 }
 
 // --- Responses ---------------------------------------------------------

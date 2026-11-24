@@ -12,11 +12,13 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
-  preloadTerritory,
-  territoryAt,
   territoryConversionRunsForTests,
   territoryImporterForTests,
   territoryLoadRunsForTests,
+} from "../../tests/harness/module-seams.ts";
+import {
+  preloadTerritory,
+  territoryAt,
 } from "./territory.ts";
 
 test("a hung atlas import resolves preloadTerritory at the bound, fails closed, and retries next time", async () => {

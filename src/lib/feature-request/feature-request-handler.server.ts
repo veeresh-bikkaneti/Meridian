@@ -35,8 +35,8 @@ import { CONTACT_RETENTION_REMINDER } from "../contact/retention.ts";
 import {
   isRateLimitBinding,
   selectRateLimiter,
-  sharedInMemoryLimiterForTests,
-  resetRateLimitBindingLookupForTests,
+  sharedMemoryLimiter,
+  clearRateLimitBindingLookup,
   readRateLimitBindings,
   type RateLimitBindings,
 } from "../contact/rate-limiter.server.ts";
@@ -136,10 +136,10 @@ export function validateFeatureRequest(input: unknown): FeatureValidationResult 
   };
 }
 
-/** Test-only reset, mirroring resetContactStateForTests. */
-export function resetFeatureRequestStateForTests(): void {
-  sharedInMemoryLimiterForTests().reset();
-  resetRateLimitBindingLookupForTests();
+/** Internal reset, mirroring clearContactHandlerState. */
+export function clearFeatureRequestState(): void {
+  sharedMemoryLimiter().reset();
+  clearRateLimitBindingLookup();
 }
 
 function log(outcome: string, subject?: string): void {
@@ -155,7 +155,7 @@ function fenceSafe(text: string): string {
   return text.replace(/`/g, "ˋ");
 }
 
-/** The plain-text Discord post. Exported for tests. */
+/** The plain-text Discord post. Callable by callers. */
 export function formatFeatureRequestPost(record: FeatureRequestMessage & { receivedAt: string }): string {
   const head =
     `**Meridian feature request** · age group: ${record.ageGroup} · subject: ${record.subject}\n` +

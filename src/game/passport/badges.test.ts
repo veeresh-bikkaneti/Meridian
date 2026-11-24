@@ -1,3 +1,4 @@
+import { __resetPassportBadgeMemory } from "../../../tests/harness/module-seams.ts";
 import assert from "node:assert/strict";
 import test from "node:test";
 
@@ -28,7 +29,6 @@ import {
   awardPassportBadge,
   earnedPassportBadges,
   getPassportBadge,
-  __resetPassportBadgeMemory,
 } from "./badges.ts";
 
 function clearStorage() {

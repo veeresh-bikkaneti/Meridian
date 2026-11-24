@@ -1,3 +1,4 @@
+import { resetFirstRevealNarrationForTests } from "../../tests/harness/module-seams.ts";
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
 import {
@@ -11,7 +12,6 @@ import {
 } from "./storyteller-lines.ts";
 import {
   claimFirstRevealNarration,
-  resetFirstRevealNarrationForTests,
 } from "./storyteller-claim.ts";
 
 describe("STORYTELLER_LINES — final copy contract", () => {

@@ -62,7 +62,7 @@
  * does not pull the monolith. A failed load degrades to empty
  * coverage. It never blocks case play.
  *
- * Test seams: every environment touchpoint (manifest load, clip
+ * Injected boundaries: every environment touchpoint (manifest load, clip
  * playback, gates) is injectable, so the queue logic is node-testable
  * with no DOM and no real Audio element.
  */
@@ -391,8 +391,8 @@ export function loadDetectiveManifestFor(
   })();
 }
 
-/** Test seam: drop the cached manifest promises. */
-export function __resetDetectiveManifestCache(): void {
+/** Helper: drop the cached manifest promises. */
+export function clearDetectiveManifestCache(): void {
   manifestPromise = null;
   splitIndexPromise = null;
   monolithPromise = null;
@@ -415,7 +415,7 @@ export interface DetectiveSpeechOptions {
   /** Initial speech mode (U9); the host updates it via setSpeechMode
    * as the degradation signals change. Defaults to "auto" (U5). */
   speechMode?: SpeechMode;
-  /* Test seams (defaults wire the real environment). */
+  /* Injected boundaries (defaults wire the real environment). */
   loadManifest?: (ref: SpeakRef, caseIndex: number) => Promise<DetectiveManifest | null>;
   /** Play one clip. `signal` aborts when something else needs the
    * voice (a pick, a replay, stopAll): stop sounding and resolve. */

@@ -60,8 +60,8 @@ const { EarnedBadgeRow } = (await import("./EarnedBadgeRow.tsx")) as typeof impo
 const {
   awardPassportBadge,
   CLEAN_ROUND_BADGE_ID,
-  __resetPassportBadgeMemory,
 } = await import("@/game/passport/badges.ts");
+const { __resetPassportBadgeMemory } = await import("../../../tests/harness/module-seams.ts");
 
 function clearStorage() {
   backing.clear();

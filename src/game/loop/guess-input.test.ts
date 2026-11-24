@@ -1,3 +1,4 @@
+import { clearLoopIndexCache } from "../../../tests/harness/module-seams.ts";
 import assert from "node:assert/strict";
 import test from "node:test";
 // The combobox component itself (guess-input.tsx) is a thin interactive shell
@@ -7,7 +8,6 @@ import test from "node:test";
 // fake index. The component is jump-only: picking a suggestion calls onJump
 // (camera fly); the bottom sheet commits the guess.
 import {
-  clearLoopIndexCache,
   displayLoopName,
   fetchLoopIndex,
   normalizeLoopName,

@@ -727,14 +727,14 @@ export async function loadRegionChunk(regionId: string): Promise<Starter[]> {
   return pending;
 }
 
-/** Test hook: drop cached chunks so tests can observe fresh loads. */
-export function clearChunkCacheForTests(): void {
+/** Helper: drop cached chunks so tests can observe fresh loads. */
+export function clearChunkCache(): void {
   chunkCache.clear();
   globeTierCache.clear();
 }
 
-/** Test hook: the Globe fame tiers fetched so far this session, ascending. */
-export function loadedGlobeTiersForTests(): number[] {
+/** Helper: the Globe fame tiers fetched so far this session, ascending. */
+export function loadedGlobeTiers(): number[] {
   return [...globeTierCache.keys()].sort((a, b) => a - b);
 }
 

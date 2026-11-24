@@ -1,3 +1,4 @@
+import { resetObservabilityForTests } from "../../tests/harness/module-seams.ts";
 import { describe, it, beforeEach } from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
@@ -7,7 +8,6 @@ import { createRequire } from "node:module";
 import type { ComponentType } from "react";
 import {
   getObservability,
-  resetObservabilityForTests,
 } from "./observability.ts";
 
 const require = createRequire(import.meta.url);

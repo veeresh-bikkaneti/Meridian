@@ -18,11 +18,13 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
+  territoryConversionRunsForTests,
+  territoryLoadRunsForTests,
+} from "../../tests/harness/module-seams.ts";
+import {
   missingContinents,
   preloadTerritory,
   territoryAt,
-  territoryConversionRunsForTests,
-  territoryLoadRunsForTests,
 } from "./territory.ts";
 
 test("no load and no conversion at module evaluation time", () => {

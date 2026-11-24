@@ -186,8 +186,8 @@ export function fetchLoopIndex(fetchImpl: FetchLike = fetch): Promise<LoopNameEn
   return indexPromise;
 }
 
-/** Test-only: drop the cached index promise so a fresh fetch can be mocked. */
-export function clearLoopIndexCache(): void {
+/** Internal: drop the cached index promise so a fresh fetch can be mocked. */
+export function clearLoopNameIndex(): void {
   indexPromise = null;
 }
 

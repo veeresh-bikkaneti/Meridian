@@ -325,8 +325,6 @@ export class WebGpuPresenter implements MapPresenter {
     for (const code of [PAN_WGSL, OVERLAY_WGSL, GLOBE_WGSL]) {
       const info = await device.createShaderModule({ code }).getCompilationInfo();
       if (info.messages.some((message) => message.type === "error")) {
-        const text = info.messages.map((message) => message.message).join("\n");
-        (globalThis as { __meridianGpu?: string }).__meridianGpu = text;
         device.destroy();
         return null;
       }

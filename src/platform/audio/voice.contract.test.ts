@@ -1,9 +1,9 @@
+import { currentVoiceOwner } from "../../../tests/harness/module-seams.ts";
 import assert from "node:assert/strict";
 import test, { afterEach, describe } from "node:test";
 
 import {
   claimVoice,
-  currentVoiceOwner,
   stopAllVoices,
 } from "../../game/audio/voice-channel.ts";
 import { createBrowserVoicePort, createVoice } from "./browser-voice.ts";

@@ -10,13 +10,13 @@
  *   arbitration against a storyteller claim both ways, never two
  *   clips at once, and wrong/finished requesting nothing.
  */
+import { currentVoiceOwner } from "../../../tests/harness/module-seams.ts";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test, { afterEach } from "node:test";
 
 import {
   claimVoice,
-  currentVoiceOwner,
   stopAllVoices,
 } from "../../game/audio/voice-channel.ts";
 import { claimStorytellerVoice } from "../../components/storyteller-voice.ts";

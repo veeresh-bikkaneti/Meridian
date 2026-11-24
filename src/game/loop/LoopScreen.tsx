@@ -32,7 +32,6 @@ import { LoopSessionSummaryPanel } from "./LoopSessionSummary.tsx";
 import { displayLoopName, fetchLoopIndex, isDuplicateGuess, unlabeledSpotEntry } from "./evaluate";
 import { LoopMap, ringAnnouncement, type LoopMapHandle } from "./LoopMap";
 import { LoopMapBoundary, LoopMapOffLine } from "./loop-map-boundary";
-import { loopPuzzleFromSearch } from "./day";
 import {
   playConfirmGuess,
   playDeal,
@@ -282,14 +281,13 @@ async function fetchJson<T>(url: string, isValid: (value: unknown) => value is T
   return parsed;
 }
 
-/**
- * E2E seam: `?loop-puzzle=<index>` pins the dealt puzzle for the mount,
- * skipping the deck (no pop, no deck side effects). Inert when absent or
- * invalid — production play always deals from the deck.
- */
+/** Pinned puzzle index when a harness names one; otherwise null. */
 function seamPuzzleIndex(poolSize: number): number | null {
   if (typeof location === "undefined") return null;
-  const index = loopPuzzleFromSearch(location.search);
+  const index =
+    (globalThis as { mh?: { loopPuzzle?: (s: string) => number | null } }).mh?.loopPuzzle?.(
+      location.search,
+    ) ?? null;
   return index !== null && index < poolSize ? index : null;
 }
 
@@ -646,7 +644,7 @@ export function LoopScreen({
         // reveal, do NOT deal a fresh mystery.
         dealIndex = next.current.index;
       } else if (seam !== null) {
-        // E2E seam: deal the pinned puzzle directly — the deck is untouched.
+        // Pinned path: deal the pinned puzzle directly — the deck is untouched.
         // Only applies when no mystery is open.
         dealIndex = seam;
         const seamConfig = captureDealConfig();

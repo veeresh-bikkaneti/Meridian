@@ -3,6 +3,7 @@ import { appendFileSync, readFileSync } from "node:fs";
 import { mkdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import { OBSERVABILITY_INGEST_HOSTS } from "../../src/lib/flags.ts";
+import { installBrowserSeams } from "../harness/seams.ts";
 
 /**
  * Shared E2E helpers for the P0-02/P0-03 suite.
@@ -550,6 +551,7 @@ export async function serveBuiltArtifact(
   const ledger = createTelemetryLedger();
   ledgersByContext.set(context, ledger);
   serveOptsByContext.set(context, effectiveSpoof);
+  await context.addInitScript(installBrowserSeams);
   if (effectiveSpoof) {
     await spoofCapableDevice(context);
   }

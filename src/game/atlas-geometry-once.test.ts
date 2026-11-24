@@ -10,11 +10,8 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { cachedCountriesAtlas } from "../lib/atlas-geometry.ts";
 import { buildRegionIndex, lookupRegion } from "../map/region-index.ts";
-import {
-  preloadTerritory,
-  territoryAt,
-  territoryConversionRunsForTests,
-} from "./territory.ts";
+import { preloadTerritory, territoryAt } from "./territory.ts";
+import { territoryConversionRunsForTests } from "../../tests/harness/module-seams.ts";
 
 test("preload and the region index convert the countries atlas once", async () => {
   assert.equal(territoryConversionRunsForTests(), 0);

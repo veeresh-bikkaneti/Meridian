@@ -189,8 +189,6 @@ export function deckCompleteCelebrationSpec(deckId: string | null | undefined): 
   };
 }
 
-const CELEBRATION_PARAM = "celebration";
-
 const CELEBRATION_VARIANTS: readonly CelebrationVariant[] = [
   "difficulty-clear",
   "mystery-solved",
@@ -198,24 +196,7 @@ const CELEBRATION_VARIANTS: readonly CelebrationVariant[] = [
   "game-complete",
 ];
 
-/**
- * E2E seam: `?celebration=<variant>` (mirrors `?loop-puzzle=`). Returns the
- * variant, or null when absent/invalid — production never sets it.
- */
-export function celebrationFromSearch(search: string): CelebrationVariant | null {
-  let raw: string | null = null;
-  try {
-    raw = new URLSearchParams(search).get(CELEBRATION_PARAM);
-  } catch {
-    return null;
-  }
-  if (!raw) return null;
-  return (CELEBRATION_VARIANTS as readonly string[]).includes(raw)
-    ? (raw as CelebrationVariant)
-    : null;
-}
-
-/** Seam variant → representative moment (each variant needs a full spec). */
+/** Representative moment for a harness-named variant. */
 const SEAM_MOMENTS: Record<CelebrationVariant, CelebrationMomentKey> = {
   "difficulty-clear": "difficulty-clear",
   "mystery-solved": "first-win",
@@ -223,10 +204,11 @@ const SEAM_MOMENTS: Record<CelebrationVariant, CelebrationMomentKey> = {
   "game-complete": "deck-complete",
 };
 
-/** The full overlay spec for `?celebration=<variant>`; null when no seam. */
+/** Overlay spec for a harness-named variant; null when none is installed. */
 export function celebrationSeamSpec(search: string): CelebrationSpec | null {
-  const variant = celebrationFromSearch(search);
-  return variant ? celebrationSpec(variant, SEAM_MOMENTS[variant]) : null;
+  const raw = (globalThis as { mh?: { c?: (s: string) => string | null } }).mh?.c?.(search);
+  if (!raw || !(CELEBRATION_VARIANTS as readonly string[]).includes(raw)) return null;
+  return celebrationSpec(raw as CelebrationVariant, SEAM_MOMENTS[raw as CelebrationVariant]);
 }
 
 export const FIRST_WIN_KEY = "meridian.firstWinCelebrated";

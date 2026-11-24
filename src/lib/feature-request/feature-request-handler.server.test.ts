@@ -1,9 +1,9 @@
+import { resetFeatureRequestStateForTests } from "../../../tests/harness/module-seams.ts";
 import assert from "node:assert/strict";
 import { beforeEach, describe, it } from "node:test";
 import {
   formatFeatureRequestPost,
   handleFeatureRequest,
-  resetFeatureRequestStateForTests,
   sanitizeFeatureText,
   validateFeatureRequest,
   type FeatureRequestEnv,

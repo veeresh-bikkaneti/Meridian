@@ -7,11 +7,8 @@
  */
 import assert from "node:assert/strict";
 import test from "node:test";
-import {
-  preloadTerritory,
-  territoryAt,
-  territoryConversionRunsForTests,
-} from "../game/territory.ts";
+import { preloadTerritory, territoryAt } from "../game/territory.ts";
+import { territoryConversionRunsForTests } from "../../tests/harness/module-seams.ts";
 import {
   atlasCountryConversionRuns,
   atlasStateConversionRuns,
