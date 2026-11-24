@@ -14,10 +14,10 @@
  *   was approved in Round 2. Any second header exception fails the
  *   test.
  * - `baseline` (header): screens that predate the shell and have not
- *   been adopted yet (loading states, the boot splash, the router
- *   error page, the challenge menu). The test freezes this list: it
- *   may only shrink, and a cured screen leaves it in the same change
- *   that adopts the shell.
+ *   been adopted yet (loading states, the router error page, the
+ *   challenge menu). The test freezes this list: it may only shrink,
+ *   and a cured screen leaves it in the same change that adopts the
+ *   shell.
  * - `footer: "exception"`: none remain. The Why Learn picker was
  *   the one exception (it rendered SiteFooter only while its host
  *   passed the grown-ups callback); the footer standardization
@@ -74,7 +74,7 @@ export const SHELL_REGISTRY: readonly ShellRegistryEntry[] = [
   { id: "challenge-menu", file: "src/components/game-app.tsx", header: "baseline", footer: "none", reason: "Challenge-a-friend region picker: a hand-placed HomeButton over a <main>, not yet adopted. Baseline, shrink-only." },
   { id: "session-loading", file: "src/components/game-app.tsx", header: "baseline", footer: "none", reason: "Transient loading fallback; it reserves the destination's header space by design. Baseline, shrink-only." },
   { id: "region-loading", file: "src/components/game-app.tsx", header: "baseline", footer: "none", reason: "Transient chunk-loading state while a region's places load. Baseline, shrink-only." },
-  { id: "boot-splash", file: "src/components/boot-splash.tsx", header: "baseline", footer: "none", reason: "Boot gate splash shown before the app is ready; no navigation exists yet. Baseline, shrink-only." },
+  { id: "boot-splash", file: "src/components/boot-splash.tsx", header: "PageShell", needle: "<PageShell", footer: "shell", reason: "Boot gate splash. It renders inside the shared page shell; the home control is a link because both callers paint it inside the router." },
   { id: "router-error", file: "src/lib/error-component.tsx", header: "baseline", footer: "none", reason: "The router's own error page, outside GameApp. Baseline, shrink-only." },
 ];
 
@@ -84,7 +84,6 @@ export const SHELL_REGISTRY: readonly ShellRegistryEntry[] = [
 export const HEADER_EXCEPTIONS: readonly string[] = ["in-run-hud"];
 export const FOOTER_EXCEPTIONS: readonly string[] = [];
 export const HEADER_BASELINE: readonly string[] = [
-  "boot-splash",
   "challenge-menu",
   "region-loading",
   "root-layout",

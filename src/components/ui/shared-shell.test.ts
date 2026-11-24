@@ -364,6 +364,14 @@ describe("PageShell and PageIntro (PR 3 Step 2)", () => {
     assert.doesNotMatch(src, /<footer|<header/);
   });
 
+  it("the boot splash sits on PageShell: narrow column, no page-local main", () => {
+    const src = read("src/components/boot-splash.tsx");
+    assert.match(src, /<PageShell header=\{\{ to: "\/", status: null, mute: null \}\} width="narrow">/);
+    assert.doesNotMatch(src, /<main[\s>]/);
+    assert.match(src, /Geography, math and science/);
+    assert.match(read("src/components/boot-splash.css"), /\.boot-splash-mark/);
+  });
+
   it("the grown-ups pages sit on PageShell (PR 3 Step 3.1): header Home + footer, no hand-built frame", () => {
     const src = read("src/components/grownups/info-page.tsx");
     assert.match(src, /<PageShell header=\{\{ to: "\/", status: null, mute: null \}\} width="narrow">/);
@@ -593,7 +601,6 @@ describe("page-width tokens (PR 3 Step 4)", () => {
   it("screen roots use the PageColumn tokens, not literal max-w-3xl / max-w-7xl", () => {
     for (const file of [
       "src/components/game-app.tsx",
-      "src/components/boot-splash.tsx",
       "src/game/loop/LoopScreen.tsx",
       "src/game/coldtrail/TrailScreen.tsx",
       "src/subjects/shared/SubjectCase.tsx",
@@ -652,7 +659,6 @@ describe("shell-ban baseline (KNOWN/STALE)", () => {
     pageLocalHeaderFooter: [],
     pageLocalNav: ["src/components/grownups/info-page.tsx", "src/routes/board.tsx"],
     pageLocalMain: [
-      "src/components/boot-splash.tsx",
       "src/components/game-app.tsx",
       "src/components/grownups/info-page.tsx",
       "src/game/coldtrail/TrailScreen.tsx",

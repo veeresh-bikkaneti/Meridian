@@ -1,0 +1,10 @@
+/* Boot splash mark. Width and gutters belong to the shared column;
+   this block only keeps the wordmark at the foot of a full-viewport
+   stretch, the placement the splash has always had. */
+.boot-splash-mark {
+  display: flex;
+  min-height: 100dvh;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: 2.5rem;
+}
