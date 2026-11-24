@@ -2,8 +2,10 @@
  * Pure name→geometry index over the vendored TopoJSON boundary data.
  *
  * Source: `world-atlas` countries-50m (countries) and `us-atlas` states-10m
- * (states), converted with the already-installed `topojson-client` `feature()`.
- * No new data, no new packages, no MapLibre, no DOM — node-testable.
+ * (states). Both conversions go through `src/lib/atlas-geometry.ts`, so a
+ * territory preload or the map's prebuilt collections that already
+ * converted an atlas are reused instead of walked again. No new data, no
+ * new packages, no MapLibre, no DOM — node-testable.
  *
  * The index is keyed by normalized name (lowercase, collapsed whitespace) and
  * carries a small alias table for known game↔atlas mismatches. It produces
@@ -25,13 +27,12 @@
  * `center`, however, is antimeridian-aware (Alaska ≈ [-158.8, 61.3], not
  * [0.3, …]) so camera math on the DTO never aims at the wrong hemisphere.
  *
- * The JSON imports carry `with { type: "json" }` (unlike the plain imports in
- * `atlas-data.ts`) because the node `--experimental-strip-types` test runner
- * requires the import attribute; it typechecks under tsc and bundles under
- * vite identically.
+ * The JSON imports carry `with { type: "json" }` because the node
+ * `--experimental-strip-types` test runner requires the import attribute;
+ * it typechecks under tsc and bundles under vite identically.
  */
 
-import { feature } from "topojson-client";
+import { convertCountries, convertStates } from "../lib/atlas-geometry.ts";
 import countriesTopo from "world-atlas/countries-50m.json" with {
   type: "json",
 };
@@ -169,16 +170,8 @@ function indexFeatures(
  */
 export function buildRegionIndex(): Map<string, RegionGeometryDTO> {
   const index = new Map<string, RegionGeometryDTO>();
-  indexFeatures(
-    index,
-    asFeatures(feature(countriesTopo, countriesTopo.objects.countries)),
-    false,
-  );
-  indexFeatures(
-    index,
-    asFeatures(feature(statesTopo, statesTopo.objects.states)),
-    true,
-  );
+  indexFeatures(index, asFeatures(convertCountries(countriesTopo)), false);
+  indexFeatures(index, asFeatures(convertStates(statesTopo)), true);
   return index;
 }
 

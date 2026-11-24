@@ -1,15 +1,16 @@
 import { feature, mesh } from "topojson-client";
-import world from "world-atlas/countries-50m.json";
-import states from "us-atlas/states-10m.json";
+import world from "world-atlas/countries-50m.json" with { type: "json" };
+import states from "us-atlas/states-10m.json" with { type: "json" };
 import { geoGraticule10 } from "d3-geo";
+import { convertCountries, convertStates } from "../lib/atlas-geometry.ts";
 
 export type Feat = { id?: string | number; type: "Feature"; geometry: unknown };
 export type Collection = { type: "FeatureCollection"; features: Feat[] };
 
-export const countries = feature(world, world.objects.countries) as unknown as Collection;
+export const countries = convertCountries(world) as unknown as Collection;
 export const coast = mesh(world, world.objects.countries, (a, b) => a === b);
 export const countryBorders = mesh(world, world.objects.countries, (a, b) => a !== b);
-export const stateCollection = feature(states, states.objects.states) as unknown as Collection;
+export const stateCollection = convertStates(states) as unknown as Collection;
 export const nebraska = stateCollection.features.find((item) => item.id === "31") ?? null;
 export const graticule = geoGraticule10();
 

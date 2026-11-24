@@ -1,6 +1,11 @@
 import { geoContains } from "d3-geo";
-import { feature } from "topojson-client";
 import { CONTINENT_BY_KEY, type Continent } from "./continents.ts";
+import {
+  atlasCountryConversionRuns,
+  cachedCountriesAtlas,
+  clearAtlasGeometryCache,
+  convertCountries,
+} from "../lib/atlas-geometry.ts";
 import type { LonLat } from "./types.ts";
 
 type CountryFeature = {
@@ -25,10 +30,15 @@ type Collection = { type: "FeatureCollection"; features: CountryFeature[] };
  * `unitForLoopTarget` on the GeoDetective / Cold Trail screens. Nothing
  * on the home screen reads it. (F2b, perf/performance-tuning.)
  *
- * The `feature()` conversion is the other half of the old cost: it walks
- * every arc and materializes full country polygons — the single most
- * expensive import-time allocation in the boot path (P0 Safari jetsam
- * suspect #1). It runs at most once, when the load lands.
+ * The `feature()` conversion walks every arc and materializes full
+ * country polygons — the single most expensive import-time allocation
+ * the boot path used to pay (P0 Safari jetsam suspect #1). It now lives
+ * in `src/lib/atlas-geometry.ts` and runs at most once per page: the
+ * region index and the map's prebuilt collections share that result
+ * instead of converting the countries atlas again. A preload that finds
+ * the collection already retained adopts it and does not import again.
+ * While nothing has converted yet, this module still loads only when
+ * `preloadTerritory()` is called.
  *
  * Sync readers fail closed while the data is not loaded — the exact
  * contract `reverse-geocode.ts` already uses for its admin-1 caches:
@@ -42,7 +52,6 @@ type Collection = { type: "FeatureCollection"; features: CountryFeature[] };
  */
 let cachedCountries: CountryFeature[] | null = null;
 let loadPromise: Promise<CountryFeature[]> | null = null;
-let conversionRuns = 0;
 let loadRuns = 0;
 /** #209 zombie guard: bumped when a load attempt starts AND when one is
  * evicted after a timeout. A timed-out import is not cancelled — it can
@@ -78,27 +87,35 @@ let atlasImporter: () => Promise<{ default: unknown }> = importAtlas;
  */
 export const TERRITORY_LOAD_TIMEOUT_MS = 10_000;
 
+function adoptSharedCountries(): CountryFeature[] | null {
+  const shared = cachedCountriesAtlas();
+  if (!shared) return null;
+  cachedCountries = shared.features as CountryFeature[];
+  return cachedCountries;
+}
+
 function loadCountryFeatures(
   timeoutMs: number = TERRITORY_LOAD_TIMEOUT_MS,
 ): Promise<CountryFeature[]> {
+  if (cachedCountries) return Promise.resolve(cachedCountries);
+  const adopted = adoptSharedCountries();
+  if (adopted) return Promise.resolve(adopted);
   if (!loadPromise) {
     loadRuns += 1;
     const generation = (loadGeneration += 1);
     const attempt = atlasImporter().then((mod) => {
+      // Zombie guard (#209): if this attempt was timed out and evicted
+      // before it landed, a newer generation owns the cache — discard
+      // the late landing instead of converting again or overwriting
+      // the retry's data.
+      if (generation !== loadGeneration) {
+        return cachedCountries ?? adoptSharedCountries() ?? [];
+      }
       const topo = mod.default as unknown as {
         objects: { countries: unknown };
       };
-      const features = (
-        feature(topo, topo.objects.countries) as unknown as Collection
-      ).features;
-      // Zombie guard (#209): if this attempt was timed out and evicted
-      // before it landed, a newer generation owns the cache — discard
-      // the late landing instead of double-counting the conversion or
-      // overwriting the retry's data.
-      if (generation === loadGeneration) {
-        conversionRuns += 1;
-        cachedCountries = features;
-      }
+      const features = (convertCountries(topo) as unknown as Collection).features;
+      cachedCountries = features;
       return features;
     });
     let timer: ReturnType<typeof setTimeout> | undefined;
@@ -164,12 +181,15 @@ export function territoryImporterForTests(
   atlasImporter = importer ?? importAtlas;
   loadPromise = null;
   cachedCountries = null;
+  clearAtlasGeometryCache();
 }
 
-/** Test seam: how many times the TopoJSON→GeoJSON conversion has run.
- * Must stay 1 no matter how many lookups happen. */
+/** How many times the countries TopoJSON→GeoJSON conversion has run.
+ * Shared with the region index and the map collections: a second
+ * caller must not bump this. Must stay 1 no matter how many lookups
+ * happen. */
 export function territoryConversionRunsForTests(): number {
-  return conversionRuns;
+  return atlasCountryConversionRuns();
 }
 
 function countryKey(item: CountryFeature): string {
