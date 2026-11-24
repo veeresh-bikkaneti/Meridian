@@ -1,0 +1,27 @@
+# Narrow run for tests/e2e/detective-endings.spec.ts only.
+# workflow_dispatch is available once this file is on main. pull_request
+# is path-filtered so a merge does not add this job to every pull request.
+name: Detective endings spec
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [ "main" ]
+    paths:
+      - "tests/e2e/detective-endings.spec.ts"
+      - ".github/workflows/detective-endings-spec.yml"
+
+jobs:
+  endings:
+    timeout-minutes: 20
+    runs-on: ubuntu-24.04
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 22.x
+        cache: npm
+    - run: npm ci
+    - run: npx playwright install --with-deps chromium
+    - run: npm run build:pages
+    - run: npx playwright test tests/e2e/detective-endings.spec.ts --project=detective-endings --workers=1 --reporter=line

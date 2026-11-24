@@ -38,9 +38,22 @@ import {
 
 test.setTimeout(420_000);
 
-test.beforeEach(async ({ context }) => {
+// Issue #460: in CI the answer clip plays, but a one-shot read of the
+// network log misses case-137/answer.mp3. The production service worker
+// claims the page during the case and then serves /audio/ cache-first,
+// and a warm HTTP cache can satisfy the media element with no request
+// event. Either one lets play() land before the log has the clip. Block
+// the worker and disable the HTTP cache so the fetch is an ordinary
+// request, issued when the element is created (before play()), and the
+// log already contains it. No retry and no extra wait.
+test.use({ serviceWorkers: "block" });
+
+test.beforeEach(async ({ context, page }) => {
   await serveBuiltArtifact(context);
   await installDetectiveRecorder(context, 4);
+  const session = await context.newCDPSession(page);
+  await session.send("Network.enable");
+  await session.send("Network.setCacheDisabled", { cacheDisabled: true });
 });
 
 /** Record the phase timeline (changes only) for NOTE_MARK / POUT
@@ -223,7 +236,11 @@ test("FAIL in 5: the answer is read aloud and POUT holds ≥3 s", async ({
     }
   }
 
-  // The fail read: Holmes reads the case's answer.
+  // The fail read: Holmes reads the case's answer. The play record and
+  // the network log are one fact: the clip was fetched and started.
+  // The worker is blocked and the HTTP cache is off, so the request is
+  // already issued. A request event queued behind the evaluate that
+  // observed play() is applied on the next turn, then the read is strict.
   await expect
     .poll(() => detectivePlays(page), { timeout: 90_000 })
     .toEqual(
@@ -231,23 +248,12 @@ test("FAIL in 5: the answer is read aloud and POUT holds ≥3 s", async ({
         expect.stringContaining("case-137/answer.mp3"),
       ]),
     );
-  // Network corroboration, polled: the answer clip usually produces a
-  // detective mp3 request, but a cache or service-worker hit serves it
-  // with no new request at all (CI-only, issue #460). The confirmed
-  // play() above is the primary proof the answer was read aloud, so a
-  // missing request after a grace window is logged, not failed.
-  const answerRequested = await expect
-    .poll(() => requests.some((u) => u.includes("case-137/answer.mp3")), {
-      timeout: 10_000,
-    })
-    .toBe(true)
-    .then(
-      () => true,
-      () => false,
-    );
-  console.log(
-    `[endings FAIL] answer.mp3 network request seen=${answerRequested} (play() confirmed above; false = cache/service-worker hit)`,
-  );
+  await new Promise((resolve) => setTimeout(resolve, 0));
+  expect(
+    requests.some((u) => u.includes("case-137/answer.mp3")),
+    "case-137/answer.mp3 network request must be observed when the answer is read",
+  ).toBe(true);
+  console.log("[endings FAIL] answer.mp3 network request seen=true");
 
   // POUT, sticky across a ≥3 s window: sample the phase every ~200 ms
   // for 3.2 s — every sample after POUT is reached must stay POUT.
