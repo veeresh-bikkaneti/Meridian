@@ -61,10 +61,18 @@ jobs:
     # One voice at a time (PR #430, #470): audio goes through the voice
     # channel and a tapped play() runs before any await; see
     # eslint/voice-channel-rule.mjs.
+    # Shell-ban is one architecture gauge. Hard at zero (eslint.config.mjs
+    # gaugeSeverity): the gauge is a warning while its baseline is above
+    # 0, and an error once that count reaches 0. A warning does not fail
+    # the job. Do not pass --max-warnings and do not set the gauge by hand.
     - run: npm run lint:nav
-    # Architecture guardrails (Phase 0, PR 0.2): imports point down
+    # Architecture gauges (Phase 0, PR 0.2): imports point down
     # only and no raw browser I/O outside src/platform; today's
     # violations are baselined shrink-only; see eslint/layer-rule.mjs.
+    # The same hard-at-zero rule as above: noRawIo is already 0, so
+    # one raw I/O call is an error and fails the job. noUpwardImport
+    # only warns until its baseline reaches 0, then the same rule
+    # flips it. Do not pass --max-warnings and do not set a gauge by hand.
     - run: npm run lint:arch
     - run: npm run test:worker
     - run: npm run typecheck:worker

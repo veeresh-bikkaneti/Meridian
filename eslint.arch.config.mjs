@@ -6,8 +6,13 @@
  * platform ports (platform/no-raw-io). See eslint/layer-rule.mjs;
  * today's violations are baselined in eslint/layer-baseline.json
  * (shrink-only).
+ *
+ * Severity is the one hard-at-zero map in eslint.config.mjs. A gauge
+ * at baseline 0 is an error. A gauge still above zero only warns.
+ * This file does not set either gauge by hand.
  */
 import tseslint from "typescript-eslint";
+import { applyHardAtZero, gaugeSeverity } from "./eslint.config.mjs";
 import { layerArchConfigs } from "./eslint/layer-rule.mjs";
 
 export default [
@@ -18,5 +23,5 @@ export default [
       parserOptions: { ecmaFeatures: { jsx: true } },
     },
   },
-  ...layerArchConfigs,
+  ...applyHardAtZero(layerArchConfigs, gaugeSeverity),
 ];

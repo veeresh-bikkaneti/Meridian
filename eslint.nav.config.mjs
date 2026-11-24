@@ -10,11 +10,15 @@
  * eslint/layer-rule.mjs, gated by `npm run lint:arch`.
  * The home-label and voice blocks are also
  * part of eslint.config.mjs for editors.
+ *
+ * Shell-ban severity is the one hard-at-zero map in eslint.config.mjs
+ * (one gauge for every ban). This file does not set it by hand.
  */
 import tseslint from "typescript-eslint";
 import { homeLabelConfig } from "./eslint/home-label-rule.mjs";
 import { voiceChannelConfig } from "./eslint/voice-channel-rule.mjs";
 import { shellBanConfigs } from "./eslint/shell-ban-rule.mjs";
+import { applyHardAtZero, gaugeSeverity } from "./eslint.config.mjs";
 
 export default [
   {
@@ -26,5 +30,5 @@ export default [
   },
   homeLabelConfig,
   voiceChannelConfig,
-  ...shellBanConfigs,
+  ...applyHardAtZero(shellBanConfigs, gaugeSeverity),
 ];
