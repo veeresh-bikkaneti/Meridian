@@ -33,6 +33,7 @@ const read = (name: string) => readFileSync(join(here, name), "utf8");
 const film = read("card-film.tsx");
 const css = read("home-v5.css");
 const gameApp = read("game-app.tsx");
+const ageProfileHost = read("age-profile/use-age-profile-host.tsx");
 const media = readFileSync(join(here, "../assets/home-v5/card-media.ts"), "utf8");
 const assetBytes = (name: string) =>
   statSync(join(here, "../assets/home-v5", name)).size;
@@ -344,8 +345,8 @@ describe("home wiring — five cards, one component, nothing else moves", () => 
       "lock check untouched",
     );
     assert.ok(
-      gameApp.includes('<LockedLoop title="GeoDetective" onGrownUpOpen={onGrownUpOpen} />'),
-      "locked variant untouched",
+      ageProfileHost.includes('<LockedLoop title="GeoDetective" onGrownUpOpen={onGrownUpOpen} />'),
+      "locked variant untouched (TD-06.6: built by the age-profile host, placed by game-app as a slot)",
     );
   });
 

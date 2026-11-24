@@ -41,6 +41,7 @@ const here = dirname(fileURLToPath(import.meta.url));
 const read = (rel: string) => readFileSync(join(here, rel), "utf8");
 
 const gameApp = read("../../components/game-app.tsx");
+const ageHost = read("../../components/age-profile/use-age-profile-host.tsx");
 const subjectPicker = read("./SubjectPicker.tsx");
 const ageAskGate = read("../../components/age-profile/AgeAskGate.tsx");
 const ageProfileSettings = read("../../components/age-profile/AgeProfileSettings.tsx");
@@ -64,10 +65,10 @@ function region(source: string, from: string, to: string): string {
   return source.slice(start, end);
 }
 
-describe("the gate holder (GameApp)", () => {
+describe("the gate holder (the age-profile host, mounted by GameApp)", () => {
   it("holds the continuation in session-only state, dropped on a cache restore", () => {
     assert.ok(
-      gameApp.includes("const [ageAsk, setAgeAsk] = useState<{ proceed: () => void } | null>(null);"),
+      ageHost.includes("const [ageAsk, setAgeAsk] = useState<{ proceed: () => void } | null>(null);"),
       "the held continuation starts empty and is never persisted",
     );
     const handler = region(
@@ -75,11 +76,13 @@ describe("the gate holder (GameApp)", () => {
       "const onPageShow = (e: PageTransitionEvent)",
       "}, []);",
     );
-    assert.ok(handler.includes("setAgeAsk(null);"), "a cache restore drops the held continuation");
+    assert.ok(handler.includes("clearAgeAsk();"), "a cache restore drops the held continuation");
+    const clear = region(ageHost, "const clearAgeAsk = useCallback(", ");");
+    assert.ok(clear.includes("setAgeAsk(null)"), "the host's clear drops the hold");
   });
 
   it("runs the continuation at once when a band is set, and holds it when none is", () => {
-    const helper = region(gameApp, "const askAgeFirst = useCallback(", "  );\n");
+    const helper = region(ageHost, "const askAgeFirst = useCallback(", "  );\n");
     assert.ok(
       helper.includes('if (ageProfile.status !== "unset") {'),
       "the trigger is the profile's unset status — not the resolved band",
@@ -90,7 +93,7 @@ describe("the gate holder (GameApp)", () => {
   });
 
   it("the pick clears the hold before the continuation runs; backing out only clears it", () => {
-    const overlay = region(gameApp, "const ageAskOverlay = ageAsk ? (", ") : null;");
+    const overlay = region(ageHost, "const ageAskGate = ageAsk ? (", ") : null;");
     const picked = region(overlay, "onPicked={() => {", "}}");
     assert.ok(picked.includes("setAgeAsk(null);"), "the hold clears on the pick");
     assert.ok(picked.includes("proceed();"), "and the held continuation runs");
@@ -142,8 +145,12 @@ describe("the Why Learn path (amendment: the page asks itself)", () => {
     // leaving an open case as a run in progress; the picker does not,
     // because its band event has no round boundary of its own to land
     // on while a case sits open — deferring it starved the re-deal.
-    const settingsMounts = gameApp.split("runInProgress={run !== null || loopOpen}").length - 1;
-    assert.equal(settingsMounts, 2, "both AgeProfileSettings mounts keep the loopOpen expression");
+    const settingsMounts = gameApp.split("ageSettings(run !== null || loopOpen)").length - 1;
+    assert.equal(settingsMounts, 2, "both settings mounts keep the loopOpen expression");
+    assert.ok(
+      ageHost.includes("runInProgress={runInProgress}"),
+      "the host passes the composer's value through to AgeProfileSettings",
+    );
   });
 
   it("a subject card's tap with no band set goes to the pills, never to a case", () => {

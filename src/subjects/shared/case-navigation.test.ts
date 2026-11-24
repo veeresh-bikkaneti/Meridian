@@ -51,6 +51,7 @@ const here = dirname(fileURLToPath(import.meta.url));
 const read = (rel: string) => readFileSync(join(here, rel), "utf8");
 
 const gameApp = read("../../components/game-app.tsx");
+const ageHost = read("../../components/age-profile/use-age-profile-host.tsx");
 const resetControl = read("../../components/reset-history-control.tsx");
 const subjectCase = read("./SubjectCase.tsx");
 const subjectPicker = read("./SubjectPicker.tsx");
@@ -244,9 +245,13 @@ describe("age band picker in the Why Learn flow (defect 4)", () => {
   it("GameApp hosts the age settings over the subjects branch too", () => {
     const branch = subjectsBranch(gameApp);
     assert.ok(branch.includes("onOpenAgeSettings={openAgeSettings}"), "the picker gets the opener");
-    assert.ok(branch.includes("<AgeProfileSettings"), "the settings flow renders in this branch");
-    assert.ok(branch.includes("onClose={closeAgeSettings}"), "with GameApp's own close (focus return)");
-    assert.ok(branch.includes("onToast={setAgeToast}"), "with GameApp's own toast");
+    assert.ok(
+      branch.includes("{ageSettings(run !== null || loopOpen)}"),
+      "the settings flow renders in this branch",
+    );
+    assert.ok(ageHost.includes("<AgeProfileSettings"), "the host builds the settings element");
+    assert.ok(ageHost.includes("onClose={closeAgeSettings}"), "with the host's own close (focus return)");
+    assert.ok(ageHost.includes("onToast={setAgeToast}"), "with the host's own toast");
     assert.ok(
       branch.includes("inert={ageSettingsOpen || ageAsk !== null || undefined}"),
       "the picker goes inert behind it (and behind the ask-first picker)",

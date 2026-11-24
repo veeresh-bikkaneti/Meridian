@@ -160,25 +160,19 @@ import { JournalBoundary } from "./journal-boundary";
 // Age-profile system: the parent-set group (7-10 / 10-18 / 18+). Game
 // screens use ONLY this facade — the store is never imported directly.
 // The settings screen is React.lazy: zero initial-bundle cost.
-import "./age-profile/age-profile.css";
-import { LockedLoop } from "./age-profile/LockedLoop";
-import { ReadAloudPrefPrompt, READ_ALOUD_PREF_HEADING_ID } from "./age-profile/ReadAloudPrefPrompt";
-import { shouldAskReadAloudPref } from "@/game/age-profile/read-aloud-pref";
 import { FirstVisitQueue, type FirstVisitPrompt } from "./ui/first-visit-queue";
-import { ReadAloudPrefSettings } from "./age-profile/ReadAloudPrefSettings";
 import { EarnedBadgeRow } from "./passport/EarnedBadgeRow";
 import {
   applyPendingAtBoundary,
   audioMode,
   getAgeGroup,
   isLoopLocked,
-  loadProfile,
-  onAgeProfileChanged,
   pinToleranceKm,
   resolveBand,
   type AgeBandId,
   type BandRunConfig,
 } from "@/game/age-profile";
+import { useAgeProfileHost } from "./age-profile/use-age-profile-host";
 
 type LegacySnapshotBand = Exclude<BandRunConfig["band"], AgeBandId>;
 
@@ -192,8 +186,6 @@ function normalizeSnapshotBand(b: AgeBandId | LegacySnapshotBand): AgeBandId {
   if (b === "11-13") return "10-18";
   return b;
 }
-const AgeProfileSettings = lazy(() => import("./age-profile/AgeProfileSettings"));
-const AgeAskGate = lazy(() => import("./age-profile/AgeAskGate"));
 const StorytellerHomeHost = lazy(() => import("./storyteller-home"));
 // Journal movie player: React.lazy like the hosts above — the player and
 // its movie/transcript code stay out of the entry bundle and load with the
@@ -1391,15 +1383,25 @@ export function GameApp() {
   // card tap. Never persisted — a reload lands on Home, like the
   // loop's tap-in rule.
   const [subjectsOpen, setSubjectsOpen] = useState<boolean>(false);
-  // Ask-first (owner decision, 2026-11-14): a "Resume your case"
-  // attempted with no age band set holds its continuation here
-  // while the age picker is answered (see askAgeFirst below). The
-  // Why Learn flow asks on the picker page itself since the
-  // 2026-11-15 amendment, so the resume paths are the ones still
-  // held here. Session-only, like the screens it guards — a cache
-  // restore drops it with them, so no case can start off the back
-  // of a frozen page.
-  const [ageAsk, setAgeAsk] = useState<{ proceed: () => void } | null>(null);
+  // Age-profile state and overlays (game-app-map step 4): the host
+  // hook in ./age-profile owns the profile state, the ask-first
+  // hold, the settings wiring and the toast — GameApp only passes
+  // the values and slots on to the screens and Home.
+  const {
+    ageBand,
+    ageAsk,
+    clearAgeAsk,
+    askAgeFirst,
+    ageAskGate,
+    ageSettingsOpen,
+    openAgeSettings,
+    ageSettings,
+    ageToast,
+    ageToastNode,
+    lockedLoop,
+    readAloudPrefSettings,
+    readAloudPrefEntry,
+  } = useAgeProfileHost();
 
   // A page restored from the browser's back/forward cache keeps its
   // frozen React state, so a tap-in screen left open when the page
@@ -1415,7 +1417,7 @@ export function GameApp() {
     const onPageShow = (e: PageTransitionEvent) => {
       if (!e.persisted) return;
       setSubjectsOpen(false);
-      setAgeAsk(null);
+      clearAgeAsk();
       writeLoopOpen(false);
       setLoopOpen(false);
     };
@@ -1540,88 +1542,24 @@ export function GameApp() {
   // leave; in-progress cases resume from the store when the player
   // taps in.
   const [coldTrailOpen, setColdTrailOpen] = useState<boolean>(() => bootRetryRef.current === "Cold Trail");
-  // Age profile (parent-set band). The profile object lives in state and
-  // refreshes via the `ageprofile:changed` event — game screens never
-  // touch the store directly. The settings screen (lazy) is the only
-  // writer of parent-control mutations.
-  const [ageProfile, setAgeProfile] = useState(() => loadProfile());
-  useEffect(() => onAgeProfileChanged(() => setAgeProfile(loadProfile())), []);
-  const ageBand: AgeBandId = resolveBand(ageProfile);
-  const [ageSettingsOpen, setAgeSettingsOpen] = useState(false);
-  const [ageToast, setAgeToast] = useState<string | null>(null);
   // Post-reload notice (chunk-recovery): set once at boot when the
   // previous page's reload left a notice flag. Deliberately NO
-  // auto-dismiss timer (unlike ageToast above): a timed status can be
+  // auto-dismiss timer (unlike the age toast): a timed status can be
   // deleted before a screen reader reaches it. Close button only.
   const { chunkReloadNotice, consumeChunkReloadNoticeOnce, dismissChunkReloadNotice } =
     useChunkReloadNotice();
-  useEffect(() => {
-    if (ageToast === null) return;
-    const id = window.setTimeout(() => setAgeToast(null), 3500);
-    return () => window.clearTimeout(id);
-  }, [ageToast]);
   // "Start over" reset (manifest 2026-10-28): the success toast reuses
   // the age-toast styling/lifetime, and historyResetEpoch is the
   // refresh pin (D14) — bumping it remounts <Choose> (re-reading the
   // mount-only home surfaces) and re-runs useDeckStatus in place.
   const { resetToast, historyResetEpoch, showResetSuccess } = useResetHistoryToast();
-  // Invoking control for the age settings (footer "For grown-ups" link or
-  // locked-tile grown-up link) — focus returns here when the settings close.
-  const ageTriggerRef = useRef<HTMLElement | null>(null);
-  const openAgeSettings = useCallback((e?: ReactMouseEvent<HTMLElement>) => {
-    // Remember the invoking control ("For grown-ups" footer link or the
-    // locked-tile grown-up link) so focus can return to it on close.
-    if (e) ageTriggerRef.current = e.currentTarget;
-    setAgeSettingsOpen(true);
-  }, []);
-  const closeAgeSettings = useCallback(() => {
-    const trigger = ageTriggerRef.current;
-    ageTriggerRef.current = null;
-    setAgeSettingsOpen(false);
-    if (trigger && document.contains(trigger)) {
-      // The settings unmount on the next paint — return focus after that,
-      // without scrolling the home page.
-      requestAnimationFrame(() => {
-        if (document.contains(trigger)) trigger.focus({ preventScroll: true });
-      });
-    }
-  }, []);
-  // Ask-first (owner decision, 2026-11-14): the case-start paths
-  // that bypass the picker page — "Resume your case" in the
-  // subjects branch and on Home's GeoDetective card — run their
-  // continuation through here. With a band set the continuation
-  // runs immediately and the player sees no change; with none set,
-  // the continuation is held and the age picker (AgeAskGate,
-  // prod's own AgePicker) renders instead. The pick writes the
-  // band through the store's unset path, then the held
-  // continuation runs — the player lands on the case they were
-  // going to, at the band they picked. Backing out clears the
-  // hold: no write, no case. The Why Learn entry and the subject
-  // cards ask on the picker page itself since the 2026-11-15
-  // amendment (AgeBandControl's pills — Radhae's reconciliation
-  // design): no case can start from that page with no band set,
-  // and the ask stays contained in that workflow.
-  const askAgeFirst = useCallback(
-    (proceed: () => void): void => {
-      if (ageProfile.status !== "unset") {
-        proceed();
-        return;
-      }
-      setAgeAsk({ proceed });
-    },
-    [ageProfile.status],
-  );
-  const ageAskOverlay = ageAsk ? (
+  // The ask-first gate overlay: the gate element is the age-profile
+  // host's; the Suspense + error boundary stay with the composer
+  // (the boundary is a components/root module — see the host file).
+  const ageAskOverlay = ageAskGate ? (
     <Suspense fallback={null}>
       <MapErrorBoundary surface="Age picker">
-      <AgeAskGate
-        onPicked={() => {
-          const proceed = ageAsk.proceed;
-          setAgeAsk(null);
-          proceed();
-        }}
-        onCancel={() => setAgeAsk(null)}
-      />
+      {ageAskGate}
       </MapErrorBoundary>
     </Suspense>
   ) : null;
@@ -3685,20 +3623,12 @@ export function GameApp() {
         {ageSettingsOpen ? (
           <Suspense fallback={null}>
             <MapErrorBoundary surface="Age settings">
-              <AgeProfileSettings
-                runInProgress={run !== null || loopOpen}
-                onClose={closeAgeSettings}
-                onToast={setAgeToast}
-              />
+              {ageSettings(run !== null || loopOpen)}
             </MapErrorBoundary>
           </Suspense>
         ) : null}
         {ageAskOverlay}
-        {ageToast ? (
-          <div className="agep-toast" role="status" data-testid="agep-toast">
-            {ageToast}
-          </div>
-        ) : null}
+        {ageToastNode}
         {celebrationOverlay}
         {idleToast}
       </>
@@ -4099,19 +4029,10 @@ export function GameApp() {
       node: <TutorialInvite onTakeTour={onTakeTour} onDismiss={onDismissInvite} />,
     });
   }
-  if (shouldAskReadAloudPref()) {
-    firstVisitPrompts.push({
-      id: "read-aloud-sheet",
-      // Arrival modal (owner direction, 2026-11-20): the sheet holds
-      // the page until the kid picks one of the three choices — no
-      // backdrop-click or Escape dismiss. Arrival only: this list is
-      // built solely in the Home branch below, so the sheet can
-      // never surface over a run or a case.
-      modal: true,
-      labelledBy: READ_ALOUD_PREF_HEADING_ID,
-      node: <ReadAloudPrefPrompt onAnswered={() => bumpPromptQueue((n) => n + 1)} />,
-    });
-  }
+  // The read-aloud sheet entry is the age-profile host's (it owns the
+  // prompt); the queue order here is unchanged — scout, tour, sheet.
+  const readAloudEntry = readAloudPrefEntry(() => bumpPromptQueue((n) => n + 1));
+  if (readAloudEntry) firstVisitPrompts.push(readAloudEntry);
 
   return (
     <>
@@ -4186,6 +4107,8 @@ export function GameApp() {
         // pill button showing both the Layers icon and current mode label.
         <MapModeToggle context="home" mapMode={mapMode} onSelect={handleHomeMapMode} />
       }
+      lockedLoop={lockedLoop}
+      footerLead={readAloudPrefSettings}
       notice={
         <>
           {challengeBootNoticeEl}
@@ -4220,20 +4143,12 @@ export function GameApp() {
     {ageSettingsOpen ? (
       <Suspense fallback={null}>
         <MapErrorBoundary surface="Age settings">
-          <AgeProfileSettings
-            runInProgress={run !== null || loopOpen}
-            onClose={closeAgeSettings}
-            onToast={setAgeToast}
-          />
+          {ageSettings(run !== null || loopOpen)}
         </MapErrorBoundary>
       </Suspense>
     ) : null}
     {ageAskOverlay}
-    {ageToast ? (
-      <div className="agep-toast" role="status" data-testid="agep-toast">
-        {ageToast}
-      </div>
-    ) : null}
+    {ageToastNode}
     {resetToastEl}
     {celebrationOverlay}
     {idleToast}
@@ -4706,6 +4621,8 @@ function Choose({
   onGrownUpOpen,
   headingRef,
   mapModeControl,
+  lockedLoop,
+  footerLead,
 }: {
   onState: (e: ReactMouseEvent) => void;
   onCountry: (e: ReactMouseEvent) => void;
@@ -4756,6 +4673,12 @@ function Choose({
    * hero's top row (Block C cure). GameApp owns the mode state and
    * the handlers; Choose only places the control. */
   mapModeControl?: ReactNode;
+  /** The locked GeoDetective tile, built by the age-profile host —
+   * Choose places it on the edition card but never imports it. */
+  lockedLoop: ReactNode;
+  /** SiteFooter's lead slot: the read-aloud preference setting,
+   * built by the age-profile host. */
+  footerLead: ReactNode;
 }) {
   // GeoDetective progress for the edition card: the resume variant and the
   // streak line. Read on mount (the menu remounts when the loop screen
@@ -5170,7 +5093,7 @@ function Choose({
             Age-profile: for bands where the loop is locked (no current group locks it), the SAME
             footprint renders the locked variant in place. */}
         {isLoopLocked(ageBand, "geodetective") ? (
-          <LockedLoop title="GeoDetective" onGrownUpOpen={onGrownUpOpen} />
+          lockedLoop
         ) : (
         <article
           className="hv5-card hv5-split hv5-stack hv5-case home-rise"
@@ -5516,7 +5439,7 @@ function Choose({
         width="wide" gives the links row the column's own width and
         gutters, so the row sits exactly where it did inside <main>. */}
     <SiteFooter
-      lead={<ReadAloudPrefSettings />}
+      lead={footerLead}
       onGrownUps={onGrownUpOpen}
       onTakeTour={onTakeTour}
       width="wide"
