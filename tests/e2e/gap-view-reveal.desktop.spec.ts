@@ -132,14 +132,21 @@ const MAX_SKIP_ATTEMPTS = 3;
 const MOVE_GATE_CAP_MS = 3000;
 /** A card this soon after Drop is a hit or no-op fit, not a running beat. */
 const PROMPT_CARD_MS = 1000;
-/** Skip tap must land well before the ~2.2 s auto-appear. */
-const SKIP_TAP_MAX_MS = 1200;
 /**
- * Tap → card bound. Measured on this VM (round 4, 11 runs of this test,
- * page clock, rAF-quantized at ~8–15 fps under WebGL): 107–152 ms,
- * median 130 ms. 300 ms is ~2x the worst observed. A no-op skip leaves
- * the card to the beat's own ~2.2 s timer, so with the tap < 1200 ms the
- * gap is >= ~1 s: the bound separates the two with margin on both sides.
+ * Tap → card bound, part of the RELATIVE skip bound (#313, panel
+ * ruling): the tap must land while the beat is still running —
+ * movement still in progress in the samples immediately before the
+ * tap — and the card must follow within this bound. Measured on this
+ * VM (round 4, 11 runs of this test, page clock, rAF-quantized at
+ * ~8–15 fps under WebGL): 107–152 ms, median 130 ms; 300 ms is ~2x
+ * the worst observed. A no-op skip leaves the card to the beat's own
+ * ~2.2 s timer, so a tap driven at first movement sits ~1 s or more
+ * from the card: the bound separates the two with margin on both
+ * sides. There is deliberately NO absolute tap deadline: on a slow
+ * harness the movement gate alone can outlast any fixed window
+ * while the skip still works, and on a fast machine a widened window
+ * would exceed the ~2.2 s auto-appear and open a false-pass window
+ * for a no-op skip.
  */
 const SKIP_CARD_MAX_MS = 300;
 
@@ -250,14 +257,15 @@ test("miss: a tap on the map skips the beat to the end state", async ({
       true,
     );
   });
-  // Fix round 4: the skip tap must land well before the beat's own
-  // ~2.2 s auto-appear, otherwise a no-op skip still passes (the card
-  // shows up on its own inside any generous window). So the tap is
-  // driven by the in-page recorder: one awaited page.evaluate resolves
-  // on the first frame where the true spot's projection has moved (the
-  // beat is running) and the card is not up, and the trusted mouse tap
-  // follows at once. tapAt (pointerdown) and cardAt (first frame with
-  // the card) are both on the page clock, measured from the Drop click.
+  // Fix round 4: the skip tap is driven by the in-page recorder, so
+  // it lands while the beat is running: one awaited page.evaluate
+  // resolves on the first frame where the true spot's projection has
+  // moved (the beat is running) and the card is not up, and the
+  // trusted mouse tap follows at once. That is what makes the
+  // relative bound below meaningful — a no-op skip would leave the
+  // card to the beat's own ~2.2 s timer, far outside it. tapAt
+  // (pointerdown) and cardAt (first frame with the card) are both on
+  // the page clock, measured from the Drop click.
   // A hit or near-miss (card up promptly, no beat to skip) advances to
   // the next place and retries; it never returns vacuously.
   // hook is reported by the recorder for every frame (asserted below).
@@ -378,14 +386,30 @@ test("miss: a tap on the map skips the beat to the end state", async ({
   console.log(`gap-view skip ${diag} spotMoves=${spotMoves}`);
   expect(spotMoves, `the gap-view camera must move before the card appears; ${diag}`).toBe(true);
   // Timing proof that the TAP produced the card, not the beat's own
-  // ~2.2 s timer: the tap lands early in the beat, and the card follows
-  // within SKIP_CARD_MAX_MS of it.
+  // ~2.2 s timer — the relative bound (#313): movement is still in
+  // progress in the samples immediately before the tap (the last two
+  // samples at or before the tap still move), and the card follows
+  // within SKIP_CARD_MAX_MS of the tap. A no-op skip fails both
+  // halves: the tap is driven at first movement, so the beat's timer
+  // would land the card ~1 s or more after it, and a tap that only
+  // lands once the camera has settled shows no movement before it.
   expect(rec.tapAt, `skip tap pointerdown was not recorded; ${diag}`).not.toBeNull();
   expect(rec.cardAt, `card frame was not recorded; ${diag}`).not.toBeNull();
+  const preTap = rec.samples.filter((s) => s.t <= rec.tapAt!);
+  const lastPair = preTap.slice(-2);
+  const movementAtTap =
+    lastPair.length === 2 &&
+    lastPair[0]!.x !== null &&
+    lastPair[1]!.x !== null &&
+    (lastPair[0]!.x !== lastPair[1]!.x || lastPair[0]!.y !== lastPair[1]!.y);
   expect(
-    rec.tapAt!,
-    `skip tap must land < ${SKIP_TAP_MAX_MS} ms after Drop (auto-appear is ~2.2 s); ${diag}`,
-  ).toBeLessThan(SKIP_TAP_MAX_MS);
+    movementAtTap,
+    `movement must still be in progress in the samples immediately before the tap; ${diag}`,
+  ).toBe(true);
+  expect(
+    rec.cardAt! - rec.tapAt!,
+    `card must not appear before the skip tap; ${diag}`,
+  ).toBeGreaterThanOrEqual(0);
   expect(
     rec.cardAt! - rec.tapAt!,
     `card must follow the skip tap within ${SKIP_CARD_MAX_MS} ms; ${diag}`,

@@ -86,7 +86,7 @@ const YELAHANKA_ID = "gn-1252758"; // Yelahanka, Karnataka — easy (1)
 // with hookMissing and no history, so it is excluded from the Globe
 // Easy storied rung and can no longer be forced. Jerez de la Frontera
 // is tier-1 WITH a verified history, in Andalusia like Sevilla, and
-// ~2,569 km from Debrecen (Sevilla: ~1,900 km) — a guaranteed miss.
+// ~2,569 km from Debrecen (Sevilla: 2,511 km) — a guaranteed miss.
 const JEREZ_ID = "gn-2516326"; // Jerez de la Frontera, Andalusia, ES — easy (1)
 const DEBRECEN_ID = "gn-721472"; // Debrecen, Hajdú-Bihar, HU — easy (1)
 
