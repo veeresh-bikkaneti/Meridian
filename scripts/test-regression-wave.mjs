@@ -17,7 +17,7 @@
  * - The arch and nav ratchets are checked against the baseline counts,
  *   not just the eslint exit code: noRawIo is at its hard floor — the
  *   baseline is empty and must stay that way (a re-baselined row fails
- *   the profile) — noUpwardImport <= 120, shell-ban <= 10. Baselines can
+ *   the profile) — noUpwardImport <= 110, shell-ban <= 10. Baselines can
  *   only shrink; a count above the cap fails even if eslint passed.
  * - Entry size must stay <= 323,865 B gzip; the exact byte count is
  *   printed either way.
@@ -42,7 +42,7 @@ import { pathToFileURL } from "node:url";
 
 export const LIMITS = {
   noRawIo: 0,
-  noUpwardImport: 120,
+  noUpwardImport: 110,
   shellBan: 10,
   entryBytes: 323_865,
 };
