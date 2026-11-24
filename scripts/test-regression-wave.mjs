@@ -15,9 +15,10 @@
  *
  * Rules baked in:
  * - The arch and nav ratchets are checked against the baseline counts,
- *   not just the eslint exit code: noRawIo <= 13, noUpwardImport <= 129,
- *   shell-ban <= 14. Baselines can only shrink; a count above the cap
- *   fails even if eslint itself passed.
+ *   not just the eslint exit code: noRawIo is at its hard floor — the
+ *   baseline is empty and must stay that way (a re-baselined row fails
+ *   the profile) — noUpwardImport <= 129, shell-ban <= 14. Baselines can
+ *   only shrink; a count above the cap fails even if eslint passed.
  * - Entry size must stay <= 323,865 B gzip; the exact byte count is
  *   printed either way.
  * - A failed Playwright spec is re-run once, alone (AGENTS.md section
@@ -40,7 +41,7 @@ import { join } from "node:path";
 import { pathToFileURL } from "node:url";
 
 export const LIMITS = {
-  noRawIo: 13,
+  noRawIo: 0,
   noUpwardImport: 129,
   shellBan: 14,
   entryBytes: 323_865,

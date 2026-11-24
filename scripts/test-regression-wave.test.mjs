@@ -11,6 +11,7 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 
 import {
+  LIMITS,
   archVerdict,
   collectPlaywrightFailures,
   computeExitCode,
@@ -36,15 +37,25 @@ test("parseArgs: defaults, --help, --list, unknown flag rejected", () => {
 });
 
 test("archVerdict: at the ratchet passes, one over fails", () => {
-  const at = layerCounts({ noRawIo: entries(13), noUpwardImport: entries(129) });
-  assert.deepEqual(at, { noRawIo: 13, noUpwardImport: 129 });
+  const at = layerCounts({ noRawIo: entries(0), noUpwardImport: entries(129) });
+  assert.deepEqual(at, { noRawIo: 0, noUpwardImport: 129 });
   assert.equal(archVerdict(at).ok, true);
-  const overRaw = archVerdict({ noRawIo: 14, noUpwardImport: 129 });
+  const overRaw = archVerdict({ noRawIo: 1, noUpwardImport: 129 });
   assert.equal(overRaw.ok, false);
-  assert.match(overRaw.note, /noRawIo 14 > 13/);
-  const overUp = archVerdict({ noRawIo: 13, noUpwardImport: 130 });
+  assert.match(overRaw.note, /noRawIo 1 > 0/);
+  const overUp = archVerdict({ noRawIo: 0, noUpwardImport: 130 });
   assert.equal(overUp.ok, false);
   assert.match(overUp.note, /noUpwardImport 130 > 129/);
+});
+
+test("the raw-I/O ratchet is hard at zero and cannot grow back", () => {
+  assert.equal(LIMITS.noRawIo, 0);
+  const one = archVerdict({ noRawIo: 1, noUpwardImport: 129 });
+  assert.equal(one.ok, false);
+  assert.match(one.note, /noRawIo 1 > 0/);
+  const oldCap = archVerdict({ noRawIo: 13, noUpwardImport: 129 });
+  assert.equal(oldCap.ok, false);
+  assert.match(oldCap.note, /noRawIo 13 > 0/);
 });
 
 test("shellBanTotal sums every ban list and ignores the comment", () => {
@@ -170,7 +181,7 @@ function baseDeps(overrides = {}) {
       ["playwright test", { code: 0, stdout: "", stderr: "" }],
     ]),
     readJson: (path) => {
-      if (path.includes("layer-baseline")) return { noRawIo: entries(13), noUpwardImport: entries(129) };
+      if (path.includes("layer-baseline")) return { noRawIo: entries(0), noUpwardImport: entries(129) };
       if (path.includes("shell-ban-baseline")) return { pageLocalMain: entries(14) };
       return { suites: [] }; // Playwright report: no failures
     },
@@ -187,6 +198,20 @@ test("runProfile: a fully green stub run passes all 14 rows and exits 0", async 
   assert.ok(rows.every((r) => r.result === "PASS"), JSON.stringify(rows, null, 1));
   const entry = rows.find((r) => r.suite === "Entry size");
   assert.match(entry.notes, /320,000 B/);
+});
+
+test("runProfile: a one-row raw-I/O baseline fails the profile even when eslint exits 0", async () => {
+  const deps = baseDeps();
+  deps.readJson = (path) => {
+    if (path.includes("layer-baseline")) return { noRawIo: entries(1), noUpwardImport: entries(129) };
+    if (path.includes("shell-ban-baseline")) return { pageLocalMain: entries(14) };
+    return { suites: [] };
+  };
+  const { rows, exitCode } = await runProfile(deps);
+  const arch = rows.find((r) => r.suite === "Architecture lint");
+  assert.equal(arch.result, "FAIL");
+  assert.match(arch.notes, /noRawIo 1 > 0/);
+  assert.equal(exitCode, 1);
 });
 
 test("runProfile: a failing gate fails its row and the run", async () => {
@@ -224,7 +249,7 @@ test("runProfile: a Playwright failure that passes its lone re-run is a flake, n
       ["check:entry-size", { code: 0, stdout: "check-entry-size: entry JS gzip 320,000 B, limit 323,865 B", stderr: "" }],
     ]),
     readJson: (path) => {
-      if (path.includes("layer-baseline")) return { noRawIo: entries(13), noUpwardImport: entries(129) };
+      if (path.includes("layer-baseline")) return { noRawIo: entries(0), noUpwardImport: entries(129) };
       if (path.includes("shell-ban-baseline")) return { pageLocalMain: entries(14) };
       // First report has one failure; the lone re-run's report is clean.
       return pwRuns <= 1
@@ -256,7 +281,7 @@ test("runProfile: a Playwright failure that fails its lone re-run is a regressio
       ["check:entry-size", { code: 0, stdout: "check-entry-size: entry JS gzip 320,000 B, limit 323,865 B", stderr: "" }],
     ]),
     readJson: (path) => {
-      if (path.includes("layer-baseline")) return { noRawIo: entries(13), noUpwardImport: entries(129) };
+      if (path.includes("layer-baseline")) return { noRawIo: entries(0), noUpwardImport: entries(129) };
       if (path.includes("shell-ban-baseline")) return { pageLocalMain: entries(14) };
       return {
         suites: [
