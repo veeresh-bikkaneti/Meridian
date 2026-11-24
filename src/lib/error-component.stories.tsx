@@ -17,7 +17,7 @@ import { AppErrorComponent } from "./error-component.tsx";
 // real TanStack router on a memory history, the story as root route.
 // The header takes the in-app onHome form (site-header.stories.tsx),
 // and status / mute are null: this screen has no status readout and
-// plays no audio. The screen still renders its own <main> today —
+// plays no audio. The screen still renders its own main landmark today —
 // that is the pageLocalMain baseline entry the later production PR
 // removes; the mockup shows the target frame around it.
 const meta = {
