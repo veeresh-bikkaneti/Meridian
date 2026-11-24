@@ -171,7 +171,7 @@ test("no page-level horizontal overflow and 18 story cards at five viewports", a
   await expect(page.locator("footer").first()).toBeVisible();
 });
 
-test("fixture-live overlay: Done holds exactly 2 stories and 11 architecture subtasks", async ({
+test("fixture-live overlay: Done holds exactly 2 stories and 12 architecture subtasks", async ({
   page,
   context,
 }) => {
@@ -187,13 +187,13 @@ test("fixture-live overlay: Done holds exactly 2 stories and 11 architecture sub
   // The Done column holds exactly 2 story cards.
   await expect(page.locator('.kb-col[data-col="Done"] .kb-story')).toHaveCount(2);
 
-  // Expanded, the architecture lane shows exactly 11 subtasks
+  // Expanded, the architecture lane shows exactly 12 subtasks
   // whose column chip says Done — the snapshot's own picture,
   // reproduced by the overlay from the recorded responses.
   await expandAllStories(page);
   await expect(
     page.locator('.kb-story[data-lane="architecture"] .kb-sub .kb-chip-col[data-col="Done"]'),
-  ).toHaveCount(11);
+  ).toHaveCount(12);
 });
 
 test("auto-matched pull and branch move their cards, and the seat chip fits", async ({
@@ -238,7 +238,7 @@ test("auto-matched pull and branch move their cards, and the seat chip fits", as
 
     await expandAllStories(page);
     const retire = page.locator(".kb-sub", { hasText: "TD-09.1" });
-    await expect(retire.locator('.kb-chip-col[data-col="In review"]')).toBeVisible();
+    await expect(retire.locator('.kb-chip-col[data-col="Done"]')).toBeVisible();
     await expect(retire.getByRole("link", { name: "finishes #577" })).toBeVisible();
     const cva = page.locator(".kb-sub", { hasText: "TD-10.2" });
     await expect(cva.locator('.kb-chip-col[data-col="In progress"]')).toBeVisible();
@@ -263,15 +263,15 @@ test("falls back to the snapshot, labelled, when the live check cannot complete"
   await expect.poll(() => githubCalled).toBe(true);
 });
 
-test("free to claim marks exactly the 18 free subtasks", async ({ page }) => {
+test("free to claim marks exactly the 16 free subtasks", async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 800 });
   await openKanban(page);
 
   await page.getByRole("button", { name: /Free to claim/ }).click();
 
   // Free-to-claim mode shows the stories that hold a free
-  // subtask, auto-expanded, each free subtask badged — 18 of
+  // subtask, auto-expanded, each free subtask badged — 16 of
   // them on the snapshot, and no two overlap in owns.
-  await expect(page.locator(".kb-chip-free")).toHaveCount(18);
-  await expect(page.locator(".kb-sub-free")).toHaveCount(18);
+  await expect(page.locator(".kb-chip-free")).toHaveCount(16);
+  await expect(page.locator(".kb-sub-free")).toHaveCount(16);
 });

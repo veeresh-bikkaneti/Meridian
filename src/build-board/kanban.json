@@ -120,8 +120,8 @@
     "td-tooling.validators-zod"
    ],
    "rollup": {
-    "col": "Backlog",
-    "done": 0,
+    "col": "Blocked",
+    "done": 1,
     "total": 2
    }
   },
@@ -141,7 +141,7 @@
    ],
    "rollup": {
     "col": "Backlog",
-    "done": 0,
+    "done": 1,
     "total": 2
    }
   },
@@ -360,8 +360,8 @@
     "arch-pages.links"
    ],
    "rollup": {
-    "col": "Backlog",
-    "done": 0,
+    "col": "Blocked",
+    "done": 1,
     "total": 2
    }
   },
@@ -651,20 +651,22 @@
    "story": "td-tooling",
    "title": "Let the content checks run in a fresh checkout without a manual install step",
    "lane": "tech-debt",
-   "col": "Backlog",
+   "col": "Done",
    "phase": null,
    "prompt": null,
    "owner": "unassigned",
-   "owns": [],
-   "ownsStatus": "unknown",
-   "ownsNote": "The docs name the symptom (npm i --no-save zod) but no file or fix.",
+   "owns": [
+    "package.json"
+   ],
+   "ownsStatus": "known",
+   "ownsNote": "zod is a direct dependency. Subject validators run from prebuild.",
    "dependsOn": [],
    "blockedBy": null,
    "gate": null,
    "prs": [],
    "issues": [],
    "branches": [],
-   "evidence": "Live behaviour: unknown (not run).",
+   "evidence": "Fresh clone at 37a9b5c4, npm ci, no extra install. zod ^4.6.7 is in dependencies and node_modules/zod@4.6.7. math, physics, chemistry, general-knowledge, journals and social-studies validators each exited 0.",
    "v1": {
     "index": 7,
     "id": "fresh-worktree-validators-need-npm-i-no-save-zod",
@@ -879,7 +881,7 @@
    "story": "td-pipeline",
    "title": "Stop the old site's publish job from failing on every run",
    "lane": "tech-debt",
-   "col": "Backlog",
+   "col": "Done",
    "phase": null,
    "prompt": "05",
    "owner": "agent (prompt 05)",
@@ -887,16 +889,22 @@
     ".github/workflows/pages.yml"
    ],
    "ownsStatus": "known",
-   "ownsNote": "Same file and same PR as arch-pages.retire; this card closes when that PR merges.",
+   "ownsNote": "Same file and same PR as arch-pages.retire. The job is already gone; this card only records that.",
    "dependsOn": [
     "arch-pages.retire"
    ],
    "blockedBy": null,
    "gate": null,
-   "prs": [],
+   "prs": [
+    {
+     "number": 577,
+     "role": "closes",
+     "href": "https://github.com/veeresh-bikkaneti/Meridian/pull/577"
+    }
+   ],
    "issues": [],
    "branches": [],
-   "evidence": "pages.yml on main; last 2 runs failed (2026-11-22 9:24 and 11:27 CST).",
+   "evidence": "PR #577 merged 2026-11-24 (0de11594). .github/workflows/pages.yml is not on main. Remaining workflows: ci-watchdog.yml, detective-e2e.yml, node.js.yml, prod-smoke.yml.",
    "v1": {
     "index": 14,
     "id": "pages-workflow-fails-every-run",
@@ -1792,7 +1800,7 @@
    "story": "arch-pages",
    "title": "Delete the old GitHub Pages publish job",
    "lane": "architecture",
-   "col": "Backlog",
+   "col": "Done",
    "phase": null,
    "prompt": "05",
    "owner": "agent (prompt 05)",
@@ -1804,17 +1812,16 @@
    "dependsOn": [],
    "blockedBy": null,
    "gate": null,
-   "prs": [],
-   "issues": [],
-   "branches": [
+   "prs": [
     {
-     "name": "chore/retire-pages",
-     "role": "work",
-     "match": "exact",
-     "href": "https://github.com/veeresh-bikkaneti/Meridian/tree/chore/retire-pages"
+     "number": 577,
+     "role": "closes",
+     "href": "https://github.com/veeresh-bikkaneti/Meridian/pull/577"
     }
    ],
-   "evidence": ".github/workflows/pages.yml still on main; chore/retire-pages not on origin.",
+   "issues": [],
+   "branches": [],
+   "evidence": "PR #577 merged 2026-11-24 (0de11594). git cat-file -e HEAD:.github/workflows/pages.yml fails. build:pages remains in package.json.",
    "v1": {
     "index": 36,
     "id": "retire-github-pages-pr-1-prompt-05",

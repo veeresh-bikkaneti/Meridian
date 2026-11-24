@@ -144,79 +144,73 @@ describe("loadSnapshot (schema v2)", () => {
 
   it("gives every story and subtask the assigned planning number", () => {
     const snap = snapshot();
-    assert.deepEqual(
-      Object.fromEntries(snap.stories.map((s) => [s.id, s.num])),
-      {
-        "arch-rules": "TD-01",
-        "arch-ports": "TD-02",
-        "arch-content": "TD-03",
-        "arch-imports": "TD-04",
-        "arch-shell": "TD-05",
-        "arch-split": "TD-06",
-        "arch-gates": "TD-07",
-        "arch-pages": "TD-09",
-        "td-dead-code": "TD-10",
-        "td-forms": "TD-11",
-        "td-tooling": "TD-12",
-        "td-pipeline": "TD-13",
-        "td-tests": "TD-14",
-        "td-a11y": "TD-15",
-        "td-prod-checks": "TD-16",
-        "prod-3d": "FW-08",
-        "prod-live": "FW-09",
-        "prod-grow": "FW-10",
-      },
-    );
-    assert.deepEqual(
-      Object.fromEntries(snap.subtasks.map((s) => [s.id, s.num])),
-      {
-        "arch-rules.amend": "TD-01.1",
-        "arch-rules.guardrails": "TD-01.2",
-        "arch-ports.audio": "TD-02.1",
-        "arch-ports.storage": "TD-02.2",
-        "arch-ports.transport": "TD-02.3",
-        "arch-ports.sweep-a": "TD-02.4",
-        "arch-ports.game-app": "TD-02.5",
-        "arch-ports.storyteller-home": "TD-02.6",
-        "arch-ports.last-ten": "TD-02.7",
-        "arch-content.records": "TD-03.1",
-        "arch-imports.batch-a": "TD-04.1",
-        "arch-imports.rulings": "TD-04.2",
-        "arch-imports.subject-contracts": "TD-04.3",
-        "arch-shell.nav-tests": "TD-05.1",
-        "arch-shell.sweep": "TD-05.2",
-        "arch-split.map": "TD-06.1",
-        "arch-split.size-budget": "TD-06.2",
-        "arch-split.modules": "TD-06.3",
-        "arch-split.router": "TD-06.4",
-        "arch-gates.contracts": "TD-07.1",
-        "arch-gates.flip": "TD-07.2",
-        "arch-pages.retire": "TD-09.1",
-        "arch-pages.links": "TD-09.2",
-        "td-dead-code.pack-shelf-move": "TD-10.1",
-        "td-dead-code.cva": "TD-10.2",
-        "td-dead-code.transport-hook": "TD-10.3",
-        "td-dead-code.test-stubs": "TD-10.4",
-        "td-forms.contact": "TD-11.1",
-        "td-forms.board": "TD-11.2",
-        "td-tooling.storybook-types": "TD-12.1",
-        "td-tooling.validators-zod": "TD-12.2",
-        "td-pipeline.repo-weight": "TD-13.1",
-        "td-pipeline.pages-failing": "TD-13.2",
-        "td-tests.detective-flake": "TD-14.1",
-        "td-tests.known-failures": "TD-14.2",
-        "td-a11y.lose-reveal": "TD-15.1",
-        "td-prod-checks.private-mode": "TD-16.1",
-        "td-prod-checks.crash-redeploy": "TD-16.2",
-        "prod-3d.globe": "FW-08.1",
-        "prod-3d.clue-films": "FW-08.2",
-        "prod-live.walk-fixes": "FW-09.1",
-        "prod-live.open-issues": "FW-09.2",
-        "prod-grow.pennant": "FW-10.1",
-        "prod-grow.science-review": "FW-10.2",
-        "prod-grow.adult-band": "FW-10.3",
-      },
-    );
+    assert.deepEqual(Object.fromEntries(snap.stories.map((s) => [s.id, s.num])), {
+      "arch-rules": "TD-01",
+      "arch-ports": "TD-02",
+      "arch-content": "TD-03",
+      "arch-imports": "TD-04",
+      "arch-shell": "TD-05",
+      "arch-split": "TD-06",
+      "arch-gates": "TD-07",
+      "arch-pages": "TD-09",
+      "td-dead-code": "TD-10",
+      "td-forms": "TD-11",
+      "td-tooling": "TD-12",
+      "td-pipeline": "TD-13",
+      "td-tests": "TD-14",
+      "td-a11y": "TD-15",
+      "td-prod-checks": "TD-16",
+      "prod-3d": "FW-08",
+      "prod-live": "FW-09",
+      "prod-grow": "FW-10",
+    });
+    assert.deepEqual(Object.fromEntries(snap.subtasks.map((s) => [s.id, s.num])), {
+      "arch-rules.amend": "TD-01.1",
+      "arch-rules.guardrails": "TD-01.2",
+      "arch-ports.audio": "TD-02.1",
+      "arch-ports.storage": "TD-02.2",
+      "arch-ports.transport": "TD-02.3",
+      "arch-ports.sweep-a": "TD-02.4",
+      "arch-ports.game-app": "TD-02.5",
+      "arch-ports.storyteller-home": "TD-02.6",
+      "arch-ports.last-ten": "TD-02.7",
+      "arch-content.records": "TD-03.1",
+      "arch-imports.batch-a": "TD-04.1",
+      "arch-imports.rulings": "TD-04.2",
+      "arch-imports.subject-contracts": "TD-04.3",
+      "arch-shell.nav-tests": "TD-05.1",
+      "arch-shell.sweep": "TD-05.2",
+      "arch-split.map": "TD-06.1",
+      "arch-split.size-budget": "TD-06.2",
+      "arch-split.modules": "TD-06.3",
+      "arch-split.router": "TD-06.4",
+      "arch-gates.contracts": "TD-07.1",
+      "arch-gates.flip": "TD-07.2",
+      "arch-pages.retire": "TD-09.1",
+      "arch-pages.links": "TD-09.2",
+      "td-dead-code.pack-shelf-move": "TD-10.1",
+      "td-dead-code.cva": "TD-10.2",
+      "td-dead-code.transport-hook": "TD-10.3",
+      "td-dead-code.test-stubs": "TD-10.4",
+      "td-forms.contact": "TD-11.1",
+      "td-forms.board": "TD-11.2",
+      "td-tooling.storybook-types": "TD-12.1",
+      "td-tooling.validators-zod": "TD-12.2",
+      "td-pipeline.repo-weight": "TD-13.1",
+      "td-pipeline.pages-failing": "TD-13.2",
+      "td-tests.detective-flake": "TD-14.1",
+      "td-tests.known-failures": "TD-14.2",
+      "td-a11y.lose-reveal": "TD-15.1",
+      "td-prod-checks.private-mode": "TD-16.1",
+      "td-prod-checks.crash-redeploy": "TD-16.2",
+      "prod-3d.globe": "FW-08.1",
+      "prod-3d.clue-films": "FW-08.2",
+      "prod-live.walk-fixes": "FW-09.1",
+      "prod-live.open-issues": "FW-09.2",
+      "prod-grow.pennant": "FW-10.1",
+      "prod-grow.science-review": "FW-10.2",
+      "prod-grow.adult-band": "FW-10.3",
+    });
     const nums = [...snap.stories, ...snap.subtasks].map((item) => item.num);
     assert.equal(new Set(nums).size, nums.length);
   });
@@ -239,7 +233,7 @@ describe("columnRank", () => {
 });
 
 describe("applyOverlay on the recorded fixtures", () => {
-  it("reproduces the snapshot's lane x column counts exactly (Done is 11, not 18)", () => {
+  it("reproduces the snapshot's lane x column counts exactly (Done is 12, not 18)", () => {
     const snap = snapshot();
     const out = applyOverlay(snap.subtasks, fixturePulls(), fixtureBranches());
     const counts: Record<string, Record<Column, number>> = {};
@@ -248,13 +242,25 @@ describe("applyOverlay on the recorded fixtures", () => {
       counts[s.lane][s.col] += 1;
     }
     assert.deepEqual(counts["architecture"], {
-      Backlog: 3, Blocked: 8, "In progress": 0, "In review": 1, Done: 11,
+      Backlog: 2,
+      Blocked: 8,
+      "In progress": 0,
+      "In review": 1,
+      Done: 12,
     });
     assert.deepEqual(counts["tech-debt"], {
-      Backlog: 11, Blocked: 4, "In progress": 0, "In review": 0, Done: 0,
+      Backlog: 9,
+      Blocked: 4,
+      "In progress": 0,
+      "In review": 0,
+      Done: 2,
     });
     assert.deepEqual(counts["product"], {
-      Backlog: 5, Blocked: 2, "In progress": 0, "In review": 0, Done: 0,
+      Backlog: 5,
+      Blocked: 2,
+      "In progress": 0,
+      "In review": 0,
+      Done: 0,
     });
     // No subtask moves at all on the recorded state.
     for (const s of out) {
@@ -314,11 +320,7 @@ describe("applyOverlay on the recorded fixtures", () => {
     assert.equal(a.col, "In progress");
     const [b] = applyOverlay([draft], pullsOf([10, { state: "open", draft: false }]), new Set());
     assert.equal(b.col, "In review");
-    const [c] = applyOverlay(
-      [draft],
-      pullsOf([10, { state: "closed", merged: true }]),
-      new Set(),
-    );
+    const [c] = applyOverlay([draft], pullsOf([10, { state: "closed", merged: true }]), new Set());
     assert.equal(c.col, "Done");
   });
 
@@ -410,9 +412,7 @@ describe("applyOverlay numbered pulls and branches", () => {
     const refd = makeSubtask({
       num: "TD-09.1",
       prs: [{ number: 577, role: "ref", href: "https://example.test/pull/577" }],
-      branches: [
-        { name: "chore/td-09.1-retire-pages", role: "ref", match: "exact", href: null },
-      ],
+      branches: [{ name: "chore/td-09.1-retire-pages", role: "ref", match: "exact", href: null }],
     });
     const [kept] = applyOverlay(
       [refd],
@@ -447,20 +447,14 @@ describe("applyOverlay numbered pulls and branches", () => {
       { state: "open", draft: true, title: "wip", headRef: "chore/td-10.2-remove-cva" },
     ]);
     assert.equal(applyOverlay([task], draft, new Set())[0].col, "In progress");
-    const ready = pullsOf([
-      1,
-      { state: "open", draft: false, title: "TD-10.2 remove cva" },
-    ]);
+    const ready = pullsOf([1, { state: "open", draft: false, title: "TD-10.2 remove cva" }]);
     assert.equal(applyOverlay([task], ready, new Set())[0].col, "In review");
     const merged = pullsOf([
       1,
       { state: "closed", merged: true, headRef: "chore/td-10.2-remove-cva" },
     ]);
     assert.equal(applyOverlay([task], merged, new Set())[0].col, "Done");
-    const closed = pullsOf([
-      1,
-      { state: "closed", merged: false, title: "abandoned TD-10.2" },
-    ]);
+    const closed = pullsOf([1, { state: "closed", merged: false, title: "abandoned TD-10.2" }]);
     const [noted] = applyOverlay([task], closed, new Set());
     assert.equal(noted.col, "Backlog");
     assert.equal(noted.note, "closed unmerged");
@@ -489,7 +483,10 @@ describe("applyOverlay numbered pulls and branches", () => {
       [task],
       pullsOf(
         [10, { state: "open", draft: true, labels: ["C:Firefox"] }],
-        [577, { state: "open", draft: false, title: "TD-09.1 retire", labels: ["C:Opera", "docs"] }],
+        [
+          577,
+          { state: "open", draft: false, title: "TD-09.1 retire", labels: ["C:Opera", "docs"] },
+        ],
       ),
       new Set(),
     );
@@ -580,22 +577,32 @@ describe("storyRollup", () => {
       counts[story.lane][roll.col] += 1;
     }
     assert.deepEqual(counts["tech-debt"], {
-      Backlog: 7, Blocked: 0, "In progress": 0, "In review": 0, Done: 0,
+      Backlog: 6,
+      Blocked: 1,
+      "In progress": 0,
+      "In review": 0,
+      Done: 0,
     });
     assert.deepEqual(counts["architecture"], {
-      Backlog: 2, Blocked: 3, "In progress": 0, "In review": 1, Done: 2,
+      Backlog: 1,
+      Blocked: 4,
+      "In progress": 0,
+      "In review": 1,
+      Done: 2,
     });
     assert.deepEqual(counts["product"], {
-      Backlog: 3, Blocked: 0, "In progress": 0, "In review": 0, Done: 0,
+      Backlog: 3,
+      Blocked: 0,
+      "In progress": 0,
+      "In review": 0,
+      Done: 0,
     });
   });
 
   it("applies the rule order on synthetic columns", () => {
     const story = { id: "s", subtasks: ["a", "b"] } as Parameters<typeof storyRollup>[0];
     const mk = (cols: Column[]) =>
-      new Map(
-        ["a", "b"].map((id, i) => [id, makeSubtask({ id, col: cols[i] })] as const),
-      );
+      new Map(["a", "b"].map((id, i) => [id, makeSubtask({ id, col: cols[i] })] as const));
     assert.equal(storyRollup(story, mk(["Done", "Done"])).col, "Done");
     assert.equal(storyRollup(story, mk(["Done", "In review"])).col, "In review");
     assert.equal(storyRollup(story, mk(["Blocked", "In progress"])).col, "In progress");
@@ -605,33 +612,28 @@ describe("storyRollup", () => {
 });
 
 describe("freeToClaim", () => {
-  it("returns exactly the 18 free subtasks on the snapshot", () => {
+  it("returns exactly the 16 free subtasks on the snapshot", () => {
     const snap = snapshot();
     const free = freeToClaim(snap.subtasks, snap.hotFiles);
-    assert.equal(free.length, 18);
-    assert.deepEqual(
-      free.map((s) => s.id).sort(),
-      [
-        "arch-pages.retire",
-        "arch-ports.storyteller-home",
-        "arch-shell.sweep",
-        "prod-3d.globe",
-        "prod-grow.adult-band",
-        "prod-grow.pennant",
-        "prod-live.open-issues",
-        "prod-live.walk-fixes",
-        "td-a11y.lose-reveal",
-        "td-dead-code.cva",
-        "td-dead-code.test-stubs",
-        "td-dead-code.transport-hook",
-        "td-forms.contact",
-        "td-pipeline.repo-weight",
-        "td-prod-checks.private-mode",
-        "td-tests.detective-flake",
-        "td-tests.known-failures",
-        "td-tooling.validators-zod",
-      ],
-    );
+    assert.equal(free.length, 16);
+    assert.deepEqual(free.map((s) => s.id).sort(), [
+      "arch-ports.storyteller-home",
+      "arch-shell.sweep",
+      "prod-3d.globe",
+      "prod-grow.adult-band",
+      "prod-grow.pennant",
+      "prod-live.open-issues",
+      "prod-live.walk-fixes",
+      "td-a11y.lose-reveal",
+      "td-dead-code.cva",
+      "td-dead-code.test-stubs",
+      "td-dead-code.transport-hook",
+      "td-forms.contact",
+      "td-pipeline.repo-weight",
+      "td-prod-checks.private-mode",
+      "td-tests.detective-flake",
+      "td-tests.known-failures",
+    ]);
     // The one Backlog subtask left out waits on unfinished dependencies.
     assert.ok(!free.some((s) => s.id === "td-pipeline.pages-failing"));
   });
@@ -663,7 +665,10 @@ describe("freeToClaim", () => {
       col: "In review",
       owns: ["src/components/"],
     });
-    assert.deepEqual(freeToClaim([a, reviewing], []).map((s) => s.id), []);
+    assert.deepEqual(
+      freeToClaim([a, reviewing], []).map((s) => s.id),
+      [],
+    );
   });
 
   it("ignores hotFiles on both sides of the overlap check", () => {
@@ -678,7 +683,10 @@ describe("freeToClaim", () => {
   it("does not treat a same-prefix sibling as overlap (slash boundary)", () => {
     const a = makeSubtask({ id: "s.a", owns: ["src/components2/x.ts"] });
     const busy = makeSubtask({ id: "s.b", col: "In progress", owns: ["src/components"] });
-    assert.deepEqual(freeToClaim([a, busy], []).map((s) => s.id), ["s.a"]);
+    assert.deepEqual(
+      freeToClaim([a, busy], []).map((s) => s.id),
+      ["s.a"],
+    );
   });
 
   it("excludes a subtask whose dependency is not Done", () => {
