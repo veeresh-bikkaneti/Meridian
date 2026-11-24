@@ -6,10 +6,16 @@ import snapshotJson from "./kanban.json" with { type: "json" };
 import {
   applyOverlay,
   COLUMNS,
+  columnForPull,
   columnRank,
+  deriveBoardItems,
+  extractItemKey,
+  extractStoryNums,
   extractSubtaskNums,
   freeToClaim,
+  isBlockedLabel,
   laneCounts,
+  laneForItem,
   loadSnapshot,
   storyRollup,
   storySeatTags,
@@ -701,5 +707,107 @@ describe("laneCounts", () => {
 describe("COLUMNS", () => {
   it("is the five board columns in order", () => {
     assert.deepEqual(COLUMNS, ["Backlog", "Blocked", "In progress", "In review", "Done"]);
+  });
+});
+
+describe("deriveBoardItems", () => {
+  const pull = (info: Partial<PullInfo>): PullInfo => ({
+    state: "open",
+    draft: false,
+    merged: false,
+    ...info,
+  });
+
+  it("reads an item key from the title, else head.ref, else the branch", () => {
+    assert.equal(extractItemKey("ship TD-08.4 tonight"), "TD-08.4");
+    assert.equal(extractItemKey("story TD-08 only"), "TD-08");
+    assert.deepEqual(extractStoryNums("TD-08.4 only"), []);
+    assert.equal(extractItemKey("feat/fw-11.1-lighthouse"), "FW-11.1");
+    assert.equal(extractItemKey("no number here"), null);
+  });
+
+  it("places each pull by the first matching column rule", () => {
+    assert.equal(isBlockedLabel("C:blocked"), true);
+    assert.equal(isBlockedLabel("blocked"), true);
+    assert.equal(isBlockedLabel("C:Opera"), false);
+    assert.deepEqual(columnForPull(pull({ labels: ["C:blocked"], merged: true })), {
+      col: "Blocked",
+    });
+    assert.deepEqual(columnForPull(pull({ state: "closed", merged: true })), { col: "Done" });
+    assert.deepEqual(columnForPull(pull({ state: "open", draft: false })), { col: "In review" });
+    assert.deepEqual(columnForPull(pull({ state: "open", draft: true })), { col: "In progress" });
+    assert.deepEqual(columnForPull(pull({ state: "closed", merged: false })), {
+      col: "Backlog",
+      note: "closed unmerged",
+    });
+  });
+
+  it("keeps the most advanced column when several pulls share one item", () => {
+    const pulls = new Map<number, PullInfo>([
+      [40, pull({ title: "draft TD-11.1", draft: true, state: "open" })],
+      [41, pull({ title: "review TD-11.1", draft: false, state: "open", labels: ["C:Atlas"] })],
+      [42, pull({ title: "closed TD-12.2", state: "closed", merged: false })],
+      [43, pull({ title: "blocked TD-12.2", state: "closed", labels: ["C:blocked"] })],
+      [44, pull({ title: "merged TD-09.1", state: "closed", merged: true })],
+      [45, pull({ title: "still open TD-09.1", state: "open", draft: false })],
+    ]);
+    const cards = deriveBoardItems(pulls, new Set());
+    const byNum = new Map(cards.map((card) => [card.num, card]));
+    assert.equal(byNum.get("TD-11.1")?.col, "In review");
+    assert.deepEqual(byNum.get("TD-11.1")?.prs.map((pr) => pr.number), [40, 41]);
+    assert.equal(byNum.get("TD-11.1")?.title, "draft TD-11.1");
+    assert.deepEqual(byNum.get("TD-11.1")?.seatTags, ["C:Atlas"]);
+    assert.equal(byNum.get("TD-12.2")?.col, "Blocked");
+    assert.equal(byNum.get("TD-09.1")?.col, "Done");
+    assert.deepEqual(byNum.get("TD-09.1")?.prs.map((pr) => pr.number), [44, 45]);
+  });
+
+  it("keeps unnumbered pulls and branches in the Unnumbered group", () => {
+    const pulls = new Map<number, PullInfo>([
+      [7, pull({ title: "scratch cleanup", headRef: "wip/scratch" })],
+    ]);
+    const cards = deriveBoardItems(pulls, new Set(["wip/scratch", "notes/loose"]));
+    const unnumbered = cards.filter((card) => card.unnumbered);
+    assert.equal(unnumbered.length, 2);
+    assert.ok(unnumbered.some((card) => card.title === "scratch cleanup" && card.prs[0]?.number === 7));
+    assert.ok(unnumbered.some((card) => card.title === "notes/loose" && card.col === "In progress"));
+    assert.equal(cards.some((card) => card.title === "wip/scratch" && card.prs.length === 0), false);
+  });
+
+  it("counts a numbered branch with no pull as In progress", () => {
+    const cards = deriveBoardItems(new Map(), new Set(["chore/td-08.4-kanban-github-derived"]));
+    assert.equal(cards.length, 1);
+    assert.equal(cards[0]?.num, "TD-08.4");
+    assert.equal(cards[0]?.col, "In progress");
+    assert.equal(cards[0]?.lane, "tech-debt");
+    assert.equal(cards[0]?.title, "chore/td-08.4-kanban-github-derived");
+  });
+
+  it("lanes TD as tech-debt, arch and phase as architecture, and the rest as product", () => {
+    assert.equal(laneForItem("TD-04.2", ["phase1/rules"]), "tech-debt");
+    assert.equal(laneForItem("FW-11.1", ["feat/fw-11.1-lighthouse"]), "product");
+    assert.equal(laneForItem(null, ["arch-pages"]), "architecture");
+    assert.equal(laneForItem(null, ["phase2/shell-sweep"]), "architecture");
+    const cards = deriveBoardItems(
+      new Map([
+        [1, pull({ title: "Phase 2 shell", headRef: "phase2/shell-sweep" })],
+        [2, pull({ title: "FW-99.9 not in the ledger" })],
+      ]),
+      new Set(),
+    );
+    assert.equal(cards.find((card) => card.unnumbered)?.lane, "architecture");
+    assert.equal(cards.find((card) => card.num === "FW-99.9")?.lane, "product");
+    assert.equal(cards.find((card) => card.num === "FW-99.9")?.col, "In review");
+  });
+
+  it("marks a closed unmerged pull and does not invent ledger rows", () => {
+    const cards = deriveBoardItems(
+      new Map([[9, pull({ title: "drop TD-16.1", state: "closed", merged: false })]]),
+      new Set(),
+    );
+    assert.equal(cards.length, 1);
+    assert.equal(cards[0]?.col, "Backlog");
+    assert.equal(cards[0]?.note, "closed unmerged");
+    assert.equal(cards.some((card) => card.num === "TD-01.1"), false);
   });
 });

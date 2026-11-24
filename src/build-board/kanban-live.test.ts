@@ -6,7 +6,6 @@ import snapshotJson from "./kanban.json" with { type: "json" };
 import { loadSnapshot, type Subtask } from "./kanban-data.ts";
 import {
   buildBoardUrl,
-  collectClosesPullNumbers,
   fetchKanbanLive,
   KANBAN_LIVE_CACHE_KEY,
   loadKanbanLive,
@@ -14,6 +13,9 @@ import {
   parseGithubBranches,
   parseGithubPull,
   parseGithubPulls,
+  parseLabelNames,
+  refreshKanbanLive,
+  shouldRefetchKanbanLive,
   type KeyValueStorage,
 } from "./kanban-live.ts";
 
@@ -151,13 +153,17 @@ describe("parseGithubBranches", () => {
   });
 });
 
-describe("collectClosesPullNumbers", () => {
-  it("on the real snapshot only PR 571 needs a lookup (every other closes PR is already Done)", () => {
-    assert.deepEqual(collectClosesPullNumbers(snapshotSubtasks()), [571]);
+describe("parseLabelNames", () => {
+  it("reads string labels and { name } objects", () => {
+    assert.deepEqual(parseLabelNames([{ name: "C:Opera" }, "C:blocked", { name: "" }, 3]), [
+      "C:Opera",
+      "C:blocked",
+    ]);
+    assert.equal(parseLabelNames("nope"), undefined);
   });
 });
 
-describe("fetchKanbanLive — two requests in the normal case", () => {
+describe("fetchKanbanLive — exactly two requests", () => {
   it("does not call pulls/{n} when the closes PR is already in the recent list", async () => {
     const stub = stubGlobalFetch(fixtureHandler);
     try {
@@ -188,17 +194,19 @@ describe("fetchKanbanLive — two requests in the normal case", () => {
     }
   });
 
-  it("fetches pulls/{n} only when a closes PR is absent from the recent list", async () => {
+  it("does not look up a missing number and does not walk pages", async () => {
     const stub = stubGlobalFetch((url) => {
       if (url.includes("sort=updated")) return { status: 200, body: [] };
-      return fixtureHandler(url);
+      if (url.includes("/branches")) return { status: 200, body: [] };
+      return { status: 200, body: [{ number: 571, state: "open", draft: true }] };
     });
     try {
-      const state = await fetchKanbanLive({ subtasks: snapshotSubtasks(), storage: null });
+      const state = await fetchKanbanLive({ storage: null });
       assert.ok(state);
-      assert.equal(state.pulls.get(571)?.draft, true);
-      assert.equal(stub.calls.filter((c) => c.url.endsWith("/pulls/571")).length, 1);
-      assert.equal(stub.calls.length, 3);
+      assert.equal(state.pulls.has(571), false);
+      assert.equal(stub.calls.length, 2);
+      assert.equal(stub.calls.filter((c) => /\/pulls\/\d+/.test(c.url)).length, 0);
+      assert.equal(stub.calls.filter((c) => /[?&]page=/.test(c.url)).length, 0);
     } finally {
       stub.restore();
     }
@@ -316,7 +324,7 @@ describe("fetchKanbanLive — two requests in the normal case", () => {
       assert.deepEqual(state.pulls.get(571)?.labels, ["C:Opera"]);
       assert.equal(stub.calls.length, 2);
       const raw = storage.map.get(KANBAN_LIVE_CACHE_KEY);
-      assert.equal(KANBAN_LIVE_CACHE_KEY, "meridian-kanban-live:v3");
+      assert.equal(KANBAN_LIVE_CACHE_KEY, "meridian-kanban-live:v4");
       assert.ok(raw);
       assert.equal(raw.includes("phase1/ports-part-b"), true);
       assert.equal(storage.map.has("meridian-kanban-live:v2"), false);
@@ -360,47 +368,27 @@ describe("fetchKanbanLive — two requests in the normal case", () => {
   });
 });
 
-describe("fetchKanbanLive — the paginated path (more than 10 lookups)", () => {
-  it("pages pulls?state=all until every needed number has been seen", async () => {
-    const subtasks: Subtask[] = [];
-    for (let n = 101; n <= 112; n++) {
-      subtasks.push({
-        ...snapshotSubtasks()[0],
-        id: `s.t${n}`,
-        col: "Backlog",
-        prs: [{ number: n, role: "closes", href: `https://example.test/pull/${n}` }],
-      });
-    }
-    const page1 = [
-      ...Array.from({ length: 89 }, (_, i) => ({
-        number: 1000 + i,
-        state: "closed",
-        draft: false,
-        merged_at: "2026-01-01T00:00:00Z",
-      })),
-      ...Array.from({ length: 11 }, (_, i) => ({
-        number: 101 + i,
-        state: "closed",
-        draft: false,
-        merged_at: "2026-01-01T00:00:00Z",
-      })),
-    ];
-    const page2 = [{ number: 112, state: "open", draft: true, merged_at: null }];
+describe("fetchKanbanLive — no page walking", () => {
+  it("stops after the two calls even when the pull list is a full page", async () => {
+    const page = Array.from({ length: 100 }, (_, i) => ({
+      number: i + 1,
+      state: "closed",
+      draft: false,
+      merged_at: "2026-01-01T00:00:00Z",
+      title: `TD-${String((i % 20) + 1).padStart(2, "0")}.1`,
+    }));
     const stub = stubGlobalFetch((url) => {
-      if (url.includes("/branches")) return { status: 200, body: branchesBody };
-      if (url.includes("sort=updated")) return { status: 200, body: [] };
-      if (url.includes("&page=1")) return { status: 200, body: page1 };
-      if (url.includes("&page=2")) return { status: 200, body: page2 };
-      return { status: 404, body: { message: "unexpected" } };
+      if (url.includes("/branches")) return { status: 200, body: [{ name: "feat/td-08.4-live" }] };
+      if (url.includes("sort=updated")) return { status: 200, body: page };
+      return { status: 500, body: { message: "should not be called" } };
     });
     try {
-      const state = await fetchKanbanLive({ subtasks, storage: null });
+      const state = await fetchKanbanLive({ storage: null });
       assert.ok(state);
-      for (let n = 101; n <= 112; n++) assert.ok(state.pulls.has(n), `pull ${n} seen`);
-      assert.deepEqual(state.pulls.get(112), { state: "open", draft: true, merged: false });
-      assert.ok(!stub.calls.some((c) => /\/pulls\/\d+($|\?)/.test(c.url)), "no by-number calls");
-      assert.equal(stub.calls.filter((c) => c.url.includes("sort=updated")).length, 1);
-      assert.equal(stub.calls.filter((c) => c.url.includes("&page=")).length, 2);
+      assert.equal(state.pulls.size, 100);
+      assert.equal(stub.calls.length, 2);
+      assert.equal(stub.calls.filter((c) => /\/pulls\/\d+/.test(c.url)).length, 0);
+      assert.equal(stub.calls.filter((c) => /[?&]page=/.test(c.url)).length, 0);
     } finally {
       stub.restore();
     }
@@ -463,5 +451,82 @@ describe("loadKanbanLive", () => {
     } finally {
       stub.restore();
     }
+  });
+});
+
+describe("refresh on focus and visibility", () => {
+  it("makes zero calls while the cache is fresh", async () => {
+    const storage = memoryStorage();
+    const stub = stubGlobalFetch(fixtureHandler);
+    try {
+      const first = await refreshKanbanLive({ event: "mount", storage, now: 1_000 });
+      assert.equal(first.action, "live");
+      assert.equal(stub.calls.length, 2);
+      const focus = await refreshKanbanLive({ event: "focus", storage, now: 1_000 + 60_000 });
+      assert.equal(focus.action, "skip");
+      const visible = await refreshKanbanLive({
+        event: "visible",
+        storage,
+        now: 1_000 + 2 * 60_000,
+      });
+      assert.equal(visible.action, "skip");
+      const hidden = await refreshKanbanLive({
+        event: "hidden",
+        storage,
+        now: 1_000 + 10 * 60_000,
+      });
+      assert.equal(hidden.action, "skip");
+      assert.equal(stub.calls.length, 2);
+    } finally {
+      stub.restore();
+    }
+  });
+
+  it("refetches on focus and visibility only after the cache expires", async () => {
+    const storage = memoryStorage();
+    const stub = stubGlobalFetch(fixtureHandler);
+    try {
+      await refreshKanbanLive({ event: "mount", storage, now: 1_000 });
+      assert.equal(stub.calls.length, 2);
+      const focus = await refreshKanbanLive({
+        event: "focus",
+        storage,
+        now: 1_000 + 5 * 60_000,
+      });
+      assert.equal(focus.action, "live");
+      assert.equal(stub.calls.length, 4);
+      const visible = await refreshKanbanLive({
+        event: "visible",
+        storage,
+        now: 1_000 + 10 * 60_000,
+      });
+      assert.equal(visible.action, "live");
+      assert.equal(stub.calls.length, 6);
+    } finally {
+      stub.restore();
+    }
+  });
+
+  it("hides the hidden event and treats a missing cache as stale", () => {
+    assert.equal(
+      shouldRefetchKanbanLive({ event: "hidden", cacheFetchedAt: null, now: 0 }),
+      false,
+    );
+    assert.equal(
+      shouldRefetchKanbanLive({ event: "focus", cacheFetchedAt: 1_000, now: 1_000 + 60_000 }),
+      false,
+    );
+    assert.equal(
+      shouldRefetchKanbanLive({
+        event: "visible",
+        cacheFetchedAt: 1_000,
+        now: 1_000 + 5 * 60_000,
+      }),
+      true,
+    );
+    assert.equal(
+      shouldRefetchKanbanLive({ event: "focus", cacheFetchedAt: null, now: 1_000 }),
+      true,
+    );
   });
 });

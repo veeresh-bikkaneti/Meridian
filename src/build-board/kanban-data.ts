@@ -177,8 +177,202 @@ export function extractSubtaskNums(text: string): string[] {
   return out;
 }
 
-export const EXPECTED_STORY_COUNT = 18;
-export const EXPECTED_SUBTASK_COUNT = 45;
+/**
+ * Story numbers (`TD-08`, `FW-10`) that are not the prefix of a
+ * subtask number. `TD-08.4` is a subtask, not story `TD-08`.
+ */
+export function extractStoryNums(text: string): string[] {
+  const seen = new Set<string>();
+  const out: string[] = [];
+  const re = /(?:^|[^a-z0-9])((?:TD|FW)-\d{2})(?!\.\d)(?=$|[^a-z0-9])/gi;
+  for (const match of text.matchAll(re)) {
+    const num = match[1].toUpperCase();
+    if (seen.has(num)) continue;
+    seen.add(num);
+    out.push(num);
+  }
+  return out;
+}
+
+/**
+ * The item key in one string: the first subtask number, else the
+ * first story number, else null. Callers try the PR title, then
+ * `head.ref`, then the branch name — the first source that
+ * returns a key wins.
+ */
+export function extractItemKey(text: string): string | null {
+  return extractSubtaskNums(text)[0] ?? extractStoryNums(text)[0] ?? null;
+}
+
+/** A `C:blocked` label, or a plain `blocked` label. */
+export function isBlockedLabel(label: string): boolean {
+  const name = label.trim().toLowerCase();
+  return name === "blocked" || name.startsWith("c:blocked");
+}
+
+/**
+ * Column for one pull. The first matching rule wins:
+ * blocked label, merged, open non-draft, open draft, else
+ * closed-unmerged backlog.
+ */
+export function columnForPull(info: PullInfo): { col: Column; note?: string } {
+  if ((info.labels ?? []).some(isBlockedLabel)) return { col: "Blocked" };
+  if (info.merged) return { col: "Done" };
+  if (info.state === "open" && !info.draft) return { col: "In review" };
+  if (info.state === "open" && info.draft) return { col: "In progress" };
+  return { col: "Backlog", note: "closed unmerged" };
+}
+
+/**
+ * TD numbers are tech-debt. `arch-*` names and phase work are
+ * architecture. Everything else, including FW numbers, is product.
+ */
+export function laneForItem(num: string | null, texts: readonly string[]): Lane {
+  if (num && /^TD-/i.test(num)) return "tech-debt";
+  const blob = texts.join("\n");
+  if (/(?:^|[^a-z0-9])arch-/i.test(blob) || /(?:^|[^a-z0-9])phase\d*/i.test(blob)) {
+    return "architecture";
+  }
+  return "product";
+}
+
+/** One card derived from pulls and branches. GitHub is the only source. */
+export interface DerivedCard {
+  id: string;
+  /** TD or story number, or null for the Unnumbered group. */
+  num: string | null;
+  title: string;
+  lane: Lane;
+  col: Column;
+  note?: string;
+  prs: PrLink[];
+  seatTags: string[];
+  unnumbered: boolean;
+}
+
+const LIVE_PR_HREF = "https://github.com/veeresh-bikkaneti/Meridian/pull/";
+
+function preferAdvanced(
+  current: { col: Column; note?: string } | null,
+  next: { col: Column; note?: string },
+): { col: Column; note?: string } {
+  if (current === null) return next;
+  const ra = columnRank(current.col);
+  const rb = columnRank(next.col);
+  if (rb > ra) return next;
+  if (ra > rb) return current;
+  if (next.col === "Blocked" && current.col !== "Blocked") return next;
+  return current;
+}
+
+interface DerivedAcc {
+  id: string;
+  num: string | null;
+  title: string;
+  texts: string[];
+  standing: { col: Column; note?: string } | null;
+  prs: PrLink[];
+  seatTags: string[];
+  unnumbered: boolean;
+}
+
+function takeSeatTags(acc: DerivedAcc, labels: readonly string[] | undefined): void {
+  for (const tag of storySeatTags([{ seatTags: labels ?? [] }])) {
+    if (!acc.seatTags.includes(tag)) acc.seatTags.push(tag);
+  }
+}
+
+/**
+ * Build the board from the pull list (newest first) and the
+ * branch set. Pulls and branches with no TD or story number land
+ * in the Unnumbered group — they are never dropped. Several pulls
+ * for one number keep the most advanced column (`columnRank`);
+ * every pull number is kept as a chip. The title is the newest
+ * pull's title, else the branch name.
+ */
+export function deriveBoardItems(
+  pulls: ReadonlyMap<number, PullInfo>,
+  branches: ReadonlySet<string>,
+): DerivedCard[] {
+  const byKey = new Map<string, DerivedAcc>();
+  const headRefs = new Set<string>();
+
+  for (const [number, info] of pulls) {
+    if (info.headRef) headRefs.add(info.headRef);
+    const key = extractItemKey(info.title ?? "") ?? extractItemKey(info.headRef ?? "");
+    const id = key ?? `unnumbered:pr:${number}`;
+    let acc = byKey.get(id);
+    if (!acc) {
+      const title = info.title?.trim() || info.headRef || `PR #${number}`;
+      acc = {
+        id,
+        num: key,
+        title,
+        texts: [],
+        standing: null,
+        prs: [],
+        seatTags: [],
+        unnumbered: key === null,
+      };
+      byKey.set(id, acc);
+    }
+    if (info.title) acc.texts.push(info.title);
+    if (info.headRef) acc.texts.push(info.headRef);
+    acc.prs.push({ number, role: "closes", href: `${LIVE_PR_HREF}${number}` });
+    acc.standing = preferAdvanced(acc.standing, columnForPull(info));
+    takeSeatTags(acc, info.labels);
+  }
+
+  for (const name of branches) {
+    if (headRefs.has(name)) continue;
+    const key = extractItemKey(name);
+    if (key && byKey.has(key)) {
+      byKey.get(key)?.texts.push(name);
+      continue;
+    }
+    if (key) {
+      byKey.set(key, {
+        id: key,
+        num: key,
+        title: name,
+        texts: [name],
+        standing: { col: "In progress" },
+        prs: [],
+        seatTags: [],
+        unnumbered: false,
+      });
+      continue;
+    }
+    const id = `unnumbered:branch:${name}`;
+    if (byKey.has(id)) continue;
+    byKey.set(id, {
+      id,
+      num: null,
+      title: name,
+      texts: [name],
+      standing: { col: "In progress" },
+      prs: [],
+      seatTags: [],
+      unnumbered: true,
+    });
+  }
+
+  return [...byKey.values()].map((acc) => {
+    const standing = acc.standing ?? { col: "Backlog" as Column };
+    const card: DerivedCard = {
+      id: acc.id,
+      num: acc.num,
+      title: acc.title,
+      lane: laneForItem(acc.num, acc.texts),
+      col: standing.col,
+      prs: acc.prs,
+      seatTags: acc.seatTags,
+      unnumbered: acc.unnumbered,
+    };
+    if (standing.note && standing.col === "Backlog") card.note = standing.note;
+    return card;
+  });
+}
 
 /** `num` is a non-empty string, unique across stories and subtasks together. */
 function claimNum(
@@ -218,19 +412,11 @@ export function loadSnapshot(json: unknown): Snapshot {
   if (typeof data.mainSha !== "string" || data.mainSha.length === 0) {
     throw new Error("kanban snapshot: mainSha must be a non-empty string");
   }
-  if (!Array.isArray(data.stories) || data.stories.length !== EXPECTED_STORY_COUNT) {
-    throw new Error(
-      `kanban snapshot: expected ${EXPECTED_STORY_COUNT} stories, got ${
-        Array.isArray(data.stories) ? data.stories.length : "none"
-      }`,
-    );
+  if (!Array.isArray(data.stories)) {
+    throw new Error("kanban snapshot: stories must be an array");
   }
-  if (!Array.isArray(data.subtasks) || data.subtasks.length !== EXPECTED_SUBTASK_COUNT) {
-    throw new Error(
-      `kanban snapshot: expected ${EXPECTED_SUBTASK_COUNT} subtasks, got ${
-        Array.isArray(data.subtasks) ? data.subtasks.length : "none"
-      }`,
-    );
+  if (!Array.isArray(data.subtasks)) {
+    throw new Error("kanban snapshot: subtasks must be an array");
   }
   const gaugesRaw = data.gauges as Record<string, Partial<GaugeInfo>> | undefined;
   if (typeof gaugesRaw !== "object" || gaugesRaw === null) {
@@ -443,8 +629,6 @@ function autoLiveColumn(
   }
   return result;
 }
-
-const LIVE_PR_HREF = "https://github.com/veeresh-bikkaneti/Meridian/pull/";
 
 function enrichPrs(sub: Subtask, matched: readonly [number, PullInfo][]): PrLink[] {
   const seen = new Set(sub.prs.map((p) => p.number));
