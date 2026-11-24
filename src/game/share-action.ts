@@ -31,7 +31,15 @@ export async function shareScore(input: {
 }): Promise<ShareOutcome> {
   if (typeof navigator !== "undefined" && typeof navigator.share === "function") {
     try {
-      await navigator.share({ title: input.title, text: input.text, url: input.url });
+      // WhatsApp, Messages, and the Android share sheet append `url` after
+      // `text`. Challenge (and session) texts already end with the link, so
+      // passing both shows the friend the same URL twice. Omit `url` when
+      // `text` already contains it; keep passing it when the text does not.
+      await navigator.share(
+        input.text.includes(input.url)
+          ? { title: input.title, text: input.text }
+          : { title: input.title, text: input.text, url: input.url },
+      );
       return "shared";
     } catch (err) {
       // A dismissed share sheet throws AbortError — the user changed their

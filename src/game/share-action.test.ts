@@ -44,7 +44,7 @@ const summary: SessionSummary = {
 };
 
 describe("shareScore — Web Share path", () => {
-  it("calls navigator.share with the exact title/text/url payload", async () => {
+  it("omits url when the share text already contains it", async () => {
     const calls: unknown[] = [];
     setNavigator({
       share: async (payload: unknown) => {
@@ -52,17 +52,43 @@ describe("shareScore — Web Share path", () => {
       },
       clipboard: { writeText: async () => assert.fail("clipboard must not be used") },
     });
+    const text =
+      "meridian October 3\nhttps://meridian.knowledgetest.workers.dev/\n1,000 over 5 places · 200 avg/place · Globe";
     const outcome = await shareScore({
       title: "Meridian score",
-      text: "meridian October 3\nhttps://meridian.knowledgetest.workers.dev/\n1,000 over 5 places · 200 avg/place · Globe",
+      text,
       url: SHARE_URL,
     });
     assert.equal(outcome, "shared");
     assert.deepEqual(calls, [
       {
         title: "Meridian score",
-        text: "meridian October 3\nhttps://meridian.knowledgetest.workers.dev/\n1,000 over 5 places · 200 avg/place · Globe",
-        url: "https://meridian.knowledgetest.workers.dev/",
+        text,
+      },
+    ]);
+    assert.ok(!("url" in (calls[0] as object)), "url must not be a key when text already contains it");
+  });
+
+  it("passes url when the share text does not already contain it", async () => {
+    const calls: unknown[] = [];
+    setNavigator({
+      share: async (payload: unknown) => {
+        calls.push(payload);
+      },
+      clipboard: { writeText: async () => assert.fail("clipboard must not be used") },
+    });
+    const text = "Challenge a friend! Same places, same circle for everyone.";
+    const outcome = await shareScore({
+      title: "Meridian challenge",
+      text,
+      url: SHARE_URL,
+    });
+    assert.equal(outcome, "shared");
+    assert.deepEqual(calls, [
+      {
+        title: "Meridian challenge",
+        text,
+        url: SHARE_URL,
       },
     ]);
   });
