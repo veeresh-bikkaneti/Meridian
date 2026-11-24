@@ -212,6 +212,11 @@ test("full-stack E2E: contact form exercises all moving parts (flags, gate, real
 
     // Moving Part 1 & 2: Navigate to /contact, fetch real /flags.json, and unlock GrownUpGate
     await page.goto(APP_NO_IDLE);
+    // The boot splash paints the shared footer too, so the contact link
+    // exists twice until the home screen replaces the splash. The tour
+    // button renders only in the home footer — wait for it, as the
+    // footer-links test above does, so the click names one element.
+    await expect(page.getByTestId("take-tour-link")).toBeVisible();
     await page.getByTestId("contact-link").click();
     await expect(page).toHaveURL(/\/contact$/);
 
@@ -456,6 +461,11 @@ test("contact form fails closed if flags.json omits contactEndpoint", async ({ c
   });
 
   await page.goto(APP_NO_IDLE);
+  // Same settle wait as the full-stack test above: the boot splash
+  // paints the shared footer too, so the contact link exists twice
+  // until the home screen replaces the splash; the tour button
+  // renders only in the home footer.
+  await expect(page.getByTestId("take-tour-link")).toBeVisible();
   await page.getByTestId("contact-link").click();
   await expect(page).toHaveURL(/\/contact$/);
 
