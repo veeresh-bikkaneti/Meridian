@@ -11,15 +11,15 @@
  * than the count (a raised ceiling must be lowered to the real count, in
  * its own reviewed change — no silent raising).
  *
- * The ceiling is the measured count on main 7dbf62eb (TD-06.2, PR 2 of the
- * game-app map). Later Phase 4 module PRs may only lower it. Do not extract
- * a module in this change; do not edit game-app.tsx.
+ * The ceiling is the measured count after TD-06.5 (game-app-map step 3:
+ * the four leaf hooks extracted) on base 9314c6de. Later Phase 4 module
+ * PRs may only lower it.
  */
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
-export const GAME_APP_SIZE_CEILING = 8869;
+export const GAME_APP_SIZE_CEILING = 8800;
 export const GAME_APP_PATH = fileURLToPath(
   new URL("../src/components/game-app.tsx", import.meta.url),
 );
