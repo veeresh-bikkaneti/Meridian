@@ -1,8 +1,16 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import { buildContactPayload, sendContact, sendOutcome, CONTACT_MESSAGE_MAX } from "./contact-form.ts";
+import { createFakeTransport } from "../../platform/transport/fake-transport.ts";
 
 const draft = { topic: "bug" as const, message: " Map froze ", replyTo: "", website: "" };
+const ENDPOINT = "https://c.test/contact";
+const payload = { topic: "bug" as const, message: "x", website: "" };
+
+const neverPost = async (): Promise<{ status: number; text: string }> => {
+  throw new Error("transport should not be called");
+};
 
 test("builds a minimal payload (no replyTo key when blank)", () => {
   const r = buildContactPayload(draft);
@@ -17,24 +25,28 @@ test("rejects missing topic, empty or oversized message, malformed reply-to", ()
   assert.equal(buildContactPayload({ ...draft, replyTo: "grownup@example.com" }).ok, true);
 });
 
-test("sendContact maps server answers and never throws", async () => {
-  const payload = { topic: "bug" as const, message: "x", website: "" };
-  const respond = (status: number, body = "{}") => async () => new Response(body, { status });
-  assert.deepEqual(await sendContact(null, payload), { status: "not-configured" });
-  assert.deepEqual(await sendContact("https://c.test/contact", payload, respond(200)), { status: "sent", stored: false });
-  assert.deepEqual(
-    await sendContact("https://c.test/contact", payload, respond(200, '{"ok":true,"stored":true}')),
-    { status: "sent", stored: true },
-  );
-  assert.deepEqual(await sendContact("https://c.test/contact", payload, respond(503)), { status: "not-configured" });
-  assert.deepEqual(await sendContact("https://c.test/contact", payload, respond(429)), { status: "rate-limited" });
-  assert.deepEqual(await sendContact("https://c.test/contact", payload, respond(500)), { status: "error" });
-  assert.deepEqual(
-    await sendContact("https://c.test/contact", payload, async () => {
-      throw new Error("offline");
-    }),
-    { status: "error" },
-  );
+test("sendContact maps server answers through a fake transport and never throws", async () => {
+  assert.deepEqual(await sendContact(null, payload, neverPost), { status: "not-configured" });
+
+  const cases: Array<{ status: number; text: string; want: unknown }> = [
+    { status: 200, text: "{}", want: { status: "sent", stored: false } },
+    { status: 200, text: '{"ok":true,"stored":true}', want: { status: "sent", stored: true } },
+    { status: 200, text: "not-json", want: { status: "sent", stored: false } },
+    { status: 503, text: "", want: { status: "not-configured" } },
+    { status: 404, text: "", want: { status: "not-configured" } },
+    { status: 429, text: "", want: { status: "rate-limited" } },
+    { status: 500, text: "", want: { status: "error" } },
+  ];
+  for (const c of cases) {
+    const fake = createFakeTransport();
+    fake.queue(ENDPOINT, { type: "text", text: c.text, status: c.status });
+    assert.deepEqual(await sendContact(ENDPOINT, payload, fake.port.postText), c.want);
+    assert.equal(fake.calls.length, 1);
+  }
+
+  const down = createFakeTransport();
+  down.queue(ENDPOINT, { type: "network" });
+  assert.deepEqual(await sendContact(ENDPOINT, payload, down.port.postText), { status: "error" });
 });
 
 test("sendOutcome: delivered ONLY when sent AND stored (the honesty contract, #220)", () => {
@@ -48,30 +60,32 @@ test("sendOutcome: delivered ONLY when sent AND stored (the honesty contract, #2
   assert.equal(sendOutcome({ status: "error" }), "error");
 });
 
-test("requests omit credentials and referrer", async () => {
-  let seen: RequestInit | undefined;
-  await sendContact("https://c.test/contact", { topic: "other", message: "x", website: "" }, async (_u, init) => {
-    seen = init;
-    return new Response("{}", { status: 200 });
-  });
-  assert.equal(seen?.credentials, "omit");
-  assert.equal(seen?.referrerPolicy, "no-referrer");
+test("the contact post omits credentials and referrer and sends the honeypot field", async () => {
+  const fake = createFakeTransport();
+  fake.queue(ENDPOINT, { type: "text", text: "{}", status: 200 });
+  const body = { topic: "other" as const, message: "x", website: "https://bot.example" };
+  await sendContact(ENDPOINT, body, fake.port.postText);
+  const call = fake.calls[0];
+  assert.equal(call?.method, "POST");
+  assert.equal(call?.credentials, "omit");
+  assert.equal(call?.referrerPolicy, "no-referrer");
+  assert.equal(call?.headers["content-type"], "application/json");
+  assert.equal(call?.body, JSON.stringify(body));
 });
 
-test("without an injected fetchFn the runtime fetch is used, credentials still omitted", async () => {
-  const realFetch = globalThis.fetch;
-  const calls: Array<{ url: string; init?: RequestInit }> = [];
-  globalThis.fetch = (async (input: unknown, init?: RequestInit) => {
-    calls.push({ url: String(input), init });
-    return new Response('{"ok":true,"stored":true}', { status: 200 });
-  }) as unknown as typeof fetch;
-  try {
-    const r = await sendContact("https://c.test/contact", { topic: "bug", message: "x", website: "" });
-    assert.deepEqual(r, { status: "sent", stored: true });
-    assert.equal(calls.length, 1);
-    assert.equal(calls[0]?.init?.credentials, "omit");
-    assert.equal(calls[0]?.init?.referrerPolicy, "no-referrer");
-  } finally {
-    globalThis.fetch = realFetch;
-  }
+test("a missing endpoint does not touch the transport", async () => {
+  let called = false;
+  const post = async () => {
+    called = true;
+    return { status: 200, text: "{}" };
+  };
+  assert.deepEqual(await sendContact(null, payload, post), { status: "not-configured" });
+  assert.equal(called, false);
+});
+
+test("the contact page posts through the shared transport port, not raw fetch", () => {
+  const src = readFileSync(new URL("../../routes/contact.tsx", import.meta.url), "utf8");
+  assert.match(src, /from "@\/platform\/transport\/browser-transport"/);
+  assert.match(src, /sendContact\(getContactEndpoint\(\), built\.payload, postText\)/);
+  assert.doesNotMatch(src, /\bfetch\s*\(/);
 });

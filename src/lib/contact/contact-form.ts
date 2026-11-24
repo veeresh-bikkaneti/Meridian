@@ -90,31 +90,42 @@ export function sendOutcome(result: SendResult | null): SendOutcome | null {
   return result.status;
 }
 
-/** POST the payload. Never throws; maps server answers to page states.
- *  The fetch seam defaults to the runtime fetch, supplied as a bare
- *  value reference (never a fetch() call in this file); callers and
- *  tests inject their own. The seam stays fetch-shaped so the
- *  credentials:"omit" / referrerPolicy:"no-referrer" init rides along
- *  exactly — the transport port cannot express those. */
+/** The slice of the shared transport port this form posts through.
+ * Structural on purpose: this module is domain code and must not
+ * import the platform layer. The page passes postText from the
+ * browser transport; tests pass a fake transport's postText. */
+export type ContactPost = (
+  url: string,
+  body: string,
+  opts?: {
+    headers?: Record<string, string>;
+    credentials?: RequestCredentials;
+    referrerPolicy?: ReferrerPolicy;
+    retries?: number;
+  },
+) => Promise<{ status: number; text: string }>;
+
+/** POST the payload through `post`. Never throws; maps server answers
+ * to page states. No cookies and no referrer leave with the request.
+ * A null endpoint fails closed (not-configured) and does not call
+ * the transport. */
 export async function sendContact(
   endpoint: string | null,
   payload: ContactPayload,
-  fetchFn: (url: string, init: RequestInit) => Promise<Response> = fetch,
+  post: ContactPost,
 ): Promise<SendResult> {
   if (!endpoint) return { status: "not-configured" };
   try {
-    const res = await fetchFn(endpoint, {
-      method: "POST",
+    const res = await post(endpoint, JSON.stringify(payload), {
       headers: { "content-type": "application/json" },
-      body: JSON.stringify(payload),
-      // No cookies or credentials ever ride along.
       credentials: "omit",
       referrerPolicy: "no-referrer",
+      retries: 0,
     });
-    if (res.ok) {
+    if (res.status >= 200 && res.status < 300) {
       let stored = false;
       try {
-        stored = ((await res.json()) as { stored?: unknown }).stored === true;
+        stored = (JSON.parse(res.text) as { stored?: unknown }).stored === true;
       } catch {
         stored = false;
       }

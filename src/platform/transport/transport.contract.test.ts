@@ -305,6 +305,21 @@ for (const driver of [browserDriver, fakeDriver]) {
       assert.equal(h.calls[1]?.keepalive, undefined);
     });
 
+    test("credentials and referrerPolicy pass through only when set", async () => {
+      const h = driver.setup();
+      h.queue(URL, { type: "text", text: "ok", status: 200 });
+      await h.port.postText(URL, "ping", {
+        credentials: "omit",
+        referrerPolicy: "no-referrer",
+      });
+      assert.equal(h.calls[0]?.credentials, "omit");
+      assert.equal(h.calls[0]?.referrerPolicy, "no-referrer");
+      h.queue(URL, { type: "text", text: "ok", status: 200 });
+      await h.port.postText(URL, "ping");
+      assert.equal(h.calls[1]?.credentials, undefined);
+      assert.equal(h.calls[1]?.referrerPolicy, undefined);
+    });
+
     test("the request controller walks idle → loading → ready on success", async () => {
       const h = driver.setup();
       h.queue(URL, { type: "json", value: { hello: "world" } });

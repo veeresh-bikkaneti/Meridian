@@ -7,6 +7,7 @@ import {
   FEATURE_IDEA_MAX,
   FEATURE_SUBJECTS,
   sendFeatureRequest,
+  type FeaturePost,
   type FeatureRequestDraft,
   type FeatureSendResult,
 } from "@/lib/feature-request/feature-request-form";
@@ -49,7 +50,7 @@ function loadTurnstileScript(): Promise<void> {
 
 const EMPTY: FeatureRequestDraft = { idea: "", ageGroup: "", subject: "", website: "" };
 
-export function FeatureRequestForm() {
+export function FeatureRequestForm({ post }: { post: FeaturePost }) {
   const [draft, setDraft] = useState<FeatureRequestDraft>(EMPTY);
   const [problems, setProblems] = useState<string[]>([]);
   const [sending, setSending] = useState(false);
@@ -103,7 +104,7 @@ export function FeatureRequestForm() {
     setResult(null);
     setSending(true);
     await loadFlags();
-    const r = await sendFeatureRequest(getFeatureRequestEndpoint(), built.payload);
+    const r = await sendFeatureRequest(getFeatureRequestEndpoint(), built.payload, post);
     setSending(false);
     setResult(r);
     if (r.status === "sent") setDraft(EMPTY);

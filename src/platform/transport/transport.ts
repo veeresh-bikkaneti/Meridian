@@ -91,6 +91,12 @@ export interface TransportOptions {
   timeoutMs?: number;
   /** Extra headers, merged over the port's own. */
   headers?: Record<string, string>;
+  /** Cookie policy for this request. Forms that must not send
+   * cookies pass "omit". Absent means the browser default. */
+  credentials?: RequestCredentials;
+  /** Referrer policy for this request. Forms that must not send a
+   * referrer pass "no-referrer". Absent means the browser default. */
+  referrerPolicy?: ReferrerPolicy;
   /** Keep the request alive past the page's unload, for
    * fire-and-forget beacons. Passed into the request as-is. */
   keepalive?: boolean;

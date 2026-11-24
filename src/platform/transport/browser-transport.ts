@@ -148,6 +148,8 @@ async function runAttempt(
   try {
     const init: RequestInit = { method: req.method, signal: attempt.signal };
     if (opts.keepalive !== undefined) init.keepalive = opts.keepalive;
+    if (opts.credentials !== undefined) init.credentials = opts.credentials;
+    if (opts.referrerPolicy !== undefined) init.referrerPolicy = opts.referrerPolicy;
     if (req.body !== undefined) {
       init.body = req.body;
       init.headers = {
