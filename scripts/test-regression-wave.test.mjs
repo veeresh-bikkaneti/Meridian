@@ -37,23 +37,23 @@ test("parseArgs: defaults, --help, --list, unknown flag rejected", () => {
 });
 
 test("archVerdict: at the ratchet passes, one over fails", () => {
-  const at = layerCounts({ noRawIo: entries(0), noUpwardImport: entries(129) });
-  assert.deepEqual(at, { noRawIo: 0, noUpwardImport: 129 });
+  const at = layerCounts({ noRawIo: entries(0), noUpwardImport: entries(120) });
+  assert.deepEqual(at, { noRawIo: 0, noUpwardImport: 120 });
   assert.equal(archVerdict(at).ok, true);
-  const overRaw = archVerdict({ noRawIo: 1, noUpwardImport: 129 });
+  const overRaw = archVerdict({ noRawIo: 1, noUpwardImport: 120 });
   assert.equal(overRaw.ok, false);
   assert.match(overRaw.note, /noRawIo 1 > 0/);
-  const overUp = archVerdict({ noRawIo: 0, noUpwardImport: 130 });
+  const overUp = archVerdict({ noRawIo: 0, noUpwardImport: 121 });
   assert.equal(overUp.ok, false);
-  assert.match(overUp.note, /noUpwardImport 130 > 129/);
+  assert.match(overUp.note, /noUpwardImport 121 > 120/);
 });
 
 test("the raw-I/O ratchet is hard at zero and cannot grow back", () => {
   assert.equal(LIMITS.noRawIo, 0);
-  const one = archVerdict({ noRawIo: 1, noUpwardImport: 129 });
+  const one = archVerdict({ noRawIo: 1, noUpwardImport: 120 });
   assert.equal(one.ok, false);
   assert.match(one.note, /noRawIo 1 > 0/);
-  const oldCap = archVerdict({ noRawIo: 13, noUpwardImport: 129 });
+  const oldCap = archVerdict({ noRawIo: 13, noUpwardImport: 120 });
   assert.equal(oldCap.ok, false);
   assert.match(oldCap.note, /noRawIo 13 > 0/);
 });
@@ -64,12 +64,12 @@ test("shellBanTotal sums every ban list and ignores the comment", () => {
     homeButtonImport: entries(3),
     maxWNone: [],
     pageLocalNav: entries(2),
-    pageLocalMain: entries(9),
+    pageLocalMain: entries(5),
   };
-  assert.equal(shellBanTotal(baseline), 14);
-  assert.equal(navVerdict(14).ok, true);
-  assert.equal(navVerdict(15).ok, false);
-  assert.match(navVerdict(15).note, /shell-ban 15 > 14/);
+  assert.equal(shellBanTotal(baseline), 10);
+  assert.equal(navVerdict(10).ok, true);
+  assert.equal(navVerdict(11).ok, false);
+  assert.match(navVerdict(11).note, /shell-ban 11 > 10/);
 });
 
 test("entry size: exact bytes parse out of the checker output and the limit is enforced", () => {
@@ -181,8 +181,8 @@ function baseDeps(overrides = {}) {
       ["playwright test", { code: 0, stdout: "", stderr: "" }],
     ]),
     readJson: (path) => {
-      if (path.includes("layer-baseline")) return { noRawIo: entries(0), noUpwardImport: entries(129) };
-      if (path.includes("shell-ban-baseline")) return { pageLocalMain: entries(14) };
+      if (path.includes("layer-baseline")) return { noRawIo: entries(0), noUpwardImport: entries(120) };
+      if (path.includes("shell-ban-baseline")) return { pageLocalMain: entries(10) };
       return { suites: [] }; // Playwright report: no failures
     },
     detectChromium: () => ({ found: true, how: "stub" }),
@@ -203,8 +203,8 @@ test("runProfile: a fully green stub run passes all 14 rows and exits 0", async 
 test("runProfile: a one-row raw-I/O baseline fails the profile even when eslint exits 0", async () => {
   const deps = baseDeps();
   deps.readJson = (path) => {
-    if (path.includes("layer-baseline")) return { noRawIo: entries(1), noUpwardImport: entries(129) };
-    if (path.includes("shell-ban-baseline")) return { pageLocalMain: entries(14) };
+    if (path.includes("layer-baseline")) return { noRawIo: entries(1), noUpwardImport: entries(120) };
+    if (path.includes("shell-ban-baseline")) return { pageLocalMain: entries(10) };
     return { suites: [] };
   };
   const { rows, exitCode } = await runProfile(deps);
@@ -249,8 +249,8 @@ test("runProfile: a Playwright failure that passes its lone re-run is a flake, n
       ["check:entry-size", { code: 0, stdout: "check-entry-size: entry JS gzip 320,000 B, limit 323,865 B", stderr: "" }],
     ]),
     readJson: (path) => {
-      if (path.includes("layer-baseline")) return { noRawIo: entries(0), noUpwardImport: entries(129) };
-      if (path.includes("shell-ban-baseline")) return { pageLocalMain: entries(14) };
+      if (path.includes("layer-baseline")) return { noRawIo: entries(0), noUpwardImport: entries(120) };
+      if (path.includes("shell-ban-baseline")) return { pageLocalMain: entries(10) };
       // First report has one failure; the lone re-run's report is clean.
       return pwRuns <= 1
         ? {
@@ -281,8 +281,8 @@ test("runProfile: a Playwright failure that fails its lone re-run is a regressio
       ["check:entry-size", { code: 0, stdout: "check-entry-size: entry JS gzip 320,000 B, limit 323,865 B", stderr: "" }],
     ]),
     readJson: (path) => {
-      if (path.includes("layer-baseline")) return { noRawIo: entries(0), noUpwardImport: entries(129) };
-      if (path.includes("shell-ban-baseline")) return { pageLocalMain: entries(14) };
+      if (path.includes("layer-baseline")) return { noRawIo: entries(0), noUpwardImport: entries(120) };
+      if (path.includes("shell-ban-baseline")) return { pageLocalMain: entries(10) };
       return {
         suites: [
           {
