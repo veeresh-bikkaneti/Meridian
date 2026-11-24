@@ -150,6 +150,13 @@ describe("layer/no-upward-import", () => {
 });
 
 describe("platform/no-raw-io", () => {
+  it("mutation check: a raw fetch() outside src/platform fails as an error, not a warning", () => {
+    const messages = lint('fetch("/api/x");\n', "src/components/fixture-screen.tsx");
+    const hits_ = hits(messages, "platform/no-raw-io");
+    assert.equal(hits_.length, 1, JSON.stringify(messages));
+    assert.equal(hits_[0].severity, 2, JSON.stringify(messages));
+  });
+
   it("fires on fetch(, new Audio( and localStorage outside src/platform", () => {
     const file = "src/components/fixture-screen.tsx";
     for (const code of [
