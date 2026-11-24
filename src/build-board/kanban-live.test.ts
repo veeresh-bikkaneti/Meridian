@@ -8,6 +8,7 @@ import {
   buildBoardUrl,
   collectClosesPullNumbers,
   fetchKanbanLive,
+  KANBAN_LIVE_CACHE_KEY,
   loadKanbanLive,
   loadPublicSnapshot,
   parseGithubBranches,
@@ -41,8 +42,13 @@ function stubGlobalFetch(
 }
 
 function fixtureHandler(url: string) {
-  if (url.includes("/pulls/571")) return { status: 200, body: pull571 };
   if (url.includes("/branches")) return { status: 200, body: branchesBody };
+  if (url.includes("sort=updated")) return { status: 200, body: Object.values(pullsFixture.pulls) };
+  const num = /\/pulls\/(\d+)/.exec(url);
+  if (num) {
+    const body = (pullsFixture.pulls as Record<string, unknown>)[num[1]];
+    if (body) return { status: 200, body };
+  }
   return { status: 404, body: { message: "not stubbed" } };
 }
 
@@ -61,12 +67,38 @@ function snapshotSubtasks(): Subtask[] {
 
 describe("parseGithubPull", () => {
   it("parses one recorded pull (the pulls/{n} shape)", () => {
-    assert.deepEqual(parseGithubPull(pull571), {
-      number: 571,
-      info: { state: "open", draft: true, merged: false },
-    });
+    const parsed = parseGithubPull(pull571);
+    assert.equal(parsed?.number, 571);
+    assert.equal(parsed?.info.state, "open");
+    assert.equal(parsed?.info.draft, true);
+    assert.equal(parsed?.info.merged, false);
+    assert.equal(
+      parsed?.info.title,
+      "Phase 1 Part B: game-app onto the storage port (noRawIo 45 to 13)",
+    );
+    assert.equal(parsed?.info.headRef, "phase1/ports-part-b");
     const merged = parseGithubPull(pullsFixture.pulls["565"]);
-    assert.deepEqual(merged?.info, { state: "closed", draft: false, merged: true });
+    assert.equal(merged?.info.state, "closed");
+    assert.equal(merged?.info.draft, false);
+    assert.equal(merged?.info.merged, true);
+    assert.equal(typeof merged?.info.title, "string");
+    assert.equal(typeof merged?.info.headRef, "string");
+  });
+
+  it("maps label names and ignores a pull body", () => {
+    const parsed = parseGithubPull({
+      number: 577,
+      state: "open",
+      draft: false,
+      merged_at: null,
+      title: "chore(td-09.1): retire pages",
+      body: "TD-99.9 is only in the body",
+      head: { ref: "chore/td-09.1-retire-pages" },
+      labels: [{ name: "C:Opera" }, { name: "" }, "C:Edge", { name: 3 }, null],
+    });
+    assert.equal(parsed?.info.headRef, "chore/td-09.1-retire-pages");
+    assert.deepEqual(parsed?.info.labels, ["C:Opera", "C:Edge"]);
+    assert.equal("body" in (parsed?.info ?? {}), false);
   });
 
   it("returns null on malformed payloads", () => {
@@ -125,8 +157,8 @@ describe("collectClosesPullNumbers", () => {
   });
 });
 
-describe("fetchKanbanLive — by-number lookups", () => {
-  it("fetches pulls/{n} for the needed closes PRs plus one branches call", async () => {
+describe("fetchKanbanLive — two requests in the normal case", () => {
+  it("does not call pulls/{n} when the closes PR is already in the recent list", async () => {
     const stub = stubGlobalFetch(fixtureHandler);
     try {
       const state = await fetchKanbanLive({
@@ -135,14 +167,38 @@ describe("fetchKanbanLive — by-number lookups", () => {
         now: 1_000_000,
       });
       assert.ok(state);
-      assert.deepEqual(state.pulls.get(571), { state: "open", draft: true, merged: false });
+      assert.equal(state.pulls.get(571)?.state, "open");
+      assert.equal(state.pulls.get(571)?.draft, true);
+      assert.equal(state.pulls.get(571)?.merged, false);
+      assert.equal(state.pulls.get(571)?.headRef, "phase1/ports-part-b");
       assert.ok(state.branches.has("phase1/ports-part-b"));
       assert.equal(state.fetchedAt, 1_000_000);
       assert.equal(stub.calls.length, 2);
-      assert.ok(stub.calls.some((c) => c.url.endsWith("/pulls/571")));
+      assert.ok(
+        stub.calls.some((c) =>
+          c.url.includes("pulls?state=all&sort=updated&direction=desc&per_page=100"),
+        ),
+      );
       assert.ok(stub.calls.some((c) => c.url.includes("/branches?per_page=100")));
+      assert.equal(stub.calls.filter((c) => /\/pulls\/\d+/.test(c.url)).length, 0);
       const headers = stub.calls[0]?.init?.headers as Record<string, string> | undefined;
       assert.equal(headers?.["accept"], "application/vnd.github+json");
+    } finally {
+      stub.restore();
+    }
+  });
+
+  it("fetches pulls/{n} only when a closes PR is absent from the recent list", async () => {
+    const stub = stubGlobalFetch((url) => {
+      if (url.includes("sort=updated")) return { status: 200, body: [] };
+      return fixtureHandler(url);
+    });
+    try {
+      const state = await fetchKanbanLive({ subtasks: snapshotSubtasks(), storage: null });
+      assert.ok(state);
+      assert.equal(state.pulls.get(571)?.draft, true);
+      assert.equal(stub.calls.filter((c) => c.url.endsWith("/pulls/571")).length, 1);
+      assert.equal(stub.calls.length, 3);
     } finally {
       stub.restore();
     }
@@ -158,20 +214,30 @@ describe("fetchKanbanLive — by-number lookups", () => {
     }
   });
 
+  it("resolves null on a 429", async () => {
+    const stub = stubGlobalFetch(() => ({ status: 429, body: { message: "slow down" } }));
+    try {
+      const state = await fetchKanbanLive({ subtasks: snapshotSubtasks(), storage: null });
+      assert.equal(state, null);
+    } finally {
+      stub.restore();
+    }
+  });
+
   it("retries a network error exactly once, then succeeds", async () => {
-    let pullCalls = 0;
+    let recentCalls = 0;
     const stub = stubGlobalFetch((url) => {
-      if (url.includes("/pulls/571")) {
-        pullCalls += 1;
-        if (pullCalls === 1) return "throw";
-        return { status: 200, body: pull571 };
+      if (url.includes("sort=updated")) {
+        recentCalls += 1;
+        if (recentCalls === 1) return "throw";
+        return { status: 200, body: Object.values(pullsFixture.pulls) };
       }
       return fixtureHandler(url);
     });
     try {
       const state = await fetchKanbanLive({ subtasks: snapshotSubtasks(), storage: null });
       assert.ok(state);
-      assert.equal(pullCalls, 2);
+      assert.equal(recentCalls, 2);
     } finally {
       stub.restore();
     }
@@ -201,6 +267,63 @@ describe("fetchKanbanLive — by-number lookups", () => {
     try {
       const state = await fetchKanbanLive({ subtasks: snapshotSubtasks(), storage: null });
       assert.equal(state, null);
+    } finally {
+      stub.restore();
+    }
+  });
+
+  it("resolves null when the recent pulls payload is not an array", async () => {
+    const stub = stubGlobalFetch((url) =>
+      url.includes("sort=updated")
+        ? { status: 200, body: { message: "not a list" } }
+        : fixtureHandler(url),
+    );
+    try {
+      const state = await fetchKanbanLive({ subtasks: snapshotSubtasks(), storage: null });
+      assert.equal(state, null);
+    } finally {
+      stub.restore();
+    }
+  });
+
+  it("writes and reads the v3 cache, including title and headRef", async () => {
+    const storage = memoryStorage();
+    const stub = stubGlobalFetch((url) => {
+      if (url.includes("/branches")) return { status: 200, body: branchesBody };
+      if (url.includes("sort=updated")) {
+        return {
+          status: 200,
+          body: [
+            {
+              number: 571,
+              state: "open",
+              draft: true,
+              merged_at: null,
+              title: "Phase 1 Part B",
+              head: { ref: "phase1/ports-part-b" },
+              labels: [{ name: "C:Opera" }],
+            },
+          ],
+        };
+      }
+      return { status: 404, body: { message: "unexpected" } };
+    });
+    try {
+      const state = await fetchKanbanLive({ needed: [571], storage, now: 5_000 });
+      assert.ok(state);
+      assert.equal(state.pulls.get(571)?.title, "Phase 1 Part B");
+      assert.equal(state.pulls.get(571)?.headRef, "phase1/ports-part-b");
+      assert.deepEqual(state.pulls.get(571)?.labels, ["C:Opera"]);
+      assert.equal(stub.calls.length, 2);
+      const raw = storage.map.get(KANBAN_LIVE_CACHE_KEY);
+      assert.equal(KANBAN_LIVE_CACHE_KEY, "meridian-kanban-live:v3");
+      assert.ok(raw);
+      assert.equal(raw.includes("phase1/ports-part-b"), true);
+      assert.equal(storage.map.has("meridian-kanban-live:v2"), false);
+      const again = await fetchKanbanLive({ needed: [571], storage, now: 5_000 + 1_000 });
+      assert.equal(again?.pulls.get(571)?.title, "Phase 1 Part B");
+      assert.equal(again?.pulls.get(571)?.headRef, "phase1/ports-part-b");
+      assert.equal(stub.calls.length, 2);
     } finally {
       stub.restore();
     }
@@ -265,6 +388,7 @@ describe("fetchKanbanLive — the paginated path (more than 10 lookups)", () => 
     const page2 = [{ number: 112, state: "open", draft: true, merged_at: null }];
     const stub = stubGlobalFetch((url) => {
       if (url.includes("/branches")) return { status: 200, body: branchesBody };
+      if (url.includes("sort=updated")) return { status: 200, body: [] };
       if (url.includes("&page=1")) return { status: 200, body: page1 };
       if (url.includes("&page=2")) return { status: 200, body: page2 };
       return { status: 404, body: { message: "unexpected" } };
@@ -274,8 +398,9 @@ describe("fetchKanbanLive — the paginated path (more than 10 lookups)", () => 
       assert.ok(state);
       for (let n = 101; n <= 112; n++) assert.ok(state.pulls.has(n), `pull ${n} seen`);
       assert.deepEqual(state.pulls.get(112), { state: "open", draft: true, merged: false });
-      assert.ok(!stub.calls.some((c) => /\/pulls\/\d+$/.test(c.url)), "no by-number calls");
-      assert.equal(stub.calls.filter((c) => c.url.includes("state=all")).length, 2);
+      assert.ok(!stub.calls.some((c) => /\/pulls\/\d+($|\?)/.test(c.url)), "no by-number calls");
+      assert.equal(stub.calls.filter((c) => c.url.includes("sort=updated")).length, 1);
+      assert.equal(stub.calls.filter((c) => c.url.includes("&page=")).length, 2);
     } finally {
       stub.restore();
     }

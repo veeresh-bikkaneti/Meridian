@@ -9,15 +9,14 @@
  * GitHub state in and the view renders what comes out, so every
  * rule is testable without a network.
  *
- * The overlay rule (SCHEMA.md, "Live overlay rule"): only a
- * subtask's `closes` PRs and `work` branches may move it, and
- * only FORWARD from its snapshot column (Backlog = Blocked <
- * In progress < In review < Done). `ref` PRs, `ref` branches
- * and issues are context links — they are never read here.
- * Round 1's rule (any linked merged PR = Done) marked 18
- * subtasks Done where the truth is 11, because the flat v1
- * card mixed "the PR that finishes this" with "the PR that
- * created this debt"; v2 separates them with `role`.
+ * The overlay rule: a subtask moves only FORWARD from its
+ * snapshot column (Backlog = Blocked < In progress < In review
+ * < Done). Signals are its pre-recorded `closes` PRs (Done only
+ * when every one of them has merged) and `work` branches, plus
+ * any live pull whose title or head branch carries the subtask
+ * `num`, plus any live branch whose name carries that `num`.
+ * `ref` PRs, `ref` branches and issues are context links — they
+ * are never read as movement. Pull bodies are never read.
  */
 
 export type Lane = "tech-debt" | "architecture" | "product";
@@ -96,6 +95,8 @@ export interface Subtask {
   v1: { index: number; id: string; title: string; dep: string };
   /** Set by the overlay only, e.g. when a closes PR closes unmerged. */
   note?: string;
+  /** Set by the overlay only: distinct `C:` labels from matched pulls. */
+  seatTags?: string[];
 }
 
 export interface Story {
@@ -149,6 +150,31 @@ export interface PullInfo {
   state: "open" | "closed";
   draft: boolean;
   merged: boolean;
+  /** Pull title, when the live check recorded one. */
+  title?: string;
+  /** Head branch name (`head.ref`), when the live check recorded one. */
+  headRef?: string;
+  /** Label names, when the live check recorded them. */
+  labels?: string[];
+}
+
+/**
+ * Subtask ids inside free text, normalized to uppercase and
+ * de-duplicated. The boundary is strict: `TD-01.1` is not a hit
+ * inside `TD-01.10`, and a story id such as `TD-08` is not a
+ * subtask id.
+ */
+export function extractSubtaskNums(text: string): string[] {
+  const seen = new Set<string>();
+  const out: string[] = [];
+  const re = /(?:^|[^a-z0-9])((?:TD|FW)-\d{2}\.\d+)(?=$|[^a-z0-9])/gi;
+  for (const match of text.matchAll(re)) {
+    const num = match[1].toUpperCase();
+    if (seen.has(num)) continue;
+    seen.add(num);
+    out.push(num);
+  }
+  return out;
 }
 
 export const EXPECTED_STORY_COUNT = 18;
@@ -295,13 +321,15 @@ export function loadSnapshot(json: unknown): Snapshot {
 }
 
 /**
- * The live column one subtask's GitHub state proves, before the
- * forward-only clamp — or null when it proves nothing. PRs are
- * read first, and only when EVERY closes PR was fetched: a
- * partial answer proves nothing (the live module fetches every
- * needed number, so a gap means the PR could not be read).
+ * The live column one subtask's pre-recorded GitHub links prove,
+ * before the forward-only clamp — or null when they prove
+ * nothing. PRs are read first, and only when EVERY closes PR
+ * was fetched: a partial answer proves nothing (the live module
+ * fetches every needed number, so a gap means the PR could not
+ * be read). Work branches are consulted only when that PR rule
+ * does not apply.
  */
-function liveColumnFor(
+function recordedLiveColumn(
   sub: Subtask,
   pulls: ReadonlyMap<number, PullInfo>,
   branches: ReadonlySet<string>,
@@ -328,24 +356,157 @@ function liveColumnFor(
   return { col: null };
 }
 
+function columnFromPull(info: PullInfo): { col: Column | null; note?: string } {
+  if (info.merged) return { col: "Done" };
+  if (info.state === "open" && !info.draft) return { col: "In review" };
+  if (info.state === "open" && info.draft) return { col: "In progress" };
+  if (info.state === "closed" && !info.merged) return { col: null, note: "closed unmerged" };
+  return { col: null };
+}
+
+/** The higher forward column; a note survives only when neither side moved. */
+function preferForward(
+  a: { col: Column | null; note?: string },
+  b: { col: Column | null; note?: string },
+): { col: Column | null; note?: string } {
+  const ra = a.col === null ? -1 : columnRank(a.col);
+  const rb = b.col === null ? -1 : columnRank(b.col);
+  if (rb > ra) return { col: b.col };
+  if (ra > rb) return { col: a.col };
+  if (a.col === null && b.col === null) return { col: null, note: a.note ?? b.note };
+  return { col: a.col };
+}
+
+function indexPulls(pulls: ReadonlyMap<number, PullInfo>): Map<string, [number, PullInfo][]> {
+  const byNum = new Map<string, [number, PullInfo][]>();
+  for (const entry of pulls) {
+    const info = entry[1];
+    const nums = new Set<string>([
+      ...extractSubtaskNums(info.title ?? ""),
+      ...extractSubtaskNums(info.headRef ?? ""),
+    ]);
+    for (const num of nums) {
+      const list = byNum.get(num);
+      if (list) list.push(entry);
+      else byNum.set(num, [entry]);
+    }
+  }
+  return byNum;
+}
+
+function indexBranches(branches: ReadonlySet<string>): Map<string, string[]> {
+  const byNum = new Map<string, string[]>();
+  for (const name of branches) {
+    for (const num of extractSubtaskNums(name)) {
+      const list = byNum.get(num);
+      if (list) list.push(name);
+      else byNum.set(num, [name]);
+    }
+  }
+  return byNum;
+}
+
+function autoPullsFor(
+  sub: Subtask,
+  byPull: ReadonlyMap<string, [number, PullInfo][]>,
+): [number, PullInfo][] {
+  const refs = new Set(sub.prs.filter((p) => p.role === "ref").map((p) => p.number));
+  return (byPull.get(sub.num.toUpperCase()) ?? []).filter(([number]) => !refs.has(number));
+}
+
+function isRefBranch(sub: Subtask, name: string): boolean {
+  const lower = name.toLowerCase();
+  return sub.branches.some((b) => b.role === "ref" && b.name.toLowerCase() === lower);
+}
+
+function autoBranchesFor(
+  sub: Subtask,
+  byBranch: ReadonlyMap<string, string[]>,
+): string[] {
+  return (byBranch.get(sub.num.toUpperCase()) ?? []).filter((name) => !isRefBranch(sub, name));
+}
+
+/** Column proved by numbered pulls and branches that are not `ref` links. */
+function autoLiveColumn(
+  sub: Subtask,
+  byPull: ReadonlyMap<string, [number, PullInfo][]>,
+  byBranch: ReadonlyMap<string, string[]>,
+): { col: Column | null; note?: string } {
+  const closes = new Set(sub.prs.filter((p) => p.role === "closes").map((p) => p.number));
+  let result: { col: Column | null; note?: string } = { col: null };
+  for (const [number, info] of autoPullsFor(sub, byPull)) {
+    if (closes.has(number)) continue;
+    result = preferForward(result, columnFromPull(info));
+  }
+  if (autoBranchesFor(sub, byBranch).length > 0) {
+    result = preferForward(result, { col: "In progress" });
+  }
+  return result;
+}
+
+const LIVE_PR_HREF = "https://github.com/veeresh-bikkaneti/Meridian/pull/";
+
+function enrichPrs(sub: Subtask, matched: readonly [number, PullInfo][]): PrLink[] {
+  const seen = new Set(sub.prs.map((p) => p.number));
+  const extra: PrLink[] = [];
+  for (const [number] of matched) {
+    if (seen.has(number)) continue;
+    seen.add(number);
+    extra.push({ number, role: "closes", href: `${LIVE_PR_HREF}${number}` });
+  }
+  return extra.length === 0 ? sub.prs : [...sub.prs, ...extra];
+}
+
+function seatTagsFor(
+  sub: Subtask,
+  pulls: ReadonlyMap<number, PullInfo>,
+  matched: readonly [number, PullInfo][],
+): string[] {
+  const seen = new Set<string>();
+  const out: string[] = [];
+  const take = (info: PullInfo | undefined) => {
+    for (const label of info?.labels ?? []) {
+      if (!label.startsWith("C:") || seen.has(label)) continue;
+      seen.add(label);
+      out.push(label);
+    }
+  };
+  for (const pr of sub.prs) {
+    if (pr.role !== "closes") continue;
+    take(pulls.get(pr.number));
+  }
+  for (const [, info] of matched) take(info);
+  return out;
+}
+
 /**
  * Apply live GitHub state to snapshot subtasks. The live column
  * replaces the snapshot column only when it ranks higher —
  * forward only, so an open draft PR never pulls an In review
  * subtask back to In progress. A closed-unmerged closes PR
  * keeps the column and leaves the "closed unmerged" note.
- * Inputs are not mutated.
+ * Newly numbered pulls are appended as `closes` links (existing
+ * numbers are left as recorded). Inputs are not mutated.
  */
 export function applyOverlay<T extends Subtask>(
   subtasks: readonly T[],
   pulls: ReadonlyMap<number, PullInfo>,
   branches: ReadonlySet<string>,
 ): T[] {
+  const byPull = indexPulls(pulls);
+  const byBranch = indexBranches(branches);
   return subtasks.map((sub) => {
-    const live = liveColumnFor(sub, pulls, branches);
+    const live = preferForward(
+      recordedLiveColumn(sub, pulls, branches),
+      autoLiveColumn(sub, byPull, byBranch),
+    );
     const col =
       live.col !== null && columnRank(live.col) > columnRank(sub.col) ? live.col : sub.col;
-    return { ...sub, col, note: live.note };
+    const matched = autoPullsFor(sub, byPull);
+    const seatTags = seatTagsFor(sub, pulls, matched);
+    const next: T = { ...sub, col, note: live.note, prs: enrichPrs(sub, matched) };
+    if (seatTags.length > 0) next.seatTags = seatTags;
+    return next;
   });
 }
 
@@ -377,6 +538,20 @@ export function storyRollup(
           ? "Backlog"
           : "Blocked";
   return { col, done, total: cols.length };
+}
+
+/** Distinct `C:` seat tags across a story's subtasks, first-seen order. */
+export function storySeatTags(subtasks: readonly Pick<Subtask, "seatTags">[]): string[] {
+  const seen = new Set<string>();
+  const out: string[] = [];
+  for (const sub of subtasks) {
+    for (const tag of sub.seatTags ?? []) {
+      if (!tag.startsWith("C:") || seen.has(tag)) continue;
+      seen.add(tag);
+      out.push(tag);
+    }
+  }
+  return out;
 }
 
 /** Two owned paths clash when equal, or when one is a directory of the other. */

@@ -17,11 +17,14 @@ import { serveBuiltArtifact } from "./helpers";
  * deterministically: the snapshot picture under its snapshot
  * stamp. The fixture-live test instead serves the recorded
  * GitHub responses from src/build-board/__fixtures__/github/
- * (real data, recorded 2026-11-23) through page.route — one
- * handler per pulls/{n} lookup and one for branches — and
+ * (real data, recorded 2026-11-23) through page.route — the
+ * recent pulls list, a pulls/{n} fallback, and branches — and
  * proves the overlay reproduces the snapshot's Done picture
  * exactly: 2 stories in Done, 11 architecture subtasks Done.
- * No test in this file ever reaches the real GitHub.
+ * A numbered pull and branch in auto-sync.json move their
+ * subtasks without a kanban.json edit, and the C: seat chip
+ * renders on the story card. No test in this file ever reaches
+ * the real GitHub.
  */
 test.setTimeout(180_000);
 
@@ -32,14 +35,23 @@ const pullsFixture = JSON.parse(
 ) as { pulls: Record<string, unknown> };
 const branchesFixture = JSON.parse(
   readFileSync("src/build-board/__fixtures__/github/branches.json", "utf8"),
-) as { branches: unknown };
+) as { branches: unknown[] };
+const autoSync = JSON.parse(
+  readFileSync("src/build-board/__fixtures__/github/auto-sync.json", "utf8"),
+) as { pulls: unknown[]; branches: unknown[] };
 
 /** Serve the recorded GitHub responses for this test's context. */
 async function serveGithubFixtures(context: import("playwright/test").BrowserContext) {
-  // One handler for every pulls/{n} lookup: the number comes
-  // from the URL, the body from the recorded fixture. A number
-  // the recording doesn't hold is a 404 — which fails the whole
-  // live check, exactly as a missing PR would against the API.
+  // Recent pulls list (one call). A number the recording doesn't
+  // hold falls through to pulls/{n}; a miss there is a 404,
+  // which fails the whole live check.
+  await context.route(/api\.github\.com\/repos\/[^/]+\/[^/]+\/pulls\?/, async (route) =>
+    route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify(autoSync.pulls),
+    }),
+  );
   await context.route(/api\.github\.com\/repos\/[^/]+\/[^/]+\/pulls\/\d+/, async (route) => {
     const match = /\/pulls\/(\d+)/.exec(route.request().url());
     const body = match ? pullsFixture.pulls[match[1]] : undefined;
@@ -60,7 +72,7 @@ async function serveGithubFixtures(context: import("playwright/test").BrowserCon
     route.fulfill({
       status: 200,
       contentType: "application/json",
-      body: JSON.stringify(branchesFixture.branches),
+      body: JSON.stringify([...branchesFixture.branches, ...autoSync.branches]),
     }),
   );
 }
@@ -182,6 +194,55 @@ test("fixture-live overlay: Done holds exactly 2 stories and 11 architecture sub
   await expect(
     page.locator('.kb-story[data-lane="architecture"] .kb-sub .kb-chip-col[data-col="Done"]'),
   ).toHaveCount(11);
+});
+
+test("auto-matched pull and branch move their cards, and the seat chip fits", async ({
+  page,
+  context,
+}) => {
+  await serveGithubFixtures(context);
+  for (const viewport of [
+    { width: 320, height: 568 },
+    { width: 390, height: 844 },
+    { width: 768, height: 1024 },
+    { width: 1280, height: 800 },
+  ]) {
+    await page.setViewportSize(viewport);
+    await openKanban(page);
+    await expect(page.locator(".kb-stamp")).toHaveText(/live · checked/);
+
+    const story = page.locator('.kb-story[data-story-id="arch-pages"]');
+    const chip = story.locator('.kb-chip-seat[data-seat-tag="C:Opera"]');
+    await chip.scrollIntoViewIfNeeded();
+    await expect(chip).toBeVisible();
+    await expect(chip).toHaveText("C:Opera");
+    const fit = await chip.evaluate((el) => {
+      const rect = el.getBoundingClientRect();
+      const card = el.closest(".kb-card");
+      const cardRect = card?.getBoundingClientRect();
+      return {
+        chipOverflow: el.scrollWidth - el.clientWidth,
+        left: rect.left,
+        right: rect.right,
+        cardLeft: cardRect?.left ?? 0,
+        cardRight: cardRect?.right ?? 0,
+        cardOverflow: card ? card.scrollWidth - card.clientWidth : 99,
+        pageOverflow: document.documentElement.scrollWidth - window.innerWidth,
+      };
+    });
+    expect(fit.pageOverflow).toBeLessThanOrEqual(1);
+    expect(fit.chipOverflow).toBeLessThanOrEqual(1);
+    expect(fit.cardOverflow).toBeLessThanOrEqual(1);
+    expect(fit.left).toBeGreaterThanOrEqual(fit.cardLeft - 1);
+    expect(fit.right).toBeLessThanOrEqual(fit.cardRight + 1);
+
+    await expandAllStories(page);
+    const retire = page.locator(".kb-sub", { hasText: "TD-09.1" });
+    await expect(retire.locator('.kb-chip-col[data-col="In review"]')).toBeVisible();
+    await expect(retire.getByRole("link", { name: "finishes #577" })).toBeVisible();
+    const cva = page.locator(".kb-sub", { hasText: "TD-10.2" });
+    await expect(cva.locator('.kb-chip-col[data-col="In progress"]')).toBeVisible();
+  }
 });
 
 test("falls back to the snapshot, labelled, when the live check cannot complete", async ({
