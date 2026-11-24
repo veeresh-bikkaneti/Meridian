@@ -1,11 +1,14 @@
 # Narrow proof run for tests/e2e/detective-endings.spec.ts only.
-# Dispatch-only: the main e2e job does not list this spec, and the
-# detective workflow runs every detective project. This job is the
-# repeated CI check for that one file.
+# pull_request (no path filter) is how this branch gets repeated runs:
+# workflow_dispatch is rejected until the file is on main. Empty commits
+# on the pull request retrigger this job and nothing else in the
+# detective suite.
 name: Detective endings spec
 
 on:
   workflow_dispatch:
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
   endings:
