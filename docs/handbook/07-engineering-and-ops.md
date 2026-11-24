@@ -9,7 +9,7 @@
 - **App:** Vite + React + TypeScript — client-heavy single-page app. Homepage route (`src/routes/index.tsx`) renders `<GameApp />`; the home screen is the `Choose` component in `src/components/game-app.tsx`.
 - **Map:** MapLibre GL on satellite tiles, with a lighter **Scout Map** fallback for weak GPUs and tile failures (see 06 §4).
 - **Hero globe (v5):** Three.js `@0.160.0` as a **lazy chunk** — dynamic import only when the hero scrolls near (IntersectionObserver), DPR capped at 1.5, no post-processing, static fallback on reduced-motion / Save-Data / WebGL failure, full disposal on unmount.
-- **Hosting (dual):** Cloudflare Workers (`meridian.knowledgetest.workers.dev`) **and** GitHub Pages. The production build is `npm run build:pages` → `dist/client`, served under the `/Meridian/` base.
+- **Hosting:** Cloudflare Workers (`meridian.knowledgetest.workers.dev`) only. `npm run build:pages` → `dist/client` (static build under the `/Meridian/` base) remains a CI gate; it is not published anywhere.
 - **Flags:** static `public/flags.json` + `src/lib/flags.ts` (see §2).
 - **Tests:** node test runner for unit suites; Playwright for E2E against the built artifact via `serveBuiltArtifact` (route-interception serving `dist/client` at `http://127.0.0.1:4123/Meridian/` — see `tests/e2e/helpers.ts`).
 
@@ -119,8 +119,7 @@ flowchart LR
     end
     subgraph "Deploy & hosting"
         GH[GitHub repo<br/>main branch]
-        Actions[GitHub Actions<br/>CI + build:pages]
-        Pages[GitHub Pages<br/>static host]
+        Actions[GitHub Actions<br/>CI + build:pages gate]
         WB[Cloudflare<br/>Workers Builds]
         Worker[meridian worker<br/>meridian.*.workers.dev<br/>stamped meridian-&lt;sha&gt;]
     end
@@ -132,9 +131,8 @@ flowchart LR
         Flags[public/flags.json<br/>network-first via SW]
     end
 
-    GH --> Actions --> Pages
+    GH --> Actions
     GH --> WB --> Worker
-    Browser --> Pages
     Browser --> Worker
     Flags --> Browser
     Browser -->|sendBeacon/fetch<br/>at-most-once, no PII| CrashW --> Discord

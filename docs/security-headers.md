@@ -20,8 +20,10 @@ was wrong.
 `src/lib/security-headers.test.ts` parses `public/_headers` and fails if
 its `/*` block differs from `SECURITY_HEADERS`. `scripts/security-headers.test.mjs`
 locks the policy content (no tracker hosts, frame-ancestors, caching).
-GitHub Pages cannot set headers, so the Pages mirror gets none of them
-(`_headers` is served there as an inert text file).
+Static hosts of GitHub Pages' kind cannot set headers on HTML, so the
+retired Pages mirror never received them (`_headers` was served there as
+an inert text file); the live site is Worker-rendered and gets them from
+the middleware above.
 
 Defining `startInstance` in `src/start.ts` replaces TanStack's built-in
 default request middleware (CSRF protection for server functions). It is
@@ -58,16 +60,17 @@ frame-ancestors 'none'; upgrade-insecure-requests
 - `'unsafe-inline'` scripts: TanStack Start's dehydration script is inline
   and changes on **every SSR response** (per-request router state and
   timestamps), so a build-time hash cannot match it on the worker. The
-  Pages shell's crash watchdog and `?nosw=1` hatch are inline too. The fix
+  static shell's crash watchdog and `?nosw=1` hatch are inline too. The fix
   is a per-request nonce on the worker, or hashes for the static shell
   (**P3 follow-up**).
 - Analytics: Cloudflare Web Analytics only (`static.cloudflareinsights.com`
   script + `cloudflareinsights.com` beacon). Google and Clarity hosts are
   intentionally absent, and the test fails if one comes back.
 - The contact form posts to `/api/contact` on the same `meridian` worker,
-  so `'self'` already covers it and no extra host is needed. The GitHub
-  Pages mirror posts cross-origin, which that handler's CORS allow-list
-  governs, not this CSP: Pages serves no `_headers`.
+  so `'self'` already covers it and no extra host is needed. (When the
+  retired Pages mirror served the static build, its form posted
+  cross-origin, governed by that handler's CORS allow-list — not this
+  CSP, since that host served no `_headers`.)
 - If `observabilityEndpoint` or `contactEndpoint` in `flags.json` ever
   points at a different host, add that host to `connect-src` in the same PR.
   For `observabilityEndpoint`, also add it to `OBSERVABILITY_INGEST_HOSTS`

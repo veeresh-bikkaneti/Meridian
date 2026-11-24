@@ -214,23 +214,21 @@ Every code change goes through two reviews: a technical-architecture review and 
 
 ## Deployment
 
-The public site is GitHub Pages, from a static build. `GITHUB_PAGES=1` sets the asset and router base to `/Meridian/`, turns on a static shell, and skips the server. `.github/workflows/pages.yml` runs that build on `main`, copies the shell to `index.html` and `404.html`, and publishes it.
-
-The same production build also ships to [meridian.knowledgetest.workers.dev](https://meridian.knowledgetest.workers.dev/) via a Cloudflare Workers build and deploy — both URLs serve the live app.
+The public site is [meridian.knowledgetest.workers.dev](https://meridian.knowledgetest.workers.dev/), served by a Cloudflare Worker deployed through Workers Builds. `npm run build:pages` stays as a CI gate: `GITHUB_PAGES=1` sets the asset and router base to `/Meridian/`, turns on a static shell, and skips the server, and CI builds that static artifact on `main` to prove the `/Meridian/`-based build stays green. It is not published — the former `.github/workflows/pages.yml` publish job was removed in TD-09.1.
 
 The Worker deploy shape is committed in this repo: a root `wrangler.jsonc` sets `main` to `src/server.ts`, Workers Builds deploys with that config, and the `@cloudflare/vite-plugin` wiring in `vite.config.ts` produces the bundle the deploy follows. The full record is [docs/reviews/2026-10-22-wrangler-config-entry.md](docs/reviews/2026-10-22-wrangler-config-entry.md).
 
-`npm run build` is a different path. It still produces the server build. The live preview uses that. Pages does not.
+`npm run build` is a different path. It still produces the server build. The live deploy uses that.
 
 ### Build version stamping
 
-Every build carries one build id — the deployed commit's short SHA (`scripts/build-id.mjs`: `GITHUB_SHA` on GitHub Actions, else `git rev-parse --short HEAD`, else a `local-<timestamp>` fallback for tarball builds). It appears in three places that must always agree: baked into the bundle (the staleness check in `src/game/build-staleness.ts`), as `VERSION` in the built `sw.js`, and served as `/build-meta.json`. The stamping runs **inside** the Vite build, not only in npm lifecycle hooks: `vite.config.ts` computes the id once (`BUILD_ID`) and passes it to `scripts/fingerprint-sw-plugin.mjs` (sw.js) and `scripts/build-meta-plugin.mjs` (writes `build-meta.json` into the output, including the Nitro `.vercel/output/static` tree). That matters because the Workers Builds deploy invokes the build directly, bypassing the `prebuild` hook that runs `scripts/write-build-meta.mjs` — on a fresh checkout there is no `public/build-meta.json` (it is gitignored), so the hook alone would leave the Workers site with no stamp. The Pages mirror under `/Meridian/` stamps the same way. Verify any built tree with:
+Every build carries one build id — the deployed commit's short SHA (`scripts/build-id.mjs`: `GITHUB_SHA` on GitHub Actions, else `git rev-parse --short HEAD`, else a `local-<timestamp>` fallback for tarball builds). It appears in three places that must always agree: baked into the bundle (the staleness check in `src/game/build-staleness.ts`), as `VERSION` in the built `sw.js`, and served as `/build-meta.json`. The stamping runs **inside** the Vite build, not only in npm lifecycle hooks: `vite.config.ts` computes the id once (`BUILD_ID`) and passes it to `scripts/fingerprint-sw-plugin.mjs` (sw.js) and `scripts/build-meta-plugin.mjs` (writes `build-meta.json` into the output, including the Nitro `.vercel/output/static` tree). That matters because the Workers Builds deploy invokes the build directly, bypassing the `prebuild` hook that runs `scripts/write-build-meta.mjs` — on a fresh checkout there is no `public/build-meta.json` (it is gitignored), so the hook alone would leave the Workers site with no stamp. The static `build:pages` artifact under `/Meridian/` stamps the same way. Verify any built tree with:
 
 ```sh
 node scripts/verify-build-stamp.mjs   # or: npm run verify:build-stamp
 ```
 
-Production today proves the point and shows the host difference: the Workers site stamps the 7-char git short SHA, the Pages mirror the 12-char `GITHUB_SHA` prefix — each equals its own deployed commit, and within any one deploy all three copies agree.
+Production on workers.dev proves the point: the live site stamps the 7-char git short SHA of its deployed commit, and within any one deploy all three copies agree.
 
 ### Production smoke check
 
@@ -261,6 +259,6 @@ The security headers (CSP, `X-Frame-Options: DENY`, `frame-ancestors 'none'`, Re
 
 ### Installable (PWA)
 
-Meridian ships a web manifest, app icons, and an offline page, so it can be installed from the browser. Updates never interrupt play: when a new version is detected, a toast offers "Update now" (applies the update and reloads once) or "Later" (dismisses; the update applies on the next fresh load). The service worker registers in production builds only. The manifest (`./` scope/start URL) and `sw.js` (base derived from its own URL) carry no hardcoded base path, so the same files work under `/Meridian/` on GitHub Pages and `/` on Cloudflare.
+Meridian ships a web manifest, app icons, and an offline page, so it can be installed from the browser. Updates never interrupt play: when a new version is detected, a toast offers "Update now" (applies the update and reloads once) or "Later" (dismisses; the update applies on the next fresh load). The service worker registers in production builds only. The manifest (`./` scope/start URL) and `sw.js` (base derived from its own URL) carry no hardcoded base path, so the same files work under the `/Meridian/` base of the static build and `/` on Cloudflare.
 
 Imagery: `Tiles © Esri — Source: Esri, Maxar, Earthstar Geographics, and the GIS User Community`. The imagery host sees the area on screen. Your pin stays on the device. Place data: GeoNames (CC-BY 4.0). Wikipedia-derived history notes: CC BY-SA, via the in-app source links.

@@ -89,7 +89,7 @@ The standing playbook is `~/workspace/custom-skills/local-meridian-review-pipeli
 6. **Autoplan** — merge sequencing across open PRs (never #34), oldest first, dependency-aware, with predicted conflict files.
 7. **Merge (the dance)** — step 0 first: check required-context drift (see §5). Merging requires the owner's explicit per-PR word. Branch protection is NEVER lifted, disabled, or changed without the owner's explicit approval for that specific merge (standing rule, 2026-10-16) — if blocked, stop and ask. The norm is NO lift: #162, #163, #165, #168, and #169 all merged with protection intact. Then: `gh pr merge <N> --squash` → `git push origin --delete <branch>` → rebase the next PR if it conflicts.
 8. **Comprehensive System Overview (post-merge)** — fresh main, conflict-marker grep, tsc, full tests, build, E2E on touched surfaces, `flags.json` validity. HEALTHY / ISSUES FOUND.
-9. **Land-and-deploy** — confirm CSO healthy; deploys auto via GitHub Pages; post-deploy `npm run smoke:crash`; verify live, no console errors.
+9. **Land-and-deploy** — confirm CSO healthy; deploys auto via Cloudflare Workers Builds on `main`; post-deploy `npm run smoke:crash`; verify live, no console errors.
 
 **Chitti's own live E2E is not optional.** For every contested PR, Chitti runs Playwright himself against the built artifact, takes screenshots at 390 / 1440 / 320px and reduced-motion, clicks the actual surfaces, and publishes the numbers. Panels check logic; Chitti checks reality.
 
