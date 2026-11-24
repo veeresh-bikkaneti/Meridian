@@ -4,23 +4,24 @@
  * fallback; the overlay upgrades it only when the check completes
  * whole):
  *
- *  - Round 2 looks PRs up BY NUMBER. The overlay only ever needs
- *    the `closes` PRs of subtasks that aren't already Done in
- *    the snapshot (today exactly one: #571). Up to 10 needed
- *    numbers are fetched one by one (GET /pulls/{n}); past that,
- *    the check pages pulls?state=all&per_page=100&page=N and
- *    stops as soon as every needed number has been seen. The
- *    round-1 read (the latest 100 pulls) is gone — it never saw
- *    older PRs at all.
+ *  - One recent-pulls call: GET /pulls?state=all&sort=updated
+ *    &direction=desc&per_page=100. Each row keeps number, state,
+ *    draft, merged_at, title, head.ref and label names — no
+ *    second call per pull. The overlay matches any of those
+ *    pulls to a subtask `num` without a kanban.json edit.
  *  - Branches come from ONE GET /branches?per_page=100 call.
  *    The transport port's RawResponse exposes only { ok, status,
  *    json } — no headers — so the `Link: rel="next"` header
  *    cannot be followed and `x-ratelimit-remaining` cannot be
- *    read. The port is not edited for this (the round-2 brief
- *    forbids it); the branch list is a single page, and the
- *    rate-limit defence is the status codes alone: any 403/429
- *    fails the whole check, on top of the small call budget
- *    (at most 11 calls) and the 5-minute session cache below.
+ *    read. The port is not edited for this; the branch list is
+ *    a single page, and the rate-limit defence is the status
+ *    codes alone: any 403/429 fails the whole check.
+ *  - Pre-recorded `closes` numbers that the recent page did not
+ *    already include are fetched by GET /pulls/{n}, at most
+ *    MAX_BY_NUMBER_LOOKUPS of them. More than that falls back
+ *    to paging pulls?state=all&per_page=100&page=N until every
+ *    missing number has been seen. The normal check is the two
+ *    calls above and nothing else.
  *  - Any failure — a non-200 status, offline, a body that is
  *    not the expected shape — fails the WHOLE check: the
  *    function resolves null and the view keeps the snapshot
@@ -101,6 +102,8 @@ export async function loadPublicSnapshot(
 
 export const GITHUB_REPO_API = "https://api.github.com/repos/veeresh-bikkaneti/Meridian";
 export const GITHUB_BRANCHES_URL = `${GITHUB_REPO_API}/branches?per_page=100`;
+export const GITHUB_RECENT_PULLS_URL =
+  `${GITHUB_REPO_API}/pulls?state=all&sort=updated&direction=desc&per_page=100`;
 
 /** At most this many needed PRs are looked up one by one. */
 export const MAX_BY_NUMBER_LOOKUPS = 10;
@@ -129,14 +132,38 @@ export function parseGithubPull(
   if (typeof o.number !== "number" || (o.state !== "open" && o.state !== "closed")) {
     return null;
   }
-  return {
-    number: o.number,
-    info: {
-      state: o.state,
-      draft: o.draft === true,
-      merged: typeof o.merged_at === "string" && o.merged_at.length > 0,
-    },
+  const head = o.head;
+  const headRef =
+    typeof head === "object" && head !== null && typeof (head as { ref?: unknown }).ref === "string"
+      ? (head as { ref: string }).ref
+      : undefined;
+  const info: PullInfo = {
+    state: o.state,
+    draft: o.draft === true,
+    merged: typeof o.merged_at === "string" && o.merged_at.length > 0,
   };
+  if (typeof o.title === "string") info.title = o.title;
+  if (headRef !== undefined) info.headRef = headRef;
+  const labels = parseLabelNames(o.labels);
+  if (labels !== undefined) info.labels = labels;
+  return { number: o.number, info };
+}
+
+/** Label names from a pulls payload. Strings or `{ name }` objects. Absent when `labels` is not an array. */
+function parseLabelNames(value: unknown): string[] | undefined {
+  if (!Array.isArray(value)) return undefined;
+  const names: string[] = [];
+  for (const item of value) {
+    if (typeof item === "string" && item.length > 0) {
+      names.push(item);
+      continue;
+    }
+    if (typeof item === "object" && item !== null && typeof (item as { name?: unknown }).name === "string") {
+      const name = (item as { name: string }).name;
+      if (name.length > 0) names.push(name);
+    }
+  }
+  return names;
 }
 
 /** Parse the pulls LIST payload into the same slice, keyed by number. */
@@ -182,7 +209,7 @@ export function collectClosesPullNumbers(subtasks: readonly Subtask[]): number[]
 /* Session cache (sessionStorage, 5 minutes — see the header note)     */
 /* ------------------------------------------------------------------ */
 
-export const KANBAN_LIVE_CACHE_KEY = "meridian-kanban-live:v2";
+export const KANBAN_LIVE_CACHE_KEY = "meridian-kanban-live:v3";
 export const KANBAN_LIVE_CACHE_TTL_MS = 5 * 60_000;
 
 export interface KeyValueStorage {
@@ -215,11 +242,24 @@ interface LiveCache {
 function isPullInfo(value: unknown): value is PullInfo {
   if (!value || typeof value !== "object") return false;
   const p = value as PullInfo;
-  return (
-    (p.state === "open" || p.state === "closed") &&
-    typeof p.draft === "boolean" &&
-    typeof p.merged === "boolean"
-  );
+  if (
+    !(
+      (p.state === "open" || p.state === "closed") &&
+      typeof p.draft === "boolean" &&
+      typeof p.merged === "boolean"
+    )
+  ) {
+    return false;
+  }
+  if (p.title !== undefined && typeof p.title !== "string") return false;
+  if (p.headRef !== undefined && typeof p.headRef !== "string") return false;
+  if (
+    p.labels !== undefined &&
+    !(Array.isArray(p.labels) && p.labels.every((label) => typeof label === "string"))
+  ) {
+    return false;
+  }
+  return true;
 }
 
 function readLiveCache(
@@ -328,6 +368,7 @@ export async function fetchKanbanLive(options: {
   now?: number;
   pullUrlFor?: (n: number) => string;
   pullsListUrlFor?: (page: number) => string;
+  recentPullsUrl?: string;
   branchesUrl?: string;
 } = {}): Promise<KanbanLiveState | null> {
   const now = options.now ?? Date.now();
@@ -337,28 +378,33 @@ export async function fetchKanbanLive(options: {
   if (cached) return cached;
 
   try {
-    const pulls = new Map<number, PullInfo>();
-    if (needed.length > 0 && needed.length <= MAX_BY_NUMBER_LOOKUPS) {
+    const recentPayload = await fetchViaPort(options.recentPullsUrl ?? GITHUB_RECENT_PULLS_URL);
+    if (!Array.isArray(recentPayload)) return null;
+    const pulls = parseGithubPulls(recentPayload);
+
+    const branchesPayload = await fetchViaPort(options.branchesUrl ?? GITHUB_BRANCHES_URL);
+    if (!Array.isArray(branchesPayload)) return null;
+
+    const missing = needed.filter((n) => !pulls.has(n));
+    if (missing.length > 0 && missing.length <= MAX_BY_NUMBER_LOOKUPS) {
       const urlFor = options.pullUrlFor ?? pullUrl;
-      for (const n of needed) {
+      for (const n of missing) {
         const parsed = parseGithubPull(await fetchViaPort(urlFor(n)));
         if (!parsed) throw new Error(`GitHub pull ${n} had an unexpected shape`);
         pulls.set(parsed.number, parsed.info);
       }
-    } else if (needed.length > MAX_BY_NUMBER_LOOKUPS) {
+    } else if (missing.length > MAX_BY_NUMBER_LOOKUPS) {
       const urlFor = options.pullsListUrlFor ?? pullsListUrl;
       for (let page = 1; page <= MAX_LIST_PAGES; page++) {
         const payload = await fetchViaPort(urlFor(page));
         if (!Array.isArray(payload)) return null;
         for (const [n, info] of parseGithubPulls(payload)) {
-          if (needed.includes(n)) pulls.set(n, info);
+          if (missing.includes(n)) pulls.set(n, info);
         }
-        if (needed.every((n) => pulls.has(n)) || payload.length < 100) break;
+        if (missing.every((n) => pulls.has(n)) || payload.length < 100) break;
       }
+      if (!missing.every((n) => pulls.has(n))) return null;
     }
-
-    const branchesPayload = await fetchViaPort(options.branchesUrl ?? GITHUB_BRANCHES_URL);
-    if (!Array.isArray(branchesPayload)) return null;
 
     const state: KanbanLiveState = {
       pulls,

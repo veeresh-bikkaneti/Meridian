@@ -7,10 +7,12 @@ import {
   applyOverlay,
   COLUMNS,
   columnRank,
+  extractSubtaskNums,
   freeToClaim,
   laneCounts,
   loadSnapshot,
   storyRollup,
+  storySeatTags,
   type Column,
   type PullInfo,
   type Snapshot,
@@ -376,6 +378,191 @@ describe("applyOverlay on the recorded fixtures", () => {
     });
     applyOverlay([task], pullsOf([10, { state: "closed", merged: true }]), new Set());
     assert.equal(task.col, "Backlog");
+  });
+});
+
+describe("extractSubtaskNums", () => {
+  it("keeps TD-01.1 distinct from TD-01.10 and ignores a story-only id", () => {
+    assert.deepEqual(extractSubtaskNums("TD-01.1"), ["TD-01.1"]);
+    assert.deepEqual(extractSubtaskNums("TD-01.10"), ["TD-01.10"]);
+    assert.deepEqual(extractSubtaskNums("see TD-01.1 next to TD-01.10"), ["TD-01.1", "TD-01.10"]);
+    assert.deepEqual(extractSubtaskNums("TD-08"), []);
+    assert.deepEqual(extractSubtaskNums("story TD-08 then TD-08.1"), ["TD-08.1"]);
+    assert.deepEqual(extractSubtaskNums("xTD-01.1"), []);
+    assert.deepEqual(extractSubtaskNums("td-09.1 and TD-09.1 again"), ["TD-09.1"]);
+    assert.deepEqual(extractSubtaskNums("fw-08.1"), ["FW-08.1"]);
+  });
+});
+
+describe("applyOverlay numbered pulls and branches", () => {
+  it("matches a branch or pull title case-insensitively, and not a ref", () => {
+    const task = makeSubtask({ num: "TD-09.1", col: "Backlog" });
+    const [byBranch] = applyOverlay([task], new Map(), new Set(["Chore/td-09.1-Retire-pages"]));
+    assert.equal(byBranch.col, "In progress");
+
+    const [byTitle] = applyOverlay(
+      [task],
+      pullsOf([577, { title: "chore(td-09.1): retire pages", headRef: "chore/other" }]),
+      new Set(),
+    );
+    assert.equal(byTitle.col, "In review");
+
+    const refd = makeSubtask({
+      num: "TD-09.1",
+      prs: [{ number: 577, role: "ref", href: "https://example.test/pull/577" }],
+      branches: [
+        { name: "chore/td-09.1-retire-pages", role: "ref", match: "exact", href: null },
+      ],
+    });
+    const [kept] = applyOverlay(
+      [refd],
+      pullsOf([
+        577,
+        { state: "closed", merged: true, title: "TD-09.1", headRef: "chore/td-09.1-retire-pages" },
+      ]),
+      new Set(["chore/td-09.1-retire-pages"]),
+    );
+    assert.equal(kept.col, "Backlog");
+    assert.equal(kept.note, undefined);
+    assert.equal(kept.prs.length, 1);
+    assert.equal(kept.seatTags, undefined);
+  });
+
+  it("does not treat TD-01.10 as TD-01.1, or a story id as a subtask", () => {
+    const narrow = makeSubtask({ num: "TD-01.1" });
+    const [out] = applyOverlay(
+      [narrow],
+      pullsOf([4, { title: "fix TD-01.10 only", headRef: "chore/td-01.10-more" }]),
+      new Set(["chore/td-01.10-more", "feat/td-08-story"]),
+    );
+    assert.equal(out.col, "Backlog");
+    const [hit] = applyOverlay([narrow], new Map(), new Set(["chore/td-01.1-exact"]));
+    assert.equal(hit.col, "In progress");
+  });
+
+  it("maps an auto pull: draft, ready, merged, and closed unmerged", () => {
+    const task = makeSubtask({ num: "TD-10.2" });
+    const draft = pullsOf([
+      1,
+      { state: "open", draft: true, title: "wip", headRef: "chore/td-10.2-remove-cva" },
+    ]);
+    assert.equal(applyOverlay([task], draft, new Set())[0].col, "In progress");
+    const ready = pullsOf([
+      1,
+      { state: "open", draft: false, title: "TD-10.2 remove cva" },
+    ]);
+    assert.equal(applyOverlay([task], ready, new Set())[0].col, "In review");
+    const merged = pullsOf([
+      1,
+      { state: "closed", merged: true, headRef: "chore/td-10.2-remove-cva" },
+    ]);
+    assert.equal(applyOverlay([task], merged, new Set())[0].col, "Done");
+    const closed = pullsOf([
+      1,
+      { state: "closed", merged: false, title: "abandoned TD-10.2" },
+    ]);
+    const [noted] = applyOverlay([task], closed, new Set());
+    assert.equal(noted.col, "Backlog");
+    assert.equal(noted.note, "closed unmerged");
+  });
+
+  it("stays forward-only when the auto signal ranks lower", () => {
+    const reviewing = makeSubtask({
+      num: "FW-08.1",
+      col: "In review",
+    });
+    const [out] = applyOverlay(
+      [reviewing],
+      pullsOf([3, { state: "open", draft: true, headRef: "feat/fw-08.1-globe" }]),
+      new Set(["feat/fw-08.1-globe"]),
+    );
+    assert.equal(out.col, "In review");
+    assert.equal(out.note, undefined);
+  });
+
+  it("appends the auto pull link without mutating the input", () => {
+    const task = makeSubtask({
+      num: "TD-09.1",
+      prs: [{ number: 10, role: "closes", href: "https://example.test/pull/10" }],
+    });
+    const [out] = applyOverlay(
+      [task],
+      pullsOf(
+        [10, { state: "open", draft: true, labels: ["C:Firefox"] }],
+        [577, { state: "open", draft: false, title: "TD-09.1 retire", labels: ["C:Opera", "docs"] }],
+      ),
+      new Set(),
+    );
+    assert.equal(task.col, "Backlog");
+    assert.equal(task.prs.length, 1);
+    assert.equal(task.seatTags, undefined);
+    assert.equal(out.col, "In review");
+    assert.equal(out.prs.length, 2);
+    assert.deepEqual(out.prs[1], {
+      number: 577,
+      role: "closes",
+      href: "https://github.com/veeresh-bikkaneti/Meridian/pull/577",
+    });
+    assert.deepEqual(out.seatTags, ["C:Firefox", "C:Opera"]);
+  });
+
+  it("dedupes C: seat tags and ignores labels that are not a seat", () => {
+    const task = makeSubtask({ num: "TD-10.3" });
+    const [out] = applyOverlay(
+      [task],
+      pullsOf(
+        [
+          2,
+          {
+            state: "open",
+            draft: true,
+            headRef: "chore/td-10.3-drop-use-get-json",
+            labels: ["C:Opera", "C:Edge", "area"],
+          },
+        ],
+        [
+          3,
+          {
+            state: "open",
+            draft: false,
+            title: "also TD-10.3",
+            labels: ["C:Opera", "C:Bot"],
+          },
+        ],
+      ),
+      new Set(),
+    );
+    assert.deepEqual(out.seatTags, ["C:Opera", "C:Edge", "C:Bot"]);
+    assert.equal(out.col, "In review");
+  });
+
+  it("does not match a num that appears only outside the title and head ref", () => {
+    const task = makeSubtask({ num: "TD-09.1" });
+    const [out] = applyOverlay(
+      [task],
+      pullsOf([
+        8,
+        { title: "unrelated cleanup", headRef: "chore/pages", labels: ["TD-09.1", "C:DuckDuck"] },
+      ]),
+      new Set(),
+    );
+    assert.equal(out.col, "Backlog");
+    assert.equal(out.seatTags, undefined);
+    assert.equal(out.prs.length, 0);
+  });
+});
+
+describe("storySeatTags", () => {
+  it("rolls distinct C: tags up in first-seen order", () => {
+    assert.deepEqual(
+      storySeatTags([
+        { seatTags: ["C:Opera", "C:Edge"] },
+        { seatTags: ["C:Opera", "C:Bot"] },
+        {},
+        { seatTags: ["notes", "C:DuckDuck"] },
+      ]),
+      ["C:Opera", "C:Edge", "C:Bot", "C:DuckDuck"],
+    );
   });
 });
 

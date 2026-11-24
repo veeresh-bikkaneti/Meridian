@@ -31,6 +31,7 @@ import {
   freeToClaim,
   loadSnapshot,
   storyRollup,
+  storySeatTags,
   type Column,
   type Lane,
   type Snapshot,
@@ -177,6 +178,7 @@ function StoryCard({
   freeIds: ReadonlySet<string>;
 }) {
   const listId = `kb-subs-${story.id}`;
+  const seatTags = storySeatTags(subtasks);
   return (
     <article className="kb-card kb-story" data-lane={story.lane} data-story-id={story.id}>
       <div className="kb-story-top">
@@ -185,6 +187,15 @@ function StoryCard({
           <div className="kb-card-title">
             <span className="kb-num">{story.num}</span> {story.title}
           </div>
+          {seatTags.length > 0 ? (
+            <div className="kb-seat-tags">
+              {seatTags.map((tag) => (
+                <span key={tag} className="kb-chip kb-chip-seat" data-seat-tag={tag}>
+                  {tag}
+                </span>
+              ))}
+            </div>
+          ) : null}
           {story.why ? <div className="kb-story-why">{story.why}</div> : null}
           {story.phase || story.prompts.length > 0 ? (
             <div className="kb-story-meta">

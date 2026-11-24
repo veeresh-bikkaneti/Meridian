@@ -1,0 +1,20 @@
+{
+  "_note": "Recent-pulls list plus one numbered branch for the live auto-sync fixture. Provenance-safe seat label only.",
+  "pulls": [
+    {
+      "number": 577,
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "title": "chore(td-09.1): retire the pages publish job",
+      "head": { "ref": "chore/td-09.1-retire-pages", "sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" },
+      "labels": [{ "name": "C:Opera" }, { "name": "area: build" }]
+    }
+  ],
+  "branches": [
+    {
+      "name": "chore/td-10.2-remove-cva",
+      "commit": { "sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb" }
+    }
+  ]
+}
