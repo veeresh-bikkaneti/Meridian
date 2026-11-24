@@ -132,9 +132,6 @@
     "src/subjects/social-studies/scenes.ts|../shared/clue-scene-types.ts"
   ],
   "noRawIo": [
-    "src/components/storyteller-home.tsx|fetch()",
-    "src/components/storyteller-home.tsx|new Audio()",
-    "src/components/storyteller-home.tsx|new Audio()",
     "src/game/loop/LoopScreen.tsx|fetch()",
     "src/game/loop/LoopScreen.tsx|sessionStorage access",
     "src/lib/error-component.tsx|window.sessionStorage access",
