@@ -47,7 +47,7 @@ register("data:text/javascript," + encodeURIComponent(HOOKS_SOURCE));
 
 // node has no window.speechSynthesis: every render below exercises the
 // "device cannot speak" path — the button must stay visible and tappable.
-const { ReadAloudButton, READ_ALONG_MESSAGE } = (await import("./ReadAloudButton.tsx")) as typeof import("./ReadAloudButton.tsx");
+const { ReadAloudButton, READ_ALONG_MESSAGE } = (await import("../ui/ReadAloudButton.tsx")) as typeof import("../ui/ReadAloudButton.tsx");
 const { ReadAloudPrefPrompt } = (await import("./ReadAloudPrefPrompt.tsx")) as typeof import("./ReadAloudPrefPrompt.tsx");
 
 const STORY = "A short story about a place.";

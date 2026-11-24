@@ -9,7 +9,7 @@ import { isHit } from "@/game/radius";
 import { startGlobeSpin, stopGlobeSpin } from "@/game/audio/sfx";
 import { readPalettePreference } from "@/game/palette-preference";
 import { playCelebrationSound, safePlay, soundAudible } from "@/game/audio/play-guards";
-import { IMAGERY_NOTICE, imageryView } from "./imagery.ts";
+import { IMAGERY_NOTICE, imageryView } from "../lib/imagery.ts";
 import { isTap, type PointerTapEndpoint } from "./pin-tap.ts";
 import { clearRegionHighlight, paintRegionHighlight } from "./region-highlight.ts";
 import { bandForMode, clearBoundaryBands, paintBoundaryBand } from "./boundary-bands.ts";

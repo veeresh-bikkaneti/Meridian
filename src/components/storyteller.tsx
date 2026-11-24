@@ -27,7 +27,7 @@ import {
   fallbackLine,
 } from "./storyteller-audio-guards";
 import { GrandpaMascot } from "./grandpa-mascot";
-import { BoundedText } from "./bounded-text";
+import { BoundedText } from "./ui/bounded-text";
 import "./storyteller-mascot.css";
 
 // Storyteller narration — the old Greek storyteller's voice.

@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { InfoPage } from "@/components/grownups/info-page";
-import { IMAGERY_ATTRIBUTION } from "@/map/imagery";
+import { IMAGERY_ATTRIBUTION } from "@/lib/imagery";
 import { BUNDLED_CREDITS } from "@/lib/credits";
 
 /**
