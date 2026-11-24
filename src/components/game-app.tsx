@@ -244,7 +244,6 @@ import {
 } from "./reveal-watchdog";
 import { isEnabled, loadFlags, getObservabilityEndpoint } from "@/lib/flags";
 import {
-  consumeChunkReloadNotice,
   installChunkLoadRecovery,
   isChunkLoadError,
   shouldReportChunkFailure,
@@ -410,6 +409,7 @@ import { resetHistory, type ResetHistoryResult } from "@/game/reset-history";
 import { ResetHistoryControl } from "./reset-history-control";
 import { useDifficultyChoice } from "./use-difficulty-choice";
 import { useDeckStatus } from "./use-deck-status";
+import { useChunkReloadNotice } from "./use-chunk-reload-notice";
 
 /**
  * Watched by the inline crash watchdog injected into _shell.html
@@ -1552,7 +1552,8 @@ export function GameApp() {
   // previous page's reload left a notice flag. Deliberately NO
   // auto-dismiss timer (unlike ageToast above): a timed status can be
   // deleted before a screen reader reaches it. Close button only.
-  const [chunkReloadNotice, setChunkReloadNotice] = useState(false);
+  const { chunkReloadNotice, consumeChunkReloadNoticeOnce, dismissChunkReloadNotice } =
+    useChunkReloadNotice();
   useEffect(() => {
     if (ageToast === null) return;
     const id = window.setTimeout(() => setAgeToast(null), 3500);
@@ -2280,7 +2281,7 @@ export function GameApp() {
       // at the crash watchdog's 28 s check, where a surviving fresh
       // notice is the recovery evidence that stands the watchdog's
       // boot_failure report down.
-      if (consumeChunkReloadNotice()) setChunkReloadNotice(true);
+      consumeChunkReloadNoticeOnce();
       try {
         if (typeof window !== "undefined" && typeof window.requestAnimationFrame === "function") {
           window.requestAnimationFrame(() => {
@@ -2297,7 +2298,7 @@ export function GameApp() {
         /* the watchdog simply treats a missing flag as not-ready */
       }
     }
-  }, [ready]);
+  }, [ready, consumeChunkReloadNoticeOnce]);
 
   useEffect(() => {
     // Crash-loop breaker: a normal unload (reload, tab close, navigation)
@@ -4213,7 +4214,7 @@ export function GameApp() {
               type="button"
               aria-label="Close"
               className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg text-muted hover:text-fg focus-visible:outline focus-visible:outline-2 focus-visible:outline-fg"
-              onClick={() => setChunkReloadNotice(false)}
+              onClick={dismissChunkReloadNotice}
             >
               ✕
             </button>

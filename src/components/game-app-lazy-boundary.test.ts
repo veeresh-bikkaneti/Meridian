@@ -31,6 +31,10 @@ import { fileURLToPath } from "node:url";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const gameAppSource = readFileSync(join(here, "game-app.tsx"), "utf8");
+const chunkReloadNoticeSource = readFileSync(
+  join(here, "use-chunk-reload-notice.ts"),
+  "utf8",
+);
 const loopMapSource = readFileSync(
   join(here, "../game/loop/LoopMap.tsx"),
   "utf8",
@@ -306,15 +310,23 @@ describe("arena Phase 2 (PR #532): boundary-less hosts and notice timing", () =>
   });
 
   it("F7d: the chunk-reload notice is consumed at the ready point, not in the mount effect", () => {
-    const readyEffect = segment(gameAppSource, "if (ready && !readySignaledRef.current) {", "}, [ready]);");
+    // TD-06.5: the consume lives in the useChunkReloadNotice hook now;
+    // game-app calls the hook's consume at the same ready point, and the
+    // hook module holds the one chunk-recovery consume.
+    const readyEffect = segment(gameAppSource, "if (ready && !readySignaledRef.current) {", "}, [ready, consumeChunkReloadNoticeOnce]);");
     assert.ok(
-      readyEffect.includes("consumeChunkReloadNotice()"),
+      readyEffect.includes("consumeChunkReloadNoticeOnce()"),
       "consume must ride the __meridian_ready signal so a mount-then-stall page keeps its notice for the watchdog",
     );
     assert.equal(
-      gameAppSource.split("consumeChunkReloadNotice()").length - 1,
+      gameAppSource.split("consumeChunkReloadNoticeOnce()").length - 1,
       1,
-      "exactly one consume site",
+      "exactly one consume site in game-app",
+    );
+    assert.equal(
+      chunkReloadNoticeSource.split("consumeChunkReloadNotice()").length - 1,
+      1,
+      "exactly one chunk-recovery consume site, inside the hook",
     );
   });
 
