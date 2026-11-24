@@ -429,12 +429,8 @@ export function SatelliteMap(props: {
   marks?: readonly MapMark[];
   variation?: MapVariation | null;
   /**
-   * E2E hook (DOM contract, follows the data-zoom/data-tile-status pattern):
-   * the current place's true-spot coordinates. The adapter exposes
-   * `__spotScreen()` on the wrapper element, projecting the spot to
-   * wrapper-relative CSS pixels through the live camera so specs can tap
-   * exact spots deterministically (e.g. a guaranteed hit). Null when there
-   * is no active place.
+   * The current place's true-spot coordinates. Null when there is
+   * no active place.
    */
   spot?: { lon: number; lat: number } | null;
   /**
@@ -559,7 +555,7 @@ export function SatelliteMap(props: {
   const suppressNextZoomEndRef = useRef(false);
   // Map center mirror for the DOM contract (data-center-lng/lat). Written on
   // moveend — cheap, stable between gestures, and precise enough (4 decimals
-  // ≈ 11 m) for E2E drag assertions. data-zoom stays rounded for the existing
+  // ≈ 11 m) for drag checks drag assertions. data-zoom stays rounded for the existing
   // zoom-control consumers.
   const [center, setCenter] = useState({ lng: 0, lat: 0 });
   // moveend fires after every gesture — including pure zooms that leave the
@@ -1039,65 +1035,40 @@ export function SatelliteMap(props: {
       // Canvas unavailable — the map error boundary covers construction.
     }
 
-    // E2E hook (DOM contract): project the current spot to wrapper-relative
-    // CSS pixels through the live camera. Specs use it to tap exact spots
-    // deterministically (e.g. a guaranteed hit). Returns null when there is
-    // no active place. The closure reads spotRef/mapRef so it always sees
-    // the current place and camera.
     const wrapperEl = wrapperRef.current!;
-    (
-      wrapperEl as unknown as {
-        __spotScreen?: () => { x: number; y: number } | null;
-      }
-    ).__spotScreen = () => {
-      const spot = spotRef.current;
-      const liveMap = mapRef.current;
-      if (!spot || !liveMap) return null;
-      const p = liveMap.project([spot.lon, spot.lat]);
-      const containerRect = liveMap.getCanvasContainer().getBoundingClientRect();
-      const wrapperRect = wrapperEl.getBoundingClientRect();
-      return {
-        x: p.x + (containerRect.left - wrapperRect.left),
-        y: p.y + (containerRect.top - wrapperRect.top),
-      };
-    };
-
-    // E2E seam (mirrors __spotScreen): project an arbitrary lon/lat to
-    // wrapper-relative screen coordinates so specs can tap deterministic
-    // geographic points (e.g. a miss pin on a named place for the
-    // pin-compare-line assertions). Inert in production.
-    (
-      wrapperEl as unknown as {
-        __project?: (lon: number, lat: number) => { x: number; y: number } | null;
-      }
-    ).__project = (lon: number, lat: number) => {
-      const liveMap = mapRef.current;
-      if (!liveMap) return null;
-      const p = liveMap.project([lon, lat]);
-      const containerRect = liveMap.getCanvasContainer().getBoundingClientRect();
-      const wrapperRect = wrapperEl.getBoundingClientRect();
-      return {
-        x: p.x + (containerRect.left - wrapperRect.left),
-        y: p.y + (containerRect.top - wrapperRect.top),
-      };
-    };
-
-    // E2E seam (mirrors __spotScreen): expose a read-only list of the live
-    // map's layer ids so specs can assert the painted boundary band without
-    // touching the network buffer. Returns null when the map is not up.
-    // Inert in production. Deliberately read-only: it reports actual map
-    // state via getStyle().layers and never recomputes which band *should*
-    // paint — that would test the seam, not the product.
-    (
-      wrapperEl as unknown as {
-        __boundaryBand?: () => { layers: string[] } | null;
-      }
-    ).__boundaryBand = () => {
-      const liveMap = mapRef.current;
-      if (!liveMap) return null;
-      const layers = liveMap.getStyle()?.layers.map((l) => l.id) ?? [];
-      return { layers };
-    };
+    (globalThis as { mh?: { attachMap?: (el: object, handles: object) => void } }).mh?.attachMap?.(
+      wrapperEl,
+      {
+      spotScreen: () => {
+        const spot = spotRef.current;
+        const liveMap = mapRef.current;
+        if (!spot || !liveMap) return null;
+        const p = liveMap.project([spot.lon, spot.lat]);
+        const containerRect = liveMap.getCanvasContainer().getBoundingClientRect();
+        const wrapperRect = wrapperEl.getBoundingClientRect();
+        return {
+          x: p.x + (containerRect.left - wrapperRect.left),
+          y: p.y + (containerRect.top - wrapperRect.top),
+        };
+      },
+      project: (lon, lat) => {
+        const liveMap = mapRef.current;
+        if (!liveMap) return null;
+        const p = liveMap.project([lon, lat]);
+        const containerRect = liveMap.getCanvasContainer().getBoundingClientRect();
+        const wrapperRect = wrapperEl.getBoundingClientRect();
+        return {
+          x: p.x + (containerRect.left - wrapperRect.left),
+          y: p.y + (containerRect.top - wrapperRect.top),
+        };
+      },
+      boundaryBand: () => {
+        const liveMap = mapRef.current;
+        if (!liveMap) return null;
+        const layers = liveMap.getStyle()?.layers.map((l) => l.id) ?? [];
+        return { layers };
+      },
+    });
 
     // Design §2: the starfield mounts behind the map container (first child
     // of the wrapper, own absolute positioning + dark fallback, canvases

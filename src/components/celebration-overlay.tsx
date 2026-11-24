@@ -25,7 +25,6 @@ import {
 // it is re-exported here so app code imports it from the overlay module.
 export {
   CELEBRATION_COPY,
-  celebrationFromSearch,
   celebrationSeamSpec,
   celebrationSpec,
   deckCompleteCelebrationSpec,

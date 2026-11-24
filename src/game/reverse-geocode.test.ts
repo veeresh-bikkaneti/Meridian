@@ -14,13 +14,11 @@
  * NOTE: node runs a file's tests in order, so the "no eager parse"
  * assertions must come before the first preload call in this file.
  */
+import { admin1ChunkLoadRunsForTests, admin1LoadRunsForTests, clearAdmin1ChunkCacheForTests, territoryLoadRunsForTests } from "../../tests/harness/module-seams.ts";
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
   admin1ChunkIso2ForRegion,
-  admin1ChunkLoadRunsForTests,
-  admin1LoadRunsForTests,
-  clearAdmin1ChunkCacheForTests,
   NEAREST_PLACE_MAX_KM,
   nearestPoolPlace,
   pinCompareLine,
@@ -33,7 +31,6 @@ import {
 } from "./reverse-geocode.ts";
 import {
   preloadTerritory,
-  territoryLoadRunsForTests,
 } from "./territory.ts";
 
 test("importing the module parses no admin-1 boundaries", () => {

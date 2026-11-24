@@ -219,7 +219,10 @@ export default function MoleculeMap({
     dummy.scale.set(1, 1, 1);
     dummy.quaternion.identity();
     scene.add(bonds);
-    stage.dataset.bondCount = String(board.bonds.length);
+    (globalThis as { mh?: { writeProbe?: (el: object, fields: object) => void } }).mh?.writeProbe?.(
+      stage,
+      { bonds: board.bonds.length },
+    );
 
     /* Bond colours are per-instance and read the atlas tokens from
      * the stage's computed style — the CSS is the single source of
@@ -420,20 +423,27 @@ export default function MoleculeMap({
       renderer.render(scene, camera);
       frames += 1;
       if (frames === 45) {
-        stage.dataset.drawCalls = String(renderer.info.render.calls);
-        stage.dataset.triangles = String(renderer.info.render.triangles);
-        /* E2E probe (same family as the counters above): the frontier
-         * atom's projected position as canvas fractions, so the spec
-         * can click a real atom through the real raycast path. */
         const frontier = board.epics
           .flatMap((e) => e.features.flatMap((f) => f.stories))
           .find((s) => s.status === "in-progress");
+        let px: number | undefined;
+        let py: number | undefined;
+        let slug: string | undefined;
         if (frontier && layout.positions[frontier.slug]) {
           const v = new THREE.Vector3(...layout.positions[frontier.slug]).project(camera);
-          stage.dataset.probeX = String(v.x * 0.5 + 0.5);
-          stage.dataset.probeY = String(-v.y * 0.5 + 0.5);
-          stage.dataset.probeSlug = frontier.slug;
+          px = v.x * 0.5 + 0.5;
+          py = -v.y * 0.5 + 0.5;
+          slug = frontier.slug;
         }
+        (globalThis as { mh?: { writeProbe?: (el: object, fields: object) => void } }).mh?.writeProbe?.(
+          stage,
+          {
+          calls: renderer.info.render.calls,
+          tris: renderer.info.render.triangles,
+          px,
+          py,
+          slug,
+        });
       }
     };
     tick();

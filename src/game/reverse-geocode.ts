@@ -64,12 +64,12 @@ let usStatesPromise: Promise<Admin1Feature[]> | null = null;
 let neAdmin1Promise: Promise<Admin1Feature[]> | null = null;
 let preloadPromise: Promise<void> | null = null;
 
-/** Test seam (see territoryConversionRunsForTests precedent): how many times
+/** Helper (see territoryConversionRuns precedent): how many times
  * the admin-1 loads have started. Must stay 1 per source no matter how many
  * times preloadAdmin1Boundaries() is called. */
 let usLoadRuns = 0;
 let neLoadRuns = 0;
-export function admin1LoadRunsForTests(): { us: number; ne: number } {
+export function admin1LoadRuns(): { us: number; ne: number } {
   return { us: usLoadRuns, ne: neLoadRuns };
 }
 
@@ -169,13 +169,13 @@ const admin1ChunkCache = new Map<string, Promise<Admin1Feature[]>>();
 const admin1ChunkFeatures = new Map<string, Admin1Feature[]>();
 const admin1ChunkLoadRuns = new Map<string, number>();
 
-/** Test seam: per-chunk load counts (mirrors admin1LoadRunsForTests). */
-export function admin1ChunkLoadRunsForTests(): Record<string, number> {
+/** Helper: per-chunk load counts (mirrors admin1LoadRuns). */
+export function admin1ChunkLoadCounts(): Record<string, number> {
   return Object.fromEntries(admin1ChunkLoadRuns);
 }
 
-/** Test seam: drop cached chunks so tests can observe fresh loads. */
-export function clearAdmin1ChunkCacheForTests(): void {
+/** Helper: drop cached chunks so tests can observe fresh loads. */
+export function clearAdmin1ChunkCache(): void {
   admin1ChunkCache.clear();
   admin1ChunkFeatures.clear();
 }

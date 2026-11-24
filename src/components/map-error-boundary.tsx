@@ -99,9 +99,6 @@ export class MapErrorBoundary extends Component<
     /** What this boundary wraps, for the neutral card's heading:
      *  "the map" (default), "GeoDetective", "Cold Trail", … */
     surface?: string;
-    /** Test seam: substitute the staleness probe. Defaults to the
-     *  real build-meta probe. */
-    probeStaleBuild?: () => Promise<boolean>;
   },
   { error: Error | null; staleBuild: boolean }
 > {
@@ -207,7 +204,8 @@ export class MapErrorBoundary extends Component<
     // F6: the one-shot guard is time-bound now — a mark older than
     // the window (or the legacy "1") no longer skips the probe.
     if (staleRefreshRecentlyUsed()) return;
-    const probe = this.props.probeStaleBuild ?? isNewBuildDeployed;
+    const probe =
+      (globalThis as { mh?: { s?: () => Promise<boolean> } }).mh?.s ?? isNewBuildDeployed;
     void probe()
       .then((stale) => {
         if (!this.unmounted && stale) this.setState({ staleBuild: true });

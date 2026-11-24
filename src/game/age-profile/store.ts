@@ -355,8 +355,8 @@ export function getAgeGroup(): AgeGroup {
   return resolveBand();
 }
 
-/** Exported for tests: reset the in-memory write-failure fallback + deferred state. */
-export function __resetMemoryFallback(): void {
+/** Callable by callers: reset the in-memory write-failure fallback + deferred state. */
+export function clearAgeProfileMemoryFallback(): void {
   memoryFallback = null;
   deferred = null;
 }

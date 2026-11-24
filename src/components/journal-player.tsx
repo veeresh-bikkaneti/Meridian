@@ -56,13 +56,6 @@ export function JournalPlayer({
   onOpen,
   onClose,
   reducedMotion,
-  /** Test-only deterministic path: bypass the manifest fetch. When
-   *  undefined (production), the manifest is fetched lazily on open. */
-  movieUrlOverride,
-  /** Test-only deterministic path: bypass the transcripts fetch. When
-   *  undefined (production), the transcripts file is fetched lazily on
-   *  open; null means "this entry has no transcript". */
-  transcriptOverride,
 }: {
   noteId: string;
   place: string;
@@ -72,9 +65,15 @@ export function JournalPlayer({
   onOpen: (noteId: string) => void;
   onClose: () => void;
   reducedMotion?: boolean;
-  movieUrlOverride?: string | null;
-  transcriptOverride?: JournalTranscript | null;
 }) {
+  const slot = (globalThis as {
+    mh?: {
+      journalMovie?: () => string | null | undefined;
+      journalTranscript?: () => unknown;
+    };
+  }).mh;
+  const movieUrlOverride = slot?.journalMovie?.();
+  const transcriptOverride = slot?.journalTranscript?.() as JournalTranscript | null | undefined;
   const reduceMotion = reducedMotion ?? prefersReducedMotion();
   const initialPhase = (): JournalPlayerPhase => {
     if (!open) return "closed";

@@ -1,10 +1,10 @@
+import { currentVoiceOwner } from "../../../tests/harness/module-seams.ts";
 import assert from "node:assert/strict";
 import test, { afterEach, describe } from "node:test";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 
 import {
-  currentVoiceOwner,
   stopAllVoices,
 } from "../../game/audio/voice-channel.ts";
 import { createFakeVoicePort } from "./fake-voice.ts";

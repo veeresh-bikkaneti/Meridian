@@ -1,6 +1,10 @@
-import { strict as assert } from "node:assert";
-import { test } from "node:test";
-import { loopPuzzleFromSearch } from "./day.ts";
+import assert from "node:assert/strict";
+import test from "node:test";
+import {
+  celebrationVariantFromSearch,
+  idleTimeoutFromSearch,
+  loopPuzzleFromSearch,
+} from "../../../tests/harness/seams.ts";
 
 test("loopPuzzleFromSearch: numeric param returns the index", () => {
   assert.equal(loopPuzzleFromSearch("?loop-puzzle=218"), 218);
@@ -21,6 +25,15 @@ test("loopPuzzleFromSearch: inert without the param or with garbage", () => {
 
 test("loopPuzzleFromSearch: the retired loop-date param is never parsed", () => {
   assert.equal(loopPuzzleFromSearch("?loop-date=2026-10-03"), null);
-  // Both params present: loop-puzzle wins, loop-date is ignored.
   assert.equal(loopPuzzleFromSearch("?loop-date=2026-10-03&loop-puzzle=7"), 7);
+});
+
+test("idleTimeoutFromSearch lives on the test harness", () => {
+  assert.equal(idleTimeoutFromSearch("?idle-ms=3000", 999), 3000);
+  assert.equal(idleTimeoutFromSearch("?idle-ms=0", 999), 999);
+});
+
+test("celebrationVariantFromSearch lives on the test harness", () => {
+  assert.equal(celebrationVariantFromSearch("?celebration=game-complete"), "game-complete");
+  assert.equal(celebrationVariantFromSearch(""), null);
 });

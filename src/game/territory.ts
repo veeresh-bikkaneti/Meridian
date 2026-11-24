@@ -53,7 +53,7 @@ let loadRuns = 0;
 let loadGeneration = 0;
 
 /** The atlas import, behind a named binding so tests can substitute a
- * failing importer (see territoryImporterForTests below). */
+ * failing importer (see setTerritoryImporter below). */
 function importAtlas(): Promise<{ default: unknown }> {
   return import("world-atlas/countries-50m.json", {
     with: { type: "json" },
@@ -147,18 +147,18 @@ export function preloadTerritory(
   );
 }
 
-/** Test seam (see admin1LoadRunsForTests precedent): how many times the
+/** Helper (see admin1LoadRuns precedent): how many times the
  * dynamic load has started. Must stay 1 no matter how many preloads or
  * lookups happen. */
-export function territoryLoadRunsForTests(): number {
+export function territoryLoadRuns(): number {
   return loadRuns;
 }
 
-/** Test seam: substitute the atlas importer and reset the load cache, so
+/** Helper: substitute the atlas importer and reset the load cache, so
  * the failure contract (never-rejects preload, fail-closed readers,
  * retry eviction) is exercised end-to-end by territory-failure.test.ts.
  * Pass null to restore the real import. */
-export function territoryImporterForTests(
+export function setTerritoryImporter(
   importer: (() => Promise<{ default: unknown }>) | null,
 ): void {
   atlasImporter = importer ?? importAtlas;
@@ -166,9 +166,9 @@ export function territoryImporterForTests(
   cachedCountries = null;
 }
 
-/** Test seam: how many times the TopoJSON→GeoJSON conversion has run.
+/** Helper: how many times the TopoJSON→GeoJSON conversion has run.
  * Must stay 1 no matter how many lookups happen. */
-export function territoryConversionRunsForTests(): number {
+export function territoryConversionRuns(): number {
   return conversionRuns;
 }
 

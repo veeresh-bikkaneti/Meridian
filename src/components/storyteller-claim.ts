@@ -21,7 +21,7 @@ export function claimFirstRevealNarration(): boolean {
   return true;
 }
 
-/** Test-only: drop the session flag. */
-export function resetFirstRevealNarrationForTests(): void {
+/** Internal: drop the session flag. */
+export function clearFirstRevealNarration(): void {
   firstRevealClaimed = false;
 }

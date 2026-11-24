@@ -176,10 +176,6 @@ interface StationAnchor {
  * later case opens straight onto the clues (plan of record §2: bench
  * and intro on first entry only). Module scope = one page session. */
 let introPlayedThisSession = false;
-/** Test-only: forget the session's intro. */
-export function __resetDetectiveSessionIntro(): void {
-  introPlayedThisSession = false;
-}
 
 export interface DetectiveHostCallbacks {
   /** The pair presented clue card `n` (1-based): the screen reveals

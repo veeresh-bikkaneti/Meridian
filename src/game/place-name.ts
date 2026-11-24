@@ -65,8 +65,8 @@ const COUNTRY_NAMES: Set<string> = (() => {
   return names;
 })();
 
-/** Test seam: how many country names the CLDR table yielded. */
-export function recognizedCountryCountForTests(): number {
+/** Helper: how many country names the CLDR table yielded. */
+export function recognizedCountryCount(): number {
   return COUNTRY_NAMES.size;
 }
 

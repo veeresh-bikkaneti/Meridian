@@ -1,8 +1,8 @@
+import { clearLoopIndexCache } from "../../../tests/harness/module-seams.ts";
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
   LOOP_SUGGESTION_LIMIT,
-  clearLoopIndexCache,
   displayLoopName,
   evaluateGuess,
   fetchLoopIndex,

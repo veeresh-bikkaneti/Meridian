@@ -1,3 +1,4 @@
+import { __resetReadAloudPrefMemory } from "../../../tests/harness/module-seams.ts";
 import assert from "node:assert/strict";
 import test from "node:test";
 
@@ -24,7 +25,6 @@ import {
   setReadAloudPref,
   shouldAskReadAloudPref,
   shouldAutoPlayReadAloud,
-  __resetReadAloudPrefMemory,
 } from "./read-aloud-pref.ts";
 import { setAgeProfileStorageBackend } from "./storage-backend.ts";
 

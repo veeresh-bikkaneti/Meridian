@@ -156,7 +156,7 @@ export class InMemoryRateLimiter implements ContactRateLimiter {
     return { allowed: true, retryAfterSec: 0 };
   }
 
-  /** Test-only: forget every window and the salt. */
+  /** Internal: forget every window and the salt. */
   reset(): void {
     this.perClient.clear();
     this.globalWindow = { start: 0, count: 0 };
@@ -245,7 +245,7 @@ export interface RateLimitBindings {
 /** The isolate's in-memory limiter, shared by every request on this isolate. */
 const sharedInMemory = new InMemoryRateLimiter();
 
-export function sharedInMemoryLimiterForTests(): InMemoryRateLimiter {
+export function sharedMemoryLimiter(): InMemoryRateLimiter {
   return sharedInMemory;
 }
 
@@ -284,8 +284,8 @@ export function readRateLimitBindings(): Promise<RateLimitBindings> {
   return bindingLookup;
 }
 
-/** Test-only: forget the cached lookup. */
-export function resetRateLimitBindingLookupForTests(): void {
+/** Internal: forget the cached lookup. */
+export function clearRateLimitBindingLookup(): void {
   bindingLookup = null;
 }
 

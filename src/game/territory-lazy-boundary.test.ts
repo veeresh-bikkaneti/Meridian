@@ -143,7 +143,7 @@ describe("F2b wiring — gameplay entry points start or await the preload", () =
     // rely on this: preloadTerritory must resolve even when the load
     // fails. Pinned by shape — the two-branch then() that maps both
     // fulfillment and rejection to undefined.
-    const preload = segment(territorySource, "export function preloadTerritory", "territoryLoadRunsForTests");
+    const preload = segment(territorySource, "export function preloadTerritory", "export function territoryLoadRuns");
     assert.ok(
       /loadCountryFeatures\([^)]*\)\.then\(/.test(preload),
       "preload must ride the shared loader (any timeout argument, #209)",

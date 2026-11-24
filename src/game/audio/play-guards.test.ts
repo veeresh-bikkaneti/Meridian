@@ -1,3 +1,4 @@
+import { resetPlayGuards } from "../../../tests/harness/module-seams.ts";
 import { describe, it, beforeEach } from "node:test";
 import assert from "node:assert/strict";
 import {
@@ -8,7 +9,6 @@ import {
   claimRejectTick,
   claimSmallCheer,
   playCelebrationSound,
-  resetPlayGuards,
   safePlay,
   soundAudible,
 } from "./play-guards.ts";

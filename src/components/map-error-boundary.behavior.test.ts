@@ -41,7 +41,6 @@ const here = dirname(fileURLToPath(import.meta.url));
 
 type BoundaryClass = new (props: {
   surface?: string;
-  probeStaleBuild?: () => Promise<boolean>;
 }) => {
   state: { error: Error | null; staleBuild: boolean };
   render: () => ReactNode;
@@ -178,7 +177,9 @@ async function caughtBoundary(
 ) {
   const mod = await loadBoundary();
   browser.wireBundle(mod);
-  const instance = new mod.MapErrorBoundary({ surface, probeStaleBuild: () => Promise.resolve(staleBuild) });
+  const g = globalThis as { mh?: { s?: () => Promise<boolean> } };
+  g.mh = { ...(g.mh ?? {}), s: () => Promise.resolve(staleBuild) };
+  const instance = new mod.MapErrorBoundary({ surface });
   instance.state = { error: new Error("chunk failed to load"), staleBuild };
   const html = mod.renderToStaticMarkup(instance.render());
   return { instance, html };

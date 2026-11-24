@@ -1,3 +1,4 @@
+import { clearChunkCacheForTests, loadedGlobeTiersForTests } from "../../tests/harness/module-seams.ts";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
@@ -9,14 +10,12 @@ import {
   generatedPlaceCount,
   loadRegionChunk,
   startersFromChunk,
-  clearChunkCacheForTests,
   aggregateChunkIds,
   applyFactIndex,
   GENERATED_SOURCE_LABEL,
   GENERATED_SOURCE_HREF,
   GLOBE_TIERS,
   loadGlobeTiers,
-  loadedGlobeTiersForTests,
   mergeByGeonameId,
 } from "./generated-places.ts";
 import { asFameTier, filterByTier, tiersFor, TIER_BANDS, type PickerDifficulty } from "./tier-filter.ts";

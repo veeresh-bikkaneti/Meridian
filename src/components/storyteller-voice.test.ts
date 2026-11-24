@@ -1,7 +1,8 @@
+import { currentVoiceOwner } from "../../tests/harness/module-seams.ts";
 import assert from "node:assert/strict";
 import test, { afterEach } from "node:test";
 
-import { claimVoice, currentVoiceOwner, stopAllVoices } from "../game/audio/voice-channel.ts";
+import { claimVoice, stopAllVoices } from "../game/audio/voice-channel.ts";
 import { claimStorytellerVoice } from "./storyteller-voice.ts";
 
 afterEach(() => stopAllVoices());

@@ -1,10 +1,10 @@
+import { resetContactStateForTests } from "../harness/module-seams.ts";
 import http from "node:http";
 import { test, expect, type Page, type Locator } from "playwright/test";
 import { serveBuiltArtifact, APP_NO_IDLE } from "./helpers";
 import {
   handleContactRequest,
   readContactRuntimeEnv,
-  resetContactStateForTests,
 } from "../../src/lib/contact/contact-handler.server";
 
 /**

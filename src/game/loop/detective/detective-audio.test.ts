@@ -1,8 +1,8 @@
+import { __resetDetectiveManifestCache } from "../../../../tests/harness/module-seams.ts";
 import assert from "node:assert/strict";
 import test from "node:test";
 
 import {
-  __resetDetectiveManifestCache,
   createDetectiveSpeech,
   isEndingRef,
   loadDetectiveManifest,

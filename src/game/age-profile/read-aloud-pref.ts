@@ -143,7 +143,7 @@ export function shouldAutoPlayReadAloud(
   }
 }
 
-/** Test-only: drop the in-memory fallback so node tests start clean. */
-export function __resetReadAloudPrefMemory(): void {
+/** Internal: drop the in-memory fallback so node tests start clean. */
+export function clearReadAloudPrefMemory(): void {
   memoryFallback = null;
 }

@@ -49,8 +49,8 @@ let lastSmallCheerAt = -Infinity;
 let lastGrandAt = -Infinity;
 let lastRejectTickAt = -Infinity;
 
-/** Test seam: reset the module's timing state. */
-export function resetPlayGuards(): void {
+/** Helper: reset the module's timing state. */
+export function clearPlayGuardTimes(): void {
   lastSmallCheerAt = -Infinity;
   lastGrandAt = -Infinity;
   lastRejectTickAt = -Infinity;

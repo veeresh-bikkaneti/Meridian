@@ -1693,8 +1693,8 @@ export function GameApp() {
   // Celebration overlay (spec §7.2): the parent owns the spec; dismiss →
   // null → unmount. Set by first-win (endless game), streak milestones via
   // sound only, and GeoDetective's 387 completion (via onCelebrate).
-  // E2E seam: ?celebration=<variant> renders the overlay on boot,
-  // mirroring ?loop-puzzle=.
+  // A harness may name a boot overlay variant. With no harness this
+  // stays null and the player path is unchanged.
   const [celebration, setCelebration] = useState<CelebrationSpec | null>(() =>
     typeof window === "undefined" ? null : celebrationSeamSpec(window.location.search),
   );
@@ -1824,7 +1824,7 @@ export function GameApp() {
   // it via onModalChange and the Home page below goes inert for
   // exactly that span, the ask-first age gate's mechanism.
   const [firstVisitModalOpen, setFirstVisitModalOpen] = useState(false);
-  // E2E seam: ?idle-ms=<n> shortens the 2-minute timeout (see session.ts).
+  // Idle window: the default, unless a harness names a different one.
   const idleTimeoutMs = useMemo(
     () => (typeof window === "undefined" ? IDLE_TIMEOUT_MS : idleTimeoutFromSearch(window.location.search)),
     [],

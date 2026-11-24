@@ -81,7 +81,9 @@ register("data:text/javascript," + encodeURIComponent(HOOKS_SOURCE));
 
 const { GuessInput } = (await import("./guess-input.tsx")) as typeof import("./guess-input.tsx");
 const { packNameIndex } = (await import("./names-codec.ts")) as typeof import("./names-codec.ts");
-const { clearLoopIndexCache } = (await import("./evaluate.ts")) as typeof import("./evaluate.ts");
+const { clearLoopIndexCache } = (await import("../../../tests/harness/module-seams.ts")) as {
+  clearLoopIndexCache: () => void;
+};
 const aaStub = (await import(AA_STUB_URL)) as {
   calls: Array<{ el: unknown; options: unknown }>;
   destroyed: unknown[];

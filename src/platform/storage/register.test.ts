@@ -14,18 +14,17 @@
  * registration below serves both cases, each with its own
  * stubbed global in place.
  */
+import { __resetReadAloudPrefMemory, __resetMemoryFallback } from "../../../tests/harness/module-seams.ts";
 import assert from "node:assert/strict";
 import { after, describe, it } from "node:test";
 
 import { setAgeProfileStorageBackend } from "../../game/age-profile/storage-backend.ts";
 import {
-  __resetReadAloudPrefMemory,
   getReadAloudPref,
   setReadAloudPref,
 } from "../../game/age-profile/read-aloud-pref.ts";
 import {
   PROFILE_STORAGE_KEY,
-  __resetMemoryFallback,
   loadProfile,
   setBand,
 } from "../../game/age-profile/store.ts";

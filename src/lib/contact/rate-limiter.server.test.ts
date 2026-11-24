@@ -1,6 +1,7 @@
 /**
  * Rate limiter unit tests (rate-limiter.server.ts).
  */
+import { resetRateLimitBindingLookupForTests } from "../../../tests/harness/module-seams.ts";
 import assert from "node:assert/strict";
 import test from "node:test";
 import { readFileSync } from "node:fs";
@@ -15,7 +16,6 @@ import {
   bindingClientKey,
   isRateLimitBinding,
   readRateLimitBindings,
-  resetRateLimitBindingLookupForTests,
   selectRateLimiter,
   type RateLimitBinding,
 } from "./rate-limiter.server.ts";

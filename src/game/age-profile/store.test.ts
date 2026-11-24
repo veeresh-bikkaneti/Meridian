@@ -1,3 +1,4 @@
+import { __resetMemoryFallback } from "../../../tests/harness/module-seams.ts";
 import assert from "node:assert/strict";
 import test from "node:test";
 
@@ -27,7 +28,6 @@ import {
   resetProfile,
   resolveBand,
   validateProfile,
-  __resetMemoryFallback,
 } from "./store.ts";
 import { onAgeProfileChanged } from "./events.ts";
 import { setAgeProfileStorageBackend } from "./storage-backend.ts";

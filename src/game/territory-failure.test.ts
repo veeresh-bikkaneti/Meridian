@@ -5,13 +5,12 @@
  * seam to force a load failure. territoryImporterForTests is that seam;
  * this file runs in its own process so the module state starts fresh.
  */
+import { territoryImporterForTests, territoryLoadRunsForTests } from "../../tests/harness/module-seams.ts";
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
   preloadTerritory,
   territoryAt,
-  territoryImporterForTests,
-  territoryLoadRunsForTests,
 } from "./territory.ts";
 
 test("a failed atlas import degrades fail-closed, never rejects, and the next preload retries", async () => {

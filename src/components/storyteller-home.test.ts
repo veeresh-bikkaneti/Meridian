@@ -1,3 +1,4 @@
+import { resetStorytellerSessionForTests, currentVoiceOwner } from "../../tests/harness/module-seams.ts";
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
 import {
@@ -18,7 +19,6 @@ import {
   consumeSessionAutoNarration,
   isSessionAutoNarrationConsumed,
   readHomeGreetDay,
-  resetStorytellerSessionForTests,
   takeTourReturnLine,
   writeHomeGreetDay,
 } from "./storyteller-session.ts";
@@ -176,7 +176,6 @@ import { dirname, resolve as resolvePath } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import {
   claimVoice,
-  currentVoiceOwner,
   stopAllVoices,
 } from "../game/audio/voice-channel.ts";
 import type { RawResponse } from "../platform/transport/transport.ts";
