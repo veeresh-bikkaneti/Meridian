@@ -4,6 +4,13 @@ import { fallbackLine, shouldReplayGreeting, decideEnteringFigureTap, isRapidFig
 import { STORYTELLER_HOME_RETRY_HINT } from "./storyteller-lines";
 import { isSoundEnabled } from "@/game/audio/sfx";
 import { claimVoice, type VoiceClaim } from "@/game/audio/voice-channel";
+import { getRaw } from "../platform/transport/browser-transport.ts";
+import type { RawResponse } from "../platform/transport/transport.ts";
+import { createVoice } from "../platform/audio/browser-voice.ts";
+import type {
+  CreateVoiceOptions,
+  VoiceHandle,
+} from "../platform/audio/voice.ts";
 import {
   GREETINGS,
   POKE_LINES,
@@ -115,22 +122,53 @@ interface AssetManifest {
 
 let manifestPromise: Promise<AssetManifest | null> | null = null;
 
+/**
+ * One manifest read through the transport port's raw getter: the
+ * body parses only on an ok status, and any failure — a thrown
+ * error, a non-ok status, an unparsable body — resolves to null
+ * (fail-closed, exactly as the old direct read behaved).
+ */
+export async function readAssetManifest(
+  fetchRaw: (url: string) => Promise<RawResponse>,
+  url: string,
+): Promise<AssetManifest | null> {
+  try {
+    const res = await fetchRaw(url);
+    if (!res.ok) return null;
+    return (await res.json) as AssetManifest;
+  } catch {
+    return null;
+  }
+}
+
 /** storyteller-assets.json — cached; null when unreachable (fail-closed). */
 function loadAssetManifest(): Promise<AssetManifest | null> {
   if (!manifestPromise) {
-    manifestPromise = (async () => {
-      try {
-        const res = await fetch(
-          `${assetBase()}assets/storyteller/storyteller-assets.json`,
-        );
-        if (!res.ok) return null;
-        return (await res.json()) as AssetManifest;
-      } catch {
-        return null;
-      }
-    })();
+    manifestPromise = readAssetManifest(
+      getRaw,
+      `${assetBase()}assets/storyteller/storyteller-assets.json`,
+    );
   }
   return manifestPromise;
+}
+
+/**
+ * Start one line through the voice port, on a channel claim the
+ * caller already holds (the port adopts it instead of claiming
+ * again). play() runs in this same call — before anything can
+ * await — so a tapped line is never refused for arriving late.
+ * Returns null when the port declines the line (sound off, tab
+ * hidden, no audio available); the claim stays with the caller.
+ */
+export function playClaimedLine(
+  makeVoice: typeof createVoice,
+  src: string,
+  opts: CreateVoiceOptions,
+): VoiceHandle | null {
+  const voice = makeVoice(src, opts);
+  if (!voice) return null;
+  voice.play();
+  return voice;
 }
 
 interface ResolvedAssets {
@@ -257,8 +295,8 @@ export default function StorytellerHomeHost({
       matchMedia("(prefers-reduced-motion: reduce)").matches,
   ).current;
 
-  const audioRef = useRef<HTMLAudioElement | null>(null);
-  const pokeAudioRef = useRef<HTMLAudioElement | null>(null);
+  const audioRef = useRef<VoiceHandle | null>(null);
+  const pokeAudioRef = useRef<VoiceHandle | null>(null);
   /** The app-wide voice channel claim for the clip now sounding. */
   const voiceRef = useRef<VoiceClaim | null>(null);
   const bubbleTimer = useRef(0);
@@ -601,8 +639,6 @@ export default function StorytellerHomeHost({
     setCanRehear(false);
     greetPlayRejectedRef.current = false;
     greetLoadErrorRef.current = false;
-    const audio = new Audio(url);
-    audioRef.current = audio;
     audioStartTimeRef.current = Date.now();
     phaseRef.current = "greeting_audio";
     setPhase("greeting_audio");
@@ -623,70 +659,76 @@ export default function StorytellerHomeHost({
     };
     // Fix D: the greeting counts as heard once its clock audibly advances —
     // "ended" alone misses the case where audio started then died silently.
-    const onTimeUpdate = () => {
-      if (audio.currentTime > 0.5) greetingHeardRef.current = true;
+    const onTimeUpdate = (seconds: number) => {
+      if (seconds > 0.5) greetingHeardRef.current = true;
     };
-    const onFail = () => {
+    const onError = (cause?: unknown) => {
+      window.clearTimeout(playHangTimer.current);
+      // A play aborted by our own pause() is the pause working, not a
+      // failure — don't kill the greeting window.
+      if (isPlayAbort(cause)) return;
+      // The port reports a clip that failed to load with no cause —
+      // that is a network failure, not a playback stall (Fix E). A
+      // caused failure means the clip is fine but playback never
+      // started (autoplay policy / stall) — retrying may help.
+      if (cause === undefined) greetLoadErrorRef.current = true;
+      else if (!greetLoadErrorRef.current) greetPlayRejectedRef.current = true;
       failGreetingAudio();
     };
-    audio.addEventListener("ended", onEnded, { once: true });
-    audio.addEventListener(
-      "error",
-      () => {
-        // The clip failed to load — the play() promise rejects too, but
-        // this is a network failure, not a playback stall (Fix E).
-        greetLoadErrorRef.current = true;
-        onFail();
-      },
-      { once: true },
-    );
-    audio.addEventListener("timeupdate", onTimeUpdate);
-    // Track pause state so the figure label can show "Resume the greeting".
-    const onPause = () => setGreetingPaused(true);
-    const onPlay = () => setGreetingPaused(false);
-    audio.addEventListener("pause", onPause);
-    audio.addEventListener("play", onPlay);
-    // Fix F: hang watchdog — a play() promise that never settles strands
-    // the subtitle bubble with zero audio (the #136 root cause, now on the
-    // home path). Armed per attempt, never chained across renders; stood
-    // down the moment play() settles either way.
+    // The port's playing report stands in for the old play() promise
+    // settling: it stands the hang watchdog down, clears the paused
+    // flag for the figure label, and — on the first start only —
+    // arms the G1 window. A resume re-fires it; the window stays
+    // anchored to the first start, as before.
+    let windowArmed = false;
+    const onPlaying = () => {
+      window.clearTimeout(playHangTimer.current);
+      setGreetingPaused(false);
+      if (windowArmed) return;
+      windowArmed = true;
+      // G1: the 12s window starts when audio ACTUALLY begins.
+      // (Home no longer consumes the session auto-narration flag —
+      // story cards keep their own one-shot, untouched.)
+      capTimer.current = window.setTimeout(() => {
+        // Hard cap: stop immediately, bubble stays text-visible.
+        stopAudio();
+        showBubble(greetingText, TEXT_BUBBLE_MS);
+        setPhase("idle_linger");
+      }, GREETING_AUDIO_CAP_MS);
+      // G1: sound toggled off mid-greeting cancels the window.
+      soundWatch.current = window.setInterval(() => {
+        if (!isSoundEnabled()) {
+          stopAudio();
+          setPhase("idle_linger");
+        }
+      }, 500);
+    };
+    const voice = playClaimedLine(createVoice, url, {
+      owner: "storyteller-home",
+      userInitiated,
+      claim,
+      onEnded,
+      onError,
+      onPlaying,
+      onTimeUpdate,
+    });
+    if (!voice) {
+      // The port declined the line (hidden tab, no audio available):
+      // the greeting degrades to text, same as a failed clip.
+      failGreetingAudio();
+      return;
+    }
+    audioRef.current = voice;
+    // Fix F: hang watchdog — a play that never starts strands the
+    // subtitle bubble with zero audio (the #136 root cause, now on
+    // the home path). Armed per attempt, never chained across
+    // renders; stood down the moment playback starts or fails.
     window.clearTimeout(playHangTimer.current);
     playHangTimer.current = window.setTimeout(() => {
-      if (audioRef.current !== audio) return; // superseded by a newer attempt
+      if (audioRef.current !== voice) return; // superseded by a newer attempt
       greetPlayRejectedRef.current = true;
       failGreetingAudio();
     }, GREET_PLAY_HANG_MS);
-    void audio
-      .play()
-      .then(() => {
-        window.clearTimeout(playHangTimer.current);
-        // G1: the 12s window starts when audio ACTUALLY begins.
-        // (Home no longer consumes the session auto-narration flag —
-        // story cards keep their own one-shot, untouched.)
-        capTimer.current = window.setTimeout(() => {
-          // Hard cap: stop immediately, bubble stays text-visible.
-          stopAudio();
-          showBubble(greetingText, TEXT_BUBBLE_MS);
-          setPhase("idle_linger");
-        }, GREETING_AUDIO_CAP_MS);
-        // G1: sound toggled off mid-greeting cancels the window.
-        soundWatch.current = window.setInterval(() => {
-          if (!isSoundEnabled()) {
-            stopAudio();
-            setPhase("idle_linger");
-          }
-        }, 500);
-      })
-      .catch((err) => {
-        window.clearTimeout(playHangTimer.current);
-        // A play() aborted by our own pause() is the pause working, not a
-        // failure — don't kill the greeting window.
-        if (isPlayAbort(err)) return;
-        // No resource error: the clip is fine but playback never started
-        // (autoplay policy / stall) — retrying may help (Fix E).
-        if (!greetLoadErrorRef.current) greetPlayRejectedRef.current = true;
-        onFail();
-      });
   }, [greetingText, showBubble, stopAudio, failGreetingAudio]);
 
   // Figure tap while `entering` (or before start — the tutorial invite holds
@@ -898,8 +940,11 @@ export default function StorytellerHomeHost({
       // Fix F: guard the resume play() with the hang watchdog — a hung or
       // rejected resume must fail loud into text + the figure-tap retry,
       // never strand "playing" with zero audio (and never swallow the
-      // error silently, as the old `.catch(() => {})` did).
-      if (audio.paused) {
+      // error silently, as the old `.catch(() => {})` did). The voice
+      // port reports the resume through the same callbacks the first
+      // start used: playing stands the watchdog down, an error fails
+      // loud. A paused voice is the one in the "ready" state.
+      if (audio.state === "ready") {
         window.clearTimeout(playHangTimer.current);
         playHangTimer.current = window.setTimeout(() => {
           if (audioRef.current !== audio) return; // superseded
@@ -911,18 +956,11 @@ export default function StorytellerHomeHost({
           greetPlayRejectedRef.current = true;
           failGreetingAudio();
         }, GREET_PLAY_HANG_MS);
-        void audio
-          .play()
-          .then(() => {
-            window.clearTimeout(playHangTimer.current);
-          })
-          .catch((err: unknown) => {
-            window.clearTimeout(playHangTimer.current);
-            if (isPlayAbort(err)) return;
-            greetPlayRejectedRef.current = true;
-            failGreetingAudio();
-          });
-      } else audio.pause();
+        audio.play();
+      } else {
+        audio.pause();
+        setGreetingPaused(true);
+      }
       pokeVisual();
       return;
     }
@@ -1047,25 +1085,31 @@ export default function StorytellerHomeHost({
         { userInitiated: true },
       );
       voiceRef.current = pokeClaim;
-      const pokeAudio = new Audio(pokeUrl);
-      pokeAudioRef.current = pokeAudio;
-      pokeAudio.addEventListener(
-        "ended",
-        () => {
-          if (pokeAudioRef.current === pokeAudio) {
+      const pokeVoice = playClaimedLine(createVoice, pokeUrl, {
+        owner: "storyteller-home",
+        userInitiated: true,
+        claim: pokeClaim ?? undefined,
+        onEnded: () => {
+          if (pokeAudioRef.current === pokeVoice) {
             voiceRef.current?.release();
             voiceRef.current = null;
           }
         },
-        { once: true },
-      );
-      void pokeAudio.play().catch(() => {
-        if (pokeAudioRef.current === pokeAudio) {
-          pokeAudioRef.current = null;
-          voiceRef.current?.release();
-          voiceRef.current = null;
-        }
+        onError: () => {
+          if (pokeAudioRef.current === pokeVoice) {
+            pokeAudioRef.current = null;
+            voiceRef.current?.release();
+            voiceRef.current = null;
+          }
+        },
       });
+      pokeAudioRef.current = pokeVoice;
+      if (!pokeVoice) {
+        // The port declined the line: give the claim back, the
+        // bubble already carries the poke on its own.
+        voiceRef.current?.release();
+        voiceRef.current = null;
+      }
     }
     pokeVisual();
   }, [mode, phase, greetingText, yielded, showBubble, pokeVisual, beginGreetingAudio, failGreetingAudio, greetFromFigureTap, tutorialInviteVisible]);

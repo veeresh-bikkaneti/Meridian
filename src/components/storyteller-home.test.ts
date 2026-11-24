@@ -160,3 +160,253 @@ describe("storyteller-session — storage flags", () => {
     assert.equal(readHomeGreetDay(), "2026-10-09");
   });
 });
+
+// ---------------------------------------------------------------------------
+// TD-02.6 — the home screen's download and sounds ride the platform ports.
+// The component is a .tsx the unit harness cannot import directly, so the
+// module hooks below (the age-band-control.test.ts pattern) resolve "@/"
+// specifiers, transpile .tsx, and stub the two imports the helpers under
+// test never reach: the stylesheet and the mascot module. Everything else
+// the component imports loads for real. The port factories are injected
+// fakes: no network, no audio element.
+// ---------------------------------------------------------------------------
+import { register } from "node:module";
+import { readFileSync } from "node:fs";
+import { dirname, resolve as resolvePath } from "node:path";
+import { fileURLToPath, pathToFileURL } from "node:url";
+import {
+  claimVoice,
+  currentVoiceOwner,
+  stopAllVoices,
+} from "../game/audio/voice-channel.ts";
+import type { RawResponse } from "../platform/transport/transport.ts";
+import type {
+  CreateVoiceOptions,
+  VoiceHandle,
+  VoiceState,
+} from "../platform/audio/voice.ts";
+
+const REPO_ROOT = resolvePath(
+  dirname(fileURLToPath(import.meta.url)),
+  "..",
+  "..",
+);
+
+const STORYTELLER_STUB_SOURCE = [
+  "export function StorytellerMascot() { return null; }",
+  "export function isPlayAbort(err) {",
+  "  return typeof err === \"object\" && err !== null && err.name === \"AbortError\";",
+  "}",
+  "export function useCelebrationActive() { return false; }",
+  "export function useTourActive() { return false; }",
+].join("\n");
+const STORYTELLER_STUB_URL =
+  "data:text/javascript," + encodeURIComponent(STORYTELLER_STUB_SOURCE);
+const EMPTY_URL =
+  "data:text/javascript," + encodeURIComponent("export {};\n");
+
+const HOOKS_SOURCE = [
+  "import { statSync } from 'node:fs';",
+  "import { fileURLToPath, pathToFileURL } from 'node:url';",
+  "import { dirname, resolve as resolvePath } from 'node:path';",
+  "const ROOT = " + JSON.stringify(REPO_ROOT) + ";",
+  "const STUB_URL = " + JSON.stringify(STORYTELLER_STUB_URL) + ";",
+  "const EMPTY_URL = " + JSON.stringify(EMPTY_URL) + ";",
+  "const TS_URL = pathToFileURL(resolvePath(ROOT, 'node_modules/typescript/lib/typescript.js')).href;",
+  "const PROBE_EXTS = ['', '.ts', '.tsx'];",
+  "function isFile(p) { try { return statSync(p).isFile(); } catch (e) { return false; } }",
+  "export async function resolve(specifier, context, nextResolve) {",
+  "  if (specifier.endsWith('.css')) {",
+  "    return { url: EMPTY_URL, shortCircuit: true };",
+  "  }",
+  "  if (specifier === './storyteller' && context.parentURL && context.parentURL.endsWith('storyteller-home.tsx')) {",
+  "    return { url: STUB_URL, shortCircuit: true };",
+  "  }",
+  "  if (specifier.startsWith('@/')) {",
+  "    const base = resolvePath(ROOT, 'src', specifier.slice(2));",
+  "    for (const ext of PROBE_EXTS) {",
+  "      const cand = base + ext;",
+  "      if (isFile(cand)) return { url: pathToFileURL(cand).href, shortCircuit: true };",
+  "    }",
+  "  }",
+  "  if ((specifier.startsWith('./') || specifier.startsWith('../')) && context.parentURL && context.parentURL.startsWith('file:')) {",
+  "    const base = resolvePath(dirname(fileURLToPath(context.parentURL)), specifier);",
+  "    for (const ext of PROBE_EXTS) {",
+  "      const cand = base + ext;",
+  "      if (isFile(cand)) return { url: pathToFileURL(cand).href, shortCircuit: true };",
+  "    }",
+  "  }",
+  "  return nextResolve(specifier, context);",
+  "}",
+  "export async function load(url, context, nextLoad) {",
+  "  if (url.endsWith('.tsx')) {",
+  "    const { readFileSync } = await import('node:fs');",
+  "    const ts = await import(TS_URL);",
+  "    const out = ts.transpileModule(readFileSync(new URL(url), 'utf8'), {",
+  "      compilerOptions: { jsx: ts.JsxEmit.ReactJSX, module: ts.ModuleKind.ESNext, target: ts.ScriptTarget.ES2022 },",
+  "    });",
+  "    return { format: 'module', source: out.outputText, shortCircuit: true };",
+  "  }",
+  "  return nextLoad(url, context);",
+  "}",
+].join("\n");
+
+register("data:text/javascript," + encodeURIComponent(HOOKS_SOURCE));
+
+const homeModule = (await import("./storyteller-home.tsx")) as unknown as {
+  readAssetManifest: (
+    fetchRaw: (url: string) => Promise<RawResponse>,
+    url: string,
+  ) => Promise<unknown>;
+  playClaimedLine: (
+    makeVoice: (
+      src: string,
+      opts: CreateVoiceOptions,
+    ) => VoiceHandle | null,
+    src: string,
+    opts: CreateVoiceOptions,
+  ) => VoiceHandle | null;
+};
+
+describe("TD-02.6 — manifest load rides the transport port", () => {
+  it("reads the manifest through the injected raw getter, never the global", async () => {
+    const manifest = {
+      version: 1,
+      poses: { idle: "idle.webp", pointing: null },
+      audio: { "greet-01": "greet-01.mp3" },
+    };
+    const seenUrls: string[] = [];
+    let globalCalls = 0;
+    const originalFetch = globalThis.fetch;
+    globalThis.fetch = (() => {
+      globalCalls += 1;
+      throw new Error("global fetch must not be used");
+    }) as typeof fetch;
+    try {
+      const out = await homeModule.readAssetManifest(async (url: string) => {
+        seenUrls.push(url);
+        return { ok: true, status: 200, json: Promise.resolve(manifest) };
+      }, "/assets/storyteller/storyteller-assets.json");
+      assert.deepEqual(out, manifest);
+    } finally {
+      globalThis.fetch = originalFetch;
+    }
+    assert.deepEqual(seenUrls, ["/assets/storyteller/storyteller-assets.json"]);
+    assert.equal(globalCalls, 0);
+  });
+
+  it("fails closed to null on a non-ok status", async () => {
+    const out = await homeModule.readAssetManifest(
+      async () => ({ ok: false, status: 404, json: Promise.resolve(null) }),
+      "/assets/storyteller/storyteller-assets.json",
+    );
+    assert.equal(out, null);
+  });
+
+  it("fails closed to null when the getter throws", async () => {
+    const out = await homeModule.readAssetManifest(async () => {
+      throw new Error("network down");
+    }, "/assets/storyteller/storyteller-assets.json");
+    assert.equal(out, null);
+  });
+
+  it("fails closed to null when the body does not parse", async () => {
+    const out = await homeModule.readAssetManifest(
+      async () => ({
+        ok: true,
+        status: 200,
+        json: Promise.reject(new Error("not json")),
+      }),
+      "/assets/storyteller/storyteller-assets.json",
+    );
+    assert.equal(out, null);
+  });
+});
+
+describe("TD-02.6 — greeting / poke playback rides the voice port", () => {
+  it("adopts the caller's channel claim and plays in the same call", () => {
+    stopAllVoices();
+    const claim = claimVoice("storyteller-home", () => {}, {
+      userInitiated: true,
+    });
+    assert.ok(claim);
+    assert.equal(currentVoiceOwner(), "storyteller-home");
+
+    let seenSrc: string | null = null;
+    const seen: { opts: CreateVoiceOptions | null } = { opts: null };
+    let playCalls = 0;
+    const state: VoiceState = "idle";
+    const fakeHandle: VoiceHandle = {
+      get state() {
+        return state;
+      },
+      play() {
+        playCalls += 1;
+      },
+      pause() {},
+      stop() {},
+      currentTime: () => 0,
+      duration: () => 0,
+    };
+    const onEnded = () => {};
+    const voice = homeModule.playClaimedLine(
+      (src: string, opts: CreateVoiceOptions) => {
+        seenSrc = src;
+        seen.opts = opts;
+        return fakeHandle;
+      },
+      "greet-01.mp3",
+      { owner: "storyteller-home", userInitiated: true, claim, onEnded },
+    );
+    // No await has run yet: play() already fired, in the same call,
+    // before anything could await — the tapped-line rule.
+    assert.equal(voice, fakeHandle);
+    assert.equal(playCalls, 1);
+    assert.equal(seenSrc, "greet-01.mp3");
+    const seenOpts = seen.opts;
+    assert.ok(seenOpts);
+    assert.equal(seenOpts.claim, claim);
+    assert.equal(seenOpts.owner, "storyteller-home");
+    assert.equal(seenOpts.onEnded, onEnded);
+    claim.release();
+    assert.equal(currentVoiceOwner(), null);
+  });
+
+  it("returns null and plays nothing when the port declines the line", () => {
+    stopAllVoices();
+    const claim = claimVoice("storyteller-home", () => {}, {
+      userInitiated: false,
+    });
+    assert.ok(claim);
+    const voice = homeModule.playClaimedLine(() => null, "poke-01.mp3", {
+      owner: "storyteller-home",
+      userInitiated: true,
+      claim,
+    });
+    assert.equal(voice, null);
+    claim.release();
+  });
+});
+
+describe("TD-02.6 — the component source carries no raw download or element", () => {
+  const source = readFileSync(
+    new URL("./storyteller-home.tsx", import.meta.url),
+    "utf8",
+  );
+
+  it("routes the manifest through the transport port's raw getter", () => {
+    assert.ok(source.includes("getRaw"));
+    assert.ok(source.includes("browser-transport"));
+  });
+
+  it("routes playback through the voice port", () => {
+    assert.ok(source.includes("createVoice"));
+    assert.ok(source.includes("browser-voice"));
+    assert.ok(source.includes("claimVoice"));
+  });
+
+  it("has no raw call left", () => {
+    assert.ok(!source.includes("new Audio("));
+    assert.ok(!source.includes("fetch("));
+  });
+});
