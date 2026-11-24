@@ -78,11 +78,11 @@ describe("screen mounts", () => {
     assert.ok(loopScreen.includes("<PackShelf"), "shelf mounted");
     assert.ok(loopScreen.includes('edition="geodetective"'), "edition wired");
     assert.ok(loopScreen.includes("onStartNext={onNextMystery}"), "deals through onNextMystery");
-    // The screen header is the shared SiteHeader (fix/ui-shared-shell
-    // adoption); the shelf sits under it.
-    const headerAt = loopScreen.indexOf("<SiteHeader");
+    // The screen frame is the shared PageShell; the shelf sits under
+    // its header.
+    const headerAt = loopScreen.indexOf("<PageShell");
     const shelfAt = loopScreen.indexOf("<PackShelf");
-    assert.ok(headerAt >= 0 && shelfAt > headerAt, "shelf sits under the screen header");
+    assert.ok(headerAt >= 0 && shelfAt > headerAt, "shelf sits under the page shell");
   });
 
   it("TrailScreen mounts the shelf for Cold Trail with its next-case handler", () => {

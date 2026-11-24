@@ -423,14 +423,16 @@ describe("PageShell and PageIntro (PR 3 Step 2)", () => {
     assert.doesNotMatch(branch, /<main/);
   });
 
-  it("GeoDetective's header carries no className override (PR 3 Step 3.11): the shell's sticky prop instead", async () => {
+  it("GeoDetective sits on PageShell: sticky header, no className override, no page-local main", async () => {
     const src = read("src/game/loop/LoopScreen.tsx");
     assert.doesNotMatch(src, /screen-home-bar -mx-5 px-5/);
-    const tag = src.slice(src.indexOf("<SiteHeader"), src.indexOf("status={", src.indexOf("<SiteHeader")));
-    assert.match(tag, /sticky/);
-    assert.doesNotMatch(tag, /className/);
-    const header = read("src/components/ui/site-header.tsx");
-    assert.match(header, /data-sticky=\{sticky \? "true" : undefined\}/);
+    assert.match(src, /<PageShell/);
+    assert.doesNotMatch(src, /<main[\s>]/);
+    const header = src.slice(src.indexOf("header={{"), src.indexOf("status:", src.indexOf("header={{")));
+    assert.match(header, /sticky:\s*true/);
+    assert.doesNotMatch(header, /className/);
+    const shellHeader = read("src/components/ui/site-header.tsx");
+    assert.match(shellHeader, /data-sticky=\{sticky \? "true" : undefined\}/);
     const css = read("src/styles.css");
     assert.match(css, /\.site-header\[data-sticky="true"\] \{\s+position: sticky;/);
     const html = await render("SiteHeader", { onHome: () => {}, status: null, mute: null, sticky: true });
@@ -605,7 +607,6 @@ describe("page-width tokens (PR 3 Step 4)", () => {
   it("screen roots use the PageColumn tokens, not literal max-w-3xl / max-w-7xl", () => {
     for (const file of [
       "src/components/game-app.tsx",
-      "src/game/loop/LoopScreen.tsx",
       "src/subjects/shared/SubjectCase.tsx",
       "src/subjects/shared/SubjectPicker.tsx",
     ]) {
@@ -633,6 +634,9 @@ describe("page-width tokens (PR 3 Step 4)", () => {
     assert.match(trail, /<PageShell[\s\S]*width="narrow"/);
     assert.doesNotMatch(trail, /max-w-3xl|max-w-7xl|max-w-6xl|lg:max-w-/);
     assert.match(css, /\.coldtrail-screen--wide > div \{\s*max-width: 72rem;/);
+    const loop = read("src/game/loop/LoopScreen.tsx");
+    assert.match(loop, /<PageShell[\s\S]*width="narrow"/);
+    assert.doesNotMatch(loop, /max-w-3xl|max-w-7xl|max-w-\(--page-/);
   });
 });
 
@@ -666,7 +670,6 @@ describe("shell-ban baseline (KNOWN/STALE)", () => {
     pageLocalNav: ["src/components/grownups/info-page.tsx", "src/routes/board.tsx"],
     pageLocalMain: [
       "src/components/game-app.tsx",
-      "src/game/loop/LoopScreen.tsx",
       "src/lib/error-component.tsx",
       "src/routes/board.tsx",
       "src/subjects/shared/SubjectCase.tsx",

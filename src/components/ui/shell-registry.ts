@@ -58,7 +58,7 @@ export const SHELL_REGISTRY: readonly ShellRegistryEntry[] = [
   { id: "grownups-pages", file: "src/components/grownups/info-page.tsx", header: "PageShell", needle: "<PageShell", footer: "shell" },
   { id: "root-layout", file: "src/routes/__root.tsx", header: "baseline", footer: "none", reason: "The router root layout (outlet + update toast), not a screen; screens render inside it." },
   // In-app screens
-  { id: "geodetective", file: "src/game/loop/LoopScreen.tsx", header: "SiteHeader", needle: "<SiteHeader", footer: "shell", footerNeedle: "<SiteFooter" },
+  { id: "geodetective", file: "src/game/loop/LoopScreen.tsx", header: "PageShell", needle: "<PageShell", footer: "shell" },
   { id: "cold-trail", file: "src/game/coldtrail/TrailScreen.tsx", header: "PageShell", needle: "<PageShell", footer: "shell" },
   { id: "why-learn-picker", file: "src/subjects/shared/SubjectPicker.tsx", header: "SiteHeader", needle: "<SiteHeader", footer: "shell", footerNeedle: "<SiteFooter" },
   { id: "subject-case", file: "src/subjects/shared/SubjectCase.tsx", header: "SiteHeader", needle: "<SiteHeader", footer: "shell", footerNeedle: "<SiteFooter" },
