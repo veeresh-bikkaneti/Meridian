@@ -114,6 +114,8 @@ import { advanceCasePhase, type AnswerFor, type CasePhase } from "./answer";
 import { recordDistinctWrong, typedWrongKey } from "./lose-reveal";
 import { recordUnitComplete } from "./subject-progress";
 import { claimVoice, type VoiceClaim } from "@/game/audio/voice-channel";
+import { createVoice } from "../../platform/audio/browser-voice.ts";
+import type { VoiceHandle } from "../../platform/audio/voice.ts";
 import { isSoundEnabled } from "@/game/audio/sfx";
 import { soundAudible } from "@/game/audio/play-guards";
 
@@ -237,7 +239,7 @@ export function SubjectCase({
   // cap). Only the scene's phase waits on this — the reveal
   // section itself renders the moment loseRevealed is set.
   const [supportHeard, setSupportHeard] = useState(false);
-  const supportAudioRef = useRef<HTMLAudioElement | null>(null);
+  const supportVoiceRef = useRef<VoiceHandle | null>(null);
   const supportClaimRef = useRef<VoiceClaim | null>(null);
   const supportTimerRef = useRef<number | null>(null);
   const supportGenRef = useRef(0);
@@ -272,10 +274,9 @@ export function SubjectCase({
       window.clearTimeout(supportTimerRef.current);
       supportTimerRef.current = null;
     }
-    if (supportAudioRef.current) {
-      supportAudioRef.current.pause();
-      supportAudioRef.current.removeAttribute("src");
-      supportAudioRef.current = null;
+    if (supportVoiceRef.current) {
+      supportVoiceRef.current.stop();
+      supportVoiceRef.current = null;
     }
     supportClaimRef.current?.release();
     supportClaimRef.current = null;
@@ -306,12 +307,22 @@ export function SubjectCase({
       return;
     }
     supportClaimRef.current = claim;
-    const audio = new Audio(loseSupportClipUrl());
-    supportAudioRef.current = audio;
-    audio.addEventListener("ended", finish);
-    audio.addEventListener("error", finish);
+    const voice = createVoice(loseSupportClipUrl(), {
+      owner: "lose-support",
+      userInitiated: false,
+      claim,
+      onEnded: finish,
+      onError: finish,
+    });
+    if (!voice) {
+      claim.release();
+      supportClaimRef.current = null;
+      setSupportHeard(true);
+      return;
+    }
+    supportVoiceRef.current = voice;
     supportTimerRef.current = window.setTimeout(finish, 4000);
-    void audio.play().catch(finish);
+    voice.play();
   };
 
   // Leaving the case silences the supportive line and frees the

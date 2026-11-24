@@ -131,16 +131,5 @@
     "src/subjects/social-studies/scenes.ts|../shared/clue-scene-types.ts",
     "src/subjects/social-studies/scenes.ts|../shared/clue-scene-types.ts"
   ],
-  "noRawIo": [
-    "src/game/loop/LoopScreen.tsx|fetch()",
-    "src/game/loop/LoopScreen.tsx|sessionStorage access",
-    "src/lib/error-component.tsx|window.sessionStorage access",
-    "src/routes/board.tsx|window.localStorage access",
-    "src/routes/board.tsx|window.localStorage access",
-    "src/routes/board.tsx|window.localStorage access",
-    "src/routes/board.tsx|window.localStorage access",
-    "src/routes/board.tsx|window.localStorage access",
-    "src/routes/board.tsx|window.localStorage access",
-    "src/subjects/shared/SubjectCase.tsx|new Audio()"
-  ]
+  "noRawIo": []
 }

@@ -349,4 +349,24 @@ describe("storage key registry (game-app ports, Part B B1)", () => {
     assert.equal(FIRST_VISIT_QUEUE_KEY, "meridian.firstVisitQueue.v1");
     assert.equal(firstVisitSeenKeyDef(FIRST_VISIT_QUEUE_KEY).key, FIRST_VISIT_QUEUE_KEY);
   });
+
+  test("the board page entries pin the v3 preference keys, raw", () => {
+    assert.equal(STORAGE_KEYS.boardCalm.key, "meridian-board-v3-calm");
+    assert.equal(STORAGE_KEYS.boardCalm.encoding, "raw");
+    assert.equal(STORAGE_KEYS.boardCalm.fallback, "");
+    assert.equal(decodeStoredText(STORAGE_KEYS.boardCalm, "1", () => ""), "1");
+    assert.equal(decodeStoredText(STORAGE_KEYS.boardCalm, '"1"', () => ""), "1");
+    assert.equal(STORAGE_KEYS.boardTheme.key, "meridian-board-v3-theme");
+    assert.equal(STORAGE_KEYS.boardTheme.encoding, "raw");
+    assert.equal(decodeStoredText(STORAGE_KEYS.boardTheme, "dark", () => ""), "dark");
+    assert.equal(STORAGE_KEYS.boardSeenClosed.key, "meridian-board-v3-seen-closed");
+    assert.equal(STORAGE_KEYS.boardSeenClosed.encoding, "raw");
+    assert.equal(STORAGE_KEYS.boardSeenClosed.fallback, null);
+    assert.equal(decodeStoredText(STORAGE_KEYS.boardSeenClosed, '["f1"]', () => null), '["f1"]');
+    assert.equal(
+      decodeStoredText(STORAGE_KEYS.boardSeenClosed, JSON.stringify('["f1"]'), () => null),
+      '["f1"]',
+    );
+    assert.equal(decodeStoredText(STORAGE_KEYS.boardSeenClosed, null, () => null), null);
+  });
 });

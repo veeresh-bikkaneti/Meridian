@@ -297,6 +297,14 @@ async function loadErrorComponent(): Promise<ErrorComponentModule> {
       '"./chunk-recovery"',
       JSON.stringify(new URL("./chunk-recovery.ts", import.meta.url).href),
     ],
+    [
+      '"../platform/storage/browser-storage.ts"',
+      JSON.stringify(new URL("../platform/storage/browser-storage.ts", import.meta.url).href),
+    ],
+    [
+      '"../platform/storage/keys.ts"',
+      JSON.stringify(new URL("../platform/storage/keys.ts", import.meta.url).href),
+    ],
   ];
   for (const [from, to] of replacements) {
     code = code.split(from).join(to);
@@ -443,5 +451,13 @@ describe("arena Phase 2 (PR #532): AppErrorComponent chunk discipline + reload a
     } finally {
       (globalThis as Record<string, unknown>).sessionStorage = prev;
     }
+  });
+
+  it("chunk reporting reads the session port, not window.sessionStorage", async () => {
+    const src = await readFile(join(dirname(fileURLToPath(import.meta.url)), "error-component.tsx"), "utf8");
+    const code = src.replace(/\/\*[\s\S]*?\*\//g, "").replace(/^\s*\/\/.*$/gm, "");
+    assert.equal(code.includes("sessionStorage"), false);
+    assert.equal(code.includes("localStorage"), false);
+    assert.ok(code.includes("readSessionItem"));
   });
 });
