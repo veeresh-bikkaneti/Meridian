@@ -364,9 +364,11 @@ describe("PageShell and PageIntro (PR 3 Step 2)", () => {
     assert.doesNotMatch(src, /<footer|<header/);
   });
 
-  it("the boot splash sits on PageShell: narrow column, no page-local main", () => {
+  it("the boot splash sits in the shared frame: narrow column, header, footer, no page-local main", () => {
     const src = read("src/components/boot-splash.tsx");
-    assert.match(src, /<PageShell header=\{\{ to: "\/", status: null, mute: null \}\} width="narrow">/);
+    assert.match(src, /<PageColumn width="narrow">/);
+    assert.match(src, /<SiteHeader to="\/" status=\{null\} mute=\{null\} \/>/);
+    assert.match(src, /<SiteFooter \/>/);
     assert.doesNotMatch(src, /<main[\s>]/);
     assert.match(src, /Geography, math and science/);
     assert.match(read("src/components/boot-splash.css"), /\.boot-splash-mark/);

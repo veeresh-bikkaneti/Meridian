@@ -74,7 +74,7 @@ export const SHELL_REGISTRY: readonly ShellRegistryEntry[] = [
   { id: "challenge-menu", file: "src/components/game-app.tsx", header: "baseline", footer: "none", reason: "Challenge-a-friend region picker: a hand-placed HomeButton over a <main>, not yet adopted. Baseline, shrink-only." },
   { id: "session-loading", file: "src/components/game-app.tsx", header: "baseline", footer: "none", reason: "Transient loading fallback; it reserves the destination's header space by design. Baseline, shrink-only." },
   { id: "region-loading", file: "src/components/game-app.tsx", header: "baseline", footer: "none", reason: "Transient chunk-loading state while a region's places load. Baseline, shrink-only." },
-  { id: "boot-splash", file: "src/components/boot-splash.tsx", header: "PageShell", needle: "<PageShell", footer: "shell", reason: "Boot gate splash. It renders inside the shared page shell; the home control is a link because both callers paint it inside the router." },
+  { id: "boot-splash", file: "src/components/boot-splash.tsx", header: "SiteHeader", needle: "<SiteHeader", footer: "shell", footerNeedle: "<SiteFooter", reason: "Boot gate splash. It renders the shared frame (SiteHeader, narrow PageColumn, SiteFooter) directly — the same frame PageShell renders — so the first-paint module does not also import PageShell." },
   { id: "router-error", file: "src/lib/error-component.tsx", header: "baseline", footer: "none", reason: "The router's own error page, outside GameApp. Baseline, shrink-only." },
 ];
 
