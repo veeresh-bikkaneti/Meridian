@@ -35,9 +35,13 @@ test.beforeEach(async ({ context }) => {
 });
 
 /** Wait until the header's box stops moving after a viewport change
- *  (the grownups spec's settle rule: never measure mid-layout). */
+ *  (the grownups spec's settle rule: never measure mid-layout).
+ *  Boot paints the splash twice for a moment (the route fallback and
+ *  the game's ready gate). Both carry a header now, so wait until
+ *  one header remains before reading its box. */
 async function waitForHeaderSettled(page: Page) {
   const header = page.locator("header.site-header");
+  await expect(header).toHaveCount(1);
   let last = "";
   await expect
     .poll(
