@@ -257,6 +257,7 @@ export function SubjectCase({
   const scenePhase: "setup" | "solved" =
     solved || (loseRevealed && supportHeard) ? "solved" : "setup";
   const headingRef = useRef<HTMLHeadingElement | null>(null);
+  const loseRevealRef = useRef<HTMLElement | null>(null);
 
   // ── The supportive line's voice ─────────────────────────────
   // The reveal fires: the supportive clip plays FIRST, through
@@ -330,6 +331,16 @@ export function SubjectCase({
     const el = headingRef.current;
     if (el && typeof el.focus === "function") el.focus({ preventScroll: true });
   }, []);
+
+  // The lose reveal replaces the answer card, so the choice that had
+  // focus is gone. Land on the panel without scrolling. The answer is
+  // spoken once by the sr-only status below — the visible lines are
+  // not a live region, so they do not announce a second time.
+  useEffect(() => {
+    if (!loseRevealed) return;
+    const el = loseRevealRef.current;
+    if (el && typeof el.focus === "function") el.focus({ preventScroll: true });
+  }, [loseRevealed]);
 
   const item = items[index] ?? null;
   const answer = item ? answerFor(item.id) : null;
@@ -562,6 +573,8 @@ export function SubjectCase({
           </section>
         ) : loseRevealed ? (
           <section
+            ref={loseRevealRef}
+            tabIndex={-1}
             aria-label="The answer, and how it solves"
             className="loop-reveal mode-surface rounded-2xl border p-4"
             data-testid={`${subjectId}-lose-reveal`}
@@ -602,6 +615,12 @@ export function SubjectCase({
             moveFocus={phase === "followUp"}
           />
         )}
+        {/* One announcer for the lose reveal. Empty until the reveal
+            so the answer is not in the tree early, and not on the
+            visible lines — those stay plain text. */}
+        <p className="sr-only" role="status" data-testid={`${subjectId}-lose-announcer`}>
+          {loseRevealed ? `${LOSE_SUPPORT_LINE} The answer is ${answer.correct} — here's how.` : ""}
+        </p>
       </div>
       {/* Item 6 slice (Stream W): one exit word per screen. The
           case used to carry a second exit at the bottom — the
