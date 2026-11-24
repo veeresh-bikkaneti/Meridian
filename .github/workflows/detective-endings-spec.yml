@@ -1,14 +1,15 @@
-# Narrow proof run for tests/e2e/detective-endings.spec.ts only.
-# pull_request (no path filter) is how this branch gets repeated runs:
-# workflow_dispatch is rejected until the file is on main. Empty commits
-# on the pull request retrigger this job and nothing else in the
-# detective suite.
+# Narrow run for tests/e2e/detective-endings.spec.ts only.
+# workflow_dispatch is available once this file is on main. pull_request
+# is path-filtered so a merge does not add this job to every pull request.
 name: Detective endings spec
 
 on:
   workflow_dispatch:
   pull_request:
     branches: [ "main" ]
+    paths:
+      - "tests/e2e/detective-endings.spec.ts"
+      - ".github/workflows/detective-endings-spec.yml"
 
 jobs:
   endings:
