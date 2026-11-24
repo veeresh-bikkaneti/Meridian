@@ -306,15 +306,20 @@ describe("arena Phase 2 (PR #532): boundary-less hosts and notice timing", () =>
   });
 
   it("F7d: the chunk-reload notice is consumed at the ready point, not in the mount effect", () => {
+    const hookSource = readFileSync(join(here, "game-app-chunk-reload-notice.ts"), "utf8");
     const readyEffect = segment(gameAppSource, "if (ready && !readySignaledRef.current) {", "}, [ready]);");
     assert.ok(
-      readyEffect.includes("consumeChunkReloadNotice()"),
-      "consume must ride the __meridian_ready signal so a mount-then-stall page keeps its notice for the watchdog",
+      readyEffect.includes("consumeChunkReloadNoticeAtReady()"),
+      "the consume must ride the __meridian_ready signal so a mount-then-stall page keeps its notice for the watchdog",
+    );
+    assert.ok(
+      hookSource.includes("consumeChunkReloadNotice()"),
+      "the hook owns the sessionStorage consume",
     );
     assert.equal(
-      gameAppSource.split("consumeChunkReloadNotice()").length - 1,
+      gameAppSource.split("consumeChunkReloadNoticeAtReady()").length - 1,
       1,
-      "exactly one consume site",
+      "exactly one consume call site in game-app",
     );
   });
 

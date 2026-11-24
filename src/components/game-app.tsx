@@ -16,7 +16,7 @@ import { ADMIN1_BY_COUNTRY, COUNTRIES, findRegion, STATES, greaterSideKm, type R
 import { rewriteStory } from "@/game/rewrite";
 import { shouldFireAiStory } from "@/game/story-ai";
 import { backfillDifficultyChoice, continueRun, dropPin, endRun, isResumable, resumeRun, startRun, type Edition, type Run, type RunPhase, type PlaceResult } from "@/game/run";
-import { isPickerDifficulty, type PickerDifficulty } from "@/game/tier-filter";
+import type { PickerDifficulty } from "@/game/tier-filter";
 import { dealingPoolFor } from "@/game/easy-curation";
 import {
   bankPlace,
@@ -244,7 +244,6 @@ import {
 } from "./reveal-watchdog";
 import { isEnabled, loadFlags, getObservabilityEndpoint } from "@/lib/flags";
 import {
-  consumeChunkReloadNotice,
   installChunkLoadRecovery,
   isChunkLoadError,
   shouldReportChunkFailure,
@@ -408,6 +407,10 @@ import {
 } from "@/game/review-deck";
 import { resetHistory, type ResetHistoryResult } from "@/game/reset-history";
 import { ResetHistoryControl } from "./reset-history-control";
+import { useDifficultyChoice } from "./game-app-difficulty";
+import { useDeckStatus } from "./game-app-deck-status";
+import { useChunkReloadNotice } from "./game-app-chunk-reload-notice";
+import { useHistoryResetToast } from "./game-app-reset-history-toast";
 
 /**
  * Watched by the inline crash watchdog injected into _shell.html
@@ -661,27 +664,6 @@ type LanguageModelGlobal = {
   availability: () => Promise<string>;
   create: () => Promise<NanoSession>;
 };
-
-/**
- * The picker's difficulty choice, persisted across page loads. Invalid or
- * missing values fall back to "medium" — the choice applies across
- * Globe → Country → State and survives edition switches.
- *
- * The port's difficulty def returns the stored string as-is (or the
- * "medium" fallback when the value is missing, unreadable or blocked),
- * so the isPickerDifficulty check below is the one validation, exactly
- * where it ran before the port.
- */
-function readDifficultyChoice(): PickerDifficulty {
-  const raw = getStorageItem(STORAGE_KEYS.difficulty);
-  return isPickerDifficulty(raw) ? raw : "medium";
-}
-
-function writeDifficultyChoice(choice: PickerDifficulty) {
-  // The port swallows a blocked write: the in-memory choice still
-  // applies this session.
-  setStorageItem(STORAGE_KEYS.difficulty, choice);
-}
 
 function readRunFrom(def: StorageKeyDef<unknown>): Run | null {
   try {
@@ -1117,44 +1099,6 @@ function globeTierSplitFor(edition: Edition, regionId: string): Promise<boolean>
   return edition === "globe" && regionId === "globe"
     ? resolveGlobeTierSplit()
     : Promise.resolve(false);
-}
-
-/**
- * Review-deck entry status for the edition picker. Gated on the
- * `learningOutcomes` flag like the other growth surfaces: flag off = no
- * deck entry at all (the deck only populates while the flag is on). Re-read
- * whenever the app returns to the picker (`run` → null): a review session
- * reschedules cards and a normal game adds misses, so a boot-time snapshot
- * would go stale — and a stale "N cards due" with an empty queue would make
- * "Start review" silently no-op.
- */
-function useDeckStatus(
-  run: Run | null,
-  historyResetEpoch: number,
-): { enabled: boolean; due: number; total: number } {
-  const [status, setStatus] = useState({ enabled: false, due: 0, total: 0 });
-  const onPicker = run === null;
-  useEffect(() => {
-    let active = true;
-    loadFlags().then(() => {
-      if (!active) return;
-      if (!isEnabled("learningOutcomes")) {
-        setStatus({ enabled: false, due: 0, total: 0 });
-        return;
-      }
-      const deck = readReviewDeck() ?? emptyReviewDeck();
-      if (!active) return;
-      const { total, due } = deckCounts(deck, Date.now());
-      setStatus({ enabled: true, total, due });
-    });
-    return () => {
-      active = false;
-    };
-    // historyResetEpoch (D14): a reset performed on the picker must
-    // re-read the deck in place — the picker never unmounted, so the
-    // onPicker edge alone would leave the stale due count on screen.
-  }, [onPicker, historyResetEpoch]);
-  return status;
 }
 
 /**
@@ -1605,27 +1549,17 @@ export function GameApp() {
   const ageBand: AgeBandId = resolveBand(ageProfile);
   const [ageSettingsOpen, setAgeSettingsOpen] = useState(false);
   const [ageToast, setAgeToast] = useState<string | null>(null);
-  // Post-reload notice (chunk-recovery): set once at boot when the
-  // previous page's reload left a notice flag. Deliberately NO
-  // auto-dismiss timer (unlike ageToast above): a timed status can be
-  // deleted before a screen reader reaches it. Close button only.
-  const [chunkReloadNotice, setChunkReloadNotice] = useState(false);
+  const {
+    chunkReloadNotice,
+    consumeAtReady: consumeChunkReloadNoticeAtReady,
+    dismiss: dismissChunkReloadNotice,
+  } = useChunkReloadNotice();
   useEffect(() => {
     if (ageToast === null) return;
     const id = window.setTimeout(() => setAgeToast(null), 3500);
     return () => window.clearTimeout(id);
   }, [ageToast]);
-  // "Start over" reset (manifest 2026-10-28): the success toast reuses
-  // the age-toast styling/lifetime, and historyResetEpoch is the
-  // refresh pin (D14) — bumping it remounts <Choose> (re-reading the
-  // mount-only home surfaces) and re-runs useDeckStatus in place.
-  const [resetToast, setResetToast] = useState<string | null>(null);
-  const [historyResetEpoch, setHistoryResetEpoch] = useState(0);
-  useEffect(() => {
-    if (resetToast === null) return;
-    const id = window.setTimeout(() => setResetToast(null), 3500);
-    return () => window.clearTimeout(id);
-  }, [resetToast]);
+  const { resetToast, historyResetEpoch, notifyHistoryReset } = useHistoryResetToast();
   // Invoking control for the age settings (footer "For grown-ups" link or
   // locked-tile grown-up link) — focus returns here when the settings close.
   const ageTriggerRef = useRef<HTMLElement | null>(null);
@@ -1726,13 +1660,7 @@ export function GameApp() {
     clearedSoundRef.current = cleared;
     playCelebrationSound(cleared.choice === "hard" ? "grandFanfare" : "mediumApplause");
   }, [cleared]);
-  // Difficulty picker: one choice applies across Globe → Country → State and
-  // survives edition switches. Persisted so it survives reloads too.
-  const [difficultyChoice, setDifficultyChoiceState] = useState<PickerDifficulty>(readDifficultyChoice);
-  const setDifficultyChoice = useCallback((choice: PickerDifficulty) => {
-    setDifficultyChoiceState(choice);
-    writeDifficultyChoice(choice);
-  }, []);
+  const [difficultyChoice, setDifficultyChoice] = useDifficultyChoice();
   /** Edition card press: the cartographer's tap, then open (SFX audio spec §2.6). */
   const withCardTap = useCallback(
     (edition: string, open: () => void) => (e: ReactMouseEvent) => {
@@ -2335,13 +2263,7 @@ export function GameApp() {
     // exactly once; never throws (SSR/edge-safe).
     if (ready && !readySignaledRef.current) {
       readySignaledRef.current = true;
-      // F7d: the post-reload notice is consumed HERE, at the point
-      // readiness is signalled — not in the mount effect. A page that
-      // mounts then stalls before ready must still hold its notice
-      // at the crash watchdog's 28 s check, where a surviving fresh
-      // notice is the recovery evidence that stands the watchdog's
-      // boot_failure report down.
-      if (consumeChunkReloadNotice()) setChunkReloadNotice(true);
+      consumeChunkReloadNoticeAtReady();
       try {
         if (typeof window !== "undefined" && typeof window.requestAnimationFrame === "function") {
           window.requestAnimationFrame(() => {
@@ -3148,8 +3070,7 @@ export function GameApp() {
     if (result.failed.length === 0) {
       replaceSession(null);
       window.dispatchEvent(new CustomEvent("meridian:history-reset"));
-      setHistoryResetEpoch((n) => n + 1);
-      setResetToast(RESET_HISTORY_SUCCESS_TOAST);
+      notifyHistoryReset();
     }
     return result;
   }, [replaceSession]);
@@ -4274,7 +4195,7 @@ export function GameApp() {
               type="button"
               aria-label="Close"
               className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg text-muted hover:text-fg focus-visible:outline focus-visible:outline-2 focus-visible:outline-fg"
-              onClick={() => setChunkReloadNotice(false)}
+              onClick={dismissChunkReloadNotice}
             >
               ✕
             </button>
@@ -5627,9 +5548,6 @@ function AtlasBackdrop() {
     </div>
   );
 }
-
-/** The reset success toast (manifest 2026-10-28 §4, locked). */
-const RESET_HISTORY_SUCCESS_TOAST = "All cleared. You are starting fresh.";
 
 /**
  * End of a review session: the due queue is exhausted. Bounded and
