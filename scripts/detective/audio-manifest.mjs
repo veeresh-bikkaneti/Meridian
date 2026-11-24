@@ -58,9 +58,19 @@ export function coreIndexesFromDisk(root) {
 /**
  * Render by-products that must never ship (#381): the pace ladder's
  * scratch takes (e.g. clue-3.mp3.pace-best.mp3) and any other file in
- * the audio tree that is not a plain .mp3 clip or the manifest.
+ * the audio tree that is not a plain .mp3 clip, the manifest, or a
+ * runtime split shard (split/index.json, split/names.json,
+ * split/cases/<n>.json).
  * Returns the offending paths relative to the audio root.
  */
+export function isSplitManifestRel(rel) {
+  return (
+    rel === "split/index.json" ||
+    rel === "split/names.json" ||
+    /^split\/cases\/\d+\.json$/.test(rel)
+  );
+}
+
 export function strayAudioFiles(root) {
   const base = join(root, AUDIO_REL);
   const out = [];
@@ -69,7 +79,7 @@ export function strayAudioFiles(root) {
     for (const e of readdirSync(dir, { withFileTypes: true })) {
       const r = rel ? `${rel}/${e.name}` : e.name;
       if (e.isDirectory()) walk(join(dir, e.name), r);
-      else if (r === "manifest.json") continue;
+      else if (r === "manifest.json" || isSplitManifestRel(r)) continue;
       else if (!/^[^.]+\.mp3$/.test(e.name)) out.push(r);
     }
   };

@@ -53,8 +53,14 @@
  * still playing, so play-time recording would hold only the clip in
  * flight and a mid-play replay could not restart the full chain.
  *
- * The manifest loads lazily, once, on first use (module-level promise);
- * a failed load degrades to empty coverage. It never blocks case play.
+ * The manifest loads lazily. The player asks for the slice a line
+ * needs: a small index (voices and fixed lines), then that case's
+ * file, or the names file when a place is spoken. A missing index,
+ * or a shard that fails for a reason other than 404, falls back to
+ * the monolithic manifest.json for the rest of the session. A 404
+ * shard is uncovered audio — silent, same as a missing entry — and
+ * does not pull the monolith. A failed load degrades to empty
+ * coverage. It never blocks case play.
  *
  * Test seams: every environment touchpoint (manifest load, clip
  * playback, gates) is injectable, so the queue logic is node-testable
@@ -169,41 +175,230 @@ export function resolveDetectiveClip(
 }
 
 /* ------------------------------------------------------------------ */
-/* Lazy one-time manifest load (module-level promise)                  */
+/* Lazy manifest load: per-case shards, monolith as fallback           */
 /* ------------------------------------------------------------------ */
 
-let manifestPromise: Promise<DetectiveManifest | null> | null = null;
+const SPLIT_INDEX_PATH = "audio/detective/split/index.json";
+const SPLIT_NAMES_PATH = "audio/detective/split/names.json";
+const MONOLITH_PATH = "audio/detective/manifest.json";
 
+interface SplitIndex {
+  v: 1;
+  split: 1;
+  voices: { holmes: string; watson: string };
+  fixed: Record<string, DetectiveManifestEntry | undefined>;
+}
+
+type CaseBucket = NonNullable<DetectiveManifest["cases"][string]>;
+
+let manifestPromise: Promise<DetectiveManifest | null> | null = null;
+let splitIndexPromise: Promise<SplitIndex | null> | null = null;
+let monolithPromise: Promise<DetectiveManifest | null> | null = null;
+let namesPromise: Promise<Record<string, DetectiveManifestEntry | undefined> | null> | null = null;
+const casePromises = new Map<number, Promise<CaseBucket | null>>();
+/** Set when the shards cannot be trusted. Later resolves use the monolith. */
+let splitUnavailable = false;
+
+type FetchResult =
+  | { state: "ok"; body: unknown }
+  | { state: "missing" }
+  | { state: "error" };
+
+async function fetchJson(fetchImpl: typeof fetch, url: string): Promise<FetchResult> {
+  try {
+    const res = await fetchImpl(url);
+    if (res.status === 404) return { state: "missing" };
+    if (!res.ok) return { state: "error" };
+    try {
+      return { state: "ok", body: await res.json() };
+    } catch {
+      return { state: "error" };
+    }
+  } catch {
+    return { state: "error" };
+  }
+}
+
+function parseMonolith(body: unknown): DetectiveManifest | null {
+  if (!body || typeof body !== "object") return null;
+  const m = body as Partial<DetectiveManifest> & { split?: number };
+  if (m.v !== 1 || m.split === 1) return null;
+  return {
+    v: 1,
+    voices: m.voices ?? { holmes: "", watson: "" },
+    fixed: m.fixed ?? {},
+    cases: m.cases ?? {},
+    names: m.names ?? {},
+  };
+}
+
+function parseSplitIndex(body: unknown): SplitIndex | null {
+  if (!body || typeof body !== "object") return null;
+  const m = body as Partial<SplitIndex>;
+  if (m.v !== 1 || m.split !== 1) return null;
+  if (!m.fixed || typeof m.fixed !== "object") return null;
+  return {
+    v: 1,
+    split: 1,
+    voices: m.voices ?? { holmes: "", watson: "" },
+    fixed: m.fixed,
+  };
+}
+
+function markSplitUnavailable(): void {
+  splitUnavailable = true;
+}
+
+function loadSplitIndex(fetchImpl: typeof fetch): Promise<SplitIndex | null> {
+  if (!splitIndexPromise) {
+    splitIndexPromise = (async () => {
+      const got = await fetchJson(fetchImpl, `${assetBase()}${SPLIT_INDEX_PATH}`);
+      if (got.state !== "ok") {
+        markSplitUnavailable();
+        return null;
+      }
+      const index = parseSplitIndex(got.body);
+      if (index) return index;
+      // A response that is the monolith (the unit seam returns one
+      // body for every URL, and an old host may do the same) is the
+      // fallback manifest. Do not fetch shards after that.
+      const mono = parseMonolith(got.body);
+      if (mono) monolithPromise = Promise.resolve(mono);
+      markSplitUnavailable();
+      return null;
+    })();
+  }
+  return splitIndexPromise;
+}
+
+function loadMonolith(fetchImpl: typeof fetch): Promise<DetectiveManifest | null> {
+  if (!monolithPromise) {
+    monolithPromise = (async () => {
+      const got = await fetchJson(fetchImpl, `${assetBase()}${MONOLITH_PATH}`);
+      if (got.state !== "ok") return null;
+      return parseMonolith(got.body);
+    })();
+  }
+  return monolithPromise;
+}
+
+function fixedView(index: SplitIndex): DetectiveManifest {
+  return {
+    v: 1,
+    voices: index.voices,
+    fixed: index.fixed,
+    cases: {},
+    names: {},
+  };
+}
+
+function loadCaseBucket(caseIndex: number, fetchImpl: typeof fetch): Promise<CaseBucket | null> {
+  let pending = casePromises.get(caseIndex);
+  if (!pending) {
+    pending = (async () => {
+      const got = await fetchJson(fetchImpl, `${assetBase()}audio/detective/split/cases/${caseIndex}.json`);
+      if (got.state === "missing") return null;
+      if (got.state === "error") {
+        markSplitUnavailable();
+        return null;
+      }
+      const body = got.body;
+      if (!body || typeof body !== "object" || Array.isArray(body)) {
+        markSplitUnavailable();
+        return null;
+      }
+      const bucket = body as { clues?: unknown; answer?: unknown };
+      const answer = bucket.answer;
+      return {
+        clues: Array.isArray(bucket.clues) ? (bucket.clues as CaseBucket["clues"]) : [],
+        answer:
+          answer && typeof answer === "object"
+            ? (answer as DetectiveManifestEntry)
+            : null,
+      };
+    })();
+    casePromises.set(caseIndex, pending);
+  }
+  return pending;
+}
+
+function loadNames(fetchImpl: typeof fetch): Promise<Record<string, DetectiveManifestEntry | undefined> | null> {
+  if (!namesPromise) {
+    namesPromise = (async () => {
+      const got = await fetchJson(fetchImpl, `${assetBase()}${SPLIT_NAMES_PATH}`);
+      if (got.state === "missing") return {};
+      if (got.state === "error") {
+        markSplitUnavailable();
+        return null;
+      }
+      const body = got.body;
+      if (!body || typeof body !== "object" || Array.isArray(body)) {
+        markSplitUnavailable();
+        return null;
+      }
+      return body as Record<string, DetectiveManifestEntry | undefined>;
+    })();
+  }
+  return namesPromise;
+}
+
+/**
+ * Fixed lines, or the whole monolith when the split index is absent.
+ * The summary celebration speaks one fixed line and uses this path,
+ * so it does not download every case.
+ */
 export function loadDetectiveManifest(
   fetchImpl: typeof fetch = fetch,
 ): Promise<DetectiveManifest | null> {
   if (!manifestPromise) {
     manifestPromise = (async () => {
-      try {
-        const res = await fetchImpl(`${assetBase()}audio/detective/manifest.json`);
-        if (!res.ok) return null;
-        const parsed: unknown = await res.json();
-        if (!parsed || typeof parsed !== "object") return null;
-        const m = parsed as Partial<DetectiveManifest>;
-        if (m.v !== 1) return null;
-        return {
-          v: 1,
-          voices: m.voices ?? { holmes: "", watson: "" },
-          fixed: m.fixed ?? {},
-          cases: m.cases ?? {},
-          names: m.names ?? {},
-        };
-      } catch {
-        return null; // silent degradation: empty coverage
-      }
+      const index = await loadSplitIndex(fetchImpl);
+      if (index && !splitUnavailable) return fixedView(index);
+      return loadMonolith(fetchImpl);
     })();
   }
   return manifestPromise;
 }
 
-/** Test seam: drop the cached manifest promise. */
+/**
+ * The manifest slice that can resolve `ref` for `caseIndex`.
+ * Clue and answer lines fetch that case's file. A name line fetches
+ * the names file (a pick is not scoped to the deck). Fixed lines use
+ * the index alone. See loadDetectiveManifest for the fallback rule.
+ */
+export function loadDetectiveManifestFor(
+  ref: SpeakRef,
+  caseIndex: number,
+  fetchImpl: typeof fetch = fetch,
+): Promise<DetectiveManifest | null> {
+  return (async () => {
+    const index = await loadSplitIndex(fetchImpl);
+    if (!index || splitUnavailable) return loadMonolith(fetchImpl);
+    const view = fixedView(index);
+    if (ref.kind === "clue" || ref.kind === "answer") {
+      const bucket = await loadCaseBucket(caseIndex, fetchImpl);
+      if (splitUnavailable) return loadMonolith(fetchImpl);
+      if (bucket) view.cases[String(caseIndex)] = bucket;
+      return view;
+    }
+    if (ref.kind === "name") {
+      const names = await loadNames(fetchImpl);
+      if (splitUnavailable || names == null) return loadMonolith(fetchImpl);
+      view.names = names;
+      return view;
+    }
+    return view;
+  })();
+}
+
+/** Test seam: drop the cached manifest promises. */
 export function __resetDetectiveManifestCache(): void {
   manifestPromise = null;
+  splitIndexPromise = null;
+  monolithPromise = null;
+  namesPromise = null;
+  casePromises.clear();
+  splitUnavailable = false;
 }
 
 /* ------------------------------------------------------------------ */
@@ -221,7 +416,7 @@ export interface DetectiveSpeechOptions {
    * as the degradation signals change. Defaults to "auto" (U5). */
   speechMode?: SpeechMode;
   /* Test seams (defaults wire the real environment). */
-  loadManifest?: () => Promise<DetectiveManifest | null>;
+  loadManifest?: (ref: SpeakRef, caseIndex: number) => Promise<DetectiveManifest | null>;
   /** Play one clip. `signal` aborts when something else needs the
    * voice (a pick, a replay, stopAll): stop sounding and resolve. */
   playClip?: (clip: ResolvedClip, signal: AbortSignal) => Promise<void>;
@@ -314,7 +509,9 @@ export function createDetectiveSpeech(
   opts: DetectiveSpeechOptions = {},
 ): DetectiveSpeechPlayer {
   const onSpeakingChange = opts.onSpeakingChange ?? (() => {});
-  const loadManifest = opts.loadManifest ?? (() => loadDetectiveManifest());
+  const loadManifest =
+    opts.loadManifest ??
+    ((ref: SpeakRef, caseIndex: number) => loadDetectiveManifestFor(ref, caseIndex));
   const isSoundOn = opts.isSoundOn ?? (() => isSoundEnabled() && soundAudible());
   const canAutoPlay = opts.canAutoPlay ?? detectiveCanAutoPlay;
 
@@ -625,7 +822,7 @@ export function createDetectiveSpeech(
         // the sound gate applies, the autoplay veto does not.
         if (!isSoundOn()) continue;
         if (speechMode === "auto" && !canAutoPlay()) continue;
-        const manifest = await loadManifest();
+        const manifest = await loadManifest(ref, caseIndex);
         if (gen !== generation || disposed) return;
         const clip = resolveDetectiveClip(manifest, ref, caseIndex);
         if (!clip) continue; // uncovered → silent skip
@@ -713,7 +910,7 @@ export function createDetectiveSpeech(
       for (const ref of refs) {
         if (mySeq !== heldPlaySeq || gen !== generation || disposed) return;
         if (!isSoundOn()) break;
-        const manifest = await loadManifest();
+        const manifest = await loadManifest(ref, caseIndex);
         if (mySeq !== heldPlaySeq || gen !== generation || disposed) return;
         const clip = resolveDetectiveClip(manifest, ref, caseIndex);
         if (!clip) continue; // uncovered → silent skip, as ever
