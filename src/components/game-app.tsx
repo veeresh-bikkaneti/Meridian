@@ -410,6 +410,7 @@ import { ResetHistoryControl } from "./reset-history-control";
 import { useDifficultyChoice } from "./use-difficulty-choice";
 import { useDeckStatus } from "./use-deck-status";
 import { useChunkReloadNotice } from "./use-chunk-reload-notice";
+import { useResetHistoryToast } from "./use-reset-history-toast";
 
 /**
  * Watched by the inline crash watchdog injected into _shell.html
@@ -1563,13 +1564,7 @@ export function GameApp() {
   // the age-toast styling/lifetime, and historyResetEpoch is the
   // refresh pin (D14) — bumping it remounts <Choose> (re-reading the
   // mount-only home surfaces) and re-runs useDeckStatus in place.
-  const [resetToast, setResetToast] = useState<string | null>(null);
-  const [historyResetEpoch, setHistoryResetEpoch] = useState(0);
-  useEffect(() => {
-    if (resetToast === null) return;
-    const id = window.setTimeout(() => setResetToast(null), 3500);
-    return () => window.clearTimeout(id);
-  }, [resetToast]);
+  const { resetToast, historyResetEpoch, showResetSuccess } = useResetHistoryToast();
   // Invoking control for the age settings (footer "For grown-ups" link or
   // locked-tile grown-up link) — focus returns here when the settings close.
   const ageTriggerRef = useRef<HTMLElement | null>(null);
@@ -3088,11 +3083,10 @@ export function GameApp() {
     if (result.failed.length === 0) {
       replaceSession(null);
       window.dispatchEvent(new CustomEvent("meridian:history-reset"));
-      setHistoryResetEpoch((n) => n + 1);
-      setResetToast(RESET_HISTORY_SUCCESS_TOAST);
+      showResetSuccess();
     }
     return result;
-  }, [replaceSession]);
+  }, [replaceSession, showResetSuccess]);
 
   /**
    * "Challenge a friend — pick a map" from the review-complete screen
@@ -5567,9 +5561,6 @@ function AtlasBackdrop() {
     </div>
   );
 }
-
-/** The reset success toast (manifest 2026-10-28 §4, locked). */
-const RESET_HISTORY_SUCCESS_TOAST = "All cleared. You are starting fresh.";
 
 /**
  * End of a review session: the due queue is exhausted. Bounded and
