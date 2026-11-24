@@ -1,10 +1,9 @@
 // Floor for the lockfile's undici copies: GHSA-4qv8-2p9j-2685, GHSA-f72v-6w45-q472 and
 // GHSA-xjj6-f33q-929c affect undici < 7.30.1. package.json `overrides` pins undici ^7.30.1.
 //
-// Scope, stated plainly: this reads package-lock.json ONLY. undici 7.29.1 is also bundled
-// inline in wrangler-dist/cli.js and @cloudflare/vite-plugin/dist/index.mjs; npm audit and
-// this test cannot see that. It goes away with wrangler >= 4.153.0 and
-// @cloudflare/vite-plugin >= 1.66.0 (both bundle undici 7.30.1).
+// Scope, stated plainly: this reads package-lock.json ONLY. Copies bundled
+// inside wrangler and @cloudflare/vite-plugin are checked by
+// scripts/undici-bundled-floor.test.mjs.
 //
 // Removal condition: delete the override once every lockfile path resolves undici >= 7.30.1
 // without it (delete it, regenerate with npm, `npm audit --package-lock-only` prints 0). If a

@@ -105,6 +105,6 @@
     "storybook": "10.6.8",
     "topojson-server": "3.0.1",
     "typescript-eslint": "^8.56.1",
-    "wrangler": "4.152.0"
+    "wrangler": "4.154.0"
   }
 }
