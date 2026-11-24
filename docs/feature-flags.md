@@ -126,7 +126,7 @@ killed feature by a stale flags.json.
 | `learningOutcomes` | `false` | No learning records, no growth UI (disabling removes them) |
 | `globeTierSplit`   | `false` | Globe loads all five fame-tier files and deals the full canonical pool; on = Easy t1+t2, Medium t2-t4, Hard t4+t5 only |
 | `friendChallenges` | `false` | No challenge entry points: a `#c=` link is stripped from the URL and ignored, the run-summary share button is hidden, and a saved challenge run is dropped instead of resumed |
-| `scoutUpgradeTrial` | `true`  | The issue #330 Scout trial never arms: an unknown-memory touch device still boots Scout first, but the in-session upgrade to the full map never fires — Scout-first boot, manual records, and every other path are untouched |
+| `scoutUpgradeTrial` | `true`  | The #330 upgrade never arms: an unknown-memory touch device still boots Scout first, but the in-session upgrade to the full map never fires — Scout-first boot, manual records, and every other path are untouched |
 
 **`globeTierSplit` and offline play.** With the flag on, the Globe fetches only
 the fame-tier files of the learning path being played, and the service worker

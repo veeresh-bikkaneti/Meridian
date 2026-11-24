@@ -447,11 +447,13 @@ export interface ScoutUpgradeGate {
   /** A live stored record (manual or auto) decided this boot's mode. */
   storedRecordPresent?: boolean;
   /**
-   * The `scoutUpgradeTrial` feature flag (src/lib/flags.ts), read by the
-   * caller at boot: false = the trial is disarmed by remote config and
-   * the upgrade must never fire, however stable Scout proves. Absent =
-   * armed — the flag's baked-in default is true, so an omitted value
-   * keeps the shipped #331 behavior byte-for-byte.
+   * The `scoutUpgradeTrial` feature flag (src/lib/flags.ts), re-read by
+   * the caller when the soak is armed and again at fire time. false =
+   * the trial is disarmed and the upgrade must never fire, however
+   * stable Scout proves. Absent = armed — the flag's baked-in default
+   * is true, so an omitted value still fires once the soak has elapsed.
+   * This is not a boot-only read: a disarm has to be visible at the
+   * moment the upgrade would fire, not only when eligibility was set.
    */
   trialArmed?: boolean;
   /** Epoch ms when the Scout map finished its first render; null = not yet. */
@@ -468,6 +470,30 @@ export function shouldFireScoutUpgrade(gate: ScoutUpgradeGate): boolean {
   if (gate.storedRecordPresent === true) return false;
   if (gate.scoutReadyAtMs === null) return false;
   return gate.nowMs - gate.scoutReadyAtMs >= SCOUT_UPGRADE_SOAK_MS;
+}
+
+/**
+ * What the live soak timer should do once it is ready to consider firing.
+ *
+ * "drop" — the gate is shut (wrong source, disarmed flag, stored record,
+ * prior crash, or the soak has not elapsed). Do not retry.
+ * "defer" — the gate is open, but a reveal beat, any other scripted
+ * camera beat, or a live gesture is in flight. Firing now would remount
+ * the map and cut that beat. Retry at the next settled moment.
+ * "fire" — gate open and the map is settled.
+ */
+export function decideScoutUpgradeFire(input: {
+  gate: ScoutUpgradeGate;
+  /** In-flight scripted beat name, or null when the controller is settled. */
+  beatKind: string | null;
+  /** True while the player is dragging, zooming, rotating, or pitching. */
+  userGesture: boolean;
+}): "fire" | "defer" | "drop" {
+  if (!shouldFireScoutUpgrade(input.gate)) return "drop";
+  // Reveal-phase guard, plus the same remount hazard for every other
+  // in-flight beat and for a gesture that has not ended yet.
+  if (input.beatKind !== null || input.userGesture) return "defer";
+  return "fire";
 }
 
 export interface ResolveMapModeOptions {

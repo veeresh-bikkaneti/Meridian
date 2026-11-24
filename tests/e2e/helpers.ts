@@ -112,8 +112,8 @@ const MIME: Record<string, string> = {
  * boot path. Must be installed via context.addInitScript BEFORE
  * navigation (addInitScript here does exactly that).
  */
-async function spoofDevice(context: BrowserContext, deviceMemoryGB: number): Promise<void> {
-  await context.addInitScript((gb: number) => {
+async function spoofDevice(context: BrowserContext, deviceMemoryGB: number | null): Promise<void> {
+  await context.addInitScript((gb: number | null) => {
     const NVIDIA =
       "ANGLE (NVIDIA, NVIDIA GeForce RTX 4090 (0x00002684) Direct3D11 vs_5_0 ps_5_0, D3D11)";
     const R = 0x9246;
@@ -149,7 +149,7 @@ async function spoofDevice(context: BrowserContext, deviceMemoryGB: number): Pro
       return ctx;
     };
     Object.defineProperty(Navigator.prototype, "deviceMemory", {
-      get: () => gb,
+      get: () => (gb === null ? undefined : gb),
       configurable: true,
     });
   }, deviceMemoryGB);
@@ -171,6 +171,35 @@ export async function spoofCapableDevice(context: BrowserContext): Promise<void>
  */
 export async function spoofLowMemoryDevice(context: BrowserContext): Promise<void> {
   await spoofDevice(context, 1);
+}
+
+/**
+ * Unknown-memory trial (issue #330): a capable GPU so the probe passes,
+ * no deviceMemory, and a coarse pointer. Boot source is "unknown-memory",
+ * which is the only source the in-session upgrade may fire for.
+ */
+export async function spoofUnknownMemoryDevice(context: BrowserContext): Promise<void> {
+  await spoofDevice(context, null);
+  await context.addInitScript(() => {
+    const orig = window.matchMedia.bind(window);
+    window.matchMedia = ((query: string) => {
+      if (query.includes("pointer: coarse")) {
+        return {
+          matches: true,
+          media: query,
+          onchange: null,
+          addEventListener() {},
+          removeEventListener() {},
+          addListener() {},
+          removeListener() {},
+          dispatchEvent() {
+            return false;
+          },
+        } as unknown as MediaQueryList;
+      }
+      return orig(query);
+    }) as typeof window.matchMedia;
+  });
 }
 
 /**

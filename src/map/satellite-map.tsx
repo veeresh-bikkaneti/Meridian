@@ -22,7 +22,14 @@ import { mountStarfield } from "./starfield.ts";
 import { buildScoutStyle } from "./scout-style.ts";
 import { ScoutFallbackMap } from "./scout-fallback.tsx";
 import { isCoarsePointer, mapOptionsForDevice, revealZoomCap, settleZoomCap, SCOUT_MAX_ZOOM_FLAT, SCOUT_MAX_ZOOM_GLOBE } from "./map-options.ts";
-import { SCOUT_UPGRADE_SOAK_MS, type MapMode } from "./capability.ts";
+import { isEnabled } from "@/lib/flags";
+import {
+  decideScoutUpgradeFire,
+  readStoredMapMode,
+  SCOUT_UPGRADE_SOAK_MS,
+  type MapMode,
+  type MapModeSource,
+} from "./capability.ts";
 import { emitTileFailed, emitWebglContextLost, recordMilestone, recordTileErrors } from "@/lib/observability";
 import { isWebgl2Unavailable } from "@/lib/webgl2-unavailable";
 export { isWebgl2Unavailable } from "@/lib/webgl2-unavailable";
@@ -94,6 +101,19 @@ export interface ScoutRestoreView {
   center: [number, number];
   zoom: number;
   projection: "globe" | "mercator";
+  /**
+   * Scout-upgrade only: epoch ms when this Scout mount finished its
+   * first render. The owner passes it back through the upgrade gate.
+   */
+  scoutReadyAtMs?: number;
+  /** Scout-upgrade only: epoch ms at which the soak decided to fire. */
+  upgradeNowMs?: number;
+  /**
+   * Scout-upgrade only: the focused element lived inside the map
+   * wrapper this remount is about to destroy. The new mount restores
+   * focus only then, so a focus that was elsewhere is left alone.
+   */
+  focusWasInsideMap?: boolean;
 }
 
 const EMPTY = { type: "FeatureCollection" as const, features: [] };
@@ -482,6 +502,23 @@ export function SatelliteMap(props: {
    * Carries the live viewport so the full map reopens in place.
    */
   onScoutUpgrade?: (view: ScoutRestoreView) => void;
+  /**
+   * Boot facts for the unknown-memory trial. Passed only while the
+   * upgrade callback is live. The soak timer routes its fire decision
+   * through decideScoutUpgradeFire / shouldFireScoutUpgrade with these
+   * facts plus the recorded ready timestamp — the gate is the runtime
+   * check, not a comment beside a raw timer.
+   */
+  scoutUpgradeGate?: {
+    initialSource: MapModeSource;
+    priorMapCrash: boolean;
+  } | null;
+  /**
+   * Issue #332: the upgrade remount destroys the focused wrapper.
+   * When set, focus the new wrapper once the intro gate has released
+   * it (a restore mount skips the intro, so this lands on the new map).
+   */
+  restoreFocus?: boolean;
 }): JSX.Element {
   const containerRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -501,6 +538,17 @@ export function SatelliteMap(props: {
   // soak timer armed in the construction effect never goes stale.
   const onScoutUpgradePropRef = useRef(props.onScoutUpgrade);
   onScoutUpgradePropRef.current = props.onScoutUpgrade;
+  const scoutUpgradeGateRef = useRef(props.scoutUpgradeGate);
+  scoutUpgradeGateRef.current = props.scoutUpgradeGate;
+  // Issue #330 soak. Refs (not effect locals) so a callback that arrives
+  // after load can arm the same timer the load path uses, and so teardown
+  // and context loss can cancel it.
+  const scoutUpgradeTimerRef = useRef<number | undefined>(undefined);
+  const scoutReadyAtMsRef = useRef<number | null>(null);
+  const scoutUpgradeArmStartedRef = useRef(false);
+  const scoutUpgradePendingRef = useRef(false);
+  const scheduleScoutUpgradeSoakRef = useRef<() => void>(() => {});
+  const tryFireScoutUpgradeRef = useRef<() => void>(() => {});
   const spotRef = useRef<{ lon: number; lat: number } | null>(null);
   spotRef.current = props.spot ?? null;
   const marksRef = useRef(props.marks);
@@ -826,6 +874,81 @@ export function SatelliteMap(props: {
     ? `${props.variation.pin.lon}:${props.variation.pin.lat}:${props.variation.spot.lon}:${props.variation.spot.lat}:${props.variation.kilometers}`
     : "";
 
+  // The soak scheduler and the fire decision. Assigned every render so
+  // the map listeners (created once) always call the current closure.
+  // The scheduler is shared by the load/idle path and by the effect that
+  // runs when the upgrade callback arrives after the map has already idled.
+  scheduleScoutUpgradeSoakRef.current = () => {
+    if (scoutUpgradeArmStartedRef.current) return;
+    if (mapModeRef.current !== "scout") return;
+    if (!onScoutUpgradePropRef.current) return;
+    const readyAt = scoutReadyAtMsRef.current;
+    if (readyAt === null) return;
+    // Re-check the flag at arm time, including a late arm after the
+    // async flags load. A disarmed trial must not start the soak.
+    if (!isEnabled("scoutUpgradeTrial")) return;
+    scoutUpgradeArmStartedRef.current = true;
+    const wait = Math.max(0, SCOUT_UPGRADE_SOAK_MS - (Date.now() - readyAt));
+    scoutUpgradeTimerRef.current = window.setTimeout(() => {
+      scoutUpgradeTimerRef.current = undefined;
+      tryFireScoutUpgradeRef.current();
+    }, wait);
+  };
+  tryFireScoutUpgradeRef.current = () => {
+    const map = mapRef.current;
+    const owner = onScoutUpgradePropRef.current;
+    if (!map || !owner || mapModeRef.current !== "scout") {
+      scoutUpgradePendingRef.current = false;
+      return;
+    }
+    const readyAt = scoutReadyAtMsRef.current;
+    const now = Date.now();
+    const gateFacts = scoutUpgradeGateRef.current;
+    let userGesture = false;
+    try {
+      userGesture = map.isMoving() || map.isRotating() || map.isZooming();
+    } catch {
+      userGesture = false;
+    }
+    const decision = decideScoutUpgradeFire({
+      gate: {
+        initialSource: gateFacts?.initialSource ?? "default",
+        priorMapCrash: gateFacts?.priorMapCrash === true,
+        storedRecordPresent: readStoredMapMode() != null,
+        trialArmed: isEnabled("scoutUpgradeTrial"),
+        scoutReadyAtMs: readyAt,
+        nowMs: now,
+      },
+      beatKind: controllerRef.current?.beatKind ?? null,
+      userGesture,
+    });
+    if (decision === "drop") {
+      scoutUpgradePendingRef.current = false;
+      return;
+    }
+    if (decision === "defer") {
+      scoutUpgradePendingRef.current = true;
+      return;
+    }
+    scoutUpgradePendingRef.current = false;
+    const wrapper = wrapperRef.current;
+    const active = document.activeElement;
+    const focusWasInsideMap =
+      !!wrapper && !!active && (active === wrapper || wrapper.contains(active));
+    try {
+      owner({
+        center: map.getCenter().toArray() as [number, number],
+        zoom: map.getZoom(),
+        projection: logicalProjection(),
+        scoutReadyAtMs: readyAt ?? undefined,
+        upgradeNowMs: now,
+        focusWasInsideMap,
+      });
+    } catch {
+      // Upgrade is best-effort: staying in Scout is always safe.
+    }
+  };
+
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
@@ -982,12 +1105,11 @@ export function SatelliteMap(props: {
     }
     maxBoundsRef.current = initialMaxBounds ?? null;
     mapRef.current = map;
-    // Issue #330: the unknown-memory trial's soak timer (armed in the
-    // load handler below; see its comment there for how the timer
-    // relates to shouldFireScoutUpgrade in src/map/capability.ts).
-    // Cleared on teardown and on context loss — a Scout map that lost
-    // its context has not proved stable.
-    let scoutUpgradeTimer: number | undefined;
+    // Issue #330: the unknown-memory trial's soak timer. Armed from the
+    // first idle (and again if the upgrade callback arrives after that
+    // idle). Cleared on teardown and on context loss — a Scout map that
+    // lost its context has not proved stable. The fire itself goes
+    // through decideScoutUpgradeFire, which calls shouldFireScoutUpgrade.
 
     if (mapMode === "scout") {
       // PBI-4: the outline style has no external resources — any map error
@@ -996,10 +1118,11 @@ export function SatelliteMap(props: {
       map.on("error", () => {
         // Issue #330: a failed Scout render has not proved stable —
         // cancel the upgrade soak so it cannot fire from this mount.
-        if (scoutUpgradeTimer !== undefined) {
-          window.clearTimeout(scoutUpgradeTimer);
-          scoutUpgradeTimer = undefined;
+        if (scoutUpgradeTimerRef.current !== undefined) {
+          window.clearTimeout(scoutUpgradeTimerRef.current);
+          scoutUpgradeTimerRef.current = undefined;
         }
+        scoutUpgradePendingRef.current = false;
         setScoutFallback(true);
       });
     }
@@ -1014,10 +1137,11 @@ export function SatelliteMap(props: {
     const onWebglContextLost = () => {
       emitWebglContextLost();
       // Issue #330: a context loss during the soak cancels the upgrade.
-      if (scoutUpgradeTimer !== undefined) {
-        window.clearTimeout(scoutUpgradeTimer);
-        scoutUpgradeTimer = undefined;
+      if (scoutUpgradeTimerRef.current !== undefined) {
+        window.clearTimeout(scoutUpgradeTimerRef.current);
+        scoutUpgradeTimerRef.current = undefined;
       }
+      scoutUpgradePendingRef.current = false;
       try {
         if (mapModeRef.current !== "full") return;
         const owner = onWebglContextLostPropRef.current;
@@ -1660,42 +1784,27 @@ export function SatelliteMap(props: {
       // A flushed queued reveal beat starts here (not via the React effect),
       // so arm tap-to-skip for it as well.
       if (ctl.beatKind === "reveal") skipControlRef.current.arm();
+      // A deferred upgrade retries once the camera has settled. The
+      // reveal beat's own moveend lands here after the controller has
+      // finished the beat, so this is the natural break — not mid-reveal.
+      if (scoutUpgradePendingRef.current) tryFireScoutUpgradeRef.current();
     });
 
     map.on("load", () => {
       recordMilestone("map_ready");
-      // Issue #330: arm the unknown-memory trial's upgrade soak. Only a
-      // scout mount with an owner-supplied upgrade callback does this.
-      // The soak starts at the first idle (Scout has no tiles, so idle
-      // is the first completed render) and fires once with the LIVE
-      // viewport, mirroring the context-lost switch's view capture.
-      // This timer implements the soak half of shouldFireScoutUpgrade
-      // (src/map/capability.ts); the gate's other conditions (no stored
-      // record, no prior crash, unknown-memory source, trial armed) hold
-      // by construction, because boot eligibility is only ever set for
-      // the unknown-memory branch of planBootMapMode — after
-      // qualifyMapMode's precedence order has already ruled the other
-      // conditions out, and only when the `scoutUpgradeTrial` flag is on
-      // (GameApp's boot effect awaits the flags load before arming). A
-      // disarmed trial never passes an upgrade callback, so this timer
-      // never arms.
-      if (mapMode === "scout" && onScoutUpgradePropRef.current) {
-        map.once("idle", () => {
-          scoutUpgradeTimer = window.setTimeout(() => {
-            try {
-              if (mapModeRef.current !== "scout") return;
-              const owner = onScoutUpgradePropRef.current;
-              const liveMap = mapRef.current;
-              if (!owner || !liveMap) return;
-              owner({
-                center: liveMap.getCenter().toArray() as [number, number],
-                zoom: liveMap.getZoom(),
-                projection: logicalProjection(),
-              });
-            } catch {
-              // Upgrade is best-effort: staying in Scout is always safe.
-            }
-          }, SCOUT_UPGRADE_SOAK_MS);
+      // Issue #330/#334: record the first idle even when the upgrade
+      // callback is not here yet (flags can resolve after this mount
+      // loads). When the callback is already present, arm the soak.
+      // A later arrival is handled by the effect below, which calls
+      // the same scheduler. The scheduler re-checks the trial flag
+      // before arming; the fire re-checks it again through the gate.
+      if (mapMode === "scout") {
+        map.on("idle", () => {
+          if (scoutReadyAtMsRef.current === null) {
+            scoutReadyAtMsRef.current = Date.now();
+          }
+          scheduleScoutUpgradeSoakRef.current();
+          if (scoutUpgradePendingRef.current) tryFireScoutUpgradeRef.current();
         });
       }
       // Must-fix #2: style parsed, tiles in flight — not a verdict either
@@ -1796,7 +1905,15 @@ export function SatelliteMap(props: {
       controllerRef.current = null;
       tapHandlersRef.current = null;
       window.clearTimeout(watchdog);
-      if (scoutUpgradeTimer !== undefined) window.clearTimeout(scoutUpgradeTimer);
+      if (scoutUpgradeTimerRef.current !== undefined) {
+        window.clearTimeout(scoutUpgradeTimerRef.current);
+        scoutUpgradeTimerRef.current = undefined;
+      }
+      // The torn-down map did not finish proving stability. A rebuilt
+      // scout mount (same component, new map) must be allowed to arm again.
+      scoutUpgradeArmStartedRef.current = false;
+      scoutReadyAtMsRef.current = null;
+      scoutUpgradePendingRef.current = false;
       disarmSkip();
       stopSpin();
       // An unmount mid-intro must not leave the ambient loop playing.
@@ -1824,6 +1941,55 @@ export function SatelliteMap(props: {
       map.remove();
     };
   }, [props.edition, props.regionName, props.mode, props.bounds, mapAttempt]);
+
+  // Issue #343: eligibility can land after this mount has already idled
+  // (the flags load is async, the map load is not). Re-arm the soak when
+  // the callback first appears, instead of waiting for another remount.
+  useEffect(() => {
+    if (!props.onScoutUpgrade) return;
+    if ((props.mapMode ?? "full") !== "scout") return;
+    if (scoutUpgradeArmStartedRef.current) return;
+    const map = mapRef.current;
+    if (!map) return;
+    if (scoutReadyAtMsRef.current !== null) {
+      scheduleScoutUpgradeSoakRef.current();
+      return;
+    }
+    let styleReady = false;
+    try {
+      styleReady = map.isStyleLoaded() || map.loaded();
+    } catch {
+      styleReady = false;
+    }
+    if (!styleReady) return;
+    let moving = true;
+    try {
+      moving = map.isMoving();
+    } catch {
+      moving = true;
+    }
+    if (moving) return;
+    scoutReadyAtMsRef.current = Date.now();
+    scheduleScoutUpgradeSoakRef.current();
+  }, [props.onScoutUpgrade, props.mapMode]);
+
+  // Issue #332: the upgrade remount destroys the focused wrapper. Move
+  // focus to the new one once the intro gate has released it.
+  useEffect(() => {
+    if (!props.restoreFocus || introActive) return;
+    const id = window.requestAnimationFrame(() => {
+      wrapperRef.current?.focus();
+    });
+    return () => window.cancelAnimationFrame(id);
+  }, [props.restoreFocus, introActive]);
+
+  // A soak that came due during the intro retries when the intro releases
+  // the map. Animated beats also retry from moveend / idle.
+  useEffect(() => {
+    if (introActive) return;
+    if (!scoutUpgradePendingRef.current) return;
+    tryFireScoutUpgradeRef.current();
+  }, [introActive]);
 
   // Must-fix #2: Retry resets the tile lifecycle and remounts the map (the
   // effect teardown above removes the old instance; `mapAttempt` retriggers
@@ -1945,6 +2111,11 @@ export function SatelliteMap(props: {
         error,
       );
       onRevealCompleteRef.current?.();
+    }
+    // A synchronous reveal (hit, reduced motion) ends without a moveend.
+    // If the soak came due mid-reveal, retry now that the beat is over.
+    if (scoutUpgradePendingRef.current && controller.beatKind !== "reveal") {
+      tryFireScoutUpgradeRef.current();
     }
     // Effect deps: variationKey embeds the pin AND the true spot, so a new
     // place always produces a new key and triggers a reveal attempt — the

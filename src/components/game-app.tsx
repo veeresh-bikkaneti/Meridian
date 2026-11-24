@@ -273,6 +273,7 @@ import {
   qualifyMapMode,
   readDeviceMemoryGB,
   readStoredMapMode,
+  shouldFireScoutUpgrade,
   writeStoredMapMode,
 } from "@/map/capability";
 import type { ScoutRestoreView } from "@/map/satellite-map";
@@ -1273,6 +1274,16 @@ export function GameApp() {
    */
   const [scoutUpgradeEligible, setScoutUpgradeEligible] = useState(false);
   /**
+   * Facts the upgrade gate needs at fire time. Set with eligibility
+   * (unknown-memory source, no prior crash) and cleared with it, so the
+   * runtime check is shouldFireScoutUpgrade rather than an assumption
+   * about which boot branch armed the callback.
+   */
+  const [scoutUpgradeGate, setScoutUpgradeGate] = useState<{
+    initialSource: MapModeSource;
+    priorMapCrash: boolean;
+  } | null>(null);
+  /**
    * Friend-challenge boot notice (cure round for PR #274): set by the
    * boot effect when a `#c=` link was tapped with the friendChallenges
    * flag ON but the challenge could not be loaded (broken link, unknown
@@ -1417,6 +1428,7 @@ export function GameApp() {
    */
   const applyScoutUpgrade = useCallback(() => {
     setScoutUpgradeEligible(false);
+    setScoutUpgradeGate(null);
     setReportMapMode("full");
     // The trial boot left the auto-Scout note standing; this upgrade
     // falsifies it (the session is no longer on Scout), so retire it
@@ -2173,6 +2185,13 @@ export function GameApp() {
             void loadFlags().then(() => {
               if (!isEnabled("scoutUpgradeTrial")) return;
               if (readStoredMapMode()?.source === "manual") return;
+              // The flag was just re-read after the async load. The map
+              // re-checks it again when it arms the soak, and Play
+              // re-checks it again at fire time.
+              setScoutUpgradeGate({
+                initialSource: decision.source,
+                priorMapCrash: false,
+              });
               setScoutUpgradeEligible(true);
             });
           }
@@ -2270,6 +2289,7 @@ export function GameApp() {
     // #330 cure: an explicit manual choice disarms any pending trial
     // upgrade — the upgrade must never override the player's pick.
     setScoutUpgradeEligible(false);
+    setScoutUpgradeGate(null);
     // BLOCK-4: close every other full-screen state so the render
     // precedence below cannot hand the landing to a lurking flag
     // (see the docstring). writeLoopOpen mirrors LoopScreen's own
@@ -2309,6 +2329,7 @@ export function GameApp() {
     // #330 cure: an explicit manual choice disarms any pending trial
     // upgrade — the upgrade must never override the player's pick.
     setScoutUpgradeEligible(false);
+    setScoutUpgradeGate(null);
     // BLOCK-2: this flip supersedes any earlier switched notice.
     setMapSwitchedNote(null);
   }, []);
@@ -3610,6 +3631,7 @@ export function GameApp() {
           applyMapMode={applyMapMode}
           applySessionMapMode={applySessionMapMode}
           scoutUpgradeEligible={scoutUpgradeEligible}
+          scoutUpgradeGate={scoutUpgradeGate}
           onScoutUpgrade={applyScoutUpgrade}
           celebrationOpen={cleared !== null}
           ageBand={ageBand}
@@ -6673,6 +6695,7 @@ function Play({
   applyMapMode,
   applySessionMapMode,
   scoutUpgradeEligible,
+  scoutUpgradeGate,
   onScoutUpgrade,
 }: {
   run: Run;
@@ -6744,6 +6767,11 @@ function Play({
   applySessionMapMode: (mode: MapMode) => void;
   /** Issue #330: this boot is an unknown-memory Scout trial. */
   scoutUpgradeEligible: boolean;
+  /** Boot facts for shouldFireScoutUpgrade. Null when the trial is not armed. */
+  scoutUpgradeGate: {
+    initialSource: MapModeSource;
+    priorMapCrash: boolean;
+  } | null;
   /** Issue #330: apply the trial's session-only upgrade to full. */
   onScoutUpgrade: () => void;
 }) {
@@ -6941,6 +6969,7 @@ function Play({
       applyMapMode={applyMapMode}
       applySessionMapMode={applySessionMapMode}
       scoutUpgradeEligible={scoutUpgradeEligible}
+      scoutUpgradeGate={scoutUpgradeGate}
       onScoutUpgrade={onScoutUpgrade}
     />
   );
@@ -6974,6 +7003,7 @@ function PlayLoaded({
   applyMapMode,
   applySessionMapMode,
   scoutUpgradeEligible,
+  scoutUpgradeGate,
   onScoutUpgrade,
 }: {
   run: Run;
@@ -7052,6 +7082,11 @@ function PlayLoaded({
   applySessionMapMode: (mode: MapMode) => void;
   /** Issue #330: this boot is an unknown-memory Scout trial. */
   scoutUpgradeEligible: boolean;
+  /** Boot facts for shouldFireScoutUpgrade. Null when the trial is not armed. */
+  scoutUpgradeGate: {
+    initialSource: MapModeSource;
+    priorMapCrash: boolean;
+  } | null;
   /** Issue #330: apply the trial's session-only upgrade to full. */
   onScoutUpgrade: () => void;
 }) {
@@ -7201,6 +7236,11 @@ function PlayLoaded({
   const [scoutSwitchView, setScoutSwitchView] = useState<ScoutRestoreView | null>(null);
   const [mapRemountNonce, setMapRemountNonce] = useState(0);
   /**
+   * Issue #332: set when an upgrade remount destroyed a focused map
+   * wrapper. The new SatelliteMap moves focus back once it is interactive.
+   */
+  const [restoreMapFocus, setRestoreMapFocus] = useState(false);
+  /**
    * PBI-5: the deferred switch note — keyed to the switch event + place
    * id, rendered at the next game-natural break (story + revealDone),
    * cleared on Continue / dismiss. Never mid-round.
@@ -7269,11 +7309,30 @@ function PlayLoaded({
       // the handlers that clear eligibility) stands over the trial,
       // and the upgrade must never override it.
       if (readStoredMapMode()?.source === "manual") return;
+      // #343: re-check the kill-switch at fire time, not only when the
+      // boot effect armed eligibility. A disarmed flag must not upgrade.
+      if (!isEnabled("scoutUpgradeTrial")) return;
+      // #334: the pure gate is the runtime decision. The map already
+      // routed the soak through it; this is the same check at the owner,
+      // with the boot source and the timestamp the map recorded.
+      if (
+        !shouldFireScoutUpgrade({
+          initialSource: scoutUpgradeGate?.initialSource ?? "default",
+          priorMapCrash: scoutUpgradeGate?.priorMapCrash === true,
+          storedRecordPresent: readStoredMapMode() != null,
+          trialArmed: isEnabled("scoutUpgradeTrial"),
+          scoutReadyAtMs: view.scoutReadyAtMs ?? null,
+          nowMs: view.upgradeNowMs ?? Date.now(),
+        })
+      ) {
+        return;
+      }
       onScoutUpgrade();
       setScoutSwitchView(view);
       setMapRemountNonce((n) => n + 1);
+      if (view.focusWasInsideMap) setRestoreMapFocus(true);
     },
-    [onScoutUpgrade, challenge],
+    [onScoutUpgrade, challenge, scoutUpgradeGate],
   );
 
   // The switch viewport is consumed by the remount it triggers; clear it
@@ -7284,6 +7343,7 @@ function PlayLoaded({
     if (lastPlaceIdRef.current !== id) {
       lastPlaceIdRef.current = id;
       setScoutSwitchView(null);
+      setRestoreMapFocus(false);
     }
   }, [place]);
   // Learning outcomes (flag-gated, observational). The store is read once
@@ -8383,6 +8443,8 @@ function PlayLoaded({
               onTileRetry={handleTileRetry}
               onTileFallback={handleTileFallback}
               onScoutUpgrade={scoutUpgradeEligible ? handleScoutUpgrade : undefined}
+              scoutUpgradeGate={scoutUpgradeEligible ? scoutUpgradeGate : null}
+              restoreFocus={restoreMapFocus}
               mode={mode}
               mapMode={mapMode}
               initialView={scoutSwitchView}

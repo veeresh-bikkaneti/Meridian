@@ -43,6 +43,7 @@ import {
   readStoredMapMode,
   resolveMapMode,
   shouldFireScoutUpgrade,
+  decideScoutUpgradeFire,
   writeDurableMapCrashMarker,
   writeStoredMapMode,
   type StoredMapMode,
@@ -794,6 +795,54 @@ test("#330 gate: weak-device sources, prior crash, and stored records never upgr
       nowMs: ready + 60_000,
     }),
     false,
+  );
+});
+
+test("#332/#334: decideScoutUpgradeFire defers a reveal or gesture and otherwise follows the gate", () => {
+  const ready = NOW;
+  const open = {
+    initialSource: "unknown-memory" as const,
+    trialArmed: true,
+    scoutReadyAtMs: ready,
+    nowMs: ready + SCOUT_UPGRADE_SOAK_MS,
+  };
+  assert.equal(decideScoutUpgradeFire({ gate: open, beatKind: null, userGesture: false }), "fire");
+  assert.equal(decideScoutUpgradeFire({ gate: open, beatKind: "reveal", userGesture: false }), "defer");
+  assert.equal(decideScoutUpgradeFire({ gate: open, beatKind: "spin", userGesture: false }), "defer");
+  assert.equal(decideScoutUpgradeFire({ gate: open, beatKind: "narrow", userGesture: false }), "defer");
+  assert.equal(decideScoutUpgradeFire({ gate: open, beatKind: "return", userGesture: false }), "defer");
+  assert.equal(decideScoutUpgradeFire({ gate: open, beatKind: null, userGesture: true }), "defer");
+  assert.equal(
+    decideScoutUpgradeFire({
+      gate: { ...open, nowMs: ready + SCOUT_UPGRADE_SOAK_MS - 1 },
+      beatKind: null,
+      userGesture: false,
+    }),
+    "drop",
+  );
+  assert.equal(
+    decideScoutUpgradeFire({
+      gate: { ...open, trialArmed: false },
+      beatKind: "reveal",
+      userGesture: true,
+    }),
+    "drop",
+  );
+  assert.equal(
+    decideScoutUpgradeFire({
+      gate: { ...open, initialSource: "low-memory" },
+      beatKind: null,
+      userGesture: false,
+    }),
+    "drop",
+  );
+  assert.equal(
+    decideScoutUpgradeFire({
+      gate: { ...open, storedRecordPresent: true },
+      beatKind: null,
+      userGesture: false,
+    }),
+    "drop",
   );
 });
 

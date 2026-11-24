@@ -35,6 +35,7 @@ import { fileURLToPath } from "node:url";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const gameAppSource = readFileSync(join(here, "game-app.tsx"), "utf8");
+const satelliteMapSource = readFileSync(join(here, "../map/satellite-map.tsx"), "utf8");
 
 /** The source between two markers (both must exist). */
 function segment(src: string, from: string, to: string): string {
@@ -154,5 +155,59 @@ describe("#330 cure: a manual choice after trial boot disarms the upgrade", () =
       guardAt < fireAt,
       "the manual-record re-check must run BEFORE the upgrade fires",
     );
+    const flagAt = handler.indexOf('isEnabled("scoutUpgradeTrial")');
+    assert.ok(flagAt >= 0 && flagAt < fireAt, "the trial flag is re-checked at fire time, before the upgrade");
+    const gateAt = handler.indexOf("shouldFireScoutUpgrade(");
+    assert.ok(
+      gateAt >= 0 && gateAt < fireAt,
+      "the pure gate is called on the runtime fire path, before the upgrade",
+    );
+  });
+});
+
+describe("#334/#332/#343: the soak timer and the remount are wired to the gate", () => {
+  it("the map decides the soak fire with decideScoutUpgradeFire", () => {
+    assert.ok(
+      satelliteMapSource.includes("decideScoutUpgradeFire("),
+      "the scout map must route the soak fire through the pure decision",
+    );
+    assert.ok(
+      satelliteMapSource.includes("scheduleScoutUpgradeSoakRef"),
+      "the late callback and the idle path must share one soak scheduler",
+    );
+    const armEffect = satelliteMapSource.indexOf("props.onScoutUpgrade, props.mapMode");
+    assert.ok(
+      armEffect >= 0,
+      "a late upgrade callback must re-arm the soak after load",
+    );
+  });
+
+  it("an upgrade remount restores focus only after the intro gate releases", () => {
+    assert.ok(
+      satelliteMapSource.includes("props.restoreFocus"),
+      "the map must accept the upgrade focus-restore flag",
+    );
+    assert.ok(
+      satelliteMapSource.includes("wrapperRef.current?.focus()"),
+      "the new wrapper must take focus, matching the tile-retry path",
+    );
+    const focusEffect = segment(
+      satelliteMapSource,
+      "if (!props.restoreFocus || introActive) return;",
+      "A soak that came due during the intro",
+    );
+    assert.ok(focusEffect.includes("wrapperRef.current?.focus()"));
+  });
+
+  it("Play passes the boot gate into the map and restores focus from the fire", () => {
+    assert.ok(
+      gameAppSource.includes("scoutUpgradeGate={scoutUpgradeEligible ? scoutUpgradeGate : null}"),
+      "the map receives the boot source only while the trial is armed",
+    );
+    assert.ok(
+      gameAppSource.includes("if (view.focusWasInsideMap) setRestoreMapFocus(true);"),
+      "focus is restored only when the destroyed map held it",
+    );
+    assert.ok(gameAppSource.includes("restoreFocus={restoreMapFocus}"));
   });
 });
