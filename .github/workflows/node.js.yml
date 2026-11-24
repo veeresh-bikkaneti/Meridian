@@ -115,6 +115,7 @@ jobs:
     # Entry JS budget (owner, 2026-11-10): the Phase 0 starting measurement,
     # 323,865 B gzip. Subjects load lazily, so first load should not grow.
     - run: npm run check:entry-size
+    - run: npm run check:seam-bundle
     - run: >-
         npx playwright test
         tests/e2e/credits.desktop.spec.ts

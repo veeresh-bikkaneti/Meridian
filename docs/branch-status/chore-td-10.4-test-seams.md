@@ -1,26 +1,33 @@
-# Branch status — chore/td-10.4-test-seams-inventory
+# Branch status — TD-10.4 test seams
 
-## Capsule
+## Capsule (after removal)
 
-Outcome: every test-only shortcut in shipped `src/` is measured
-and named (35 seams, below), and a shrink-only ratchet
-(`scripts/check-test-seams.mjs`) pins the inventory so the count
-can only go down on purpose. No production file changes in this
-PR: removal waits for Veeresh's OK (prompt 09 item 4).
-Done condition: the ratchet passes on this tip and fails on a
-planted new seam and on a vanished listed seam (both proven by
-`scripts/check-test-seams.test.mjs`); all §9 gates pass; entry
-size unchanged (the script is not in the app bundle).
+Outcome: the 35 test-only seams named below no longer ship in
+production `src/`. Browser shortcuts (URL params, DOM handles,
+dataset probes) are installed only by `tests/harness/seams.ts`,
+which the e2e server passes to Playwright as an init script.
+Production reads `globalThis.mh` at the call site and does nothing
+when the slot is absent, so the pages entry does not import a
+shared seam module. `src/lib/harness-bus.ts` is the same read,
+kept for its unit test and not imported by the app. Module resets and counters
+stay next to the state they touch, under plain names, and tests
+import the old names from `tests/harness/module-seams.ts`.
+`window.__meridianGpu` and the unused detective intro reset were
+deleted. `scripts/check-test-seams.mjs` baseline is empty (0).
+`scripts/check-seam-bundle.mjs` fails if a seam marker survives
+in the pages entry chunk.
 
-Base: origin/main 796aee9f63b8c84937d6ba5161768b7efe5b006e.
-Tier 2, cap 80k tokens. Story TD-10.4 (Wave 2: plan, inventory,
-ratchet only).
+Original inventory (measured before this removal, kept so a
+regression can be named). Base of that measurement: origin/main
+796aee9f. The removal branch is `refactor/slice-k-test-seams`.
 
-## Facts (measured on this base)
+## Facts (measured on the inventory base)
 
-- **Measured count: 35 distinct test-only seams** in production
-  `src/` (test files excluded). One seam = one distinct hook (a
-  param, a global, an export, a prop), however many sites read it.
+- **Measured count before removal: 35 distinct test-only seams**
+  in production `src/` (test files excluded). One seam = one
+  distinct hook (a param, a global, an export, a prop), however
+  many sites read it. **Count after removal: 0** (baseline empty;
+  the scanner reports no unlisted seam-shaped hook).
 - The "534 test-stub guards" figure in HANDOVER and the kanban
   card does not reproduce on this tip under any net tried:
   `data-testid` attributes in production `src/` = 376 grep lines;
@@ -29,14 +36,17 @@ ratchet only).
   | Test hook | Exported for tests) over production `src/` = 443
   lines. 506 is closest; the 534 was likely counted on an older
   tree or a wider net. It should not be quoted again.
-- Every seam below is compiled into a shipped bundle (client or
-  server): none sits behind an `import.meta.env.DEV` guard. The
-  URL-param and DOM hooks are runtime-reachable by any visitor.
+- Before removal, every seam below was compiled into a shipped
+  bundle (client or server): none sat behind an
+  `import.meta.env.DEV` guard. The URL-param and DOM hooks were
+  runtime-reachable by any visitor. After removal, those strings
+  live in `tests/harness/seams.ts` and are installed only in the
+  test page.
 - Precedent that removal works: production once read
   `window.__meridianSuppressScoutOffer`; it was removed, and
   `src/map/capability.test.ts:481` now pins its absence.
 
-## Inventory
+## Inventory (original, now closed)
 
 Ships = compiled into the production bundle (no DEV guard).
 Cure key: **seam module** = register/read the hook from one
