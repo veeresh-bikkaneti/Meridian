@@ -2565,6 +2565,30 @@ body:has(> header.site-header) {
   border-color: var(--atlas-card-line);
 }
 
+/* Cold Trail inside the shared column. The shell's narrow width holds
+   the fail-closed branch. The play surface widens to 72rem (Tailwind's
+   max-w-6xl) once the sightings and the map sit side by side. No
+   --page-* token holds 72rem, and --page-wide (80rem) would move the
+   layout. The top and bottom padding are the old pt-2 / pb-8. */
+.coldtrail-screen {
+  min-height: 100dvh;
+  padding-top: 0.5rem;
+  padding-bottom: 2rem;
+}
+/* GeoDetective inside the shared column. The old page root carried
+   py-8; that breathing room stays on the wrapper so the header does
+   not jump when the screen adopts the shell. */
+.loop-screen {
+  min-height: 100dvh;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+@media (min-width: 1024px) {
+  .coldtrail-screen--wide > div {
+    max-width: 72rem;
+  }
+}
+
 /* =====================================================================
  * Cold Trail layout (WI-13)
  * Sticky map: DOM order is unchanged (header -> sighting cards -> map
