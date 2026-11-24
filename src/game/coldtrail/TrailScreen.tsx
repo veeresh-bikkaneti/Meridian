@@ -3,8 +3,7 @@ import { clampLat, normalizeLon } from "@/game/geo";
 import { formatLength, unitForLoopTarget } from "@/game/units";
 import { preloadTerritory } from "@/game/territory";
 import { Button } from "@/components/ui/button";
-import { SiteHeader } from "@/components/ui/site-header";
-import { SiteFooter } from "@/components/ui/site-footer";
+import { PageShell } from "@/components/ui/page-shell";
 import { SoundToggle } from "@/components/SoundToggle";
 import { FlagImg } from "@/components/flag-img";
 import { flagEntry } from "@/lib/flag-registry";
@@ -208,20 +207,17 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
     // path it targets the case heading at the bottom of this file;
     // without the ref this branch silently dropped the focus landing.
     return (
-      <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-(--page-narrow) flex-col px-5 pt-2 pb-8" data-testid="coldtrail-screen">
-        {/* The shared shell (PR 3 Step 3.5): even the fail-closed
-            branch carries SiteHeader's one Home control, top-left,
-            where every other screen puts it — the bottom-of-card
-            HomeButton it replaces sat below the alert. */}
-        <SiteHeader onHome={onLeave} status={null} mute={null} />
-        <h1 ref={caseHeadingRef} tabIndex={-1} className="mode-title mt-4 text-3xl text-fg">❄️ Cold Trail</h1>
-        <p className="mt-4 text-fg" role="alert">
-          The case files didn&rsquo;t load. No case to play right now.
-        </p>
-        {/* The shared footer (footer standardization, 2026-11-18),
-            as on the trail screen below. */}
-        <SiteFooter />
-      </main>
+      <div className="mode-screen coldtrail-screen" data-testid="coldtrail-screen">
+        {/* The shared page shell: even the fail-closed branch carries
+            the one Home control, top-left, where every other screen
+            puts it. */}
+        <PageShell header={{ onHome: onLeave, status: null, mute: null }} width="narrow">
+          <h1 ref={caseHeadingRef} tabIndex={-1} className="mode-title mt-4 text-3xl text-fg">❄️ Cold Trail</h1>
+          <p className="mt-4 text-fg" role="alert">
+            The case files didn&rsquo;t load. No case to play right now.
+          </p>
+        </PageShell>
+      </div>
     );
   }
 
@@ -512,31 +508,25 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
   const placingNow = placing !== null && !mapOff;
 
   return (
-    <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-(--page-narrow) flex-col px-5 pt-2 pb-8 lg:max-w-6xl" data-testid="coldtrail-screen">
-      {/* The shared shell (PR 3 Step 3.5): SiteHeader carries the
-          one Home control, the stars readout in its status slot and
-          the one mute in its mute slot — the shell's fixed slot
-          order (status, mute) replaces this screen's hand-built row.
-          Same master toggle everywhere: one persisted key
-          (meridian.sound), one implementation (SoundToggle.tsx).
-          The brief's flagged `px-2` override is GONE: it sat on the
-          HomeButton itself, narrowing the one Home control's own
-          padding so this screen's Home differed from every other
-          screen's. The shell's HomeButton carries the standard
-          padding and hit box; no narrower gutter is needed — the
-          page column's px-5 gutter is unchanged, so nothing here
-          needs the width prop or a token exception either. The
-          page's top padding gives back 24px of the ~40px the shell
-          header row adds (32 -> 8px, the Step 3.3 pattern). */}
-      <SiteHeader
-        onHome={onLeave}
-        status={
-          <p data-testid="coldtrail-stars" className="text-sm text-fg" aria-label={`${store.stars} stars`}>
-            ⭐ {store.stars}
-          </p>
-        }
-        mute={<SoundToggle testId="sound-toggle-trail" className="atlas-sound-toggle" />}
-      />
+    <div className="mode-screen coldtrail-screen coldtrail-screen--wide" data-testid="coldtrail-screen">
+      {/* The shared page shell: the header carries the one Home
+          control, the stars readout in its status slot and the one
+          mute in its mute slot. The page's top padding gives back
+          24px of the shell header row (the Step 3.3 pattern). At the
+          menu breakpoint the column widens to 72rem so the sightings
+          and the map can sit side by side — see .coldtrail-screen--wide. */}
+      <PageShell
+        header={{
+          onHome: onLeave,
+          status: (
+            <p data-testid="coldtrail-stars" className="text-sm text-fg" aria-label={`${store.stars} stars`}>
+              ⭐ {store.stars}
+            </p>
+          ),
+          mute: <SoundToggle testId="sound-toggle-trail" className="atlas-sound-toggle" />,
+        }}
+        width="narrow"
+      >
       <p className="name-eyebrow mt-4">{theme.eyebrow}</p>
       <h1 ref={caseHeadingRef} tabIndex={-1} className="mode-title mt-1 text-3xl text-fg">
         {theme.heading(caseData.caseNo)}
@@ -750,10 +740,9 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
           </Button>
         </section>
       ) : null}
-      {/* The shared footer (footer standardization, 2026-11-18):
-          SiteFooter + Grandpa's band in page flow below the play
-          surface — never over the map or the sighting cards. */}
-      <SiteFooter />
-    </main>
+      {/* The shared footer rides in the page shell, in page flow
+          below the play surface — never over the map or the cards. */}
+      </PageShell>
+    </div>
   );
 }

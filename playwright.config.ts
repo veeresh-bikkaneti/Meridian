@@ -1,5 +1,6 @@
 import { existsSync } from "node:fs";
-import { defineConfig } from "playwright/test";
+import { webkit } from "playwright";
+import { defineConfig, type Project } from "playwright/test";
 
 /**
  * Which Chromium to launch (review follow-up, 2026-10-21):
@@ -12,6 +13,48 @@ const VM_CHROME = "/opt/meta-chromium/chrome";
 const chromiumExecutable =
   process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE?.trim() ||
   (existsSync(VM_CHROME) ? VM_CHROME : undefined);
+
+/**
+ * WebKit is optional on this machine. The private-browsing spec is
+ * registered either way (the Chromium project always matches it).
+ * The WebKit project is added only when Playwright's WebKit binary
+ * is actually on disk, so a Chromium-only install does not fail
+ * the suite at browser launch.
+ */
+function webkitInstalled(): boolean {
+  try {
+    return existsSync(webkit.executablePath());
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * TD-16.1: one spec, two engines. Chromium always. WebKit only when
+ * its browser is installed — launchOptions is boxed, so the WebKit
+ * project must replace the shared Chromium executable entirely.
+ */
+function privateBrowsingProjects(): Project[] {
+  const shared = {
+    testMatch: /private-browsing\.spec\.ts/,
+    use: { viewport: { width: 1280, height: 800 } },
+  };
+  const projects: Project[] = [
+    { name: "private-browsing-chromium", ...shared },
+  ];
+  if (webkitInstalled()) {
+    projects.push({
+      name: "private-browsing-webkit",
+      testMatch: /private-browsing\.spec\.ts/,
+      use: {
+        browserName: "webkit",
+        viewport: { width: 1280, height: 800 },
+        launchOptions: { args: [] },
+      },
+    });
+  }
+  return projects;
+}
 
 /**
  * E2E suite for PBI P0-02 (gesture model) / P0-03 (game chrome rework).
@@ -609,6 +652,7 @@ export default defineConfig({
       testMatch: /kanban\.spec\.ts/,
       use: { viewport: { width: 1280, height: 800 } },
     },
+    ...privateBrowsingProjects(),
   ],
   reporter: [["list"], ["html", { open: "never", outputFolder: "playwright-report" }]],
 });

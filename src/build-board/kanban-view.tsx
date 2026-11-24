@@ -8,37 +8,32 @@
  * cards. A story expands into its subtasks; subtasks never
  * render as top-level cards.
  *
- * Data flow, three stages, each labelled by the stamp:
- *  1. The bundled snapshot (kanban.json, via loadSnapshot)
- *     renders first — "snapshot from <asOf>".
- *  2. On mount the per-deploy public snapshot
- *     (loadPublicSnapshot: build-board.json, refreshed every
- *     deploy) swaps in when it validates — "snapshot · built
- *     <builtAt>". Any failure keeps the bundled copy.
- *  3. The live overlay (loadKanbanLive) applies on top of
- *     whichever snapshot is showing: applyOverlay moves
- *     subtasks, story columns are recomputed with storyRollup
- *     (the stored rollup is never trusted), stories whose
- *     column changed FLIP to their new home within the motion
- *     budget, and the stamp turns live — "live · checked
- *     <time>". A failed check keeps the last good state under
- *     its snapshot label: the board never claims to be live
- *     when it is not.
+ * Data flow:
+ *  1. Ask GitHub for pulls and branches (refreshKanbanLive).
+ *     Success renders deriveBoardItems and the stamp
+ *     "Live · fetched HH:MM". Ledger-only rows stay hidden.
+ *  2. Failure (offline, 403, 429, malformed) renders the
+ *     snapshot — the per-deploy public file when it validates,
+ *     otherwise the bundled kanban.json — under a visible
+ *     "Offline snapshot from <asOf>" banner.
+ *  3. Focus and visibility re-check only after the 5-minute
+ *     cache expires. There is no interval.
  */
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import {
-  applyOverlay,
+  deriveBoardItems,
   freeToClaim,
   loadSnapshot,
   storyRollup,
   storySeatTags,
   type Column,
+  type DerivedCard,
   type Lane,
   type Snapshot,
   type Story,
   type Subtask,
 } from "./kanban-data";
-import { loadKanbanLive, loadPublicSnapshot } from "./kanban-live";
+import { loadPublicSnapshot, refreshKanbanLive } from "./kanban-live";
 import { Gauges } from "./gauges";
 import { beginMotion, endMotion, motionSettled } from "./motion-budget";
 import snapshotJson from "./kanban.json";
@@ -67,11 +62,12 @@ function stampText(stamp: Stamp, bundledAsOf: string): string {
             minute: "2-digit",
           })}`;
     }
-    case "live":
-      return `live · checked ${new Date(stamp.at).toLocaleTimeString("en-US", {
-        hour: "numeric",
-        minute: "2-digit",
-      })}`;
+    case "live": {
+      const d = new Date(stamp.at);
+      const hh = String(d.getHours()).padStart(2, "0");
+      const mm = String(d.getMinutes()).padStart(2, "0");
+      return `Live · fetched ${hh}:${mm}`;
+    }
   }
 }
 
@@ -242,6 +238,50 @@ function StoryCard({
   );
 }
 
+function LiveCard({ item, laneLabel }: { item: DerivedCard; laneLabel: string }) {
+  return (
+    <article
+      className="kb-card kb-story"
+      data-lane={item.lane}
+      data-story-id={item.id}
+      data-group={item.unnumbered ? "Unnumbered" : "numbered"}
+    >
+      <div className="kb-story-top">
+        <div className="kb-story-main">
+          <div className="kb-card-lane">{item.unnumbered ? "Unnumbered" : laneLabel}</div>
+          <div className="kb-card-title">
+            {item.num ? (
+              <span className="kb-num">{item.num}</span>
+            ) : (
+              <span className="kb-num">Unnumbered</span>
+            )}{" "}
+            {item.title}
+          </div>
+          {item.seatTags.length > 0 ? (
+            <div className="kb-seat-tags">
+              {item.seatTags.map((tag) => (
+                <span key={tag} className="kb-chip kb-chip-seat" data-seat-tag={tag}>
+                  {tag}
+                </span>
+              ))}
+            </div>
+          ) : null}
+          {item.note ? <span className="kb-chip kb-chip-note">{item.note}</span> : null}
+          {item.prs.length > 0 ? (
+            <div className="kb-card-links">
+              {item.prs.map((pr) => (
+                <a key={pr.number} className="kb-chip" href={pr.href}>
+                  #{pr.number}
+                </a>
+              ))}
+            </div>
+          ) : null}
+        </div>
+      </div>
+    </article>
+  );
+}
+
 /* ------------------------------------------------------------------ */
 /* The view                                                            */
 /* ------------------------------------------------------------------ */
@@ -249,6 +289,8 @@ function StoryCard({
 export function KanbanView() {
   const [snapshot, setSnapshot] = useState<Snapshot>(BUNDLED);
   const [subtasks, setSubtasks] = useState<Subtask[]>(BUNDLED.subtasks);
+  const [items, setItems] = useState<DerivedCard[]>([]);
+  const [mode, setMode] = useState<"pending" | "live" | "offline">("pending");
   const [stamp, setStamp] = useState<Stamp>({ kind: "bundled" });
   const [lane, setLane] = useState<Lane | "all">("all");
   const [claimOnly, setClaimOnly] = useState(false);
@@ -264,34 +306,45 @@ export function KanbanView() {
   const calmRef = useRef(calm);
   calmRef.current = calm;
 
-  /* Stages 2 and 3 of the data flow (see the header note): the
-   * per-deploy public snapshot first, then the live overlay on
-   * top of whichever snapshot won. Each failure keeps the last
-   * good state and its label. */
+  /* GitHub first. The snapshot renders only when that check fails.
+   * Focus and visibility re-check after the cache expires. */
   useEffect(() => {
     let active = true;
-    void (async () => {
-      let base = BUNDLED;
-      const pub = await loadPublicSnapshot();
+    const apply = async (event: "mount" | "focus" | "visible") => {
+      const pubPromise = event === "mount" ? loadPublicSnapshot() : Promise.resolve(null);
+      const resultPromise = refreshKanbanLive({ event });
+      const pub = await pubPromise;
+      const result = await resultPromise;
       if (!active) return;
       if (pub) {
-        base = pub;
         setSnapshot(pub);
         setSubtasks(pub.subtasks);
-        setStamp({ kind: "public", builtAt: pub.builtAt, asOf: pub.asOf });
       }
-      const live = await loadKanbanLive();
-      if (!active || !live) return;
+      if (result.action === "skip") return;
+      if (result.action === "fallback") {
+        setMode("offline");
+        return;
+      }
       const rects = new Map<string, DOMRect>();
       boardRef.current
         ?.querySelectorAll<HTMLElement>("[data-story-id]")
         .forEach((el) => rects.set(el.dataset.storyId as string, el.getBoundingClientRect()));
       firstRects.current = rects;
-      setSubtasks(applyOverlay(base.subtasks, live.pulls, live.branches));
-      setStamp({ kind: "live", at: live.fetchedAt });
-    })();
+      setItems(deriveBoardItems(result.state.pulls, result.state.branches));
+      setStamp({ kind: "live", at: result.state.fetchedAt });
+      setMode("live");
+    };
+    void apply("mount");
+    const onFocus = () => void apply("focus");
+    const onVisible = () => {
+      if (document.visibilityState === "visible") void apply("visible");
+    };
+    window.addEventListener("focus", onFocus);
+    document.addEventListener("visibilitychange", onVisible);
     return () => {
       active = false;
+      window.removeEventListener("focus", onFocus);
+      document.removeEventListener("visibilitychange", onVisible);
     };
   }, []);
 
@@ -350,14 +403,19 @@ export function KanbanView() {
   );
 
   const laneLabel = (id: Lane) => snapshot.lanes.find((l) => l.id === id)?.label ?? id;
-  const laneCountsFor = (key: Lane | "all") => ({
-    stories:
-      key === "all"
-        ? snapshot.stories.length
-        : snapshot.stories.filter((s) => s.lane === key).length,
-    tasks:
-      key === "all" ? subtasks.length : subtasks.filter((s) => s.lane === key).length,
-  });
+  const laneCountsFor = (key: Lane | "all") => {
+    if (mode === "live") {
+      const n = key === "all" ? items.length : items.filter((item) => item.lane === key).length;
+      return { stories: n, tasks: n };
+    }
+    return {
+      stories:
+        key === "all"
+          ? snapshot.stories.length
+          : snapshot.stories.filter((s) => s.lane === key).length,
+      tasks: key === "all" ? subtasks.length : subtasks.filter((s) => s.lane === key).length,
+    };
+  };
 
   const visibleStories = snapshot.stories.filter(
     (story) =>
@@ -389,7 +447,13 @@ export function KanbanView() {
           queued, blocked, being built, in review and done — for the people and agents
           building Meridian.
         </p>
-        <span className="kb-stamp">{stampText(stamp, snapshot.asOf)}</span>
+        <span className={`kb-stamp${mode === "offline" ? " kb-offline" : ""}`} role="status">
+          {mode === "offline"
+            ? `Offline snapshot from ${snapshot.asOf}`
+            : mode === "pending"
+              ? "Checking GitHub…"
+              : stampText(stamp, snapshot.asOf)}
+        </span>
         <Gauges gaugeInfo={snapshot.gaugeInfo} calm={calm} />
         <div className="kb-controls">
           <div className="kb-seg" role="group" aria-label="Swimlane">
@@ -408,14 +472,16 @@ export function KanbanView() {
             })}
           </div>
           <div className="kb-toggles">
-            <button
-              type="button"
-              className="kb-claim"
-              aria-pressed={claimOnly}
-              onClick={() => setClaimOnly((on) => !on)}
-            >
-              Free to claim {freeSubs.length}
-            </button>
+            {mode !== "live" ? (
+              <button
+                type="button"
+                className="kb-claim"
+                aria-pressed={claimOnly}
+                onClick={() => setClaimOnly((on) => !on)}
+              >
+                Free to claim {freeSubs.length}
+              </button>
+            ) : null}
             <button
               type="button"
               className="kb-calm-toggle"
@@ -427,37 +493,65 @@ export function KanbanView() {
           </div>
         </div>
         <div className="kb-board" ref={boardRef}>
-          {snapshot.columns.map((col) => {
-            const colStories = visibleStories.filter(
-              (story) => rollups.get(story.id)?.col === col,
-            );
-            return (
-              <section key={col} className="kb-col" data-col={col} aria-label={col}>
-                <h2>
-                  {col}
-                  <span>{colStories.length}</span>
-                </h2>
-                {colStories.length > 0 ? (
-                  colStories.map((story) => (
-                    <StoryCard
-                      key={story.id}
-                      story={story}
-                      laneLabel={laneLabel(story.lane)}
-                      rollup={rollups.get(story.id) as { col: Column; done: number; total: number }}
-                      subtasks={story.subtasks
-                        .map((id) => subtasksById.get(id))
-                        .filter((s): s is Subtask => Boolean(s))}
-                      open={openStories.has(story.id)}
-                      onToggle={() => toggleStory(story.id)}
-                      freeIds={freeIds}
-                    />
-                  ))
-                ) : (
-                  <div className="kb-empty">Nothing here yet</div>
-                )}
-              </section>
-            );
-          })}
+          {mode === "pending" ? (
+            <div className="kb-empty">Checking GitHub…</div>
+          ) : mode === "live" ? (
+            snapshot.columns.map((col) => {
+              const colItems = items.filter(
+                (item) => item.col === col && (lane === "all" || item.lane === lane),
+              );
+              const numbered = colItems.filter((item) => !item.unnumbered);
+              const unnumbered = colItems.filter((item) => item.unnumbered);
+              return (
+                <section key={col} className="kb-col" data-col={col} aria-label={col}>
+                  <h2>
+                    {col}
+                    <span>{colItems.length}</span>
+                  </h2>
+                  {numbered.map((item) => (
+                    <LiveCard key={item.id} item={item} laneLabel={laneLabel(item.lane)} />
+                  ))}
+                  {unnumbered.length > 0 ? <p className="kb-group">Unnumbered</p> : null}
+                  {unnumbered.map((item) => (
+                    <LiveCard key={item.id} item={item} laneLabel={laneLabel(item.lane)} />
+                  ))}
+                  {colItems.length === 0 ? <div className="kb-empty">Nothing here yet</div> : null}
+                </section>
+              );
+            })
+          ) : (
+            snapshot.columns.map((col) => {
+              const colStories = visibleStories.filter(
+                (story) => rollups.get(story.id)?.col === col,
+              );
+              return (
+                <section key={col} className="kb-col" data-col={col} aria-label={col}>
+                  <h2>
+                    {col}
+                    <span>{colStories.length}</span>
+                  </h2>
+                  {colStories.length > 0 ? (
+                    colStories.map((story) => (
+                      <StoryCard
+                        key={story.id}
+                        story={story}
+                        laneLabel={laneLabel(story.lane)}
+                        rollup={rollups.get(story.id) as { col: Column; done: number; total: number }}
+                        subtasks={story.subtasks
+                          .map((id) => subtasksById.get(id))
+                          .filter((s): s is Subtask => Boolean(s))}
+                        open={openStories.has(story.id)}
+                        onToggle={() => toggleStory(story.id)}
+                        freeIds={freeIds}
+                      />
+                    ))
+                  ) : (
+                    <div className="kb-empty">Nothing here yet</div>
+                  )}
+                </section>
+              );
+            })
+          )}
         </div>
       </div>
     </div>

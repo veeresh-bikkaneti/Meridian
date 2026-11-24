@@ -1,4 +1,4 @@
-import { test, expect } from "playwright/test";
+import { test, expect, type Request } from "playwright/test";
 import { readFileSync } from "node:fs";
 import { serveBuiltArtifact } from "./helpers";
 
@@ -284,13 +284,15 @@ test("calm mode stills every loop; the tip form wears its §5 costume", async ({
     .evaluate((el) => getComputedStyle(el).animationName);
   expect(animName).toBe("none");
 
-  await context.route("**/api/feature-request", async (route) =>
-    route.fulfill({
+  let posted: Request | null = null;
+  await context.route("**/api/feature-request", async (route) => {
+    posted = route.request();
+    return route.fulfill({
       status: 200,
       contentType: "application/json",
       body: JSON.stringify({ ok: true, stored: true }),
-    }),
-  );
+    });
+  });
   await page.getByTestId("board-nav-tip").click();
   await expect(page.getByRole("heading", { name: "Ask for something new" })).toBeVisible();
   await expect(page.locator("main")).toContainText(
@@ -303,6 +305,68 @@ test("calm mode stills every loop; the tip form wears its §5 costume", async ({
   await form.getByRole("button", { name: "Send tip" }).click();
   await expect(page.getByTestId("feature-request-sent")).toContainText(
     "Thanks! Watch for it on What’s coming",
+  );
+  expect(posted, "the tip posts through the page").not.toBeNull();
+  const sent = posted as Request;
+  const headers = sent.headers();
+  expect(sent.method()).toBe("POST");
+  expect(headers["content-type"]).toContain("application/json");
+  expect(headers["cookie"]).toBeUndefined();
+  expect(headers["referer"]).toBeUndefined();
+  const body = sent.postDataJSON() as { idea?: string; website?: string };
+  expect(body.idea).toContain("famous rivers");
+  expect(body.website).toBe("");
+});
+
+test("tip form fails closed if flags.json omits featureRequestEndpoint", async ({ page, context }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  const flags = JSON.parse(readFileSync("dist/client/flags.json", "utf8")) as Record<string, unknown>;
+  delete flags.featureRequestEndpoint;
+  let posted = false;
+  const serve = async (route: import("playwright/test").Route) =>
+    route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify(flags),
+    });
+  // Context as well as page: the service worker fetches flags.json itself.
+  await page.route("**/flags.json*", serve);
+  await context.route("**/flags.json*", serve);
+  await context.route("**/api/feature-request", async (route) => {
+    posted = true;
+    return route.abort();
+  });
+  await openBoard(page);
+  await page.getByTestId("board-nav-tip").click();
+  const form = page.getByTestId("feature-request-form");
+  await form.locator("textarea").fill("A quiz about famous rivers, please");
+  await form.locator("select").first().selectOption("7-10");
+  await form.locator("select").nth(1).selectOption("Geography");
+  await form.getByRole("button", { name: "Send tip" }).click();
+  await expect(page.getByTestId("feature-request-error")).toContainText(
+    "Feature requests are not open yet.",
+  );
+  expect(posted).toBe(false);
+});
+
+test("tip form shows the rate-limit message", async ({ page, context }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await context.route("**/api/feature-request", async (route) =>
+    route.fulfill({
+      status: 429,
+      contentType: "application/json",
+      body: JSON.stringify({ error: "rate limited" }),
+    }),
+  );
+  await openBoard(page);
+  await page.getByTestId("board-nav-tip").click();
+  const form = page.getByTestId("feature-request-form");
+  await form.locator("textarea").fill("Another rivers quiz");
+  await form.locator("select").first().selectOption("7-10");
+  await form.locator("select").nth(1).selectOption("Geography");
+  await form.getByRole("button", { name: "Send tip" }).click();
+  await expect(page.getByTestId("feature-request-error")).toContainText(
+    "That's a lot of requests in a short time — please try again in a few minutes.",
   );
 });
 

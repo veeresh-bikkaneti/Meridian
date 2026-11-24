@@ -19,9 +19,9 @@
  * already-aborted signal rejects before anything is recorded
  * past the call itself.
  *
- * The calls log records each call's url, method, body, headers
- * and keepalive flag, so a test can pin exactly what would have
- * gone out.
+ * The calls log records each call's url, method, body, headers,
+ * keepalive flag, credentials and referrer policy, so a test can pin
+ * exactly what would have gone out.
  */
 
 import { createBrowserTransportPort } from "./browser-transport.ts";
@@ -43,6 +43,8 @@ export interface FakeFetchCall {
   body: string | null;
   headers: Record<string, string>;
   keepalive?: boolean;
+  credentials?: RequestCredentials;
+  referrerPolicy?: ReferrerPolicy;
 }
 
 /** A scripted fetch plus the test's controls over it. */
@@ -91,6 +93,8 @@ export function createFakeFetch(): FakeFetch {
       body: typeof init?.body === "string" ? init.body : null,
       headers: (init?.headers as Record<string, string> | undefined) ?? {},
       keepalive: init?.keepalive,
+      credentials: init?.credentials,
+      referrerPolicy: init?.referrerPolicy,
     });
     if (signal?.aborted) return Promise.reject(abortError());
 

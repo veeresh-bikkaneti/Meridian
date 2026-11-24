@@ -3,6 +3,7 @@ import { lazy, Suspense, useState, type FormEvent } from "react";
 import { InfoPage } from "@/components/grownups/info-page";
 import { BootSplash } from "@/components/boot-splash";
 import { getContactEndpoint, loadFlags } from "@/lib/flags";
+import { postText } from "@/platform/transport/browser-transport";
 import {
   buildContactPayload,
   CONTACT_MESSAGE_MAX,
@@ -92,8 +93,10 @@ function ContactForm() {
     setSending(true);
     // The endpoint comes from flags.json (contactEndpoint) — null until the
     // owner switches /api/contact on, in which case we say so honestly.
+    // The post itself goes through the shared transport port (the same
+    // one the pack shelf uses): no cookies, no referrer.
     await loadFlags();
-    const r = await sendContact(getContactEndpoint(), built.payload);
+    const r = await sendContact(getContactEndpoint(), built.payload, postText);
     setSending(false);
     setResult(r);
     // The draft is cleared ONLY when the message was actually delivered

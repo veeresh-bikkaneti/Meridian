@@ -22,8 +22,7 @@ import { STORAGE_KEYS } from "../../platform/storage/keys.ts";
 import { calendarDate } from "@/game/daily";
 import { Button } from "@/components/ui/button";
 import { HomeButton } from "@/components/ui/home-button";
-import { SiteHeader } from "@/components/ui/site-header";
-import { SiteFooter } from "@/components/ui/site-footer";
+import { PageShell } from "@/components/ui/page-shell";
 import { ErrorScreen } from "@/components/ui/error-screen";
 import { SoundToggle } from "@/components/SoundToggle";
 import { ShareButton } from "@/components/share-button";
@@ -956,37 +955,35 @@ export function LoopScreen({
   }
 
   return (
-    <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-(--page-narrow) flex-col px-5 py-8">
-      {/* The shared shell header (fix/ui-shared-shell, Round 2
-          adoption): HomeButton ("Home") top-left, then the fixed
+    <div className="mode-screen loop-screen">
+      {/* The shared page shell: Home in the header, then the fixed
           slots — the case readout, the one mute, End game. The
-          shell's sticky prop keeps the bar pinned over the case
-          (PR 3 Step 3.11 — it replaces the hand-rolled
-          screen-home-bar className override; the shell's gutter and
-          row geometry carry the layout, so the Home control sits
-          exactly where every other screen's sits). The mute is the
-          same master toggle as everywhere: one persisted key
-          (meridian.sound), one implementation (SoundToggle.tsx,
-          owner 2026-11-10). The pair has no speaker of its own. */}
-      <SiteHeader
-        onHome={onLeave}
-        sticky
-        status={<p className="text-sm text-fg">Case #{caseNo}</p>}
-        mute={<SoundToggle testId="sound-toggle-loop" className="atlas-sound-toggle" />}
-        endGame={
-          store && load.phase === "ready" && !endedSummary ? (
-            <Button
-              variant="secondary"
-              data-testid="end-game-button"
-              className="min-h-[44px]"
-              onClick={() => setEndChoiceOpen(true)}
-              ref={endGameOpenerRef}
-            >
-              End game
-            </Button>
-          ) : undefined
-        }
-      />
+          shell's sticky prop keeps the bar pinned over the case.
+          The mute is the same master toggle as everywhere: one
+          persisted key (meridian.sound), one implementation
+          (SoundToggle.tsx). The pair has no speaker of its own.
+          End-of-flow still uses HomeButton, not the header lockup. */}
+      <PageShell
+        header={{
+          onHome: onLeave,
+          sticky: true,
+          status: <p className="text-sm text-fg">Case #{caseNo}</p>,
+          mute: <SoundToggle testId="sound-toggle-loop" className="atlas-sound-toggle" />,
+          endGame:
+            store && load.phase === "ready" && !endedSummary ? (
+              <Button
+                variant="secondary"
+                data-testid="end-game-button"
+                className="min-h-[44px]"
+                onClick={() => setEndChoiceOpen(true)}
+                ref={endGameOpenerRef}
+              >
+                End game
+              </Button>
+            ) : undefined,
+        }}
+        width="narrow"
+      >
       <div className="mt-4">
         <h1 ref={headingRef} tabIndex={-1} className="mode-title text-4xl text-fg sm:text-5xl">GeoDetective</h1>
         <p className="mt-3 max-w-md text-lg text-fg">
@@ -1198,11 +1195,11 @@ export function LoopScreen({
         />
       ) : null}
 
-      {/* The shared footer (fix/ui-shared-shell): the route links +
-          kids-privacy note every screen carries. No page actions live
-          inside it — End game stays in the header slot above. */}
-      <SiteFooter />
-    </main>
+      {/* The shared footer rides in the page shell: the route links
+          and the kids-privacy note. No page actions live inside it —
+          End game stays in the header slot above. */}
+      </PageShell>
+    </div>
   );
 }
 

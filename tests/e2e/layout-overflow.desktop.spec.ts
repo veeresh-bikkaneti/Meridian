@@ -35,9 +35,13 @@ test.beforeEach(async ({ context }) => {
 });
 
 /** Wait until the header's box stops moving after a viewport change
- *  (the grownups spec's settle rule: never measure mid-layout). */
+ *  (the grownups spec's settle rule: never measure mid-layout).
+ *  Boot paints the splash twice for a moment (the route fallback and
+ *  the game's ready gate). Both carry a header now, so wait until
+ *  one header remains before reading its box. */
 async function waitForHeaderSettled(page: Page) {
   const header = page.locator("header.site-header");
+  await expect(header).toHaveCount(1);
   let last = "";
   await expect
     .poll(
@@ -82,7 +86,7 @@ const VIEWPORTS = [
 test("no horizontal overflow; every header control inside the viewport", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto(APP_NO_IDLE);
-  await expect(page.locator("header.site-header")).toBeVisible();
+  await expect(page.locator("header.site-header")).toHaveCount(1);
   await dismissFirstVisitQueue(page);
 
   for (const [w, h] of VIEWPORTS) {
@@ -201,7 +205,7 @@ test("GeoDetective: no horizontal overflow at five viewports; End game fits 320"
   test.setTimeout(240_000);
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto(APP_NO_IDLE);
-  await expect(page.locator("header.site-header")).toBeVisible();
+  await expect(page.locator("header.site-header")).toHaveCount(1);
   await dismissFirstVisitQueue(page);
 
   await page.getByRole("button", { name: "GeoDetective: Solve a mystery" }).click();
@@ -224,7 +228,7 @@ test("GeoDetective: no horizontal overflow at five viewports; End game fits 320"
 test("Why Learn picker: no horizontal overflow at five viewports", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto(APP_NO_IDLE);
-  await expect(page.locator("header.site-header")).toBeVisible();
+  await expect(page.locator("header.site-header")).toHaveCount(1);
   await dismissFirstVisitQueue(page);
 
   await page.getByRole("button", { name: "Why Do We Learn This?: Start exploring" }).click();

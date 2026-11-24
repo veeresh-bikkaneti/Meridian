@@ -78,23 +78,22 @@ describe("screen mounts", () => {
     assert.ok(loopScreen.includes("<PackShelf"), "shelf mounted");
     assert.ok(loopScreen.includes('edition="geodetective"'), "edition wired");
     assert.ok(loopScreen.includes("onStartNext={onNextMystery}"), "deals through onNextMystery");
-    // The screen header is the shared SiteHeader (fix/ui-shared-shell
-    // adoption); the shelf sits under it.
-    const headerAt = loopScreen.indexOf("<SiteHeader");
+    // The screen frame is the shared PageShell; the shelf sits under
+    // its header.
+    const headerAt = loopScreen.indexOf("<PageShell");
     const shelfAt = loopScreen.indexOf("<PackShelf");
-    assert.ok(headerAt >= 0 && shelfAt > headerAt, "shelf sits under the screen header");
+    assert.ok(headerAt >= 0 && shelfAt > headerAt, "shelf sits under the page shell");
   });
 
   it("TrailScreen mounts the shelf for Cold Trail with its next-case handler", () => {
     assert.ok(trailScreen.includes("<PackShelf"), "shelf mounted");
     assert.ok(trailScreen.includes('edition="coldtrail"'), "edition wired");
     assert.ok(trailScreen.includes("onStartNext={onNextCase}"), "deals through onNextCase");
-    // The screen header is the shared SiteHeader (PR 3 Step 3.5
-    // adoption); the shelf sits under it — the same pin LoopScreen
-    // carries above.
-    const headerAt = trailScreen.indexOf("<SiteHeader");
+    // The screen frame is the shared PageShell; the shelf sits under
+    // its header — the same pin LoopScreen carries above.
+    const headerAt = trailScreen.indexOf("<PageShell");
     const shelfAt = trailScreen.indexOf("<PackShelf");
-    assert.ok(headerAt >= 0 && shelfAt > headerAt, "shelf sits under the screen header");
+    assert.ok(headerAt >= 0 && shelfAt > headerAt, "shelf sits under the page shell");
   });
 });
 

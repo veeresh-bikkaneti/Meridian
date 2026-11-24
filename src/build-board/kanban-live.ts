@@ -1,46 +1,18 @@
 /**
- * Build-board live overlay — the runtime GitHub check, mirroring
- * src/board/live-feed.ts's discipline (the snapshot stays the
- * fallback; the overlay upgrades it only when the check completes
- * whole):
+ * Build-board live check. GitHub is the source of truth. The
+ * browser calls the public API directly — no Worker, no KV, no
+ * token — and makes exactly two requests per refresh:
  *
- *  - One recent-pulls call: GET /pulls?state=all&sort=updated
- *    &direction=desc&per_page=100. Each row keeps number, state,
- *    draft, merged_at, title, head.ref and label names — no
- *    second call per pull. The overlay matches any of those
- *    pulls to a subtask `num` without a kanban.json edit.
- *  - Branches come from ONE GET /branches?per_page=100 call.
- *    The transport port's RawResponse exposes only { ok, status,
- *    json } — no headers — so the `Link: rel="next"` header
- *    cannot be followed and `x-ratelimit-remaining` cannot be
- *    read. The port is not edited for this; the branch list is
- *    a single page, and the rate-limit defence is the status
- *    codes alone: any 403/429 fails the whole check.
- *  - Pre-recorded `closes` numbers that the recent page did not
- *    already include are fetched by GET /pulls/{n}, at most
- *    MAX_BY_NUMBER_LOOKUPS of them. More than that falls back
- *    to paging pulls?state=all&per_page=100&page=N until every
- *    missing number has been seen. The normal check is the two
- *    calls above and nothing else.
- *  - Any failure — a non-200 status, offline, a body that is
- *    not the expected shape — fails the WHOLE check: the
- *    function resolves null and the view keeps the snapshot
- *    under its "snapshot from <date>" stamp. A partial overlay
- *    is never applied, so the board can never show a half-live
- *    picture.
- *  - The parsed states feed kanban-data's applyOverlay
- *    unchanged, so the snapshot rules and the live rules are
- *    one rule.
+ *  1. GET /pulls?state=all&sort=updated&direction=desc&per_page=100
+ *  2. GET /branches?per_page=100
  *
- * Discipline (live-feed's, kept): one fetch sequence per page
- * load (repeat calls share it), a session cache so reloads and
- * view switches do not re-burn the unauthenticated rate budget
- * (60 requests an hour per IP), no polling, and at most one
- * retry — of a network error, never of an HTTP status. The
- * cache TTL is 5 minutes, not live-feed's 10: the brief for
- * this board sets 5 (a deliberate deviation, recorded in
- * docs/branch-status/feat-build-kanban.md) — build state moves
- * faster than the parent board's story states.
+ * There is no by-number lookup and no page walking. A non-array
+ * payload, a 403, a 429, or a network failure fails the whole
+ * check and the view keeps kanban.json. Overlapping callers share
+ * one in-flight pair. A 5-minute session cache (key v4) makes a
+ * repeat free. Focus and visibility re-check only after that
+ * cache expires. There is no interval. A network error is retried
+ * once; an HTTP status is not.
  */
 import { resolveSession } from "../game/storage-slot.ts";
 import { getJson, getRaw } from "../platform/transport/browser-transport.ts";
@@ -48,12 +20,10 @@ import {
   TransportError,
   type SchemaLike,
 } from "../platform/transport/transport.ts";
-import snapshotJson from "./kanban.json" with { type: "json" };
 import {
   loadSnapshot,
   type PullInfo,
   type Snapshot,
-  type Subtask,
 } from "./kanban-data.ts";
 
 /* ------------------------------------------------------------------ */
@@ -105,15 +75,6 @@ export const GITHUB_BRANCHES_URL = `${GITHUB_REPO_API}/branches?per_page=100`;
 export const GITHUB_RECENT_PULLS_URL =
   `${GITHUB_REPO_API}/pulls?state=all&sort=updated&direction=desc&per_page=100`;
 
-/** At most this many needed PRs are looked up one by one. */
-export const MAX_BY_NUMBER_LOOKUPS = 10;
-/** The paginated path never reads more pages than this. */
-export const MAX_LIST_PAGES = 10;
-
-const pullUrl = (n: number) => `${GITHUB_REPO_API}/pulls/${n}`;
-const pullsListUrl = (page: number) =>
-  `${GITHUB_REPO_API}/pulls?state=all&per_page=100&page=${page}`;
-
 /* ------------------------------------------------------------------ */
 /* GitHub payloads (defensive parsing, live-feed's shapes)             */
 /* ------------------------------------------------------------------ */
@@ -150,7 +111,7 @@ export function parseGithubPull(
 }
 
 /** Label names from a pulls payload. Strings or `{ name }` objects. Absent when `labels` is not an array. */
-function parseLabelNames(value: unknown): string[] | undefined {
+export function parseLabelNames(value: unknown): string[] | undefined {
   if (!Array.isArray(value)) return undefined;
   const names: string[] = [];
   for (const item of value) {
@@ -189,27 +150,13 @@ export function parseGithubBranches(payload: unknown): Set<string> {
   return out;
 }
 
-/**
- * The PR numbers the live check must look up: the `closes` PRs
- * of subtasks not already Done in the snapshot. `ref` PRs are
- * context and are never fetched. Sorted, de-duplicated.
- */
-export function collectClosesPullNumbers(subtasks: readonly Subtask[]): number[] {
-  const out = new Set<number>();
-  for (const sub of subtasks) {
-    if (sub.col === "Done") continue;
-    for (const pr of sub.prs) {
-      if (pr.role === "closes") out.add(pr.number);
-    }
-  }
-  return [...out].sort((a, b) => a - b);
-}
+
 
 /* ------------------------------------------------------------------ */
-/* Session cache (sessionStorage, 5 minutes — see the header note)     */
+/* Session cache (sessionStorage, 5 minutes)                           */
 /* ------------------------------------------------------------------ */
 
-export const KANBAN_LIVE_CACHE_KEY = "meridian-kanban-live:v3";
+export const KANBAN_LIVE_CACHE_KEY = "meridian-kanban-live:v4";
 export const KANBAN_LIVE_CACHE_TTL_MS = 5 * 60_000;
 
 export interface KeyValueStorage {
@@ -234,7 +181,6 @@ export interface KanbanLiveState {
 
 interface LiveCache {
   fetchedAt: number;
-  needed: number[];
   pulls: [number, PullInfo][];
   branches: string[];
 }
@@ -265,7 +211,6 @@ function isPullInfo(value: unknown): value is PullInfo {
 function readLiveCache(
   storage: KeyValueStorage | null | undefined,
   now: number,
-  needed: readonly number[],
 ): KanbanLiveState | null {
   const store = safeStorage(storage);
   if (!store) return null;
@@ -273,21 +218,14 @@ function readLiveCache(
     const raw = store.getItem(KANBAN_LIVE_CACHE_KEY);
     if (!raw) return null;
     const parsed = JSON.parse(raw) as Partial<LiveCache>;
-    if (typeof parsed.fetchedAt !== "number" || now - parsed.fetchedAt > KANBAN_LIVE_CACHE_TTL_MS)
-      return null;
-    if (!Array.isArray(parsed.pulls) || !Array.isArray(parsed.branches)) return null;
-    // A cache written for a different lookup set proves nothing
-    // about this one.
-    if (
-      !Array.isArray(parsed.needed) ||
-      parsed.needed.length !== needed.length ||
-      !parsed.needed.every((n, i) => n === needed[i])
-    ) {
+    if (typeof parsed.fetchedAt !== "number" || now - parsed.fetchedAt >= KANBAN_LIVE_CACHE_TTL_MS) {
       return null;
     }
+    if (!Array.isArray(parsed.pulls) || !Array.isArray(parsed.branches)) return null;
     for (const entry of parsed.pulls) {
-      if (!Array.isArray(entry) || typeof entry[0] !== "number" || !isPullInfo(entry[1]))
+      if (!Array.isArray(entry) || typeof entry[0] !== "number" || !isPullInfo(entry[1])) {
         return null;
+      }
     }
     if (!parsed.branches.every((b) => typeof b === "string")) return null;
     return {
@@ -300,37 +238,44 @@ function readLiveCache(
   }
 }
 
-function writeLiveCache(
-  storage: KeyValueStorage | null | undefined,
-  state: KanbanLiveState,
-  needed: readonly number[],
-): void {
+function writeLiveCache(storage: KeyValueStorage | null | undefined, state: KanbanLiveState): void {
   const store = safeStorage(storage);
   if (!store) return;
   try {
     const cache: LiveCache = {
       fetchedAt: state.fetchedAt,
-      needed: [...needed],
       pulls: [...state.pulls.entries()],
       branches: [...state.branches],
     };
     store.setItem(KANBAN_LIVE_CACHE_KEY, JSON.stringify(cache));
   } catch {
-    // Quota / private mode: caching is best-effort, never fatal.
+    // Quota or private mode: caching is best-effort, never fatal.
   }
 }
 
+/**
+ * Focus and visibility refresh. Hidden never refetches. A missing
+ * cache refetches. A cache younger than the TTL does not.
+ */
+export function shouldRefetchKanbanLive(input: {
+  event: "focus" | "visible" | "hidden";
+  cacheFetchedAt: number | null;
+  now: number;
+}): boolean {
+  if (input.event === "hidden") return false;
+  if (input.cacheFetchedAt === null) return true;
+  return input.now - input.cacheFetchedAt >= KANBAN_LIVE_CACHE_TTL_MS;
+}
+
 /* ------------------------------------------------------------------ */
-/* The fetch sequence                                                  */
+/* The fetch sequence — exactly two calls                              */
 /* ------------------------------------------------------------------ */
 
 /**
- * One fetch through the transport port (live-feed's fetchPageViaPort,
- * kept line for line in discipline): getRaw never throws for a
+ * One fetch through the transport port. getRaw never throws for a
  * failure status and is asked for no retries of its own, so a
- * network/timeout failure is retried exactly once here, an HTTP
+ * network or timeout failure is retried exactly once here, an HTTP
  * status never is, and a body that is not JSON fails without retry.
- * Throws on failure; the caller falls back whole.
  */
 async function fetchViaPort(url: string): Promise<unknown> {
   const headers = { accept: "application/vnd.github+json" };
@@ -348,91 +293,95 @@ async function fetchViaPort(url: string): Promise<unknown> {
   return outcome.json;
 }
 
-let bundledSubtasks: Subtask[] | null = null;
-function defaultSubtasks(): Subtask[] {
-  bundledSubtasks ??= loadSnapshot(snapshotJson).subtasks;
-  return bundledSubtasks;
-}
-
-/**
- * The live check: the pull states the overlay needs, plus the
- * repo's branch names — or an honest null. Every needed pull
- * must be read and the branches payload must be the expected
- * array; anything less is not a live check at all, and the
- * caller keeps the snapshot.
- */
-export async function fetchKanbanLive(options: {
-  subtasks?: readonly Subtask[];
-  needed?: readonly number[];
+export interface FetchKanbanLiveOptions {
   storage?: KeyValueStorage | null;
   now?: number;
-  pullUrlFor?: (n: number) => string;
-  pullsListUrlFor?: (page: number) => string;
   recentPullsUrl?: string;
   branchesUrl?: string;
-} = {}): Promise<KanbanLiveState | null> {
-  const now = options.now ?? Date.now();
-  const needed = options.needed ?? collectClosesPullNumbers(options.subtasks ?? defaultSubtasks());
-
-  const cached = readLiveCache(options.storage, now, needed);
-  if (cached) return cached;
-
-  try {
-    const recentPayload = await fetchViaPort(options.recentPullsUrl ?? GITHUB_RECENT_PULLS_URL);
-    if (!Array.isArray(recentPayload)) return null;
-    const pulls = parseGithubPulls(recentPayload);
-
-    const branchesPayload = await fetchViaPort(options.branchesUrl ?? GITHUB_BRANCHES_URL);
-    if (!Array.isArray(branchesPayload)) return null;
-
-    const missing = needed.filter((n) => !pulls.has(n));
-    if (missing.length > 0 && missing.length <= MAX_BY_NUMBER_LOOKUPS) {
-      const urlFor = options.pullUrlFor ?? pullUrl;
-      for (const n of missing) {
-        const parsed = parseGithubPull(await fetchViaPort(urlFor(n)));
-        if (!parsed) throw new Error(`GitHub pull ${n} had an unexpected shape`);
-        pulls.set(parsed.number, parsed.info);
-      }
-    } else if (missing.length > MAX_BY_NUMBER_LOOKUPS) {
-      const urlFor = options.pullsListUrlFor ?? pullsListUrl;
-      for (let page = 1; page <= MAX_LIST_PAGES; page++) {
-        const payload = await fetchViaPort(urlFor(page));
-        if (!Array.isArray(payload)) return null;
-        for (const [n, info] of parseGithubPulls(payload)) {
-          if (missing.includes(n)) pulls.set(n, info);
-        }
-        if (missing.every((n) => pulls.has(n)) || payload.length < 100) break;
-      }
-      if (!missing.every((n) => pulls.has(n))) return null;
-    }
-
-    const state: KanbanLiveState = {
-      pulls,
-      branches: parseGithubBranches(branchesPayload),
-      fetchedAt: now,
-    };
-    writeLiveCache(options.storage, state, needed);
-    return state;
-  } catch {
-    return null;
-  }
 }
-
-/* ------------------------------------------------------------------ */
-/* One sequence per page load                                          */
-/* ------------------------------------------------------------------ */
 
 let inflight: Promise<KanbanLiveState | null> | null = null;
 
 /**
- * Load the live overlay state over the bundled snapshot. Repeat
- * calls share the one in-flight (or settled) check — view
- * switches and re-renders never refetch.
+ * The live check: the recent pulls page and the branches page,
+ * or null. A non-array payload, a 403, a 429, or a network
+ * failure fails the whole check. Nothing else is requested.
+ * Overlapping callers share one in-flight pair of requests.
+ */
+export async function fetchKanbanLive(
+  options: FetchKanbanLiveOptions = {},
+): Promise<KanbanLiveState | null> {
+  const now = options.now ?? Date.now();
+  const cached = readLiveCache(options.storage, now);
+  if (cached) return cached;
+  if (inflight) return inflight;
+
+  const pending = (async (): Promise<KanbanLiveState | null> => {
+    try {
+      const recentPayload = await fetchViaPort(options.recentPullsUrl ?? GITHUB_RECENT_PULLS_URL);
+      if (!Array.isArray(recentPayload)) return null;
+      const pulls = parseGithubPulls(recentPayload);
+
+      const branchesPayload = await fetchViaPort(options.branchesUrl ?? GITHUB_BRANCHES_URL);
+      if (!Array.isArray(branchesPayload)) return null;
+
+      const state: KanbanLiveState = {
+        pulls,
+        branches: parseGithubBranches(branchesPayload),
+        fetchedAt: now,
+      };
+      writeLiveCache(options.storage, state);
+      return state;
+    } catch {
+      return null;
+    }
+  })().finally(() => {
+    if (inflight === pending) inflight = null;
+  });
+  inflight = pending;
+  return pending;
+}
+
+export type KanbanRefresh =
+  | { action: "skip" }
+  | { action: "live"; state: KanbanLiveState }
+  | { action: "fallback" };
+
+/**
+ * Mount always checks GitHub (the session cache may answer with
+ * zero calls). Focus and visibility check only after the cache
+ * expires. Hidden does nothing.
+ */
+export async function refreshKanbanLive(
+  options: FetchKanbanLiveOptions & {
+    event: "mount" | "focus" | "visible" | "hidden";
+  },
+): Promise<KanbanRefresh> {
+  const now = options.now ?? Date.now();
+  if (options.event !== "mount") {
+    const cached = readLiveCache(options.storage, now);
+    if (
+      !shouldRefetchKanbanLive({
+        event: options.event,
+        cacheFetchedAt: cached?.fetchedAt ?? null,
+        now,
+      })
+    ) {
+      return { action: "skip" };
+    }
+  }
+  const state = await fetchKanbanLive({ ...options, now });
+  if (!state) return { action: "fallback" };
+  return { action: "live", state };
+}
+
+/**
+ * Load the live check. Concurrent callers share the in-flight
+ * promise. Once it settles, a later call may run again — the
+ * session cache keeps that free until the TTL expires.
  */
 export function loadKanbanLive(
-  options: { storage?: KeyValueStorage | null; now?: number } = {},
+  options: FetchKanbanLiveOptions = {},
 ): Promise<KanbanLiveState | null> {
-  if (inflight) return inflight;
-  inflight = fetchKanbanLive(options);
-  return inflight;
+  return fetchKanbanLive(options);
 }

@@ -240,6 +240,26 @@ export default defineConfig(({ command, isPreview }) => ({
     strictPort: true,
   },
   resolve: { tsconfigPaths: true },
+  build: {
+    rollupOptions: {
+      output: {
+        advancedChunks: {
+          groups: [
+            {
+              // One chunk for the shared page shell and the low-level
+              // modules only it splits out (entry-size fix): left to
+              // the default splitter, the shell's first-paint modules
+              // land in five small files whose per-file overhead pushes
+              // the entry JS ~0.5 KB gzip over its budget. Same modules,
+              // one file boundary; nothing about what loads changes.
+              name: "shell",
+              test: /(?:src\/components\/ui\/(?:site-header|site-footer|page-column|page-shell|home-button|site-links)\.tsx?|src\/lib\/cn\.ts|tailwind-merge|clsx|react-jsx-runtime|createLucideIcon|lucide-react\/dist\/esm\/Icon\.js|lucide-react\/dist\/esm\/icons\/house\.js|preload-helper)/,
+            },
+          ],
+        },
+      },
+    },
+  },
   plugins: [
     pgliteBootstrapPlugin(),
     ssrContactEnvPlugin(),

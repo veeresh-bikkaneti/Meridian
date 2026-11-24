@@ -364,9 +364,21 @@ describe("PageShell and PageIntro (PR 3 Step 2)", () => {
     assert.doesNotMatch(src, /<footer|<header/);
   });
 
+  it("the boot splash sits in the shared frame: narrow column, header, footer, no page-local main", () => {
+    const src = read("src/components/boot-splash.tsx");
+    assert.match(src, /<PageColumn width="narrow">/);
+    assert.match(src, /<SiteHeader to="\/" status=\{null\} mute=\{null\} \/>/);
+    assert.match(src, /<SiteFooter \/>/);
+    assert.doesNotMatch(src, /<main[\s>]/);
+    assert.match(src, /Geography, math and science/);
+    assert.match(read("src/components/boot-splash.css"), /\.boot-splash-mark/);
+  });
+
   it("the grown-ups pages sit on PageShell (PR 3 Step 3.1): header Home + footer, no hand-built frame", () => {
     const src = read("src/components/grownups/info-page.tsx");
     assert.match(src, /<PageShell header=\{\{ to: "\/", status: null, mute: null \}\} width="narrow">/);
+    assert.match(src, /<nav className="gp-doors"/);
+    assert.doesNotMatch(src, /<main[\s>]/);
     assert.doesNotMatch(src, /gp-wrap/);
   });
 
@@ -390,10 +402,12 @@ describe("PageShell and PageIntro (PR 3 Step 2)", () => {
     assert.match(src, /onHome=\{\(\) => setMenu\(null\)\}/);
   });
 
-  it("Cold Trail sits on SiteHeader (PR 3 Step 3.5): stars in status, mute in mute, no px-2 Home override", () => {
+  it("Cold Trail sits on PageShell: stars in status, mute in mute, no page-local main", () => {
     const src = read("src/game/coldtrail/TrailScreen.tsx");
-    assert.match(src, /<SiteHeader\s+onHome=\{onLeave\}/);
-    assert.match(src, /mute=\{<SoundToggle testId="sound-toggle-trail"/);
+    assert.match(src, /<PageShell/);
+    assert.match(src, /onHome: onLeave/);
+    assert.match(src, /mute: <SoundToggle testId="sound-toggle-trail"/);
+    assert.doesNotMatch(src, /<main[\s>]/);
     assert.doesNotMatch(src, /<HomeButton/);
     assert.doesNotMatch(src, /from "@\/components\/ui\/home-button"/);
     assert.doesNotMatch(src, /className="px-2"/);
@@ -411,14 +425,16 @@ describe("PageShell and PageIntro (PR 3 Step 2)", () => {
     assert.doesNotMatch(branch, /<main/);
   });
 
-  it("GeoDetective's header carries no className override (PR 3 Step 3.11): the shell's sticky prop instead", async () => {
+  it("GeoDetective sits on PageShell: sticky header, no className override, no page-local main", async () => {
     const src = read("src/game/loop/LoopScreen.tsx");
     assert.doesNotMatch(src, /screen-home-bar -mx-5 px-5/);
-    const tag = src.slice(src.indexOf("<SiteHeader"), src.indexOf("status={", src.indexOf("<SiteHeader")));
-    assert.match(tag, /sticky/);
-    assert.doesNotMatch(tag, /className/);
-    const header = read("src/components/ui/site-header.tsx");
-    assert.match(header, /data-sticky=\{sticky \? "true" : undefined\}/);
+    assert.match(src, /<PageShell/);
+    assert.doesNotMatch(src, /<main[\s>]/);
+    const header = src.slice(src.indexOf("header={{"), src.indexOf("status:", src.indexOf("header={{")));
+    assert.match(header, /sticky:\s*true/);
+    assert.doesNotMatch(header, /className/);
+    const shellHeader = read("src/components/ui/site-header.tsx");
+    assert.match(shellHeader, /data-sticky=\{sticky \? "true" : undefined\}/);
     const css = read("src/styles.css");
     assert.match(css, /\.site-header\[data-sticky="true"\] \{\s+position: sticky;/);
     const html = await render("SiteHeader", { onHome: () => {}, status: null, mute: null, sticky: true });
@@ -593,9 +609,6 @@ describe("page-width tokens (PR 3 Step 4)", () => {
   it("screen roots use the PageColumn tokens, not literal max-w-3xl / max-w-7xl", () => {
     for (const file of [
       "src/components/game-app.tsx",
-      "src/components/boot-splash.tsx",
-      "src/game/loop/LoopScreen.tsx",
-      "src/game/coldtrail/TrailScreen.tsx",
       "src/subjects/shared/SubjectCase.tsx",
       "src/subjects/shared/SubjectPicker.tsx",
     ]) {
@@ -614,12 +627,18 @@ describe("page-width tokens (PR 3 Step 4)", () => {
     // change, not a refactor. Component-local caps (cards, overlays,
     // sheets) are not page widths and stay literal too.
     assert.match(read("src/components/game-app.tsx"), /max-w-xl flex-col/);
-    // Same reason, Cold Trail's wide band: its healthy-path root
-    // widens to 72rem at the large breakpoint (lg:max-w-6xl). No
-    // token in the narrow/wide family holds 72rem, and converting
-    // it to --page-wide (80rem) would move the layout, so the
-    // literal stays — its base width is the token above.
-    assert.match(read("src/game/coldtrail/TrailScreen.tsx"), /lg:max-w-6xl/);
+    // Cold Trail's play surface widens to 72rem at the menu breakpoint.
+    // No token in the narrow/wide family holds 72rem, and converting it
+    // to --page-wide (80rem) would move the layout. The screen itself
+    // sits in PageShell's narrow column; the 72rem override lives in
+    // the shell CSS, not a page-local max-width class.
+    const trail = read("src/game/coldtrail/TrailScreen.tsx");
+    assert.match(trail, /<PageShell[\s\S]*width="narrow"/);
+    assert.doesNotMatch(trail, /max-w-3xl|max-w-7xl|max-w-6xl|lg:max-w-/);
+    assert.match(css, /\.coldtrail-screen--wide > div \{\s*max-width: 72rem;/);
+    const loop = read("src/game/loop/LoopScreen.tsx");
+    assert.match(loop, /<PageShell[\s\S]*width="narrow"/);
+    assert.doesNotMatch(loop, /max-w-3xl|max-w-7xl|max-w-\(--page-/);
   });
 });
 
@@ -652,11 +671,7 @@ describe("shell-ban baseline (KNOWN/STALE)", () => {
     pageLocalHeaderFooter: [],
     pageLocalNav: ["src/components/grownups/info-page.tsx", "src/routes/board.tsx"],
     pageLocalMain: [
-      "src/components/boot-splash.tsx",
       "src/components/game-app.tsx",
-      "src/components/grownups/info-page.tsx",
-      "src/game/coldtrail/TrailScreen.tsx",
-      "src/game/loop/LoopScreen.tsx",
       "src/lib/error-component.tsx",
       "src/routes/board.tsx",
       "src/subjects/shared/SubjectCase.tsx",

@@ -23,6 +23,7 @@
     "ci:required": "node scripts/ci-required.mjs",
     "check:contact": "node --experimental-strip-types scripts/contact-readiness.mjs",
     "check:detective-audio": "node scripts/detective/check-audio-manifest.mjs",
+    "split:detective-audio": "node scripts/detective/split-audio-manifest.mjs",
     "lint:content": "node --experimental-strip-types scripts/lint-content.mjs",
     "board:budget": "node scripts/board/check-3d-budget.mjs",
     "lint:subjects": "node --experimental-strip-types scripts/lint-subject-leads.mjs",
