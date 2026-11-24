@@ -47,9 +47,9 @@ export function shareText(input: {
   const strip = input.scores?.length ? input.scores.map(scoreMark).join("") + "\n" : "";
   // The site URL gets its own line: messaging apps auto-linkify bare URLs,
   // so the shared score carries a tappable link back to the game.
-  // Owner ruling 2026-11-09: always workers.dev, never the Pages origin —
-  // `shareOrigin()` still serves OG meta (`__root.tsx`), which keeps the
-  // Pages origin as the canonical URL of the served page.
+  // Owner ruling 2026-11-09: always workers.dev, for the share text and
+  // for OG meta (`shareOrigin()` in `__root.tsx`), on every Vite base
+  // including the Pages CI artifact.
   const origin = WORKERS_ORIGIN;
   return (
     `${BRAND.shareHost} ${when}\n` +

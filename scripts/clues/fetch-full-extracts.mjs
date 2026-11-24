@@ -56,7 +56,7 @@ const DEFAULT_OUT = join(ROOT, ".scratch", "geodetective", "full-extracts.jsonl"
 
 export const API = "https://en.wikipedia.org/w/api.php";
 export const USER_AGENT =
-  "MeridianGame/1.0 (https://veeresh-bikkaneti.github.io/Meridian/; contact: https://github.com/veeresh-bikkaneti/Meridian)";
+  "MeridianGame/1.0 (https://meridian.knowledgetest.workers.dev/; contact: https://github.com/veeresh-bikkaneti/Meridian)";
 export const MAX_TEXT_CHARS = 30000;
 export const DONE_STATUSES = new Set(["ok", "empty", "missing"]);
 const MAX_ATTEMPTS = 3;

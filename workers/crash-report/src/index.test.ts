@@ -917,7 +917,6 @@ test("POST responses echo the allowed origin (never *)", async () => {
   }
   assert.deepEqual([...ALLOWED_ORIGINS], [
     "https://meridian.knowledgetest.workers.dev",
-    "https://veeresh-bikkaneti.github.io",
   ]);
 });
 
@@ -956,7 +955,7 @@ test("S4: a sendBeacon-style text/plain POST from the game is accepted (no prefl
   const res = await handleRequest(
     new Request("https://worker.test/ingest", {
       method: "POST",
-      headers: { "content-type": "text/plain;charset=UTF-8", origin: "https://veeresh-bikkaneti.github.io" },
+      headers: { "content-type": "text/plain;charset=UTF-8", origin: GAME_ORIGIN },
       body: JSON.stringify(validEvent()),
     }),
     {},

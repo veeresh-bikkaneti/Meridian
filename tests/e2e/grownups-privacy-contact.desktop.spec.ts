@@ -149,9 +149,8 @@ test("full-stack E2E: contact form exercises all moving parts (flags, gate, real
   const prevAllowedOriginsEnv = process.env.CONTACT_ALLOWED_ORIGINS;
   process.env.CONTACT_DISCORD_WEBHOOK_URL =
     "https://discord.com/api/webhooks/123456789012345678/abcdefghijklmnopqrstuvwxyz0123456789?wait=true";
-  // Allow both the GitHub Pages mirror and the E2E harness origin (http://127.0.0.1:4123)
-  process.env.CONTACT_ALLOWED_ORIGINS =
-    "https://veeresh-bikkaneti.github.io,http://127.0.0.1:4123";
+  // The harness origin is cross-origin to the live worker URL this test posts to.
+  process.env.CONTACT_ALLOWED_ORIGINS = "http://127.0.0.1:4123";
 
   let simulatedClientIp = "198.51.100.10";
   const serverResponses: Array<{ status: number; body: unknown; headers: Record<string, string> }> =
@@ -363,18 +362,18 @@ test("full-stack E2E: contact form exercises all moving parts (flags, gate, real
     expect(Number(serverResponses[4].headers["retry-after"])).toBeGreaterThan(0);
     expect(webhookReceiver.calls).toHaveLength(2);
 
-    // Moving Part 3d (Cross-origin CORS preflight + GitHub Pages origin + Disallowed origin):
+    // Moving Part 3d (Cross-origin CORS preflight + harness origin + Disallowed origin):
     const env = await readContactRuntimeEnv();
     const preflightRes = await handleContactRequest(
       new Request("https://meridian.knowledgetest.workers.dev/api/contact", {
         method: "OPTIONS",
-        headers: { origin: "https://veeresh-bikkaneti.github.io" },
+        headers: { origin: "http://127.0.0.1:4123" },
       }),
       env,
     );
     expect(preflightRes.status).toBe(204);
     expect(preflightRes.headers.get("access-control-allow-origin")).toBe(
-      "https://veeresh-bikkaneti.github.io",
+      "http://127.0.0.1:4123",
     );
 
     const pagesPostRes = await handleContactRequest(
@@ -382,19 +381,19 @@ test("full-stack E2E: contact form exercises all moving parts (flags, gate, real
         method: "POST",
         headers: {
           "content-type": "application/json",
-          origin: "https://veeresh-bikkaneti.github.io",
+          origin: "http://127.0.0.1:4123",
           "cf-connecting-ip": "198.51.100.99",
         },
         body: JSON.stringify({
           topic: "delete-data",
-          message: "Cross-origin request from GitHub Pages mirror",
+          message: "Cross-origin request from the harness origin",
         }),
       }),
       env,
     );
     expect(pagesPostRes.status).toBe(200);
     expect(pagesPostRes.headers.get("access-control-allow-origin")).toBe(
-      "https://veeresh-bikkaneti.github.io",
+      "http://127.0.0.1:4123",
     );
     expect(await pagesPostRes.json()).toEqual({ ok: true, stored: true });
     expect(webhookReceiver.calls).toHaveLength(3);

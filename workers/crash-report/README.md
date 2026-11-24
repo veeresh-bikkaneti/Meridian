@@ -86,8 +86,7 @@ plus a `scheduled` handler for the hourly digest.
   PREVIOUS UTC hour. Zero events → nothing posted (silence is the
   healthy signal).
 - **Origin allowlist (review S4, 2026-10-21):** ingest POSTs must carry
-  `Origin: https://meridian.knowledgetest.workers.dev` or
-  `Origin: https://veeresh-bikkaneti.github.io` (`ALLOWED_ORIGINS` in
+  `Origin: https://meridian.knowledgetest.workers.dev` (`ALLOWED_ORIGINS` in
   `src/index.ts`). Anything else, or no Origin at all, gets `403`. Browsers
   send Origin on every cross-origin POST, `navigator.sendBeacon` included,
   so real reports are unaffected. `curl` tests must add

@@ -6,8 +6,9 @@
 //   SHARE_CARD_BUILT=workers -> checks the Nitro server output (workers build)
 //   SHARE_CARD_BUILT=both    -> runs both
 //
-// Both hosts must serve the same 12 share tags, each with its own origin. The
-// Workers middleware (server/middleware/grok-pwa.ts) keeps the tags head()
+// Both builds must serve the same 12 share tags, and both use the live
+// site as the origin. The Pages CI artifact is not a second host.
+// The Workers middleware (server/middleware/grok-pwa.ts) keeps the tags head()
 // already emitted and only fills in keys the document leaves out.
 
 import { test } from "node:test";
@@ -23,12 +24,11 @@ const SKIP_REASON = "set SHARE_CARD_BUILT=pages|workers|both after the matching 
 const runPages = MODE === "pages" || MODE === "both";
 const runWorkers = MODE === "workers" || MODE === "both";
 
-const PAGES_ORIGIN = "https://veeresh-bikkaneti.github.io/Meridian/";
 const WORKERS_ORIGIN = "https://meridian.knowledgetest.workers.dev/";
 const SHARE_TITLE = "Meridian: guess the place, then read its story";
 const SHARE_IMAGE_ALT = "The word Meridian and the line 'Explore the world, one pin at a time—where every guess unlocks a new story' over a dark green and gold world map with a gold location pin.";
 const OLD_DESCRIPTION = "Pin the place. The run lasts until the pin misses.";
-const PAGES_HOST = "veeresh-bikkaneti.github.io";
+const RETIRED_HOST = "veeresh-bikkaneti.github.io";
 const WORKERS_HOST = "meridian.knowledgetest.workers.dev";
 
 const site = JSON.parse(
@@ -102,18 +102,18 @@ function assertShareSet(tags, origin) {
   assert.equal(descriptionTags[0].content, SITE_DESCRIPTION);
 }
 
-test("pages: shell carries all 12 share tags exactly once with Pages-origin values", { skip: runPages ? false : SKIP_REASON }, () => {
+test("pages: shell carries all 12 share tags exactly once with the live origin", { skip: runPages ? false : SKIP_REASON }, () => {
   const html = readFileSync(new URL("../dist/client/_shell.html", import.meta.url)).toString("utf8");
   const tags = parseMetaTags(html);
 
   assert.ok(!html.includes(OLD_DESCRIPTION), "old description text must be absent");
 
-  assertShareSet(tags, PAGES_ORIGIN);
+  assertShareSet(tags, WORKERS_ORIGIN);
 
   for (const tag of tags) {
     assert.ok(
-      !(tag.content ?? "").includes(WORKERS_HOST),
-      `Pages shell must not reference ${WORKERS_HOST} in ${tag.raw}`,
+      !tag.raw.includes(RETIRED_HOST) && !(tag.content ?? "").includes(RETIRED_HOST),
+      `Pages shell must not reference ${RETIRED_HOST} in ${tag.raw}`,
     );
   }
 });
@@ -135,8 +135,8 @@ test("workers: server output carries all 12 share tags exactly once with the wor
 
   for (const tag of tags) {
     assert.ok(
-      !tag.raw.includes(PAGES_HOST) && !(tag.content ?? "").includes(PAGES_HOST),
-      `${PAGES_HOST} must not appear in ${tag.raw}`,
+      !tag.raw.includes(RETIRED_HOST) && !(tag.content ?? "").includes(RETIRED_HOST),
+      `${RETIRED_HOST} must not appear in ${tag.raw}`,
     );
   }
 });

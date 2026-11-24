@@ -20,7 +20,7 @@ const manifest = JSON.parse(readFileSync(new URL("../public/manifest.webmanifest
  * Web App Manifest id processing (W3C Manifest, "processing the id member"):
  * id is parsed with the ORIGIN of start_url as its base, NOT start_url's
  * path. So "id":"./" would resolve to "https://host/" on both builds and
- * collapse the Pages app's identity onto the github.io origin root. With no
+ * collapse the Pages app's identity onto the origin root. With no
  * id, the id defaults to the resolved start_url, which is base-correct.
  */
 function manifestUrls(manifestHref) {
@@ -38,7 +38,7 @@ test("manifest scope/start_url are base-relative and id is omitted", () => {
 
 test("manifest start_url, scope and (spec-resolved) id land on each build's base", () => {
   for (const [href, base] of [
-    ["https://veeresh-bikkaneti.github.io/Meridian/manifest.webmanifest", "/Meridian/"],
+    ["https://pages.example/Meridian/manifest.webmanifest", "/Meridian/"],
     ["https://meridian.example.workers.dev/manifest.webmanifest", "/"],
   ]) {
     const u = manifestUrls(href);
@@ -62,7 +62,7 @@ function loadSw(href) {
 }
 
 test("sw.js derives BASE for the GitHub Pages build", () => {
-  const p = loadSw("https://x.github.io/Meridian/sw.js");
+  const p = loadSw("https://pages.example/Meridian/sw.js");
   assert.equal(p.BASE, "/Meridian/");
   assert.equal(p.FLAGS_URL, "/Meridian/flags.json");
   assert.ok(p.isStaticAsset("/Meridian/assets/index-abc.js"));

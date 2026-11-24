@@ -1,10 +1,7 @@
 import { BRAND } from "../../game/brand.ts";
 import site from "./site.json" with { type: "json" };
 
-/** GitHub Pages origin (the Pages build serves under the /Meridian/ base). */
-export const PAGES_ORIGIN = "https://veeresh-bikkaneti.github.io/Meridian/";
-
-/** Workers origin, used by every non-Pages build. */
+/** Workers origin. The live site, and the canonical origin for every build. */
 export const WORKERS_ORIGIN = BRAND.siteUrl;
 
 export const SHARE_TITLE_MAX = 60;
@@ -15,11 +12,12 @@ export const SHARE_DESCRIPTION: string = site.description;
 export const SHARE_IMAGE_ALT = "The word Meridian and the line 'Explore the world, one pin at a time—where every guess unlocks a new story' over a dark green and gold world map with a gold location pin.";
 
 /**
- * Vite sets base "/Meridian/" only for the GitHub Pages build, so the share
- * origin follows the build that is actually being served.
+ * Canonical origin for share cards and OG tags.
+ * Callers still pass the Vite base (`"/Meridian/"` on the Pages CI
+ * artifact, `"/"` on the live worker). That base is not a second host.
  */
-export function shareOrigin(baseUrl: string): string {
-  return baseUrl === "/Meridian/" ? PAGES_ORIGIN : WORKERS_ORIGIN;
+export function shareOrigin(_baseUrl: string): string {
+  return WORKERS_ORIGIN;
 }
 
 export type ShareMetaTag = { property: string; content: string } | { name: string; content: string };
