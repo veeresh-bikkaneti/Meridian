@@ -47,10 +47,12 @@ register("data:text/javascript," + encodeURIComponent(HOOKS_SOURCE));
 
 const { DropPinButton } = (await import("./drop-pin-button.tsx")) as typeof import("./drop-pin-button.tsx");
 const { ZoomControls } = (await import("./zoom-controls.tsx")) as typeof import("./zoom-controls.tsx");
+// Non-literal specifiers: tsc must not resolve these, the shim files are deleted.
+const SHIM_FLAG_IMG = "../flag-img.tsx";
+const SHIM_DETECTIVE_PAIR = "../../game/loop/detective/DetectivePair.tsx";
+
 const { FlagImg } = (await import("./flag-img.tsx")) as typeof import("./flag-img.tsx");
-const { FlagImg: FlagImgViaShim } = (await import("../flag-img.tsx")) as typeof import("../flag-img.tsx");
 const pair = (await import("./DetectivePair.tsx")) as typeof import("./DetectivePair.tsx");
-const pairViaShim = (await import("../../game/loop/detective/DetectivePair.tsx")) as typeof import("../../game/loop/detective/DetectivePair.tsx");
 
 
 describe("components moved to ui keep working", () => {
@@ -64,13 +66,13 @@ describe("components moved to ui keep working", () => {
     );
     assert.match(html, /zoom/i);
   });
-  it("flag-img shim re-exports the same component", () => {
-    assert.equal(FlagImgViaShim, FlagImg);
+  it("the deleted flag-img and DetectivePair shims no longer resolve", async () => {
+    await assert.rejects(import(SHIM_FLAG_IMG));
+    await assert.rejects(import(SHIM_DETECTIVE_PAIR));
   });
-  it("DetectivePair shim re-exports the same rigs and celebrate layout", () => {
-    assert.equal(pairViaShim.HolmesRig, pair.HolmesRig);
-    assert.equal(pairViaShim.WatsonRig, pair.WatsonRig);
-    assert.equal(pairViaShim.CELEBRATE_LAYOUT, pair.CELEBRATE_LAYOUT);
-    assert.equal(pairViaShim.HOLMES_POSES, pair.HOLMES_POSES);
+  it("the canonical flag-img and DetectivePair modules still export their API", () => {
+    assert.equal(typeof FlagImg, "function");
+    assert.equal(typeof pair.HolmesRig, "function");
+    assert.equal(typeof pair.WatsonRig, "function");
   });
 });

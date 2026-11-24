@@ -13,7 +13,7 @@ import {
   type PackDeckView,
   type PackEditionId,
   type PackManifest,
-} from "./pack-shelf-data.ts";
+} from "./ui/pack-shelf-data.ts";
 
 /**
  * The pack shelf: one row of deck chips inside an edition's entry

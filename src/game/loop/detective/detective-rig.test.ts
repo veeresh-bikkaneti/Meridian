@@ -47,7 +47,7 @@ const HOOKS_SOURCE = [
 register("data:text/javascript," + encodeURIComponent(HOOKS_SOURCE));
 
 const { HolmesRig, WatsonRig, HOLMES_POSES, WATSON_POSES, HIGH_FIVE_CONTACT, CELEBRATE_LAYOUT } =
-  (await import("./DetectivePair.tsx")) as typeof import("./DetectivePair.tsx");
+  (await import("../../../components/ui/DetectivePair.tsx")) as typeof import("../../../components/ui/DetectivePair.tsx");
 
 function renderHolmes(pose: (typeof HOLMES_POSES)[number], facing: "left" | "right", speaking = false) {
   return renderToString(createElement(HolmesRig, { pose, facing, speaking }));

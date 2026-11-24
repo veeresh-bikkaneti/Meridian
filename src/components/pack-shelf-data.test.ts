@@ -28,7 +28,7 @@ import {
   toShelfDeckId,
   writeSelectedDeck,
   type PackManifest,
-} from "./pack-shelf-data.ts";
+} from "./ui/pack-shelf-data.ts";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const readSrc = (rel: string) => readFileSync(join(here, rel), "utf8");

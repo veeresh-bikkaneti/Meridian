@@ -62,7 +62,7 @@ const HOOKS_SOURCE = [
 register("data:text/javascript," + encodeURIComponent(HOOKS_SOURCE));
 
 const { HolmesRig, WatsonRig, HOLMES_POSES, WATSON_POSES, HIGH_FIVE_CONTACT } =
-  await import("../../src/game/loop/detective/DetectivePair.tsx");
+  await import("../../src/components/ui/DetectivePair.tsx");
 
 const rigCss = readFileSync(join(REPO_ROOT, "src/game/loop/detective/detective.css"), "utf8");
 

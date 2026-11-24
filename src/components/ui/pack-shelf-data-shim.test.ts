@@ -1,13 +1,18 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
 import { deckLabelForId } from "./pack-shelf-data.ts";
-import { deckLabelForId as viaShim } from "../pack-shelf-data.ts";
+
+// Non-literal specifier: tsc must not resolve this, the shim file is deleted.
+const SHIM_PACK_SHELF_DATA = "../pack-shelf-data.ts";
 
 
-describe("ui moves keep their old paths working", () => {
-  it("pack-shelf-data shim re-exports the same function", () => {
-    assert.equal(viaShim, deckLabelForId);
+describe("pack-shelf-data canonical module", () => {
+  it("exports the deck label helper", () => {
     assert.equal(typeof deckLabelForId("capitals"), "string");
+  });
+
+  it("the deleted components-root shim no longer resolves", async () => {
+    await assert.rejects(import(SHIM_PACK_SHELF_DATA));
   });
 
 });

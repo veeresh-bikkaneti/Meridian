@@ -55,7 +55,7 @@ import {
   MAP_MODE_STORAGE_KEY,
 } from "../../map/capability.ts";
 import { PALETTE_STORAGE_KEY } from "../../game/palette.ts";
-import { PACK_SHELF_SELECTION_KEY as SHELF_PACK_SHELF_SELECTION_KEY } from "../../components/pack-shelf-data.ts";
+import { PACK_SHELF_SELECTION_KEY as SHELF_PACK_SHELF_SELECTION_KEY } from "../../components/ui/pack-shelf-data.ts";
 import { decodeStoredText } from "./storage.ts";
 import {
   clearedMarkKey,

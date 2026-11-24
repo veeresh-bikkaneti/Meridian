@@ -47,7 +47,7 @@ import {
 } from "react";
 import { guessPresentTarget } from "../clue-watchdog";
 import { createPortal } from "react-dom";
-import { CELEBRATE_LAYOUT, HolmesRig, WatsonRig } from "./DetectivePair";
+import { CELEBRATE_LAYOUT, HolmesRig, WatsonRig } from "@/components/ui/DetectivePair";
 import {
   initialDetectiveState,
   transition,
