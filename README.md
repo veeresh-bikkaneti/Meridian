@@ -2,8 +2,7 @@
 
 **Explore the world, one pin at a time—where every guess unlocks a new story**
 
-Play it at [veeresh-bikkaneti.github.io/Meridian](https://veeresh-bikkaneti.github.io/Meridian/)
-— also served via [meridian.knowledgetest.workers.dev](https://meridian.knowledgetest.workers.dev/).
+Play it at [meridian.knowledgetest.workers.dev](https://meridian.knowledgetest.workers.dev/).
 
 ## A learning journey, not just a quiz
 
@@ -51,7 +50,7 @@ The share line carries the trail, not just a number:
 
 ```
 meridian October 2
-https://veeresh-bikkaneti.github.io/Meridian/
+https://meridian.knowledgetest.workers.dev/
 🎯🏆🌟👏🙂
 1,240 over 14 places · 89 avg/place · 🔥 3 best streak · Nebraska
 ```

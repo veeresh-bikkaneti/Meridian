@@ -121,7 +121,7 @@ Signature (typed name is fine): [ ]
 | Status | **GATED** — do not start building until P3 has landed AND its own definition is signed (see Definition of done) |
 | Branch | `feat/physics-spec` (per this spec brief; the work packets call the P4 branch `feat/algebra-physics` — confirm the branch name before the build agent starts) |
 | Video count | **TO CONFIRM** — do not invent a number. The count is set by the signed definition (algebra topic map + physics topics per band), not by this spec. |
-| Repo | veeresh-bikkaneti/Meridian — free browser geography game for kids, live at https://veeresh-bikkaneti.github.io/Meridian/ (project record, MEMORY.md; confidence HIGH as a project-internal fact — the live web search on 2026-11-10 returned other products named "Meridian" and did not independently verify the repo URL, so no web citation is claimed for it) |
+| Repo | veeresh-bikkaneti/Meridian — free browser geography game for kids, live at https://meridian.knowledgetest.workers.dev/ (project record, MEMORY.md; confidence HIGH as a project-internal fact — the live web search on 2026-11-10 returned other products named "Meridian" and did not independently verify the repo URL, so no web citation is claimed for it) |
 | Sources consulted | `meridian-scaling-lens-breakdown.md` §0 (lines 15–151), §3 P4 (lines 656–800), §12 staleness flags (lines 1899–1926), §13 open questions (lines 1927–1961); `meridian-scaling-work-packets.md` shared gates + dependency chart (lines 7–102), P4 (lines 282–335) |
 | Spec date | 2026-11-10 |
 

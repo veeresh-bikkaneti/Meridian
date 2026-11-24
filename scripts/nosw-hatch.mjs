@@ -10,7 +10,7 @@
  *
  * Behavior: when `location.search` contains `nosw=1`, unregister every
  * service-worker registration scoped under this app's base (NOT the whole
- * origin — sibling projects share veeresh-bikkaneti.github.io), delete
+ * origin — other projects can share a host), delete
  * every `meridian-*` cache, strip the param with history.replaceState,
  * record what was cleaned in sessionStorage (`meridian.noswHatch`, so the
  * cleanup is observable and E2E-verifiable even though the app re-registers

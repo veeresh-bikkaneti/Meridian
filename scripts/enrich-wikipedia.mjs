@@ -50,7 +50,7 @@ export const CACHE_PATH = join(CACHE_DIR, "crawl-cache.jsonl");
 
 const API = "https://en.wikipedia.org/w/api.php";
 const USER_AGENT =
-  "MeridianGame/1.0 (https://veeresh-bikkaneti.github.io/Meridian/; contact: https://github.com/veeresh-bikkaneti/Meridian)";
+  "MeridianGame/1.0 (https://meridian.knowledgetest.workers.dev/; contact: https://github.com/veeresh-bikkaneti/Meridian)";
 const GEO_RADIUS_M = 10_000;
 // 50: in dense downtowns the top results are all tiny landmarks (buildings,
 // parks) tagged at the same center — the city article itself gets crowded

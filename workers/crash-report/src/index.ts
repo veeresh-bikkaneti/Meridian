@@ -46,8 +46,7 @@
  * bucket — no event payloads, no identifiers.
  *
  * CORS and Origin allowlist (review S4, 2026-10-21): the game is served
- * from https://meridian.knowledgetest.workers.dev and from
- * https://veeresh-bikkaneti.github.io (GitHub Pages), and this worker is a
+ * from https://meridian.knowledgetest.workers.dev, and this worker is a
  * different origin, so every report is cross-origin. Before S4 the worker
  * answered `access-control-allow-origin: *` and took POSTs from anywhere.
  * Now ALLOWED_ORIGINS is the whole list:
@@ -116,7 +115,6 @@ export const MAX_BODY_BYTES = 8192;
  */
 export const ALLOWED_ORIGINS: readonly string[] = Object.freeze([
   "https://meridian.knowledgetest.workers.dev",
-  "https://veeresh-bikkaneti.github.io",
 ]);
 
 /** Name of the optional Workers Rate Limiting binding (wrangler.toml). */

@@ -17,8 +17,8 @@
  *   node scripts/crash-smoke.mjs <workerBase> <gameBase>
  * Example:
  *   node scripts/crash-smoke.mjs \
- *     https://meridian.knowledgetest.workers.dev \
- *     https://veeresh-bikkaneti.github.io/Meridian
+ *     https://meridian-crash-report.knowledgetest.workers.dev \
+ *     https://meridian.knowledgetest.workers.dev
  *
  * Deploy order this gates (do not skip):
  *   1. Deploy the crash-report worker (workers/crash-report).
@@ -28,8 +28,8 @@
  *      on the old worker — silent telemetry loss, no crash.)
  *
  * Known false-fail windows:
- *   - GitHub Pages caches HTML (~max-age=600): check 4 can FAIL on a stale
- *     shell right after a game deploy. Wait ~10 min and re-run.
+ *   - A stale cached game shell can make check 4 FAIL right after a deploy.
+ *     Wait and re-run.
  *   - The worker rate-limits BEFORE validating: check 2 spends 1 request
  *     of your IP's 10/min budget. A hot IP gets a 429 FAIL here — wait a
  *     minute and re-run; the script prints the status.

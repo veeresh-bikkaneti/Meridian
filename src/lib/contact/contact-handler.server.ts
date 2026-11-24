@@ -47,8 +47,8 @@
  *   given), received-at timestamp. No IP, user agent, headers, or cookies.
  * - Origin: a POST MUST carry an Origin header (every browser sends one on
  *   a fetch POST). A request without one is refused with 403, so a bare
- *   script cannot skip the origin check. Allowed: same-origin, plus the
- *   GitHub Pages mirror (or CONTACT_ALLOWED_ORIGINS). Never "*".
+ *   script cannot skip the origin check. Allowed: same-origin, or
+ *   CONTACT_ALLOWED_ORIGINS when that list is set. Never "*".
  * - Stores nothing server-side: no KV, no database, no cache, no message
  *   text in logs. Retention of the one delivered copy (Discord) is in
  *   retention.ts.
@@ -97,8 +97,8 @@ export interface ContactEnv extends RateLimitBindings {
   CONTACT_DISCORD_WEBHOOK_URL?: string;
   /**
    * Comma-separated extra origins allowed to POST cross-origin. Unset →
-   * DEFAULT_ALLOWED_ORIGINS (the GitHub Pages mirror). Same-origin
-   * requests are always allowed.
+   * no extra origins (same-origin only). Same-origin requests are always
+   * allowed.
    */
   CONTACT_ALLOWED_ORIGINS?: string;
 }
@@ -219,8 +219,8 @@ export function resetContactStateForTests(): void {
 
 // --- Responses ---------------------------------------------------------
 
-/** The GitHub Pages mirror posts cross-origin to the workers.dev site. */
-export const DEFAULT_ALLOWED_ORIGINS = ["https://veeresh-bikkaneti.github.io"];
+/** No default cross-origin callers. The live site posts same-origin. */
+export const DEFAULT_ALLOWED_ORIGINS: readonly string[] = [];
 
 /**
  * CORS decision. Returns the value for access-control-allow-origin, ""

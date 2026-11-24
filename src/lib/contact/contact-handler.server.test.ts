@@ -147,17 +147,17 @@ test("body cap: oversized body → 413", async () => {
   assert.equal(res.status, 413);
 });
 
-test("CORS: same-origin and the Pages mirror are allowed; anything else is refused; never *", async () => {
+test("CORS: same-origin is allowed; other origins need CONTACT_ALLOWED_ORIGINS; never *", async () => {
   const { env } = defaultEnv();
   const same = await handleRequest(post({ topic: "bug", message: "x" }, { origin: "https://meridian.test" }), env);
   assert.equal(same.status, 200);
   assert.equal(same.headers.get("access-control-allow-origin"), null);
-  const pages = await handleRequest(
+  const retired = await handleRequest(
     post({ topic: "bug", message: "x" }, { origin: "https://veeresh-bikkaneti.github.io", "cf-connecting-ip": "198.51.100.2" }),
     env,
   );
-  assert.equal(pages.status, 200);
-  assert.equal(pages.headers.get("access-control-allow-origin"), "https://veeresh-bikkaneti.github.io");
+  assert.equal(retired.status, 403);
+  assert.equal(retired.headers.get("access-control-allow-origin"), null);
   const bad = await handleRequest(post({ topic: "bug", message: "x" }, { origin: "https://evil.example" }), env);
   assert.equal(bad.status, 403);
   const override = await handleRequest(
@@ -171,10 +171,22 @@ test("only POST (and the OPTIONS preflight) are accepted", async () => {
   const res = await handleRequest(new Request("https://meridian.test/api/contact"), {});
   assert.equal(res.status, 405);
   const pre = await handleRequest(
-    new Request("https://meridian.test/api/contact", { method: "OPTIONS", headers: { origin: "https://veeresh-bikkaneti.github.io" } }),
-    {},
+    new Request("https://meridian.test/api/contact", {
+      method: "OPTIONS",
+      headers: { origin: "https://mirror.example" },
+    }),
+    { CONTACT_ALLOWED_ORIGINS: "https://mirror.example" },
   );
   assert.equal(pre.status, 204);
+  assert.equal(pre.headers.get("access-control-allow-origin"), "https://mirror.example");
+  const retired = await handleRequest(
+    new Request("https://meridian.test/api/contact", {
+      method: "OPTIONS",
+      headers: { origin: "https://veeresh-bikkaneti.github.io" },
+    }),
+    {},
+  );
+  assert.equal(retired.status, 403);
 });
 
 test("readContactEnv reads only the contact secret names from process.env", () => {
@@ -451,7 +463,6 @@ test("full-stack E2E over real local HTTP server: readContactRuntimeEnv + handle
           website: "",
         },
         {
-          origin: "https://veeresh-bikkaneti.github.io",
           "cf-connecting-ip": "198.51.100.42",
         },
       ),
@@ -459,7 +470,7 @@ test("full-stack E2E over real local HTTP server: readContactRuntimeEnv + handle
     );
 
     assert.equal(res.status, 200);
-    assert.equal(res.headers.get("access-control-allow-origin"), "https://veeresh-bikkaneti.github.io");
+    assert.equal(res.headers.get("access-control-allow-origin"), null);
     assert.deepEqual(await res.json(), { ok: true, stored: true });
 
     assert.equal(receivedCalls.length, 1);

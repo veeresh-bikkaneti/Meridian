@@ -3,7 +3,6 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import site from "./site.json" with { type: "json" };
 import {
-  PAGES_ORIGIN,
   SHARE_DESCRIPTION,
   SHARE_DESCRIPTION_MAX,
   SHARE_IMAGE_ALT,
@@ -30,8 +29,8 @@ const EXPECTED_KEYS = [
 ];
 
 const ORIGINS = [
-  { label: "pages", origin: PAGES_ORIGIN, other: "meridian.knowledgetest.workers.dev" },
-  { label: "workers", origin: WORKERS_ORIGIN, other: "veeresh-bikkaneti.github.io" },
+  { label: "custom", origin: "https://share.example/Meridian/", other: "meridian.knowledgetest.workers.dev" },
+  { label: "workers", origin: WORKERS_ORIGIN, other: "github.io" },
 ];
 
 function keyOf(tag: { property?: string; name?: string }): string {
@@ -62,11 +61,12 @@ function jpegSize(buf: Buffer): { width: number; height: number } {
   throw new Error("no SOF marker found");
 }
 
-test("shareOrigin: /Meridian/ maps to Pages, every other base to workers.dev", () => {
-  assert.equal(shareOrigin("/Meridian/"), PAGES_ORIGIN);
+test("shareOrigin: every base, including /Meridian/, is the live site", () => {
+  assert.equal(shareOrigin("/Meridian/"), WORKERS_ORIGIN);
   assert.equal(shareOrigin("/"), WORKERS_ORIGIN);
   assert.equal(shareOrigin("/other/"), WORKERS_ORIGIN);
   assert.equal(WORKERS_ORIGIN, "https://meridian.knowledgetest.workers.dev/");
+  assert.equal(shareOrigin("/Meridian/").includes("github.io"), false);
 });
 
 for (const { label, origin, other } of ORIGINS) {

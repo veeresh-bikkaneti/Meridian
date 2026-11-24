@@ -114,7 +114,7 @@ export function sessionShareText(input: {
  * its own line. Owner ruling 2026-11-09: the share payload (text + url)
  * always points at workers.dev, in every build — the old build-aware
  * behaviour (Wave 1 P0 Item 4E/4F: Pages build → Pages URL) is superseded
- * for shares. OG meta (`__root.tsx` via `shareOrigin()`) still keeps the
- * Pages origin as the canonical URL of the served page.
+ * for shares. OG meta (`__root.tsx` via `shareOrigin()`) uses the same
+ * live origin for every Vite base, including the Pages CI artifact.
  */
 export const SHARE_URL = WORKERS_ORIGIN;
