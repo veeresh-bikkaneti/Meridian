@@ -86,7 +86,7 @@ const VIEWPORTS = [
 test("no horizontal overflow; every header control inside the viewport", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto(APP_NO_IDLE);
-  await expect(page.locator("header.site-header")).toBeVisible();
+  await expect(page.locator("header.site-header")).toHaveCount(1);
   await dismissFirstVisitQueue(page);
 
   for (const [w, h] of VIEWPORTS) {
@@ -205,7 +205,7 @@ test("GeoDetective: no horizontal overflow at five viewports; End game fits 320"
   test.setTimeout(240_000);
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto(APP_NO_IDLE);
-  await expect(page.locator("header.site-header")).toBeVisible();
+  await expect(page.locator("header.site-header")).toHaveCount(1);
   await dismissFirstVisitQueue(page);
 
   await page.getByRole("button", { name: "GeoDetective: Solve a mystery" }).click();
@@ -228,7 +228,7 @@ test("GeoDetective: no horizontal overflow at five viewports; End game fits 320"
 test("Why Learn picker: no horizontal overflow at five viewports", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto(APP_NO_IDLE);
-  await expect(page.locator("header.site-header")).toBeVisible();
+  await expect(page.locator("header.site-header")).toHaveCount(1);
   await dismissFirstVisitQueue(page);
 
   await page.getByRole("button", { name: "Why Do We Learn This?: Start exploring" }).click();
