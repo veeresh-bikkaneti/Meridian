@@ -36,7 +36,7 @@ export const Route = createFileRoute("/contact")({
 });
 
 const GrownUpGate = lazy(() =>
-  import("@/components/age-profile/GrownUpGate.tsx").then((m) => ({ default: m.GrownUpGate })),
+  import("@/components/ui/GrownUpGate.tsx").then((m) => ({ default: m.GrownUpGate })),
 );
 
 /**

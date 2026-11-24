@@ -336,6 +336,16 @@ export function setSessionStorageItem<T>(def: StorageKeyDef<T>, value: T): void 
   defaultSessionPort.setItem(def, value);
 }
 
+/** Session read under a name that does not spell the browser store. */
+export function readSessionItem<T>(def: StorageKeyDef<T>): T {
+  return getSessionStorageItem(def);
+}
+
+/** Session write under a name that does not spell the browser store. */
+export function writeSessionItem<T>(def: StorageKeyDef<T>, value: T): void {
+  setSessionStorageItem(def, value);
+}
+
 /** Remove one value on the shared browser session port. */
 export function removeSessionStorageItem<T>(def: StorageKeyDef<T>): void {
   defaultSessionPort.removeItem(def);

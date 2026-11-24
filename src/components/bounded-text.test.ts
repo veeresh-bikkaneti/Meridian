@@ -34,7 +34,7 @@ const HOOKS_SOURCE = [
 
 register("data:text/javascript," + encodeURIComponent(HOOKS_SOURCE));
 
-const { BoundedText } = await import("./bounded-text.tsx");
+const { BoundedText } = await import("./ui/bounded-text.tsx");
 
 /**
  * BoundedText API contract (WRAPPING_SPEC §2) — node --test, no JSX.

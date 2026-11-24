@@ -9,6 +9,9 @@
  */
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
+import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { join } from "node:path";
+import { pathToFileURL, fileURLToPath } from "node:url";
 import { Linter } from "eslint";
 import { layerArchConfigs } from "../eslint/layer-rule.mjs";
 
@@ -181,17 +184,43 @@ describe("platform/no-raw-io", () => {
     assert.deepEqual(hits(test, "platform/no-raw-io"), []);
   });
 
-  it("baseline is per-violation: the one baselined fetch() is suppressed, a second unlisted one fires", () => {
-    // eslint/layer-baseline.json holds exactly one fetch() entry for
-    // this file: "src/game/loop/LoopScreen.tsx|fetch()".
-    // (The storyteller-home entry was cured by the TD-02.6 ports
-    // sweep, PR #582, so this file is the one remaining fetch()
-    // baseline.) A new call site in the same file is NOT covered by
-    // that entry and must fail.
-    const file = "src/game/loop/LoopScreen.tsx";
-    const one = lint('fetch("/api/x");\n', file);
-    assert.deepEqual(hits(one, "platform/no-raw-io"), [], JSON.stringify(one));
-    const two = lint('fetch("/api/x");\nfetch("/api/y");\n', file);
-    assert.equal(hits(two, "platform/no-raw-io").length, 1, JSON.stringify(two));
+  it("baseline is per-violation: one listed fetch() is suppressed, a second unlisted one fires", async () => {
+    // The production baseline no longer holds a fetch() row (TD-02.7
+    // cured the last one). This case injects its own baseline next
+    // to a copy of the rule, so the proof does not depend on a
+    // production row.
+    const repoRoot = fileURLToPath(new URL("..", import.meta.url));
+    const dir = mkdtempSync(join(repoRoot, ".layer-rule-fixture-"));
+    const file = "src/fixture/per-violation.tsx";
+    try {
+      writeFileSync(join(dir, "layer-rule.mjs"), readFileSync(new URL("../eslint/layer-rule.mjs", import.meta.url)));
+      writeFileSync(
+        join(dir, "layer-baseline.json"),
+        JSON.stringify({
+          noUpwardImport: [],
+          noRawIo: [`${file}|fetch()`],
+        }),
+      );
+      const injected = await import(pathToFileURL(join(dir, "layer-rule.mjs")).href);
+      const local = new Linter();
+      const verify = (code) =>
+        local.verify(
+          code,
+          [
+            {
+              files: ["**/*.{ts,tsx}"],
+              languageOptions: { ecmaVersion: 2022, sourceType: "module" },
+            },
+            ...injected.layerArchConfigs,
+          ],
+          { filename: file },
+        );
+      const one = verify('fetch("/api/x");\n');
+      assert.deepEqual(hits(one, "platform/no-raw-io"), [], JSON.stringify(one));
+      const two = verify('fetch("/api/x");\nfetch("/api/y");\n');
+      assert.equal(hits(two, "platform/no-raw-io").length, 1, JSON.stringify(two));
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
   });
 });

@@ -50,7 +50,10 @@ test("edition switch keeps the accumulated score (no reset to 0)", async ({ page
   await expect.poll(() => readPhase(page), { timeout: 20_000 }).toBe("aim");
 
   // Switch editions mid-session via the Editions button (no End game).
-  await page.getByRole("button", { name: "Meridian home", exact: true }).click();
+  // The play screen's home control is the HUD Home pill; the brand
+  // lockup ("Meridian home") lives in the shell header on menu screens
+  // only, so the mid-play clicks in this file use the pill.
+  await page.getByRole("button", { name: "Home", exact: true }).click();
   await expect(page.getByRole("button", { name: "Play the globe" })).toBeVisible();
 
   // Start a country run: the globe score must survive the switch.
@@ -82,6 +85,17 @@ test("HUD score toggle shows the per-edition breakdown", async ({ page }) => {
   const globeScore = await sessionTotal(page);
   expect(globeScore).toBeGreaterThan(0);
 
+  // A genuine first win raises the first-win celebration overlay, whose
+  // card intercepts pointer events over the HUD until the player closes
+  // it (no auto-timer by design). Close it the way a player would, the
+  // same pattern clickNextPlace uses; the celebration itself is
+  // unchanged (#315).
+  const celebration = page.getByTestId("celebration-overlay");
+  if (await celebration.count()) {
+    await celebration.getByRole("button", { name: "Close celebration" }).click();
+    await expect(celebration).toHaveCount(0, { timeout: 10_000 });
+  }
+
   await page.getByTestId("score-total").click();
   const breakdown = page.getByTestId("session-score-breakdown");
   await expect(breakdown).toBeVisible();
@@ -108,7 +122,7 @@ test("end-game summary shows the session total with per-edition breakdown", asyn
   await expect.poll(() => readPhase(page), { timeout: 20_000 }).toBe("aim");
 
   // Play one place in a second edition, then end the game.
-  await page.getByRole("button", { name: "Meridian home", exact: true }).click();
+  await page.getByRole("button", { name: "Home", exact: true }).click();
   await page.getByRole("button", { name: "Choose a country" }).click();
   await page.getByRole("button", { name: "United States" }).click();
   await page.getByRole("button", { name: "Play entire United States" }).click();
@@ -284,7 +298,7 @@ test("HUD placed-counter accumulates across an edition switch", async ({
   await expect.poll(() => readPhase(page), { timeout: 20_000 }).toBe("aim");
 
   // Switch editions mid-session via the Editions button (no End game).
-  await page.getByRole("button", { name: "Meridian home", exact: true }).click();
+  await page.getByRole("button", { name: "Home", exact: true }).click();
   await expect(page.getByRole("button", { name: "Play the globe" })).toBeVisible();
   await page.getByRole("button", { name: "Choose a country" }).click();
   await page.getByRole("button", { name: "United States" }).click();
@@ -315,7 +329,7 @@ test("end-game summary shows per-difficulty and per-region breakdown", async ({
   await expect.poll(() => readPhase(page), { timeout: 20_000 }).toBe("aim");
 
   // Medium country run: switch the band on the edition menu, then play.
-  await page.getByRole("button", { name: "Meridian home", exact: true }).click();
+  await page.getByRole("button", { name: "Home", exact: true }).click();
   await expect(page.getByRole("button", { name: "Play the globe" })).toBeVisible();
   const group = difficultyGroup(page);
   await group.getByRole("button", { name: "Medium" }).click();
@@ -522,7 +536,7 @@ test("share text contains the breakdown", async ({
     await expect.poll(() => readPhase(page), { timeout: 20_000 }).toBe("aim");
 
     // Second edition, so the breakdown has region + difficulty rows.
-    await page.getByRole("button", { name: "Meridian home", exact: true }).click();
+    await page.getByRole("button", { name: "Home", exact: true }).click();
     await expect(page.getByRole("button", { name: "Play the globe" })).toBeVisible();
     await page.getByRole("button", { name: "Choose a country" }).click();
     await page.getByRole("button", { name: "United States" }).click();

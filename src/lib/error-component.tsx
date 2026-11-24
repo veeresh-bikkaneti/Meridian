@@ -2,9 +2,37 @@ import { useEffect } from "react";
 import type { ErrorComponentProps } from "@tanstack/react-router";
 import { TriangleAlert } from "lucide-react";
 import { emitEvent, sanitizeError } from "./observability";
-import { isChunkLoadError, shouldReportChunkFailure } from "./chunk-recovery";
+import {
+  CHUNK_RELOAD_KEY,
+  CHUNK_RELOAD_SURFACE_KEY,
+  isChunkLoadError,
+  shouldReportChunkFailure,
+} from "./chunk-recovery";
+import { readSessionItem } from "../platform/storage/browser-storage.ts";
+import { STORAGE_KEYS } from "../platform/storage/keys.ts";
 
 const FALLBACK_MESSAGE = "An unexpected error occurred. Try reloading the page.";
+
+/**
+ * The slice shouldReportChunkFailure reads. Values come from the
+ * session port: a missing stamp is the port's 0 fallback, which
+ * this adapter reports as absent so a first failure stays silent.
+ */
+function chunkReportStorage(): { getItem(key: string): string | null } {
+  return {
+    getItem(key: string): string | null {
+      if (key === CHUNK_RELOAD_KEY) {
+        const stamp = readSessionItem(STORAGE_KEYS.chunkReloadAt);
+        return stamp === 0 ? null : String(stamp);
+      }
+      if (key === CHUNK_RELOAD_SURFACE_KEY) {
+        const surface = readSessionItem(STORAGE_KEYS.chunkReloadSurface);
+        return surface === "unknown" ? null : surface;
+      }
+      return null;
+    },
+  };
+}
 
 function errorMessage(error: unknown): string {
   if (error instanceof Error && error.message) return error.message;
@@ -22,7 +50,7 @@ export function AppErrorComponent({ error }: ErrorComponentProps) {
     if (isChunkLoadError(error)) {
       let report = true;
       try {
-        report = shouldReportChunkFailure(window.sessionStorage, Date.now());
+        report = shouldReportChunkFailure(chunkReportStorage(), Date.now());
       } catch {
         report = true;
       }
