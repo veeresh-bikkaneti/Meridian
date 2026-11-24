@@ -54,6 +54,11 @@ async function expectCreditsContent(page: import("playwright/test").Page) {
 
 test("footer credits link reaches the credits page", async ({ page }) => {
   await page.goto(APP_NO_IDLE);
+  // The boot splash paints the shared footer too, so the credits link
+  // exists twice until the home screen replaces the splash. The tour
+  // button renders only in the home footer — wait for it, as the
+  // grownups contact-link tests do, so the click names one element.
+  await expect(page.getByTestId("take-tour-link")).toBeVisible();
   await page.getByTestId("credits-link").click();
   await expect(page).toHaveURL(/\/credits$/);
   await expectCreditsContent(page);
