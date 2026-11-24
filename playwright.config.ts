@@ -443,6 +443,13 @@ export default defineConfig({
       },
     },
     {
+      name: "subject-case-navigation",
+      testMatch: /subject-case-navigation\.spec\.ts/,
+      use: {
+        viewport: { width: 1440, height: 900 },
+      },
+    },
+    {
       // Ask first (fix/ask-age-first): the case-start band ask.
       name: "ask-age-first",
       testMatch: /ask-age-first\.spec\.ts/,
