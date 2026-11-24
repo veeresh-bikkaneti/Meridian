@@ -66,6 +66,19 @@
   margin-bottom: 12px;
 }
 
+.build-board .kb-offline {
+  color: var(--hv5-ink);
+  background: color-mix(in srgb, var(--hv5-brown) 18%, var(--hv5-card));
+}
+
+.build-board .kb-group {
+  margin: 8px 0 4px;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--hv5-ink-soft);
+}
+
 /* Gauges */
 
 .build-board .kb-gauges {

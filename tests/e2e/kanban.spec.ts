@@ -3,79 +3,15 @@ import { readFileSync } from "node:fs";
 import { serveBuiltArtifact } from "./helpers";
 
 /**
- * /kanban — the build board (item 10, round 2): the hidden,
- * flag-gated Kanban of 18 plain-English stories and their 45
- * subtasks, with the live GitHub overlay over the snapshot.
- *
- * Runs against the built Pages artifact. The board ships dark:
- * FLAG_DEFAULTS has buildKanban false, so this spec fulfils
- * flags.json with the shipped payload plus buildKanban true —
- * this spec only; production is untouched.
- *
- * api.github.com is ABORTED by default here, so tests that do
- * not serve the fixtures run the overlay's honest fallback path
- * deterministically: the snapshot picture under its snapshot
- * stamp. The fixture-live test instead serves the recorded
- * GitHub responses from src/build-board/__fixtures__/github/
- * (real data, recorded 2026-11-23) through page.route — the
- * recent pulls list, a pulls/{n} fallback, and branches — and
- * proves the overlay reproduces the snapshot's Done picture
- * exactly: 2 stories in Done, 11 architecture subtasks Done.
- * A numbered pull and branch in auto-sync.json move their
- * subtasks without a kanban.json edit, and the C: seat chip
- * renders on the story card. No test in this file ever reaches
- * the real GitHub.
+ * /kanban — the build board. GitHub is the source of truth when
+ * the public API answers. api.github.com is aborted by default,
+ * so the snapshot tests run the offline path: kanban.json under
+ * "Offline snapshot from <asOf>". The live tests serve both
+ * GitHub endpoints with page.route and never reach the real API.
  */
 test.setTimeout(180_000);
 
 const KANBAN_URL = "http://127.0.0.1:4123/Meridian/kanban";
-
-const pullsFixture = JSON.parse(
-  readFileSync("src/build-board/__fixtures__/github/pulls-by-number.json", "utf8"),
-) as { pulls: Record<string, unknown> };
-const branchesFixture = JSON.parse(
-  readFileSync("src/build-board/__fixtures__/github/branches.json", "utf8"),
-) as { branches: unknown[] };
-const autoSync = JSON.parse(
-  readFileSync("src/build-board/__fixtures__/github/auto-sync.json", "utf8"),
-) as { pulls: unknown[]; branches: unknown[] };
-
-/** Serve the recorded GitHub responses for this test's context. */
-async function serveGithubFixtures(context: import("playwright/test").BrowserContext) {
-  // Recent pulls list (one call). A number the recording doesn't
-  // hold falls through to pulls/{n}; a miss there is a 404,
-  // which fails the whole live check.
-  await context.route(/api\.github\.com\/repos\/[^/]+\/[^/]+\/pulls\?/, async (route) =>
-    route.fulfill({
-      status: 200,
-      contentType: "application/json",
-      body: JSON.stringify(autoSync.pulls),
-    }),
-  );
-  await context.route(/api\.github\.com\/repos\/[^/]+\/[^/]+\/pulls\/\d+/, async (route) => {
-    const match = /\/pulls\/(\d+)/.exec(route.request().url());
-    const body = match ? pullsFixture.pulls[match[1]] : undefined;
-    if (body === undefined) {
-      return route.fulfill({
-        status: 404,
-        contentType: "application/json",
-        body: JSON.stringify({ message: "Not Found" }),
-      });
-    }
-    return route.fulfill({
-      status: 200,
-      contentType: "application/json",
-      body: JSON.stringify(body),
-    });
-  });
-  await context.route(/api\.github\.com\/repos\/[^/]+\/[^/]+\/branches(\?|$)/, async (route) =>
-    route.fulfill({
-      status: 200,
-      contentType: "application/json",
-      body: JSON.stringify([...branchesFixture.branches, ...autoSync.branches]),
-    }),
-  );
-}
 
 test.beforeEach(async ({ context }) => {
   await serveBuiltArtifact(context);
@@ -171,78 +107,66 @@ test("no page-level horizontal overflow and 18 story cards at five viewports", a
   await expect(page.locator("footer").first()).toBeVisible();
 });
 
-test("fixture-live overlay: Done holds exactly 2 stories and 11 architecture subtasks", async ({
+test("a story that is not in the snapshot appears from the API alone, in two requests", async ({
   page,
   context,
 }) => {
+  const githubUrls: string[] = [];
+  page.on("request", (request) => {
+    if (request.url().includes("api.github.com")) githubUrls.push(request.url());
+  });
+  await context.route(/api\.github\.com\/repos\/[^/]+\/[^/]+\/pulls\?/, async (route) =>
+    route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify([
+        {
+          number: 9001,
+          state: "open",
+          draft: false,
+          merged_at: null,
+          title: "feat: FW-99.9 not in the ledger",
+          head: { ref: "feat/fw-99.9-lighthouse" },
+          labels: [{ name: "C:Atlas" }],
+        },
+      ]),
+    }),
+  );
+  await context.route(/api\.github\.com\/repos\/[^/]+\/[^/]+\/branches(\?|$)/, async (route) =>
+    route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify([{ name: "chore/td-08.4-kanban-github-derived" }]),
+    }),
+  );
+
   await page.setViewportSize({ width: 1280, height: 800 });
-  // Registered after the beforeEach abort, so these win dispatch
-  // for their endpoints.
-  await serveGithubFixtures(context);
-  await openKanban(page);
-
-  // The stamp turns live once the recorded check completes.
-  await expect(page.locator(".kb-stamp")).toHaveText(/live · checked/);
-
-  // The Done column holds exactly 2 story cards.
-  await expect(page.locator('.kb-col[data-col="Done"] .kb-story')).toHaveCount(2);
-
-  // Expanded, the architecture lane shows exactly 11 subtasks
-  // whose column chip says Done — the snapshot's own picture,
-  // reproduced by the overlay from the recorded responses.
-  await expandAllStories(page);
-  await expect(
-    page.locator('.kb-story[data-lane="architecture"] .kb-sub .kb-chip-col[data-col="Done"]'),
-  ).toHaveCount(11);
+  await page.goto(KANBAN_URL);
+  const fresh = page.locator(".kb-story", { hasText: "FW-99.9" });
+  await expect(fresh).toBeVisible();
+  await expect(fresh).toContainText("not in the ledger");
+  await expect(fresh.locator('.kb-chip-seat[data-seat-tag="C:Atlas"]')).toHaveText("C:Atlas");
+  await expect(page.locator(".kb-story", { hasText: "TD-08.4" })).toBeVisible();
+  await expect(page.locator(".kb-stamp")).toHaveText(/Live · fetched \d{2}:\d{2}/);
+  // Ledger-only rows stay off the board while GitHub answers.
+  await expect(page.getByText("TD-01.1", { exact: true })).toHaveCount(0);
+  await expect.poll(() => githubUrls.length).toBe(2);
+  expect(githubUrls.filter((url) => /\/pulls\/\d+/.test(url))).toEqual([]);
+  expect(githubUrls.filter((url) => /[?&]page=/.test(url))).toEqual([]);
 });
 
-test("auto-matched pull and branch move their cards, and the seat chip fits", async ({
-  page,
-  context,
-}) => {
-  await serveGithubFixtures(context);
-  for (const viewport of [
-    { width: 320, height: 568 },
-    { width: 390, height: 844 },
-    { width: 768, height: 1024 },
-    { width: 1280, height: 800 },
-  ]) {
-    await page.setViewportSize(viewport);
-    await openKanban(page);
-    await expect(page.locator(".kb-stamp")).toHaveText(/live · checked/);
-
-    const story = page.locator('.kb-story[data-story-id="arch-pages"]');
-    const chip = story.locator('.kb-chip-seat[data-seat-tag="C:Opera"]');
-    await chip.scrollIntoViewIfNeeded();
-    await expect(chip).toBeVisible();
-    await expect(chip).toHaveText("C:Opera");
-    const fit = await chip.evaluate((el) => {
-      const rect = el.getBoundingClientRect();
-      const card = el.closest(".kb-card");
-      const cardRect = card?.getBoundingClientRect();
-      return {
-        chipOverflow: el.scrollWidth - el.clientWidth,
-        left: rect.left,
-        right: rect.right,
-        cardLeft: cardRect?.left ?? 0,
-        cardRight: cardRect?.right ?? 0,
-        cardOverflow: card ? card.scrollWidth - card.clientWidth : 99,
-        pageOverflow: document.documentElement.scrollWidth - window.innerWidth,
-      };
-    });
-    expect(fit.pageOverflow).toBeLessThanOrEqual(1);
-    expect(fit.chipOverflow).toBeLessThanOrEqual(1);
-    expect(fit.cardOverflow).toBeLessThanOrEqual(1);
-    expect(fit.left).toBeGreaterThanOrEqual(fit.cardLeft - 1);
-    expect(fit.right).toBeLessThanOrEqual(fit.cardRight + 1);
-
-    await expandAllStories(page);
-    const retire = page.locator(".kb-sub", { hasText: "TD-09.1" });
-    await expect(retire.locator('.kb-chip-col[data-col="In review"]')).toBeVisible();
-    await expect(retire.getByRole("link", { name: "finishes #577" })).toBeVisible();
-    const cva = page.locator(".kb-sub", { hasText: "TD-10.2" });
-    await expect(cva.locator('.kb-chip-col[data-col="In progress"]')).toBeVisible();
-  }
+test("a 403 shows the offline snapshot banner", async ({ page, context }) => {
+  await context.route(/api\.github\.com\/.*/, async (route) =>
+    route.fulfill({
+      status: 403,
+      contentType: "application/json",
+      body: JSON.stringify({ message: "rate limit" }),
+    }),
+  );
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.goto(KANBAN_URL);
+  await expect(page.locator(".kb-stamp")).toHaveText(/Offline snapshot from 2026-11-23/);
+  await expect(page.locator(".kb-story")).toHaveCount(18);
 });
 
 test("falls back to the snapshot, labelled, when the live check cannot complete", async ({
