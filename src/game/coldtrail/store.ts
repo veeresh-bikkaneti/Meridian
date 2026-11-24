@@ -33,7 +33,7 @@ export const COLDTRAIL_STORAGE_KEY = "meridian.coldtrail.v2";
 export const COLDTRAIL_PACK_STORAGE_KEY = "meridian.coldtrail.pack.capitals.v1";
 /**
  * Pack shelf selection key (owner: PACK_SHELF_SELECTION_KEY in
- * src/components/pack-shelf-data.ts), restated for the same reason as
+ * src/components/ui/pack-shelf-data.ts), restated for the same reason as
  * the pack store key above. The blob's Cold Trail entry is this
  * edition's deck pick; a reset that leaves it behind would resurrect
  * the pack selection after "Start over", unlike the GeoDetective

@@ -5,7 +5,7 @@ import { preloadTerritory } from "@/game/territory";
 import { Button } from "@/components/ui/button";
 import { PageShell } from "@/components/ui/page-shell";
 import { SoundToggle } from "@/components/SoundToggle";
-import { FlagImg } from "@/components/flag-img";
+import { FlagImg } from "@/components/ui/flag-img";
 import { flagEntry } from "@/lib/flag-registry";
 import { PackShelf } from "@/components/pack-shelf";
 import {
@@ -13,7 +13,7 @@ import {
   initialTrailDeck,
   readSelectedDeck,
   writeSelectedDeck,
-} from "@/components/pack-shelf-data";
+} from "@/components/ui/pack-shelf-data";
 import { playConfirmGuess, playLose, playWin } from "@/game/audio/sfx";
 import { playCelebrationSound } from "@/game/audio/play-guards";
 import { resolveBand, type AgeBandId } from "@/game/age-profile";

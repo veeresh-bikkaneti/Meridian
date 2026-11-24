@@ -56,7 +56,7 @@ import {
   WatsonRig,
   type HolmesPose,
   type WatsonPose,
-} from "@/game/loop/detective/DetectivePair";
+} from "@/components/ui/DetectivePair";
 import {
   createDetectiveSpeech,
   type DetectiveSpeaker,

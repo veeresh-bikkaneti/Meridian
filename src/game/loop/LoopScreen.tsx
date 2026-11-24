@@ -6,7 +6,7 @@ import { formatLength, loopGradeBand, unitForLoopTarget } from "@/game/units";
 import { preloadTerritory } from "@/game/territory";
 import { nameTier } from "@/game/place-name";
 import { PlaceNameText } from "@/components/place-name";
-import { FlagImg } from "@/components/flag-img";
+import { FlagImg } from "@/components/ui/flag-img";
 import { flagEntry } from "@/lib/flag-registry";
 import { isEnabled } from "@/lib/flags";
 import { numberWord } from "@/lib/number-words";
@@ -95,7 +95,7 @@ function normalizeSnapshotBand(b: AgeBandId | LegacySnapshotBand): AgeBandId {
 
 import { HintPanel } from "@/components/hint-panel";
 import { PackShelf } from "@/components/pack-shelf";
-import { CORE_DECK_ID as SHELF_CORE_DECK_ID, deckLabelForId, toShelfDeckId } from "@/components/pack-shelf-data";
+import { CORE_DECK_ID as SHELF_CORE_DECK_ID, deckLabelForId, toShelfDeckId } from "@/components/ui/pack-shelf-data";
 import { directionalHint } from "@/components/hint-logic";
 import { awardCleanRoundBadge, type PassportBadge } from "@/game/passport/badges";
 import {
