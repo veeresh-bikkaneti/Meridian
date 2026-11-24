@@ -278,6 +278,7 @@ suspected_crash 1 · first 17:42 · last 17:42
   builds: c6853be ×1 · editions: state ×1 · regions: nebraska ×1
   groups: c6853be|ios|16|phone ×1
   verdicts: developer_needed/fg_kill_current ×1 · severities: S1 ×1 · modes: scout ×1 · steps: map_init_start ×1
+
 js_error 1 · first 17:05 · last 17:05
   builds: 2a0527f ×1 · editions: state ×1 · regions: nebraska ×1
   groups: 2a0527f|android|unknown|phone ×1
@@ -291,8 +292,8 @@ worker, not when they happened on the phone) and the total event
 count, followed by a `priority:` line for the highest-priority
 verdict in the hour, with its top group — led by the hour's worst
 severity grade when the hour counted any graded event (see
-Severity grades above). Each type then gets its own
-block. The block's first line shows the count plus the **first** and
+Severity grades above). Each type then gets its own block, and
+blocks are separated by a blank line. The block's first line shows the count plus the **first** and
 **last** receipt times in the hour — so a burst (first ≈ last) reads
 differently from a steady rate — and ends with
 `(some reports arrived late)` when any event's own timestamp fell
@@ -301,7 +302,9 @@ top **builds**, **editions**, and **regions**; the top **groups**
 (`<buildId>|<os>|<osMajor>|<deviceClass>` cross-tabs); and the top
 **verdicts** (the worker's re-derived `<verdict>/<whyKey>` pairs),
 **severities** (the #345 grades plus `ungraded`), **modes**, and
-**steps** (last milestones), plus **errors** (error
+**steps** (last milestones, printed as the raw key — an alert says
+"map loading" for `map_init_start`; the glossary is in
+`docs/observability.md`), plus **errors** (error
 names only) when the bucket counted any. Every list shows only its
 top few entries, and a truncated list is **labelled, never silent**:
 it ends with the true remainder, like `(+2 more)`. Caps: top 3 builds,

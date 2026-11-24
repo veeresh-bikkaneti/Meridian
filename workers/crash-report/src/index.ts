@@ -1920,8 +1920,13 @@ export function tierOf(type: CrashReportEventType, recoveryOutcome?: string): Te
 // os/form device bucket). No sessionId, no UA, no IPs, no payloads.
 
 export const HOUR_MS = 3_600_000;
-/** Council fix T4: counter retention (proposal default, documented in README). */
+/** Council fix T4: counter retention (90 days), documented in the worker README. */
 export const COUNT_BUCKET_TTL_SECONDS = 90 * 24 * 3600;
+/**
+ * Cloudflare's minimum KV expirationTtl. The health probe uses this floor;
+ * every other crash-report put uses a longer documented retention.
+ */
+export const KV_MIN_TTL_SECONDS = 60;
 export const TRAILING_BASELINE_HOURS = 24;
 export const ANOMALY_RATIO = 3;
 export const ANOMALY_MIN_COUNT = 3;
@@ -2026,7 +2031,13 @@ export function boundedKv(kv: KvLike, opMs: number = KV_OP_TIMEOUT_MS, budgetMs?
   };
   return {
     get: (key) => guard(() => kv.get(key)),
-    put: (key, value, options) => guard(() => kv.put(key, value, options)),
+    put: (key, value, options) => {
+      const expirationTtl = options?.expirationTtl;
+      if (typeof expirationTtl !== "number" || !Number.isFinite(expirationTtl) || expirationTtl < KV_MIN_TTL_SECONDS) {
+        return Promise.reject(Object.assign(new Error("kv put requires expirationTtl"), { name: "TypeError" }));
+      }
+      return guard(() => kv.put(key, value, { ...options, expirationTtl }));
+    },
     close: () => {
       closed = true;
     },
@@ -2142,7 +2153,25 @@ function bump(map: Record<string, number>, key: string): void {
   map[key] = (map[key] ?? 0) + 1;
 }
 
-/** Group key (§5.2): build × OS × OS major × device class. */
+/**
+ * Same hard cap as group keys. A new key once the map is full tallies
+ * as "other" so a burst of distinct build ids or error names cannot
+ * grow a bucket without bound (issue #342; retention is issue #338).
+ */
+function bumpCapped(map: Record<string, number>, key: string): void {
+  if (key in map || Object.keys(map).length < MAX_GROUP_KEYS) {
+    bump(map, key);
+    return;
+  }
+  bump(map, "other");
+}
+
+/**
+ * Group key: build × OS × OS major × device class.
+ * locale, deviceMemory, and hardwareConcurrency stay off this key.
+ * Counting by any of them needs a fresh panel vote, not a manifest-row
+ * addition (issue #342).
+ */
 export function groupKeyOf(event: CrashReportEvent): string {
   const dev = (event.device ?? {}) as { os?: unknown; osVersion?: unknown; deviceClass?: unknown };
   const os = typeof dev.os === "string" && dev.os ? dev.os : "unknown";
@@ -2195,7 +2224,7 @@ export async function recordTelemetry(
     const key = bucketKey(hour, event.type);
     const bucket = (await store.readBucket(key)) ?? emptyBucket();
     bucket.total += 1;
-    bump(bucket.builds, event.buildId);
+    bumpCapped(bucket.builds, event.buildId);
     bump(bucket.editions, event.edition ?? "—");
     bump(bucket.regions, event.regionId ?? "—");
     bump(bucket.devices, deviceBucketOf(event));
@@ -2228,7 +2257,7 @@ export async function recordTelemetry(
     bump(bucket.severities, severityKeyOf(event));
     bump(bucket.milestones, event.lastMilestone ?? "—");
     bump(bucket.modes, typeof event.mapMode === "string" && event.mapMode ? event.mapMode : "unknown");
-    bump(bucket.errorNames, event.error ? scrubErrorText(event.error.name, 80) || "—" : "none");
+    bumpCapped(bucket.errorNames, event.error ? scrubErrorText(event.error.name, 80) || "—" : "none");
     bucket.firstAt = bucket.firstAt === 0 ? now : Math.min(bucket.firstAt, now);
     bucket.lastAt = Math.max(bucket.lastAt, now);
     const hourStart = hourBucketStart(now);
@@ -2550,7 +2579,9 @@ export async function renderDigest(
       // first place S1 appears — and only in an hour that counted S1.
       (hourCountsS1(rows) ? `${S1_DIGEST_GLOSS}\n` : "") +
       `\n` +
-      lines.join("\n") +
+      // A blank line between type blocks (issue #342): several types
+      // otherwise read as one wall.
+      lines.join("\n\n") +
       `\n\nalerts this hour: ${firedAlerts.length > 0 ? firedAlerts.map((t) => `${t} threshold`).join(", ") : "none"}`
     );
   } catch (err) {
@@ -2602,7 +2633,6 @@ export const HEALTH_FRESH_MS = 35 * 60_000;
 const HEALTH_FUTURE_SKEW_MS = 60_000;
 const HEALTH_CHECK_TIMEOUT_MS = 2_000;
 const HEALTH_INCIDENT_TTL_SECONDS = 30 * 24 * 3600;
-const KV_MIN_TTL_SECONDS = 60;
 const HEALTH_PAGE_AFTER_FAILURES = 2;
 const HEALTH_RECOVER_AFTER_PASSES = 2;
 const HEALTH_REMINDER_MS = 24 * HOUR_MS;

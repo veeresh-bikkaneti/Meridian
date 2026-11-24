@@ -9,6 +9,7 @@
  * the exact failure this worker exists to prevent.
  */
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import test, { beforeEach, afterEach } from "node:test";
 import {
   buildAlert,
@@ -43,6 +44,7 @@ import {
   setSleepForTests,
   UncorroboratedSummary,
   COUNT_BUCKET_TTL_SECONDS,
+  KV_MIN_TTL_SECONDS,
   evaluateHealth,
   runScheduledHealth,
   HEALTH_CRON,
@@ -1911,6 +1913,52 @@ test("counting v2: the 33rd distinct group tallies under other (hard cap 32)", a
   assert.equal(bucket.groups["other"], 1);
 });
 
+test("counting: the 33rd distinct build id and error name tally under other", async () => {
+  const { store } = memoryStore();
+  const cfg = thresholdConfig({});
+  const t0 = Date.UTC(2026, 10, 3, 17, 5, 0);
+  for (let i = 0; i < MAX_GROUP_KEYS + 1; i++) {
+    await recordTelemetry(
+      store,
+      validEvent({
+        type: "js_error",
+        buildId: `build-${i}`,
+        error: { name: `Err${i}`, message: "m" },
+      }) as unknown as CrashReportEvent,
+      t0,
+      cfg,
+      "corroborated",
+    );
+  }
+  const bucket = (await store.readBucket(bucketKey(hourLabelOf(t0), "js_error")))!;
+  assert.equal(Object.keys(bucket.builds).length, MAX_GROUP_KEYS + 1, "32 build ids + other");
+  assert.equal(bucket.builds["other"], 1);
+  assert.equal(Object.keys(bucket.errorNames).length, MAX_GROUP_KEYS + 1, "32 error names + other");
+  assert.equal(bucket.errorNames["other"], 1);
+  assert.equal(bucket.builds["build-0"], 1, "an existing key still increments under the cap");
+});
+
+test("group key ignores locale, deviceMemory, and hardwareConcurrency", () => {
+  const base = validEvent({
+    buildId: "c6853be",
+    device: { os: "ios", osVersion: "16.4.1", deviceClass: "phone" },
+  }) as unknown as CrashReportEvent;
+  const withExtras = validEvent({
+    buildId: "c6853be",
+    device: {
+      os: "ios",
+      osVersion: "16.4.1",
+      deviceClass: "phone",
+      locale: "en-US",
+      deviceMemory: 8,
+      hardwareConcurrency: 4,
+    },
+  }) as unknown as CrashReportEvent;
+  assert.equal(groupKeyOf(base), "c6853be|ios|16|phone");
+  assert.equal(groupKeyOf(withExtras), groupKeyOf(base));
+  assert.equal(groupKeyOf(base).split("|").length, 4);
+});
+
 test("counting v2: an old-shape bucket in KV reads back with v2 defaults", async () => {
   const { kv, store } = memoryStore();
   const key = bucketKey("2026-11-03T17", "js_error");
@@ -2214,6 +2262,7 @@ test("golden: renderDigest for the §5.3 two-event hour (full string)", async ()
       "  builds: c6853be ×1 · editions: state ×1 · regions: nebraska ×1",
       "  groups: c6853be|ios|16|phone ×1",
       "  verdicts: developer_needed/fg_kill_current ×1 · severities: S1 ×1 · modes: scout ×1 · steps: map_init_start ×1",
+      "",
       "js_error 1 · first 17:05 · last 17:05",
       "  builds: 2a0527f ×1 · editions: state ×1 · regions: nebraska ×1",
       "  groups: 2a0527f|android|unknown|phone ×1",
@@ -3733,6 +3782,91 @@ test("T4 every counter write sets expirationTtl (90 days); ops records 7 days", 
     if (p.k.startsWith("ops:")) assert.equal(p.o!.expirationTtl, 7 * 24 * 3600);
   }
 });
+
+/**
+ * Retention, documented in workers/crash-report/README.md:
+ * counter buckets 90 days, ops records 7 days, health incidents 30 days,
+ * the KV health probe 60 seconds (KV_MIN_TTL_SECONDS). A put that omits
+ * expirationTtl fails this scan — including a future call site the
+ * runtime spy above does not happen to exercise.
+ */
+test("every KV put call in the worker source passes expirationTtl", () => {
+  const raw = readFileSync(new URL("./index.ts", import.meta.url), "utf8");
+  const src = stripJsComments(raw);
+  const calls = balancedCalls(src, ".put(");
+  assert.ok(calls.length >= 5, `expected the production put calls, found ${calls.length}:\n${calls.join("\n---\n")}`);
+  for (const call of calls) {
+    assert.match(call, /expirationTtl/, `put without a TTL:\n${call}`);
+  }
+  assert.equal(KV_MIN_TTL_SECONDS, 60);
+  assert.equal(COUNT_BUCKET_TTL_SECONDS, 90 * 24 * 3600);
+});
+
+function stripJsComments(src: string): string {
+  let out = "";
+  let i = 0;
+  while (i < src.length) {
+    const c = src[i];
+    const n = src[i + 1];
+    if (c === "/" && n === "/") {
+      i += 2;
+      while (i < src.length && src[i] !== "\n") i++;
+      continue;
+    }
+    if (c === "/" && n === "*") {
+      i += 2;
+      while (i < src.length && !(src[i] === "*" && src[i + 1] === "/")) i++;
+      i += 2;
+      continue;
+    }
+    if (c === "'" || c === '"' || c === "`") {
+      const q = c;
+      out += c;
+      i++;
+      while (i < src.length) {
+        if (src[i] === "\\") {
+          out += src[i] + (src[i + 1] ?? "");
+          i += 2;
+          continue;
+        }
+        out += src[i];
+        if (src[i] === q) {
+          i++;
+          break;
+        }
+        i++;
+      }
+      continue;
+    }
+    out += c;
+    i++;
+  }
+  return out;
+}
+
+function balancedCalls(src: string, needle: string): string[] {
+  const spans: string[] = [];
+  let from = 0;
+  while (from < src.length) {
+    const at = src.indexOf(needle, from);
+    if (at < 0) break;
+    let depth = 0;
+    let i = at + needle.length - 1;
+    for (; i < src.length; i++) {
+      const ch = src[i];
+      if (ch === "(") depth++;
+      else if (ch === ")") {
+        depth--;
+        if (depth === 0) {
+          spans.push(src.slice(at, i + 1));
+          break;
+        }
+      }
+    }
+    from = i + 1;
+  }
+  return spans;
+}
 
 test("T4 stored count maps are numerically normalised on read (corrBuilds/cantTellGroups/others); old buckets still read", async () => {
   const map = new Map<string, string>();
