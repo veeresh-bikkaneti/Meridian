@@ -28,3 +28,8 @@ why-learn-shots/
 # Generated at build time (prebuild) — never commit
 public/build-meta.json
 public/build-board.json
+
+# Motion-verify captures (TD-13.1): generated locally, never committed
+docs/motion-verify/*.png
+docs/motion-verify/*.mp4
+docs/motion-verify/raw-webm/

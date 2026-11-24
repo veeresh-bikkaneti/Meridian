@@ -85,6 +85,8 @@ appears over an in-progress Globe round.
 `docs/motion-verify/read-aloud-modal-full-{1280,768,390,320}px.png`
 — full-page captures of the modal on the real built home page,
 produced by the spec's env-gated capture test (CAPTURE_MODAL=1).
+Captures are generated locally and are not stored in git (TD-13.1);
+regenerate with `CAPTURE_MODAL=1` on the capture test.
 
 ## Not done / next
 

@@ -29,6 +29,8 @@ Verification ran against a copy of the page staged in /tmp with the two three.js
 
 Captures: `docs/motion-verify/landmark-globe-mockup-1280px.png` (1280 x 900, full page) and `docs/motion-verify/landmark-globe-mockup-390px.png` (390 x 844, full page), taken after load plus rise-in, with a scroll pass first so both globes had rendered. No interaction clip: skipped to stay inside the Stage 1 token budget.
 
+Captures are generated locally and are not stored in git (TD-13.1); regenerate with `node scripts/record-motion-verify.mjs`.
+
 ## Changed values (Stage 1 vs the mockup as shared)
 
 - Halo strength 0.85 → 0.5.
