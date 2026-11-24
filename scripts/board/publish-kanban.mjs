@@ -28,9 +28,10 @@
  *
  * Validation (fail loud, write NOTHING on error): schemaVersion
  * is 2; 18 stories and 45 subtasks; ids unique across stories
- * and subtasks together; every subtask sits in exactly one
- * story's subtasks list and names that story; every dependsOn
- * id exists; every gauge carries numeric start/now/target.
+ * and subtasks together; every story and subtask has a
+ * non-empty `num`, unique across both; every subtask sits in
+ * exactly one story's subtasks list and names that story; every
+ * dependsOn id exists; every gauge carries numeric start/now/target.
  *
  * Fail-loud: an unreadable baseline, a malformed envelope or a
  * failed validation prints the problem to stderr, exits non-zero
@@ -119,13 +120,20 @@ function validateEnvelope(data) {
   }
 
   // Ids unique across stories and subtasks together.
+  // `num` is a non-empty string, unique across both as well.
   const ids = new Set();
+  const nums = new Set();
   for (const item of [...data.stories, ...data.subtasks]) {
     if (typeof item?.id !== "string" || item.id.length === 0) {
       fail("kanban.json: a story or subtask has no non-empty string id");
     }
     if (ids.has(item.id)) fail(`kanban.json: duplicate id "${item.id}"`);
     ids.add(item.id);
+    if (typeof item.num !== "string" || item.num.length === 0) {
+      fail(`kanban.json: "${item.id}" has no non-empty string num`);
+    }
+    if (nums.has(item.num)) fail(`kanban.json: duplicate num "${item.num}"`);
+    nums.add(item.num);
   }
   const subtaskIds = new Set(data.subtasks.map((s) => s.id));
   const storyIds = new Set(data.stories.map((s) => s.id));

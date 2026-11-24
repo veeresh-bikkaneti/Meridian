@@ -65,6 +65,7 @@ function makeSubtask(overrides: Partial<Subtask> = {}): Subtask {
     branches: [],
     evidence: "",
     v1: { index: 0, id: "task", title: "Task", dep: "" },
+    num: "SYN-0",
     ...overrides,
   };
 }
@@ -119,6 +120,103 @@ describe("loadSnapshot (schema v2)", () => {
     const orphan = structuredClone(snapshotJson);
     orphan.stories[0].subtasks = orphan.stories[0].subtasks.slice(1);
     assert.throws(() => loadSnapshot(orphan));
+  });
+
+  it("throws when a story or subtask num is missing or empty", () => {
+    const missingStory = structuredClone(snapshotJson);
+    (missingStory.stories[0] as { num?: string }).num = undefined;
+    assert.throws(() => loadSnapshot(missingStory), /num/);
+    const emptySub = structuredClone(snapshotJson);
+    emptySub.subtasks[0].num = "";
+    assert.throws(() => loadSnapshot(emptySub), /num/);
+  });
+
+  it("throws on a duplicate num, including a story sharing a subtask's num", () => {
+    const dup = structuredClone(snapshotJson);
+    dup.subtasks[1].num = dup.subtasks[0].num;
+    assert.throws(() => loadSnapshot(dup), /duplicate num/);
+    const shared = structuredClone(snapshotJson);
+    shared.stories[0].num = shared.subtasks[0].num;
+    assert.throws(() => loadSnapshot(shared), /duplicate num/);
+  });
+
+  it("gives every story and subtask the assigned planning number", () => {
+    const snap = snapshot();
+    assert.deepEqual(
+      Object.fromEntries(snap.stories.map((s) => [s.id, s.num])),
+      {
+        "arch-rules": "TD-01",
+        "arch-ports": "TD-02",
+        "arch-content": "TD-03",
+        "arch-imports": "TD-04",
+        "arch-shell": "TD-05",
+        "arch-split": "TD-06",
+        "arch-gates": "TD-07",
+        "arch-pages": "TD-09",
+        "td-dead-code": "TD-10",
+        "td-forms": "TD-11",
+        "td-tooling": "TD-12",
+        "td-pipeline": "TD-13",
+        "td-tests": "TD-14",
+        "td-a11y": "TD-15",
+        "td-prod-checks": "TD-16",
+        "prod-3d": "FW-08",
+        "prod-live": "FW-09",
+        "prod-grow": "FW-10",
+      },
+    );
+    assert.deepEqual(
+      Object.fromEntries(snap.subtasks.map((s) => [s.id, s.num])),
+      {
+        "arch-rules.amend": "TD-01.1",
+        "arch-rules.guardrails": "TD-01.2",
+        "arch-ports.audio": "TD-02.1",
+        "arch-ports.storage": "TD-02.2",
+        "arch-ports.transport": "TD-02.3",
+        "arch-ports.sweep-a": "TD-02.4",
+        "arch-ports.game-app": "TD-02.5",
+        "arch-ports.storyteller-home": "TD-02.6",
+        "arch-ports.last-ten": "TD-02.7",
+        "arch-content.records": "TD-03.1",
+        "arch-imports.batch-a": "TD-04.1",
+        "arch-imports.rulings": "TD-04.2",
+        "arch-imports.subject-contracts": "TD-04.3",
+        "arch-shell.nav-tests": "TD-05.1",
+        "arch-shell.sweep": "TD-05.2",
+        "arch-split.map": "TD-06.1",
+        "arch-split.size-budget": "TD-06.2",
+        "arch-split.modules": "TD-06.3",
+        "arch-split.router": "TD-06.4",
+        "arch-gates.contracts": "TD-07.1",
+        "arch-gates.flip": "TD-07.2",
+        "arch-pages.retire": "TD-09.1",
+        "arch-pages.links": "TD-09.2",
+        "td-dead-code.pack-shelf-move": "TD-10.1",
+        "td-dead-code.cva": "TD-10.2",
+        "td-dead-code.transport-hook": "TD-10.3",
+        "td-dead-code.test-stubs": "TD-10.4",
+        "td-forms.contact": "TD-11.1",
+        "td-forms.board": "TD-11.2",
+        "td-tooling.storybook-types": "TD-12.1",
+        "td-tooling.validators-zod": "TD-12.2",
+        "td-pipeline.repo-weight": "TD-13.1",
+        "td-pipeline.pages-failing": "TD-13.2",
+        "td-tests.detective-flake": "TD-14.1",
+        "td-tests.known-failures": "TD-14.2",
+        "td-a11y.lose-reveal": "TD-15.1",
+        "td-prod-checks.private-mode": "TD-16.1",
+        "td-prod-checks.crash-redeploy": "TD-16.2",
+        "prod-3d.globe": "FW-08.1",
+        "prod-3d.clue-films": "FW-08.2",
+        "prod-live.walk-fixes": "FW-09.1",
+        "prod-live.open-issues": "FW-09.2",
+        "prod-grow.pennant": "FW-10.1",
+        "prod-grow.science-review": "FW-10.2",
+        "prod-grow.adult-band": "FW-10.3",
+      },
+    );
+    const nums = [...snap.stories, ...snap.subtasks].map((item) => item.num);
+    assert.equal(new Set(nums).size, nums.length);
   });
 
   it("throws when a dependsOn id does not exist", () => {

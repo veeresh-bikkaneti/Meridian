@@ -137,12 +137,22 @@ test("no page-level horizontal overflow and 18 story cards at five viewports", a
       await expect(page.locator(`.kb-col[data-col="${col}"]`)).toHaveCount(1);
     }
     // The board scrolls inside its own container; the page never
-    // scrolls sideways, at any width.
+    // scrolls sideways, at any width. Story numbers are on the
+    // cards; expanding shows every subtask number too.
     const overflow = await page.evaluate(() => ({
       scrollWidth: document.documentElement.scrollWidth,
       innerWidth: window.innerWidth,
     }));
     expect(overflow.scrollWidth).toBeLessThanOrEqual(overflow.innerWidth);
+    await expect(page.getByText("TD-01", { exact: true })).toBeVisible();
+    await expandAllStories(page);
+    await expect(page.getByText("TD-01.1", { exact: true })).toBeVisible();
+    await expect(page.locator(".kb-num")).toHaveCount(63);
+    const expanded = await page.evaluate(() => ({
+      scrollWidth: document.documentElement.scrollWidth,
+      innerWidth: window.innerWidth,
+    }));
+    expect(expanded.scrollWidth).toBeLessThanOrEqual(expanded.innerWidth);
   }
   // The real shell, not a mock frame: the shared header + footer.
   await expect(page.locator("header").first()).toBeVisible();

@@ -67,6 +67,8 @@ export type OwnsStatus = "known" | "partial" | "unknown" | "none";
 
 export interface Subtask {
   id: string;
+  /** Stable planning number, unique across stories and subtasks (e.g. "TD-01.1"). */
+  num: string;
   story: string;
   lane: Lane;
   title: string;
@@ -98,6 +100,8 @@ export interface Subtask {
 
 export interface Story {
   id: string;
+  /** Stable planning number, unique across stories and subtasks (e.g. "TD-01"). */
+  num: string;
   lane: Lane;
   title: string;
   phase: string | null;
@@ -150,12 +154,29 @@ export interface PullInfo {
 export const EXPECTED_STORY_COUNT = 18;
 export const EXPECTED_SUBTASK_COUNT = 45;
 
+/** `num` is a non-empty string, unique across stories and subtasks together. */
+function claimNum(
+  item: { id?: string; num?: unknown },
+  kind: "story" | "subtask",
+  seen: Set<string>,
+): void {
+  const id = typeof item?.id === "string" && item.id.length > 0 ? item.id : "?";
+  if (typeof item?.num !== "string" || item.num.length === 0) {
+    throw new Error(`kanban snapshot: ${kind} "${id}" has no non-empty string num`);
+  }
+  if (seen.has(item.num)) {
+    throw new Error(`kanban snapshot: duplicate num "${item.num}"`);
+  }
+  seen.add(item.num);
+}
+
 /**
  * Validate an unknown payload as a v2 board snapshot. Throws on
- * the wrong story/subtask counts, duplicate ids, a subtask that
- * sits in zero or two stories, a dangling dependsOn, or a
- * malformed envelope — the board would rather fail loudly than
- * render a half-empty picture of the work.
+ * the wrong story/subtask counts, duplicate ids, a missing or
+ * duplicate `num`, a subtask that sits in zero or two stories,
+ * a dangling dependsOn, or a malformed envelope — the board
+ * would rather fail loudly than render a half-empty picture of
+ * the work.
  */
 export function loadSnapshot(json: unknown): Snapshot {
   if (typeof json !== "object" || json === null || Array.isArray(json)) {
@@ -207,12 +228,14 @@ export function loadSnapshot(json: unknown): Snapshot {
   const stories = data.stories as Story[];
   const subtasks = data.subtasks as Subtask[];
   const storyIds = new Set<string>();
+  const nums = new Set<string>();
   for (const story of stories) {
     if (typeof story?.id !== "string" || story.id.length === 0) {
       throw new Error("kanban snapshot: a story has no non-empty string id");
     }
     if (storyIds.has(story.id)) throw new Error(`kanban snapshot: duplicate story id "${story.id}"`);
     storyIds.add(story.id);
+    claimNum(story, "story", nums);
   }
   const subtaskIds = new Set<string>();
   for (const sub of subtasks) {
@@ -223,6 +246,7 @@ export function loadSnapshot(json: unknown): Snapshot {
       throw new Error(`kanban snapshot: duplicate subtask id "${sub.id}"`);
     }
     subtaskIds.add(sub.id);
+    claimNum(sub, "subtask", nums);
     if (!COLUMNS.includes(sub.col)) {
       throw new Error(`kanban snapshot: subtask "${sub.id}" has unknown column "${sub.col}"`);
     }
