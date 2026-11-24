@@ -400,10 +400,12 @@ describe("PageShell and PageIntro (PR 3 Step 2)", () => {
     assert.match(src, /onHome=\{\(\) => setMenu\(null\)\}/);
   });
 
-  it("Cold Trail sits on SiteHeader (PR 3 Step 3.5): stars in status, mute in mute, no px-2 Home override", () => {
+  it("Cold Trail sits on PageShell: stars in status, mute in mute, no page-local main", () => {
     const src = read("src/game/coldtrail/TrailScreen.tsx");
-    assert.match(src, /<SiteHeader\s+onHome=\{onLeave\}/);
-    assert.match(src, /mute=\{<SoundToggle testId="sound-toggle-trail"/);
+    assert.match(src, /<PageShell/);
+    assert.match(src, /onHome: onLeave/);
+    assert.match(src, /mute: <SoundToggle testId="sound-toggle-trail"/);
+    assert.doesNotMatch(src, /<main[\s>]/);
     assert.doesNotMatch(src, /<HomeButton/);
     assert.doesNotMatch(src, /from "@\/components\/ui\/home-button"/);
     assert.doesNotMatch(src, /className="px-2"/);
@@ -604,7 +606,6 @@ describe("page-width tokens (PR 3 Step 4)", () => {
     for (const file of [
       "src/components/game-app.tsx",
       "src/game/loop/LoopScreen.tsx",
-      "src/game/coldtrail/TrailScreen.tsx",
       "src/subjects/shared/SubjectCase.tsx",
       "src/subjects/shared/SubjectPicker.tsx",
     ]) {
@@ -623,12 +624,15 @@ describe("page-width tokens (PR 3 Step 4)", () => {
     // change, not a refactor. Component-local caps (cards, overlays,
     // sheets) are not page widths and stay literal too.
     assert.match(read("src/components/game-app.tsx"), /max-w-xl flex-col/);
-    // Same reason, Cold Trail's wide band: its healthy-path root
-    // widens to 72rem at the large breakpoint (lg:max-w-6xl). No
-    // token in the narrow/wide family holds 72rem, and converting
-    // it to --page-wide (80rem) would move the layout, so the
-    // literal stays — its base width is the token above.
-    assert.match(read("src/game/coldtrail/TrailScreen.tsx"), /lg:max-w-6xl/);
+    // Cold Trail's play surface widens to 72rem at the menu breakpoint.
+    // No token in the narrow/wide family holds 72rem, and converting it
+    // to --page-wide (80rem) would move the layout. The screen itself
+    // sits in PageShell's narrow column; the 72rem override lives in
+    // the shell CSS, not a page-local max-width class.
+    const trail = read("src/game/coldtrail/TrailScreen.tsx");
+    assert.match(trail, /<PageShell[\s\S]*width="narrow"/);
+    assert.doesNotMatch(trail, /max-w-3xl|max-w-7xl|max-w-6xl|lg:max-w-/);
+    assert.match(css, /\.coldtrail-screen--wide > div \{\s*max-width: 72rem;/);
   });
 });
 
@@ -662,7 +666,6 @@ describe("shell-ban baseline (KNOWN/STALE)", () => {
     pageLocalNav: ["src/components/grownups/info-page.tsx", "src/routes/board.tsx"],
     pageLocalMain: [
       "src/components/game-app.tsx",
-      "src/game/coldtrail/TrailScreen.tsx",
       "src/game/loop/LoopScreen.tsx",
       "src/lib/error-component.tsx",
       "src/routes/board.tsx",

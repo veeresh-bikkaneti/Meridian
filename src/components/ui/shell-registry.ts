@@ -59,7 +59,7 @@ export const SHELL_REGISTRY: readonly ShellRegistryEntry[] = [
   { id: "root-layout", file: "src/routes/__root.tsx", header: "baseline", footer: "none", reason: "The router root layout (outlet + update toast), not a screen; screens render inside it." },
   // In-app screens
   { id: "geodetective", file: "src/game/loop/LoopScreen.tsx", header: "SiteHeader", needle: "<SiteHeader", footer: "shell", footerNeedle: "<SiteFooter" },
-  { id: "cold-trail", file: "src/game/coldtrail/TrailScreen.tsx", header: "SiteHeader", needle: "<SiteHeader", footer: "shell", footerNeedle: "<SiteFooter" },
+  { id: "cold-trail", file: "src/game/coldtrail/TrailScreen.tsx", header: "PageShell", needle: "<PageShell", footer: "shell" },
   { id: "why-learn-picker", file: "src/subjects/shared/SubjectPicker.tsx", header: "SiteHeader", needle: "<SiteHeader", footer: "shell", footerNeedle: "<SiteFooter" },
   { id: "subject-case", file: "src/subjects/shared/SubjectCase.tsx", header: "SiteHeader", needle: "<SiteHeader", footer: "shell", footerNeedle: "<SiteFooter" },
   { id: "region-list", file: "src/components/game-app.tsx", header: "SiteHeader", needle: "<SiteHeader", footer: "none", reason: "Drill-down list; the header carries Home/Back, no footer in the shipped design." },
