@@ -1,0 +1,23 @@
+# Narrow proof run for tests/e2e/detective-endings.spec.ts only.
+# Dispatch-only: the main e2e job does not list this spec, and the
+# detective workflow runs every detective project. This job is the
+# repeated CI check for that one file.
+name: Detective endings spec
+
+on:
+  workflow_dispatch:
+
+jobs:
+  endings:
+    timeout-minutes: 20
+    runs-on: ubuntu-24.04
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 22.x
+        cache: npm
+    - run: npm ci
+    - run: npx playwright install --with-deps chromium
+    - run: npm run build:pages
+    - run: npx playwright test tests/e2e/detective-endings.spec.ts --project=detective-endings --workers=1 --reporter=line
