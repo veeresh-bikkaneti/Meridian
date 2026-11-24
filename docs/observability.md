@@ -376,6 +376,12 @@ How to read it, top to bottom:
    It names, one by one, the four facts the classifier needed and
    which ones were missing (✗) or present (✓). Different missing
    facts print a different line, so the gap is never a guess.
+   **`lcV` is the classifier logic version the client stamped**
+   (the current stamp is `"2"`). The checkmark means the stamp
+   arrived, not that a particular version number was required. A
+   missing `lcV` is one reason a report stays "can't tell". The
+   same token in a digest or a stored event is this stamp, not a
+   separate field.
 5. **`device:` is the phone, in one line:** the old `ios/mobile`
    bucket, then the device class (`phone`), the browser and its
    version, the engine, and the OS version. "(UA-parsed)" is a
@@ -421,6 +427,7 @@ suspected_crash 1 · first 17:42 · last 17:42
   builds: c6853be ×1 · editions: state ×1 · regions: nebraska ×1
   groups: c6853be|ios|16|phone ×1
   verdicts: developer_needed/fg_kill_current ×1 · severities: S1 ×1 · modes: scout ×1 · steps: map_init_start ×1
+
 js_error 1 · first 17:05 · last 17:05
   builds: 2a0527f ×1 · editions: state ×1 · regions: nebraska ×1
   groups: 2a0527f|android|unknown|phone ×1
@@ -440,9 +447,10 @@ Reading notes:
   the hour. A total of 20 with first ≈ last is a burst; the same 20
   spread across the hour is a steady rate. Different problems.
 - **`groups:`** is the cross-tab that answers "is this one kind of
-  device?": build | OS | OS major version | device class. Groups are
-  capped at 32 distinct keys per hour-bucket; anything beyond that
-  tallies under `other`.
+  device?": build | OS | OS major version | device class. It does
+  not count by locale, device memory, or hardware concurrency.
+  Groups, build ids, and error names are each capped at 32 distinct
+  keys per hour-bucket; anything beyond that tallies under `other`.
 - **`severities:`** counts the hour's severity grades per type
   (issue #345), including `ungraded` for reports whose verdict
   carries no grade. Grade precedence, worst first, is
@@ -455,6 +463,28 @@ Reading notes:
   counted any S1, exactly one gloss line follows the priority
   line: `S1 = player-left INFERRED from ≥3 unfinished boots with
   no clean boot — not observed.`
+- **`steps:` uses the raw milestone key** (`map_init_start`), the
+  same token the trail stores. An alert for that same fact says
+  **map loading** — the plain-language last step, never the word
+  "milestone". The two surfaces are one vocabulary:
+
+  | Milestone key (`steps:`) | Alert last step |
+  |---|---|
+  | `boot_start` | starting up |
+  | `boot_ready` | ready |
+  | `run_start` | starting a game |
+  | `data_chunk_load_start` | loading game data |
+  | `data_loaded` | game data loaded |
+  | `map_init_start` | map loading |
+  | `map_ready` | map on screen |
+  | `game_loaded` | playing — map on screen |
+  | `storyteller_ready` | story ready |
+  | `backgrounded` | in the background (app switched away) |
+  | `foregrounded` | back in the foreground |
+
+  A key with no row is printed as stored, truncated. `lcV` does not
+  appear in the digest; it is the classifier-version stamp glossed
+  in "How to read a crash alert" above.
 - **Caps are labelled, never silent.** Each list shows its top few
   entries; when entries are cut, the line ends with the true
   remainder, like `(+2 more)`. Ties sort by count, then by name, so
