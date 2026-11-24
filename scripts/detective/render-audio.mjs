@@ -43,6 +43,7 @@ import {
   textHash,
   writeManifest,
 } from "./audio-manifest.mjs";
+import { writeSplit } from "./split-audio-manifest.mjs";
 import { MAX_PACE_RETRIES, PACE_STEP, paceFloorFor, selectBestTake, settlePace } from "./pace-ladder.mjs";
 import { FIXED_LINES, VOICES, casePlan, displayName, selectionNamePlan } from "./render-plan.mjs";
 
@@ -423,6 +424,9 @@ async function main() {
     return Array.isArray(clues) && clues.filter(Boolean).length === 5;
   });
   writeManifest(ROOT, manifest);
+  // Shards follow the monolith. A crashed run can leave them stale;
+  // check-audio-manifest.mjs fails until this split is rewritten.
+  writeSplit(ROOT, manifest);
 
   // Strict gates (batch-level; no flagged acceptance). Baseline = the
   // acks' median pitch, from this batch or the manifest.

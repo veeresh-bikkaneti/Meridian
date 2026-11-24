@@ -6,6 +6,7 @@ import {
   createDetectiveSpeech,
   isEndingRef,
   loadDetectiveManifest,
+  loadDetectiveManifestFor,
   resolveDetectiveClip,
   type DetectiveManifest,
   type DetectiveSpeechOptions,
@@ -1229,6 +1230,169 @@ test("loadDetectiveManifest: an injected fetch supplies the manifest; a failed l
     assert.equal(manifest?.v, 1);
     __resetDetectiveManifestCache();
     assert.equal(await loadDetectiveManifest(fetchDown), null);
+  } finally {
+    __resetDetectiveManifestCache();
+  }
+});
+
+/* ------------------------------------------------------------------ */
+/* Per-case shards (#377). The monolith stays the fallback.            */
+/* ------------------------------------------------------------------ */
+
+const SPLIT_INDEX = {
+  v: 1 as const,
+  split: 1 as const,
+  voices: MANIFEST.voices,
+  fixed: MANIFEST.fixed,
+};
+
+function scriptedFetch(
+  routes: Record<string, { status?: number; body?: unknown }>,
+): typeof fetch & { urls: string[] } {
+  const urls: string[] = [];
+  const fn = (async (input: RequestInfo | URL) => {
+    const url = String(input);
+    urls.push(url);
+    const key = Object.keys(routes).find((k) => url.endsWith(k));
+    if (!key) {
+      return { ok: false, status: 404, json: async () => null } as Response;
+    }
+    const status = routes[key]!.status ?? 200;
+    return {
+      ok: status >= 200 && status < 300,
+      status,
+      json: async () => routes[key]!.body,
+    } as Response;
+  }) as typeof fetch & { urls: string[] };
+  fn.urls = urls;
+  return fn;
+}
+
+test("loadDetectiveManifestFor: a clue fetches the index and that case, not the monolith", async () => {
+  const fetchImpl = scriptedFetch({
+    "split/index.json": { body: SPLIT_INDEX },
+    "split/cases/387.json": { body: MANIFEST.cases["387"] },
+  });
+  try {
+    __resetDetectiveManifestCache();
+    const manifest = await loadDetectiveManifestFor({ kind: "clue", clueIndex: 1 }, 387, fetchImpl);
+    assert.deepEqual(resolveDetectiveClip(manifest, { kind: "clue", clueIndex: 1 }, 387, BASE), {
+      url: "/audio/detective/case-387/clue-1.mp3",
+      who: "watson",
+    });
+    assert.deepEqual(
+      fetchImpl.urls.map((u) => u.split("/audio/detective/")[1]),
+      ["split/index.json", "split/cases/387.json"],
+    );
+  } finally {
+    __resetDetectiveManifestCache();
+  }
+});
+
+test("loadDetectiveManifestFor: a fixed line fetches only the index", async () => {
+  const fetchImpl = scriptedFetch({
+    "split/index.json": { body: SPLIT_INDEX },
+  });
+  try {
+    __resetDetectiveManifestCache();
+    const manifest = await loadDetectiveManifestFor({ kind: "fixed", id: "ack-1" }, 387, fetchImpl);
+    assert.deepEqual(resolveDetectiveClip(manifest, { kind: "fixed", id: "ack-1" }, 387, BASE), {
+      url: "/audio/detective/fixed/ack-1.mp3",
+      who: "holmes",
+    });
+    assert.deepEqual(fetchImpl.urls.map((u) => u.split("/audio/detective/")[1]), ["split/index.json"]);
+  } finally {
+    __resetDetectiveManifestCache();
+  }
+});
+
+test("loadDetectiveManifestFor: a name fetches the names file, not the case", async () => {
+  const fetchImpl = scriptedFetch({
+    "split/index.json": { body: SPLIT_INDEX },
+    "split/names.json": { body: MANIFEST.names },
+  });
+  try {
+    __resetDetectiveManifestCache();
+    const manifest = await loadDetectiveManifestFor(
+      { kind: "name", placeId: "geonames:323786" },
+      387,
+      fetchImpl,
+    );
+    assert.deepEqual(
+      resolveDetectiveClip(manifest, { kind: "name", placeId: "geonames:323786" }, 387, BASE),
+      { url: "/audio/detective/names/323786.mp3", who: "holmes" },
+    );
+    assert.deepEqual(
+      fetchImpl.urls.map((u) => u.split("/audio/detective/")[1]),
+      ["split/index.json", "split/names.json"],
+    );
+  } finally {
+    __resetDetectiveManifestCache();
+  }
+});
+
+test("loadDetectiveManifestFor: a 404 case is silent and does not fetch the monolith", async () => {
+  const fetchImpl = scriptedFetch({
+    "split/index.json": { body: SPLIT_INDEX },
+    "split/cases/387.json": { status: 404 },
+  });
+  try {
+    __resetDetectiveManifestCache();
+    const manifest = await loadDetectiveManifestFor({ kind: "clue", clueIndex: 1 }, 387, fetchImpl);
+    assert.equal(resolveDetectiveClip(manifest, { kind: "clue", clueIndex: 1 }, 387, BASE), null);
+    assert.ok(fetchImpl.urls.every((u) => !u.endsWith("manifest.json")));
+  } finally {
+    __resetDetectiveManifestCache();
+  }
+});
+
+test("loadDetectiveManifestFor: a missing index falls back to manifest.json", async () => {
+  const fetchImpl = scriptedFetch({
+    "manifest.json": { body: MANIFEST },
+  });
+  try {
+    __resetDetectiveManifestCache();
+    const manifest = await loadDetectiveManifestFor({ kind: "clue", clueIndex: 1 }, 387, fetchImpl);
+    assert.deepEqual(resolveDetectiveClip(manifest, { kind: "clue", clueIndex: 1 }, 387, BASE), {
+      url: "/audio/detective/case-387/clue-1.mp3",
+      who: "watson",
+    });
+    assert.ok(fetchImpl.urls.some((u) => u.endsWith("audio/detective/manifest.json")));
+    assert.ok(fetchImpl.urls.every((u) => !u.includes("/split/cases/")));
+  } finally {
+    __resetDetectiveManifestCache();
+  }
+});
+
+test("loadDetectiveManifestFor: a case shard that errors falls back to the monolith", async () => {
+  const fetchImpl = scriptedFetch({
+    "split/index.json": { body: SPLIT_INDEX },
+    "split/cases/387.json": { status: 500 },
+    "manifest.json": { body: MANIFEST },
+  });
+  try {
+    __resetDetectiveManifestCache();
+    const manifest = await loadDetectiveManifestFor({ kind: "clue", clueIndex: 1 }, 387, fetchImpl);
+    assert.equal(
+      resolveDetectiveClip(manifest, { kind: "answer" }, 387, BASE)?.url,
+      "/audio/detective/case-387/answer.mp3",
+    );
+    assert.ok(fetchImpl.urls.some((u) => u.endsWith("audio/detective/manifest.json")));
+  } finally {
+    __resetDetectiveManifestCache();
+  }
+});
+
+test("loadDetectiveManifest: a split index supplies fixed lines and skips the monolith", async () => {
+  const fetchImpl = scriptedFetch({
+    "split/index.json": { body: SPLIT_INDEX },
+  });
+  try {
+    __resetDetectiveManifestCache();
+    const manifest = await loadDetectiveManifest(fetchImpl);
+    assert.equal(manifest?.fixed["ack-1"]?.file, "fixed/ack-1.mp3");
+    assert.deepEqual(manifest?.cases, {});
+    assert.deepEqual(fetchImpl.urls.map((u) => u.split("/audio/detective/")[1]), ["split/index.json"]);
   } finally {
     __resetDetectiveManifestCache();
   }

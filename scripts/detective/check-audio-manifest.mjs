@@ -13,7 +13,11 @@
  * coverage completeness (checkCoreCoverage): every core-deck case
  * (audio 0–386) must be claimed with all five clue reads present, or
  * named on the explicit hold list — an empty clue entry can never
- * ship silently again (that silence was handbook gate FG-3).
+ * ship silently again (that silence was handbook gate FG-3). Since
+ * #377 it also checks the runtime shards: split/index.json,
+ * split/cases/<n>.json and split/names.json must match a fresh split
+ * of this monolith. The player fetches those; this file stays the
+ * fallback.
  * Node-only: no python, no ffmpeg, safe for the prebuild chain.
  *
  * Exit codes: 0 clean · 2 stale/missing (each line named) · 3 manifest
@@ -33,6 +37,7 @@ import {
   strayAudioFiles,
   verifyManifest,
 } from "./audio-manifest.mjs";
+import { verifySplit } from "./split-audio-manifest.mjs";
 
 const args = process.argv.slice(2);
 let root = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
@@ -80,10 +85,13 @@ try {
   for (const f of strayAudioFiles(root)) {
     coverageProblems.push({ key: f, kind: "stray-file", detail: `${AUDIO_REL}/${f} is not a clip the manifest can name (render scratch?) — delete it` });
   }
+  // #377: runtime shards must match the monolith. The player fetches
+  // the shards; the monolith remains the fallback and the hash record.
+  const splitProblems = verifySplit(root, manifest).problems;
   result = {
     ...verified,
-    ok: verified.ok && budgetProblems.length === 0 && coverageProblems.length === 0,
-    problems: [...verified.problems, ...budgetProblems, ...coverageProblems],
+    ok: verified.ok && budgetProblems.length === 0 && coverageProblems.length === 0 && splitProblems.length === 0,
+    problems: [...verified.problems, ...budgetProblems, ...coverageProblems, ...splitProblems],
   };
 } catch (e) {
   console.error(`error: could not recompute expected renders: ${e.message}`);
