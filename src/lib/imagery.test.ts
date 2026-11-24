@@ -1,11 +1,18 @@
-import { describe, it } from "node:test";
 import assert from "node:assert/strict";
-import { IMAGERY_TILES } from "./imagery.ts";
-import { IMAGERY_TILES as IMAGERY_TILES_VIA_SHIM } from "../map/imagery.ts";
+import test from "node:test";
+import { IMAGERY_ATTRIBUTION, IMAGERY_NOTICE, IMAGERY_TILES, imageryView } from "./imagery.ts";
 
-describe("imagery (moved to lib)", () => {
-  it("the map shim re-exports the same tiles value", () => {
-    assert.equal(IMAGERY_TILES_VIA_SHIM, IMAGERY_TILES);
-    assert.ok(IMAGERY_TILES.length > 0);
-  });
+test("imagery is the live Esri satellite endpoint", () => {
+  assert.equal(
+    IMAGERY_TILES,
+    "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+  );
+  assert.equal(
+    IMAGERY_ATTRIBUTION,
+    "Tiles © Esri — Source: Esri, Maxar, Earthstar Geographics, and the GIS User Community",
+  );
+  assert.match(IMAGERY_NOTICE, /imagery host sees the area on screen/i);
+  assert.equal(imageryView("flat").projection, "mercator");
+  assert.equal(imageryView("globe").projection, "globe");
+  assert.equal(imageryView("globe").tiles, IMAGERY_TILES);
 });

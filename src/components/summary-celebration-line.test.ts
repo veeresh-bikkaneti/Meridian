@@ -4,7 +4,7 @@ import test from "node:test";
 import {
   createCelebrationLinePlayer,
   type CelebrationLineDeps,
-} from "./summary-celebration-line.ts";
+} from "./ui/summary-celebration-line.ts";
 import type { DetectiveManifest } from "../game/loop/detective/detective-audio.ts";
 import { stopAllVoices } from "../game/audio/voice-channel.ts";
 import { createFakeVoicePort } from "../platform/audio/fake-voice.ts";

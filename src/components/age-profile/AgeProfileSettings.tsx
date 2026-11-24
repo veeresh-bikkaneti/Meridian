@@ -22,7 +22,7 @@ import {
 } from "@/game/age-profile/store.ts";
 
 const GrownUpGate = lazy(() =>
-  import("./GrownUpGate.tsx").then((m) => ({ default: m.GrownUpGate })),
+  import("../ui/GrownUpGate.tsx").then((m) => ({ default: m.GrownUpGate })),
 );
 const AgePicker = lazy(() =>
   import("./AgePicker.tsx").then((m) => ({ default: m.AgePicker })),
