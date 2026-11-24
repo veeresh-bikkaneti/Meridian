@@ -16,6 +16,9 @@ import { ScrollCue, useMoreBelow } from "@/components/scroll-cue";
 import { BRAND } from "@/game/brand";
 import { shareLoopText } from "@/game/share";
 import { isNewBuildDeployed, staleRefreshRecentlyUsed } from "@/game/build-staleness";
+import { getRaw } from "../../platform/transport/browser-transport.ts";
+import { writeSessionItem } from "../../platform/storage/browser-storage.ts";
+import { STORAGE_KEYS } from "../../platform/storage/keys.ts";
 import { calendarDate } from "@/game/daily";
 import { Button } from "@/components/ui/button";
 import { HomeButton } from "@/components/ui/home-button";
@@ -116,8 +119,6 @@ import {
  * `meridian.run` / `meridian.drop`, and it never touches the daily-era
  * `meridian.loop.v1` archive.
  */
-
-const STALE_REFRESH_KEY = "meridian.staleRefresh";
 
 const CLUE_TIERS = ["Geography", "Climate", "History", "The Hook", "Giveaway"] as const;
 
@@ -273,9 +274,11 @@ function isLoopClueFile(value: unknown): value is LoopClueFile {
 }
 
 async function fetchJson<T>(url: string, isValid: (value: unknown) => value is T): Promise<T> {
-  const res = await fetch(url, { cache: "no-store" });
+  // The transport port has no cache field. The old call passed
+  // cache: "no-store"; this uses the port as-is.
+  const res = await getRaw(url);
   if (!res.ok) throw new Error(`HTTP ${res.status} for ${url}`);
-  const parsed: unknown = await res.json();
+  const parsed: unknown = await res.json;
   if (!isValid(parsed)) throw new Error(`invalid shape for ${url}`);
   return parsed;
 }
@@ -709,7 +712,7 @@ export function LoopScreen({
     try {
       // F6: a timestamp, not "1" — readers honour the mark only
       // inside the freshness window (staleRefreshRecentlyUsed).
-      sessionStorage.setItem(STALE_REFRESH_KEY, String(Date.now()));
+      writeSessionItem(STORAGE_KEYS.staleRefresh, Date.now());
     } catch {
       // Storage unavailable — reload anyway; the prompt simply reappears.
     }

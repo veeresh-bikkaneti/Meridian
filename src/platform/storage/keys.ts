@@ -373,6 +373,34 @@ const difficulty: StorageKeyDef<string> = {
   encoding: "raw",
 };
 
+/** Board calm toggle: the bare "1"/"0" bytes predate the port. */
+const boardCalm: StorageKeyDef<string> = {
+  key: "meridian-board-v3-calm",
+  schema: z.string(),
+  fallback: "",
+  encoding: "raw",
+};
+
+/** Board theme choice: the bare "light"/"dark" bytes predate the port. */
+const boardTheme: StorageKeyDef<string> = {
+  key: "meridian-board-v3-theme",
+  schema: z.string(),
+  fallback: "",
+  encoding: "raw",
+};
+
+/**
+ * Board seen-closed set: the page stores a JSON array string and
+ * parses it itself. Raw so a legacy array text still reads back
+ * as that text; a port write of the same string round-trips.
+ */
+const boardSeenClosed: StorageKeyDef<string | null> = {
+  key: "meridian-board-v3-seen-closed",
+  schema: z.string().nullable(),
+  fallback: null,
+  encoding: "raw",
+};
+
 /** Every registered storage key, by the name stores know it by. */
 export const STORAGE_KEYS = {
   subjectProgress,
@@ -416,6 +444,9 @@ export const STORAGE_KEYS = {
   mapCrashMarker,
   palettePreference,
   difficulty,
+  boardCalm,
+  boardTheme,
+  boardSeenClosed,
 };
 
 /**

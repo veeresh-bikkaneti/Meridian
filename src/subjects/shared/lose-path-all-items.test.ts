@@ -381,6 +381,9 @@ describe("the supportive line (owner decision, 2026-11-19)", () => {
       "only the scene phase is gated on the supportive beat — the reveal itself renders at once",
     );
     assert.ok(subjectCase.includes('claimVoice("lose-support", finish, { userInitiated: false })'));
+    assert.ok(subjectCase.includes("createVoice(loseSupportClipUrl()"), "the clip is built by the voice port");
+    assert.ok(subjectCase.includes("voice.play()"), "play runs before any await");
+    assert.ok(!subjectCase.includes("new Audio("), "the scene does not construct an audio element");
     assert.ok(subjectCase.includes("isSoundEnabled()"), "the clip honours the sound toggle");
     assert.ok(subjectCase.includes("soundAudible()"), "the clip honours the play guards");
     assert.ok(subjectCase.includes("audio/subjects/lose-support.mp3"), "the clip lives with the summary clips");

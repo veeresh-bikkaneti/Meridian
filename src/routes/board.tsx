@@ -30,6 +30,8 @@ import { flagsRemoteApplied, isEnabled, loadFlags } from "@/lib/flags";
 import { SiteHeader } from "@/components/ui/site-header";
 import { SiteFooter } from "@/components/ui/site-footer";
 import "@/board/board.css";
+import { getStorageItem, setStorageItem } from "../platform/storage/browser-storage.ts";
+import { STORAGE_KEYS } from "../platform/storage/keys.ts";
 
 const MoleculeMap = lazy(() => import("@/board/molecule-map"));
 
@@ -71,7 +73,7 @@ const MoleculeMap = lazy(() => import("@/board/molecule-map"));
  * Light / Dark in the view nav. An explicit choice sets
  * data-board-theme on the board root, where board.css re-declares
  * the scheme tokens (copies pinned by theme-parity.test.ts), and
- * persists in localStorage; System sets no attribute and the
+ * persists through the storage port; System sets no attribute and the
  * media query rules, exactly as before the switch existed.
  *
  * Indexing: the board IS indexed and listed in the sitemap
@@ -81,7 +83,7 @@ const MoleculeMap = lazy(() => import("@/board/molecule-map"));
  * exposure (nav, footer, grown-ups pages).
  * scripts/static-wellknown.test.mjs asserts both halves.
  *
- * ssr: false, like / and /contact: the page reads localStorage (the
+ * ssr: false, like / and /contact: the page reads saved preferences (the
  * seen-closed set, Calm mode) and fetches the status file.
  */
 export const Route = createFileRoute("/board")({
@@ -104,9 +106,31 @@ export const Route = createFileRoute("/board")({
 });
 
 type BoardView = "trail" | "map" | "tip";
-const CALM_KEY = "meridian-board-v3-calm";
-const THEME_KEY = "meridian-board-v3-theme";
 type BoardThemeChoice = "system" | "light" | "dark";
+
+/** The seen-closed helpers take a storage-shaped object. This one
+ * speaks the port, so the page never touches the browser store. */
+function boardSeenStorage(): Storage {
+  const def = STORAGE_KEYS.boardSeenClosed;
+  return {
+    getItem(key: string): string | null {
+      if (key !== def.key) return null;
+      return getStorageItem(def);
+    },
+    setItem(key: string, value: string): void {
+      if (key !== def.key) return;
+      setStorageItem(def, value);
+    },
+    removeItem(): void {},
+    clear(): void {},
+    key(): string | null {
+      return null;
+    },
+    get length(): number {
+      return 0;
+    },
+  };
+}
 
 function BoardPage() {
   const search = Route.useSearch();
@@ -117,7 +141,7 @@ function BoardPage() {
   const [loaded, setLoaded] = useState<LoadedBoard | null>(null);
   const [mapOn, setMapOn] = useState(true);
   const [calm, setCalm] = useState(
-    () => typeof window !== "undefined" && window.localStorage.getItem(CALM_KEY) === "1",
+    () => typeof window !== "undefined" && getStorageItem(STORAGE_KEYS.boardCalm) === "1",
   );
   /* Board theme: the stored choice wins; "system" (the default,
    * and the fallback for anything unreadable) sets no attribute —
@@ -125,7 +149,7 @@ function BoardPage() {
   const [themeChoice, setThemeChoice] = useState<BoardThemeChoice>(() => {
     if (typeof window === "undefined") return "system";
     try {
-      const v = window.localStorage.getItem(THEME_KEY);
+      const v = getStorageItem(STORAGE_KEYS.boardTheme);
       return v === "light" || v === "dark" ? v : "system";
     } catch {
       return "system";
@@ -149,7 +173,7 @@ function BoardPage() {
   const pickTheme = (choice: BoardThemeChoice) => {
     setThemeChoice(choice);
     try {
-      window.localStorage.setItem(THEME_KEY, choice);
+      setStorageItem(STORAGE_KEYS.boardTheme, choice);
     } catch {
       /* ignore */
     }
@@ -248,10 +272,11 @@ function BoardPage() {
    * the visitor's last visit — never on first sight (spec §2). */
   useEffect(() => {
     if (!loaded) return;
-    const seen = readSeenClosed(window.localStorage);
+    const seenStorage = boardSeenStorage();
+    const seen = readSeenClosed(seenStorage);
     const names = newlyClosedFeatures(board, seen);
     if (names.length > 0) setToast(names[0]);
-    writeSeenClosed(window.localStorage, allClosedFeatureIds(board));
+    writeSeenClosed(seenStorage, allClosedFeatureIds(board));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loaded]);
 
@@ -463,7 +488,7 @@ function BoardPage() {
               const next = !calm;
               setCalm(next);
               try {
-                window.localStorage.setItem(CALM_KEY, next ? "1" : "0");
+                setStorageItem(STORAGE_KEYS.boardCalm, next ? "1" : "0");
               } catch {
                 /* ignore */
               }
