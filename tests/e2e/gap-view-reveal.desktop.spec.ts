@@ -408,6 +408,10 @@ test("miss: a tap on the map skips the beat to the end state", async ({
   ).toBe(true);
   expect(
     rec.cardAt! - rec.tapAt!,
+    `card must not appear before the skip tap; ${diag}`,
+  ).toBeGreaterThanOrEqual(0);
+  expect(
+    rec.cardAt! - rec.tapAt!,
     `card must follow the skip tap within ${SKIP_CARD_MAX_MS} ms; ${diag}`,
   ).toBeLessThan(SKIP_CARD_MAX_MS);
 });
