@@ -3,7 +3,6 @@ import { describe, it } from "node:test";
 import branchesFixture from "./__fixtures__/github/branches.json" with { type: "json" };
 import pullsFixture from "./__fixtures__/github/pulls-by-number.json" with { type: "json" };
 import snapshotJson from "./kanban.json" with { type: "json" };
-import { loadSnapshot, type Subtask } from "./kanban-data.ts";
 import {
   buildBoardUrl,
   fetchKanbanLive,
@@ -61,10 +60,6 @@ function memoryStorage(): KeyValueStorage & { map: Map<string, string> } {
     getItem: (k) => map.get(k) ?? null,
     setItem: (k, v) => void map.set(k, v),
   };
-}
-
-function snapshotSubtasks(): Subtask[] {
-  return loadSnapshot(snapshotJson).subtasks;
 }
 
 describe("parseGithubPull", () => {
@@ -168,7 +163,6 @@ describe("fetchKanbanLive — exactly two requests", () => {
     const stub = stubGlobalFetch(fixtureHandler);
     try {
       const state = await fetchKanbanLive({
-        subtasks: snapshotSubtasks(),
         storage: null,
         now: 1_000_000,
       });
@@ -215,7 +209,7 @@ describe("fetchKanbanLive — exactly two requests", () => {
   it("resolves null on a 403 (the unauthenticated rate limit answering)", async () => {
     const stub = stubGlobalFetch(() => ({ status: 403, body: { message: "rate limited" } }));
     try {
-      const state = await fetchKanbanLive({ subtasks: snapshotSubtasks(), storage: null });
+      const state = await fetchKanbanLive({ storage: null });
       assert.equal(state, null);
     } finally {
       stub.restore();
@@ -225,7 +219,7 @@ describe("fetchKanbanLive — exactly two requests", () => {
   it("resolves null on a 429", async () => {
     const stub = stubGlobalFetch(() => ({ status: 429, body: { message: "slow down" } }));
     try {
-      const state = await fetchKanbanLive({ subtasks: snapshotSubtasks(), storage: null });
+      const state = await fetchKanbanLive({ storage: null });
       assert.equal(state, null);
     } finally {
       stub.restore();
@@ -243,7 +237,7 @@ describe("fetchKanbanLive — exactly two requests", () => {
       return fixtureHandler(url);
     });
     try {
-      const state = await fetchKanbanLive({ subtasks: snapshotSubtasks(), storage: null });
+      const state = await fetchKanbanLive({ storage: null });
       assert.ok(state);
       assert.equal(recentCalls, 2);
     } finally {
@@ -258,7 +252,7 @@ describe("fetchKanbanLive — exactly two requests", () => {
       return "throw";
     });
     try {
-      const state = await fetchKanbanLive({ subtasks: snapshotSubtasks(), storage: null });
+      const state = await fetchKanbanLive({ storage: null });
       assert.equal(state, null);
       assert.equal(calls, 2);
     } finally {
@@ -273,7 +267,7 @@ describe("fetchKanbanLive — exactly two requests", () => {
         : fixtureHandler(url),
     );
     try {
-      const state = await fetchKanbanLive({ subtasks: snapshotSubtasks(), storage: null });
+      const state = await fetchKanbanLive({ storage: null });
       assert.equal(state, null);
     } finally {
       stub.restore();
@@ -287,7 +281,7 @@ describe("fetchKanbanLive — exactly two requests", () => {
         : fixtureHandler(url),
     );
     try {
-      const state = await fetchKanbanLive({ subtasks: snapshotSubtasks(), storage: null });
+      const state = await fetchKanbanLive({ storage: null });
       assert.equal(state, null);
     } finally {
       stub.restore();
@@ -317,7 +311,7 @@ describe("fetchKanbanLive — exactly two requests", () => {
       return { status: 404, body: { message: "unexpected" } };
     });
     try {
-      const state = await fetchKanbanLive({ needed: [571], storage, now: 5_000 });
+      const state = await fetchKanbanLive({ storage, now: 5_000 });
       assert.ok(state);
       assert.equal(state.pulls.get(571)?.title, "Phase 1 Part B");
       assert.equal(state.pulls.get(571)?.headRef, "phase1/ports-part-b");
@@ -328,7 +322,7 @@ describe("fetchKanbanLive — exactly two requests", () => {
       assert.ok(raw);
       assert.equal(raw.includes("phase1/ports-part-b"), true);
       assert.equal(storage.map.has("meridian-kanban-live:v2"), false);
-      const again = await fetchKanbanLive({ needed: [571], storage, now: 5_000 + 1_000 });
+      const again = await fetchKanbanLive({ storage, now: 5_000 + 1_000 });
       assert.equal(again?.pulls.get(571)?.title, "Phase 1 Part B");
       assert.equal(again?.pulls.get(571)?.headRef, "phase1/ports-part-b");
       assert.equal(stub.calls.length, 2);
@@ -342,21 +336,18 @@ describe("fetchKanbanLive — exactly two requests", () => {
     const stub = stubGlobalFetch(fixtureHandler);
     try {
       const first = await fetchKanbanLive({
-        subtasks: snapshotSubtasks(),
         storage,
         now: 1_000_000,
       });
       assert.ok(first);
       assert.equal(stub.calls.length, 2);
       const second = await fetchKanbanLive({
-        subtasks: snapshotSubtasks(),
         storage,
         now: 1_000_000 + 4 * 60_000,
       });
       assert.ok(second);
       assert.equal(stub.calls.length, 2);
       const third = await fetchKanbanLive({
-        subtasks: snapshotSubtasks(),
         storage,
         now: 1_000_000 + 6 * 60_000,
       });

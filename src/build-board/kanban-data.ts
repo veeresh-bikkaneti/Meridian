@@ -276,7 +276,7 @@ interface DerivedAcc {
   unnumbered: boolean;
 }
 
-function takeSeatTags(acc: DerivedAcc, labels: readonly string[] | undefined): void {
+function takeSeatTags(acc: DerivedAcc, labels: string[] | undefined): void {
   for (const tag of storySeatTags([{ seatTags: labels ?? [] }])) {
     if (!acc.seatTags.includes(tag)) acc.seatTags.push(tag);
   }
