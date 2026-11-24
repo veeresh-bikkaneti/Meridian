@@ -8,10 +8,10 @@
 # Meridian's own server keeps no copy of a contact message (see /privacy);
 # a delivered message is held by Discord — including an optional reply-to
 # address — until it is deleted once resolved, within 90 days. Renew
-# "Expires" before it passes; scripts/static-wellknown.test.mjs fails
-# once it is in the past or more than a year out.
+# "Expires" before it passes. scripts/static-wellknown.test.mjs fails
+# once it is in the past, more than a year out, or under 60 days away.
 Contact: https://meridian.knowledgetest.workers.dev/contact
 Contact: https://github.com/veeresh-bikkaneti/Meridian/security/advisories/new
-Expires: 2027-11-01T00:00:00.000Z
+Expires: 2027-11-20T00:00:00.000Z
 Preferred-Languages: en
 Canonical: https://meridian.knowledgetest.workers.dev/.well-known/security.txt

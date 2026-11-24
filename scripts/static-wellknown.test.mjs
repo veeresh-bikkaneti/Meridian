@@ -39,7 +39,23 @@ test("security.txt: exactly one Expires, in the future and at most a year out", 
   const at = Date.parse(expires[0]);
   assert.ok(Number.isFinite(at), "Expires must be an ISO 8601 date-time");
   assert.ok(at > Date.now(), "security.txt has EXPIRED: set a new Expires (≤ 1 year out)");
-  assert.ok(at - Date.now() <= 366 * 86_400_000, "Expires should be less than a year away (RFC 9116 §2.5.5)");
+  assert.ok(
+    at - Date.now() <= 366 * 86_400_000,
+    "Expires should be less than a year away (RFC 9116 §2.5.5)",
+  );
+});
+
+test("security.txt: Expires is at least 60 days away", () => {
+  const f = fields(read("public/.well-known/security.txt"));
+  const expires = f.get("expires");
+  assert.equal(expires?.length, 1, "RFC 9116 requires exactly one Expires");
+  const at = Date.parse(expires[0]);
+  const left = at - Date.now();
+  const days = Math.floor(left / 86_400_000);
+  assert.ok(
+    left >= 60 * 86_400_000,
+    `security.txt Expires is under 60 days away (${days} days): renew it`,
+  );
 });
 
 test("robots.txt allows crawling and points at the sitemap", () => {
@@ -101,7 +117,10 @@ test("sitemap.xml lists every public page route", () => {
   assert.ok(pages.length > 0, "route scan found no pages — the scan itself is broken");
   for (const p of pages) {
     if (NOINDEX_ROUTES.has(p)) {
-      assert.ok(!locs.includes(`${SITE}${p}`), `noindex route ${p} must not be listed in the sitemap`);
+      assert.ok(
+        !locs.includes(`${SITE}${p}`),
+        `noindex route ${p} must not be listed in the sitemap`,
+      );
     } else {
       assert.ok(locs.includes(`${SITE}${p}`), `sitemap is missing ${p}`);
     }
@@ -124,7 +143,10 @@ test("the board is indexed: listed in the sitemap and serving no noindex (owner 
   const xml = read("public/sitemap.xml");
   const locs = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
   assert.ok(locs.includes(`${SITE}/board`), "sitemap is missing /board");
-  assert.ok(!locs.some((l) => l.includes("issues")), "a deleted route (/board/issues) must not be listed");
+  assert.ok(
+    !locs.some((l) => l.includes("issues")),
+    "a deleted route (/board/issues) must not be listed",
+  );
   const source = read("src/routes/board.tsx");
   assert.doesNotMatch(
     source,
