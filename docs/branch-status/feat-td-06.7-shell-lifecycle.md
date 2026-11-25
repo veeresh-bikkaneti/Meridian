@@ -23,9 +23,19 @@
   check-game-app-size currently FAILS (ceiling 8,723 > count 8,562);
   the ceiling is lowered once, after the last commit, per the brief.
 
+- Step 6 — Overlay queue (first-visit, tutorial/invite, celebration/cleared).
+  New `src/components/use-overlay-queue.tsx` (`useOverlayQueue`): the
+  overlay state (tutorial, invite, first-visit modal, celebration,
+  cleared) + the celebration element and cleared sound effect.
+  GameApp calls the hook and mounts the queue; the prompt computation
+  stays in the composer (it needs the tour callbacks). `mapMode` is a
+  plain string so the module adds no upward-import row.
+  `game-app.tsx` 8,562 -> 8,524 lines.
+  Tests: `use-overlay-queue.test.ts` (3 pass). Gates: tsc PASS,
+  lint:arch PASS, lint:nav PASS.
+
 ## Next
 
-- Step 6 — Overlay queue (first-visit, tutorial/invite, celebration/cleared).
 - Step 7 — Run controller (`commit`, `openRun`, `startReview`).
 - Step 10 — Router hook (boot / `ready`, `inAppScreen`, hash / history).
 - Then: lower `GAME_APP_SIZE_CEILING` to the new `wc -l`, update
