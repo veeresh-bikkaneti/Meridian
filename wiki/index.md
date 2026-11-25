@@ -10,8 +10,10 @@ ingest. `[[wikilinks]]` are relative to `wiki/`.
 
 ## Sources
 
-None yet. Source summaries will appear in `wiki/sources/` after the
-first ingest. (source: raw/README.md)
+- [[us-education-curriculum]] — U.S. education curriculum research
+  pack (2026-11-24): dual-cohort district sample, 4-tier Why Learn
+  design, 96 case-file prompts, gap analysis.
+  (source: raw/us-education-curriculum/CURRICULUM-DESIGN.md)
 
 ## Entities
 
@@ -19,7 +21,9 @@ None yet. (source: raw/README.md)
 
 ## Concepts
 
-None yet. (source: raw/README.md)
+- [[why-learn-tiers]] — The 4-tier Why Learn structure and its
+  collapse onto the current 3 age bands.
+  (source: raw/us-education-curriculum/CURRICULUM-DESIGN.md)
 
 ## Analyses
 
