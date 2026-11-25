@@ -57,10 +57,14 @@
 ## Next
 
 - Step 10 — Router hook (boot / `ready`, `inAppScreen`, hash / history).
-  NOT DONE — needs a follow-up (token budget reached after Step 7).
-- Entry-size overage: 324,522 B vs 323,865 B limit (+657 B).
-  Needs diagnosis (the three extractions added ~700 B to the entry
-  bundle) and a fix before merge.
+  DONE in the review-fix round: `src/components/use-shell-router.ts`
+  owns `ready` / `setReady`, `inAppScreen`, `hashSeededRef`, the hash
+  effect, `applyHashScreen`, the popstate + deep-link effects, and the
+  boot effect (every exit still calls `setReady(true)`).
+  `game-app.tsx` 8,274 -> 7,701 lines; ceiling lowered to 7,701.
+- Entry-size overage: was 324,522 B vs 323,865 B limit (+657 B) after
+  Steps 5-7. The Step 10 extraction changed the bundle; re-measured
+  below (see Gates). If still over, the cause needs diagnosis.
 - Then: lower `GAME_APP_SIZE_CEILING` to the new `wc -l`, update
   `docs/architecture/game-app-map.md` steps 5, 6, 7, 10 to done,
   run the full gates, open the draft PR.
