@@ -271,12 +271,23 @@ export function createJournalRotation(options: {
   };
 
   const recompute = () => {
+    // TD-06.17: recompute is the visibilitychange / focusin / safety-tick
+    // path, so it doubles as the retry for a failed dataset fetch —
+    // loadJournalNotes is memoized and evicts its promise on failure,
+    // making this a no-op once the notes are in.
+    if (!journalDataLoaded()) void loadJournalNotes();
     const index = journalSetIndexAt(now());
     if (index === currentIndex) {
       pendingIndex = null;
       return;
     }
-    if (shouldApplySetChange(options.blockers())) {
+    // First entry (currentIndex < 0, the dataset has just landed):
+    // nothing is on screen yet, so there is no reader to swap under —
+    // apply immediately, bypassing the §6 blockers. Deferring here
+    // would leave the visible card and section empty whenever the
+    // journal was already in view at load time (PR #623 re-review).
+    // Every N -> M rotation keeps the blockers unchanged.
+    if (currentIndex < 0 || shouldApplySetChange(options.blockers())) {
       apply(index);
     } else {
       // Deferred: applied on a later recompute once the blocker clears.

@@ -113,3 +113,41 @@ describe("journal on-screen wiring, exercised through the rotation seam (item 42
     assert.equal(rotation.getPendingIndex(), 12);
   });
 });
+
+describe("first entry after the lazy dataset lands (TD-06.17 re-review, PR #623)", () => {
+  it("the -1 -> N transition applies at once even with every blocker up; later rotations still defer", () => {
+    // game-app starts the rotation at -1 while the dataset is in
+    // flight; by the time loadJournalNotes() resolves and it calls
+    // recompute(), the IntersectionObserver may already report the
+    // journal on screen. Nothing is shown yet, so there is no reader
+    // to swap under: the first entry must apply immediately.
+    const clock = { now: JOURNAL_WINDOW_MS * 10 + 1_000 };
+    const applied: number[] = [];
+    const rotation = createJournalRotation({
+      now: () => clock.now,
+      timers: silentTimers,
+      initialIndex: -1,
+      blockers: () => ({
+        focusInsideCard: true,
+        focusInsideSection: true,
+        journalOnScreen: true,
+      }),
+      onApply: (index) => applied.push(index),
+    });
+
+    rotation.recompute();
+
+    assert.deepEqual(applied, [10], "the first entry applies despite the blockers");
+    assert.equal(rotation.getCurrentIndex(), 10);
+    assert.equal(rotation.getPendingIndex(), null, "nothing is left pending");
+
+    // The bypass is only for the empty -> first transition: the next
+    // window change under the same blockers defers as §6 requires.
+    clock.now = JOURNAL_WINDOW_MS * 11;
+    rotation.recompute();
+
+    assert.deepEqual(applied, [10], "a shown entry is never swapped under a reader");
+    assert.equal(rotation.getCurrentIndex(), 10);
+    assert.equal(rotation.getPendingIndex(), 11);
+  });
+});
