@@ -271,7 +271,7 @@ describe("M6 — edition-card press feedback", () => {
 
   it("navigation fires immediately — no JS delay in the card click path", () => {
     const src = read("src/components/game-app.tsx");
-    const tap = src.match(/const withCardTap = useCallback\(\s*\([\s\S]*?\),\s*\[\],?\s*\);/);
+    const tap = src.match(/const withCardTap = useCallback\(\s*\([\s\S]*?\}\s*,\s*\[\]\s*\);/);
     assert.ok(tap, "withCardTap missing");
     assert.match(tap![0], /playCardTap\(\);\s*open\(\);/s, "tap sound then immediate open()");
     assert.ok(!/setTimeout|requestAnimationFrame/.test(tap![0]), "no timer in the click path");
