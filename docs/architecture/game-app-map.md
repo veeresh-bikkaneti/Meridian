@@ -381,7 +381,7 @@ Final order. Extraction steps follow published shared-state row counts, fewest f
 | 7 | Run controller (`commit`, `openRun`, `startReview`) | 3 | ~350 | Pulled forward of the challenge hook. B had placed this after a 5-row step. Done in TD-06.7 (`use-run-controller.ts` in `src/components/`). |
 | 8 | Map-mode hook in `src/map` | 4 | ~280 | Cures checklist rows 14-18 and 20. |
 | 9 | Challenge receive and preview hook | 5 | ~280 | |
-| 10 | Router hook and remaining boot, `inAppScreen` and hash or history | 6 | ~700 | Hook extract only. The file stays in `src/components/`. |
+| 10 | Router hook and remaining boot, `inAppScreen` and hash or history | 6 | ~700 | Hook extract only. The file stays in `src/components/`. Done in TD-06.7 (`use-shell-router.ts` in `src/components/`). |
 | 11 | Challenge welcome | 3 | ~170 | Views start here, after their state owners exist. Then fewest shared-state rows first among views. |
 | 12 | Challenge complete and verdict | 3 | ~675 | Same view-after-owners rule. |
 | 13 | Review complete | 4 | ~85 | Same view-after-owners rule. |
