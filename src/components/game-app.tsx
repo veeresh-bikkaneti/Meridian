@@ -21,23 +21,16 @@ import { dealingPoolFor } from "@/game/easy-curation";
 import {
   bankPlace,
   clearDiscardedShadow,
-  clearSession,
   DIFFICULTY_LABELS,
   EDITION_LABELS,
   endSession,
   formatSuccessRate,
-  IDLE_TIMEOUT_MS,
-  idleTimeoutFromSearch,
-  idleWarnMsFor,
   isIdleExpired,
   isSessionLive,
   readDiscardedShadow,
   readSession,
-  seedSessionFromRun,
   startSession,
   summarizeSession,
-  touchSession,
-  writeSession,
   type Session,
   type SessionSummary,
 } from "@/game/session";
@@ -173,6 +166,7 @@ import {
   type BandRunConfig,
 } from "@/game/age-profile";
 import { useAgeProfileHost } from "./age-profile/use-age-profile-host";
+import { useShellSession } from "./use-shell-session";
 
 type LegacySnapshotBand = Exclude<BandRunConfig["band"], AgeBandId>;
 
@@ -1056,31 +1050,6 @@ type Menu =
   | { kind: "admin1"; countryId: string; countryName: string; from: "countries" | "states" };
 
 /**
- * Session state: the score accumulator that survives edition switches.
- * All mutations go through `update`/`replace`, which persist to
- * session storage and keep `ref` (the read-current-value handle for event
- * handlers and the idle timer) in sync with the rendered state.
- */
-function useSessionState() {
-  const [session, setSession] = useState<Session | null>(null);
-  const ref = useRef<Session | null>(null);
-  const persist = useCallback((next: Session | null) => {
-    ref.current = next;
-    if (next) writeSession(next);
-    else clearSession();
-    setSession(next);
-  }, []);
-  const update = useCallback(
-    (fn: (prev: Session | null) => Session | null) => {
-      persist(fn(ref.current));
-    },
-    [persist],
-  );
-  const get = useCallback(() => ref.current, []);
-  return { session, update, replace: persist, get };
-}
-
-/**
  * The globeTierSplit decision for a run's pool load. Only the Globe consults
  * the flag (and thereby waits for flags.json, at most ~1.5s, only on the first
  * Globe run of a page load); every other region gets false at once. Both
@@ -1651,36 +1620,6 @@ export function GameApp() {
   // instead), and its finally must not clear a NEWER start's
   // loading state.
   const runStartGenRef = useRef(0);
-  // Session score: survives edition switches until End game or the idle
-  // timeout. The HUD and the summary read from here, never from the run.
-  const { session, update: updateSession, replace: replaceSession, get: getSession } = useSessionState();
-  // Idle UX: a non-blocking "still there?" warning, and a one-shot notice
-  // on the home screen after the idle kill.
-  const [idleWarn, setIdleWarn] = useState(false);
-  const [idleEndedNote, setIdleEndedNote] = useState(false);
-  // Wave 1 P0 Item 1: the one shared discarded-run notice. Keyed to
-  // "live, non-ended run/session discarded at boot" — deliberate End
-  // game already ends the session and isResumable excludes phase
-  // "summary", so ended games never produce one (no clean-exit flag
-  // keying: a finished game killed without pagehide must not show a
-  // lost-game notice). One card for all four causes; the reason
-  // keyword + the played score/places travel together, and each
-  // cause's copy avoids the other causes' keywords.
-  const [discardedNotice, setDiscardedNotice] = useState<DiscardedNotice | null>(null);
-  // Fix round L2: the visible notice must not carry role="status" — it
-  // mounts with its text already present, so screen readers may never
-  // announce it. Instead this always-present (on home) sr-only region
-  // starts empty and is FILLED by the effect below after mount, so the
-  // text change is what announces. Cleared when the notice goes null,
-  // so a later identical notice announces again instead of landing on
-  // an unchanged region.
-  const [discardedNoticeAnnouncement, setDiscardedNoticeAnnouncement] =
-    useState("");
-  useEffect(() => {
-    setDiscardedNoticeAnnouncement(
-      discardedNotice ? discardedNoticeText(discardedNotice) : "",
-    );
-  }, [discardedNotice]);
   // First-run tutorial: null when inactive, otherwise the current beat
   // (1 = aim coachmark, 2 = reveal feedback, 3 = completion hook). Owned
   // by GameApp so the menu invitation, the run, and the cleanup paths all
@@ -1697,12 +1636,35 @@ export function GameApp() {
   // it via onModalChange and the Home page below goes inert for
   // exactly that span, the ask-first age gate's mechanism.
   const [firstVisitModalOpen, setFirstVisitModalOpen] = useState(false);
-  // Idle window: the default, unless a harness names a different one.
-  const idleTimeoutMs = useMemo(
-    () => (typeof window === "undefined" ? IDLE_TIMEOUT_MS : idleTimeoutFromSearch(window.location.search)),
-    [],
-  );
-  const idleWarnMs = useMemo(() => idleWarnMsFor(idleTimeoutMs), [idleTimeoutMs]);
+  // Step 5 — session, idle watchdog, discarded notice (use-shell-session).
+  const {
+    session,
+    updateSession,
+    replaceSession,
+    getSession,
+    ensureSession,
+    killIdleSession,
+    idleWarn,
+    idleEndedNote,
+    discardedNotice,
+    discardedNoticeAnnouncement,
+    idleTimeoutMs,
+    idleWarnMs,
+    setDiscardedNotice,
+    setIdleWarn,
+    setIdleEndedNote,
+  } = useShellSession({
+    setRun,
+    setMenu,
+    setTutorial,
+    setStartError,
+    setMapSwitchedNote,
+    clearDrop,
+    readRun,
+    readMc2Run,
+    clearMc2Run,
+    clearMc3Run,
+  });
 
   const commit = useCallback((next: Run) => {
     writeRun(next);
@@ -1810,24 +1772,6 @@ export function GameApp() {
    * already has results backfills exactly once: those places were never
    * banked into any live session.
    */
-  const ensureSession = useCallback(
-    (nextRun: Run | null) => {
-      const now = Date.now();
-      const dateKey = trailDate();
-      updateSession((prev) => {
-        if (isSessionLive(prev, dateKey) && !isIdleExpired(prev, now, idleTimeoutMs)) {
-          return touchSession(prev, now);
-        }
-        let fresh = startSession(dateKey, now);
-        if (nextRun && nextRun.results.length > 0) {
-          fresh = seedSessionFromRun(fresh, nextRun);
-        }
-        return fresh;
-      });
-    },
-    [updateSession, idleTimeoutMs],
-  );
-
   /**
    * A challenge's Done tap (mc2/mc3; manifest §2, contract 6): the
    * challenge slots are cleared, and the normal run the challenge
@@ -1913,56 +1857,6 @@ export function GameApp() {
    * skipNotice (fix round M1) suppresses ONLY the inactivity notice set:
    * the kill, the session clear, and the shadow clear always run. The
    * body boot passes it when an mc2 notice is preserved. */
-  const killIdleSession = useCallback((skipNotice = false) => {
-    setStartError(null);
-    clearDrop();
-    // Wave 1 P0 Item 1: capture what was played BEFORE dropping the
-    // session. Challenge runs never bank into the session (their score
-    // belongs to the shared route), so a challenge kill summarises the
-    // run itself; every other kill summarises the whole session, and
-    // only falls back to the run when no session survives.
-    const killedRun = readRun() ?? readMc2Run();
-    const killedIsChallenge =
-      !!killedRun &&
-      (killedRun.regionId === CHALLENGE_REGION_ID || killedRun.challengeOrigin === "mc2");
-    // Boot fallback: at boot the session ref is still null (useSessionState
-    // starts null with no hydration) while the persisted session survives
-    // in session storage, so a reload-after-expiry kill must total the whole
-    // persisted session, not just the killed run. Challenge kills stay
-    // run-only (challenges never bank). Live play is unchanged: the ref
-    // is non-null during play, so the fallback never runs there.
-    const live = getSession() ?? (killedIsChallenge ? null : readSession());
-    const liveSummary = live && !killedIsChallenge ? summarizeSession(live) : null;
-    const totals = liveSummary
-      ? { totalScore: liveSummary.totalScore, placesPlayed: liveSummary.placesPlayed }
-      : runResultsTotals(killedRun);
-    if (!skipNotice) {
-      setDiscardedNotice({ reason: "inactivity", ...totals });
-    }
-    // The kill is the show: no durable record may re-fire it on a
-    // later boot (at most one notice per discarded game).
-    clearDiscardedShadow();
-    try {
-      removeSessionStorageItem(STORAGE_KEYS.pausedRun);
-      clearMc2Run();
-      clearMc3Run();
-    } catch {
-      // Storage blocked; the in-memory run is dropped below regardless.
-    }
-    setRun(null);
-    setMenu(null);
-    setTutorial(null);
-    replaceSession(null);
-    setIdleWarn(false);
-    setIdleEndedNote(true);
-    // #188: session end retires the switched notice too — the same
-    // lifecycle logic Block B applied to mode flips. Left standing, a
-    // "You switched to … Your score is kept." notice would sit beside
-    // the idle-ended notice above and read stale (the score it says
-    // was kept has just been dropped with the session).
-    setMapSwitchedNote(null);
-  }, [replaceSession, getSession]);
-
   useEffect(() => {
     // Observability boot — MUST run before the crash-loop breaker effect
     // below consumes the clean-exit state: initObservability() reads the
@@ -3217,61 +3111,6 @@ export function GameApp() {
   }, [updateSession]);
 
   // Any interaction keeps the session alive; also dismisses the idle warning.
-  useEffect(() => {
-    const onActivity = () => {
-      const now = Date.now();
-      const dateKey = trailDate();
-      updateSession((prev) => {
-        if (!isSessionLive(prev, dateKey)) return prev;
-        // Throttle storage writes: interaction bursts don't need per-event persistence.
-        if (now - prev.lastActivityAt < 2000) return prev;
-        return touchSession(prev, now);
-      });
-      setIdleWarn(false);
-    };
-    const events = ["pointerdown", "keydown", "touchstart", "wheel"] as const;
-    for (const name of events) {
-      window.addEventListener(name, onActivity, { passive: true });
-    }
-    return () => {
-      for (const name of events) {
-        window.removeEventListener(name, onActivity);
-      }
-    };
-  }, [updateSession]);
-
-  // Idle watchdog: warn shortly before the timeout, then kill the session
-  // and return the player to the home screen. Wall-clock based — a tab left
-  // open but untouched still expires.
-  useEffect(() => {
-    const check = () => {
-      const s = getSession();
-      const dateKey = trailDate();
-      if (!isSessionLive(s, dateKey)) {
-        setIdleWarn(false);
-        return;
-      }
-      const now = Date.now();
-      const idleMs = now - s.lastActivityAt;
-      if (idleMs > idleTimeoutMs) {
-        killIdleSession();
-      } else if (idleMs > idleWarnMs) {
-        setIdleWarn(true);
-      }
-    };
-    const id = window.setInterval(check, 5000);
-    // Check immediately when the tab becomes visible again: timers throttle
-    // in background tabs, so the kill would otherwise lag the return.
-    const onVisible = () => {
-      if (document.visibilityState === "visible") check();
-    };
-    document.addEventListener("visibilitychange", onVisible);
-    return () => {
-      window.clearInterval(id);
-      document.removeEventListener("visibilitychange", onVisible);
-    };
-  }, [getSession, killIdleSession, idleTimeoutMs, idleWarnMs]);
-
   // Reset success toast: rendered in the run branch (ReviewComplete is
   // a Play surface) and the home branch alike, like idleToast below.
   const resetToastEl = resetToast ? (
