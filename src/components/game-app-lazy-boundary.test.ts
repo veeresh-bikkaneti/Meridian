@@ -39,6 +39,12 @@ const coldTrailHostSource = readFileSync(
   join(here, "../game/coldtrail/ColdTrailHost.tsx"),
   "utf8",
 );
+// Step 15 (TD-06.11): the LoopScreen lazy factory and the leave
+// wiring live in src/game/loop/GeoDetectiveHost.tsx now.
+const geoDetectiveHostSource = readFileSync(
+  join(here, "../game/loop/GeoDetectiveHost.tsx"),
+  "utf8",
+);
 const chunkReloadNoticeSource = readFileSync(
   join(here, "use-chunk-reload-notice.ts"),
   "utf8",
@@ -71,7 +77,7 @@ describe("F2 lazy boundary — Loop/Trail are not eagerly imported", () => {
 
   it("both screens are declared via React.lazy over a dynamic import", () => {
     assert.ok(
-      gameAppSource.includes("const LoopScreen = lazy("),
+      geoDetectiveHostSource.includes("const LoopScreen = lazy("),
       "LoopScreen must be a React.lazy component",
     );
     assert.ok(
@@ -79,7 +85,7 @@ describe("F2 lazy boundary — Loop/Trail are not eagerly imported", () => {
       "TrailScreen must be a React.lazy component",
     );
     assert.ok(
-      gameAppSource.includes('import("@/game/loop/LoopScreen")'),
+      geoDetectiveHostSource.includes('import("@/game/loop/LoopScreen")'),
       "the Loop loader must dynamically import the LoopScreen module",
     );
     assert.ok(
@@ -125,7 +131,7 @@ describe("F2 lazy boundary — restore path crosses Suspense + error boundary", 
     );
   });
 
-  it("the loopOpen branch renders LoopScreen inside Suspense + MapErrorBoundary", () => {
+  it("the loopOpen branch renders the GeoDetective host inside Suspense + MapErrorBoundary", () => {
     const branch = segment(gameAppSource, "if (loopOpen) {", "if (coldTrailOpen) {");
     // #210: the boundary carries the surface name for its card copy.
     assert.ok(branch.includes('<MapErrorBoundary surface="GeoDetective">'), "loop branch needs the chunk-failure boundary");
@@ -133,7 +139,22 @@ describe("F2 lazy boundary — restore path crosses Suspense + error boundary", 
       branch.includes('<Suspense fallback={<SessionLoadingFallback label="Loading GeoDetective…" />}>'),
       "loop branch must show the destination-named session fallback while the chunk loads",
     );
-    assert.ok(branch.includes("<LoopScreen"), "loop branch must render LoopScreen");
+    assert.ok(branch.includes("<GeoDetectiveHost"), "loop branch must render GeoDetectiveHost");
+    assert.ok(
+      branch.includes("onLeave={() => setLoopOpen(false)}"),
+      "the host's leave callback must clear the shell's open state",
+    );
+    assert.ok(
+      geoDetectiveHostSource.includes("<LoopScreen"),
+      "the host must render LoopScreen",
+    );
+    // Step 15 (TD-06.11): the leave wiring is split — the host
+    // clears the persisted flag, then the shell callback it was
+    // handed clears the open state.
+    assert.ok(
+      geoDetectiveHostSource.includes("writeLoopOpen(false);"),
+      "leaving GeoDetective must clear the persisted flag (host leave wiring)",
+    );
     // Boundary outside Suspense, mirroring the SatelliteMap render site.
     assert.ok(
       branch.indexOf("<MapErrorBoundary") < branch.indexOf("<Suspense"),
@@ -250,6 +271,10 @@ describe("Core F-4 — no component prefetch; territory-data prefetch kept", () 
       !coldTrailHostSource.includes("void loadTrailScreen().catch"),
       "no fire-and-forget component import may remain for Trail (host)",
     );
+    assert.ok(
+      !geoDetectiveHostSource.includes("void loadLoopScreen().catch"),
+      "no fire-and-forget component import may remain for Loop (host)",
+    );
   });
 
   it("the home case-card buttons fire the territory-data prefetch on hover, focus, and pointerdown", () => {
@@ -281,7 +306,7 @@ describe("#209 — every gameplay chunk load is timeout-bounded", () => {
       "the home globe's lazy load must be timeout-bounded too — a hang lands on its chunk fallback (#209)",
     );
     assert.ok(
-      gameAppSource.includes('withChunkTimeout(loadLoopScreen(), "GeoDetective screen")'),
+      geoDetectiveHostSource.includes('withChunkTimeout(loadLoopScreen(), "GeoDetective screen")'),
       "LoopScreen's lazy load must be timeout-bounded (#209)",
     );
     assert.ok(
