@@ -19,7 +19,7 @@ import { execFileSync } from "node:child_process";
 import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
-export const ENTRY_JS_GZIP_LIMIT = 324_995;
+export const ENTRY_JS_GZIP_LIMIT = 323_865;
 
 /** Pure check, exported for the unit test. */
 export function checkEntrySize(entryJsGzip, limit = ENTRY_JS_GZIP_LIMIT) {

@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { checkEntrySize, ENTRY_JS_GZIP_LIMIT } from "./check-entry-size.mjs";
 
 test("limit is the Phase 0 starting measurement", () => {
-  assert.equal(ENTRY_JS_GZIP_LIMIT, 324_995);
+  assert.equal(ENTRY_JS_GZIP_LIMIT, 323_865);
 });
 
 test("at or under the limit passes", () => {

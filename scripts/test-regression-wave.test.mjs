@@ -73,12 +73,12 @@ test("shellBanTotal sums every ban list and ignores the comment", () => {
 });
 
 test("entry size: exact bytes parse out of the checker output and the limit is enforced", () => {
-  const out = "check-entry-size: entry JS gzip 324,995 B, limit 324,995 B (0 B to spare)";
-  assert.equal(parseEntrySizeBytes(out), 324995);
+  const out = "check-entry-size: entry JS gzip 323,865 B, limit 323,865 B (0 B to spare)";
+  assert.equal(parseEntrySizeBytes(out), 323865);
   assert.equal(parseEntrySizeBytes("no size here"), null);
-  assert.equal(entrySizeVerdict(324995).ok, true);
-  assert.equal(entrySizeVerdict(324996).ok, false);
-  assert.match(entrySizeVerdict(324996).note, /324,996 B > 324,995 B limit/);
+  assert.equal(entrySizeVerdict(323865).ok, true);
+  assert.equal(entrySizeVerdict(323866).ok, false);
+  assert.match(entrySizeVerdict(323866).note, /323,866 B > 323,865 B limit/);
 });
 
 test("formatTable prints the four columns and every row", () => {
