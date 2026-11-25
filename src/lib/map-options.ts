@@ -1,4 +1,4 @@
-import type { MapMode } from "./capability.ts";
+import type { MapMode } from "./map-mode.ts";
 
 /**
  * Map construction options that bound GPU/tile memory on phones.

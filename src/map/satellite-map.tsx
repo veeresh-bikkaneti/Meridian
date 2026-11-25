@@ -21,7 +21,7 @@ import {
 import { mountStarfield } from "./starfield.ts";
 import { buildScoutStyle } from "./scout-style.ts";
 import { ScoutFallbackMap } from "./scout-fallback.tsx";
-import { isCoarsePointer, mapOptionsForDevice, revealZoomCap, settleZoomCap, SCOUT_MAX_ZOOM_FLAT, SCOUT_MAX_ZOOM_GLOBE } from "./map-options.ts";
+import { isCoarsePointer, mapOptionsForDevice, revealZoomCap, settleZoomCap, SCOUT_MAX_ZOOM_FLAT, SCOUT_MAX_ZOOM_GLOBE } from "../lib/map-options.ts";
 import { SCOUT_UPGRADE_SOAK_MS, type MapMode } from "./capability.ts";
 import { emitTileFailed, emitWebglContextLost, recordMilestone, recordTileErrors } from "@/lib/observability";
 import { harnessAttachMap } from "@/lib/harness-bus";
@@ -30,9 +30,8 @@ export { isWebgl2Unavailable } from "@/lib/webgl2-unavailable";
 import { createTapTracker } from "./tap-tracker.ts";
 import { INITIAL_TILE_STATUS, tileStatusReducer, type TileStatus } from "./tile-status.ts";
 import { nextTileFallbackAction } from "./tile-fallback.ts";
-import { TILE_FALLBACK_COPY } from "./tile-fallback-copy.ts";
+import { TILE_FALLBACK_COPY } from "@/lib/tile-fallback-copy.ts";
 import { variationLine, type MapPoint } from "./variation.ts";
-import type { LengthUnit } from "@/game/units";
 import {
   GLOBE_HOME,
   SPIN_DURATION_MS,
@@ -75,27 +74,10 @@ const PROJECTION_MORPH: ProjectionSpecification["type"] = [
 const CHROME =
   "backdrop-blur-[14px] bg-[rgba(10,12,16,0.72)] border border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]";
 
-export type MapMark = { lon: number; lat: number; tone: "aim" | "pin" | "spot" };
-
-export type MapVariation = {
-  pin: MapPoint;
-  spot: MapPoint;
-  kilometers: number;
-  radiusKm: number;
-  /** Unit for the miss-line map pill, from unitForEdition — same as the result headline. */
-  unit: LengthUnit;
-};
-
-/**
- * PBI-5: a captured map viewport for state-preserving remounts (the
- * webglcontextlost → Scout Map switch). Re-opens mid-SPACE — center, zoom
- * AND projection — instead of replaying the intro.
- */
-export interface ScoutRestoreView {
-  center: [number, number];
-  zoom: number;
-  projection: "globe" | "mercator";
-}
+// The shared map view types moved down to src/lib (step 8, TD-06.8);
+// they are re-exported here for this module's existing importers.
+export type { MapMark, MapVariation, ScoutRestoreView } from "../lib/map-view-types.ts";
+import type { MapMark, MapVariation, ScoutRestoreView } from "../lib/map-view-types.ts";
 
 const EMPTY = { type: "FeatureCollection" as const, features: [] };
 
@@ -904,7 +886,7 @@ export function SatelliteMap(props: {
     mapModeRef.current = mapMode;
     // Secondary jetsam mitigation: cap the WebGL canvas pixel ratio at
     // 1.5 on coarse-pointer (touch) devices and bound the tile cache —
-    // see src/map/map-options.ts (unit-tested policy). Scout Map caps the
+    // see src/lib/map-options.ts (unit-tested policy). Scout Map caps the
     // pixel ratio at 1 instead (PBI-2).
     const deviceMapOptions = mapOptionsForDevice({
       coarsePointer: isCoarsePointer(),

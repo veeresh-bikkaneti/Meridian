@@ -29,7 +29,7 @@
  */
 
 import { observeResize } from "../lib/observe-resize.ts";
-import { COARSE_POINTER_PIXEL_RATIO_CAP, isCoarsePointer } from "./map-options.ts";
+import { COARSE_POINTER_PIXEL_RATIO_CAP, isCoarsePointer } from "../lib/map-options.ts";
 
 export interface Star {
   /** Unit-space position [0, 1) — resolution-independent, rescales on resize. */
@@ -85,7 +85,7 @@ export function generateStars(
 
 /**
  * Canvas pixel ratio for the starfield (issue #330): the SAME policy as
- * the map itself (map-options.ts). The starfield used to size its two
+ * the map itself (src/lib/map-options.ts). The starfield used to size its two
  * fullscreen canvases at its own `min(2, devicePixelRatio)`, ignoring the
  * map's coarse-pointer cap of 1.5 — on an iPhone 11 (414×896 CSS, DPR 2)
  * that is 2 × 828×1792×4 B = 11,870,208 B allocated inside the
