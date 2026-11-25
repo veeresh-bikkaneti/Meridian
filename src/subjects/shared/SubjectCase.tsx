@@ -89,7 +89,7 @@
  * pick. It fires only after a pick, so answer-blindness before
  * the choice is unchanged.
  */
-import { Suspense, lazy, useEffect, useRef, useState, type ReactNode } from "react";
+import { Suspense, lazy, useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
 import type { AgeGroup, SubjectProps, UnitItem } from "../registry";
 import { getAgeGroup } from "@/game/age-profile";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
@@ -118,6 +118,10 @@ import { createVoice } from "../../platform/audio/browser-voice.ts";
 import type { VoiceHandle } from "../../platform/audio/voice.ts";
 import { isSoundEnabled } from "@/game/audio/sfx";
 import { soundAudible } from "@/game/audio/play-guards";
+/* ADOPTION MOCK (staging only — never a PR): the interactable
+ * prototype components (playable coin scene + motion explanation),
+ * owner direction 2026-11-24 15:32 CST. See adoption-play.tsx. */
+import { CoinPlayScene, ExplanationMotion } from "./adoption-play";
 
 /** The supportive line shown — and voiced — ahead of the answer
  * on every lose reveal (owner decision, 2026-11-19; the wording
@@ -182,6 +186,17 @@ export type SubjectCaseConfig = {
    * summary rendering and narration self-gate on that).
    * Absent, every wrong answer behaves exactly as before. */
   loseReveal?: (item: UnitItem, band: AgeGroup) => boolean;
+};
+
+/* ADOPTION MOCK (staging only): Lane C subject colours for the case
+ * screen accent + stamp. Production home: the registry record. */
+const SUBJECT_CASE_COLORS: Record<string, string> = {
+  math: "#1d4ed8",
+  physics: "#7c3aed",
+  chemistry: "#047857",
+  "social-studies": "#b45309",
+  "general-knowledge": "#0e7490",
+  journals: "#be185d",
 };
 
 export function SubjectCase({
@@ -252,6 +267,17 @@ export function SubjectCase({
   // "main" asks the entry; "followUp" asks its follow-up; "done"
   // shows the result with both answers.
   const [phase, setPhase] = useState<CasePhase>("main");
+  /* ADOPTION MOCK (staging only — never a PR): Lane B hunch state
+   * (in-memory only, per spec) + Lane D flap state. Production
+   * gates the hunch on the answer entry's optional `predict`
+   * field; staging gates on the Math subject + choice kind. */
+  const [hunch, setHunch] = useState<string | null>(null);
+  const [hunchDone, setHunchDone] = useState(false);
+  const [flapState, setFlapState] = useState<"down" | "lifting" | "open">("down");
+  /* ADOPTION MOCK (staging only): interactable prototype — the
+   * coin scene's progress report (groups complete, nothing else:
+   * the answer-blind scene contract) for the play prompt line. */
+  const [playGroups, setPlayGroups] = useState(0);
   const solved = phase === "done";
   // The scene's phase: the lose reveal performs the same solved
   // beat as a win — the case itself is not done, so nothing else
@@ -417,6 +443,21 @@ export function SubjectCase({
   // answer is correct, otherwise the entry itself.
   const active = phase === "followUp" && answer.followUp ? answer.followUp : answer;
 
+  /* ADOPTION MOCK (staging only): Lane B hunch step active state —
+   * Math, main phase, choice-kind entry, before any answer. */
+  const hunchActive =
+    subjectId === "math" &&
+    phase === "main" &&
+    !solved &&
+    !loseRevealed &&
+    !hunchDone &&
+    (answer.kind ?? "choice") === "choice";
+
+  /* ADOPTION MOCK (staging only): the interactable prototype is
+   * staged on the one coin case (40 coins, groups of 5 — the
+   * givens in the item's own question and its scene description). */
+  const isCoinItem = subjectId === "math" && item.id === "math-number:groups:skip-count";
+
   // Shared correct-answer path for picks and typed numbers: advance
   // the phase, and celebrate once, on the first correct answer.
   const onCorrect = () => {
@@ -479,6 +520,17 @@ export function SubjectCase({
     }
   };
 
+  /* ADOPTION MOCK (staging only): the playable scene reports
+   * SOLVED — playing the grouping through IS the correct answer
+   * for the prototype, so it takes the shared correct path (phase
+   * advance, progress record, first-win celebration). The scene
+   * never learns the answer; the case never learns how the player
+   * grouped, only that the scene solved. */
+  const onCoinPlaySolved = () => {
+    if (phase !== "main" || solved || loseRevealed) return;
+    onCorrect();
+  };
+
   const nextCase = () => {
     stopSupportPlayback();
     setIndex((i) => (i + 1) % items.length);
@@ -487,6 +539,10 @@ export function SubjectCase({
     setSupportHeard(false);
     wrongKeysRef.current.clear();
     setPhase("main");
+    setHunch(null);
+    setHunchDone(false);
+    setFlapState("down");
+    setPlayGroups(0);
   };
 
   return (
@@ -495,6 +551,7 @@ export function SubjectCase({
       data-testid={`${subjectId}-case`}
       data-band={band}
       data-item={item.id}
+      style={{ "--subject-color": SUBJECT_CASE_COLORS[subjectId] ?? "#6e4a0e" } as CSSProperties}
     >
       {/* The shared shell (PR 3 Step 3.4): SiteHeader carries the
           one Home control — the legacy ScreenShell's BrandHomeButton
@@ -547,7 +604,64 @@ export function SubjectCase({
           </Suspense>
         </div>
         {lead ? lead(item, reduced) : null}
-        {scene ? scene(item, scenePhase, reduced, band) : null}
+        {/* ADOPTION MOCK (staging only): Lane D SceneFlap — a CSS
+            hinge over the Math scene. Production: the shared
+            SceneFlap component wrapping the scene hook's output,
+            opt-in per subject (see specs/lane-d-hinge.md). */}
+        {scene ? (
+          isCoinItem ? (
+            /* ADOPTION MOCK (staging only): the interactable
+             * prototype — the playable coin scene under the same
+             * Lane D flap. Play unlocks once the flap is open and
+             * the hunch is committed (prototype flow: clue → flap
+             * → hunch → play to solve → result). */
+            <div className="wl-flap-scene">
+              <CoinPlayScene
+                key={`${item.id}:${index}`}
+                total={40}
+                groupSize={5}
+                reduced={reduced}
+                active={
+                  (reduced || flapState === "open") && hunchDone && !solved && !loseRevealed
+                }
+                onProgress={setPlayGroups}
+                onSolved={onCoinPlaySolved}
+              />
+              {!reduced && flapState !== "open" && scenePhase !== "solved" ? (
+                <button
+                  type="button"
+                  className={`wl-flap${flapState === "lifting" ? " is-lifting" : ""}`}
+                  aria-expanded={false}
+                  data-testid="math-scene-flap"
+                  onClick={() => setFlapState("lifting")}
+                  onAnimationEnd={() => setFlapState("open")}
+                >
+                  <span className="wl-flap-title">📖 Lift the flap</span>
+                  <span className="wl-flap-sub">to see it move</span>
+                </button>
+              ) : null}
+            </div>
+          ) : subjectId === "math" && !reduced ? (
+            <div className="wl-flap-scene">
+              {scene(item, scenePhase, reduced, band)}
+              {flapState !== "open" && scenePhase !== "solved" ? (
+                <button
+                  type="button"
+                  className={`wl-flap${flapState === "lifting" ? " is-lifting" : ""}`}
+                  aria-expanded={false}
+                  data-testid="math-scene-flap"
+                  onClick={() => setFlapState("lifting")}
+                  onAnimationEnd={() => setFlapState("open")}
+                >
+                  <span className="wl-flap-title">📖 Lift the flap</span>
+                  <span className="wl-flap-sub">to see it move</span>
+                </button>
+              ) : null}
+            </div>
+          ) : (
+            scene(item, scenePhase, reduced, band)
+          )
+        ) : null}
         <ClueCard tier={title} index={0} text={item.why} revealed reduced={reduced} />
         {solved ? (
           <section
@@ -556,6 +670,35 @@ export function SubjectCase({
             data-testid={`${subjectId}-result`}
           >
             <p className="verdict-headline loop-verdict-headline">🎯 You got it!</p>
+            {/* ADOPTION MOCK (staging only): Lane A stamp at the
+                prove moment + Lane B's named-back hunch line. */}
+            <p className="mt-2">
+              <span className="wl-stamp wl-stamp-case" aria-hidden="true">
+                ★ Proved it!
+              </span>
+            </p>
+            {hunch !== null ? (
+              <p className="wl-hunch-line mt-2 text-fg">
+                <span className="wl-hunch-label">Your hunch&nbsp;</span>
+                {hunch === answer.correct ? (
+                  <>
+                    You guessed <strong>{hunch}</strong> — exactly right. Here's why.
+                  </>
+                ) : (
+                  <>
+                    You guessed <strong>{hunch}</strong>. The answer is <strong>{answer.correct}</strong> — here's why.
+                  </>
+                )}
+              </p>
+            ) : null}
+            {/* ADOPTION MOCK (staging only): Lane B addendum — the
+                explanation FIRST as a motion segment (the solving
+                performed: coins slide into groups of five, the
+                count builds 5, 10, … 40); the text derivation
+                below stays as the accessible fallback. */}
+            {isCoinItem ? (
+              <ExplanationMotion total={40} groupSize={5} reduced={reduced} />
+            ) : null}
             <p className="mt-2 text-fg">
               The answer is <strong>{answer.correct}</strong>. {answer.derivation}
             </p>
@@ -613,6 +756,58 @@ export function SubjectCase({
               <HomeButton onHome={onExit} testId="home-button-end" variant="secondary" className="w-full rounded-xl" />
             </div>
           </section>
+        ) : hunchActive ? (
+          /* ADOPTION MOCK (staging only): Lane B hunch card. In
+           * production this is the AnswerCard with a `purpose`
+           * prop (one component per job — see specs/lane-b-predict.md);
+           * staging renders the same choice rows inline. */
+          <article className="mode-card p-4 wl-hunch-card" data-testid="math-hunch-card" aria-label="What's your hunch?">
+            <p className="name-eyebrow">First — your prediction</p>
+            <h2 className="mt-1 text-base font-normal text-fg">What's your hunch?</h2>
+            <p className="mt-1 text-sm text-muted">{answer.prompt}</p>
+            <div className="mt-3 grid gap-2">
+              {answer.choices.map((choice, i) => (
+                <button
+                  key={choice}
+                  type="button"
+                  className="wl-choice min-h-[44px] w-full rounded-xl border border-line bg-bg px-4 py-2 text-left text-fg"
+                  onClick={() => {
+                    setHunch(choice);
+                    setHunchDone(true);
+                  }}
+                >
+                  <span className="wl-choice-letter" aria-hidden="true">
+                    {"ABCD"[i] ?? ""}
+                  </span>{" "}
+                  {choice}
+                </button>
+              ))}
+            </div>
+            <button
+              type="button"
+              className="mt-3 min-h-[44px] w-full rounded-xl border border-line px-4 py-2 text-muted"
+              onClick={() => setHunchDone(true)}
+            >
+              Skip — go straight to the question
+            </button>
+          </article>
+        ) : isCoinItem && hunchDone ? (
+          /* ADOPTION MOCK (staging only): the interactable
+           * prototype's play prompt — for the coin case the scene
+           * IS the question once the hunch is committed; solving
+           * it by grouping takes the shared correct path. */
+          <article className="mode-card p-4" data-testid="math-play-prompt" aria-label="Your turn to play">
+            <p className="name-eyebrow">Now — your turn to play</p>
+            <h2 className="mt-1 text-base font-normal text-fg">
+              Group the coins in fives to solve
+            </h2>
+            <p className="mt-1 text-sm text-muted">
+              {playGroups} of 8 groups
+              {playGroups > 0
+                ? ` · counting in fives: ${Array.from({ length: playGroups }, (_, i) => (i + 1) * 5).join(", ")}`
+                : " · drag the coins into a tray, or tap a coin to send it in"}
+            </p>
+          </article>
         ) : (
           <AnswerCard
             key={`${item.id}:${phase}`}

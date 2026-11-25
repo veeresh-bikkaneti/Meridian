@@ -4180,3 +4180,336 @@ body:has(.subject-case-screen) .celebration-overlay {
     border: 1px solid CanvasText;
   }
 }
+
+/* ================================================================
+   ADOPTION MOCK (staging only — never a PR): Lanes A–D composed.
+   Lane C sticker skin + subject colour, Lane A stamp, Lane B
+   hunch treatment, Lane D hinge, Lane C/P3 Grandpa presence.
+   Specs: ~/workspace/reverse-engineering/2026-11-24-three-sites/specs/
+   ================================================================ */
+.wl-adoption-mock .why-learn-card {
+  border: 3px solid #26335e;
+  border-radius: 24px;
+  box-shadow: 0 6px 0 rgba(38, 51, 94, 0.35);
+  transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
+}
+.wl-adoption-mock .why-learn-card:not(:disabled):hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 0 rgba(38, 51, 94, 0.35);
+}
+.wl-adoption-mock .why-learn-badge {
+  background: var(--subject-color, #6e4a0e);
+  border-color: rgba(0, 0, 0, 0.25);
+  color: #fff;
+}
+.wl-adoption-mock .wl-chip-stamp {
+  border-color: var(--subject-color, #e2d096);
+}
+.wl-stamp {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border: 2px solid var(--subject-color, #6e4a0e);
+  border-radius: 9999px;
+  background: #fff8e1;
+  color: #3d2c07;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  transform: rotate(-6deg);
+  box-shadow: 0 2px 0 rgba(61, 44, 7, 0.25);
+  white-space: nowrap;
+}
+.wl-stamp-chip {
+  font-size: 11px;
+  padding: 2px 8px;
+  margin-left: 8px;
+}
+.wl-stamp-case {
+  font-size: 14px;
+  padding: 4px 12px;
+}
+.wl-hunch-label {
+  color: var(--subject-color, #6e4a0e);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 12px;
+}
+.wl-grandpa {
+  display: flex;
+  align-items: flex-end;
+  gap: 14px;
+  margin-top: 14px;
+}
+.wl-grandpa img {
+  height: 118px;
+  width: auto;
+  flex: none;
+}
+.wl-grandpa-line {
+  background: #fffdf6;
+  border: 2px solid #26335e;
+  border-radius: 16px;
+  box-shadow: 0 4px 0 rgba(38, 51, 94, 0.3);
+  color: #26335e;
+  font-weight: 700;
+  padding: 10px 14px;
+  margin-bottom: 18px;
+}
+.wl-flap-scene {
+  position: relative;
+  perspective: 900px;
+}
+.wl-flap {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-height: 44px;
+  background: #f6efdb;
+  border: 2px dashed #6e4a0e;
+  border-radius: 16px;
+  color: #3d2c07;
+  cursor: pointer;
+  transform-origin: top center;
+}
+.wl-flap-title {
+  font-size: 20px;
+  font-weight: 800;
+}
+.wl-flap-sub {
+  font-size: 14px;
+  font-weight: 600;
+}
+.wl-flap.is-lifting {
+  animation: wl-flap-lift 0.38s ease-out forwards;
+}
+@keyframes wl-flap-lift {
+  55% {
+    opacity: 1;
+  }
+  100% {
+    transform: rotateX(-72deg);
+    opacity: 0;
+  }
+}
+
+/* ADOPTION MOCK (staging only): the INTERACTABLE prototype —
+   playable coin scene + motion explanation (owner direction
+   2026-11-24 15:32 CST). See adoption-play.tsx. */
+.wl-play {
+  border: 2px solid #d8c491;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #fdf6df, #f6ead0);
+  padding: 10px;
+}
+.wl-play-counts {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  min-height: 26px;
+  margin-bottom: 8px;
+}
+.wl-count-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 30px;
+  height: 24px;
+  padding: 0 7px;
+  border-radius: 9999px;
+  background: #26335e;
+  color: #ffe9a8;
+  font-size: 13px;
+  font-weight: 800;
+  animation: wl-chip-pop 0.3s ease-out;
+}
+@keyframes wl-chip-pop {
+  0% {
+    transform: scale(0.4);
+  }
+  70% {
+    transform: scale(1.18);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.wl-play-count-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #6e4a0e;
+}
+.wl-play-spill {
+  position: relative;
+  height: 192px;
+  border-radius: 12px;
+  background: rgba(180, 140, 60, 0.08);
+  margin-bottom: 10px;
+}
+.wl-coin {
+  position: absolute;
+  width: 34px;
+  height: 34px;
+  border-radius: 9999px;
+  border: 2px solid #a86e0a;
+  background: radial-gradient(circle at 35% 30%, #ffe9a8, #f5c542 55%, #d99a16);
+  box-shadow: inset 0 0 0 3px rgba(255, 248, 225, 0.65), 0 2px 3px rgba(61, 44, 7, 0.35);
+  color: #a86e0a;
+  font-size: 14px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  touch-action: none;
+  cursor: grab;
+  transition: transform 0.18s ease-out;
+}
+.wl-coin:disabled {
+  cursor: default;
+  opacity: 0.92;
+}
+.wl-play.is-reduced .wl-coin {
+  transition: none;
+}
+.wl-play-done {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 6px;
+  text-align: center;
+  font-weight: 800;
+  color: #3d2c07;
+  font-size: 15px;
+}
+.wl-play-trays {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+.wl-tray {
+  position: relative;
+  aspect-ratio: 4 / 3.6;
+  border: 2px dashed rgba(110, 74, 14, 0.45);
+  border-radius: 12px;
+  background: rgba(255, 253, 246, 0.55);
+}
+.wl-tray.is-current {
+  border: 2px solid #d99a16;
+  background: #fff3cf;
+  box-shadow: 0 0 0 3px rgba(245, 197, 66, 0.35);
+}
+.wl-tray.is-locked {
+  border: 2px solid #047857;
+  border-style: solid;
+  background: #e9f7ef;
+}
+.wl-coin-in-tray {
+  width: 21px;
+  height: 21px;
+  font-size: 9px;
+  border-width: 1.5px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+.wl-tray-count {
+  position: absolute;
+  top: -8px;
+  right: -6px;
+  min-width: 24px;
+  height: 20px;
+  padding: 0 5px;
+  border-radius: 9999px;
+  background: #047857;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  animation: wl-chip-pop 0.3s ease-out;
+}
+.wl-explain {
+  margin-top: 12px;
+  border: 2px solid #d8c491;
+  border-radius: 14px;
+  background: #fffdf6;
+  padding: 10px;
+}
+.wl-explain-title {
+  font-weight: 800;
+  color: #3d2c07;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+.wl-explain-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 100 / 68;
+  container-type: size;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #fdf6df, #f6ead0);
+  overflow: hidden;
+}
+.wl-explain-tray {
+  position: absolute;
+  border: 2px dashed rgba(110, 74, 14, 0.4);
+  border-radius: 10px;
+  background: rgba(255, 253, 246, 0.5);
+}
+.wl-explain-coin {
+  width: 6.2%;
+  aspect-ratio: 1;
+  height: auto;
+  font-size: 10px;
+  border-width: 1.5px;
+  transform: translate(-50%, -50%);
+  animation: wl-explain-move 0.65s ease-in-out both;
+}
+.wl-explain-stage.is-still .wl-explain-coin {
+  animation: none;
+}
+@keyframes wl-explain-move {
+  0% {
+    transform: translate(calc(-50% + var(--fx)), calc(-50% + var(--fy)));
+  }
+  100% {
+    transform: translate(-50%, -50%);
+  }
+}
+.wl-explain-badge {
+  position: absolute;
+  min-width: 26px;
+  height: 22px;
+  padding: 0 6px;
+  border-radius: 9999px;
+  background: #26335e;
+  color: #ffe9a8;
+  font-size: 12px;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateX(-50%);
+  animation: wl-chip-pop 0.3s ease-out both;
+}
+.wl-explain-stage.is-still .wl-explain-badge {
+  animation: none;
+}
+.wl-explain-replay {
+  margin-top: 8px;
+  min-height: 44px;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  border: 2px solid #26335e;
+  background: #fff;
+  color: #26335e;
+  font-weight: 700;
+  font-size: 14px;
+}

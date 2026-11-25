@@ -90,6 +90,7 @@ import { WhyLearnHero } from "./WhyLearnHero";
 import { WhyLearnDrift } from "./WhyLearnDrift";
 import { WhyLearnWorld } from "./WhyLearnWorld";
 import { GkGlobeOverlay } from "./GkGlobeOverlay";
+import { grandpaStaticUrl } from "@/components/storyteller-lines";
 
 /** Entrance cascade for the cards (the approved mock's uneven
  *  stagger on the shared atlas-rise), by row index. */
@@ -117,6 +118,19 @@ const SUBJECT_ONE_LINERS: Record<string, string> = {
   // on the way.") lives at the render site, picked by row state —
   // a released card must not promise what it already delivers.
   journals: "Field notes from real places",
+};
+
+/* ADOPTION MOCK (staging only — never a PR): Lane C subject colour
+ * token values + Lane A stamp derivation. Production home per the
+ * specs: the registry record (colour) and subject-progress.ts
+ * (isBandComplete helper). */
+const SUBJECT_COLORS: Record<string, string> = {
+  math: "#1d4ed8",
+  physics: "#7c3aed",
+  chemistry: "#047857",
+  "social-studies": "#b45309",
+  "general-knowledge": "#0e7490",
+  journals: "#be185d",
 };
 
 type CaseComponent = ComponentType<
@@ -315,7 +329,7 @@ export default function SubjectPicker({
 
   return (
     <main
-      className="mode-screen mx-auto flex min-h-dvh w-full max-w-(--page-wide) flex-col px-5 pt-2 pb-8 why-learn-screen subject-picker-screen"
+      className="mode-screen mx-auto flex min-h-dvh w-full max-w-(--page-wide) flex-col px-5 pt-2 pb-8 why-learn-screen subject-picker-screen wl-adoption-mock"
       data-testid="subject-picker"
       data-band={band}
     >
@@ -359,6 +373,14 @@ export default function SubjectPicker({
           </div>
         </div>
       </div>
+      {/* ADOPTION MOCK (staging only): Lane C / P3 — Grandpa's one
+          static presence on this page, beside the hero, never over
+          a card, film or tap zone. Placeholder line; copy is an
+          owner decision in the real lane. */}
+      <div className="wl-grandpa" aria-hidden="true">
+        <img src={grandpaStaticUrl()} alt="" />
+        <p className="wl-grandpa-line">Pick a case — I will be right here.</p>
+      </div>
       <WhyLearnDrift />
       {/* The band control lives in the title block above — there
           is deliberately no second control below the hero. One
@@ -388,12 +410,23 @@ export default function SubjectPicker({
           const stillUrl = SUBJECT_CARD_STILLS[row.id];
           const riseDelay = `${RISE_DELAYS_MS[i] ?? 1500}ms`;
           const hasProgress = (subjectProgress[row.id]?.length ?? 0) > 0;
+          /* ADOPTION MOCK: Lane A stamp derivation — every unit of
+           * the current band solved (spec's primary form). */
+          const bandUnits = row.module?.units.filter((u) => u.group === band) ?? [];
+          const solvedIds = subjectProgress[row.id] ?? [];
+          const stampEarned =
+            bandUnits.length > 0 && bandUnits.every((u) => solvedIds.includes(u.id));
           return (
             <li key={row.id} className="relative flex">
               <button
                 type="button"
                 className={`why-learn-card home-rise flex w-full flex-col p-4 text-left text-fg${ready ? "" : " is-soon"}${spotIndex === i ? " is-spot" : ""}`}
-                style={{ "--rise-delay": riseDelay } as CSSProperties}
+                style={
+                  {
+                    "--rise-delay": riseDelay,
+                    "--subject-color": SUBJECT_COLORS[row.id] ?? "#6e4a0e",
+                  } as CSSProperties
+                }
                 data-testid={`subject-row-${row.id}`}
                 disabled={!ready}
                 aria-disabled={ready ? undefined : "true"}
@@ -432,6 +465,11 @@ export default function SubjectPicker({
                     >
                       {ready ? `${row.caseCount} ${row.caseCount === 1 ? "case" : "cases"}` : "Coming soon"}
                     </span>
+                    {stampEarned ? (
+                      <span className="wl-stamp wl-stamp-chip" aria-hidden="true">
+                        ★ Proved
+                      </span>
+                    ) : null}
                   </span>
                   <span className="mt-1 text-sm text-muted">
                     {row.id === "journals" && !ready
