@@ -17,6 +17,7 @@ import {
   type RefObject,
 } from "react";
 import { isUncleanShutdown, clearRunAfterUncleanShutdown } from "@/game/clean-exit";
+import { initObservability } from "@/lib/observability";
 import { loadFlags, isEnabled } from "@/lib/flags";
 import {
   decodeChallenge,
@@ -144,6 +145,15 @@ export function useShellRouter(deps: ShellRouterDeps) {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
+    // Observability boot — MUST run first, before the crash-loop breaker
+    // below consumes the clean-exit state: initObservability() reads the
+    // previous breadcrumb and, when isUncleanShutdown() is true, queues
+    // exactly one suspected_crash event carrying that trail (see
+    // src/lib/observability.ts — a jetsam kill cannot beacon during the
+    // kill; detection is by asymmetry at next boot). Events queue in
+    // memory until flags resolve and provide the endpoint (possibly
+    // null = transport disabled), then flush. Never throws.
+    initObservability();
     // Crash-loop breaker: the previous page wrote a run but never unloaded
     // — the process was killed mid-game. Clear the stale run and land on
     // the menu instead of replaying the identical heavy path. A missing

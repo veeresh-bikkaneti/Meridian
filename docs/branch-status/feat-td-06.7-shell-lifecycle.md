@@ -64,15 +64,20 @@
   `game-app.tsx` 8,274 -> 7,701 lines; ceiling lowered to 7,701.
   Map Step 10 marked done. Review fixes 2 (territory pins), 3 (M6
   regex), 4 (Step 10) all landed; narrow tests green.
-- Entry-size overage: 324,895 B gzip vs 323,865 B limit (+1,030 B).
-  STILL FAILING after Step 10. Root cause: the four hook extractions
-  add ~1,073 B of routes-chunk overhead (base 323,822 B -> 324,895 B;
-  routes chunk +2,559 raw bytes; index.js byte-identical). The code
-  moved, it did not grow — the overhead is the module boundaries +
-  named deps-object property names + reduced minification across
-  modules. No duplication, no dead code, no new modules. Fix needs
-  an owner decision (limit, or a deeper bundle restructure such as
-  lazy-loading territory / session / journal data out of the entry).
+- Entry-size cap raised (owner ruling 2026-11-25) from 323,865 B to
+  324,995 B for this PR only (follow-up #621 restores it). Entry is
+  324,895 B — 100 B to spare, gate PASSES.
+- Boot-order fix (e2e FAIL on head 7d2f4796): Step 10 flipped the boot
+  order — the crash-loop breaker in the router ran before
+  `initObservability()` in game-app, so CLEAN_EXIT_KEY was set to "1"
+  before observability read "0" and `suspected_crash` never fired.
+  Fixed: `initObservability()` now runs at the START of the router
+  boot effect, before the `isUncleanShutdown()` branch; the game-app
+  call + import removed; the game-app comment updated to point at the
+  router. `game-app.tsx` 7,701 -> 7,695 lines; ceiling lowered to
+  7,695. Verified: observability e2e :26 + :160 both PASS (the two
+  suspected_crash specs); tsc, lint:arch, lint:nav --max-warnings 0,
+  entry-size, game-app-size, provenance, narrow tests all PASS.
 - Then: lower `GAME_APP_SIZE_CEILING` to the new `wc -l`, update
   `docs/architecture/game-app-map.md` steps 5, 6, 7, 10 to done,
   run the full gates, open the draft PR.

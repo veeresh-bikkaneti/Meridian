@@ -236,7 +236,6 @@ import { withChunkTimeout } from "@/lib/chunk-timeout";
 import { resolveGlobeTierSplit } from "@/lib/globe-tier-split";
 import {
   emitEvent,
-  initObservability,
   installGlobalErrorHandlers,
   noteRecoverySignal,
   recordMilestone,
@@ -1825,15 +1824,10 @@ export function GameApp() {
    * the kill, the session clear, and the shadow clear always run. The
    * body boot passes it when an mc2 notice is preserved. */
   useEffect(() => {
-    // Observability boot — MUST run before the crash-loop breaker effect
-    // below consumes the clean-exit state: initObservability() reads the
-    // previous breadcrumb and, when isUncleanShutdown() is true, queues
-    // exactly one suspected_crash event carrying that trail (see
-    // src/lib/observability.ts — a jetsam kill cannot beacon during the
-    // kill; detection is by asymmetry at next boot). Events queue in
-    // memory until flags resolve and provide the endpoint (possibly
-    // null = transport disabled), then flush. Never throws.
-    initObservability();
+    // Observability boots in the router (use-shell-router.ts) at the
+    // start of the boot effect, before the crash-loop breaker reads the
+    // clean-exit state — see there. This effect installs the global
+    // error handlers and the stale-chunk recovery hook.
     installGlobalErrorHandlers();
     // Stale-chunk auto-recovery: registered at boot, before any lazy
     // screen import can fire, so a deploy that lands mid-session
