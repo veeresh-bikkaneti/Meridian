@@ -10,8 +10,10 @@ ingest. `[[wikilinks]]` are relative to `wiki/`.
 
 ## Sources
 
-None yet. Source summaries will appear in `wiki/sources/` after the
-first ingest. (source: raw/README.md)
+- [[architect-pack-2026-11-23]] — Architect review pack v2
+  (2026-11-23): the 29-row register of planned features plus the
+  architecture programme, each row with its brief and evidence.
+  (source: raw/architect-pack-2026-11-23/AUDIT-TABLE.md)
 
 ## Entities
 
