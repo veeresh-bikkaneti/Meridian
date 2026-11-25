@@ -669,10 +669,12 @@ describe("shell-ban baseline (KNOWN/STALE)", () => {
     // lg:max-w-none is gone — so the maxWNone baseline is empty.
     maxWNone: [],
     pageLocalHeaderFooter: [],
-    pageLocalNav: ["src/components/grownups/info-page.tsx", "src/routes/board.tsx"],
+    // TD-05.3: the board's view switcher renders through ContentNav
+    // (the content-nav owner); the router error page (ErrorScreen)
+    // and the board left pageLocalMain.
+    pageLocalNav: ["src/components/grownups/info-page.tsx"],
     pageLocalMain: [
       "src/components/game-app.tsx",
-      "src/routes/board.tsx",
       "src/subjects/shared/SubjectCase.tsx",
       "src/subjects/shared/SubjectPicker.tsx",
     ],

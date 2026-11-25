@@ -94,7 +94,7 @@ test("trail: snapshot picture, honestly labelled, when the live check cannot com
 
   // Readability law over the rendered DOM: no PR numbers, no code
   // terms, no story-id slugs as visible text.
-  const bodyText = await page.locator("main").innerText();
+  const bodyText = await page.locator(".board-v3").innerText();
   expect(bodyText).not.toMatch(/PR #|pull request|github/i);
   expect(bodyText).not.toMatch(/#\d{3}\b/);
   expect(bodyText.toLowerCase()).not.toMatch(/\bxp\b|\bpoints\b/);
@@ -120,7 +120,7 @@ test("the board renders the published file's words (fulfilled file, renamed stor
     route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(published) }),
   );
   await openBoard(page);
-  await expect(page.locator("main")).toContainText("ZZZ Published File Story");
+  await expect(page.locator(".board-v3")).toContainText("ZZZ Published File Story");
 });
 
 test("cleanup: life pills carry the delivered %, stories sit in their four groups", async ({
@@ -145,7 +145,7 @@ test("cleanup: life pills carry the delivered %, stories sit in their four group
   // one of the missing rows — no section, no "nothing here" line.
   await expect(page.getByTestId("v3-story-group")).toHaveCount(18);
   await expect(page.locator('[data-testid="v3-story-group"][data-group="blocked"]')).toHaveCount(0);
-  await expect(page.locator("main")).not.toContainText("Nothing waiting right now");
+  await expect(page.locator(".board-v3")).not.toContainText("Nothing waiting right now");
   // The frontier story sits in its feature's In progress group.
   await expect(
     page.locator(
@@ -278,7 +278,7 @@ test("calm mode stills every loop; the tip form wears its §5 costume", async ({
   await page.setViewportSize({ width: 1280, height: 900 });
   await openBoard(page);
   await page.getByTestId("board-calm-toggle").click();
-  await expect(page.locator("main.board-v3")).toHaveClass(/v3-calm/);
+  await expect(page.locator(".board-v3")).toHaveClass(/v3-calm/);
   const animName = await page
     .locator('[data-anim="sum"] .sum-a')
     .evaluate((el) => getComputedStyle(el).animationName);
@@ -295,7 +295,7 @@ test("calm mode stills every loop; the tip form wears its §5 costume", async ({
   });
   await page.getByTestId("board-nav-tip").click();
   await expect(page.getByRole("heading", { name: "Ask for something new" })).toBeVisible();
-  await expect(page.locator("main")).toContainText(
+  await expect(page.locator(".board-v3")).toContainText(
     "Hey — you can request a feature! Tell us what your child would love to play or learn next.",
   );
   const form = page.getByTestId("feature-request-form");
@@ -430,7 +430,7 @@ test("theme switch: dark system loads on system, flips to Light live, persists, 
   await page.emulateMedia({ colorScheme: "dark" });
   await page.setViewportSize({ width: 1280, height: 900 });
   await openBoard(page);
-  const main = page.locator("main.board-v3");
+  const main = page.locator(".board-v3");
   // System default: no override attribute — the media query rules.
   await expect(main).not.toHaveAttribute("data-board-theme", /.*/);
   await page.getByTestId("board-nav-map").click();
@@ -464,7 +464,7 @@ test("theme switch: light system loads on system and flips to Dark live", async 
   await page.emulateMedia({ colorScheme: "light" });
   await page.setViewportSize({ width: 1280, height: 900 });
   await openBoard(page);
-  const main = page.locator("main.board-v3");
+  const main = page.locator(".board-v3");
   await expect(main).not.toHaveAttribute("data-board-theme", /.*/);
   await page.getByTestId("board-nav-map").click();
   const stage = page.getByTestId("v3-map-stage");
@@ -728,7 +728,7 @@ test("390px: controls hide behind the Menu bar — open, Esc, outside tap, theme
   // not a navigation).
   await menuButton.click();
   await page.getByTestId("board-theme-dark").click();
-  await expect(page.locator("main.board-v3")).toHaveAttribute("data-board-theme", "dark");
+  await expect(page.locator(".board-v3")).toHaveAttribute("data-board-theme", "dark");
   await expect(menuButton).toHaveAttribute("aria-expanded", "true");
 
   // Picking a view navigates and closes the panel.
@@ -748,7 +748,7 @@ test("v4 trail: features first, stories inside, traveller on the trail, no inter
   await expect(page.getByTestId("board-progress-line")).toContainText("ON THE TRAIL");
   await expect(page.locator(".v4-traveller")).toBeAttached();
   // No dev language, no internal epic anywhere on the trail.
-  const bodyText = await page.locator("main").innerText();
+  const bodyText = await page.locator(".board-v3").innerText();
   expect(bodyText).not.toContain("Behind the Scenes");
   expect(bodyText).not.toContain("How Meridian Is Made");
   expect(bodyText).not.toContain("Subject registry");

@@ -27,9 +27,10 @@
  * 4. Page-local <nav> / <main> elements (PR 3 Step 5): the header's
  *    nav lives in SiteHeader, and a screen's <main> root is part of
  *    its shell adoption record (shell-registry.ts). Today's <main>
- *    hosts and the two content navs (the grown-ups doors, the
- *    board's view switcher) are baselined, shrink-only; a new file
- *    that hand-builds either fails here.
+ *    hosts are baselined, shrink-only. Content navs (the grown-ups
+ *    doors, the board's view switcher) render through ContentNav
+ *    (src/components/ui/content-nav.tsx) since TD-05.3; a new file
+ *    that hand-builds either element fails here.
  *
  * The bans are three rules of one local plugin, not three
  * no-restricted-syntax blocks: flat-config blocks that set the same
@@ -144,8 +145,10 @@ const shellPlugin = {
 /** The shared components own the only sanctioned <header>/<footer>. */
 const HEADER_FOOTER_OWNERS = ["src/components/ui/site-header.tsx", "src/components/ui/site-footer.tsx"];
 
-/** SiteHeader owns the only sanctioned header <nav>. */
-const NAV_OWNERS = ["src/components/ui/site-header.tsx"];
+/** SiteHeader owns the only sanctioned header <nav>; ContentNav
+ *  (TD-05.3) owns the only sanctioned content <nav> (the grown-ups
+ *  doors, the board's view switcher). */
+const NAV_OWNERS = ["src/components/ui/site-header.tsx", "src/components/ui/content-nav.tsx"];
 
 /** The sanctioned host of the home control itself: SiteHeader
  *  (every adopted screen's header). ScreenShell, the other host,

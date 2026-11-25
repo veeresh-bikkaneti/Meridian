@@ -30,6 +30,7 @@ import { flagsRemoteApplied, isEnabled, loadFlags } from "@/lib/flags";
 import { postText } from "../platform/transport/browser-transport.ts";
 import { SiteHeader } from "@/components/ui/site-header";
 import { SiteFooter } from "@/components/ui/site-footer";
+import { ContentNav } from "@/components/ui/content-nav";
 import "@/board/board.css";
 import { getStorageItem, setStorageItem } from "../platform/storage/browser-storage.ts";
 import { STORAGE_KEYS } from "../platform/storage/keys.ts";
@@ -318,7 +319,7 @@ function BoardPage() {
   /* Parallax ground (v4 sample): two fixed layers drift at different
    * rates against scroll, as CSS vars on the board root. Frozen under
    * Calm mode and prefers-reduced-motion — the ground simply rests. */
-  const mainRef = useRef<HTMLElement>(null);
+  const mainRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const main = mainRef.current;
     if (!main) return;
@@ -344,8 +345,11 @@ function BoardPage() {
     return () => window.removeEventListener("scroll", onScroll);
   }, [calm, view]);
 
+  /* The page root is a plain element: the board renders the shared
+     frame (SiteHeader + SiteFooter) and no page-local main landmark, like
+     every other shell-adopted screen (TD-05.3). */
   return (
-    <main
+    <div
       ref={mainRef}
       className={`board-v3${calm ? " v3-calm" : ""}${view === "trail" ? " v4-trail-page" : ""}`}
       data-board-theme={themeChoice === "system" ? undefined : themeChoice}
@@ -403,7 +407,7 @@ function BoardPage() {
           </div>
         ) : null}
 
-        <nav className="v3-viewnav" aria-label="Board views" ref={viewnavRef}>
+        <ContentNav className="v3-viewnav" label="Board views" ref={viewnavRef}>
           <div className="v3-menubar">
             <button
               type="button"
@@ -504,7 +508,7 @@ function BoardPage() {
           </div>
           </div>
           </div>
-        </nav>
+        </ContentNav>
 
         {toast ? (
           <p className="v3-toast" role="status" data-testid="board-toast">
@@ -566,6 +570,6 @@ function BoardPage() {
           }
         />
       </div>
-    </main>
+    </div>
   );
 }
