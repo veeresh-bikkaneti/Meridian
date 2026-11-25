@@ -298,6 +298,9 @@ function takeSeatTags(acc: DerivedAcc, labels: string[] | undefined): void {
  * every pull number is kept as a chip. The title is the newest
  * pull's title, else the branch name.
  */
+/** The repo's default branch; never a card of its own. */
+const DEFAULT_BRANCH = "main";
+
 export function deriveBoardItems(
   pulls: ReadonlyMap<number, PullInfo>,
   branches: ReadonlySet<string>,
@@ -349,7 +352,8 @@ export function deriveBoardItems(
   }
 
   for (const name of branches) {
-    if (headRefs.has(name)) continue;
+    // The default branch is the trunk, not a piece of work.
+    if (headRefs.has(name) || name === DEFAULT_BRANCH) continue;
     const key = extractItemKey(name);
     if (key && byKey.has(key)) {
       byKey.get(key)?.texts.push(name);
@@ -835,10 +839,12 @@ export interface LaneCensus {
  * both numbers at the window size. A live or mapped id the
  * stale ledger lacks (TD-06.5, TD-08.1, TD-10.5) still counts,
  * and a ledger id whose PR has fallen out of the window counts
- * too. Lane assignment prefers the ledger's own lane for an id;
- * an id only the map or the window knows takes the lane its
- * number derives (TD → tech-debt). Unnumbered live cards count
- * in neither figure; they are reported separately.
+ * too. Lane assignment uses the same rule as the cards: a live
+ * card's own lane when the window holds that id, otherwise
+ * `laneForItem` on the id (TD → tech-debt), never the ledger's
+ * hand-set lane — so each tab's counts match the cards it shows.
+ * Unnumbered live cards count in neither figure; they are
+ * reported separately.
  */
 export function boardCensus(
   snapshot: Snapshot,
@@ -846,21 +852,17 @@ export function boardCensus(
 ): Record<Lane | "all", LaneCensus> {
   const storyLane = new Map<string, Lane>();
   const taskLane = new Map<string, Lane>();
-  const addTask = (num: string, lane: Lane) => {
-    if (!taskLane.has(num)) taskLane.set(num, lane);
+  const add = (num: string, lane: Lane) => {
     const story = storyNumOf(num);
-    if (story && !storyLane.has(story)) storyLane.set(story, lane);
-  };
-  for (const story of snapshot.stories) {
-    if (!storyLane.has(story.num)) storyLane.set(story.num, story.lane);
-  }
-  for (const sub of snapshot.subtasks) addTask(sub.num, sub.lane);
-  for (const row of PR_NUMBER_MAP) {
-    for (const id of row.ids) {
-      if (storyNumOf(id)) addTask(id, laneForItem(id, []));
-      else if (!storyLane.has(id)) storyLane.set(id, laneForItem(id, []));
+    if (!story) {
+      if (!storyLane.has(num)) storyLane.set(num, lane);
+      return;
     }
-  }
+    if (!taskLane.has(num)) taskLane.set(num, lane);
+    if (!storyLane.has(story)) storyLane.set(story, lane);
+  };
+  // Live cards first, so an id the window holds takes the exact
+  // lane its card is filed under.
   let unnumbered = 0;
   const unnumberedByLane: Record<Lane, number> = {
     "tech-debt": 0,
@@ -873,8 +875,13 @@ export function boardCensus(
       unnumberedByLane[item.lane] += 1;
       continue;
     }
-    if (storyNumOf(item.num)) addTask(item.num, item.lane);
-    else if (!storyLane.has(item.num)) storyLane.set(item.num, item.lane);
+    add(item.num, item.lane);
+  }
+  // Ledger and map ids take the cards' rule, not the ledger lane.
+  for (const story of snapshot.stories) add(story.num, laneForItem(story.num, []));
+  for (const sub of snapshot.subtasks) add(sub.num, laneForItem(sub.num, []));
+  for (const row of PR_NUMBER_MAP) {
+    for (const id of row.ids) add(id, laneForItem(id, []));
   }
   const census = {} as Record<Lane | "all", LaneCensus>;
   const lanes: Lane[] = ["tech-debt", "architecture", "product"];

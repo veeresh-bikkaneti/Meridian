@@ -218,6 +218,23 @@ test("backfilled numbers show live, genuine unknowns stay Unnumbered, counts are
   // 19 stories and 47 tasks — distinct numbers, and neither is
   // the 3-pull fixture window length.
   await expect(page.getByRole("button", { name: /19 stories, 47 tasks/ })).toBeVisible();
+
+  // Each tab's counts use the cards' lane rule (every TD id is
+  // tech-debt): a tab that counts ids shows their cards, and a
+  // tab with no numbered cards counts none.
+  const tab = (label: string) =>
+    page.getByRole("group", { name: "Swimlane" }).getByRole("button", { name: label });
+  await expect(tab("Tech debt · 16 stories, 40 tasks")).toBeVisible();
+  await expect(tab("Architecture · 0 stories, 0 tasks")).toBeVisible();
+  await expect(tab("Product · 3 stories, 7 tasks")).toBeVisible();
+  const numberedCards = page.locator('.kb-story[data-group="numbered"]');
+  await tab("Tech debt · 16 stories, 40 tasks").click();
+  await expect(numberedCards).toHaveCount(2);
+  await expect(numberedCards.and(page.locator('[data-lane="tech-debt"]'))).toHaveCount(2);
+  await tab("Architecture · 0 stories, 0 tasks").click();
+  await expect(numberedCards).toHaveCount(0);
+  await tab("Product · 3 stories, 7 tasks").click();
+  await expect(numberedCards).toHaveCount(0);
   await expect(
     page.getByText("Counts include the checked-in ledger plus the last 100 updated PRs"),
   ).toBeVisible();

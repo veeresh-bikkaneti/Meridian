@@ -980,11 +980,39 @@ describe("boardCensus (TD-08.5 live counts)", () => {
     // TD-10.5 as tasks and TD-08 as a story — ids the stale
     // ledger does not hold.
     assert.deepEqual(census.all, { stories: 19, tasks: 47, unnumbered: 0 });
-    assert.equal(census["tech-debt"].stories, 8);
-    assert.equal(census["tech-debt"].tasks, 17);
-    assert.equal(census.architecture.tasks, 23);
-    assert.equal(census.product.stories, 3);
+    // Lanes follow the cards' rule (every TD id is tech-debt),
+    // not the ledger's hand-set architecture lane.
+    assert.deepEqual(census["tech-debt"], { stories: 16, tasks: 40, unnumbered: 0 });
+    assert.deepEqual(census.architecture, { stories: 0, tasks: 0, unnumbered: 0 });
+    assert.deepEqual(census.product, { stories: 3, tasks: 7, unnumbered: 0 });
     assert.notEqual(census.all.stories, census.all.tasks);
+  });
+
+  it("never turns the default branch into an Unnumbered card", () => {
+    const items = deriveBoardItems(new Map(), new Set(["main", "spike-notes"]));
+    assert.deepEqual(
+      items.map((item) => item.title),
+      ["spike-notes"],
+    );
+  });
+
+  it("files each live id under the same lane as its card", () => {
+    const items = deriveBoardItems(
+      pullsOf(
+        [9003, { title: "TD-06.6 age-profile host", headRef: "phase2/td-06.6-age-host" }],
+        [9004, { title: "FW-77.1 arch-pages tidy", headRef: "arch-pages/fw-77.1" }],
+      ),
+      new Set(),
+    );
+    const byNum = new Map(items.map((item) => [item.num, item.lane]));
+    assert.equal(byNum.get("TD-06.6"), "tech-debt");
+    assert.equal(byNum.get("FW-77.1"), "architecture");
+    const census = boardCensus(snapshot(), items);
+    // TD-06.6 is new, so tech-debt gains one task; FW-77 and
+    // FW-77.1 land in architecture, exactly where the card sits.
+    assert.deepEqual(census["tech-debt"], { stories: 16, tasks: 41, unnumbered: 0 });
+    assert.deepEqual(census.architecture, { stories: 1, tasks: 1, unnumbered: 0 });
+    assert.deepEqual(census.product, { stories: 3, tasks: 7, unnumbered: 0 });
   });
 
   it("is not the window length: a 3-pull window still yields the full census", () => {
