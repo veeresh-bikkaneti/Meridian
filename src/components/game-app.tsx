@@ -274,6 +274,7 @@ import {
   peekLoopProgress,
 } from "@/game/loop/store";
 import { writeColdTrailOpen } from "@/game/coldtrail/store";
+import { ColdTrailHost } from "@/game/coldtrail/ColdTrailHost";
 // F2 bundle split: GeoDetective (Loop) and Cold Trail are play-intent
 // screens — they render only when the player opens them (B7: never on
 // boot from a saved loopOpen flag — tap-in only). Both screens statically
@@ -285,7 +286,6 @@ import { writeColdTrailOpen } from "@/game/coldtrail/store";
 // default export, so the lazy factories adapt their named exports (the
 // HomeGlobe idiom above).
 const loadLoopScreen = () => import("@/game/loop/LoopScreen");
-const loadTrailScreen = () => import("@/game/coldtrail/TrailScreen");
 const loadSubjectPicker = () => import("@/subjects/shared/SubjectPicker");
 // #209: each lazy load is raced against CHUNK_LOAD_TIMEOUT_MS (inside
 // withChunkTimeout) — a HUNG import never settles, so without the race
@@ -294,11 +294,6 @@ const loadSubjectPicker = () => import("@/subjects/shared/SubjectPicker");
 const LoopScreen = lazy(() =>
   withChunkTimeout(loadLoopScreen(), "GeoDetective screen").then((m) => ({
     default: m.LoopScreen,
-  })),
-);
-const TrailScreen = lazy(() =>
-  withChunkTimeout(loadTrailScreen(), "Cold Trail screen").then((m) => ({
-    default: m.TrailScreen,
   })),
 );
 // Subject picker (why-learn card): same lazy discipline — it loads
@@ -2302,7 +2297,7 @@ export function GameApp() {
         {mapModeAnnouncer}
         <MapErrorBoundary surface="Cold Trail">
           <Suspense fallback={<SessionLoadingFallback label="Loading Cold Trail…" />}>
-            <TrailScreen onLeave={() => { writeColdTrailOpen(false); setColdTrailOpen(false); }} />
+            <ColdTrailHost onLeave={() => setColdTrailOpen(false)} />
           </Suspense>
         </MapErrorBoundary>
         {celebrationOverlay}
