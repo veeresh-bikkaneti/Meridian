@@ -168,6 +168,7 @@ import {
 import { useAgeProfileHost } from "./age-profile/use-age-profile-host";
 import { useShellSession } from "./use-shell-session";
 import { useOverlayQueue } from "./use-overlay-queue";
+import { useRunController } from "./use-run-controller";
 
 type LegacySnapshotBand = Exclude<BandRunConfig["band"], AgeBandId>;
 
@@ -265,7 +266,6 @@ import { TILE_FALLBACK_COPY } from "@/map/tile-fallback-copy.ts";
 import { MapModeToggle } from "./map-mode-toggle.tsx";
 import {
   TUTORIAL_EDITION,
-  TUTORIAL_PLACE_ID,
   TUTORIAL_REGION_ID,
   TUTORIAL_REGION_NAME,
   hasSeenTutorial,
@@ -871,27 +871,6 @@ function recordChallengeCompletion(run: Run): {
     incomingBest: run.challengeWinner?.bestScore ?? null,
   });
   return { attempts, minted };
-}
-
-function writeRun(run: Run) {
-  try {
-    // Each challenge format persists to its OWN slot (pausedRunMc3,
-    // pausedRunMc2) so a build from before that format existed never
-    // sees its saves (§Q1-A4); everything else keeps the shipped slot.
-    const def =
-      run.challengeOrigin === "mc3"
-        ? STORAGE_KEYS.pausedRunMc3
-        : run.challengeOrigin === "mc2"
-          ? STORAGE_KEYS.pausedRunMc2
-          : STORAGE_KEYS.pausedRun;
-    setSessionStorageItem(def, run);
-    // Crash-loop breaker: this page now holds unsaved-crash state. If the
-    // process is killed without unloading, the next boot must not
-    // auto-resume; `pagehide` clears this flag on every clean unload.
-    stampCleanExitDirty();
-  } catch {
-    // The run still lives in memory when storage is blocked.
-  }
 }
 
 /**
@@ -1625,14 +1604,22 @@ export function GameApp() {
     clearMc3Run,
   });
 
-  const commit = useCallback((next: Run) => {
-    writeRun(next);
-    setRun(next);
-    // A new or continued run retires any boot discard notice: the
-    // notice describes a game that is gone, and returning home later
-    // (Editions) must not resurrect it beside the fresh game.
-    setDiscardedNotice(null);
-  }, []);
+  // Step 7 — run controller: commit, openRun, startReview (use-run-controller).
+  const { commit, openRun, startReview } = useRunController({
+    runStartGenRef,
+    setRun,
+    setMenu,
+    setStarting,
+    setStartError,
+    setTutorial,
+    setCleared,
+    setDiscardedNotice,
+    ensureSession,
+    difficultyChoice,
+    readRun,
+    poolForRunStart,
+    globeTierSplitFor,
+  });
 
   /**
    * The welcome card's Start tap — the moment a received mc2 challenge
@@ -2617,215 +2604,6 @@ export function GameApp() {
     window.location.reload();
   }, []);
 
-  const openRun = useCallback(
-    async (
-      edition: Edition,
-      regionId: string,
-      regionName: string,
-      choice: PickerDifficulty,
-      // `fresh` forces a brand-new run instead of resuming the saved one.
-      // The celebration's replay/promotion buttons always pass it: the
-      // just-finished run (phase "done") is resumable, so resumeRun would
-      // return it unchanged and the replay would never restart.
-      // `tutorial` starts the isolated first-run practice round: a single
-      // fixed famous place, no seen-history side effects, no cleared-mode
-      // backstop — the tour is unscored practice, never a real run.
-      opts?: { fresh?: boolean; tutorial?: boolean },
-    ) => {
-      // BLOCK-A: stamp this start (see runStartGenRef). A manual
-      // map-mode switch — or a newer start — bumps the generation and
-      // makes this one stale; the checks after the awaits below then
-      // bail instead of committing a run nobody is waiting for.
-      const gen = ++runStartGenRef.current;
-      // Edition entrance fanfare: the player is making their grand arrival
-      // into an edition (gladiator-into-the-arena energy). Not for the
-      // tutorial (quiet practice round).
-      if (!opts?.tutorial && soundAudible()) safePlay(playEditionEntrance);
-      setStarting({ edition, regionId, regionName, choice });
-      setStartError(null);
-      recordMilestone("run_start", { edition, regionId, chunkId: regionId });
-      // D1: arm the clean-exit dirty marker NOW, before the data-chunk
-      // load below — not only later in writeRun/commit. Why it must
-      // precede the load: a jetsam kill DURING the load (the Globe
-      // 13.7 MB chunk window) previously left meridian.cleanExit
-      // missing/"1" (writeRun had not run yet), so the next boot's
-      // initObservability gate (cleanExit === "0") failed and no
-      // suspected_crash was emitted — and the breadcrumb identifying
-      // the kill was silently overwritten. Interplay:
-      // (a) A kill during load leaves no saved run, so the boot
-      //     crash-loop breaker clearing the (absent) run and landing
-      //     on the menu is harmless and unchanged.
-      // (b) A normal chunk-load ERROR caught by the catch below does
-      //     NOT produce a spurious suspected_crash: any later normal
-      //     unload/reload fires pagehide → handlePageHide stamps "1".
-      // (c) Every openRun re-arms, so a repeat kill after the breaker
-      //     re-armed the flag to "1" at boot is detectable again.
-      // stampCleanExitDirty never throws (see clean-exit.ts).
-      stampCleanExitDirty();
-      try {
-        // The region's chunk(s) load here — never eagerly, never partial.
-        recordMilestone("data_chunk_load_start", { edition, regionId, chunkId: regionId });
-        // The learning path and the globeTierSplit flag ride along so the Globe
-        // fetches only the fame tiers it deals from (flag on) or all five (flag
-        // off); dealingPoolFor below still decides the pool.
-        const tierSplit = await globeTierSplitFor(edition, regionId);
-        if (gen !== runStartGenRef.current) return; // stale (BLOCK-A)
-        // F2b: the countries-50m territory data loads in parallel with
-        // the places and is awaited before the run commits — scorePlace's
-        // region bonus and the reveal pin-compare read it synchronously,
-        // so a run must never start ahead of it. preloadTerritory never
-        // rejects (a failed load fails closed at the readers), so this
-        // await cannot fail the start.
-        // #209: the pair is raced against CHUNK_LOAD_TIMEOUT_MS — a
-        // HUNG places import never settles, and without the bound the
-        // "Fetching this region's places…" state would spin forever.
-        // A timeout lands in the catch below like any other load
-        // failure: fail-closed, recoverable, stale-probed.
-        const [places] = await withChunkTimeout(
-          Promise.all([
-            placesFor(edition, regionId, choice, tierSplit),
-            preloadTerritory(),
-          ]),
-          `places for ${regionName}`,
-        );
-        if (gen !== runStartGenRef.current) return; // stale (BLOCK-A)
-        recordMilestone("data_loaded", { edition, regionId, chunkId: regionId });
-        const dateKey = trailDate();
-        // The picker's difficulty band narrows the catalog BEFORE the dealer
-        // pool is built. Fail-closed: an empty band yields an empty pool,
-        // never a widened one. The tutorial bypasses banding entirely: its
-        // pool is the single fixed practice place, so the tour always asks
-        // the same easy famous question regardless of picker choice — and
-        // poolForRunStart is skipped so the tour never touches (or wipes)
-        // the band's persistent no-repeat history.
-        let poolIds: string[];
-        let prevLastId: string | null;
-        if (opts?.tutorial) {
-          poolIds = [TUTORIAL_PLACE_ID];
-          prevLastId = null;
-        } else {
-          // Easy also applies the famous-places curation (easy-curation.ts).
-          const banded = dealingPoolFor(places, choice);
-          const started = poolForRunStart(banded, edition, regionId, choice);
-          poolIds = started.poolIds;
-          prevLastId = started.prevLastId;
-          // Cleared-mode backstop: a completed cycle at run start means the
-          // band was fully played through. If it was already celebrated, the
-          // new cycle begins silently (retire the mark); if not — a clear
-          // from before this feature existed, or a crash before the
-          // celebration — celebrate immediately instead of silently
-          // repeating. One celebration per clear: the mark is set either way.
-          if (started.cycleCompleted) {
-            if (wasClearedCelebrated(edition, regionId, choice)) {
-              clearClearedMark(edition, regionId, choice);
-            } else {
-              markClearedCelebrated(edition, regionId, choice);
-              setCleared({ edition, regionId, regionName, choice });
-            }
-          }
-        }
-        // A celebration replay/promotion starts FRESH: at the onContinue
-        // boundary the run is mid-run in reveal phase and resumable, so
-        // resumeRun would return it unchanged and the replay would never
-        // restart. Picker paths keep
-        // resume semantics (leave-and-return mid-run restores the
-        // in-progress run) — `fresh` is opt-in only, and isResumable's
-        // semantics are deliberately unchanged (other flows depend on them).
-        const today = { edition, regionId, regionName, dateKey, difficultyChoice: choice };
-        // The tutorial practice round always starts fresh (it is never a
-        // resumed run) and arms beat 1; any other run clears tutorial state
-        // (e.g. a normal run started after an idle-killed tour).
-        const next =
-          opts?.tutorial || opts?.fresh
-            ? startRun(today, poolIds, prevLastId)
-            : resumeRun(readRun(), today, poolIds, prevLastId);
-        commit(next);
-        // Switching editions keeps the session (and its score) alive: a new
-        // session starts only when none is live.
-        ensureSession(next);
-        setMenu(null);
-        setTutorial(opts?.tutorial ? 1 : null);
-        if (opts?.tutorial) {
-          // The tour run started: the invitation has been handled, whether
-          // or not the player finishes the tour.
-          markTutorialSeen();
-        }
-        // Warm the admin-1 boundary cache during play so it's ready by reveal.
-        // Deferred 10 s past run start: firing the ~2 MB JSON fetch during
-        // map mount starves the tile requests (net::ERR_ABORTED) and flips
-        // the tile-status to failed. The fixed delay moves it out of the
-        // critical tile-loading window (requestIdleCallback proved racy —
-        // "idle" fires while tiles are still in flight). resolvePin fails
-        // closed to country-only until the cache populates. Fire-and-forget:
-        // preloadAdmin1Boundaries is specified non-throwing.
-        // Country editions with a vendored admin-1 chunk (EG/FR/DE/IT/JP/
-        // MX/GB) warm just that chunk on the same tick — the reveal's
-        // pin-compare line can then name departments/provinces instead of
-        // falling back to the "near <city>" line. Null for other editions:
-        // no fetch attempted.
-        window.setTimeout(() => {
-          void preloadAdmin1Boundaries();
-          const chunkIso2 = admin1ChunkIso2ForRegion(regionId);
-          if (chunkIso2) void preloadAdmin1ForCountry(chunkIso2);
-        }, 10000);
-      } catch (err) {
-        // BLOCK-A: a stale start fails silently — the player already
-        // cancelled it (map flip) or superseded it (a newer start).
-        // Parking a start error on the screen they chose instead
-        // would report a failure for a start they never made.
-        if (gen !== runStartGenRef.current) return;
-        // Fail closed: no chunk, no run. The player stays on the menu with
-        // an explanation instead of starting with a partial/missing pool.
-        // If the tab predates the current deploy (old hashed chunk URLs 404),
-        // offer a refresh instead of the dead-end error. The session flag
-        // stops a reload loop when the chunk is genuinely missing.
-        const message = `Could not load places for ${regionName}: ${err instanceof Error ? err.message : String(err)}`;
-        let staleBuild = false;
-        try {
-          staleBuild = !staleRefreshRecentlyUsed() && (await isNewBuildDeployed());
-        } catch {
-          staleBuild = false;
-        }
-        // The switch can also land during the stale-build probe above.
-        if (gen !== runStartGenRef.current) return;
-        setStartError({
-          message: staleBuild ? message : `We couldn't open ${regionId === "globe" ? "the Globe" : regionName} right now. Check that you're online, then tap Play again.`,
-          staleBuild,
-          edition,
-          regionId,
-          regionName,
-          choice,
-        });
-        // Telemetry: region-chunk load failures never left this catch —
-        // emit so they reach crash reporting like every other error class.
-        // F3: chunk-shaped failures follow the shared discipline — a
-        // first failure stays silent; only the post-reload repeat (or
-        // unreadable storage) reports. Non-chunk failures report as before.
-        let reportStartError = true;
-        if (isChunkLoadError(err) || isChunkLoadError(message)) {
-          try {
-            reportStartError = shouldReportChunkFailure(resolveSession() ?? null, Date.now());
-          } catch {
-            reportStartError = true;
-          }
-        }
-        if (reportStartError) {
-          emitEvent({
-            type: "js_error",
-            ts: Date.now(),
-            buildId: "",
-            error: sanitizeError(new Error(message)),
-          });
-        }
-      } finally {
-        // Only the current start owns the loading state (BLOCK-A): a
-        // stale start's finally must not clear a newer start's notice.
-        if (gen === runStartGenRef.current) setStarting(null);
-      }
-    },
-    [commit, ensureSession],
-  );
-
   // "Try again" on the in-run start-failure box. A failed dynamic import() is
   // remembered by the browser for the lifetime of the document (Chromium does
   // not even request the URL again), so calling openRun again in THIS document
@@ -2905,31 +2683,6 @@ export function GameApp() {
    * due order. Deliberately no ensureSession: review answers never bank
    * into the session — review is practice, not scoring.
    */
-  const startReview = useCallback(() => {
-    const deck = readReviewDeck() ?? emptyReviewDeck();
-    const due = dueEntries(deck, Date.now());
-    // Fail closed: the entry points only render when due > 0, so this is
-    // unreachable in practice — never start a run with an empty queue.
-    if (due.length === 0) return;
-    // F2b: review runs skip openRun (and its awaited territory preload);
-    // start the load here — the ResultCard's own mount preload is the
-    // guarantee layer for its pin-compare ledger.
-    void preloadTerritory();
-    const next = startRun(
-      {
-        edition: "globe",
-        regionId: REVIEW_DECK_REGION_ID,
-        regionName: REVIEW_DECK_REGION_NAME,
-        dateKey: trailDate(),
-        difficultyChoice,
-      },
-      due.map((entry) => entry.place.id),
-      null,
-    );
-    commit(next);
-    setMenu(null);
-  }, [commit, difficultyChoice]);
-
   /**
    * "Review my misses" from the end-game summary: the session already ended
    * there, so just leave the summary behind and start the review session.

@@ -34,9 +34,20 @@
   Tests: `use-overlay-queue.test.ts` (3 pass). Gates: tsc PASS,
   lint:arch PASS, lint:nav PASS.
 
+- Step 7 — Run controller (`commit`, `openRun`, `startReview`).
+  New `src/components/use-run-controller.ts` (`useRunController`):
+  `commit` (still the one `writeRun` + `setRun` writer, `writeRun`
+  moved with it), `openRun` (still awaits `preloadTerritory()` before
+  a run commits, still honors `runStartGenRef`, still skips territory
+  preload for review runs via `startReview`), `startReview`.
+  `game-app.tsx` 8,524 -> 8,277 lines.
+  Tests: `use-run-controller.test.ts` (3 pass),
+  `game-app-lazy-boundary.test.ts` (18 pass, #209 openRun pin
+  retargeted to the new module). Gates: tsc PASS, lint:arch PASS,
+  lint:nav PASS.
+
 ## Next
 
-- Step 7 — Run controller (`commit`, `openRun`, `startReview`).
 - Step 10 — Router hook (boot / `ready`, `inAppScreen`, hash / history).
 - Then: lower `GAME_APP_SIZE_CEILING` to the new `wc -l`, update
   `docs/architecture/game-app-map.md` steps 5, 6, 7, 10 to done,
