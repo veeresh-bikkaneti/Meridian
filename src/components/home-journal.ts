@@ -4,7 +4,13 @@
  * (src/game/journal.ts on feat/homepage-premium-v5) onto the merged
  * dataset in ./home-journal.data.ts.
  *
- * The dataset is static and bundled (generated from the catalog).
+ * The dataset is generated from the catalog and lazy-loaded (TD-06.17,
+ * issue #621): it used to be statically bundled into the first-load JS
+ * (~14 KB gzip) even though nothing needs a note before the home
+ * Journal renders. It now loads through `loadJournalNotes()` below —
+ * a memoized dynamic import in the fail-closed spirit of
+ * `preloadTerritory` — and every sync reader below reads the loaded
+ * cache, degrading to the spec §7 empty-dataset results until it lands.
  * Rotation is derived from the wall-clock epoch — every visitor sees the
  * same entry in the same 30-minute window, no server state. The pure
  * functions here never read Date.now() inside; the current time is
@@ -12,11 +18,7 @@
  * factored into `createJournalRotation` below so spec §8's fake-timer
  * unit tests exercise the actual production mechanism.
  */
-import {
-  JOURNAL_NOTES,
-  type JournalNote,
-  type JournalSetData,
-} from "./home-journal.data.ts";
+import type { JournalNote, JournalSetData } from "./home-journal.data.ts";
 import { assetBase } from "./storyteller-lines.ts";
 
 /** One journal window: 30 minutes (B8 amendment, owner 2026-11-09).
@@ -24,6 +26,43 @@ import { assetBase } from "./storyteller-lines.ts";
 export const JOURNAL_WINDOW_MS = 1_800_000;
 
 export type { JournalNote, JournalSetData };
+
+// ---------------------------------------------------------------------------
+// Lazy dataset load (TD-06.17). One memoized dynamic import; a failure
+// resolves false and evicts the cached promise so the next call
+// retries (the preloadTerritory failure contract). Never rejects.
+// ---------------------------------------------------------------------------
+
+let loadedNotes: JournalNote[] | null = null;
+let loadPromise: Promise<boolean> | null = null;
+
+/** True once the dataset has landed; sync readers are live afterwards. */
+export function journalDataLoaded(): boolean {
+  return loadedNotes !== null;
+}
+
+/** Start (or reuse) the dataset load. Resolves true when notes are in. */
+export function loadJournalNotes(): Promise<boolean> {
+  if (loadedNotes !== null) return Promise.resolve(true);
+  if (!loadPromise) {
+    loadPromise = import("./home-journal.data.ts").then(
+      (mod) => {
+        loadedNotes = mod.JOURNAL_NOTES;
+        return true;
+      },
+      () => {
+        loadPromise = null;
+        return false;
+      },
+    );
+  }
+  return loadPromise;
+}
+
+/** The loaded notes, or the empty dataset until the load lands (§7). */
+function notes(): readonly JournalNote[] {
+  return loadedNotes ?? [];
+}
 
 /** Public asset URL for a journal note's storybook drawing — the same
  *  assetBase() seam the storyteller audio URLs use, never a hardcoded
@@ -53,16 +92,16 @@ export interface JournalSet {
 }
 
 export function journalNoteCount(): number {
-  return JOURNAL_NOTES.length;
+  return notes().length;
 }
 
 export function journalSetCount(): number {
-  return JOURNAL_NOTES.length;
+  return notes().length;
 }
 
 /** All windows in rotation order, one singleton set per note. */
 export function journalSets(): JournalSet[] {
-  return JOURNAL_NOTES.map((note, index) => singletonSet(note, index));
+  return notes().map((note, index) => singletonSet(note, index));
 }
 
 function singletonSet(note: JournalNote, index: number): JournalSet {
@@ -107,7 +146,7 @@ export function confidenceText(note: JournalNote): string {
  * dataset is empty (spec §7: no current entry).
  */
 export function journalSetIndexAt(timeMs: number): number {
-  const count = JOURNAL_NOTES.length;
+  const count = notes().length;
   if (count === 0) return -1;
   const window = Math.floor(timeMs / JOURNAL_WINDOW_MS);
   return ((window % count) + count) % count;
@@ -122,10 +161,10 @@ export function journalSetAt(timeMs: number): JournalSet | null {
 
 /** The entry at an explicit cycle index (wraps), or null when empty. */
 export function journalSetByIndex(index: number): JournalSet | null {
-  const count = JOURNAL_NOTES.length;
+  const count = notes().length;
   if (count === 0) return null;
   const wrapped = ((index % count) + count) % count;
-  return singletonSet(JOURNAL_NOTES[wrapped]!, wrapped);
+  return singletonSet(notes()[wrapped]!, wrapped);
 }
 
 /** Epoch ms at which the window containing `timeMs` ends / the next begins. */
@@ -232,12 +271,23 @@ export function createJournalRotation(options: {
   };
 
   const recompute = () => {
+    // TD-06.17: recompute is the visibilitychange / focusin / safety-tick
+    // path, so it doubles as the retry for a failed dataset fetch —
+    // loadJournalNotes is memoized and evicts its promise on failure,
+    // making this a no-op once the notes are in.
+    if (!journalDataLoaded()) void loadJournalNotes();
     const index = journalSetIndexAt(now());
     if (index === currentIndex) {
       pendingIndex = null;
       return;
     }
-    if (shouldApplySetChange(options.blockers())) {
+    // First entry (currentIndex < 0, the dataset has just landed):
+    // nothing is on screen yet, so there is no reader to swap under —
+    // apply immediately, bypassing the §6 blockers. Deferring here
+    // would leave the visible card and section empty whenever the
+    // journal was already in view at load time (PR #623 re-review).
+    // Every N -> M rotation keeps the blockers unchanged.
+    if (currentIndex < 0 || shouldApplySetChange(options.blockers())) {
       apply(index);
     } else {
       // Deferred: applied on a later recompute once the blocker clears.

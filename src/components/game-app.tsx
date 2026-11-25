@@ -123,6 +123,7 @@ import {
   journalSetByIndex,
   journalSetCount,
   journalSetIndexAt,
+  loadJournalNotes,
   nextEntryCountdown,
 } from "./home-journal";
 import {
@@ -3433,13 +3434,10 @@ function Choose({
   const [loopProgress] = useState(() => peekLoopProgress());
   // Journal ("What the land remembers", docs/journal-spec.md §3/§5/§6):
   // the displayed entry index is state, driven by the auto-switch rotation
-  // (createJournalRotation in ./home-journal): a boundary timeout at the
-  // next window start + a 30s safety interval recompute it, as do
-  // visibilitychange (tab visible again) and focusin. A new index is
-  // DEFERRED while focus is inside the home Journal card or inside the
-  // inline journal section — content is never swapped under a reader
-  // (§6, focus-only per owner ruling Q3). The footer countdown ticks on
-  // its own 60s clock so it stays live without re-rendering the entry.
+  // (createJournalRotation in ./home-journal): a boundary timeout + a 30s
+  // safety interval recompute it, as do visibilitychange and focusin. A new
+  // index is DEFERRED while focus is inside the Journal card or section
+  // (§6, focus-only per owner ruling Q3) — never swapped under a reader.
   const [journalIndex, setJournalIndex] = useState(() => journalSetIndexAt(Date.now()));
   const [journalNowMs, setJournalNowMs] = useState(() => Date.now());
   // Journal movie player: the single open note id, or null. One movie
@@ -3473,6 +3471,7 @@ function Choose({
   );
   useEffect(() => {
     journalRotation.start();
+    void loadJournalNotes().then((ok) => { if (ok) journalRotation.recompute(); }); // lazy dataset (TD-06.17): recompute once the notes land
     const tick = window.setInterval(() => setJournalNowMs(Date.now()), 60_000);
     const onVisibility = () => {
       if (document.visibilityState === "visible") journalRotation.recompute();
@@ -3519,7 +3518,8 @@ function Choose({
     for (const target of targets) observer.observe(target);
     return () => observer.disconnect();
   }, [journalRotation]);
-  const journalEntry = journalSetByIndex(journalIndex) ?? journalSetAt(Date.now());
+  // journalIndex stays -1 until the lazy dataset lands — no entry until then.
+  const journalEntry = journalIndex >= 0 ? journalSetByIndex(journalIndex) ?? journalSetAt(Date.now()) : null;
   const journalNotes = journalEntry?.notes ?? [];
   // A movie stops when its window rotates away — the note is no longer shown.
   useEffect(() => {

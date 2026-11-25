@@ -19,11 +19,16 @@ import {
   journalSetCount,
   journalSetIndexAt,
   journalSets,
+  loadJournalNotes,
   nextEntryCountdown,
   nextWindowStart,
   shouldApplySetChange,
   type JournalTimerHost,
 } from "./home-journal.ts";
+
+// The dataset is lazy in production (TD-06.17); load it once up front so
+// the sync rotation functions below resolve real entries.
+await loadJournalNotes();
 
 /** Ring order (generator-internal on the merged dataset; restated here). */
 const RING_ORDER: RingId[] = ["lincoln", "region", "nebraska", "usa", "world"];

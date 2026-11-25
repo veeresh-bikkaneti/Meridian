@@ -1,7 +1,7 @@
 import { resetContactStateForTests } from "../harness/module-seams.ts";
 import http from "node:http";
 import { test, expect, type Page, type Locator } from "playwright/test";
-import { serveBuiltArtifact, APP_NO_IDLE } from "./helpers";
+import { serveBuiltArtifact, APP_NO_IDLE, answerFirstVisitQueue } from "./helpers";
 import {
   handleContactRequest,
   readContactRuntimeEnv,
@@ -592,11 +592,10 @@ test("home UX polish across 6 viewports: unified map-mode pill, whole-card journ
   // which is the point. A first-visit player answers it in one tap
   // before touching the page — do the same here, up front. No
   // assertion below changes; only the answer moved earlier.
-  const readAloudSheet = page.getByTestId("first-visit-queue");
-  if ((await readAloudSheet.count()) > 0 && (await readAloudSheet.getAttribute("data-prompt-id")) === "read-aloud-sheet") {
-    await readAloudSheet.getByRole("button", { name: /Never/ }).click();
-    await expect(page.locator('[data-prompt-id="read-aloud-sheet"]')).toHaveCount(0);
-  }
+  // The invite above is already dismissed, so the helper's invite
+  // step is a no-op here; its sheet step is exactly the answer this
+  // block used to hand-roll.
+  await answerFirstVisitQueue(page);
 
   for (const [w, h] of viewports) {
     await page.setViewportSize({ width: w, height: h });
