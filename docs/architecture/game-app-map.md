@@ -376,9 +376,9 @@ Final order. Extraction steps follow published shared-state row counts, fewest f
 | 2 | Shrink-only size budget test for `game-app.tsx` | 0 | test only | After Part B merges. Locks that this file only shrinks from then on. |
 | 3 | Leaf hooks: difficulty, deck status, chunk-reload notice, reset toast | 1 each | ~130 | |
 | 4 | Age-profile hook and overlay host | 2 | ~150 | Cures checklist rows 1-6. Done in TD-06.6 (`use-age-profile-host.tsx` in `src/components/age-profile/`); the composer's one leftover host import is the new baseline row the §2 preamble allows, cleared in the last PR. |
-| 5 | Session hook, idle watchdog, discarded notice | 3 | ~220 | |
-| 6 | Overlay queue: first-visit, tutorial or invite, celebration or cleared | 3 | ~200 | |
-| 7 | Run controller (`commit`, `openRun`, `startReview`) | 3 | ~350 | Pulled forward of the challenge hook. B had placed this after a 5-row step. |
+| 5 | Session hook, idle watchdog, discarded notice | 3 | ~220 | Done in TD-06.7 (`use-shell-session.ts` in `src/components/`). |
+| 6 | Overlay queue: first-visit, tutorial or invite, celebration or cleared | 3 | ~200 | Done in TD-06.7 (`use-overlay-queue.tsx` in `src/components/`). |
+| 7 | Run controller (`commit`, `openRun`, `startReview`) | 3 | ~350 | Pulled forward of the challenge hook. B had placed this after a 5-row step. Done in TD-06.7 (`use-run-controller.ts` in `src/components/`). |
 | 8 | Map-mode hook in `src/map` | 4 | ~280 | Cures checklist rows 14-18 and 20. |
 | 9 | Challenge receive and preview hook | 5 | ~280 | |
 | 10 | Router hook and remaining boot, `inAppScreen` and hash or history | 6 | ~700 | Hook extract only. The file stays in `src/components/`. |
