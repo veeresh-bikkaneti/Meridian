@@ -672,7 +672,6 @@ describe("shell-ban baseline (KNOWN/STALE)", () => {
     pageLocalNav: ["src/components/grownups/info-page.tsx", "src/routes/board.tsx"],
     pageLocalMain: [
       "src/components/game-app.tsx",
-      "src/lib/error-component.tsx",
       "src/routes/board.tsx",
       "src/subjects/shared/SubjectCase.tsx",
       "src/subjects/shared/SubjectPicker.tsx",

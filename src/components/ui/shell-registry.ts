@@ -14,8 +14,8 @@
  *   was approved in Round 2. Any second header exception fails the
  *   test.
  * - `baseline` (header): screens that predate the shell and have not
- *   been adopted yet (loading states, the router error page, the
- *   challenge menu). The test freezes this list: it may only shrink,
+ *   been adopted yet (loading states, the challenge menu). The
+ *   test freezes this list: it may only shrink,
  *   and a cured screen leaves it in the same change that adopts the
  *   shell.
  * - `footer: "exception"`: none remain. The Why Learn picker was
@@ -75,7 +75,7 @@ export const SHELL_REGISTRY: readonly ShellRegistryEntry[] = [
   { id: "session-loading", file: "src/components/game-app.tsx", header: "baseline", footer: "none", reason: "Transient loading fallback; it reserves the destination's header space by design. Baseline, shrink-only." },
   { id: "region-loading", file: "src/components/game-app.tsx", header: "baseline", footer: "none", reason: "Transient chunk-loading state while a region's places load. Baseline, shrink-only." },
   { id: "boot-splash", file: "src/components/boot-splash.tsx", header: "SiteHeader", needle: "<SiteHeader", footer: "shell", footerNeedle: "<SiteFooter", reason: "Boot gate splash. It renders the shared frame (SiteHeader, narrow PageColumn, SiteFooter) directly — the same frame PageShell renders — so the first-paint module does not also import PageShell." },
-  { id: "router-error", file: "src/lib/error-component.tsx", header: "baseline", footer: "none", reason: "The router's own error page, outside GameApp. Baseline, shrink-only." },
+  { id: "router-error", file: "src/lib/error-component.tsx", header: "ErrorScreen", needle: "<ErrorScreen", footer: "none", reason: "The router's own error page, outside GameApp (TD-05.3). ErrorScreen frames itself with SiteHeader and its two exits; a failure page carries no footer." },
 ];
 
 /** The frozen shrink-only lists: the test compares the registry
@@ -87,7 +87,6 @@ export const HEADER_BASELINE: readonly string[] = [
   "challenge-menu",
   "region-loading",
   "root-layout",
-  "router-error",
   "session-loading",
 ];
 
