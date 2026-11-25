@@ -5,6 +5,7 @@ import pullsFixture from "./__fixtures__/github/pulls-by-number.json" with { typ
 import snapshotJson from "./kanban.json" with { type: "json" };
 import {
   applyOverlay,
+  boardCensus,
   COLUMNS,
   columnForPull,
   columnRank,
@@ -17,6 +18,7 @@ import {
   laneCounts,
   laneForItem,
   loadSnapshot,
+  storyNumOf,
   storyRollup,
   storySeatTags,
   type Column,
@@ -24,6 +26,7 @@ import {
   type Snapshot,
   type Subtask,
 } from "./kanban-data.ts";
+import { PR_NUMBER_MAP, mappedIdsFor } from "./pr-number-map.ts";
 import { parseGithubBranches, parseGithubPull } from "./kanban-live.ts";
 
 /* The recorded GitHub state (fixtures/github, recorded 2026-11-23)
@@ -809,5 +812,234 @@ describe("deriveBoardItems", () => {
     assert.equal(cards[0]?.col, "Backlog");
     assert.equal(cards[0]?.note, "closed unmerged");
     assert.equal(cards.some((card) => card.num === "TD-01.1"), false);
+  });
+});
+
+describe("pr-number-map (TD-08.5 backfill)", () => {
+  it("agrees with every closes link recorded in the ledger", () => {
+    for (const sub of snapshot().subtasks) {
+      for (const pr of sub.prs) {
+        if (pr.role !== "closes") continue;
+        assert.ok(
+          mappedIdsFor(pr.number)?.includes(sub.num),
+          `#${pr.number} closes ${sub.num} in the ledger, so the map must carry it`,
+        );
+      }
+    }
+  });
+
+  it("never steals an id the ledger lists the PR only as ref for", () => {
+    assert.deepEqual(mappedIdsFor(552), ["TD-01.2"]);
+    assert.deepEqual(mappedIdsFor(563), ["TD-02.2"]);
+    assert.deepEqual(mappedIdsFor(565), ["TD-02.3"]);
+    assert.deepEqual(mappedIdsFor(560), ["TD-07.1"]);
+    assert.equal(mappedIdsFor(545), undefined);
+    assert.equal(mappedIdsFor(546), undefined);
+    assert.equal(mappedIdsFor(553), undefined);
+    assert.equal(mappedIdsFor(556), undefined);
+    for (const row of PR_NUMBER_MAP) {
+      for (const id of row.ids) {
+        assert.ok(extractSubtaskNums(id).length > 0 || extractStoryNums(id).length > 0);
+      }
+    }
+  });
+
+  it("pins #614 to TD-10.5 even when head.ref says td-10.1", () => {
+    const cards = deriveBoardItems(
+      pullsOf([
+        614,
+        {
+          title: "chore: drop the baselined shims",
+          headRef: "chore/td-10.1-drop-baselined-shims",
+          state: "open",
+          draft: true,
+        },
+      ]),
+      new Set(),
+    );
+    assert.equal(cards.length, 1);
+    assert.equal(cards[0]?.num, "TD-10.5");
+    assert.equal(cards[0]?.unnumbered, false);
+    assert.equal(cards.some((card) => card.num === "TD-10.1"), false);
+  });
+
+  it("keeps #612 off the TD-06.3 card #610 owns, and off TD-06.5", () => {
+    const cards = deriveBoardItems(
+      pullsOf(
+        [610, { title: "TD-06.3 game-app size ratchet", state: "closed", merged: true }],
+        [612, { title: "TD-06.3 game-app size ratchet", state: "open", draft: true }],
+      ),
+      new Set(),
+    );
+    const td063 = cards.find((card) => card.num === "TD-06.3");
+    assert.deepEqual(td063?.prs.map((pr) => pr.number), [610]);
+    assert.equal(cards.some((card) => card.num === "TD-06.5"), false);
+    const clash = cards.find((card) => card.prs.some((pr) => pr.number === 612));
+    assert.equal(clash?.unnumbered, true);
+    assert.equal(clash?.num, null);
+  });
+
+  it("backfills #571 as TD-02.5 in tech-debt, not Unnumbered", () => {
+    const cards = deriveBoardItems(
+      pullsOf([
+        571,
+        {
+          title: "Phase 1 Part B: game-app onto the storage port",
+          headRef: "phase1/ports-part-b",
+          state: "closed",
+          merged: true,
+        },
+      ]),
+      new Set(),
+    );
+    assert.equal(cards.length, 1);
+    assert.equal(cards[0]?.num, "TD-02.5");
+    assert.equal(cards[0]?.lane, "tech-debt");
+    assert.equal(cards[0]?.unnumbered, false);
+    assert.equal(cards[0]?.col, "Done");
+  });
+
+  it("chips the multi-id #605 onto both TD-11.1 and TD-11.2", () => {
+    const cards = deriveBoardItems(
+      pullsOf([
+        605,
+        {
+          title: "refactor(forms): post contact and board forms through the transport port",
+          headRef: "feat/slice-a-forms-network-port",
+          state: "closed",
+          merged: true,
+        },
+      ]),
+      new Set(),
+    );
+    assert.deepEqual(
+      cards.map((card) => card.num).sort(),
+      ["TD-11.1", "TD-11.2"],
+    );
+    for (const card of cards) {
+      assert.deepEqual(card.prs.map((pr) => pr.number), [605]);
+      assert.equal(card.col, "Done");
+    }
+  });
+
+  it("keeps a genuinely unnumbered pull in the Unnumbered group", () => {
+    const cards = deriveBoardItems(
+      pullsOf([
+        616,
+        {
+          title: "test(e2e): settle the boot splash before the credits-link click",
+          headRef: "vibe/credits-link-dup-700c6b",
+          state: "closed",
+          merged: true,
+        },
+      ]),
+      new Set(),
+    );
+    assert.equal(cards.length, 1);
+    assert.equal(cards[0]?.unnumbered, true);
+    assert.equal(cards[0]?.num, null);
+  });
+
+  it("does not let #614 auto-attach to TD-10.1 in the snapshot overlay", () => {
+    const snap = snapshot();
+    const out = applyOverlay(
+      snap.subtasks,
+      pullsOf([
+        614,
+        { headRef: "chore/td-10.1-drop-baselined-shims", state: "open", draft: true },
+      ]),
+      new Set(),
+    );
+    const td101 = out.find((sub) => sub.num === "TD-10.1");
+    assert.equal(td101?.prs.some((pr) => pr.number === 614), false);
+  });
+
+  it("enriches both TD-11.1 and TD-11.2 with #605 in the snapshot overlay", () => {
+    const snap = snapshot();
+    const out = applyOverlay(
+      snap.subtasks,
+      pullsOf([605, { state: "closed", merged: true }]),
+      new Set(),
+    );
+    for (const num of ["TD-11.1", "TD-11.2"]) {
+      assert.ok(out.find((sub) => sub.num === num)?.prs.some((pr) => pr.number === 605));
+    }
+  });
+});
+
+describe("boardCensus (TD-08.5 live counts)", () => {
+  it("splits a subtask id into its story id", () => {
+    assert.equal(storyNumOf("TD-01.1"), "TD-01");
+    assert.equal(storyNumOf("FW-10.3"), "FW-10");
+    assert.equal(storyNumOf("TD-08"), null);
+  });
+
+  it("counts the ledger plus the map, with no live window at all", () => {
+    const census = boardCensus(snapshot(), []);
+    // Ledger: 18 stories, 45 tasks. The map adds TD-08.1 and
+    // TD-10.5 as tasks and TD-08 as a story — ids the stale
+    // ledger does not hold.
+    assert.deepEqual(census.all, { stories: 19, tasks: 47, unnumbered: 0 });
+    // Lanes follow the cards' rule (every TD id is tech-debt),
+    // not the ledger's hand-set architecture lane.
+    assert.deepEqual(census["tech-debt"], { stories: 16, tasks: 40, unnumbered: 0 });
+    assert.deepEqual(census.architecture, { stories: 0, tasks: 0, unnumbered: 0 });
+    assert.deepEqual(census.product, { stories: 3, tasks: 7, unnumbered: 0 });
+    assert.notEqual(census.all.stories, census.all.tasks);
+  });
+
+  it("never turns the default branch into an Unnumbered card", () => {
+    const items = deriveBoardItems(new Map(), new Set(["main", "spike-notes"]));
+    assert.deepEqual(
+      items.map((item) => item.title),
+      ["spike-notes"],
+    );
+  });
+
+  it("files each live id under the same lane as its card", () => {
+    const items = deriveBoardItems(
+      pullsOf(
+        [9003, { title: "TD-06.6 age-profile host", headRef: "phase2/td-06.6-age-host" }],
+        [9004, { title: "FW-77.1 arch-pages tidy", headRef: "arch-pages/fw-77.1" }],
+      ),
+      new Set(),
+    );
+    const byNum = new Map(items.map((item) => [item.num, item.lane]));
+    assert.equal(byNum.get("TD-06.6"), "tech-debt");
+    assert.equal(byNum.get("FW-77.1"), "architecture");
+    const census = boardCensus(snapshot(), items);
+    // TD-06.6 is new, so tech-debt gains one task; FW-77 and
+    // FW-77.1 land in architecture, exactly where the card sits.
+    assert.deepEqual(census["tech-debt"], { stories: 16, tasks: 41, unnumbered: 0 });
+    assert.deepEqual(census.architecture, { stories: 1, tasks: 1, unnumbered: 0 });
+    assert.deepEqual(census.product, { stories: 3, tasks: 7, unnumbered: 0 });
+  });
+
+  it("is not the window length: a 3-pull window still yields the full census", () => {
+    const items = deriveBoardItems(
+      pullsOf(
+        [571, { state: "closed", merged: true, headRef: "phase1/ports-part-b" }],
+        [616, { title: "credits-link fix", headRef: "vibe/credits-link-dup-700c6b" }],
+        [9001, { title: "feat: FW-99.9 not in the ledger" }],
+      ),
+      new Set(),
+    );
+    const census = boardCensus(snapshot(), items);
+    assert.ok(census.all.stories > items.length);
+    assert.ok(census.all.tasks > items.length);
+    // TD-01.1 is counted even though #543 is absent from the window.
+    assert.equal(census.all.tasks, 48);
+    assert.equal(census.all.stories, 20);
+    assert.equal(census.all.unnumbered, 1);
+  });
+
+  it("counts a live id the ledger lacks, such as TD-06.5", () => {
+    const items = deriveBoardItems(
+      pullsOf([9002, { title: "TD-06.5 entry chunk guard", state: "open", draft: true }]),
+      new Set(),
+    );
+    const census = boardCensus(snapshot(), items);
+    assert.equal(census.all.tasks, 48);
+    assert.equal(census.all.stories, 19);
   });
 });

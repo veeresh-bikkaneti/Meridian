@@ -155,6 +155,91 @@ test("a story that is not in the snapshot appears from the API alone, in two req
   expect(githubUrls.filter((url) => /[?&]page=/.test(url))).toEqual([]);
 });
 
+test("backfilled numbers show live, genuine unknowns stay Unnumbered, counts are a census", async ({
+  page,
+  context,
+}) => {
+  await context.route(/api\.github\.com\/repos\/[^/]+\/[^/]+\/pulls\?/, async (route) =>
+    route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify([
+        {
+          number: 571,
+          state: "closed",
+          draft: false,
+          merged_at: "2026-11-23T17:00:00Z",
+          title: "Phase 1 Part B: game-app onto the storage port",
+          head: { ref: "phase1/ports-part-b" },
+          labels: [],
+        },
+        {
+          number: 614,
+          state: "open",
+          draft: true,
+          merged_at: null,
+          title: "chore: drop the baselined shims",
+          head: { ref: "chore/td-10.1-drop-baselined-shims" },
+          labels: [],
+        },
+        {
+          number: 616,
+          state: "closed",
+          draft: false,
+          merged_at: "2026-11-24T15:00:00Z",
+          title: "test(e2e): settle the boot splash before the credits-link click",
+          head: { ref: "vibe/credits-link-dup-700c6b" },
+          labels: [],
+        },
+      ]),
+    }),
+  );
+  await context.route(/api\.github\.com\/repos\/[^/]+\/[^/]+\/branches(\?|$)/, async (route) =>
+    route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify([]) }),
+  );
+
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.goto(KANBAN_URL);
+  await expect(page.locator(".kb-stamp")).toHaveText(/Live · fetched \d{2}:\d{2}/);
+
+  // The backfill map keys #571 as TD-02.5 even though neither
+  // its title nor its branch carries the number.
+  await expect(page.locator(".kb-story", { hasText: "TD-02.5" })).toBeVisible();
+  // The map also wins over #614's head.ref, which names TD-10.1.
+  await expect(page.locator(".kb-story", { hasText: "TD-10.5" })).toBeVisible();
+  await expect(page.locator(".kb-story", { hasText: "TD-10.1" })).toHaveCount(0);
+  // #616 has no determinable number: it stays under Unnumbered.
+  const unknown = page.locator(".kb-story", { hasText: "credits-link click" });
+  await expect(unknown).toBeVisible();
+  await expect(unknown).toHaveAttribute("data-group", "Unnumbered");
+  await expect(page.locator(".kb-group", { hasText: "Unnumbered" }).first()).toBeVisible();
+
+  // The lane counts are the census (ledger + map + window):
+  // 19 stories and 47 tasks — distinct numbers, and neither is
+  // the 3-pull fixture window length.
+  await expect(page.getByRole("button", { name: /19 stories, 47 tasks/ })).toBeVisible();
+
+  // Each tab's counts use the cards' lane rule (every TD id is
+  // tech-debt): a tab that counts ids shows their cards, and a
+  // tab with no numbered cards counts none.
+  const tab = (label: string) =>
+    page.getByRole("group", { name: "Swimlane" }).getByRole("button", { name: label });
+  await expect(tab("Tech debt · 16 stories, 40 tasks")).toBeVisible();
+  await expect(tab("Architecture · 0 stories, 0 tasks")).toBeVisible();
+  await expect(tab("Product · 3 stories, 7 tasks")).toBeVisible();
+  const numberedCards = page.locator('.kb-story[data-group="numbered"]');
+  await tab("Tech debt · 16 stories, 40 tasks").click();
+  await expect(numberedCards).toHaveCount(2);
+  await expect(numberedCards.and(page.locator('[data-lane="tech-debt"]'))).toHaveCount(2);
+  await tab("Architecture · 0 stories, 0 tasks").click();
+  await expect(numberedCards).toHaveCount(0);
+  await tab("Product · 3 stories, 7 tasks").click();
+  await expect(numberedCards).toHaveCount(0);
+  await expect(
+    page.getByText("Counts include the checked-in ledger plus the last 100 updated PRs"),
+  ).toBeVisible();
+});
+
 test("a 403 shows the offline snapshot banner", async ({ page, context }) => {
   await context.route(/api\.github\.com\/.*/, async (route) =>
     route.fulfill({
