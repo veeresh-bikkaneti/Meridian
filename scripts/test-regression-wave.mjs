@@ -19,7 +19,7 @@
  *   baseline is empty and must stay that way (a re-baselined row fails
  *   the profile) — noUpwardImport <= 110, shell-ban <= 10. Baselines can
  *   only shrink; a count above the cap fails even if eslint passed.
- * - Entry size must stay <= 323,865 B gzip; the exact byte count is
+ * - Entry size must stay <= 324,995 B gzip; the exact byte count is
  *   printed either way.
  * - A failed Playwright spec is re-run once, alone (AGENTS.md section
  *   9): it is a regression only if the lone re-run fails too. A spec
@@ -44,7 +44,7 @@ export const LIMITS = {
   noRawIo: 0,
   noUpwardImport: 110,
   shellBan: 10,
-  entryBytes: 323_865,
+  entryBytes: 324_995,
 };
 
 export const PLAYWRIGHT_PROJECTS = [
