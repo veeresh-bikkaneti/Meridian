@@ -104,16 +104,19 @@ describe("FirstVisitQueue wiring (item 9)", () => {
 
   it("GameApp feeds the queue in INV4 order and holds the bubble", () => {
     const app = read("src/components/game-app.tsx");
+    const host = read("src/components/age-profile/use-age-profile-host.tsx");
     const scout = app.indexOf('id: "scout-notice"');
     const tour = app.indexOf('id: "tour-invite"');
-    const sheet = app.indexOf('id: "read-aloud-sheet"');
+    // The sheet entry itself is built by the age-profile host
+    // (TD-06.6); GameApp pushes it third, after scout and tour.
+    const sheet = app.indexOf("firstVisitPrompts.push(readAloudEntry)");
     assert.ok(scout >= 0 && tour > scout && sheet > tour, "queue order: scout → tour → read-aloud");
     assert.match(app, /<FirstVisitQueue prompts=\{firstVisitPrompts\} seenKey=\{FIRST_VISIT_QUEUE_KEY\} placement="overlay" onModalChange=\{setFirstVisitModalOpen\} \/>/);
     // Arrival modal (2026-11-20): the read-aloud sheet — and only the
     // sheet — is flagged modal, and the Home page goes inert while
     // the queue reports a modal prompt up.
-    assert.match(app, /id: "read-aloud-sheet",\s*\n\s*\/\/ Arrival modal/);
-    assert.match(app, /modal: true,/);
+    assert.match(host, /id: "read-aloud-sheet",\s*\n\s*\/\/ Arrival modal/);
+    assert.match(host, /modal: true,/);
     assert.match(app, /inert=\{ageSettingsOpen \|\| ageAsk !== null \|\| firstVisitModalOpen \|\| undefined\}/);
     // The bubble (fourth prompt) waits for the whole queue, not just the invite.
     assert.match(app, /tutorialInviteVisible=\{firstVisitPrompts\.length > 0\}/);

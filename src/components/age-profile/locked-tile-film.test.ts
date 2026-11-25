@@ -29,6 +29,7 @@ const tile = read("LockedLoop.tsx");
 const css = read("age-profile.css");
 const styles = read("../../styles.css");
 const gameApp = read("../game-app.tsx");
+const host = read("use-age-profile-host.tsx");
 const media = read("../../assets/home-v5/locked-tile-media.ts");
 const assetBytes = (name: string) =>
   statSync(join(here, "../../assets/home-v5", name)).size;
@@ -207,12 +208,13 @@ describe("LockedLoop — R5: copy byte-exact, order frozen, picture adds no word
 });
 
 describe("band selection — only the 5–7 locked tile ever mounts the film", () => {
-  it("LockedLoop mounts the film; game-app's locked branch is byte-identical", () => {
+  it("LockedLoop mounts the film; the locked branch is byte-identical in the age-profile host", () => {
     assert.ok(tile.includes("<LockedTileFilm />"), "film mounts inside LockedLoop");
     assert.ok(
-      gameApp.includes('<LockedLoop title="GeoDetective" onGrownUpOpen={onGrownUpOpen} />'),
-      "game-app locked branch untouched — no new prop, no new import there",
+      host.includes('<LockedLoop title="GeoDetective" onGrownUpOpen={onGrownUpOpen} />'),
+      "host locked branch untouched — no new prop, no new import there",
     );
+    assert.ok(!gameApp.includes("LockedLoop"), "game-app never names LockedLoop (TD-06.6: the host owns it)");
     assert.ok(!gameApp.includes("LockedTileFilm"), "game-app never names the film directly");
     assert.ok(!gameApp.includes("locked-tile-media"), "game-app never names the locked media");
   });

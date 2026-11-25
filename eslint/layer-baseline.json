@@ -2,12 +2,7 @@
   "comment": "KNOWN violations of the architecture guardrails (eslint/layer-rule.mjs), regenerated 2026-11-20 on main b740197d8e510806097cb882fd13c7b5f52c0c32. Entries are per violation: noUpwardImport is \"file|specifier\" (the specifier exactly as written) and noRawIo is \"file|what\" (one entry per call site, duplicates kept). Each list can only shrink: a rule suppresses a violation only while an entry with its exact key remains, and scripts/layer-baseline.test.mjs fails when a file's baselined keys no longer match its live violations. Permanent exemptions (test files, src/platform/** itself) live in the rule file, not here.",
   "noUpwardImport": [
     "src/components/age-profile/LockedTileFilm.tsx|../../assets/home-v5/locked-tile-media",
-    "src/components/game-app.tsx|./age-profile/AgeAskGate",
-    "src/components/game-app.tsx|./age-profile/AgeProfileSettings",
-    "src/components/game-app.tsx|./age-profile/LockedLoop",
-    "src/components/game-app.tsx|./age-profile/ReadAloudPrefPrompt",
-    "src/components/game-app.tsx|./age-profile/ReadAloudPrefSettings",
-    "src/components/game-app.tsx|./age-profile/age-profile.css",
+    "src/components/game-app.tsx|./age-profile/use-age-profile-host",
     "src/components/game-app.tsx|./passport/EarnedBadgeRow",
     "src/components/game-app.tsx|@/assets/home-v5/card-media",
     "src/components/game-app.tsx|@/assets/home-v5/globe-fallback.webp",

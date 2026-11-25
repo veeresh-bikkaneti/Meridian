@@ -231,12 +231,12 @@ Related, not counted in the 21 upward-import rows: `noRawIo` lists 32 game-app r
 
 | # | Specifier | Import site | Curing PR |
 | ---: | :--- | :--- | :--- |
-| 1 | `./age-profile/AgeAskGate` | 180 | Age-profile host. The import moves into `src/components/age-profile/` (same area). Overlays Home and Subjects via `ageAsk`. |
-| 2 | `./age-profile/AgeProfileSettings` | 179 | Age-profile host (`ageSettingsOpen`, 4308-4318, 3773+). |
-| 3 | `./age-profile/LockedLoop` | 148 | Age-profile host, passed into Home as a slot at 5261. Home must not import it. |
-| 4 | `./age-profile/ReadAloudPrefPrompt` | 149 | Age-profile host, first-visit queue at 4259-4264. |
-| 5 | `./age-profile/ReadAloudPrefSettings` | 152 | Age-profile host, same queue. |
-| 6 | `./age-profile/age-profile.css` | 147 | Age-profile host, not Home. |
+| 1 | `./age-profile/AgeAskGate` | 180 | Age-profile host. The import moves into `src/components/age-profile/` (same area). Overlays Home and Subjects via `ageAsk`. — cured in TD-06.6. |
+| 2 | `./age-profile/AgeProfileSettings` | 179 | Age-profile host (`ageSettingsOpen`, 4308-4318, 3773+). — cured in TD-06.6. |
+| 3 | `./age-profile/LockedLoop` | 148 | Age-profile host, passed into Home as a slot at 5261. Home must not import it. — cured in TD-06.6. |
+| 4 | `./age-profile/ReadAloudPrefPrompt` | 149 | Age-profile host, first-visit queue at 4259-4264. — cured in TD-06.6. |
+| 5 | `./age-profile/ReadAloudPrefSettings` | 152 | Age-profile host, same queue. — cured in TD-06.6. |
+| 6 | `./age-profile/age-profile.css` | 147 | Age-profile host, not Home. — cured in TD-06.6. |
 | 7 | `./passport/EarnedBadgeRow` | 153 | Last PR: the thin layer-6 router passes a slot into Home at 5298. Home must not import passport. |
 | 8 | `@/assets/home-v5/card-media` | 78 | Last PR: the thin router passes URLs or media objects into Home, unless `src/assets/**` has already been reclassified as layer 1. |
 | 9 | `@/assets/home-v5/globe-fallback.webp` | 73, used 199 | Last PR, same slot rule as 8. |
@@ -375,7 +375,7 @@ Final order. Extraction steps follow published shared-state row counts, fewest f
 | later | Deferred: storage, history, saveData, and language-model ports in `src/platform`. | 0 | ~400 | Wait for edge's Part B. That lane owns those files now. |
 | 2 | Shrink-only size budget test for `game-app.tsx` | 0 | test only | After Part B merges. Locks that this file only shrinks from then on. |
 | 3 | Leaf hooks: difficulty, deck status, chunk-reload notice, reset toast | 1 each | ~130 | |
-| 4 | Age-profile hook and overlay host | 2 | ~150 | Cures checklist rows 1-6. |
+| 4 | Age-profile hook and overlay host | 2 | ~150 | Cures checklist rows 1-6. Done in TD-06.6 (`use-age-profile-host.tsx` in `src/components/age-profile/`); the composer's one leftover host import is the new baseline row the §2 preamble allows, cleared in the last PR. |
 | 5 | Session hook, idle watchdog, discarded notice | 3 | ~220 | |
 | 6 | Overlay queue: first-visit, tutorial or invite, celebration or cleared | 3 | ~200 | |
 | 7 | Run controller (`commit`, `openRun`, `startReview`) | 3 | ~350 | Pulled forward of the challenge hook. B had placed this after a 5-row step. |
