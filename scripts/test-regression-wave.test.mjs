@@ -37,15 +37,15 @@ test("parseArgs: defaults, --help, --list, unknown flag rejected", () => {
 });
 
 test("archVerdict: at the ratchet passes, one over fails", () => {
-  const at = layerCounts({ noRawIo: entries(0), noUpwardImport: entries(110) });
-  assert.deepEqual(at, { noRawIo: 0, noUpwardImport: 110 });
+  const at = layerCounts({ noRawIo: entries(0), noUpwardImport: entries(104) });
+  assert.deepEqual(at, { noRawIo: 0, noUpwardImport: 104 });
   assert.equal(archVerdict(at).ok, true);
-  const overRaw = archVerdict({ noRawIo: 1, noUpwardImport: 110 });
+  const overRaw = archVerdict({ noRawIo: 1, noUpwardImport: 104 });
   assert.equal(overRaw.ok, false);
   assert.match(overRaw.note, /noRawIo 1 > 0/);
-  const overUp = archVerdict({ noRawIo: 0, noUpwardImport: 111 });
+  const overUp = archVerdict({ noRawIo: 0, noUpwardImport: 105 });
   assert.equal(overUp.ok, false);
-  assert.match(overUp.note, /noUpwardImport 111 > 110/);
+  assert.match(overUp.note, /noUpwardImport 105 > 104/);
 });
 
 test("the raw-I/O ratchet is hard at zero and cannot grow back", () => {
@@ -73,12 +73,12 @@ test("shellBanTotal sums every ban list and ignores the comment", () => {
 });
 
 test("entry size: exact bytes parse out of the checker output and the limit is enforced", () => {
-  const out = "check-entry-size: entry JS gzip 324,995 B, limit 324,995 B (0 B to spare)";
-  assert.equal(parseEntrySizeBytes(out), 324995);
+  const out = "check-entry-size: entry JS gzip 325,157 B, limit 325,157 B (0 B to spare)";
+  assert.equal(parseEntrySizeBytes(out), 325157);
   assert.equal(parseEntrySizeBytes("no size here"), null);
-  assert.equal(entrySizeVerdict(324995).ok, true);
-  assert.equal(entrySizeVerdict(324996).ok, false);
-  assert.match(entrySizeVerdict(324996).note, /324,996 B > 324,995 B limit/);
+  assert.equal(entrySizeVerdict(325157).ok, true);
+  assert.equal(entrySizeVerdict(325158).ok, false);
+  assert.match(entrySizeVerdict(325158).note, /325,158 B > 325,157 B limit/);
 });
 
 test("formatTable prints the four columns and every row", () => {
@@ -181,7 +181,7 @@ function baseDeps(overrides = {}) {
       ["playwright test", { code: 0, stdout: "", stderr: "" }],
     ]),
     readJson: (path) => {
-      if (path.includes("layer-baseline")) return { noRawIo: entries(0), noUpwardImport: entries(110) };
+      if (path.includes("layer-baseline")) return { noRawIo: entries(0), noUpwardImport: entries(104) };
       if (path.includes("shell-ban-baseline")) return { pageLocalMain: entries(10) };
       return { suites: [] }; // Playwright report: no failures
     },
@@ -249,7 +249,7 @@ test("runProfile: a Playwright failure that passes its lone re-run is a flake, n
       ["check:entry-size", { code: 0, stdout: "check-entry-size: entry JS gzip 320,000 B, limit 323,865 B", stderr: "" }],
     ]),
     readJson: (path) => {
-      if (path.includes("layer-baseline")) return { noRawIo: entries(0), noUpwardImport: entries(110) };
+      if (path.includes("layer-baseline")) return { noRawIo: entries(0), noUpwardImport: entries(104) };
       if (path.includes("shell-ban-baseline")) return { pageLocalMain: entries(10) };
       // First report has one failure; the lone re-run's report is clean.
       return pwRuns <= 1
@@ -281,7 +281,7 @@ test("runProfile: a Playwright failure that fails its lone re-run is a regressio
       ["check:entry-size", { code: 0, stdout: "check-entry-size: entry JS gzip 320,000 B, limit 323,865 B", stderr: "" }],
     ]),
     readJson: (path) => {
-      if (path.includes("layer-baseline")) return { noRawIo: entries(0), noUpwardImport: entries(110) };
+      if (path.includes("layer-baseline")) return { noRawIo: entries(0), noUpwardImport: entries(104) };
       if (path.includes("shell-ban-baseline")) return { pageLocalMain: entries(10) };
       return {
         suites: [

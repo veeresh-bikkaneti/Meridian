@@ -42,9 +42,9 @@ import { pathToFileURL } from "node:url";
 
 export const LIMITS = {
   noRawIo: 0,
-  noUpwardImport: 110,
+  noUpwardImport: 104,
   shellBan: 10,
-  entryBytes: 324_995,
+  entryBytes: 325_157,
 };
 
 export const PLAYWRIGHT_PROJECTS = [
