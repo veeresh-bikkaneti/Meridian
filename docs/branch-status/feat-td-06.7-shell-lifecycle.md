@@ -62,9 +62,17 @@
   effect, `applyHashScreen`, the popstate + deep-link effects, and the
   boot effect (every exit still calls `setReady(true)`).
   `game-app.tsx` 8,274 -> 7,701 lines; ceiling lowered to 7,701.
-- Entry-size overage: was 324,522 B vs 323,865 B limit (+657 B) after
-  Steps 5-7. The Step 10 extraction changed the bundle; re-measured
-  below (see Gates). If still over, the cause needs diagnosis.
+  Map Step 10 marked done. Review fixes 2 (territory pins), 3 (M6
+  regex), 4 (Step 10) all landed; narrow tests green.
+- Entry-size overage: 324,895 B gzip vs 323,865 B limit (+1,030 B).
+  STILL FAILING after Step 10. Root cause: the four hook extractions
+  add ~1,073 B of routes-chunk overhead (base 323,822 B -> 324,895 B;
+  routes chunk +2,559 raw bytes; index.js byte-identical). The code
+  moved, it did not grow — the overhead is the module boundaries +
+  named deps-object property names + reduced minification across
+  modules. No duplication, no dead code, no new modules. Fix needs
+  an owner decision (limit, or a deeper bundle restructure such as
+  lazy-loading territory / session / journal data out of the entry).
 - Then: lower `GAME_APP_SIZE_CEILING` to the new `wc -l`, update
   `docs/architecture/game-app-map.md` steps 5, 6, 7, 10 to done,
   run the full gates, open the draft PR.
