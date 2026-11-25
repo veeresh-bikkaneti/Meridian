@@ -91,10 +91,19 @@
 
 ## Next step
 
-- BLOCKED on entry size (see Size above): caps reverted to
-  324,995 B per the owner's ruling; entry is 325,158 B local.
-  Owner call on how the ~170 B is funded (issue #621). TD-06.10
-  starts only after this merges (one open game-app PR at a time).
+- Catch-up merge of origin/main c8b735f4 (TD-06.17, #621/#623)
+  landed clean, no conflicts. TD-06.17's journal lazy-load took
+  the entry to 310,419 B gzip against main's restored 323,865 B
+  cap (13,446 B to spare), so the entry-size block above is
+  cleared without touching any cap: ENTRY_JS_GZIP_LIMIT and
+  LIMITS.entryBytes are main's 323,865 B. game-app.tsx is
+  7,481 lines, at the 7,481 ceiling. Gates on the merged tip:
+  tsc, lint:arch (noRawIo 0, noUpwardImport 104), lint:nav,
+  build:pages, check:entry-size, check-game-app-size,
+  check:provenance all PASS; narrow unit tests 160/160;
+  observability.spec.ts:26 and :160 PASS. Awaiting review.
+  TD-06.10 starts only after this merges (one open game-app PR
+  at a time).
 
 ## Graph
 
