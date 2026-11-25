@@ -19,7 +19,7 @@ import { playCelebrationSound } from "@/game/audio/play-guards";
 import { resolveBand, type AgeBandId } from "@/game/age-profile";
 import { LoopMap } from "../loop/LoopMap";
 import { LoopMapBoundary, LoopMapOffLine } from "../loop/loop-map-boundary";
-import { TILE_FALLBACK_COPY } from "@/map/tile-fallback-copy";
+import { TILE_FALLBACK_COPY } from "@/lib/tile-fallback-copy";
 import { coldtrailCaseCount, getColdtrailCase } from "./cases";
 import {
   capitalsPackCaseCount,

@@ -379,7 +379,7 @@ Final order. Extraction steps follow published shared-state row counts, fewest f
 | 5 | Session hook, idle watchdog, discarded notice | 3 | ~220 | Done in TD-06.7 (`use-shell-session.ts` in `src/components/`). |
 | 6 | Overlay queue: first-visit, tutorial or invite, celebration or cleared | 3 | ~200 | Done in TD-06.7 (`use-overlay-queue.tsx` in `src/components/`). |
 | 7 | Run controller (`commit`, `openRun`, `startReview`) | 3 | ~350 | Pulled forward of the challenge hook. B had placed this after a 5-row step. Done in TD-06.7 (`use-run-controller.ts` in `src/components/`). |
-| 8 | Map-mode hook in `src/map` | 4 | ~280 | Cures checklist rows 14-18 and 20. |
+| 8 | Map-mode hook in `src/map` | 4 | ~280 | Cures checklist rows 14-18 and 20. Done in TD-06.8 (`use-map-mode.ts` in `src/map/`; `map-options` and the satellite view types moved down to `src/lib`, the tile-fallback shim is deleted. `capability.ts` stays in `src/map`: its default storage path goes through the platform storage port, which the domain layer may not import — the hook imports it same-area instead). |
 | 9 | Challenge receive and preview hook | 5 | ~280 | |
 | 10 | Router hook and remaining boot, `inAppScreen` and hash or history | 6 | ~700 | Hook extract only. The file stays in `src/components/`. Done in TD-06.7 (`use-shell-router.ts` in `src/components/`). |
 | 11 | Challenge welcome | 3 | ~170 | Views start here, after their state owners exist. Then fewest shared-state rows first among views. |

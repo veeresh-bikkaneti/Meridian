@@ -100,6 +100,10 @@ export const ALLOWLIST = [
   { file: "src/components/journal-prefetch.ts", pattern: /.*/, reason: "fetch-design note; specs intercept the network, no hook" },
   { file: "src/components/grandpa-coffee-run.tsx", pattern: /.*/, reason: "data-tour-scroll is the tour's own attribute" },
   { file: "src/game/easy-curation.ts", pattern: /.*/, reason: "product logic exported so tests can reach it; not a hook" },
+  // The map-mode hook's boot-qualification comment records the #154
+  // test bypass that was REMOVED (the harness spoofs device signals);
+  // the comment is the guard's history, not a seam.
+  { file: "src/map/use-map-mode.ts", pattern: /.*/, reason: "comment records a removed bypass (issue #154); no test-only code" },
 ];
 
 const COMMENT_PHRASES =

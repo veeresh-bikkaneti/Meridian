@@ -457,36 +457,45 @@ test("auto-switch record: qualifying source, NO accepted flag, decays after 7 da
 });
 
 test("game-app wiring: boot applies the plan's persistSource as an auto record", () => {
-  // Pins that game-app's boot effect actually writes what the planner
+  // Pins that the boot qualification actually writes what the planner
   // returns — the successor of the issue #154 item 7 accept-wiring pin
-  // (the accept handler it guarded is gone with the dialog). game-app.tsx
-  // is a large component with no unit-render harness in this repo, so the
-  // wiring is pinned by reading the source — the same pattern as the
-  // userAgent check on capability.ts above.
+  // (the accept handler it guarded is gone with the dialog). Step 8
+  // (TD-06.8): the boot qualification lives in the map-mode hook now
+  // (src/map/use-map-mode.ts), which GameApp's boot effect calls. There
+  // is no unit-render harness for it in this repo, so the wiring is
+  // pinned by reading the source — the same pattern as the userAgent
+  // check on capability.ts above.
   const src = readFileSync(
+    new URL("./use-map-mode.ts", import.meta.url),
+    "utf8",
+  );
+  const gameAppSource = readFileSync(
     new URL("../components/game-app.tsx", import.meta.url),
     "utf8",
   );
   const start = src.indexOf("planBootMapMode(");
-  assert.ok(start >= 0, "boot effect must plan via planBootMapMode");
+  assert.ok(start >= 0, "boot qualification must plan via planBootMapMode");
   const boot = src.slice(start, start + 1200);
   assert.match(
     boot,
     /writeStoredMapMode\("scout", plan\.persistSource\)/,
     "boot must persist the planned source as the auto record",
   );
-  // And the dialog era is fully gone from the component.
-  assert.ok(!src.includes("ScoutBootOffer"), "the boot offer dialog must not come back");
-  // Issue #154 item 1: the E2E harness seam must NOT come back either.
-  // Production once read window.__meridianSuppressScoutOffer to skip the
-  // auto-switch — a test bypass shipped to every player, settable by any
-  // page script. The harness now spoofs the device signals instead
-  // (tests/e2e/helpers.ts), so the app needs no bypass; if the seam name
-  // ever reappears in this component, this pin fails.
-  assert.ok(
-    !src.includes("__meridianSuppressScoutOffer"),
-    "the production test seam must stay removed — the harness spoofs device signals instead (issue #154 item 1)",
-  );
+  // And the dialog era is fully gone from the hook and the component.
+  for (const source of [src, gameAppSource]) {
+    assert.ok(!source.includes("ScoutBootOffer"), "the boot offer dialog must not come back");
+    // Issue #154 item 1: the E2E harness seam must NOT come back either.
+    // Production once read window.__meridianSuppressScoutOffer to skip the
+    // auto-switch — a test bypass shipped to every player, settable by any
+    // page script. The harness now spoofs the device signals instead
+    // (tests/e2e/helpers.ts), so this boot path is the only one that
+    // exists — in production and in tests alike; if the seam name ever
+    // reappears in either file, this pin fails.
+    assert.ok(
+      !source.includes("__meridianSuppressScoutOffer"),
+      "the production test seam must stay removed — the harness spoofs device signals instead (issue #154 item 1)",
+    );
+  }
 });
 
 test("legacy accepted record (written by the pre-2026-10-20 dialog) never decays", () => {
