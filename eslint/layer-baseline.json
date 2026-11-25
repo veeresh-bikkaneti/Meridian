@@ -8,7 +8,7 @@
     "src/components/game-app.tsx|@/assets/home-v5/globe-fallback.webp",
     "src/components/game-app.tsx|@/assets/home-v5/hero-mountain.webp",
     "src/components/game-app.tsx|@/assets/verdict/grandpa-media",
-    "src/components/game-app.tsx|@/game/coldtrail/TrailScreen",
+    "src/components/game-app.tsx|@/game/coldtrail/ColdTrailHost",
     "src/components/game-app.tsx|@/game/loop/LoopScreen",
     "src/components/game-app.tsx|@/map/satellite-map",
     "src/components/game-app.tsx|@/map/use-map-mode",

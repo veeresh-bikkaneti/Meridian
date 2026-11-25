@@ -33,6 +33,12 @@ const here = dirname(fileURLToPath(import.meta.url));
 const gameAppSource = readFileSync(join(here, "game-app.tsx"), "utf8");
 // Step 7 (TD-06.7): openRun lives in use-run-controller.ts now.
 const runControllerSource = readFileSync(join(here, "use-run-controller.ts"), "utf8");
+// Step 14 (TD-06.10): the TrailScreen lazy factory and the leave
+// wiring live in src/game/coldtrail/ColdTrailHost.tsx now.
+const coldTrailHostSource = readFileSync(
+  join(here, "../game/coldtrail/ColdTrailHost.tsx"),
+  "utf8",
+);
 const chunkReloadNoticeSource = readFileSync(
   join(here, "use-chunk-reload-notice.ts"),
   "utf8",
@@ -69,7 +75,7 @@ describe("F2 lazy boundary — Loop/Trail are not eagerly imported", () => {
       "LoopScreen must be a React.lazy component",
     );
     assert.ok(
-      gameAppSource.includes("const TrailScreen = lazy("),
+      coldTrailHostSource.includes("const TrailScreen = lazy("),
       "TrailScreen must be a React.lazy component",
     );
     assert.ok(
@@ -77,7 +83,7 @@ describe("F2 lazy boundary — Loop/Trail are not eagerly imported", () => {
       "the Loop loader must dynamically import the LoopScreen module",
     );
     assert.ok(
-      gameAppSource.includes('import("@/game/coldtrail/TrailScreen")'),
+      coldTrailHostSource.includes('import("@/game/coldtrail/TrailScreen")'),
       "the Trail loader must dynamically import the TrailScreen module",
     );
   });
@@ -135,7 +141,7 @@ describe("F2 lazy boundary — restore path crosses Suspense + error boundary", 
     );
   });
 
-  it("the coldTrailOpen branch renders TrailScreen inside Suspense + MapErrorBoundary", () => {
+  it("the coldTrailOpen branch renders the Cold Trail host inside Suspense + MapErrorBoundary", () => {
     const branch = segment(
       gameAppSource,
       "if (coldTrailOpen) {",
@@ -146,7 +152,11 @@ describe("F2 lazy boundary — restore path crosses Suspense + error boundary", 
       branch.includes('<Suspense fallback={<SessionLoadingFallback label="Loading Cold Trail…" />}>'),
       "trail branch must show the destination-named session fallback while the chunk loads",
     );
-    assert.ok(branch.includes("<TrailScreen"), "trail branch must render TrailScreen");
+    assert.ok(branch.includes("<ColdTrailHost"), "trail branch must render ColdTrailHost");
+    assert.ok(
+      coldTrailHostSource.includes("<TrailScreen"),
+      "the host must render TrailScreen",
+    );
   });
 
   it("BootSplash survives ONLY at the boot !ready gate (PR #203 panel)", () => {
@@ -196,9 +206,16 @@ describe("F2 lazy boundary — restore path crosses Suspense + error boundary", 
       gameAppSource.includes("writeColdTrailOpen(true); setColdTrailOpen(true);"),
       "opening Cold Trail must persist the flag",
     );
+    // Step 14 (TD-06.10): the leave wiring is split — the host
+    // clears the persisted flag, then the shell callback it was
+    // handed clears the open state.
     assert.ok(
-      gameAppSource.includes("writeColdTrailOpen(false); setColdTrailOpen(false);"),
-      "leaving/resetting Cold Trail must clear the persisted flag with the state",
+      coldTrailHostSource.includes("writeColdTrailOpen(false);"),
+      "leaving Cold Trail must clear the persisted flag (host leave wiring)",
+    );
+    assert.ok(
+      gameAppSource.includes("<ColdTrailHost onLeave={() => setColdTrailOpen(false)} />"),
+      "the host's leave callback must clear the shell's open state",
     );
   });
 });
@@ -228,6 +245,10 @@ describe("Core F-4 — no component prefetch; territory-data prefetch kept", () 
     assert.ok(
       !gameAppSource.includes("void loadTrailScreen().catch"),
       "no fire-and-forget component import may remain for Trail",
+    );
+    assert.ok(
+      !coldTrailHostSource.includes("void loadTrailScreen().catch"),
+      "no fire-and-forget component import may remain for Trail (host)",
     );
   });
 
@@ -264,7 +285,7 @@ describe("#209 — every gameplay chunk load is timeout-bounded", () => {
       "LoopScreen's lazy load must be timeout-bounded (#209)",
     );
     assert.ok(
-      gameAppSource.includes('withChunkTimeout(loadTrailScreen(), "Cold Trail screen")'),
+      coldTrailHostSource.includes('withChunkTimeout(loadTrailScreen(), "Cold Trail screen")'),
       "TrailScreen's lazy load must be timeout-bounded (#209)",
     );
     assert.ok(
