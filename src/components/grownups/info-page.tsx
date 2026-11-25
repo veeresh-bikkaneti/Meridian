@@ -19,11 +19,13 @@
  * stays: it is the pages' theme surface, not a shell fork, and it is
  * a plain wrapper rather than its own landmark. The doors nav stays as page content under
  * the header — it is this family's own cross-nav, and its entries
- * come from the one shared link list.
+ * come from the one shared link list. Since TD-05.3 it renders
+ * through the shared ContentNav, the one content-nav owner.
  */
 import type { ReactNode } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
 import { GROWNUP_DOORS } from "../ui/site-links.ts";
+import { ContentNav } from "../ui/content-nav.tsx";
 import { PageShell } from "../ui/page-shell.tsx";
 import "./info-page.css";
 
@@ -90,7 +92,7 @@ export function InfoPage({
     <div className="grown-page">
       <div className="gp-shell-pad">
         <PageShell header={{ to: "/", status: null, mute: null }} width="narrow">
-          <nav className="gp-doors" aria-label="Grown-ups pages">
+          <ContentNav className="gp-doors" label="Grown-ups pages">
             {DOORS.map((door) => {
               const isCurrent = pathname === door.to && !door.search;
               return (
@@ -104,7 +106,7 @@ export function InfoPage({
                 </Link>
               );
             })}
-          </nav>
+          </ContentNav>
           <div className="gp-card">
             {graphic ? <div className="gp-graphic">{GRAPHICS[graphic]}</div> : null}
             <h1 className="gp-title">{title}</h1>

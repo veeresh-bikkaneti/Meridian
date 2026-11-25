@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import type { ErrorComponentProps } from "@tanstack/react-router";
-import { TriangleAlert } from "lucide-react";
+import { ErrorScreen } from "../components/ui/error-screen.tsx";
 import { emitEvent, sanitizeError } from "./observability";
 import {
   CHUNK_RELOAD_KEY,
@@ -10,8 +10,6 @@ import {
 } from "./chunk-recovery";
 import { readSessionItem } from "../platform/storage/browser-storage.ts";
 import { STORAGE_KEYS } from "../platform/storage/keys.ts";
-
-const FALLBACK_MESSAGE = "An unexpected error occurred. Try reloading the page.";
 
 /**
  * The slice shouldReportChunkFailure reads. Values come from the
@@ -32,12 +30,6 @@ function chunkReportStorage(): { getItem(key: string): string | null } {
       return null;
     },
   };
-}
-
-function errorMessage(error: unknown): string {
-  if (error instanceof Error && error.message) return error.message;
-  if (typeof error === "string" && error) return error;
-  return FALLBACK_MESSAGE;
 }
 
 export function AppErrorComponent({ error }: ErrorComponentProps) {
@@ -63,28 +55,16 @@ export function AppErrorComponent({ error }: ErrorComponentProps) {
       error: sanitizeError(error),
     });
   }, [error]);
+  // TD-05.3: the router error page is the shared ErrorScreen, the
+  // only error surface. Its pinned blameless copy replaces the raw
+  // error message (no error text on screen; telemetry above keeps
+  // it). F4 holds: Try again reloads, so the page is never
+  // button-less. Home is a truthful exit here — this page is outside
+  // any run, and a full load of "/" lands on Home.
   return (
-    <main
-      className={
-        "flex min-h-screen flex-col items-center justify-center gap-3 px-6 text-center " +
-        "bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-50"
-      }
-    >
-      <span className="text-red-500" aria-hidden="true">
-        <TriangleAlert className="size-10" strokeWidth={2} />
-      </span>
-      <h1 className="text-lg font-semibold">Something went wrong</h1>
-      <p className="max-w-md text-sm break-words text-zinc-500 dark:text-zinc-400">
-        {errorMessage(error)}
-      </p>
-      {/* F4: a router-level error page is never button-less. */}
-      <button
-        type="button"
-        onClick={() => window.location.reload()}
-        className="mt-2 inline-flex min-h-11 items-center justify-center rounded-lg bg-zinc-900 px-5 text-sm font-semibold text-zinc-50 dark:bg-zinc-50 dark:text-zinc-900"
-      >
-        Try again
-      </button>
-    </main>
+    <ErrorScreen
+      onRetry={() => window.location.reload()}
+      onHome={() => window.location.assign("/")}
+    />
   );
 }

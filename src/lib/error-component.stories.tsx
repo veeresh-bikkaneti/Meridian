@@ -5,24 +5,18 @@ import {
   createRouter,
   RouterProvider,
 } from "@tanstack/react-router";
-import { PageShell } from "../components/ui/page-shell.tsx";
 import { AppErrorComponent } from "./error-component.tsx";
 
-// TD-05.2 mockup: the router error screen inside the shared shell it
-// will adopt in the Phase 2 shell sweep. The composition is the real
-// PageShell (SiteHeader + PageColumn + SiteFooter) around the real
-// AppErrorComponent — nothing about the screen itself is redrawn.
-// PageShell's footer renders router Links, so the story carries the
-// shell stories' own router wrapper (site-footer.stories.tsx): a
-// real TanStack router on a memory history, the story as root route.
-// The header takes the in-app onHome form (site-header.stories.tsx),
-// and status / mute are null: this screen has no status readout and
-// plays no audio. The screen still renders its own main landmark today —
-// that is the pageLocalMain baseline entry the later production PR
-// removes; the mockup shows the target frame around it.
+// The router error screen (TD-05.3): AppErrorComponent renders the
+// shared ErrorScreen itself — SiteHeader with the Meridian home
+// lockup, the narrow PageColumn, the pinned blameless copy and the
+// two exits (Try again, Home). The story renders the real component
+// with no extra frame. SiteHeader can render router Links, so the
+// story carries the shell stories' own router wrapper: a real
+// TanStack router on a memory history, the story as root route.
 const meta = {
   title: "Screens/ErrorComponent",
-  component: PageShell,
+  component: AppErrorComponent,
   parameters: { layout: "fullscreen" },
   decorators: [
     (Story) => {
@@ -34,28 +28,22 @@ const meta = {
       return <RouterProvider router={router} />;
     },
   ],
-} satisfies Meta<typeof PageShell>;
+} satisfies Meta<typeof AppErrorComponent>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const shellArgs = {
-  header: { onHome: () => {}, status: null, mute: null },
-  width: "narrow" as const,
-  children: (
-    <AppErrorComponent
-      error={new Error("Example error, shown so the page can be reviewed.")}
-      reset={() => {}}
-    />
-  ),
+const errorArgs = {
+  error: new Error("Example error, shown so the page can be reviewed."),
+  reset: () => {},
 };
 
 export const Desktop: Story = {
-  args: shellArgs,
+  args: errorArgs,
 };
 
 export const Mobile: Story = {
-  args: shellArgs,
+  args: errorArgs,
   decorators: [
     (Story) => (
       <div style={{ width: 390, margin: "0 auto" }}>

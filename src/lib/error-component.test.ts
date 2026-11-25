@@ -266,6 +266,21 @@ type ErrorComponentModule = {
 
 let cachedModule: ErrorComponentModule | null = null;
 
+async function errorScreenStandIn(): Promise<string> {
+  const runtime = JSON.stringify(await import.meta.resolve("react/jsx-runtime"));
+  const code = [
+    `import { jsx, jsxs } from ${runtime};`,
+    "export function ErrorScreen(props) {",
+    '  return jsxs("div", { children: [',
+    '    jsx("h1", { children: "That page couldn\'t load." }),',
+    '    jsx("button", { type: "button", onClick: props.onRetry, children: "Try again" }),',
+    '    props.onHome ? jsx("button", { type: "button", onClick: props.onHome, children: "Home" }) : null,',
+    "  ] });",
+    "}",
+  ].join("\n");
+  return `data:text/javascript;base64,${Buffer.from(code, "utf8").toString("base64")}`;
+}
+
 async function loadErrorComponent(): Promise<ErrorComponentModule> {
   if (cachedModule) return cachedModule;
   const here = dirname(fileURLToPath(import.meta.url));
@@ -289,6 +304,13 @@ async function loadErrorComponent(): Promise<ErrorComponentModule> {
       '"lucide-react"',
       JSON.stringify(await import.meta.resolve("lucide-react")),
     ],
+    // ErrorScreen (TD-05.3) pulls the shared shell (router links,
+    // path aliases) that this transpile-and-import harness cannot
+    // load, so it is swapped for a stand-in that renders the same
+    // contract: the pinned title and a Try again button wired to
+    // onRetry. The real component's copy is pinned in its own source
+    // (asserted below), and the shell tests cover its frame.
+    ['"../components/ui/error-screen.tsx"', JSON.stringify(await errorScreenStandIn())],
     [
       '"./observability"',
       JSON.stringify(new URL("./observability.ts", import.meta.url).href),
@@ -459,5 +481,26 @@ describe("arena Phase 2 (PR #532): AppErrorComponent chunk discipline + reload a
     assert.equal(code.includes("sessionStorage"), false);
     assert.equal(code.includes("localStorage"), false);
     assert.ok(code.includes("readSessionItem"));
+  });
+});
+
+describe("TD-05.3: the router error page is the shared ErrorScreen", () => {
+  const here = dirname(fileURLToPath(import.meta.url));
+
+  it("renders ErrorScreen with a reload retry and a Home exit, and no page-local main", async () => {
+    const src = await readFile(join(here, "error-component.tsx"), "utf8");
+    assert.match(src, /import \{ ErrorScreen \} from "\.\.\/components\/ui\/error-screen\.tsx";/);
+    assert.match(src, /<ErrorScreen[\s\S]*onRetry=\{\(\) => window\.location\.reload\(\)\}/);
+    assert.match(src, /onHome=\{\(\) => window\.location\.assign\("\/"\)\}/);
+    assert.doesNotMatch(src, /<main[\s>]/);
+  });
+
+  it("shows no raw error text: the screen keeps ErrorScreen's pinned blameless copy", async () => {
+    const src = await readFile(join(here, "error-component.tsx"), "utf8");
+    assert.doesNotMatch(src, /error\.message/);
+    assert.doesNotMatch(src, /\b(?:title|body)=/);
+    const screen = await readFile(join(here, "../components/ui/error-screen.tsx"), "utf8");
+    assert.match(screen, /title = "That page couldn't load\."/);
+    assert.match(screen, /\{actions\?\.retryLabel \?\? "Try again"\}/);
   });
 });

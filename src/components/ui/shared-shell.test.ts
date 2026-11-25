@@ -377,7 +377,8 @@ describe("PageShell and PageIntro (PR 3 Step 2)", () => {
   it("the grown-ups pages sit on PageShell (PR 3 Step 3.1): header Home + footer, no hand-built frame", () => {
     const src = read("src/components/grownups/info-page.tsx");
     assert.match(src, /<PageShell header=\{\{ to: "\/", status: null, mute: null \}\} width="narrow">/);
-    assert.match(src, /<nav className="gp-doors"/);
+    assert.match(src, /<ContentNav className="gp-doors" label="Grown-ups pages">/);
+    assert.doesNotMatch(src, /<nav[\s>]/);
     assert.doesNotMatch(src, /<main[\s>]/);
     assert.doesNotMatch(src, /gp-wrap/);
   });
@@ -669,11 +670,12 @@ describe("shell-ban baseline (KNOWN/STALE)", () => {
     // lg:max-w-none is gone — so the maxWNone baseline is empty.
     maxWNone: [],
     pageLocalHeaderFooter: [],
-    pageLocalNav: ["src/components/grownups/info-page.tsx", "src/routes/board.tsx"],
+    // TD-05.3: the grown-ups doors and the board view switcher render
+    // through ContentNav (the content-nav owner); the router error
+    // page (ErrorScreen) and the board left pageLocalMain.
+    pageLocalNav: [],
     pageLocalMain: [
       "src/components/game-app.tsx",
-      "src/lib/error-component.tsx",
-      "src/routes/board.tsx",
       "src/subjects/shared/SubjectCase.tsx",
       "src/subjects/shared/SubjectPicker.tsx",
     ],
@@ -702,7 +704,7 @@ describe("shell-ban baseline (KNOWN/STALE)", () => {
 
   it("the shared components themselves are never baselined", () => {
     const all = Object.values(baseline).flat();
-    for (const own of ["site-header", "site-footer", "page-column", "page-shell", "pill", "error-screen", "first-visit-queue"]) {
+    for (const own of ["site-header", "site-footer", "page-column", "page-shell", "pill", "error-screen", "first-visit-queue", "content-nav"]) {
       assert.ok(!all.some((f) => f.includes(own)), own);
     }
   });
