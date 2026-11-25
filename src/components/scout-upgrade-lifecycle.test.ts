@@ -35,6 +35,9 @@ import { fileURLToPath } from "node:url";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const gameAppSource = readFileSync(join(here, "game-app.tsx"), "utf8");
+// Step 8 (TD-06.8): applyScoutUpgrade and the boot qualification live
+// in the map-mode hook now (src/map/use-map-mode.ts).
+const mapModeHookSource = readFileSync(join(here, "../map/use-map-mode.ts"), "utf8");
 
 /** The source between two markers (both must exist). */
 function segment(src: string, from: string, to: string): string {
@@ -48,9 +51,9 @@ function segment(src: string, from: string, to: string): string {
 describe("#330 cure: the upgrade retires the auto-Scout note", () => {
   it("applyScoutUpgrade clears autoScoutNote", () => {
     const upgrade = segment(
-      gameAppSource,
+      mapModeHookSource,
       "const applyScoutUpgrade = useCallback(",
-      "// GeoDetective mounts its own screen",
+      "Commit the challenge welcome card's staged map pick",
     );
     assert.ok(
       upgrade.includes("setAutoScoutNote(false);"),
@@ -60,9 +63,9 @@ describe("#330 cure: the upgrade retires the auto-Scout note", () => {
 
   it("control: applyScoutUpgrade still clears eligibility and applies full", () => {
     const upgrade = segment(
-      gameAppSource,
+      mapModeHookSource,
       "const applyScoutUpgrade = useCallback(",
-      "// GeoDetective mounts its own screen",
+      "Commit the challenge welcome card's staged map pick",
     );
     assert.ok(
       upgrade.includes("setScoutUpgradeEligible(false);"),
@@ -78,7 +81,7 @@ describe("#330 cure: the upgrade retires the auto-Scout note", () => {
 describe("#331 flag-gate cure: the trial arms only when scoutUpgradeTrial is on", () => {
   it("boot eligibility is set inside the flag-gated loadFlags callback", () => {
     const boot = segment(
-      gameAppSource,
+      mapModeHookSource,
       'if (decision.source === "unknown-memory")',
       "setAutoScoutNote(true);",
     );
@@ -91,13 +94,13 @@ describe("#331 flag-gate cure: the trial arms only when scoutUpgradeTrial is on"
   });
 
   it("the flag-gated call is the ONLY place eligibility is armed", () => {
-    const arms = gameAppSource.split("setScoutUpgradeEligible(true);").length - 1;
+    const arms = mapModeHookSource.split("setScoutUpgradeEligible(true);").length - 1;
     assert.equal(arms, 1, "exactly one arming site may exist, and it is the flag-gated one");
   });
 
   it("a manual record landing during the flags load blocks the arming", () => {
     const boot = segment(
-      gameAppSource,
+      mapModeHookSource,
       'if (decision.source === "unknown-memory")',
       "setAutoScoutNote(true);",
     );
