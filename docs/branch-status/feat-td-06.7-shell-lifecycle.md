@@ -46,9 +46,21 @@
   retargeted to the new module). Gates: tsc PASS, lint:arch PASS,
   lint:nav PASS.
 
+- Ceiling lowered to the new count: `GAME_APP_SIZE_CEILING` 8,723 ->
+  8,274 (`scripts/check-game-app-size.mjs` + test). Map steps 5, 6,
+  7 marked done in `docs/architecture/game-app-map.md`.
+  Entry size is 324,522 B gzip — 657 B OVER the 323,865 B limit
+  (base 334d34b0c is 323,822 B). The three extractions added ~700 B
+  to the entry bundle; the cause is not yet isolated. This gate is
+  FAILING and needs a follow-up.
+
 ## Next
 
 - Step 10 — Router hook (boot / `ready`, `inAppScreen`, hash / history).
+  NOT DONE — needs a follow-up (token budget reached after Step 7).
+- Entry-size overage: 324,522 B vs 323,865 B limit (+657 B).
+  Needs diagnosis (the three extractions added ~700 B to the entry
+  bundle) and a fix before merge.
 - Then: lower `GAME_APP_SIZE_CEILING` to the new `wc -l`, update
   `docs/architecture/game-app-map.md` steps 5, 6, 7, 10 to done,
   run the full gates, open the draft PR.
