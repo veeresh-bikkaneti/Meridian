@@ -47,12 +47,24 @@
   `LIMITS.noUpwardImport` lowered to 104. `noRawIo` stays 0.
 - Size: `game-app.tsx` 7,695 → 7,481 lines; ceiling lowered to 7,481.
 - Entry size: the extraction's wiring (hook return/destructure, the
-  `readStoredMapMode` prop thread) grows the entry chunk by 262 B
-  gzip over base (324,888 B on `f5448d85`, 107 B of headroom), so —
-  the TD-06.7 / #621 precedent, and the checker's own "raise only on
-  purpose, in its own reviewed change" rule — `ENTRY_JS_GZIP_LIMIT`
-  and the regression `LIMITS.entryBytes` are raised to the measured
-  325,157 B (no silent headroom), with their test fixtures updated.
+  `readStoredMapMode` prop thread) grows the entry chunk by ~270 B
+  gzip over base (324,884 B on `f5448d85`). The caps were first raised
+  to the measured 325,157 B; the owner then ruled the 324,995 B cap
+  was for #620 only, with no further bump (follow-up: issue #621), so
+  `ENTRY_JS_GZIP_LIMIT` and the regression `LIMITS.entryBytes` are
+  REVERTED to 324,995 B and this branch is BLOCKED on entry size:
+  measured entry is 325,158 B local / 325,167 B CI, 163-172 B over.
+  Shrink investigation (bundle-report + chunk diff): all growth is in
+  the `routes` chunk (+922 raw / +272 gzip); no duplicated code or
+  strings. The interface names compress too well to recover the gap —
+  converting both the hook return object and the shell destructure to
+  positional form in the built chunk (696 raw removed) saves only
+  134 B gzip (~325,024 B, still over), and that shape contradicts the
+  named-object pattern every other extracted hook uses. Folding the
+  boot effect into the hook (dropping `qualifyBootMapMode` from the
+  interface) is worth only ~30-40 B more and changes effect ordering.
+  No honest, behaviour-identical cut reaches 324,995 B; owner call
+  needed (issue #621).
 - Pins retargeted (TD-06.7 pattern): `src/map/capability.test.ts`
   boot-wiring pin now reads the hook; `scout-upgrade-lifecycle`
   pins for `applyScoutUpgrade` and the boot arming now read the hook
@@ -79,8 +91,10 @@
 
 ## Next step
 
-- Parent publishes the draft PR; Rock reviews. TD-06.10 starts only
-  after this merges (one open game-app PR at a time).
+- BLOCKED on entry size (see Size above): caps reverted to
+  324,995 B per the owner's ruling; entry is 325,158 B local.
+  Owner call on how the ~170 B is funded (issue #621). TD-06.10
+  starts only after this merges (one open game-app PR at a time).
 
 ## Graph
 

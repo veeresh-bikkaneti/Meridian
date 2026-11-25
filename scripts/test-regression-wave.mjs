@@ -44,7 +44,7 @@ export const LIMITS = {
   noRawIo: 0,
   noUpwardImport: 104,
   shellBan: 10,
-  entryBytes: 325_157,
+  entryBytes: 324_995,
 };
 
 export const PLAYWRIGHT_PROJECTS = [
