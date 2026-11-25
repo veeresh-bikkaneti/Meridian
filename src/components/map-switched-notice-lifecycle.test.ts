@@ -22,6 +22,8 @@ import { fileURLToPath } from "node:url";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const gameAppSource = readFileSync(join(here, "game-app.tsx"), "utf8");
+// Step 5 (TD-06.7): killIdleSession lives in use-shell-session.ts now.
+const shellSessionSource = readFileSync(join(here, "use-shell-session.ts"), "utf8");
 
 /** The source between two markers (both must exist). */
 function segment(src: string, from: string, to: string): string {
@@ -35,9 +37,9 @@ function segment(src: string, from: string, to: string): string {
 describe("#188 switched notice is retired when the session ends", () => {
   it("killIdleSession clears mapSwitchedNote", () => {
     const kill = segment(
-      gameAppSource,
+      shellSessionSource,
       "const killIdleSession = useCallback(",
-      "useEffect(() => {\n    // Observability boot",
+      "useEffect(() => {\n    const onActivity",
     );
     assert.ok(
       kill.includes("setMapSwitchedNote(null);"),

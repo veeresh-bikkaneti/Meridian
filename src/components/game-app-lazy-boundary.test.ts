@@ -31,6 +31,8 @@ import { fileURLToPath } from "node:url";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const gameAppSource = readFileSync(join(here, "game-app.tsx"), "utf8");
+// Step 7 (TD-06.7): openRun lives in use-run-controller.ts now.
+const runControllerSource = readFileSync(join(here, "use-run-controller.ts"), "utf8");
 const chunkReloadNoticeSource = readFileSync(
   join(here, "use-chunk-reload-notice.ts"),
   "utf8",
@@ -272,7 +274,7 @@ describe("#209 — every gameplay chunk load is timeout-bounded", () => {
   });
 
   it("openRun races its places+territory await, so a hang lands in the existing start-error catch", () => {
-    const openRun = segment(gameAppSource, "const openRun = useCallback(", "// \"Try again\" on the in-run start-failure box");
+    const openRun = segment(runControllerSource, "const openRun = useCallback(", "const startReview = useCallback(");
     assert.ok(
       openRun.includes("await withChunkTimeout("),
       "openRun's chunk await must be timeout-bounded (#209)",

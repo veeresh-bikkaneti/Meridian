@@ -6,9 +6,7 @@ import { CURRENT_BUILD_ID, isNewBuildDeployed, staleRefreshRecentlyUsed } from "
 import { preloadAdmin1Boundaries, preloadAdmin1ForCountry, admin1ChunkIso2ForRegion } from "@/game/reverse-geocode";
 import { preloadTerritory } from "@/game/territory";
 import {
-  clearRunAfterUncleanShutdown,
   handlePageHide,
-  isUncleanShutdown,
   stampCleanExitDirty,
 } from "@/game/clean-exit";
 import type { Starter } from "@/game/starters";
@@ -21,23 +19,13 @@ import { dealingPoolFor } from "@/game/easy-curation";
 import {
   bankPlace,
   clearDiscardedShadow,
-  clearSession,
   DIFFICULTY_LABELS,
   EDITION_LABELS,
   endSession,
   formatSuccessRate,
-  IDLE_TIMEOUT_MS,
-  idleTimeoutFromSearch,
-  idleWarnMsFor,
-  isIdleExpired,
   isSessionLive,
-  readDiscardedShadow,
-  readSession,
-  seedSessionFromRun,
   startSession,
   summarizeSession,
-  touchSession,
-  writeSession,
   type Session,
   type SessionSummary,
 } from "@/game/session";
@@ -173,6 +161,10 @@ import {
   type BandRunConfig,
 } from "@/game/age-profile";
 import { useAgeProfileHost } from "./age-profile/use-age-profile-host";
+import { useShellSession } from "./use-shell-session";
+import { useOverlayQueue } from "./use-overlay-queue";
+import { useRunController } from "./use-run-controller";
+import { useShellRouter } from "./use-shell-router";
 
 type LegacySnapshotBand = Exclude<BandRunConfig["band"], AgeBandId>;
 
@@ -218,12 +210,9 @@ const HomeGlobe = lazy(() =>
     .catch(() => ({ default: GlobeChunkFallback })),
 );
 import {
-  CelebrationOverlay,
-  celebrationSeamSpec,
   celebrationSpec,
   hasCelebratedFirstWin,
   markFirstWinCelebrated,
-  type CelebrationSpec,
 } from "./celebration-overlay";
 import {
   buildCollisionCounts,
@@ -241,14 +230,12 @@ import {
   shouldReportChunkFailure,
 } from "@/lib/chunk-recovery";
 import { consumeRetryScreen } from "@/lib/persisted-screen";
-import { hashForScreen, screenForHash } from "@/lib/screen-hash";
 import { numberWord } from "@/lib/number-words";
 import { geodetectiveConfig } from "@/game/age-profile/difficulty";
 import { withChunkTimeout } from "@/lib/chunk-timeout";
 import { resolveGlobeTierSplit } from "@/lib/globe-tier-split";
 import {
   emitEvent,
-  initObservability,
   installGlobalErrorHandlers,
   noteRecoverySignal,
   recordMilestone,
@@ -273,11 +260,9 @@ import { TILE_FALLBACK_COPY } from "@/map/tile-fallback-copy.ts";
 import { MapModeToggle } from "./map-mode-toggle.tsx";
 import {
   TUTORIAL_EDITION,
-  TUTORIAL_PLACE_ID,
   TUTORIAL_REGION_ID,
   TUTORIAL_REGION_NAME,
   hasSeenTutorial,
-  isTutorialRunPool,
   markTutorialSeen,
   TUTORIAL_INVITE_DISMISS_EVENT,
   type TutorialBeat,
@@ -445,12 +430,8 @@ import {
   challengeRunFields,
   createChallengeRoute,
   dealChallenge,
-  decodeChallenge,
-  decodeChallengeLink,
   encodeChallenge,
   isLegalWinnerBlock,
-  playOrder,
-  resolveChallengeRoute,
   routeCeiling,
   type ChallengeCreation,
   type ChallengeRoute,
@@ -881,27 +862,6 @@ function recordChallengeCompletion(run: Run): {
   return { attempts, minted };
 }
 
-function writeRun(run: Run) {
-  try {
-    // Each challenge format persists to its OWN slot (pausedRunMc3,
-    // pausedRunMc2) so a build from before that format existed never
-    // sees its saves (§Q1-A4); everything else keeps the shipped slot.
-    const def =
-      run.challengeOrigin === "mc3"
-        ? STORAGE_KEYS.pausedRunMc3
-        : run.challengeOrigin === "mc2"
-          ? STORAGE_KEYS.pausedRunMc2
-          : STORAGE_KEYS.pausedRun;
-    setSessionStorageItem(def, run);
-    // Crash-loop breaker: this page now holds unsaved-crash state. If the
-    // process is killed without unloading, the next boot must not
-    // auto-resume; `pagehide` clears this flag on every clean unload.
-    stampCleanExitDirty();
-  } catch {
-    // The run still lives in memory when storage is blocked.
-  }
-}
-
 /**
  * The persisted pin-drop for the in-progress place. `drop`/`revealDone`
  * are React state only, so a page reload during the result card used to
@@ -1056,31 +1016,6 @@ type Menu =
   | { kind: "admin1"; countryId: string; countryName: string; from: "countries" | "states" };
 
 /**
- * Session state: the score accumulator that survives edition switches.
- * All mutations go through `update`/`replace`, which persist to
- * session storage and keep `ref` (the read-current-value handle for event
- * handlers and the idle timer) in sync with the rendered state.
- */
-function useSessionState() {
-  const [session, setSession] = useState<Session | null>(null);
-  const ref = useRef<Session | null>(null);
-  const persist = useCallback((next: Session | null) => {
-    ref.current = next;
-    if (next) writeSession(next);
-    else clearSession();
-    setSession(next);
-  }, []);
-  const update = useCallback(
-    (fn: (prev: Session | null) => Session | null) => {
-      persist(fn(ref.current));
-    },
-    [persist],
-  );
-  const get = useCallback(() => ref.current, []);
-  return { session, update, replace: persist, get };
-}
-
-/**
  * The globeTierSplit decision for a run's pool load. Only the Globe consults
  * the flag (and thereby waits for flags.json, at most ~1.5s, only on the first
  * Globe run of a page load); every other region gets false at once. Both
@@ -1137,7 +1072,6 @@ export function GameApp() {
   useEffect(() => {
     applyPalettePreference();
   }, []);
-  const [ready, setReady] = useState(false);
   // Exactly-once guard for the crash-watchdog ready signal below.
   const readySignaledRef = useRef(false);
   const [run, setRun] = useState<Run | null>(null);
@@ -1563,46 +1497,23 @@ export function GameApp() {
       </MapErrorBoundary>
     </Suspense>
   ) : null;
-  // Cleared-mode celebration: set when a difficulty band's full cycle is  // celebrated (primary onContinue trigger or the run-start backstop). The
-  // dialog renders over the current screen; dismissing returns the player
-  // to exactly where they were.
-  const [cleared, setCleared] = useState<ClearedInfo | null>(null);
-  // Celebration overlay (spec §7.2): the parent owns the spec; dismiss →
-  // null → unmount. Set by first-win (endless game), streak milestones via
-  // sound only, and GeoDetective's 387 completion (via onCelebrate).
-  // A harness may name a boot overlay variant. With no harness this
-  // stays null and the player path is unchanged.
-  const [celebration, setCelebration] = useState<CelebrationSpec | null>(() =>
-    typeof window === "undefined" ? null : celebrationSeamSpec(window.location.search),
-  );
-  const dismissCelebration = useCallback(() => setCelebration(null), []);
-  const celebrationOverlay = celebration ? (
-    <CelebrationOverlay
-      variant={celebration.variant}
-      character={celebration.character}
-      title={celebration.title}
-      body={celebration.body}
-      onDismiss={dismissCelebration}
-      // PBI-3: Scout Map disables motion — no confetti, same calm card.
-      motionOff={mapMode === "scout"}
-    />
-  ) : null;
-  // Celebration audio (spec §3): the cleared-mode dialog's opening beat.
-  // Easy/Medium get the medium applause; Hard gets the grand fanfare
-  // (coronation — the 60 s grand cooldown drops it to applause instead of
-  // stacking). First clear only: the cleared mark is set before the dialog
-  // opens, so the ref guard fires once per open — an Escape dismissal
-  // still sounds, because the trigger is the open, never the close.
-  const clearedSoundRef = useRef<ClearedInfo | null>(null);
-  useEffect(() => {
-    if (!cleared) {
-      clearedSoundRef.current = null;
-      return;
-    }
-    if (clearedSoundRef.current === cleared) return;
-    clearedSoundRef.current = cleared;
-    playCelebrationSound(cleared.choice === "hard" ? "grandFanfare" : "mediumApplause");
-  }, [cleared]);
+  // Step 6 — overlay queue: first-visit, tutorial / invite, celebration / cleared.
+  const {
+    cleared,
+    setCleared,
+    celebration,
+    setCelebration,
+    dismissCelebration,
+    celebrationOverlay,
+    tutorial,
+    setTutorial,
+    inviteDismissed,
+    setInviteDismissed,
+    bumpPromptQueue,
+    firstVisitModalOpen,
+    setFirstVisitModalOpen,
+  } = useOverlayQueue(mapMode);
+
   // Difficulty picker: one choice applies across Globe → Country → State and
   // survives edition switches. Persisted so it survives reloads too.
   const [difficultyChoice, setDifficultyChoice] = useDifficultyChoice();
@@ -1651,67 +1562,84 @@ export function GameApp() {
   // instead), and its finally must not clear a NEWER start's
   // loading state.
   const runStartGenRef = useRef(0);
-  // Session score: survives edition switches until End game or the idle
-  // timeout. The HUD and the summary read from here, never from the run.
-  const { session, update: updateSession, replace: replaceSession, get: getSession } = useSessionState();
-  // Idle UX: a non-blocking "still there?" warning, and a one-shot notice
-  // on the home screen after the idle kill.
-  const [idleWarn, setIdleWarn] = useState(false);
-  const [idleEndedNote, setIdleEndedNote] = useState(false);
-  // Wave 1 P0 Item 1: the one shared discarded-run notice. Keyed to
-  // "live, non-ended run/session discarded at boot" — deliberate End
-  // game already ends the session and isResumable excludes phase
-  // "summary", so ended games never produce one (no clean-exit flag
-  // keying: a finished game killed without pagehide must not show a
-  // lost-game notice). One card for all four causes; the reason
-  // keyword + the played score/places travel together, and each
-  // cause's copy avoids the other causes' keywords.
-  const [discardedNotice, setDiscardedNotice] = useState<DiscardedNotice | null>(null);
-  // Fix round L2: the visible notice must not carry role="status" — it
-  // mounts with its text already present, so screen readers may never
-  // announce it. Instead this always-present (on home) sr-only region
-  // starts empty and is FILLED by the effect below after mount, so the
-  // text change is what announces. Cleared when the notice goes null,
-  // so a later identical notice announces again instead of landing on
-  // an unchanged region.
-  const [discardedNoticeAnnouncement, setDiscardedNoticeAnnouncement] =
-    useState("");
-  useEffect(() => {
-    setDiscardedNoticeAnnouncement(
-      discardedNotice ? discardedNoticeText(discardedNotice) : "",
-    );
-  }, [discardedNotice]);
-  // First-run tutorial: null when inactive, otherwise the current beat
-  // (1 = aim coachmark, 2 = reveal feedback, 3 = completion hook). Owned
-  // by GameApp so the menu invitation, the run, and the cleanup paths all
-  // share one source of truth; Play/PlayLoaded only render from it.
-  const [tutorial, setTutorial] = useState<TutorialBeat | null>(null);
-  // The menu invitation is shown at most once per page load; the
-  // local-storage seen-flag persists the decision across visits.
-  const [inviteDismissed, setInviteDismissed] = useState(false);
-  // Item 9: bumped when the queued read-aloud sheet is answered, so the
-  // first-visit queue recomputes which prompt wants to show next.
-  const [, bumpPromptQueue] = useState(0);
-  // Arrival modal (owner direction, 2026-11-20): true while the
-  // read-aloud sheet is the queue's visible prompt — the queue drives
-  // it via onModalChange and the Home page below goes inert for
-  // exactly that span, the ask-first age gate's mechanism.
-  const [firstVisitModalOpen, setFirstVisitModalOpen] = useState(false);
-  // Idle window: the default, unless a harness names a different one.
-  const idleTimeoutMs = useMemo(
-    () => (typeof window === "undefined" ? IDLE_TIMEOUT_MS : idleTimeoutFromSearch(window.location.search)),
-    [],
-  );
-  const idleWarnMs = useMemo(() => idleWarnMsFor(idleTimeoutMs), [idleTimeoutMs]);
+  // Step 5 — session, idle watchdog, discarded notice (use-shell-session).
+  const {
+    session,
+    updateSession,
+    replaceSession,
+    getSession,
+    ensureSession,
+    killIdleSession,
+    idleWarn,
+    idleEndedNote,
+    discardedNotice,
+    discardedNoticeAnnouncement,
+    idleTimeoutMs,
+    idleWarnMs,
+    setDiscardedNotice,
+    setIdleWarn,
+    setIdleEndedNote,
+  } = useShellSession({
+    setRun,
+    setMenu,
+    setTutorial,
+    setStartError,
+    setMapSwitchedNote,
+    clearDrop,
+    readRun,
+    readMc2Run,
+    clearMc2Run,
+    clearMc3Run,
+  });
 
-  const commit = useCallback((next: Run) => {
-    writeRun(next);
-    setRun(next);
-    // A new or continued run retires any boot discard notice: the
-    // notice describes a game that is gone, and returning home later
-    // (Editions) must not resurrect it beside the fresh game.
-    setDiscardedNotice(null);
-  }, []);
+  // Step 7 — run controller: commit, openRun, startReview (use-run-controller).
+  const { commit, openRun, startReview } = useRunController({
+    runStartGenRef,
+    setRun,
+    setMenu,
+    setStarting,
+    setStartError,
+    setTutorial,
+    setCleared,
+    setDiscardedNotice,
+    ensureSession,
+    difficultyChoice,
+    readRun,
+    poolForRunStart,
+    globeTierSplitFor,
+  });
+
+  // Step 10 (TD-06.7): the shell router + boot live in use-shell-router.ts.
+  // It owns `ready`, the derived `inAppScreen`, the hash / history writer
+  // and listeners, and the boot effect that restores a saved run.
+  const { ready, inAppScreen } = useShellRouter({
+    commit,
+    ensureSession,
+    killIdleSession,
+    idleTimeoutMs,
+    difficultyChoice,
+    replaceSession,
+    setDiscardedNotice,
+    setChallengeBootNotice,
+    setMenu,
+    setPendingChallenge,
+    clearDrop,
+    bootRetryRef,
+    readRun,
+    readMc2Run,
+    readMc3Run,
+    clearMc2Run,
+    clearMc3Run,
+    run,
+    loopOpen,
+    coldTrailOpen,
+    subjectsOpen,
+    starting,
+    menu,
+    setLoopOpen,
+    setColdTrailOpen,
+    setSubjectsOpen,
+  });
 
   /**
    * The welcome card's Start tap — the moment a received mc2 challenge
@@ -1810,24 +1738,6 @@ export function GameApp() {
    * already has results backfills exactly once: those places were never
    * banked into any live session.
    */
-  const ensureSession = useCallback(
-    (nextRun: Run | null) => {
-      const now = Date.now();
-      const dateKey = trailDate();
-      updateSession((prev) => {
-        if (isSessionLive(prev, dateKey) && !isIdleExpired(prev, now, idleTimeoutMs)) {
-          return touchSession(prev, now);
-        }
-        let fresh = startSession(dateKey, now);
-        if (nextRun && nextRun.results.length > 0) {
-          fresh = seedSessionFromRun(fresh, nextRun);
-        }
-        return fresh;
-      });
-    },
-    [updateSession, idleTimeoutMs],
-  );
-
   /**
    * A challenge's Done tap (mc2/mc3; manifest §2, contract 6): the
    * challenge slots are cleared, and the normal run the challenge
@@ -1913,66 +1823,11 @@ export function GameApp() {
    * skipNotice (fix round M1) suppresses ONLY the inactivity notice set:
    * the kill, the session clear, and the shadow clear always run. The
    * body boot passes it when an mc2 notice is preserved. */
-  const killIdleSession = useCallback((skipNotice = false) => {
-    setStartError(null);
-    clearDrop();
-    // Wave 1 P0 Item 1: capture what was played BEFORE dropping the
-    // session. Challenge runs never bank into the session (their score
-    // belongs to the shared route), so a challenge kill summarises the
-    // run itself; every other kill summarises the whole session, and
-    // only falls back to the run when no session survives.
-    const killedRun = readRun() ?? readMc2Run();
-    const killedIsChallenge =
-      !!killedRun &&
-      (killedRun.regionId === CHALLENGE_REGION_ID || killedRun.challengeOrigin === "mc2");
-    // Boot fallback: at boot the session ref is still null (useSessionState
-    // starts null with no hydration) while the persisted session survives
-    // in session storage, so a reload-after-expiry kill must total the whole
-    // persisted session, not just the killed run. Challenge kills stay
-    // run-only (challenges never bank). Live play is unchanged: the ref
-    // is non-null during play, so the fallback never runs there.
-    const live = getSession() ?? (killedIsChallenge ? null : readSession());
-    const liveSummary = live && !killedIsChallenge ? summarizeSession(live) : null;
-    const totals = liveSummary
-      ? { totalScore: liveSummary.totalScore, placesPlayed: liveSummary.placesPlayed }
-      : runResultsTotals(killedRun);
-    if (!skipNotice) {
-      setDiscardedNotice({ reason: "inactivity", ...totals });
-    }
-    // The kill is the show: no durable record may re-fire it on a
-    // later boot (at most one notice per discarded game).
-    clearDiscardedShadow();
-    try {
-      removeSessionStorageItem(STORAGE_KEYS.pausedRun);
-      clearMc2Run();
-      clearMc3Run();
-    } catch {
-      // Storage blocked; the in-memory run is dropped below regardless.
-    }
-    setRun(null);
-    setMenu(null);
-    setTutorial(null);
-    replaceSession(null);
-    setIdleWarn(false);
-    setIdleEndedNote(true);
-    // #188: session end retires the switched notice too — the same
-    // lifecycle logic Block B applied to mode flips. Left standing, a
-    // "You switched to … Your score is kept." notice would sit beside
-    // the idle-ended notice above and read stale (the score it says
-    // was kept has just been dropped with the session).
-    setMapSwitchedNote(null);
-  }, [replaceSession, getSession]);
-
   useEffect(() => {
-    // Observability boot — MUST run before the crash-loop breaker effect
-    // below consumes the clean-exit state: initObservability() reads the
-    // previous breadcrumb and, when isUncleanShutdown() is true, queues
-    // exactly one suspected_crash event carrying that trail (see
-    // src/lib/observability.ts — a jetsam kill cannot beacon during the
-    // kill; detection is by asymmetry at next boot). Events queue in
-    // memory until flags resolve and provide the endpoint (possibly
-    // null = transport disabled), then flush. Never throws.
-    initObservability();
+    // Observability boots in the router (use-shell-router.ts) at the
+    // start of the boot effect, before the crash-loop breaker reads the
+    // clean-exit state — see there. This effect installs the global
+    // error handlers and the stale-chunk recovery hook.
     installGlobalErrorHandlers();
     // Stale-chunk auto-recovery: registered at boot, before any lazy
     // screen import can fire, so a deploy that lands mid-session
@@ -2244,511 +2099,6 @@ export function GameApp() {
     return () => window.removeEventListener("pagehide", onPageHide);
   }, []);
 
-  useEffect(() => {
-    // Crash-loop breaker: the previous page wrote a run but never unloaded
-    // — the process was killed mid-game. Clear the stale run and land on
-    // the menu instead of replaying the identical heavy path. A missing
-    // flag (runs saved before this fix) counts as clean and resumes as
-    // before.
-    if (isUncleanShutdown()) {
-      clearRunAfterUncleanShutdown(STORAGE_KEYS.pausedRun.key);
-      clearRunAfterUncleanShutdown(STORAGE_KEYS.pausedRunMc2.key);
-      clearRunAfterUncleanShutdown(STORAGE_KEYS.pausedRunMc3.key);
-      setReady(true);
-      return;
-    }
-    // Friend-challenge links arrive as a `#c=…` URL fragment. The
-    // fragment is stripped from the address bar FIRST, synchronously,
-    // before anything async happens — a challenge link should never
-    // sit in the URL where a screenshot or a share could leak it, and
-    // stripping must not wait on the flag fetch below. What happens
-    // next depends on the friendChallenges flag, but every failure exit
-    // FALLS THROUGH to bootSavedRun() — the ordinary saved-run boot
-    // defined below — instead of ending the boot itself: a player who
-    // taps a friend's link (broken or not, feature on or off) must
-    // never lose the run they already had in progress. With the flag
-    // off this makes the `#c=` boot exactly the boot main would have
-    // run if the link had never been tapped.
-    const rawHash = window.location.hash;
-    if (rawHash.startsWith("#c=") || rawHash === "#c") {
-      try {
-        window.history.replaceState(
-          null,
-          "",
-          window.location.pathname + window.location.search,
-        );
-      } catch {
-        // History API blocked; proceed fail-closed.
-      }
-      void loadFlags().then(async () => {
-        if (!isEnabled("friendChallenges")) {
-          // Flag off: the feature does not exist for this player, so
-          // the boot must be indistinguishable from main's — fall
-          // through to the saved-run boot (which also clears a saved
-          // CHALLENGE run, exactly as it does without a hash).
-          bootSavedRun();
-          return;
-        }
-        const mcVersionPrefix = /^#c=mc(\d+)\./.exec(rawHash);
-        if (mcVersionPrefix && Number(mcVersionPrefix[1]) !== 1) {
-          // mc2 and mc3 links take their own receive path (welcome
-          // card, no displacement until Start). So does a link from a
-          // NEWER format this build does not know (delta §3.6): the
-          // receive path's dispatcher answers it with the version
-          // signal, and the failure mapping below turns that into the
-          // newest-Meridian remedy instead of a resend line. The mc1
-          // prefix itself stays on the frozen path below, untouched.
-          void receiveMc2Challenge(rawHash);
-          return;
-        }
-        const decoded = decodeChallenge(rawHash, SCORING_VERSION);
-        if (!decoded.ok) {
-          // Flag on, but the link is broken (corrupt, or made by a
-          // different scoring version): tell the player on Home via
-          // the boot notice, then fall through — a saved run, if one
-          // exists, still resumes underneath the notice.
-          setChallengeBootNotice({ title: CHALLENGE_CHILD_COPY, detail: null });
-          bootSavedRun();
-          return;
-        }
-        try {
-          const [globePlaces] = await Promise.all([
-            placesFor("globe", "globe", undefined, false),
-            preloadTerritory(),
-          ]);
-          const validIds = new Set(globePlaces.map((p) => p.id));
-          if (!decoded.ids.every((id) => validIds.has(id))) {
-            // The link names a place this build's Globe catalog does
-            // not have (an old link, or a hand-edited one). Same
-            // child-facing failure as a corrupt link: notice + fall
-            // through to the saved-run boot.
-            setChallengeBootNotice({ title: CHALLENGE_CHILD_COPY, detail: null });
-            bootSavedRun();
-            return;
-          }
-          const orderedIds = playOrder(decoded);
-          clearDrop();
-          const challengeRun = startRun(
-            {
-              edition: "globe",
-              regionId: CHALLENGE_REGION_ID,
-              regionName: CHALLENGE_REGION_NAME,
-              dateKey: trailDate(),
-              difficultyChoice,
-            },
-            orderedIds,
-            null,
-          );
-          commit(challengeRun);
-          // The mc1 boot is its commit point: a saved mc2/mc3
-          // challenge is displaced now (a saved challenge is
-          // displaceable only on a new challenge's start — manifest
-          // §3 persistence; one challenge at a time, so the newer
-          // slots must not shadow this run at the next boot). The
-          // normal slot now holds THIS challenge; nothing else is
-          // touched.
-          clearMc2Run();
-          clearMc3Run();
-          setMenu(null);
-        } catch {
-          // The Globe catalog could not load, so the challenge cannot
-          // start. From the player's side this is the same failure as
-          // a broken link — show the same notice and fall through to
-          // the saved-run boot instead of stranding them on Home.
-          setChallengeBootNotice({ title: CHALLENGE_CHILD_COPY, detail: null });
-          bootSavedRun();
-          return;
-        }
-        setReady(true);
-      });
-      return;
-    }
-    // The ordinary saved-run boot: everything a hash-less boot does —
-    // challenge-run resume/clear, review and tutorial retirement,
-    // idle-expiry, and the resumable-run restore. It is a named
-    // function (declared here, hoisted within this effect) because the
-    // `#c=` branch above falls through to it on every failure exit;
-    // the hash-less path simply calls it directly. The body below is
-    // the pre-challenge boot, unchanged — if you are changing resume
-    // behaviour, change it here so BOTH entry points get it.
-    function bootSavedRun() {
-    // Challenge saves take precedence over the normal slot, newest
-    // format first (governing manifest §Q1-A4 read order: mc3 → mc2
-    // → mc1): a player who left a challenge mid-route comes back to
-    // the challenge. With the flag off the challenge save is cleared
-    // and the ordinary boot continues underneath — a saved normal run
-    // is never collateral (manifest C7's guard table). A newer
-    // format's save also shadows the older slots (and a stale mc1
-    // save in the normal slot) until it completes or is cleared.
-    const mc3Saved = readMc3Run();
-    if (mc3Saved) {
-      void loadFlags().then(async () => {
-        if (!isEnabled("friendChallenges")) {
-          clearMc3Run();
-          bootMc2OrBody();
-          return;
-        }
-        const today = {
-          edition: mc3Saved.edition,
-          regionId: mc3Saved.regionId,
-          regionName: mc3Saved.regionName,
-          dateKey: trailDate(),
-          difficultyChoice: mc3Saved.difficultyChoice,
-        };
-        if (isResumable(mc3Saved, today)) {
-          const restored = resumeRun(mc3Saved, today);
-          await preloadTerritory();
-          commit(restored);
-          setReady(true);
-          return;
-        }
-        clearMc3Run();
-        bootMc2OrBody();
-      });
-      return;
-    }
-    bootMc2OrBody();
-    }
-
-    function bootMc2OrBody() {
-    const mc2Saved = readMc2Run();
-    if (mc2Saved) {
-      void loadFlags().then(async () => {
-        // Fix round M1: a dropped mc2 run notices instead of landing on
-        // silent home. The notice is set BEFORE the clear, and the body
-        // boot runs preserving it (see bootSavedRunBody's preserveNotice
-        // guard). A finished (summary-phase) challenge is not a lost
-        // game: it clears silently, matching the body's own summary
-        // exclusion. Challenge runs never bank into the session, so the
-        // summary is the mc2 run's own results — never another game's
-        // session totals.
-        const noticeMc2Discard = () => {
-          if (mc2Saved.phase !== "summary") {
-            setDiscardedNotice({ reason: "challenges", ...runResultsTotals(mc2Saved) });
-          }
-        };
-        if (!isEnabled("friendChallenges")) {
-          noticeMc2Discard();
-          clearMc2Run();
-          bootSavedRunBody(true);
-          return;
-        }
-        const today = {
-          edition: mc2Saved.edition,
-          regionId: mc2Saved.regionId,
-          regionName: mc2Saved.regionName,
-          dateKey: trailDate(),
-          difficultyChoice: mc2Saved.difficultyChoice,
-        };
-        if (isResumable(mc2Saved, today)) {
-          const restored = resumeRun(mc2Saved, today);
-          await preloadTerritory();
-          commit(restored);
-          setReady(true);
-          return;
-        }
-        noticeMc2Discard();
-        clearMc2Run();
-        bootSavedRunBody(true);
-      });
-      return;
-    }
-    bootSavedRunBody();
-    }
-
-    /**
-     * The mc2/mc3 receive path (Package A; mc3 added by the 2026-10-31
-     * delta): decode and bind the link, load the named region's
-     * catalog, check membership — fail-closed at every step with the
-     * manifest's three failure classes — and only then show the
-     * welcome card. The saved run is NOT touched here: displacement
-     * commits on the card's Start tap, never on arrival.
-     */
-    async function receiveMc2Challenge(hash: string) {
-      const link = decodeChallengeLink(hash, SCORING_VERSION);
-      if (!link.ok) {
-        // The failure classes (governing manifest §Q1-A6), told apart
-        // by their TITLE line (see challengeBootNotice):
-        // - VERSION class: the link is well-formed but from a newer
-        //   Meridian than this build — either its prefix names an
-        //   unknown version (the dispatcher only raises "version" for
-        //   that shape, canonical body included), or it is an mc3
-        //   link whose REGION failure means registry skew: the seal
-        //   already passed, so the link is intact and simply names a
-        //   region this build's registry predates. Title is the
-        //   newest-Meridian line; no resend remedy, because a resend
-        //   from the same newer build fails identically.
-        // - REGION class: an mc1/mc2 link naming a region this build
-        //   does not have.
-        // - CORRUPT class: everything else, malformed mc3 included.
-        //   A "version" raised from INSIDE a known format (an mc2
-        //   payload with v ≠ 2, an mc3 with reserved bits set) lands
-        //   here and keeps the ordinary resend line.
-        const prefixVersion = /^#c=mc(\d+)\./.exec(hash);
-        const unknownVersionPrefix =
-          prefixVersion !== null && ![1, 2, 3].includes(Number(prefixVersion[1]));
-        const versionClass =
-          (link.reason === "version" && unknownVersionPrefix) ||
-          (hash.startsWith(CHALLENGE_MC3_PREFIX) && link.reason === "region");
-        setChallengeBootNotice(
-          versionClass
-            ? { title: CHALLENGE_VERSION_COPY, detail: null }
-            : link.reason === "region"
-              ? { title: CHALLENGE_CHILD_COPY, detail: CHALLENGE_UNKNOWN_REGION_COPY }
-              : { title: CHALLENGE_CHILD_COPY, detail: CHALLENGE_BROKEN_LINK_COPY },
-        );
-        bootSavedRun();
-        return;
-      }
-      try {
-        const [places] = await Promise.all([
-          placesFor(link.route.edition, link.route.regionId, undefined, false),
-          preloadTerritory(),
-        ]);
-        const resolved = resolveChallengeRoute(hash, SCORING_VERSION, places.map((p) => p.id));
-        if (!resolved.ok) {
-          // Class 2 (place arm): a named place is not in this build's
-          // catalog for the named region.
-          setChallengeBootNotice({
-            title: CHALLENGE_CHILD_COPY,
-            detail: CHALLENGE_UNKNOWN_CONTENT_COPY,
-          });
-          bootSavedRun();
-          return;
-        }
-        const saved = readRun();
-        setPendingChallenge({
-          route: resolved.route,
-          hasSavedRun:
-            !!saved &&
-            saved.regionId !== CHALLENGE_REGION_ID &&
-            saved.regionId !== REVIEW_DECK_REGION_ID,
-        });
-        setMenu(null);
-        setReady(true);
-      } catch {
-        // Class 3: the link may be perfect, but the region chunk did
-        // not load, so membership could not be checked.
-        setChallengeBootNotice({
-          title: CHALLENGE_CHILD_COPY,
-          detail: CHALLENGE_LOAD_FAILURE_COPY,
-        });
-        bootSavedRun();
-      }
-    }
-
-    // preserveNotice: when an mc2 discard notice already stands, the
-    // body boot must not overwrite it with its own discard notice.
-    // Every notice site below is guarded; the shadow block is skipped
-    // whole, so a preserved shadow survives for a later boot instead of
-    // being silently consumed. A resumed run still retires the notice
-    // via commit() — that is the retire rule, not an overwrite.
-    function bootSavedRunBody(preserveNotice = false) {
-    const saved = readRun();
-    if (saved && saved.regionId === CHALLENGE_REGION_ID) {
-      void loadFlags().then(async () => {
-        if (!isEnabled("friendChallenges")) {
-          // Wave 1 P0 Item 1E: the flag-off deletion notices instead of
-          // landing on silent home. Challenge runs never bank into the
-          // session, so the summary is the challenge run's own results
-          // — never another game's session totals.
-          clearDrop();
-          const challengeTotals = runResultsTotals(saved);
-          if (!preserveNotice) {
-            setDiscardedNotice({ reason: "challenges", ...challengeTotals });
-          }
-          try {
-            removeSessionStorageItem(STORAGE_KEYS.pausedRun);
-          } catch {
-            // Storage blocked.
-          }
-          setReady(true);
-          return;
-        }
-        const today = {
-          edition: saved.edition,
-          regionId: saved.regionId,
-          regionName: saved.regionName,
-          dateKey: trailDate(),
-          difficultyChoice: saved.difficultyChoice,
-        };
-        if (isResumable(saved, today)) {
-          const restored = resumeRun(saved, today);
-          await preloadTerritory();
-          commit(restored);
-        }
-        setReady(true);
-      });
-      return;
-    }
-    // Review sessions never resume across reloads: the deck (local storage)
-    // is the durable state; the session queue is rebuilt fresh on every
-    // start. Fail closed to the edition picker.
-    if (saved && saved.regionId === REVIEW_DECK_REGION_ID) {
-      clearDrop();
-      try {
-        removeSessionStorageItem(STORAGE_KEYS.pausedRun);
-      } catch {
-        // Storage blocked; the in-memory run is dropped regardless.
-      }
-      setReady(true);
-      return;
-    }
-    // A persisted tutorial practice round never resumes: the tour is a
-    // single-place practice round, so resuming it would recycle the same
-    // place forever with no tutorial UI (beat state is in-memory only).
-    // Drop it and land on the menu — the invitation is already marked
-    // seen, so the player simply starts a real game.
-    let resumable = saved;
-    if (resumable && isTutorialRunPool(resumable.poolIds)) {
-      try {
-        removeSessionStorageItem(STORAGE_KEYS.pausedRun);
-      } catch {
-        // Storage blocked; treating it as absent is enough.
-      }
-      resumable = null;
-    }
-    const now = Date.now();
-    const dateKey = trailDate();
-    const savedSession = readSession();
-    // A session that idled out while the tab was closed counts as expired:
-    // kill it (and the run it banked) instead of silently resuming.
-    // The kill's own inactivity notice is skipped when an mc2 notice is
-    // preserved (skipNotice gates only that set, never the kill itself).
-    if (savedSession && isSessionLive(savedSession, dateKey) && isIdleExpired(savedSession, now, idleTimeoutMs)) {
-      killIdleSession(preserveNotice);
-      setReady(true);
-      return;
-    }
-    if (resumable) {
-      const today = {
-        edition: resumable.edition,
-        regionId: resumable.regionId,
-        regionName: resumable.regionName,
-        dateKey,
-        // A changed difficulty choice never resumes: switching bands starts
-        // a fresh run instead.
-        difficultyChoice,
-      };
-      // resumeRun mints a fresh run when the saved one is not resumable — a
-      // page load must not auto-start a run, so only resumable sessions are
-      // restored. (The old `restored === saved` check could never pass:
-      // resumeRun always returns a new object, so reloads silently dropped
-      // to the menu instead of resuming.)
-      // The literal `if (isResumable(...))` shape is pinned by
-      // territory-lazy-boundary.test.ts (Core F-2); the discard block
-      // below keys off didRestore instead of an else branch (the
-      // predicate would narrow an else branch to never).
-      let didRestore = false;
-      if (isResumable(resumable, today)) {
-        didRestore = true;
-        // Wave 1 P0 Item 1B: a successful resume consumes any pending
-        // discarded record, so it cannot fire later. (The resumed
-        // session's own persists below write a fresh live shadow.)
-        clearDiscardedShadow();
-        const restored = resumeRun(resumable, today);
-        if (restored.phase === "aim") {
-          // Core F-2: an aim-phase restore resumes straight into
-          // gameplay without crossing openRun's awaited territory
-          // preload — so the commit waits for the preload here: the
-          // first post-restore pin drop must score against the real
-          // data, not the fail-closed default. preloadTerritory never
-          // rejects (a failed load fails closed at the readers), so
-          // deferring the commit on it cannot strand the boot; the
-          // splash stays up until it lands, then ready is set.
-          // (#209: the preload is timeout-bounded in territory.ts,
-          // so this deferral always settles — a hung import can no
-          // longer hold the splash up forever.)
-          void preloadTerritory().then(() => {
-            commit(restored);
-            ensureSession(restored);
-            setReady(true);
-          });
-          return;
-        }
-        // Non-aim restore (reveal phases): the pin already scored
-        // before the reload, so no await is needed — the F2b
-        // fire-and-forget start below stands, and the ResultCard's own
-        // mount preload + re-render is the guarantee layer for its
-        // pin-compare.
-        void preloadTerritory();
-        commit(restored);
-        ensureSession(restored);
-      }
-      if (!didRestore && resumable.phase !== "summary") {
-        // Wave 1 P0 Item 1: a live, non-ended run that cannot resume
-        // notices instead of landing on silent home. Only the two
-        // classifiable causes notice here — a new UTC day, or a retired
-        // scoring version (stored scores are never recomputed). The
-        // summary-phase run is deliberately excluded: End game already
-        // ended that session, and its reload must show plain home.
-        // Anything else unclassified (e.g. a band change) keeps today's
-        // silent fall-through.
-        const staleScoring =
-          resumable.results.length > 0 &&
-          resumable.results.some((r) => r.scoringVersion !== SCORING_VERSION);
-        const reason: DiscardedNotice["reason"] | null =
-          savedSession && savedSession.dateKey !== dateKey
-            ? "new-day"
-            : staleScoring
-              ? "scoring"
-              : null;
-        if (reason) {
-          const sessionSummary = savedSession ? summarizeSession(savedSession) : null;
-          const totals = sessionSummary
-            ? { totalScore: sessionSummary.totalScore, placesPlayed: sessionSummary.placesPlayed }
-            : runResultsTotals(resumable);
-          if (!preserveNotice) {
-            setDiscardedNotice({ reason, ...totals });
-          }
-          clearDrop();
-          try {
-            removeSessionStorageItem(STORAGE_KEYS.pausedRun);
-          } catch {
-            // Storage blocked; the in-memory run is dropped regardless.
-          }
-          replaceSession(null);
-          clearDiscardedShadow();
-          setReady(true);
-          return;
-        }
-      }
-    }
-    if (!saved) {
-      // Wave 1 P0 Item 1B: no session storage run survived (a closed tab
-      // kills session storage), but the local-storage shadow may have.
-      // A shadow from a previous UTC day is a new-day discard; an
-      // expired shadow is an inactivity discard. A fresh shadow is
-      // left alone — the game may still be open in another tab, and
-      // a later expired boot still notices. Showing consumes the
-      // record at first show: dismiss and reload alike show nothing.
-      const shadow = readDiscardedShadow();
-      // Fix round M1: when an mc2 notice is preserved, the shadow block
-      // is skipped whole — neither shown nor consumed — so the shadow
-      // survives for a later boot (defer, not silent loss).
-      if (shadow && !preserveNotice) {
-        if (shadow.dateKey !== dateKey) {
-          setDiscardedNotice({
-            reason: "new-day",
-            totalScore: shadow.totalScore,
-            placesPlayed: shadow.placesPlayed,
-          });
-          clearDiscardedShadow();
-        } else if (now - shadow.lastActivityAt > idleTimeoutMs) {
-          setDiscardedNotice({
-            reason: "inactivity",
-            totalScore: shadow.totalScore,
-            placesPlayed: shadow.placesPlayed,
-          });
-          clearDiscardedShadow();
-        }
-      }
-    }
-      setReady(true);
-    }
-    bootSavedRun();
-  }, [commit, ensureSession, killIdleSession, idleTimeoutMs, difficultyChoice]);
-
   const refreshForNewBuild = useCallback(() => {
     try {
       // F6: a timestamp, not "1" — readers honour the mark only
@@ -2763,215 +2113,6 @@ export function GameApp() {
     }
     window.location.reload();
   }, []);
-
-  const openRun = useCallback(
-    async (
-      edition: Edition,
-      regionId: string,
-      regionName: string,
-      choice: PickerDifficulty,
-      // `fresh` forces a brand-new run instead of resuming the saved one.
-      // The celebration's replay/promotion buttons always pass it: the
-      // just-finished run (phase "done") is resumable, so resumeRun would
-      // return it unchanged and the replay would never restart.
-      // `tutorial` starts the isolated first-run practice round: a single
-      // fixed famous place, no seen-history side effects, no cleared-mode
-      // backstop — the tour is unscored practice, never a real run.
-      opts?: { fresh?: boolean; tutorial?: boolean },
-    ) => {
-      // BLOCK-A: stamp this start (see runStartGenRef). A manual
-      // map-mode switch — or a newer start — bumps the generation and
-      // makes this one stale; the checks after the awaits below then
-      // bail instead of committing a run nobody is waiting for.
-      const gen = ++runStartGenRef.current;
-      // Edition entrance fanfare: the player is making their grand arrival
-      // into an edition (gladiator-into-the-arena energy). Not for the
-      // tutorial (quiet practice round).
-      if (!opts?.tutorial && soundAudible()) safePlay(playEditionEntrance);
-      setStarting({ edition, regionId, regionName, choice });
-      setStartError(null);
-      recordMilestone("run_start", { edition, regionId, chunkId: regionId });
-      // D1: arm the clean-exit dirty marker NOW, before the data-chunk
-      // load below — not only later in writeRun/commit. Why it must
-      // precede the load: a jetsam kill DURING the load (the Globe
-      // 13.7 MB chunk window) previously left meridian.cleanExit
-      // missing/"1" (writeRun had not run yet), so the next boot's
-      // initObservability gate (cleanExit === "0") failed and no
-      // suspected_crash was emitted — and the breadcrumb identifying
-      // the kill was silently overwritten. Interplay:
-      // (a) A kill during load leaves no saved run, so the boot
-      //     crash-loop breaker clearing the (absent) run and landing
-      //     on the menu is harmless and unchanged.
-      // (b) A normal chunk-load ERROR caught by the catch below does
-      //     NOT produce a spurious suspected_crash: any later normal
-      //     unload/reload fires pagehide → handlePageHide stamps "1".
-      // (c) Every openRun re-arms, so a repeat kill after the breaker
-      //     re-armed the flag to "1" at boot is detectable again.
-      // stampCleanExitDirty never throws (see clean-exit.ts).
-      stampCleanExitDirty();
-      try {
-        // The region's chunk(s) load here — never eagerly, never partial.
-        recordMilestone("data_chunk_load_start", { edition, regionId, chunkId: regionId });
-        // The learning path and the globeTierSplit flag ride along so the Globe
-        // fetches only the fame tiers it deals from (flag on) or all five (flag
-        // off); dealingPoolFor below still decides the pool.
-        const tierSplit = await globeTierSplitFor(edition, regionId);
-        if (gen !== runStartGenRef.current) return; // stale (BLOCK-A)
-        // F2b: the countries-50m territory data loads in parallel with
-        // the places and is awaited before the run commits — scorePlace's
-        // region bonus and the reveal pin-compare read it synchronously,
-        // so a run must never start ahead of it. preloadTerritory never
-        // rejects (a failed load fails closed at the readers), so this
-        // await cannot fail the start.
-        // #209: the pair is raced against CHUNK_LOAD_TIMEOUT_MS — a
-        // HUNG places import never settles, and without the bound the
-        // "Fetching this region's places…" state would spin forever.
-        // A timeout lands in the catch below like any other load
-        // failure: fail-closed, recoverable, stale-probed.
-        const [places] = await withChunkTimeout(
-          Promise.all([
-            placesFor(edition, regionId, choice, tierSplit),
-            preloadTerritory(),
-          ]),
-          `places for ${regionName}`,
-        );
-        if (gen !== runStartGenRef.current) return; // stale (BLOCK-A)
-        recordMilestone("data_loaded", { edition, regionId, chunkId: regionId });
-        const dateKey = trailDate();
-        // The picker's difficulty band narrows the catalog BEFORE the dealer
-        // pool is built. Fail-closed: an empty band yields an empty pool,
-        // never a widened one. The tutorial bypasses banding entirely: its
-        // pool is the single fixed practice place, so the tour always asks
-        // the same easy famous question regardless of picker choice — and
-        // poolForRunStart is skipped so the tour never touches (or wipes)
-        // the band's persistent no-repeat history.
-        let poolIds: string[];
-        let prevLastId: string | null;
-        if (opts?.tutorial) {
-          poolIds = [TUTORIAL_PLACE_ID];
-          prevLastId = null;
-        } else {
-          // Easy also applies the famous-places curation (easy-curation.ts).
-          const banded = dealingPoolFor(places, choice);
-          const started = poolForRunStart(banded, edition, regionId, choice);
-          poolIds = started.poolIds;
-          prevLastId = started.prevLastId;
-          // Cleared-mode backstop: a completed cycle at run start means the
-          // band was fully played through. If it was already celebrated, the
-          // new cycle begins silently (retire the mark); if not — a clear
-          // from before this feature existed, or a crash before the
-          // celebration — celebrate immediately instead of silently
-          // repeating. One celebration per clear: the mark is set either way.
-          if (started.cycleCompleted) {
-            if (wasClearedCelebrated(edition, regionId, choice)) {
-              clearClearedMark(edition, regionId, choice);
-            } else {
-              markClearedCelebrated(edition, regionId, choice);
-              setCleared({ edition, regionId, regionName, choice });
-            }
-          }
-        }
-        // A celebration replay/promotion starts FRESH: at the onContinue
-        // boundary the run is mid-run in reveal phase and resumable, so
-        // resumeRun would return it unchanged and the replay would never
-        // restart. Picker paths keep
-        // resume semantics (leave-and-return mid-run restores the
-        // in-progress run) — `fresh` is opt-in only, and isResumable's
-        // semantics are deliberately unchanged (other flows depend on them).
-        const today = { edition, regionId, regionName, dateKey, difficultyChoice: choice };
-        // The tutorial practice round always starts fresh (it is never a
-        // resumed run) and arms beat 1; any other run clears tutorial state
-        // (e.g. a normal run started after an idle-killed tour).
-        const next =
-          opts?.tutorial || opts?.fresh
-            ? startRun(today, poolIds, prevLastId)
-            : resumeRun(readRun(), today, poolIds, prevLastId);
-        commit(next);
-        // Switching editions keeps the session (and its score) alive: a new
-        // session starts only when none is live.
-        ensureSession(next);
-        setMenu(null);
-        setTutorial(opts?.tutorial ? 1 : null);
-        if (opts?.tutorial) {
-          // The tour run started: the invitation has been handled, whether
-          // or not the player finishes the tour.
-          markTutorialSeen();
-        }
-        // Warm the admin-1 boundary cache during play so it's ready by reveal.
-        // Deferred 10 s past run start: firing the ~2 MB JSON fetch during
-        // map mount starves the tile requests (net::ERR_ABORTED) and flips
-        // the tile-status to failed. The fixed delay moves it out of the
-        // critical tile-loading window (requestIdleCallback proved racy —
-        // "idle" fires while tiles are still in flight). resolvePin fails
-        // closed to country-only until the cache populates. Fire-and-forget:
-        // preloadAdmin1Boundaries is specified non-throwing.
-        // Country editions with a vendored admin-1 chunk (EG/FR/DE/IT/JP/
-        // MX/GB) warm just that chunk on the same tick — the reveal's
-        // pin-compare line can then name departments/provinces instead of
-        // falling back to the "near <city>" line. Null for other editions:
-        // no fetch attempted.
-        window.setTimeout(() => {
-          void preloadAdmin1Boundaries();
-          const chunkIso2 = admin1ChunkIso2ForRegion(regionId);
-          if (chunkIso2) void preloadAdmin1ForCountry(chunkIso2);
-        }, 10000);
-      } catch (err) {
-        // BLOCK-A: a stale start fails silently — the player already
-        // cancelled it (map flip) or superseded it (a newer start).
-        // Parking a start error on the screen they chose instead
-        // would report a failure for a start they never made.
-        if (gen !== runStartGenRef.current) return;
-        // Fail closed: no chunk, no run. The player stays on the menu with
-        // an explanation instead of starting with a partial/missing pool.
-        // If the tab predates the current deploy (old hashed chunk URLs 404),
-        // offer a refresh instead of the dead-end error. The session flag
-        // stops a reload loop when the chunk is genuinely missing.
-        const message = `Could not load places for ${regionName}: ${err instanceof Error ? err.message : String(err)}`;
-        let staleBuild = false;
-        try {
-          staleBuild = !staleRefreshRecentlyUsed() && (await isNewBuildDeployed());
-        } catch {
-          staleBuild = false;
-        }
-        // The switch can also land during the stale-build probe above.
-        if (gen !== runStartGenRef.current) return;
-        setStartError({
-          message: staleBuild ? message : `We couldn't open ${regionId === "globe" ? "the Globe" : regionName} right now. Check that you're online, then tap Play again.`,
-          staleBuild,
-          edition,
-          regionId,
-          regionName,
-          choice,
-        });
-        // Telemetry: region-chunk load failures never left this catch —
-        // emit so they reach crash reporting like every other error class.
-        // F3: chunk-shaped failures follow the shared discipline — a
-        // first failure stays silent; only the post-reload repeat (or
-        // unreadable storage) reports. Non-chunk failures report as before.
-        let reportStartError = true;
-        if (isChunkLoadError(err) || isChunkLoadError(message)) {
-          try {
-            reportStartError = shouldReportChunkFailure(resolveSession() ?? null, Date.now());
-          } catch {
-            reportStartError = true;
-          }
-        }
-        if (reportStartError) {
-          emitEvent({
-            type: "js_error",
-            ts: Date.now(),
-            buildId: "",
-            error: sanitizeError(new Error(message)),
-          });
-        }
-      } finally {
-        // Only the current start owns the loading state (BLOCK-A): a
-        // stale start's finally must not clear a newer start's notice.
-        if (gen === runStartGenRef.current) setStarting(null);
-      }
-    },
-    [commit, ensureSession],
-  );
 
   // "Try again" on the in-run start-failure box. A failed dynamic import() is
   // remembered by the browser for the lifetime of the document (Chromium does
@@ -3052,31 +2193,6 @@ export function GameApp() {
    * due order. Deliberately no ensureSession: review answers never bank
    * into the session — review is practice, not scoring.
    */
-  const startReview = useCallback(() => {
-    const deck = readReviewDeck() ?? emptyReviewDeck();
-    const due = dueEntries(deck, Date.now());
-    // Fail closed: the entry points only render when due > 0, so this is
-    // unreachable in practice — never start a run with an empty queue.
-    if (due.length === 0) return;
-    // F2b: review runs skip openRun (and its awaited territory preload);
-    // start the load here — the ResultCard's own mount preload is the
-    // guarantee layer for its pin-compare ledger.
-    void preloadTerritory();
-    const next = startRun(
-      {
-        edition: "globe",
-        regionId: REVIEW_DECK_REGION_ID,
-        regionName: REVIEW_DECK_REGION_NAME,
-        dateKey: trailDate(),
-        difficultyChoice,
-      },
-      due.map((entry) => entry.place.id),
-      null,
-    );
-    commit(next);
-    setMenu(null);
-  }, [commit, difficultyChoice]);
-
   /**
    * "Review my misses" from the end-game summary: the session already ended
    * there, so just leave the summary behind and start the review session.
@@ -3217,61 +2333,6 @@ export function GameApp() {
   }, [updateSession]);
 
   // Any interaction keeps the session alive; also dismisses the idle warning.
-  useEffect(() => {
-    const onActivity = () => {
-      const now = Date.now();
-      const dateKey = trailDate();
-      updateSession((prev) => {
-        if (!isSessionLive(prev, dateKey)) return prev;
-        // Throttle storage writes: interaction bursts don't need per-event persistence.
-        if (now - prev.lastActivityAt < 2000) return prev;
-        return touchSession(prev, now);
-      });
-      setIdleWarn(false);
-    };
-    const events = ["pointerdown", "keydown", "touchstart", "wheel"] as const;
-    for (const name of events) {
-      window.addEventListener(name, onActivity, { passive: true });
-    }
-    return () => {
-      for (const name of events) {
-        window.removeEventListener(name, onActivity);
-      }
-    };
-  }, [updateSession]);
-
-  // Idle watchdog: warn shortly before the timeout, then kill the session
-  // and return the player to the home screen. Wall-clock based — a tab left
-  // open but untouched still expires.
-  useEffect(() => {
-    const check = () => {
-      const s = getSession();
-      const dateKey = trailDate();
-      if (!isSessionLive(s, dateKey)) {
-        setIdleWarn(false);
-        return;
-      }
-      const now = Date.now();
-      const idleMs = now - s.lastActivityAt;
-      if (idleMs > idleTimeoutMs) {
-        killIdleSession();
-      } else if (idleMs > idleWarnMs) {
-        setIdleWarn(true);
-      }
-    };
-    const id = window.setInterval(check, 5000);
-    // Check immediately when the tab becomes visible again: timers throttle
-    // in background tabs, so the kill would otherwise lag the return.
-    const onVisible = () => {
-      if (document.visibilityState === "visible") check();
-    };
-    document.addEventListener("visibilitychange", onVisible);
-    return () => {
-      window.clearInterval(id);
-      document.removeEventListener("visibilitychange", onVisible);
-    };
-  }, [getSession, killIdleSession, idleTimeoutMs, idleWarnMs]);
-
   // Reset success toast: rendered in the run branch (ReviewComplete is
   // a Play surface) and the home branch alike, like idleToast below.
   const resetToastEl = resetToast ? (
@@ -3326,95 +2387,6 @@ export function GameApp() {
       }
     />
   ) : null;
-
-  // One shared scroll reset when the in-app screen changes (not when
-  // focus merely moves inside the same screen). Instant, so reduced
-  // motion is already honoured. Nested subject cases remount
-  // their screen and reset there too.
-  const inAppScreen = !ready
-    ? "boot"
-    : run
-      ? "globe"
-      : loopOpen
-        ? "geodetective"
-        : coldTrailOpen
-          ? "coldtrail"
-          : subjectsOpen
-            ? "subjects"
-            : starting
-              ? "starting"
-              : menu
-                ? `menu:${menu.kind}`
-                : "home";
-  useLayoutEffect(() => {
-    if (inAppScreen === "boot") return;
-    window.scrollTo(0, 0);
-  }, [inAppScreen]);
-
-  // Item 8 (INV3/INV5): each screen carries its own hash (see
-  // src/lib/screen-hash.ts). A screen change pushes it, so Back
-  // returns to the previous screen instead of leaving the site;
-  // a popstate (Back / Forward) drives the screen state to match.
-  // Round 2 (bug 12): the FIRST screen's hash seeds the current
-  // history entry with replaceState instead of pushing a second
-  // one — pushing #home over a fresh visit to / left a phantom
-  // entry, so a first Back landed on the hash-less / and did
-  // nothing (the player was trapped; a second Back left). Seeding
-  // only happens on a hash-less URL: a visit that arrives with a
-  // fragment (deep link, home section) keeps today's push, so its
-  // entry stays in the stack under the screen it opened.
-  const hashSeededRef = useRef(false);
-  useEffect(() => {
-    const hash = hashForScreen(inAppScreen);
-    if (hash === null || window.location.hash === hash) return;
-    if (!hashSeededRef.current && window.location.hash === "") {
-      window.history.replaceState(null, "", hash);
-    } else {
-      window.history.pushState(null, "", hash);
-    }
-    hashSeededRef.current = true;
-  }, [inAppScreen]);
-
-  // Open exactly one tap-in screen (or none, for Home), closing the
-  // others — the hash counterpart of the card taps, with the same
-  // persisted-flag writes the tap handlers make.
-  const applyHashScreen = useCallback((screen: string) => {
-    writeLoopOpen(screen === "geodetective");
-    setLoopOpen(screen === "geodetective");
-    writeColdTrailOpen(screen === "coldtrail");
-    setColdTrailOpen(screen === "coldtrail");
-    setSubjectsOpen(screen === "subjects");
-    setMenu(
-      screen === "menu:countries"
-        ? { kind: "countries" }
-        : screen === "menu:states"
-          ? { kind: "states" }
-          : null,
-    );
-  }, []);
-
-  useEffect(() => {
-    const onPopState = () => {
-      if (run !== null) return; // a run in progress owns the screen
-      const target = screenForHash(window.location.hash);
-      if (target !== null) applyHashScreen(target);
-    };
-    window.addEventListener("popstate", onPopState);
-    return () => window.removeEventListener("popstate", onPopState);
-  }, [run, applyHashScreen]);
-
-  // Deep link (INV5): a first visit carrying a screen hash opens
-  // the screen it names — unless the 368 retry restore already
-  // picked the first screen, or a saved run was restored over it.
-  const deepLinkAppliedRef = useRef(false);
-  useEffect(() => {
-    if (!ready || deepLinkAppliedRef.current) return;
-    deepLinkAppliedRef.current = true;
-    if (bootRetryRef.current !== null) return;
-    if (run !== null) return;
-    const target = screenForHash(window.location.hash);
-    if (target !== null && target !== "home") applyHashScreen(target);
-  }, [ready, run, applyHashScreen]);
 
   if (!ready) {
     // The boot splash lives in boot-splash.tsx: the index route

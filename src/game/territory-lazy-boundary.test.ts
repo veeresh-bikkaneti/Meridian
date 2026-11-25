@@ -28,6 +28,17 @@ const gameAppSource = readFileSync(
   join(here, "../components/game-app.tsx"),
   "utf8",
 );
+// Step 7 (TD-06.7): openRun lives in use-run-controller.ts now.
+const runControllerSource = readFileSync(
+  join(here, "../components/use-run-controller.ts"),
+  "utf8",
+);
+// Step 10 (TD-06.7): the boot effect (incl. the boot restore) lives in
+// use-shell-router.ts now.
+const routerSource = readFileSync(
+  join(here, "../components/use-shell-router.ts"),
+  "utf8",
+);
 const resultCardSource = readFileSync(
   join(here, "../components/result-card.tsx"),
   "utf8",
@@ -81,7 +92,7 @@ describe("F2b wiring — gameplay entry points start or await the preload", () =
   });
 
   it("openRun awaits the preload alongside the places load", () => {
-    const openRun = segment(gameAppSource, "const openRun = useCallback(", "const startReview");
+    const openRun = segment(runControllerSource, "const openRun = useCallback(", "const startReview");
     assert.ok(
       openRun.includes("preloadTerritory()"),
       "openRun must preload the territory data before a run commits",
@@ -175,9 +186,9 @@ describe("Core F-2 — every run start crosses an AWAITED territory preload", ()
     // an immediate commit(restored) — a restored aim run whose first
     // pin drop scored against the fail-closed default.
     const restore = segment(
-      gameAppSource,
+      routerSource,
       "if (isResumable(resumable, today)) {",
-      "const refreshForNewBuild",
+      "// Non-aim restore",
     );
     assert.ok(
       restore.includes('restored.phase === "aim"'),
@@ -318,7 +329,7 @@ describe("#211 item 3 — territoryAt caller pin: scoring reads territory only a
 
   it("in game-app, every preloadTerritory() await sits before the commit that follows it (no scoring ahead of the data)", () => {
     // openRun: the awaited pair lands before commit(next).
-    const openRun = segment(gameAppSource, "const openRun = useCallback(", "// \"Try again\" on the in-run start-failure box");
+    const openRun = segment(runControllerSource, "const openRun = useCallback(", "const startReview");
     const openAwait = openRun.indexOf("preloadTerritory()");
     const openCommit = openRun.indexOf("commit(next);");
     assert.ok(openAwait >= 0 && openCommit > openAwait, "openRun must await the preload before committing the run");
@@ -327,7 +338,7 @@ describe("#211 item 3 — territoryAt caller pin: scoring reads territory only a
       "openRun must not score before the awaited preload (#211 item 3)",
     );
     // Boot restore (aim phase): the preload .then carries the commit.
-    const restore = segment(gameAppSource, 'if (restored.phase === "aim")', "// Non-aim restore");
+    const restore = segment(routerSource, 'if (restored.phase === "aim")', "// Non-aim restore");
     assert.ok(
       restore.includes("void preloadTerritory().then(() => {"),
       "the aim-phase restore must defer its commit on the preload (#211 item 3)",
