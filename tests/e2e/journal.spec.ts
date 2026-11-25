@@ -1,7 +1,7 @@
 import { test, expect, type Page } from "playwright/test";
 import { readFileSync } from "node:fs";
 import path from "node:path";
-import { serveBuiltArtifact } from "./helpers";
+import { serveBuiltArtifact, answerFirstVisitQueue } from "./helpers";
 
 /**
  * Journal — "What the land remembers" (docs/journal-spec.md §8), adapted
@@ -98,6 +98,10 @@ async function loadHome(page: Page, time: Date): Promise<void> {
   await expect(page.getByTestId("journal-card")).toBeVisible({ timeout: 20_000 });
   // Let boot timers (which the mocked clock holds) drain a little.
   await page.clock.runFor(1_000);
+  // The read-aloud arrival modal holds the page (backdrop + inert)
+  // until it is answered; answer it the way a player does before any
+  // test clicks or focuses, or those interactions race its mount.
+  await answerFirstVisitQueue(page);
 }
 
 test("current entry renders inline: card line, section header, note with confidence line, footer", async ({

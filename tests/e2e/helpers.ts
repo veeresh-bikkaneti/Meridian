@@ -529,6 +529,34 @@ const collectEndpointByContext = new WeakMap<BrowserContext, string>();
  *   successful send as far as the app can tell): assert on the ledger,
  *   not on the absence of that copy.
  */
+/**
+ * Answer the first-visit queue the way a player does, so a spec can
+ * interact with the page underneath: the tour invite's "Not now" if
+ * it is up, then the read-aloud sheet's "Never" if it is the pending
+ * prompt. The sheet is an arrival modal (owner direction, 2026-11-20):
+ * while it is up, its backdrop intercepts every click and the page
+ * underneath is inert, so focus() calls silently no-op. A spec that
+ * clicks or focuses before answering it races the queue's mount —
+ * fast machines win the race, slow ones lose it, and the failure
+ * looks like an app bug. Call this after boot, before the first
+ * click/focus interaction. (Specs hand-rolled this answer before;
+ * this is the one canonical copy.)
+ */
+export async function answerFirstVisitQueue(page: Page): Promise<void> {
+  const notNow = page.getByRole("button", { name: "Not now" });
+  if ((await notNow.count()) > 0) {
+    await notNow.click();
+  }
+  const sheet = page.getByTestId("first-visit-queue");
+  if (
+    (await sheet.count()) > 0 &&
+    (await sheet.getAttribute("data-prompt-id")) === "read-aloud-sheet"
+  ) {
+    await sheet.getByRole("button", { name: /Never/ }).click();
+    await expect(page.locator('[data-prompt-id="read-aloud-sheet"]')).toHaveCount(0);
+  }
+}
+
 export async function serveBuiltArtifact(
   context: BrowserContext,
   opts: { spoofCapableDevice?: boolean } = {},
