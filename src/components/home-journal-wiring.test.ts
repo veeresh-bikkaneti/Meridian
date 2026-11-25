@@ -25,8 +25,13 @@ import assert from "node:assert/strict";
 import {
   JOURNAL_WINDOW_MS,
   createJournalRotation,
+  loadJournalNotes,
   type JournalTimerHost,
 } from "./home-journal.ts";
+
+// The dataset is lazy in production (TD-06.17); load it once up front so
+// the rotation below resolves real window indices.
+await loadJournalNotes();
 
 /** Minimal timer host: the wiring tests drive recompute() by hand. */
 const silentTimers: JournalTimerHost = {
