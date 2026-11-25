@@ -17,7 +17,15 @@
  * `num`, plus any live branch whose name carries that `num`.
  * `ref` PRs, `ref` branches and issues are context links — they
  * are never read as movement. Pull bodies are never read.
+ *
+ * TD-08.5 adds the PR number backfill: a checked-in map
+ * (pr-number-map.ts) pins older PRs to the planning ids their
+ * titles and branches never carried. The map wins over the
+ * derived key, a multi-id PR chips onto each of its cards, and
+ * an empty mapping keeps a PR Unnumbered even when its title
+ * names another PR's id (the #612 / TD-06.3 clash).
  */
+import { PR_NUMBER_MAP, mappedIdsFor } from "./pr-number-map.ts";
 
 export type Lane = "tech-debt" | "architecture" | "product";
 
@@ -299,28 +307,45 @@ export function deriveBoardItems(
 
   for (const [number, info] of pulls) {
     if (info.headRef) headRefs.add(info.headRef);
-    const key = extractItemKey(info.title ?? "") ?? extractItemKey(info.headRef ?? "");
-    const id = key ?? `unnumbered:pr:${number}`;
-    let acc = byKey.get(id);
-    if (!acc) {
-      const title = info.title?.trim() || info.headRef || `PR #${number}`;
-      acc = {
-        id,
-        num: key,
-        title,
-        texts: [],
-        standing: null,
-        prs: [],
-        seatTags: [],
-        unnumbered: key === null,
-      };
-      byKey.set(id, acc);
+    /* The backfill map wins over the derived key. An empty
+     * mapping is a deliberate exclusion: the pull stays
+     * Unnumbered even when its title names another PR's id. A
+     * multi-id pull contributes its chip and standing to each
+     * of its cards. */
+    const mapped = mappedIdsFor(number);
+    const keys: readonly string[] | null =
+      mapped !== undefined
+        ? mapped.length > 0
+          ? mapped
+          : null
+        : (() => {
+            const key = extractItemKey(info.title ?? "") ?? extractItemKey(info.headRef ?? "");
+            return key ? [key] : null;
+          })();
+    const ids = keys ?? [`unnumbered:pr:${number}`];
+    for (const id of ids) {
+      const key = keys ? id : null;
+      let acc = byKey.get(id);
+      if (!acc) {
+        const title = info.title?.trim() || info.headRef || `PR #${number}`;
+        acc = {
+          id,
+          num: key,
+          title,
+          texts: [],
+          standing: null,
+          prs: [],
+          seatTags: [],
+          unnumbered: key === null,
+        };
+        byKey.set(id, acc);
+      }
+      if (info.title) acc.texts.push(info.title);
+      if (info.headRef) acc.texts.push(info.headRef);
+      acc.prs.push({ number, role: "closes", href: `${LIVE_PR_HREF}${number}` });
+      acc.standing = preferAdvanced(acc.standing, columnForPull(info));
+      takeSeatTags(acc, info.labels);
     }
-    if (info.title) acc.texts.push(info.title);
-    if (info.headRef) acc.texts.push(info.headRef);
-    acc.prs.push({ number, role: "closes", href: `${LIVE_PR_HREF}${number}` });
-    acc.standing = preferAdvanced(acc.standing, columnForPull(info));
-    takeSeatTags(acc, info.labels);
   }
 
   for (const name of branches) {
@@ -567,10 +592,18 @@ function indexPulls(pulls: ReadonlyMap<number, PullInfo>): Map<string, [number, 
   const byNum = new Map<string, [number, PullInfo][]>();
   for (const entry of pulls) {
     const info = entry[1];
-    const nums = new Set<string>([
-      ...extractSubtaskNums(info.title ?? ""),
-      ...extractSubtaskNums(info.headRef ?? ""),
-    ]);
+    /* A mapped pull indexes under its mapped subtask ids only:
+     * #614's head.ref says td-10.1, but the map pins it to
+     * TD-10.5, so it must never auto-attach to TD-10.1's row. */
+    const mapped = mappedIdsFor(entry[0]);
+    const nums = new Set<string>(
+      mapped !== undefined
+        ? mapped.filter((id) => extractSubtaskNums(id).length > 0)
+        : [
+            ...extractSubtaskNums(info.title ?? ""),
+            ...extractSubtaskNums(info.headRef ?? ""),
+          ],
+    );
     for (const num of nums) {
       const list = byNum.get(num);
       if (list) list.push(entry);
@@ -777,4 +810,81 @@ export function laneCounts<T extends { lane: Lane }>(
   const counts: Record<Lane, number> = { "tech-debt": 0, architecture: 0, product: 0 };
   for (const item of items) counts[item.lane] += 1;
   return counts;
+}
+
+/** The story-level id inside a subtask id (`TD-01.1` → `TD-01`), else null. */
+export function storyNumOf(num: string): string | null {
+  const match = /^((?:TD|FW)-\d{2})\.\d+$/i.exec(num);
+  return match ? match[1].toUpperCase() : null;
+}
+
+export interface LaneCensus {
+  /** Unique story-level ids (TD-01, FW-08, …). */
+  stories: number;
+  /** Unique subtask ids (TD-01.1, TD-06.5, …). */
+  tasks: number;
+  /** Live cards with no number — neither a story nor a task. */
+  unnumbered: number;
+}
+
+/**
+ * The live census (TD-08.5): story and task counts for the lane
+ * segment, counted separately over the UNION of the checked-in
+ * ledger, the PR number map and the live derived cards — never
+ * just the length of the 100-PR window, which silently capped
+ * both numbers at the window size. A live or mapped id the
+ * stale ledger lacks (TD-06.5, TD-08.1, TD-10.5) still counts,
+ * and a ledger id whose PR has fallen out of the window counts
+ * too. Lane assignment prefers the ledger's own lane for an id;
+ * an id only the map or the window knows takes the lane its
+ * number derives (TD → tech-debt). Unnumbered live cards count
+ * in neither figure; they are reported separately.
+ */
+export function boardCensus(
+  snapshot: Snapshot,
+  items: readonly DerivedCard[],
+): Record<Lane | "all", LaneCensus> {
+  const storyLane = new Map<string, Lane>();
+  const taskLane = new Map<string, Lane>();
+  const addTask = (num: string, lane: Lane) => {
+    if (!taskLane.has(num)) taskLane.set(num, lane);
+    const story = storyNumOf(num);
+    if (story && !storyLane.has(story)) storyLane.set(story, lane);
+  };
+  for (const story of snapshot.stories) {
+    if (!storyLane.has(story.num)) storyLane.set(story.num, story.lane);
+  }
+  for (const sub of snapshot.subtasks) addTask(sub.num, sub.lane);
+  for (const row of PR_NUMBER_MAP) {
+    for (const id of row.ids) {
+      if (storyNumOf(id)) addTask(id, laneForItem(id, []));
+      else if (!storyLane.has(id)) storyLane.set(id, laneForItem(id, []));
+    }
+  }
+  let unnumbered = 0;
+  const unnumberedByLane: Record<Lane, number> = {
+    "tech-debt": 0,
+    architecture: 0,
+    product: 0,
+  };
+  for (const item of items) {
+    if (item.unnumbered || !item.num) {
+      unnumbered += 1;
+      unnumberedByLane[item.lane] += 1;
+      continue;
+    }
+    if (storyNumOf(item.num)) addTask(item.num, item.lane);
+    else if (!storyLane.has(item.num)) storyLane.set(item.num, item.lane);
+  }
+  const census = {} as Record<Lane | "all", LaneCensus>;
+  const lanes: Lane[] = ["tech-debt", "architecture", "product"];
+  for (const lane of lanes) {
+    census[lane] = {
+      stories: [...storyLane.values()].filter((l) => l === lane).length,
+      tasks: [...taskLane.values()].filter((l) => l === lane).length,
+      unnumbered: unnumberedByLane[lane],
+    };
+  }
+  census.all = { stories: storyLane.size, tasks: taskLane.size, unnumbered };
+  return census;
 }

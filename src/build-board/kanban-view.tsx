@@ -11,7 +11,10 @@
  * Data flow:
  *  1. Ask GitHub for pulls and branches (refreshKanbanLive).
  *     Success renders deriveBoardItems and the stamp
- *     "Live · fetched HH:MM". Ledger-only rows stay hidden.
+ *     "Live · fetched HH:MM". Ledger-only rows stay hidden as
+ *     cards, but the lane counts are a census over the ledger,
+ *     the PR number map and the live window (TD-08.5), so an
+ *     item that fell out of the 100-PR window still counts.
  *  2. Failure (offline, 403, 429, malformed) renders the
  *     snapshot — the per-deploy public file when it validates,
  *     otherwise the bundled kanban.json — under a visible
@@ -21,6 +24,7 @@
  */
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import {
+  boardCensus,
   deriveBoardItems,
   freeToClaim,
   loadSnapshot,
@@ -403,10 +407,15 @@ export function KanbanView() {
   );
 
   const laneLabel = (id: Lane) => snapshot.lanes.find((l) => l.id === id)?.label ?? id;
+  /* Live counts come from the census (TD-08.5): the union of
+   * the ledger, the PR number map and the live window, with
+   * stories and tasks counted separately — never the window
+   * length, which capped both at the number of derived cards. */
+  const census = useMemo(() => boardCensus(snapshot, items), [snapshot, items]);
   const laneCountsFor = (key: Lane | "all") => {
     if (mode === "live") {
-      const n = key === "all" ? items.length : items.filter((item) => item.lane === key).length;
-      return { stories: n, tasks: n };
+      const c = census[key];
+      return { stories: c.stories, tasks: c.tasks };
     }
     return {
       stories:
@@ -492,6 +501,12 @@ export function KanbanView() {
             </button>
           </div>
         </div>
+        {mode === "live" ? (
+          <p className="kb-count-note">
+            Counts include the checked-in ledger plus the last 100 updated PRs
+            {census.all.unnumbered > 0 ? ` · ${census.all.unnumbered} unnumbered` : ""}
+          </p>
+        ) : null}
         <div className="kb-board" ref={boardRef}>
           {mode === "pending" ? (
             <div className="kb-empty">Checking GitHub…</div>
