@@ -10,8 +10,10 @@ ingest. `[[wikilinks]]` are relative to `wiki/`.
 
 ## Sources
 
-None yet. Source summaries will appear in `wiki/sources/` after the
-first ingest. (source: raw/README.md)
+- [[why-learn-adoption]] — Why Learn adoption research pack
+  (2026-11-24): reverse-engineering of Lesson2Play / Every Joule /
+  RoverKit, two brainstorm rounds, 4 lane specs, capture evidence.
+  (source: raw/why-learn-adoption/RE-PACK.md)
 
 ## Entities
 

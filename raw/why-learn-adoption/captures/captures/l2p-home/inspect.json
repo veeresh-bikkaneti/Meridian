@@ -1,0 +1,631 @@
+{
+  "url": "https://lesson2play.com/",
+  "title": "Lesson2Play: Learning, Gamified – Free Games for Kids & Teens",
+  "viewport": [
+    1440,
+    900
+  ],
+  "scrollY": 0,
+  "devicePixelRatio": 1,
+  "libs": [],
+  "fonts": [
+    "Fredoka 700 normal",
+    "Nunito 600 normal",
+    "Nunito 700 normal",
+    "Nunito 800 normal"
+  ],
+  "canvases": [],
+  "target": {
+    "selector": ".doors",
+    "found": true,
+    "rect": [
+      160,
+      448,
+      1120,
+      655
+    ]
+  },
+  "animations": [],
+  "keyframes": [
+    {
+      "unreadable": "https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap"
+    },
+    {
+      "name": "drift1",
+      "css": "@keyframes drift1 { \n  0%, 100% { transform: translate(0px, 0px) scale(1); }\n  25% { transform: translate(26px, -34px) scale(1.06); }\n  50% { transform: translate(-18px, -58px) scale(0.95); }\n  75% { transform: translate(-30px, -20px) scale(1.04); }\n}"
+    },
+    {
+      "name": "drift2",
+      "css": "@keyframes drift2 { \n  0%, 100% { transform: translate(0px, 0px); }\n  33% { transform: translate(-36px, 28px); }\n  66% { transform: translate(30px, 44px); }\n}"
+    },
+    {
+      "name": "spin1",
+      "css": "@keyframes spin1 { \n  0% { transform: translate(0px, 0px) rotate(0deg); }\n  50% { transform: translate(-28px, 36px) rotate(180deg); }\n  100% { transform: translate(0px, 0px) rotate(360deg); }\n}"
+    },
+    {
+      "name": "spin2",
+      "css": "@keyframes spin2 { \n  0% { transform: translate(0px, 0px) rotate(0deg); }\n  50% { transform: translate(34px, -30px) rotate(-180deg); }\n  100% { transform: translate(0px, 0px) rotate(-360deg); }\n}"
+    },
+    {
+      "name": "cfabIn",
+      "css": "@keyframes cfabIn { \n  0% { opacity: 0; transform: scale(0.4) translateY(20px); }\n  100% { opacity: 1; transform: none; }\n}"
+    },
+    {
+      "name": "cfabOut",
+      "css": "@keyframes cfabOut { \n  100% { opacity: 0; transform: scale(0.4) translateY(20px); }\n}"
+    }
+  ],
+  "nodes": [
+    {
+      "el": "section.doors",
+      "rect": [
+        160,
+        448,
+        1120,
+        655
+      ],
+      "style": {
+        "color": "rgb(38, 51, 94)",
+        "font-family": "Nunito, ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+        "font-size": "17px",
+        "font-weight": "600",
+        "line-height": "25.5px",
+        "display": "grid",
+        "gap": "20px"
+      }
+    },
+    {
+      "el": "a.door.play",
+      "rect": [
+        160,
+        448,
+        550,
+        311
+      ],
+      "style": {
+        "transition": "transform 0.15s, box-shadow 0.15s",
+        "color": "rgb(38, 51, 94)",
+        "background-color": "rgb(116, 192, 252)",
+        "font-family": "Nunito, ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+        "font-size": "17px",
+        "font-weight": "600",
+        "line-height": "25.5px",
+        "border-radius": "32px",
+        "box-shadow": "rgb(38, 51, 94) 0px 10px 0px 0px",
+        "overflow": "hidden",
+        "position": "relative",
+        "display": "grid",
+        "gap": "10px",
+        "padding": "26px 253px 22px 24px"
+      }
+    },
+    {
+      "el": "span.k",
+      "rect": [
+        189,
+        479,
+        66,
+        30
+      ],
+      "text": "Play",
+      "style": {
+        "color": "rgb(38, 51, 94)",
+        "background-color": "rgb(255, 255, 255)",
+        "font-family": "Fredoka, Nunito, ui-rounded, system-ui, sans-serif",
+        "font-size": "13px",
+        "font-weight": "700",
+        "letter-spacing": "1.04px",
+        "border-radius": "999px",
+        "display": "block",
+        "padding": "4px 12px"
+      }
+    },
+    {
+      "el": "h2",
+      "rect": [
+        189,
+        519,
+        263,
+        95
+      ],
+      "text": "Free learning games & labs",
+      "style": {
+        "color": "rgb(38, 51, 94)",
+        "font-family": "Fredoka, Nunito, ui-rounded, system-ui, sans-serif",
+        "font-size": "34px",
+        "font-weight": "700",
+        "line-height": "35.7px",
+        "letter-spacing": "-0.34px",
+        "display": "block"
+      }
+    },
+    {
+      "el": "p",
+      "rect": [
+        189,
+        624,
+        263,
+        48
+      ],
+      "text": "Physics, chemistry, reading, math, history. Sign in once, pl",
+      "style": {
+        "opacity": "0.85",
+        "color": "rgb(38, 51, 94)",
+        "font-family": "Nunito, ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "700",
+        "line-height": "24px",
+        "display": "block"
+      }
+    },
+    {
+      "el": "span.go",
+      "rect": [
+        189,
+        682,
+        142,
+        50
+      ],
+      "text": "Play free ▶",
+      "style": {
+        "color": "rgb(38, 51, 94)",
+        "background-color": "rgb(255, 255, 255)",
+        "font-family": "Fredoka, Nunito, ui-rounded, system-ui, sans-serif",
+        "font-size": "18px",
+        "font-weight": "700",
+        "border-radius": "999px",
+        "box-shadow": "rgb(38, 51, 94) 0px 5px 0px 0px",
+        "display": "block",
+        "padding": "10px 20px"
+      }
+    },
+    {
+      "el": "img.art.cover",
+      "rect": [
+        453,
+        598,
+        286,
+        196
+      ],
+      "text": "",
+      "style": {
+        "transform": "matrix(0.994522, -0.104528, 0.104528, 0.994522, 0, 0)",
+        "color": "rgb(38, 51, 94)",
+        "font-family": "Nunito, ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+        "font-size": "17px",
+        "font-weight": "600",
+        "line-height": "25.5px",
+        "border-radius": "20px",
+        "filter": "drop-shadow(rgba(38, 51, 94, 0.18) 0px 8px 0px)",
+        "overflow": "clip",
+        "position": "absolute",
+        "display": "block"
+      },
+      "src": "https://lesson2play.com/img/games/packs/physics-lab.jpg"
+    },
+    {
+      "el": "a.door.build",
+      "rect": [
+        730,
+        448,
+        550,
+        311
+      ],
+      "style": {
+        "transition": "transform 0.15s, box-shadow 0.15s",
+        "color": "rgb(38, 51, 94)",
+        "background-color": "rgb(255, 212, 59)",
+        "font-family": "Nunito, ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+        "font-size": "17px",
+        "font-weight": "600",
+        "line-height": "25.5px",
+        "border-radius": "32px",
+        "box-shadow": "rgb(38, 51, 94) 0px 10px 0px 0px",
+        "overflow": "hidden",
+        "position": "relative",
+        "display": "grid",
+        "gap": "10px",
+        "padding": "26px 253px 22px 24px"
+      }
+    },
+    {
+      "el": "span.k",
+      "rect": [
+        759,
+        479,
+        71,
+        30
+      ],
+      "text": "Build",
+      "style": {
+        "color": "rgb(38, 51, 94)",
+        "background-color": "rgb(255, 255, 255)",
+        "font-family": "Fredoka, Nunito, ui-rounded, system-ui, sans-serif",
+        "font-size": "13px",
+        "font-weight": "700",
+        "letter-spacing": "1.04px",
+        "border-radius": "999px",
+        "display": "block",
+        "padding": "4px 12px"
+      }
+    },
+    {
+      "el": "h2",
+      "rect": [
+        759,
+        519,
+        263,
+        71
+      ],
+      "text": "Turn your lesson into a game",
+      "style": {
+        "color": "rgb(38, 51, 94)",
+        "font-family": "Fredoka, Nunito, ui-rounded, system-ui, sans-serif",
+        "font-size": "34px",
+        "font-weight": "700",
+        "line-height": "35.7px",
+        "letter-spacing": "-0.34px",
+        "display": "block"
+      }
+    },
+    {
+      "el": "p",
+      "rect": [
+        759,
+        600,
+        263,
+        72
+      ],
+      "text": "Type your questions, pick a game, share one link. 2 minutes,",
+      "style": {
+        "opacity": "0.85",
+        "color": "rgb(38, 51, 94)",
+        "font-family": "Nunito, ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "700",
+        "line-height": "24px",
+        "display": "block"
+      }
+    },
+    {
+      "el": "span.go",
+      "rect": [
+        759,
+        682,
+        155,
+        50
+      ],
+      "text": "Build free ✨",
+      "style": {
+        "color": "rgb(38, 51, 94)",
+        "background-color": "rgb(255, 255, 255)",
+        "font-family": "Fredoka, Nunito, ui-rounded, system-ui, sans-serif",
+        "font-size": "18px",
+        "font-weight": "700",
+        "border-radius": "999px",
+        "box-shadow": "rgb(38, 51, 94) 0px 5px 0px 0px",
+        "display": "block",
+        "padding": "10px 20px"
+      }
+    },
+    {
+      "el": "div.art.showcase",
+      "rect": [
+        1032,
+        590,
+        227,
+        130
+      ],
+      "style": {
+        "color": "rgb(38, 51, 94)",
+        "font-family": "Nunito, ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+        "font-size": "17px",
+        "font-weight": "600",
+        "line-height": "25.5px",
+        "position": "absolute",
+        "display": "block"
+      }
+    },
+    {
+      "el": "img.shot",
+      "rect": [
+        1028,
+        583,
+        217,
+        145
+      ],
+      "text": "",
+      "style": {
+        "transform": "matrix(0.997564, -0.0697565, 0.0697565, 0.997564, 0, 0)",
+        "color": "rgb(38, 51, 94)",
+        "font-family": "Nunito, ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+        "font-size": "17px",
+        "font-weight": "600",
+        "line-height": "25.5px",
+        "border-radius": "18px",
+        "box-shadow": "rgba(38, 51, 94, 0.18) 0px 8px 0px 0px",
+        "overflow": "clip",
+        "display": "block"
+      },
+      "src": "https://lesson2play.com/img/games/word-factory.jpg"
+    },
+    {
+      "el": "img.pup",
+      "rect": [
+        1164,
+        641,
+        113,
+        113
+      ],
+      "text": "",
+      "style": {
+        "color": "rgb(38, 51, 94)",
+        "font-family": "Nunito, ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+        "font-size": "17px",
+        "font-weight": "600",
+        "line-height": "25.5px",
+        "filter": "drop-shadow(rgba(38, 51, 94, 0.2) 0px 6px 0px)",
+        "overflow": "clip",
+        "position": "absolute",
+        "display": "block"
+      },
+      "src": "https://lesson2play.com/img/pup-hero.png"
+    },
+    {
+      "el": "a.door.hire",
+      "rect": [
+        160,
+        779,
+        550,
+        324
+      ],
+      "style": {
+        "transition": "transform 0.15s, box-shadow 0.15s",
+        "color": "rgb(38, 51, 94)",
+        "background-color": "rgb(217, 212, 255)",
+        "font-family": "Nunito, ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+        "font-size": "17px",
+        "font-weight": "600",
+        "line-height": "25.5px",
+        "border-radius": "32px",
+        "box-shadow": "rgb(38, 51, 94) 0px 10px 0px 0px",
+        "overflow": "hidden",
+        "position": "relative",
+        "display": "grid",
+        "gap": "10px",
+        "padding": "26px 253px 22px 24px"
+      }
+    },
+    {
+      "el": "span.k",
+      "rect": [
+        189,
+        810,
+        117,
+        30
+      ],
+      "text": "Commission",
+      "style": {
+        "color": "rgb(38, 51, 94)",
+        "background-color": "rgb(255, 255, 255)",
+        "font-family": "Fredoka, Nunito, ui-rounded, system-ui, sans-serif",
+        "font-size": "13px",
+        "font-weight": "700",
+        "letter-spacing": "1.04px",
+        "border-radius": "999px",
+        "display": "block",
+        "padding": "4px 12px"
+      }
+    },
+    {
+      "el": "h2",
+      "rect": [
+        189,
+        850,
+        263,
+        107
+      ],
+      "text": "Custom games for your curriculum",
+      "style": {
+        "color": "rgb(38, 51, 94)",
+        "font-family": "Fredoka, Nunito, ui-rounded, system-ui, sans-serif",
+        "font-size": "34px",
+        "font-weight": "700",
+        "line-height": "35.7px",
+        "letter-spacing": "-0.34px",
+        "display": "block"
+      }
+    },
+    {
+      "el": "p",
+      "rect": [
+        189,
+        967,
+        263,
+        48
+      ],
+      "text": "For publishers, schools and training companies. Serious proj",
+      "style": {
+        "opacity": "0.85",
+        "color": "rgb(38, 51, 94)",
+        "font-family": "Nunito, ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "700",
+        "line-height": "24px",
+        "display": "block"
+      }
+    },
+    {
+      "el": "span.go",
+      "rect": [
+        189,
+        1025,
+        172,
+        51
+      ],
+      "text": "See services →",
+      "style": {
+        "color": "rgb(38, 51, 94)",
+        "background-color": "rgb(255, 255, 255)",
+        "font-family": "Fredoka, Nunito, ui-rounded, system-ui, sans-serif",
+        "font-size": "18px",
+        "font-weight": "700",
+        "border-radius": "999px",
+        "box-shadow": "rgb(38, 51, 94) 0px 5px 0px 0px",
+        "display": "block",
+        "padding": "10px 20px"
+      }
+    },
+    {
+      "el": "img.art.cover",
+      "rect": [
+        453,
+        942,
+        286,
+        196
+      ],
+      "text": "",
+      "style": {
+        "transform": "matrix(0.994522, -0.104528, 0.104528, 0.994522, 0, 0)",
+        "color": "rgb(38, 51, 94)",
+        "font-family": "Nunito, ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+        "font-size": "17px",
+        "font-weight": "600",
+        "line-height": "25.5px",
+        "border-radius": "20px",
+        "filter": "drop-shadow(rgba(38, 51, 94, 0.18) 0px 8px 0px)",
+        "overflow": "clip",
+        "position": "absolute",
+        "display": "block"
+      },
+      "src": "https://lesson2play.com/img/games/packs/physics-hub.jpg"
+    },
+    {
+      "el": "a.door.diy",
+      "rect": [
+        730,
+        779,
+        550,
+        324
+      ],
+      "style": {
+        "transition": "transform 0.15s, box-shadow 0.15s",
+        "color": "rgb(255, 255, 255)",
+        "background-color": "rgb(31, 58, 102)",
+        "background-image": "linear-gradient(rgba(255, 255, 255, 0.08) 1px, rgba(0, 0, 0, 0) 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, rgba(0, 0, 0, 0) 1px)",
+        "font-family": "Nunito, ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+        "font-size": "17px",
+        "font-weight": "600",
+        "line-height": "25.5px",
+        "border-radius": "32px",
+        "box-shadow": "rgb(38, 51, 94) 0px 10px 0px 0px",
+        "overflow": "hidden",
+        "position": "relative",
+        "display": "grid",
+        "gap": "10px",
+        "padding": "26px 253px 22px 24px"
+      }
+    },
+    {
+      "el": "span.k",
+      "rect": [
+        759,
+        810,
+        53,
+        30
+      ],
+      "text": "DIY",
+      "style": {
+        "color": "rgb(255, 255, 255)",
+        "background-color": "rgb(43, 75, 128)",
+        "font-family": "Fredoka, Nunito, ui-rounded, system-ui, sans-serif",
+        "font-size": "13px",
+        "font-weight": "700",
+        "letter-spacing": "1.04px",
+        "border-radius": "999px",
+        "display": "block",
+        "padding": "4px 12px"
+      }
+    },
+    {
+      "el": "h2",
+      "rect": [
+        759,
+        850,
+        263,
+        108
+      ],
+      "text": "Make it yourself",
+      "style": {
+        "color": "rgb(255, 255, 255)",
+        "font-family": "Fredoka, Nunito, ui-rounded, system-ui, sans-serif",
+        "font-size": "34px",
+        "font-weight": "700",
+        "line-height": "35.7px",
+        "letter-spacing": "-0.34px",
+        "display": "block"
+      }
+    },
+    {
+      "el": "p",
+      "rect": [
+        759,
+        968,
+        263,
+        48
+      ],
+      "text": "How I build 3D textbooks and labs with AI. Free step-by-step",
+      "style": {
+        "opacity": "0.85",
+        "color": "rgb(255, 255, 255)",
+        "font-family": "Nunito, ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "700",
+        "line-height": "24px",
+        "display": "block"
+      }
+    },
+    {
+      "el": "span.go",
+      "rect": [
+        759,
+        1026,
+        231,
+        50
+      ],
+      "text": "Open the workshop 🛠️",
+      "style": {
+        "color": "rgb(38, 51, 94)",
+        "background-color": "rgb(255, 212, 59)",
+        "font-family": "Fredoka, Nunito, ui-rounded, system-ui, sans-serif",
+        "font-size": "18px",
+        "font-weight": "700",
+        "border-radius": "999px",
+        "box-shadow": "rgb(255, 255, 255) 0px 5px 0px 0px",
+        "display": "block",
+        "padding": "10px 20px"
+      }
+    },
+    {
+      "el": "iframe.art.bench",
+      "rect": [
+        1017,
+        868,
+        254,
+        218
+      ],
+      "text": "",
+      "style": {
+        "color": "rgb(255, 255, 255)",
+        "font-family": "Nunito, ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+        "font-size": "17px",
+        "font-weight": "600",
+        "line-height": "25.5px",
+        "overflow": "clip",
+        "position": "absolute",
+        "display": "block"
+      },
+      "src": "https://lesson2play.com/diy/fig/workstation.html?mode=card"
+    }
+  ]
+}

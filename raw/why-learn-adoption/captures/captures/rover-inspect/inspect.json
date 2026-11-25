@@ -1,0 +1,2734 @@
+{
+  "url": "https://roverkit.vercel.app/#parts",
+  "title": "RoverKit — build & simulate a robot car",
+  "viewport": [
+    1440,
+    900
+  ],
+  "scrollY": 0,
+  "devicePixelRatio": 1,
+  "libs": [
+    "three.js r187",
+    "webgl canvas",
+    "canvas 2d"
+  ],
+  "fonts": [
+    "Oswald 500 700 normal",
+    "Roboto Condensed 400 600 normal",
+    "JetBrains Mono 400 500 normal",
+    "Barlow Condensed 500 normal",
+    "Barlow Condensed 600 normal"
+  ],
+  "canvases": [
+    {
+      "el": "canvas",
+      "context": "webgl2",
+      "size": [
+        920,
+        693
+      ],
+      "css": [
+        20,
+        76,
+        920,
+        693
+      ]
+    },
+    {
+      "el": "canvas#minimapCanvas",
+      "context": "2d",
+      "size": [
+        187,
+        187
+      ],
+      "css": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "target": {
+    "selector": "body",
+    "found": true,
+    "rect": [
+      0,
+      0,
+      1440,
+      900
+    ]
+  },
+  "animations": [
+    {
+      "kind": "CSSAnimation",
+      "name": "loader-turn",
+      "target": "g.loader__wheel",
+      "timing": {
+        "delay": 0,
+        "direction": "normal",
+        "duration": 1800,
+        "easing": "linear",
+        "endDelay": 0,
+        "fill": "none",
+        "iterationStart": 0,
+        "iterations": null
+      },
+      "keyframes": [
+        {
+          "offset": 0,
+          "easing": "linear",
+          "transform": "none"
+        },
+        {
+          "offset": 1,
+          "easing": "linear",
+          "transform": "rotate(360deg)"
+        }
+      ],
+      "playState": "running",
+      "currentTime": 23665.773999999506,
+      "timeline": "DocumentTimeline"
+    },
+    {
+      "kind": "CSSAnimation",
+      "name": "ui-in",
+      "target": "div.tool-group",
+      "timing": {
+        "delay": 0,
+        "direction": "normal",
+        "duration": 320,
+        "easing": "linear",
+        "endDelay": 0,
+        "fill": "both",
+        "iterationStart": 0,
+        "iterations": 1
+      },
+      "keyframes": [
+        {
+          "offset": 0,
+          "easing": "cubic-bezier(0.16, 0.84, 0.3, 1)",
+          "transform": "translateY(8px)",
+          "opacity": "0"
+        },
+        {
+          "offset": 1,
+          "easing": "cubic-bezier(0.16, 0.84, 0.3, 1)",
+          "transform": "none",
+          "opacity": "1"
+        }
+      ],
+      "playState": "finished",
+      "currentTime": 320,
+      "timeline": "DocumentTimeline"
+    },
+    {
+      "kind": "CSSAnimation",
+      "name": "ui-in",
+      "target": "div.tool-group",
+      "timing": {
+        "delay": 0,
+        "direction": "normal",
+        "duration": 320,
+        "easing": "linear",
+        "endDelay": 0,
+        "fill": "both",
+        "iterationStart": 0,
+        "iterations": 1
+      },
+      "keyframes": [
+        {
+          "offset": 0,
+          "easing": "cubic-bezier(0.16, 0.84, 0.3, 1)",
+          "transform": "translateY(8px)",
+          "opacity": "0"
+        },
+        {
+          "offset": 1,
+          "easing": "cubic-bezier(0.16, 0.84, 0.3, 1)",
+          "transform": "none",
+          "opacity": "1"
+        }
+      ],
+      "playState": "finished",
+      "currentTime": 320,
+      "timeline": "DocumentTimeline"
+    }
+  ],
+  "keyframes": [
+    {
+      "name": "loader-turn",
+      "css": "@keyframes loader-turn { \n  100% { transform: rotate(360deg); }\n}"
+    },
+    {
+      "name": "pulse",
+      "css": "@keyframes pulse { \n  50% { opacity: 0.45; }\n}"
+    },
+    {
+      "name": "backdrop-in",
+      "css": "@keyframes backdrop-in { \n  0% { opacity: 0; }\n}"
+    },
+    {
+      "name": "ui-in",
+      "css": "@keyframes ui-in { \n  0% { opacity: 0; transform: translateY(8px); }\n}"
+    },
+    {
+      "name": "deny",
+      "css": "@keyframes deny { \n  20%, 60% { transform: translate(-4px); }\n  40%, 80% { transform: translate(4px); }\n}"
+    },
+    {
+      "name": "pane-in",
+      "css": "@keyframes pane-in { \n  0% { opacity: 0; transform: translate(16px); }\n}"
+    },
+    {
+      "name": "flow-live",
+      "css": "@keyframes flow-live { \n  50% { opacity: 0.35; transform: scale(0.78); }\n}"
+    }
+  ],
+  "nodes": [
+    {
+      "el": "body",
+      "rect": [
+        0,
+        0,
+        1440,
+        900
+      ],
+      "style": {
+        "color": "rgb(14, 25, 50)",
+        "background-color": "rgb(246, 243, 232)",
+        "background-image": "radial-gradient(1200px 500px at 50% -10%, rgb(251, 250, 243) 0%, rgba(251, 250, 243, 0) 70%), none",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "overflow": "hidden",
+        "display": "block"
+      }
+    },
+    {
+      "el": "div#loader.loader.is-done",
+      "rect": [
+        0,
+        0,
+        1440,
+        900
+      ],
+      "style": {
+        "opacity": "0",
+        "transition": "opacity 0.4s, visibility 0s linear 0.4s",
+        "color": "rgb(14, 25, 50)",
+        "background-color": "rgb(246, 243, 232)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "position": "fixed",
+        "display": "grid"
+      }
+    },
+    {
+      "el": "div.loader__box",
+      "rect": [
+        560,
+        357,
+        320,
+        186
+      ],
+      "style": {
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "display": "flex"
+      }
+    },
+    {
+      "el": "svg.loader__mark",
+      "rect": [
+        682,
+        357,
+        76,
+        76
+      ],
+      "style": {
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "overflow": "hidden",
+        "display": "block"
+      }
+    },
+    {
+      "el": "rect",
+      "rect": [
+        684,
+        359,
+        73,
+        73
+      ],
+      "text": "",
+      "style": {
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "display": "inline"
+      }
+    },
+    {
+      "el": "g",
+      "rect": [
+        735,
+        370,
+        15,
+        20
+      ],
+      "style": {
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "display": "inline"
+      }
+    },
+    {
+      "el": "path",
+      "rect": [
+        735,
+        377,
+        8,
+        14
+      ],
+      "text": "",
+      "style": {
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "display": "inline"
+      }
+    },
+    {
+      "el": "path",
+      "rect": [
+        740,
+        370,
+        10,
+        17
+      ],
+      "text": "",
+      "style": {
+        "opacity": "0.55",
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "display": "inline"
+      }
+    },
+    {
+      "el": "g.loader__wheel",
+      "rect": [
+        688,
+        372,
+        55,
+        55
+      ],
+      "style": {
+        "transform": "matrix(0.599655, 0.800259, -0.800259, 0.599655, 0, 0)",
+        "animation": "1.8s linear infinite loader-turn",
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "display": "inline"
+      }
+    },
+    {
+      "el": "circle",
+      "rect": [
+        688,
+        372,
+        55,
+        55
+      ],
+      "text": "",
+      "style": {
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "display": "inline"
+      }
+    },
+    {
+      "el": "g",
+      "rect": [
+        695,
+        377,
+        42,
+        43
+      ],
+      "style": {
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "display": "inline"
+      }
+    },
+    {
+      "el": "path",
+      "rect": [
+        720,
+        390,
+        8,
+        6
+      ],
+      "text": "",
+      "style": {
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "display": "inline"
+      }
+    },
+    {
+      "el": "path",
+      "rect": [
+        720,
+        401,
+        9,
+        10
+      ],
+      "text": "",
+      "style": {
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "display": "inline"
+      }
+    },
+    {
+      "el": "path",
+      "rect": [
+        707,
+        405,
+        10,
+        10
+      ],
+      "text": "",
+      "style": {
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "display": "inline"
+      }
+    },
+    {
+      "el": "path",
+      "rect": [
+        699,
+        395,
+        10,
+        10
+      ],
+      "text": "",
+      "style": {
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "display": "inline"
+      }
+    },
+    {
+      "el": "path",
+      "rect": [
+        707,
+        384,
+        9,
+        10
+      ],
+      "text": "",
+      "style": {
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "display": "inline"
+      }
+    },
+    {
+      "el": "circle",
+      "rect": [
+        708,
+        392,
+        15,
+        15
+      ],
+      "text": "",
+      "style": {
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "display": "inline"
+      }
+    },
+    {
+      "el": "circle",
+      "rect": [
+        712,
+        397,
+        6,
+        6
+      ],
+      "text": "",
+      "style": {
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "display": "inline"
+      }
+    },
+    {
+      "el": "div.loader__name",
+      "rect": [
+        655,
+        449,
+        131,
+        30
+      ],
+      "style": {
+        "color": "rgb(14, 25, 50)",
+        "font-family": "Oswald, \"Barlow Condensed\", \"Arial Narrow\", Arial, sans-serif",
+        "font-size": "30px",
+        "font-weight": "600",
+        "line-height": "30px",
+        "letter-spacing": "1.5px",
+        "display": "block"
+      }
+    },
+    {
+      "el": "b",
+      "rect": [
+        742,
+        441,
+        44,
+        45
+      ],
+      "text": "KIT",
+      "style": {
+        "color": "rgb(31, 154, 120)",
+        "font-family": "Oswald, \"Barlow Condensed\", \"Arial Narrow\", Arial, sans-serif",
+        "font-size": "30px",
+        "font-weight": "600",
+        "line-height": "30px",
+        "letter-spacing": "1.5px",
+        "display": "inline"
+      }
+    },
+    {
+      "el": "div.loader__bar",
+      "rect": [
+        560,
+        503,
+        320,
+        8
+      ],
+      "style": {
+        "color": "rgb(14, 25, 50)",
+        "background-color": "rgb(225, 223, 216)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "border-radius": "5px",
+        "overflow": "hidden",
+        "display": "block"
+      }
+    },
+    {
+      "el": "span#loaderFill",
+      "rect": [
+        560,
+        503,
+        320,
+        8
+      ],
+      "text": "",
+      "style": {
+        "transition": "width 0.3s",
+        "color": "rgb(14, 25, 50)",
+        "background-image": "linear-gradient(90deg, rgb(30, 58, 92), rgb(40, 74, 112))",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "border-radius": "5px",
+        "display": "block"
+      }
+    },
+    {
+      "el": "div#loaderText.loader__text",
+      "rect": [
+        702,
+        523,
+        36,
+        20
+      ],
+      "text": "Ready",
+      "style": {
+        "color": "rgb(93, 98, 114)",
+        "font-family": "\"Barlow Condensed\", \"Arial Narrow\", Arial, sans-serif",
+        "font-size": "15px",
+        "font-weight": "500",
+        "line-height": "19.5px",
+        "letter-spacing": "0.3px",
+        "display": "block"
+      }
+    },
+    {
+      "el": "div.stage",
+      "rect": [
+        0,
+        0,
+        1440,
+        900
+      ],
+      "style": {
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "overflow": "hidden",
+        "position": "fixed",
+        "display": "block"
+      }
+    },
+    {
+      "el": "div.app",
+      "rect": [
+        0,
+        0,
+        1440,
+        900
+      ],
+      "style": {
+        "transform": "matrix(0.956429, 0, 0, 0.956429, 0, 0)",
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "position": "absolute",
+        "display": "flex",
+        "padding": "0px 21px 22px 20px"
+      }
+    },
+    {
+      "el": "header.topbar",
+      "rect": [
+        19,
+        0,
+        1401,
+        75
+      ],
+      "style": {
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "position": "relative",
+        "display": "flex",
+        "padding": "0px 2px 4px 6px"
+      }
+    },
+    {
+      "el": "div.topbar__left",
+      "rect": [
+        25,
+        12,
+        411,
+        46
+      ],
+      "style": {
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "display": "flex"
+      }
+    },
+    {
+      "el": "a.brand",
+      "rect": [
+        25,
+        12,
+        189,
+        46
+      ],
+      "style": {
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "display": "flex",
+        "gap": "14px"
+      }
+    },
+    {
+      "el": "svg.brand__mark",
+      "rect": [
+        25,
+        12,
+        46,
+        46
+      ],
+      "style": {
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "filter": "drop-shadow(rgba(15, 36, 67, 0.25) 0px 3px 6px)",
+        "overflow": "hidden",
+        "display": "block"
+      }
+    },
+    {
+      "el": "rect",
+      "rect": [
+        26,
+        13,
+        44,
+        44
+      ],
+      "text": "",
+      "style": {
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "display": "inline"
+      }
+    },
+    {
+      "el": "g",
+      "rect": [
+        57,
+        20,
+        9,
+        12
+      ],
+      "style": {
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "display": "inline"
+      }
+    },
+    {
+      "el": "path",
+      "rect": [
+        57,
+        24,
+        5,
+        8
+      ],
+      "text": "",
+      "style": {
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "display": "inline"
+      }
+    },
+    {
+      "el": "path",
+      "rect": [
+        60,
+        20,
+        6,
+        11
+      ],
+      "text": "",
+      "style": {
+        "opacity": "0.55",
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "display": "inline"
+      }
+    },
+    {
+      "el": "circle",
+      "rect": [
+        33,
+        26,
+        24,
+        24
+      ],
+      "text": "",
+      "style": {
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "display": "inline"
+      }
+    },
+    {
+      "el": "g",
+      "rect": [
+        35,
+        28,
+        19,
+        18
+      ],
+      "style": {
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "display": "inline"
+      }
+    },
+    {
+      "el": "path",
+      "rect": [
+        45,
+        28,
+        0,
+        6
+      ],
+      "text": "",
+      "style": {
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "display": "inline"
+      }
+    },
+    {
+      "el": "path",
+      "rect": [
+        48,
+        35,
+        6,
+        2
+      ],
+      "text": "",
+      "style": {
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "display": "inline"
+      }
+    },
+    {
+      "el": "path",
+      "rect": [
+        47,
+        41,
+        4,
+        5
+      ],
+      "text": "",
+      "style": {
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "display": "inline"
+      }
+    },
+    {
+      "el": "path",
+      "rect": [
+        39,
+        41,
+        4,
+        5
+      ],
+      "text": "",
+      "style": {
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "display": "inline"
+      }
+    },
+    {
+      "el": "path",
+      "rect": [
+        35,
+        35,
+        6,
+        2
+      ],
+      "text": "",
+      "style": {
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "display": "inline"
+      }
+    },
+    {
+      "el": "circle",
+      "rect": [
+        42,
+        35,
+        7,
+        7
+      ],
+      "text": "",
+      "style": {
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "display": "inline"
+      }
+    },
+    {
+      "el": "circle",
+      "rect": [
+        44,
+        37,
+        2,
+        2
+      ],
+      "text": "",
+      "style": {
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "display": "inline"
+      }
+    },
+    {
+      "el": "span.brand__text",
+      "rect": [
+        84,
+        21,
+        129,
+        30
+      ],
+      "style": {
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "display": "flex"
+      }
+    },
+    {
+      "el": "span.brand__name",
+      "rect": [
+        84,
+        21,
+        129,
+        30
+      ],
+      "style": {
+        "color": "rgb(14, 25, 50)",
+        "font-family": "Oswald, \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "31px",
+        "font-weight": "600",
+        "line-height": "31px",
+        "letter-spacing": "1.4px",
+        "display": "block"
+      }
+    },
+    {
+      "el": "b",
+      "rect": [
+        171,
+        13,
+        42,
+        44
+      ],
+      "text": "KIT",
+      "style": {
+        "color": "rgb(31, 154, 120)",
+        "font-family": "Oswald, \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "31px",
+        "font-weight": "600",
+        "line-height": "31px",
+        "letter-spacing": "1.4px",
+        "display": "inline"
+      }
+    },
+    {
+      "el": "span.topbar__rule",
+      "rect": [
+        235,
+        19,
+        1,
+        33
+      ],
+      "text": "",
+      "style": {
+        "color": "rgb(14, 25, 50)",
+        "background-color": "rgb(221, 216, 201)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "display": "block"
+      }
+    },
+    {
+      "el": "a.credit",
+      "rect": [
+        249,
+        13,
+        187,
+        44
+      ],
+      "style": {
+        "transition": "background 0.15s",
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "border-radius": "12px",
+        "display": "flex",
+        "gap": "11px",
+        "padding": "4px 10px 4px 4px"
+      }
+    },
+    {
+      "el": "span.credit__tile",
+      "rect": [
+        253,
+        17,
+        36,
+        36
+      ],
+      "style": {
+        "transition": "transform 0.18s cubic-bezier(0.16, 0.84, 0.3, 1), box-shadow 0.18s",
+        "color": "rgb(14, 25, 50)",
+        "background-image": "linear-gradient(rgb(32, 64, 107), rgb(15, 36, 67))",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "border-radius": "10px",
+        "box-shadow": "rgba(15, 36, 67, 0.45) 0px 3px 7px -3px",
+        "display": "grid"
+      }
+    },
+    {
+      "el": "svg",
+      "rect": [
+        263,
+        27,
+        16,
+        16
+      ],
+      "style": {
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "overflow": "hidden",
+        "display": "block"
+      }
+    },
+    {
+      "el": "path",
+      "rect": [
+        263,
+        28,
+        16,
+        15
+      ],
+      "text": "",
+      "style": {
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "display": "inline"
+      }
+    },
+    {
+      "el": "span.credit__text",
+      "rect": [
+        300,
+        20,
+        127,
+        31
+      ],
+      "style": {
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "display": "grid",
+        "gap": "3px"
+      }
+    },
+    {
+      "el": "span.credit__label",
+      "rect": [
+        300,
+        20,
+        127,
+        11
+      ],
+      "text": "Designed by",
+      "style": {
+        "color": "rgb(93, 98, 114)",
+        "font-family": "Oswald, \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "11.5px",
+        "font-weight": "500",
+        "line-height": "11.5px",
+        "letter-spacing": "1.4px",
+        "display": "block"
+      }
+    },
+    {
+      "el": "span.credit__handle",
+      "rect": [
+        300,
+        34,
+        127,
+        18
+      ],
+      "text": "x.com/DilumSanjaya",
+      "style": {
+        "transition": "text-decoration-color 0.15s",
+        "color": "rgb(26, 36, 64)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "600",
+        "line-height": "18.4px",
+        "display": "block"
+      }
+    },
+    {
+      "el": "div.topbar__right",
+      "rect": [
+        975,
+        13,
+        443,
+        44
+      ],
+      "style": {
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "display": "flex",
+        "gap": "12px"
+      }
+    },
+    {
+      "el": "span#boardLabel.topbar__label",
+      "rect": [
+        975,
+        26,
+        40,
+        19
+      ],
+      "text": "Board",
+      "style": {
+        "color": "rgb(93, 98, 114)",
+        "font-family": "Oswald, \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "13px",
+        "font-weight": "500",
+        "letter-spacing": "1.4px",
+        "display": "block"
+      }
+    },
+    {
+      "el": "div#boardGroup.segmented.segmented--board",
+      "rect": [
+        1027,
+        14,
+        230,
+        42
+      ],
+      "style": {
+        "color": "rgb(14, 25, 50)",
+        "background-color": "rgb(235, 232, 223)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "border-radius": "8px",
+        "box-shadow": "rgba(0, 0, 0, 0.02) 0px 0px 0px 1px inset",
+        "display": "grid"
+      }
+    },
+    {
+      "el": "button.is-active",
+      "rect": [
+        1027,
+        14,
+        133,
+        42
+      ],
+      "style": {
+        "transition": "background 0.15s, color 0.15s",
+        "color": "rgb(255, 255, 255)",
+        "background-image": "linear-gradient(rgb(40, 74, 112), rgb(30, 58, 92))",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "15px",
+        "font-weight": "500",
+        "border-radius": "8px",
+        "box-shadow": "rgba(30, 58, 92, 0.3) 0px 2px 5px 0px",
+        "display": "flex",
+        "gap": "8px",
+        "padding": "0px 18px"
+      }
+    },
+    {
+      "el": "svg",
+      "rect": [
+        1044,
+        27,
+        17,
+        17
+      ],
+      "style": {
+        "color": "rgb(255, 255, 255)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "15px",
+        "font-weight": "500",
+        "overflow": "hidden",
+        "display": "block"
+      }
+    },
+    {
+      "el": "rect",
+      "rect": [
+        1046,
+        31,
+        13,
+        9
+      ],
+      "text": "",
+      "style": {
+        "color": "rgb(255, 255, 255)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "15px",
+        "font-weight": "500",
+        "display": "inline"
+      }
+    },
+    {
+      "el": "path",
+      "rect": [
+        1049,
+        30,
+        6,
+        11
+      ],
+      "text": "",
+      "style": {
+        "color": "rgb(255, 255, 255)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "15px",
+        "font-weight": "500",
+        "display": "inline"
+      }
+    },
+    {
+      "el": "span.board__name",
+      "rect": [
+        1069,
+        27,
+        74,
+        17
+      ],
+      "text": "Arduino UNO",
+      "style": {
+        "color": "rgb(255, 255, 255)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "15px",
+        "font-weight": "500",
+        "display": "block"
+      }
+    },
+    {
+      "el": "button",
+      "rect": [
+        1160,
+        14,
+        97,
+        42
+      ],
+      "style": {
+        "transition": "background 0.15s, color 0.15s",
+        "color": "rgb(43, 51, 70)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "15px",
+        "font-weight": "500",
+        "border-radius": "8px",
+        "display": "flex",
+        "gap": "8px",
+        "padding": "0px 18px"
+      }
+    },
+    {
+      "el": "svg",
+      "rect": [
+        1177,
+        27,
+        17,
+        17
+      ],
+      "style": {
+        "color": "rgb(43, 51, 70)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "15px",
+        "font-weight": "500",
+        "overflow": "hidden",
+        "display": "block"
+      }
+    },
+    {
+      "el": "path",
+      "rect": [
+        1180,
+        32,
+        11,
+        4
+      ],
+      "text": "",
+      "style": {
+        "color": "rgb(43, 51, 70)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "15px",
+        "font-weight": "500",
+        "display": "inline"
+      }
+    },
+    {
+      "el": "circle",
+      "rect": [
+        1184,
+        38,
+        2,
+        2
+      ],
+      "text": "",
+      "style": {
+        "color": "rgb(43, 51, 70)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "15px",
+        "font-weight": "500",
+        "display": "inline"
+      }
+    },
+    {
+      "el": "div#langPicker.lang-picker",
+      "rect": [
+        1274,
+        13,
+        89,
+        44
+      ],
+      "style": {
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "position": "relative",
+        "display": "block"
+      }
+    },
+    {
+      "el": "button#langBtn.icon-btn.lang-btn",
+      "rect": [
+        1274,
+        13,
+        89,
+        44
+      ],
+      "style": {
+        "transition": "background 0.15s, box-shadow 0.15s, transform 0.08s, color 0.15s, filter 0.15s, opacity 0.15s",
+        "color": "rgb(14, 25, 50)",
+        "background-color": "rgb(236, 233, 223)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "border-radius": "11px",
+        "box-shadow": "rgba(255, 255, 255, 0.7) 0px 1px 0px 0px inset, rgba(70, 60, 30, 0.06) 0px 2px 6px 0px",
+        "display": "flex",
+        "gap": "6px",
+        "padding": "0px 9px 0px 11px"
+      }
+    },
+    {
+      "el": "svg.lang-btn__globe",
+      "rect": [
+        1285,
+        25,
+        20,
+        20
+      ],
+      "style": {
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "overflow": "hidden",
+        "display": "block"
+      }
+    },
+    {
+      "el": "circle",
+      "rect": [
+        1288,
+        28,
+        14,
+        14
+      ],
+      "text": "",
+      "style": {
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "display": "inline"
+      }
+    },
+    {
+      "el": "path",
+      "rect": [
+        1288,
+        28,
+        14,
+        14
+      ],
+      "text": "",
+      "style": {
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "display": "inline"
+      }
+    },
+    {
+      "el": "span#langChip.lang-btn__chip",
+      "rect": [
+        1311,
+        24,
+        21,
+        23
+      ],
+      "text": "EN",
+      "style": {
+        "color": "rgb(26, 36, 64)",
+        "font-family": "Oswald, \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "600",
+        "letter-spacing": "1.2px",
+        "display": "block"
+      }
+    },
+    {
+      "el": "svg.lang-btn__caret",
+      "rect": [
+        1338,
+        28,
+        15,
+        15
+      ],
+      "style": {
+        "transition": "transform 0.2s cubic-bezier(0.16, 0.84, 0.3, 1)",
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "overflow": "hidden",
+        "display": "block"
+      }
+    },
+    {
+      "el": "path",
+      "rect": [
+        1342,
+        34,
+        6,
+        3
+      ],
+      "text": "",
+      "style": {
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "display": "inline"
+      }
+    },
+    {
+      "el": "div#langPanel.langs",
+      "rect": [
+        1087,
+        61,
+        276,
+        60
+      ],
+      "style": {
+        "opacity": "0",
+        "transform": "matrix(0.98, 0, 0, 0.98, 0, -6)",
+        "transition": "opacity 0.14s, transform 0.14s, visibility 0s 0.14s",
+        "color": "rgb(14, 25, 50)",
+        "background-color": "rgb(252, 250, 243)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "border-radius": "16px",
+        "box-shadow": "rgba(60, 50, 20, 0.42) 0px 24px 56px -22px, rgba(60, 50, 20, 0.16) 0px 4px 12px -6px",
+        "position": "absolute",
+        "display": "block",
+        "padding": "14px 12px 10px"
+      }
+    },
+    {
+      "el": "div#langTitle.langs__title",
+      "rect": [
+        1103,
+        75,
+        244,
+        28
+      ],
+      "text": "Language",
+      "style": {
+        "color": "rgb(93, 98, 114)",
+        "font-family": "Oswald, \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "13px",
+        "font-weight": "500",
+        "letter-spacing": "1.4px",
+        "display": "block",
+        "padding": "0px 0px 9px"
+      }
+    },
+    {
+      "el": "div#langList.langs__list",
+      "rect": [
+        1099,
+        111,
+        251,
+        0
+      ],
+      "text": "",
+      "style": {
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "display": "grid",
+        "gap": "3px 8px"
+      }
+    },
+    {
+      "el": "button#settingsBtn.icon-btn",
+      "rect": [
+        1374,
+        13,
+        44,
+        44
+      ],
+      "style": {
+        "transition": "background 0.15s, box-shadow 0.15s, transform 0.08s, color 0.15s, filter 0.15s, opacity 0.15s",
+        "color": "rgb(14, 25, 50)",
+        "background-color": "rgb(236, 233, 223)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "border-radius": "11px",
+        "box-shadow": "rgba(255, 255, 255, 0.7) 0px 1px 0px 0px inset, rgba(70, 60, 30, 0.06) 0px 2px 6px 0px",
+        "display": "grid"
+      }
+    },
+    {
+      "el": "svg",
+      "rect": [
+        1384,
+        23,
+        24,
+        24
+      ],
+      "style": {
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "overflow": "hidden",
+        "display": "block"
+      }
+    },
+    {
+      "el": "path",
+      "rect": [
+        1386,
+        25,
+        19,
+        20
+      ],
+      "text": "",
+      "style": {
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "display": "inline"
+      }
+    },
+    {
+      "el": "main.layout",
+      "rect": [
+        19,
+        75,
+        1401,
+        804
+      ],
+      "style": {
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "display": "grid",
+        "gap": "14px 16px"
+      }
+    },
+    {
+      "el": "section.card.card--bench",
+      "rect": [
+        19,
+        75,
+        922,
+        695
+      ],
+      "style": {
+        "color": "rgb(14, 25, 50)",
+        "background-image": "linear-gradient(rgb(251, 249, 241) 0%, rgb(250, 247, 238) 100%)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "border-radius": "18px",
+        "box-shadow": "rgba(255, 255, 255, 0.9) 0px 1px 0px 0px inset, rgba(80, 66, 30, 0.05) 0px 1px 2px 0px, rgba(80, 66, 30, 0.1) 0px 6px 18px -6px",
+        "overflow": "hidden",
+        "position": "relative",
+        "display": "block"
+      }
+    },
+    {
+      "el": "div#viewport.viewport",
+      "rect": [
+        20,
+        76,
+        920,
+        693
+      ],
+      "style": {
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "border-radius": "18px",
+        "overflow": "hidden",
+        "position": "absolute",
+        "display": "block"
+      }
+    },
+    {
+      "el": "canvas",
+      "rect": [
+        20,
+        76,
+        920,
+        693
+      ],
+      "text": "",
+      "style": {
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "overflow": "clip",
+        "display": "block"
+      }
+    },
+    {
+      "el": "div",
+      "rect": [
+        20,
+        76,
+        920,
+        693
+      ],
+      "style": {
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "overflow": "hidden",
+        "position": "absolute",
+        "display": "block"
+      }
+    },
+    {
+      "el": "div.kit-label",
+      "rect": [
+        560,
+        381,
+        102,
+        23
+      ],
+      "style": {
+        "transform": "matrix(1, 0, 0, 1, 565, 319.553)",
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "position": "absolute",
+        "display": "block"
+      }
+    },
+    {
+      "el": "span",
+      "rect": [
+        560,
+        381,
+        102,
+        23
+      ],
+      "text": "Arduino UNO R3",
+      "style": {
+        "color": "rgb(26, 36, 64)",
+        "background-color": "rgba(252, 250, 243, 0.92)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "13.5px",
+        "font-weight": "500",
+        "border-radius": "7px",
+        "box-shadow": "rgba(60, 50, 20, 0.3) 0px 2px 6px -3px",
+        "display": "block",
+        "padding": "3px 8px"
+      }
+    },
+    {
+      "el": "div.kit-label",
+      "rect": [
+        562,
+        455,
+        106,
+        23
+      ],
+      "style": {
+        "transform": "matrix(1, 0, 0, 1, 566.192, 396.541)",
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "position": "absolute",
+        "display": "block"
+      }
+    },
+    {
+      "el": "span",
+      "rect": [
+        562,
+        455,
+        106,
+        23
+      ],
+      "text": "Sensor Shield V5",
+      "style": {
+        "color": "rgb(26, 36, 64)",
+        "background-color": "rgba(252, 250, 243, 0.92)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "13.5px",
+        "font-weight": "500",
+        "border-radius": "7px",
+        "box-shadow": "rgba(60, 50, 20, 0.3) 0px 2px 6px -3px",
+        "display": "block",
+        "padding": "3px 8px"
+      }
+    },
+    {
+      "el": "div.kit-label",
+      "rect": [
+        564,
+        552,
+        175,
+        23
+      ],
+      "style": {
+        "transform": "matrix(1, 0, 0, 1, 569.197, 498.475)",
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "position": "absolute",
+        "display": "block"
+      }
+    },
+    {
+      "el": "span",
+      "rect": [
+        564,
+        552,
+        175,
+        23
+      ],
+      "text": "20× jumper wires (F–F, 15 cm)",
+      "style": {
+        "color": "rgb(26, 36, 64)",
+        "background-color": "rgba(252, 250, 243, 0.92)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "13.5px",
+        "font-weight": "500",
+        "border-radius": "7px",
+        "box-shadow": "rgba(60, 50, 20, 0.3) 0px 2px 6px -3px",
+        "display": "block",
+        "padding": "3px 8px"
+      }
+    },
+    {
+      "el": "div.kit-label",
+      "rect": [
+        188,
+        287,
+        83,
+        23
+      ],
+      "style": {
+        "transform": "matrix(1, 0, 0, 1, 176.007, 220.994)",
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "position": "absolute",
+        "display": "block"
+      }
+    },
+    {
+      "el": "span",
+      "rect": [
+        188,
+        287,
+        83,
+        23
+      ],
+      "text": "bottom deck",
+      "style": {
+        "color": "rgb(26, 36, 64)",
+        "background-color": "rgba(252, 250, 243, 0.92)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "13.5px",
+        "font-weight": "500",
+        "border-radius": "7px",
+        "box-shadow": "rgba(60, 50, 20, 0.3) 0px 2px 6px -3px",
+        "display": "block",
+        "padding": "3px 8px"
+      }
+    },
+    {
+      "el": "div.kit-label",
+      "rect": [
+        450,
+        287,
+        81,
+        23
+      ],
+      "style": {
+        "transform": "matrix(1, 0, 0, 1, 449.173, 220.994)",
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "position": "absolute",
+        "display": "block"
+      }
+    },
+    {
+      "el": "span",
+      "rect": [
+        450,
+        287,
+        81,
+        23
+      ],
+      "text": "middle deck",
+      "style": {
+        "color": "rgb(26, 36, 64)",
+        "background-color": "rgba(252, 250, 243, 0.92)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "13.5px",
+        "font-weight": "500",
+        "border-radius": "7px",
+        "box-shadow": "rgba(60, 50, 20, 0.3) 0px 2px 6px -3px",
+        "display": "block",
+        "padding": "3px 8px"
+      }
+    },
+    {
+      "el": "div.kit-label",
+      "rect": [
+        745,
+        287,
+        63,
+        23
+      ],
+      "style": {
+        "transform": "matrix(1, 0, 0, 1, 757.522, 220.994)",
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "position": "absolute",
+        "display": "block"
+      }
+    },
+    {
+      "el": "span",
+      "rect": [
+        745,
+        287,
+        63,
+        23
+      ],
+      "text": "top deck",
+      "style": {
+        "color": "rgb(26, 36, 64)",
+        "background-color": "rgba(252, 250, 243, 0.92)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "13.5px",
+        "font-weight": "500",
+        "border-radius": "7px",
+        "box-shadow": "rgba(60, 50, 20, 0.3) 0px 2px 6px -3px",
+        "display": "block",
+        "padding": "3px 8px"
+      }
+    },
+    {
+      "el": "div.kit-label",
+      "rect": [
+        144,
+        439,
+        80,
+        23
+      ],
+      "style": {
+        "transform": "matrix(1, 0, 0, 1, 129.877, 379.884)",
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "position": "absolute",
+        "display": "block"
+      }
+    },
+    {
+      "el": "span",
+      "rect": [
+        144,
+        439,
+        80,
+        23
+      ],
+      "text": "4× TT motor",
+      "style": {
+        "color": "rgb(26, 36, 64)",
+        "background-color": "rgba(252, 250, 243, 0.92)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "13.5px",
+        "font-weight": "500",
+        "border-radius": "7px",
+        "box-shadow": "rgba(60, 50, 20, 0.3) 0px 2px 6px -3px",
+        "display": "block",
+        "padding": "3px 8px"
+      }
+    },
+    {
+      "el": "div.kit-label",
+      "rect": [
+        218,
+        399,
+        107,
+        23
+      ],
+      "style": {
+        "transform": "matrix(1, 0, 0, 1, 207.064, 338.471)",
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "position": "absolute",
+        "display": "block"
+      }
+    },
+    {
+      "el": "span",
+      "rect": [
+        218,
+        399,
+        107,
+        23
+      ],
+      "text": "8× motor bracket",
+      "style": {
+        "color": "rgb(26, 36, 64)",
+        "background-color": "rgba(252, 250, 243, 0.92)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "13.5px",
+        "font-weight": "500",
+        "border-radius": "7px",
+        "box-shadow": "rgba(60, 50, 20, 0.3) 0px 2px 6px -3px",
+        "display": "block",
+        "padding": "3px 8px"
+      }
+    },
+    {
+      "el": "div.kit-label",
+      "rect": [
+        213,
+        487,
+        134,
+        23
+      ],
+      "style": {
+        "transform": "matrix(1, 0, 0, 1, 201.839, 430.354)",
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "position": "absolute",
+        "display": "block"
+      }
+    },
+    {
+      "el": "span",
+      "rect": [
+        213,
+        487,
+        134,
+        23
+      ],
+      "text": "M3 bolts, nuts, screws",
+      "style": {
+        "color": "rgb(26, 36, 64)",
+        "background-color": "rgba(252, 250, 243, 0.92)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "13.5px",
+        "font-weight": "500",
+        "border-radius": "7px",
+        "box-shadow": "rgba(60, 50, 20, 0.3) 0px 2px 6px -3px",
+        "display": "block",
+        "padding": "3px 8px"
+      }
+    },
+    {
+      "el": "div.kit-label",
+      "rect": [
+        354,
+        450,
+        106,
+        23
+      ],
+      "style": {
+        "transform": "matrix(1, 0, 0, 1, 349.075, 391.625)",
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "position": "absolute",
+        "display": "block"
+      }
+    },
+    {
+      "el": "span",
+      "rect": [
+        354,
+        450,
+        106,
+        23
+      ],
+      "text": "4× wheel, 65 mm",
+      "style": {
+        "color": "rgb(26, 36, 64)",
+        "background-color": "rgba(252, 250, 243, 0.92)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "13.5px",
+        "font-weight": "500",
+        "border-radius": "7px",
+        "box-shadow": "rgba(60, 50, 20, 0.3) 0px 2px 6px -3px",
+        "display": "block",
+        "padding": "3px 8px"
+      }
+    },
+    {
+      "el": "div.kit-label",
+      "rect": [
+        479,
+        361,
+        90,
+        23
+      ],
+      "style": {
+        "transform": "matrix(1, 0, 0, 1, 479.901, 298.061)",
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "position": "absolute",
+        "display": "block"
+      }
+    },
+    {
+      "el": "span",
+      "rect": [
+        479,
+        361,
+        90,
+        23
+      ],
+      "text": "L9110S driver",
+      "style": {
+        "color": "rgb(26, 36, 64)",
+        "background-color": "rgba(252, 250, 243, 0.92)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "13.5px",
+        "font-weight": "500",
+        "border-radius": "7px",
+        "box-shadow": "rgba(60, 50, 20, 0.3) 0px 2px 6px -3px",
+        "display": "block",
+        "padding": "3px 8px"
+      }
+    },
+    {
+      "el": "div.kit-label",
+      "rect": [
+        491,
+        411,
+        68,
+        23
+      ],
+      "style": {
+        "transform": "matrix(1, 0, 0, 1, 492.136, 350.883)",
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "position": "absolute",
+        "display": "block"
+      }
+    },
+    {
+      "el": "span",
+      "rect": [
+        491,
+        411,
+        68,
+        23
+      ],
+      "text": "foam pad",
+      "style": {
+        "color": "rgb(26, 36, 64)",
+        "background-color": "rgba(252, 250, 243, 0.92)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "13.5px",
+        "font-weight": "500",
+        "border-radius": "7px",
+        "box-shadow": "rgba(60, 50, 20, 0.3) 0px 2px 6px -3px",
+        "display": "block",
+        "padding": "3px 8px"
+      }
+    },
+    {
+      "el": "div.kit-label",
+      "rect": [
+        677,
+        353,
+        65,
+        23
+      ],
+      "style": {
+        "transform": "matrix(1, 0, 0, 1, 686.825, 289.727)",
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "position": "absolute",
+        "display": "block"
+      }
+    },
+    {
+      "el": "span",
+      "rect": [
+        677,
+        353,
+        65,
+        23
+      ],
+      "text": "HC-SR04",
+      "style": {
+        "color": "rgb(26, 36, 64)",
+        "background-color": "rgba(252, 250, 243, 0.92)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "13.5px",
+        "font-weight": "500",
+        "border-radius": "7px",
+        "box-shadow": "rgba(60, 50, 20, 0.3) 0px 2px 6px -3px",
+        "display": "block",
+        "padding": "3px 8px"
+      }
+    },
+    {
+      "el": "div.kit-label",
+      "rect": [
+        666,
+        411,
+        96,
+        23
+      ],
+      "style": {
+        "transform": "matrix(1, 0, 0, 1, 675.286, 350.883)",
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "position": "absolute",
+        "display": "block"
+      }
+    },
+    {
+      "el": "span",
+      "rect": [
+        666,
+        411,
+        96,
+        23
+      ],
+      "text": "sensor bracket",
+      "style": {
+        "color": "rgb(26, 36, 64)",
+        "background-color": "rgba(252, 250, 243, 0.92)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "13.5px",
+        "font-weight": "500",
+        "border-radius": "7px",
+        "box-shadow": "rgba(60, 50, 20, 0.3) 0px 2px 6px -3px",
+        "display": "block",
+        "padding": "3px 8px"
+      }
+    },
+    {
+      "el": "div.kit-label",
+      "rect": [
+        729,
+        359,
+        77,
+        23
+      ],
+      "style": {
+        "transform": "matrix(1, 0, 0, 1, 741.372, 296.205)",
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "position": "absolute",
+        "display": "block"
+      }
+    },
+    {
+      "el": "span",
+      "rect": [
+        729,
+        359,
+        77,
+        23
+      ],
+      "text": "SG90 servo",
+      "style": {
+        "color": "rgb(26, 36, 64)",
+        "background-color": "rgba(252, 250, 243, 0.92)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "13.5px",
+        "font-weight": "500",
+        "border-radius": "7px",
+        "box-shadow": "rgba(60, 50, 20, 0.3) 0px 2px 6px -3px",
+        "display": "block",
+        "padding": "3px 8px"
+      }
+    },
+    {
+      "el": "div.kit-label",
+      "rect": [
+        750,
+        393,
+        41,
+        23
+      ],
+      "style": {
+        "transform": "matrix(1, 0, 0, 1, 763.12, 331.825)",
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "position": "absolute",
+        "display": "block"
+      }
+    },
+    {
+      "el": "span",
+      "rect": [
+        750,
+        393,
+        41,
+        23
+      ],
+      "text": "horn",
+      "style": {
+        "color": "rgb(26, 36, 64)",
+        "background-color": "rgba(252, 250, 243, 0.92)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "13.5px",
+        "font-weight": "500",
+        "border-radius": "7px",
+        "box-shadow": "rgba(60, 50, 20, 0.3) 0px 2px 6px -3px",
+        "display": "block",
+        "padding": "3px 8px"
+      }
+    },
+    {
+      "el": "div.kit-label",
+      "rect": [
+        779,
+        406,
+        106,
+        23
+      ],
+      "style": {
+        "transform": "matrix(1, 0, 0, 1, 793.518, 345.143)",
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "position": "absolute",
+        "display": "block"
+      }
+    },
+    {
+      "el": "span",
+      "rect": [
+        779,
+        406,
+        106,
+        23
+      ],
+      "text": "2 × 18650 holder",
+      "style": {
+        "color": "rgb(26, 36, 64)",
+        "background-color": "rgba(252, 250, 243, 0.92)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "13.5px",
+        "font-weight": "500",
+        "border-radius": "7px",
+        "box-shadow": "rgba(60, 50, 20, 0.3) 0px 2px 6px -3px",
+        "display": "block",
+        "padding": "3px 8px"
+      }
+    },
+    {
+      "el": "div.kit-label",
+      "rect": [
+        746,
+        496,
+        88,
+        23
+      ],
+      "style": {
+        "transform": "matrix(1, 0, 0, 1, 759.259, 439.418)",
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "position": "absolute",
+        "display": "block"
+      }
+    },
+    {
+      "el": "span",
+      "rect": [
+        746,
+        496,
+        88,
+        23
+      ],
+      "text": "2× 18650 cell",
+      "style": {
+        "color": "rgb(26, 36, 64)",
+        "background-color": "rgba(252, 250, 243, 0.92)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "13.5px",
+        "font-weight": "500",
+        "border-radius": "7px",
+        "box-shadow": "rgba(60, 50, 20, 0.3) 0px 2px 6px -3px",
+        "display": "block",
+        "padding": "3px 8px"
+      }
+    },
+    {
+      "el": "div.kit-label",
+      "rect": [
+        98,
+        510,
+        86,
+        23
+      ],
+      "style": {
+        "transform": "matrix(1, 0, 0, 1, 81.113, 454.631)",
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "position": "absolute",
+        "display": "block"
+      }
+    },
+    {
+      "el": "span",
+      "rect": [
+        98,
+        510,
+        86,
+        23
+      ],
+      "text": "power switch",
+      "style": {
+        "color": "rgb(26, 36, 64)",
+        "background-color": "rgba(252, 250, 243, 0.92)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "13.5px",
+        "font-weight": "500",
+        "border-radius": "7px",
+        "box-shadow": "rgba(60, 50, 20, 0.3) 0px 2px 6px -3px",
+        "display": "block",
+        "padding": "3px 8px"
+      }
+    },
+    {
+      "el": "div.kit-label",
+      "rect": [
+        168,
+        510,
+        77,
+        23
+      ],
+      "style": {
+        "transform": "matrix(1, 0, 0, 1, 154.801, 454.631)",
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "position": "absolute",
+        "display": "block"
+      }
+    },
+    {
+      "el": "span",
+      "rect": [
+        168,
+        510,
+        77,
+        23
+      ],
+      "text": "10 mm LED",
+      "style": {
+        "color": "rgb(26, 36, 64)",
+        "background-color": "rgba(252, 250, 243, 0.92)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "13.5px",
+        "font-weight": "500",
+        "border-radius": "7px",
+        "box-shadow": "rgba(60, 50, 20, 0.3) 0px 2px 6px -3px",
+        "display": "block",
+        "padding": "3px 8px"
+      }
+    },
+    {
+      "el": "div.kit-label",
+      "rect": [
+        243,
+        510,
+        48,
+        23
+      ],
+      "style": {
+        "transform": "matrix(1, 0, 0, 1, 232.765, 454.631)",
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "position": "absolute",
+        "display": "block"
+      }
+    },
+    {
+      "el": "span",
+      "rect": [
+        243,
+        510,
+        48,
+        23
+      ],
+      "text": "220 Ω",
+      "style": {
+        "color": "rgb(26, 36, 64)",
+        "background-color": "rgba(252, 250, 243, 0.92)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "13.5px",
+        "font-weight": "500",
+        "border-radius": "7px",
+        "box-shadow": "rgba(60, 50, 20, 0.3) 0px 2px 6px -3px",
+        "display": "block",
+        "padding": "3px 8px"
+      }
+    },
+    {
+      "el": "div.kit-label",
+      "rect": [
+        278,
+        510,
+        87,
+        23
+      ],
+      "style": {
+        "transform": "matrix(1, 0, 0, 1, 269.504, 454.631)",
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "position": "absolute",
+        "display": "block"
+      }
+    },
+    {
+      "el": "span",
+      "rect": [
+        278,
+        510,
+        87,
+        23
+      ],
+      "text": "active buzzer",
+      "style": {
+        "color": "rgb(26, 36, 64)",
+        "background-color": "rgba(252, 250, 243, 0.92)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "13.5px",
+        "font-weight": "500",
+        "border-radius": "7px",
+        "box-shadow": "rgba(60, 50, 20, 0.3) 0px 2px 6px -3px",
+        "display": "block",
+        "padding": "3px 8px"
+      }
+    },
+    {
+      "el": "div.kit-label",
+      "rect": [
+        362,
+        510,
+        58,
+        23
+      ],
+      "style": {
+        "transform": "matrix(1, 0, 0, 1, 357.771, 454.631)",
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "position": "absolute",
+        "display": "block"
+      }
+    },
+    {
+      "el": "span",
+      "rect": [
+        362,
+        510,
+        58,
+        23
+      ],
+      "text": "DC plug",
+      "style": {
+        "color": "rgb(26, 36, 64)",
+        "background-color": "rgba(252, 250, 243, 0.92)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "13.5px",
+        "font-weight": "500",
+        "border-radius": "7px",
+        "box-shadow": "rgba(60, 50, 20, 0.3) 0px 2px 6px -3px",
+        "display": "block",
+        "padding": "3px 8px"
+      }
+    },
+    {
+      "el": "div.kit-label",
+      "rect": [
+        409,
+        522,
+        106,
+        23
+      ],
+      "style": {
+        "transform": "matrix(1, 0, 0, 1, 406.547, 466.385)",
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "position": "absolute",
+        "display": "block"
+      }
+    },
+    {
+      "el": "span",
+      "rect": [
+        409,
+        522,
+        106,
+        23
+      ],
+      "text": "16× M3 standoff",
+      "style": {
+        "color": "rgb(26, 36, 64)",
+        "background-color": "rgba(252, 250, 243, 0.92)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "13.5px",
+        "font-weight": "500",
+        "border-radius": "7px",
+        "box-shadow": "rgba(60, 50, 20, 0.3) 0px 2px 6px -3px",
+        "display": "block",
+        "padding": "3px 8px"
+      }
+    },
+    {
+      "el": "div.kit-label",
+      "rect": [
+        467,
+        465,
+        86,
+        23
+      ],
+      "style": {
+        "transform": "matrix(1, 0, 0, 1, 467.616, 407.407)",
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "position": "absolute",
+        "display": "block"
+      }
+    },
+    {
+      "el": "span",
+      "rect": [
+        467,
+        465,
+        86,
+        23
+      ],
+      "text": "hook-up wire",
+      "style": {
+        "color": "rgb(26, 36, 64)",
+        "background-color": "rgba(252, 250, 243, 0.92)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "13.5px",
+        "font-weight": "500",
+        "border-radius": "7px",
+        "box-shadow": "rgba(60, 50, 20, 0.3) 0px 2px 6px -3px",
+        "display": "block",
+        "padding": "3px 8px"
+      }
+    },
+    {
+      "el": "header.bench__head",
+      "rect": [
+        20,
+        76,
+        920,
+        69
+      ],
+      "style": {
+        "color": "rgb(14, 25, 50)",
+        "font-family": "\"Roboto Condensed\", \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "position": "relative",
+        "display": "flex",
+        "gap": "14px",
+        "padding": "0px 16px 0px 17px"
+      }
+    },
+    {
+      "el": "span.badge.badge--icon",
+      "rect": [
+        36,
+        92,
+        36,
+        36
+      ],
+      "style": {
+        "color": "rgb(43, 38, 17)",
+        "background-image": "radial-gradient(circle at 40% 30%, rgb(255, 221, 132) 0%, rgb(253, 208, 98) 55%, rgb(246, 192, 71) 100%)",
+        "font-family": "Oswald, \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "18px",
+        "font-weight": "600",
+        "border-radius": "50%",
+        "box-shadow": "rgba(255, 255, 255, 0.5) 0px 1px 0px 0px inset, rgba(150, 110, 10, 0.18) 0px 1px 2px 0px",
+        "display": "grid"
+      }
+    },
+    {
+      "el": "svg.bench__icon.bench__icon--build",
+      "rect": [
+        44,
+        100,
+        20,
+        20
+      ],
+      "style": {
+        "color": "rgb(43, 38, 17)",
+        "font-family": "Oswald, \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "18px",
+        "font-weight": "600",
+        "overflow": "hidden",
+        "display": "block"
+      }
+    },
+    {
+      "el": "path",
+      "rect": [
+        47,
+        105,
+        11,
+        11
+      ],
+      "text": "",
+      "style": {
+        "color": "rgb(43, 38, 17)",
+        "font-family": "Oswald, \"Barlow Condensed\", \"Arial Narrow\", sans-serif",
+        "font-size": "18px",
+        "font-weight": "600",
+        "display": "inline"
+      }
+    }
+  ]
+}

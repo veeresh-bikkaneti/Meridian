@@ -1,0 +1,35 @@
+{
+  "url": "https://lesson2play.com/",
+  "out": "/home/hatch/workspace/reverse-engineering/2026-11-24-three-sites/captures/l2p-home",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "scale": 1,
+  "fps": 25,
+  "rate": 1,
+  "trigger": "load",
+  "target": ".doors",
+  "selector": ".doors",
+  "clip": {
+    "x": 160,
+    "y": 447,
+    "width": 1120,
+    "height": 453
+  },
+  "duration": 4000,
+  "preRoll": 200,
+  "waitBefore": 800,
+  "track": [
+    ".door.play",
+    ".door.build",
+    ".door.hire",
+    ".door.diy"
+  ],
+  "clock": "real",
+  "seed": null,
+  "gpu": "software",
+  "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+  "gl": false,
+  "capturedAt": "2026-11-24T15:18:09.016Z"
+}

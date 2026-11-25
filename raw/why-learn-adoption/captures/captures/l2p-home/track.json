@@ -1,0 +1,1038 @@
+{
+  "selectors": [
+    ".door.play",
+    ".door.build",
+    ".door.hire",
+    ".door.diy"
+  ],
+  "playbackRate": 1,
+  "note": "t in ms of reference time, 0 = trigger; negative samples are before it",
+  "samples": [
+    {
+      "t": 0,
+      "scrollY": 0,
+      "els": {
+        ".door.play": {
+          "x": 160,
+          "y": 447.73,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.build": {
+          "x": 730,
+          "y": 447.73,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.hire": {
+          "x": 160,
+          "y": 818.8,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.diy": {
+          "x": 730,
+          "y": 818.8,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        }
+      }
+    },
+    {
+      "t": 417.4,
+      "scrollY": 0,
+      "els": {
+        ".door.play": {
+          "x": 160,
+          "y": 447.73,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.build": {
+          "x": 730,
+          "y": 447.73,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.hire": {
+          "x": 160,
+          "y": 818.8,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.diy": {
+          "x": 730,
+          "y": 818.8,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        }
+      }
+    },
+    {
+      "t": 490.7,
+      "scrollY": 0,
+      "els": {
+        ".door.play": {
+          "x": 160,
+          "y": 447.73,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.build": {
+          "x": 730,
+          "y": 447.73,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.hire": {
+          "x": 160,
+          "y": 818.8,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.diy": {
+          "x": 730,
+          "y": 818.8,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        }
+      }
+    },
+    {
+      "t": 497.8,
+      "scrollY": 0,
+      "els": {
+        ".door.play": {
+          "x": 160,
+          "y": 447.73,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.build": {
+          "x": 730,
+          "y": 447.73,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.hire": {
+          "x": 160,
+          "y": 818.8,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.diy": {
+          "x": 730,
+          "y": 818.8,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        }
+      }
+    },
+    {
+      "t": 505,
+      "scrollY": 0,
+      "els": {
+        ".door.play": {
+          "x": 160,
+          "y": 447.73,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.build": {
+          "x": 730,
+          "y": 447.73,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.hire": {
+          "x": 160,
+          "y": 818.8,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.diy": {
+          "x": 730,
+          "y": 818.8,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        }
+      }
+    },
+    {
+      "t": 558.2,
+      "scrollY": 0,
+      "els": {
+        ".door.play": {
+          "x": 160,
+          "y": 447.73,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.build": {
+          "x": 730,
+          "y": 447.73,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.hire": {
+          "x": 160,
+          "y": 818.8,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.diy": {
+          "x": 730,
+          "y": 818.8,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        }
+      }
+    },
+    {
+      "t": 589.6,
+      "scrollY": 0,
+      "els": {
+        ".door.play": {
+          "x": 160,
+          "y": 447.73,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.build": {
+          "x": 730,
+          "y": 447.73,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.hire": {
+          "x": 160,
+          "y": 818.8,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.diy": {
+          "x": 730,
+          "y": 818.8,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        }
+      }
+    },
+    {
+      "t": 655.6,
+      "scrollY": 0,
+      "els": {
+        ".door.play": {
+          "x": 160,
+          "y": 447.73,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.build": {
+          "x": 730,
+          "y": 447.73,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.hire": {
+          "x": 160,
+          "y": 818.8,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.diy": {
+          "x": 730,
+          "y": 818.8,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        }
+      }
+    },
+    {
+      "t": 685.5,
+      "scrollY": 0,
+      "els": {
+        ".door.play": {
+          "x": 160,
+          "y": 447.73,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.build": {
+          "x": 730,
+          "y": 447.73,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.hire": {
+          "x": 160,
+          "y": 818.8,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.diy": {
+          "x": 730,
+          "y": 818.8,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        }
+      }
+    },
+    {
+      "t": 773.5,
+      "scrollY": 0,
+      "els": {
+        ".door.play": {
+          "x": 160,
+          "y": 447.73,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.build": {
+          "x": 730,
+          "y": 447.73,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.hire": {
+          "x": 160,
+          "y": 818.8,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.diy": {
+          "x": 730,
+          "y": 818.8,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        }
+      }
+    },
+    {
+      "t": 860.2,
+      "scrollY": 0,
+      "els": {
+        ".door.play": {
+          "x": 160,
+          "y": 447.73,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.build": {
+          "x": 730,
+          "y": 447.73,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.hire": {
+          "x": 160,
+          "y": 818.8,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.diy": {
+          "x": 730,
+          "y": 818.8,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        }
+      }
+    },
+    {
+      "t": 881.8,
+      "scrollY": 0,
+      "els": {
+        ".door.play": {
+          "x": 160,
+          "y": 447.73,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.build": {
+          "x": 730,
+          "y": 447.73,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.hire": {
+          "x": 160,
+          "y": 818.8,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.diy": {
+          "x": 730,
+          "y": 818.8,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        }
+      }
+    },
+    {
+      "t": 1043.7,
+      "scrollY": 0,
+      "els": {
+        ".door.play": {
+          "x": 160,
+          "y": 447.73,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.build": {
+          "x": 730,
+          "y": 447.73,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.hire": {
+          "x": 160,
+          "y": 818.8,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.diy": {
+          "x": 730,
+          "y": 818.8,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        }
+      }
+    },
+    {
+      "t": 1074.2,
+      "scrollY": 0,
+      "els": {
+        ".door.play": {
+          "x": 160,
+          "y": 447.73,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.build": {
+          "x": 730,
+          "y": 447.73,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.hire": {
+          "x": 160,
+          "y": 818.8,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.diy": {
+          "x": 730,
+          "y": 818.8,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        }
+      }
+    },
+    {
+      "t": 1181.3,
+      "scrollY": 0,
+      "els": {
+        ".door.play": {
+          "x": 160,
+          "y": 447.73,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.build": {
+          "x": 730,
+          "y": 447.73,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.hire": {
+          "x": 160,
+          "y": 818.8,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.diy": {
+          "x": 730,
+          "y": 818.8,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        }
+      }
+    },
+    {
+      "t": 1281.3,
+      "scrollY": 0,
+      "els": {
+        ".door.play": {
+          "x": 160,
+          "y": 447.73,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.build": {
+          "x": 730,
+          "y": 447.73,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.hire": {
+          "x": 160,
+          "y": 818.8,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.diy": {
+          "x": 730,
+          "y": 818.8,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        }
+      }
+    },
+    {
+      "t": 1340.3,
+      "scrollY": 0,
+      "els": {
+        ".door.play": {
+          "x": 160,
+          "y": 447.73,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.build": {
+          "x": 730,
+          "y": 447.73,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.hire": {
+          "x": 160,
+          "y": 818.8,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.diy": {
+          "x": 730,
+          "y": 818.8,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        }
+      }
+    },
+    {
+      "t": 1540.9,
+      "scrollY": 0,
+      "els": {
+        ".door.play": {
+          "x": 160,
+          "y": 447.73,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.build": {
+          "x": 730,
+          "y": 447.73,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.hire": {
+          "x": 160,
+          "y": 818.8,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.diy": {
+          "x": 730,
+          "y": 818.8,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        }
+      }
+    },
+    {
+      "t": 1576.7,
+      "scrollY": 0,
+      "els": {
+        ".door.play": {
+          "x": 160,
+          "y": 447.73,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.build": {
+          "x": 730,
+          "y": 447.73,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.hire": {
+          "x": 160,
+          "y": 818.8,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.diy": {
+          "x": 730,
+          "y": 818.8,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        }
+      }
+    },
+    {
+      "t": 1692.5,
+      "scrollY": 0,
+      "els": {
+        ".door.play": {
+          "x": 160,
+          "y": 447.73,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.build": {
+          "x": 730,
+          "y": 447.73,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.hire": {
+          "x": 160,
+          "y": 818.8,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.diy": {
+          "x": 730,
+          "y": 818.8,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        }
+      }
+    },
+    {
+      "t": 1758.4,
+      "scrollY": 0,
+      "els": {
+        ".door.play": {
+          "x": 160,
+          "y": 447.73,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.build": {
+          "x": 730,
+          "y": 447.73,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.hire": {
+          "x": 160,
+          "y": 818.8,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.diy": {
+          "x": 730,
+          "y": 818.8,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        }
+      }
+    },
+    {
+      "t": 1840.1,
+      "scrollY": 0,
+      "els": {
+        ".door.play": {
+          "x": 160,
+          "y": 447.73,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.build": {
+          "x": 730,
+          "y": 447.73,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.hire": {
+          "x": 160,
+          "y": 818.8,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.diy": {
+          "x": 730,
+          "y": 818.8,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        }
+      }
+    },
+    {
+      "t": 1868.4,
+      "scrollY": 0,
+      "els": {
+        ".door.play": {
+          "x": 160,
+          "y": 447.73,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.build": {
+          "x": 730,
+          "y": 447.73,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.hire": {
+          "x": 160,
+          "y": 818.8,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.diy": {
+          "x": 730,
+          "y": 818.8,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        }
+      }
+    },
+    {
+      "t": 1956.9,
+      "scrollY": 0,
+      "els": {
+        ".door.play": {
+          "x": 160,
+          "y": 447.73,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.build": {
+          "x": 730,
+          "y": 447.73,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.hire": {
+          "x": 160,
+          "y": 818.8,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.diy": {
+          "x": 730,
+          "y": 818.8,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        }
+      }
+    },
+    {
+      "t": 2264.5,
+      "scrollY": 0,
+      "els": {
+        ".door.play": {
+          "x": 160,
+          "y": 447.73,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.build": {
+          "x": 730,
+          "y": 447.73,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.hire": {
+          "x": 160,
+          "y": 818.8,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.diy": {
+          "x": 730,
+          "y": 818.8,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        }
+      }
+    },
+    {
+      "t": 2433.5,
+      "scrollY": 0,
+      "els": {
+        ".door.play": {
+          "x": 160,
+          "y": 447.73,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.build": {
+          "x": 730,
+          "y": 447.73,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.hire": {
+          "x": 160,
+          "y": 818.8,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.diy": {
+          "x": 730,
+          "y": 818.8,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        }
+      }
+    },
+    {
+      "t": 2480.7,
+      "scrollY": 0,
+      "els": {
+        ".door.play": {
+          "x": 160,
+          "y": 447.73,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.build": {
+          "x": 730,
+          "y": 447.73,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.hire": {
+          "x": 160,
+          "y": 818.8,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        },
+        ".door.diy": {
+          "x": 730,
+          "y": 818.8,
+          "w": 550,
+          "h": 351.06,
+          "opacity": 1,
+          "transform": "none"
+        }
+      }
+    }
+  ]
+}

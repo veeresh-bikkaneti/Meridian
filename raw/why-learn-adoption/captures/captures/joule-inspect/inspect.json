@@ -1,0 +1,871 @@
+{
+  "url": "https://iamtechartist.com/Apps/every-joule/",
+  "title": "Every Joule · a physics book about energy",
+  "viewport": [
+    1440,
+    900
+  ],
+  "scrollY": 0,
+  "devicePixelRatio": 1,
+  "libs": [],
+  "fonts": [
+    "Source Serif 4 Variable 200 900 normal"
+  ],
+  "canvases": [
+    {
+      "el": "canvas#c",
+      "context": null,
+      "size": [
+        300,
+        150
+      ],
+      "css": [
+        0,
+        0,
+        1440,
+        900
+      ]
+    }
+  ],
+  "target": {
+    "selector": "body",
+    "found": true,
+    "rect": [
+      0,
+      0,
+      1440,
+      900
+    ]
+  },
+  "animations": [
+    {
+      "kind": "CSSAnimation",
+      "name": "ta-inL",
+      "target": "g.ta-l",
+      "timing": {
+        "delay": 0,
+        "direction": "normal",
+        "duration": 900,
+        "easing": "linear",
+        "endDelay": 0,
+        "fill": "both",
+        "iterationStart": 0,
+        "iterations": 1
+      },
+      "keyframes": [
+        {
+          "offset": 0,
+          "easing": "cubic-bezier(0.2, 0.8, 0.2, 1)",
+          "transform": "translate(-10px, -8px)",
+          "opacity": "0"
+        },
+        {
+          "offset": 1,
+          "easing": "cubic-bezier(0.2, 0.8, 0.2, 1)",
+          "transform": "none",
+          "opacity": "1"
+        }
+      ],
+      "playState": "finished",
+      "currentTime": 900,
+      "timeline": "DocumentTimeline"
+    },
+    {
+      "kind": "CSSAnimation",
+      "name": "ta-inR",
+      "target": "g.ta-r",
+      "timing": {
+        "delay": 120,
+        "direction": "normal",
+        "duration": 900,
+        "easing": "linear",
+        "endDelay": 0,
+        "fill": "both",
+        "iterationStart": 0,
+        "iterations": 1
+      },
+      "keyframes": [
+        {
+          "offset": 0,
+          "easing": "cubic-bezier(0.2, 0.8, 0.2, 1)",
+          "transform": "translate(10px, -8px)",
+          "opacity": "0"
+        },
+        {
+          "offset": 1,
+          "easing": "cubic-bezier(0.2, 0.8, 0.2, 1)",
+          "transform": "none",
+          "opacity": "1"
+        }
+      ],
+      "playState": "finished",
+      "currentTime": 1020,
+      "timeline": "DocumentTimeline"
+    },
+    {
+      "kind": "CSSAnimation",
+      "name": "ta-glint",
+      "target": "rect.ta-glint",
+      "timing": {
+        "delay": 900,
+        "direction": "normal",
+        "duration": 2400,
+        "easing": "linear",
+        "endDelay": 0,
+        "fill": "none",
+        "iterationStart": 0,
+        "iterations": null
+      },
+      "keyframes": [
+        {
+          "offset": 0,
+          "easing": "ease-in-out",
+          "transform": "translateX(-140px)"
+        },
+        {
+          "offset": 0.55,
+          "easing": "ease-in-out",
+          "transform": "translateX(460px)"
+        },
+        {
+          "offset": 1,
+          "easing": "ease-in-out",
+          "transform": "translateX(460px)"
+        }
+      ],
+      "playState": "running",
+      "currentTime": 2316.59099999984,
+      "timeline": "DocumentTimeline"
+    },
+    {
+      "kind": "CSSAnimation",
+      "name": "ta-fade",
+      "target": "svg.ta-word",
+      "timing": {
+        "delay": 450,
+        "direction": "normal",
+        "duration": 800,
+        "easing": "linear",
+        "endDelay": 0,
+        "fill": "forwards",
+        "iterationStart": 0,
+        "iterations": 1
+      },
+      "keyframes": [
+        {
+          "offset": 0,
+          "easing": "ease",
+          "opacity": "0"
+        },
+        {
+          "offset": 1,
+          "easing": "ease",
+          "opacity": "1"
+        }
+      ],
+      "playState": "finished",
+      "currentTime": 1250,
+      "timeline": "DocumentTimeline"
+    },
+    {
+      "kind": "CSSAnimation",
+      "name": "ta-fade",
+      "target": "div.ta-title",
+      "timing": {
+        "delay": 700,
+        "direction": "normal",
+        "duration": 800,
+        "easing": "linear",
+        "endDelay": 0,
+        "fill": "forwards",
+        "iterationStart": 0,
+        "iterations": 1
+      },
+      "keyframes": [
+        {
+          "offset": 0,
+          "easing": "ease",
+          "opacity": "0"
+        },
+        {
+          "offset": 1,
+          "easing": "ease",
+          "opacity": "1"
+        }
+      ],
+      "playState": "finished",
+      "currentTime": 1500,
+      "timeline": "DocumentTimeline"
+    },
+    {
+      "kind": "CSSAnimation",
+      "name": "ta-run",
+      "target": "i",
+      "timing": {
+        "delay": 0,
+        "direction": "normal",
+        "duration": 1300,
+        "easing": "linear",
+        "endDelay": 0,
+        "fill": "none",
+        "iterationStart": 0,
+        "iterations": null
+      },
+      "keyframes": [
+        {
+          "offset": 0,
+          "easing": "ease-in-out",
+          "transform": "translateX(-100%)"
+        },
+        {
+          "offset": 1,
+          "easing": "ease-in-out",
+          "transform": "translateX(560%)"
+        }
+      ],
+      "playState": "running",
+      "currentTime": 2316.59099999984,
+      "timeline": "DocumentTimeline"
+    }
+  ],
+  "keyframes": [
+    {
+      "name": "ta-inL",
+      "css": "@keyframes ta-inL { \n  0% { opacity: 0; transform: translate(-10px, -8px); }\n  100% { opacity: 1; transform: none; }\n}"
+    },
+    {
+      "name": "ta-inR",
+      "css": "@keyframes ta-inR { \n  0% { opacity: 0; transform: translate(10px, -8px); }\n  100% { opacity: 1; transform: none; }\n}"
+    },
+    {
+      "name": "ta-fade",
+      "css": "@keyframes ta-fade { \n  100% { opacity: 1; }\n}"
+    },
+    {
+      "name": "ta-glint",
+      "css": "@keyframes ta-glint { \n  0% { transform: translateX(-140px); }\n  55%, 100% { transform: translateX(460px); }\n}"
+    },
+    {
+      "name": "ta-run",
+      "css": "@keyframes ta-run { \n  0% { transform: translateX(-100%); }\n  100% { transform: translateX(560%); }\n}"
+    }
+  ],
+  "nodes": [
+    {
+      "el": "body",
+      "rect": [
+        0,
+        0,
+        1440,
+        900
+      ],
+      "style": {
+        "color": "rgb(28, 36, 51)",
+        "background-color": "rgb(185, 176, 162)",
+        "font-family": "\"Source Serif 4 Variable\", \"Source Serif 4\", Georgia, serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "overflow": "hidden",
+        "display": "block"
+      }
+    },
+    {
+      "el": "div#ta-loader.ta-wait",
+      "rect": [
+        0,
+        0,
+        1440,
+        900
+      ],
+      "style": {
+        "transition": "opacity 0.7s 0.1s, visibility 0s 0.85s",
+        "color": "rgb(233, 231, 239)",
+        "background-image": "radial-gradient(120% 90% at 50% 38%, rgb(29, 22, 34) 0%, rgb(13, 11, 18) 58%, rgb(8, 7, 11) 100%)",
+        "font-family": "\"Inter Variable\", Inter, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+        "font-size": "13px",
+        "font-weight": "500",
+        "line-height": "18.2px",
+        "overflow": "hidden",
+        "position": "fixed",
+        "display": "grid"
+      }
+    },
+    {
+      "el": "div.ta-in",
+      "rect": [
+        601,
+        336,
+        238,
+        228
+      ],
+      "style": {
+        "color": "rgb(233, 231, 239)",
+        "font-family": "\"Inter Variable\", Inter, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+        "font-size": "13px",
+        "font-weight": "500",
+        "line-height": "18.2px",
+        "display": "flex",
+        "gap": "14px",
+        "padding": "0px 24px"
+      }
+    },
+    {
+      "el": "svg.ta-mark",
+      "rect": [
+        672,
+        336,
+        96,
+        96
+      ],
+      "style": {
+        "color": "rgb(233, 231, 239)",
+        "font-family": "\"Inter Variable\", Inter, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+        "font-size": "13px",
+        "font-weight": "500",
+        "line-height": "18.2px",
+        "filter": "drop-shadow(rgba(255, 110, 70, 0.22) 0px 10px 26px)",
+        "display": "block"
+      }
+    },
+    {
+      "el": "g.ta-l",
+      "rect": [
+        679,
+        341,
+        41,
+        86
+      ],
+      "style": {
+        "animation": "0.9s cubic-bezier(0.2, 0.8, 0.2, 1) both ta-inL",
+        "color": "rgb(233, 231, 239)",
+        "font-family": "\"Inter Variable\", Inter, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+        "font-size": "13px",
+        "font-weight": "500",
+        "line-height": "18.2px",
+        "display": "inline"
+      }
+    },
+    {
+      "el": "path",
+      "rect": [
+        679,
+        341,
+        41,
+        86
+      ],
+      "text": "",
+      "style": {
+        "color": "rgb(233, 231, 239)",
+        "font-family": "\"Inter Variable\", Inter, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+        "font-size": "13px",
+        "font-weight": "500",
+        "line-height": "18.2px",
+        "display": "inline"
+      }
+    },
+    {
+      "el": "g.ta-r",
+      "rect": [
+        720,
+        341,
+        41,
+        86
+      ],
+      "style": {
+        "animation": "0.9s cubic-bezier(0.2, 0.8, 0.2, 1) 0.12s both ta-inR",
+        "color": "rgb(233, 231, 239)",
+        "font-family": "\"Inter Variable\", Inter, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+        "font-size": "13px",
+        "font-weight": "500",
+        "line-height": "18.2px",
+        "display": "inline"
+      }
+    },
+    {
+      "el": "path",
+      "rect": [
+        720,
+        341,
+        41,
+        86
+      ],
+      "text": "",
+      "style": {
+        "color": "rgb(233, 231, 239)",
+        "font-family": "\"Inter Variable\", Inter, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+        "font-size": "13px",
+        "font-weight": "500",
+        "line-height": "18.2px",
+        "display": "inline"
+      }
+    },
+    {
+      "el": "g",
+      "rect": [
+        776,
+        336,
+        33,
+        96
+      ],
+      "style": {
+        "color": "rgb(233, 231, 239)",
+        "font-family": "\"Inter Variable\", Inter, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+        "font-size": "13px",
+        "font-weight": "500",
+        "line-height": "18.2px",
+        "clip-path": "url(\"#taClip\")",
+        "display": "inline"
+      }
+    },
+    {
+      "el": "rect.ta-glint",
+      "rect": [
+        776,
+        336,
+        33,
+        96
+      ],
+      "text": "",
+      "style": {
+        "transform": "matrix(1, 0, 0, 1, 460, 0)",
+        "animation": "2.4s ease-in-out 0.9s infinite ta-glint",
+        "color": "rgb(233, 231, 239)",
+        "font-family": "\"Inter Variable\", Inter, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+        "font-size": "13px",
+        "font-weight": "500",
+        "line-height": "18.2px",
+        "display": "inline"
+      }
+    },
+    {
+      "el": "svg.ta-word",
+      "rect": [
+        625,
+        446,
+        190,
+        40
+      ],
+      "style": {
+        "animation": "0.8s 0.45s forwards ta-fade",
+        "color": "rgb(233, 231, 239)",
+        "font-family": "\"Inter Variable\", Inter, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+        "font-size": "13px",
+        "font-weight": "500",
+        "line-height": "18.2px",
+        "overflow": "hidden",
+        "display": "block"
+      }
+    },
+    {
+      "el": "path",
+      "rect": [
+        630,
+        452,
+        14,
+        28
+      ],
+      "text": "",
+      "style": {
+        "color": "rgb(233, 231, 239)",
+        "font-family": "\"Inter Variable\", Inter, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+        "font-size": "13px",
+        "font-weight": "500",
+        "line-height": "18.2px",
+        "display": "inline"
+      }
+    },
+    {
+      "el": "path",
+      "rect": [
+        645,
+        457,
+        21,
+        23
+      ],
+      "text": "",
+      "style": {
+        "color": "rgb(233, 231, 239)",
+        "font-family": "\"Inter Variable\", Inter, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+        "font-size": "13px",
+        "font-weight": "500",
+        "line-height": "18.2px",
+        "display": "inline"
+      }
+    },
+    {
+      "el": "path",
+      "rect": [
+        668,
+        457,
+        21,
+        23
+      ],
+      "text": "",
+      "style": {
+        "color": "rgb(233, 231, 239)",
+        "font-family": "\"Inter Variable\", Inter, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+        "font-size": "13px",
+        "font-weight": "500",
+        "line-height": "18.2px",
+        "display": "inline"
+      }
+    },
+    {
+      "el": "path",
+      "rect": [
+        692,
+        449,
+        20,
+        31
+      ],
+      "text": "",
+      "style": {
+        "color": "rgb(233, 231, 239)",
+        "font-family": "\"Inter Variable\", Inter, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+        "font-size": "13px",
+        "font-weight": "500",
+        "line-height": "18.2px",
+        "display": "inline"
+      }
+    },
+    {
+      "el": "path",
+      "rect": [
+        714,
+        457,
+        19,
+        23
+      ],
+      "text": "",
+      "style": {
+        "color": "rgb(233, 231, 239)",
+        "font-family": "\"Inter Variable\", Inter, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+        "font-size": "13px",
+        "font-weight": "500",
+        "line-height": "18.2px",
+        "display": "inline"
+      }
+    },
+    {
+      "el": "path",
+      "rect": [
+        738,
+        458,
+        12,
+        22
+      ],
+      "text": "",
+      "style": {
+        "color": "rgb(233, 231, 239)",
+        "font-family": "\"Inter Variable\", Inter, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+        "font-size": "13px",
+        "font-weight": "500",
+        "line-height": "18.2px",
+        "display": "inline"
+      }
+    },
+    {
+      "el": "path",
+      "rect": [
+        751,
+        452,
+        14,
+        28
+      ],
+      "text": "",
+      "style": {
+        "color": "rgb(233, 231, 239)",
+        "font-family": "\"Inter Variable\", Inter, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+        "font-size": "13px",
+        "font-weight": "500",
+        "line-height": "18.2px",
+        "display": "inline"
+      }
+    },
+    {
+      "el": "path",
+      "rect": [
+        767,
+        458,
+        5,
+        22
+      ],
+      "text": "",
+      "style": {
+        "color": "rgb(233, 231, 239)",
+        "font-family": "\"Inter Variable\", Inter, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+        "font-size": "13px",
+        "font-weight": "500",
+        "line-height": "18.2px",
+        "display": "inline"
+      }
+    },
+    {
+      "el": "path",
+      "rect": [
+        775,
+        457,
+        19,
+        23
+      ],
+      "text": "",
+      "style": {
+        "color": "rgb(233, 231, 239)",
+        "font-family": "\"Inter Variable\", Inter, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+        "font-size": "13px",
+        "font-weight": "500",
+        "line-height": "18.2px",
+        "display": "inline"
+      }
+    },
+    {
+      "el": "path",
+      "rect": [
+        795,
+        452,
+        14,
+        28
+      ],
+      "text": "",
+      "style": {
+        "color": "rgb(233, 231, 239)",
+        "font-family": "\"Inter Variable\", Inter, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+        "font-size": "13px",
+        "font-weight": "500",
+        "line-height": "18.2px",
+        "display": "inline"
+      }
+    },
+    {
+      "el": "path",
+      "rect": [
+        764,
+        446,
+        5,
+        10
+      ],
+      "text": "",
+      "style": {
+        "color": "rgb(233, 231, 239)",
+        "font-family": "\"Inter Variable\", Inter, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+        "font-size": "13px",
+        "font-weight": "500",
+        "line-height": "18.2px",
+        "display": "inline"
+      }
+    },
+    {
+      "el": "path",
+      "rect": [
+        770,
+        446,
+        5,
+        10
+      ],
+      "text": "",
+      "style": {
+        "color": "rgb(233, 231, 239)",
+        "font-family": "\"Inter Variable\", Inter, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+        "font-size": "13px",
+        "font-weight": "500",
+        "line-height": "18.2px",
+        "display": "inline"
+      }
+    },
+    {
+      "el": "div.ta-title",
+      "rect": [
+        672,
+        506,
+        96,
+        15
+      ],
+      "text": "Every Joule",
+      "style": {
+        "animation": "0.8s 0.7s forwards ta-fade",
+        "color": "rgb(142, 147, 170)",
+        "font-family": "\"Inter Variable\", Inter, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+        "font-size": "11px",
+        "font-weight": "500",
+        "line-height": "15.4px",
+        "letter-spacing": "2.64px",
+        "display": "block"
+      }
+    },
+    {
+      "el": "div.ta-bar",
+      "rect": [
+        635,
+        535,
+        170,
+        2
+      ],
+      "style": {
+        "color": "rgb(233, 231, 239)",
+        "background-color": "rgba(142, 147, 170, 0.18)",
+        "font-family": "\"Inter Variable\", Inter, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+        "font-size": "13px",
+        "font-weight": "500",
+        "line-height": "18.2px",
+        "border-radius": "2px",
+        "overflow": "hidden",
+        "display": "block"
+      }
+    },
+    {
+      "el": "i",
+      "rect": [
+        787,
+        535,
+        31,
+        2
+      ],
+      "text": "",
+      "style": {
+        "transform": "matrix(1, 0, 0, 1, 151.638, 0)",
+        "transition": "width 0.35s",
+        "animation": "1.3s ease-in-out infinite ta-run",
+        "color": "rgb(233, 231, 239)",
+        "background-image": "linear-gradient(90deg, rgb(255, 224, 138), rgb(255, 155, 61) 45%, rgb(255, 94, 91) 75%, rgb(194, 36, 107))",
+        "font-family": "\"Inter Variable\", Inter, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+        "font-size": "13px",
+        "font-weight": "500",
+        "line-height": "18.2px",
+        "border-radius": "2px",
+        "display": "block"
+      }
+    },
+    {
+      "el": "div#loadMsg.ta-msg",
+      "rect": [
+        720,
+        551,
+        0,
+        13
+      ],
+      "text": "",
+      "style": {
+        "color": "rgb(201, 198, 212)",
+        "font-family": "\"Inter Variable\", Inter, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+        "font-size": "13px",
+        "font-weight": "500",
+        "line-height": "18.2px",
+        "display": "block"
+      }
+    },
+    {
+      "el": "div.ta-copy",
+      "rect": [
+        0,
+        871,
+        1440,
+        15
+      ],
+      "text": "© 2026 Techartist",
+      "style": {
+        "color": "rgb(112, 116, 138)",
+        "font-family": "\"Inter Variable\", Inter, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+        "font-size": "10.5px",
+        "font-weight": "500",
+        "line-height": "14.7px",
+        "letter-spacing": "0.84px",
+        "position": "absolute",
+        "display": "block"
+      }
+    },
+    {
+      "el": "canvas#c",
+      "rect": [
+        0,
+        0,
+        1440,
+        900
+      ],
+      "text": "",
+      "style": {
+        "color": "rgb(28, 36, 51)",
+        "font-family": "\"Source Serif 4 Variable\", \"Source Serif 4\", Georgia, serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "overflow": "clip",
+        "display": "block"
+      }
+    },
+    {
+      "el": "div#ui",
+      "rect": [
+        0,
+        0,
+        1440,
+        900
+      ],
+      "text": "",
+      "style": {
+        "color": "rgb(28, 36, 51)",
+        "font-family": "\"Source Serif 4 Variable\", \"Source Serif 4\", Georgia, serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "position": "fixed",
+        "display": "block"
+      }
+    },
+    {
+      "el": "main#a11y.sr",
+      "rect": [
+        -1,
+        899,
+        1,
+        1
+      ],
+      "text": "",
+      "style": {
+        "color": "rgb(28, 36, 51)",
+        "font-family": "\"Source Serif 4 Variable\", \"Source Serif 4\", Georgia, serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "overflow": "hidden",
+        "position": "absolute",
+        "display": "block"
+      }
+    },
+    {
+      "el": "div#a11yLive.sr",
+      "rect": [
+        -1,
+        899,
+        1,
+        1
+      ],
+      "text": "",
+      "style": {
+        "color": "rgb(28, 36, 51)",
+        "font-family": "\"Source Serif 4 Variable\", \"Source Serif 4\", Georgia, serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "overflow": "hidden",
+        "position": "absolute",
+        "display": "block"
+      }
+    },
+    {
+      "el": "div#copy",
+      "rect": [
+        1319,
+        854,
+        101,
+        12
+      ],
+      "text": "© 2026 Techartist",
+      "style": {
+        "color": "rgba(28, 36, 51, 0.72)",
+        "font-family": "\"Source Serif 4 Variable\", \"Source Serif 4\", Georgia, serif",
+        "font-size": "12px",
+        "font-weight": "400",
+        "line-height": "12px",
+        "letter-spacing": "0.36px",
+        "position": "fixed",
+        "display": "block"
+      }
+    }
+  ]
+}

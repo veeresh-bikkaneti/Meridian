@@ -1,0 +1,1 @@
+function r(t,a=2){if(!isFinite(t))return"–";if(Math.abs(t)<.005)return"0";const e=Math.abs(t),i=Math.max(0,a-1-Math.floor(Math.log10(e)));return t.toFixed(Math.min(4,i))}function n(t,a=2){const e=Math.abs(t);return e>=1e6?`${r(t/1e6,a)} MJ`:e>=1e3?`${r(t/1e3,a)} kJ`:`${r(t,a)} J`}export{n as j,r as s};
