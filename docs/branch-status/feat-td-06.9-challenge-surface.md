@@ -2,7 +2,7 @@
 
 - Branch: `feat/td-06.9-challenge-surface`
 - Base: `origin/main` at `da516bee` (TD-06.11 #625 merged; gate met)
-- PR: (draft, to open)
+- PR: draft #626 — https://github.com/veeresh-bikkaneti/Meridian/pull/626
 
 ## Done
 
