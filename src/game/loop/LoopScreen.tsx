@@ -2240,7 +2240,6 @@ function LoopReveal({
           </Button>
           <p className="text-center text-sm text-muted">Case #{caseNo} is on your desk.</p>
           <EndOfFlowHome onHome={onLeave} testId="home-button-end" className="min-h-[48px]" />
-          <HomeButton onHome={onLeave} />
         </div>
         <p role="status" aria-live="polite" className="sr-only">
           {revealAnnouncement}
