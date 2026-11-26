@@ -20,3 +20,15 @@ evidence lanes, 4 council memos), wrote the summary at
 districts and standards bodies are catalogued in the pack's sample
 justification table, and no reader needs them as standalone pages
 yet. (source: raw/us-education-curriculum/CURRICULUM-DESIGN.md)
+
+## [2026-11-25] ingest | Living World revision of the U.S. curriculum pack
+
+Revision ingest. Added the dated revision document and the Lane 6
+Life Science evidence file to `raw/us-education-curriculum/`, and
+updated [[us-education-curriculum]] and [[why-learn-tiers]]. The
+revision adopts the Living World strand inside General Knowledge,
+replaces the confidence standard, records the inventory audit (78
+items, 0 Living World), and rules 10 confidence corrections. The
+corrections are stated in the revision document rather than edited
+into the original raw files, which stay immutable.
+(source: raw/us-education-curriculum/REVISION-2026-11-25-living-world.md)

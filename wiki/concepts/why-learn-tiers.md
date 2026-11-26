@@ -23,3 +23,11 @@ as an internal difficulty tag
 (source: raw/us-education-curriculum/CURRICULUM-DESIGN.md#a5-collapse-to-3-buttons-ui-constraint-note-inferred).
 
 Source summary: [[us-education-curriculum]].
+
+## Living World inside the tiers (2026-11-25)
+
+Life Science sits inside General Knowledge as the protected Living
+World strand in every tier. T1 treatment is observable phenomena
+only. T2 is integrated and relational. T3 is formal Biology. T4 is
+application-oriented biological literacy with no medical advice
+(source: raw/us-education-curriculum/REVISION-2026-11-25-living-world.md#5-revised-matrix--life-science-strand-treatment).

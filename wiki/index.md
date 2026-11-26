@@ -14,6 +14,10 @@ ingest. `[[wikilinks]]` are relative to `wiki/`.
   pack (2026-11-24): dual-cohort district sample, 4-tier Why Learn
   design, 96 case-file prompts, gap analysis.
   (source: raw/us-education-curriculum/CURRICULUM-DESIGN.md)
+- Revision 2026-11-25 in the same summary — Living World strand
+  adopted inside General Knowledge, confidence standard replaced,
+  inventory audit at 0 Living World items, Lane 6 NGSS anchors.
+  (source: raw/us-education-curriculum/REVISION-2026-11-25-living-world.md)
 
 ## Entities
 

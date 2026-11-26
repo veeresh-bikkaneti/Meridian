@@ -49,3 +49,46 @@ sit under `raw/us-education-curriculum/evidence/`
 (source: raw/us-education-curriculum/SOURCES.md).
 
 Related concept: [[why-learn-tiers]].
+
+## Revision 2026-11-25 — Living World strand + confidence standard
+
+- The Life Science question is decided. Biology/Life Science is a
+  protected first-class strand named Living World inside General
+  Knowledge, with internal id `life-science`. The six-category UI
+  stays
+  (source: raw/us-education-curriculum/REVISION-2026-11-25-living-world.md#1-decision-status--adopted).
+- At least one-third of General Knowledge T1–T2 allocation is the
+  planning target for primary Living World items. The target is a
+  product-balancing rule, not a district instructional-time claim
+  (source: raw/us-education-curriculum/REVISION-2026-11-25-living-world.md#1-decision-status--adopted).
+- The inventory audit classified 78 items across General Knowledge,
+  Journals, Chemistry, Physics, and Social Studies. It found 0
+  primary Living World items, 0 cross-tagged items, and 0 of the 8
+  Living World domains represented, so every Living World item must
+  be authored new
+  (source: raw/us-education-curriculum/REVISION-2026-11-25-living-world.md#3-inventory-audit-tested).
+- The confidence standard was replaced. High now requires at least
+  two independent primary or official sources, with a narrow-fact
+  exception for a single authoritative source
+  (source: raw/us-education-curriculum/REVISION-2026-11-25-living-world.md#2-confidence-standard--replaced).
+- The confidence audit counted 475 tags and ruled 10 corrections.
+  The largest are [High 2/3] to [Moderate 2/3] for the Eanes ISD
+  scaled score and growth claims, because both supporters share one
+  origin, and [High 3/4] to [Moderate 3/4] for the California
+  adoption-dates claim
+  (source: raw/us-education-curriculum/REVISION-2026-11-25-living-world.md#7-confidence-audit).
+- Cohort 2 is now described as six districts selected from official
+  state accountability portals for high performance plus documented
+  growth, change, or growth-related evidence. A proficiency trend or
+  accountability-model component is not a direct student-growth
+  result
+  (source: raw/us-education-curriculum/REVISION-2026-11-25-living-world.md#7-confidence-audit).
+- Meridian currently covers selected Physical Science and Earth &
+  Space content, with Life Science assigned to a protected General
+  Knowledge strand. Full NGSS science coverage is not yet
+  established
+  (source: raw/us-education-curriculum/REVISION-2026-11-25-living-world.md#9-ngss-coverage-statement).
+- Lane 6 anchors the strand on official NGSS performance
+  expectations. LS1 and LS2 carry records across T1 to T3. LS3 and
+  LS4 are anchored at T1 only, and no national T4 standard exists
+  (source: raw/us-education-curriculum/evidence/lane6-life-science.md).
