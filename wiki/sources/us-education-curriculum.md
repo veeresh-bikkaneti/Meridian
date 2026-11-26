@@ -127,3 +127,60 @@ Related concept: [[why-learn-tiers]].
 - Depth rule adopted: each pillar cell carries a base anchor
   (standard + district sequence) and a competition ceiling anchor per
   tier (source: raw/us-education-curriculum/REVISION-2026-11-26-competition-anchored-rebuild.md#5-depth-re-calibration-rule-adopted).
+
+## Revision 2026-11-26 — Biology promoted to 7th subject card
+
+- Biology is promoted from the Living World strand inside General
+  Knowledge to its own standalone 7th subject card (Option A approved,
+  superseding the interim strand decision of 2026-11-25)
+  (source: raw/us-education-curriculum/REVISION-2026-11-26-biology-7th-card.md#1-decision--option-a-approved).
+- Biology subject module created at `src/subjects/biology/` with 14
+  records: 4 T1 (7-10), 5 T2 (10-18 Middle School), 4 T3 (10-18
+  High School), 1 T4 (18+). All anchored on NGSS Life Science PEs
+  (source: raw/us-education-curriculum/REVISION-2026-11-26-biology-7th-card.md#3-implementation-completed).
+- USABO confirmed as the T3 competition ceiling for Biology
+  (source: raw/us-education-curriculum/evidence/lane6-pass2-heredity-evolution.md).
+
+## Revision 2026-11-26 — Lane 6 Pass 2 (LS3/LS4 at T2/T3)
+
+- 12 new NGSS evidence records (LS-014 to LS-025) cover MS-LS3,
+  MS-LS4, HS-LS3, and HS-LS4 with state-standard corroboration from
+  TX (TEKS), FL (B.E.S.T.), and CA (NGSS-aligned). The LS3/LS4 gap
+  identified in Lane 6 Pass 1 is closed. NGSS coverage now spans all
+  four Life Science DCIs (LS1-LS4) at T1-T3
+  (source: raw/us-education-curriculum/evidence/lane6-pass2-heredity-evolution.md).
+
+## Revision 2026-11-26 — NCF-Envirothon & Kansas Envirothon benchmark
+
+- High School Environmental Studies anchored to NCF-Envirothon's 5
+  station categories (Soils & Land Use, Aquatic Ecology, Forestry,
+  Wildlife, Current Issue) plus Oral Presentation
+  (source: raw/us-education-curriculum/evidence/lane11-envirothon-benchmark.md#111-ncf-envirothon--official-competition-structure).
+- Kansas Envirothon's 5 content areas confirmed: Soils & Land Use,
+  Forestry, Wildlife, Aquatic Ecology, Rangeland Management
+  (source: raw/us-education-curriculum/evidence/lane11-envirothon-benchmark.md#112-kansas-envirothon--state-level-content-areas).
+- St. John's Catholic School (Beloit, KS) verified as state-to-
+  international benchmark: 3 consecutive Kansas state championships
+  (2024, 2025, 2026) and international representation (24th/51 in
+  2025, 12th in 2026)
+  (source: raw/us-education-curriculum/evidence/lane11-envirothon-benchmark.md#113-verified-benchmark-st-johns-catholic-school-beloit-ks).
+
+## Revision 2026-11-26 — Inventory re-tag and safety promotion
+
+- 60 existing `10-18` items split into internal T2 (42 items) vs T3
+  (18 items) tier tags. `fractions:compare-unlike` tagged to Grade 5
+  (source: raw/us-education-curriculum/REVISION-2026-11-26-inventory-retag.md).
+- H01-H03 promoted from UNVERIFIED to sourced using NHTSA/MUTCD/DMV
+  citations from Lane 9
+  (source: raw/us-education-curriculum/REVISION-2026-11-26-inventory-retag.md#3-h01h03-promotion-from-unverified-to-sourced).
+
+## Revision 2026-11-26 — Citation verification and content authoring
+
+- Primary citations verified: g = 9.8 m/s² (NIST), CCSS 6-8 standard
+  text (CCSSO ADA-Compliant PDF), Eanes ISD on TEA ([Moderate 2/3])
+  (source: raw/us-education-curriculum/REVISION-2026-11-26-citations-and-authoring.md#1-citation-verifications).
+- 4-wave content rollout recorded: Wave 1 (4 T1 Biology + safety +
+  fractions), Wave 2 (5 T2 Biology incl. Heredity & Natural Selection),
+  Wave 3 (4 T3 Biology incl. Molecular Inheritance & Speciation + USABO
+  ceiling + Envirothon), Wave 4 (1 T4 Biology literacy, safety-reviewed)
+  (source: raw/us-education-curriculum/REVISION-2026-11-26-citations-and-authoring.md#2-content-authoring-summary--4-wave-rollout).

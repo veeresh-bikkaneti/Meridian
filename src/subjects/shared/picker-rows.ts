@@ -19,6 +19,7 @@ export const PLANNED_SUBJECTS: readonly PlannedSubject[] = [
   { id: "math", title: "Math" },
   { id: "physics", title: "Physics" },
   { id: "chemistry", title: "Chemistry" },
+  { id: "biology", title: "Biology" },
   { id: "general-knowledge", title: "General knowledge" },
   { id: "social-studies", title: "Social studies" },
   { id: "journals", title: "Journals" },

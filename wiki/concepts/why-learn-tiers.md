@@ -24,13 +24,27 @@ as an internal difficulty tag
 
 Source summary: [[us-education-curriculum]].
 
-## Living World inside the tiers (2026-11-25)
+## Living World inside the tiers (2026-11-25) — SUPERSEDED
 
-Life Science sits inside General Knowledge as the protected Living
-World strand in every tier. T1 treatment is observable phenomena
-only. T2 is integrated and relational. T3 is formal Biology. T4 is
-application-oriented biological literacy with no medical advice
-(source: raw/us-education-curriculum/REVISION-2026-11-25-living-world.md#5-revised-matrix--life-science-strand-treatment).
+> **Superseded by the Biology card decision of 2026-11-26.**
+> Biology is now its own standalone 7th subject card, not a strand
+> inside General Knowledge. See below.
+
+## Biology as the 7th subject card (2026-11-26)
+
+Biology is a standalone subject card with its own picker entry, icon
+(Leaf), and one-liner. The interim Living World strand inside General
+Knowledge (adopted 2026-11-25) is superseded. Biology content is
+anchored on NGSS Life Science DCIs (LS1-LS4) across T1-T3, with
+USABO as the T3 competition ceiling
+(source: raw/us-education-curriculum/REVISION-2026-11-26-biology-7th-card.md).
+
+Lane 6 Pass 2 closes the LS3/LS4 gap: Heredity and Evolution are now
+fully anchored at T2 (MS-LS3-1, MS-LS3-2, MS-LS4-1, MS-LS4-2,
+MS-LS4-4, MS-LS4-6) and T3 (HS-LS3-1, HS-LS3-2, HS-LS3-3, HS-LS4-1,
+HS-LS4-2, HS-LS4-3, HS-LS4-4, HS-LS4-5), with state-standard
+corroboration from TX, FL, and CA
+(source: raw/us-education-curriculum/evidence/lane6-pass2-heredity-evolution.md).
 
 ## Five-pillar competition anchors per tier (2026-11-26)
 
@@ -43,8 +57,13 @@ standards base anchor
   Div C, USAPhO/USNCO/USABO, Regeneron ISEF
   (source: raw/us-education-curriculum/REVISION-2026-11-26-competition-anchored-rebuild.md#pillar-1--stem-math--science-olympiad--young-scientist-depth).
 - **Environmental Studies:** T3 ceiling = NCF-Envirothon (5 field
-  stations) and National Ocean Sciences Bowl (8 disciplines)
-  (source: raw/us-education-curriculum/evidence/lane8-young-scientist-environmental.md#82-environmental-competitions-pillar-2-benchmark).
+  stations + Oral Presentation) and National Ocean Sciences Bowl (8
+  disciplines); Kansas Envirothon's 5 content areas (Soils & Land Use,
+  Forestry, Wildlife, Aquatic Ecology, Rangeland Management) confirmed
+  as the state-level checklist; St. John's Catholic School (Beloit, KS)
+  verified as state-to-international benchmark (3× Kansas champion
+  2024-2026, 12th at 2026 NCF-Envirothon)
+  (source: raw/us-education-curriculum/evidence/lane11-envirothon-benchmark.md).
 - **Traffic & Road Rules:** T1 = NHTSA K-5 pedestrian curriculum; T2 =
   Bicycle Safer Journey + MUTCD signs; T3 = state DMV handbooks +
   NHTSA GDL + MUTCD; T4 = adult driving decisions

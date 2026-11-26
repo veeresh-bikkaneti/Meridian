@@ -38,21 +38,19 @@
     national standard (Data not available).
 
 - Revision 2026-11-26 (owner's required curriculum direction, 2026-11-26; responds to the external audit `meridian-audit-vs-plan-2026-11-26.md` of this branch @ 447ff41): competition-anchored rebuild of the five pillars on the existing T1-T4 tiers. Added `raw/us-education-curriculum/REVISION-2026-11-26-competition-anchored-rebuild.md` plus evidence lanes 7-10 (olympiads; young scientist + environmental competitions; safety/situational/riddles; district pacing-guide pass with the NCES CCD federal layer). Audit gaps A1-A5 and P1-P5 each mapped to a closing lane; 5 pillars x T1-T4 x competition benchmarks; depth rule = base anchor + competition ceiling anchor per cell. Competition eligibility verified on organizer official pages 2026-11-26; revised confidence standard (2026-11-25) applied. Wiki (us-education-curriculum, why-learn-tiers, index, log) updated; no existing raw file edited; research only, no code, no content records.
+- Gap-closure pass 2026-11-26 (5 tasks):
+  1. Promoted Biology to standalone 7th subject card (`src/subjects/biology/index.ts`, `items.ts`, `BiologyCase.tsx`, `src/subjects/shared/picker-rows.ts`, `SubjectPicker.tsx`), superseding the interim Living World strand decision (`raw/us-education-curriculum/REVISION-2026-11-26-biology-7th-card.md`).
+  2. Finished Biology Lane 6 Pass 2 (`raw/us-education-curriculum/evidence/lane6-pass2-heredity-evolution.md`): added 12 NGSS records (LS-014 to LS-025) for MS-LS3, MS-LS4, HS-LS3, HS-LS4 with TX/FL/CA corroboration and USABO as T3 ceiling.
+  3. Added NCF-Envirothon & Kansas Envirothon benchmark (`raw/us-education-curriculum/evidence/lane11-envirothon-benchmark.md`) including St. John's Catholic School (Beloit, KS — 2024, 2025, 2026 Kansas state champions).
+  4. Split 60 existing `10-18` items into internal T2/T3 tags and tagged `math-number:fractions:compare-unlike` to Grade 5 in `src/subjects/shared/tier-tags.ts` (+ `tier-tags.test.ts`); promoted `H01–H03` from UNVERIFIED to sourced (`raw/us-education-curriculum/REVISION-2026-11-26-inventory-retag.md`).
+  5. Verified primary citations (`g = 9.8 m/s²`, CCSS 6–8, Eanes ISD on TEA) and authored Wave 1–4 Biology content (`src/subjects/biology/items.ts`, `raw/us-education-curriculum/REVISION-2026-11-26-citations-and-authoring.md`). Updated `wiki/` pages and `wiki/log.md`.
 
 ## Next step
-- Lane 6 pass 2: T2/T3 records for LS3 heredity and LS4 evolution,
-  plus state-standard corroboration for Lane 6 placements.
-- Authoring queue (revision §8): T1 foundation prompts first, then
-  T2, then T3, then the single safety-reviewed T4 literacy prompt.
-  Each authoring wave is its own decision and lane.
-- Authoring wave now unblocked by lanes 7-10: five-pillar content records per tier; H01-H03 promotable from UNVERIFIED to sourced via lane 9; USABO is the T3 ceiling for the Living World strand.
+- Educator review of the 14 authored Biology items and `SubjectPicker` visual layout with 7 subject cards.
+- Author remaining 5-pillar content records (Envirothon, safety, riddles) into `general-knowledge` / `social-studies` / `journals` in the next build PR.
 
 ## Open questions
-- Whether any of this research converts into build lanes; the tier
-  design is calibrated to 4 tiers and folds back to the current
-  3 bands (7-10 / 10-18 / 18+) per the owner's standing band ruling.
-- Discoverability of Biology under the General Knowledge label is
-  untested; it is one of the three 7th-category triggers.
+- National T4 Life Science standard: none exists (Lane 6 LS-013); T4 remains application-oriented biological literacy.
 
 ## Ruled out
 - No PR opened: the owner's instruction was to push the branch.

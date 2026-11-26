@@ -50,3 +50,53 @@ JIC, Regeneron ISEF, NCF-Envirothon, NOSB) and to NHTSA/MUTCD/state
 DMV safety sources. Updated [[us-education-curriculum]] and
 [[why-learn-tiers]]. No existing raw file was edited.
 (source: raw/us-education-curriculum/REVISION-2026-11-26-competition-anchored-rebuild.md)
+
+## [2026-11-26] decision | Biology promoted to 7th subject card (Option A)
+
+Owner decision: Biology is promoted from the interim Living World
+strand inside General Knowledge to its own standalone 7th subject
+card. The six-category UI becomes seven. Option A (rejected on
+2026-11-25) is now approved, superseding the interim strand decision.
+Biology subject module created at `src/subjects/biology/` with 14
+records across 4 waves (4 T1 + 5 T2 + 4 T3 + 1 T4). Picker updated
+with Leaf icon and one-liner.
+(source: raw/us-education-curriculum/REVISION-2026-11-26-biology-7th-card.md)
+
+## [2026-11-26] ingest | Lane 6 Pass 2 — Heredity (LS3) and Evolution (LS4) at T2/T3
+
+Closes the LS3/LS4 gap identified in Lane 6 Pass 1. Added 12 new
+evidence records (LS-014 to LS-025) covering MS-LS3, MS-LS4, HS-LS3,
+HS-LS4 with state-standard corroboration from TX (TEKS), FL (B.E.S.T.),
+and CA (NGSS-aligned). USABO confirmed as T3 competition ceiling for
+Biology. NGSS coverage now spans all four Life Science DCIs at T1-T3.
+(source: raw/us-education-curriculum/evidence/lane6-pass2-heredity-evolution.md)
+
+## [2026-11-26] ingest | Lane 11 — NCF-Envirothon & Kansas Envirothon benchmark
+
+Anchors High School Environmental Studies to NCF-Envirothon's 5 station
+categories + Oral Presentation and Kansas Envirothon's 5 content areas
+(Soils & Land Use, Forestry, Wildlife, Aquatic Ecology, Rangeland
+Management). St. John's Catholic School (Beloit, KS) added as a
+verified state-to-international benchmark: 3 consecutive Kansas state
+championships (2024-2026), international representation including 12th
+place at the 2026 NCF-Envirothon.
+(source: raw/us-education-curriculum/evidence/lane11-envirothon-benchmark.md)
+
+## [2026-11-26] update | Inventory re-tag and safety promotion
+
+Split the 60 existing `10-18` items into internal T2 (42 items) vs
+T3 (18 items) tier tags based on CCSS/NGSS grade-band boundaries.
+Tagged `fractions:compare-unlike` to Grade 5. Promoted H01-H03 from
+UNVERIFIED to sourced using NHTSA/MUTCD/DMV citations from Lane 9.
+(source: raw/us-education-curriculum/REVISION-2026-11-26-inventory-retag.md)
+
+## [2026-11-26] update | Citation verification and content authoring waves
+
+Verified primary citations for g = 9.8 m/s² (NIST), CCSS 6-8
+standard text (CCSSO ADA-Compliant PDF), and Eanes ISD on TEA
+([Moderate 2/3]). Recorded 4-wave content authoring: Wave 1 (4 T1
+Biology + road safety + Grade 5 fractions), Wave 2 (5 T2 Biology),
+Wave 3 (4 T3 Biology + Envirothon), Wave 4 (1 T4 Biology literacy).
+All open register items closed except the national T4 standard (none
+exists).
+(source: raw/us-education-curriculum/REVISION-2026-11-26-citations-and-authoring.md)

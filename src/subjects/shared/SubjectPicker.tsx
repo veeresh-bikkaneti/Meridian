@@ -85,7 +85,7 @@ import { SiteHeader } from "@/components/ui/site-header";
 import { SiteFooter } from "@/components/ui/site-footer";
 import { Pill } from "@/components/ui/pill";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Atom, BookOpen, Calculator, FlaskConical, Globe2, Users, type LucideIcon } from "lucide-react";
+import { ArrowRight, Atom, BookOpen, Calculator, FlaskConical, Globe2, Leaf, Users, type LucideIcon } from "lucide-react";
 import { WhyLearnHero } from "./WhyLearnHero";
 import { WhyLearnDrift } from "./WhyLearnDrift";
 import { WhyLearnWorld } from "./WhyLearnWorld";
@@ -100,6 +100,7 @@ const SUBJECT_ICONS: Record<string, LucideIcon> = {
   math: Calculator,
   physics: Atom,
   chemistry: FlaskConical,
+  biology: Leaf,
   "general-knowledge": Globe2,
   "social-studies": Users,
   journals: BookOpen,
@@ -111,6 +112,7 @@ const SUBJECT_ONE_LINERS: Record<string, string> = {
   math: "Why triangles hold up bridges",
   physics: "Why a ball always comes back down",
   chemistry: "Why bread rises and iron rusts",
+  biology: "Why living things are built to survive",
   "general-knowledge": "Why places are where they are",
   "social-studies": "Why towns grew beside rivers",
   // The ready-state line. The coming-soon line ("New journals are
