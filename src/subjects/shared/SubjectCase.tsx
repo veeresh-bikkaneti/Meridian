@@ -103,7 +103,7 @@ import {
 import { AnswerCard } from "./AnswerCard";
 import { usedInLine } from "./used-in-line";
 import { buildSubjectDetectiveHostProps } from "./subject-host-props";
-import { HomeButton } from "@/components/ui/home-button";
+import { EndOfFlowHome } from "@/components/ui/end-of-flow-home";
 import { Pill } from "@/components/ui/pill";
 import { Button } from "@/components/ui/button";
 import { SiteHeader } from "@/components/ui/site-header";
@@ -506,9 +506,9 @@ export function SubjectCase({
           and is ~24px taller than the old home bar — the page gives
           that height back here so the case content keeps its
           measured place (the picker migration, Step 3.3, set this
-          pattern). The end-of-flow HomeButtons in the result
-          sections below stay: they are the sanctioned end surface,
-          not header/footer chrome. */}
+          pattern). The end-of-flow Home pill (EndOfFlowHome) in the
+          result sections below stays: it is the sanctioned end
+          surface, not header/footer chrome. */}
       <SiteHeader
         onHome={onExit}
         status={null}
@@ -579,7 +579,7 @@ export function SubjectCase({
                   🔎 Next case
                 </button>
               ) : null}
-              <HomeButton onHome={onExit} testId="home-button-end" variant="secondary" className="w-full rounded-xl" />
+              <EndOfFlowHome onHome={onExit} testId="home-button-end" variant="secondary" className="w-full rounded-xl" />
             </div>
           </section>
         ) : loseRevealed ? (
@@ -610,7 +610,7 @@ export function SubjectCase({
                   🔎 Next case
                 </button>
               ) : null}
-              <HomeButton onHome={onExit} testId="home-button-end" variant="secondary" className="w-full rounded-xl" />
+              <EndOfFlowHome onHome={onExit} testId="home-button-end" variant="secondary" className="w-full rounded-xl" />
             </div>
           </section>
         ) : (

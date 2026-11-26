@@ -666,7 +666,11 @@ describe("shell-ban baseline (KNOWN/STALE)", () => {
   // adding or removing an entry fails here until a person edits
   // this record on purpose, in the same change that cures a file.
   const FROZEN_BASELINE: Record<string, string[]> = {
-    homeButtonImport: ["src/components/game-app.tsx", "src/game/loop/LoopScreen.tsx", "src/subjects/shared/SubjectCase.tsx"],
+    homeButtonImport: ["src/components/game-app.tsx"],
+    // TD-05.4: LoopScreen and SubjectCase were cured — end-of-flow
+    // Home renders through the shared EndOfFlowHome owner, so their
+    // homeButtonImport entries are gone. game-app.tsx follows in
+    // TD-05.4 PR 2.
     // Why Learn D1 (2026-11-18): SubjectPicker was cured — the
     // picker sits in the shared --page-wide container and its
     // lg:max-w-none is gone — so the maxWNone baseline is empty.
@@ -705,9 +709,21 @@ describe("shell-ban baseline (KNOWN/STALE)", () => {
   });
 
   it("the shared components themselves are never baselined", () => {
-    const all = Object.values(baseline).flat();
-    for (const own of ["site-header", "site-footer", "page-column", "page-shell", "pill", "error-screen", "first-visit-queue", "content-nav"]) {
+    // Skip the comment: it names the owners in prose (TD-05.4 record).
+    const all = Object.entries(baseline)
+      .filter(([kind]) => kind !== "comment")
+      .flatMap(([, files]) => files);
+    for (const own of ["site-header", "site-footer", "page-column", "page-shell", "pill", "error-screen", "first-visit-queue", "content-nav", "end-of-flow-home"]) {
       assert.ok(!all.some((f) => f.includes(own)), own);
+    }
+  });
+
+  it("TD-05.4: the cured screens render EndOfFlowHome, not a HomeButton import", () => {
+    for (const file of ["src/game/loop/LoopScreen.tsx", "src/subjects/shared/SubjectCase.tsx"]) {
+      const src = read(file);
+      assert.doesNotMatch(src, patterns.homeButtonImport, `${file} still imports HomeButton`);
+      assert.match(src, /@\/components\/ui\/end-of-flow-home/, `${file} does not render EndOfFlowHome`);
+      assert.match(src, /<EndOfFlowHome/, `${file} does not render EndOfFlowHome`);
     }
   });
 });
