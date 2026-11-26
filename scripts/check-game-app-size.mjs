@@ -19,7 +19,7 @@ import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
-export const GAME_APP_SIZE_CEILING = 7471;
+export const GAME_APP_SIZE_CEILING = 6397;
 export const GAME_APP_PATH = fileURLToPath(
   new URL("../src/components/game-app.tsx", import.meta.url),
 );
