@@ -165,6 +165,7 @@ import { useShellSession } from "./use-shell-session";
 import { useOverlayQueue } from "./use-overlay-queue";
 import { useRunController } from "./use-run-controller";
 import { useShellRouter } from "./use-shell-router";
+import { useChallengeSurface } from "./use-challenge-surface";
 
 type LegacySnapshotBand = Exclude<BandRunConfig["band"], AgeBandId>;
 
@@ -1095,70 +1096,12 @@ export function GameApp() {
    */
   const homeHeadingRef = useRef<HTMLHeadingElement | null>(null);
   const landHomeFocusRef = useRef(false);
-  /**
-   * Friend-challenge boot notice (cure round for PR #274): set by the
-   * boot effect when a `#c=` link was tapped with the friendChallenges
-   * flag ON but the challenge could not be loaded (broken link, unknown
-   * place, or the Globe catalog failed to load). Home then shows the
-   * child-friendly CHALLENGE_CHILD_COPY in a role="status" region for
-   * the rest of that boot — a tapped link must never fail silently for
-   * a kid, and there is no auto-dismiss, so a slow screen reader (or a
-   * grown-up helping) still sees it. Flag OFF never sets it: with the
-   * feature off there is nothing to explain.
-   *
-   * The notice is a TITLE plus an optional DETAIL line, because the
-   * failure classes have different titles (governing manifest
-   * §Q1-A6): a broken or unknown link titles itself with
-   * CHALLENGE_CHILD_COPY and details the remedy, while the version
-   * class — a well-formed link from a newer Meridian, or an mc3
-   * region this build's registry predates — titles itself with
-   * CHALLENGE_VERSION_COPY and carries no resend remedy (a resend
-   * from the same newer build would fail identically). Screen-reader
-   * users identify failures by their heading, so the classes must
-   * not share one.
-   */
-  const [challengeBootNotice, setChallengeBootNotice] = useState<{
-    title: string;
-    detail: string | null;
-  } | null>(null);
-
-  /**
-   * A validated mc2 challenge waiting on its welcome card (Package A):
-   * the boot decoded and membership-checked the route, but NOTHING is
-   * displaced yet — the player's saved run stays exactly where it was
-   * until they tap Start on the card (manifest C6). hasSavedRun drives
-   * the card's "your game is saved" line.
-   */
-  const [pendingChallenge, setPendingChallenge] = useState<{
-    route: ChallengeRoute;
-    hasSavedRun: boolean;
-  } | null>(null);
-
-  /** Home's friend-challenge entry points, flag-gated like every other
-   * challenge surface (PlayLoaded reads the same flag for its own). */
-  const [friendChallengesOn, setFriendChallengesOn] = useState(false);
-  useEffect(() => {
-    let active = true;
-    void loadFlags().then(() => {
-      if (active) setFriendChallengesOn(isEnabled("friendChallenges"));
-    });
-    return () => {
-      active = false;
-    };
-  }, []);
 
   /** "Why Do We Learn This?" Home card: live for everyone since the
    * subjects launch (owner rule, Nov 13: release progressively). It
    * used to be flag-gated behind scalePlay / ?scale=1; the card no
    * longer reads that flag. */
 
-  /** A minted challenge waiting on its preview sheet (picker flow). */
-  const [challengePreview, setChallengePreview] = useState<{
-    creation: ChallengeCreation;
-    edition: Edition;
-    regionId: string;
-  } | null>(null);
-  const [challengePickError, setChallengePickError] = useState<string | null>(null);
 
   // GeoDetective mounts its own screen outside the endless-run state
   // machine; it persists under meridian.loop.v2 and never touches the
@@ -1475,6 +1418,41 @@ export function GameApp() {
     globeTierSplitFor,
   });
 
+  // Step 9 (TD-06.9): the challenge receive/preview surface owns the
+  // pending + preview state the router hook writes into, and the
+  // commit-on-action callbacks. The composer keeps the render sites.
+  const {
+    challengeBootNotice,
+    setChallengeBootNotice,
+    pendingChallenge,
+    setPendingChallenge,
+    friendChallengesOn,
+    challengePreview,
+    setChallengePreview,
+    challengePickError,
+    setChallengePickError,
+    startPendingChallenge,
+    handleChallengeDone,
+    openChallengePicker,
+    pickChallengeRegion,
+    handleReviewChallenge,
+  } = useChallengeSurface({
+    commit,
+    ensureSession,
+    difficultyChoice,
+    welcomeMapPick,
+    setWelcomeMapPick,
+    mapMode,
+    handleWelcomeMapMode,
+    setMenu,
+    setRun,
+    setStartError,
+    readRun,
+    clearMc2Run,
+    clearMc3Run,
+    clearDrop,
+  });
+
   // Step 10 (TD-06.7): the shell router + boot live in use-shell-router.ts.
   // It owns `ready`, the derived `inAppScreen`, the hash / history writer
   // and listeners, and the boot effect that restores a saved run.
@@ -1507,71 +1485,6 @@ export function GameApp() {
     setSubjectsOpen,
   });
 
-  /**
-   * The welcome card's Start tap — the moment a received mc2 challenge
-   * commits (manifest C6). The run is built from the validated route
-   * and persisted through commit/writeRun, which routes it to the mc2
-   * key; the player's saved normal run (STORAGE_KEYS.pausedRun) is never touched,
-   * so it survives underneath and is offered back when the challenge
-   * ends. The challenge never banks into the session (ensureSession is
-   * deliberately not called — the same isolation as mc1).
-   */
-
-  const startPendingChallenge = useCallback((routeOverride?: ChallengeRoute) => {
-    // The welcome card's Start passes nothing (the pending route);
-    // the verdict screen's Retry passes the completed route to play
-    // it again at once — same commit path, no second welcome.
-    const route = routeOverride ?? pendingChallenge?.route;
-    if (!route) return;
-    // Commit the welcome card's staged map pick NOW, on Start — the
-    // moment the card's bargain binds. A flip followed by "Not now"
-    // never reaches this line, so declining still commits nothing.
-    if (welcomeMapPick && welcomeMapPick !== mapMode) {
-      handleWelcomeMapMode(welcomeMapPick);
-    }
-    setWelcomeMapPick(null);
-    const fields = challengeRunFields(route);
-    clearDrop();
-    // One challenge at a time across formats too: a saved challenge
-    // in the OTHER format's slot would shadow this run at the next
-    // boot (the read order is mc3 → mc2 → mc1), so starting here
-    // retires it — displacement, as ever, commits on Start.
-    if (fields.challengeOrigin === "mc3") clearMc2Run();
-    if (fields.challengeOrigin === "mc2") clearMc3Run();
-    // Cross-format displacement (manifest §3 persistence): if the
-    // normal slot holds a saved CHALLENGE (an mc1 run), starting this
-    // mc2 challenge displaces it — one challenge at a time, and the
-    // displacement commits here, on Start, never on arrival. A saved
-    // NORMAL run is not a challenge and is never touched: it survives
-    // underneath and is offered back on Done.
-    const savedNormal = readRun();
-    if (savedNormal && savedNormal.regionId === CHALLENGE_REGION_ID) {
-      removeSessionStorageItem(STORAGE_KEYS.pausedRun);
-    }
-    const run: Run = {
-      ...startRun(
-        {
-          edition: fields.edition,
-          regionId: fields.regionId,
-          regionName: fields.regionName,
-          dateKey: trailDate(),
-          difficultyChoice,
-        },
-        route.ids,
-        null,
-      ),
-      challengeRegionId: fields.challengeRegionId,
-      challengeRadiusKm: fields.challengeRadiusKm,
-      challengeOrigin: fields.challengeOrigin,
-      // The winner block rides the run verbatim (mc3 only; null on
-      // every other route): Package B's welcome goal and verdict read
-      // it, and a completion re-share carries it losslessly.
-      ...(route.winner ? { challengeWinner: route.winner } : {}),
-    };
-    commit(run);
-    setPendingChallenge(null);
-    setMenu(null);
-  }, [pendingChallenge, difficultyChoice, commit, welcomeMapPick, mapMode, handleWelcomeMapMode]);
 
   /**
    * Adopt the stored session when it is still live (same day, not ended),
@@ -1579,40 +1492,6 @@ export function GameApp() {
    * already has results backfills exactly once: those places were never
    * banked into any live session.
    */
-  /**
-   * A challenge's Done tap (mc2/mc3; manifest §2, contract 6): the
-   * challenge slots are cleared, and the normal run the challenge
-   * displaced is offered back — resumed in place when it is still
-   * resumable today. Nothing here touches the player's history: the
-   * challenge never wrote any.
-   */
-  const handleChallengeDone = useCallback(() => {
-    setStartError(null);
-    clearDrop();
-    clearMc2Run();
-    clearMc3Run();
-    setRun(null);
-    setMenu(null);
-    const saved = readRun();
-    if (
-      saved &&
-      saved.regionId !== CHALLENGE_REGION_ID &&
-      saved.regionId !== REVIEW_DECK_REGION_ID
-    ) {
-      const today = {
-        edition: saved.edition,
-        regionId: saved.regionId,
-        regionName: saved.regionName,
-        dateKey: trailDate(),
-        difficultyChoice: saved.difficultyChoice,
-      };
-      if (isResumable(saved, today)) {
-        const restored = resumeRun(saved, today);
-        commit(restored);
-        ensureSession(restored);
-      }
-    }
-  }, [commit, ensureSession]);
 
   const challengeMenuHeadingRef = useRef<HTMLHeadingElement | null>(null);
   useEffect(() => {
@@ -1621,44 +1500,7 @@ export function GameApp() {
     }
   }, [menu]);
 
-  /** Picker flow, step 1: open the challenge region list. */
-  const openChallengePicker = useCallback(() => {
-    setChallengePickError(null);
-    setMenu({ kind: "challengeRegions" });
-  }, []);
 
-  /**
-   * Picker flow, step 2: deal a fresh 5 for the tapped region and show
-   * the preview sheet. The catalog is the region's OWN places
-   * (fail-closed dealing), widened inside the region only when the
-   * band/seen steps run thin (buildCreationSources).
-   */
-  const pickChallengeRegion = useCallback(
-    async (edition: Edition, regionId: string) => {
-      setChallengePickError(null);
-      try {
-        const catalog = await placesFor(edition, regionId, undefined, false);
-        const seenIds = new Set(seenStoreFor(edition, regionId, difficultyChoice).read());
-        const sources = buildCreationSources({ catalog, choice: difficultyChoice, seenIds });
-        const creation = createChallengeRoute({
-          edition,
-          regionId,
-          scoringVersion: SCORING_VERSION,
-          mode: "fresh",
-          sources,
-          dealSeed: mintSeed(),
-        });
-        if (!creation) {
-          setChallengePickError("Not enough places there yet — pick another region.");
-          return;
-        }
-        setChallengePreview({ creation, edition, regionId });
-      } catch {
-        setChallengePickError("That region could not load — check your connection and try again.");
-      }
-    },
-    [difficultyChoice],
-  );
 
   /** Idle kill: end the session and return the player to the home screen.
    * skipNotice (fix round M1) suppresses ONLY the inactivity notice set:
@@ -1932,25 +1774,6 @@ export function GameApp() {
     return result;
   }, [replaceSession, showResetSuccess]);
 
-  /**
-   * "Challenge a friend — pick a map" from the review-complete screen
-   * (manifest §1(e)). The review is finished, so the tap first runs
-   * the same exit as the screen's Editions button (clear the drop,
-   * end the run — the SESSION is untouched, no summary is fabricated:
-   * review answers never banked into one), then opens the shipped
-   * challenge-region mini-picker instead of the plain menu. The
-   * friendChallenges flag is re-read at tap time (click-atomic, the
-   * Package B precedent): if it flipped off after the screen booted,
-   * the tap degrades to the plain exit — never a trap, never a
-   * half-open picker. One state batch: Play unmounts and the menu
-   * branch mounts in the same commit, so there is no home flash.
-   */
-  const handleReviewChallenge = useCallback(() => {
-    setStartError(null);
-    clearDrop();
-    setRun(null);
-    setMenu(isEnabled("friendChallenges") ? { kind: "challengeRegions" } : null);
-  }, []);
 
   /**
    * Start a review session over the currently-due deck cards. The session is
