@@ -67,9 +67,9 @@ test("shellBanTotal sums every ban list and ignores the comment", () => {
     pageLocalMain: entries(5),
   };
   assert.equal(shellBanTotal(baseline), 10);
-  assert.equal(navVerdict(10).ok, true);
-  assert.equal(navVerdict(11).ok, false);
-  assert.match(navVerdict(11).note, /shell-ban 11 > 10/);
+  assert.equal(navVerdict(4).ok, true);
+  assert.equal(navVerdict(5).ok, false);
+  assert.match(navVerdict(5).note, /shell-ban 5 > 4/);
 });
 
 test("entry size: exact bytes parse out of the checker output and the limit is enforced", () => {
@@ -182,7 +182,7 @@ function baseDeps(overrides = {}) {
     ]),
     readJson: (path) => {
       if (path.includes("layer-baseline")) return { noRawIo: entries(0), noUpwardImport: entries(104) };
-      if (path.includes("shell-ban-baseline")) return { pageLocalMain: entries(10) };
+      if (path.includes("shell-ban-baseline")) return { pageLocalMain: entries(4) };
       return { suites: [] }; // Playwright report: no failures
     },
     detectChromium: () => ({ found: true, how: "stub" }),
@@ -204,7 +204,7 @@ test("runProfile: a one-row raw-I/O baseline fails the profile even when eslint 
   const deps = baseDeps();
   deps.readJson = (path) => {
     if (path.includes("layer-baseline")) return { noRawIo: entries(1), noUpwardImport: entries(110) };
-    if (path.includes("shell-ban-baseline")) return { pageLocalMain: entries(10) };
+    if (path.includes("shell-ban-baseline")) return { pageLocalMain: entries(4) };
     return { suites: [] };
   };
   const { rows, exitCode } = await runProfile(deps);
@@ -250,7 +250,7 @@ test("runProfile: a Playwright failure that passes its lone re-run is a flake, n
     ]),
     readJson: (path) => {
       if (path.includes("layer-baseline")) return { noRawIo: entries(0), noUpwardImport: entries(104) };
-      if (path.includes("shell-ban-baseline")) return { pageLocalMain: entries(10) };
+      if (path.includes("shell-ban-baseline")) return { pageLocalMain: entries(4) };
       // First report has one failure; the lone re-run's report is clean.
       return pwRuns <= 1
         ? {
@@ -282,7 +282,7 @@ test("runProfile: a Playwright failure that fails its lone re-run is a regressio
     ]),
     readJson: (path) => {
       if (path.includes("layer-baseline")) return { noRawIo: entries(0), noUpwardImport: entries(104) };
-      if (path.includes("shell-ban-baseline")) return { pageLocalMain: entries(10) };
+      if (path.includes("shell-ban-baseline")) return { pageLocalMain: entries(4) };
       return {
         suites: [
           {
