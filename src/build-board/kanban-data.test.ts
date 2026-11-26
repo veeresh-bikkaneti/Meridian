@@ -778,28 +778,45 @@ describe("deriveBoardItems", () => {
   });
 
   it("counts a numbered branch with no pull as In progress", () => {
-    const cards = deriveBoardItems(new Map(), new Set(["chore/td-08.4-kanban-github-derived"]));
+    const cards = deriveBoardItems(
+      new Map(),
+      new Set(["chore/td-08.4-kanban-github-derived"]),
+      snapshot(),
+    );
     assert.equal(cards.length, 1);
     assert.equal(cards[0]?.num, "TD-08.4");
     assert.equal(cards[0]?.col, "In progress");
+    // TD-08 is not a ledger story, so TD-08.4 keeps the heuristic.
     assert.equal(cards[0]?.lane, "tech-debt");
     assert.equal(cards[0]?.title, "chore/td-08.4-kanban-github-derived");
   });
 
-  it("lanes TD as tech-debt, arch and phase as architecture, and the rest as product", () => {
+  it("uses the ledger lane, else the parent story, else the heuristic", () => {
+    const snap = snapshot();
+    // TD-04.2 is architecture in the ledger, even when the text says phase.
+    assert.equal(laneForItem("TD-04.2", ["phase1/rules"], snap), "architecture");
+    // TD-06.6 is not a ledger row; it inherits architecture from TD-06.
+    assert.equal(laneForItem("TD-06.6", ["phase2/td-06.6-age-host"], snap), "architecture");
+    // No parent story: TD-08.1 stays tech-debt. TD-10.5 inherits TD-10.
+    assert.equal(laneForItem("TD-08.1", [], snap), "tech-debt");
+    assert.equal(laneForItem("TD-10.5", [], snap), "tech-debt");
+    assert.equal(laneForItem("FW-11.1", ["feat/fw-11.1-lighthouse"], snap), "product");
+    assert.equal(laneForItem(null, ["arch-pages"], snap), "architecture");
+    assert.equal(laneForItem(null, ["phase2/shell-sweep"], snap), "architecture");
+    // Without a snapshot the heuristic is unchanged: TD beats phase text.
     assert.equal(laneForItem("TD-04.2", ["phase1/rules"]), "tech-debt");
-    assert.equal(laneForItem("FW-11.1", ["feat/fw-11.1-lighthouse"]), "product");
-    assert.equal(laneForItem(null, ["arch-pages"]), "architecture");
-    assert.equal(laneForItem(null, ["phase2/shell-sweep"]), "architecture");
     const cards = deriveBoardItems(
       new Map([
         [1, pull({ title: "Phase 2 shell", headRef: "phase2/shell-sweep" })],
         [2, pull({ title: "FW-99.9 not in the ledger" })],
+        [3, pull({ title: "TD-06.6 age-profile host", headRef: "phase2/td-06.6-age-host" })],
       ]),
       new Set(),
+      snap,
     );
     assert.equal(cards.find((card) => card.unnumbered)?.lane, "architecture");
     assert.equal(cards.find((card) => card.num === "FW-99.9")?.lane, "product");
+    assert.equal(cards.find((card) => card.num === "TD-06.6")?.lane, "architecture");
     assert.equal(cards.find((card) => card.num === "FW-99.9")?.col, "In review");
   });
 
@@ -856,9 +873,11 @@ describe("pr-number-map (TD-08.5 backfill)", () => {
         },
       ]),
       new Set(),
+      snapshot(),
     );
     assert.equal(cards.length, 1);
     assert.equal(cards[0]?.num, "TD-10.5");
+    assert.equal(cards[0]?.lane, "tech-debt");
     assert.equal(cards[0]?.unnumbered, false);
     assert.equal(cards.some((card) => card.num === "TD-10.1"), false);
   });
@@ -879,7 +898,7 @@ describe("pr-number-map (TD-08.5 backfill)", () => {
     assert.equal(clash?.num, null);
   });
 
-  it("backfills #571 as TD-02.5 in tech-debt, not Unnumbered", () => {
+  it("backfills #571 as TD-02.5 in architecture, not Unnumbered", () => {
     const cards = deriveBoardItems(
       pullsOf([
         571,
@@ -891,10 +910,11 @@ describe("pr-number-map (TD-08.5 backfill)", () => {
         },
       ]),
       new Set(),
+      snapshot(),
     );
     assert.equal(cards.length, 1);
     assert.equal(cards[0]?.num, "TD-02.5");
-    assert.equal(cards[0]?.lane, "tech-debt");
+    assert.equal(cards[0]?.lane, "architecture");
     assert.equal(cards[0]?.unnumbered, false);
     assert.equal(cards[0]?.col, "Done");
   });
@@ -978,12 +998,12 @@ describe("boardCensus (TD-08.5 live counts)", () => {
     const census = boardCensus(snapshot(), []);
     // Ledger: 18 stories, 45 tasks. The map adds TD-08.1 and
     // TD-10.5 as tasks and TD-08 as a story — ids the stale
-    // ledger does not hold.
+    // ledger does not hold. Lanes follow the ledger: TD-01..07
+    // and TD-09 are architecture (8/23). Tech-debt is TD-10..16
+    // plus TD-08, TD-08.1 and TD-10.5 (8/17). Product stays 3/7.
     assert.deepEqual(census.all, { stories: 19, tasks: 47, unnumbered: 0 });
-    // Lanes follow the cards' rule (every TD id is tech-debt),
-    // not the ledger's hand-set architecture lane.
-    assert.deepEqual(census["tech-debt"], { stories: 16, tasks: 40, unnumbered: 0 });
-    assert.deepEqual(census.architecture, { stories: 0, tasks: 0, unnumbered: 0 });
+    assert.deepEqual(census.architecture, { stories: 8, tasks: 23, unnumbered: 0 });
+    assert.deepEqual(census["tech-debt"], { stories: 8, tasks: 17, unnumbered: 0 });
     assert.deepEqual(census.product, { stories: 3, tasks: 7, unnumbered: 0 });
     assert.notEqual(census.all.stories, census.all.tasks);
   });
@@ -997,25 +1017,30 @@ describe("boardCensus (TD-08.5 live counts)", () => {
   });
 
   it("files each live id under the same lane as its card", () => {
+    const snap = snapshot();
     const items = deriveBoardItems(
       pullsOf(
         [9003, { title: "TD-06.6 age-profile host", headRef: "phase2/td-06.6-age-host" }],
         [9004, { title: "FW-77.1 arch-pages tidy", headRef: "arch-pages/fw-77.1" }],
       ),
       new Set(),
+      snap,
     );
     const byNum = new Map(items.map((item) => [item.num, item.lane]));
-    assert.equal(byNum.get("TD-06.6"), "tech-debt");
+    // TD-06.6 inherits TD-06 even though the branch says phase2.
+    assert.equal(byNum.get("TD-06.6"), "architecture");
     assert.equal(byNum.get("FW-77.1"), "architecture");
-    const census = boardCensus(snapshot(), items);
-    // TD-06.6 is new, so tech-debt gains one task; FW-77 and
-    // FW-77.1 land in architecture, exactly where the card sits.
-    assert.deepEqual(census["tech-debt"], { stories: 16, tasks: 41, unnumbered: 0 });
-    assert.deepEqual(census.architecture, { stories: 1, tasks: 1, unnumbered: 0 });
+    const census = boardCensus(snap, items);
+    // TD-06 already counts, so only the task is new. FW-77 is a
+    // new architecture story (arch- in the ref) with one task.
+    assert.deepEqual(census.architecture, { stories: 9, tasks: 25, unnumbered: 0 });
+    assert.deepEqual(census["tech-debt"], { stories: 8, tasks: 17, unnumbered: 0 });
     assert.deepEqual(census.product, { stories: 3, tasks: 7, unnumbered: 0 });
+    assert.deepEqual(census.all, { stories: 20, tasks: 49, unnumbered: 0 });
   });
 
   it("is not the window length: a 3-pull window still yields the full census", () => {
+    const snap = snapshot();
     const items = deriveBoardItems(
       pullsOf(
         [571, { state: "closed", merged: true, headRef: "phase1/ports-part-b" }],
@@ -1023,23 +1048,33 @@ describe("boardCensus (TD-08.5 live counts)", () => {
         [9001, { title: "feat: FW-99.9 not in the ledger" }],
       ),
       new Set(),
+      snap,
     );
-    const census = boardCensus(snapshot(), items);
+    const census = boardCensus(snap, items);
     assert.ok(census.all.stories > items.length);
     assert.ok(census.all.tasks > items.length);
     // TD-01.1 is counted even though #543 is absent from the window.
+    // #571 is TD-02.5 (already in the ledger, architecture).
+    // FW-99.9 adds one product story and one product task.
     assert.equal(census.all.tasks, 48);
     assert.equal(census.all.stories, 20);
     assert.equal(census.all.unnumbered, 1);
+    assert.deepEqual(census.architecture, { stories: 8, tasks: 23, unnumbered: 0 });
+    assert.deepEqual(census["tech-debt"], { stories: 8, tasks: 17, unnumbered: 0 });
+    assert.deepEqual(census.product, { stories: 4, tasks: 8, unnumbered: 1 });
   });
 
   it("counts a live id the ledger lacks, such as TD-06.5", () => {
+    const snap = snapshot();
     const items = deriveBoardItems(
       pullsOf([9002, { title: "TD-06.5 entry chunk guard", state: "open", draft: true }]),
       new Set(),
+      snap,
     );
-    const census = boardCensus(snapshot(), items);
+    const census = boardCensus(snap, items);
     assert.equal(census.all.tasks, 48);
     assert.equal(census.all.stories, 19);
+    // TD-06.5 inherits architecture from TD-06; the story already counts.
+    assert.deepEqual(census.architecture, { stories: 8, tasks: 24, unnumbered: 0 });
   });
 });
