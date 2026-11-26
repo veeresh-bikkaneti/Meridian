@@ -301,6 +301,11 @@ export function KanbanView() {
   const [calm, setCalm] = useState(false);
   const [expanded, setExpanded] = useState<ReadonlySet<string>>(new Set());
   const boardRef = useRef<HTMLDivElement>(null);
+  /* The effect below closes over the first render. Later refreshes
+   * must still lane cards against the snapshot on screen (the
+   * public file, once it has loaded). */
+  const snapshotRef = useRef(snapshot);
+  snapshotRef.current = snapshot;
   /* Story positions captured just before the overlay swap,
    * consumed by the layout effect below to FLIP the moved ones. */
   const firstRects = useRef<Map<string, DOMRect> | null>(null);
@@ -320,6 +325,7 @@ export function KanbanView() {
       const pub = await pubPromise;
       const result = await resultPromise;
       if (!active) return;
+      const board = pub ?? snapshotRef.current;
       if (pub) {
         setSnapshot(pub);
         setSubtasks(pub.subtasks);
@@ -334,7 +340,7 @@ export function KanbanView() {
         ?.querySelectorAll<HTMLElement>("[data-story-id]")
         .forEach((el) => rects.set(el.dataset.storyId as string, el.getBoundingClientRect()));
       firstRects.current = rects;
-      setItems(deriveBoardItems(result.state.pulls, result.state.branches));
+      setItems(deriveBoardItems(result.state.pulls, result.state.branches, board));
       setStamp({ kind: "live", at: result.state.fetchedAt });
       setMode("live");
     };
