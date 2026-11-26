@@ -31,3 +31,27 @@ World strand in every tier. T1 treatment is observable phenomena
 only. T2 is integrated and relational. T3 is formal Biology. T4 is
 application-oriented biological literacy with no medical advice
 (source: raw/us-education-curriculum/REVISION-2026-11-25-living-world.md#5-revised-matrix--life-science-strand-treatment).
+
+## Five-pillar competition anchors per tier (2026-11-26)
+
+Each pillar cell now carries a competition ceiling anchor beside its
+standards base anchor
+(source: raw/us-education-curriculum/REVISION-2026-11-26-competition-anchored-rebuild.md#5-depth-re-calibration-rule-adopted):
+
+- **STEM:** T2 ceiling = AMC 8, MATHCOUNTS, Science Olympiad Div B, 3M
+  Young Scientist, Thermo Fisher JIC; T3 ceiling = AMC 10/12, SciOly
+  Div C, USAPhO/USNCO/USABO, Regeneron ISEF
+  (source: raw/us-education-curriculum/REVISION-2026-11-26-competition-anchored-rebuild.md#pillar-1--stem-math--science-olympiad--young-scientist-depth).
+- **Environmental Studies:** T3 ceiling = NCF-Envirothon (5 field
+  stations) and National Ocean Sciences Bowl (8 disciplines)
+  (source: raw/us-education-curriculum/evidence/lane8-young-scientist-environmental.md#82-environmental-competitions-pillar-2-benchmark).
+- **Traffic & Road Rules:** T1 = NHTSA K-5 pedestrian curriculum; T2 =
+  Bicycle Safer Journey + MUTCD signs; T3 = state DMV handbooks +
+  NHTSA GDL + MUTCD; T4 = adult driving decisions
+  (source: raw/us-education-curriculum/evidence/lane9-safety-situational-logic.md#91-traffic--road-rules-pillar-3--verified-official-sources).
+- **Situational Awareness:** sourced NHTSA/ESS3 base at T1-T3 plus an
+  [Inferred] scan-assess-decide-act protocol layer at T4
+  (source: raw/us-education-curriculum/evidence/lane9-safety-situational-logic.md#92-situational-awareness-pillar-4--source-base--honest-scope).
+- **Educational Riddles:** T2 = MATHCOUNTS/AMC 8 logic; T3 = AMC 10/12
+  + SciOly deduction events + NOSB team challenges
+  (source: raw/us-education-curriculum/evidence/lane9-safety-situational-logic.md#93-educational-riddles-pillar-5--competition-grade-logic-benchmarks).

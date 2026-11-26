@@ -92,3 +92,38 @@ Related concept: [[why-learn-tiers]].
   expectations. LS1 and LS2 carry records across T1 to T3. LS3 and
   LS4 are anchored at T1 only, and no national T4 standard exists
   (source: raw/us-education-curriculum/evidence/lane6-life-science.md).
+
+## Revision 2026-11-26 - competition-anchored rebuild of the five pillars
+
+- The plan is rebuilt on the branch's 4 tiers against verified
+  top-rated districts and national competition standards, in five
+  pillars (STEM, Environmental Studies, Traffic & Road Rules,
+  Situational Awareness, Educational Riddles)
+  (source: raw/us-education-curriculum/REVISION-2026-11-26-competition-anchored-rebuild.md#4-the-five-pillars-x-tiers-x-national-competition-benchmarks).
+- Every gap in the external audit of 2026-11-26 is mapped to a
+  closing lane: A1 pacing pass, A2 olympiads, A3 young scientist,
+  A4 environmental competitions, A5 safety/situational/riddles, and
+  the P1-P5 pillar gaps
+  (source: raw/us-education-curriculum/REVISION-2026-11-26-competition-anchored-rebuild.md#1-gaps-from-the-audit-and-where-each-is-fixed).
+- Competition benchmarks with official eligibility rules: AMC 8/10/12
+  (MAA, grades 8/10/12 and below), MATHCOUNTS (grades 6-8), Science
+  Olympiad Divisions A/B/C (through Gr 6 / Gr 6-9 / Gr 9-12), USAPhO,
+  USNCO, USABO (Gr 9-12)
+  (source: raw/us-education-curriculum/evidence/lane7-competitions-olympiads.md).
+- Young Scientist and environmental benchmarks: 3M Young Scientist
+  Challenge (Gr 5-8), Thermo Fisher JIC (Gr 6-8), Regeneron ISEF
+  (Gr 9-12), NCF-Envirothon (Gr 9-12), National Ocean Sciences Bowl
+  (high school)
+  (source: raw/us-education-curriculum/evidence/lane8-young-scientist-environmental.md).
+- Traffic/safety sources: NHTSA Child Pedestrian Safety Curriculum
+  K-5, Bicycle Safer Journey, Teen Driving/GDL, FHWA MUTCD 11th
+  Edition, state DMV handbooks
+  (source: raw/us-education-curriculum/evidence/lane9-safety-situational-logic.md#91-traffic--road-rules-pillar-3--verified-official-sources).
+- District pacing-guide pass closes Lane 5's open cells: St. Johns
+  HS course sequences via SPP + Year-at-a-Glance + 2025-26 catalogs,
+  Chandler per-grade scope-and-sequence pages, Triad grade-level
+  pages, plus the federal NCES CCD identity layer
+  (source: raw/us-education-curriculum/evidence/lane10-district-pacing-pass.md#103-pacing-guide--course-sequence-closures-this-pass).
+- Depth rule adopted: each pillar cell carries a base anchor
+  (standard + district sequence) and a competition ceiling anchor per
+  tier (source: raw/us-education-curriculum/REVISION-2026-11-26-competition-anchored-rebuild.md#5-depth-re-calibration-rule-adopted).

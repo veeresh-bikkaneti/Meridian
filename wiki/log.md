@@ -32,3 +32,21 @@ items, 0 Living World), and rules 10 confidence corrections. The
 corrections are stated in the revision document rather than edited
 into the original raw files, which stay immutable.
 (source: raw/us-education-curriculum/REVISION-2026-11-25-living-world.md)
+
+## [2026-11-26] ingest | Competition-anchored five-pillar rebuild of the U.S. curriculum pack
+
+Revision ingest responding to the external audit
+(`meridian-audit-vs-plan-2026-11-26.md`) of this branch @ 447ff41.
+Added `REVISION-2026-11-26-competition-anchored-rebuild.md` and four
+new evidence lanes under `raw/us-education-curriculum/evidence/`
+(lane7 competitions/olympiads, lane8 young-scientist + environmental
+competitions, lane9 safety/situational-awareness/riddles, lane10
+district pacing-guide pass with the NCES CCD federal layer). Every
+audit gap A1-A5 and P1-P5 is mapped to its closing lane; the five
+pillars are mapped to T1-T4 tiers with official competition
+eligibility rules (MAA AMC 8/10/12, MATHCOUNTS, Science Olympiad
+Div A/B/C, USAPhO, USNCO, USABO, 3M Young Scientist, Thermo Fisher
+JIC, Regeneron ISEF, NCF-Envirothon, NOSB) and to NHTSA/MUTCD/state
+DMV safety sources. Updated [[us-education-curriculum]] and
+[[why-learn-tiers]]. No existing raw file was edited.
+(source: raw/us-education-curriculum/REVISION-2026-11-26-competition-anchored-rebuild.md)

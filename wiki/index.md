@@ -18,6 +18,11 @@ ingest. `[[wikilinks]]` are relative to `wiki/`.
   adopted inside General Knowledge, confidence standard replaced,
   inventory audit at 0 Living World items, Lane 6 NGSS anchors.
   (source: raw/us-education-curriculum/REVISION-2026-11-25-living-world.md)
+- Revision 2026-11-26 in the same summary — five-pillar
+  competition-anchored rebuild: lanes 7-10 (olympiads, young
+  scientist + environmental competitions, safety/situational/riddles,
+  district pacing-guide pass) and the pillar x tier x benchmark
+  matrix. (source: raw/us-education-curriculum/REVISION-2026-11-26-competition-anchored-rebuild.md)
 
 ## Entities
 
