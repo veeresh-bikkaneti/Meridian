@@ -68,3 +68,22 @@
   unit tests 83/83, build:pages, then the narrow Playwright set
   (package-b:209, mc3-receive:364, mc3-verdict) twice in a row:
   16 passed, 1 skipped, both runs.
+
+## Cure round 2 (TD-06.9, final attempt)
+
+- Round 1 did not fix the two specs on the owner's harness (same
+  2/2 failure on `fea921a9`). Per the owner's ruling, the
+  shell-ban growth is reverted: `ChallengeCompleteShell` moves
+  into `game-app.tsx` (already in pageLocalMain) and keeps the
+  `<main>` there; `challenge-complete.tsx` leaves pageLocalMain
+  and the frozen record, restoring shell-ban to 6. lint:arch
+  stays at 104.
+- Diff findings: PlayLoaded is identical to main except the
+  completion branch; the hook callbacks are verbatim with the
+  same dep arrays; the import-graph union is identical; the map
+  code, the E2E helpers, and the run machinery are untouched —
+  no play-path mechanism exists in the diff. The (500,400) hit
+  and the map-ready timeout did not reproduce in this VM (see
+  the PR body for the exact counts measured on the new head).
+- Ceiling set to the new line count 6397 (the shell's lines now
+  live in the composer, per the ruling).
