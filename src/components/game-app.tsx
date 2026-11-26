@@ -275,6 +275,7 @@ import {
 } from "@/game/loop/store";
 import { writeColdTrailOpen } from "@/game/coldtrail/store";
 import { ColdTrailHost } from "@/game/coldtrail/ColdTrailHost";
+import { GeoDetectiveHost } from "@/game/loop/GeoDetectiveHost";
 // F2 bundle split: GeoDetective (Loop) and Cold Trail are play-intent
 // screens — they render only when the player opens them (B7: never on
 // boot from a saved loopOpen flag — tap-in only). Both screens statically
@@ -285,17 +286,11 @@ import { ColdTrailHost } from "@/game/coldtrail/ColdTrailHost";
 // Suspense + MapErrorBoundary at the render sites. The screens have no
 // default export, so the lazy factories adapt their named exports (the
 // HomeGlobe idiom above).
-const loadLoopScreen = () => import("@/game/loop/LoopScreen");
 const loadSubjectPicker = () => import("@/subjects/shared/SubjectPicker");
 // #209: each lazy load is raced against CHUNK_LOAD_TIMEOUT_MS (inside
 // withChunkTimeout) — a HUNG import never settles, so without the race
 // the Suspense fallback below would spin forever; with it, the race
 // rejection lands in MapErrorBoundary's recoverable card instead.
-const LoopScreen = lazy(() =>
-  withChunkTimeout(loadLoopScreen(), "GeoDetective screen").then((m) => ({
-    default: m.LoopScreen,
-  })),
-);
 // Subject picker (why-learn card): same lazy discipline — it loads
 // only when the why-learn card is tapped, and each subject's case
 // loads only when its picker row is tapped.
@@ -2276,8 +2271,8 @@ export function GameApp() {
         {mapModeAnnouncer}
         <MapErrorBoundary surface="GeoDetective">
           <Suspense fallback={<SessionLoadingFallback label="Loading GeoDetective…" />}>
-            <LoopScreen
-              onLeave={() => { writeLoopOpen(false); setLoopOpen(false); }}
+            <GeoDetectiveHost
+              onLeave={() => setLoopOpen(false)}
               onCelebrate={(spec) => setCelebration(spec)}
             />
           </Suspense>

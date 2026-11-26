@@ -243,7 +243,7 @@ Related, not counted in the 21 upward-import rows: `noRawIo` lists 32 game-app r
 | 10 | `@/assets/home-v5/hero-mountain.webp` | 72 | Last PR, same slot rule as 8. |
 | 11 | `@/assets/verdict/grandpa-media` | 74-77 | Last PR: the thin router passes poster and video URLs into Challenge complete, used at 6066-6077, unless assets have been reclassified. |
 | 12 | `@/game/coldtrail/TrailScreen` | 304, 315 | Cold Trail host PR. The import moves into `src/game/coldtrail/ColdTrailHost.tsx` (same area). — cured in TD-06.10. |
-| 13 | `@/game/loop/LoopScreen` | 303, 310 | GeoDetective host PR. The import moves into `src/game/loop/GeoDetectiveHost.tsx` (same area). |
+| 13 | `@/game/loop/LoopScreen` | 303, 310 | GeoDetective host PR. The import moves into `src/game/loop/GeoDetectiveHost.tsx` (same area). — cured in TD-06.11. |
 | 14 | `@/map/capability` types | 253 | Map-mode hook PR. The import moves into `src/map/` (same area as `capability.ts`). |
 | 15 | `@/map/capability` values | 254-261 | Same map-mode hook PR. |
 | 16 | `@/map/map-options` | 263 | Same map-mode hook PR (`isCoarsePointer`). |
@@ -386,7 +386,7 @@ Final order. Extraction steps follow published shared-state row counts, fewest f
 | 12 | Challenge complete and verdict | 3 | ~675 | Same view-after-owners rule. |
 | 13 | Review complete | 4 | ~85 | Same view-after-owners rule. |
 | 14 | Cold Trail host, `src/game/coldtrail/ColdTrailHost.tsx` | 4 | ~110 | Same view-after-owners rule. Cures checklist row 12. Done in TD-06.10 (`ColdTrailHost.tsx` in `src/game/coldtrail/` owns the lazy `TrailScreen` and the leave wiring — the persisted-flag clear plus the shell close callback; the composer's render site keeps the Suspense + `MapErrorBoundary` wrappers, and its one leftover host import is the new baseline row the §2 preamble allows, cleared in the last PR). |
-| 15 | GeoDetective host, `src/game/loop/GeoDetectiveHost.tsx` | 6 | ~100 | Same view-after-owners rule. Cures checklist row 13. |
+| 15 | GeoDetective host, `src/game/loop/GeoDetectiveHost.tsx` | 6 | ~100 | Same view-after-owners rule. Cures checklist row 13. Done in TD-06.11 (`GeoDetectiveHost.tsx` in `src/game/loop/` owns the lazy `LoopScreen` and the leave wiring — the persisted-flag clear plus the shell close callback; the shell's celebration callback passes through untouched; the composer's render site keeps the Suspense + `MapErrorBoundary` wrappers, and its one leftover host import is the new baseline row the §2 preamble allows, cleared in the last PR). |
 | 16 | Region list | 7 | ~160 | Same view-after-owners rule. |
 | 17 | Starting view | 9, view uses 1 | ~40 | Same view-after-owners rule. `openRun` stays with the run controller. |
 | 18 | Subjects host, `src/subjects/shared/SubjectsHost.tsx` | 10 | ~180 | Same view-after-owners rule. Cures checklist row 21. Tied with the challenge menu at 10 rows. |
