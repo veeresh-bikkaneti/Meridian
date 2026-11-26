@@ -45,6 +45,20 @@
   4. Split `69` `10-18` items (`60` pre-existing: `35` T2 / `25` T3; `9` Biology: `5` T2 / `4` T3; total `40` T2 / `29` T3) and tagged `math-number:fractions:compare-unlike` to Grade 5 in `src/subjects/shared/tier-tags.ts` (data-only at runtime); `H01–H03` promoted in research pack while `docs/scaling/humanities/screened-topics.md:49` still reads `UNVERIFIED`.
   5. Verified primary citations (`g = 9.8 m/s²`, CCSS 6–8, Eanes ISD on TEA), authored Wave 1–4 Biology content (`src/subjects/biology/items.ts`), and added `biology` to `scripts/lint-subject-leads.mjs`. Updated `wiki/` pages and `wiki/log.md`.
   - Measured gates (`2026-11-26`): `src/subjects/*/*.test.ts` `342/342` PASS (`tier-tags.test.ts` `2/2`); `lint:nav` PASS; `lint-cards.mjs` PASS; `build:pages` PASS; `lint:subjects` exits 1 (`GATE FAILED (8)` on pre-existing `journals` mismatches; `biology` has `0` findings across `leads=1021`); Playwright E2E NOT RUN.
+- Review record (2026-11-26): Councilor C adversary review of the
+  pushback-fixes tip (`6a6258b8`) ended with the verdict `NO OBJECTION`
+  (reported by the owner in the 2026-11-26 session; written into this
+  file per AGENTS.md section 5 because the review run did not record it
+  here itself).
+- Owner decision, verbatim, 2026-11-26, Biology 7th card (Option A),
+  confirmed as the owner's own words in the 2026-11-26 session; also
+  quoted in `raw/us-education-curriculum/REVISION-2026-11-26-review-pushback-fixes.md` section 5:
+
+  > "1. Promote Biology to its own 7th subject card:
+  > - Update `src/subjects/registry.ts` to add `biology` (`Biology`) as a standalone subject card alongside Math, Physics, Chemistry, Social Studies, Journals, and General Knowledge (keeping the 3 age bands: `7-10`, `10-18`, `18+`).
+  > - Update the research/wiki decision docs to record that Option A (7th category) is now approved, superseding the interim General Knowledge strand decision."
+
+  > "Biology (New Standalone 7th Card): Promoted out of General Knowledge so life sciences are clearly visible and never buried."
 
 ## Next step
 - Educator review of the 14 authored Biology items and `SubjectPicker` visual layout with 7 subject cards.
@@ -72,3 +86,4 @@
   strand; documents the revision node above.
 - Add node: `raw/us-education-curriculum/REVISION-2026-11-26-competition-anchored-rebuild.md` (revision) - rebuilds the plan on five pillars anchored in the six ESSA-verified districts plus national competition benchmarks; decided-by the owner's required curriculum direction of 2026-11-26; documents `raw/us-education-curriculum/CURRICULUM-DESIGN.md` and `raw/us-education-curriculum/REVISION-2026-11-25-living-world.md`.
 - Add nodes: `raw/us-education-curriculum/evidence/lane7-competitions-olympiads.md`, `lane8-young-scientist-environmental.md`, `lane9-safety-situational-logic.md`, `lane10-district-pacing-pass.md` (evidence lanes) - competition/safety benchmarks and the district pacing-guide pass; document the 2026-11-26 revision node above.
+- Add node: `raw/us-education-curriculum/REVISION-2026-11-26-review-pushback-fixes.md` (revision addendum) - pushback corrections, council finalization, and the owner-decision record; decided-by the owner's review pushback of 2026-11-26; documents the 2026-11-26 revision nodes above.
