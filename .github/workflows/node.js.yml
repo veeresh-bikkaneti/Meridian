@@ -135,3 +135,34 @@ jobs:
           playwright-report/
           test-results/
         retention-days: 7
+
+  # TD-06.9: the two friend-challenge specs drive the challenge receive,
+  # preview and completion surface through real map taps, and no other CI
+  # job touches them. Desktop project only; no retries and no raised
+  # timeouts (playwright.config.ts keeps retries: 0).
+  e2e-friend-challenge:
+    timeout-minutes: 20
+    runs-on: ubuntu-24.04
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 22.x
+        cache: 'npm'
+    - run: npm ci
+    - run: npx playwright install --with-deps chromium
+    - run: npm run build:pages
+    - run: >-
+        npx playwright test
+        tests/e2e/friend-challenge-mc2-package-b.desktop.spec.ts
+        tests/e2e/friend-challenge-mc3-receive.desktop.spec.ts
+        --project=desktop --workers=1 --reporter=line
+    - name: Upload the Playwright report on failure
+      if: failure()
+      uses: actions/upload-artifact@v4
+      with:
+        name: playwright-report-friend-challenge
+        path: |
+          playwright-report/
+          test-results/
+        retention-days: 7
