@@ -179,9 +179,9 @@ async function subjectLeads() {
     if (!statSync(dir).isDirectory()) continue;
     const itemsFile = join(dir, "items.ts");
     const answersFile = join(dir, "answers.ts");
-    if (!existsSync(itemsFile) || !existsSync(answersFile)) continue;
+    if (!existsSync(itemsFile)) continue;
     const items = await import(pathToFileURL(itemsFile).href);
-    const answers = await import(pathToFileURL(answersFile).href);
+    const answers = existsSync(answersFile) ? await import(pathToFileURL(answersFile).href) : items;
     if (typeof items.itemsForGroup !== "function" || typeof answers.answerFor !== "function") continue;
     subjects.push(id);
     for (const group of GROUPS) {

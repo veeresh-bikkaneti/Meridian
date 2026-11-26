@@ -113,7 +113,7 @@ export const BIOLOGY_RECORDS: SubjectItem[] = [
       "code": "4-LS1-1",
       "source": "https://www.nextgenscience.org/search-standards"
     },
-    "why": "A woodpecker hammers trees all day without hurting its head. Why not? Looking closely at its skull reveals how body structures match what an animal needs to do.",
+    "why": "A woodpecker hammers trees all day without hurting its head. Why not? Looking closely at its anatomy reveals how body structures match what an animal needs to do.",
     "buildsOn": [],
     "useElsewhere": [
       "physics: how structures absorb and distribute force"
@@ -227,7 +227,7 @@ export const BIOLOGY_RECORDS: SubjectItem[] = [
       "code": "MS-LS2-1",
       "source": "https://www.nextgenscience.org/search-standards"
     },
-    "why": "The rabbits multiplied fast one spring, then the meadow's grass thinned out and the population dropped. What happened? Resources ran short.",
+    "why": "The rabbits multiplied fast one spring, then the meadow's plants thinned out and the population dropped. What happened? Resources ran short.",
     "buildsOn": [
       "biology:life-ecosystems:dry-summer"
     ],
@@ -283,7 +283,7 @@ export const BIOLOGY_RECORDS: SubjectItem[] = [
       "code": "MS-LS4-6",
       "source": "https://www.nextgenscience.org/search-standards"
     },
-    "why": "Before industrial pollution, most peppered moths in England were light-coloured and hard to see on pale tree bark. After soot darkened the bark, the dark moths became more common. Why?",
+    "why": "Before industrial pollution, most peppered moths in England had pale wings that blended into light tree bark. After soot darkened the bark, the dark moths became more common. Why?",
     "buildsOn": [
       "biology:life-ecosystems:dry-summer"
     ],
@@ -343,7 +343,7 @@ export const BIOLOGY_RECORDS: SubjectItem[] = [
       "code": "HS-LS2-3",
       "source": "https://www.nextgenscience.org/dci-arrangement/hs-ls2-ecosystems-interactions-energy-and-dynamics"
     },
-    "why": "The carbon atom in your breath was once inside a leaf. How can the same atom move from a plant, into your body, and back into the air?",
+    "why": "The carbon atom in your breath was once inside a plant. How can the same atom move from a plant, into your body, and back into the air?",
     "buildsOn": [
       "biology:life-matter:seed-diary"
     ],

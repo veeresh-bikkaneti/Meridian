@@ -156,23 +156,30 @@ Related concept: [[why-learn-tiers]].
   station categories (Soils & Land Use, Aquatic Ecology, Forestry,
   Wildlife, Current Issue) plus Oral Presentation
   (source: raw/us-education-curriculum/evidence/lane11-envirothon-benchmark.md#111-ncf-envirothon--official-competition-structure).
-- Kansas Envirothon's 5 content areas confirmed: Soils & Land Use,
-  Forestry, Wildlife, Aquatic Ecology, Rangeland Management
-  (source: raw/us-education-curriculum/evidence/lane11-envirothon-benchmark.md#112-kansas-envirothon--state-level-content-areas).
-- St. John's Catholic School (Beloit, KS) verified as state-to-
-  international benchmark: 3 consecutive Kansas state championships
-  (2024, 2025, 2026) and international representation (24th/51 in
-  2025, 12th in 2026)
-  (source: raw/us-education-curriculum/evidence/lane11-envirothon-benchmark.md#113-verified-benchmark-st-johns-catholic-school-beloit-ks).
+- Kansas Envirothon tests 5 core areas (Soils & Land Use, Forestry,
+  Wildlife, Aquatic Ecology, Rangeland Management) PLUS the annual
+  Current Environmental Issue and Oral Presentation (Rangeland does
+  not replace Current Issue)
+  (source: raw/us-education-curriculum/REVISION-2026-11-26-review-pushback-fixes.md#3-kansas-envirothon--2026-ncf-envirothon-corrections-lane11).
+- St. John's Catholic School (Beloit, KS): 3 consecutive Kansas state
+  championships (2024–2026), 2024 Geneva NY, 2025 Calgary (`24th/51`),
+  2026 Mississippi State (Team #2640 total `499.00`; `"12th place"`
+  cited to KACD past winners, downgraded to `[Moderate]` pending
+  direct rank-row extraction)
+  (source: raw/us-education-curriculum/REVISION-2026-11-26-review-pushback-fixes.md#3-kansas-envirothon--2026-ncf-envirothon-corrections-lane11).
 
 ## Revision 2026-11-26 — Inventory re-tag and safety promotion
 
-- 60 existing `10-18` items split into internal T2 (42 items) vs T3
-  (18 items) tier tags. `fractions:compare-unlike` tagged to Grade 5
-  (source: raw/us-education-curriculum/REVISION-2026-11-26-inventory-retag.md).
-- H01-H03 promoted from UNVERIFIED to sourced using NHTSA/MUTCD/DMV
-  citations from Lane 9
-  (source: raw/us-education-curriculum/REVISION-2026-11-26-inventory-retag.md#3-h01h03-promotion-from-unverified-to-sourced).
+- Mechanical recount of `src/subjects/shared/tier-tags.ts`: `40` T2 +
+  `29` T3 = `69` `10-18` tags (`35` T2 / `25` T3 across the `60`
+  pre-existing items; `5` T2 / `4` T3 for Biology), plus `1` Grade 5
+  tag (`math-number:fractions:compare-unlike`), data-only at runtime
+  (source: raw/us-education-curriculum/REVISION-2026-11-26-review-pushback-fixes.md#1-mechanical-t2t3-count-correction-srcsubjectssharedtier-tagsts).
+- H01-H03 promoted from UNVERIFIED to sourced in the research pack
+  via Lane 9 NHTSA/MUTCD/DMV citations, while
+  `docs/scaling/humanities/screened-topics.md:49` still reads
+  UNVERIFIED for non-US countries and `0` items are authored in code
+  (source: raw/us-education-curriculum/REVISION-2026-11-26-review-pushback-fixes.md#2-h01h03-dual-status-research-vs-runtime-inventory).
 
 ## Revision 2026-11-26 — Citation verification and content authoring
 

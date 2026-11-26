@@ -100,3 +100,16 @@ Wave 3 (4 T3 Biology + Envirothon), Wave 4 (1 T4 Biology literacy).
 All open register items closed except the national T4 standard (none
 exists).
 (source: raw/us-education-curriculum/REVISION-2026-11-26-citations-and-authoring.md)
+
+## [2026-11-26] correction | Review pushback fixes & council finalization
+
+Corrected `tier-tags.ts` mechanical count (`40` T2 + `29` T3 = `69`
+total; `35` T2 + `25` T3 for the 60 pre-existing items), clarified
+`H01–H03` dual status (research-sourced vs runtime `screened-topics.md`),
+corrected Kansas Envirothon §11.2 (5 core areas incl. Rangeland PLUS
+Current Issue + Oral Presentation), downgraded 2026 NCF-Envirothon
+`"12th place"` to `[Moderate]` with exact Team #2640 scoresheet
+(`499.00`), flagged `meridian-audit-vs-plan-2026-11-26.md` as absent
+from repo, recorded verbatim owner words for Biology 7th card, and
+added `biology` to `scripts/lint-subject-leads.mjs` scope.
+(source: raw/us-education-curriculum/REVISION-2026-11-26-review-pushback-fixes.md)

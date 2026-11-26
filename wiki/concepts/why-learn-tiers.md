@@ -58,12 +58,14 @@ standards base anchor
   (source: raw/us-education-curriculum/REVISION-2026-11-26-competition-anchored-rebuild.md#pillar-1--stem-math--science-olympiad--young-scientist-depth).
 - **Environmental Studies:** T3 ceiling = NCF-Envirothon (5 field
   stations + Oral Presentation) and National Ocean Sciences Bowl (8
-  disciplines); Kansas Envirothon's 5 content areas (Soils & Land Use,
-  Forestry, Wildlife, Aquatic Ecology, Rangeland Management) confirmed
-  as the state-level checklist; St. John's Catholic School (Beloit, KS)
-  verified as state-to-international benchmark (3× Kansas champion
-  2024-2026, 12th at 2026 NCF-Envirothon)
-  (source: raw/us-education-curriculum/evidence/lane11-envirothon-benchmark.md).
+  disciplines); Kansas Envirothon tests 5 core areas (Soils & Land Use,
+  Forestry, Wildlife, Aquatic Ecology, Rangeland Management) PLUS the
+  annual Current Environmental Issue and Oral Presentation; St. John's
+  Catholic School (Beloit, KS) verified as state-to-international
+  benchmark (`2024–2026` 3× Kansas champion, `2024` Geneva NY, `2025`
+  Calgary `24th/51`, `2026` Mississippi State Team #2640 `499.00`;
+  `"12th place"` cited to KACD past winners, `[Moderate]`)
+  (source: raw/us-education-curriculum/REVISION-2026-11-26-review-pushback-fixes.md#3-kansas-envirothon--2026-ncf-envirothon-corrections-lane11).
 - **Traffic & Road Rules:** T1 = NHTSA K-5 pedestrian curriculum; T2 =
   Bicycle Safer Journey + MUTCD signs; T3 = state DMV handbooks +
   NHTSA GDL + MUTCD; T4 = adult driving decisions
