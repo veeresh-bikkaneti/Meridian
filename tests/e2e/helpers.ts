@@ -1171,21 +1171,177 @@ export const resultCard = (page: Page) =>
   page.getByRole("region", { name: "Result" });
 
 /**
- * Commit a guaranteed miss: tap (500, 400); on the ~1% chance it lands
- * inside the 750 km hit radius, advance and retry.
+ * Commit a guaranteed miss: tap the map corner farthest from the true
+ * spot, measured only after the camera has settled, at a screen distance
+ * the live map scale proves is beyond the largest radius the app can
+ * judge for this run. The fixed (500, 400) tap it replaces had no such
+ * guarantee: a mid-ease tap (handlers re-arm at the return-ease start,
+ * before the camera settles) could land inside the hit circle, ending
+ * the run one stop early on runs that assert exact stop counts.
+ *
+ * The guarantee is geometric, not timed: the settled spot comes from
+ * settledSpotViewportPoint (projection stable <0.5 px for 600 ms), the
+ * scale from the app's own live __project seam at the settled camera
+ * centre, and the radius ceiling from the app's own rules
+ * (challengeRadiusOf for challenge runs; pinToleranceKm's clamped
+ * ceilings — state 160, country 450, globe 750 x 1.25 max band
+ * multiplier — otherwise). A corner qualifies only when its estimated
+ * distance clears radius x 1.25 + 10 km and the tap would hit the map
+ * canvas. When the settle signal, the run snapshot, or the live scale
+ * is unavailable, or no corner qualifies, the farthest map-hitting
+ * corner is used and the advance-on-hit guard below stays as the
+ * backstop — the old (500, 400) behaviour, never worse.
  */
+const MISS_EDGE_INSET_PX = 12;
+const MISS_SCALE_MARGIN = 1.25;
+const MISS_EXTRA_KM = 10;
+const MISS_MIN_HOP_PX = 20;
+
+/** Largest radius the app can judge for a run, in kilometres. */
+function missRadiusKm(snapshot: {
+  regionId: string;
+  challengeRadiusKm: number | null;
+}): number {
+  // Challenge runs judge against the link-pinned snapshot, never scaled
+  // by band (challengeRadiusOf; mc1 resolves to the historic 750 km).
+  if (snapshot.regionId === "challenge") return snapshot.challengeRadiusKm ?? 750;
+  // Otherwise pinToleranceKm clamps after scaling: state never exceeds
+  // 160 km, country never 450 km, globe is 750 km times the largest band
+  // multiplier (1.25). The ceiling holds for every band and review play.
+  if (snapshot.edition === "country") return 450;
+  if (snapshot.edition === "globe") return 938;
+  return 160;
+}
+
+async function readRunSnapshot(
+  page: Page,
+  key: string,
+): Promise<{
+  edition: string;
+  regionId: string;
+  challengeRadiusKm: number | null;
+} | null> {
+  return page.evaluate((k) => {
+    const raw = sessionStorage.getItem(k);
+    if (!raw) return null;
+    const run = JSON.parse(raw) as {
+      edition?: unknown;
+      regionId?: unknown;
+      challengeRadiusKm?: unknown;
+    };
+    if (typeof run.edition !== "string" || typeof run.regionId !== "string") return null;
+    return {
+      edition: run.edition,
+      regionId: run.regionId,
+      challengeRadiusKm:
+        typeof run.challengeRadiusKm === "number" ? run.challengeRadiusKm : null,
+    };
+  }, key);
+}
+
+/**
+ * Live pixels-per-kilometre at the settled camera centre, from the app's
+ * own __project seam: project the centre and a point 1 degree (then 5
+ * degrees) of longitude east of it, and divide by the great-circle
+ * distance between them — the same haversine (R = 6371.0088 km) the app
+ * judges pins with in src/game/geo.ts. Null when the seam or the centre
+ * attributes are unavailable, or the hop is too short to measure.
+ */
+async function livePxPerKm(page: Page): Promise<number | null> {
+  return page.locator(".satellite-map").evaluate(
+    (el, minHopPx) => {
+      const hook = (
+        el as unknown as {
+          __project?: (lo: number, la: number) => { x: number; y: number } | null;
+        }
+      ).__project;
+      if (typeof hook !== "function") return null;
+      const lng = Number(el.getAttribute("data-center-lng"));
+      const lat = Number(el.getAttribute("data-center-lat"));
+      if (!Number.isFinite(lng) || !Number.isFinite(lat)) return null;
+      const centre = hook(lng, lat);
+      if (!centre) return null;
+      const haversineKm = (lo1: number, la1: number, lo2: number, la2: number): number => {
+        const p1 = (la1 * Math.PI) / 180;
+        const p2 = (la2 * Math.PI) / 180;
+        const dp = ((la2 - la1) * Math.PI) / 180;
+        const dl = ((lo2 - lo1) * Math.PI) / 180;
+        const s =
+          Math.sin(dp / 2) ** 2 + Math.cos(p1) * Math.cos(p2) * Math.sin(dl / 2) ** 2;
+        return 2 * 6371.0088 * Math.asin(Math.min(1, Math.sqrt(s)));
+      };
+      for (const hopDeg of [1, 5]) {
+        const p = hook(lng + hopDeg, lat);
+        if (!p) continue;
+        const px = Math.hypot(p.x - centre.x, p.y - centre.y);
+        if (px < minHopPx) continue;
+        const km = haversineKm(lng, lat, lng + hopDeg, lat);
+        if (km > 0 && Number.isFinite(px / km)) return px / km;
+      }
+      return null;
+    },
+    MISS_MIN_HOP_PX);
+}
+
+/**
+ * The farthest map corner from the settled spot that the live scale
+ * proves is beyond the judged radius, or the farthest map-hitting
+ * corner when no corner can be proven, or null when the settle signal
+ * is unavailable. Never throws: every failure degrades to the legacy
+ * fixed-point tap in commitMiss.
+ */
+async function guaranteedMissPoint(
+  page: Page,
+  key: string,
+): Promise<{ x: number; y: number } | null> {
+  const spot = await settledSpotViewportPoint(page).catch(() => null);
+  if (!spot) return null;
+  const snapshot = await readRunSnapshot(page, key).catch(() => null);
+  const pxPerKm = await livePxPerKm(page).catch(() => null);
+  if (!snapshot || !pxPerKm) return null;
+  const box = await page.locator(".satellite-map").boundingBox();
+  if (!box) return null;
+  const needPx =
+    (missRadiusKm(snapshot) * MISS_SCALE_MARGIN + MISS_EXTRA_KM) * pxPerKm;
+  const corners = [
+    { x: box.x + MISS_EDGE_INSET_PX, y: box.y + MISS_EDGE_INSET_PX },
+    { x: box.x + box.width - MISS_EDGE_INSET_PX, y: box.y + MISS_EDGE_INSET_PX },
+    { x: box.x + MISS_EDGE_INSET_PX, y: box.y + box.height - MISS_EDGE_INSET_PX },
+    {
+      x: box.x + box.width - MISS_EDGE_INSET_PX,
+      y: box.y + box.height - MISS_EDGE_INSET_PX,
+    },
+  ]
+    .map((c) => ({ ...c, dist: Math.hypot(c.x - spot.x, c.y - spot.y) }))
+    .sort((a, b) => b.dist - a.dist);
+  for (const corner of corners) {
+    if (corner.dist >= needPx && (await tapHitsMap(page, corner.x, corner.y))) {
+      return { x: corner.x, y: corner.y };
+    }
+  }
+  for (const corner of corners) {
+    if (await tapHitsMap(page, corner.x, corner.y)) {
+      return { x: corner.x, y: corner.y };
+    }
+  }
+  return null;
+}
+
 export async function commitMiss(
   page: Page,
   key: string = RUN_KEY,
 ): Promise<{ committedAt: number }> {
   for (let attempt = 0; attempt < 3; attempt++) {
-    const { phase, committedAt } = await commitPin(page, 500, 400, key);
+    const point =
+      (await guaranteedMissPoint(page, key).catch(() => null)) ?? { x: 500, y: 400 };
+    const { phase, committedAt } = await commitPin(page, point.x, point.y, key);
     if (phase === "done") return { committedAt };
-    // Rare hit: move on and try the next place.
+    // No corner could be proven a miss and the tap hit anyway: move on
+    // and try the next place.
     await clickNextPlace(page);
     await expect.poll(() => readPhase(page, key), { timeout: 20_000 }).toBe("aim");
   }
-  throw new Error("commitMiss: (500, 400) hit three places in a row");
+  throw new Error("commitMiss: three places in a row did not end in a miss");
 }
 
 /** How long the projected spot must hold still to count as settled. */
