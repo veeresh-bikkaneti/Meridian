@@ -113,7 +113,7 @@ import { canUseHint } from "@/game/age-profile/run-config.ts";
 import { ResultCard } from "./result-card";
 import { RunSummaryCard } from "./run-summary";
 import { ShareButton } from "./share-button";
-import { ChallengeComplete } from "./challenge-complete";
+import { ChallengeCompleteShell } from "./challenge-complete";
 import { ChallengeMenu } from "./challenge-menu";
 import { ChallengeWelcome } from "./challenge-welcome";
 import { ClearedCelebrationDialog, type ClearedInfo } from "./cleared-celebration";
@@ -4739,22 +4739,6 @@ function PlayLoaded({
   // no reads, no writes, no traces — dealing/scoring/session byte-identical.
   const [learningEnabled, setLearningEnabled] = useState(false);
   const [friendChallengesEnabled, setFriendChallengesEnabled] = useState(false);
-  // Verdict settle choreography (TD-06.9): the settle flags live here,
-  // on the branch that owns the completion screen's `<main>` shell, so
-  // a tap on the header settles like any other tap on the screen.
-  // ChallengeComplete receives them as props; the flags reset whenever
-  // a new run loads, so a second completed challenge starts unsettled.
-  const [verdictSettled, setVerdictSettled] = useState(false);
-  const [verdictSettledByGesture, setVerdictSettledByGesture] = useState(false);
-  useEffect(() => {
-    setVerdictSettled(false);
-    setVerdictSettledByGesture(false);
-  }, [run]);
-  const settleVerdict = useCallback(() => setVerdictSettled(true), []);
-  const settleVerdictByGesture = useCallback(() => {
-    setVerdictSettled(true);
-    setVerdictSettledByGesture(true);
-  }, []);
   // Unit B: the detectivePair flag also gates the pair's game-end
   // celebration on the run summary (every edition). Boot-time value,
   // like the other flag reads here; off = the summary is today's.
@@ -5811,45 +5795,34 @@ function PlayLoaded({
         ? onChallengeDone
         : onEditions;
     return (
-      <main
-        className="mx-auto flex min-h-dvh w-full max-w-(--page-narrow) flex-col px-5 pt-2 pb-8"
-        data-verdict-settled={run.challengeWinner ? verdictSettled : undefined}
-        onClick={run.challengeWinner ? settleVerdictByGesture : undefined}
-        onKeyDown={run.challengeWinner ? settleVerdictByGesture : undefined}
-      >
-        <ChallengeComplete
-          run={run}
-          total={pool.length}
-          onDone={challengeDoneHandler}
-          onRetry={
-            run.challengeWinner && onChallengeRetry
-              ? () =>
-                  onChallengeRetry({
-                    edition: run.edition,
-                    regionId: run.challengeRegionId ?? "globe",
-                    regionName:
-                      findRegion(run.edition, run.challengeRegionId ?? "globe")?.name ??
-                      run.regionName,
-                    radiusKm: run.challengeRadiusKm ?? 750,
-                    ids: [...run.poolIds],
-                    originFormat: "mc3",
-                    winner: run.challengeWinner ?? null,
-                  })
-              : undefined
-          }
-          shareEnabled={friendChallengesEnabled}
-          regionCatalog={challengeCatalog}
-          posterUrl={VERDICT_GRANDPA_POSTER_URL}
-          videoUrl={VERDICT_GRANDPA_VIDEO_URL}
-          homeButton={
-            <HomeButton onHome={challengeDoneHandler} variant="primary" testId="challenge-done" />
-          }
-          settled={verdictSettled}
-          settledByGesture={verdictSettledByGesture}
-          onSettle={settleVerdict}
-          onSettleByGesture={settleVerdictByGesture}
-        />
-      </main>
+      <ChallengeCompleteShell
+        run={run}
+        total={pool.length}
+        onDone={challengeDoneHandler}
+        onRetry={
+          run.challengeWinner && onChallengeRetry
+            ? () =>
+                onChallengeRetry({
+                  edition: run.edition,
+                  regionId: run.challengeRegionId ?? "globe",
+                  regionName:
+                    findRegion(run.edition, run.challengeRegionId ?? "globe")?.name ??
+                    run.regionName,
+                  radiusKm: run.challengeRadiusKm ?? 750,
+                  ids: [...run.poolIds],
+                  originFormat: "mc3",
+                  winner: run.challengeWinner ?? null,
+                })
+            : undefined
+        }
+        shareEnabled={friendChallengesEnabled}
+        regionCatalog={challengeCatalog}
+        posterUrl={VERDICT_GRANDPA_POSTER_URL}
+        videoUrl={VERDICT_GRANDPA_VIDEO_URL}
+        homeButton={
+          <HomeButton onHome={challengeDoneHandler} variant="primary" testId="challenge-done" />
+        }
+      />
     );
   }
 

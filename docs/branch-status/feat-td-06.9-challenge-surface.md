@@ -49,3 +49,22 @@
 ## Done
 
 - (see above; all four commits landed — heads in the header)
+
+## Cure (TD-06.9, after PR #626 opened)
+
+- The PlayLoaded-level settle state regressed two friend-challenge
+  specs (package-b:209, mc3-receive:364 failed 2/2 on the PR head,
+  passed 2/2 on main). Cure: `ChallengeCompleteShell` in
+  `challenge-complete.tsx` owns the `<main>` shell and the settle
+  flags as mount-scoped useState; the PlayLoaded-level state and
+  the `useEffect(..., [run])` reset are removed. Slots unchanged.
+- Shell-ban pageLocalMain grows 3 → 4 (total 6 → 7): the moved
+  `<main>` is a real violation in a new file, and the rule has no
+  registry exemption — the baseline JSON and the frozen record in
+  `shared-shell.test.ts` were updated together, as the freeze
+  comment permits for a deliberate move. lint:arch stays at 104.
+- Ceiling lowered 6350 → 6323.
+- Verified: tsc, lint:arch, lint:nav, entry 310,838 B, touched
+  unit tests 83/83, build:pages, then the narrow Playwright set
+  (package-b:209, mc3-receive:364, mc3-verdict) twice in a row:
+  16 passed, 1 skipped, both runs.

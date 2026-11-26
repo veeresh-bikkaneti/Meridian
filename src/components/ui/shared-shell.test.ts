@@ -680,6 +680,10 @@ describe("shell-ban baseline (KNOWN/STALE)", () => {
       "src/components/game-app.tsx",
       "src/subjects/shared/SubjectCase.tsx",
       "src/subjects/shared/SubjectPicker.tsx",
+      // TD-06.9 cure: the completion screen's <main> moved from the
+      // PlayLoaded branch into ChallengeCompleteShell, restoring
+      // main's mount-scoped settle state.
+      "src/components/challenge-complete.tsx",
     ],
   };
 
