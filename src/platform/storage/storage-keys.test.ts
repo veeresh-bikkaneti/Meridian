@@ -317,6 +317,27 @@ describe("storage key registry (game-app ports, Part B B1)", () => {
     assert.equal(decodeStoredText(STORAGE_KEYS.difficulty, null, () => "medium"), "medium");
   });
 
+  test("the per-module difficulty entry pins the FW-11.1 map key, JSON with an empty fallback", () => {
+    // FW-11.1: one choice per module, stored as a JSON map of
+    // module id → choice. The entry is the source: its bytes are
+    // stated here once so an accidental edit fails this pin.
+    assert.equal(STORAGE_KEYS.difficultyByModule.key, "meridian.difficulty.byModule");
+    assert.equal(STORAGE_KEYS.difficultyByModule.encoding, undefined);
+    assert.deepEqual(STORAGE_KEYS.difficultyByModule.fallback, {});
+    assert.deepEqual(
+      decodeStoredText(
+        STORAGE_KEYS.difficultyByModule,
+        JSON.stringify({ globe: "hard" }),
+        () => ({}),
+      ),
+      { globe: "hard" },
+    );
+    assert.deepEqual(
+      decodeStoredText(STORAGE_KEYS.difficultyByModule, null, () => ({})),
+      {},
+    );
+  });
+
   test("the story factory pins game-app's story key builder for a fixture id", () => {
     // The factory is the source now (game-app calls it, Part B
     // B3): its bytes are stated here once so an accidental edit

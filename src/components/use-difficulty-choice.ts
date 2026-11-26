@@ -5,6 +5,10 @@
  * in-memory state and writes every change through the port.
  */
 import { useCallback, useState } from "react";
+import {
+  getModuleDifficulty,
+  type ModuleId,
+} from "../game/module-difficulty.ts";
 import { isPickerDifficulty, type PickerDifficulty } from "../game/tier-filter.ts";
 import { STORAGE_KEYS } from "../platform/storage/keys.ts";
 import {
@@ -44,4 +48,64 @@ export function useDifficultyChoice(): [
     writeDifficultyChoice(choice);
   }, []);
   return [difficultyChoice, setDifficultyChoice];
+}
+
+/**
+ * Per-module difficulty (FW-11.1): one choice per module/edition,
+ * stored as a JSON map under STORAGE_KEYS.difficultyByModule.
+ * New writes go to the map only; the legacy `meridian.difficulty`
+ * key is left in place and is only ever read, once, to seed the
+ * migration below.
+ */
+function readModuleDifficultyMap(): Record<string, string> {
+  return getStorageItem(STORAGE_KEYS.difficultyByModule);
+}
+
+function writeModuleDifficultyMap(map: Record<string, string>): void {
+  setStorageItem(STORAGE_KEYS.difficultyByModule, map);
+}
+
+/**
+ * One module's stored choice. On first read, when the map is
+ * missing/empty, seed globe, country and state from the legacy
+ * `meridian.difficulty` value (or "medium" when it is invalid).
+ * A stored value that is not a picker choice falls back to that
+ * module's defaultChoice ("medium" for every module today).
+ */
+export function readModuleDifficulty(moduleId: ModuleId): PickerDifficulty {
+  let map = readModuleDifficultyMap();
+  if (Object.keys(map).length === 0) {
+    const legacy = readDifficultyChoice();
+    map = { globe: legacy, country: legacy, state: legacy };
+    writeModuleDifficultyMap(map);
+  }
+  const stored = map[moduleId];
+  if (isPickerDifficulty(stored)) return stored;
+  return getModuleDifficulty(moduleId).defaultChoice;
+}
+
+export function writeModuleDifficulty(
+  moduleId: ModuleId,
+  choice: PickerDifficulty,
+): void {
+  // Spread, never replace: a write for one module must not clobber
+  // another module's stored choice.
+  writeModuleDifficultyMap({ ...readModuleDifficultyMap(), [moduleId]: choice });
+}
+
+export function useModuleDifficulty(moduleId: ModuleId): [
+  PickerDifficulty,
+  (choice: PickerDifficulty) => void,
+] {
+  const [choice, setChoiceState] = useState<PickerDifficulty>(() =>
+    readModuleDifficulty(moduleId),
+  );
+  const setChoice = useCallback(
+    (next: PickerDifficulty) => {
+      setChoiceState(next);
+      writeModuleDifficulty(moduleId, next);
+    },
+    [moduleId],
+  );
+  return [choice, setChoice];
 }

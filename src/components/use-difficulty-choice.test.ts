@@ -4,8 +4,11 @@ import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import {
   readDifficultyChoice,
+  readModuleDifficulty,
   useDifficultyChoice,
+  useModuleDifficulty,
   writeDifficultyChoice,
+  writeModuleDifficulty,
 } from "./use-difficulty-choice.ts";
 
 /**
@@ -82,5 +85,109 @@ describe("useDifficultyChoice", () => {
     delete globals.localStorage;
     assert.doesNotThrow(() => renderToStaticMarkup(createElement(Probe)));
     assert.match(renderToStaticMarkup(createElement(Probe)), /<span>medium<\/span>/);
+  });
+});
+
+function readModuleMap(store: Map<string, string>): Record<string, string> {
+  const raw = store.get("meridian.difficulty.byModule");
+  return raw ? (JSON.parse(raw) as Record<string, string>) : {};
+}
+
+describe("readModuleDifficulty / writeModuleDifficulty (FW-11.1)", () => {
+  it("seeds globe, country and state from the legacy choice on first read", () => {
+    const store = stubLocalStorage({ "meridian.difficulty": "hard" });
+    assert.equal(readModuleDifficulty("globe"), "hard");
+    assert.equal(readModuleDifficulty("country"), "hard");
+    assert.equal(readModuleDifficulty("state"), "hard");
+    assert.deepEqual(readModuleMap(store), {
+      globe: "hard",
+      country: "hard",
+      state: "hard",
+    });
+    // The legacy key is left in place (still the stubbed value).
+    assert.equal(store.get("meridian.difficulty"), "hard");
+  });
+
+  it("seeds medium when the legacy value is invalid or missing", () => {
+    const store = stubLocalStorage({ "meridian.difficulty": "extreme" });
+    assert.equal(readModuleDifficulty("globe"), "medium");
+    assert.deepEqual(readModuleMap(store), {
+      globe: "medium",
+      country: "medium",
+      state: "medium",
+    });
+    const empty = stubLocalStorage();
+    assert.equal(readModuleDifficulty("state"), "medium");
+    assert.deepEqual(readModuleMap(empty), {
+      globe: "medium",
+      country: "medium",
+      state: "medium",
+    });
+  });
+
+  it("falls back to the module default on a stored invalid value (no re-seed)", () => {
+    stubLocalStorage({
+      "meridian.difficulty.byModule": JSON.stringify({ globe: "extreme" }),
+    });
+    assert.equal(readModuleDifficulty("globe"), "medium");
+    // A stub module with nothing stored reads its default.
+    assert.equal(readModuleDifficulty("geodetective"), "medium");
+  });
+
+  it("writeModuleDifficulty writes to the map only and never clobbers another module", () => {
+    const store = stubLocalStorage({
+      "meridian.difficulty": "easy",
+      "meridian.difficulty.byModule": JSON.stringify({ globe: "hard", country: "easy" }),
+    });
+    writeModuleDifficulty("state", "hard");
+    assert.deepEqual(readModuleMap(store), {
+      globe: "hard",
+      country: "easy",
+      state: "hard",
+    });
+    // The legacy key is untouched by a module write (still the stubbed value).
+    assert.equal(store.get("meridian.difficulty"), "easy");
+  });
+
+  it("isolation: setting Globe to Hard does not change a State run's stored choice", () => {
+    const store = stubLocalStorage({
+      "meridian.difficulty.byModule": JSON.stringify({ globe: "medium", state: "easy" }),
+    });
+    writeModuleDifficulty("globe", "hard");
+    assert.equal(readModuleDifficulty("globe"), "hard");
+    assert.equal(readModuleDifficulty("state"), "easy");
+    assert.deepEqual(readModuleMap(store), { globe: "hard", state: "easy" });
+  });
+});
+
+function ModuleProbe({ moduleId }: { moduleId: "globe" | "country" | "state" }) {
+  const [choice] = useModuleDifficulty(moduleId);
+  return createElement("span", null, choice);
+}
+
+describe("useModuleDifficulty", () => {
+  it("initialises from the module's stored choice", () => {
+    stubLocalStorage({
+      "meridian.difficulty.byModule": JSON.stringify({ globe: "hard" }),
+    });
+    assert.match(
+      renderToStaticMarkup(createElement(ModuleProbe, { moduleId: "globe" })),
+      /<span>hard<\/span>/,
+    );
+    assert.match(
+      renderToStaticMarkup(createElement(ModuleProbe, { moduleId: "country" })),
+      /<span>medium<\/span>/,
+    );
+  });
+
+  it("is SSR-safe with no storage at all: reads as medium and never throws", () => {
+    delete globals.localStorage;
+    assert.doesNotThrow(() =>
+      renderToStaticMarkup(createElement(ModuleProbe, { moduleId: "globe" })),
+    );
+    assert.match(
+      renderToStaticMarkup(createElement(ModuleProbe, { moduleId: "globe" })),
+      /<span>medium<\/span>/,
+    );
   });
 });

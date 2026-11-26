@@ -373,6 +373,20 @@ const difficulty: StorageKeyDef<string> = {
   encoding: "raw",
 };
 
+/**
+ * Per-module picker difficulty choices (FW-11.1): a JSON map of
+ * module id → "easy"/"medium"/"hard". Seeded on first read from the
+ * legacy `meridian.difficulty` value (see use-difficulty-choice.ts);
+ * the legacy key is left in place and new writes go to this map
+ * only. Validation stays in the domain reader (isPickerDifficulty
+ * per value); the schema only requires string values.
+ */
+const difficultyByModule: StorageKeyDef<Record<string, string>> = {
+  key: "meridian.difficulty.byModule",
+  schema: z.record(z.string(), z.string()),
+  fallback: {},
+};
+
 /** Board calm toggle: the bare "1"/"0" bytes predate the port. */
 const boardCalm: StorageKeyDef<string> = {
   key: "meridian-board-v3-calm",
@@ -444,6 +458,7 @@ export const STORAGE_KEYS = {
   mapCrashMarker,
   palettePreference,
   difficulty,
+  difficultyByModule,
   boardCalm,
   boardTheme,
   boardSeenClosed,
