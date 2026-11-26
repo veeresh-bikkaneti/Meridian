@@ -21,7 +21,7 @@ import { writeSessionItem } from "../../platform/storage/browser-storage.ts";
 import { STORAGE_KEYS } from "../../platform/storage/keys.ts";
 import { calendarDate } from "@/game/daily";
 import { Button } from "@/components/ui/button";
-import { HomeButton } from "@/components/ui/home-button";
+import { EndOfFlowHome } from "@/components/ui/end-of-flow-home";
 import { PageShell } from "@/components/ui/page-shell";
 import { ErrorScreen } from "@/components/ui/error-screen";
 import { SoundToggle } from "@/components/SoundToggle";
@@ -2239,7 +2239,8 @@ function LoopReveal({
             🔎 Next mystery
           </Button>
           <p className="text-center text-sm text-muted">Case #{caseNo} is on your desk.</p>
-          <HomeButton onHome={onLeave} testId="home-button-end" className="min-h-[48px]" />
+          <EndOfFlowHome onHome={onLeave} testId="home-button-end" className="min-h-[48px]" />
+          <HomeButton onHome={onLeave} />
         </div>
         <p role="status" aria-live="polite" className="sr-only">
           {revealAnnouncement}

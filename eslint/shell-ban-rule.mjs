@@ -9,16 +9,18 @@
  * from coming back:
  *
  * 1. Importing a home control (HomeButton or BrandHomeButton) to
- *    hand-roll a header — screens take the home control from
- *    SiteHeader, which owns it. Since PR 529 Part 2 (owner ruling
+ *    hand-roll a header — the header control belongs to SiteHeader,
+ *    which owns it. Since PR 529 Part 2 (owner ruling
  *    2026-11-17) the header control is BrandHomeButton: the brand
  *    lockup named exactly "Meridian home", top-left, on every
  *    adopted screen — one home control per screen, and it is the
- *    lockup. The controls themselves are NOT deleted: HomeButton
- *    ("Home") still serves end-of-flow and HUD surfaces, which are
- *    not headers. No screen imports either control to hand-roll a
- *    header. Those uses are baselined or owner-exempt below; this
- *    rule bans new imports everywhere else.
+ *    lockup. The controls themselves are NOT deleted: since TD-05.4
+ *    end-of-flow and HUD Home renders through EndOfFlowHome
+ *    (src/components/ui/end-of-flow-home.ts), the second owner in
+ *    this rule — which itself renders HomeButton ("Home") for those
+ *    surfaces, which are not headers. No screen imports either
+ *    control to hand-roll a header. Those uses are baselined or
+ *    owner-exempt below; this rule bans new imports everywhere else.
  * 2. Page-local <header> / <footer> elements outside the shared
  *    components.
  * 3. `max-w-none` in a class string — screens sit in PageColumn's two
@@ -68,7 +70,7 @@ const shellPlugin = {
               ) {
                 context.report({
                   node: spec,
-                  message: `Screens take the home control from SiteHeader, never by importing it. Fix: ${FIX_HEADER}. End-of-flow/HUD uses are baselined in eslint/shell-ban-baseline.json.`,
+                  message: `Screens take the header home control from SiteHeader, and end-of-flow/HUD Home through EndOfFlowHome (src/components/ui/end-of-flow-home.ts) — never by importing HomeButton or BrandHomeButton directly. Fix: ${FIX_HEADER}, or render EndOfFlowHome. End-of-flow/HUD uses are not baselined anymore; a direct import inside EndOfFlowHome is the only sanctioned one.`,
                 });
               }
             }
@@ -150,10 +152,12 @@ const HEADER_FOOTER_OWNERS = ["src/components/ui/site-header.tsx", "src/componen
  *  doors, the board's view switcher). */
 const NAV_OWNERS = ["src/components/ui/site-header.tsx", "src/components/ui/content-nav.tsx"];
 
-/** The sanctioned host of the home control itself: SiteHeader
- *  (every adopted screen's header). ScreenShell, the other host,
- *  was deleted in PR 3 Step 4. */
-const HOME_CONTROL_OWNERS = ["src/components/ui/site-header.tsx"];
+/** The sanctioned hosts of the home control itself: SiteHeader
+ *  (every adopted screen's header control) and, since TD-05.4,
+ *  EndOfFlowHome — the end-of-flow / HUD Home owner, which renders
+ *  HomeButton for those non-header surfaces. ScreenShell, the other
+ *  host, was deleted in PR 3 Step 4. */
+const HOME_CONTROL_OWNERS = ["src/components/ui/site-header.tsx", "src/components/ui/end-of-flow-home.ts"];
 
 function block(kind, ruleName, extraIgnores = []) {
   return {

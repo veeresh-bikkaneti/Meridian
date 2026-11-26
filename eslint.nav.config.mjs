@@ -2,7 +2,8 @@
  * `npm run lint:nav`: only the guard rules, so CI can gate on them without
  * the rest of the ESLint backlog: the home label (eslint/home-label-rule.mjs),
  * one voice at a time (eslint/voice-channel-rule.mjs), and the shared-shell
- * bans (eslint/shell-ban-rule.mjs — no HomeButton-pill imports, no
+ * bans (eslint/shell-ban-rule.mjs — no home-control imports outside the
+ * rule-file owners (SiteHeader, EndOfFlowHome), no
  * page-local header/footer/nav/main, no max-w-none; today's violations baselined in
  * eslint/shell-ban-baseline.json). The layering guard that used to
  * live here (src/game never imports src/subjects) folded into the
