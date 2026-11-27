@@ -237,3 +237,36 @@ architecture Done subtasks 11, and PR #571's subtask
 (arch-ports.game-app) holds In review — the forward-only
 rule keeps the draft PR from pulling it back to
 In progress. Screenshots taken at 320, 390, 768, 1280.
+
+## Polling contract (TD-08.7, PR #633)
+
+The live board polls GitHub while it is visible; the
+ledger (`kanban.json`, 18 stories / 45 subtasks) stays
+the offline fallback and is never edited by the poll.
+
+- Refresh triggers: mount, focus, visibility regain, and
+  a 5-minute poll tick. Hidden tabs never refresh.
+- Freshness: one 5-minute TTL. A tick may refetch 5 s
+  early (the 5 s slack); the session cache answers only
+  while younger than TTL minus slack, so the decision and
+  the cache never disagree. Focus/visibility use the
+  strict TTL, no slack.
+- Request budget: 3 calls per refresh (newest pulls page
+  + branches + open `bug` issues). Older pulls pages 2–5
+  (500 PRs with page 1) run at most hourly, only when
+  page 1 is full, cached in localStorage across tabs.
+  Steady state ≤ 40 calls an hour of GitHub's 60/hr
+  unauthenticated limit (per IP); a page-5 failure
+  included, the hour measures 40.
+- Failures: a failed deep tier records its attempt
+  timestamp and waits out the hour; pages fetched before
+  the failure are kept and merged over the previous deep
+  rows. A 403/429 on any tier reports rate-limited: the
+  poller backs off 60 minutes and the board keeps the
+  last good live state with a stale stamp. A failed pulls
+  call aborts the fast tier: 1 call on an HTTP failure,
+  2 when a network/timeout failure is retried once.
+- Owner ruling still open: unlocking the ledger (editing
+  `kanban.json`, changing the 18/45 checker) and new TD
+  IDs, plus the 500-PR deep cap when the ledger's oldest
+  PR passes #500 in the window.

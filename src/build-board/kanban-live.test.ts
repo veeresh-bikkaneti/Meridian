@@ -726,6 +726,53 @@ describe("fetchKanbanLive — deep tier (TD-08.7)", () => {
     }
   });
 
+  it("a partial deep failure keeps the fetched pages and the previous rows", async () => {
+    const deepStorage = memoryStorage();
+    const now = 1_000_000;
+    deepStorage.map.set(
+      KANBAN_DEEP_CACHE_KEY,
+      JSON.stringify({
+        fetchedAt: now - 61 * 60_000,
+        pulls: [
+          [
+            999,
+            { state: "closed", draft: false, merged: true, title: "older than the window" },
+          ],
+        ],
+      }),
+    );
+    const stub = stubGlobalFetch((url) => {
+      if (url.includes("/branches")) return { status: 200, body: [] };
+      if (url.includes("/issues")) return { status: 200, body: [] };
+      if (url.includes("page=2")) return { status: 200, body: fullPage(101) };
+      if (url.includes("page=3")) return { status: 200, body: fullPage(201) };
+      if (url.includes("page=4")) return { status: 500, body: { message: "page 4 down" } };
+      if (url.includes("sort=updated")) return { status: 200, body: fullPage(1) };
+      return { status: 500, body: { message: "should not be called" } };
+    });
+    try {
+      const state = await fetchKanbanLive({ storage: null, deepStorage, now });
+      assert.ok(state);
+      // Fast tier (100) + fetched deep pages (200) + previous row (1).
+      assert.equal(state.pulls.size, 301);
+      assert.ok(state.pulls.has(150));
+      assert.ok(state.pulls.has(250));
+      assert.equal(state.pulls.get(999)?.merged, true);
+      assert.equal(stub.calls.filter((c) => /[?&]page=/.test(c.url)).length, 3);
+      // The partial attempt is recorded: no deep retry inside the hour.
+      const again = await fetchKanbanLive({
+        storage: null,
+        deepStorage,
+        now: now + 6 * 60_000,
+      });
+      assert.ok(again);
+      assert.equal(again.pulls.size, 301);
+      assert.equal(stub.calls.filter((c) => /[?&]page=/.test(c.url)).length, 3);
+    } finally {
+      stub.restore();
+    }
+  });
+
   it("an hour of 5-minute ticks with page 5 always failing stays within 40 calls", async () => {
     const storage = memoryStorage();
     const deepStorage = memoryStorage();

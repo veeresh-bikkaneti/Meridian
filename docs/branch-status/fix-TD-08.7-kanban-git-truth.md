@@ -219,3 +219,37 @@ the 441M checkout does not fit the 512M tmpfs).
 Final head verification (e2e twice, `rg` stale-claim check,
 `git diff --stat origin/main...HEAD`), rewrite of the #633
 PR body, then the final report. Do not merge.
+
+## Review fixes (2026-11-27, on the review of #633)
+
+Main moved to `ae219ecb` (#634, #635, #629); merged in
+as `aeb5457c`, no rebase, no conflicts. The review's two
+blockers and the should-fix, in three commits:
+
+- Blocker 1 — the 5 s tick slack never reached the fetch:
+  `readLiveCache` answered from the cache until the full
+  300 s. One freshness rule now: the cache answers only
+  while younger than TTL minus the slack
+  (`KANBAN_TICK_SLACK_MS`, one constant shared with the
+  refetch decision). Proved by reverting the one line:
+  the new full-refresh test failed (3 calls, expected 6).
+- Blocker 2 — a failed deep tier was retried on every
+  refresh (probe: 12 deep calls/hr, 48 total, worst case
+  84). `deepPullsForRefresh` now records the attempt
+  timestamp on failure too, and a deep-page 403/429
+  reports rateLimited like the fast tier. Proved by
+  removing the failure timestamp: the hour test failed.
+  The hour with page 5 failing measures 40 calls.
+- Should-fix — partial deep pages merge over the previous
+  rows instead of being dropped; the clock e2e test
+  asserts a healthy steady-state round is exactly 3
+  calls; the polling contract is documented in
+  `docs/branch-status/feat-build-kanban.md` (added on the
+  review brief's explicit order; that file is another
+  branch's status file).
+
+## Next step (review fixes)
+
+Re-verify at the final head, rewrite the #633 PR body
+with the measured entry size and the corrected failed-
+round call count, then report. Do not merge.

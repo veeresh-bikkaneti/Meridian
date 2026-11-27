@@ -402,6 +402,12 @@ test("the board polls every 5 minutes while visible and keeps the last good stat
   const firstRound = githubUrls.length;
   assert.equal(firstRound, 3);
 
+  // Five minutes on, visible, healthy: one steady-state round
+  // makes exactly 3 calls (pulls + branches + issues).
+  await page.clock.fastForward(5 * 60_000);
+  await expect.poll(() => githubUrls.length).toBe(firstRound + 3);
+  await expect(page.locator(".kb-stamp")).toHaveText(/Live · fetched \d{2}:\d{2}/);
+
   // Five minutes on, visible: the tick refetches. The pulls
   // call fails first, so the failed round costs exactly one
   // call and the whole check fails; the board keeps the last
@@ -410,7 +416,7 @@ test("the board polls every 5 minutes while visible and keeps the last good stat
   failing = true;
   await page.clock.fastForward(5 * 60_000);
   await expect(page.locator(".kb-stamp")).toContainText("last check failed");
-  await expect.poll(() => githubUrls.length).toBe(firstRound + 1);
+  await expect.poll(() => githubUrls.length).toBe(firstRound + 4);
   await expect(page.locator(".kb-story").first()).toBeVisible();
 
   // Five minutes on, hidden: no round at all.
@@ -423,7 +429,7 @@ test("the board polls every 5 minutes while visible and keeps the last good stat
   });
   await page.clock.fastForward(5 * 60_000);
   await page.waitForTimeout(50);
-  assert.equal(githubUrls.length, firstRound + 1);
+  assert.equal(githubUrls.length, firstRound + 4);
 
   // Visible again: the visibility re-check refetches at once,
   // and the next 5-minute tick refetches again — one failed
@@ -435,7 +441,7 @@ test("the board polls every 5 minutes while visible and keeps the last good stat
     });
     document.dispatchEvent(new Event("visibilitychange"));
   });
-  await expect.poll(() => githubUrls.length).toBe(firstRound + 2);
+  await expect.poll(() => githubUrls.length).toBe(firstRound + 5);
   await page.clock.fastForward(5 * 60_000);
-  await expect.poll(() => githubUrls.length).toBe(firstRound + 3);
+  await expect.poll(() => githubUrls.length).toBe(firstRound + 6);
 });

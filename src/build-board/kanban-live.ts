@@ -542,29 +542,37 @@ let inflight: Promise<KanbanFetchOutcome> | null = null;
  * on a short page. A failure on any page ends the tier: a 403
  * or 429 is rate-limiting, anything else (a bad status, a
  * non-array payload, a network error after its retry) is a
- * plain failure. The caller records the attempt either way,
- * so a failed deep tier is not retried until the hour is up.
+ * plain failure. Pages fetched before the failure are kept
+ * and marked partial, so the board never drops data it
+ * already has; only a failure on the first deep page yields
+ * nothing. The caller records the attempt either way, so a
+ * failed deep tier is not retried until the hour is up.
  */
 type DeepPagesResult =
   | { kind: "ok"; pulls: Map<number, PullInfo> }
+  | { kind: "partial"; pulls: Map<number, PullInfo> }
   | { kind: "failed" }
-  | { kind: "rateLimited" };
+  | { kind: "rateLimited"; pulls: Map<number, PullInfo> };
 
 async function fetchDeepPages(
   options: FetchKanbanLiveOptions,
 ): Promise<DeepPagesResult> {
   const merged = new Map<number, PullInfo>();
+  let fetchedPage = false;
   for (let page = 2; page <= KANBAN_DEEP_PAGE_CAP; page++) {
     let payload: unknown;
     try {
       payload = await fetchViaPort(githubPullsPageUrl(page));
     } catch (err) {
       if (err instanceof GithubHttpError && (err.status === 403 || err.status === 429)) {
-        return { kind: "rateLimited" };
+        return { kind: "rateLimited", pulls: merged };
       }
-      return { kind: "failed" };
+      return fetchedPage ? { kind: "partial", pulls: merged } : { kind: "failed" };
     }
-    if (!Array.isArray(payload)) return { kind: "failed" };
+    if (!Array.isArray(payload)) {
+      return fetchedPage ? { kind: "partial", pulls: merged } : { kind: "failed" };
+    }
+    fetchedPage = true;
     for (const [number, info] of parseGithubPulls(payload)) {
       merged.set(number, info);
     }
@@ -576,11 +584,13 @@ async function fetchDeepPages(
 /**
  * The deep rows to merge into this refresh: the fresh cache when
  * it is fresh, else a re-fetch that replaces the cache on
- * success. On failure the previous rows are kept, but the
- * attempt timestamp is still recorded, so the next deep try
- * waits the full hour: a failing deep tier must not be
- * retried on every refresh. A 403/429 on a deep page is
- * rate-limiting, reported so the whole check backs off.
+ * success. A partial result merges the pages it fetched over
+ * the previous rows, so data already held is never dropped.
+ * On failure the previous rows are kept, but the attempt
+ * timestamp is still recorded, so the next deep try waits
+ * the full hour: a failing deep tier must not be retried on
+ * every refresh. A 403/429 on a deep page is rate-limiting,
+ * reported so the whole check backs off.
  */
 async function deepPullsForRefresh(
   options: FetchKanbanLiveOptions,
@@ -592,12 +602,19 @@ async function deepPullsForRefresh(
   }
   const previous = entry?.pulls ?? new Map<number, PullInfo>();
   const refreshed = await fetchDeepPages(options);
-  if (refreshed.kind === "ok") {
-    writeDeepCache(options.deepStorage, now, refreshed.pulls);
-    return { pulls: refreshed.pulls, rateLimited: false };
+  if (refreshed.kind === "failed") {
+    // Nothing new was fetched: keep the previous rows, but
+    // record the attempt so the tier waits out the hour.
+    writeDeepCache(options.deepStorage, now, previous);
+    return { pulls: previous, rateLimited: false };
   }
-  writeDeepCache(options.deepStorage, now, previous);
-  return { pulls: previous, rateLimited: refreshed.kind === "rateLimited" };
+  // Success replaces the cache; a partial (or rate-limited)
+  // result merges the pages it fetched over the previous
+  // rows, so data already held is never dropped.
+  const merged =
+    refreshed.kind === "ok" ? refreshed.pulls : new Map([...previous, ...refreshed.pulls]);
+  writeDeepCache(options.deepStorage, now, merged);
+  return { pulls: merged, rateLimited: refreshed.kind === "rateLimited" };
 }
 
 /**
