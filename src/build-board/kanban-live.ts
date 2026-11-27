@@ -22,7 +22,9 @@
  * list marked unavailable. A failed deep page keeps the
  * previous cached deep pages and does not fail the check.
  * Overlapping callers share one in-flight sequence. A
- * 5-minute session cache (key v6) makes a repeat free. The
+ * 5-minute session cache (key v6) makes a repeat free; it
+ * answers only while younger than the TTL minus the 5 s tick
+ * slack, the same window the refetch decision uses. The
  * board polls every 5 minutes while it is visible (paused
  * while hidden), plus a re-check on focus/visibility once
  * the cache expires; after a rate-limited answer the poller
@@ -355,7 +357,14 @@ function readLiveCache(
     const raw = store.getItem(KANBAN_LIVE_CACHE_KEY);
     if (!raw) return null;
     const parsed = JSON.parse(raw) as Partial<LiveCache>;
-    if (typeof parsed.fetchedAt !== "number" || now - parsed.fetchedAt >= KANBAN_LIVE_CACHE_TTL_MS) {
+    // One freshness rule, shared with the refetch decision:
+    // the cache answers only while younger than the TTL minus
+    // the tick slack, so a tick the decision sends to refetch
+    // is never answered from the cache instead.
+    if (
+      typeof parsed.fetchedAt !== "number" ||
+      now - parsed.fetchedAt >= KANBAN_LIVE_CACHE_TTL_MS - KANBAN_TICK_SLACK_MS
+    ) {
       return null;
     }
     if (!Array.isArray(parsed.pulls) || !Array.isArray(parsed.branches)) return null;
@@ -404,6 +413,13 @@ function writeLiveCache(storage: KeyValueStorage | null | undefined, state: Kanb
 /** The poll interval is the cache TTL: one value, no drift. */
 export const KANBAN_POLL_INTERVAL_MS = KANBAN_LIVE_CACHE_TTL_MS;
 
+/** How early a poll tick may refetch: the cache-fresh window
+ * ends this far before the TTL, so a tick landing just short
+ * of the TTL still refetches instead of silently becoming a
+ * 10-minute gap. One constant, shared by the refetch decision
+ * and the cache read — the two must never disagree. */
+export const KANBAN_TICK_SLACK_MS = 5_000;
+
 /** How long the poller stays quiet after a rate-limited answer. */
 export const KANBAN_RATE_LIMIT_BACKOFF_MS = 60 * 60_000;
 
@@ -422,7 +438,7 @@ export function shouldRefetchKanbanLive(input: {
   if (input.event === "hidden") return false;
   if (input.cacheFetchedAt === null) return true;
   const age = input.now - input.cacheFetchedAt;
-  if (input.event === "tick") return age >= KANBAN_POLL_INTERVAL_MS - 5_000;
+  if (input.event === "tick") return age >= KANBAN_POLL_INTERVAL_MS - KANBAN_TICK_SLACK_MS;
   return age >= KANBAN_LIVE_CACHE_TTL_MS;
 }
 

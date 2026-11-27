@@ -820,6 +820,60 @@ describe("refresh on focus and visibility", () => {
   });
 });
 
+describe("tick slack end to end (TD-08.7 fix)", () => {
+  it("a tick at t0+299 s makes exactly 3 calls through a full refresh", async () => {
+    const storage = memoryStorage();
+    const deepStorage = memoryStorage();
+    const stub = stubGlobalFetch(fixtureHandler);
+    try {
+      const mount = await refreshKanbanLive({
+        event: "mount",
+        storage,
+        deepStorage,
+        now: 1_000,
+      });
+      assert.equal(mount.action, "live");
+      assert.equal(stub.calls.length, 3);
+      const tick = await refreshKanbanLive({
+        event: "tick",
+        storage,
+        deepStorage,
+        now: 1_000 + 299_000,
+      });
+      assert.equal(tick.action, "live");
+      assert.equal(stub.calls.length, 6);
+    } finally {
+      stub.restore();
+    }
+  });
+
+  it("a tick at t0+120 s makes 0 calls", async () => {
+    const storage = memoryStorage();
+    const deepStorage = memoryStorage();
+    const stub = stubGlobalFetch(fixtureHandler);
+    try {
+      const mount = await refreshKanbanLive({
+        event: "mount",
+        storage,
+        deepStorage,
+        now: 1_000,
+      });
+      assert.equal(mount.action, "live");
+      assert.equal(stub.calls.length, 3);
+      const tick = await refreshKanbanLive({
+        event: "tick",
+        storage,
+        deepStorage,
+        now: 1_000 + 120_000,
+      });
+      assert.equal(tick.action, "skip");
+      assert.equal(stub.calls.length, 3);
+    } finally {
+      stub.restore();
+    }
+  });
+});
+
 describe("startKanbanPolling (TD-08.7)", () => {
   const liveState = {
     pulls: new Map(),
