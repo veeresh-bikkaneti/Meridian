@@ -539,51 +539,65 @@ let inflight: Promise<KanbanFetchOutcome> | null = null;
 
 /**
  * Deep-tier pages 2..cap, merged by PR number. Pages stop early
- * on a short page. Any failure — a bad status, a non-array
- * payload, a network error after its retry — returns null and
- * the caller keeps the previous cached deep pages: a failed
- * deep page never fails the check.
+ * on a short page. A failure on any page ends the tier: a 403
+ * or 429 is rate-limiting, anything else (a bad status, a
+ * non-array payload, a network error after its retry) is a
+ * plain failure. The caller records the attempt either way,
+ * so a failed deep tier is not retried until the hour is up.
  */
+type DeepPagesResult =
+  | { kind: "ok"; pulls: Map<number, PullInfo> }
+  | { kind: "failed" }
+  | { kind: "rateLimited" };
+
 async function fetchDeepPages(
   options: FetchKanbanLiveOptions,
-): Promise<Map<number, PullInfo> | null> {
+): Promise<DeepPagesResult> {
   const merged = new Map<number, PullInfo>();
   for (let page = 2; page <= KANBAN_DEEP_PAGE_CAP; page++) {
     let payload: unknown;
     try {
       payload = await fetchViaPort(githubPullsPageUrl(page));
-    } catch {
-      return null;
+    } catch (err) {
+      if (err instanceof GithubHttpError && (err.status === 403 || err.status === 429)) {
+        return { kind: "rateLimited" };
+      }
+      return { kind: "failed" };
     }
-    if (!Array.isArray(payload)) return null;
+    if (!Array.isArray(payload)) return { kind: "failed" };
     for (const [number, info] of parseGithubPulls(payload)) {
       merged.set(number, info);
     }
     if (payload.length < 100) break;
   }
-  return merged;
+  return { kind: "ok", pulls: merged };
 }
 
 /**
  * The deep rows to merge into this refresh: the fresh cache when
  * it is fresh, else a re-fetch that replaces the cache on
- * success and keeps the previous rows (even stale) on failure,
- * so the next refresh retries.
+ * success. On failure the previous rows are kept, but the
+ * attempt timestamp is still recorded, so the next deep try
+ * waits the full hour: a failing deep tier must not be
+ * retried on every refresh. A 403/429 on a deep page is
+ * rate-limiting, reported so the whole check backs off.
  */
 async function deepPullsForRefresh(
   options: FetchKanbanLiveOptions,
   now: number,
-): Promise<Map<number, PullInfo>> {
+): Promise<{ pulls: Map<number, PullInfo>; rateLimited: boolean }> {
   const entry = readDeepCache(options.deepStorage);
   if (entry !== null && now - entry.fetchedAt < KANBAN_DEEP_CACHE_TTL_MS) {
-    return entry.pulls;
+    return { pulls: entry.pulls, rateLimited: false };
   }
+  const previous = entry?.pulls ?? new Map<number, PullInfo>();
   const refreshed = await fetchDeepPages(options);
-  if (refreshed !== null) {
-    writeDeepCache(options.deepStorage, now, refreshed);
-    return refreshed;
+  if (refreshed.kind === "ok") {
+    writeDeepCache(options.deepStorage, now, refreshed.pulls);
+    return { pulls: refreshed.pulls, rateLimited: false };
   }
-  return entry?.pulls ?? new Map();
+  writeDeepCache(options.deepStorage, now, previous);
+  return { pulls: previous, rateLimited: refreshed.kind === "rateLimited" };
 }
 
 /**
@@ -610,8 +624,10 @@ async function fetchIssues(
  * succeed on pulls and branches or the whole check fails; the
  * deep tier (older pulls pages) only runs when page 1 is full
  * — a short first page means there is nothing older — and its
- * failures keep the previous deep rows. Overlapping callers
- * share one in-flight sequence.
+ * failures keep the previous deep rows while recording the
+ * attempt, so the tier is retried at most hourly. A 403/429 on
+ * a deep page reports rateLimited like the fast tier.
+ * Overlapping callers share one in-flight sequence.
  */
 async function fetchKanbanLiveOutcome(
   options: FetchKanbanLiveOptions,
@@ -635,7 +651,8 @@ async function fetchKanbanLiveOutcome(
       let pulls = fastPulls;
       if (recentPayload.length >= 100) {
         const deep = await deepPullsForRefresh(options, now);
-        pulls = new Map([...deep, ...fastPulls]);
+        if (deep.rateLimited) return { kind: "rateLimited" };
+        pulls = new Map([...deep.pulls, ...fastPulls]);
       }
 
       const state: KanbanLiveState = {

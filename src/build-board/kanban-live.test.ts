@@ -665,6 +665,101 @@ describe("fetchKanbanLive — deep tier (TD-08.7)", () => {
       }
     }
   });
+
+  it("a failed deep page is not retried on the next 11 refreshes in the hour", async () => {
+    const storage = memoryStorage();
+    const deepStorage = memoryStorage();
+    const stub = stubGlobalFetch((url) => {
+      if (url.includes("/branches")) return { status: 200, body: [] };
+      if (url.includes("/issues")) return { status: 200, body: [] };
+      if (url.includes("page=2")) return { status: 500, body: { message: "deep down" } };
+      if (url.includes("sort=updated")) return { status: 200, body: fullPage(1) };
+      return { status: 500, body: { message: "should not be called" } };
+    });
+    try {
+      const t0 = 1_000_000;
+      const mount = await refreshKanbanLive({ event: "mount", storage, deepStorage, now: t0 });
+      assert.equal(mount.action, "live");
+      assert.equal(stub.calls.length, 4);
+      for (let i = 1; i <= 11; i++) {
+        const tick = await refreshKanbanLive({
+          event: "tick",
+          storage,
+          deepStorage,
+          now: t0 + i * 5 * 60_000,
+        });
+        assert.equal(tick.action, "live");
+      }
+      // 4 + 11 fast tiers of 3, and the deep page was called once.
+      assert.equal(stub.calls.length, 37);
+      assert.equal(stub.calls.filter((c) => /[?&]page=/.test(c.url)).length, 1);
+    } finally {
+      stub.restore();
+    }
+  });
+
+  it("a 403 on a deep page reports rateLimited and records the deep attempt", async () => {
+    const storage = memoryStorage();
+    const deepStorage = memoryStorage();
+    const stub = stubGlobalFetch((url) => {
+      if (url.includes("/branches")) return { status: 200, body: [] };
+      if (url.includes("/issues")) return { status: 200, body: [] };
+      if (url.includes("page=2")) return { status: 403, body: { message: "limited" } };
+      if (url.includes("sort=updated")) return { status: 200, body: fullPage(1) };
+      return { status: 500, body: { message: "should not be called" } };
+    });
+    try {
+      const t0 = 1_000_000;
+      const result = await refreshKanbanLive({ event: "mount", storage, deepStorage, now: t0 });
+      // The signal the poller consumes for its 60-minute back-off.
+      assert.deepEqual(result, { action: "fallback", rateLimited: true });
+      const tick = await refreshKanbanLive({
+        event: "tick",
+        storage,
+        deepStorage,
+        now: t0 + 5 * 60_000,
+      });
+      assert.equal(tick.action, "live");
+      assert.equal(stub.calls.filter((c) => /[?&]page=/.test(c.url)).length, 1);
+    } finally {
+      stub.restore();
+    }
+  });
+
+  it("an hour of 5-minute ticks with page 5 always failing stays within 40 calls", async () => {
+    const storage = memoryStorage();
+    const deepStorage = memoryStorage();
+    const stub = stubGlobalFetch((url) => {
+      if (url.includes("/branches")) return { status: 200, body: [] };
+      if (url.includes("/issues")) return { status: 200, body: [] };
+      const page = /[?&]page=(\d+)/.exec(url)?.[1];
+      if (page === "5") return { status: 500, body: { message: "page 5 down" } };
+      if (page) return { status: 200, body: fullPage((Number(page) - 1) * 100 + 1) };
+      if (url.includes("sort=updated")) return { status: 200, body: fullPage(1) };
+      return { status: 500, body: { message: "should not be called" } };
+    });
+    try {
+      const t0 = 1_000_000;
+      const mount = await refreshKanbanLive({ event: "mount", storage, deepStorage, now: t0 });
+      assert.equal(mount.action, "live");
+      assert.equal(stub.calls.length, 7);
+      for (let i = 1; i <= 11; i++) {
+        const tick = await refreshKanbanLive({
+          event: "tick",
+          storage,
+          deepStorage,
+          now: t0 + i * 5 * 60_000,
+        });
+        assert.equal(tick.action, "live");
+      }
+      // 7 on the first refresh, 3 fast-tier calls on each of the
+      // 11 ticks, no deep retry inside the hour: 40 of 60.
+      assert.ok(stub.calls.length <= 40, `expected <= 40 calls, got ${stub.calls.length}`);
+      assert.equal(stub.calls.filter((c) => /[?&]page=/.test(c.url)).length, 4);
+    } finally {
+      stub.restore();
+    }
+  });
 });
 
 describe("loadPublicSnapshot", () => {
