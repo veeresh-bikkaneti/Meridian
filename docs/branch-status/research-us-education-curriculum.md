@@ -45,6 +45,13 @@
   4. Split `69` `10-18` items (`60` pre-existing: `35` T2 / `25` T3; `9` Biology: `5` T2 / `4` T3; total `40` T2 / `29` T3) and tagged `math-number:fractions:compare-unlike` to Grade 5 in `src/subjects/shared/tier-tags.ts` (data-only at runtime); `H01–H03` promoted in research pack while `docs/scaling/humanities/screened-topics.md:49` still reads `UNVERIFIED`.
   5. Verified primary citations (`g = 9.8 m/s²`, CCSS 6–8, Eanes ISD on TEA), authored Wave 1–4 Biology content (`src/subjects/biology/items.ts`), and added `biology` to `scripts/lint-subject-leads.mjs`. Updated `wiki/` pages and `wiki/log.md`.
   - Measured gates (`2026-11-26`): `src/subjects/*/*.test.ts` `342/342` PASS (`tier-tags.test.ts` `2/2`); `lint:nav` PASS; `lint-cards.mjs` PASS; `build:pages` PASS; `lint:subjects` exits 1 (`GATE FAILED (8)` on pre-existing `journals` mismatches; `biology` has `0` findings across `leads=1021`); Playwright E2E NOT RUN.
+- Curriculum authoring & runtime wiring W1–W5 (`2026-11-26`):
+  - **W1** (`57cc3a64`): authored 10 Wave A GK Pillars 3–5 items (road/bike/GDL safety H01–H03, situational awareness, competition riddles; 6 at `10-18`).
+  - **W2** (`e5517c16`): authored 14 Wave B GK Environmental Studies items (NGSS ESS/LS2 at T1–T2 + NCF-Envirothon 5 stations, Oral Presentation, and Kansas Rangeland at T3; 11 at `10-18`) and cured Wave A leads.
+  - **W3** (`42951e6d`): authored 6 Wave C quantitative T3 Olympiad-ceiling `10-18` items (2 Physics `F=ma`/USAPhO, 2 Chemistry USNCO, 2 Social Studies C3 9–12).
+  - **W4** (`bade5445`): added Biology record validator, unit tests, and educator review packet.
+  - **W5** (uncommitted): tagged all 23 new `10-18` items in `src/subjects/shared/tier-tags.ts` (92 total: 47 T2, 45 T3), added `sequenceByCurriculumTier(items, group)` (T2 before T3 for `10-18`, unchanged for `7-10`/`18+`), wired it in `src/subjects/shared/SubjectCase.tsx`, and added the 7-card picker + Biology case test in `tests/e2e/subjects-picker.desktop.spec.ts`.
+  - Measured gates W5 (`2026-11-26`): `src/subjects/*/*.test.ts` `354/354` PASS (`tier-tags.test.ts` `4/4`); `npm run lint:nav` PASS; `node scripts/lint-cards.mjs` GATE PASSED; `npm run build:pages` PASS; `npx tsc --noEmit` 0 errors in touched files (pre-existing `.stories.tsx` and `src/play-lab/components/ScaledHomeMockup.tsx` errors only); Playwright (`--workers=1`): `tests/e2e/subjects-picker.desktop.spec.ts` `7/7` PASS, `tests/e2e/home-layout.desktop.spec.ts` `6/14` PASS / `8` pre-existing FAIL (`credits-link` strict mode 2 elements across 6 viewports; `review on spot cards` 1 card in 3 columns at `768x1024` and `1280x800`).
 - Review record (2026-11-26): Councilor C adversary review of the
   pushback-fixes tip (`6a6258b8`) ended with the verdict `NO OBJECTION`
   (reported by the owner in the 2026-11-26 session; written into this
@@ -66,6 +73,7 @@
 
 ## Open questions
 - National T4 Life Science standard: none exists (Lane 6 LS-013); T4 remains application-oriented biological literacy.
+- **Blocked:** `meridian-audit-vs-plan-2026-11-26.md` is not present in this repository (`Data not available.` per `raw/us-education-curriculum/REVISION-2026-11-26-review-pushback-fixes.md` §4); ingest into `raw/` is blocked until the owner supplies the file.
 
 ## Ruled out
 - No PR opened: the owner's instruction was to push the branch.

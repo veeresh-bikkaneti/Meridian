@@ -113,6 +113,7 @@ import type { ResetHistoryResult } from "@/game/reset-history";
 import { advanceCasePhase, type AnswerFor, type CasePhase } from "./answer";
 import { recordDistinctWrong, typedWrongKey } from "./lose-reveal";
 import { recordUnitComplete } from "./subject-progress";
+import { sequenceByCurriculumTier } from "./tier-tags";
 import { claimVoice, type VoiceClaim } from "@/game/audio/voice-channel";
 import { createVoice } from "../../platform/audio/browser-voice.ts";
 import type { VoiceHandle } from "../../platform/audio/voice.ts";
@@ -224,7 +225,7 @@ export function SubjectCase({
   // The registry passes the session's group; fall back to the stored
   // profile read so a direct mount still deals the right band.
   const band = group ?? getAgeGroup();
-  const items = itemsForGroup(band);
+  const items = sequenceByCurriculumTier(itemsForGroup(band), band);
   const [index, setIndex] = useState(0);
   const [picked, setPicked] = useState<string | null>(null);
   // L1 lose path: true once the second distinct wrong answer on

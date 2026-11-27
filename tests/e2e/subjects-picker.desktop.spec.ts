@@ -107,6 +107,36 @@ test("picking Math opens the math case, and its Meridian home control returns Ho
   expect(errors).toEqual([]);
 });
 
+test("picker renders all 7 subject cards and opens Biology case", async ({ page, context }) => {
+  await setup(context, "10-18");
+  const errors = watchErrors(page);
+  await openPicker(page);
+  const subjectIds = [
+    "math",
+    "physics",
+    "chemistry",
+    "biology",
+    "general-knowledge",
+    "social-studies",
+    "journals",
+  ];
+  for (const id of subjectIds) {
+    const row = page.getByTestId(`subject-row-${id}`);
+    await expect(row).toBeVisible();
+    await expect(row).toBeEnabled();
+  }
+  const biology = page.getByTestId("subject-row-biology");
+  await expect(biology).toContainText("Biology");
+  await expect(biology).toContainText("9 cases");
+  await biology.click();
+  const biologyCase = page.getByTestId("biology-case");
+  await expect(biologyCase).toBeVisible();
+  await expect(biologyCase).toHaveAttribute("data-band", "10-18");
+  await biologyCase.getByRole("button", { name: "Meridian home", exact: true }).click();
+  await expect(page.getByTestId("home-card-why-learn")).toBeVisible();
+  expect(errors).toEqual([]);
+});
+
 test("reduced motion: the picker still renders and opens a case", async ({
   page,
   context,
