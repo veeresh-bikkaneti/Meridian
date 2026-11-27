@@ -35,10 +35,10 @@ it("adapter reads every curated general-knowledge row", () => {
 it("the live slice holds every multiple-choice-ready row, each in its own band", () => {
   const units = generalKnowledgeUnits();
   assert.equal(units.length, GENERAL_KNOWLEDGE_ITEM_IDS.length);
-  // Original 10 (5 / 3 / 2) + Wave A Pillars 3-5 (+3 / +6 / +2) = 21 (8 / 9 / 4).
-  assert.equal(units.length, 21);
-  assert.equal(itemsForGroup("7-10").length, 8);
-  assert.equal(itemsForGroup("10-18").length, 9);
+  // Original 10 (5 / 3 / 2) + Wave A (+3 / +6 / +2) + Wave B (+3 / +11 / +0) = 35 (11 / 20 / 4).
+  assert.equal(units.length, 35);
+  assert.equal(itemsForGroup("7-10").length, 11);
+  assert.equal(itemsForGroup("10-18").length, 20);
   assert.equal(itemsForGroup("18+").length, 4);
   for (const group of ["7-10", "10-18", "18+"] as const) {
     for (const item of itemsForGroup(group)) assert.equal(item.group, group);
@@ -133,10 +133,34 @@ it("Wave A items cover Pillars 3-5 across age bands with verified answers", () =
   assert.equal(climb.correct, "Day 8");
 });
 
+it("Wave B items cover NGSS ESS/LS2 (T1-T2) and 100% of the lane11 Envirothon matrix (T3)", () => {
+  const envUnits = generalKnowledgeUnits().filter((u) => u.id.includes(":environment:"));
+  const envirothonUnits = generalKnowledgeUnits().filter((u) => u.id.includes(":envirothon:"));
+  assert.equal(envUnits.filter((u) => u.group === "7-10").length, 3);
+  assert.equal(envUnits.filter((u) => u.group === "10-18").length, 3);
+  assert.equal(envirothonUnits.length, 8);
+  for (const u of envirothonUnits) {
+    assert.equal(u.group, "10-18", `expected T3 ("10-18") for ${u.id}`);
+  }
+  const requiredEnvirothonIds = [
+    "general-knowledge:envirothon:soils-horizons",
+    "general-knowledge:envirothon:aquatic-macroinvertebrates",
+    "general-knowledge:envirothon:forestry-succession",
+    "general-knowledge:envirothon:wildlife-habitat-carrying-capacity",
+    "general-knowledge:envirothon:current-issue-station",
+    "general-knowledge:envirothon:oral-presentation",
+    "general-knowledge:envirothon:kansas-rangeland-management",
+  ];
+  const liveIds = new Set(GENERAL_KNOWLEDGE_ITEM_IDS);
+  for (const id of requiredEnvirothonIds) {
+    assert.ok(liveIds.has(id), `missing lane11 station item ${id}`);
+  }
+});
+
 it("the subject module matches contract I1 and is released", () => {
   assert.equal(generalKnowledgeModule.id, "general-knowledge");
   assert.equal(generalKnowledgeModule.released, true);
   assert.deepEqual(generalKnowledgeModule.groups, ["7-10", "10-18", "18+"]);
-  assert.equal(generalKnowledgeModule.units.length, 21);
+  assert.equal(generalKnowledgeModule.units.length, 35);
   assert.equal(typeof generalKnowledgeModule.load, "function");
 });

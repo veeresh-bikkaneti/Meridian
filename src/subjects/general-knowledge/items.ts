@@ -52,7 +52,8 @@ export type { SubjectItem, SubjectAnswer };
 /** The live slice: every multiple-choice-ready row, in deal order.
  *  Original 10 fixture items come first (preserving deal order and prefix
  *  equality against __fixtures__/main-7c04e3a7.json), followed by Wave A
- *  Pillars 3-5 items (road/bike/GDL safety, situational awareness, riddles). */
+ *  Pillars 3-5 items, followed by Wave B Pillar 2 Environmental Studies
+ *  (NGSS ESS/LS2 at T1-T2 and NCF-Envirothon + Kansas Rangeland at T3). */
 export const GENERAL_KNOWLEDGE_ITEM_IDS: readonly string[] = [
   // 7-10 (original 5)
   "general-knowledge:mixed:opera-years-ago",
@@ -81,6 +82,22 @@ export const GENERAL_KNOWLEDGE_ITEM_IDS: readonly string[] = [
   "general-knowledge:riddles:mislabeled-crates",
   "general-knowledge:riddles:sciolympiad-alibi-deduction",
   "general-knowledge:riddles:tournament-knockout",
+  // Wave B — Pillar 2: NGSS ESS / LS2 (T1: 7-10, T2: 10-18)
+  "general-knowledge:environment:weathering-erosion-layers",
+  "general-knowledge:environment:decomposers-matter-cycle",
+  "general-knowledge:environment:watershed-storm-runoff",
+  "general-knowledge:environment:rain-shadow-systems",
+  "general-knowledge:environment:plate-boundary-hazards",
+  "general-knowledge:environment:watershed-limiting-resource",
+  // Wave B — Pillar 2: NCF-Envirothon 5 Stations + Oral + Kansas Rangeland (T3: 10-18)
+  "general-knowledge:envirothon:soils-horizons",
+  "general-knowledge:envirothon:aquatic-macroinvertebrates",
+  "general-knowledge:envirothon:forestry-succession",
+  "general-knowledge:envirothon:wildlife-habitat-carrying-capacity",
+  "general-knowledge:envirothon:current-issue-station",
+  "general-knowledge:envirothon:oral-presentation",
+  "general-knowledge:envirothon:kansas-rangeland-management",
+  "general-knowledge:envirothon:rangeland-grazing-ecology",
 ];
 
 export const GENERAL_KNOWLEDGE_RECORDS: SubjectItem[] = [
@@ -392,7 +409,7 @@ export const GENERAL_KNOWLEDGE_RECORDS: SubjectItem[] = [
     "group": "7-10",
     "objective": "After this, a child can explain why children under 10 cross streets with a grown-up and wait for vehicles to come to a complete stop with driver eye contact before stepping into a crosswalk.",
     "standard": "UNVERIFIED",
-    "why": "Even when white stripes are painted across the road, a rolling car may not stop in time, and a driver might be looking the other way. Under NHTSA safety rules, children under ten need a grown-up when crossing—and checking that a driver actually sees you matters every time.",
+    "why": "Even when white stripes are painted across the road, a rolling car may not stop in time, and a driver might be looking the other way. Under NHTSA safety rules, children under ten need a grown-up when crossing—and following a clear curb check matters every time.",
     "buildsOn": [],
     "useElsewhere": [
       "everyday life: crossing neighborhood streets and parking lots safely with an adult"
@@ -419,7 +436,7 @@ export const GENERAL_KNOWLEDGE_RECORDS: SubjectItem[] = [
     "group": "10-18",
     "objective": "After this, a student can apply NHTSA Bicycle Safer Journey and MUTCD rules by riding on the right side in the same direction as traffic, wearing a fitted helmet, and obeying road signs.",
     "standard": "UNVERIFIED",
-    "why": "Cyclists share the road under traffic laws just like drivers, yet many riders guess wrong about which side of a two-way street to use. Riding the wrong way puts you head-on with cars and hides you from drivers turning out of driveways who only check one direction.",
+    "why": "Cyclists share the road under traffic laws just like drivers, yet many riders guess wrong about which side of a two-way street to use. Choosing the proper lane and direction keeps you predictable to drivers turning out of driveways and intersections.",
     "buildsOn": [
       "general-knowledge:safety:pedestrian-crossing"
     ],
@@ -706,6 +723,433 @@ export const GENERAL_KNOWLEDGE_RECORDS: SubjectItem[] = [
     },
     "provenance": {
       "source": "https://maa.org/student-programs/amc/",
+      "verifiedOn": "2026-11-26"
+    },
+    "media": [],
+    "leadPolicy": "answer-not-in-lead"
+  },
+  // ── Wave B — Pillar 2: NGSS ESS / LS2 (T1: 7-10, T2: 10-18) ───────
+  {
+    "id": "general-knowledge:environment:weathering-erosion-layers",
+    "group": "7-10",
+    "objective": "After this, a child can infer landscape history from rock layers and fossil locations, explaining that deeper undisturbed sedimentary layers formed earlier than layers near the top.",
+    "standard": {
+      "code": "ESS1.C",
+      "source": "https://www.nextgenscience.org/understanding-standards/understanding-standards"
+    },
+    "why": "Canyon walls often show stacked bands of rock with shells buried deep near the bottom and leaf prints higher up. Reading those bands is like turning pages in Earth's history book, where rain and wind slowly carve the surface.",
+    "buildsOn": [],
+    "useElsewhere": [
+      "geography: reading how rivers and rock layers record a landscape's past"
+    ],
+    "answer": {
+      "prompt": "In an undisturbed cliff of sedimentary rock layers, a fossil fish sits near the bottom layer and a fossil fern sits in a layer near the top. What do those rock layers tell you about the landscape's history?",
+      "choices": [
+        "The bottom layer formed earlier, when water covered the area before the upper land layer formed",
+        "The top layer is always older because rain washed it down from the sky",
+        "Both fossils formed on the exact same day during one afternoon storm"
+      ],
+      "correct": "The bottom layer formed earlier, when water covered the area before the upper land layer formed",
+      "derivation": "NGSS ESS1.C (3-5): landforms, weathering, erosion, and fossil order in rock layers show landscape history—undisturbed lower layers formed earlier than upper layers."
+    },
+    "provenance": {
+      "source": "https://www.nextgenscience.org/understanding-standards/understanding-standards",
+      "verifiedOn": "2026-11-26"
+    },
+    "media": [],
+    "leadPolicy": "answer-not-in-lead"
+  },
+  {
+    "id": "general-knowledge:environment:decomposers-matter-cycle",
+    "group": "7-10",
+    "objective": "After this, a child can model matter moving among plants, animals, decomposers, and the environment by identifying how decomposers recycle dead plant matter back into soil.",
+    "standard": {
+      "code": "5-LS2-1",
+      "source": "https://www.nextgenscience.org/search-standards?keys=&tid_3%5B0%5D=96&page=2"
+    },
+    "why": "Every autumn, fallen leaves blanket a forest floor, yet the woods are not buried under stacks of old leaves. Tiny living helpers break down dead plants and animals so matter keeps moving through the ecosystem.",
+    "buildsOn": [],
+    "useElsewhere": [
+      "biology: tracing nutrients from compost into garden plants"
+    ],
+    "answer": {
+      "prompt": "In a forest food web, fungi and earthworms break down fallen leaves and dead logs into rich soil nutrients that new trees take up. Which role do fungi and earthworms play in moving matter through the ecosystem?",
+      "choices": [
+        "Producers, because they turn sunlight into food inside green leaves",
+        "Decomposers, because they recycle dead matter back into the environment for plants to reuse",
+        "Top predators, because they hunt larger animals across the forest"
+      ],
+      "correct": "Decomposers, because they recycle dead matter back into the environment for plants to reuse",
+      "derivation": "NGSS 5-LS2-1: matter moves among plants, animals, decomposers, and the environment; decomposers break down dead material and return nutrients to soil."
+    },
+    "provenance": {
+      "source": "https://www.nextgenscience.org/search-standards?keys=&tid_3%5B0%5D=96&page=2",
+      "verifiedOn": "2026-11-26"
+    },
+    "media": [],
+    "leadPolicy": "answer-not-in-lead"
+  },
+  {
+    "id": "general-knowledge:environment:watershed-storm-runoff",
+    "group": "7-10",
+    "objective": "After this, a child can explain how surface cover affects water runoff and soil erosion during rainstorms, identifying why grassy slopes protect stream clarity better than bare dirt.",
+    "standard": {
+      "code": "ESS2.C",
+      "source": "https://www.nextgenscience.org/understanding-standards/understanding-standards"
+    },
+    "why": "After a heavy spring rainstorm, water rushes downhill toward local creeks and ponds. What covers the ground makes a huge difference to whether rainwater soaks in gently or carries mud straight into the stream.",
+    "buildsOn": [
+      "general-knowledge:environment:weathering-erosion-layers"
+    ],
+    "useElsewhere": [
+      "geography: understanding how riverbanks and hillside plants prevent flooding and mudslides"
+    ],
+    "answer": {
+      "prompt": "Two matching hillsides receive the same rainstorm: one hillside is covered in grass, and the other is bare plowed dirt. Which stream at the bottom stays clearer, and why?",
+      "choices": [
+        "The stream below the bare dirt, because mud sinks before water starts moving",
+        "The stream below the grassy hillside, because plant stems slow the runoff and roots hold soil in place",
+        "Both streams look identical because rainwater never touches the ground"
+      ],
+      "correct": "The stream below the grassy hillside, because plant stems slow the runoff and roots hold soil in place",
+      "derivation": "NGSS ESS2.C / ESS1.C (3-5): water shapes landforms through erosion and runoff, while vegetation slows surface flow and anchors soil."
+    },
+    "provenance": {
+      "source": "https://www.nextgenscience.org/understanding-standards/understanding-standards",
+      "verifiedOn": "2026-11-26"
+    },
+    "media": [],
+    "leadPolicy": "answer-not-in-lead"
+  },
+  {
+    "id": "general-knowledge:environment:rain-shadow-systems",
+    "group": "10-18",
+    "objective": "After this, a student can explain how Earth's water cycle, air-mass movement, and mountain landforms interact to produce wet windward slopes and dry rain-shadow valleys.",
+    "standard": {
+      "code": "MS-ESS2",
+      "source": "https://www.nextgenscience.org/search-standards"
+    },
+    "why": "Hikers on the ocean-facing side of a tall coastal mountain range often pack rain jackets, while towns just across the ridge sit in dry desert scrub. Rising air masses and landforms interact to create sharp local climate differences.",
+    "buildsOn": [
+      "general-knowledge:environment:watershed-storm-runoff"
+    ],
+    "useElsewhere": [
+      "geography: reading why deserts often sit just inland of coastal mountain ranges"
+    ],
+    "answer": {
+      "prompt": "Moist ocean wind blows up the west slope of a mountain range, cools as it rises, and drops heavy rain. What happens to that air mass as it descends the far east slope, creating a rain shadow?",
+      "choices": [
+        "It picks up extra moisture from mountain rocks and causes heavier floods on the east side",
+        "Having shed most of its water vapor while rising, the sinking air warms and stays dry",
+        "It freezes permanently at the peak and stops all wind from reaching the valley"
+      ],
+      "correct": "Having shed most of its water vapor while rising, the sinking air warms and stays dry",
+      "derivation": "NGSS MS-ESS2 (ESS2.C/D): moist air cools and condenses on the windward slope, then descends on the leeward side drier and warmer, creating a rain shadow."
+    },
+    "provenance": {
+      "source": "https://www.nextgenscience.org/search-standards",
+      "verifiedOn": "2026-11-26"
+    },
+    "media": [],
+    "leadPolicy": "answer-not-in-lead"
+  },
+  {
+    "id": "general-knowledge:environment:plate-boundary-hazards",
+    "group": "10-18",
+    "objective": "After this, a student can explain why earthquakes and active volcanoes cluster along narrow global belts by connecting natural hazards to interactions at tectonic plate boundaries.",
+    "standard": {
+      "code": "MS-ESS2",
+      "source": "https://www.nextgenscience.org/search-standards"
+    },
+    "why": "Earthquakes and active volcanoes do not appear randomly across the globe—plotting recent events on a world map reveals narrow belts winding across ocean basins and continental edges.",
+    "buildsOn": [
+      "general-knowledge:environment:weathering-erosion-layers"
+    ],
+    "useElsewhere": [
+      "geography: assessing earthquake and volcano risk along continental margins"
+    ],
+    "answer": {
+      "prompt": "Why do most major earthquakes and volcanic chains cluster along specific belts rather than occurring evenly across the middle of every continent?",
+      "choices": [
+        "Because ocean tides pull hardest only along the equator",
+        "Because Earth's crust is broken into moving tectonic plates whose edges collide, pull apart, or slide past one another",
+        "Because deep underground rivers carve caverns beneath mountain peaks"
+      ],
+      "correct": "Because Earth's crust is broken into moving tectonic plates whose edges collide, pull apart, or slide past one another",
+      "derivation": "NGSS MS-ESS2 (ESS2.B Plate Tectonics) and MS-ESS3: seismic and volcanic belts trace tectonic plate boundaries where lithospheric plates interact."
+    },
+    "provenance": {
+      "source": "https://www.nextgenscience.org/search-standards",
+      "verifiedOn": "2026-11-26"
+    },
+    "media": [],
+    "leadPolicy": "answer-not-in-lead"
+  },
+  {
+    "id": "general-knowledge:environment:watershed-limiting-resource",
+    "group": "10-18",
+    "objective": "After this, a student can analyse how nutrient runoff alters resource availability in an aquatic ecosystem, identifying dissolved-oxygen depletion after an algae bloom as the limiting factor for fish.",
+    "standard": {
+      "code": "MS-LS2-1",
+      "source": "https://www.nextgenscience.org/search-standards?keys=&tid_3%5B0%5D=96&page=2"
+    },
+    "why": "When warm summer runoff carries extra fertilizer into a shallow farm pond, the pond turns bright green overnight—yet days later, fish begin struggling at the surface. Tracking how resource shifts ripple through a food web explains the chain reaction.",
+    "buildsOn": [
+      "general-knowledge:environment:decomposers-matter-cycle",
+      "general-knowledge:environment:watershed-storm-runoff"
+    ],
+    "useElsewhere": [
+      "biology: connecting nutrient cycles to aquatic carrying capacity"
+    ],
+    "answer": {
+      "prompt": "Excess fertilizer washes into a pond, triggering a dense algae bloom that soon dies and is broken down by oxygen-using bacteria. What resource limit directly harms the pond's fish population afterward?",
+      "choices": [
+        "Too much sunlight reaching the bottom mud",
+        "Depleted dissolved oxygen in the water as bacteria consume it during decomposition",
+        "A sudden shortage of carbon dioxide for fish to breathe"
+      ],
+      "correct": "Depleted dissolved oxygen in the water as bacteria consume it during decomposition",
+      "derivation": "NGSS MS-LS2-1: resource availability governs ecosystem populations; decomposing an algae bloom consumes dissolved oxygen needed by aquatic animals."
+    },
+    "provenance": {
+      "source": "https://www.nextgenscience.org/search-standards?keys=&tid_3%5B0%5D=96&page=2",
+      "verifiedOn": "2026-11-26"
+    },
+    "media": [],
+    "leadPolicy": "answer-not-in-lead"
+  },
+  // ── Wave B — Pillar 2: NCF-Envirothon + Kansas Rangeland (T3: 10-18) ─
+  {
+    "id": "general-knowledge:envirothon:soils-horizons",
+    "group": "10-18",
+    "objective": "After this, a student can identify master soil horizons (A, E, B) in a soil profile and explain how soil texture, structure, and horizons inform land-capability and conservation decisions.",
+    "standard": "UNVERIFIED",
+    "why": "At the NCF-Envirothon Soils & Land Use station, teams step into a dug soil pit to judge whether a hillside can support crops, pasture, or forest without washing away. Color, texture, and distinct horizontal bands reveal how soil formed and how it drains.",
+    "buildsOn": [
+      "general-knowledge:environment:weathering-erosion-layers"
+    ],
+    "useElsewhere": [
+      "geography: matching land-use practices to slope and soil drainage"
+    ],
+    "answer": {
+      "prompt": "Inspecting a soil profile from the surface downward, you see a dark topsoil layer rich in organic matter (humus) above a lighter, leached layer and a denser clay-accumulating subsoil. Which sequence of master soil horizons are you looking at from top to bottom?",
+      "choices": [
+        "C -> B -> A (parent rock at the surface above topsoil)",
+        "A -> E -> B (organic-rich topsoil, leached eluvial layer, and subsoil of accumulation)",
+        "R -> O -> C (unweathered bedrock resting directly on fresh leaf litter)"
+      ],
+      "correct": "A -> E -> B (organic-rich topsoil, leached eluvial layer, and subsoil of accumulation)",
+      "derivation": "NCF-Envirothon Soils & Land Use station: standard downward mineral soil horizons proceed from A (topsoil with humus) through E (leached/eluvial) into B (subsoil where clay and minerals accumulate)."
+    },
+    "provenance": {
+      "source": "https://envirothon.org/the-competition/areas-of-study/",
+      "verifiedOn": "2026-11-26"
+    },
+    "media": [],
+    "leadPolicy": "answer-not-in-lead"
+  },
+  {
+    "id": "general-knowledge:envirothon:aquatic-macroinvertebrates",
+    "group": "10-18",
+    "objective": "After this, a student can interpret benthic macroinvertebrate indicators (EPT taxa versus pollution-tolerant species) alongside riparian buffers to assess watershed health.",
+    "standard": "UNVERIFIED",
+    "why": "Chemical test strips show a creek's condition for only a single moment, whereas tiny bottom-dwelling creatures living among stream rocks record conditions over weeks or months. Envirothon Aquatic Ecology teams pair both clues with riparian buffer checks to diagnose watershed health.",
+    "buildsOn": [
+      "general-knowledge:environment:watershed-limiting-resource"
+    ],
+    "useElsewhere": [
+      "biology: using biological indicator species to monitor stream ecosystems"
+    ],
+    "answer": {
+      "prompt": "A stream survey along a wooded riparian buffer finds abundant stonefly nymphs, mayfly nymphs, and caddisfly larvae (EPT taxa), while a downstream farm channel holds mostly bloodworms and leeches. What does this macroinvertebrate shift indicate?",
+      "choices": [
+        "The downstream channel has higher dissolved oxygen and cleaner gravel habitat",
+        "The wooded reach has healthy, well-oxygenated water, whereas the downstream reach shows pollution or low-oxygen stress",
+        "Stoneflies and mayflies only live in stagnant, muddy water with zero current"
+      ],
+      "correct": "The wooded reach has healthy, well-oxygenated water, whereas the downstream reach shows pollution or low-oxygen stress",
+      "derivation": "NCF-Envirothon Aquatic Ecology station: EPT macroinvertebrates (mayflies, stoneflies, caddisflies) require clean, well-oxygenated water, whereas bloodworms and leeches tolerate low-oxygen or degraded waters."
+    },
+    "provenance": {
+      "source": "https://envirothon.org/the-competition/areas-of-study/",
+      "verifiedOn": "2026-11-26"
+    },
+    "media": [],
+    "leadPolicy": "answer-not-in-lead"
+  },
+  {
+    "id": "general-knowledge:envirothon:forestry-succession",
+    "group": "10-18",
+    "objective": "After this, a student can distinguish secondary forest succession from primary succession and explain how canopy light and species traits shape woodland management.",
+    "standard": "UNVERIFIED",
+    "why": "At the NCF-Envirothon Forestry station, high school teams identify tree types, measure standing timber, and read how a woodland changes over decades after a fire or abandoned farm field. Knowing which trees thrive in open sun versus deep shade guides sustainable forest management.",
+    "buildsOn": [
+      "general-knowledge:environment:decomposers-matter-cycle"
+    ],
+    "useElsewhere": [
+      "biology: understanding ecological succession and timber stewardship"
+    ],
+    "answer": {
+      "prompt": "After a clear-cut or abandoned pasture is left untouched, fast-growing sun-loving pines establish first, gradually shading the forest floor so shade-tolerant oaks and maples can grow up beneath them. What ecological process is this?",
+      "choices": [
+        "Secondary forest succession, as species progressively alter light and soil conditions for later arrivals",
+        "Primary succession on bare volcanic lava where no soil previously existed",
+        "Clear-cutting regeneration, where all shade-tolerant hardwoods sprout before grasses"
+      ],
+      "correct": "Secondary forest succession, as species progressively alter light and soil conditions for later arrivals",
+      "derivation": "NCF-Envirothon Forestry station: when existing soil remains after disturbance, pioneer sun-loving trees establish first and modify understory shade and humus for slower-growing climax hardwoods in secondary succession."
+    },
+    "provenance": {
+      "source": "https://envirothon.org/the-competition/areas-of-study/",
+      "verifiedOn": "2026-11-26"
+    },
+    "media": [],
+    "leadPolicy": "answer-not-in-lead"
+  },
+  {
+    "id": "general-knowledge:envirothon:wildlife-habitat-carrying-capacity",
+    "group": "10-18",
+    "objective": "After this, a student can apply the wildlife limiting-factor principle across food, water, cover, and space to diagnose why a population stalls despite adding one abundant resource.",
+    "standard": "UNVERIFIED",
+    "why": "Wildlife managers cannot just count deer or songbirds in isolation—every species depends on multiple habitat ingredients working together. At the NCF-Envirothon Wildlife station, teams analyze wildlife numbers and habitat limits before recommending management actions.",
+    "buildsOn": [
+      "general-knowledge:environment:watershed-limiting-resource"
+    ],
+    "useElsewhere": [
+      "biology: evaluating carrying capacity and limiting factors in wildlife conservation"
+    ],
+    "answer": {
+      "prompt": "A grassland preserve expands winter food plots, yet bobwhite quail numbers stay flat because dense thorny shrubs for escaping predators are scarce across the open fields. Which habitat principle explains why quail numbers did not rise?",
+      "choices": [
+        "The limiting factor rule: a population is capped by whichever essential habitat component—here, protective cover—is scarcest",
+        "Competitive exclusion: quail leave any field that contains extra grain",
+        "Bioaccumulation: extra winter food builds up toxins in birds"
+      ],
+      "correct": "The limiting factor rule: a population is capped by whichever essential habitat component—here, protective cover—is scarcest",
+      "derivation": "NCF-Envirothon Wildlife station: habitat requires food, water, cover, and space in proper arrangement; when escape cover is scarce, adding more food cannot raise carrying capacity past the cover bottleneck."
+    },
+    "provenance": {
+      "source": "https://envirothon.org/the-competition/areas-of-study/",
+      "verifiedOn": "2026-11-26"
+    },
+    "media": [],
+    "leadPolicy": "answer-not-in-lead"
+  },
+  {
+    "id": "general-knowledge:envirothon:current-issue-station",
+    "group": "10-18",
+    "objective": "After this, a student can describe how NCF-Envirothon's rotating Current Environmental Issue functions as both a 100-point fifth field station and the shared theme of the Oral Presentation.",
+    "standard": "UNVERIFIED",
+    "why": "Beyond the four permanent natural-resource stations, NCF-Envirothon challenges teams each year with a rotating Current Environmental Issue such as Sustainable Agriculture or Water Resources. Every station exam carries an equal slice of the written field score.",
+    "buildsOn": [
+      "general-knowledge:envirothon:soils-horizons",
+      "general-knowledge:envirothon:aquatic-macroinvertebrates",
+      "general-knowledge:envirothon:forestry-succession",
+      "general-knowledge:envirothon:wildlife-habitat-carrying-capacity"
+    ],
+    "useElsewhere": [
+      "social-studies: linking environmental policy topics to scientific fieldwork"
+    ],
+    "answer": {
+      "prompt": "In the NCF-Envirothon competition format, how is the rotating Current Environmental Issue tested alongside Soils, Aquatics, Forestry, and Wildlife?",
+      "choices": [
+        "It is an optional essay for extra credit that replaces the Forestry station",
+        "It is the fifth hands-on station test (scored out of 100) AND serves as the shared topic for the team Oral Presentation",
+        "It is only a vocabulary quiz for ninth graders with no link to the oral round"
+      ],
+      "correct": "It is the fifth hands-on station test (scored out of 100) AND serves as the shared topic for the team Oral Presentation",
+      "derivation": "NCF-Envirothon official competition structure: teams take five 100-point station tests (Soils & Land Use, Aquatic Ecology, Forestry, Wildlife, and the annual Current Issue) plus a 200-point Oral Presentation on that Current Issue (700 points total)."
+    },
+    "provenance": {
+      "source": "https://envirothon.org/the-competition/",
+      "verifiedOn": "2026-11-26"
+    },
+    "media": [],
+    "leadPolicy": "answer-not-in-lead"
+  },
+  {
+    "id": "general-knowledge:envirothon:oral-presentation",
+    "group": "10-18",
+    "objective": "After this, a student can explain why NCF-Envirothon weights the Oral Presentation at 200 points: teams must integrate all five station areas into an actionable management plan for judges.",
+    "standard": "UNVERIFIED",
+    "why": "Field tests prove a team knows science facts, but conservation leaders also have to convince landowners, agencies, and communities to act. In the NCF-Envirothon Oral Presentation, a student team steps before a scoring panel to defend a practical solution.",
+    "buildsOn": [
+      "general-knowledge:envirothon:current-issue-station"
+    ],
+    "useElsewhere": [
+      "social-studies: communicating evidence-based public policy and land-use plans"
+    ],
+    "answer": {
+      "prompt": "Why does the NCF-Envirothon Oral Presentation carry double the points (200 points) of a single written station test (100 points)?",
+      "choices": [
+        "Because teams must synthesize all five resource areas into a feasible, real-world management plan for the annual Current Issue and answer judges' questions",
+        "Because teams recite memorized species lists faster than other schools",
+        "Because each judge awards points only for poster artwork and costumes"
+      ],
+      "correct": "Because teams must synthesize all five resource areas into a feasible, real-world management plan for the annual Current Issue and answer judges' questions",
+      "derivation": "NCF-Envirothon competition rules: each written station is scored out of 100 while the Oral Presentation is scored out of 200 (of 700 total), rewarding integrated management planning and defense before judges."
+    },
+    "provenance": {
+      "source": "https://envirothon.org/the-competition/",
+      "verifiedOn": "2026-11-26"
+    },
+    "media": [],
+    "leadPolicy": "answer-not-in-lead"
+  },
+  {
+    "id": "general-knowledge:envirothon:kansas-rangeland-management",
+    "group": "10-18",
+    "objective": "After this, a student can distinguish Kansas Envirothon's competition matrix—five core areas including Rangeland Management plus the annual Current Issue and Oral Presentation—from the misconception that Rangeland replaces Current Issue.",
+    "standard": "UNVERIFIED",
+    "why": "Prairie grasslands cover vast stretches of Kansas, where conservation districts track native grasses, grazing pressure, and prescribed fire together with forests and creeks. Kansas Envirothon reflects that landscape in its state-level testing structure on the path toward the international NCF-Envirothon.",
+    "buildsOn": [
+      "general-knowledge:envirothon:oral-presentation"
+    ],
+    "useElsewhere": [
+      "geography: seeing how state conservation contests adapt to regional biomes"
+    ],
+    "answer": {
+      "prompt": "How does Kansas Envirothon (organized by KACD and KACEE) test Rangeland Management relative to the international NCF-Envirothon categories?",
+      "choices": [
+        "Rangeland Management replaces the Aquatic Ecology station for all Kansas schools",
+        "Rangeland Management replaces both the annual Current Issue and the Oral Presentation",
+        "Kansas tests five core areas—adding Rangeland Management alongside Soils, Forestry, Wildlife, and Aquatics—PLUS the annual Current Environmental Issue and Oral Presentation"
+      ],
+      "correct": "Kansas tests five core areas—adding Rangeland Management alongside Soils, Forestry, Wildlife, and Aquatics—PLUS the annual Current Environmental Issue and Oral Presentation",
+      "derivation": "KACD and KACEE Kansas Envirothon structure: Kansas tests five core areas (Soils & Land Use, Forestry, Wildlife, Aquatic Ecology, and Rangeland Management) PLUS the annual Current Environmental Issue and Oral Presentation."
+    },
+    "provenance": {
+      "source": "https://www.kacd.net/envirothon.cfm",
+      "verifiedOn": "2026-11-26"
+    },
+    "media": [],
+    "leadPolicy": "answer-not-in-lead"
+  },
+  {
+    "id": "general-knowledge:envirothon:rangeland-grazing-ecology",
+    "group": "10-18",
+    "objective": "After this, a student can apply Kansas Rangeland Management principles by explaining how rotational grazing and adequate stubble height sustain deep prairie grass roots and prevent erosion.",
+    "standard": "UNVERIFIED",
+    "why": "On Kansas tallgrass and mixed-grass prairies, ranchers and conservationists balance livestock forage with wildlife nesting cover and ground protection. Overgrazing weakens perennial native bunchgrasses and opens bare ground to invasive weeds and washouts.",
+    "buildsOn": [
+      "general-knowledge:envirothon:kansas-rangeland-management",
+      "general-knowledge:environment:watershed-storm-runoff"
+    ],
+    "useElsewhere": [
+      "biology: connecting plant photosynthesis and root storage to grassland stewardship"
+    ],
+    "answer": {
+      "prompt": "In Kansas Rangeland Management, why do rotational grazing plans move cattle between pastures and leave a healthy stubble height on native prairie grasses before resting a paddock?",
+      "choices": [
+        "To allow grass leaves to photosynthesize and rebuild deep root reserves while preventing soil compaction and erosion",
+        "To force cattle to eat woody shrubs down to bare dirt every spring",
+        "To eliminate all deep-rooted native grasses so shallow annual weeds take over"
+      ],
+      "correct": "To allow grass leaves to photosynthesize and rebuild deep root reserves while preventing soil compaction and erosion",
+      "derivation": "KACD Kansas Rangeland Management principles: leaving adequate leaf stubble and rotating pastures lets perennial native grasses photosynthesize, restore deep root systems, hold soil against erosion, and maintain forage productivity."
+    },
+    "provenance": {
+      "source": "https://www.kacd.net/envirothon.cfm",
       "verifiedOn": "2026-11-26"
     },
     "media": [],

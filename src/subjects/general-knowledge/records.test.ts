@@ -133,7 +133,7 @@ it("validator accepts the live records and deal order matches GENERAL_KNOWLEDGE_
     GENERAL_KNOWLEDGE_RECORDS.map((r) => r.id),
     [...GENERAL_KNOWLEDGE_ITEM_IDS],
   );
-  // Every Wave A item (after the original 10) carries verified provenance.
+  // Every Wave A and Wave B item (after the original 10) carries verified provenance.
   for (const record of GENERAL_KNOWLEDGE_RECORDS.slice(10)) {
     assert.ok(
       typeof record.provenance === "object" &&
@@ -145,9 +145,9 @@ it("validator accepts the live records and deal order matches GENERAL_KNOWLEDGE_
 });
 
 it("projection preserves the frozen main fixture for the original 10 general-knowledge items", () => {
-  assert.equal(generalKnowledgeUnits().length, 21);
-  assert.equal(GENERAL_KNOWLEDGE_RECORDS.length, 21);
-  assert.equal(Object.keys(GENERAL_KNOWLEDGE_ANSWERS).length, 20);
+  assert.equal(generalKnowledgeUnits().length, 35);
+  assert.equal(GENERAL_KNOWLEDGE_RECORDS.length, 35);
+  assert.equal(Object.keys(GENERAL_KNOWLEDGE_ANSWERS).length, 34);
   // Original 10 items remain an exact prefix of generalKnowledgeUnits().
   assert.deepEqual(generalKnowledgeUnits().slice(0, 10), fixture.units);
   // The static answers map includes every entry of the frozen fixture
