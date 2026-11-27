@@ -1171,21 +1171,110 @@ export const resultCard = (page: Page) =>
   page.getByRole("region", { name: "Result" });
 
 /**
- * Commit a guaranteed miss: tap (500, 400); on the ~1% chance it lands
- * inside the 750 km hit radius, advance and retry.
+ * Commit a guaranteed miss: once the camera has settled, tap the on-map
+ * point farthest from the true spot (great-circle distance, read through
+ * the app's own live projection). A fixed tap point is not a miss at
+ * state zoom: (500, 400) could land inside a challenge's 87 km circle,
+ * the hit consumed the place, and the caller's loop ran past the last
+ * stop. Throws if the tap still scores a hit.
  */
 export async function commitMiss(
   page: Page,
   key: string = RUN_KEY,
 ): Promise<{ committedAt: number }> {
-  for (let attempt = 0; attempt < 3; attempt++) {
-    const { phase, committedAt } = await commitPin(page, 500, 400, key);
-    if (phase === "done") return { committedAt };
-    // Rare hit: move on and try the next place.
-    await clickNextPlace(page);
-    await expect.poll(() => readPhase(page, key), { timeout: 20_000 }).toBe("aim");
+  const spot = await settledSpotViewportPoint(page);
+  if (!spot) throw new Error("commitMiss: the map reports no spot");
+  const tap = await farthestMapPointFrom(page, spot);
+  const { phase, committedAt } = await commitPin(page, tap.x, tap.y, key);
+  if (phase !== "done") {
+    throw new Error(
+      `commitMiss: tap (${tap.x}, ${tap.y}) ${Math.round(tap.km)} km from the spot scored a hit (phase ${phase})`,
+    );
   }
-  throw new Error("commitMiss: (500, 400) hit three places in a row");
+  return { committedAt };
+}
+
+/**
+ * The tappable map point (viewport px, integers) farthest from `spot`,
+ * with its great-circle distance in km. Inverts the app's live
+ * projection numerically (Newton on map.project), so it holds for the
+ * globe and for flat views alike; a point whose inversion does not
+ * round-trip (off the globe) or that sits under chrome is skipped.
+ */
+async function farthestMapPointFrom(
+  page: Page,
+  spot: { x: number; y: number },
+): Promise<{ x: number; y: number; km: number }> {
+  const best = await page.locator(".satellite-map").evaluate((el, target) => {
+    const project = (
+      el as unknown as {
+        __project?: (lon: number, lat: number) => { x: number; y: number } | null;
+      }
+    ).__project;
+    if (typeof project !== "function") return null;
+    const r = el.getBoundingClientRect();
+    const toView = (lon: number, lat: number) => {
+      const p = project(lon, lat);
+      return p ? { x: r.left + p.x, y: r.top + p.y } : null;
+    };
+    const lon0 = Number(el.getAttribute("data-center-lng")) || 0;
+    const lat0 = Number(el.getAttribute("data-center-lat")) || 0;
+    const unproject = (x: number, y: number): [number, number] | null => {
+      let lon = lon0;
+      let lat = lat0;
+      for (let i = 0; i < 40; i++) {
+        const p = toView(lon, lat);
+        const px = toView(lon + 1e-3, lat);
+        const py = toView(lon, lat + 1e-3);
+        if (!p || !px || !py) return null;
+        const ex = x - p.x;
+        const ey = y - p.y;
+        if (Math.hypot(ex, ey) < 0.5) return [lon, lat];
+        const a = (px.x - p.x) / 1e-3;
+        const b = (py.x - p.x) / 1e-3;
+        const c = (px.y - p.y) / 1e-3;
+        const d = (py.y - p.y) / 1e-3;
+        const det = a * d - b * c;
+        if (!Number.isFinite(det) || Math.abs(det) < 1e-9) return null;
+        let dLon = (d * ex - b * ey) / det;
+        let dLat = (a * ey - c * ex) / det;
+        const step = Math.hypot(dLon, dLat);
+        if (step > 10) {
+          dLon *= 10 / step;
+          dLat *= 10 / step;
+        }
+        lon += dLon;
+        lat = Math.max(-85, Math.min(85, lat + dLat));
+      }
+      return null;
+    };
+    const km = (a: [number, number], b: [number, number]) => {
+      const rad = Math.PI / 180;
+      const dLat = (b[1] - a[1]) * rad;
+      const dLon = (b[0] - a[0]) * rad;
+      const h =
+        Math.sin(dLat / 2) ** 2 +
+        Math.cos(a[1] * rad) * Math.cos(b[1] * rad) * Math.sin(dLon / 2) ** 2;
+      return 2 * 6371 * Math.asin(Math.min(1, Math.sqrt(h)));
+    };
+    const spotLngLat = unproject(target.x, target.y);
+    if (!spotLngLat) return null;
+    let found: { x: number; y: number; km: number } | null = null;
+    for (let fx = 0.15; fx <= 0.851; fx += 0.0875) {
+      for (let fy = 0.2; fy <= 0.801; fy += 0.075) {
+        const x = Math.round(r.left + r.width * fx);
+        const y = Math.round(r.top + r.height * fy);
+        if (!document.elementFromPoint(x, y)?.closest(".maplibregl-canvas-container")) continue;
+        const ll = unproject(x, y);
+        if (!ll) continue;
+        const d = km(spotLngLat, ll);
+        if (!found || d > found.km) found = { x, y, km: d };
+      }
+    }
+    return found;
+  }, spot);
+  if (!best) throw new Error("commitMiss: found no tappable map point to miss with");
+  return best;
 }
 
 /** How long the projected spot must hold still to count as settled. */
