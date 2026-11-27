@@ -121,14 +121,18 @@ it("validator accepts the live records, known giveaway case included", () => {
   validatePhysicsRecords(PHYSICS_RECORDS);
 });
 
-it("projection equals the frozen main fixture for all 24 physics items", () => {
-  assert.equal(physicsUnits().length, 24);
-  assert.equal(Object.keys(PHYSICS_ANSWERS).length, 24);
-  assert.deepEqual(physicsUnits(), fixture.units);
-  assert.deepEqual(PHYSICS_ANSWERS, fixture.answers);
-  // Deal order is part of the projection, not just the set of ids.
+it("projection preserves the frozen main fixture for all 24 original physics items", () => {
+  const units = physicsUnits();
+  const fixtureIds = new Set((fixture.units as { id: string }[]).map((u) => u.id));
+  assert.equal(units.length, 26);
+  assert.equal(Object.keys(PHYSICS_ANSWERS).length, 26);
+  assert.deepEqual(units.slice(0, fixture.units.length), fixture.units);
+  for (const [id, expected] of Object.entries(fixture.answers)) {
+    assert.deepEqual(PHYSICS_ANSWERS[id], expected, id);
+  }
+  // Original deal order is preserved as a prefix/subset.
   assert.deepEqual(
-    physicsUnits().map((u) => u.id),
+    units.filter((u) => fixtureIds.has(u.id)).map((u) => u.id),
     (fixture.units as { id: string }[]).map((u) => u.id),
   );
 });

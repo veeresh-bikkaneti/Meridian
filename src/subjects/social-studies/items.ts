@@ -66,6 +66,9 @@ export const SOCIAL_STUDIES_ITEM_IDS: readonly string[] = [
   "social-studies:region:flat-map-area",
   "social-studies:route:great-circle",
   "social-studies:compare:trip-cost",
+  // 10-18 — Wave C (C3 Framework 9-12 quantitative T3)
+  "social-studies:economics:real-purchasing-power",
+  "social-studies:region:water-demand-projection",
 ];
 
 export const SOCIAL_STUDIES_RECORDS: SubjectItem[] = [
@@ -425,6 +428,77 @@ export const SOCIAL_STUDIES_RECORDS: SubjectItem[] = [
       "derivation": "Toll road: $10 + $6 = $16. Free road: $13. $16 − $13 = $3, so the free road costs $3 less."
     },
     "provenance": "UNVERIFIED",
+    "media": [],
+    "leadPolicy": "answer-not-in-lead"
+  },
+  // ── Wave C — T3 (10-18, High School C3 Framework 9-12) ────────────
+  {
+    "id": "social-studies:economics:real-purchasing-power",
+    "group": "10-18",
+    "objective": "After this, a learner can calculate how nominal wage growth and price-index inflation combine to change real purchasing power, shown by selecting the inflation-adjusted hourly wage.",
+    "standard": {
+      "code": "D2.Eco.1.9-12",
+      "source": "https://www.socialstudies.org/system/files/2021-12/se-85062021332.pdf"
+    },
+    "why": "A raise in paycheck numbers does not always buy more goods if everyday prices climb faster over the same stretch. Measuring true purchasing power requires adjusting nominal pay by the price index.",
+    "buildsOn": [
+      "math-number:fractions:percent",
+      "social-studies:compare:trip-cost"
+    ],
+    "useElsewhere": [
+      "personal finance: checking whether a pay raise keeps pace with rising prices"
+    ],
+    "answer": {
+      "prompt": "In an example economy, a worker earns $20.00 per hour when the price index is 100. A year later, nominal pay rises by 10% while the price index rises to 125. What is the worker's new real hourly pay in base-index dollars?",
+      "choices": [
+        "$17.00",
+        "$17.60",
+        "$18.40",
+        "$22.00"
+      ],
+      "correct": "$17.60",
+      "value": 17.6,
+      "derivation": "Step 1: nominal hourly pay = $20.00 × 1.10 = $22.00. Step 2: deflate by the price index (125 / 100 = 1.25): real pay = $22.00 / 1.25 = $17.60 (a 12% drop in purchasing power, rather than the 15% difference from subtracting 25% − 10%)."
+    },
+    "provenance": {
+      "source": "https://www.socialstudies.org/system/files/2021-12/se-85062021332.pdf",
+      "verifiedOn": "2026-11-26"
+    },
+    "media": [],
+    "leadPolicy": "answer-not-in-lead"
+  },
+  {
+    "id": "social-studies:region:water-demand-projection",
+    "group": "10-18",
+    "objective": "After this, a learner can project total municipal resource demand by combining percentage population change and percentage per-capita consumption change, shown by computing total daily water demand.",
+    "standard": {
+      "code": "D2.Geo.11.9-12",
+      "source": "https://www.socialstudies.org/system/files/2021-12/se-85062021332.pdf"
+    },
+    "why": "Growing cities often pair water-saving rules with new housing so municipal reservoirs stay within capacity. Predicting whether a water supply will hold requires multiplying the changed population by the changed per-person rate rather than adding percentage changes.",
+    "buildsOn": [
+      "social-studies:region:density",
+      "math-number:fractions:percent"
+    ],
+    "useElsewhere": [
+      "urban planning: sizing municipal infrastructure for growing populations"
+    ],
+    "answer": {
+      "prompt": "An example coastal city of 400,000 residents uses 150 liters of water per person each day. If the population grows by 50% while conservation lowers per-person daily use by 20%, what is the city's new total daily water demand?",
+      "choices": [
+        "48 million liters",
+        "72 million liters",
+        "78 million liters",
+        "90 million liters"
+      ],
+      "correct": "72 million liters",
+      "value": 72,
+      "derivation": "Step 1: new population = 400,000 × 1.50 = 600,000 residents. Step 2: new per-person daily use = 150 L × (1 − 0.20) = 120 L/person. Step 3: total daily demand = 600,000 × 120 L = 72,000,000 L = 72 million liters."
+    },
+    "provenance": {
+      "source": "https://www.socialstudies.org/system/files/2021-12/se-85062021332.pdf",
+      "verifiedOn": "2026-11-26"
+    },
     "media": [],
     "leadPolicy": "answer-not-in-lead"
   }

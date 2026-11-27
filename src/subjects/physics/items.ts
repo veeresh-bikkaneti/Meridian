@@ -61,6 +61,9 @@ export const PHYSICS_ITEM_IDS: readonly string[] = [
   "physics:ramp:adult-ratio",
   "physics:arrive:adult-time",
   "physics:energy:missing",
+  // 10-18 — Wave C (F=ma / USAPhO T3 ceiling)
+  "physics:dynamics:atwood-acceleration",
+  "physics:momentum:inelastic-climb",
 ];
 
 export const PHYSICS_RECORDS: SubjectItem[] = [
@@ -755,6 +758,77 @@ export const PHYSICS_RECORDS: SubjectItem[] = [
       "derivation": "3 = energy in − 2, so energy in = 3 + 2 = 5 units."
     },
     "provenance": "UNVERIFIED",
+    "media": [],
+    "leadPolicy": "answer-not-in-lead"
+  },
+  // ── Wave C — T3 (10-18, High School F=ma / USAPhO ceiling) ─────────
+  {
+    "id": "physics:dynamics:atwood-acceleration",
+    "group": "10-18",
+    "objective": "After this, a learner can compute the acceleration of a two-block Atwood machine from net gravitational force and total mass, shown by selecting the acceleration in m/s².",
+    "standard": {
+      "code": "HS-PS2-1",
+      "source": "https://www.nextgenscience.org/search-standards"
+    },
+    "why": "Two unequal blocks hang over a light frictionless pulley. Neither block falls freely on its own because the cord pulls upward on both; finding how fast the system speeds up requires balancing the whole pair together.",
+    "buildsOn": [
+      "physics:push:mass",
+      "physics:push:table"
+    ],
+    "useElsewhere": [
+      "engineering: elevator counterweights that reduce motor force"
+    ],
+    "answer": {
+      "prompt": "A 6 kg block and a 4 kg block hang from opposite ends of a light cord over a frictionless pulley. Taking g = 10 m/s², what is the magnitude of the blocks' acceleration?",
+      "choices": [
+        "2 m/s²",
+        "5 m/s²",
+        "6 m/s²",
+        "10 m/s²"
+      ],
+      "correct": "2 m/s²",
+      "value": 2,
+      "derivation": "Net driving force is (6 kg − 4 kg) × 10 m/s² = 20 N. Total accelerating mass is 6 kg + 4 kg = 10 kg, so a = F_net / m_total = 20 N / 10 kg = 2 m/s²."
+    },
+    "provenance": {
+      "source": "https://aapt.org/physicsteam/",
+      "verifiedOn": "2026-11-26"
+    },
+    "media": [],
+    "leadPolicy": "answer-not-in-lead"
+  },
+  {
+    "id": "physics:momentum:inelastic-climb",
+    "group": "10-18",
+    "objective": "After this, a learner can combine momentum conservation during a sticking collision with mechanical energy conservation afterward to compute the maximum height reached on a frictionless ramp.",
+    "standard": {
+      "code": "HS-PS2-2",
+      "source": "https://www.nextgenscience.org/search-standards"
+    },
+    "why": "When a moving cart latches onto an identical parked cart, kinetic energy is lost in the latch even though total momentum is unchanged. Predicting how high the coupled pair climbs a smooth ramp requires applying each conservation law in its own step.",
+    "buildsOn": [
+      "physics:ramp:higher-stored",
+      "physics:energy:transfer"
+    ],
+    "useElsewhere": [
+      "automotive safety: why coupled collisions dissipate kinetic energy as heat and deformation"
+    ],
+    "answer": {
+      "prompt": "A 2 kg cart sliding at 20 m/s on a frictionless track collides and latches onto an identical 2 kg cart at rest. The coupled pair then coasts up a frictionless ramp. Taking g = 10 m/s², what maximum vertical height does the pair reach?",
+      "choices": [
+        "2 m",
+        "5 m",
+        "10 m",
+        "20 m"
+      ],
+      "correct": "5 m",
+      "value": 5,
+      "derivation": "Step 1 (momentum conservation during the latch): (2 kg)(20 m/s) = (2 kg + 2 kg) v_f, so v_f = 10 m/s. Step 2 (energy conservation up the smooth ramp): (1/2) M v_f² = M g h, so h = v_f² / (2g) = (10 m/s)² / (2 × 10 m/s²) = 5 m."
+    },
+    "provenance": {
+      "source": "https://aapt.org/physicsteam/",
+      "verifiedOn": "2026-11-26"
+    },
     "media": [],
     "leadPolicy": "answer-not-in-lead"
   }

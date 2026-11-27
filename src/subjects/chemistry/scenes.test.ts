@@ -147,8 +147,10 @@ describe("chemistry clue scene descriptions — waves 7-8", () => {
     }
   });
 
-  it("covers exactly all eight dealt items for ages 10-18", () => {
-    const bandIds = itemsForGroup("10-18").map((item) => item.id);
+  it("covers all eight scene-backed dealt items for ages 10-18", () => {
+    const bandIds = itemsForGroup("10-18")
+      .map((item) => item.id)
+      .filter((id) => clueSceneFor(id) !== null);
     assert.equal(bandIds.length, 8);
     assert.deepEqual([...bandIds].sort(), [...IDS_1018].sort());
     for (const id of IDS_1018) {

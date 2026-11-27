@@ -121,14 +121,18 @@ it("validator accepts the live records, known giveaway case included", () => {
   validateChemistryRecords(CHEMISTRY_RECORDS);
 });
 
-it("projection equals the frozen main fixture for all 16 chemistry items", () => {
-  assert.equal(chemistryUnits().length, 16);
-  assert.equal(Object.keys(CHEMISTRY_ANSWERS).length, 16);
-  assert.deepEqual(chemistryUnits(), fixture.units);
-  assert.deepEqual(CHEMISTRY_ANSWERS, fixture.answers);
-  // Deal order is part of the projection, not just the set of ids.
+it("projection preserves the frozen main fixture for all 16 original chemistry items", () => {
+  const units = chemistryUnits();
+  const fixtureIds = new Set((fixture.units as { id: string }[]).map((u) => u.id));
+  assert.equal(units.length, 18);
+  assert.equal(Object.keys(CHEMISTRY_ANSWERS).length, 18);
+  assert.deepEqual(units.slice(0, fixture.units.length), fixture.units);
+  for (const [id, expected] of Object.entries(fixture.answers)) {
+    assert.deepEqual(CHEMISTRY_ANSWERS[id], expected, id);
+  }
+  // Original deal order is preserved as a prefix/subset.
   assert.deepEqual(
-    chemistryUnits().map((u) => u.id),
+    units.filter((u) => fixtureIds.has(u.id)).map((u) => u.id),
     (fixture.units as { id: string }[]).map((u) => u.id),
   );
 });

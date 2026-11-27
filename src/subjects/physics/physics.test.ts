@@ -20,11 +20,11 @@ it("adapter reads every curated physics row", () => {
   }
 });
 
-it("the live slice holds every curated row, each in its own band", () => {
+it("the live slice holds every curated row plus Wave C T3 items, each in its own band", () => {
   const units = physicsUnits();
   assert.equal(units.length, PHYSICS_ITEM_IDS.length);
-  assert.equal(units.length, 24);
-  const perBand = { "7-10": 12, "10-18": 9, "18+": 3 } as const;
+  assert.equal(units.length, 26);
+  const perBand = { "7-10": 12, "10-18": 11, "18+": 3 } as const;
   for (const group of ["7-10", "10-18", "18+"] as const) {
     const items = itemsForGroup(group);
     assert.equal(items.length, perBand[group], group);
@@ -55,6 +55,8 @@ it("each numeric answer matches its derivation", () => {
     "physics:push:equal-pushes": 4 * 2,
     "physics:arrive:adult-time": 12 / 4,
     "physics:energy:missing": 3 + 2,
+    "physics:dynamics:atwood-acceleration": ((6 - 4) * 10) / (6 + 4),
+    "physics:momentum:inelastic-climb": (((2 * 20) / (2 + 2)) ** 2) / (2 * 10),
   };
   for (const [id, expected] of Object.entries(recompute)) {
     const entry = answerFor(id);
@@ -79,6 +81,6 @@ it("the subject module matches contract I1 and is released", () => {
   assert.equal(physicsModule.id, "physics");
   assert.equal(physicsModule.released, true);
   assert.deepEqual(physicsModule.groups, ["7-10", "10-18", "18+"]);
-  assert.equal(physicsModule.units.length, 24);
+  assert.equal(physicsModule.units.length, 26);
   assert.equal(typeof physicsModule.load, "function");
 });

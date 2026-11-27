@@ -74,6 +74,9 @@ export const CHEMISTRY_ITEM_IDS: readonly string[] = [
   "chemistry:reactions:rate",
   "chemistry:reactions:mass",
   "chemistry:reactions:explain",
+  // 10-18 — Wave C (USNCO T3 ceiling)
+  "chemistry:stoichiometry:limiting-reactant-yield",
+  "chemistry:solutions:neutralization-molarity",
 ];
 
 export const CHEMISTRY_RECORDS: SubjectItem[] = [
@@ -529,6 +532,77 @@ export const CHEMISTRY_RECORDS: SubjectItem[] = [
       "derivation": "Elements in the same column share outer-electron patterns, so they react in similar ways."
     },
     "provenance": "UNVERIFIED",
+    "media": [],
+    "leadPolicy": "answer-not-in-lead"
+  },
+  // ── Wave C — T3 (10-18, High School USNCO ceiling) ────────────────
+  {
+    "id": "chemistry:stoichiometry:limiting-reactant-yield",
+    "group": "10-18",
+    "objective": "After this, a learner can identify the limiting reactant from mass inputs and compute the mass of product formed using molar masses and a balanced chemical equation.",
+    "standard": {
+      "code": "HS-PS1-7",
+      "source": "https://www.nextgenscience.org/search-standards"
+    },
+    "why": "In a sealed reactor, one reactant runs out before the other is used up. Finding the mass of carbon dioxide formed means converting each reactant mass to moles and checking the balanced mole ratio.",
+    "buildsOn": [
+      "chemistry:reactions:weight",
+      "chemistry:reactions:mass"
+    ],
+    "useElsewhere": [
+      "chemical engineering: sizing reactant feeds to avoid wasted excess"
+    ],
+    "answer": {
+      "prompt": "Methane burns via CH₄ + 2 O₂ → CO₂ + 2 H₂O (molar masses: CH₄ = 16 g/mol, O₂ = 32 g/mol, CO₂ = 44 g/mol). If 32 g of CH₄ reacts with 96 g of O₂, what mass of CO₂ forms?",
+      "choices": [
+        "44 g",
+        "66 g",
+        "88 g",
+        "132 g"
+      ],
+      "correct": "66 g",
+      "value": 66,
+      "derivation": "Step 1: moles CH₄ = 32 g / 16 g/mol = 2.0 mol; moles O₂ = 96 g / 32 g/mol = 3.0 mol. Step 2: 2.0 mol CH₄ requires 4.0 mol O₂, so O₂ is limiting. Step 3: moles CO₂ = 3.0 mol O₂ × (1 mol CO₂ / 2 mol O₂) = 1.5 mol; mass CO₂ = 1.5 mol × 44 g/mol = 66 g."
+    },
+    "provenance": {
+      "source": "https://www.acs.org/education/olympiad/rules-and-eligibility.html",
+      "verifiedOn": "2026-11-26"
+    },
+    "media": [],
+    "leadPolicy": "answer-not-in-lead"
+  },
+  {
+    "id": "chemistry:solutions:neutralization-molarity",
+    "group": "10-18",
+    "objective": "After this, a learner can compute an unknown acid molarity from titration volume and base molarity using balanced neutralization stoichiometry.",
+    "standard": {
+      "code": "HS-PS1-7",
+      "source": "https://www.nextgenscience.org/search-standards"
+    },
+    "why": "When a diprotic acid reacts with a strong base in a titration, each acid molecule supplies twice as many hydrogen ions as a monoprotic acid. Determining the unknown concentration requires tracking moles through the balanced neutralization ratio.",
+    "buildsOn": [
+      "chemistry:mixtures:dissolve",
+      "chemistry:reactions:mass"
+    ],
+    "useElsewhere": [
+      "analytical chemistry: standardizing acid and base solutions in laboratory titrations"
+    ],
+    "answer": {
+      "prompt": "A 25 mL sample of H₂SO₄ is completely neutralized by 30 mL of 0.50 M NaOH via H₂SO₄ + 2 NaOH → Na₂SO₄ + 2 H₂O. What is the molarity of the H₂SO₄ solution?",
+      "choices": [
+        "0.15 M",
+        "0.30 M",
+        "0.60 M",
+        "1.20 M"
+      ],
+      "correct": "0.30 M",
+      "value": 0.3,
+      "derivation": "Step 1: moles NaOH = 0.50 mol/L × 0.030 L = 0.015 mol. Step 2: 1 mol H₂SO₄ reacts per 2 mol NaOH, so moles H₂SO₄ = 0.015 mol / 2 = 0.0075 mol. Step 3: molarity = 0.0075 mol / 0.025 L = 0.30 M."
+    },
+    "provenance": {
+      "source": "https://www.acs.org/education/olympiad/rules-and-eligibility.html",
+      "verifiedOn": "2026-11-26"
+    },
     "media": [],
     "leadPolicy": "answer-not-in-lead"
   }

@@ -21,11 +21,11 @@ it("adapter reads every curated chemistry row", () => {
   }
 });
 
-it("the live slice holds every playable row, each in its own band", () => {
+it("the live slice holds every playable row plus Wave C T3 items, each in its own band", () => {
   const units = chemistryUnits();
   assert.equal(units.length, CHEMISTRY_ITEM_IDS.length);
-  assert.equal(units.length, 16);
-  const perBand = { "7-10": 5, "10-18": 8, "18+": 3 } as const;
+  assert.equal(units.length, 18);
+  const perBand = { "7-10": 5, "10-18": 10, "18+": 3 } as const;
   for (const group of ["7-10", "10-18", "18+"] as const) {
     const items = itemsForGroup(group);
     assert.equal(items.length, perBand[group], group);
@@ -65,12 +65,17 @@ it("every curated row is listed except the held one, and the held one stays out"
   }
 });
 
-it("no chemistry answer is numeric or year-based, so the value/clock clauses are vacuous here", () => {
-  // No chemistry row has a numeric answer (nothing needs the typed-number
-  // kind) and none is year-based, so no entry carries value and no test
-  // needs a pinned clock. If a future row adds either, this test must go.
+it("each numeric chemistry answer matches its derivation and no answer is year-based", () => {
+  const recompute: Record<string, number> = {
+    "chemistry:stoichiometry:limiting-reactant-yield": ((96 / 32) / 2) * 44,
+    "chemistry:solutions:neutralization-molarity": ((0.5 * 0.03) / 2) / 0.025,
+  };
+  for (const [id, expected] of Object.entries(recompute)) {
+    const entry = answerFor(id);
+    assert.ok(entry, id);
+    assert.equal(entry.value, expected, id);
+  }
   for (const [id, entry] of Object.entries(CHEMISTRY_ANSWERS)) {
-    assert.equal(entry.value, undefined, id);
     assert.ok(!/\b(19|20)\d\d\b/.test(`${entry.prompt} ${entry.derivation}`), id);
   }
 });
@@ -114,6 +119,6 @@ it("the subject module matches contract I1 and is released", () => {
   assert.equal(chemistryModule.id, "chemistry");
   assert.equal(chemistryModule.released, true);
   assert.deepEqual(chemistryModule.groups, ["7-10", "10-18", "18+"]);
-  assert.equal(chemistryModule.units.length, 16);
+  assert.equal(chemistryModule.units.length, 18);
   assert.equal(typeof chemistryModule.load, "function");
 });

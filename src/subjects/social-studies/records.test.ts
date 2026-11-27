@@ -118,14 +118,18 @@ it("validator accepts the live records", () => {
   validateSocialStudiesRecords(SOCIAL_STUDIES_RECORDS);
 });
 
-it("projection equals the frozen main fixture for all 12 social-studies items", () => {
-  assert.equal(socialStudiesUnits().length, 12);
-  assert.equal(Object.keys(SOCIAL_STUDIES_ANSWERS).length, 12);
-  assert.deepEqual(socialStudiesUnits(), fixture.units);
-  assert.deepEqual(SOCIAL_STUDIES_ANSWERS, fixture.answers);
-  // Deal order is part of the projection, not just the set of ids.
+it("projection preserves the frozen main fixture for all 12 original social-studies items", () => {
+  const units = socialStudiesUnits();
+  const fixtureIds = new Set((fixture.units as { id: string }[]).map((u) => u.id));
+  assert.equal(units.length, 14);
+  assert.equal(Object.keys(SOCIAL_STUDIES_ANSWERS).length, 14);
+  assert.deepEqual(units.slice(0, fixture.units.length), fixture.units);
+  for (const [id, expected] of Object.entries(fixture.answers)) {
+    assert.deepEqual(SOCIAL_STUDIES_ANSWERS[id], expected, id);
+  }
+  // Original deal order is preserved as a prefix/subset.
   assert.deepEqual(
-    socialStudiesUnits().map((u) => u.id),
+    units.filter((u) => fixtureIds.has(u.id)).map((u) => u.id),
     (fixture.units as { id: string }[]).map((u) => u.id),
   );
 });

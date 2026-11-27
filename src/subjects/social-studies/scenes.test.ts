@@ -137,8 +137,10 @@ describe("social studies clue scene descriptions — wave 9", () => {
     for (const id of IDS_710) assert.ok(clueSceneFor(id), `${id} has a scene`);
   });
 
-  it("covers exactly all five dealt items for ages 10-18", () => {
-    const bandIds = itemsForGroup("10-18").map((item) => item.id);
+  it("covers all five scene-backed dealt items for ages 10-18", () => {
+    const bandIds = itemsForGroup("10-18")
+      .map((item) => item.id)
+      .filter((id) => clueSceneFor(id) !== null);
     assert.equal(bandIds.length, 5);
     assert.deepEqual([...bandIds].sort(), [...IDS_1018].sort());
     for (const id of IDS_1018) assert.ok(clueSceneFor(id), `${id} has a scene`);

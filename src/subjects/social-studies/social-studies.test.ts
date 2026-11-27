@@ -26,12 +26,12 @@ it("adapter reads every curated social-studies row", () => {
   }
 });
 
-it("the live slice holds the v1 items plus the v2 wave, each in its own band", () => {
+it("the live slice holds the v1 items, the v2 wave, and Wave C T3 items, each in its own band", () => {
   const units = socialStudiesUnits();
   assert.equal(units.length, SOCIAL_STUDIES_ITEM_IDS.length);
-  assert.equal(units.length, 12);
+  assert.equal(units.length, 14);
   assert.equal(itemsForGroup("7-10").length, 4);
-  assert.equal(itemsForGroup("10-18").length, 5);
+  assert.equal(itemsForGroup("10-18").length, 7);
   assert.equal(itemsForGroup("18+").length, 3);
   for (const group of ["7-10", "10-18", "18+"] as const) {
     for (const item of itemsForGroup(group)) assert.equal(item.group, group);
@@ -62,6 +62,8 @@ it("each numeric answer matches its derivation", () => {
     "social-studies:route:scale-ratio": (7 * 50_000) / 100_000,
     "social-studies:route:travel-time": 90 / 15,
     "social-studies:compare:trip-cost": 10 + 6 - 13,
+    "social-studies:economics:real-purchasing-power": (20 * 1.1) / 1.25,
+    "social-studies:region:water-demand-projection": (400_000 * 1.5 * (150 * 0.8)) / 1_000_000,
   };
   for (const [id, expected] of Object.entries(recompute)) {
     const entry = answerFor(id);
@@ -105,6 +107,6 @@ it("the subject module matches contract I1 and is released", () => {
   assert.equal(socialStudiesModule.id, "social-studies");
   assert.equal(socialStudiesModule.released, true);
   assert.deepEqual(socialStudiesModule.groups, ["7-10", "10-18", "18+"]);
-  assert.equal(socialStudiesModule.units.length, 12);
+  assert.equal(socialStudiesModule.units.length, 14);
   assert.equal(typeof socialStudiesModule.load, "function");
 });

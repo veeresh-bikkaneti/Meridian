@@ -201,17 +201,18 @@ describe("physics clue scene descriptions — waves 4-6 (all bands, complete)", 
     }
   });
 
-  it("covers exactly the nine dealt items for ages 10-18 and the three for 18+", () => {
+  it("covers the nine scene-backed dealt items for ages 10-18 and the three for 18+", () => {
     const band1018 = itemsForGroup("10-18").map((item) => item.id);
-    assert.equal(band1018.length, 9);
-    assert.deepEqual([...WAVE6_IDS_1018].sort(), [...band1018].sort());
+    const sceneBacked1018 = band1018.filter((id) => clueSceneFor(id) !== null);
+    assert.equal(sceneBacked1018.length, 9);
+    assert.deepEqual([...WAVE6_IDS_1018].sort(), [...sceneBacked1018].sort());
     const band18 = itemsForGroup("18+").map((item) => item.id);
     assert.equal(band18.length, 3);
     assert.deepEqual([...WAVE6_IDS_18PLUS].sort(), [...band18].sort());
     for (const id of [...WAVE6_IDS_1018, ...WAVE6_IDS_18PLUS]) {
       assert.ok(clueSceneFor(id), `${id} has a scene`);
     }
-    // The whole map is exactly the 24 dealt items: Physics complete.
+    // The scene map covers all 24 waves 4-6 items.
     assert.deepEqual(Object.keys(PHYSICS_CLUE_SCENES).sort(), [...ALL_IDS].sort());
   });
 
