@@ -22,11 +22,12 @@
  * list marked unavailable. A failed deep page keeps the
  * previous cached deep pages and does not fail the check.
  * Overlapping callers share one in-flight sequence. A
- * 5-minute session cache (key v6) makes a repeat free. Focus
- * and visibility re-check only after that cache expires.
- * There is no interval yet: the poller lands in a later
- * commit. A network error is retried once; an HTTP status is
- * not.
+ * 5-minute session cache (key v6) makes a repeat free. The
+ * board polls every 5 minutes while it is visible (paused
+ * while hidden), plus a re-check on focus/visibility once
+ * the cache expires; after a rate-limited answer the poller
+ * backs off for 60 minutes. A network error is retried once;
+ * an HTTP status is not.
  */
 import { resolveLocal, resolveSession } from "../game/storage-slot.ts";
 import { getJson, getRaw } from "../platform/transport/browser-transport.ts";
@@ -400,18 +401,70 @@ function writeLiveCache(storage: KeyValueStorage | null | undefined, state: Kanb
   }
 }
 
+/** The poll interval is the cache TTL: one value, no drift. */
+export const KANBAN_POLL_INTERVAL_MS = KANBAN_LIVE_CACHE_TTL_MS;
+
+/** How long the poller stays quiet after a rate-limited answer. */
+export const KANBAN_RATE_LIMIT_BACKOFF_MS = 60 * 60_000;
+
 /**
- * Focus and visibility refresh. Hidden never refetches. A missing
- * cache refetches. A cache younger than the TTL does not.
+ * Focus, visibility and poll-tick refresh. Hidden never
+ * refetches. A missing cache refetches. A cache younger than
+ * the TTL does not — except on a tick, which allows ~5 s of
+ * slack so a tick landing just short of the TTL still
+ * refetches instead of silently becoming a 10-minute gap.
  */
 export function shouldRefetchKanbanLive(input: {
-  event: "focus" | "visible" | "hidden";
+  event: "focus" | "visible" | "hidden" | "tick";
   cacheFetchedAt: number | null;
   now: number;
 }): boolean {
   if (input.event === "hidden") return false;
   if (input.cacheFetchedAt === null) return true;
-  return input.now - input.cacheFetchedAt >= KANBAN_LIVE_CACHE_TTL_MS;
+  const age = input.now - input.cacheFetchedAt;
+  if (input.event === "tick") return age >= KANBAN_POLL_INTERVAL_MS - 5_000;
+  return age >= KANBAN_LIVE_CACHE_TTL_MS;
+}
+
+/**
+ * Poll GitHub on an interval while the board is visible. The
+ * poller is React-free: the view hands it an `apply` that runs
+ * one refresh and reports the outcome, and an `isHidden` check.
+ * Ticks while hidden are skipped, ticks while a refresh is
+ * already in flight are skipped, and after a rate-limited
+ * answer no tick applies until the back-off has passed. The
+ * returned stop function clears the timer; the view calls it
+ * on unmount. Timers and the clock are injectable for tests.
+ */
+export function startKanbanPolling(options: {
+  apply: () => Promise<KanbanRefresh>;
+  isHidden: () => boolean;
+  now?: () => number;
+  intervalMs?: number;
+  backoffMs?: number;
+  setIntervalFn?: typeof setInterval;
+  clearIntervalFn?: typeof clearInterval;
+}): () => void {
+  const intervalMs = options.intervalMs ?? KANBAN_POLL_INTERVAL_MS;
+  const backoffMs = options.backoffMs ?? KANBAN_RATE_LIMIT_BACKOFF_MS;
+  const now = options.now ?? Date.now;
+  const setIntervalFn = options.setIntervalFn ?? setInterval;
+  const clearIntervalFn = options.clearIntervalFn ?? clearInterval;
+  let backoffUntil = 0;
+  let inFlight = false;
+  const timer = setIntervalFn(async () => {
+    if (options.isHidden() || inFlight || now() < backoffUntil) return;
+    inFlight = true;
+    try {
+      const result = await options.apply();
+      if (result.action === "fallback" && result.rateLimited) {
+        backoffUntil = now() + backoffMs;
+      }
+    } finally {
+      inFlight = false;
+    }
+  }, intervalMs);
+  return () => clearIntervalFn(timer);
 }
 
 /* ------------------------------------------------------------------ */
@@ -621,7 +674,7 @@ export type KanbanRefresh =
  */
 export async function refreshKanbanLive(
   options: FetchKanbanLiveOptions & {
-    event: "mount" | "focus" | "visible" | "hidden";
+    event: "mount" | "focus" | "visible" | "hidden" | "tick";
   },
 ): Promise<KanbanRefresh> {
   const now = options.now ?? Date.now();

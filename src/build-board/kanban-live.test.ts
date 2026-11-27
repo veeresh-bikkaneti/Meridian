@@ -11,6 +11,8 @@ import {
   KANBAN_DEEP_CACHE_KEY,
   KANBAN_DEEP_CACHE_TTL_MS,
   KANBAN_LIVE_CACHE_KEY,
+  KANBAN_LIVE_CACHE_TTL_MS,
+  KANBAN_POLL_INTERVAL_MS,
   loadKanbanLive,
   loadPublicSnapshot,
   parseGithubBranches,
@@ -21,6 +23,8 @@ import {
   parseLabelNames,
   refreshKanbanLive,
   shouldRefetchKanbanLive,
+  startKanbanPolling,
+  type KanbanRefresh,
   type KeyValueStorage,
 } from "./kanban-live.ts";
 
@@ -796,5 +800,195 @@ describe("refresh on focus and visibility", () => {
       shouldRefetchKanbanLive({ event: "focus", cacheFetchedAt: null, now: 1_000 }),
       true,
     );
+  });
+
+  it("a tick allows ~5 s of slack, focus and visibility do not (TD-08.7)", () => {
+    const fetchedAt = 1_000;
+    assert.equal(
+      shouldRefetchKanbanLive({ event: "tick", cacheFetchedAt: fetchedAt, now: fetchedAt + 299_000 }),
+      true,
+    );
+    assert.equal(
+      shouldRefetchKanbanLive({ event: "tick", cacheFetchedAt: fetchedAt, now: fetchedAt + 290_000 }),
+      false,
+    );
+    assert.equal(
+      shouldRefetchKanbanLive({ event: "focus", cacheFetchedAt: fetchedAt, now: fetchedAt + 299_000 }),
+      false,
+    );
+    assert.equal(KANBAN_POLL_INTERVAL_MS, KANBAN_LIVE_CACHE_TTL_MS);
+  });
+});
+
+describe("startKanbanPolling (TD-08.7)", () => {
+  const liveState = {
+    pulls: new Map(),
+    branches: new Set<string>(),
+    issues: new Map(),
+    issuesUnavailable: false,
+    fetchedAt: 0,
+  };
+  const liveResult: KanbanRefresh = { action: "live", state: liveState };
+
+  function fakeTimers() {
+    let handler: (() => Promise<void>) | null = null;
+    let intervalMs: number | undefined;
+    const cleared: unknown[] = [];
+    return {
+      setIntervalFn: ((fn: () => void, ms?: number) => {
+        handler = fn as () => Promise<void>;
+        intervalMs = ms;
+        return 7;
+      }) as typeof setInterval,
+      clearIntervalFn: ((id: unknown) => {
+        cleared.push(id);
+        handler = null;
+      }) as typeof clearInterval,
+      fire: () => handler?.() ?? Promise.resolve(),
+      get intervalMs() {
+        return intervalMs;
+      },
+      cleared,
+    };
+  }
+
+  it("applies on 5 ticks over 25 fake minutes, at the poll interval", async () => {
+    const timers = fakeTimers();
+    let now = 0;
+    let applies = 0;
+    const stop = startKanbanPolling({
+      apply: async () => {
+        applies += 1;
+        return liveResult;
+      },
+      isHidden: () => false,
+      now: () => now,
+      setIntervalFn: timers.setIntervalFn,
+      clearIntervalFn: timers.clearIntervalFn,
+    });
+    try {
+      assert.equal(timers.intervalMs, KANBAN_POLL_INTERVAL_MS);
+      for (let i = 0; i < 5; i += 1) {
+        now += 5 * 60_000;
+        await timers.fire();
+      }
+      assert.equal(applies, 5);
+    } finally {
+      stop();
+    }
+  });
+
+  it("skips ticks while hidden, resumes when visible", async () => {
+    const timers = fakeTimers();
+    let hidden = false;
+    let applies = 0;
+    const stop = startKanbanPolling({
+      apply: async () => {
+        applies += 1;
+        return liveResult;
+      },
+      isHidden: () => hidden,
+      setIntervalFn: timers.setIntervalFn,
+      clearIntervalFn: timers.clearIntervalFn,
+    });
+    try {
+      await timers.fire();
+      hidden = true;
+      await timers.fire();
+      await timers.fire();
+      hidden = false;
+      await timers.fire();
+      assert.equal(applies, 2);
+    } finally {
+      stop();
+    }
+  });
+
+  it("backs off 60 minutes after a rate-limited answer, then resumes", async () => {
+    const timers = fakeTimers();
+    let now = 0;
+    let applies = 0;
+    const stop = startKanbanPolling({
+      apply: async () => {
+        applies += 1;
+        return applies === 1
+          ? { action: "fallback", rateLimited: true }
+          : liveResult;
+      },
+      isHidden: () => false,
+      now: () => now,
+      setIntervalFn: timers.setIntervalFn,
+      clearIntervalFn: timers.clearIntervalFn,
+    });
+    try {
+      await timers.fire();
+      assert.equal(applies, 1);
+      for (let i = 0; i < 11; i += 1) {
+        now += 5 * 60_000;
+        await timers.fire();
+      }
+      assert.equal(applies, 1);
+      now += 5 * 60_000;
+      await timers.fire();
+      assert.equal(applies, 2);
+    } finally {
+      stop();
+    }
+  });
+
+  it("a non-rate-limited failure does not back off", async () => {
+    const timers = fakeTimers();
+    let applies = 0;
+    const stop = startKanbanPolling({
+      apply: async () => {
+        applies += 1;
+        return applies === 1 ? { action: "fallback" } : liveResult;
+      },
+      isHidden: () => false,
+      setIntervalFn: timers.setIntervalFn,
+      clearIntervalFn: timers.clearIntervalFn,
+    });
+    try {
+      await timers.fire();
+      await timers.fire();
+      assert.equal(applies, 2);
+    } finally {
+      stop();
+    }
+  });
+
+  it("stop() clears the timer, and a slow refresh is not re-entered", async () => {
+    const timers = fakeTimers();
+    let release!: () => void;
+    const gate = new Promise<void>((resolve) => {
+      release = resolve;
+    });
+    let applies = 0;
+    const stop = startKanbanPolling({
+      apply: async () => {
+        applies += 1;
+        await gate;
+        return liveResult;
+      },
+      isHidden: () => false,
+      setIntervalFn: timers.setIntervalFn,
+      clearIntervalFn: timers.clearIntervalFn,
+    });
+    try {
+      const first = timers.fire();
+      await Promise.resolve();
+      const second = timers.fire();
+      await second;
+      assert.equal(applies, 1);
+      release();
+      await first;
+      await timers.fire();
+      assert.equal(applies, 2);
+    } finally {
+      stop();
+    }
+    assert.deepEqual(timers.cleared, [7]);
+    await timers.fire();
+    assert.equal(applies, 2);
   });
 });

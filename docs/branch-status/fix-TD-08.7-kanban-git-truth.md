@@ -12,7 +12,7 @@
 ## PR
 
 Draft #633: https://github.com/veeresh-bikkaneti/Meridian/pull/633
-(head `7fd04925` after commit 1). Never merge, never mark
+(head `b823578e` after commit 4). Never merge, never mark
 ready; a separate Reviewer runs `review.md` after each push.
 
 ## Goal
@@ -163,6 +163,42 @@ the 441M checkout does not fit the 512M tmpfs).
   folded TD-02.5 row with its #571 chip, Architecture
   numbered cards 1→0, note "last 500 updated PRs".
 
+### Commit 5 — break A: poll GitHub every 5 minutes while the board is visible
+
+- `KANBAN_POLL_INTERVAL_MS` is the cache TTL itself (one
+  value, no drift). `startKanbanPolling` in `kanban-live.ts`
+  is React-free and injectable: ticks skip while hidden,
+  while a refresh is in flight, and for 60 minutes after a
+  rate-limited answer; the view starts it in the existing
+  effect and stops it on unmount. `shouldRefetchKanbanLive`
+  gains a `"tick"` event with ~5 s of slack so a tick
+  landing just short of the TTL still refetches. A failed
+  poll after a live success keeps the last good live state
+  with the stamp "Live · fetched HH:MM (last check
+  failed)"; the offline snapshot shows only when there was
+  never a live success.
+- Contract text now says "polls every 5 minutes while the
+  board is visible (paused while hidden), plus a re-check
+  on focus/visibility" in the `kanban-live.ts` header, the
+  `shouldRefetchKanbanLive` doc, and the view header. The
+  `rg` stale-claim check over `src/build-board`, `docs` and
+  the kanban spec found no remaining "no interval /
+  exactly two / 100 pulls / ledger-only rows stay" claim in
+  the board's own paths (the only hits were unrelated docs).
+  `docs/branch-status/feat-build-kanban.md` was NOT edited:
+  its "deliberate" line is about the 5-minute TTL choice,
+  not a no-poll design, and it is another branch's status
+  file.
+- Tests: 6 new in `kanban-live.test.ts` (tick slack,
+  5 ticks / 25 fake minutes at the poll interval, hidden
+  ticks skipped, 60-minute rate-limit back-off, no back-off
+  on a plain failure, stop() + no re-entry). E2E: a new
+  `page.clock` test — 5 minutes visible refetches (one
+  failed pulls call: pulls fails first, so the round costs
+  1 call), 5 minutes hidden makes no round, visible again
+  re-checks at once and the next tick refetches again,
+  with the stale stamp throughout.
+
 ## Ruled out / deferred
 
 - Editing `kanban.json`, `scripts/board/publish-kanban.mjs`,
@@ -180,4 +216,6 @@ the 441M checkout does not fit the 512M tmpfs).
 
 ## Next step
 
-Commit 5 (break A): poll GitHub every 5 minutes while the board is visible.
+Final head verification (e2e twice, `rg` stale-claim check,
+`git diff --stat origin/main...HEAD`), rewrite of the #633
+PR body, then the final report. Do not merge.

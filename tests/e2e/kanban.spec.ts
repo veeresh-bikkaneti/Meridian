@@ -1,4 +1,5 @@
 import { test, expect } from "playwright/test";
+import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { serveBuiltArtifact } from "./helpers";
 
@@ -372,4 +373,69 @@ test("free to claim marks exactly the 18 free subtasks", async ({ page }) => {
   // them on the snapshot, and no two overlap in owns.
   await expect(page.locator(".kb-chip-free")).toHaveCount(18);
   await expect(page.locator(".kb-sub-free")).toHaveCount(18);
+});
+
+test("the board polls every 5 minutes while visible and keeps the last good state when a poll fails (TD-08.7)", async ({
+  page,
+  context,
+}) => {
+  await page.clock.install();
+  let failing = false;
+  const githubUrls: string[] = [];
+  page.on("request", (request) => {
+    if (request.url().includes("api.github.com")) githubUrls.push(request.url());
+  });
+  const answer = (body: unknown) => async (route: import("@playwright/test").Route) =>
+    failing
+      ? route.fulfill({ status: 500, contentType: "application/json", body: "{}" })
+      : route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(body) });
+  await context.route(/api\.github\.com\/repos\/[^/]+\/[^/]+\/pulls\?/, answer([]));
+  await context.route(
+    /api\.github\.com\/repos\/[^/]+\/[^/]+\/branches(\?|$)/,
+    answer([{ name: "chore/td-08.4-kanban-github-derived" }]),
+  );
+  await context.route(/api\.github\.com\/repos\/[^/]+\/[^/]+\/issues\?/, answer([]));
+
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.goto(KANBAN_URL);
+  await expect(page.locator(".kb-stamp")).toHaveText(/Live · fetched \d{2}:\d{2}/);
+  const firstRound = githubUrls.length;
+  assert.equal(firstRound, 3);
+
+  // Five minutes on, visible: the tick refetches. The pulls
+  // call fails first, so the failed round costs exactly one
+  // call and the whole check fails; the board keeps the last
+  // good live state with a stale stamp instead of flipping to
+  // the offline snapshot.
+  failing = true;
+  await page.clock.fastForward(5 * 60_000);
+  await expect(page.locator(".kb-stamp")).toContainText("last check failed");
+  await expect.poll(() => githubUrls.length).toBe(firstRound + 1);
+  await expect(page.locator(".kb-story").first()).toBeVisible();
+
+  // Five minutes on, hidden: no round at all.
+  await page.evaluate(() => {
+    Object.defineProperty(document, "visibilityState", {
+      get: () => "hidden",
+      configurable: true,
+    });
+    document.dispatchEvent(new Event("visibilitychange"));
+  });
+  await page.clock.fastForward(5 * 60_000);
+  await page.waitForTimeout(50);
+  assert.equal(githubUrls.length, firstRound + 1);
+
+  // Visible again: the visibility re-check refetches at once,
+  // and the next 5-minute tick refetches again — one failed
+  // pulls call each.
+  await page.evaluate(() => {
+    Object.defineProperty(document, "visibilityState", {
+      get: () => "visible",
+      configurable: true,
+    });
+    document.dispatchEvent(new Event("visibilitychange"));
+  });
+  await expect.poll(() => githubUrls.length).toBe(firstRound + 2);
+  await page.clock.fastForward(5 * 60_000);
+  await expect.poll(() => githubUrls.length).toBe(firstRound + 3);
 });

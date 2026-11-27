@@ -21,8 +21,12 @@
  *     snapshot — the per-deploy public file when it validates,
  *     otherwise the bundled kanban.json — under a visible
  *     "Offline snapshot from <asOf>" banner.
- *  3. Focus and visibility re-check only after the 5-minute
- *     cache expires. There is no interval.
+ *  3. The board polls GitHub every 5 minutes while it is
+ *     visible (paused while hidden), plus a re-check on
+ *     focus/visibility once the 5-minute cache expires. A
+ *     failed poll after a live success keeps the last good
+ *     live state with a stale stamp; a rate-limited answer
+ *     pauses polling for 60 minutes.
  */
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import {
@@ -43,7 +47,12 @@ import {
   type Subtask,
   unledgeredCards,
 } from "./kanban-data";
-import { loadPublicSnapshot, refreshKanbanLive } from "./kanban-live";
+import {
+  loadPublicSnapshot,
+  refreshKanbanLive,
+  startKanbanPolling,
+  type KanbanRefresh,
+} from "./kanban-live";
 import { Gauges } from "./gauges";
 import { beginMotion, endMotion, motionSettled } from "./motion-budget";
 import snapshotJson from "./kanban.json";
@@ -54,7 +63,7 @@ const BUNDLED: Snapshot = loadSnapshot(snapshotJson);
 type Stamp =
   | { kind: "bundled" }
   | { kind: "public"; builtAt?: string; asOf: string }
-  | { kind: "live"; at: number };
+  | { kind: "live"; at: number; stale?: boolean };
 
 function stampText(stamp: Stamp, bundledAsOf: string): string {
   switch (stamp.kind) {
@@ -76,7 +85,7 @@ function stampText(stamp: Stamp, bundledAsOf: string): string {
       const d = new Date(stamp.at);
       const hh = String(d.getHours()).padStart(2, "0");
       const mm = String(d.getMinutes()).padStart(2, "0");
-      return `Live · fetched ${hh}:${mm}`;
+      return `Live · fetched ${hh}:${mm}${stamp.stale ? " (last check failed)" : ""}`;
     }
   }
 }
@@ -350,25 +359,37 @@ export function KanbanView() {
   calmRef.current = calm;
 
   /* GitHub first. The snapshot renders only when that check fails.
-   * Focus and visibility re-check after the cache expires. */
+   * The board polls every 5 minutes while it is visible (paused
+   * while hidden), plus a re-check on focus/visibility once the
+   * cache expires. A failed poll after a live success keeps the
+   * last good live state with a stale stamp. */
   useEffect(() => {
     let active = true;
-    const apply = async (event: "mount" | "focus" | "visible") => {
+    let hadLive = false;
+    const apply = async (
+      event: "mount" | "focus" | "visible" | "tick",
+    ): Promise<KanbanRefresh> => {
       const pubPromise = event === "mount" ? loadPublicSnapshot() : Promise.resolve(null);
       const resultPromise = refreshKanbanLive({ event });
       const pub = await pubPromise;
       const result = await resultPromise;
-      if (!active) return;
+      if (!active) return { action: "skip" };
       const board = pub ?? snapshotRef.current;
       if (pub) {
         setSnapshot(pub);
         setSubtasks(pub.subtasks);
       }
-      if (result.action === "skip") return;
+      if (result.action === "skip") return result;
       if (result.action === "fallback") {
-        setSubtasks(board.subtasks);
-        setMode("offline");
-        return;
+        if (hadLive) {
+          setStamp((prev) =>
+            prev.kind === "live" ? { ...prev, stale: true } : prev,
+          );
+        } else {
+          setSubtasks(board.subtasks);
+          setMode("offline");
+        }
+        return result;
       }
       const rects = new Map<string, DOMRect>();
       boardRef.current
@@ -381,16 +402,23 @@ export function KanbanView() {
       setBugsUnavailable(result.state.issuesUnavailable);
       setStamp({ kind: "live", at: result.state.fetchedAt });
       setMode("live");
+      hadLive = true;
+      return result;
     };
     void apply("mount");
     const onFocus = () => void apply("focus");
     const onVisible = () => {
       if (document.visibilityState === "visible") void apply("visible");
     };
+    const stopPolling = startKanbanPolling({
+      apply: () => apply("tick"),
+      isHidden: () => document.visibilityState === "hidden",
+    });
     window.addEventListener("focus", onFocus);
     document.addEventListener("visibilitychange", onVisible);
     return () => {
       active = false;
+      stopPolling();
       window.removeEventListener("focus", onFocus);
       document.removeEventListener("visibilitychange", onVisible);
     };
