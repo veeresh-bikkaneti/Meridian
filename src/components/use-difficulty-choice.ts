@@ -66,19 +66,31 @@ function writeModuleDifficultyMap(map: Record<string, string>): void {
 }
 
 /**
- * One module's stored choice. On first read, when the map is
- * missing/empty, seed globe, country and state from the legacy
- * `meridian.difficulty` value (or "medium" when it is invalid).
- * A stored value that is not a picker choice falls back to that
- * module's defaultChoice ("medium" for every module today).
+ * The per-module map, seeded from the legacy global choice on first
+ * use — read or write. When the map is missing/empty, globe, country
+ * and state start from `meridian.difficulty` (or "medium" when it is
+ * invalid). The legacy key is left in place; new writes go to the
+ * map only. Both the read and the write path go through here so a
+ * write before any read cannot lose the legacy seed.
  */
-export function readModuleDifficulty(moduleId: ModuleId): PickerDifficulty {
-  let map = readModuleDifficultyMap();
+function seededModuleDifficultyMap(): Record<string, string> {
+  const map = readModuleDifficultyMap();
   if (Object.keys(map).length === 0) {
     const legacy = readDifficultyChoice();
-    map = { globe: legacy, country: legacy, state: legacy };
-    writeModuleDifficultyMap(map);
+    const seeded = { globe: legacy, country: legacy, state: legacy };
+    writeModuleDifficultyMap(seeded);
+    return seeded;
   }
+  return map;
+}
+
+/**
+ * One module's stored choice. A stored value that is not a picker
+ * choice falls back to that module's defaultChoice ("medium" for
+ * every module today).
+ */
+export function readModuleDifficulty(moduleId: ModuleId): PickerDifficulty {
+  const map = seededModuleDifficultyMap();
   const stored = map[moduleId];
   if (isPickerDifficulty(stored)) return stored;
   return getModuleDifficulty(moduleId).defaultChoice;
@@ -89,8 +101,10 @@ export function writeModuleDifficulty(
   choice: PickerDifficulty,
 ): void {
   // Spread, never replace: a write for one module must not clobber
-  // another module's stored choice.
-  writeModuleDifficultyMap({ ...readModuleDifficultyMap(), [moduleId]: choice });
+  // another module's stored choice. The seed runs first, so a write
+  // before any read still carries the legacy choice into the other
+  // MapTap modules.
+  writeModuleDifficultyMap({ ...seededModuleDifficultyMap(), [moduleId]: choice });
 }
 
 export function useModuleDifficulty(moduleId: ModuleId): [

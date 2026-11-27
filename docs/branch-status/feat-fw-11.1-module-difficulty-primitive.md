@@ -19,6 +19,13 @@
 - Picker + semantics for GeoDetective, Cold Trail, Subjects — a later FW-11.x with an owner design.
 - No analytics, no URL/hash persistence, no age-band changes, no GeoDetective / Cold Trail / Subject internals.
 
+## Fix round (siloed review, 2026-11-26)
+
+- **Seed on write:** `writeModuleDifficulty` now seeds through the shared `seededModuleDifficultyMap()` helper (same as the read path), so a write before any read still carries the legacy choice into the other MapTap modules. Write-first test added (legacy `hard`, write `globe` to `easy`, `country`/`state` read `hard`, map has all three keys, legacy key still `hard`).
+- **Picker hides stubs:** `DifficultyPicker` returns `null` when `showsPicker` is `false` (or `supported` is empty). The hook stays above the return (Rules of Hooks). Tests: `geodetective` and `coldtrail` render empty; `globe`/`country`/`state` still render.
+- **Chirp guard tested:** the selection step is now `selectDifficulty(next, current, setChoice, chirp)` with the guard inside; the picker's `onClick` delegates to it. Tests drive it with a stubbed chirp: changing band chirps, re-tapping the active band does not. A mutation that always chirps now fails a test.
+- **Fix note:** the pack asked for a fresh `/tmp` clone, but the clone filled the 512M `/tmp` and died (`Out of diskspace` on checkout) — the repo working tree alone is ~435M. Work ran in `~/workspace/fw-11.1-worktree`, reset to the pinned head `39afb3b6` (remote head verified unchanged via `ls-remote`).
+
 ## Open questions
 
 - None for PR 1. PR 2 needs Veeresh's word that this seat holds the game-app lock (only one open game-app PR at a time; #626 and #627 have both merged).

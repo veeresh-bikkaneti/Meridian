@@ -3,7 +3,7 @@ import { describe, it, beforeEach, afterEach } from "node:test";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 
-import { DifficultyPicker } from "./difficulty-picker.ts";
+import { DifficultyPicker, selectDifficulty } from "./difficulty-picker.ts";
 
 /**
  * The picker is exercised through renderToStaticMarkup (no jsdom in
@@ -85,5 +85,60 @@ describe("DifficultyPicker (FW-11.1)", () => {
     );
     assert.match(html, /id="custom-label"/);
     assert.match(html, /aria-labelledby="custom-label"/);
+  });
+
+  it("renders nothing for a stub module (GeoDetective, Cold Trail)", () => {
+    for (const moduleId of ["geodetective", "coldtrail"] as const) {
+      const html = renderToStaticMarkup(
+        createElement(DifficultyPicker, { moduleId }),
+      );
+      assert.equal(html, "", moduleId);
+    }
+  });
+
+  it("still renders for every MapTap edition", () => {
+    for (const moduleId of ["globe", "country", "state"] as const) {
+      const html = renderToStaticMarkup(
+        createElement(DifficultyPicker, { moduleId }),
+      );
+      assert.match(html, /How do you want to grow your map today\?/, moduleId);
+      assert.match(html, />Easy<\/button>/, moduleId);
+    }
+  });
+});
+
+describe("selectDifficulty (chirp guard)", () => {
+  it("chirps and applies the choice when the band changes", () => {
+    let chirped = false;
+    let applied: string | undefined;
+    selectDifficulty(
+      "hard",
+      "medium",
+      (choice) => {
+        applied = choice;
+      },
+      () => {
+        chirped = true;
+      },
+    );
+    assert.equal(chirped, true);
+    assert.equal(applied, "hard");
+  });
+
+  it("applies the choice without chirping when re-tapping the active band", () => {
+    let chirped = false;
+    let applied: string | undefined;
+    selectDifficulty(
+      "medium",
+      "medium",
+      (choice) => {
+        applied = choice;
+      },
+      () => {
+        chirped = true;
+      },
+    );
+    assert.equal(chirped, false);
+    assert.equal(applied, "medium");
   });
 });

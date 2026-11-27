@@ -19,6 +19,7 @@ import {
   PICKER_DIFFICULTIES,
   type ModuleId,
 } from "../game/module-difficulty.ts";
+import type { PickerDifficulty } from "../game/tier-filter.ts";
 import { useModuleDifficulty } from "./use-difficulty-choice.ts";
 
 const PICKER_LABELS: Record<string, string> = {
@@ -37,6 +38,23 @@ interface DifficultyPickerProps {
   labelId?: string;
 }
 
+/**
+ * The picker's selection step, extracted so the chirp guard is
+ * unit-testable: chirp only when the band actually changes, then
+ * apply the choice. `chirp` defaults to playDifficultySelect; tests
+ * pass a stub to observe the guard. (SFX audio spec §2.6:
+ * re-tapping the active band stays silent.)
+ */
+export function selectDifficulty(
+  next: PickerDifficulty,
+  current: PickerDifficulty,
+  setChoice: (choice: PickerDifficulty) => void,
+  chirp: () => void = playDifficultySelect,
+): void {
+  if (next !== current) chirp();
+  setChoice(next);
+}
+
 export function DifficultyPicker({
   moduleId,
   className,
@@ -45,6 +63,10 @@ export function DifficultyPicker({
 }: DifficultyPickerProps) {
   const [choice, setChoice] = useModuleDifficulty(moduleId);
   const entry = getModuleDifficulty(moduleId);
+  // A module that does not show the picker renders nothing. The hook
+  // stays above this return (Rules of Hooks): it only reads the
+  // module's stored choice, which a stub never changes.
+  if (!entry.showsPicker || entry.supported.length === 0) return null;
   const id = labelId ?? `difficulty-label-${moduleId}`;
   return createElement(
     "div",
@@ -61,12 +83,7 @@ export function DifficultyPicker({
             key: value,
             type: "button",
             "aria-pressed": selected,
-            onClick: () => {
-              // SFX audio spec §2.6: the select chirps only on an
-              // actual change — re-tapping the active band stays silent.
-              if (value !== choice) playDifficultySelect();
-              setChoice(value);
-            },
+            onClick: () => selectDifficulty(value, choice, setChoice),
           },
           PICKER_LABELS[value],
         );

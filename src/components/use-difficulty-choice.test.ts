@@ -158,6 +158,21 @@ describe("readModuleDifficulty / writeModuleDifficulty (FW-11.1)", () => {
     assert.equal(readModuleDifficulty("state"), "easy");
     assert.deepEqual(readModuleMap(store), { globe: "hard", state: "easy" });
   });
+
+  it("write-first: a write before any read still seeds the other modules from legacy", () => {
+    const store = stubLocalStorage({ "meridian.difficulty": "hard" });
+    // No prior read: the write itself must carry the legacy seed.
+    writeModuleDifficulty("globe", "easy");
+    assert.equal(readModuleDifficulty("country"), "hard");
+    assert.equal(readModuleDifficulty("state"), "hard");
+    assert.deepEqual(readModuleMap(store), {
+      globe: "easy",
+      country: "hard",
+      state: "hard",
+    });
+    // The legacy key is left in place.
+    assert.equal(store.get("meridian.difficulty"), "hard");
+  });
 });
 
 function ModuleProbe({ moduleId }: { moduleId: "globe" | "country" | "state" }) {
