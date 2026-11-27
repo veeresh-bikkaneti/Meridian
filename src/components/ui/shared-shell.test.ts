@@ -384,24 +384,25 @@ describe("PageShell and PageIntro (PR 3 Step 2)", () => {
   });
 
   it("Review and Challenge complete sit on SiteHeader (PR 3 Step 3.7): the one Home at the top", () => {
-    const gameApp = read("src/components/game-app.tsx");
+    const review = read("src/components/review-complete.tsx");
     const complete = read("src/components/challenge-complete.tsx");
     assert.equal(
-      gameApp.split("<SiteHeader onHome={onDone} status={null} mute={null} />").length - 1 +
+      review.split("<SiteHeader onHome={onDone} status={null} mute={null} />").length - 1 +
         complete.split("<SiteHeader onHome={onDone} status={null} mute={null} />").length - 1,
       2,
       "both end-of-flow screens render the shared header",
     );
-    assert.match(gameApp, /data-testid="review-complete"/);
-    assert.match(gameApp, /testId="challenge-done"/);
+    assert.match(review, /data-testid="review-complete"/);
+    assert.match(read("src/components/game-app.tsx"), /testId="challenge-done"/);
   });
 
   it("the region lists sit on SiteHeader (PR 3 Step 3.6): Home everywhere, Back in the back slot", () => {
     const src = read("src/components/game-app.tsx");
+    const list = read("src/components/region-list.tsx");
     assert.doesNotMatch(src, /<ScreenShell/);
     assert.doesNotMatch(src, /from "@\/components\/ui\/screen-shell"/);
-    assert.match(src, /<SiteHeader onHome=\{onBack\} status=\{null\} mute=\{null\} \/>/);
-    assert.match(src, /data-testid="back-button"/);
+    assert.match(list, /<SiteHeader onHome=\{onBack\} status=\{null\} mute=\{null\} \/>/);
+    assert.match(list, /data-testid="back-button"/);
     assert.match(src, /onHome=\{\(\) => setMenu\(null\)\}/);
   });
 
@@ -666,11 +667,11 @@ describe("shell-ban baseline (KNOWN/STALE)", () => {
   // adding or removing an entry fails here until a person edits
   // this record on purpose, in the same change that cures a file.
   const FROZEN_BASELINE: Record<string, string[]> = {
-    homeButtonImport: ["src/components/game-app.tsx"],
+    homeButtonImport: [],
     // TD-05.4: LoopScreen and SubjectCase were cured — end-of-flow
     // Home renders through the shared EndOfFlowHome owner, so their
-    // homeButtonImport entries are gone. game-app.tsx follows in
-    // TD-05.4 PR 2.
+    // homeButtonImport entries are gone. game-app.tsx followed in
+    // TD-05.4 PR 2 (same owner), so the list is now empty.
     // Why Learn D1 (2026-11-18): SubjectPicker was cured — the
     // picker sits in the shared --page-wide container and its
     // lg:max-w-none is gone — so the maxWNone baseline is empty.

@@ -10,10 +10,10 @@ import {
   stampCleanExitDirty,
 } from "@/game/clean-exit";
 import type { Starter } from "@/game/starters";
-import { ADMIN1_BY_COUNTRY, COUNTRIES, findRegion, STATES, greaterSideKm, type Region } from "@/game/regions";
+import { ADMIN1_BY_COUNTRY, COUNTRIES, findRegion, STATES, greaterSideKm } from "@/game/regions";
 import { rewriteStory } from "@/game/rewrite";
 import { shouldFireAiStory } from "@/game/story-ai";
-import { backfillDifficultyChoice, continueRun, dropPin, endRun, isResumable, resumeRun, startRun, type Edition, type Run, type RunPhase, type PlaceResult } from "@/game/run";
+import { backfillDifficultyChoice, continueRun, dropPin, endRun, isResumable, resumeRun, startRun, type Edition, type Run, type RunPhase } from "@/game/run";
 import { isPickerDifficulty, type PickerDifficulty } from "@/game/tier-filter";
 import { dealingPoolFor } from "@/game/easy-curation";
 import {
@@ -65,7 +65,7 @@ import {
 import { GEODETECTIVE_FILM, GROWNUPS_FILM, JOURNAL_FILM, coldtrailMediaForBand, reviewMediaForBand, whyLearnMediaForBand } from "@/assets/home-v5/card-media";
 import { CardFilm } from "./card-film";
 import { usePrefersReducedMotion } from "../hooks/use-prefers-reduced-motion";
-import { Compass, Contrast, Flag, Globe2, MapPin, MoreHorizontal } from "lucide-react";
+import { Compass, Flag, Globe2, MapPin, MoreHorizontal } from "lucide-react";
 import { SoundToggle } from "./SoundToggle";
 import {
   FIRST_VISIT_QUEUE_KEY,
@@ -93,27 +93,26 @@ import {
   playWin,
 } from "@/game/audio/sfx";
 import { playCelebrationSound, safePlay, soundAudible } from "@/game/audio/play-guards";
-import {
-  applyPalettePreference,
-  isHighContrastEnabled,
-  setHighContrastEnabled,
-} from "@/game/palette-preference";
+import { applyPalettePreference } from "@/game/palette-preference";
 import { Suspense, lazy, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type KeyboardEvent as ReactKeyboardEvent, type MouseEvent as ReactMouseEvent, type ReactNode, type RefObject } from "react";
 import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
-import { HomeButton } from "@/components/ui/home-button";
+import { EndOfFlowHome } from "@/components/ui/end-of-flow-home";
 import { SiteHeader } from "@/components/ui/site-header";
 import { SiteFooter } from "@/components/ui/site-footer";
 import { ErrorScreen } from "@/components/ui/error-screen";
 import { RunStartNotice } from "@/components/run-start-notice";
 import { QuestionBubble, type BubbleViewState } from "./question-bubble";
 import { HintPanel } from "./hint-panel";
+import { HighContrastToggle } from "./high-contrast-toggle";
 import { directionalHint } from "./hint-logic";
 import { canUseHint } from "@/game/age-profile/run-config.ts";
 import { ResultCard } from "./result-card";
 import { RunSummaryCard } from "./run-summary";
 import { ShareButton } from "./share-button";
 import { ChallengeComplete } from "./challenge-complete";
+import { RegionList, StartingView } from "./region-list";
+import { ReviewComplete } from "./review-complete";
 import { ChallengeMenu } from "./challenge-menu";
 import { ChallengeWelcome } from "./challenge-welcome";
 import { ClearedCelebrationDialog, type ClearedInfo } from "./cleared-celebration";
@@ -164,6 +163,7 @@ import {
   type BandRunConfig,
 } from "@/game/age-profile";
 import { useAgeProfileHost } from "./age-profile/use-age-profile-host";
+import { SubjectsHost } from "@/subjects/shared/SubjectsHost";
 import { useShellSession } from "./use-shell-session";
 import { useOverlayQueue } from "./use-overlay-queue";
 import { useRunController } from "./use-run-controller";
@@ -290,19 +290,6 @@ import { GeoDetectiveHost } from "@/game/loop/GeoDetectiveHost";
 // Suspense + MapErrorBoundary at the render sites. The screens have no
 // default export, so the lazy factories adapt their named exports (the
 // HomeGlobe idiom above).
-const loadSubjectPicker = () => import("@/subjects/shared/SubjectPicker");
-// #209: each lazy load is raced against CHUNK_LOAD_TIMEOUT_MS (inside
-// withChunkTimeout) — a HUNG import never settles, so without the race
-// the Suspense fallback below would spin forever; with it, the race
-// rejection lands in MapErrorBoundary's recoverable card instead.
-// Subject picker (why-learn card): same lazy discipline — it loads
-// only when the why-learn card is tapped, and each subject's case
-// loads only when its picker row is tapped.
-const SubjectPickerScreen = lazy(() =>
-  withChunkTimeout(loadSubjectPicker(), "Subject picker screen").then((m) => ({
-    default: m.default,
-  })),
-);
 /**
  * F2b intent prefetch for the edition + case cards: hovering, focusing,
  * or pressing a card starts the countries-50m load (scorePlace's region
@@ -400,7 +387,6 @@ import {
   CHALLENGE_MIN_PLACES,
   CHALLENGE_REGION_ID,
   CHALLENGE_REGION_NAME,
-  CHALLENGE_REVIEW_LABEL,
   CHALLENGE_SHARE_LABEL,
   CHALLENGE_EXACT_SHARE_LABEL,
   CHALLENGE_RESHARE_LABEL,
@@ -446,67 +432,6 @@ import {
   VERDICT_ICONS,
   type VerdictClass,
 } from "@/game/challenge-verdict";
-
-/**
- * High-contrast view toggle (manifest 2026-10-27): the SoundToggle
- * pattern for the map palette — persisted under `meridian.palette`
- * (PALETTE_STORAGE_KEY), default OFF (standard), one instance in the
- * home hero and one in the game chrome, each reading the persisted
- * value on mount. Flipping it repaints the map IN PLACE via the
- * palette-preference module (data-palette attribute + the
- * meridian:palette-change event): unlike the Scout Map switch it
- * never ends a game and never navigates, because the palette is a
- * paint choice, not a map-build input. A corrupt stored value fails
- * closed to standard inside selectPalette — the toggle just shows
- * OFF.
- */
-function HighContrastToggle({
-  testId,
-  className,
-  style,
-  iconClassName = "size-5",
-}: {
-  testId: string;
-  className?: string;
-  style?: CSSProperties;
-  iconClassName?: string;
-}) {
-  const [highContrast, setHighContrast] = useState<boolean>(() => isHighContrastEnabled());
-  const toggleHighContrast = () => {
-    try {
-      const next = !highContrast;
-      setHighContrastEnabled(next);
-      setHighContrast(next);
-    } catch {
-      // The palette is enhancement-only; the toggle itself never throws.
-    }
-  };
-  return (
-    <button
-      type="button"
-      data-testid={testId}
-      aria-pressed={highContrast}
-      aria-label={highContrast ? "Turn high contrast off" : "Turn high contrast on"}
-      title={highContrast ? "High contrast on" : "High contrast off"}
-      onClick={toggleHighContrast}
-      // atlas-contrast-toggle: the dedicated class both hosts share, so
-      // styles.css can give [aria-pressed="true"] a VISIBLE pressed state
-      // (brass fill + filled icon, the .atlas-seg pattern) — aria-pressed
-      // alone is invisible to the sighted low-vision users this serves
-      // (panel BLOCK 3; manifest Scenarios 1–2: "I can see it pressed").
-      className={className ? `atlas-contrast-toggle ${className}` : "atlas-contrast-toggle"}
-      style={style}
-    >
-      <Contrast className={iconClassName} aria-hidden="true" />
-      {/* Visible text label (item 37): the control was icon-only, so a
-          sighted player had no way to know what it does. The word rides
-          beside the icon in both hosts; the hosts' classes give it room
-          (the hero host is min-width 44px inline-flex, the game host is
-          min-w-11 with padding). */}
-      <span className="text-sm font-medium">Contrast</span>
-    </button>
-  );
-}
 
 /**
  * Snapshot a missed place's full question context for the deck: a review
@@ -2088,7 +2013,7 @@ export function GameApp() {
         <div inert={ageSettingsOpen || ageAsk !== null || undefined}>
           <MapErrorBoundary surface="Subjects">
             <Suspense fallback={<SessionLoadingFallback label="Loading subjects…" />}>
-              <SubjectPickerScreen
+              <SubjectsHost
                 group={getAgeGroup()}
                 tier="full"
                 onExit={() => setSubjectsOpen(false)}
@@ -2157,11 +2082,7 @@ export function GameApp() {
       <>
       {mapModeAnnouncer}
       <main className="mx-auto flex min-h-dvh w-full max-w-(--page-narrow) flex-col justify-center px-5 py-8">
-        <p className="text-sm tracking-wide text-muted uppercase">Loading places</p>
-        <h1 className="mt-2 font-display text-4xl text-fg">{starting.regionName}</h1>
-        <p className="mt-4 max-w-md text-lg text-muted" role="status">
-          Fetching this region&rsquo;s places&hellip;
-        </p>
+        <StartingView regionName={starting.regionName} />
       </main>
       {celebrationOverlay}
       {idleToast}
@@ -2332,7 +2253,7 @@ export function GameApp() {
       <>
         {mapModeAnnouncer}
         <main className="mx-auto w-full max-w-(--page-narrow) px-5 py-8">
-          <HomeButton onHome={() => setMenu(null)} variant="secondary" />
+          <EndOfFlowHome onHome={() => setMenu(null)} variant="secondary" />
           <ChallengeMenu
             notice={challengeBootNoticeEl}
             pickError={challengePickError}
@@ -2356,22 +2277,24 @@ export function GameApp() {
     return (
       <>
       {mapModeAnnouncer}
-      <RegionList
-        title="Country"
-        subtitle="Play a country whole — or drill into its states where available."
-        regions={regions}
-        notice={<>{challengeBootNoticeEl}{loadNotice}</>}
-        kind="home"
-        onBack={() => setMenu(null)}
-        onChoose={(region) => {
-          const subdivisions = ADMIN1_BY_COUNTRY[region.id] ?? [];
-          if (subdivisions.length > 0) {
-            setMenu({ kind: "admin1", countryId: region.id, countryName: region.name, from: "countries" });
-          } else {
-            openRun("country", region.id, region.name, difficultyChoice);
-          }
-        }}
-      />
+      <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-xl flex-col px-5 pt-2 pb-8">
+        <RegionList
+          title="Country"
+          subtitle="Play a country whole — or drill into its states where available."
+          regions={regions}
+          notice={<>{challengeBootNoticeEl}{loadNotice}</>}
+          kind="home"
+          onBack={() => setMenu(null)}
+          onChoose={(region) => {
+            const subdivisions = ADMIN1_BY_COUNTRY[region.id] ?? [];
+            if (subdivisions.length > 0) {
+              setMenu({ kind: "admin1", countryId: region.id, countryName: region.name, from: "countries" });
+            } else {
+              openRun("country", region.id, region.name, difficultyChoice);
+            }
+          }}
+        />
+      </main>
       {celebrationOverlay}
       {idleToast}
       </>
@@ -2392,16 +2315,18 @@ export function GameApp() {
     return (
       <>
       {mapModeAnnouncer}
-      <RegionList
-        title="State"
-        subtitle="Choose a country, then one of its states."
-        regions={regions}
-        kind="home"
-        onBack={() => setMenu(null)}
-        onChoose={(region) =>
-          setMenu({ kind: "admin1", countryId: region.id, countryName: region.name, from: "states" })
-        }
-      />
+      <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-xl flex-col px-5 pt-2 pb-8">
+        <RegionList
+          title="State"
+          subtitle="Choose a country, then one of its states."
+          regions={regions}
+          kind="home"
+          onBack={() => setMenu(null)}
+          onChoose={(region) =>
+            setMenu({ kind: "admin1", countryId: region.id, countryName: region.name, from: "states" })
+          }
+        />
+      </main>
       {celebrationOverlay}
       {idleToast}
       </>
@@ -2413,20 +2338,22 @@ export function GameApp() {
     return (
       <>
       {mapModeAnnouncer}
-      <RegionList
-        title={menu.countryName}
-        subtitle={`Play the whole ${menu.countryName}, or pick a state.`}
-        regions={regions}
-        notice={<>{challengeBootNoticeEl}{loadNotice}</>}
-        headerAction={{
-          label: `Play entire ${menu.countryName}`,
-          onClick: () => openRun("country", menu.countryId, menu.countryName, difficultyChoice),
-        }}
-        kind="back"
-        onBack={() => setMenu({ kind: menu.from })}
-        onHome={() => setMenu(null)}
-        onChoose={(region) => openRun("state", region.id, region.name, difficultyChoice)}
-      />
+      <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-xl flex-col px-5 pt-2 pb-8">
+        <RegionList
+          title={menu.countryName}
+          subtitle={`Play the whole ${menu.countryName}, or pick a state.`}
+          regions={regions}
+          notice={<>{challengeBootNoticeEl}{loadNotice}</>}
+          headerAction={{
+            label: `Play entire ${menu.countryName}`,
+            onClick: () => openRun("country", menu.countryId, menu.countryName, difficultyChoice),
+          }}
+          kind="back"
+          onBack={() => setMenu({ kind: menu.from })}
+          onHome={() => setMenu(null)}
+          onChoose={(region) => openRun("state", region.id, region.name, difficultyChoice)}
+        />
+      </main>
       {celebrationOverlay}
       {idleToast}
       </>
@@ -3915,81 +3842,6 @@ function AtlasBackdrop() {
  * back later — further out every time; missed cards are due again right
  * away, so a quick retry is always one tap away from the picker.
  */
-function ReviewComplete({
-  results,
-  total,
-  onDone,
-  onResetHistory,
-  onChallengeFriend,
-}: {
-  results: PlaceResult[];
-  total: number;
-  onDone: () => void;
-  /** Present only when the deck still holds cards (fresh read, D16). */
-  onResetHistory?: () => ResetHistoryResult;
-  /** Present only while the friendChallenges flag is on (manifest
-   * §1(e)): the review-surface challenge entry. Unlike the reset
-   * entry it is NOT deck-gated — it deals fresh from the picked
-   * region, never from the deck, so an empty deck is fine here. */
-  onChallengeFriend?: () => void;
-}) {
-  const remembered = results.filter((r) => r.hit).length;
-  return (
-    <main className="mx-auto flex min-h-dvh w-full max-w-(--page-narrow) flex-col px-5 pt-2 pb-8">
-      {/* The shared shell (PR 3 Step 3.7): SiteHeader carries the
-          one Home control at the top — this screen had no header
-          at all. The content keeps its vertical centring in the
-          space below the header. The primary HomeButton in the
-          flow stays: it is this end-of-flow screen's own exit
-          action beside its challenge/reset entries, the sanctioned
-          end surface. No failure branch exists on this screen —
-          the total === 0 state is an empty deck, not an error —
-          so there is nothing to route to ErrorScreen. */}
-      <SiteHeader onHome={onDone} status={null} mute={null} />
-      <div className="flex flex-1 flex-col justify-center">
-      <p className="text-sm tracking-wide text-muted uppercase">
-        {REVIEW_DECK_COPY.pickerTitle}
-      </p>
-      <h1 className="mt-2 font-display text-4xl text-fg" data-testid="review-complete">
-        {total === 0
-          ? "Nothing to review."
-          : `${REVIEW_DECK_COPY.completeTitle} You remembered ${remembered} of ${total}.`}
-      </h1>
-      <p className="mt-4 max-w-md text-lg text-muted">
-        {total === 0
-          ? REVIEW_DECK_COPY.pickerEmpty
-          : remembered === total
-            ? "Each card comes back later — further out every time you get it right."
-            : "The ones you missed are due again right away. One more round locks them in."}
-      </p>
-      <div className="mt-6 flex flex-col items-start gap-3">
-        <HomeButton onHome={onDone} variant="primary" />
-        {/* "Challenge a friend — pick a map" (manifest §1(e)): the
-            review is finished, so this door leaves it — the GameApp
-            handler runs the Editions exit and opens the shipped
-            region mini-picker in one act. Secondary beside the
-            primary exit: the review's own flow stays the headline. */}
-        {onChallengeFriend ? (
-          <Button
-            variant="secondary"
-            onClick={onChallengeFriend}
-            data-testid="review-challenge-a-friend"
-          >
-            {CHALLENGE_REVIEW_LABEL}
-          </Button>
-        ) : null}
-        {onResetHistory ? <ResetHistoryControl onReset={onResetHistory} /> : null}
-      </div>
-      </div>
-      {/* The shared footer (footer standardization, 2026-11-18):
-          the review-end screen carries SiteFooter + Grandpa's band
-          like every other page; its in-flow primary Home button
-          above stays the end-of-flow exit. */}
-      <SiteFooter />
-    </main>
-  );
-}
-
 /**
  * The mc2 welcome card (Package A): shown on Home after a challenge
  * link validates, BEFORE anything is displaced. It states the route
@@ -4000,83 +3852,6 @@ function ReviewComplete({
  */
 
 
-
-function RegionList({
-  title,
-  subtitle,
-  regions,
-  headerAction,
-  notice,
-  kind,
-  onBack,
-  onHome,
-  onChoose,
-}: {
-  title: string;
-  subtitle?: string;
-  regions: Region[];
-  headerAction?: { label: string; onClick: () => void };
-  notice?: ReactNode;
-  /** "home": the top list (its button is Home); "back": one step up a drill-down (Back). */
-  kind: "home" | "back";
-  onBack: () => void;
-  /** The drill-down lists' way straight home (the top menu). The
-   *  shared header carries the one Home control on every screen —
-   *  the legacy ScreenShell showed only Back here, so the "back"
-   *  lists gain Home beside Back (the picker's Step 3.3 pattern:
-   *  Home first, the step control in the back slot). */
-  onHome?: () => void;
-  onChoose: (region: Region) => void;
-}) {
-  return (
-    <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-xl flex-col px-5 pt-2 pb-8">
-      {/* The shared shell (PR 3 Step 3.6): SiteHeader carries the
-          one Home control — the legacy ScreenShell's BrandHomeButton
-          lockup goes. On a drill-down list the Back button rides
-          the header's back slot with its old classes and testid.
-          The titles are the screen's own content block, in the
-          classes ScreenShell rendered. Top padding gives back the
-          ~24px the shell header row adds (32 -> 8px, Step 3.3). */}
-      {kind === "home" ? (
-        <SiteHeader onHome={onBack} status={null} mute={null} />
-      ) : (
-        <SiteHeader
-          onHome={onHome ?? onBack}
-          status={null}
-          mute={null}
-          back={
-            <Button variant="ghost" className="-ml-3 px-3" onClick={onBack} data-testid="back-button">
-              Back
-            </Button>
-          }
-        />
-      )}
-      <h1 tabIndex={-1} className="mode-title mt-4 text-3xl text-fg">
-        {title}
-      </h1>
-      {subtitle ? <p className="mt-2 text-fg">{subtitle}</p> : null}
-      {notice}
-      {headerAction ? (
-        <Button variant="secondary" className="mt-6 w-full" onClick={headerAction.onClick}>
-          {headerAction.label}
-        </Button>
-      ) : null}
-      <ul className="mt-6 flex flex-col gap-2">
-        {regions.map((region) => (
-          <li key={region.id}>
-            <Button
-              variant="secondary"
-              className="w-full justify-start"
-              onClick={() => onChoose(region)}
-            >
-              {region.name}
-            </Button>
-          </li>
-        ))}
-      </ul>
-    </main>
-  );
-}
 
 /**
  * Async boundary for an in-progress run: the region's chunk loads here
@@ -5852,6 +5627,7 @@ function PlayLoaded({
   // completable session — ADHD-friendly — never the endless run.
   if (review && run.index >= pool.length) {
     return (
+      <main className="mx-auto flex min-h-dvh w-full max-w-(--page-narrow) flex-col px-5 pt-2 pb-8">
       <ReviewComplete
         results={run.results}
         total={pool.length}
@@ -5859,6 +5635,7 @@ function PlayLoaded({
         onResetHistory={reviewDeckTotal > 0 ? onResetHistory : undefined}
         onChallengeFriend={friendChallengesEnabled ? reviewChallengeTap : undefined}
       />
+      </main>
     );
   }
   if (challenge && (run.index >= pool.length || run.phase === "summary")) {
@@ -5894,7 +5671,7 @@ function PlayLoaded({
         posterUrl={VERDICT_GRANDPA_POSTER_URL}
         videoUrl={VERDICT_GRANDPA_VIDEO_URL}
         homeButton={
-          <HomeButton onHome={challengeDoneHandler} variant="primary" testId="challenge-done" />
+          <EndOfFlowHome onHome={challengeDoneHandler} variant="primary" testId="challenge-done" />
         }
       />
     );
@@ -5942,7 +5719,7 @@ function PlayLoaded({
                 {REVIEW_DECK_COPY.exitReview}
               </Button>
             ) : (
-              <HomeButton onHome={onEditions} variant="secondary" className="pointer-events-auto" />
+              <EndOfFlowHome onHome={onEditions} variant="secondary" className="pointer-events-auto" />
             )}
             {/* In-game mute (Veeresh's ask): the same meridian.sound toggle
                 as the home header, reachable mid-game. Mutes every sound —
