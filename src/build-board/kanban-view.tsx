@@ -9,35 +9,50 @@
  * render as top-level cards.
  *
  * Data flow:
- *  1. Ask GitHub for pulls and branches (refreshKanbanLive).
- *     Success renders deriveBoardItems and the stamp
- *     "Live · fetched HH:MM". Ledger-only rows stay hidden as
- *     cards, but the lane counts are a census over the ledger,
- *     the PR number map and the live window (TD-08.5), so an
- *     item that fell out of the 100-PR window still counts.
+ *  1. Ask GitHub for pulls, branches and open bug issues
+ *     (refreshKanbanLive). Success renders the ledger stories
+ *     with columns derived live from GitHub, plus extra cards
+ *     for GitHub-only items, and the stamp
+ *     "Live · fetched HH:MM". The lane counts are a census over
+ *     the ledger, the PR number map and the live window
+ *     (TD-08.5), so an item that fell out of the 500-PR window
+ *     still counts.
  *  2. Failure (offline, 403, 429, malformed) renders the
  *     snapshot — the per-deploy public file when it validates,
  *     otherwise the bundled kanban.json — under a visible
  *     "Offline snapshot from <asOf>" banner.
- *  3. Focus and visibility re-check only after the 5-minute
- *     cache expires. There is no interval.
+ *  3. The board polls GitHub every 5 minutes while it is
+ *     visible (paused while hidden), plus a re-check on
+ *     focus/visibility once the 5-minute cache expires. A
+ *     failed poll after a live success keeps the last good
+ *     live state with a stale stamp; a rate-limited answer
+ *     pauses polling for 60 minutes.
  */
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import {
+  applyOverlay,
   boardCensus,
   deriveBoardItems,
+  deriveBugCards,
   freeToClaim,
   loadSnapshot,
   storyRollup,
   storySeatTags,
+  type BugCard as BugCardData,
   type Column,
   type DerivedCard,
   type Lane,
   type Snapshot,
   type Story,
   type Subtask,
+  unledgeredCards,
 } from "./kanban-data";
-import { loadPublicSnapshot, refreshKanbanLive } from "./kanban-live";
+import {
+  loadPublicSnapshot,
+  refreshKanbanLive,
+  startKanbanPolling,
+  type KanbanRefresh,
+} from "./kanban-live";
 import { Gauges } from "./gauges";
 import { beginMotion, endMotion, motionSettled } from "./motion-budget";
 import snapshotJson from "./kanban.json";
@@ -48,7 +63,7 @@ const BUNDLED: Snapshot = loadSnapshot(snapshotJson);
 type Stamp =
   | { kind: "bundled" }
   | { kind: "public"; builtAt?: string; asOf: string }
-  | { kind: "live"; at: number };
+  | { kind: "live"; at: number; stale?: boolean };
 
 function stampText(stamp: Stamp, bundledAsOf: string): string {
   switch (stamp.kind) {
@@ -70,7 +85,7 @@ function stampText(stamp: Stamp, bundledAsOf: string): string {
       const d = new Date(stamp.at);
       const hh = String(d.getHours()).padStart(2, "0");
       const mm = String(d.getMinutes()).padStart(2, "0");
-      return `Live · fetched ${hh}:${mm}`;
+      return `Live · fetched ${hh}:${mm}${stamp.stale ? " (last check failed)" : ""}`;
     }
   }
 }
@@ -286,6 +301,32 @@ function LiveCard({ item, laneLabel }: { item: DerivedCard; laneLabel: string })
   );
 }
 
+function BugCard({ bug, laneLabel }: { bug: BugCardData; laneLabel: string }) {
+  return (
+    <article
+      className="kb-card kb-bug"
+      data-bug-id={bug.issue.number}
+      data-col={bug.col}
+      data-lane={bug.lane}
+    >
+      <div className="kb-story-top">
+        <div className="kb-story-main">
+          <div className="kb-card-lane">{laneLabel}</div>
+          <div className="kb-card-title">
+            <span className="kb-num">#{bug.issue.number}</span> {bug.issue.title}
+          </div>
+          <div className="kb-card-links">
+            <span className="kb-chip kb-chip-bug">Bug</span>
+            <a className="kb-chip" href={bug.issue.htmlUrl}>
+              Issue #{bug.issue.number}
+            </a>
+          </div>
+        </div>
+      </div>
+    </article>
+  );
+}
+
 /* ------------------------------------------------------------------ */
 /* The view                                                            */
 /* ------------------------------------------------------------------ */
@@ -294,6 +335,8 @@ export function KanbanView() {
   const [snapshot, setSnapshot] = useState<Snapshot>(BUNDLED);
   const [subtasks, setSubtasks] = useState<Subtask[]>(BUNDLED.subtasks);
   const [items, setItems] = useState<DerivedCard[]>([]);
+  const [bugs, setBugs] = useState<BugCardData[]>([]);
+  const [bugsUnavailable, setBugsUnavailable] = useState(false);
   const [mode, setMode] = useState<"pending" | "live" | "offline">("pending");
   const [stamp, setStamp] = useState<Stamp>({ kind: "bundled" });
   const [lane, setLane] = useState<Lane | "all">("all");
@@ -316,43 +359,66 @@ export function KanbanView() {
   calmRef.current = calm;
 
   /* GitHub first. The snapshot renders only when that check fails.
-   * Focus and visibility re-check after the cache expires. */
+   * The board polls every 5 minutes while it is visible (paused
+   * while hidden), plus a re-check on focus/visibility once the
+   * cache expires. A failed poll after a live success keeps the
+   * last good live state with a stale stamp. */
   useEffect(() => {
     let active = true;
-    const apply = async (event: "mount" | "focus" | "visible") => {
+    let hadLive = false;
+    const apply = async (
+      event: "mount" | "focus" | "visible" | "tick",
+    ): Promise<KanbanRefresh> => {
       const pubPromise = event === "mount" ? loadPublicSnapshot() : Promise.resolve(null);
       const resultPromise = refreshKanbanLive({ event });
       const pub = await pubPromise;
       const result = await resultPromise;
-      if (!active) return;
+      if (!active) return { action: "skip" };
       const board = pub ?? snapshotRef.current;
       if (pub) {
         setSnapshot(pub);
         setSubtasks(pub.subtasks);
       }
-      if (result.action === "skip") return;
+      if (result.action === "skip") return result;
       if (result.action === "fallback") {
-        setMode("offline");
-        return;
+        if (hadLive) {
+          setStamp((prev) =>
+            prev.kind === "live" ? { ...prev, stale: true } : prev,
+          );
+        } else {
+          setSubtasks(board.subtasks);
+          setMode("offline");
+        }
+        return result;
       }
       const rects = new Map<string, DOMRect>();
       boardRef.current
         ?.querySelectorAll<HTMLElement>("[data-story-id]")
         .forEach((el) => rects.set(el.dataset.storyId as string, el.getBoundingClientRect()));
       firstRects.current = rects;
+      setSubtasks(applyOverlay(board.subtasks, result.state.pulls, result.state.branches));
       setItems(deriveBoardItems(result.state.pulls, result.state.branches, board));
+      setBugs(deriveBugCards(result.state.issues, result.state.pulls));
+      setBugsUnavailable(result.state.issuesUnavailable);
       setStamp({ kind: "live", at: result.state.fetchedAt });
       setMode("live");
+      hadLive = true;
+      return result;
     };
     void apply("mount");
     const onFocus = () => void apply("focus");
     const onVisible = () => {
       if (document.visibilityState === "visible") void apply("visible");
     };
+    const stopPolling = startKanbanPolling({
+      apply: () => apply("tick"),
+      isHidden: () => document.visibilityState === "hidden",
+    });
     window.addEventListener("focus", onFocus);
     document.addEventListener("visibilitychange", onVisible);
     return () => {
       active = false;
+      stopPolling();
       window.removeEventListener("focus", onFocus);
       document.removeEventListener("visibilitychange", onVisible);
     };
@@ -437,9 +503,20 @@ export function KanbanView() {
       (lane === "all" || story.lane === lane) &&
       (!claimOnly || freeStoryIds.has(story.id)),
   );
+  /* Live mode ignores free-to-claim: every ledger story renders,
+   * with its subtask columns derived from GitHub. */
+  const liveStories = snapshot.stories.filter(
+    (story) => lane === "all" || story.lane === lane,
+  );
+  /* Derived cards with no ledger row: a card whose id matches a
+   * ledger subtask num is folded into that subtask, not shown
+   * twice. */
+  const extras = useMemo(() => unledgeredCards(items, subtasks), [items, subtasks]);
   /* In free-to-claim mode the matching stories render
-   * auto-expanded; outside it, expansion is the reader's own. */
-  const openStories: ReadonlySet<string> = claimOnly ? freeStoryIds : expanded;
+   * auto-expanded; outside it, expansion is the reader's own.
+   * Live mode never auto-expands: the button is hidden there. */
+  const openStories: ReadonlySet<string> =
+    claimOnly && mode !== "live" ? freeStoryIds : expanded;
   const toggleStory = (id: string) =>
     setExpanded((prev) => {
       const next = new Set(prev);
@@ -509,8 +586,13 @@ export function KanbanView() {
         </div>
         {mode === "live" ? (
           <p className="kb-count-note">
-            Counts include the checked-in ledger plus the last 100 updated PRs
+            Counts include the checked-in ledger plus the last 500 updated PRs
             {census.all.unnumbered > 0 ? ` · ${census.all.unnumbered} unnumbered` : ""}
+            {bugsUnavailable
+              ? " · bug list unavailable"
+              : bugs.length > 0
+                ? ` · ${bugs.length} open bug${bugs.length === 1 ? "" : "s"}`
+                : ""}
           </p>
         ) : null}
         <div className="kb-board" ref={boardRef}>
@@ -518,25 +600,49 @@ export function KanbanView() {
             <div className="kb-empty">Checking GitHub…</div>
           ) : mode === "live" ? (
             snapshot.columns.map((col) => {
-              const colItems = items.filter(
+              const colStories = liveStories.filter(
+                (story) => rollups.get(story.id)?.col === col,
+              );
+              const colExtras = extras.filter(
                 (item) => item.col === col && (lane === "all" || item.lane === lane),
               );
-              const numbered = colItems.filter((item) => !item.unnumbered);
-              const unnumbered = colItems.filter((item) => item.unnumbered);
+              const extraNumbered = colExtras.filter((item) => !item.unnumbered);
+              const extraUnnumbered = colExtras.filter((item) => item.unnumbered);
+              const colBugs = bugs.filter(
+                (bug) => bug.col === col && (lane === "all" || bug.lane === lane),
+              );
+              const total = colStories.length + colExtras.length + colBugs.length;
               return (
                 <section key={col} className="kb-col" data-col={col} aria-label={col}>
                   <h2>
                     {col}
-                    <span>{colItems.length}</span>
+                    <span>{total}</span>
                   </h2>
-                  {numbered.map((item) => (
+                  {colStories.map((story) => (
+                    <StoryCard
+                      key={story.id}
+                      story={story}
+                      laneLabel={laneLabel(story.lane)}
+                      rollup={rollups.get(story.id) as { col: Column; done: number; total: number }}
+                      subtasks={story.subtasks
+                        .map((id) => subtasksById.get(id))
+                        .filter((s): s is Subtask => Boolean(s))}
+                      open={openStories.has(story.id)}
+                      onToggle={() => toggleStory(story.id)}
+                      freeIds={freeIds}
+                    />
+                  ))}
+                  {extraNumbered.map((item) => (
                     <LiveCard key={item.id} item={item} laneLabel={laneLabel(item.lane)} />
                   ))}
-                  {unnumbered.length > 0 ? <p className="kb-group">Unnumbered</p> : null}
-                  {unnumbered.map((item) => (
+                  {extraUnnumbered.length > 0 ? <p className="kb-group">Unnumbered</p> : null}
+                  {extraUnnumbered.map((item) => (
                     <LiveCard key={item.id} item={item} laneLabel={laneLabel(item.lane)} />
                   ))}
-                  {colItems.length === 0 ? <div className="kb-empty">Nothing here yet</div> : null}
+                  {colBugs.map((bug) => (
+                    <BugCard key={bug.issue.number} bug={bug} laneLabel={laneLabel(bug.lane)} />
+                  ))}
+                  {total === 0 ? <div className="kb-empty">Nothing here yet</div> : null}
                 </section>
               );
             })

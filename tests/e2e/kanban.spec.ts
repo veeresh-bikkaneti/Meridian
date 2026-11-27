@@ -1,4 +1,5 @@
 import { test, expect } from "playwright/test";
+import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { serveBuiltArtifact } from "./helpers";
 
@@ -107,7 +108,7 @@ test("no page-level horizontal overflow and 18 story cards at five viewports", a
   await expect(page.locator("footer").first()).toBeVisible();
 });
 
-test("a story that is not in the snapshot appears from the API alone, in two requests", async ({
+test("a story that is not in the snapshot appears from the API alone, within the request budget", async ({
   page,
   context,
 }) => {
@@ -115,19 +116,65 @@ test("a story that is not in the snapshot appears from the API alone, in two req
   page.on("request", (request) => {
     if (request.url().includes("api.github.com")) githubUrls.push(request.url());
   });
-  await context.route(/api\.github\.com\/repos\/[^/]+\/[^/]+\/pulls\?/, async (route) =>
+  // TD-08.7 deep tier, exercised with fixtures: page 1 is full
+  // (100 rows), so one deep page is read; page 2 is short, so
+  // paging stops. The budget for this first load is 3 calls:
+  // pulls page 1 + pulls page 2 + branches. The 5-page cap is
+  // pinned in the unit tests, not here.
+  const pullsPage = (start: number, count: number) =>
+    Array.from({ length: count }, (_, i) => ({
+      number: start + i,
+      state: "open",
+      draft: false,
+      merged_at: null,
+      title: "feat: FW-99.9 not in the ledger",
+      head: { ref: "feat/fw-99.9-lighthouse" },
+      labels: [{ name: "C:Atlas" }],
+    }));
+  await context.route(/api\.github\.com\/repos\/[^/]+\/[^/]+\/pulls\?/, async (route) => {
+    const url = route.request().url();
+    const body = /[?&]page=/.test(url) ? pullsPage(9200, 3) : pullsPage(9001, 100);
+    if (/[?&]page=/.test(url)) {
+      // One open pull mentions #590, so that bug is In progress;
+      // #478 has no open pull and stays Backlog. The title keeps
+      // the "not in the ledger" text the card assertion looks for.
+      body[0] = {
+        ...body[0],
+        title: "feat: FW-99.9 not in the ledger, refs #590",
+      };
+    }
+    return route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify(body),
+    });
+  });
+  await context.route(/api\.github\.com\/repos\/[^/]+\/[^/]+\/issues\?/, async (route) =>
     route.fulfill({
       status: 200,
       contentType: "application/json",
       body: JSON.stringify([
         {
-          number: 9001,
+          number: 590,
           state: "open",
-          draft: false,
-          merged_at: null,
-          title: "feat: FW-99.9 not in the ledger",
-          head: { ref: "feat/fw-99.9-lighthouse" },
-          labels: [{ name: "C:Atlas" }],
+          title: "Narration silent on the phone",
+          html_url: "https://github.com/veeresh-bikkaneti/Meridian/issues/590",
+          labels: [{ name: "bug" }],
+        },
+        {
+          number: 478,
+          state: "open",
+          title: "Ledger-linked bug still gets its own card",
+          html_url: "https://github.com/veeresh-bikkaneti/Meridian/issues/478",
+          labels: [{ name: "bug" }],
+        },
+        {
+          number: 9999,
+          state: "open",
+          title: "A pull request, not an issue",
+          html_url: "https://github.com/veeresh-bikkaneti/Meridian/pull/9999",
+          pull_request: { url: "https://api.github.com/repos/veeresh-bikkaneti/Meridian/pulls/9999" },
+          labels: [{ name: "bug" }],
         },
       ]),
     }),
@@ -148,11 +195,37 @@ test("a story that is not in the snapshot appears from the API alone, in two req
   await expect(fresh.locator('.kb-chip-seat[data-seat-tag="C:Atlas"]')).toHaveText("C:Atlas");
   await expect(page.locator(".kb-story", { hasText: "TD-08.4" })).toBeVisible();
   await expect(page.locator(".kb-stamp")).toHaveText(/Live · fetched \d{2}:\d{2}/);
-  // Ledger-only rows stay off the board while GitHub answers.
+  // Commit 4: ledger stories render in live mode, with columns
+  // derived from GitHub. TD-01 has no live evidence, so its
+  // filed Done subtask falls back to Backlog ("not verified
+  // live") and the story sits in Backlog. All 18 ledger stories
+  // plus the two GitHub-only cards (FW-99.9, TD-08.4) render.
+  await expect(page.locator(".kb-story")).toHaveCount(20);
+  const td01Num = page.locator('section.kb-col[data-col="Backlog"] .kb-story .kb-num', {
+    hasText: /^TD-01$/,
+  });
+  await expect(td01Num).toBeVisible();
+  // TD-01.1 is a subtask row inside the collapsed TD-01 story,
+  // not a top-level card.
   await expect(page.getByText("TD-01.1", { exact: true })).toHaveCount(0);
-  await expect.poll(() => githubUrls.length).toBe(2);
+  // Both open bugs appear as bug cards, including #478, which the
+  // ledger already links; the pull row in the issues payload does not.
+  await expect(page.locator(".kb-bug")).toHaveCount(2);
+  const bug590 = page.locator('.kb-bug[data-bug-id="590"]');
+  await expect(bug590).toBeVisible();
+  await expect(bug590.locator(".kb-chip-bug")).toHaveText("Bug");
+  await expect(bug590.locator('a[href*="/issues/590"]')).toBeVisible();
+  await expect(
+    page.locator('section.kb-col[data-col="In progress"] .kb-bug[data-bug-id="590"]'),
+  ).toBeVisible();
+  await expect(
+    page.locator('section.kb-col[data-col="Backlog"] .kb-bug[data-bug-id="478"]'),
+  ).toBeVisible();
+  await expect(page.locator(".kb-count-note")).toContainText("2 open bugs");
+  await expect.poll(() => githubUrls.length).toBe(4);
   expect(githubUrls.filter((url) => /\/pulls\/\d+/.test(url))).toEqual([]);
-  expect(githubUrls.filter((url) => /[?&]page=/.test(url))).toEqual([]);
+  const pages = githubUrls.flatMap((url) => /[?&]page=(\d+)/.exec(url)?.[1] ?? []);
+  expect(pages).toEqual(["2"]);
 });
 
 test("backfilled numbers show live, genuine unknowns stay Unnumbered, counts are a census", async ({
@@ -197,15 +270,28 @@ test("backfilled numbers show live, genuine unknowns stay Unnumbered, counts are
   await context.route(/api\.github\.com\/repos\/[^/]+\/[^/]+\/branches(\?|$)/, async (route) =>
     route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify([]) }),
   );
+  await context.route(/api\.github\.com\/repos\/[^/]+\/[^/]+\/issues\?/, async (route) =>
+    route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify([]) }),
+  );
 
   await page.setViewportSize({ width: 1280, height: 800 });
   await page.goto(KANBAN_URL);
   await expect(page.locator(".kb-stamp")).toHaveText(/Live · fetched \d{2}:\d{2}/);
 
   // The backfill map keys #571 as TD-02.5 even though neither
-  // its title nor its branch carries the number.
-  await expect(page.locator(".kb-story", { hasText: "TD-02.5" })).toBeVisible();
+  // its title nor its branch carries the number. TD-02.5 is a
+  // ledger subtask, so its card folds into the TD-02 story:
+  // expanding the story shows the row with the #571 chip, and
+  // no top-level card carries the id.
+  await expect(page.locator('[data-story-id="TD-02.5"]')).toHaveCount(0);
+  await page
+    .getByRole("button", { name: /Show subtasks for TD-02 / })
+    .click();
+  const td025 = page.locator(".kb-subs li", { hasText: "TD-02.5" });
+  await expect(td025).toBeVisible();
+  await expect(td025.locator('a[href*="/pull/571"]')).toBeVisible();
   // The map also wins over #614's head.ref, which names TD-10.1.
+  // TD-10.5 is not a ledger subtask, so it stays a card.
   await expect(page.locator(".kb-story", { hasText: "TD-10.5" })).toBeVisible();
   await expect(page.locator(".kb-story", { hasText: "TD-10.1" })).toHaveCount(0);
   // #616 has no determinable number: it stays under Unnumbered.
@@ -233,13 +319,14 @@ test("backfilled numbers show live, genuine unknowns stay Unnumbered, counts are
   await expect(numberedCards.and(page.locator('[data-lane="tech-debt"]'))).toHaveCount(1);
   await expect(page.locator(".kb-story", { hasText: "TD-10.5" })).toBeVisible();
   await tab("Architecture · 8 stories, 23 tasks").click();
-  await expect(numberedCards).toHaveCount(1);
-  await expect(numberedCards.and(page.locator('[data-lane="architecture"]'))).toHaveCount(1);
-  await expect(page.locator(".kb-story", { hasText: "TD-02.5" })).toBeVisible();
+  // TD-02.5 folded into its story, so no numbered card remains
+  // on this lane; the TD-02 story itself is still here.
+  await expect(numberedCards).toHaveCount(0);
+  await expect(page.locator(".kb-story .kb-num", { hasText: /^TD-02$/ })).toBeVisible();
   await tab("Product · 3 stories, 7 tasks").click();
   await expect(numberedCards).toHaveCount(0);
   await expect(
-    page.getByText("Counts include the checked-in ledger plus the last 100 updated PRs"),
+    page.getByText("Counts include the checked-in ledger plus the last 500 updated PRs"),
   ).toBeVisible();
 });
 
@@ -286,4 +373,75 @@ test("free to claim marks exactly the 18 free subtasks", async ({ page }) => {
   // them on the snapshot, and no two overlap in owns.
   await expect(page.locator(".kb-chip-free")).toHaveCount(18);
   await expect(page.locator(".kb-sub-free")).toHaveCount(18);
+});
+
+test("the board polls every 5 minutes while visible and keeps the last good state when a poll fails (TD-08.7)", async ({
+  page,
+  context,
+}) => {
+  await page.clock.install();
+  let failing = false;
+  const githubUrls: string[] = [];
+  page.on("request", (request) => {
+    if (request.url().includes("api.github.com")) githubUrls.push(request.url());
+  });
+  const answer = (body: unknown) => async (route: import("@playwright/test").Route) =>
+    failing
+      ? route.fulfill({ status: 500, contentType: "application/json", body: "{}" })
+      : route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(body) });
+  await context.route(/api\.github\.com\/repos\/[^/]+\/[^/]+\/pulls\?/, answer([]));
+  await context.route(
+    /api\.github\.com\/repos\/[^/]+\/[^/]+\/branches(\?|$)/,
+    answer([{ name: "chore/td-08.4-kanban-github-derived" }]),
+  );
+  await context.route(/api\.github\.com\/repos\/[^/]+\/[^/]+\/issues\?/, answer([]));
+
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.goto(KANBAN_URL);
+  await expect(page.locator(".kb-stamp")).toHaveText(/Live · fetched \d{2}:\d{2}/);
+  const firstRound = githubUrls.length;
+  assert.equal(firstRound, 3);
+
+  // Five minutes on, visible, healthy: one steady-state round
+  // makes exactly 3 calls (pulls + branches + issues).
+  await page.clock.fastForward(5 * 60_000);
+  await expect.poll(() => githubUrls.length).toBe(firstRound + 3);
+  await expect(page.locator(".kb-stamp")).toHaveText(/Live · fetched \d{2}:\d{2}/);
+
+  // Five minutes on, visible: the tick refetches. The pulls
+  // call fails first, so the failed round costs exactly one
+  // call and the whole check fails; the board keeps the last
+  // good live state with a stale stamp instead of flipping to
+  // the offline snapshot.
+  failing = true;
+  await page.clock.fastForward(5 * 60_000);
+  await expect(page.locator(".kb-stamp")).toContainText("last check failed");
+  await expect.poll(() => githubUrls.length).toBe(firstRound + 4);
+  await expect(page.locator(".kb-story").first()).toBeVisible();
+
+  // Five minutes on, hidden: no round at all.
+  await page.evaluate(() => {
+    Object.defineProperty(document, "visibilityState", {
+      get: () => "hidden",
+      configurable: true,
+    });
+    document.dispatchEvent(new Event("visibilitychange"));
+  });
+  await page.clock.fastForward(5 * 60_000);
+  await page.waitForTimeout(50);
+  assert.equal(githubUrls.length, firstRound + 4);
+
+  // Visible again: the visibility re-check refetches at once,
+  // and the next 5-minute tick refetches again — one failed
+  // pulls call each.
+  await page.evaluate(() => {
+    Object.defineProperty(document, "visibilityState", {
+      get: () => "visible",
+      configurable: true,
+    });
+    document.dispatchEvent(new Event("visibilitychange"));
+  });
+  await expect.poll(() => githubUrls.length).toBe(firstRound + 5);
+  await page.clock.fastForward(5 * 60_000);
+  await expect.poll(() => githubUrls.length).toBe(firstRound + 6);
 });

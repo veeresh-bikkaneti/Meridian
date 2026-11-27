@@ -9,14 +9,21 @@
  * GitHub state in and the view renders what comes out, so every
  * rule is testable without a network.
  *
- * The overlay rule: a subtask moves only FORWARD from its
- * snapshot column (Backlog = Blocked < In progress < In review
- * < Done). Signals are its pre-recorded `closes` PRs (Done only
- * when every one of them has merged) and `work` branches, plus
- * any live pull whose title or head branch carries the subtask
- * `num`, plus any live branch whose name carries that `num`.
- * `ref` PRs, `ref` branches and issues are context links — they
- * are never read as movement. Pull bodies are never read.
+ * The overlay rule: a subtask with live evidence takes the
+ * live column in both directions — up AND down. Without
+ * evidence, a filed Backlog/Blocked stands, and a filed
+ * Done/In review/In progress falls back to Backlog with the
+ * note "not verified live": the board never invents Done from
+ * the ledger alone. Signals are its pre-recorded `closes` PRs
+ * and `work` branches, plus any live pull whose title or head
+ * branch carries the subtask `num`, plus any live branch whose
+ * name carries that `num`. `ref` PRs, `ref` branches and
+ * issues are context links — they are never read as movement.
+ * Pull bodies are never read. Live PR and branch evidence for
+ * a subtask is read as one set through standingForPulls
+ * (TD-08.7), so one merged pull never outvotes an open one.
+ * The view renders ledger stories with these columns, plus
+ * extra cards for GitHub-only items.
  *
  * TD-08.5 adds the PR number backfill: a checked-in map
  * (pr-number-map.ts) pins older PRs to the planning ids their
@@ -33,7 +40,7 @@ export type Column = "Backlog" | "Blocked" | "In progress" | "In review" | "Done
 
 export const COLUMNS: Column[] = ["Backlog", "Blocked", "In progress", "In review", "Done"];
 
-/** Forward-only ranking: a live column must outrank the snapshot's. */
+/** Forward-only ranking, kept for the per-PR column rule. */
 export function columnRank(col: Column): number {
   switch (col) {
     case "Backlog":
@@ -232,6 +239,32 @@ export function columnForPull(info: PullInfo): { col: Column; note?: string } {
 }
 
 /**
+ * The standing of a whole card from ALL of its pulls at once.
+ * One merged pull never outvotes an open one: Done needs the
+ * whole set settled. Rules, in order:
+ *  1. A `blocked` / `c:blocked*` label on any pull → Blocked.
+ *  2. Closed-unmerged pulls are superseded: ignored while
+ *     other pulls exist; when every pull is closed-unmerged
+ *     → Backlog with the note "closed unmerged".
+ *  3. Any open non-draft pull → In review; else any open
+ *     draft pull → In progress.
+ *  4. Done only with at least one merged pull and no open pull.
+ */
+export function standingForPulls(
+  infos: readonly PullInfo[],
+): { col: Column; note?: string } {
+  if (infos.some((info) => (info.labels ?? []).some(isBlockedLabel))) {
+    return { col: "Blocked" };
+  }
+  const open = infos.filter((info) => info.state === "open");
+  if (open.some((info) => !info.draft)) return { col: "In review" };
+  if (open.some((info) => info.draft)) return { col: "In progress" };
+  if (infos.some((info) => info.merged)) return { col: "Done" };
+  if (infos.length === 0) return { col: "Backlog" };
+  return { col: "Backlog", note: "closed unmerged" };
+}
+
+/**
  * Lane for one card or census id. When a snapshot is passed it
  * wins: the exact story or subtask row, else the parent story
  * (`TD-06.9` → `TD-06` via `storyNumOf`). With no row and no
@@ -286,18 +319,67 @@ export interface DerivedCard {
 }
 
 const LIVE_PR_HREF = "https://github.com/veeresh-bikkaneti/Meridian/pull/";
+/** An open GitHub issue with the `bug` label, from the live check. */
+export interface IssueInfo {
+  number: number;
+  title: string;
+  htmlUrl: string;
+  /** Label names, when the live check recorded them. */
+  labels?: string[];
+}
 
-function preferAdvanced(
-  current: { col: Column; note?: string } | null,
-  next: { col: Column; note?: string },
-): { col: Column; note?: string } {
-  if (current === null) return next;
-  const ra = columnRank(current.col);
-  const rb = columnRank(next.col);
-  if (rb > ra) return next;
-  if (ra > rb) return current;
-  if (next.col === "Blocked" && current.col !== "Blocked") return next;
-  return current;
+/** A live bug card: an open `bug` issue, filed under the product lane. */
+export interface BugCard {
+  issue: IssueInfo;
+  col: Column;
+  lane: Lane;
+  /** Open pull numbers whose title or head ref mentions this issue. */
+  linkedPrs: number[];
+}
+
+/**
+ * Bug cards for the live board. A bug is Backlog until an OPEN
+ * pull's title or head ref mentions `#N` — then it is In
+ * progress. A merged pull that only says "Refs #N" does not
+ * move it: the bug is still open. A bug the ledger already
+ * links still gets its own card; the ledger row keeps its chip.
+ * Bugs never join the story/task census.
+ */
+export function deriveBugCards(
+  issues: ReadonlyMap<number, IssueInfo>,
+  pulls: ReadonlyMap<number, PullInfo>,
+): BugCard[] {
+  const cards: BugCard[] = [];
+  for (const issue of issues.values()) {
+    const mention = new RegExp(`(?:^|[^0-9])#${issue.number}(?!\\d)`);
+    const linkedPrs: number[] = [];
+    for (const [number, info] of pulls) {
+      if (info.state !== "open") continue;
+      if (mention.test(info.title ?? "") || mention.test(info.headRef ?? "")) {
+        linkedPrs.push(number);
+      }
+    }
+    cards.push({
+      issue,
+      col: linkedPrs.length > 0 ? "In progress" : "Backlog",
+      lane: "product",
+      linkedPrs,
+    });
+  }
+  cards.sort((a, b) => a.issue.number - b.issue.number);
+  return cards;
+}
+
+const LIVE_ISSUE_HREF = "https://github.com/veeresh-bikkaneti/Meridian/issues/";
+
+/**
+ * The `html_url` of an issue row, or the issue URL built from
+ * its number when the row carries none.
+ */
+export function issueHtmlUrl(number: number, htmlUrl: unknown): string {
+  return typeof htmlUrl === "string" && htmlUrl.length > 0
+    ? htmlUrl
+    : `${LIVE_ISSUE_HREF}${number}`;
 }
 
 interface DerivedAcc {
@@ -305,7 +387,7 @@ interface DerivedAcc {
   num: string | null;
   title: string;
   texts: string[];
-  standing: { col: Column; note?: string } | null;
+  pullInfos: PullInfo[];
   prs: PrLink[];
   seatTags: string[];
   unnumbered: boolean;
@@ -320,12 +402,12 @@ function takeSeatTags(acc: DerivedAcc, labels: string[] | undefined): void {
 /**
  * Build the board from the pull list (newest first) and the
  * branch set. Pulls and branches with no TD or story number land
- * in the Unnumbered group — they are never dropped. Several pulls
- * for one number keep the most advanced column (`columnRank`);
- * every pull number is kept as a chip. The title is the newest
- * pull's title, else the branch name. Pass the snapshot so a
- * card takes the ledger lane (or its parent story's lane)
- * instead of the TD heuristic.
+ * in the Unnumbered group — they are never dropped. All pulls
+ * for one number are read as one set through standingForPulls
+ * (TD-08.7); every pull number is kept as a chip. The title is
+ * the newest pull's title, else the branch name. Pass the
+ * snapshot so a card takes the ledger lane (or its parent
+ * story's lane) instead of the TD heuristic.
  */
 /** The repo's default branch; never a card of its own. */
 const DEFAULT_BRANCH = "main";
@@ -366,7 +448,7 @@ export function deriveBoardItems(
           num: key,
           title,
           texts: [],
-          standing: null,
+          pullInfos: [],
           prs: [],
           seatTags: [],
           unnumbered: key === null,
@@ -376,7 +458,7 @@ export function deriveBoardItems(
       if (info.title) acc.texts.push(info.title);
       if (info.headRef) acc.texts.push(info.headRef);
       acc.prs.push({ number, role: "closes", href: `${LIVE_PR_HREF}${number}` });
-      acc.standing = preferAdvanced(acc.standing, columnForPull(info));
+      acc.pullInfos.push(info);
       takeSeatTags(acc, info.labels);
     }
   }
@@ -395,7 +477,7 @@ export function deriveBoardItems(
         num: key,
         title: name,
         texts: [name],
-        standing: { col: "In progress" },
+        pullInfos: [],
         prs: [],
         seatTags: [],
         unnumbered: false,
@@ -409,7 +491,7 @@ export function deriveBoardItems(
       num: null,
       title: name,
       texts: [name],
-      standing: { col: "In progress" },
+      pullInfos: [],
       prs: [],
       seatTags: [],
       unnumbered: true,
@@ -417,7 +499,12 @@ export function deriveBoardItems(
   }
 
   return [...byKey.values()].map((acc) => {
-    const standing = acc.standing ?? { col: "Backlog" as Column };
+    // A card with pulls takes the whole-set standing; a
+    // branch-only card is work in flight, In progress.
+    const standing =
+      acc.pullInfos.length > 0
+        ? standingForPulls(acc.pullInfos)
+        : { col: "In progress" as Column };
     const card: DerivedCard = {
       id: acc.id,
       num: acc.num,
@@ -566,60 +653,55 @@ export function loadSnapshot(json: unknown): Snapshot {
 }
 
 /**
- * The live column one subtask's pre-recorded GitHub links prove,
- * before the forward-only clamp — or null when they prove
- * nothing. PRs are read first, and only when EVERY closes PR
- * was fetched: a partial answer proves nothing (the live module
- * fetches every needed number, so a gap means the PR could not
- * be read). Work branches are consulted only when that PR rule
- * does not apply.
+ * The live standing one subtask's GitHub evidence proves, or
+ * null when it proves nothing. Recorded `closes` PRs are read
+ * as one set — only when EVERY one of them was fetched: a
+ * partial answer proves nothing (the live module fetches every
+ * needed number, so a gap means the PR could not be read).
+ * Numbered pulls that are not `ref` links join the same set,
+ * so one merged pull never outvotes an open one. A live work
+ * branch (recorded, or a live branch carrying the number)
+ * proves work started: it lifts an all-closed-unmerged
+ * standing to In progress, and nothing else.
  */
-function recordedLiveColumn(
+function liveStanding(
   sub: Subtask,
   pulls: ReadonlyMap<number, PullInfo>,
   branches: ReadonlySet<string>,
+  byPull: ReadonlyMap<string, [number, PullInfo][]>,
+  byBranch: ReadonlyMap<string, string[]>,
 ): { col: Column | null; note?: string } {
   const closes = sub.prs.filter((p) => p.role === "closes");
-  if (closes.length > 0 && closes.every((p) => pulls.has(p.number))) {
-    const infos = closes.map((p) => pulls.get(p.number) as PullInfo);
-    if (infos.every((i) => i.merged)) return { col: "Done" };
-    if (infos.some((i) => i.state === "open" && !i.draft)) return { col: "In review" };
-    if (infos.some((i) => i.state === "open" && i.draft)) return { col: "In progress" };
-    if (infos.some((i) => i.state === "closed" && !i.merged)) {
-      return { col: null, note: "closed unmerged" };
-    }
-    return { col: null };
+  const closesComplete = closes.every((p) => pulls.has(p.number));
+  const recordedInfos = closesComplete
+    ? closes.map((p) => pulls.get(p.number) as PullInfo)
+    : [];
+  const closeNumbers = new Set(closes.map((p) => p.number));
+  const autoInfos = autoPullsFor(sub, byPull)
+    .filter(([number]) => !closeNumbers.has(number))
+    .map(([, info]) => info);
+  const branchEvidence =
+    autoBranchesFor(sub, byBranch).length > 0 || recordedWorkBranchExists(sub, branches);
+  const infos = [...recordedInfos, ...autoInfos];
+  if (infos.length === 0) {
+    return branchEvidence ? { col: "In progress" } : { col: null };
   }
+  const standing = standingForPulls(infos);
+  if (standing.col === "Backlog" && branchEvidence) return { col: "In progress" };
+  return standing;
+}
+
+/** A recorded `work` branch exists in the live branch set. */
+function recordedWorkBranchExists(sub: Subtask, branches: ReadonlySet<string>): boolean {
   for (const branch of sub.branches) {
     if (branch.role !== "work") continue;
     const exists =
       branch.match === "prefix"
         ? [...branches].some((name) => name.startsWith(branch.name))
         : branches.has(branch.name);
-    if (exists) return { col: "In progress" };
+    if (exists) return true;
   }
-  return { col: null };
-}
-
-function columnFromPull(info: PullInfo): { col: Column | null; note?: string } {
-  if (info.merged) return { col: "Done" };
-  if (info.state === "open" && !info.draft) return { col: "In review" };
-  if (info.state === "open" && info.draft) return { col: "In progress" };
-  if (info.state === "closed" && !info.merged) return { col: null, note: "closed unmerged" };
-  return { col: null };
-}
-
-/** The higher forward column; a note survives only when neither side moved. */
-function preferForward(
-  a: { col: Column | null; note?: string },
-  b: { col: Column | null; note?: string },
-): { col: Column | null; note?: string } {
-  const ra = a.col === null ? -1 : columnRank(a.col);
-  const rb = b.col === null ? -1 : columnRank(b.col);
-  if (rb > ra) return { col: b.col };
-  if (ra > rb) return { col: a.col };
-  if (a.col === null && b.col === null) return { col: null, note: a.note ?? b.note };
-  return { col: a.col };
+  return false;
 }
 
 function indexPulls(pulls: ReadonlyMap<number, PullInfo>): Map<string, [number, PullInfo][]> {
@@ -679,24 +761,6 @@ function autoBranchesFor(
   return (byBranch.get(sub.num.toUpperCase()) ?? []).filter((name) => !isRefBranch(sub, name));
 }
 
-/** Column proved by numbered pulls and branches that are not `ref` links. */
-function autoLiveColumn(
-  sub: Subtask,
-  byPull: ReadonlyMap<string, [number, PullInfo][]>,
-  byBranch: ReadonlyMap<string, string[]>,
-): { col: Column | null; note?: string } {
-  const closes = new Set(sub.prs.filter((p) => p.role === "closes").map((p) => p.number));
-  let result: { col: Column | null; note?: string } = { col: null };
-  for (const [number, info] of autoPullsFor(sub, byPull)) {
-    if (closes.has(number)) continue;
-    result = preferForward(result, columnFromPull(info));
-  }
-  if (autoBranchesFor(sub, byBranch).length > 0) {
-    result = preferForward(result, { col: "In progress" });
-  }
-  return result;
-}
-
 function enrichPrs(sub: Subtask, matched: readonly [number, PullInfo][]): PrLink[] {
   const seen = new Set(sub.prs.map((p) => p.number));
   const extra: PrLink[] = [];
@@ -731,13 +795,16 @@ function seatTagsFor(
 }
 
 /**
- * Apply live GitHub state to snapshot subtasks. The live column
- * replaces the snapshot column only when it ranks higher —
- * forward only, so an open draft PR never pulls an In review
- * subtask back to In progress. A closed-unmerged closes PR
- * keeps the column and leaves the "closed unmerged" note.
- * Newly numbered pulls are appended as `closes` links (existing
- * numbers are left as recorded). Inputs are not mutated.
+ * Apply live GitHub state to snapshot subtasks. A subtask with
+ * live evidence takes the live column in both directions, so
+ * an open draft PR pulls an In review subtask back to In
+ * progress, and a closed-unmerged closes PR moves its subtask
+ * to Backlog with the "closed unmerged" note. Without any
+ * evidence, a filed Backlog/Blocked stands, and a filed
+ * Done/In review/In progress falls back to Backlog with the
+ * note "not verified live". Newly numbered pulls are appended
+ * as `closes` links (existing numbers are left as recorded).
+ * Inputs are not mutated.
  */
 export function applyOverlay<T extends Subtask>(
   subtasks: readonly T[],
@@ -747,18 +814,40 @@ export function applyOverlay<T extends Subtask>(
   const byPull = indexPulls(pulls);
   const byBranch = indexBranches(branches);
   return subtasks.map((sub) => {
-    const live = preferForward(
-      recordedLiveColumn(sub, pulls, branches),
-      autoLiveColumn(sub, byPull, byBranch),
-    );
-    const col =
-      live.col !== null && columnRank(live.col) > columnRank(sub.col) ? live.col : sub.col;
+    const live = liveStanding(sub, pulls, branches, byPull, byBranch);
+    let col: Column;
+    let note: string | undefined;
+    if (live.col !== null) {
+      col = live.col;
+      note = live.note;
+    } else if (sub.col === "Backlog" || sub.col === "Blocked") {
+      col = sub.col;
+    } else {
+      col = "Backlog";
+      note = "not verified live";
+    }
     const matched = autoPullsFor(sub, byPull);
     const seatTags = seatTagsFor(sub, pulls, matched);
-    const next: T = { ...sub, col, note: live.note, prs: enrichPrs(sub, matched) };
+    const next: T = { ...sub, col, note, prs: enrichPrs(sub, matched) };
     if (seatTags.length > 0) next.seatTags = seatTags;
     return next;
   });
+}
+
+/**
+ * Derived cards with no ledger row: a card whose id matches a
+ * ledger subtask num is folded into that subtask (its pulls
+ * already chip onto the subtask row through the overlay), not
+ * shown twice. Cards keyed by a ledger story num stay as
+ * extras — the story card does not carry their pulls — and
+ * Unnumbered cards always stay.
+ */
+export function unledgeredCards(
+  items: readonly DerivedCard[],
+  subtasks: readonly Subtask[],
+): DerivedCard[] {
+  const nums = new Set(subtasks.map((s) => s.num));
+  return items.filter((item) => item.num === null || !nums.has(item.num));
 }
 
 /**
