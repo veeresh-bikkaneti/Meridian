@@ -166,6 +166,7 @@ import {
   type BandRunConfig,
 } from "@/game/age-profile";
 import { useAgeProfileHost } from "./age-profile/use-age-profile-host";
+import { SubjectsHost } from "@/subjects/shared/SubjectsHost";
 import { useShellSession } from "./use-shell-session";
 import { useOverlayQueue } from "./use-overlay-queue";
 import { useRunController } from "./use-run-controller";
@@ -292,19 +293,6 @@ import { GeoDetectiveHost } from "@/game/loop/GeoDetectiveHost";
 // Suspense + MapErrorBoundary at the render sites. The screens have no
 // default export, so the lazy factories adapt their named exports (the
 // HomeGlobe idiom above).
-const loadSubjectPicker = () => import("@/subjects/shared/SubjectPicker");
-// #209: each lazy load is raced against CHUNK_LOAD_TIMEOUT_MS (inside
-// withChunkTimeout) — a HUNG import never settles, so without the race
-// the Suspense fallback below would spin forever; with it, the race
-// rejection lands in MapErrorBoundary's recoverable card instead.
-// Subject picker (why-learn card): same lazy discipline — it loads
-// only when the why-learn card is tapped, and each subject's case
-// loads only when its picker row is tapped.
-const SubjectPickerScreen = lazy(() =>
-  withChunkTimeout(loadSubjectPicker(), "Subject picker screen").then((m) => ({
-    default: m.default,
-  })),
-);
 /**
  * F2b intent prefetch for the edition + case cards: hovering, focusing,
  * or pressing a card starts the countries-50m load (scorePlace's region
@@ -2089,7 +2077,7 @@ export function GameApp() {
         <div inert={ageSettingsOpen || ageAsk !== null || undefined}>
           <MapErrorBoundary surface="Subjects">
             <Suspense fallback={<SessionLoadingFallback label="Loading subjects…" />}>
-              <SubjectPickerScreen
+              <SubjectsHost
                 group={getAgeGroup()}
                 tier="full"
                 onExit={() => setSubjectsOpen(false)}

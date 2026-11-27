@@ -10,14 +10,14 @@ import {
   GAME_APP_SIZE_CEILING,
 } from "./check-game-app-size.mjs";
 
-test("ceiling is the measured count after TD-06.13", () => {
-  assert.equal(GAME_APP_SIZE_CEILING, 6250);
+test("ceiling is the measured count after TD-06.14", () => {
+  assert.equal(GAME_APP_SIZE_CEILING, 6238);
 });
 
 test("the real file is at the ceiling", () => {
   const result = checkGameAppFile(GAME_APP_PATH);
   assert.equal(result.ok, true);
-  assert.equal(result.lineCount, 6250);
+  assert.equal(result.lineCount, 6238);
 });
 
 test("a fake file with ceiling + 1 lines fails and says by how much", () => {
@@ -34,7 +34,7 @@ test("a fake file with ceiling + 1 lines fails and says by how much", () => {
 });
 
 test("a ceiling higher than the real count fails instead of passing silently", () => {
-  const result = checkGameAppSize(6250, GAME_APP_SIZE_CEILING + 1);
+  const result = checkGameAppSize(6238, GAME_APP_SIZE_CEILING + 1);
   assert.equal(result.ok, false);
   assert.match(result.message, /higher than the real count/);
 });
