@@ -65,7 +65,7 @@ import {
 import { GEODETECTIVE_FILM, GROWNUPS_FILM, JOURNAL_FILM, coldtrailMediaForBand, reviewMediaForBand, whyLearnMediaForBand } from "@/assets/home-v5/card-media";
 import { CardFilm } from "./card-film";
 import { usePrefersReducedMotion } from "../hooks/use-prefers-reduced-motion";
-import { Compass, Contrast, Flag, Globe2, MapPin, MoreHorizontal } from "lucide-react";
+import { Compass, Flag, Globe2, MapPin, MoreHorizontal } from "lucide-react";
 import { SoundToggle } from "./SoundToggle";
 import {
   FIRST_VISIT_QUEUE_KEY,
@@ -93,11 +93,7 @@ import {
   playWin,
 } from "@/game/audio/sfx";
 import { playCelebrationSound, safePlay, soundAudible } from "@/game/audio/play-guards";
-import {
-  applyPalettePreference,
-  isHighContrastEnabled,
-  setHighContrastEnabled,
-} from "@/game/palette-preference";
+import { applyPalettePreference } from "@/game/palette-preference";
 import { Suspense, lazy, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type KeyboardEvent as ReactKeyboardEvent, type MouseEvent as ReactMouseEvent, type ReactNode, type RefObject } from "react";
 import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
@@ -108,6 +104,7 @@ import { ErrorScreen } from "@/components/ui/error-screen";
 import { RunStartNotice } from "@/components/run-start-notice";
 import { QuestionBubble, type BubbleViewState } from "./question-bubble";
 import { HintPanel } from "./hint-panel";
+import { HighContrastToggle } from "./high-contrast-toggle";
 import { directionalHint } from "./hint-logic";
 import { canUseHint } from "@/game/age-profile/run-config.ts";
 import { ResultCard } from "./result-card";
@@ -435,67 +432,6 @@ import {
   VERDICT_ICONS,
   type VerdictClass,
 } from "@/game/challenge-verdict";
-
-/**
- * High-contrast view toggle (manifest 2026-10-27): the SoundToggle
- * pattern for the map palette — persisted under `meridian.palette`
- * (PALETTE_STORAGE_KEY), default OFF (standard), one instance in the
- * home hero and one in the game chrome, each reading the persisted
- * value on mount. Flipping it repaints the map IN PLACE via the
- * palette-preference module (data-palette attribute + the
- * meridian:palette-change event): unlike the Scout Map switch it
- * never ends a game and never navigates, because the palette is a
- * paint choice, not a map-build input. A corrupt stored value fails
- * closed to standard inside selectPalette — the toggle just shows
- * OFF.
- */
-function HighContrastToggle({
-  testId,
-  className,
-  style,
-  iconClassName = "size-5",
-}: {
-  testId: string;
-  className?: string;
-  style?: CSSProperties;
-  iconClassName?: string;
-}) {
-  const [highContrast, setHighContrast] = useState<boolean>(() => isHighContrastEnabled());
-  const toggleHighContrast = () => {
-    try {
-      const next = !highContrast;
-      setHighContrastEnabled(next);
-      setHighContrast(next);
-    } catch {
-      // The palette is enhancement-only; the toggle itself never throws.
-    }
-  };
-  return (
-    <button
-      type="button"
-      data-testid={testId}
-      aria-pressed={highContrast}
-      aria-label={highContrast ? "Turn high contrast off" : "Turn high contrast on"}
-      title={highContrast ? "High contrast on" : "High contrast off"}
-      onClick={toggleHighContrast}
-      // atlas-contrast-toggle: the dedicated class both hosts share, so
-      // styles.css can give [aria-pressed="true"] a VISIBLE pressed state
-      // (brass fill + filled icon, the .atlas-seg pattern) — aria-pressed
-      // alone is invisible to the sighted low-vision users this serves
-      // (panel BLOCK 3; manifest Scenarios 1–2: "I can see it pressed").
-      className={className ? `atlas-contrast-toggle ${className}` : "atlas-contrast-toggle"}
-      style={style}
-    >
-      <Contrast className={iconClassName} aria-hidden="true" />
-      {/* Visible text label (item 37): the control was icon-only, so a
-          sighted player had no way to know what it does. The word rides
-          beside the icon in both hosts; the hosts' classes give it room
-          (the hero host is min-width 44px inline-flex, the game host is
-          min-w-11 with padding). */}
-      <span className="text-sm font-medium">Contrast</span>
-    </button>
-  );
-}
 
 /**
  * Snapshot a missed place's full question context for the deck: a review

@@ -22,6 +22,7 @@ Finish the game-app split (extract ReviewComplete, RegionList, SubjectsHost, hig
 - Commit 3 (TD-06.12): ReviewComplete extracted to `src/components/review-complete.tsx` (fragment; composer keeps the `<main>` wrapper, no new pageLocalMain row); game-app 6397 → 6324, ceiling lowered to 6324; map step 13 done.
 - Commit 4 (TD-06.13): RegionList + StartingView extracted to `src/components/region-list.tsx` (fragments; composer keeps the `<main>` wrappers at all 4 call sites, no new pageLocalMain row); game-app 6324 → 6250, ceiling lowered to 6250; map steps 16–17 done.
 - Commit 5 (TD-06.14): SubjectsHost created at `src/subjects/shared/SubjectsHost.tsx` (owns the lazy SubjectPicker; composer keeps Suspense + MapErrorBoundary); layer-baseline key swaps count-neutrally SubjectPicker → SubjectsHost (104 stays 104); game-app 6250 → 6238, ceiling lowered to 6238; map step 18 done. SubjectCase / SubjectPicker keep their pageLocalMain rows — their `<main>` carries screen-specific classes (`mode-screen`, `why-learn-screen`, `subject-*-screen`) and data attributes PageShell cannot express; curing them would be a visual change.
+- Commit 6 (TD-06.15a): HighContrastToggle extracted to `src/components/high-contrast-toggle.tsx` (slot component, rendered directly by Play and Home); game-app 6238 → 6174, ceiling lowered to 6174; map step 20 preamble done.
 
 ## Ruled out / deferred
 
@@ -36,4 +37,4 @@ Finish the game-app split (extract ReviewComplete, RegionList, SubjectsHost, hig
 
 ## Next step
 
-Commit 6 (TD-06.15a): extract the high-contrast toggle as a slot component, used by Play and Home.
+Commit 7 (TD-06.15b): extract Play + PlayLoaded, lazy map host in `src/map/`.
