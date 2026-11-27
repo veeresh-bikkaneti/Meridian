@@ -232,16 +232,43 @@ export function columnForPull(info: PullInfo): { col: Column; note?: string } {
 }
 
 /**
- * TD numbers are tech-debt. `arch-*` names and phase work are
- * architecture. Everything else, including FW numbers, is product.
+ * Lane for one card or census id. When a snapshot is passed it
+ * wins: the exact story or subtask row, else the parent story
+ * (`TD-06.9` → `TD-06` via `storyNumOf`). With no row and no
+ * parent story — TD-08.x, a brand-new FW, an unnumbered card —
+ * the heuristic stands: a TD number is tech-debt, an `arch-*`
+ * name or phase work is architecture, and everything else,
+ * including FW numbers, is product.
  */
-export function laneForItem(num: string | null, texts: readonly string[]): Lane {
+export function laneForItem(
+  num: string | null,
+  texts: readonly string[],
+  snapshot?: Snapshot | null,
+): Lane {
+  if (snapshot && num) {
+    const key = num.toUpperCase();
+    const exact = exactLane(snapshot, key);
+    if (exact) return exact;
+    const parent = storyNumOf(key);
+    if (parent) {
+      const inherited = exactLane(snapshot, parent);
+      if (inherited) return inherited;
+    }
+  }
   if (num && /^TD-/i.test(num)) return "tech-debt";
   const blob = texts.join("\n");
   if (/(?:^|[^a-z0-9])arch-/i.test(blob) || /(?:^|[^a-z0-9])phase\d*/i.test(blob)) {
     return "architecture";
   }
   return "product";
+}
+
+/** The snapshot lane for this exact num, if the ledger has that row. */
+function exactLane(snapshot: Snapshot, num: string): Lane | undefined {
+  return (
+    snapshot.stories.find((story) => story.num === num)?.lane ??
+    snapshot.subtasks.find((sub) => sub.num === num)?.lane
+  );
 }
 
 /** One card derived from pulls and branches. GitHub is the only source. */
@@ -296,7 +323,9 @@ function takeSeatTags(acc: DerivedAcc, labels: string[] | undefined): void {
  * in the Unnumbered group — they are never dropped. Several pulls
  * for one number keep the most advanced column (`columnRank`);
  * every pull number is kept as a chip. The title is the newest
- * pull's title, else the branch name.
+ * pull's title, else the branch name. Pass the snapshot so a
+ * card takes the ledger lane (or its parent story's lane)
+ * instead of the TD heuristic.
  */
 /** The repo's default branch; never a card of its own. */
 const DEFAULT_BRANCH = "main";
@@ -304,6 +333,7 @@ const DEFAULT_BRANCH = "main";
 export function deriveBoardItems(
   pulls: ReadonlyMap<number, PullInfo>,
   branches: ReadonlySet<string>,
+  snapshot: Snapshot | null = null,
 ): DerivedCard[] {
   const byKey = new Map<string, DerivedAcc>();
   const headRefs = new Set<string>();
@@ -392,7 +422,7 @@ export function deriveBoardItems(
       id: acc.id,
       num: acc.num,
       title: acc.title,
-      lane: laneForItem(acc.num, acc.texts),
+      lane: laneForItem(acc.num, acc.texts, snapshot),
       col: standing.col,
       prs: acc.prs,
       seatTags: acc.seatTags,
@@ -832,19 +862,18 @@ export interface LaneCensus {
 }
 
 /**
- * The live census (TD-08.5): story and task counts for the lane
- * segment, counted separately over the UNION of the checked-in
- * ledger, the PR number map and the live derived cards — never
- * just the length of the 100-PR window, which silently capped
- * both numbers at the window size. A live or mapped id the
- * stale ledger lacks (TD-06.5, TD-08.1, TD-10.5) still counts,
- * and a ledger id whose PR has fallen out of the window counts
- * too. Lane assignment uses the same rule as the cards: a live
- * card's own lane when the window holds that id, otherwise
- * `laneForItem` on the id (TD → tech-debt), never the ledger's
- * hand-set lane — so each tab's counts match the cards it shows.
- * Unnumbered live cards count in neither figure; they are
- * reported separately.
+ * The live census: story and task counts for the lane segment,
+ * counted separately over the UNION of the checked-in ledger,
+ * the PR number map and the live derived cards — never just the
+ * length of the 100-PR window, which silently capped both
+ * numbers at the window size. A live or mapped id the stale
+ * ledger lacks (TD-06.5, TD-08.1, TD-10.5) still counts, and a
+ * ledger id whose PR has fallen out of the window counts too.
+ * Lane assignment is the cards' rule (`laneForItem`): the
+ * snapshot row, else the parent story, else the heuristic.
+ * A live card is filed first, so the lane on that card is the
+ * one the tab counts. Unnumbered live cards count in neither
+ * figure; they are reported separately.
  */
 export function boardCensus(
   snapshot: Snapshot,
@@ -877,11 +906,11 @@ export function boardCensus(
     }
     add(item.num, item.lane);
   }
-  // Ledger and map ids take the cards' rule, not the ledger lane.
-  for (const story of snapshot.stories) add(story.num, laneForItem(story.num, []));
-  for (const sub of snapshot.subtasks) add(sub.num, laneForItem(sub.num, []));
+  // Ledger and map ids use the same rule as the cards.
+  for (const story of snapshot.stories) add(story.num, laneForItem(story.num, [], snapshot));
+  for (const sub of snapshot.subtasks) add(sub.num, laneForItem(sub.num, [], snapshot));
   for (const row of PR_NUMBER_MAP) {
-    for (const id of row.ids) add(id, laneForItem(id, []));
+    for (const id of row.ids) add(id, laneForItem(id, [], snapshot));
   }
   const census = {} as Record<Lane | "all", LaneCensus>;
   const lanes: Lane[] = ["tech-debt", "architecture", "product"];
