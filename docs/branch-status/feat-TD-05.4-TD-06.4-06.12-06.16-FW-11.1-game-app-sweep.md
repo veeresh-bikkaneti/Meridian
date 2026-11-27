@@ -20,6 +20,7 @@ Finish the game-app split (extract ReviewComplete, RegionList, SubjectsHost, hig
 
 - Commit 2 (TD-05.4): game-app takes EndOfFlowHome at its 4 sites; `homeButtonImport` cured (shell-ban 4 → 3); ceiling stays 6397 (no lines dropped).
 - Commit 3 (TD-06.12): ReviewComplete extracted to `src/components/review-complete.tsx` (fragment; composer keeps the `<main>` wrapper, no new pageLocalMain row); game-app 6397 → 6324, ceiling lowered to 6324; map step 13 done.
+- Commit 4 (TD-06.13): RegionList + StartingView extracted to `src/components/region-list.tsx` (fragments; composer keeps the `<main>` wrappers at all 4 call sites, no new pageLocalMain row); game-app 6324 → 6250, ceiling lowered to 6250; map steps 16–17 done.
 
 ## Ruled out / deferred
 
@@ -34,4 +35,4 @@ Finish the game-app split (extract ReviewComplete, RegionList, SubjectsHost, hig
 
 ## Next step
 
-Commit 4 (TD-06.13): extract RegionList into `src/components/region-list.tsx`, plus the starting / region-open loader view.
+Commit 5 (TD-06.14): new `src/subjects/shared/SubjectsHost.tsx` owns the lazy SubjectPicker import.

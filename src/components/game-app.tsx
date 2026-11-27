@@ -10,7 +10,7 @@ import {
   stampCleanExitDirty,
 } from "@/game/clean-exit";
 import type { Starter } from "@/game/starters";
-import { ADMIN1_BY_COUNTRY, COUNTRIES, findRegion, STATES, greaterSideKm, type Region } from "@/game/regions";
+import { ADMIN1_BY_COUNTRY, COUNTRIES, findRegion, STATES, greaterSideKm } from "@/game/regions";
 import { rewriteStory } from "@/game/rewrite";
 import { shouldFireAiStory } from "@/game/story-ai";
 import { backfillDifficultyChoice, continueRun, dropPin, endRun, isResumable, resumeRun, startRun, type Edition, type Run, type RunPhase } from "@/game/run";
@@ -114,6 +114,7 @@ import { ResultCard } from "./result-card";
 import { RunSummaryCard } from "./run-summary";
 import { ShareButton } from "./share-button";
 import { ChallengeComplete } from "./challenge-complete";
+import { RegionList, StartingView } from "./region-list";
 import { ReviewComplete } from "./review-complete";
 import { ChallengeMenu } from "./challenge-menu";
 import { ChallengeWelcome } from "./challenge-welcome";
@@ -2157,11 +2158,7 @@ export function GameApp() {
       <>
       {mapModeAnnouncer}
       <main className="mx-auto flex min-h-dvh w-full max-w-(--page-narrow) flex-col justify-center px-5 py-8">
-        <p className="text-sm tracking-wide text-muted uppercase">Loading places</p>
-        <h1 className="mt-2 font-display text-4xl text-fg">{starting.regionName}</h1>
-        <p className="mt-4 max-w-md text-lg text-muted" role="status">
-          Fetching this region&rsquo;s places&hellip;
-        </p>
+        <StartingView regionName={starting.regionName} />
       </main>
       {celebrationOverlay}
       {idleToast}
@@ -2356,22 +2353,24 @@ export function GameApp() {
     return (
       <>
       {mapModeAnnouncer}
-      <RegionList
-        title="Country"
-        subtitle="Play a country whole — or drill into its states where available."
-        regions={regions}
-        notice={<>{challengeBootNoticeEl}{loadNotice}</>}
-        kind="home"
-        onBack={() => setMenu(null)}
-        onChoose={(region) => {
-          const subdivisions = ADMIN1_BY_COUNTRY[region.id] ?? [];
-          if (subdivisions.length > 0) {
-            setMenu({ kind: "admin1", countryId: region.id, countryName: region.name, from: "countries" });
-          } else {
-            openRun("country", region.id, region.name, difficultyChoice);
-          }
-        }}
-      />
+      <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-xl flex-col px-5 pt-2 pb-8">
+        <RegionList
+          title="Country"
+          subtitle="Play a country whole — or drill into its states where available."
+          regions={regions}
+          notice={<>{challengeBootNoticeEl}{loadNotice}</>}
+          kind="home"
+          onBack={() => setMenu(null)}
+          onChoose={(region) => {
+            const subdivisions = ADMIN1_BY_COUNTRY[region.id] ?? [];
+            if (subdivisions.length > 0) {
+              setMenu({ kind: "admin1", countryId: region.id, countryName: region.name, from: "countries" });
+            } else {
+              openRun("country", region.id, region.name, difficultyChoice);
+            }
+          }}
+        />
+      </main>
       {celebrationOverlay}
       {idleToast}
       </>
@@ -2392,16 +2391,18 @@ export function GameApp() {
     return (
       <>
       {mapModeAnnouncer}
-      <RegionList
-        title="State"
-        subtitle="Choose a country, then one of its states."
-        regions={regions}
-        kind="home"
-        onBack={() => setMenu(null)}
-        onChoose={(region) =>
-          setMenu({ kind: "admin1", countryId: region.id, countryName: region.name, from: "states" })
-        }
-      />
+      <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-xl flex-col px-5 pt-2 pb-8">
+        <RegionList
+          title="State"
+          subtitle="Choose a country, then one of its states."
+          regions={regions}
+          kind="home"
+          onBack={() => setMenu(null)}
+          onChoose={(region) =>
+            setMenu({ kind: "admin1", countryId: region.id, countryName: region.name, from: "states" })
+          }
+        />
+      </main>
       {celebrationOverlay}
       {idleToast}
       </>
@@ -2413,20 +2414,22 @@ export function GameApp() {
     return (
       <>
       {mapModeAnnouncer}
-      <RegionList
-        title={menu.countryName}
-        subtitle={`Play the whole ${menu.countryName}, or pick a state.`}
-        regions={regions}
-        notice={<>{challengeBootNoticeEl}{loadNotice}</>}
-        headerAction={{
-          label: `Play entire ${menu.countryName}`,
-          onClick: () => openRun("country", menu.countryId, menu.countryName, difficultyChoice),
-        }}
-        kind="back"
-        onBack={() => setMenu({ kind: menu.from })}
-        onHome={() => setMenu(null)}
-        onChoose={(region) => openRun("state", region.id, region.name, difficultyChoice)}
-      />
+      <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-xl flex-col px-5 pt-2 pb-8">
+        <RegionList
+          title={menu.countryName}
+          subtitle={`Play the whole ${menu.countryName}, or pick a state.`}
+          regions={regions}
+          notice={<>{challengeBootNoticeEl}{loadNotice}</>}
+          headerAction={{
+            label: `Play entire ${menu.countryName}`,
+            onClick: () => openRun("country", menu.countryId, menu.countryName, difficultyChoice),
+          }}
+          kind="back"
+          onBack={() => setMenu({ kind: menu.from })}
+          onHome={() => setMenu(null)}
+          onChoose={(region) => openRun("state", region.id, region.name, difficultyChoice)}
+        />
+      </main>
       {celebrationOverlay}
       {idleToast}
       </>
@@ -3925,83 +3928,6 @@ function AtlasBackdrop() {
  */
 
 
-
-function RegionList({
-  title,
-  subtitle,
-  regions,
-  headerAction,
-  notice,
-  kind,
-  onBack,
-  onHome,
-  onChoose,
-}: {
-  title: string;
-  subtitle?: string;
-  regions: Region[];
-  headerAction?: { label: string; onClick: () => void };
-  notice?: ReactNode;
-  /** "home": the top list (its button is Home); "back": one step up a drill-down (Back). */
-  kind: "home" | "back";
-  onBack: () => void;
-  /** The drill-down lists' way straight home (the top menu). The
-   *  shared header carries the one Home control on every screen —
-   *  the legacy ScreenShell showed only Back here, so the "back"
-   *  lists gain Home beside Back (the picker's Step 3.3 pattern:
-   *  Home first, the step control in the back slot). */
-  onHome?: () => void;
-  onChoose: (region: Region) => void;
-}) {
-  return (
-    <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-xl flex-col px-5 pt-2 pb-8">
-      {/* The shared shell (PR 3 Step 3.6): SiteHeader carries the
-          one Home control — the legacy ScreenShell's BrandHomeButton
-          lockup goes. On a drill-down list the Back button rides
-          the header's back slot with its old classes and testid.
-          The titles are the screen's own content block, in the
-          classes ScreenShell rendered. Top padding gives back the
-          ~24px the shell header row adds (32 -> 8px, Step 3.3). */}
-      {kind === "home" ? (
-        <SiteHeader onHome={onBack} status={null} mute={null} />
-      ) : (
-        <SiteHeader
-          onHome={onHome ?? onBack}
-          status={null}
-          mute={null}
-          back={
-            <Button variant="ghost" className="-ml-3 px-3" onClick={onBack} data-testid="back-button">
-              Back
-            </Button>
-          }
-        />
-      )}
-      <h1 tabIndex={-1} className="mode-title mt-4 text-3xl text-fg">
-        {title}
-      </h1>
-      {subtitle ? <p className="mt-2 text-fg">{subtitle}</p> : null}
-      {notice}
-      {headerAction ? (
-        <Button variant="secondary" className="mt-6 w-full" onClick={headerAction.onClick}>
-          {headerAction.label}
-        </Button>
-      ) : null}
-      <ul className="mt-6 flex flex-col gap-2">
-        {regions.map((region) => (
-          <li key={region.id}>
-            <Button
-              variant="secondary"
-              className="w-full justify-start"
-              onClick={() => onChoose(region)}
-            >
-              {region.name}
-            </Button>
-          </li>
-        ))}
-      </ul>
-    </main>
-  );
-}
 
 /**
  * Async boundary for an in-progress run: the region's chunk loads here

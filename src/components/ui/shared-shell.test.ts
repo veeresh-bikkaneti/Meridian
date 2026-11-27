@@ -398,10 +398,11 @@ describe("PageShell and PageIntro (PR 3 Step 2)", () => {
 
   it("the region lists sit on SiteHeader (PR 3 Step 3.6): Home everywhere, Back in the back slot", () => {
     const src = read("src/components/game-app.tsx");
+    const list = read("src/components/region-list.tsx");
     assert.doesNotMatch(src, /<ScreenShell/);
     assert.doesNotMatch(src, /from "@\/components\/ui\/screen-shell"/);
-    assert.match(src, /<SiteHeader onHome=\{onBack\} status=\{null\} mute=\{null\} \/>/);
-    assert.match(src, /data-testid="back-button"/);
+    assert.match(list, /<SiteHeader onHome=\{onBack\} status=\{null\} mute=\{null\} \/>/);
+    assert.match(list, /data-testid="back-button"/);
     assert.match(src, /onHome=\{\(\) => setMenu\(null\)\}/);
   });
 

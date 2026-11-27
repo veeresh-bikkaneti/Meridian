@@ -62,7 +62,7 @@ export const SHELL_REGISTRY: readonly ShellRegistryEntry[] = [
   { id: "cold-trail", file: "src/game/coldtrail/TrailScreen.tsx", header: "PageShell", needle: "<PageShell", footer: "shell" },
   { id: "why-learn-picker", file: "src/subjects/shared/SubjectPicker.tsx", header: "SiteHeader", needle: "<SiteHeader", footer: "shell", footerNeedle: "<SiteFooter" },
   { id: "subject-case", file: "src/subjects/shared/SubjectCase.tsx", header: "SiteHeader", needle: "<SiteHeader", footer: "shell", footerNeedle: "<SiteFooter" },
-  { id: "region-list", file: "src/components/game-app.tsx", header: "SiteHeader", needle: "<SiteHeader", footer: "none", reason: "Drill-down list; the header carries Home/Back, no footer in the shipped design." },
+  { id: "region-list", file: "src/components/region-list.tsx", header: "SiteHeader", needle: "<SiteHeader", footer: "none", reason: "Drill-down list; the header carries Home/Back, no footer in the shipped design." },
   { id: "review-complete", file: "src/components/review-complete.tsx", header: "SiteHeader", needle: "<SiteHeader", footer: "shell", footerNeedle: "<SiteFooter" },
   { id: "challenge-complete", file: "src/components/challenge-complete.tsx", header: "SiteHeader", needle: "<SiteHeader", footer: "none", reason: "End-of-flow screen; its in-flow primary Home button is the sanctioned end surface." },
   { id: "pool-error", file: "src/components/game-app.tsx", header: "ErrorScreen", needle: "<ErrorScreen", footer: "none", reason: "Failure branch; ErrorScreen frames itself with SiteHeader and its two exits." },
