@@ -44,7 +44,7 @@ export function operaYearsEntry(year: number): AnswerEntry {
   };
 }
 
-/** The nine static entries, projected from the records. The computed
+/** All static entries, projected from the records. The computed
  *  opera entry is deliberately absent — see the header. */
 export const GENERAL_KNOWLEDGE_ANSWERS: Record<string, GeneralKnowledgeAnswerEntry> =
   Object.fromEntries(

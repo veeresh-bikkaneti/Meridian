@@ -33,9 +33,28 @@ import { itemsForGroup } from "./items.ts";
 import { yearsSince } from "../shared/years.ts";
 import type { ClueSceneDescription } from "../shared/clue-scene-types.ts";
 
-const IDS_710 = itemsForGroup("7-10").map((item) => item.id);
-const IDS_1018 = itemsForGroup("10-18").map((item) => item.id);
-const IDS_18 = itemsForGroup("18+").map((item) => item.id);
+/** The five ages 7-10 items with clue scenes. */
+const IDS_710 = [
+  "general-knowledge:mixed:opera-years-ago",
+  "general-knowledge:mixed:eiffel-antennas",
+  "general-knowledge:mixed:older-landmark",
+  "general-knowledge:mixed:falls-in-km",
+  "general-knowledge:mixed:trip-buses",
+];
+
+/** The three ages 10-18 items with clue scenes. */
+const IDS_1018 = [
+  "general-knowledge:mixed:everest-vs-falls",
+  "general-knowledge:mixed:paris-sydney-flight",
+  "general-knowledge:mixed:tower-angle",
+];
+
+/** The two ages 18+ items with clue scenes. */
+const IDS_18 = [
+  "general-knowledge:mixed:great-circle",
+  "general-knowledge:mixed:falls-flow",
+];
+
 const ALL_IDS = [...IDS_710, ...IDS_1018, ...IDS_18];
 const OPERA_ID = "general-knowledge:mixed:opera-years-ago";
 
@@ -147,7 +166,13 @@ describe("general knowledge clue scene descriptions — waves 3 and 10 (all band
     }
   });
 
-  it("the whole scene map is exactly the ten dealt items", () => {
+  it("the whole scene map is exactly the ten scene-backed items, all present in itemsForGroup", () => {
+    const liveIds = new Set(
+      (["7-10", "10-18", "18+"] as const).flatMap((g) => itemsForGroup(g).map((i) => i.id)),
+    );
+    for (const id of ALL_IDS) {
+      assert.ok(liveIds.has(id), `${id} is in itemsForGroup`);
+    }
     assert.deepEqual(
       [...Object.keys(GENERAL_KNOWLEDGE_CLUE_SCENES), OPERA_ID].sort(),
       [...ALL_IDS].sort(),

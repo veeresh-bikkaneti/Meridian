@@ -22,7 +22,7 @@
 import { it } from "node:test";
 import assert from "node:assert/strict";
 import { validateGeneralKnowledgeRecords } from "./validate.ts";
-import { generalKnowledgeUnits, GENERAL_KNOWLEDGE_RECORDS } from "./items.ts";
+import { generalKnowledgeUnits, GENERAL_KNOWLEDGE_ITEM_IDS, GENERAL_KNOWLEDGE_RECORDS } from "./items.ts";
 import type { SubjectAnswer } from "./items.ts";
 import type { AnswerEntry } from "../shared/answer.ts";
 import { GENERAL_KNOWLEDGE_ANSWERS, operaYearsEntry } from "./answers.ts";
@@ -127,29 +127,47 @@ it("validator rejects a follow-up answer leaked in the lead", () => {
   );
 });
 
-it("validator accepts the live records", () => {
+it("validator accepts the live records and deal order matches GENERAL_KNOWLEDGE_ITEM_IDS", () => {
   validateGeneralKnowledgeRecords(GENERAL_KNOWLEDGE_RECORDS);
+  assert.deepEqual(
+    GENERAL_KNOWLEDGE_RECORDS.map((r) => r.id),
+    [...GENERAL_KNOWLEDGE_ITEM_IDS],
+  );
+  // Every Wave A item (after the original 10) carries verified provenance.
+  for (const record of GENERAL_KNOWLEDGE_RECORDS.slice(10)) {
+    assert.ok(
+      typeof record.provenance === "object" &&
+        record.provenance.source.startsWith("https://") &&
+        record.provenance.verifiedOn === "2026-11-26",
+      `expected verified provenance on ${record.id}`,
+    );
+  }
 });
 
-it("projection equals the frozen main fixture for all 10 general-knowledge items", () => {
-  assert.equal(generalKnowledgeUnits().length, 10);
-  assert.equal(GENERAL_KNOWLEDGE_RECORDS.length, 10);
-  assert.equal(Object.keys(GENERAL_KNOWLEDGE_ANSWERS).length, 9);
-  assert.deepEqual(generalKnowledgeUnits(), fixture.units);
-  // The static answers map is the fixture minus the computed opera
-  // entry; the opera entry is pinned against its generator at the
-  // fixture's pinned year (2026).
+it("projection preserves the frozen main fixture for the original 10 general-knowledge items", () => {
+  assert.equal(generalKnowledgeUnits().length, 21);
+  assert.equal(GENERAL_KNOWLEDGE_RECORDS.length, 21);
+  assert.equal(Object.keys(GENERAL_KNOWLEDGE_ANSWERS).length, 20);
+  // Original 10 items remain an exact prefix of generalKnowledgeUnits().
+  assert.deepEqual(generalKnowledgeUnits().slice(0, 10), fixture.units);
+  // The static answers map includes every entry of the frozen fixture
+  // minus the computed opera entry; the opera entry is pinned against its
+  // generator at the fixture's pinned year (2026).
   const { [OPERA_ID]: operaFrozen, ...staticFrozen } = fixture.answers;
-  assert.deepEqual(GENERAL_KNOWLEDGE_ANSWERS, staticFrozen);
+  for (const [id, expected] of Object.entries(staticFrozen)) {
+    assert.deepEqual(GENERAL_KNOWLEDGE_ANSWERS[id], expected, `frozen answer mismatch for ${id}`);
+  }
   assert.deepEqual(operaYearsEntry(fixture.pinnedYear), operaFrozen);
   // The opera record's specimen answer is the generator's output at
   // the lint pin year — never a stored play-time answer.
   const operaRecord = GENERAL_KNOWLEDGE_RECORDS.find((r) => r.id === OPERA_ID);
   assert.ok(operaRecord, `no record for ${OPERA_ID}`);
   assert.deepEqual(operaRecord.answer, operaYearsEntry(LINT_PIN_YEAR));
-  // Deal order is part of the projection, not just the set of ids.
+  // Deal order of the original 10 items is preserved as a prefix.
   assert.deepEqual(
-    generalKnowledgeUnits().map((u) => u.id),
+    generalKnowledgeUnits()
+      .slice(0, 10)
+      .map((u) => u.id),
     (fixture.units as { id: string }[]).map((u) => u.id),
   );
 });

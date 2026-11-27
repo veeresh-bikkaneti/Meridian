@@ -49,21 +49,38 @@ import type { SubjectItem, SubjectAnswer } from "../math/items.ts";
 export { SubjectItemSchema } from "../math/items.ts";
 export type { SubjectItem, SubjectAnswer };
 
-/** The live slice: every multiple-choice-ready row, in deal order. */
+/** The live slice: every multiple-choice-ready row, in deal order.
+ *  Original 10 fixture items come first (preserving deal order and prefix
+ *  equality against __fixtures__/main-7c04e3a7.json), followed by Wave A
+ *  Pillars 3-5 items (road/bike/GDL safety, situational awareness, riddles). */
 export const GENERAL_KNOWLEDGE_ITEM_IDS: readonly string[] = [
-  // 7-10
+  // 7-10 (original 5)
   "general-knowledge:mixed:opera-years-ago",
   "general-knowledge:mixed:eiffel-antennas",
   "general-knowledge:mixed:older-landmark",
   "general-knowledge:mixed:falls-in-km",
   "general-knowledge:mixed:trip-buses",
-  // 10-18
+  // 10-18 (original 3)
   "general-knowledge:mixed:everest-vs-falls",
   "general-knowledge:mixed:paris-sydney-flight",
   "general-knowledge:mixed:tower-angle",
-  // 18+ (only 2 rows exist)
+  // 18+ (original 2)
   "general-knowledge:mixed:great-circle",
   "general-knowledge:mixed:falls-flow",
+  // Wave A — Pillar 3: Road, Bike & GDL Safety (H01-H03)
+  "general-knowledge:safety:pedestrian-crossing",
+  "general-knowledge:safety:bicycle-traffic-rules",
+  "general-knowledge:safety:mutcd-yield-sign",
+  "general-knowledge:safety:teen-gdl-driving",
+  // Wave A — Pillar 4: Situational Awareness (scan -> assess -> decide -> act)
+  "general-knowledge:awareness:parking-lot-scan",
+  "general-knowledge:awareness:multiple-threat-crossing",
+  "general-knowledge:awareness:storm-road-triage",
+  // Wave A — Pillar 5: Competition-Calibrated Educational Riddles
+  "general-knowledge:riddles:wall-climb-days",
+  "general-knowledge:riddles:mislabeled-crates",
+  "general-knowledge:riddles:sciolympiad-alibi-deduction",
+  "general-knowledge:riddles:tournament-knockout",
 ];
 
 export const GENERAL_KNOWLEDGE_RECORDS: SubjectItem[] = [
@@ -366,6 +383,331 @@ export const GENERAL_KNOWLEDGE_RECORDS: SubjectItem[] = [
       "derivation": "500,000,000 × 1,440 minutes = 720,000,000,000 = 7.2 × 10^11 litres in a day."
     },
     "provenance": "UNVERIFIED",
+    "media": [],
+    "leadPolicy": "answer-not-in-lead"
+  },
+  // ── Wave A — Pillar 3: Road, Bike & GDL Safety (H01–H03) ───────────
+  {
+    "id": "general-knowledge:safety:pedestrian-crossing",
+    "group": "7-10",
+    "objective": "After this, a child can explain why children under 10 cross streets with a grown-up and wait for vehicles to come to a complete stop with driver eye contact before stepping into a crosswalk.",
+    "standard": "UNVERIFIED",
+    "why": "Even when white stripes are painted across the road, a rolling car may not stop in time, and a driver might be looking the other way. Under NHTSA safety rules, children under ten need a grown-up when crossing—and checking that a driver actually sees you matters every time.",
+    "buildsOn": [],
+    "useElsewhere": [
+      "everyday life: crossing neighborhood streets and parking lots safely with an adult"
+    ],
+    "answer": {
+      "prompt": "You reach a crosswalk with your grown-up, and a car is rolling toward the corner with its turn signal blinking. What should you do before stepping off the curb?",
+      "choices": [
+        "Wave once and jog across before the car reaches the corner",
+        "Wait for the car to stop completely and make eye contact with the driver",
+        "Step onto the crosswalk right away so the driver notices you"
+      ],
+      "correct": "Wait for the car to stop completely and make eye contact with the driver",
+      "derivation": "NHTSA pedestrian safety guidance teaches children under 10 to cross with an adult, look left-right-left, wait until vehicles come to a complete stop, and make eye contact with the driver before stepping into the street."
+    },
+    "provenance": {
+      "source": "https://www.nhtsa.gov/pedestrian-safety/child-pedestrian-safety-curriculum",
+      "verifiedOn": "2026-11-26"
+    },
+    "media": [],
+    "leadPolicy": "answer-not-in-lead"
+  },
+  {
+    "id": "general-knowledge:safety:bicycle-traffic-rules",
+    "group": "10-18",
+    "objective": "After this, a student can apply NHTSA Bicycle Safer Journey and MUTCD rules by riding on the right side in the same direction as traffic, wearing a fitted helmet, and obeying road signs.",
+    "standard": "UNVERIFIED",
+    "why": "Cyclists share the road under traffic laws just like drivers, yet many riders guess wrong about which side of a two-way street to use. Riding the wrong way puts you head-on with cars and hides you from drivers turning out of driveways who only check one direction.",
+    "buildsOn": [
+      "general-knowledge:safety:pedestrian-crossing"
+    ],
+    "useElsewhere": [
+      "everyday life: riding bicycles safely on neighborhood roads and shared lanes"
+    ],
+    "answer": {
+      "prompt": "When riding a bicycle on a two-way street with no bike path, which side and direction should you ride under NHTSA Bicycle Safer Journey and MUTCD traffic rules?",
+      "choices": [
+        "On the left side facing oncoming cars so you can watch them",
+        "On the right side riding in the same direction as traffic",
+        "Switching sides at each block depending on parked cars"
+      ],
+      "correct": "On the right side riding in the same direction as traffic",
+      "derivation": "Under NHTSA Bicycle Safer Journey and state traffic laws aligned with the MUTCD, bicycles follow the rules of the road: ride on the right side in the same direction as traffic, obey stop and yield signs, signal turns, and wear a properly fitted helmet."
+    },
+    "provenance": {
+      "source": "https://www.nhtsa.gov/book/countermeasures-that-work/bicycle-safety/countermeasures/other-strategies-behavior-change-1",
+      "verifiedOn": "2026-11-26"
+    },
+    "media": [],
+    "leadPolicy": "answer-not-in-lead"
+  },
+  {
+    "id": "general-knowledge:safety:mutcd-yield-sign",
+    "group": "10-18",
+    "objective": "After this, a student can distinguish FHWA MUTCD right-of-way rules at a Yield sign versus a Stop sign, identifying when a driver or cyclist must slow and give way to pedestrians and crossing traffic.",
+    "standard": "UNVERIFIED",
+    "why": "At busy intersections, standard shapes and colors tell travelers who goes first and who waits. Under the federal MUTCD standard, those sign rules stay uniform across every state so you can read a traffic control in a split second.",
+    "buildsOn": [
+      "general-knowledge:safety:bicycle-traffic-rules"
+    ],
+    "useElsewhere": [
+      "everyday life: reading road signs accurately whether walking, cycling, or learning to drive"
+    ],
+    "answer": {
+      "prompt": "Under the FHWA MUTCD, what does a downward-pointing red-and-white triangle Yield sign require as you approach an intersection?",
+      "choices": [
+        "Come to a full stop every time, even when the crossing is completely empty",
+        "Speed up to clear the intersection before cross-traffic arrives",
+        "Slow down, prepare to stop if needed, and give the right-of-way to pedestrians and cross-traffic"
+      ],
+      "correct": "Slow down, prepare to stop if needed, and give the right-of-way to pedestrians and cross-traffic",
+      "derivation": "FHWA MUTCD Part 2 defines the Yield sign (R1-2, downward triangle) as a right-of-way control: slow down, check for pedestrians and cross-traffic, and stop whenever necessary to let them pass safely."
+    },
+    "provenance": {
+      "source": "https://mutcd.fhwa.dot.gov/",
+      "verifiedOn": "2026-11-26"
+    },
+    "media": [],
+    "leadPolicy": "answer-not-in-lead"
+  },
+  {
+    "id": "general-knowledge:safety:teen-gdl-driving",
+    "group": "10-18",
+    "objective": "After this, a student can explain why NHTSA and state DMV Graduated Driver Licensing (GDL) programs phase in solo driving privileges with supervised practice and limits on teen passengers and night driving.",
+    "standard": "UNVERIFIED",
+    "why": "New drivers face their steepest crash rate during their very first months behind the wheel, even after passing a road test. State DMV manuals and NHTSA Teen Driving guidelines use a staged system instead of granting every driving privilege on day one.",
+    "buildsOn": [
+      "general-knowledge:safety:mutcd-yield-sign"
+    ],
+    "useElsewhere": [
+      "everyday life: preparing for a learner's permit and supervised driving hours"
+    ],
+    "answer": {
+      "prompt": "Why do Graduated Driver Licensing (GDL) laws require supervised practice hours and temporarily limit late-night driving and extra teen passengers for newly licensed drivers?",
+      "choices": [
+        "To build real-world hazard experience in lower-risk settings before facing high-risk distractions and darkness",
+        "To keep new drivers off daytime neighborhood streets until they turn twenty-one",
+        "To replace the need for obeying posted speed limits and traffic signals"
+      ],
+      "correct": "To build real-world hazard experience in lower-risk settings before facing high-risk distractions and darkness",
+      "derivation": "NHTSA Teen Driving / GDL and state DMV manuals phase in driving privileges—starting with supervised practice and limiting nighttime driving and peer passengers—because crash rates fall sharply as new drivers gain experience under lower-risk conditions."
+    },
+    "provenance": {
+      "source": "https://www.nhtsa.gov/road-safety/teen-driving",
+      "verifiedOn": "2026-11-26"
+    },
+    "media": [],
+    "leadPolicy": "answer-not-in-lead"
+  },
+  // ── Wave A — Pillar 4: Situational Awareness (scan -> assess -> decide -> act) ──
+  {
+    "id": "general-knowledge:awareness:parking-lot-scan",
+    "group": "7-10",
+    "objective": "After this, a child can apply the scan, assess, decide, act protocol in a parking lot by noticing backup cues, judging whether a driver can see them, choosing a safe spot, and waiting until the lane clears.",
+    "standard": "UNVERIFIED",
+    "why": "Walking across a store parking lot feels calm until a parked car starts backing out. Using a four-step habit—scan around you, assess what could go wrong, decide on the safest move, and act calmly—keeps you out of a driver's blind spot.",
+    "buildsOn": [
+      "general-knowledge:safety:pedestrian-crossing"
+    ],
+    "useElsewhere": [
+      "everyday life: spotting driveway and parking-lot hazards early"
+    ],
+    "answer": {
+      "prompt": "You are walking beside parked cars with a grown-up when white reverse lights turn on and an engine hums on a nearby SUV. Using scan -> assess -> decide -> act, what is the safest response?",
+      "choices": [
+        "Walk faster behind the SUV before it starts rolling",
+        "Stop on the curb or beside a non-moving car out of the driver's path, and wait until the SUV pulls out",
+        "Tap on the back bumper so the driver hears you while backing up"
+      ],
+      "correct": "Stop on the curb or beside a non-moving car out of the driver's path, and wait until the SUV pulls out",
+      "derivation": "Scan (white reverse lights and engine sound), assess (a backing driver may not see a pedestrian behind the vehicle), decide (stay clear of the path), act (stop in a protected spot with your adult until the SUV leaves). Protocol layered on NHTSA Child Pedestrian Safety Lesson 4."
+    },
+    "provenance": {
+      "source": "https://www.nhtsa.gov/pedestrian-safety/child-pedestrian-safety-curriculum",
+      "verifiedOn": "2026-11-26"
+    },
+    "media": [],
+    "leadPolicy": "answer-not-in-lead"
+  },
+  {
+    "id": "general-knowledge:awareness:multiple-threat-crossing",
+    "group": "10-18",
+    "objective": "After this, a student can apply the scan, assess, decide, act protocol to a multi-lane street crossing when a stopped vehicle blocks sightlines to an adjacent lane.",
+    "standard": "UNVERIFIED",
+    "why": "When one driver stops kindly to wave you across a multi-lane street, it is tempting to relax and walk straight ahead. That stopped vehicle creates a visual screen that hides whatever is approaching beside it. Running through scan, assess, decide, act prevents a classic multiple-threat collision.",
+    "buildsOn": [
+      "general-knowledge:awareness:parking-lot-scan"
+    ],
+    "useElsewhere": [
+      "everyday life: crossing multi-lane streets and checking blind spots when cycling"
+    ],
+    "answer": {
+      "prompt": "On a four-lane street, a driver in the nearest lane stops and waves for you to cross, but their tall van blocks your view of the second lane. Using scan -> assess -> decide -> act, what should you do next?",
+      "choices": [
+        "Walk briskly past the van because the first driver waved you across",
+        "Pause at the edge of the van, check the hidden lane for oncoming traffic, and cross only when it is clear",
+        "Jog straight across both lanes so any car in the second lane has less time near you"
+      ],
+      "correct": "Pause at the edge of the van, check the hidden lane for oncoming traffic, and cross only when it is clear",
+      "derivation": "Scan (identify the blocked sightline beside the van), assess (cars in the second lane may not see you or stop), decide (never rely on one driver's wave), act (pause at the van's edge to verify the adjacent lane is clear before stepping out). Protocol layered on NHTSA Pedestrian Safety and MUTCD right-of-way rules."
+    },
+    "provenance": {
+      "source": "https://www.nhtsa.gov/road-safety/pedestrian-safety",
+      "verifiedOn": "2026-11-26"
+    },
+    "media": [],
+    "leadPolicy": "answer-not-in-lead"
+  },
+  {
+    "id": "general-knowledge:awareness:storm-road-triage",
+    "group": "18+",
+    "objective": "After this, an adult can apply the scan, assess, decide, act protocol to an unexpected road hazard such as standing floodwater by weighing depth uncertainty, traction loss, and safe turn-around options.",
+    "standard": "UNVERIFIED",
+    "why": "Under pressure behind the wheel, rushing into an unfamiliar hazard often turns a delay into an emergency. Running a structured check—scan the environment, assess hidden unknowns, decide on the lowest-risk option, and act deliberately—protects passengers when road conditions shift fast.",
+    "buildsOn": [
+      "general-knowledge:awareness:multiple-threat-crossing",
+      "general-knowledge:safety:teen-gdl-driving"
+    ],
+    "useElsewhere": [
+      "everyday life: emergency decision-making during severe weather and road hazards"
+    ],
+    "answer": {
+      "prompt": "Driving at dusk in heavy rain, you come upon water covering a low dip in the road with no visible lane lines or curb markers. Applying scan -> assess -> decide -> act, what is the sound adult decision?",
+      "choices": [
+        "Drive through slowly in low gear while following the taillights ahead",
+        "Do not enter the flooded dip; safely pull off or turn around to take higher ground and an alternate route",
+        "Speed up slightly so momentum carries the car across before water enters the engine"
+      ],
+      "correct": "Do not enter the flooded dip; safely pull off or turn around to take higher ground and an alternate route",
+      "derivation": "Scan (obscured lane markings and standing water at dusk), assess (water depth, road washout, and current are invisible, and shallow-looking water can stall or sweep a vehicle), decide (avoid unknown depth), act (turn around safely onto higher ground). Protocol layered on NHTSA hazard-anticipation principles."
+    },
+    "provenance": {
+      "source": "https://www.nhtsa.gov/road-safety/teen-driving",
+      "verifiedOn": "2026-11-26"
+    },
+    "media": [],
+    "leadPolicy": "answer-not-in-lead"
+  },
+  // ── Wave A — Pillar 5: Competition-Calibrated Educational Riddles ────
+  {
+    "id": "general-knowledge:riddles:wall-climb-days",
+    "group": "7-10",
+    "objective": "After this, a child can solve a multi-step progress-and-setback riddle without off-by-one errors by tracking the final upward step before any nightly slip occurs.",
+    "standard": {
+      "code": "4.OA.A.3",
+      "source": "https://learning.ccsso.org/wp-content/uploads/2022/11/ADA-Compliant-Math-Standards.pdf"
+    },
+    "why": "A classic math riddle looks easy—just divide total height by daily net gain—until you picture the final step! Once a climber reaches the very top during the daytime, the climb is already finished and there is no slide backward that night.",
+    "buildsOn": [
+      "math-number:division:remainders"
+    ],
+    "useElsewhere": [
+      "math: checking boundary conditions in multi-step word problems"
+    ],
+    "answer": {
+      "prompt": "A beetle starts at the bottom of a 10-foot wall. Each day it climbs 3 feet up, and each night it slides 2 feet back down. On which day does the beetle first reach the top of the 10-foot wall?",
+      "choices": [
+        "Day 8",
+        "Day 9",
+        "Day 10"
+      ],
+      "correct": "Day 8",
+      "derivation": "After 7 full day-and-night cycles, the beetle gains 7 × (3 − 2) = 7 feet. On Day 8, it climbs 3 feet from 7 feet to 10 feet and reaches the top before nightfall."
+    },
+    "provenance": {
+      "source": "https://maa.org/student-programs/amc/",
+      "verifiedOn": "2026-11-26"
+    },
+    "media": [],
+    "leadPolicy": "answer-not-in-lead"
+  },
+  {
+    "id": "general-knowledge:riddles:mislabeled-crates",
+    "group": "10-18",
+    "objective": "After this, a student can solve a MATHCOUNTS/AMC-8-style constraint deduction puzzle by choosing the single observation that eliminates two possibilities simultaneously.",
+    "standard": "UNVERIFIED",
+    "why": "In competition logic puzzles like MATHCOUNTS and AMC 8, one well-chosen test gives you far more information than random guessing. Before picking, ask yourself which observation immediately rules out two possibilities at once instead of leaving a tie.",
+    "buildsOn": [
+      "general-knowledge:riddles:wall-climb-days"
+    ],
+    "useElsewhere": [
+      "math: designing decisive tests and eliminating cases in logic proofs"
+    ],
+    "answer": {
+      "prompt": "Three closed crates are labeled 'Apples', 'Oranges', and 'Mixed', and every single label is on the wrong crate. You may pull out just one piece of fruit from one crate without looking inside. Which crate must you pick from to identify all three crates with certainty?",
+      "choices": [
+        "The crate labeled 'Apples'",
+        "The crate labeled 'Oranges'",
+        "The crate labeled 'Mixed'"
+      ],
+      "correct": "The crate labeled 'Mixed'",
+      "derivation": "Since every label is wrong, the crate labeled 'Mixed' must be pure Apples or pure Oranges. If you draw an apple from it, that crate is Apples; the crate labeled 'Oranges' cannot be Oranges or Apples so it must be Mixed, leaving the crate labeled 'Apples' as Oranges (and drawing an orange works symmetrically)."
+    },
+    "provenance": {
+      "source": "https://www.mathcounts.org/programs/official-rules-procedures",
+      "verifiedOn": "2026-11-26"
+    },
+    "media": [],
+    "leadPolicy": "answer-not-in-lead"
+  },
+  {
+    "id": "general-knowledge:riddles:sciolympiad-alibi-deduction",
+    "group": "10-18",
+    "objective": "After this, a student can solve a Science Olympiad / AMC-10-style truth-teller deduction puzzle by testing each hypothesis against a 'strictly one true statement' constraint.",
+    "standard": "UNVERIFIED",
+    "why": "Science Olympiad deduction events like Crime Busters and Disease Detectives pair clues with strict logic: test each suspect against every fact until only one consistent story survives. Remember that if a rule says only one witness speaks the truth, every other claim must be false.",
+    "buildsOn": [
+      "general-knowledge:riddles:mislabeled-crates"
+    ],
+    "useElsewhere": [
+      "science: testing competing hypotheses by checking which one satisfies all constraints"
+    ],
+    "answer": {
+      "prompt": "A lab timer was reset after hours by one student. Three suspects make one statement each, and you know for sure that ONLY ONE statement is true: Alex says 'I did not do it.' Blair says 'I did not do it.' Casey says 'Blair did it.' Who reset the timer?",
+      "choices": [
+        "Alex",
+        "Blair",
+        "Casey"
+      ],
+      "correct": "Alex",
+      "derivation": "Test each suspect: if Blair did it, Alex and Casey both tell the truth (2 true); if Casey did it, Alex and Blair both tell the truth (2 true); only if Alex did it is exactly one statement true (Blair's)."
+    },
+    "provenance": {
+      "source": "https://www.soinc.org",
+      "verifiedOn": "2026-11-26"
+    },
+    "media": [],
+    "leadPolicy": "answer-not-in-lead"
+  },
+  {
+    "id": "general-knowledge:riddles:tournament-knockout",
+    "group": "18+",
+    "objective": "After this, an adult can solve an AMC-style invariant deduction problem in one step by counting eliminated players rather than simulating tournament rounds with byes.",
+    "standard": "UNVERIFIED",
+    "why": "Tough competition problems often hide a one-line invariant beneath intimidating arithmetic. Instead of simulating every round of a bracket with odd numbers and byes, ask what each single match removes from the field.",
+    "buildsOn": [
+      "general-knowledge:riddles:sciolympiad-alibi-deduction"
+    ],
+    "useElsewhere": [
+      "math: using invariants to solve counting and graph-tree problems quickly"
+    ],
+    "answer": {
+      "prompt": "A single-elimination chess tournament has 127 players (whenever an odd number remain in a round, one player receives a bye to the next round). How many total matches are played to crown one champion?",
+      "choices": [
+        "125",
+        "126",
+        "127"
+      ],
+      "correct": "126",
+      "value": 126,
+      "derivation": "Every match eliminates exactly 1 player, and 126 of the 127 players must be eliminated to leave 1 champion, so exactly 126 matches are played regardless of byes."
+    },
+    "provenance": {
+      "source": "https://maa.org/student-programs/amc/",
+      "verifiedOn": "2026-11-26"
+    },
     "media": [],
     "leadPolicy": "answer-not-in-lead"
   }

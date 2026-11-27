@@ -35,12 +35,11 @@ it("adapter reads every curated general-knowledge row", () => {
 it("the live slice holds every multiple-choice-ready row, each in its own band", () => {
   const units = generalKnowledgeUnits();
   assert.equal(units.length, GENERAL_KNOWLEDGE_ITEM_IDS.length);
-  assert.equal(units.length, 10);
-  // v2: the 7-10 band grows 3 -> 5 (older-landmark, falls-in-km).
-  assert.equal(itemsForGroup("7-10").length, 5);
-  assert.equal(itemsForGroup("10-18").length, 3);
-  // 18+ has only 2 curated rows; both ship.
-  assert.equal(itemsForGroup("18+").length, 2);
+  // Original 10 (5 / 3 / 2) + Wave A Pillars 3-5 (+3 / +6 / +2) = 21 (8 / 9 / 4).
+  assert.equal(units.length, 21);
+  assert.equal(itemsForGroup("7-10").length, 8);
+  assert.equal(itemsForGroup("10-18").length, 9);
+  assert.equal(itemsForGroup("18+").length, 4);
   for (const group of ["7-10", "10-18", "18+"] as const) {
     for (const item of itemsForGroup(group)) assert.equal(item.group, group);
   }
@@ -117,10 +116,27 @@ it("the v2 items' answers follow from their rows' numbers", () => {
   assert.equal(answerFor("general-knowledge:mixed:noon-shadow"), null);
 });
 
+it("Wave A items cover Pillars 3-5 across age bands with verified answers", () => {
+  const safetyIds = GENERAL_KNOWLEDGE_ITEM_IDS.filter((id) => id.includes(":safety:"));
+  const awarenessIds = GENERAL_KNOWLEDGE_ITEM_IDS.filter((id) => id.includes(":awareness:"));
+  const riddleIds = GENERAL_KNOWLEDGE_ITEM_IDS.filter((id) => id.includes(":riddles:"));
+  assert.equal(safetyIds.length, 4);
+  assert.equal(awarenessIds.length, 3);
+  assert.equal(riddleIds.length, 4);
+  // Tournament knockout invariant: 127 players -> 126 matches.
+  const knockout = answerFor("general-knowledge:riddles:tournament-knockout");
+  assert.ok(knockout);
+  assert.equal(knockout.value, 127 - 1);
+  // Beetle climb: after 7 cycles (+7 ft), day 8 adds +3 ft to reach 10 ft.
+  const climb = answerFor("general-knowledge:riddles:wall-climb-days");
+  assert.ok(climb);
+  assert.equal(climb.correct, "Day 8");
+});
+
 it("the subject module matches contract I1 and is released", () => {
   assert.equal(generalKnowledgeModule.id, "general-knowledge");
   assert.equal(generalKnowledgeModule.released, true);
   assert.deepEqual(generalKnowledgeModule.groups, ["7-10", "10-18", "18+"]);
-  assert.equal(generalKnowledgeModule.units.length, 10);
+  assert.equal(generalKnowledgeModule.units.length, 21);
   assert.equal(typeof generalKnowledgeModule.load, "function");
 });
