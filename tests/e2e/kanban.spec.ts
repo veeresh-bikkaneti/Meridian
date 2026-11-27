@@ -194,6 +194,19 @@ test("a story that is not in the snapshot appears from the API alone, within the
   await expect(fresh.locator('.kb-chip-seat[data-seat-tag="C:Atlas"]')).toHaveText("C:Atlas");
   await expect(page.locator(".kb-story", { hasText: "TD-08.4" })).toBeVisible();
   await expect(page.locator(".kb-stamp")).toHaveText(/Live · fetched \d{2}:\d{2}/);
+  // Commit 4: ledger stories render in live mode, with columns
+  // derived from GitHub. TD-01 has no live evidence, so its
+  // filed Done subtask falls back to Backlog ("not verified
+  // live") and the story sits in Backlog. All 18 ledger stories
+  // plus the two GitHub-only cards (FW-99.9, TD-08.4) render.
+  await expect(page.locator(".kb-story")).toHaveCount(20);
+  const td01Num = page.locator('section.kb-col[data-col="Backlog"] .kb-story .kb-num', {
+    hasText: /^TD-01$/,
+  });
+  await expect(td01Num).toBeVisible();
+  // TD-01.1 is a subtask row inside the collapsed TD-01 story,
+  // not a top-level card.
+  await expect(page.getByText("TD-01.1", { exact: true })).toHaveCount(0);
   // Both open bugs appear as bug cards, including #478, which the
   // ledger already links; the pull row in the issues payload does not.
   await expect(page.locator(".kb-bug")).toHaveCount(2);
@@ -208,9 +221,6 @@ test("a story that is not in the snapshot appears from the API alone, within the
     page.locator('section.kb-col[data-col="Backlog"] .kb-bug[data-bug-id="478"]'),
   ).toBeVisible();
   await expect(page.locator(".kb-count-note")).toContainText("2 open bugs");
-  // Ledger-only rows stay off the board while GitHub answers.
-  // (Commit 4 flips this: ledger stories render in live mode.)
-  await expect(page.getByText("TD-01.1", { exact: true })).toHaveCount(0);
   await expect.poll(() => githubUrls.length).toBe(4);
   expect(githubUrls.filter((url) => /\/pulls\/\d+/.test(url))).toEqual([]);
   const pages = githubUrls.flatMap((url) => /[?&]page=(\d+)/.exec(url)?.[1] ?? []);
@@ -268,9 +278,19 @@ test("backfilled numbers show live, genuine unknowns stay Unnumbered, counts are
   await expect(page.locator(".kb-stamp")).toHaveText(/Live · fetched \d{2}:\d{2}/);
 
   // The backfill map keys #571 as TD-02.5 even though neither
-  // its title nor its branch carries the number.
-  await expect(page.locator(".kb-story", { hasText: "TD-02.5" })).toBeVisible();
+  // its title nor its branch carries the number. TD-02.5 is a
+  // ledger subtask, so its card folds into the TD-02 story:
+  // expanding the story shows the row with the #571 chip, and
+  // no top-level card carries the id.
+  await expect(page.locator('[data-story-id="TD-02.5"]')).toHaveCount(0);
+  await page
+    .getByRole("button", { name: /Show subtasks for TD-02 / })
+    .click();
+  const td025 = page.locator(".kb-subs li", { hasText: "TD-02.5" });
+  await expect(td025).toBeVisible();
+  await expect(td025.locator('a[href*="/pull/571"]')).toBeVisible();
   // The map also wins over #614's head.ref, which names TD-10.1.
+  // TD-10.5 is not a ledger subtask, so it stays a card.
   await expect(page.locator(".kb-story", { hasText: "TD-10.5" })).toBeVisible();
   await expect(page.locator(".kb-story", { hasText: "TD-10.1" })).toHaveCount(0);
   // #616 has no determinable number: it stays under Unnumbered.
@@ -298,13 +318,14 @@ test("backfilled numbers show live, genuine unknowns stay Unnumbered, counts are
   await expect(numberedCards.and(page.locator('[data-lane="tech-debt"]'))).toHaveCount(1);
   await expect(page.locator(".kb-story", { hasText: "TD-10.5" })).toBeVisible();
   await tab("Architecture · 8 stories, 23 tasks").click();
-  await expect(numberedCards).toHaveCount(1);
-  await expect(numberedCards.and(page.locator('[data-lane="architecture"]'))).toHaveCount(1);
-  await expect(page.locator(".kb-story", { hasText: "TD-02.5" })).toBeVisible();
+  // TD-02.5 folded into its story, so no numbered card remains
+  // on this lane; the TD-02 story itself is still here.
+  await expect(numberedCards).toHaveCount(0);
+  await expect(page.locator(".kb-story .kb-num", { hasText: /^TD-02$/ })).toBeVisible();
   await tab("Product · 3 stories, 7 tasks").click();
   await expect(numberedCards).toHaveCount(0);
   await expect(
-    page.getByText("Counts include the checked-in ledger plus the last 100 updated PRs"),
+    page.getByText("Counts include the checked-in ledger plus the last 500 updated PRs"),
   ).toBeVisible();
 });
 

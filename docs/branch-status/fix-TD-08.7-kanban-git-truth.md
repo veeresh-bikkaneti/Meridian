@@ -122,6 +122,47 @@ the 441M checkout does not fit the 512M tmpfs).
 - Budget (final): steady state 3 calls per refresh, deep
   ≤ 4/hr, first load ≤ 7.
 
+### Commit 4 — break C: ledger stories in live mode, columns derived from GitHub
+
+- The forward-only clamp is gone. `applyOverlay` now gives
+  an evidenced subtask its live column in both directions
+  (open draft pulls In review back to In progress; a
+  closed-unmerged closes PR moves its subtask to Backlog
+  with the note). With no evidence, filed Backlog/Blocked
+  stands, and filed Done/In review/In progress falls back
+  to Backlog with the note "not verified live" — the board
+  never invents Done from the ledger alone. This also cures
+  the commit-1 wart: a blocked label now surfaces through
+  the overlay. The stale `deriveBoardItems` comment (most-
+  advanced column) is corrected to the whole-set rule.
+- The view finally calls `applyOverlay` on the snapshot
+  subtasks with the live pulls/branches, and renders every
+  ledger story in live mode (lane-filtered, free-to-claim
+  ignored) with `storyRollup` over the live columns, plus
+  `unledgeredCards` extras: a derived card whose id matches
+  a ledger subtask num folds into that subtask row, cards
+  keyed by a story num stay as extras, Unnumbered cards
+  always stay. Column header counts equal the cards actually
+  rendered (stories + extras + bugs). The count note now
+  reads "last 500 updated PRs". On fallback the subtasks
+  reset to the filed ones, so a stale overlay never shows
+  in offline mode.
+- Tests: 6 new in `kanban-data.test.ts` (unevidenced
+  fallback for Done/In review/In progress/Backlog/Blocked,
+  evidence beats the fallback, fold + story-num-extra
+  cases). Deliberate assertion changes, all from the new
+  rule: the recorded-fixture counts (arch In progress 0→1,
+  In review 1→0 — exactly one subtask moves:
+  arch-ports.game-app on open draft PR 571), the PR-571
+  forward-only test, the closed-unmerged test (now Backlog
+  + note), the work-branch "never a step back" test, the
+  auto-signal test. The ledger-only census test is
+  unchanged. E2E: budget test asserts 20 story cards (18
+  ledger + FW-99.9 + TD-08.4), TD-01 in Backlog, no
+  top-level TD-01.1; census test expands TD-02 to show the
+  folded TD-02.5 row with its #571 chip, Architecture
+  numbered cards 1→0, note "last 500 updated PRs".
+
 ## Ruled out / deferred
 
 - Editing `kanban.json`, `scripts/board/publish-kanban.mjs`,
@@ -139,4 +180,4 @@ the 441M checkout does not fit the 512M tmpfs).
 
 ## Next step
 
-Commit 4 (break C): ledger stories in live mode, columns derived from GitHub.
+Commit 5 (break A): poll GitHub every 5 minutes while the board is visible.

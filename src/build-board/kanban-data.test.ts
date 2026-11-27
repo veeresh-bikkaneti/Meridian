@@ -24,9 +24,11 @@ import {
   storyRollup,
   storySeatTags,
   type Column,
+  type DerivedCard,
   type PullInfo,
   type Snapshot,
   type Subtask,
+  unledgeredCards,
 } from "./kanban-data.ts";
 import { PR_NUMBER_MAP, mappedIdsFor } from "./pr-number-map.ts";
 import { parseGithubBranches, parseGithubPull } from "./kanban-live.ts";
@@ -258,8 +260,12 @@ describe("applyOverlay on the recorded fixtures", () => {
       counts[s.lane] ??= { Backlog: 0, Blocked: 0, "In progress": 0, "In review": 0, Done: 0 };
       counts[s.lane][s.col] += 1;
     }
+    // TD-08.7 commit 4: the live column wins in both directions,
+    // so arch-ports.game-app moves In review → In progress on
+    // the open draft PR 571. Every other subtask keeps its
+    // filed column on the recorded state.
     assert.deepEqual(counts["architecture"], {
-      Backlog: 3, Blocked: 8, "In progress": 0, "In review": 1, Done: 11,
+      Backlog: 3, Blocked: 8, "In progress": 1, "In review": 0, Done: 11,
     });
     assert.deepEqual(counts["tech-debt"], {
       Backlog: 11, Blocked: 4, "In progress": 0, "In review": 0, Done: 0,
@@ -267,10 +273,10 @@ describe("applyOverlay on the recorded fixtures", () => {
     assert.deepEqual(counts["product"], {
       Backlog: 5, Blocked: 2, "In progress": 0, "In review": 0, Done: 0,
     });
-    // No subtask moves at all on the recorded state.
-    for (const s of out) {
-      assert.equal(s.col, snap.subtasks.find((x) => x.id === s.id)?.col, s.id);
-    }
+    const moved = out
+      .filter((s) => s.col !== snap.subtasks.find((x) => x.id === s.id)?.col)
+      .map((s) => `${s.id}: ${snap.subtasks.find((x) => x.id === s.id)?.col} -> ${s.col}`);
+    assert.deepEqual(moved, ["arch-ports.game-app: In review -> In progress"]);
   });
 
   it("keeps the 7 FINDINGS §1 subtasks in their snapshot columns (their PRs are ref, not closes)", () => {
@@ -294,16 +300,16 @@ describe("applyOverlay on the recorded fixtures", () => {
     }
   });
 
-  it("forward only: PR 571 is an open draft, but its subtask stays In review", () => {
+  it("live evidence wins both ways: PR 571 is an open draft, so its subtask is In progress (TD-08.7)", () => {
     const snap = snapshot();
     const task = snap.subtasks.find((s) => s.id === "arch-ports.game-app");
     assert.ok(task);
     assert.equal(task.col, "In review");
     const [out] = applyOverlay([task], fixturePulls(), fixtureBranches());
-    assert.equal(out.col, "In review");
+    assert.equal(out.col, "In progress");
   });
 
-  it("a closed-unmerged closes PR keeps the column and adds the note", () => {
+  it("a closed-unmerged closes PR moves its subtask to Backlog and adds the note (TD-08.7)", () => {
     const task = makeSubtask({
       col: "In review",
       prs: [{ number: 571, role: "closes", href: "https://example.test/pull/571" }],
@@ -313,7 +319,7 @@ describe("applyOverlay on the recorded fixtures", () => {
       pullsOf([571, { state: "closed", merged: false }]),
       new Set(),
     );
-    assert.equal(out.col, "In review");
+    assert.equal(out.col, "Backlog");
     assert.equal(out.note, "closed unmerged");
   });
 
@@ -364,7 +370,7 @@ describe("applyOverlay on the recorded fixtures", () => {
     assert.equal(out.note, undefined);
   });
 
-  it("work branches: exact and prefix matches give In progress, never a step back", () => {
+  it("work branches: exact and prefix matches give In progress, and live evidence wins both ways (TD-08.7)", () => {
     const exact = makeSubtask({
       branches: [{ name: "feat/work", role: "work", match: "exact", href: null }],
     });
@@ -380,7 +386,7 @@ describe("applyOverlay on the recorded fixtures", () => {
       branches: [{ name: "feat/work", role: "work", match: "exact", href: null }],
     });
     const [c] = applyOverlay([reviewing], new Map(), new Set(["feat/work"]));
-    assert.equal(c.col, "In review");
+    assert.equal(c.col, "In progress");
   });
 
   it("does not mutate the input subtasks", () => {
@@ -389,6 +395,75 @@ describe("applyOverlay on the recorded fixtures", () => {
     });
     applyOverlay([task], pullsOf([10, { state: "closed", merged: true }]), new Set());
     assert.equal(task.col, "Backlog");
+  });
+});
+
+describe("applyOverlay without live evidence (TD-08.7)", () => {
+  it("a filed Done with no evidence falls back to Backlog, marked not verified live", () => {
+    const [out] = applyOverlay(
+      [makeSubtask({ col: "Done" })],
+      new Map(),
+      new Set(),
+    );
+    assert.equal(out.col, "Backlog");
+    assert.equal(out.note, "not verified live");
+  });
+
+  it("a filed In review or In progress with no evidence falls back the same way", () => {
+    for (const col of ["In review", "In progress"] as const) {
+      const [out] = applyOverlay([makeSubtask({ col })], new Map(), new Set());
+      assert.equal(out.col, "Backlog");
+      assert.equal(out.note, "not verified live");
+    }
+  });
+
+  it("a filed Backlog or Blocked with no evidence stands, with no note", () => {
+    for (const col of ["Backlog", "Blocked"] as const) {
+      const [out] = applyOverlay([makeSubtask({ col })], new Map(), new Set());
+      assert.equal(out.col, col);
+      assert.equal(out.note, undefined);
+    }
+  });
+
+  it("evidence beats the fallback: a merged PR still means Done", () => {
+    const [out] = applyOverlay(
+      [makeSubtask({ col: "Done", prs: [{ number: 10, role: "closes", href: "https://example.test/pull/10" }] })],
+      pullsOf([10, { state: "closed", merged: true }]),
+      new Set(),
+    );
+    assert.equal(out.col, "Done");
+    assert.equal(out.note, undefined);
+  });
+});
+
+describe("unledgeredCards (TD-08.7)", () => {
+  const card = (id: string, num: string | null): DerivedCard => ({
+    id,
+    num,
+    title: id,
+    col: "Backlog",
+    lane: "product",
+    prs: [],
+    seatTags: [],
+    unnumbered: num === null,
+  });
+
+  it("folds a card whose id matches a ledger subtask num, keeps the rest", () => {
+    const subtasks = [makeSubtask({ num: "TD-08.4" }), makeSubtask({ num: "TD-01.1" })];
+    const cards = unledgeredCards(
+      [card("TD-08.4", "TD-08.4"), card("FW-99.9", "FW-99.9"), card("unnumbered:pr:1", null)],
+      subtasks,
+    );
+    assert.deepEqual(
+      cards.map((c) => c.id),
+      ["FW-99.9", "unnumbered:pr:1"],
+    );
+  });
+
+  it("a card keyed by a ledger story num stays as an extra", () => {
+    const subtasks = [makeSubtask({ num: "TD-08.4" })];
+    const cards = unledgeredCards([card("TD-08", "TD-08")], subtasks);
+    assert.equal(cards.length, 1);
   });
 });
 
@@ -477,7 +552,7 @@ describe("applyOverlay numbered pulls and branches", () => {
     assert.equal(noted.note, "closed unmerged");
   });
 
-  it("stays forward-only when the auto signal ranks lower", () => {
+  it("live evidence wins both ways when the auto signal ranks lower (TD-08.7)", () => {
     const reviewing = makeSubtask({
       num: "FW-08.1",
       col: "In review",
@@ -487,7 +562,7 @@ describe("applyOverlay numbered pulls and branches", () => {
       pullsOf([3, { state: "open", draft: true, headRef: "feat/fw-08.1-globe" }]),
       new Set(["feat/fw-08.1-globe"]),
     );
-    assert.equal(out.col, "In review");
+    assert.equal(out.col, "In progress");
     assert.equal(out.note, undefined);
   });
 

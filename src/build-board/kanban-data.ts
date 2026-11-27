@@ -9,14 +9,21 @@
  * GitHub state in and the view renders what comes out, so every
  * rule is testable without a network.
  *
- * The overlay rule: a subtask moves only FORWARD from its
- * snapshot column (Backlog = Blocked < In progress < In review
- * < Done). Signals are its pre-recorded `closes` PRs (Done only
- * when every one of them has merged) and `work` branches, plus
- * any live pull whose title or head branch carries the subtask
- * `num`, plus any live branch whose name carries that `num`.
- * `ref` PRs, `ref` branches and issues are context links — they
- * are never read as movement. Pull bodies are never read.
+ * The overlay rule: a subtask with live evidence takes the
+ * live column in both directions — up AND down. Without
+ * evidence, a filed Backlog/Blocked stands, and a filed
+ * Done/In review/In progress falls back to Backlog with the
+ * note "not verified live": the board never invents Done from
+ * the ledger alone. Signals are its pre-recorded `closes` PRs
+ * and `work` branches, plus any live pull whose title or head
+ * branch carries the subtask `num`, plus any live branch whose
+ * name carries that `num`. `ref` PRs, `ref` branches and
+ * issues are context links — they are never read as movement.
+ * Pull bodies are never read. Live PR and branch evidence for
+ * a subtask is read as one set through standingForPulls
+ * (TD-08.7), so one merged pull never outvotes an open one.
+ * The view renders ledger stories with these columns, plus
+ * extra cards for GitHub-only items.
  *
  * TD-08.5 adds the PR number backfill: a checked-in map
  * (pr-number-map.ts) pins older PRs to the planning ids their
@@ -33,7 +40,7 @@ export type Column = "Backlog" | "Blocked" | "In progress" | "In review" | "Done
 
 export const COLUMNS: Column[] = ["Backlog", "Blocked", "In progress", "In review", "Done"];
 
-/** Forward-only ranking: a live column must outrank the snapshot's. */
+/** Forward-only ranking, kept for the per-PR column rule. */
 export function columnRank(col: Column): number {
   switch (col) {
     case "Backlog":
@@ -395,12 +402,12 @@ function takeSeatTags(acc: DerivedAcc, labels: string[] | undefined): void {
 /**
  * Build the board from the pull list (newest first) and the
  * branch set. Pulls and branches with no TD or story number land
- * in the Unnumbered group — they are never dropped. Several pulls
- * for one number keep the most advanced column (`columnRank`);
- * every pull number is kept as a chip. The title is the newest
- * pull's title, else the branch name. Pass the snapshot so a
- * card takes the ledger lane (or its parent story's lane)
- * instead of the TD heuristic.
+ * in the Unnumbered group — they are never dropped. All pulls
+ * for one number are read as one set through standingForPulls
+ * (TD-08.7); every pull number is kept as a chip. The title is
+ * the newest pull's title, else the branch name. Pass the
+ * snapshot so a card takes the ledger lane (or its parent
+ * story's lane) instead of the TD heuristic.
  */
 /** The repo's default branch; never a card of its own. */
 const DEFAULT_BRANCH = "main";
@@ -788,13 +795,16 @@ function seatTagsFor(
 }
 
 /**
- * Apply live GitHub state to snapshot subtasks. The live column
- * replaces the snapshot column only when it ranks higher —
- * forward only, so an open draft PR never pulls an In review
- * subtask back to In progress. A closed-unmerged closes PR
- * keeps the column and leaves the "closed unmerged" note.
- * Newly numbered pulls are appended as `closes` links (existing
- * numbers are left as recorded). Inputs are not mutated.
+ * Apply live GitHub state to snapshot subtasks. A subtask with
+ * live evidence takes the live column in both directions, so
+ * an open draft PR pulls an In review subtask back to In
+ * progress, and a closed-unmerged closes PR moves its subtask
+ * to Backlog with the "closed unmerged" note. Without any
+ * evidence, a filed Backlog/Blocked stands, and a filed
+ * Done/In review/In progress falls back to Backlog with the
+ * note "not verified live". Newly numbered pulls are appended
+ * as `closes` links (existing numbers are left as recorded).
+ * Inputs are not mutated.
  */
 export function applyOverlay<T extends Subtask>(
   subtasks: readonly T[],
@@ -805,14 +815,39 @@ export function applyOverlay<T extends Subtask>(
   const byBranch = indexBranches(branches);
   return subtasks.map((sub) => {
     const live = liveStanding(sub, pulls, branches, byPull, byBranch);
-    const col =
-      live.col !== null && columnRank(live.col) > columnRank(sub.col) ? live.col : sub.col;
+    let col: Column;
+    let note: string | undefined;
+    if (live.col !== null) {
+      col = live.col;
+      note = live.note;
+    } else if (sub.col === "Backlog" || sub.col === "Blocked") {
+      col = sub.col;
+    } else {
+      col = "Backlog";
+      note = "not verified live";
+    }
     const matched = autoPullsFor(sub, byPull);
     const seatTags = seatTagsFor(sub, pulls, matched);
-    const next: T = { ...sub, col, note: live.note, prs: enrichPrs(sub, matched) };
+    const next: T = { ...sub, col, note, prs: enrichPrs(sub, matched) };
     if (seatTags.length > 0) next.seatTags = seatTags;
     return next;
   });
+}
+
+/**
+ * Derived cards with no ledger row: a card whose id matches a
+ * ledger subtask num is folded into that subtask (its pulls
+ * already chip onto the subtask row through the overlay), not
+ * shown twice. Cards keyed by a ledger story num stay as
+ * extras — the story card does not carry their pulls — and
+ * Unnumbered cards always stay.
+ */
+export function unledgeredCards(
+  items: readonly DerivedCard[],
+  subtasks: readonly Subtask[],
+): DerivedCard[] {
+  const nums = new Set(subtasks.map((s) => s.num));
+  return items.filter((item) => item.num === null || !nums.has(item.num));
 }
 
 /**
