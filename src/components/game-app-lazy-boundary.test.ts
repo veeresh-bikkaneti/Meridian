@@ -45,6 +45,12 @@ const geoDetectiveHostSource = readFileSync(
   join(here, "../game/loop/GeoDetectiveHost.tsx"),
   "utf8",
 );
+// TD-06.14 (review finding 4 on #634): the SubjectPicker lazy
+// factory lives in src/subjects/shared/SubjectsHost.tsx now.
+const subjectsHostSource = readFileSync(
+  join(here, "../subjects/shared/SubjectsHost.tsx"),
+  "utf8",
+);
 const chunkReloadNoticeSource = readFileSync(
   join(here, "use-chunk-reload-notice.ts"),
   "utf8",
@@ -382,5 +388,39 @@ describe("arena Phase 2 (PR #532): boundary-less hosts and notice timing", () =>
     const notice = segment(gameAppSource, "const loadNotice = startError ? (", "const discardedNoticeEl");
     assert.ok(notice.includes("Try again"), "the non-stale menu card must not be button-less");
     assert.ok(notice.includes("window.location.reload()"), "the menu card's button is a plain reload, like the in-run variant");
+  });
+});
+
+describe("TD-06.14 — SubjectsHost keeps SubjectPicker lazy", () => {
+  // Review finding 4 on #634: nothing pinned that the picker still
+  // loads lazily. A static import would drag the whole subjects
+  // chunk (cases + media) into the preloaded route chunk and every
+  // home visit would pay for it. The picker is why-learn-card intent
+  // only, so it loads through React.lazy behind the composer's
+  // Suspense + MapErrorBoundary.
+  it("SubjectsHost has no static import of SubjectPicker", () => {
+    assert.ok(
+      !/import\s+[^(\n]*from\s+["']\.\/SubjectPicker["']/.test(subjectsHostSource),
+      "SubjectPicker must not be statically imported (it drags the subjects chunk in)",
+    );
+    assert.ok(
+      !/import\s+["']\.\/SubjectPicker["']/.test(subjectsHostSource),
+      "SubjectPicker must not be side-effect imported either",
+    );
+  });
+
+  it("SubjectPicker loads only through a dynamic import() inside React.lazy", () => {
+    assert.ok(
+      subjectsHostSource.includes('import("./SubjectPicker")'),
+      "the picker loader must dynamically import the SubjectPicker module",
+    );
+    assert.ok(
+      subjectsHostSource.includes("const SubjectPickerScreen = lazy("),
+      "SubjectPicker must be a React.lazy component",
+    );
+    assert.ok(
+      subjectsHostSource.includes('withChunkTimeout(loadSubjectPicker(), "Subject picker screen")'),
+      "the picker load must be timeout-bounded (#209)",
+    );
   });
 });
