@@ -515,6 +515,11 @@
   color: var(--hv5-forest);
 }
 
+.build-board .kb-chip-bug {
+  color: #8a3b2a;
+  background: color-mix(in srgb, #8a3b2a 8%, var(--hv5-card));
+}
+
 .build-board .kb-chip-unknown {
   color: #8a3b2a;
   background: color-mix(in srgb, #8a3b2a 8%, var(--hv5-card));

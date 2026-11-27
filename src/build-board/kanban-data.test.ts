@@ -10,6 +10,7 @@ import {
   columnForPull,
   columnRank,
   deriveBoardItems,
+  deriveBugCards,
   extractItemKey,
   extractStoryNums,
   extractSubtaskNums,
@@ -970,6 +971,79 @@ describe("standingForPulls (TD-08.7 whole-set rule)", () => {
     ]);
     const [card] = deriveBoardItems(pulls, new Set());
     assert.equal(card?.col, "Blocked");
+  });
+});
+
+describe("deriveBugCards (TD-08.7)", () => {
+  const issue = (number: number, title = `bug ${number}`) => ({
+    number,
+    title,
+    htmlUrl: `https://github.com/veeresh-bikkaneti/Meridian/issues/${number}`,
+  });
+  const issuesOf = (...numbers: number[]) =>
+    new Map(numbers.map((n) => [n, issue(n)]));
+  const pullsOf = (...rows: [number, Partial<PullInfo>][]) =>
+    new Map(rows.map(([n, info]) => [n, { state: "open", draft: false, merged: false, ...info } as PullInfo]));
+
+  it("files bugs Backlog under the product lane, sorted by number", () => {
+    const cards = deriveBugCards(issuesOf(590, 478), new Map());
+    assert.deepEqual(
+      cards.map((c) => c.issue.number),
+      [478, 590],
+    );
+    assert.ok(cards.every((c) => c.col === "Backlog" && c.lane === "product"));
+    assert.deepEqual(cards[0]?.linkedPrs, []);
+  });
+
+  it("an open pull mentioning #N in its title or head ref moves the bug to In progress", () => {
+    const byTitle = deriveBugCards(
+      issuesOf(590),
+      pullsOf([10, { title: "fix: crash on load, refs #590" }]),
+    );
+    assert.equal(byTitle[0]?.col, "In progress");
+    assert.deepEqual(byTitle[0]?.linkedPrs, [10]);
+    const byRef = deriveBugCards(
+      issuesOf(590),
+      pullsOf([11, { headRef: "fix/crash-590", title: "fix: crash" }]),
+    );
+    // The head ref carries "590" without "#", so it does not count.
+    assert.equal(byRef[0]?.col, "Backlog");
+    const byHashRef = deriveBugCards(
+      issuesOf(590),
+      pullsOf([12, { headRef: "fix/#590-crash" }]),
+    );
+    assert.equal(byHashRef[0]?.col, "In progress");
+  });
+
+  it("a merged pull that only says Refs #N does not move the bug", () => {
+    const cards = deriveBugCards(
+      issuesOf(590),
+      pullsOf([10, { state: "closed", merged: true, title: "Refs #590, landed" }]),
+    );
+    assert.equal(cards[0]?.col, "Backlog");
+    assert.deepEqual(cards[0]?.linkedPrs, []);
+  });
+
+  it("does not match a longer number: #5901 and #1590 are not #590", () => {
+    const cards = deriveBugCards(
+      issuesOf(590),
+      pullsOf(
+        [10, { title: "fix #5901" }],
+        [11, { title: "fix #1590" }],
+        [12, { title: "fix (#590)" }],
+      ),
+    );
+    assert.equal(cards[0]?.col, "In progress");
+    assert.deepEqual(cards[0]?.linkedPrs, [12]);
+  });
+
+  it("a bug the ledger already links still gets its own card", () => {
+    // deriveBugCards is ledger-blind by design: #478 keeps its
+    // ledger chip, and still appears as a bug card.
+    const cards = deriveBugCards(issuesOf(478), new Map());
+    assert.equal(cards.length, 1);
+    assert.equal(cards[0]?.issue.number, 478);
+    assert.equal(cards[0]?.col, "Backlog");
   });
 });
 

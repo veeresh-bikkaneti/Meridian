@@ -133,12 +133,51 @@ test("a story that is not in the snapshot appears from the API alone, within the
   await context.route(/api\.github\.com\/repos\/[^/]+\/[^/]+\/pulls\?/, async (route) => {
     const url = route.request().url();
     const body = /[?&]page=/.test(url) ? pullsPage(9200, 3) : pullsPage(9001, 100);
+    if (/[?&]page=/.test(url)) {
+      // One open pull mentions #590, so that bug is In progress;
+      // #478 has no open pull and stays Backlog. The title keeps
+      // the "not in the ledger" text the card assertion looks for.
+      body[0] = {
+        ...body[0],
+        title: "feat: FW-99.9 not in the ledger, refs #590",
+      };
+    }
     return route.fulfill({
       status: 200,
       contentType: "application/json",
       body: JSON.stringify(body),
     });
   });
+  await context.route(/api\.github\.com\/repos\/[^/]+\/[^/]+\/issues\?/, async (route) =>
+    route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify([
+        {
+          number: 590,
+          state: "open",
+          title: "Narration silent on the phone",
+          html_url: "https://github.com/veeresh-bikkaneti/Meridian/issues/590",
+          labels: [{ name: "bug" }],
+        },
+        {
+          number: 478,
+          state: "open",
+          title: "Ledger-linked bug still gets its own card",
+          html_url: "https://github.com/veeresh-bikkaneti/Meridian/issues/478",
+          labels: [{ name: "bug" }],
+        },
+        {
+          number: 9999,
+          state: "open",
+          title: "A pull request, not an issue",
+          html_url: "https://github.com/veeresh-bikkaneti/Meridian/pull/9999",
+          pull_request: { url: "https://api.github.com/repos/veeresh-bikkaneti/Meridian/pulls/9999" },
+          labels: [{ name: "bug" }],
+        },
+      ]),
+    }),
+  );
   await context.route(/api\.github\.com\/repos\/[^/]+\/[^/]+\/branches(\?|$)/, async (route) =>
     route.fulfill({
       status: 200,
@@ -155,10 +194,24 @@ test("a story that is not in the snapshot appears from the API alone, within the
   await expect(fresh.locator('.kb-chip-seat[data-seat-tag="C:Atlas"]')).toHaveText("C:Atlas");
   await expect(page.locator(".kb-story", { hasText: "TD-08.4" })).toBeVisible();
   await expect(page.locator(".kb-stamp")).toHaveText(/Live · fetched \d{2}:\d{2}/);
+  // Both open bugs appear as bug cards, including #478, which the
+  // ledger already links; the pull row in the issues payload does not.
+  await expect(page.locator(".kb-bug")).toHaveCount(2);
+  const bug590 = page.locator('.kb-bug[data-bug-id="590"]');
+  await expect(bug590).toBeVisible();
+  await expect(bug590.locator(".kb-chip-bug")).toHaveText("Bug");
+  await expect(bug590.locator('a[href*="/issues/590"]')).toBeVisible();
+  await expect(
+    page.locator('section.kb-col[data-col="In progress"] .kb-bug[data-bug-id="590"]'),
+  ).toBeVisible();
+  await expect(
+    page.locator('section.kb-col[data-col="Backlog"] .kb-bug[data-bug-id="478"]'),
+  ).toBeVisible();
+  await expect(page.locator(".kb-count-note")).toContainText("2 open bugs");
   // Ledger-only rows stay off the board while GitHub answers.
   // (Commit 4 flips this: ledger stories render in live mode.)
   await expect(page.getByText("TD-01.1", { exact: true })).toHaveCount(0);
-  await expect.poll(() => githubUrls.length).toBe(3);
+  await expect.poll(() => githubUrls.length).toBe(4);
   expect(githubUrls.filter((url) => /\/pulls\/\d+/.test(url))).toEqual([]);
   const pages = githubUrls.flatMap((url) => /[?&]page=(\d+)/.exec(url)?.[1] ?? []);
   expect(pages).toEqual(["2"]);
@@ -204,6 +257,9 @@ test("backfilled numbers show live, genuine unknowns stay Unnumbered, counts are
     }),
   );
   await context.route(/api\.github\.com\/repos\/[^/]+\/[^/]+\/branches(\?|$)/, async (route) =>
+    route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify([]) }),
+  );
+  await context.route(/api\.github\.com\/repos\/[^/]+\/[^/]+\/issues\?/, async (route) =>
     route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify([]) }),
   );
 

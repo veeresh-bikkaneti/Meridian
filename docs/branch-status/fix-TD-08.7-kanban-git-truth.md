@@ -92,6 +92,36 @@ the 441M checkout does not fit the 512M tmpfs).
   deep ≤ 4/hr, first load ≤ 6. Commit 3 adds the issues call
   (steady 3, first load ≤ 7).
 
+### Commit 3 — break E: show open bug issues on the live board
+
+- One call per refresh: `GET /issues?labels=bug&state=open&
+  per_page=100`, parsed defensively (`parseGithubIssues`;
+  rows with a `pull_request` key are pulls and are skipped).
+  The issues call is the one exception to whole-check-or-
+  nothing: any failure leaves the board live with the note
+  line reading "bug list unavailable".
+- `KanbanLiveState` carries `issues` + `issuesUnavailable`;
+  the session-cache key moved v5 → v6 because the cached
+  shape changed (issues join it). New fixture
+  `__fixtures__/github/issues.json` (#590, #478, one PR row
+  that must be filtered).
+- Bug cards (`deriveBugCards` in `kanban-data.ts`): visible
+  Bug chip + issue link, lane `product`, excluded from the
+  story/task census, separate count in the note line. Backlog
+  by default; In progress when an OPEN pull's title or head
+  ref mentions `#N` — a merged pull saying "Refs #N" does not
+  move it. A ledger-linked bug (#478) still gets its own card.
+- Tests: parse + cache round-trip (v6) + issues-failure
+  cases in `kanban-live.test.ts` (every steady-state count
+  moved 2 → 3, deep counts +1); `deriveBugCards` cases in
+  `kanban-data.test.ts` (title/ref mentions, merged-ref
+  negative, `#5901`/`#1590` non-matches). E2E budget test now
+  mocks the issues payload and asserts both bug cards in
+  their columns plus "2 open bugs" (4 calls on first load);
+  the census test mocks an empty issues list.
+- Budget (final): steady state 3 calls per refresh, deep
+  ≤ 4/hr, first load ≤ 7.
+
 ## Ruled out / deferred
 
 - Editing `kanban.json`, `scripts/board/publish-kanban.mjs`,
@@ -109,4 +139,4 @@ the 441M checkout does not fit the 512M tmpfs).
 
 ## Next step
 
-Commit 3 (break E): open bug issues on the live board.
+Commit 4 (break C): ledger stories in live mode, columns derived from GitHub.

@@ -312,6 +312,68 @@ export interface DerivedCard {
 }
 
 const LIVE_PR_HREF = "https://github.com/veeresh-bikkaneti/Meridian/pull/";
+/** An open GitHub issue with the `bug` label, from the live check. */
+export interface IssueInfo {
+  number: number;
+  title: string;
+  htmlUrl: string;
+  /** Label names, when the live check recorded them. */
+  labels?: string[];
+}
+
+/** A live bug card: an open `bug` issue, filed under the product lane. */
+export interface BugCard {
+  issue: IssueInfo;
+  col: Column;
+  lane: Lane;
+  /** Open pull numbers whose title or head ref mentions this issue. */
+  linkedPrs: number[];
+}
+
+/**
+ * Bug cards for the live board. A bug is Backlog until an OPEN
+ * pull's title or head ref mentions `#N` — then it is In
+ * progress. A merged pull that only says "Refs #N" does not
+ * move it: the bug is still open. A bug the ledger already
+ * links still gets its own card; the ledger row keeps its chip.
+ * Bugs never join the story/task census.
+ */
+export function deriveBugCards(
+  issues: ReadonlyMap<number, IssueInfo>,
+  pulls: ReadonlyMap<number, PullInfo>,
+): BugCard[] {
+  const cards: BugCard[] = [];
+  for (const issue of issues.values()) {
+    const mention = new RegExp(`(?:^|[^0-9])#${issue.number}(?!\\d)`);
+    const linkedPrs: number[] = [];
+    for (const [number, info] of pulls) {
+      if (info.state !== "open") continue;
+      if (mention.test(info.title ?? "") || mention.test(info.headRef ?? "")) {
+        linkedPrs.push(number);
+      }
+    }
+    cards.push({
+      issue,
+      col: linkedPrs.length > 0 ? "In progress" : "Backlog",
+      lane: "product",
+      linkedPrs,
+    });
+  }
+  cards.sort((a, b) => a.issue.number - b.issue.number);
+  return cards;
+}
+
+const LIVE_ISSUE_HREF = "https://github.com/veeresh-bikkaneti/Meridian/issues/";
+
+/**
+ * The `html_url` of an issue row, or the issue URL built from
+ * its number when the row carries none.
+ */
+export function issueHtmlUrl(number: number, htmlUrl: unknown): string {
+  return typeof htmlUrl === "string" && htmlUrl.length > 0
+    ? htmlUrl
+    : `${LIVE_ISSUE_HREF}${number}`;
+}
 
 interface DerivedAcc {
   id: string;

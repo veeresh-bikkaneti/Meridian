@@ -9,8 +9,9 @@
  * render as top-level cards.
  *
  * Data flow:
- *  1. Ask GitHub for pulls and branches (refreshKanbanLive).
- *     Success renders deriveBoardItems and the stamp
+ *  1. Ask GitHub for pulls, branches and open bug issues
+ *     (refreshKanbanLive). Success renders deriveBoardItems
+ *     and the stamp
  *     "Live · fetched HH:MM". Ledger-only rows stay hidden as
  *     cards, but the lane counts are a census over the ledger,
  *     the PR number map and the live window (TD-08.5), so an
@@ -26,10 +27,12 @@ import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import {
   boardCensus,
   deriveBoardItems,
+  deriveBugCards,
   freeToClaim,
   loadSnapshot,
   storyRollup,
   storySeatTags,
+  type BugCard as BugCardData,
   type Column,
   type DerivedCard,
   type Lane,
@@ -286,6 +289,32 @@ function LiveCard({ item, laneLabel }: { item: DerivedCard; laneLabel: string })
   );
 }
 
+function BugCard({ bug, laneLabel }: { bug: BugCardData; laneLabel: string }) {
+  return (
+    <article
+      className="kb-card kb-bug"
+      data-bug-id={bug.issue.number}
+      data-col={bug.col}
+      data-lane={bug.lane}
+    >
+      <div className="kb-story-top">
+        <div className="kb-story-main">
+          <div className="kb-card-lane">{laneLabel}</div>
+          <div className="kb-card-title">
+            <span className="kb-num">#{bug.issue.number}</span> {bug.issue.title}
+          </div>
+          <div className="kb-card-links">
+            <span className="kb-chip kb-chip-bug">Bug</span>
+            <a className="kb-chip" href={bug.issue.htmlUrl}>
+              Issue #{bug.issue.number}
+            </a>
+          </div>
+        </div>
+      </div>
+    </article>
+  );
+}
+
 /* ------------------------------------------------------------------ */
 /* The view                                                            */
 /* ------------------------------------------------------------------ */
@@ -294,6 +323,8 @@ export function KanbanView() {
   const [snapshot, setSnapshot] = useState<Snapshot>(BUNDLED);
   const [subtasks, setSubtasks] = useState<Subtask[]>(BUNDLED.subtasks);
   const [items, setItems] = useState<DerivedCard[]>([]);
+  const [bugs, setBugs] = useState<BugCardData[]>([]);
+  const [bugsUnavailable, setBugsUnavailable] = useState(false);
   const [mode, setMode] = useState<"pending" | "live" | "offline">("pending");
   const [stamp, setStamp] = useState<Stamp>({ kind: "bundled" });
   const [lane, setLane] = useState<Lane | "all">("all");
@@ -341,6 +372,8 @@ export function KanbanView() {
         .forEach((el) => rects.set(el.dataset.storyId as string, el.getBoundingClientRect()));
       firstRects.current = rects;
       setItems(deriveBoardItems(result.state.pulls, result.state.branches, board));
+      setBugs(deriveBugCards(result.state.issues, result.state.pulls));
+      setBugsUnavailable(result.state.issuesUnavailable);
       setStamp({ kind: "live", at: result.state.fetchedAt });
       setMode("live");
     };
@@ -511,6 +544,11 @@ export function KanbanView() {
           <p className="kb-count-note">
             Counts include the checked-in ledger plus the last 100 updated PRs
             {census.all.unnumbered > 0 ? ` · ${census.all.unnumbered} unnumbered` : ""}
+            {bugsUnavailable
+              ? " · bug list unavailable"
+              : bugs.length > 0
+                ? ` · ${bugs.length} open bug${bugs.length === 1 ? "" : "s"}`
+                : ""}
           </p>
         ) : null}
         <div className="kb-board" ref={boardRef}>
@@ -523,11 +561,14 @@ export function KanbanView() {
               );
               const numbered = colItems.filter((item) => !item.unnumbered);
               const unnumbered = colItems.filter((item) => item.unnumbered);
+              const colBugs = bugs.filter(
+                (bug) => bug.col === col && (lane === "all" || bug.lane === lane),
+              );
               return (
                 <section key={col} className="kb-col" data-col={col} aria-label={col}>
                   <h2>
                     {col}
-                    <span>{colItems.length}</span>
+                    <span>{colItems.length + colBugs.length}</span>
                   </h2>
                   {numbered.map((item) => (
                     <LiveCard key={item.id} item={item} laneLabel={laneLabel(item.lane)} />
@@ -536,7 +577,12 @@ export function KanbanView() {
                   {unnumbered.map((item) => (
                     <LiveCard key={item.id} item={item} laneLabel={laneLabel(item.lane)} />
                   ))}
-                  {colItems.length === 0 ? <div className="kb-empty">Nothing here yet</div> : null}
+                  {colBugs.map((bug) => (
+                    <BugCard key={bug.issue.number} bug={bug} laneLabel={laneLabel(bug.lane)} />
+                  ))}
+                  {colItems.length === 0 && colBugs.length === 0 ? (
+                    <div className="kb-empty">Nothing here yet</div>
+                  ) : null}
                 </section>
               );
             })

@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import branchesFixture from "./__fixtures__/github/branches.json" with { type: "json" };
+import issuesFixture from "./__fixtures__/github/issues.json" with { type: "json" };
 import pullsFixture from "./__fixtures__/github/pulls-by-number.json" with { type: "json" };
 import snapshotJson from "./kanban.json" with { type: "json" };
 import {
@@ -13,6 +14,8 @@ import {
   loadKanbanLive,
   loadPublicSnapshot,
   parseGithubBranches,
+  parseGithubIssue,
+  parseGithubIssues,
   parseGithubPull,
   parseGithubPulls,
   parseLabelNames,
@@ -47,6 +50,7 @@ function stubGlobalFetch(
 
 function fixtureHandler(url: string) {
   if (url.includes("/branches")) return { status: 200, body: branchesBody };
+  if (url.includes("/issues")) return { status: 200, body: issuesFixture.issues };
   if (url.includes("sort=updated")) return { status: 200, body: Object.values(pullsFixture.pulls) };
   const num = /\/pulls\/(\d+)/.exec(url);
   if (num) {
@@ -161,6 +165,76 @@ describe("parseLabelNames", () => {
   });
 });
 
+describe("parseGithubIssues (TD-08.7)", () => {
+  it("parses the fixture: two issues, the pull row filtered out", () => {
+    const issues = parseGithubIssues(issuesFixture.issues);
+    assert.equal(issues.size, 2);
+    assert.equal(issues.get(590)?.title, "Example open bug 590");
+    assert.equal(
+      issues.get(590)?.htmlUrl,
+      "https://github.com/veeresh-bikkaneti/Meridian/issues/590",
+    );
+    assert.deepEqual(issues.get(590)?.labels, ["bug"]);
+    assert.equal(issues.get(478)?.title, "Example open bug 478");
+    assert.equal(issues.has(999), false);
+  });
+
+  it("skips rows without a number or title, and builds the URL when html_url is missing", () => {
+    assert.equal(parseGithubIssue({ number: 1 }), null);
+    assert.equal(parseGithubIssue({ title: "no number" }), null);
+    assert.equal(parseGithubIssue({ number: 7, title: "x", pull_request: {} }), null);
+    const built = parseGithubIssue({ number: 7, title: "x" });
+    assert.equal(
+      built?.info.htmlUrl,
+      "https://github.com/veeresh-bikkaneti/Meridian/issues/7",
+    );
+  });
+});
+
+describe("fetchKanbanLive — issues failures never fail the check", () => {
+  it("a failed issues call leaves the board live with the bug list unavailable", async () => {
+    for (const status of [500, 403, 429]) {
+      const stub = stubGlobalFetch((url) => {
+        if (url.includes("/branches")) return { status: 200, body: [] };
+        if (url.includes("/issues")) return { status, body: { message: "issues down" } };
+        if (url.includes("sort=updated")) return { status: 200, body: [] };
+        return { status: 500, body: { message: "should not be called" } };
+      });
+      try {
+        const result = await refreshKanbanLive({
+          event: "mount",
+          storage: null,
+          deepStorage: null,
+          now: 1_000,
+        });
+        assert.equal(result.action, "live");
+        if (result.action === "live") {
+          assert.equal(result.state.issues.size, 0);
+          assert.equal(result.state.issuesUnavailable, true);
+        }
+      } finally {
+        stub.restore();
+      }
+    }
+  });
+
+  it("a non-array issues payload is unavailable, not fatal", async () => {
+    const stub = stubGlobalFetch((url) => {
+      if (url.includes("/branches")) return { status: 200, body: [] };
+      if (url.includes("/issues")) return { status: 200, body: { issues: [] } };
+      if (url.includes("sort=updated")) return { status: 200, body: [] };
+      return { status: 500, body: { message: "should not be called" } };
+    });
+    try {
+      const state = await fetchKanbanLive({ storage: null, deepStorage: null });
+      assert.ok(state);
+      assert.equal(state.issuesUnavailable, true);
+    } finally {
+      stub.restore();
+    }
+  });
+});
+
 describe("fetchKanbanLive — fast tier", () => {
   it("does not call pulls/{n} when the closes PR is already in the recent list", async () => {
     const stub = stubGlobalFetch(fixtureHandler);
@@ -176,13 +250,14 @@ describe("fetchKanbanLive — fast tier", () => {
       assert.equal(state.pulls.get(571)?.headRef, "phase1/ports-part-b");
       assert.ok(state.branches.has("phase1/ports-part-b"));
       assert.equal(state.fetchedAt, 1_000_000);
-      assert.equal(stub.calls.length, 2);
+      assert.equal(stub.calls.length, 3);
       assert.ok(
         stub.calls.some((c) =>
           c.url.includes("pulls?state=all&sort=updated&direction=desc&per_page=100"),
         ),
       );
       assert.ok(stub.calls.some((c) => c.url.includes("/branches?per_page=100")));
+      assert.ok(stub.calls.some((c) => c.url.includes("/issues?labels=bug&state=open")));
       assert.equal(stub.calls.filter((c) => /\/pulls\/\d+/.test(c.url)).length, 0);
       const headers = stub.calls[0]?.init?.headers as Record<string, string> | undefined;
       assert.equal(headers?.["accept"], "application/vnd.github+json");
@@ -201,7 +276,7 @@ describe("fetchKanbanLive — fast tier", () => {
       const state = await fetchKanbanLive({ storage: null });
       assert.ok(state);
       assert.equal(state.pulls.has(571), false);
-      assert.equal(stub.calls.length, 2);
+      assert.equal(stub.calls.length, 3);
       assert.equal(stub.calls.filter((c) => /\/pulls\/\d+/.test(c.url)).length, 0);
       assert.equal(stub.calls.filter((c) => /[?&]page=/.test(c.url)).length, 0);
     } finally {
@@ -291,10 +366,11 @@ describe("fetchKanbanLive — fast tier", () => {
     }
   });
 
-  it("writes and reads the v5 cache, including title and headRef", async () => {
+  it("writes and reads the v6 cache, including title, headRef and issues", async () => {
     const storage = memoryStorage();
     const stub = stubGlobalFetch((url) => {
       if (url.includes("/branches")) return { status: 200, body: branchesBody };
+      if (url.includes("/issues")) return { status: 200, body: issuesFixture.issues };
       if (url.includes("sort=updated")) {
         return {
           status: 200,
@@ -319,16 +395,22 @@ describe("fetchKanbanLive — fast tier", () => {
       assert.equal(state.pulls.get(571)?.title, "Phase 1 Part B");
       assert.equal(state.pulls.get(571)?.headRef, "phase1/ports-part-b");
       assert.deepEqual(state.pulls.get(571)?.labels, ["C:Opera"]);
-      assert.equal(stub.calls.length, 2);
+      assert.equal(state.issues.size, 2);
+      assert.equal(state.issues.get(590)?.title, "Example open bug 590");
+      assert.equal(state.issuesUnavailable, false);
+      assert.equal(stub.calls.length, 3);
       const raw = storage.map.get(KANBAN_LIVE_CACHE_KEY);
-      assert.equal(KANBAN_LIVE_CACHE_KEY, "meridian-kanban-live:v5");
+      assert.equal(KANBAN_LIVE_CACHE_KEY, "meridian-kanban-live:v6");
       assert.ok(raw);
       assert.equal(raw.includes("phase1/ports-part-b"), true);
-      assert.equal(storage.map.has("meridian-kanban-live:v4"), false);
+      assert.equal(storage.map.has("meridian-kanban-live:v5"), false);
       const again = await fetchKanbanLive({ storage, now: 5_000 + 1_000 });
       assert.equal(again?.pulls.get(571)?.title, "Phase 1 Part B");
       assert.equal(again?.pulls.get(571)?.headRef, "phase1/ports-part-b");
-      assert.equal(stub.calls.length, 2);
+      assert.equal(again?.issues.size, 2);
+      assert.equal(again?.issues.get(478)?.title, "Example open bug 478");
+      assert.equal(again?.issuesUnavailable, false);
+      assert.equal(stub.calls.length, 3);
     } finally {
       stub.restore();
     }
@@ -343,19 +425,19 @@ describe("fetchKanbanLive — fast tier", () => {
         now: 1_000_000,
       });
       assert.ok(first);
-      assert.equal(stub.calls.length, 2);
+      assert.equal(stub.calls.length, 3);
       const second = await fetchKanbanLive({
         storage,
         now: 1_000_000 + 4 * 60_000,
       });
       assert.ok(second);
-      assert.equal(stub.calls.length, 2);
+      assert.equal(stub.calls.length, 3);
       const third = await fetchKanbanLive({
         storage,
         now: 1_000_000 + 6 * 60_000,
       });
       assert.ok(third);
-      assert.equal(stub.calls.length, 4);
+      assert.equal(stub.calls.length, 6);
     } finally {
       stub.restore();
     }
@@ -398,7 +480,7 @@ describe("fetchKanbanLive — deep tier (TD-08.7)", () => {
       assert.ok(state.pulls.has(125));
       assert.equal(state.pulls.get(125)?.merged, true);
       assert.equal(stub.calls.filter((c) => c.url.includes("page=3")).length, 0);
-      assert.equal(stub.calls.length, 3);
+      assert.equal(stub.calls.length, 4);
     } finally {
       stub.restore();
     }
@@ -435,7 +517,7 @@ describe("fetchKanbanLive — deep tier (TD-08.7)", () => {
       assert.equal(state.pulls.size, 500);
       assert.equal(stub.calls.filter((c) => c.url.includes("page=6")).length, 0);
       assert.equal(stub.calls.filter((c) => /[?&]page=/.test(c.url)).length, 4);
-      assert.equal(stub.calls.length, 6);
+      assert.equal(stub.calls.length, 7);
       assert.ok(githubPullsPageUrl(3).endsWith("&page=3"));
     } finally {
       stub.restore();
@@ -492,15 +574,15 @@ describe("fetchKanbanLive — deep tier (TD-08.7)", () => {
     try {
       const first = await fetchKanbanLive({ storage, deepStorage, now: 1_000_000 });
       assert.ok(first);
-      assert.equal(stub.calls.length, 3);
+      assert.equal(stub.calls.length, 4);
       const cached = await fetchKanbanLive({
         storage,
         deepStorage,
         now: 1_000_000 + 4 * 60_000,
       });
       assert.ok(cached);
-      assert.equal(stub.calls.length, 3);
-      // Session expired, deep fresh: exactly the fast tier, 2 calls.
+      assert.equal(stub.calls.length, 4);
+      // Session expired, deep fresh: exactly the fast tier, 3 calls.
       const steady = await fetchKanbanLive({
         storage,
         deepStorage,
@@ -508,7 +590,7 @@ describe("fetchKanbanLive — deep tier (TD-08.7)", () => {
       });
       assert.ok(steady);
       assert.equal(steady.pulls.size, 110);
-      assert.equal(stub.calls.length, 5);
+      assert.equal(stub.calls.length, 7);
       assert.equal(stub.calls.filter((c) => /[?&]page=/.test(c.url)).length, 1);
       // Deep stale: the deep tier runs again.
       const later = await fetchKanbanLive({
@@ -517,7 +599,7 @@ describe("fetchKanbanLive — deep tier (TD-08.7)", () => {
         now: 1_000_000 + 61 * 60_000,
       });
       assert.ok(later);
-      assert.equal(stub.calls.length, 8);
+      assert.equal(stub.calls.length, 11);
       assert.equal(stub.calls.filter((c) => /[?&]page=/.test(c.url)).length, 2);
       assert.equal(
         deepStorage.map.has(KANBAN_DEEP_CACHE_KEY),
@@ -557,7 +639,7 @@ describe("fetchKanbanLive — deep tier (TD-08.7)", () => {
       assert.ok(state);
       assert.equal(state.pulls.size, 101);
       assert.equal(state.pulls.get(999)?.merged, true);
-      assert.equal(stub.calls.length, 3);
+      assert.equal(stub.calls.length, 4);
     } finally {
       stub.restore();
     }
@@ -633,7 +715,7 @@ describe("loadKanbanLive", () => {
       ]);
       assert.ok(a);
       assert.equal(a, b);
-      assert.equal(stub.calls.length, 2);
+      assert.equal(stub.calls.length, 3);
     } finally {
       stub.restore();
     }
@@ -647,7 +729,7 @@ describe("refresh on focus and visibility", () => {
     try {
       const first = await refreshKanbanLive({ event: "mount", storage, now: 1_000 });
       assert.equal(first.action, "live");
-      assert.equal(stub.calls.length, 2);
+      assert.equal(stub.calls.length, 3);
       const focus = await refreshKanbanLive({ event: "focus", storage, now: 1_000 + 60_000 });
       assert.equal(focus.action, "skip");
       const visible = await refreshKanbanLive({
@@ -662,7 +744,7 @@ describe("refresh on focus and visibility", () => {
         now: 1_000 + 10 * 60_000,
       });
       assert.equal(hidden.action, "skip");
-      assert.equal(stub.calls.length, 2);
+      assert.equal(stub.calls.length, 3);
     } finally {
       stub.restore();
     }
@@ -673,21 +755,21 @@ describe("refresh on focus and visibility", () => {
     const stub = stubGlobalFetch(fixtureHandler);
     try {
       await refreshKanbanLive({ event: "mount", storage, now: 1_000 });
-      assert.equal(stub.calls.length, 2);
+      assert.equal(stub.calls.length, 3);
       const focus = await refreshKanbanLive({
         event: "focus",
         storage,
         now: 1_000 + 5 * 60_000,
       });
       assert.equal(focus.action, "live");
-      assert.equal(stub.calls.length, 4);
+      assert.equal(stub.calls.length, 6);
       const visible = await refreshKanbanLive({
         event: "visible",
         storage,
         now: 1_000 + 10 * 60_000,
       });
       assert.equal(visible.action, "live");
-      assert.equal(stub.calls.length, 6);
+      assert.equal(stub.calls.length, 9);
     } finally {
       stub.restore();
     }

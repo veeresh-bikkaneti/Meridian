@@ -5,10 +5,10 @@
  * unauthenticated limit is 60 requests per hour per IP, shared
  * by every viewer behind that IP):
  *
- *  Fast tier, every refresh (at most 2 calls before the issues
- *  call lands, 3 after): the newest pulls page and the
- *  branches page. The pulls sort is `updated` desc, so any PR
- *  whose state changed since the last refresh is on page 1.
+ *  Fast tier, every refresh (3 calls): the newest pulls page,
+ *  the branches page, and the open `bug` issues page. The pulls
+ *  sort is `updated` desc, so any PR whose state changed since
+ *  the last refresh is on page 1.
  *  Deep tier, rarely (at most 4 calls per hour): pulls pages
  *  2..5, cached 60 minutes in localStorage and shared across
  *  tabs, merged by PR number with the fast tier winning.
@@ -16,14 +16,17 @@
  *  PR is #543, so every ledger PR is covered today.
  *
  * A non-array payload, a 403, a 429, or a network failure on
- * the fast tier fails the whole check and the view keeps
- * kanban.json. A failed deep page keeps the previous cached
- * deep pages and does not fail the check. Overlapping callers
- * share one in-flight sequence. A 5-minute session cache (key
- * v5) makes a repeat free. Focus and visibility re-check only
- * after that cache expires. There is no interval yet: the
- * poller lands in a later commit. A network error is retried
- * once; an HTTP status is not.
+ * the pulls or branches call fails the whole check and the
+ * view keeps kanban.json. The issues call is the one
+ * exception: its failure leaves the board live with the bug
+ * list marked unavailable. A failed deep page keeps the
+ * previous cached deep pages and does not fail the check.
+ * Overlapping callers share one in-flight sequence. A
+ * 5-minute session cache (key v6) makes a repeat free. Focus
+ * and visibility re-check only after that cache expires.
+ * There is no interval yet: the poller lands in a later
+ * commit. A network error is retried once; an HTTP status is
+ * not.
  */
 import { resolveLocal, resolveSession } from "../game/storage-slot.ts";
 import { getJson, getRaw } from "../platform/transport/browser-transport.ts";
@@ -32,7 +35,9 @@ import {
   type SchemaLike,
 } from "../platform/transport/transport.ts";
 import {
+  issueHtmlUrl,
   loadSnapshot,
+  type IssueInfo,
   type PullInfo,
   type Snapshot,
 } from "./kanban-data.ts";
@@ -85,6 +90,8 @@ export const GITHUB_REPO_API = "https://api.github.com/repos/veeresh-bikkaneti/M
 export const GITHUB_BRANCHES_URL = `${GITHUB_REPO_API}/branches?per_page=100`;
 export const GITHUB_RECENT_PULLS_URL =
   `${GITHUB_REPO_API}/pulls?state=all&sort=updated&direction=desc&per_page=100`;
+export const GITHUB_ISSUES_URL =
+  `${GITHUB_REPO_API}/issues?labels=bug&state=open&per_page=100`;
 
 /** The pulls list URL for one deep-tier page (pages 2..5). */
 export function githubPullsPageUrl(page: number): string {
@@ -154,6 +161,37 @@ export function parseGithubPulls(payload: unknown): Map<number, PullInfo> {
   return out;
 }
 
+/**
+ * Parse one issues LIST row into an IssueInfo. Rows carrying a
+ * `pull_request` key are pulls, not issues, and are skipped.
+ */
+export function parseGithubIssue(row: unknown): { number: number; info: IssueInfo } | null {
+  if (!row || typeof row !== "object") return null;
+  const o = row as Record<string, unknown>;
+  if ("pull_request" in o) return null;
+  if (typeof o.number !== "number") return null;
+  if (typeof o.title !== "string") return null;
+  const info: IssueInfo = {
+    number: o.number,
+    title: o.title,
+    htmlUrl: issueHtmlUrl(o.number, o.html_url),
+  };
+  const labels = parseLabelNames(o.labels);
+  if (labels !== undefined) info.labels = labels;
+  return { number: o.number, info };
+}
+
+/** Parse the issues LIST payload into IssueInfos, keyed by number. Pull rows are skipped. */
+export function parseGithubIssues(payload: unknown): Map<number, IssueInfo> {
+  const out = new Map<number, IssueInfo>();
+  if (!Array.isArray(payload)) return out;
+  for (const item of payload) {
+    const parsed = parseGithubIssue(item);
+    if (parsed) out.set(parsed.number, parsed.info);
+  }
+  return out;
+}
+
 /** Parse the GitHub branches payload into the set of branch names. */
 export function parseGithubBranches(payload: unknown): Set<string> {
   const out = new Set<string>();
@@ -172,7 +210,7 @@ export function parseGithubBranches(payload: unknown): Set<string> {
 /* Session cache (sessionStorage, 5 minutes)                           */
 /* ------------------------------------------------------------------ */
 
-export const KANBAN_LIVE_CACHE_KEY = "meridian-kanban-live:v5";
+export const KANBAN_LIVE_CACHE_KEY = "meridian-kanban-live:v6";
 export const KANBAN_LIVE_CACHE_TTL_MS = 5 * 60_000;
 
 /* ------------------------------------------------------------------ */
@@ -254,6 +292,9 @@ function safeStorage(storage: KeyValueStorage | null | undefined): KeyValueStora
 export interface KanbanLiveState {
   pulls: ReadonlyMap<number, PullInfo>;
   branches: ReadonlySet<string>;
+  issues: ReadonlyMap<number, IssueInfo>;
+  /** The issues call failed: the board is live, the bug list is not. */
+  issuesUnavailable: boolean;
   fetchedAt: number;
 }
 
@@ -261,6 +302,23 @@ interface LiveCache {
   fetchedAt: number;
   pulls: [number, PullInfo][];
   branches: string[];
+  issues: [number, IssueInfo][];
+  issuesUnavailable: boolean;
+}
+
+function isIssueInfo(value: unknown): value is IssueInfo {
+  if (!value || typeof value !== "object") return false;
+  const p = value as IssueInfo;
+  if (typeof p.number !== "number") return false;
+  if (typeof p.title !== "string") return false;
+  if (typeof p.htmlUrl !== "string") return false;
+  if (
+    p.labels !== undefined &&
+    !(Array.isArray(p.labels) && p.labels.every((label) => typeof label === "string"))
+  ) {
+    return false;
+  }
+  return true;
 }
 
 function isPullInfo(value: unknown): value is PullInfo {
@@ -306,9 +364,18 @@ function readLiveCache(
       }
     }
     if (!parsed.branches.every((b) => typeof b === "string")) return null;
+    if (!Array.isArray(parsed.issues)) return null;
+    for (const entry of parsed.issues) {
+      if (!Array.isArray(entry) || typeof entry[0] !== "number" || !isIssueInfo(entry[1])) {
+        return null;
+      }
+    }
+    if (typeof parsed.issuesUnavailable !== "boolean") return null;
     return {
       pulls: new Map(parsed.pulls),
       branches: new Set(parsed.branches),
+      issues: new Map(parsed.issues),
+      issuesUnavailable: parsed.issuesUnavailable,
       fetchedAt: parsed.fetchedAt,
     };
   } catch {
@@ -324,6 +391,8 @@ function writeLiveCache(storage: KeyValueStorage | null | undefined, state: Kanb
       fetchedAt: state.fetchedAt,
       pulls: [...state.pulls.entries()],
       branches: [...state.branches],
+      issues: [...state.issues.entries()],
+      issuesUnavailable: state.issuesUnavailable,
     };
     store.setItem(KANBAN_LIVE_CACHE_KEY, JSON.stringify(cache));
   } catch {
@@ -388,6 +457,7 @@ export interface FetchKanbanLiveOptions {
   now?: number;
   recentPullsUrl?: string;
   branchesUrl?: string;
+  issuesUrl?: string;
 }
 
 /** The detailed outcome of one fetch sequence, for the rate-limit signal. */
@@ -448,12 +518,31 @@ async function deepPullsForRefresh(
 }
 
 /**
+ * The open `bug` issues, or an empty map with `unavailable`
+ * when the call fails in any way. The issues call never fails
+ * the check: the board renders live and the note line says the
+ * bug list is unavailable.
+ */
+async function fetchIssues(
+  options: FetchKanbanLiveOptions,
+): Promise<{ issues: Map<number, IssueInfo>; unavailable: boolean }> {
+  try {
+    const payload = await fetchViaPort(options.issuesUrl ?? GITHUB_ISSUES_URL);
+    if (!Array.isArray(payload)) return { issues: new Map(), unavailable: true };
+    return { issues: parseGithubIssues(payload), unavailable: false };
+  } catch {
+    return { issues: new Map(), unavailable: true };
+  }
+}
+
+/**
  * The live check, in two tiers: the fast tier (the newest pulls
- * page and the branches page) must succeed or the whole check
- * fails; the deep tier (older pulls pages) only runs when page
- * 1 is full — a short first page means there is nothing older
- * — and its failures keep the previous deep rows. Overlapping
- * callers share one in-flight sequence.
+ * page, the branches page, and the open `bug` issues page) must
+ * succeed on pulls and branches or the whole check fails; the
+ * deep tier (older pulls pages) only runs when page 1 is full
+ * — a short first page means there is nothing older — and its
+ * failures keep the previous deep rows. Overlapping callers
+ * share one in-flight sequence.
  */
 async function fetchKanbanLiveOutcome(
   options: FetchKanbanLiveOptions,
@@ -472,6 +561,8 @@ async function fetchKanbanLiveOutcome(
       const branchesPayload = await fetchViaPort(options.branchesUrl ?? GITHUB_BRANCHES_URL);
       if (!Array.isArray(branchesPayload)) return { kind: "failed" };
 
+      const { issues, unavailable: issuesUnavailable } = await fetchIssues(options);
+
       let pulls = fastPulls;
       if (recentPayload.length >= 100) {
         const deep = await deepPullsForRefresh(options, now);
@@ -481,6 +572,8 @@ async function fetchKanbanLiveOutcome(
       const state: KanbanLiveState = {
         pulls,
         branches: parseGithubBranches(branchesPayload),
+        issues,
+        issuesUnavailable,
         fetchedAt: now,
       };
       writeLiveCache(options.storage, state);
@@ -502,9 +595,11 @@ async function fetchKanbanLiveOutcome(
 }
 
 /**
- * The live check: the merged pulls and branches state, or null.
- * A non-array payload, a 403, a 429, or a network failure fails
- * the whole check. Nothing else is requested on the fast tier.
+ * The live check: the merged pulls, branches and open `bug`
+ * issues, or null. A non-array payload, a 403, a 429, or a
+ * network failure on pulls or branches fails the whole check;
+ * an issues failure leaves the state live with the bug list
+ * marked unavailable.
  */
 export async function fetchKanbanLive(
   options: FetchKanbanLiveOptions = {},
