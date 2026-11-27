@@ -13,7 +13,7 @@ import type { Starter } from "@/game/starters";
 import { ADMIN1_BY_COUNTRY, COUNTRIES, findRegion, STATES, greaterSideKm, type Region } from "@/game/regions";
 import { rewriteStory } from "@/game/rewrite";
 import { shouldFireAiStory } from "@/game/story-ai";
-import { backfillDifficultyChoice, continueRun, dropPin, endRun, isResumable, resumeRun, startRun, type Edition, type Run, type RunPhase, type PlaceResult } from "@/game/run";
+import { backfillDifficultyChoice, continueRun, dropPin, endRun, isResumable, resumeRun, startRun, type Edition, type Run, type RunPhase } from "@/game/run";
 import { isPickerDifficulty, type PickerDifficulty } from "@/game/tier-filter";
 import { dealingPoolFor } from "@/game/easy-curation";
 import {
@@ -114,6 +114,7 @@ import { ResultCard } from "./result-card";
 import { RunSummaryCard } from "./run-summary";
 import { ShareButton } from "./share-button";
 import { ChallengeComplete } from "./challenge-complete";
+import { ReviewComplete } from "./review-complete";
 import { ChallengeMenu } from "./challenge-menu";
 import { ChallengeWelcome } from "./challenge-welcome";
 import { ClearedCelebrationDialog, type ClearedInfo } from "./cleared-celebration";
@@ -400,7 +401,6 @@ import {
   CHALLENGE_MIN_PLACES,
   CHALLENGE_REGION_ID,
   CHALLENGE_REGION_NAME,
-  CHALLENGE_REVIEW_LABEL,
   CHALLENGE_SHARE_LABEL,
   CHALLENGE_EXACT_SHARE_LABEL,
   CHALLENGE_RESHARE_LABEL,
@@ -3915,81 +3915,6 @@ function AtlasBackdrop() {
  * back later — further out every time; missed cards are due again right
  * away, so a quick retry is always one tap away from the picker.
  */
-function ReviewComplete({
-  results,
-  total,
-  onDone,
-  onResetHistory,
-  onChallengeFriend,
-}: {
-  results: PlaceResult[];
-  total: number;
-  onDone: () => void;
-  /** Present only when the deck still holds cards (fresh read, D16). */
-  onResetHistory?: () => ResetHistoryResult;
-  /** Present only while the friendChallenges flag is on (manifest
-   * §1(e)): the review-surface challenge entry. Unlike the reset
-   * entry it is NOT deck-gated — it deals fresh from the picked
-   * region, never from the deck, so an empty deck is fine here. */
-  onChallengeFriend?: () => void;
-}) {
-  const remembered = results.filter((r) => r.hit).length;
-  return (
-    <main className="mx-auto flex min-h-dvh w-full max-w-(--page-narrow) flex-col px-5 pt-2 pb-8">
-      {/* The shared shell (PR 3 Step 3.7): SiteHeader carries the
-          one Home control at the top — this screen had no header
-          at all. The content keeps its vertical centring in the
-          space below the header. The primary HomeButton in the
-          flow stays: it is this end-of-flow screen's own exit
-          action beside its challenge/reset entries, the sanctioned
-          end surface. No failure branch exists on this screen —
-          the total === 0 state is an empty deck, not an error —
-          so there is nothing to route to ErrorScreen. */}
-      <SiteHeader onHome={onDone} status={null} mute={null} />
-      <div className="flex flex-1 flex-col justify-center">
-      <p className="text-sm tracking-wide text-muted uppercase">
-        {REVIEW_DECK_COPY.pickerTitle}
-      </p>
-      <h1 className="mt-2 font-display text-4xl text-fg" data-testid="review-complete">
-        {total === 0
-          ? "Nothing to review."
-          : `${REVIEW_DECK_COPY.completeTitle} You remembered ${remembered} of ${total}.`}
-      </h1>
-      <p className="mt-4 max-w-md text-lg text-muted">
-        {total === 0
-          ? REVIEW_DECK_COPY.pickerEmpty
-          : remembered === total
-            ? "Each card comes back later — further out every time you get it right."
-            : "The ones you missed are due again right away. One more round locks them in."}
-      </p>
-      <div className="mt-6 flex flex-col items-start gap-3">
-        <EndOfFlowHome onHome={onDone} variant="primary" />
-        {/* "Challenge a friend — pick a map" (manifest §1(e)): the
-            review is finished, so this door leaves it — the GameApp
-            handler runs the Editions exit and opens the shipped
-            region mini-picker in one act. Secondary beside the
-            primary exit: the review's own flow stays the headline. */}
-        {onChallengeFriend ? (
-          <Button
-            variant="secondary"
-            onClick={onChallengeFriend}
-            data-testid="review-challenge-a-friend"
-          >
-            {CHALLENGE_REVIEW_LABEL}
-          </Button>
-        ) : null}
-        {onResetHistory ? <ResetHistoryControl onReset={onResetHistory} /> : null}
-      </div>
-      </div>
-      {/* The shared footer (footer standardization, 2026-11-18):
-          the review-end screen carries SiteFooter + Grandpa's band
-          like every other page; its in-flow primary Home button
-          above stays the end-of-flow exit. */}
-      <SiteFooter />
-    </main>
-  );
-}
-
 /**
  * The mc2 welcome card (Package A): shown on Home after a challenge
  * link validates, BEFORE anything is displaced. It states the route
@@ -5852,6 +5777,7 @@ function PlayLoaded({
   // completable session — ADHD-friendly — never the endless run.
   if (review && run.index >= pool.length) {
     return (
+      <main className="mx-auto flex min-h-dvh w-full max-w-(--page-narrow) flex-col px-5 pt-2 pb-8">
       <ReviewComplete
         results={run.results}
         total={pool.length}
@@ -5859,6 +5785,7 @@ function PlayLoaded({
         onResetHistory={reviewDeckTotal > 0 ? onResetHistory : undefined}
         onChallengeFriend={friendChallengesEnabled ? reviewChallengeTap : undefined}
       />
+      </main>
     );
   }
   if (challenge && (run.index >= pool.length || run.phase === "summary")) {

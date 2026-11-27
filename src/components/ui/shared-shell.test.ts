@@ -384,16 +384,16 @@ describe("PageShell and PageIntro (PR 3 Step 2)", () => {
   });
 
   it("Review and Challenge complete sit on SiteHeader (PR 3 Step 3.7): the one Home at the top", () => {
-    const gameApp = read("src/components/game-app.tsx");
+    const review = read("src/components/review-complete.tsx");
     const complete = read("src/components/challenge-complete.tsx");
     assert.equal(
-      gameApp.split("<SiteHeader onHome={onDone} status={null} mute={null} />").length - 1 +
+      review.split("<SiteHeader onHome={onDone} status={null} mute={null} />").length - 1 +
         complete.split("<SiteHeader onHome={onDone} status={null} mute={null} />").length - 1,
       2,
       "both end-of-flow screens render the shared header",
     );
-    assert.match(gameApp, /data-testid="review-complete"/);
-    assert.match(gameApp, /testId="challenge-done"/);
+    assert.match(review, /data-testid="review-complete"/);
+    assert.match(read("src/components/game-app.tsx"), /testId="challenge-done"/);
   });
 
   it("the region lists sit on SiteHeader (PR 3 Step 3.6): Home everywhere, Back in the back slot", () => {

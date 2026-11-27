@@ -19,6 +19,7 @@ Finish the game-app split (extract ReviewComplete, RegionList, SubjectsHost, hig
 ## Done
 
 - Commit 2 (TD-05.4): game-app takes EndOfFlowHome at its 4 sites; `homeButtonImport` cured (shell-ban 4 → 3); ceiling stays 6397 (no lines dropped).
+- Commit 3 (TD-06.12): ReviewComplete extracted to `src/components/review-complete.tsx` (fragment; composer keeps the `<main>` wrapper, no new pageLocalMain row); game-app 6397 → 6324, ceiling lowered to 6324; map step 13 done.
 
 ## Ruled out / deferred
 
@@ -33,4 +34,4 @@ Finish the game-app split (extract ReviewComplete, RegionList, SubjectsHost, hig
 
 ## Next step
 
-Commit 3 (TD-06.12): extract ReviewComplete into `src/components/review-complete.tsx`, taking EndOfFlowHome.
+Commit 4 (TD-06.13): extract RegionList into `src/components/region-list.tsx`, plus the starting / region-open loader view.
