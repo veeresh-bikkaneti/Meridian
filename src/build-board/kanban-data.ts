@@ -232,6 +232,32 @@ export function columnForPull(info: PullInfo): { col: Column; note?: string } {
 }
 
 /**
+ * The standing of a whole card from ALL of its pulls at once.
+ * One merged pull never outvotes an open one: Done needs the
+ * whole set settled. Rules, in order:
+ *  1. A `blocked` / `c:blocked*` label on any pull → Blocked.
+ *  2. Closed-unmerged pulls are superseded: ignored while
+ *     other pulls exist; when every pull is closed-unmerged
+ *     → Backlog with the note "closed unmerged".
+ *  3. Any open non-draft pull → In review; else any open
+ *     draft pull → In progress.
+ *  4. Done only with at least one merged pull and no open pull.
+ */
+export function standingForPulls(
+  infos: readonly PullInfo[],
+): { col: Column; note?: string } {
+  if (infos.some((info) => (info.labels ?? []).some(isBlockedLabel))) {
+    return { col: "Blocked" };
+  }
+  const open = infos.filter((info) => info.state === "open");
+  if (open.some((info) => !info.draft)) return { col: "In review" };
+  if (open.some((info) => info.draft)) return { col: "In progress" };
+  if (infos.some((info) => info.merged)) return { col: "Done" };
+  if (infos.length === 0) return { col: "Backlog" };
+  return { col: "Backlog", note: "closed unmerged" };
+}
+
+/**
  * Lane for one card or census id. When a snapshot is passed it
  * wins: the exact story or subtask row, else the parent story
  * (`TD-06.9` → `TD-06` via `storyNumOf`). With no row and no
@@ -287,25 +313,12 @@ export interface DerivedCard {
 
 const LIVE_PR_HREF = "https://github.com/veeresh-bikkaneti/Meridian/pull/";
 
-function preferAdvanced(
-  current: { col: Column; note?: string } | null,
-  next: { col: Column; note?: string },
-): { col: Column; note?: string } {
-  if (current === null) return next;
-  const ra = columnRank(current.col);
-  const rb = columnRank(next.col);
-  if (rb > ra) return next;
-  if (ra > rb) return current;
-  if (next.col === "Blocked" && current.col !== "Blocked") return next;
-  return current;
-}
-
 interface DerivedAcc {
   id: string;
   num: string | null;
   title: string;
   texts: string[];
-  standing: { col: Column; note?: string } | null;
+  pullInfos: PullInfo[];
   prs: PrLink[];
   seatTags: string[];
   unnumbered: boolean;
@@ -366,7 +379,7 @@ export function deriveBoardItems(
           num: key,
           title,
           texts: [],
-          standing: null,
+          pullInfos: [],
           prs: [],
           seatTags: [],
           unnumbered: key === null,
@@ -376,7 +389,7 @@ export function deriveBoardItems(
       if (info.title) acc.texts.push(info.title);
       if (info.headRef) acc.texts.push(info.headRef);
       acc.prs.push({ number, role: "closes", href: `${LIVE_PR_HREF}${number}` });
-      acc.standing = preferAdvanced(acc.standing, columnForPull(info));
+      acc.pullInfos.push(info);
       takeSeatTags(acc, info.labels);
     }
   }
@@ -395,7 +408,7 @@ export function deriveBoardItems(
         num: key,
         title: name,
         texts: [name],
-        standing: { col: "In progress" },
+        pullInfos: [],
         prs: [],
         seatTags: [],
         unnumbered: false,
@@ -409,7 +422,7 @@ export function deriveBoardItems(
       num: null,
       title: name,
       texts: [name],
-      standing: { col: "In progress" },
+      pullInfos: [],
       prs: [],
       seatTags: [],
       unnumbered: true,
@@ -417,7 +430,12 @@ export function deriveBoardItems(
   }
 
   return [...byKey.values()].map((acc) => {
-    const standing = acc.standing ?? { col: "Backlog" as Column };
+    // A card with pulls takes the whole-set standing; a
+    // branch-only card is work in flight, In progress.
+    const standing =
+      acc.pullInfos.length > 0
+        ? standingForPulls(acc.pullInfos)
+        : { col: "In progress" as Column };
     const card: DerivedCard = {
       id: acc.id,
       num: acc.num,
@@ -566,60 +584,55 @@ export function loadSnapshot(json: unknown): Snapshot {
 }
 
 /**
- * The live column one subtask's pre-recorded GitHub links prove,
- * before the forward-only clamp — or null when they prove
- * nothing. PRs are read first, and only when EVERY closes PR
- * was fetched: a partial answer proves nothing (the live module
- * fetches every needed number, so a gap means the PR could not
- * be read). Work branches are consulted only when that PR rule
- * does not apply.
+ * The live standing one subtask's GitHub evidence proves, or
+ * null when it proves nothing. Recorded `closes` PRs are read
+ * as one set — only when EVERY one of them was fetched: a
+ * partial answer proves nothing (the live module fetches every
+ * needed number, so a gap means the PR could not be read).
+ * Numbered pulls that are not `ref` links join the same set,
+ * so one merged pull never outvotes an open one. A live work
+ * branch (recorded, or a live branch carrying the number)
+ * proves work started: it lifts an all-closed-unmerged
+ * standing to In progress, and nothing else.
  */
-function recordedLiveColumn(
+function liveStanding(
   sub: Subtask,
   pulls: ReadonlyMap<number, PullInfo>,
   branches: ReadonlySet<string>,
+  byPull: ReadonlyMap<string, [number, PullInfo][]>,
+  byBranch: ReadonlyMap<string, string[]>,
 ): { col: Column | null; note?: string } {
   const closes = sub.prs.filter((p) => p.role === "closes");
-  if (closes.length > 0 && closes.every((p) => pulls.has(p.number))) {
-    const infos = closes.map((p) => pulls.get(p.number) as PullInfo);
-    if (infos.every((i) => i.merged)) return { col: "Done" };
-    if (infos.some((i) => i.state === "open" && !i.draft)) return { col: "In review" };
-    if (infos.some((i) => i.state === "open" && i.draft)) return { col: "In progress" };
-    if (infos.some((i) => i.state === "closed" && !i.merged)) {
-      return { col: null, note: "closed unmerged" };
-    }
-    return { col: null };
+  const closesComplete = closes.every((p) => pulls.has(p.number));
+  const recordedInfos = closesComplete
+    ? closes.map((p) => pulls.get(p.number) as PullInfo)
+    : [];
+  const closeNumbers = new Set(closes.map((p) => p.number));
+  const autoInfos = autoPullsFor(sub, byPull)
+    .filter(([number]) => !closeNumbers.has(number))
+    .map(([, info]) => info);
+  const branchEvidence =
+    autoBranchesFor(sub, byBranch).length > 0 || recordedWorkBranchExists(sub, branches);
+  const infos = [...recordedInfos, ...autoInfos];
+  if (infos.length === 0) {
+    return branchEvidence ? { col: "In progress" } : { col: null };
   }
+  const standing = standingForPulls(infos);
+  if (standing.col === "Backlog" && branchEvidence) return { col: "In progress" };
+  return standing;
+}
+
+/** A recorded `work` branch exists in the live branch set. */
+function recordedWorkBranchExists(sub: Subtask, branches: ReadonlySet<string>): boolean {
   for (const branch of sub.branches) {
     if (branch.role !== "work") continue;
     const exists =
       branch.match === "prefix"
         ? [...branches].some((name) => name.startsWith(branch.name))
         : branches.has(branch.name);
-    if (exists) return { col: "In progress" };
+    if (exists) return true;
   }
-  return { col: null };
-}
-
-function columnFromPull(info: PullInfo): { col: Column | null; note?: string } {
-  if (info.merged) return { col: "Done" };
-  if (info.state === "open" && !info.draft) return { col: "In review" };
-  if (info.state === "open" && info.draft) return { col: "In progress" };
-  if (info.state === "closed" && !info.merged) return { col: null, note: "closed unmerged" };
-  return { col: null };
-}
-
-/** The higher forward column; a note survives only when neither side moved. */
-function preferForward(
-  a: { col: Column | null; note?: string },
-  b: { col: Column | null; note?: string },
-): { col: Column | null; note?: string } {
-  const ra = a.col === null ? -1 : columnRank(a.col);
-  const rb = b.col === null ? -1 : columnRank(b.col);
-  if (rb > ra) return { col: b.col };
-  if (ra > rb) return { col: a.col };
-  if (a.col === null && b.col === null) return { col: null, note: a.note ?? b.note };
-  return { col: a.col };
+  return false;
 }
 
 function indexPulls(pulls: ReadonlyMap<number, PullInfo>): Map<string, [number, PullInfo][]> {
@@ -679,24 +692,6 @@ function autoBranchesFor(
   return (byBranch.get(sub.num.toUpperCase()) ?? []).filter((name) => !isRefBranch(sub, name));
 }
 
-/** Column proved by numbered pulls and branches that are not `ref` links. */
-function autoLiveColumn(
-  sub: Subtask,
-  byPull: ReadonlyMap<string, [number, PullInfo][]>,
-  byBranch: ReadonlyMap<string, string[]>,
-): { col: Column | null; note?: string } {
-  const closes = new Set(sub.prs.filter((p) => p.role === "closes").map((p) => p.number));
-  let result: { col: Column | null; note?: string } = { col: null };
-  for (const [number, info] of autoPullsFor(sub, byPull)) {
-    if (closes.has(number)) continue;
-    result = preferForward(result, columnFromPull(info));
-  }
-  if (autoBranchesFor(sub, byBranch).length > 0) {
-    result = preferForward(result, { col: "In progress" });
-  }
-  return result;
-}
-
 function enrichPrs(sub: Subtask, matched: readonly [number, PullInfo][]): PrLink[] {
   const seen = new Set(sub.prs.map((p) => p.number));
   const extra: PrLink[] = [];
@@ -747,10 +742,7 @@ export function applyOverlay<T extends Subtask>(
   const byPull = indexPulls(pulls);
   const byBranch = indexBranches(branches);
   return subtasks.map((sub) => {
-    const live = preferForward(
-      recordedLiveColumn(sub, pulls, branches),
-      autoLiveColumn(sub, byPull, byBranch),
-    );
+    const live = liveStanding(sub, pulls, branches, byPull, byBranch);
     const col =
       live.col !== null && columnRank(live.col) > columnRank(sub.col) ? live.col : sub.col;
     const matched = autoPullsFor(sub, byPull);

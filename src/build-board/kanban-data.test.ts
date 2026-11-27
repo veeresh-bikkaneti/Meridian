@@ -18,6 +18,7 @@ import {
   laneCounts,
   laneForItem,
   loadSnapshot,
+  standingForPulls,
   storyNumOf,
   storyRollup,
   storySeatTags,
@@ -745,7 +746,7 @@ describe("deriveBoardItems", () => {
     });
   });
 
-  it("keeps the most advanced column when several pulls share one item", () => {
+  it("resolves several pulls on one item by the whole-set rule (TD-08.7)", () => {
     const pulls = new Map<number, PullInfo>([
       [40, pull({ title: "draft TD-11.1", draft: true, state: "open" })],
       [41, pull({ title: "review TD-11.1", draft: false, state: "open", labels: ["C:Atlas"] })],
@@ -761,7 +762,10 @@ describe("deriveBoardItems", () => {
     assert.equal(byNum.get("TD-11.1")?.title, "draft TD-11.1");
     assert.deepEqual(byNum.get("TD-11.1")?.seatTags, ["C:Atlas"]);
     assert.equal(byNum.get("TD-12.2")?.col, "Blocked");
-    assert.equal(byNum.get("TD-09.1")?.col, "Done");
+    // TD-08.7 changed this: a merged pull plus an open pull is
+    // In review, not Done — the old most-advanced rule let one
+    // merged pull declare the card finished.
+    assert.equal(byNum.get("TD-09.1")?.col, "In review");
     assert.deepEqual(byNum.get("TD-09.1")?.prs.map((pr) => pr.number), [44, 45]);
   });
 
@@ -829,6 +833,143 @@ describe("deriveBoardItems", () => {
     assert.equal(cards[0]?.col, "Backlog");
     assert.equal(cards[0]?.note, "closed unmerged");
     assert.equal(cards.some((card) => card.num === "TD-01.1"), false);
+  });
+});
+
+describe("standingForPulls (TD-08.7 whole-set rule)", () => {
+  const pull = (info: Partial<PullInfo>): PullInfo => ({
+    state: "open",
+    draft: false,
+    merged: false,
+    ...info,
+  });
+  const closesHref = (number: number) => `https://example.test/pull/${number}`;
+
+  it("needs every pull settled for Done", () => {
+    assert.deepEqual(standingForPulls([pull({ state: "closed", merged: true })]), {
+      col: "Done",
+    });
+    assert.deepEqual(
+      standingForPulls([
+        pull({ state: "closed", merged: true }),
+        pull({ state: "closed", merged: false }),
+      ]),
+      { col: "Done" },
+    );
+    assert.deepEqual(standingForPulls([pull({ state: "closed", merged: false })]), {
+      col: "Backlog",
+      note: "closed unmerged",
+    });
+    assert.deepEqual(
+      standingForPulls([
+        pull({ state: "closed", merged: true }),
+        pull({ state: "open", draft: true }),
+      ]),
+      { col: "In progress" },
+    );
+    assert.deepEqual(
+      standingForPulls([
+        pull({ state: "closed", merged: true }),
+        pull({ state: "open", draft: false }),
+      ]),
+      { col: "In review" },
+    );
+    assert.deepEqual(
+      standingForPulls([pull({ state: "closed", merged: true, labels: ["C:blocked"] })]),
+      { col: "Blocked" },
+    );
+    assert.deepEqual(standingForPulls([]), { col: "Backlog" });
+  });
+
+  it("TD-06.9 shape: merged PRs plus open drafts stay In progress, not Done", () => {
+    const pulls = new Map<number, PullInfo>([
+      [626, pull({ title: "TD-06.9 challenge surface", state: "closed", merged: true })],
+      [631, pull({ title: "TD-06.9 challenge surface", state: "closed", merged: true })],
+      [630, pull({ title: "TD-06.9 challenge surface", state: "open", draft: true })],
+      [632, pull({ title: "TD-06.9 challenge surface", state: "open", draft: true })],
+    ]);
+    const cards = deriveBoardItems(pulls, new Set());
+    assert.equal(cards.length, 1);
+    assert.equal(cards[0]?.num, "TD-06.9");
+    assert.equal(cards[0]?.col, "In progress");
+    assert.deepEqual(
+      cards[0]?.prs.map((pr) => pr.number),
+      [626, 631, 630, 632],
+    );
+  });
+
+  it("TD-06.9 shape with an open non-draft is In review", () => {
+    const pulls = new Map<number, PullInfo>([
+      [626, pull({ title: "TD-06.9 challenge surface", state: "closed", merged: true })],
+      [632, pull({ title: "TD-06.9 challenge surface", state: "open", draft: false })],
+    ]);
+    const [card] = deriveBoardItems(pulls, new Set());
+    assert.equal(card?.col, "In review");
+  });
+
+  it("TD-05.4 shape: one merged plus one open draft is In progress", () => {
+    const pulls = new Map<number, PullInfo>([
+      [1, pull({ title: "TD-05.4 first", state: "closed", merged: true })],
+      [2, pull({ title: "TD-05.4 second", state: "open", draft: true })],
+    ]);
+    const [card] = deriveBoardItems(pulls, new Set());
+    assert.equal(card?.num, "TD-05.4");
+    assert.equal(card?.col, "In progress");
+  });
+
+  it("TD-06.9 shape through the overlay: open drafts hold the card at In progress", () => {
+    const task = makeSubtask({
+      col: "Backlog",
+      prs: [626, 631, 630, 632].map((number) => ({
+        number,
+        role: "closes" as const,
+        href: closesHref(number),
+      })),
+    });
+    const [out] = applyOverlay(
+      [task],
+      pullsOf(
+        [626, { state: "closed", merged: true }],
+        [631, { state: "closed", merged: true }],
+        [630, { state: "open", draft: true }],
+        [632, { state: "open", draft: true }],
+      ),
+      new Set(),
+    );
+    assert.equal(out.col, "In progress");
+  });
+
+  it("all merged through the overlay is Done", () => {
+    const task = makeSubtask({
+      col: "Backlog",
+      prs: [10, 11].map((number) => ({
+        number,
+        role: "closes" as const,
+        href: closesHref(number),
+      })),
+    });
+    const [done] = applyOverlay(
+      [task],
+      pullsOf(
+        [10, { state: "closed", merged: true }],
+        [11, { state: "closed", merged: true }],
+      ),
+      new Set(),
+    );
+    assert.equal(done.col, "Done");
+  });
+
+  it("a blocked label wins on a derived card", () => {
+    // The overlay's forward-only clamp (rank Blocked = Backlog)
+    // keeps this from the snapshot until commit 4 removes the
+    // clamp for evidenced subtasks; the shared rule itself
+    // already returns Blocked, asserted above.
+    const pulls = new Map<number, PullInfo>([
+      [20, pull({ title: "TD-06.9 blocked", state: "closed", merged: true })],
+      [21, pull({ title: "TD-06.9 blocked", state: "open", draft: false, labels: ["blocked"] })],
+    ]);
+    const [card] = deriveBoardItems(pulls, new Set());
+    assert.equal(card?.col, "Blocked");
   });
 });
 
