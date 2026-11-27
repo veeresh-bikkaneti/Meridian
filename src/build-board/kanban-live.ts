@@ -1,20 +1,31 @@
 /**
  * Build-board live check. GitHub is the source of truth. The
  * browser calls the public API directly — no Worker, no KV, no
- * token — and makes exactly two requests per refresh:
+ * token — in two tiers, inside a fixed request budget (the
+ * unauthenticated limit is 60 requests per hour per IP, shared
+ * by every viewer behind that IP):
  *
- *  1. GET /pulls?state=all&sort=updated&direction=desc&per_page=100
- *  2. GET /branches?per_page=100
+ *  Fast tier, every refresh (at most 2 calls before the issues
+ *  call lands, 3 after): the newest pulls page and the
+ *  branches page. The pulls sort is `updated` desc, so any PR
+ *  whose state changed since the last refresh is on page 1.
+ *  Deep tier, rarely (at most 4 calls per hour): pulls pages
+ *  2..5, cached 60 minutes in localStorage and shared across
+ *  tabs, merged by PR number with the fast tier winning.
+ *  Together they cover 500 PRs; the ledger's oldest `closes`
+ *  PR is #543, so every ledger PR is covered today.
  *
- * There is no by-number lookup and no page walking. A non-array
- * payload, a 403, a 429, or a network failure fails the whole
- * check and the view keeps kanban.json. Overlapping callers share
- * one in-flight pair. A 5-minute session cache (key v4) makes a
- * repeat free. Focus and visibility re-check only after that
- * cache expires. There is no interval. A network error is retried
+ * A non-array payload, a 403, a 429, or a network failure on
+ * the fast tier fails the whole check and the view keeps
+ * kanban.json. A failed deep page keeps the previous cached
+ * deep pages and does not fail the check. Overlapping callers
+ * share one in-flight sequence. A 5-minute session cache (key
+ * v5) makes a repeat free. Focus and visibility re-check only
+ * after that cache expires. There is no interval yet: the
+ * poller lands in a later commit. A network error is retried
  * once; an HTTP status is not.
  */
-import { resolveSession } from "../game/storage-slot.ts";
+import { resolveLocal, resolveSession } from "../game/storage-slot.ts";
 import { getJson, getRaw } from "../platform/transport/browser-transport.ts";
 import {
   TransportError,
@@ -74,6 +85,11 @@ export const GITHUB_REPO_API = "https://api.github.com/repos/veeresh-bikkaneti/M
 export const GITHUB_BRANCHES_URL = `${GITHUB_REPO_API}/branches?per_page=100`;
 export const GITHUB_RECENT_PULLS_URL =
   `${GITHUB_REPO_API}/pulls?state=all&sort=updated&direction=desc&per_page=100`;
+
+/** The pulls list URL for one deep-tier page (pages 2..5). */
+export function githubPullsPageUrl(page: number): string {
+  return `${GITHUB_RECENT_PULLS_URL}&page=${page}`;
+}
 
 /* ------------------------------------------------------------------ */
 /* GitHub payloads (defensive parsing, live-feed's shapes)             */
@@ -156,8 +172,70 @@ export function parseGithubBranches(payload: unknown): Set<string> {
 /* Session cache (sessionStorage, 5 minutes)                           */
 /* ------------------------------------------------------------------ */
 
-export const KANBAN_LIVE_CACHE_KEY = "meridian-kanban-live:v4";
+export const KANBAN_LIVE_CACHE_KEY = "meridian-kanban-live:v5";
 export const KANBAN_LIVE_CACHE_TTL_MS = 5 * 60_000;
+
+/* ------------------------------------------------------------------ */
+/* Deep-tier cache (localStorage, 60 minutes, shared across tabs)      */
+/* ------------------------------------------------------------------ */
+
+/** Deep pages cache key. The shape is versioned separately: v1. */
+export const KANBAN_DEEP_CACHE_KEY = "meridian-kanban-live:deep:v1";
+export const KANBAN_DEEP_CACHE_TTL_MS = 60 * 60_000;
+/** Deep tier reads pulls pages 2..this cap: 500 PRs with page 1. */
+export const KANBAN_DEEP_PAGE_CAP = 5;
+
+interface DeepCache {
+  fetchedAt: number;
+  pulls: [number, PullInfo][];
+}
+
+function safeDeepStorage(
+  storage: KeyValueStorage | null | undefined,
+): KeyValueStorage | null {
+  if (storage) return storage;
+  try {
+    return resolveLocal() ?? null;
+  } catch {
+    return null;
+  }
+}
+
+function readDeepCache(
+  storage: KeyValueStorage | null | undefined,
+): { fetchedAt: number; pulls: Map<number, PullInfo> } | null {
+  const store = safeDeepStorage(storage);
+  if (!store) return null;
+  try {
+    const raw = store.getItem(KANBAN_DEEP_CACHE_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw) as Partial<DeepCache>;
+    if (typeof parsed.fetchedAt !== "number" || !Array.isArray(parsed.pulls)) return null;
+    for (const entry of parsed.pulls) {
+      if (!Array.isArray(entry) || typeof entry[0] !== "number" || !isPullInfo(entry[1])) {
+        return null;
+      }
+    }
+    return { fetchedAt: parsed.fetchedAt, pulls: new Map(parsed.pulls) };
+  } catch {
+    return null;
+  }
+}
+
+function writeDeepCache(
+  storage: KeyValueStorage | null | undefined,
+  fetchedAt: number,
+  pulls: ReadonlyMap<number, PullInfo>,
+): void {
+  const store = safeDeepStorage(storage);
+  if (!store) return;
+  try {
+    const cache: DeepCache = { fetchedAt, pulls: [...pulls.entries()] };
+    store.setItem(KANBAN_DEEP_CACHE_KEY, JSON.stringify(cache));
+  } catch {
+    // Quota or private mode: caching is best-effort, never fatal.
+  }
+}
 
 export interface KeyValueStorage {
   getItem(key: string): string | null;
@@ -268,8 +346,18 @@ export function shouldRefetchKanbanLive(input: {
 }
 
 /* ------------------------------------------------------------------ */
-/* The fetch sequence — exactly two calls                              */
+/* The fetch sequence — fast tier every refresh, deep tier rarely     */
 /* ------------------------------------------------------------------ */
+
+/** An HTTP status from GitHub, carrying the status for the rate-limit signal. */
+class GithubHttpError extends Error {
+  readonly status: number;
+  constructor(status: number, url: string) {
+    super(`GitHub returned ${status} for ${url}`);
+    this.name = "GithubHttpError";
+    this.status = status;
+  }
+}
 
 /**
  * One fetch through the transport port. getRaw never throws for a
@@ -289,41 +377,106 @@ async function fetchViaPort(url: string): Promise<unknown> {
       throw err;
     }
   }
-  if (!outcome.ok) throw new Error(`GitHub returned ${outcome.status} for ${url}`);
+  if (!outcome.ok) throw new GithubHttpError(outcome.status, url);
   return outcome.json;
 }
 
 export interface FetchKanbanLiveOptions {
   storage?: KeyValueStorage | null;
+  /** Deep-tier cache storage; localStorage when omitted. */
+  deepStorage?: KeyValueStorage | null;
   now?: number;
   recentPullsUrl?: string;
   branchesUrl?: string;
 }
 
-let inflight: Promise<KanbanLiveState | null> | null = null;
+/** The detailed outcome of one fetch sequence, for the rate-limit signal. */
+type KanbanFetchOutcome =
+  | { kind: "live"; state: KanbanLiveState }
+  | { kind: "rateLimited" }
+  | { kind: "failed" };
+
+let inflight: Promise<KanbanFetchOutcome> | null = null;
 
 /**
- * The live check: the recent pulls page and the branches page,
- * or null. A non-array payload, a 403, a 429, or a network
- * failure fails the whole check. Nothing else is requested.
- * Overlapping callers share one in-flight pair of requests.
+ * Deep-tier pages 2..cap, merged by PR number. Pages stop early
+ * on a short page. Any failure — a bad status, a non-array
+ * payload, a network error after its retry — returns null and
+ * the caller keeps the previous cached deep pages: a failed
+ * deep page never fails the check.
  */
-export async function fetchKanbanLive(
-  options: FetchKanbanLiveOptions = {},
-): Promise<KanbanLiveState | null> {
+async function fetchDeepPages(
+  options: FetchKanbanLiveOptions,
+): Promise<Map<number, PullInfo> | null> {
+  const merged = new Map<number, PullInfo>();
+  for (let page = 2; page <= KANBAN_DEEP_PAGE_CAP; page++) {
+    let payload: unknown;
+    try {
+      payload = await fetchViaPort(githubPullsPageUrl(page));
+    } catch {
+      return null;
+    }
+    if (!Array.isArray(payload)) return null;
+    for (const [number, info] of parseGithubPulls(payload)) {
+      merged.set(number, info);
+    }
+    if (payload.length < 100) break;
+  }
+  return merged;
+}
+
+/**
+ * The deep rows to merge into this refresh: the fresh cache when
+ * it is fresh, else a re-fetch that replaces the cache on
+ * success and keeps the previous rows (even stale) on failure,
+ * so the next refresh retries.
+ */
+async function deepPullsForRefresh(
+  options: FetchKanbanLiveOptions,
+  now: number,
+): Promise<Map<number, PullInfo>> {
+  const entry = readDeepCache(options.deepStorage);
+  if (entry !== null && now - entry.fetchedAt < KANBAN_DEEP_CACHE_TTL_MS) {
+    return entry.pulls;
+  }
+  const refreshed = await fetchDeepPages(options);
+  if (refreshed !== null) {
+    writeDeepCache(options.deepStorage, now, refreshed);
+    return refreshed;
+  }
+  return entry?.pulls ?? new Map();
+}
+
+/**
+ * The live check, in two tiers: the fast tier (the newest pulls
+ * page and the branches page) must succeed or the whole check
+ * fails; the deep tier (older pulls pages) only runs when page
+ * 1 is full — a short first page means there is nothing older
+ * — and its failures keep the previous deep rows. Overlapping
+ * callers share one in-flight sequence.
+ */
+async function fetchKanbanLiveOutcome(
+  options: FetchKanbanLiveOptions,
+): Promise<KanbanFetchOutcome> {
   const now = options.now ?? Date.now();
   const cached = readLiveCache(options.storage, now);
-  if (cached) return cached;
+  if (cached) return { kind: "live", state: cached };
   if (inflight) return inflight;
 
-  const pending = (async (): Promise<KanbanLiveState | null> => {
+  const pending = (async (): Promise<KanbanFetchOutcome> => {
     try {
       const recentPayload = await fetchViaPort(options.recentPullsUrl ?? GITHUB_RECENT_PULLS_URL);
-      if (!Array.isArray(recentPayload)) return null;
-      const pulls = parseGithubPulls(recentPayload);
+      if (!Array.isArray(recentPayload)) return { kind: "failed" };
+      const fastPulls = parseGithubPulls(recentPayload);
 
       const branchesPayload = await fetchViaPort(options.branchesUrl ?? GITHUB_BRANCHES_URL);
-      if (!Array.isArray(branchesPayload)) return null;
+      if (!Array.isArray(branchesPayload)) return { kind: "failed" };
+
+      let pulls = fastPulls;
+      if (recentPayload.length >= 100) {
+        const deep = await deepPullsForRefresh(options, now);
+        pulls = new Map([...deep, ...fastPulls]);
+      }
 
       const state: KanbanLiveState = {
         pulls,
@@ -331,9 +484,15 @@ export async function fetchKanbanLive(
         fetchedAt: now,
       };
       writeLiveCache(options.storage, state);
-      return state;
-    } catch {
-      return null;
+      return { kind: "live", state };
+    } catch (err) {
+      if (
+        err instanceof GithubHttpError &&
+        (err.status === 403 || err.status === 429)
+      ) {
+        return { kind: "rateLimited" };
+      }
+      return { kind: "failed" };
     }
   })().finally(() => {
     if (inflight === pending) inflight = null;
@@ -342,15 +501,28 @@ export async function fetchKanbanLive(
   return pending;
 }
 
+/**
+ * The live check: the merged pulls and branches state, or null.
+ * A non-array payload, a 403, a 429, or a network failure fails
+ * the whole check. Nothing else is requested on the fast tier.
+ */
+export async function fetchKanbanLive(
+  options: FetchKanbanLiveOptions = {},
+): Promise<KanbanLiveState | null> {
+  const outcome = await fetchKanbanLiveOutcome(options);
+  return outcome.kind === "live" ? outcome.state : null;
+}
+
 export type KanbanRefresh =
   | { action: "skip" }
   | { action: "live"; state: KanbanLiveState }
-  | { action: "fallback" };
+  | { action: "fallback"; rateLimited?: boolean };
 
 /**
  * Mount always checks GitHub (the session cache may answer with
  * zero calls). Focus and visibility check only after the cache
- * expires. Hidden does nothing.
+ * expires. Hidden does nothing. A 403/429 on the fast tier
+ * reports `rateLimited` so the poller can back off.
  */
 export async function refreshKanbanLive(
   options: FetchKanbanLiveOptions & {
@@ -370,9 +542,10 @@ export async function refreshKanbanLive(
       return { action: "skip" };
     }
   }
-  const state = await fetchKanbanLive({ ...options, now });
-  if (!state) return { action: "fallback" };
-  return { action: "live", state };
+  const outcome = await fetchKanbanLiveOutcome({ ...options, now });
+  if (outcome.kind === "live") return { action: "live", state: outcome.state };
+  if (outcome.kind === "rateLimited") return { action: "fallback", rateLimited: true };
+  return { action: "fallback" };
 }
 
 /**

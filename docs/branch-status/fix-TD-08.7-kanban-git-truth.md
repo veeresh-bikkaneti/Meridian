@@ -11,9 +11,9 @@
 
 ## PR
 
-Draft, opened after commit 1 (number recorded in commit 2's
-update to this file). Never merge, never mark ready; a
-separate Reviewer runs `review.md` after each push.
+Draft #633: https://github.com/veeresh-bikkaneti/Meridian/pull/633
+(head `7fd04925` after commit 1). Never merge, never mark
+ready; a separate Reviewer runs `review.md` after each push.
 
 ## Goal
 
@@ -64,6 +64,34 @@ the 441M checkout does not fit the 512M tmpfs).
   suite, provenance — all pass (see commit-1 gate logs under
   `~/workspace/.td069-tmp/td087-c1-*`).
 
+### Commit 2 — break B: read older pull requests within a fixed request budget
+
+- Two tiers in `kanban-live.ts`: fast (pulls page 1 +
+  branches, every refresh) and deep (pulls pages 2..5, cap
+  500 PRs, 60-minute localStorage cache shared across tabs,
+  merged by number with the fast tier winning). Deep pages
+  run only when page 1 is full; a short page stops paging;
+  page 6 is never requested. A failed deep page keeps the
+  previous deep rows and never fails the check.
+- `KANBAN_LIVE_CACHE_KEY` bumped v4 → v5 (cached shape
+  unchanged in this commit, but the key moves with the fetch
+  contract; the issues shape lands in commit 3).
+- Fast-tier 403/429 surfaces `{ action: "fallback",
+  rateLimited: true }` from `refreshKanbanLive` (the poller
+  in commit 5 consumes it). `fetchKanbanLive` still resolves
+  null on any failure.
+- Tests: 7 new deep-tier unit tests (paging + merge,
+  short-page stop, page-6 cap, fast-wins, 60-min deep cache
+  with the exact 2-call steady state, failed deep page,
+  rateLimited signal). Deliberate replacements: the "no page
+  walking" unit test is gone (that was the old contract);
+  the "v3 cache" test now asserts the v5 key. E2E budget
+  test updated with a full-page fixture: 3 calls on first
+  load (pulls p1 + pulls p2 + branches), pages `["2"]` only.
+- Budget (this commit): steady state 2 calls per refresh,
+  deep ≤ 4/hr, first load ≤ 6. Commit 3 adds the issues call
+  (steady 3, first load ≤ 7).
+
 ## Ruled out / deferred
 
 - Editing `kanban.json`, `scripts/board/publish-kanban.mjs`,
@@ -81,4 +109,4 @@ the 441M checkout does not fit the 512M tmpfs).
 
 ## Next step
 
-Commit 2 (break B): paged pulls within the request budget.
+Commit 3 (break E): open bug issues on the live board.

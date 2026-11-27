@@ -6,6 +6,9 @@ import snapshotJson from "./kanban.json" with { type: "json" };
 import {
   buildBoardUrl,
   fetchKanbanLive,
+  githubPullsPageUrl,
+  KANBAN_DEEP_CACHE_KEY,
+  KANBAN_DEEP_CACHE_TTL_MS,
   KANBAN_LIVE_CACHE_KEY,
   loadKanbanLive,
   loadPublicSnapshot,
@@ -158,7 +161,7 @@ describe("parseLabelNames", () => {
   });
 });
 
-describe("fetchKanbanLive — exactly two requests", () => {
+describe("fetchKanbanLive — fast tier", () => {
   it("does not call pulls/{n} when the closes PR is already in the recent list", async () => {
     const stub = stubGlobalFetch(fixtureHandler);
     try {
@@ -288,7 +291,7 @@ describe("fetchKanbanLive — exactly two requests", () => {
     }
   });
 
-  it("writes and reads the v3 cache, including title and headRef", async () => {
+  it("writes and reads the v5 cache, including title and headRef", async () => {
     const storage = memoryStorage();
     const stub = stubGlobalFetch((url) => {
       if (url.includes("/branches")) return { status: 200, body: branchesBody };
@@ -318,10 +321,10 @@ describe("fetchKanbanLive — exactly two requests", () => {
       assert.deepEqual(state.pulls.get(571)?.labels, ["C:Opera"]);
       assert.equal(stub.calls.length, 2);
       const raw = storage.map.get(KANBAN_LIVE_CACHE_KEY);
-      assert.equal(KANBAN_LIVE_CACHE_KEY, "meridian-kanban-live:v4");
+      assert.equal(KANBAN_LIVE_CACHE_KEY, "meridian-kanban-live:v5");
       assert.ok(raw);
       assert.equal(raw.includes("phase1/ports-part-b"), true);
-      assert.equal(storage.map.has("meridian-kanban-live:v2"), false);
+      assert.equal(storage.map.has("meridian-kanban-live:v4"), false);
       const again = await fetchKanbanLive({ storage, now: 5_000 + 1_000 });
       assert.equal(again?.pulls.get(571)?.title, "Phase 1 Part B");
       assert.equal(again?.pulls.get(571)?.headRef, "phase1/ports-part-b");
@@ -359,29 +362,221 @@ describe("fetchKanbanLive — exactly two requests", () => {
   });
 });
 
-describe("fetchKanbanLive — no page walking", () => {
-  it("stops after the two calls even when the pull list is a full page", async () => {
-    const page = Array.from({ length: 100 }, (_, i) => ({
-      number: i + 1,
+describe("fetchKanbanLive — deep tier (TD-08.7)", () => {
+  /* One full pulls page: numbers start..start+99. */
+  const fullPage = (
+    start: number,
+  ): { number: number; state: string; draft: boolean; merged_at: string | null; title: string }[] =>
+    Array.from({ length: 100 }, (_, i) => ({
+      number: start + i,
       state: "closed",
       draft: false,
       merged_at: "2026-01-01T00:00:00Z",
-      title: `TD-${String((i % 20) + 1).padStart(2, "0")}.1`,
+      title: `filler ${start + i}`,
     }));
+  const shortPage = (start: number, count: number) =>
+    Array.from({ length: count }, (_, i) => ({
+      number: start + i,
+      state: "closed",
+      draft: false,
+      merged_at: "2026-01-01T00:00:00Z",
+      title: `older ${start + i}`,
+    }));
+
+  it("first load pages past a full first page and merges the older rows", async () => {
     const stub = stubGlobalFetch((url) => {
-      if (url.includes("/branches")) return { status: 200, body: [{ name: "feat/td-08.4-live" }] };
-      if (url.includes("sort=updated")) return { status: 200, body: page };
+      if (url.includes("/branches")) return { status: 200, body: [] };
+      if (url.includes("page=2")) return { status: 200, body: shortPage(101, 30) };
+      if (url.includes("sort=updated")) return { status: 200, body: fullPage(1) };
       return { status: 500, body: { message: "should not be called" } };
     });
     try {
-      const state = await fetchKanbanLive({ storage: null });
+      const state = await fetchKanbanLive({ storage: null, deepStorage: null });
       assert.ok(state);
-      assert.equal(state.pulls.size, 100);
-      assert.equal(stub.calls.length, 2);
-      assert.equal(stub.calls.filter((c) => /\/pulls\/\d+/.test(c.url)).length, 0);
-      assert.equal(stub.calls.filter((c) => /[?&]page=/.test(c.url)).length, 0);
+      // A PR only on page 2 is in the merged state.
+      assert.equal(state.pulls.size, 130);
+      assert.ok(state.pulls.has(125));
+      assert.equal(state.pulls.get(125)?.merged, true);
+      assert.equal(stub.calls.filter((c) => c.url.includes("page=3")).length, 0);
+      assert.equal(stub.calls.length, 3);
     } finally {
       stub.restore();
+    }
+  });
+
+  it("a short page stops paging early", async () => {
+    const stub = stubGlobalFetch((url) => {
+      if (url.includes("/branches")) return { status: 200, body: [] };
+      if (url.includes("page=2")) return { status: 200, body: shortPage(101, 5) };
+      if (url.includes("sort=updated")) return { status: 200, body: fullPage(1) };
+      return { status: 500, body: { message: "should not be called" } };
+    });
+    try {
+      const state = await fetchKanbanLive({ storage: null, deepStorage: null });
+      assert.ok(state);
+      assert.equal(state.pulls.size, 105);
+      assert.equal(stub.calls.filter((c) => /[?&]page=/.test(c.url)).length, 1);
+    } finally {
+      stub.restore();
+    }
+  });
+
+  it("never requests page 6, even when page 5 is full", async () => {
+    const stub = stubGlobalFetch((url) => {
+      if (url.includes("/branches")) return { status: 200, body: [] };
+      const page = /[?&]page=(\d+)/.exec(url)?.[1];
+      if (page) return { status: 200, body: fullPage((Number(page) - 1) * 100 + 1) };
+      if (url.includes("sort=updated")) return { status: 200, body: fullPage(1) };
+      return { status: 500, body: { message: "should not be called" } };
+    });
+    try {
+      const state = await fetchKanbanLive({ storage: null, deepStorage: null });
+      assert.ok(state);
+      assert.equal(state.pulls.size, 500);
+      assert.equal(stub.calls.filter((c) => c.url.includes("page=6")).length, 0);
+      assert.equal(stub.calls.filter((c) => /[?&]page=/.test(c.url)).length, 4);
+      assert.equal(stub.calls.length, 6);
+      assert.ok(githubPullsPageUrl(3).endsWith("&page=3"));
+    } finally {
+      stub.restore();
+    }
+  });
+
+  it("the fast tier wins when a PR appears on both tiers", async () => {
+    const first = fullPage(1);
+    first[49] = {
+      number: 50,
+      state: "open",
+      draft: false,
+      merged_at: null,
+      title: "still open 50",
+    };
+    const stub = stubGlobalFetch((url) => {
+      if (url.includes("/branches")) return { status: 200, body: [] };
+      if (url.includes("page=2")) {
+        return {
+          status: 200,
+          body: [
+            {
+              number: 50,
+              state: "closed",
+              draft: false,
+              merged_at: "2026-01-01T00:00:00Z",
+              title: "stale 50",
+            },
+          ],
+        };
+      }
+      if (url.includes("sort=updated")) return { status: 200, body: first };
+      return { status: 500, body: { message: "should not be called" } };
+    });
+    try {
+      const state = await fetchKanbanLive({ storage: null, deepStorage: null });
+      assert.ok(state);
+      assert.equal(state.pulls.get(50)?.state, "open");
+      assert.equal(state.pulls.get(50)?.merged, false);
+    } finally {
+      stub.restore();
+    }
+  });
+
+  it("deep cache: no deep calls inside 60 min, deep calls again after", async () => {
+    const storage = memoryStorage();
+    const deepStorage = memoryStorage();
+    const stub = stubGlobalFetch((url) => {
+      if (url.includes("/branches")) return { status: 200, body: [] };
+      if (url.includes("page=2")) return { status: 200, body: shortPage(101, 10) };
+      if (url.includes("sort=updated")) return { status: 200, body: fullPage(1) };
+      return { status: 500, body: { message: "should not be called" } };
+    });
+    try {
+      const first = await fetchKanbanLive({ storage, deepStorage, now: 1_000_000 });
+      assert.ok(first);
+      assert.equal(stub.calls.length, 3);
+      const cached = await fetchKanbanLive({
+        storage,
+        deepStorage,
+        now: 1_000_000 + 4 * 60_000,
+      });
+      assert.ok(cached);
+      assert.equal(stub.calls.length, 3);
+      // Session expired, deep fresh: exactly the fast tier, 2 calls.
+      const steady = await fetchKanbanLive({
+        storage,
+        deepStorage,
+        now: 1_000_000 + 6 * 60_000,
+      });
+      assert.ok(steady);
+      assert.equal(steady.pulls.size, 110);
+      assert.equal(stub.calls.length, 5);
+      assert.equal(stub.calls.filter((c) => /[?&]page=/.test(c.url)).length, 1);
+      // Deep stale: the deep tier runs again.
+      const later = await fetchKanbanLive({
+        storage,
+        deepStorage,
+        now: 1_000_000 + 61 * 60_000,
+      });
+      assert.ok(later);
+      assert.equal(stub.calls.length, 8);
+      assert.equal(stub.calls.filter((c) => /[?&]page=/.test(c.url)).length, 2);
+      assert.equal(
+        deepStorage.map.has(KANBAN_DEEP_CACHE_KEY),
+        true,
+      );
+      assert.ok(
+        1_000_000 + 61 * 60_000 - KANBAN_DEEP_CACHE_TTL_MS >= 1_000_000,
+      );
+    } finally {
+      stub.restore();
+    }
+  });
+
+  it("a failed deep page keeps the previous deep rows and does not fail the check", async () => {
+    const deepStorage = memoryStorage();
+    const now = 1_000_000;
+    deepStorage.map.set(
+      KANBAN_DEEP_CACHE_KEY,
+      JSON.stringify({
+        fetchedAt: now - 61 * 60_000,
+        pulls: [
+          [
+            999,
+            { state: "closed", draft: false, merged: true, title: "older than the window" },
+          ],
+        ],
+      }),
+    );
+    const stub = stubGlobalFetch((url) => {
+      if (url.includes("/branches")) return { status: 200, body: [] };
+      if (url.includes("page=2")) return { status: 500, body: { message: "deep down" } };
+      if (url.includes("sort=updated")) return { status: 200, body: fullPage(1) };
+      return { status: 500, body: { message: "should not be called" } };
+    });
+    try {
+      const state = await fetchKanbanLive({ storage: null, deepStorage, now });
+      assert.ok(state);
+      assert.equal(state.pulls.size, 101);
+      assert.equal(state.pulls.get(999)?.merged, true);
+      assert.equal(stub.calls.length, 3);
+    } finally {
+      stub.restore();
+    }
+  });
+
+  it("reports rateLimited on a 403/429 fast-tier failure", async () => {
+    for (const status of [403, 429]) {
+      const stub = stubGlobalFetch(() => ({ status, body: { message: "limited" } }));
+      try {
+        const result = await refreshKanbanLive({
+          event: "mount",
+          storage: null,
+          deepStorage: null,
+          now: 1_000,
+        });
+        assert.deepEqual(result, { action: "fallback", rateLimited: true });
+      } finally {
+        stub.restore();
+      }
     }
   });
 });

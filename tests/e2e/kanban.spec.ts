@@ -107,7 +107,7 @@ test("no page-level horizontal overflow and 18 story cards at five viewports", a
   await expect(page.locator("footer").first()).toBeVisible();
 });
 
-test("a story that is not in the snapshot appears from the API alone, in two requests", async ({
+test("a story that is not in the snapshot appears from the API alone, within the request budget", async ({
   page,
   context,
 }) => {
@@ -115,23 +115,30 @@ test("a story that is not in the snapshot appears from the API alone, in two req
   page.on("request", (request) => {
     if (request.url().includes("api.github.com")) githubUrls.push(request.url());
   });
-  await context.route(/api\.github\.com\/repos\/[^/]+\/[^/]+\/pulls\?/, async (route) =>
-    route.fulfill({
+  // TD-08.7 deep tier, exercised with fixtures: page 1 is full
+  // (100 rows), so one deep page is read; page 2 is short, so
+  // paging stops. The budget for this first load is 3 calls:
+  // pulls page 1 + pulls page 2 + branches. The 5-page cap is
+  // pinned in the unit tests, not here.
+  const pullsPage = (start: number, count: number) =>
+    Array.from({ length: count }, (_, i) => ({
+      number: start + i,
+      state: "open",
+      draft: false,
+      merged_at: null,
+      title: "feat: FW-99.9 not in the ledger",
+      head: { ref: "feat/fw-99.9-lighthouse" },
+      labels: [{ name: "C:Atlas" }],
+    }));
+  await context.route(/api\.github\.com\/repos\/[^/]+\/[^/]+\/pulls\?/, async (route) => {
+    const url = route.request().url();
+    const body = /[?&]page=/.test(url) ? pullsPage(9200, 3) : pullsPage(9001, 100);
+    return route.fulfill({
       status: 200,
       contentType: "application/json",
-      body: JSON.stringify([
-        {
-          number: 9001,
-          state: "open",
-          draft: false,
-          merged_at: null,
-          title: "feat: FW-99.9 not in the ledger",
-          head: { ref: "feat/fw-99.9-lighthouse" },
-          labels: [{ name: "C:Atlas" }],
-        },
-      ]),
-    }),
-  );
+      body: JSON.stringify(body),
+    });
+  });
   await context.route(/api\.github\.com\/repos\/[^/]+\/[^/]+\/branches(\?|$)/, async (route) =>
     route.fulfill({
       status: 200,
@@ -149,10 +156,12 @@ test("a story that is not in the snapshot appears from the API alone, in two req
   await expect(page.locator(".kb-story", { hasText: "TD-08.4" })).toBeVisible();
   await expect(page.locator(".kb-stamp")).toHaveText(/Live · fetched \d{2}:\d{2}/);
   // Ledger-only rows stay off the board while GitHub answers.
+  // (Commit 4 flips this: ledger stories render in live mode.)
   await expect(page.getByText("TD-01.1", { exact: true })).toHaveCount(0);
-  await expect.poll(() => githubUrls.length).toBe(2);
+  await expect.poll(() => githubUrls.length).toBe(3);
   expect(githubUrls.filter((url) => /\/pulls\/\d+/.test(url))).toEqual([]);
-  expect(githubUrls.filter((url) => /[?&]page=/.test(url))).toEqual([]);
+  const pages = githubUrls.flatMap((url) => /[?&]page=(\d+)/.exec(url)?.[1] ?? []);
+  expect(pages).toEqual(["2"]);
 });
 
 test("backfilled numbers show live, genuine unknowns stay Unnumbered, counts are a census", async ({
