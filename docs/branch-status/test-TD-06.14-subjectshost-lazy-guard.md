@@ -19,10 +19,11 @@ Follow-up to #634, closing its review findings 4 and 6. Commit A guards the Subj
 ## Done
 
 - Commit A: lazy-boundary test asserts SubjectsHost loads SubjectPicker only via dynamic `import()`, never a static import. Mutation proof: static import fails the test, restore passes (20/20).
+- Commit B: `eslint/shell-ban-baseline.json` restored to its pre-#634 compact single-line format (no trailing newline), keeping today's 3 pageLocalMain rows. `git diff 4128e16e~1` now shows only the removed homeButtonImport row (+ its documenting comment sentence). No script writes this file (all readers) — the reformat was done by re-serializing the parsed JSON.
 
 ## Next step
 
-Commit B: restore shell-ban baseline formatting.
+Push both commits, open the draft PR, report.
 
 ## Open questions
 
