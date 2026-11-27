@@ -1,11 +1,10 @@
 # Screened topic list — humanities and general knowledge
 
-**Status:** PROPOSED, 2026-11-10. GATED: no named human educator has signed
+**Status:** PROPOSED, 2026-11-10 (updated 2026-11-26 for Biology 7th card and US H01–H03 authoring). GATED: no named human educator has signed
 `educator-gate-rubric.md`, and nothing here is approved to build.
 Screened against standard §7a (`k12-learning-design-standard.md`), owner
 ruling D2: no religion, no sexuality or gender identity topics, no current or
-contested politics. Also applied: no biology and no mythology (owner,
-2026-11-10), and the three age groups of §1.
+contested politics. Also applied: no mythology (owner, 2026-11-10) and the three age groups of §1. *(Note 2026-11-26: the 2026-11-10 "no biology" rule is superseded by the owner's 2026-11-26 decision promoting Biology to its own 7th standalone subject card in `src/subjects/biology/`.)*
 
 **Owner decisions (2026-11-10) applied here:** current affairs (P11) closed
 and removed; the constitution picker cut and removed; the third P8 category
@@ -46,8 +45,8 @@ screened with it.
 
 | ID | Topic | Verdict | Group | C3 family | Objective (what a child can do, shown by) | Reason / limits |
 |---|---|---|---|---|---|---|
-| H01 | Road signs: shape, colour, meaning | KEEP-LIMITS | 7-10, 10-18 | D2.Civ (rules), 3-5 and 6-8 | After this, a child can match a road sign to what it tells a driver or walker to do, shown by a correct match from three choices. | Signs differ by country: each sign needs a named national source. US pedestrian content has a HIGH source (NHTSA); other countries are UNVERIFIED. |
-| H02 | Road and pedestrian rules as decisions | KEEP-LIMITS | 7-10, 10-18 | D2.Civ, 3-5 and 6-8 | After this, a child can choose the safe action at a crossing or junction, shown by a decision, a short reason why the safe choice is safer, and a retry if the choice was not safe. | Safety rules only. No traffic-law debates, no penalty politics. Per-country source needed. |
+| H01 | Road signs: shape, colour, meaning | KEEP-LIMITS | 7-10, 10-18 | D2.Civ (rules), 3-5 and 6-8 | After this, a child can match a road sign to what it tells a driver or walker to do, shown by a correct match from three choices. | Signs differ by country: each sign needs a named national source. US pedestrian/sign/bike/GDL content is sourced (NHTSA/MUTCD/DMV, Lane 9) and authored in `src/subjects/general-knowledge/items.ts` (Wave A, 2026-11-26); other countries remain UNVERIFIED. |
+| H02 | Road and pedestrian rules as decisions | KEEP-LIMITS | 7-10, 10-18 | D2.Civ, 3-5 and 6-8 | After this, a child can choose the safe action at a crossing or junction, shown by a decision, a short reason why the safe choice is safer, and a retry if the choice was not safe. | Safety rules only. No traffic-law debates, no penalty politics. US rules sourced via NHTSA/MUTCD (Lane 9) and authored in `src/subjects/general-knowledge/items.ts` (Wave A, 2026-11-26); non-US countries remain UNVERIFIED. |
 | H03 | Traffic as spatial decisions | KEEP-LIMITS | 10-18, 18+ | D2.Geo, 6-8; 18+: no school band, adult use | After this, a learner can pick the route that avoids a blocked road, shown by a pin or route choice. | Overlaps the map-based social studies mode (route items). One owner for routes: that spec. |
 | H04 | Driving and walking directions | KEEP | 7-10, 10-18 | D2.Geo, 3-5 | After this, a child can follow three direction steps to a place on a map, shown by the pin landing there. | Overlaps map mode (compass clues). Reuse its item ids; do not duplicate. |
 | H05 | Social economy: prices, change, budgets | KEEP-LIMITS | 7-10, 10-18, 18+ | D2.Eco, 3-5 / 6-8; 18+: no school band, adult use | After this, a learner can work out the change from a purchase or the total of a small budget, shown by the correct amount. | Everyday money and arithmetic only: no policy, parties, taxes debates or contested economic views. Fictional prices are labelled as such. |

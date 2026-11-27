@@ -68,8 +68,9 @@
   > "Biology (New Standalone 7th Card): Promoted out of General Knowledge so life sciences are clearly visible and never buried."
 
 ## Next step
-- Educator review of the 14 authored Biology items and `SubjectPicker` visual layout with 7 subject cards.
-- Author remaining 5-pillar content records (Envirothon, safety, riddles) into `general-knowledge` / `social-studies` / `journals` in the next build PR.
+- Human educator review of `src/subjects/biology/educator-review-packet.md` (14 `UNVERIFIED` Biology items) and `docs/scaling/humanities/screened-topics.md` (`educator-gate-rubric.md` sign-off).
+- Ingest `meridian-audit-vs-plan-2026-11-26.md` into `raw/us-education-curriculum/` once supplied by the owner.
+- Add Biology ClueScene kinds in `src/subjects/shared/` in a dedicated UI/scene slice if desired.
 
 ## Open questions
 - National T4 Life Science standard: none exists (Lane 6 LS-013); T4 remains application-oriented biological literacy.
@@ -95,3 +96,4 @@
 - Add node: `raw/us-education-curriculum/REVISION-2026-11-26-competition-anchored-rebuild.md` (revision) - rebuilds the plan on five pillars anchored in the six ESSA-verified districts plus national competition benchmarks; decided-by the owner's required curriculum direction of 2026-11-26; documents `raw/us-education-curriculum/CURRICULUM-DESIGN.md` and `raw/us-education-curriculum/REVISION-2026-11-25-living-world.md`.
 - Add nodes: `raw/us-education-curriculum/evidence/lane7-competitions-olympiads.md`, `lane8-young-scientist-environmental.md`, `lane9-safety-situational-logic.md`, `lane10-district-pacing-pass.md` (evidence lanes) - competition/safety benchmarks and the district pacing-guide pass; document the 2026-11-26 revision node above.
 - Add node: `raw/us-education-curriculum/REVISION-2026-11-26-review-pushback-fixes.md` (revision addendum) - pushback corrections, council finalization, and the owner-decision record; decided-by the owner's review pushback of 2026-11-26; documents the 2026-11-26 revision nodes above.
+- Add node: `raw/us-education-curriculum/REVISION-2026-11-26-wave-closure.md` (revision) - records Waves A-C authoring, Biology hardening, runtime T2->T3 wiring (`92` `10-18` tags), and synchronized `wiki/` + `docs/scaling/` planning updates; documents `raw/us-education-curriculum/REVISION-2026-11-26-review-pushback-fixes.md`.

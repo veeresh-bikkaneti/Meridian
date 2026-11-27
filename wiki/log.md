@@ -113,3 +113,14 @@ Current Issue + Oral Presentation), downgraded 2026 NCF-Envirothon
 from repo, recorded verbatim owner words for Biology 7th card, and
 added `biology` to `scripts/lint-subject-leads.mjs` scope.
 (source: raw/us-education-curriculum/REVISION-2026-11-26-review-pushback-fixes.md)
+
+## [2026-11-26] update | Waves A–C closure, Biology hardening & T2→T3 runtime wiring
+
+Recorded implementation and planning closure for Waves A–C (`11` GK
+Pillars 3–5 items, `14` GK Environmental/Envirothon items, `6`
+quantitative T3 Physics/Chemistry/Social Studies items), Biology
+hardening (`validate.ts`, `records.test.ts`, `educator-review-packet.md`),
+and runtime T2→T3 sequencing in `SubjectCase.tsx` (`92` `10-18` tags:
+`47` T2, `45` T3). Updated [[us-education-curriculum]],
+[[why-learn-tiers]], and [[index]].
+(source: raw/us-education-curriculum/REVISION-2026-11-26-wave-closure.md)

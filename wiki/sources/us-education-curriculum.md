@@ -191,3 +191,16 @@ Related concept: [[why-learn-tiers]].
   Wave 3 (4 T3 Biology incl. Molecular Inheritance & Speciation + USABO
   ceiling + Envirothon), Wave 4 (1 T4 Biology literacy, safety-reviewed)
   (source: raw/us-education-curriculum/REVISION-2026-11-26-citations-and-authoring.md#2-content-authoring-summary--4-wave-rollout).
+
+## Revision 2026-11-26 — Waves A–C closure, Biology hardening & T2→T3 runtime wiring
+
+- **Wave A (GK Pillars 3–5, 11 items):** authored `H01–H03` road/bike/MUTCD/GDL safety (`4` items), `scan → assess → decide → act` situational awareness (`3` items), and AMC/MATHCOUNTS/SciOly-calibrated riddles (`4` items) in `src/subjects/general-knowledge/items.ts`
+  (source: raw/us-education-curriculum/REVISION-2026-11-26-wave-closure.md#1-wave-a--general-knowledge-pillars-35-57cc3a64-lead-cure-e5517c16).
+- **Wave B (Environmental Studies, 14 items):** authored `6` NGSS ESS/LS2 items (`3` T1, `3` T2) and `8` T3 Envirothon items covering 100% of the `lane11` station matrix + Oral Presentation + Kansas Rangeland Management, bringing GK to `35` items
+  (source: raw/us-education-curriculum/REVISION-2026-11-26-wave-closure.md#2-wave-b--environmental-studies--ncf-envirothon-e5517c16).
+- **Wave C (Quantitative T3 Olympiads, 6 items):** authored `2` Physics (`F=ma`/USAPhO), `2` Chemistry (USNCO), and `2` Social Studies (C3) items at `10-18`
+  (source: raw/us-education-curriculum/REVISION-2026-11-26-wave-closure.md#3-wave-c--quantitative-t3-olympiad-ceiling-items-42951e6d).
+- **Biology hardening:** added `validate.ts`, `records.test.ts` (`11/11` PASS), and `educator-review-packet.md` for the `14` `UNVERIFIED` items; ClueScenes deferred pending shared scene kinds
+  (source: raw/us-education-curriculum/REVISION-2026-11-26-wave-closure.md#4-biology-hardening-bade5445).
+- **Runtime T2→T3 wiring:** `src/subjects/shared/tier-tags.ts` expanded from `69` to `92` `10-18` tags (`47` T2, `45` T3) and wired into `SubjectCase.tsx` via `sequenceByCurriculumTier()`; `subjects-picker.desktop.spec.ts` verifies all 7 cards (`7/7` PASS); `meridian-audit-vs-plan-2026-11-26.md` remains absent (`Data not available`)
+  (source: raw/us-education-curriculum/REVISION-2026-11-26-wave-closure.md#5-runtime-t2t3-sequencing--verification-53eaf071).

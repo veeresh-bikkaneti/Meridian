@@ -34,11 +34,13 @@ MATH ──► PHYSICS ──► CHEMISTRY
   └──────────┴──── ENVIRONMENTAL STUDIES   (the thread, shown on the globe)
 ```
 
-**No biology (owner, final, 2026-11-10).** The owner first named biology in the
+**No biology (owner, final, 2026-11-10) — SUPERSEDED (2026-11-26).** The owner first named biology in the
 chain, then removed it: "just remove bilogy all together ... no bilogy." The
 chain ends at chemistry. Environment links stay on earth, water, weather,
 energy, materials and maps; no living-things content (plants, animals,
 ecosystems, the body) slips in through them.
+
+> **Superseded by owner decision (2026-11-26):** Biology is now promoted to its own standalone 7th subject card (`src/subjects/biology/`, anchored on NGSS LS1–LS4 with USABO as the T3 ceiling). Environmental Studies (NGSS ESS/LS2 and NCF-Envirothon) lives in `src/subjects/general-knowledge/`. See `raw/us-education-curriculum/REVISION-2026-11-26-biology-7th-card.md` and `REVISION-2026-11-26-wave-closure.md`.
 
 ## Every unit carries four fields
 

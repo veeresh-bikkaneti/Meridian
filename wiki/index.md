@@ -23,6 +23,10 @@ ingest. `[[wikilinks]]` are relative to `wiki/`.
   scientist + environmental competitions, safety/situational/riddles,
   district pacing-guide pass) and the pillar x tier x benchmark
   matrix. (source: raw/us-education-curriculum/REVISION-2026-11-26-competition-anchored-rebuild.md)
+- Wave closure 2026-11-26 in the same summary — Waves A–C content
+  (GK Pillars 3–5, Envirothon + NGSS ESS/LS2, Physics/Chem/SS T3),
+  Biology hardening, and T2→T3 runtime sequencing (`92` `10-18` tags).
+  (source: raw/us-education-curriculum/REVISION-2026-11-26-wave-closure.md)
 
 ## Entities
 

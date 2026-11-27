@@ -21,6 +21,10 @@ Meridian's shipping age bands stay 7-10 / 10-18 / 18+ per the owner's
 standing ruling; the tiers fold onto them with the T2/T3 split kept
 as an internal difficulty tag
 (source: raw/us-education-curriculum/CURRICULUM-DESIGN.md#a5-collapse-to-3-buttons-ui-constraint-note-inferred).
+At runtime, `src/subjects/shared/tier-tags.ts` maps all `92` `10-18`
+items (`47` T2, `45` T3) and `SubjectCase.tsx` sequences `10-18` pools
+so T2 items are dealt before T3 items
+(source: raw/us-education-curriculum/REVISION-2026-11-26-wave-closure.md#5-runtime-t2t3-sequencing--verification-53eaf071).
 
 Source summary: [[us-education-curriculum]].
 
