@@ -45,6 +45,12 @@ const geoDetectiveHostSource = readFileSync(
   join(here, "../game/loop/GeoDetectiveHost.tsx"),
   "utf8",
 );
+// TD-06.15b: the SatelliteMap lazy factory lives in
+// src/map/satellite-map-host.tsx now.
+const satelliteMapHostSource = readFileSync(
+  join(here, "../map/satellite-map-host.tsx"),
+  "utf8",
+);
 // TD-06.14 (review finding 4 on #634): the SubjectPicker lazy
 // factory lives in src/subjects/shared/SubjectsHost.tsx now.
 const subjectsHostSource = readFileSync(
@@ -320,7 +326,7 @@ describe("#209 — every gameplay chunk load is timeout-bounded", () => {
       "TrailScreen's lazy load must be timeout-bounded (#209)",
     );
     assert.ok(
-      gameAppSource.includes('withChunkTimeout(import("@/map/satellite-map"), "Satellite map")'),
+      satelliteMapHostSource.includes('withChunkTimeout(import("@/map/satellite-map"), "Satellite map")'),
       "the satellite map's lazy load must be timeout-bounded (#209)",
     );
   });
@@ -399,12 +405,15 @@ describe("TD-06.14 — SubjectsHost keeps SubjectPicker lazy", () => {
   // only, so it loads through React.lazy behind the composer's
   // Suspense + MapErrorBoundary.
   it("SubjectsHost has no static import of SubjectPicker", () => {
+    // G3 (PR B): the alias path is the same violation as the
+    // relative path — a static import by either spelling drags the
+    // subjects chunk into the preloaded route chunk.
     assert.ok(
-      !/import\s+[^(\n]*from\s+["']\.\/SubjectPicker["']/.test(subjectsHostSource),
+      !/import\s+[^(\n]*from\s+["'](?:\.\/|@\/subjects\/shared\/)SubjectPicker["']/.test(subjectsHostSource),
       "SubjectPicker must not be statically imported (it drags the subjects chunk in)",
     );
     assert.ok(
-      !/import\s+["']\.\/SubjectPicker["']/.test(subjectsHostSource),
+      !/import\s+["'](?:\.\/|@\/subjects\/shared\/)SubjectPicker["']/.test(subjectsHostSource),
       "SubjectPicker must not be side-effect imported either",
     );
   });

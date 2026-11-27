@@ -65,15 +65,16 @@ export const SHELL_REGISTRY: readonly ShellRegistryEntry[] = [
   { id: "region-list", file: "src/components/region-list.tsx", header: "SiteHeader", needle: "<SiteHeader", footer: "none", reason: "Drill-down list; the header carries Home/Back, no footer in the shipped design." },
   { id: "review-complete", file: "src/components/review-complete.tsx", header: "SiteHeader", needle: "<SiteHeader", footer: "shell", footerNeedle: "<SiteFooter" },
   { id: "challenge-complete", file: "src/components/challenge-complete.tsx", header: "SiteHeader", needle: "<SiteHeader", footer: "none", reason: "End-of-flow screen; its in-flow primary Home button is the sanctioned end surface." },
+  { id: "challenge-complete-shell", file: "src/components/challenge-complete-shell.tsx", header: "SiteHeader", needle: "<ChallengeComplete", footer: "none", reason: "End-of-flow shell; renders ChallengeComplete, which carries the SiteHeader and the sanctioned end-of-flow Home button. Moved from the composer in TD-06.15b." },
   { id: "pool-error", file: "src/components/game-app.tsx", header: "ErrorScreen", needle: "<ErrorScreen", footer: "none", reason: "Failure branch; ErrorScreen frames itself with SiteHeader and its two exits." },
   { id: "map-error-boundary", file: "src/components/map-error-boundary.tsx", header: "ErrorScreen", needle: "ErrorScreen", footer: "none", reason: "ErrorScreen in embedded mode: a panel inside a screen that already carries the shell (PR 3 Step 3.9)." },
   // The one sanctioned header exception (owner item 10, 2026-11-17).
-  { id: "in-run-hud", file: "src/components/game-app.tsx", header: "exception", footer: "none", reason: "The in-run globe HUD is a game overlay, not a page; its Home control was approved in Round 2. Sole sanctioned shell exception." },
+  { id: "in-run-hud", file: "src/components/play-loaded.tsx", header: "exception", footer: "none", reason: "The in-run globe HUD is a game overlay, not a page; its Home control was approved in Round 2. Sole sanctioned shell exception. Moved from the composer in TD-06.15b." },
   // Shrink-only baseline: not yet adopted, named so the test can
   // fail if this list ever grows.
   { id: "challenge-menu", file: "src/components/game-app.tsx", header: "baseline", footer: "none", reason: "Challenge-a-friend region picker: a hand-placed HomeButton over a <main>, not yet adopted. Baseline, shrink-only." },
   { id: "session-loading", file: "src/components/game-app.tsx", header: "baseline", footer: "none", reason: "Transient loading fallback; it reserves the destination's header space by design. Baseline, shrink-only." },
-  { id: "region-loading", file: "src/components/game-app.tsx", header: "baseline", footer: "none", reason: "Transient chunk-loading state while a region's places load. Baseline, shrink-only." },
+  { id: "region-loading", file: "src/components/play.tsx", header: "baseline", footer: "none", reason: "Transient chunk-loading state while a region's places load. Baseline, shrink-only. Moved from the composer in TD-06.15b." },
   { id: "boot-splash", file: "src/components/boot-splash.tsx", header: "SiteHeader", needle: "<SiteHeader", footer: "shell", footerNeedle: "<SiteFooter", reason: "Boot gate splash. It renders the shared frame (SiteHeader, narrow PageColumn, SiteFooter) directly — the same frame PageShell renders — so the first-paint module does not also import PageShell." },
   { id: "router-error", file: "src/lib/error-component.tsx", header: "ErrorScreen", needle: "<ErrorScreen", footer: "none", reason: "The router's own error page, outside GameApp (TD-05.3). ErrorScreen frames itself with SiteHeader and its two exits; a failure page carries no footer." },
 ];

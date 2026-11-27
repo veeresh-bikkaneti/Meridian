@@ -10,7 +10,7 @@
     "src/components/game-app.tsx|@/assets/verdict/grandpa-media",
     "src/components/game-app.tsx|@/game/coldtrail/ColdTrailHost",
     "src/components/game-app.tsx|@/game/loop/GeoDetectiveHost",
-    "src/components/game-app.tsx|@/map/satellite-map",
+    "src/components/game-app.tsx|@/map/satellite-map-host",
     "src/components/game-app.tsx|@/map/use-map-mode",
     "src/components/game-app.tsx|@/subjects/shared/SubjectsHost",
     "src/components/grandpa-coffee-run.tsx|./age-profile/age-profile.css",

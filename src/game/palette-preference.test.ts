@@ -285,10 +285,12 @@ test("toggle pressed state has a visible brass treatment (panel BLOCK 3 cure)", 
 test("game-app wires the toggle hosts and the boot apply", () => {
   const src = readFileSync(new URL("../components/game-app.tsx", import.meta.url), "utf8");
   const toggle = readFileSync(new URL("../components/high-contrast-toggle.tsx", import.meta.url), "utf8");
+  // TD-06.15b: the in-game toggle host lives in PlayLoaded now.
+  const loaded = readFileSync(new URL("../components/play-loaded.tsx", import.meta.url), "utf8");
   // Hosts pass the id through the SoundToggle-pattern `testId` prop;
   // HighContrastToggle renders it as data-testid={testId}.
   assert.ok(src.includes('testId="high-contrast-toggle"'), "home toggle host");
-  assert.ok(src.includes('testId="high-contrast-toggle-game"'), "in-game toggle host");
+  assert.ok(loaded.includes('testId="high-contrast-toggle-game"'), "in-game toggle host");
   assert.ok(toggle.includes("data-testid={testId}"), "toggle renders its testId as data-testid");
   assert.ok(src.includes("applyPalettePreference()"), "boot apply call");
 });

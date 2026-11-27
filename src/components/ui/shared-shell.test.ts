@@ -393,7 +393,9 @@ describe("PageShell and PageIntro (PR 3 Step 2)", () => {
       "both end-of-flow screens render the shared header",
     );
     assert.match(review, /data-testid="review-complete"/);
-    assert.match(read("src/components/game-app.tsx"), /testId="challenge-done"/);
+    // TD-06.15b: the challenge-done EndOfFlowHome lives in
+    // PlayLoaded (it hands it to ChallengeCompleteShell as a slot).
+    assert.match(read("src/components/play-loaded.tsx"), /testId="challenge-done"/);
   });
 
   it("the region lists sit on SiteHeader (PR 3 Step 3.6): Home everywhere, Back in the back slot", () => {
@@ -419,7 +421,8 @@ describe("PageShell and PageIntro (PR 3 Step 2)", () => {
   });
 
   it("the pool error is the shared ErrorScreen (PR 3 Step 3.8): failure copy on its props, one recovery door", () => {
-    const src = read("src/components/game-app.tsx");
+    // TD-06.15b: the pool-error branch lives in Play now.
+    const src = read("src/components/play.tsx");
     const branch = src.slice(src.indexOf("if (poolError)"), src.indexOf("if (!places)"));
     assert.match(branch, /<ErrorScreen/);
     assert.match(branch, /title="Couldn't load places\."/);
