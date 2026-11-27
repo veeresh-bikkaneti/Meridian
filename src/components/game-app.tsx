@@ -101,7 +101,7 @@ import {
 import { Suspense, lazy, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type KeyboardEvent as ReactKeyboardEvent, type MouseEvent as ReactMouseEvent, type ReactNode, type RefObject } from "react";
 import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
-import { HomeButton } from "@/components/ui/home-button";
+import { EndOfFlowHome } from "@/components/ui/end-of-flow-home";
 import { SiteHeader } from "@/components/ui/site-header";
 import { SiteFooter } from "@/components/ui/site-footer";
 import { ErrorScreen } from "@/components/ui/error-screen";
@@ -2332,7 +2332,7 @@ export function GameApp() {
       <>
         {mapModeAnnouncer}
         <main className="mx-auto w-full max-w-(--page-narrow) px-5 py-8">
-          <HomeButton onHome={() => setMenu(null)} variant="secondary" />
+          <EndOfFlowHome onHome={() => setMenu(null)} variant="secondary" />
           <ChallengeMenu
             notice={challengeBootNoticeEl}
             pickError={challengePickError}
@@ -3963,7 +3963,7 @@ function ReviewComplete({
             : "The ones you missed are due again right away. One more round locks them in."}
       </p>
       <div className="mt-6 flex flex-col items-start gap-3">
-        <HomeButton onHome={onDone} variant="primary" />
+        <EndOfFlowHome onHome={onDone} variant="primary" />
         {/* "Challenge a friend — pick a map" (manifest §1(e)): the
             review is finished, so this door leaves it — the GameApp
             handler runs the Editions exit and opens the shipped
@@ -5894,7 +5894,7 @@ function PlayLoaded({
         posterUrl={VERDICT_GRANDPA_POSTER_URL}
         videoUrl={VERDICT_GRANDPA_VIDEO_URL}
         homeButton={
-          <HomeButton onHome={challengeDoneHandler} variant="primary" testId="challenge-done" />
+          <EndOfFlowHome onHome={challengeDoneHandler} variant="primary" testId="challenge-done" />
         }
       />
     );
@@ -5942,7 +5942,7 @@ function PlayLoaded({
                 {REVIEW_DECK_COPY.exitReview}
               </Button>
             ) : (
-              <HomeButton onHome={onEditions} variant="secondary" className="pointer-events-auto" />
+              <EndOfFlowHome onHome={onEditions} variant="secondary" className="pointer-events-auto" />
             )}
             {/* In-game mute (Veeresh's ask): the same meridian.sound toggle
                 as the home header, reachable mid-game. Mutes every sound —

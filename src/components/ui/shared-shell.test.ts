@@ -666,11 +666,11 @@ describe("shell-ban baseline (KNOWN/STALE)", () => {
   // adding or removing an entry fails here until a person edits
   // this record on purpose, in the same change that cures a file.
   const FROZEN_BASELINE: Record<string, string[]> = {
-    homeButtonImport: ["src/components/game-app.tsx"],
+    homeButtonImport: [],
     // TD-05.4: LoopScreen and SubjectCase were cured — end-of-flow
     // Home renders through the shared EndOfFlowHome owner, so their
-    // homeButtonImport entries are gone. game-app.tsx follows in
-    // TD-05.4 PR 2.
+    // homeButtonImport entries are gone. game-app.tsx followed in
+    // TD-05.4 PR 2 (same owner), so the list is now empty.
     // Why Learn D1 (2026-11-18): SubjectPicker was cured — the
     // picker sits in the shared --page-wide container and its
     // lg:max-w-none is gone — so the maxWNone baseline is empty.
