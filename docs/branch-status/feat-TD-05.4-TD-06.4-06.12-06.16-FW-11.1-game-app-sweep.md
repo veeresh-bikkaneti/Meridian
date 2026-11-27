@@ -24,6 +24,18 @@ Finish the game-app split (extract ReviewComplete, RegionList, SubjectsHost, hig
 - Commit 5 (TD-06.14): SubjectsHost created at `src/subjects/shared/SubjectsHost.tsx` (owns the lazy SubjectPicker; composer keeps Suspense + MapErrorBoundary); layer-baseline key swaps count-neutrally SubjectPicker → SubjectsHost (104 stays 104); game-app 6250 → 6238, ceiling lowered to 6238; map step 18 done. SubjectCase / SubjectPicker keep their pageLocalMain rows — their `<main>` carries screen-specific classes (`mode-screen`, `why-learn-screen`, `subject-*-screen`) and data attributes PageShell cannot express; curing them would be a visual change.
 - Commit 6 (TD-06.15a): HighContrastToggle extracted to `src/components/high-contrast-toggle.tsx` (slot component, rendered directly by Play and Home); game-app 6238 → 6174, ceiling lowered to 6174; map step 20 preamble done.
 
+## Blocked — commit 7 (TD-06.15b, Play + PlayLoaded)
+
+- **Status:** BLOCKED, work stashed (not pushed, not in the PR). Stash: `stash@{0}` on this branch — "commit 7 WIP: Play/PlayLoaded extraction, blocked on pageLocalMain (lint:nav)".
+- **What was built (and verified before the block):** Play (309 lines) + ChallengeCompleteShell (74) + PlayLoaded (1,935) extracted to `src/components/play.tsx`, `challenge-complete-shell.tsx`, `play-loaded.tsx`; lazy SatelliteMap moved to a `src/map/satellite-map-host.tsx` host (stays lazy, PlayLoaded gets it as a `mapHost` slot prop); `clearDrop` / `poolForRunStart` / `globeTierSplitFor` / `revealStory` / Grandpa verdict URLs threaded as props from the composer; `useMapMode` reduced to a `typeof import()` type query; `LegacySnapshotBand` type + PlayLoaded-only helpers moved with PlayLoaded. tsc clean, lint:arch clean (baseline swap `game-app.tsx|@/map/satellite-map` → `.../satellite-map-host`, count stays 104).
+- **Blocker:** `lint:nav` (`shell/no-page-local-main`) fails — 4 errors. The rule bans a `<main>` JSX element in ANY file not listed in `eslint/shell-ban-baseline.json` `pageLocalMain` (game-app.tsx, SubjectCase.tsx, SubjectPicker.tsx only); the shell-registry does NOT exempt a file from this rule. Play renders a `<main>` (Loading places), PlayLoaded renders two (`<main>` for the review-complete branch and `<main className="relative h-dvh bg-bg">` for the map), ChallengeCompleteShell renders one. The pack forbids new baseline rows, and the branches carry different `<main>` classes so a single composer wrapper cannot cover them (the fragment pattern from commits 3–4 does not transfer — the branch is only known inside PlayLoaded). The pack's CCS note ("if it would add a row, keep it in the composer") confirms the constraint; the pack does not resolve it for Play/PlayLoaded.
+- **Systemic:** commit 8 is blocked the same way — Choose renders `<main>` twice in its body. Commit 9 depends on 8 (it edits the extracted Choose); commit 10 depends on 3–9. The sweep cannot proceed past commit 6 without an owner/architect ruling.
+- **Options for the owner:** (a) allow new `pageLocalMain` baseline rows for the extracted play/home files (3 rows: play.tsx, play-loaded.tsx, challenge-complete-shell.tsx; Choose would add a 4th); (b) redesign the `<main>` placement (e.g. a single composer-owned `<main>` whose class is driven by run state); (c) stop the split here and leave Play/Home in the composer.
+
+## Next step
+
+Owner ruling on the pageLocalMain blocker (see above). If (a) is granted, revive the stash (`git stash pop`), add the baseline rows, re-run gates, push commit 7, then continue to 8–10.
+
 ## Ruled out / deferred
 
 - Picker semantics for GeoDetective / Cold Trail / Subjects: later FW-11.x, owner design (commit 9 leaves them with no picker and no Easy/Medium/Hard semantics).
@@ -37,4 +49,4 @@ Finish the game-app split (extract ReviewComplete, RegionList, SubjectsHost, hig
 
 ## Next step
 
-Commit 7 (TD-06.15b): extract Play + PlayLoaded, lazy map host in `src/map/`.
+Owner ruling on the pageLocalMain blocker (see Blocked — commit 7 above). If new baseline rows are granted, revive the stash, add the rows, re-run gates, push commit 7, then continue to 8–10.
