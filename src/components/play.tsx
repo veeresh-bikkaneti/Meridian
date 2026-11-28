@@ -162,6 +162,11 @@ export function Play({
   scoutUpgradeEligible,
   onScoutUpgrade,
   readStoredMapMode,
+  onPlacesChange,
+  verdictSettled,
+  verdictSettledByGesture,
+  onSettleVerdict,
+  onSettleVerdictByGesture,
 }: {
   /** The lazy satellite-map host, supplied by the composer as a slot. */
   mapHost: ComponentType<
@@ -265,6 +270,16 @@ export function Play({
   readStoredMapMode: ReturnType<
     (typeof import("@/map/use-map-mode"))["useMapMode"]
   >["readStoredMapMode"];
+  /** B1: report the loaded places (keyed) to the composer, so the
+   * composer's single `<main>` can carry the active Play branch's
+   * class. Called with null while loading / on a key change. */
+  onPlacesChange?: (loaded: { key: string; places: Starter[] | null }) => void;
+  /** Verdict settle flags, owned by the composer (B1) — passed through
+   * to PlayLoaded / ChallengeCompleteShell. */
+  verdictSettled: boolean;
+  verdictSettledByGesture: boolean;
+  onSettleVerdict: () => void;
+  onSettleVerdictByGesture: () => void;
 }) {
   // The catalog is stored WITH the key it was loaded for and only used while
   // that key is the current run's key. Play stays mounted across run changes
@@ -288,6 +303,14 @@ export function Play({
     useState<LoadedFor<Starter[]> | null>(null);
   const challengeCatalog = loadedForKey(loadedChallengeCatalog, loadKey);
   const poolError = loadedForKey(poolFailure, loadKey);
+  // B1: report the loaded places (keyed) to the composer, so its single
+  // `<main>` carries the active Play branch's class. The key lets the
+  // composer tell a stale catalog from the current run's — a key change
+  // reports null first, so the composer renders the loading `<main>`
+  // instead of the previous run's branch for one frame.
+  useEffect(() => {
+    onPlacesChange?.({ key: loadKey, places });
+  }, [loadKey, places, onPlacesChange]);
   // Review sessions: the due deck entries in session order (the poolIds
   // order). Null for normal runs.
   const [reviewEntries, setReviewEntries] = useState<DeckEntry[] | null>(null);
@@ -421,13 +444,13 @@ export function Play({
 
   if (!places) {
     return (
-      <section className="mode-screen mx-auto flex min-h-dvh w-full max-w-(--page-narrow) flex-col justify-center px-5 py-8">
+      <>
         <p className="name-eyebrow">Loading places</p>
         <h1 className="mode-title mt-2 text-4xl text-fg">{run.regionName}</h1>
         <p className="mt-4 max-w-md text-lg text-fg" role="status">
           Fetching this region&rsquo;s places&hellip;
         </p>
-      </section>
+      </>
     );
   }
 
@@ -468,6 +491,10 @@ export function Play({
       scoutUpgradeEligible={scoutUpgradeEligible}
       onScoutUpgrade={onScoutUpgrade}
       readStoredMapMode={readStoredMapMode}
+      verdictSettled={verdictSettled}
+      verdictSettledByGesture={verdictSettledByGesture}
+      onSettleVerdict={onSettleVerdict}
+      onSettleVerdictByGesture={onSettleVerdictByGesture}
     />
   );
 }

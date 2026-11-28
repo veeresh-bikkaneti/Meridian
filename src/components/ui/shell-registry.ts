@@ -47,14 +47,19 @@ export type ShellRegistryEntry = {
   /** Footer needle; required when footer is "shell" and the shell
    *  is not PageShell (PageShell renders SiteFooter itself). */
   footerNeedle?: string;
+  /** File that renders the footer, when it is not the entry's file
+   *  (B1/B2, TD-06.16: Home's SiteFooter moved to the composer,
+   *  game-app.tsx, while its SiteHeader stays in choose.tsx). */
+  footerFile?: string;
   reason?: string;
 };
 
 export const SHELL_REGISTRY: readonly ShellRegistryEntry[] = [
   // Routes
   // TD-06.16: the home screen (Choose) lives in choose.tsx now; it
-  // renders the SiteHeader and the SiteFooter.
-  { id: "home", file: "src/components/choose.tsx", header: "SiteHeader", needle: "<SiteHeader", footer: "shell", footerNeedle: "<SiteFooter" },
+  // renders the SiteHeader. B1/B2 moved its SiteFooter to the
+  // composer (game-app.tsx), after the Home </main>.
+  { id: "home", file: "src/components/choose.tsx", header: "SiteHeader", needle: "<SiteHeader", footer: "shell", footerNeedle: "<SiteFooter", footerFile: "src/components/game-app.tsx" },
   { id: "board", file: "src/routes/board.tsx", header: "SiteHeader", needle: "<SiteHeader", footer: "shell", footerNeedle: "<SiteFooter" },
   { id: "kanban", file: "src/routes/kanban.tsx", header: "PageShell", needle: "<PageShell", footer: "shell" },
   { id: "grownups-pages", file: "src/components/grownups/info-page.tsx", header: "PageShell", needle: "<PageShell", footer: "shell" },
@@ -118,7 +123,10 @@ export function validateRegistry(
       if (e.header === "PageShell" && !src.includes("<PageShell")) problems.push(`${e.id}: not on PageShell`);
     }
     if (e.footer === "shell" && e.header !== "PageShell") {
-      if (!e.footerNeedle || !src.includes(e.footerNeedle)) problems.push(`${e.id}: footer is "shell" but ${e.file} does not render ${e.footerNeedle ?? "SiteFooter"}`);
+      const footerSrc = e.footerFile ? sourceOf(e.footerFile) : src;
+      const footerWhere = e.footerFile ?? e.file;
+      if (footerSrc === null) problems.push(`${e.id}: footer file ${footerWhere} does not exist`);
+      else if (!e.footerNeedle || !footerSrc.includes(e.footerNeedle)) problems.push(`${e.id}: footer is "shell" but ${footerWhere} does not render ${e.footerNeedle ?? "SiteFooter"}`);
     }
     if (e.footer === "exception" && !e.reason) problems.push(`${e.id}: footer exception needs a reason`);
   }

@@ -5,7 +5,6 @@ import {
   handlePageHide,
   stampCleanExitDirty,
 } from "@/game/clean-exit";
-import type { Starter } from "@/game/starters";
 import { ADMIN1_BY_COUNTRY, COUNTRIES, findRegion, STATES, greaterSideKm } from "@/game/regions";
 import { rewriteStory } from "@/game/rewrite";
 import { shouldFireAiStory } from "@/game/story-ai";
@@ -48,7 +47,8 @@ export type { Drop } from "@/game/shell-helpers";
 import { createDealer, poolForNewRun, seenStoreFor, mintSeed, wasClearedCelebrated, markClearedCelebrated, clearClearedMark, memorySeenStore, isBandCleared } from "@/game/trail";
 import { MapErrorBoundary } from "./map-error-boundary";
 import { Play } from "./play";
-import { Choose } from "./choose";
+import { usePlayMainProps } from "./use-play-main-props";
+import { Choose, CHOOSE_MAIN_CLASSNAME } from "./choose";
 import { AtlasBackdrop, HeroTrailOverlay, HeroTrekkerOverlay } from "./hero-overlays";
 // Home media slots (TD-06.16): the composer owns the @/assets/** and
 // passport imports (layer-baseline covers game-app.tsx) and passes them
@@ -88,6 +88,7 @@ import { applyPalettePreference } from "@/game/palette-preference";
 import { Suspense, useCallback, useEffect, useRef, useState, type MouseEvent as ReactMouseEvent } from "react";
 import { Button } from "@/components/ui/button";
 import { EndOfFlowHome } from "@/components/ui/end-of-flow-home";
+import { SiteFooter } from "@/components/ui/site-footer";
 import { RunStartNotice } from "@/components/run-start-notice";
 import { directionalHint } from "./hint-logic";
 import { canUseHint } from "@/game/age-profile/run-config.ts";
@@ -634,6 +635,17 @@ export function GameApp() {
   const readySignaledRef = useRef(false);
   const [run, setRun] = useState<Run | null>(null);
   const [menu, setMenu] = useState<Menu | null>(null);
+  // B1 (TD-06.16): the composer's single `<main>` carries the Play
+  // branch's class + data attributes — use-play-main-props.ts owns
+  // the derivation, so the composer stays under its line ceiling.
+  const {
+    playMainProps,
+    setPlayPlacesState,
+    verdictSettled,
+    verdictSettledByGesture,
+    settleVerdict,
+    settleVerdictByGesture,
+  } = usePlayMainProps(run);
   // Map-mode cluster (game-app-map step 8): the hook in src/map
   // owns the mode state, its notices and announcement, the boot
   // qualification and the apply paths. GameApp threads the values
@@ -1552,7 +1564,7 @@ export function GameApp() {
     return (
       <>
         {mapModeAnnouncer}
-        <main>
+        <main {...playMainProps}>
         <Play
           mapHost={SatelliteMapHost}
           globeTierSplitFor={globeTierSplitFor}
@@ -1617,6 +1629,11 @@ export function GameApp() {
           readStoredMapMode={readStoredMapMode}
           celebrationOpen={cleared !== null}
           ageBand={ageBand}
+          onPlacesChange={setPlayPlacesState}
+          verdictSettled={verdictSettled}
+          verdictSettledByGesture={verdictSettledByGesture}
+          onSettleVerdict={settleVerdict}
+          onSettleVerdictByGesture={settleVerdictByGesture}
         />
         </main>
         {cleared ? (
@@ -2090,14 +2107,13 @@ export function GameApp() {
         way; its layer renders through the queue's portal, outside
         this subtree, so going inert never traps the sheet itself. */}
     <div inert={ageSettingsOpen || ageAsk !== null || firstVisitModalOpen || undefined}>
-    <main>
+    <main className={CHOOSE_MAIN_CLASSNAME}>
     <Choose
       key={historyResetEpoch}
       onState={withCardTap("State", () => setMenu({ kind: "states" }))}
       onCountry={withCardTap("Country", () => setMenu({ kind: "countries" }))}
       onGlobe={withCardTap("Globe", () => openRun("globe", "globe", "Globe", difficultyChoice))}
       onBegin={withCardTap("Globe", () => openRun("globe", "globe", "Globe", difficultyChoice))}
-      onTakeTour={onTakeTour}
       onLoop={withCardTap("mystery", () => {
         // Ask-first (owner decision, 2026-11-14): the card is the
         // resume offer while a mystery is mid-play, and a resume is
@@ -2152,7 +2168,6 @@ export function GameApp() {
         <MapModeToggle context="home" mapMode={mapMode} onSelect={handleHomeMapMode} />
       }
       lockedLoop={lockedLoop}
-      footerLead={readAloudPrefSettings}
       heroMountainUrl={heroMountainUrl}
       cardMedia={{
         geodetectiveFilm: GEODETECTIVE_FILM,
@@ -2194,6 +2209,18 @@ export function GameApp() {
       }
     />
     </main>
+    {/* B2 (TD-06.16): SiteFooter sits after `</main>` again, like on
+        main — the footer (incl. Grandpa's coffee-run band) spans the
+        full width under the centred column. width="wide" matches the
+        column's own width and gutters. */}
+    <SiteFooter
+      lead={readAloudPrefSettings}
+      onGrownUps={openAgeSettings}
+      onTakeTour={onTakeTour}
+      width="wide"
+      grandpaTour
+      grandpaAnchor
+    />
     </div>
     {ageSettingsOpen ? (
       <Suspense fallback={null}>

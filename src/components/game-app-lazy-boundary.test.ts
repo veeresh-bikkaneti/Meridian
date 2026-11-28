@@ -424,6 +424,19 @@ describe("TD-06.14 — SubjectsHost keeps SubjectPicker lazy", () => {
     );
   });
 
+  it("SubjectPicker is not re-exported, by either spelling", () => {
+    // S1 (review finding on #636): a re-export is the same violation
+    // as a static import — `export … from "./SubjectPicker"` (or the
+    // aliased spelling) statically pulls the subjects chunk into the
+    // preloaded route chunk, so the guard fails on both. A type-only
+    // re-export (`export type { … } from …`) is erased at compile
+    // time and stays allowed.
+    assert.ok(
+      !/export\s+(?:\{[^}]*\}|\*(?:\s+as\s+\w+)?)\s+from\s+["'](?:\.\/|@\/subjects\/shared\/)SubjectPicker["']/.test(subjectsHostSource),
+      "SubjectPicker must not be re-exported (a re-export statically pulls the subjects chunk in)",
+    );
+  });
+
   it("SubjectPicker loads only through a dynamic import() inside React.lazy", () => {
     assert.ok(
       subjectsHostSource.includes('import("./SubjectPicker")'),

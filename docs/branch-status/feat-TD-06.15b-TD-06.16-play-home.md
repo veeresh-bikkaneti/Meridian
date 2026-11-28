@@ -10,7 +10,7 @@
 
 ## PR
 
-Draft, to be opened after this iteration's commit (PR B). Title: `refactor(game-app): extract Play and Home under the shell-only-main ruling (TD-06.15b, TD-06.16)`.
+Draft PR #636 — https://github.com/veeresh-bikkaneti/Meridian/pull/636 — head `c6f3ee1e`, base main `1a3191ae`. Review verdict FAIL at c6f3ee1e (gates all green, DOM changed); fix round below, then the owner-approved Home header add-on as 3 commits. Do not merge, do not mark ready. Merge only on Veeresh's word.
 
 ## Goal
 
@@ -33,7 +33,38 @@ Extract Play, PlayLoaded, ChallengeCompleteShell (TD-06.15b) and Home, Choose, h
 
 ## Still unmet
 
-- G5 (draft PR) is not done — no PR opened in this iteration, by design (the orchestrator opens it).
+- G4 (CI) is not done — CI on c6f3ee1e is superseded by the fix + header commits; re-score on the final head.
+- The Home header add-on (3 commits: cream-bar contrast, responsive nav + hamburger, auto-loop compass logo) runs after this fix round.
+
+## Done (fix round — review FAIL at c6f3ee1e, B1/B2/B3/S1)
+
+- B1: the composer's single `<main>` now carries the active screen's class + data attributes, so the DOM matches main. Home: `<main className={CHOOSE_MAIN_CLASSNAME}>` (`atlas-home home-v5 …`, exported from choose.tsx). Play: `use-play-main-props.ts` (new hook) derives the branch (loading / review-complete / verdict / map) from `run` + the pool, exactly as PlayLoaded does; Play reports its loaded places via `onPlacesChange` (loadKey-gated, so a run change reads as "loading" synchronously). The verdict settle flags are lifted to the hook, so `<main>` carries `data-verdict-settled` and the settle gesture handlers (`onClick`/`onKeyDown`) only when `challengeWinner != null`; the flags reset when the verdict branch deactivates, so a second challenge starts unsettled. `ChallengeCompleteShell` / `PlayLoaded` / `Play` render fragments now (no wrapper `<section>`). One deliberate deviation: main rendered NO `<main>` for the pool-error branch, but the shell owns exactly one, so the loading `<main>` stands in for it.
+- B2: `SiteFooter` sits after `</main>` again, in the composer (game-app.tsx), inside the inert `<div>` — the same DOM nesting as main (Choose rendered `<main>` + `<SiteFooter>` as siblings inside the inert div). Choose no longer renders SiteFooter or takes `onTakeTour` / `footerLead`. The registry `home` row now carries `footerFile: "src/components/game-app.tsx"` (new `footerFile` field: the header lives in choose.tsx, the footer in the composer).
+- B3: the 4 e2e specs pass, specs untouched — mobile-home-overlap, kofi-persistent-cloud.mobile, grandpa-tasting-tour, friend-challenge-mc3-verdict (30 passed, 2 skipped, 0 failed, 27.2 min, built artifact, `--workers=1`). Friend-challenge confirmed alone: 14 passed, 1 skipped, 0 failed (10.9 min).
+- S1: the lazy guard now also fails on `export … from "./SubjectPicker"` and the aliased re-export (`export … from "@/subjects/shared/SubjectPicker"`). Planted-fail proofs (both reverted): each plant fails the new test `SubjectPicker is not re-exported, by either spelling` with "SubjectPicker must not be re-exported (a re-export statically pulls the subjects chunk in)".
+- S3: entry gzip 319,477 B (Ko-fi build; 319,315 B without) vs 323,865 cap — 4,388 B spare (was 4,903 B). Header add-on must stay lean.
+- Size ceiling: game-app.tsx 2,277 lines (was 2,250). The B1 derivation lives in `use-play-main-props.ts`, so the composer carries only the hook call, the Play props and the footer JSX — but that is still +27 lines the shrink-only ceiling cannot absorb. The ceiling was raised 2,250 → 2,277 in `scripts/check-game-app-size.mjs` + its test, set to the real count in this reviewed change (the script's own process: a raised ceiling is set to the real count, in its own reviewed change). Brief gate (≤ 6,174) still passes with large headroom.
+- Gates (fix round): tsc PASS, lint:arch PASS, lint:nav PASS (max-warnings 0), check-game-app-size PASS (2,277/2,277), full npm test 3,533/3,533 0 fail, build:pages PASS, entry 319,477 B vs 323,865, check:provenance (to confirm at commit).
+
+## DOM equivalence note (B1/B2)
+
+- Home: `<main class="atlas-home home-v5 relative mx-auto flex min-h-dvh w-full max-w-(--page-wide) flex-col px-5 pt-8 md:px-9">` + `<SiteFooter>` after `</main>` inside the inert div — byte-equivalent to main. `grandpa-coffee-run.tsx:755,766` (`document.querySelector("main.home-v5")`) finds it again.
+- Play: loading / review / verdict / map `<main>` classes + `data-verdict-settled` match main's per-branch `<main>`s exactly; the verdict `<main>` carries the settle gesture handlers. Pool-error branch: loading `<main>` stands in (see deviation above).
+- Exactly one `<main>` in the shell; the pageLocalMain allowlist is untouched (game-app.tsx, SubjectCase.tsx, SubjectPicker.tsx).
+
+## 1:1 layer-baseline key moves (vs main 1a3191ae)
+
+- `src/components/game-app.tsx|@/assets/home-v5/globe-fallback.webp` removed — the fallback lives in home-globe.tsx now, which keeps its own entry (`src/components/home-globe.tsx|@/assets/home-v5/globe-fallback.webp`).
+- `src/components/game-app.tsx|@/map/satellite-map` → `src/components/game-app.tsx|@/map/satellite-map-host` — the satellite map loads through its host.
+
+## S4 — Workers Builds note
+
+- Workers Builds did not run on the PR #636 head (c6f3ee1e). Note in the PR body when updating it; CI on the final head is the G4 re-score.
+
+## Graph
+
+- Node: `use-play-main-props` (hook, `src/components/use-play-main-props.ts`) — derives the Play branch `<main>` props for the composer. Edge: `use-play-main-props` `depends-on` `Play` (places via `onPlacesChange`), `depends-on` `PlayLoaded` (branch order mirror).
+- Node: `home-footer-placement` (decision) — SiteFooter after `</main>` in the composer, inside the inert div (B2). Edge: `home-footer-placement` `decided-by` the #636 review (FAIL at c6f3ee1e).
 
 ## Ruled out / deferred
 
@@ -47,4 +78,4 @@ Extract Play, PlayLoaded, ChallengeCompleteShell (TD-06.15b) and Home, Choose, h
 
 ## Next step
 
-Orchestrator: open the draft PR for this branch (iterations 1 + 2), then Veeresh says "review B" → siloed review → merge only on Veeresh's word.
+Orchestrator: push the fix commit, update PR #636 body (S1 proofs, DOM-equivalence note, S4 Workers Builds note, contrast ratios + screenshots after the header add-on), run the Home header add-on (3 commits), wait for CI on the final head, score G4.

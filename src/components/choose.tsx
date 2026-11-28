@@ -4,10 +4,12 @@
  * The home menu: hero, expedition picker, case cards, review deck,
  * journal, grown-ups. Moved out of src/components/game-app.tsx under
  * Veeresh's ruling (2026-11-27): the shared page shell owns the only
- * <main>; this screen renders a <section> and the shell wraps the
- * <Choose> call site in a <main>. The picker block stays as-is (PR C
- * removes it). Passport and @/assets/** arrive as slots from the
- * composer (lockedLoop, footerLead, mapModeControl) — never reclassified.
+ * <main>; this screen renders a fragment and the shell wraps the
+ * <Choose> call site in a <main> carrying CHOOSE_MAIN_CLASSNAME
+ * (B1: byte-equivalent to main's Home <main>). The picker block stays
+ * as-is (PR C removes it). Passport and @/assets/** arrive as slots
+ * from the composer (lockedLoop, mapModeControl) — never reclassified.
+ * SiteFooter renders in the composer, after </main> (B2).
  */
 import { preloadTerritory } from "@/game/territory";
 import { type PickerDifficulty } from "@/game/tier-filter";
@@ -21,7 +23,6 @@ import { Suspense, lazy, useCallback, useEffect, useRef, useState, type CSSPrope
 import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { SiteHeader } from "@/components/ui/site-header";
-import { SiteFooter } from "@/components/ui/site-footer";
 import { HighContrastToggle } from "./high-contrast-toggle";
 import { CometEmblem } from "./comet-emblem";
 import {
@@ -136,12 +137,20 @@ const DIFFICULTY_HINTS: Record<PickerDifficulty, string> = {
   hard: "Hidden corners of the world — for explorers ready to discover more.",
 };
 
+/**
+ * B1 (TD-06.16): the Home screen's `<main>` class. The composer
+ * (game-app.tsx) spreads this onto its single `<main>`; Choose renders
+ * a fragment, so the class lives here and the screen and the shell
+ * never drift apart. Byte-equivalent to main's Home `<main>`.
+ */
+export const CHOOSE_MAIN_CLASSNAME =
+  "atlas-home home-v5 relative mx-auto flex min-h-dvh w-full max-w-(--page-wide) flex-col px-5 pt-8 md:px-9";
+
 export function Choose({
   onState,
   onCountry,
   onGlobe,
   onBegin,
-  onTakeTour,
   onLoop,
   onColdTrail,
   onReview,
@@ -163,7 +172,6 @@ export function Choose({
   headingRef,
   mapModeControl,
   lockedLoop,
-  footerLead,
   heroMountainUrl,
   cardMedia,
   earnedBadgeRow,
@@ -173,8 +181,6 @@ export function Choose({
   onGlobe: (e: ReactMouseEvent) => void;
   /** Hero "Begin exploring": start a Globe round at the picked difficulty. */
   onBegin: (e: ReactMouseEvent) => void;
-  /** Re-open the first-run tour (after "Not now" — finding P2-11). */
-  onTakeTour: () => void;
   /** Open the GeoDetective edition (unlimited mysteries). */
   onLoop: (e: ReactMouseEvent) => void;
   /** Open the Cold Trail vertical slice (smuggler triangulation). */
@@ -220,9 +226,6 @@ export function Choose({
   /** The locked GeoDetective tile, built by the age-profile host —
    * Choose places it on the edition card but never imports it. */
   lockedLoop: ReactNode;
-  /** SiteFooter's lead slot: the read-aloud preference setting,
-   * built by the age-profile host. */
-  footerLead: ReactNode;
   /** The hero mountain art URL, from the composer — a components/root
    * file may not import @/assets/** directly (layer rule), so the
    * composer passes media as slots. */
@@ -395,7 +398,6 @@ export function Choose({
   );
   return (
     <>
-    <section className="atlas-home home-v5 relative mx-auto flex min-h-dvh w-full max-w-(--page-wide) flex-col px-5 pt-8 md:px-9">
       {/* Skip link (WCAG 2.4.1): the first focusable element on the home
           page, visually hidden until focused; jumps to the journal
           section (scrollTo moves focus there as well as scrolling). */}
@@ -977,35 +979,6 @@ export function Choose({
           ) : null}
         </section>
       </div>
-
-    </section>
-    {/* Age-profile footer entry (Phase 2 §1a): the COPPA-standard
-        ParentZone placement — low-emphasis, after the review deck.
-        One host per screen: the header hosts brand + sound, so the
-        footer carries this. The shared SiteFooter (fix/ui-shared-shell)
-        renders the shipped set: the read-aloud setting as its lead
-        (owner 2026-10-09: the kid's tool, next to the grown-ups gate,
-        never parent-gated), the grown-ups gate, the tour re-entry
-        (review finding P2-11), the grown-ups info pages (P0-3) and
-        the kids-privacy promise (owner 2026-10-21 — factual
-        statements only; if analytics, ads or accounts are ever added,
-        update SiteFooter's note and /privacy in the same PR).
-        Since the footer standardization (2026-11-18) SiteFooter also
-        owns Grandpa's coffee-run band, so Home renders it here, after
-        </section>, where the band always lived: the band spans the full
-        width under the centred column, carries #home-involved (the
-        v5 nav's GET INVOLVED jump target — the app's get-involved
-        surface, Veeresh 2026-10-07) and runs the full tasting tour.
-        width="wide" gives the links row the column's own width and
-        gutters, so the row sits exactly where it did inside <main>. */}
-    <SiteFooter
-      lead={footerLead}
-      onGrownUps={onGrownUpOpen}
-      onTakeTour={onTakeTour}
-      width="wide"
-      grandpaTour
-      grandpaAnchor
-    />
     {/* Kid-set read-aloud preference (age-profile B3) renders through
         the first-visit queue in GameApp (item 9): it is the queue's
         third prompt, so it never piles up with the Scout notice, the

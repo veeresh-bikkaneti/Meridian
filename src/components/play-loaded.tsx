@@ -346,6 +346,10 @@ export function PlayLoaded({
   scoutUpgradeEligible,
   onScoutUpgrade,
   readStoredMapMode,
+  verdictSettled,
+  verdictSettledByGesture,
+  onSettleVerdict,
+  onSettleVerdictByGesture,
 }: {
   /** The lazy satellite-map host, supplied by the composer as a slot. */
   mapHost: ComponentType<
@@ -454,6 +458,12 @@ export function PlayLoaded({
   readStoredMapMode: ReturnType<
     (typeof import("@/map/use-map-mode"))["useMapMode"]
   >["readStoredMapMode"];
+  /** Verdict settle flags, owned by the composer (B1) — passed through
+   * to ChallengeCompleteShell, whose `<main>` the composer renders. */
+  verdictSettled: boolean;
+  verdictSettledByGesture: boolean;
+  onSettleVerdict: () => void;
+  onSettleVerdictByGesture: () => void;
 }) {
   // Review-deck session: a synthetic Run reusing this game loop. The deck
   // queue (due order) is the pool; review answers never bank into the
@@ -1731,7 +1741,6 @@ export function PlayLoaded({
   // completable session — ADHD-friendly — never the endless run.
   if (review && run.index >= pool.length) {
     return (
-      <section className="mx-auto flex min-h-dvh w-full max-w-(--page-narrow) flex-col px-5 pt-2 pb-8">
       <ReviewComplete
         results={run.results}
         total={pool.length}
@@ -1739,7 +1748,6 @@ export function PlayLoaded({
         onResetHistory={reviewDeckTotal > 0 ? onResetHistory : undefined}
         onChallengeFriend={friendChallengesEnabled ? reviewChallengeTap : undefined}
       />
-      </section>
     );
   }
   if (challenge && (run.index >= pool.length || run.phase === "summary")) {
@@ -1777,12 +1785,16 @@ export function PlayLoaded({
         homeButton={
           <EndOfFlowHome onHome={challengeDoneHandler} variant="primary" testId="challenge-done" />
         }
+        settled={verdictSettled}
+        settledByGesture={verdictSettledByGesture}
+        onSettle={onSettleVerdict}
+        onSettleByGesture={onSettleVerdictByGesture}
       />
     );
   }
 
   return (
-    <section className="relative h-dvh bg-bg">
+    <>
       <div className="absolute inset-0">
         <MapErrorBoundary>
             <MapHost
@@ -2271,6 +2283,6 @@ export function PlayLoaded({
         />
       ) : null}
       {summaryPreviewEl}
-    </section>
+    </>
   );
 }
