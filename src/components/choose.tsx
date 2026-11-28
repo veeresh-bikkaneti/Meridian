@@ -438,7 +438,6 @@ export function Choose({
         onHome={scrollTop}
         className="home-rise"
         style={rise(0)}
-        exitInMenuOnSmallScreens
         nav={
           <>
             <button type="button" className="site-header-nav-link" data-nav-section="home-editions" onClick={() => scrollTo("home-editions")}>

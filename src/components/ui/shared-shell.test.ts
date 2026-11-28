@@ -166,14 +166,23 @@ describe("SiteHeader", () => {
     const src = read("src/components/ui/site-header.tsx");
     assert.match(src, /data-nav-section=\{item\.sectionId\}/);
     assert.match(src, /aria-current", "location"/);
-    assert.match(src, /onPanelClick/);
     assert.match(src, /setMenuOpen\(false\)/);
+    // The pick-to-close lives in the drawer now (TD-06.16): a click
+    // on a nav link inside the panel closes it.
+    const drawer = read("src/components/ui/site-header-drawer.ts");
+    assert.match(drawer, /closest\("\.site-header-nav-link"\)/);
+    assert.match(drawer, /onClose\(\)/);
   });
 
   it("menu button is a 44px-class control, collapsed, and the panel (with the slots outside it) is closed", async () => {
     const html = await render("SiteHeader", base);
     assert.match(html, /site-header-menu-button/);
     assert.match(html, /aria-expanded="false"/);
+    // Icon button (TD-06.16): named "Open menu", with the Menu glyph
+    // and the "Menu" label both present for the CSS swap below 768px.
+    assert.match(html, /aria-label="Open menu"/);
+    assert.match(html, /site-header-menu-icon/);
+    assert.match(html, /site-header-menu-label/);
     assert.doesNotMatch(html, /site-header-panel/);
   });
 
