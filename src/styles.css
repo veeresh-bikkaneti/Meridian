@@ -2315,6 +2315,13 @@ html {
   position: sticky;
   top: 0;
   z-index: var(--z-header);
+  /* Cream bar (TD-06.16): the home header rides on the home card
+   * surface, not the page background — in the dark theme the
+   * --hv5-ink nav text sat on the dark --bg at 1.43:1; on the cream
+   * card it reads 12.69:1 in both themes. The global .site-header
+   * background is untouched; other pages stay the same. */
+  background: var(--hv5-card);
+  border-bottom: 1px solid var(--hv5-line);
 }
 /* Sticky is confined to its parent's box (Phase A mechanism 2):
  * PageShell's column grows with the page, so route headers stick
