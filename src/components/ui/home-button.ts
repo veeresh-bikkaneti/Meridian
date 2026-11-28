@@ -108,6 +108,10 @@ export function BrandHomeButton({ className, testId = "home-button", ...rest }: 
    * pauses it while the tab is hidden, via animation-play-state.
    * No play button: the loop is ambient, never a control. */
   useEffect(() => {
+    /* No document in the node test-renderer: skip the listener there.
+     * In a real browser document always exists, so pause-on-hidden is
+     * unchanged. */
+    if (typeof document === "undefined") return;
     const rings = ringsRef.current;
     if (!rings) return;
     const onVisibility = () => {
