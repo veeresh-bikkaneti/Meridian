@@ -6,7 +6,7 @@
  */
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
-import { createElement } from "react";
+import { createElement, Fragment } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import {
   MORE_VISIBLE_COUNT,
@@ -33,6 +33,16 @@ describe("splitNavItems", () => {
     assert.equal(visible.length, 2);
     assert.equal(rest.length, 0);
   });
+
+  it("splits at an explicit count (the adaptive shrink)", () => {
+    const { visible, rest } = splitNavItems(SEVEN, 2);
+    assert.equal(visible.length, 2);
+    assert.equal(rest.length, 5);
+    assert.deepEqual(
+      visible.map((n) => (n as { props: { children: string } }).props.children),
+      ["A", "B"],
+    );
+  });
 });
 
 describe("SiteHeaderNavRow", () => {
@@ -44,6 +54,7 @@ describe("SiteHeaderNavRow", () => {
         moreOpen: false,
         onMoreToggle: () => {},
         navRef: { current: null },
+        visibleCount: MORE_VISIBLE_COUNT,
       }),
     );
     for (const label of ["A", "B", "C", "D", "E", "F", "G"]) assert.match(html, new RegExp(`>${label}<`));
@@ -58,6 +69,7 @@ describe("SiteHeaderNavRow", () => {
         moreOpen: true,
         onMoreToggle: () => {},
         navRef: { current: null },
+        visibleCount: MORE_VISIBLE_COUNT,
       }),
     );
     assert.match(html, />More</);
@@ -76,6 +88,7 @@ describe("SiteHeaderNavRow", () => {
         moreOpen: false,
         onMoreToggle: () => {},
         navRef: { current: null },
+        visibleCount: MORE_VISIBLE_COUNT,
       }),
     );
     assert.match(html, />More</);
@@ -85,8 +98,10 @@ describe("SiteHeaderNavRow", () => {
 
 describe("SiteHeaderNav", () => {
   it("initial render is the full row (the measurement runs in the browser)", () => {
+    // Home passes its nav as a fragment — the split must see the
+    // items inside it, not the fragment as one item.
     const html = renderToStaticMarkup(
-      createElement(SiteHeaderNav, { navNode: createElement("span", null, SEVEN) }),
+      createElement(SiteHeaderNav, { navNode: createElement(Fragment, null, ...SEVEN) }),
     );
     for (const label of ["A", "B", "C", "D", "E", "F", "G"]) assert.match(html, new RegExp(`>${label}<`));
     assert.doesNotMatch(html, />More</);

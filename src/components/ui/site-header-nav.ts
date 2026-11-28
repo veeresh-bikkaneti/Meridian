@@ -21,6 +21,7 @@ import {
   Children,
   createElement,
   Fragment,
+  isValidElement,
   useEffect,
   useLayoutEffect,
   useRef,
@@ -31,7 +32,10 @@ import {
 import { ChevronDown } from "lucide-react";
 import { SiteHeaderDrawer } from "./site-header-drawer.ts";
 
-/** Links kept inline when the row splits. */
+/** Links kept inline when the row splits. This is the STARTING
+ * count, not a promise: where the header gives the nav little room
+ * the row still overflows with four links, and the nav shrinks the
+ * count until the row fits. */
 export const MORE_VISIBLE_COUNT = 4;
 /** The band where the More split applies. */
 export const MORE_BAND = "(min-width: 768px) and (max-width: 1023.5px)";
@@ -46,13 +50,17 @@ export type SiteHeaderNavRowProps = {
   moreOpen: boolean;
   onMoreToggle: (open: boolean) => void;
   navRef: RefObject<HTMLElement | null>;
+  /** Links kept inline in "more" mode (the adaptive count). */
+  visibleCount: number;
 };
 
 /** The row itself, mode-driven so the node harness can render both. */
-export function SiteHeaderNavRow({ items, mode, moreOpen, onMoreToggle, navRef }: SiteHeaderNavRowProps) {
+export function SiteHeaderNavRow({ items, mode, moreOpen, onMoreToggle, navRef, visibleCount }: SiteHeaderNavRowProps) {
   const moreButtonRef = useRef<HTMLButtonElement>(null);
   const { visible, rest } =
-    mode === "more" ? splitNavItems(items) : { visible: items, rest: [] as ReactNode[] };
+    mode === "more"
+      ? splitNavItems(items, visibleCount)
+      : { visible: items, rest: [] as ReactNode[] };
   const showMore = rest.length > 0;
   const closeMore = () => {
     onMoreToggle(false);
@@ -90,21 +98,44 @@ export function SiteHeaderNavRow({ items, mode, moreOpen, onMoreToggle, navRef }
 }
 
 export function SiteHeaderNav({ navNode }: { navNode: ReactNode }) {
-  const items = Children.toArray(navNode);
+  /* Unwrap a top-level fragment: Home (and the navItems-built node)
+   * pass the nav as <>…</>, and Children.toArray of a fragment
+   * element returns the fragment itself, not its items — the split
+   * would see one item and never fire. */
+  const frag =
+    isValidElement<{ children?: ReactNode }>(navNode) && navNode.type === Fragment ? navNode : null;
+  const inner = frag ? frag.props.children : navNode;
+  const items = Children.toArray(inner);
   const navRef = useRef<HTMLElement>(null);
   const [mode, setMode] = useState<"full" | "more">("full");
   const [moreOpen, setMoreOpen] = useState(false);
+  /* Visible links while in "more" mode. Starts at MORE_VISIBLE_COUNT
+   * and only ever shrinks (see the layout effect below). */
+  const [visibleCount, setVisibleCount] = useState(MORE_VISIBLE_COUNT);
   const [probe, setProbe] = useState(0);
 
   // Measure only the full row: in "more" mode the row is short by
   // construction, so its scrollWidth says nothing about the full row.
+  // Then, in "more" mode, measure the shortened row too: four links
+  // + More is 382px at the compact gap and the nav only has ~306px
+  // at 820px, so the More button would land under the Join pill and
+  // never be clickable. Shrink the count until the row fits; the
+  // count only ever decreases here, so this converges.
   useLayoutEffect(() => {
-    if (mode !== "full") return;
     const el = navRef.current;
     if (!el) return;
     if (!window.matchMedia(MORE_BAND).matches) return;
-    if (el.scrollWidth > el.clientWidth + 1) setMode("more");
-  }, [mode, probe]);
+    if (mode === "full") {
+      if (el.scrollWidth > el.clientWidth + 1) {
+        setMode("more");
+        setVisibleCount(MORE_VISIBLE_COUNT);
+      }
+      return;
+    }
+    if (el.scrollWidth > el.clientWidth + 1 && visibleCount > 1) {
+      setVisibleCount((c) => Math.max(1, c - 1));
+    }
+  }, [mode, probe, visibleCount]);
 
   // A resize or a font load re-probes: render full first, then the
   // layout effect above decides. setMode("full") is a no-op when
@@ -125,5 +156,6 @@ export function SiteHeaderNav({ navNode }: { navNode: ReactNode }) {
     moreOpen,
     onMoreToggle: setMoreOpen,
     navRef,
+    visibleCount,
   });
 }

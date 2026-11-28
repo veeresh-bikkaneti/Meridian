@@ -2588,6 +2588,17 @@ body:has(> header.site-header) {
     letter-spacing: 0.06em;
   }
 }
+/* More band (TD-06.16): the split row needs a tighter gap so three
+ * links + More fit an 820px row. Measured: three links + More is
+ * 308px at the 14px gap and the nav only has ~306px at 820px, so
+ * the More button landed under the Join pill and never fired. At
+ * 10px it is 296px and fits with room to spare; the count still
+ * shrinks to two at 768px, where even this cannot fit three. */
+@media (min-width: 768px) and (max-width: 1023.5px) {
+  .site-header-nav {
+    gap: 10px;
+  }
+}
 
 .site-pill {
   display: inline-flex;
