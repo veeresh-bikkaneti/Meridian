@@ -2601,8 +2601,12 @@ body:has(> header.site-header) {
  * the More button landed under the Join pill and never fired. At
  * 10px it is 296px and fits with room to spare; below 820px the
  * count would shrink to two, where even this cannot fit three —
- * so the Menu button owns the nav below 820px instead. */
-@media (min-width: 820px) and (max-width: 1023.5px) {
+ * so the Menu button owns the nav below 820px instead. The band
+ * runs to 1364px (the compact band's top): the full row needs
+ * 1365px of viewport, so at 1024px the squeezed full nav (613px)
+ * overflows its 510px box and the last link overlaps Join — the
+ * split is what makes it fit there. */
+@media (min-width: 820px) and (max-width: 1364.5px) {
   .site-header-nav {
     gap: 10px;
   }
