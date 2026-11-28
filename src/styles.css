@@ -2171,6 +2171,38 @@ div.first-visit-queue-overlay.first-visit-queue-modal {
   height: 40px;
   flex: none;
 }
+/* Compass loop (TD-06.16): the rings rotate slowly; the star stays
+ * still. Transform-only, so it never triggers layout. The ticks on
+ * the rings group make the rotation visible. */
+.brand-home-rings {
+  animation: brand-ring-spin 24s linear infinite;
+  transform-origin: 50% 50%;
+  transform-box: fill-box;
+}
+@keyframes brand-ring-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+/* Soft star glow, one breath every ~4s (opacity only). */
+.brand-home-star {
+  animation: brand-star-glow 4s ease-in-out infinite;
+}
+@keyframes brand-star-glow {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.75;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .brand-home-rings,
+  .brand-home-star {
+    animation: none;
+  }
+}
 .brand-home-word {
   font-family: var(--font-atlas-display);
   font-size: 24px;

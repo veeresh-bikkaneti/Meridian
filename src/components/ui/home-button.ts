@@ -25,7 +25,7 @@
  * Do not write a home label by hand anywhere else: `npm run lint:nav`
  * fails on the old labels and names this file.
  */
-import { createElement } from "react";
+import { createElement, useEffect, useRef } from "react";
 import { Link } from "@tanstack/react-router";
 import { House } from "lucide-react";
 import { cn } from "../../lib/cn.ts";
@@ -102,24 +102,52 @@ export type BrandHomeButtonProps = {
 
 export function BrandHomeButton({ className, testId = "home-button", ...rest }: BrandHomeButtonProps) {
   const cls = cn(BRAND_BASE, className);
+  const ringsRef = useRef<SVGGElement>(null);
+  /* Compass loop (TD-06.16): the rings spin; the star stays still.
+   * The spin is pure CSS (styles.css, brand-ring-spin); this only
+   * pauses it while the tab is hidden, via animation-play-state.
+   * No play button: the loop is ambient, never a control. */
+  useEffect(() => {
+    const rings = ringsRef.current;
+    if (!rings) return;
+    const onVisibility = () => {
+      rings.style.animationPlayState = document.hidden ? "paused" : "running";
+    };
+    document.addEventListener("visibilitychange", onVisibility);
+    return () => document.removeEventListener("visibilitychange", onVisibility);
+  }, []);
   const mark = createElement(
     "svg",
     { className: "brand-home-mark", viewBox: "0 0 48 48", "aria-hidden": true, focusable: "false" },
-    createElement("circle", { cx: "24", cy: "24", r: "21.5", fill: "none", stroke: "#8A6D2F", strokeWidth: "1.6" }),
-    createElement("circle", {
-      cx: "24",
-      cy: "24",
-      r: "16.5",
-      fill: "none",
-      stroke: "#B8932F",
-      strokeWidth: ".8",
-      strokeOpacity: ".6",
-    }),
-    createElement("path", {
-      d: "M24 6 L27.2 20.8 L42 24 L27.2 27.2 L24 42 L20.8 27.2 L6 24 L20.8 20.8 Z",
-      fill: "#8A6D2F",
-    }),
-    createElement("circle", { cx: "24", cy: "24", r: "3.4", fill: "#F6F1E3", stroke: "#8A6D2F", strokeWidth: "1.2" }),
+    createElement(
+      "g",
+      { className: "brand-home-rings", ref: ringsRef },
+      createElement("circle", { cx: "24", cy: "24", r: "21.5", fill: "none", stroke: "#8A6D2F", strokeWidth: "1.6" }),
+      createElement("circle", {
+        cx: "24",
+        cy: "24",
+        r: "16.5",
+        fill: "none",
+        stroke: "#B8932F",
+        strokeWidth: ".8",
+        strokeOpacity: ".6",
+      }),
+      /* Cardinal ticks (stroke #8A6D2F) so the rotation is visible:
+       * two perfect circles give the spin nothing to show. */
+      createElement("line", { x1: "24", y1: "2.5", x2: "24", y2: "5", stroke: "#8A6D2F", strokeWidth: "1.6" }),
+      createElement("line", { x1: "43", y1: "24", x2: "45.5", y2: "24", stroke: "#8A6D2F", strokeWidth: "1.6" }),
+      createElement("line", { x1: "24", y1: "43", x2: "24", y2: "45.5", stroke: "#8A6D2F", strokeWidth: "1.6" }),
+      createElement("line", { x1: "2.5", y1: "24", x2: "5", y2: "24", stroke: "#8A6D2F", strokeWidth: "1.6" }),
+    ),
+    createElement(
+      "g",
+      { className: "brand-home-star" },
+      createElement("path", {
+        d: "M24 6 L27.2 20.8 L42 24 L27.2 27.2 L24 42 L20.8 27.2 L6 24 L20.8 20.8 Z",
+        fill: "#8A6D2F",
+      }),
+      createElement("circle", { cx: "24", cy: "24", r: "3.4", fill: "#F6F1E3", stroke: "#8A6D2F", strokeWidth: "1.2" }),
+    ),
   );
   const word = createElement("span", { className: "brand-home-word" }, "MERIDIAN");
   if ("to" in rest && rest.to) {

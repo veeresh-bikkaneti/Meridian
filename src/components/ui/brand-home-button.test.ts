@@ -11,6 +11,9 @@ import { describe, it } from "node:test";
 import assert from "node:assert/strict";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
+import { readFileSync } from "node:fs";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
 import {
   createMemoryHistory,
   createRootRoute,
@@ -18,6 +21,8 @@ import {
   RouterProvider,
 } from "@tanstack/react-router";
 import { BrandHomeButton, BRAND_HOME_LABEL } from "./home-button.ts";
+
+const repoRoot = join(dirname(fileURLToPath(import.meta.url)), "..", "..", "..");
 
 describe("BrandHomeButton", () => {
   it("BRAND_HOME_LABEL is exactly Meridian home", () => {
@@ -81,5 +86,30 @@ describe("BrandHomeButton", () => {
     const html = renderToStaticMarkup(createElement(BrandHomeButton, { onHome: () => {} }));
     assert.doesNotMatch(html, />Home</);
     assert.doesNotMatch(html, /lucide-house/);
+  });
+
+  it("compass loop (TD-06.16): rings and star are separate groups, rings carry cardinal ticks", () => {
+    const html = renderToStaticMarkup(createElement(BrandHomeButton, { onHome: () => {} }));
+    // Rings group: the two circles plus four cardinal ticks (the
+    // rotation needs something to show — two circles alone are symmetric).
+    assert.match(html, /<g class="brand-home-rings">/);
+    assert.match(html, /<line x1="24" y1="2\.5" x2="24" y2="5" stroke="#8A6D2F" stroke-width="1\.6">/);
+    assert.match(html, /<line x1="43" y1="24" x2="45\.5" y2="24" stroke="#8A6D2F" stroke-width="1\.6">/);
+    assert.match(html, /<line x1="24" y1="43" x2="24" y2="45\.5" stroke="#8A6D2F" stroke-width="1\.6">/);
+    assert.match(html, /<line x1="2\.5" y1="24" x2="5" y2="24" stroke="#8A6D2F" stroke-width="1\.6">/);
+    // Star group: the star path and centre circle, still by design.
+    assert.match(html, /<g class="brand-home-star">/);
+  });
+
+  it("compass loop (TD-06.16): rings spin 24s linear, star glows ~4s, reduced motion kills both", () => {
+    const css = readFileSync(join(repoRoot, "src/styles.css"), "utf8");
+    assert.match(css, /\.brand-home-rings \{\s[^}]*animation: brand-ring-spin 24s linear infinite;/);
+    assert.match(css, /\.brand-home-rings \{\s[^}]*transform-origin: 50% 50%;[^}]*transform-box: fill-box;/);
+    assert.match(css, /@keyframes brand-ring-spin \{\s+to \{\s+transform: rotate\(360deg\);/);
+    assert.match(css, /\.brand-home-star \{\s[^}]*animation: brand-star-glow 4s ease-in-out infinite;/);
+    assert.match(
+      css,
+      /@media \(prefers-reduced-motion: reduce\) \{\s+\.brand-home-rings,\s+\.brand-home-star \{\s+animation: none;/,
+    );
   });
 });
