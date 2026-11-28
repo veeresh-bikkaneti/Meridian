@@ -275,9 +275,11 @@ describe("M6 — edition-card press feedback", () => {
     assert.ok(tap, "withCardTap missing");
     assert.match(tap![0], /playCardTap\(\);\s*open\(\);/s, "tap sound then immediate open()");
     assert.ok(!/setTimeout|requestAnimationFrame/.test(tap![0]), "no timer in the click path");
-    assert.ok(src.includes('onClick={onState}'), "v5 edition rows wire onClick directly (State)");
-    assert.ok(src.includes('onClick={onCountry}'), "v5 edition rows wire onClick directly (Country)");
-    assert.ok(src.includes('onClick={onGlobe}'), "v5 edition rows wire onClick directly (Globe)");
+    // TD-06.16: the v5 edition rows live in Choose (choose.tsx) now.
+    const choose = read("src/components/choose.tsx");
+    assert.ok(choose.includes('onClick={onState}'), "v5 edition rows wire onClick directly (State)");
+    assert.ok(choose.includes('onClick={onCountry}'), "v5 edition rows wire onClick directly (Country)");
+    assert.ok(choose.includes('onClick={onGlobe}'), "v5 edition rows wire onClick directly (Globe)");
   });
 });
 
@@ -298,7 +300,8 @@ describe("M7 — atlas entrance stagger retune", () => {
   });
 
   it("rise() emits uneven 60–100ms gaps, --d retired", () => {
-    const src = read("src/components/game-app.tsx");
+    // TD-06.16: RISE_DELAY and rise() live in Choose (choose.tsx) now.
+    const src = read("src/components/choose.tsx");
     const m = src.match(/const RISE_DELAY:\s*Record<number,\s*string>\s*=\s*{([^}]+)}/);
     assert.ok(m, "RISE_DELAY table missing");
     const delays = [...m![1].matchAll(/(\d+):\s*"(\d+)ms"/g)].map((x) => Number(x[2]));

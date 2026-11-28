@@ -23,9 +23,16 @@ Extract Play, PlayLoaded, ChallengeCompleteShell (TD-06.15b) and Home, Choose, h
 - G3 proven: the lazy guard test now also catches the `@/subjects/shared/SubjectPicker` alias spelling. Planted alias import fails the test; restore passes (20/20).
 - Gates: tsc PASS, lint:arch PASS, lint:nav PASS (max-warnings 0), lazy-boundary + shared-shell + palette-preference 74/74, size check 3,737/3,737, build:pages PASS, entry 310,454 B vs 323,865.
 
+## Done (iteration 2 — TD-06.16)
+
+- TD-06.16: `Choose` extracted to `src/components/choose.tsx` (1,010 lines: lazy `StorytellerHomeHost` / `JournalPlayer` / `HomeGlobe` factories, territory prefetch, `DIFFICULTY_HINTS`, the full Choose screen); `HeroTrailOverlay`, `HeroTrekkerOverlay` and `AtlasBackdrop` extracted to `src/components/hero-overlays.tsx` (441 lines). Choose renders a `<section className="atlas-home home-v5 ...">` (was `<main>`); game-app.tsx wraps the `<Choose>` call site in a plain `<main>` (the iteration-1 Play pattern). The pageLocalMain allowlist is untouched. game-app.tsx 3,737 → 2,250 lines, ceiling lowered to 2,250. Map step 21 done. The picker block stays as-is (PR C removes it); `begin-exploring` and `tour-stop-difficulty` testids kept; Passport and `@/assets/**` stay as composer slots.
+- Test retargets: home-journal-lazy-boundary (loader kick now asserted in choose.tsx), home-journal-heading (source read now choose.tsx), motionmaxxing navigation onClick rows + M7 RISE_DELAY/rise (choose.tsx), game-app-lazy-boundary prefetch buttons + #209 HomeGlobe + F4 JournalBoundary + F4 GlobeChunkFallback (choose.tsx). Shell-registry `home` row retargeted to choose.tsx.
+- Import cleanup: game-app.tsx drops ~50 imports now used only by the extracted files (incl. the whole review-deck / challenge-verdict / learning imports); trims sfx, react, home-journal, age-profile, tier-filter to the names GameApp still uses. `peekLoopProgress` stays (used in GameApp too); `@/game/session` stays whole (all its names are used in GameApp).
+- Media slots (layer rule): choose.tsx may not import `@/assets/**` or `./passport/*` directly, so game-app.tsx keeps those imports (baseline-covered) and passes them as props — `heroMountainUrl`, a `cardMedia` object (3 films + 3 band resolvers), and `earnedBadgeRow` (`<EarnedBadgeRow />`). `GlobeChunkFallback` moved to home-globe.tsx (which already imports the fallback URL and carries the baseline entry); choose.tsx imports the component. Consequence: the game-app.tsx baseline entry for `globe-fallback.webp` went stale and was removed from `eslint/layer-baseline.json` (shrink-only direction; home-globe.tsx keeps its own entry). Registry `pool-error` row retargeted to play.tsx (iteration-1 miss: `<ErrorScreen>` renders in Play, game-app.tsx only imported it) and the now-unused ErrorScreen import dropped from game-app.tsx.
+- Gates: tsc PASS, lint:arch PASS, lint:nav PASS (max-warnings 0), check-game-app-size PASS (2,250/2,250), touched unit tests PASS (68 + 54 + 17 retargeted files, then full npm test 1,293 + 3,532 pass, 0 fail), build:pages PASS, entry 318,949 B vs 323,865 (4,916 B spare), provenance PASS (to confirm at commit).
+
 ## Still unmet
 
-- TD-06.16 (Home, Choose, heroes): NOT extracted in this iteration. Choose (2832-3690 on the pre-extraction base) plus HeroTrailOverlay, HeroTrekkerOverlay and AtlasBackdrop still live in game-app.tsx, and Choose still renders its own `<main className="atlas-home home-v5 ...">` at the shell. The extraction needs: move DIFFICULTY_HINTS, HomeGlobe, JournalPlayer, StorytellerHomeHost, prefetchTerritoryData/onFocus into choose.tsx; move heroStaticGateAtMount and TREKKER_CLIMB_PATH into the heroes file; replace Choose's `<main>` with a `<section>` and wrap the `<Choose>` call site in a `<main>` in the shell; retarget the source-assertion tests that read game-app.tsx for Choose strings.
 - G5 (draft PR) is not done — no PR opened in this iteration, by design (the orchestrator opens it).
 
 ## Ruled out / deferred
@@ -40,4 +47,4 @@ Extract Play, PlayLoaded, ChallengeCompleteShell (TD-06.15b) and Home, Choose, h
 
 ## Next step
 
-Orchestrator: open the draft PR for this commit, then narrow iteration 2 to TD-06.16 (Choose/Home/heroes).
+Orchestrator: open the draft PR for this branch (iterations 1 + 2), then Veeresh says "review B" → siloed review → merge only on Veeresh's word.

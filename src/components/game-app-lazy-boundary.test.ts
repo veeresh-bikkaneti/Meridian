@@ -51,6 +51,8 @@ const satelliteMapHostSource = readFileSync(
   join(here, "../map/satellite-map-host.tsx"),
   "utf8",
 );
+// TD-06.16: the home screen (Choose) lives in choose.tsx now.
+const chooseSource = readFileSync(join(here, "choose.tsx"), "utf8");
 // TD-06.14 (review finding 4 on #634): the SubjectPicker lazy
 // factory lives in src/subjects/shared/SubjectsHost.tsx now.
 const subjectsHostSource = readFileSync(
@@ -290,8 +292,8 @@ describe("Core F-4 — no component prefetch; territory-data prefetch kept", () 
   });
 
   it("the home case-card buttons fire the territory-data prefetch on hover, focus, and pointerdown", () => {
-    const loopButton = segment(gameAppSource, "onClick={onLoop}", "</button>");
-    const trailButton = segment(gameAppSource, "onClick={onColdTrail}", "</button>");
+    const loopButton = segment(chooseSource, "onClick={onLoop}", "</button>");
+    const trailButton = segment(chooseSource, "onClick={onColdTrail}", "</button>");
     for (const [name, button] of [
       ["GeoDetective", loopButton],
       ["Cold Trail", trailButton],
@@ -314,7 +316,7 @@ describe("#209 — every gameplay chunk load is timeout-bounded", () => {
   // places+territory await. Removing any wrap reopens the hang.
   it("the lazy factories for Loop, Trail, and the satellite map race withChunkTimeout", () => {
     assert.ok(
-      gameAppSource.includes('withChunkTimeout(import("./home-globe"), "the home globe")'),
+      chooseSource.includes('withChunkTimeout(import("./home-globe"), "the home globe")'),
       "the home globe's lazy load must be timeout-bounded too — a hang lands on its chunk fallback (#209)",
     );
     assert.ok(
@@ -358,13 +360,17 @@ describe("arena Phase 2 (PR #532): boundary-less hosts and notice timing", () =>
   });
 
   it("F4: JournalPlayer is wrapped in its fail-closed local boundary, so Home survives its chunk failure", () => {
-    assert.ok(gameAppSource.includes("<JournalBoundary>"), "the journal player must fail closed in place");
-    assert.ok(gameAppSource.includes("</JournalBoundary>"), "the journal boundary must close around the player");
+    assert.ok(chooseSource.includes("<JournalBoundary>"), "the journal player must fail closed in place");
+    assert.ok(chooseSource.includes("</JournalBoundary>"), "the journal boundary must close around the player");
   });
 
   it("F4: GlobeChunkFallback marks itself so the recovery handler stands down", () => {
+    // TD-06.16: the fallback lives in home-globe.tsx now (choose.tsx
+    // only imports the component — a components/root file may not
+    // import @/assets/** directly).
+    const homeGlobeSource = readFileSync(join(here, "home-globe.tsx"), "utf8");
     assert.ok(
-      gameAppSource.includes('data-chunk-fallback="globe"'),
+      homeGlobeSource.includes('data-chunk-fallback="globe"'),
       "the globe's graceful fallback must carry data-chunk-fallback",
     );
   });

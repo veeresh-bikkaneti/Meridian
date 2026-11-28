@@ -1,10 +1,6 @@
 import { distanceKm } from "@/game/geo";
-import { formatLength, unitForEdition } from "@/game/units";
-import { isHit, radiusKm } from "@/game/radius";
 import { placesFor, poolSizeFor, storyForBand } from "@/game/generated-places";
 import { CURRENT_BUILD_ID, isNewBuildDeployed, staleRefreshRecentlyUsed } from "@/game/build-staleness";
-import { preloadAdmin1Boundaries, preloadAdmin1ForCountry, admin1ChunkIso2ForRegion } from "@/game/reverse-geocode";
-import { preloadTerritory } from "@/game/territory";
 import {
   handlePageHide,
   stampCleanExitDirty,
@@ -14,7 +10,7 @@ import { ADMIN1_BY_COUNTRY, COUNTRIES, findRegion, STATES, greaterSideKm } from 
 import { rewriteStory } from "@/game/rewrite";
 import { shouldFireAiStory } from "@/game/story-ai";
 import { backfillDifficultyChoice, continueRun, dropPin, endRun, isResumable, resumeRun, startRun, type Edition, type Run, type RunPhase } from "@/game/run";
-import { isPickerDifficulty, type PickerDifficulty } from "@/game/tier-filter";
+import { type PickerDifficulty } from "@/game/tier-filter";
 import { dealingPoolFor } from "@/game/easy-curation";
 import {
   bankPlace,
@@ -49,28 +45,24 @@ import {
 } from "@/game/shell-helpers";
 export { isChallengeRun } from "@/game/shell-helpers";
 export type { Drop } from "@/game/shell-helpers";
-import { SCORING_VERSION, scorePlace, type Difficulty } from "@/game/scoring";
 import { createDealer, poolForNewRun, seenStoreFor, mintSeed, wasClearedCelebrated, markClearedCelebrated, clearClearedMark, memorySeenStore, isBandCleared } from "@/game/trail";
-import { resolveRunPool } from "@/game/pool";
-import { loadedForKey, placesLoadKey, type LoadedFor } from "@/game/places-load-key";
 import { MapErrorBoundary } from "./map-error-boundary";
 import { Play } from "./play";
-import { ChallengeCompleteShell } from "./challenge-complete-shell";
-import { PlayLoaded } from "./play-loaded";
+import { Choose } from "./choose";
+import { AtlasBackdrop, HeroTrailOverlay, HeroTrekkerOverlay } from "./hero-overlays";
+// Home media slots (TD-06.16): the composer owns the @/assets/** and
+// passport imports (layer-baseline covers game-app.tsx) and passes them
+// to <Choose> as props — choose.tsx may not import them directly.
+import heroMountainUrl from "@/assets/home-v5/hero-mountain.webp";
+import { GEODETECTIVE_FILM, GROWNUPS_FILM, JOURNAL_FILM, coldtrailMediaForBand, reviewMediaForBand, whyLearnMediaForBand } from "@/assets/home-v5/card-media";
+import { EarnedBadgeRow } from "./passport/EarnedBadgeRow";
 import { SatelliteMapHost } from "@/map/satellite-map-host";
 import { BootSplash } from "./boot-splash";
 import "./home-v5.css";
-import heroMountainUrl from "@/assets/home-v5/hero-mountain.webp";
-import globeFallbackUrl from "@/assets/home-v5/globe-fallback.webp";
 import {
   VERDICT_GRANDPA_POSTER_URL,
   VERDICT_GRANDPA_VIDEO_URL,
 } from "@/assets/verdict/grandpa-media";
-import { GEODETECTIVE_FILM, GROWNUPS_FILM, JOURNAL_FILM, coldtrailMediaForBand, reviewMediaForBand, whyLearnMediaForBand } from "@/assets/home-v5/card-media";
-import { CardFilm } from "./card-film";
-import { usePrefersReducedMotion } from "../hooks/use-prefers-reduced-motion";
-import { Compass, Flag, Globe2, MapPin, MoreHorizontal } from "lucide-react";
-import { SoundToggle } from "./SoundToggle";
 import {
   FIRST_VISIT_QUEUE_KEY,
   STORAGE_KEYS,
@@ -86,51 +78,29 @@ import {
   setStorageItem,
 } from "../platform/storage/browser-storage.ts";
 import type { StorageKeyDef } from "../platform/storage/storage.ts";
-import { resolveSession } from "../game/storage-slot.ts";
 import {
   initAudio,
-  isSoundEnabled,
   playCardTap,
-  playDifficultySelect,
-  playEditionEntrance,
-  playLose,
   playWin,
 } from "@/game/audio/sfx";
 import { playCelebrationSound, safePlay, soundAudible } from "@/game/audio/play-guards";
 import { applyPalettePreference } from "@/game/palette-preference";
-import { Suspense, lazy, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type KeyboardEvent as ReactKeyboardEvent, type MouseEvent as ReactMouseEvent, type ReactNode, type RefObject } from "react";
-import { Link } from "@tanstack/react-router";
+import { Suspense, useCallback, useEffect, useRef, useState, type MouseEvent as ReactMouseEvent } from "react";
 import { Button } from "@/components/ui/button";
 import { EndOfFlowHome } from "@/components/ui/end-of-flow-home";
-import { SiteHeader } from "@/components/ui/site-header";
-import { SiteFooter } from "@/components/ui/site-footer";
-import { ErrorScreen } from "@/components/ui/error-screen";
 import { RunStartNotice } from "@/components/run-start-notice";
-import { QuestionBubble, type BubbleViewState } from "./question-bubble";
-import { HintPanel } from "./hint-panel";
-import { HighContrastToggle } from "./high-contrast-toggle";
 import { directionalHint } from "./hint-logic";
 import { canUseHint } from "@/game/age-profile/run-config.ts";
-import { ResultCard } from "./result-card";
 import { RunSummaryCard } from "./run-summary";
-import { ShareButton } from "./share-button";
-import { ChallengeComplete } from "./challenge-complete";
 import { RegionList, StartingView } from "./region-list";
-import { ReviewComplete } from "./review-complete";
 import { ChallengeMenu } from "./challenge-menu";
 import { ChallengeWelcome } from "./challenge-welcome";
 import { ClearedCelebrationDialog, type ClearedInfo } from "./cleared-celebration";
-import { CometEmblem } from "./comet-emblem";
 import {
-  confidenceText,
-  createJournalRotation,
-  journalImageUrl,
   journalSetAt,
   journalSetByIndex,
   journalSetCount,
   journalSetIndexAt,
-  loadJournalNotes,
-  nextEntryCountdown,
 } from "./home-journal";
 import {
   isJournalPrefetchAllowedNow,
@@ -146,25 +116,13 @@ import {
 // figure so the banner never breaks home. Comet is retired as a host: a
 // silent ~30px emblem stays in the eyebrow row (aria-hidden, decorative,
 // never speaks).
-import {
-  StorytellerBannerBoundary,
-  StorytellerBannerSkeleton,
-} from "./storyteller-banner-shell";
-import { JournalBoundary } from "./journal-boundary";
 // Age-profile system: the parent-set group (7-10 / 10-18 / 18+). Game
 // screens use ONLY this facade — the store is never imported directly.
 // The settings screen is React.lazy: zero initial-bundle cost.
 import { FirstVisitQueue, type FirstVisitPrompt } from "./ui/first-visit-queue";
-import { EarnedBadgeRow } from "./passport/EarnedBadgeRow";
 import {
-  applyPendingAtBoundary,
-  audioMode,
   getAgeGroup,
   isLoopLocked,
-  pinToleranceKm,
-  resolveBand,
-  type AgeBandId,
-  type BandRunConfig,
 } from "@/game/age-profile";
 import { useAgeProfileHost } from "./age-profile/use-age-profile-host";
 import { SubjectsHost } from "@/subjects/shared/SubjectsHost";
@@ -174,47 +132,11 @@ import { useRunController } from "./use-run-controller";
 import { useShellRouter } from "./use-shell-router";
 import { useChallengeSurface } from "./use-challenge-surface";
 
-const StorytellerHomeHost = lazy(() => import("./storyteller-home"));
-// Journal movie player: React.lazy like the hosts above — the player and
-// its movie/transcript code stay out of the entry bundle and load with the
-// journal section, instead of taxing every first load (bundle budget).
-const JournalPlayer = lazy(() =>
-  import("./journal-player").then((m) => ({ default: m.JournalPlayer })),
-);
-// v5 hero globe: React.lazy like the storyteller host — the Three.js chunk
-// never lands in the initial bundle; HomeGlobe itself dynamically imports
-// three only when the hero nears the viewport.
-// A failed globe-chunk fetch must never take the home page down with it:
-// the lazy factory catches to a static-disc component (the same fallback
-// HomeGlobe renders for reduced-motion / no-WebGL).
-function GlobeChunkFallback() {
-  return (
-    <img
-      data-chunk-fallback="globe"
-      className="hv5-globe-fallback"
-      src={globeFallbackUrl}
-      alt=""
-      aria-hidden="true"
-      width={800}
-      height={800}
-    />
-  );
-}
-const HomeGlobe = lazy(() =>
-  withChunkTimeout(import("./home-globe"), "the home globe")
-    .then((m) => ({ default: m.HomeGlobe }))
-    .catch(() => ({ default: GlobeChunkFallback })),
-);
 import {
   celebrationSpec,
   hasCelebratedFirstWin,
   markFirstWinCelebrated,
 } from "./celebration-overlay";
-import {
-  buildCollisionCounts,
-  buildQuestionLabel,
-  hasNameCollision,
-} from "@/game/question-label";
 import {
   REVEAL_WATCHDOG_MS,
   shouldArmRevealWatchdog,
@@ -226,9 +148,6 @@ import {
   shouldReportChunkFailure,
 } from "@/lib/chunk-recovery";
 import { consumeRetryScreen } from "@/lib/persisted-screen";
-import { numberWord } from "@/lib/number-words";
-import { geodetectiveConfig } from "@/game/age-profile/difficulty";
-import { withChunkTimeout } from "@/lib/chunk-timeout";
 import { resolveGlobeTierSplit } from "@/lib/globe-tier-split";
 import {
   emitEvent,
@@ -257,15 +176,6 @@ import {
 } from "@/game/tutorial";
 import { TutorialInvite, TutorialOverlay } from "./tutorial-overlay";
 import {
-  emptyLearningStore,
-  growthLineFor,
-  growthSummary,
-  readLearningStore,
-  recordAnswer,
-  writeLearningStore,
-  type LearningStore,
-} from "@/game/learning";
-import {
   writeLoopOpen,
   peekLoopProgress,
 } from "@/game/loop/store";
@@ -282,73 +192,7 @@ import { GeoDetectiveHost } from "@/game/loop/GeoDetectiveHost";
 // Suspense + MapErrorBoundary at the render sites. The screens have no
 // default export, so the lazy factories adapt their named exports (the
 // HomeGlobe idiom above).
-/**
- * F2b intent prefetch for the edition + case cards: hovering, focusing,
- * or pressing a card starts the countries-50m load (scorePlace's region
- * bonus + the reveal pin-compare read it). Fire-and-forget —
- * preloadTerritory never rejects, and openRun awaits it before any run
- * commits, so a cold prefetch never changes the outcome, only the wait.
- *
- * Deliberately NO component-chunk prefetch for Loop/Trail (Core F-4):
- * the old helpers fired the screens' dynamic import() on this same
- * intent signal, but a FAILED import() is negatively cached by the
- * browser for the life of the document (see map-error-boundary.tsx) —
- * a transient hover-time failure therefore guaranteed the click itself
- * failed into the error card. The territory DATA prefetch is safe to
- * keep by contrast: its loader evicts a failed load and retries on the
- * next call, and a miss degrades fail-closed at the readers instead of
- * surfacing an error card.
- *
- * #211 item 1: FOCUS is the weakest of the three intent signals — a
- * keyboard or screen-reader user tabs PAST these cards on the way to
- * somewhere else, and focus alone starts a ~206 KB (brotli) download.
- * On a Save-Data connection that spend is exactly what the player
- * asked the browser to avoid, so the focus-triggered prefetch is
- * gated on the Save-Data signal (the home-globe precedent in
- * home-globe.tsx reads the same `navigator.connection.saveData`).
- * Pointer intent (hover / press) is deliberate and stays ungated;
- * and nothing about play changes — a tap still awaits the load in
- * openRun before the run commits.
- */
-function prefetchTerritoryData(): void {
-  void preloadTerritory();
-}
-
-/** True when the browser reports the player's Save-Data preference. */
-function saveDataEnabled(): boolean {
-  try {
-    return Boolean(
-      (navigator as Navigator & { connection?: { saveData?: boolean } })
-        .connection?.saveData,
-    );
-  } catch {
-    return false;
-  }
-}
-
-/** The focus-triggered variant: skipped entirely under Save-Data. */
-function prefetchTerritoryDataOnFocus(): void {
-  if (saveDataEnabled()) return;
-  prefetchTerritoryData();
-}
-import {
-  REVIEW_DECK_COPY,
-  REVIEW_DECK_REGION_ID,
-  REVIEW_DECK_REGION_NAME,
-  deckCounts,
-  deckStarter,
-  dueEntries,
-  emptyReviewDeck,
-  readReviewDeck,
-  recordReview,
-  removeDeckEntry,
-  upsertMiss,
-  writeReviewDeck,
-  type DeckEntry,
-  type DeckPlaceSnapshot,
-} from "@/game/review-deck";
 import { resetHistory, type ResetHistoryResult } from "@/game/reset-history";
-import { ResetHistoryControl } from "./reset-history-control";
 import { useDifficultyChoice } from "./use-difficulty-choice";
 import { useDeckStatus } from "./use-deck-status";
 import { useChunkReloadNotice } from "./use-chunk-reload-notice";
@@ -401,29 +245,6 @@ import {
   type ChallengeRoute,
   type ChallengeWinner,
 } from "@/game/challenge";
-import {
-  challengeRouteTuple,
-  readRouteAttempts,
-  recordRouteCompletion,
-} from "@/game/challenge-attempts";
-import {
-  classifyVerdict,
-  exactRouteTargetShareText,
-  hitMaskFromResults,
-  maxAttainableRemaining,
-  mintWinnerBlock,
-  passAlongReceipt,
-  routeTierCeiling,
-  trailingStreak,
-  verdictAriaSentence,
-  verdictAttemptsFacts,
-  verdictDuelLine,
-  verdictMarginSentence,
-  verdictSubLine,
-  VERDICT_HEADLINES,
-  VERDICT_ICONS,
-  type VerdictClass,
-} from "@/game/challenge-verdict";
 
 /**
  * Suspense fallback while a play-intent screen chunk (GeoDetective /
@@ -647,9 +468,6 @@ function clearMc3Run() {
   }
 }
 
-
-
-
 function clearDrop() {
   try {
     removeSessionStorageItem(STORAGE_KEYS.pausedDrop);
@@ -789,7 +607,6 @@ function globeTierSplitFor(edition: Edition, regionId: string): Promise<boolean>
     : Promise.resolve(false);
 }
 
-
 export function GameApp() {
   // SFX autoplay gate (audio spec §7): the AudioContext is created on the
   // first user gesture ONLY. `{ once: true }` listeners — load-bearing, not
@@ -859,7 +676,6 @@ export function GameApp() {
    * subjects launch (owner rule, Nov 13: release progressively). It
    * used to be flag-gated behind scalePlay / ?scale=1; the card no
    * longer reads that flag. */
-
 
   // GeoDetective mounts its own screen outside the endless-run state
   // machine; it persists under meridian.loop.v2 and never touches the
@@ -1243,16 +1059,12 @@ export function GameApp() {
     setSubjectsOpen,
   });
 
-
   /**
    * Adopt the stored session when it is still live (same day, not ended),
    * otherwise start a fresh one. A fresh session seeded from a run that
    * already has results backfills exactly once: those places were never
    * banked into any live session.
    */
-
-
-
 
   /** Idle kill: end the session and return the player to the home screen.
    * skipNotice (fix round M1) suppresses ONLY the inactivity notice set:
@@ -1525,7 +1337,6 @@ export function GameApp() {
     }
     return result;
   }, [replaceSession, showResetSuccess]);
-
 
   /**
    * Start a review session over the currently-due deck cards. The session is
@@ -2128,8 +1939,6 @@ export function GameApp() {
     />
   ) : null;
 
-
-
   if (menu?.kind === "challengeRegions") {
     return (
       <>
@@ -2281,6 +2090,7 @@ export function GameApp() {
         way; its layer renders through the queue's portal, outside
         this subtree, so going inert never traps the sheet itself. */}
     <div inert={ageSettingsOpen || ageAsk !== null || firstVisitModalOpen || undefined}>
+    <main>
     <Choose
       key={historyResetEpoch}
       onState={withCardTap("State", () => setMenu({ kind: "states" }))}
@@ -2343,6 +2153,16 @@ export function GameApp() {
       }
       lockedLoop={lockedLoop}
       footerLead={readAloudPrefSettings}
+      heroMountainUrl={heroMountainUrl}
+      cardMedia={{
+        geodetectiveFilm: GEODETECTIVE_FILM,
+        grownupsFilm: GROWNUPS_FILM,
+        journalFilm: JOURNAL_FILM,
+        coldtrailMediaForBand,
+        reviewMediaForBand,
+        whyLearnMediaForBand,
+      }}
+      earnedBadgeRow={<EarnedBadgeRow />}
       notice={
         <>
           {challengeBootNoticeEl}
@@ -2373,6 +2193,7 @@ export function GameApp() {
         ) : null
       }
     />
+    </main>
     </div>
     {ageSettingsOpen ? (
       <Suspense fallback={null}>
@@ -2413,1312 +2234,6 @@ function startNoticeTarget(
 }
 
 /**
- * Hero motion V1 — "the journey up": an SVG overlay that tracks the
- * painted mountain art exactly (same 800×533 viewBox, sliced like the
- * img's object-fit: cover / right-bottom) — a dotted trail whose dots
- * march along the painted switchbacks, a gold pulse that climbs the
- * trail to the summit, a waving flag on the peak, and soft cloud
- * forms drifting in front of the upper slopes (owner's V1b pick,
- * 2026-11-04: the painted summits already sit in mist bands, so the
- * clouds move — "the mountains are in the cloud"). V1b also answers
- * his "very subtle" note: bigger pulse core + halo + comet tail,
- * larger/brisker trail dots, wider flag wave. Zero new assets.
- *
- * Motion gates mirror CardFilm (card-film.tsx), the same pattern
- * the trekker overlay below uses: prefers-reduced-motion (the
- * shared hook, so an OS flip mid-session lands on the still too),
- * Save-Data, or deviceMemory ≤ 2 — any of them means the pulse and
- * clouds are never rendered, and the CSS kills the march + wave:
- * the JS `reduced` state is reflected onto this SVG as the
- * `hv5-trail-still` class, and home-v5.css sets `animation: none`
- * on the dots + flag under that class (mirroring its
- * prefers-reduced-motion rules, which only cover the OS gate),
- * leaving a static dotted trail. The loops otherwise run
- * continuously; no timer ever stops them.
- *
- * The tradeoff, stated plainly (the same one CardFilm records):
- * WCAG 2.2.2 asks for a stop on moving content that lasts more
- * than five seconds. These hero loops are continuous looping
- * decorative motion with no pause button — the hero has no pause
- * button by the owner's autoloop order (2026-11-03: "we dont need
- * playbutton it should be in autoloop"). The stops that remain
- * are the gates above: a player who prefers reduced motion, or
- * is saving data, or is on a low-memory device never gets the
- * motion at all, only the still. Do not add a button back
- * without a new owner order.
- */
-function HeroTrailOverlay() {
-  const reducedMotion = usePrefersReducedMotion();
-  const [staticGate] = useState<boolean>(heroStaticGateAtMount);
-  const reduced = reducedMotion || staticGate;
-  const trail =
-    "M322 528 C 305 500, 345 480, 350 460 C 355 438, 300 432, 292 408 C 284 384, 312 362, 340 350 C 375 336, 415 340, 408 318 C 402 298, 380 285, 402 268 C 428 248, 486 240, 512 226 C 532 215, 500 200, 492 182 C 486 166, 498 148, 503 134";
-  return (
-    <svg
-      className={reduced ? "hv5-trail hv5-trail-still" : "hv5-trail"}
-      viewBox="0 0 800 533"
-      preserveAspectRatio="xMaxYMax slice"
-      aria-hidden="true"
-    >
-      <defs>
-        <filter id="hv5-cloud-soft" x="-40%" y="-40%" width="180%" height="180%">
-          <feGaussianBlur stdDeviation="9" />
-        </filter>
-      </defs>
-      <path
-        d={trail}
-        fill="none"
-        stroke="#7c5a1e"
-        strokeWidth="5.5"
-        strokeLinecap="round"
-        strokeDasharray="0.1 11"
-        className="hv5-trail-dots"
-        opacity="0.95"
-      />
-      {!reduced ? (
-        <g className="hv5-clouds" aria-hidden="true">
-          <g className="hv5-cloud-drift-a" filter="url(#hv5-cloud-soft)" fill="#fdfbf3">
-            <ellipse cx="0" cy="118" rx="120" ry="17" opacity="0.32" />
-            <ellipse cx="85" cy="106" rx="80" ry="13" opacity="0.26" />
-            <ellipse cx="-80" cy="108" rx="70" ry="12" opacity="0.22" />
-            <ellipse cx="560" cy="238" rx="130" ry="15" opacity="0.2" />
-            <ellipse cx="645" cy="228" rx="75" ry="11" opacity="0.16" />
-            {/* The same bank again, +800: the drift translates one
-                full pattern width, so this copy lands exactly where
-                the first sat at loop reset — no empty bank, no pop. */}
-            <g transform="translate(800 0)">
-              <ellipse cx="0" cy="118" rx="120" ry="17" opacity="0.32" />
-              <ellipse cx="85" cy="106" rx="80" ry="13" opacity="0.26" />
-              <ellipse cx="-80" cy="108" rx="70" ry="12" opacity="0.22" />
-              <ellipse cx="560" cy="238" rx="130" ry="15" opacity="0.2" />
-              <ellipse cx="645" cy="228" rx="75" ry="11" opacity="0.16" />
-            </g>
-          </g>
-          <g className="hv5-cloud-drift-b" filter="url(#hv5-cloud-soft)" fill="#fdfbf3">
-            <ellipse cx="330" cy="168" rx="105" ry="14" opacity="0.24" />
-            <ellipse cx="405" cy="158" rx="65" ry="10" opacity="0.19" />
-            <ellipse cx="60" cy="268" rx="95" ry="12" opacity="0.15" />
-            <g transform="translate(800 0)">
-              <ellipse cx="330" cy="168" rx="105" ry="14" opacity="0.24" />
-              <ellipse cx="405" cy="158" rx="65" ry="10" opacity="0.19" />
-              <ellipse cx="60" cy="268" rx="95" ry="12" opacity="0.15" />
-            </g>
-          </g>
-        </g>
-      ) : null}
-      {!reduced ? (
-        <g className="hv5-trail-pulse">
-          <path
-            d={trail}
-            fill="none"
-            stroke="#e9cd7d"
-            strokeWidth="7"
-            strokeLinecap="round"
-            pathLength={100}
-            strokeDasharray="10 90"
-            opacity="0.55"
-            className="hv5-pulse-tail"
-          >
-            <animate
-              attributeName="stroke-dashoffset"
-              from="10"
-              to="-90"
-              dur="9s"
-              repeatCount="indefinite"
-            />
-            <animate
-              attributeName="opacity"
-              values="0;0.55;0.55;0"
-              keyTimes="0;0.05;0.93;1"
-              dur="9s"
-              repeatCount="indefinite"
-            />
-          </path>
-          <circle r="13" fill="#b8932f" opacity="0.28" className="hv5-pulse-halo">
-            <animateMotion dur="9s" repeatCount="indefinite" path={trail} />
-            <animate
-              attributeName="opacity"
-              values="0;0.28;0.28;0"
-              keyTimes="0;0.06;0.92;1"
-              dur="9s"
-              repeatCount="indefinite"
-            />
-          </circle>
-          <circle
-            r="8.5"
-            fill="#b8932f"
-            stroke="#fffdf6"
-            strokeWidth="2.5"
-            className="hv5-pulse-core"
-          >
-            <animateMotion dur="9s" repeatCount="indefinite" path={trail} />
-            <animate
-              attributeName="opacity"
-              values="0;1;1;0"
-              keyTimes="0;0.06;0.92;1"
-              dur="9s"
-              repeatCount="indefinite"
-            />
-          </circle>
-        </g>
-      ) : null}
-      <g transform="translate(20 6)">
-        <g className="hv5-trail-flag">
-          <line x1="503" y1="134" x2="503" y2="106" stroke="#4c3a14" strokeWidth="2.5" strokeLinecap="round" />
-          <path d="M503 107 L525 112 L503 118 Z" fill="#8a6d2f" />
-        </g>
-      </g>
-    </svg>
-  );
-}
-
-/**
- * Hero trekker — "Just a child, trekking" (prototype v2 from
- * branch design/hero-trekker-prototype, composed into production
- * on the owner's ship word, 2026-11-04 21:15: "Ship it — fold the
- * simple trekker into the home build"). Owner's simplification
- * ruling, 2026-11-04 20:29, on
- * the v1 "Catch It, Pin It" prototype: "Reduce the size of the
- * animated cartoon guy, this is supposed be a child walking the
- * trail and let just keep it to that. No more complexities, but
- * while trekking you need sticks and make it realistic trekking
- * please and wind blowing, climbing slowly."
- *
- * So v2 is ONLY a child trekking. The paper, the gust event, the
- * tumble, the catch, the hold-up map reveal, the tuck and the point
- * are all DELETED. What remains, on ONE 18s SMIL master clock:
- *   0–1.1s    he fades in inside the valley mist at the leg's foot
- *   1.1–15.3s slow climb up ONE painted switchback leg (leg 3 of the
- *             v1 spline), two trekking poles working the whole way
- *   15.3–16.7s he fades into the mist bank at the leg's top end
- *   16.7–18s  reset happens invisible inside the mist — no jump cut
- *
- * The figure is a CHILD, drawn ~44 units tall (v1's adult was ~69.5;
- * ≈63%), with child proportions: head ≈27% of height, shorter legs.
- * He keeps the identity the brainstorm chose: rust-orange headwrap,
- * teal backpack. He leans ~6° into the slope.
- *
- * The pole gait is the realism core. Legs, arms and poles are all
- * keyframed path shapes on one 1.8s step clock, opposite pairing
- * like a real climber: each pole PLANTS on the trail ahead at the
- * same beat as the OPPOSITE foot, stays grounded while the body
- * passes over it (the tip sweeps back relative to the body), pushes
- * off behind, then swings forward lifted for the next plant. Pole
- * tips pass through y=0 (the trail under his feet) at every stance
- * keyframe — a floating pole would fail the owner's ask.
- *
- * Wind is an always-on layer, not an event: the headwrap's two tail
- * strands stream and flutter on their own fast clocks, the jacket
- * hem flutters, and the valley mist drifts on the climb leg. The
- * prototype's own ambient peak/summit clouds are NOT ported: the
- * trail overlay's drifting clouds are the hero's one cloud layer.
- * The mist stays — it is this figure's fade staging (he fades in
- * and out inside it), sitting on the leg, not a second weather
- * layer.
- *
- * Gates mirror CardFilm (card-film.tsx): prefers-reduced-motion
- * (the shared hook), Save-Data, or deviceMemory ≤ 2 get the STILL
- * instead — the same SVG with its clock paused mid-climb
- * (t = 7.25s: both poles on the ground, front planted, rear at
- * push-off, headwrap streaming). The loop itself never stops on a
- * timer; like the V1 overlay it is ambient, aria-hidden art.
- * When the gate lifts mid-session (the shared hook is live, so an
- * OS flip lands here), the effect below un-pauses the clock and
- * the climb resumes from the still frame.
- *
- * The tradeoff, stated plainly (the same one CardFilm records):
- * WCAG 2.2.2 asks for a stop on moving content that lasts more
- * than five seconds. This loop is continuous looping decorative
- * motion with no pause button — the hero has no pause button by
- * the owner's autoloop order (2026-11-03: "we dont need
- * playbutton it should be in autoloop"). The stops that remain
- * are the gates above: a player who prefers reduced motion, or
- * is saving data, or is on a low-memory device never gets the
- * motion at all, only the still. Do not add a button back
- * without a new owner order.
- */
-const TREKKER_CLIMB_PATH =
-  "M294 406 C 288 386, 315 362, 342 351 C 368 340, 398 336, 402 321";
-
-/** Save-Data / low-memory gate, mirroring CardFilm's mount read.
- * Shared by both hero overlays (trail + trekker). */
-function heroStaticGateAtMount(): boolean {
-  if (typeof navigator === "undefined") return false;
-  const nav = navigator as Navigator & {
-    connection?: { saveData?: boolean };
-    deviceMemory?: number;
-  };
-  if (nav.connection?.saveData) return true;
-  const mem = nav.deviceMemory;
-  return typeof mem === "number" && mem > 0 && mem <= 2;
-}
-
-function HeroTrekkerOverlay() {
-  const reducedMotion = usePrefersReducedMotion();
-  const [staticGate] = useState<boolean>(heroStaticGateAtMount);
-  const still = reducedMotion || staticGate;
-  const svgRef = useRef<SVGSVGElement | null>(null);
-  useEffect(() => {
-    const svg = svgRef.current;
-    if (!svg) return;
-    if (!still) {
-      // The gate lifted mid-session: resume the master clock from
-      // wherever the still froze it — without this the clock stays
-      // paused at 7.25 forever even though `still` is false again.
-      svg.unpauseAnimations();
-      return;
-    }
-    // The still IS the mid-climb frame: freeze the master clock on it.
-    svg.pauseAnimations();
-    svg.setCurrentTime(7.25);
-  }, [still]);
-  return (
-    <svg
-      ref={svgRef}
-      className="hv5-trekker"
-      viewBox="0 0 800 533"
-      preserveAspectRatio="xMaxYMax slice"
-      aria-hidden="true"
-    >
-      <defs>
-        <radialGradient id="tk-mist" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="#fffdf6" stopOpacity="0.95" />
-          <stop offset="60%" stopColor="#fffdf6" stopOpacity="0.6" />
-          <stop offset="100%" stopColor="#fffdf6" stopOpacity="0" />
-        </radialGradient>
-      </defs>
-
-      {/* The trekker rig: one small group climbing the leg on the 18s
-          clock. Fades in inside the foot mist, fades out inside the
-          top mist; the position reset rides the invisible window. */}
-      <g opacity="0">
-        <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.06;0.85;0.93;1" dur="18s" repeatCount="indefinite" />
-        <animateMotion
-          path={TREKKER_CLIMB_PATH}
-          keyPoints="0;1;1;0"
-          keyTimes="0;0.92;0.97;1"
-          calcMode="linear"
-          dur="18s"
-          repeatCount="indefinite"
-        />
-        {/* ~6° forward lean into the slope, pivoting on the ground
-            point; inside it, the step bob (two bobs per step cycle). */}
-        <g transform="rotate(6)">
-          <g>
-            <animateTransform attributeName="transform" type="translate" values="0 0;0 -0.8;0 0;0 -0.8;0 0" keyTimes="0;0.25;0.5;0.75;1" dur="1.8s" repeatCount="indefinite" />
-
-            {/* Far leg (darker): stance in the second half-cycle,
-                swing in the first — opposite the near leg. */}
-            <path fill="none" stroke="#4a3826" strokeWidth="3.6" strokeLinecap="round">
-              <animate attributeName="d" calcMode="linear" keyTimes="0;0.25;0.5;0.75;1" dur="1.8s" repeatCount="indefinite"
-                values="M-1 -18 L0 -9 L-4.5 -1;M-1 -18 L4.5 -10 L0 -3.5;M-1 -18 L4 -9 L5 0;M-1 -18 L3 -9.5 L0.5 0;M-1 -18 L0 -9 L-4.5 -1" />
-            </path>
-            <ellipse rx="2.7" ry="1.5" fill="#3d2c12">
-              <animate attributeName="cx" calcMode="linear" keyTimes="0;0.25;0.5;0.75;1" dur="1.8s" repeatCount="indefinite" values="-4.5;0;5;0.5;-4.5" />
-              <animate attributeName="cy" calcMode="linear" keyTimes="0;0.25;0.5;0.75;1" dur="1.8s" repeatCount="indefinite" values="-1;-3.5;0;0;-1" />
-            </ellipse>
-
-            {/* Far arm + its pole: plants WITH the near foot (opposite
-                pairing) — tip grounded ahead at cycle start, sweeps
-                back, pushes off at mid-cycle, swings forward lifted. */}
-            <path fill="none" stroke="#8a3f1f" strokeWidth="3.4" strokeLinecap="round">
-              <animate attributeName="d" calcMode="linear" keyTimes="0;0.25;0.5;0.75;1" dur="1.8s" repeatCount="indefinite"
-                values="M-3 -29 L-7 -26 L-5 -21.5;M-3 -29 L-8 -25.5 L-6 -21;M-3 -29 L-6 -25 L-4 -20;M-3 -29 L-6.5 -25 L-4.5 -20.5;M-3 -29 L-7 -26 L-5 -21.5" />
-            </path>
-            <circle r="2" fill="#caa06a">
-              <animate attributeName="cx" calcMode="linear" keyTimes="0;0.25;0.5;0.75;1" dur="1.8s" repeatCount="indefinite" values="-5;-6;-4;-4.5;-5" />
-              <animate attributeName="cy" calcMode="linear" keyTimes="0;0.25;0.5;0.75;1" dur="1.8s" repeatCount="indefinite" values="-21.5;-21;-20;-20.5;-21.5" />
-            </circle>
-
-            {/* Teal backpack behind the torso; torso over it, with a
-                wind-fluttered hem at its back-bottom corner. */}
-            <rect x="-13.5" y="-31" width="8.5" height="14.5" rx="4" fill="#177e70" />
-            <rect x="-14.5" y="-32.5" width="7" height="4" rx="2" fill="#12685c" />
-            <rect x="-5" y="-32" width="12" height="14" rx="5" fill="#9c4a24" />
-            <path d="M-5 -19.5 C -8 -18.5, -9 -16.5, -8.2 -14.5" fill="none" stroke="#7e3a1c" strokeWidth="2.4" strokeLinecap="round">
-              <animateTransform attributeName="transform" type="rotate" values="-3 -5 -19.5;4 -5 -19.5;-3 -5 -19.5" keyTimes="0;0.5;1" dur="0.7s" repeatCount="indefinite" />
-            </path>
-
-            {/* Near leg: stance in the first half-cycle (foot planted,
-                body passes over it), swing in the second. */}
-            <path fill="none" stroke="#5a4632" strokeWidth="3.6" strokeLinecap="round">
-              <animate attributeName="d" calcMode="linear" keyTimes="0;0.25;0.5;0.75;1" dur="1.8s" repeatCount="indefinite"
-                values="M1 -18 L4 -9 L5 0;M1 -18 L3 -9.5 L0.5 0;M1 -18 L0 -9 L-4.5 -1;M1 -18 L4.5 -10 L0 -3.5;M1 -18 L4 -9 L5 0" />
-            </path>
-            <ellipse rx="2.7" ry="1.5" fill="#4c3a14">
-              <animate attributeName="cx" calcMode="linear" keyTimes="0;0.25;0.5;0.75;1" dur="1.8s" repeatCount="indefinite" values="5;0.5;-4.5;0;5" />
-              <animate attributeName="cy" calcMode="linear" keyTimes="0;0.25;0.5;0.75;1" dur="1.8s" repeatCount="indefinite" values="0;0;-1;-3.5;0" />
-            </ellipse>
-
-            {/* The far pole, drawn after the legs on purpose: its
-                shaft crosses behind the body from the back hand, and
-                at this size the plant only reads if the lower shaft
-                and tip stay visible against the trail. */}
-            <path fill="none" stroke="#4a5058" strokeWidth="1.9" strokeLinecap="round">
-              <animate attributeName="d" calcMode="linear" keyTimes="0;0.25;0.5;0.75;1" dur="1.8s" repeatCount="indefinite"
-                values="M-5 -21.5 L8 0;M-6 -21 L1 0;M-4 -20 L-6 -0.5;M-4.5 -20.5 L0 -4.5;M-5 -21.5 L8 0" />
-            </path>
-
-            {/* Near arm + its pole: plants WITH the far foot at
-                mid-cycle, pushes off as the cycle wraps. Elbow stays
-                bent; the hand rides the pole grip. */}
-            <path fill="none" stroke="#9c4a24" strokeWidth="3.4" strokeLinecap="round">
-              <animate attributeName="d" calcMode="linear" keyTimes="0;0.25;0.5;0.75;1" dur="1.8s" repeatCount="indefinite"
-                values="M4 -29 L7 -25.5 L5.5 -20;M4 -29 L8.5 -25.5 L6.5 -20.5;M4 -29 L10 -26 L8 -21.5;M4 -29 L9 -25.5 L7 -21;M4 -29 L7 -25.5 L5.5 -20" />
-            </path>
-            <path fill="none" stroke="#565d66" strokeWidth="1.9" strokeLinecap="round">
-              <animate attributeName="d" calcMode="linear" keyTimes="0;0.25;0.5;0.75;1" dur="1.8s" repeatCount="indefinite"
-                values="M5.5 -20 L-6 -0.5;M6.5 -20.5 L1 -4.5;M8 -21.5 L10 0;M7 -21 L2 0;M5.5 -20 L-6 -0.5" />
-            </path>
-            <circle r="2" fill="#caa06a">
-              <animate attributeName="cx" calcMode="linear" keyTimes="0;0.25;0.5;0.75;1" dur="1.8s" repeatCount="indefinite" values="5.5;6.5;8;7;5.5" />
-              <animate attributeName="cy" calcMode="linear" keyTimes="0;0.25;0.5;0.75;1" dur="1.8s" repeatCount="indefinite" values="-20;-20.5;-21.5;-21;-20" />
-            </circle>
-
-            {/* Headwrap tails: two strands streaming behind the head,
-                fluttering on their own fast clocks — the wind never
-                stops, the whole loop long. */}
-            <g transform="translate(-4.2 -38.5)">
-              <path d="M0 0 C -5 0.5, -9 3, -12.5 6.5" fill="none" stroke="#e07b2a" strokeWidth="3" strokeLinecap="round">
-                <animateTransform attributeName="transform" type="rotate" values="-4;6;-4" keyTimes="0;0.5;1" dur="0.6s" repeatCount="indefinite" />
-              </path>
-              <path d="M0 1.5 C -4 2, -7 4.5, -9.5 7" fill="none" stroke="#c25e2e" strokeWidth="2.2" strokeLinecap="round">
-                <animateTransform attributeName="transform" type="rotate" values="5;-5;5" keyTimes="0;0.5;1" dur="0.45s" repeatCount="indefinite" />
-              </path>
-            </g>
-            {/* Head + rust-orange headwrap (child: head ≈27% of height). */}
-            <circle cx="1.5" cy="-37.5" r="5.9" fill="#caa06a" />
-            <path d="M-4.4 -37.5 A 5.9 5.9 0 0 1 7.4 -37.5 Z" fill="#e07b2a" />
-            <rect x="-4.4" y="-39.8" width="11.8" height="2.4" rx="1.2" fill="#c25e2e" />
-          </g>
-        </g>
-      </g>
-
-      {/* Valley mist over the leg's foot: thick at the loop point
-          (his entrance), thin while he climbs. Front of the figure. */}
-      <g>
-        <animateTransform attributeName="transform" type="translate" values="-6 0;6 0;-6 0" keyTimes="0;0.5;1" dur="18s" repeatCount="indefinite" />
-        <ellipse cx="330" cy="452" rx="150" ry="62" fill="url(#tk-mist)">
-          <animate attributeName="opacity" values="0.95;0.5;0.22;0.22;0.75;1" keyTimes="0;0.09;0.22;0.9;0.97;1" dur="18s" repeatCount="indefinite" />
-        </ellipse>
-      </g>
-
-      {/* Mist bank at the leg's top end: thin while he climbs, thick
-          at the exit so the reset happens inside it — no jump cut. */}
-      <g>
-        <animateTransform attributeName="transform" type="translate" values="-5 0;5 0;-5 0" keyTimes="0;0.5;1" dur="18s" repeatCount="indefinite" />
-        <ellipse cx="415" cy="312" rx="95" ry="30" fill="url(#tk-mist)">
-          <animate attributeName="opacity" values="0.35;0.15;0.15;0.7;1;0.35" keyTimes="0;0.1;0.8;0.88;0.95;1" dur="18s" repeatCount="indefinite" />
-        </ellipse>
-      </g>
-    </svg>
-  );
-}
-
-/** Item 30: the Home card spells the band's guess cap as a word,
- *  read from the same difficulty table the loop's counter uses
- *  (geodetectiveConfig) — never a hardcoded count. The word itself
- *  comes from the shared numberWord helper (Round 2, bug 10
- *  residue), the same source the loop's intro uses. */
-const guessCapWord = numberWord;
-
-/** Kid-friendly hints for each learning path, shown under the picker. */
-const DIFFICULTY_HINTS: Record<PickerDifficulty, string> = {
-  easy: "Famous places — the spots every explorer starts with.",
-  medium: "A little of everything — grow your map one discovery at a time.",
-  hard: "Hidden corners of the world — for explorers ready to discover more.",
-};
-
-function Choose({
-  onState,
-  onCountry,
-  onGlobe,
-  onBegin,
-  onTakeTour,
-  onLoop,
-  onColdTrail,
-  onReview,
-  onResetHistory,
-  challengeEnabled,
-  whyLearnEnabled,
-  onWhyLearn,
-  onChallenge,
-  deck,
-  notice,
-  homeToast,
-  difficultyChoice,
-  onDifficultyChoice,
-  tutorialInvite,
-  tutorialInviteVisible,
-  suppressGreeting,
-  ageBand,
-  onGrownUpOpen,
-  headingRef,
-  mapModeControl,
-  lockedLoop,
-  footerLead,
-}: {
-  onState: (e: ReactMouseEvent) => void;
-  onCountry: (e: ReactMouseEvent) => void;
-  onGlobe: (e: ReactMouseEvent) => void;
-  /** Hero "Begin exploring": start a Globe round at the picked difficulty. */
-  onBegin: (e: ReactMouseEvent) => void;
-  /** Re-open the first-run tour (after "Not now" — finding P2-11). */
-  onTakeTour: () => void;
-  /** Open the GeoDetective edition (unlimited mysteries). */
-  onLoop: (e: ReactMouseEvent) => void;
-  /** Open the Cold Trail vertical slice (smuggler triangulation). */
-  onColdTrail: (e: ReactMouseEvent) => void;
-  /** Start a review session over the due deck cards. */
-  onReview: () => void;
-  /** Run the "Start over" history reset (GameApp owns the flow). */
-  onResetHistory: () => ResetHistoryResult;
-  /** Friend challenges on (flag): show the "Challenge a friend" entry. */
-  challengeEnabled?: boolean;
-  /** Open the challenge region picker. */
-  onChallenge?: (e: ReactMouseEvent) => void;
-  /** Show the "Why Do We Learn This?" card. Live for everyone since
-   * the subjects launch (owner rule, Nov 13: release progressively). */
-  whyLearnEnabled?: boolean;
-  /** Open the subject picker. Without it the card's button renders
-   * disabled ("Coming soon"). */
-  onWhyLearn?: (e: ReactMouseEvent) => void;
-  /** Deck entry status (flag-gated; see useDeckStatus). */
-  deck: { enabled: boolean; due: number; total: number };
-  notice?: ReactNode;
-  homeToast?: ReactNode;
-  difficultyChoice: PickerDifficulty;
-  onDifficultyChoice: (choice: PickerDifficulty) => void;
-  tutorialInvite?: ReactNode;
-  /** True while the first-run tutorial invite is on screen — Comet's
-      auto-greeting stays quiet until it's dismissed (no competing popups). */
-  tutorialInviteVisible?: boolean;
-  /** True while a blocking boot dialog is open or boot qualification hasn't
-      settled — the storyteller greeting waits (UX review 2026-10-12). */
-  suppressGreeting?: boolean;
-  /** Effective age band (parent-set; "10-18" when unset). */
-  ageBand: AgeBandId;
-  /** Open the grown-up gate (footer link + locked-tile link). */
-  onGrownUpOpen: () => void;
-  /** Ref for the home h1 — GameApp moves focus to it when a manual
-   * Scout Map switch lands the player home (Block A cure). */
-  headingRef?: RefObject<HTMLHeadingElement | null>;
-  /** The map-mode toggle + current-mode indicator, hosted in the
-   * hero's top row (Block C cure). GameApp owns the mode state and
-   * the handlers; Choose only places the control. */
-  mapModeControl?: ReactNode;
-  /** The locked GeoDetective tile, built by the age-profile host —
-   * Choose places it on the edition card but never imports it. */
-  lockedLoop: ReactNode;
-  /** SiteFooter's lead slot: the read-aloud preference setting,
-   * built by the age-profile host. */
-  footerLead: ReactNode;
-}) {
-  // GeoDetective progress for the edition card: the resume variant and the
-  // streak line. Read on mount (the menu remounts when the loop screen
-  // closes, so this is always fresh on return).
-  const [loopProgress] = useState(() => peekLoopProgress());
-  // Journal ("What the land remembers", docs/journal-spec.md §3/§5/§6):
-  // the displayed entry index is state, driven by the auto-switch rotation
-  // (createJournalRotation in ./home-journal): a boundary timeout + a 30s
-  // safety interval recompute it, as do visibilitychange and focusin. A new
-  // index is DEFERRED while focus is inside the Journal card or section
-  // (§6, focus-only per owner ruling Q3) — never swapped under a reader.
-  const [journalIndex, setJournalIndex] = useState(() => journalSetIndexAt(Date.now()));
-  const [journalNowMs, setJournalNowMs] = useState(() => Date.now());
-  // Journal movie player: the single open note id, or null. One movie
-  // plays at a time; opening another entry closes the first.
-  const [playingJournalId, setPlayingJournalId] = useState<string | null>(null);
-  const focusInsideJournalCard = useCallback(() => {
-    const active = document.activeElement;
-    const card = document.querySelector('[data-testid="journal-card"]');
-    return !!active && !!card && card.contains(active);
-  }, []);
-  const focusInsideJournalSection = useCallback(() => {
-    const active = document.activeElement;
-    const section = document.getElementById("home-journal");
-    return !!active && !!section && section.contains(active);
-  }, []);
-  // Item 42: rotation also pauses while the journal is simply ON SCREEN
-  // (a child reading with no keyboard focus anywhere). Probed by the
-  // IntersectionObserver effect below into this ref; the rotation reads
-  // it fresh at every recompute, like the focus probes.
-  const journalOnScreenRef = useRef(false);
-  const [journalRotation] = useState(() =>
-    createJournalRotation({
-      initialIndex: journalIndex,
-      blockers: () => ({
-        focusInsideCard: focusInsideJournalCard(),
-        focusInsideSection: focusInsideJournalSection(),
-        journalOnScreen: journalOnScreenRef.current,
-      }),
-      onApply: (index) => setJournalIndex(index),
-    }),
-  );
-  useEffect(() => {
-    journalRotation.start();
-    void loadJournalNotes().then((ok) => { if (ok) journalRotation.recompute(); }); // lazy dataset (TD-06.17): recompute once the notes land
-    const tick = window.setInterval(() => setJournalNowMs(Date.now()), 60_000);
-    const onVisibility = () => {
-      if (document.visibilityState === "visible") journalRotation.recompute();
-    };
-    document.addEventListener("visibilitychange", onVisibility);
-    const onFocusIn = () => {
-      // A deferred set lands once focus has left the card and the
-      // section — never while the reader is still in either place.
-      // Recompute from the clock rather than applying a stored pending
-      // index, so there is no stale-pending path: the pure deferral
-      // check inside the rotation decides for this focus position.
-      journalRotation.recompute();
-    };
-    document.addEventListener("focusin", onFocusIn);
-    return () => {
-      journalRotation.stop();
-      window.clearInterval(tick);
-      document.removeEventListener("visibilitychange", onVisibility);
-      document.removeEventListener("focusin", onFocusIn);
-    };
-  }, [journalRotation]);
-  // Item 42: watch the journal card + section; while either is on screen
-  // the rotation holds, and the moment both leave, a deferred entry can
-  // land — recompute right away instead of waiting for the 30s tick.
-  useEffect(() => {
-    const targets = [
-      document.querySelector('[data-testid="journal-card"]'),
-      document.getElementById("home-journal"),
-    ].filter((el): el is Element => el !== null);
-    if (targets.length === 0 || typeof IntersectionObserver === "undefined") return;
-    const visible = new Set<Element>();
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) visible.add(entry.target);
-          else visible.delete(entry.target);
-        }
-        const wasOnScreen = journalOnScreenRef.current;
-        journalOnScreenRef.current = visible.size > 0;
-        if (wasOnScreen && !journalOnScreenRef.current) journalRotation.recompute();
-      },
-      { threshold: 0.2 },
-    );
-    for (const target of targets) observer.observe(target);
-    return () => observer.disconnect();
-  }, [journalRotation]);
-  // journalIndex stays -1 until the lazy dataset lands — no entry until then.
-  const journalEntry = journalIndex >= 0 ? journalSetByIndex(journalIndex) ?? journalSetAt(Date.now()) : null;
-  const journalNotes = journalEntry?.notes ?? [];
-  // A movie stops when its window rotates away — the note is no longer shown.
-  useEffect(() => {
-    setPlayingJournalId(null);
-  }, [journalIndex]);
-  // Stagger order for the orchestrated entrance (110ms steps in CSS).
-  // motionmaxxing M7: the atlas entrance cascade's stagger gaps, retuned
-  // uneven (60–100ms) so the cards don't land on a metronome. Keyframes,
-  // 0.8s duration, and softLand curve frozen in styles.css; the +380ms
-  // stamp offset is frozen there too. --d is retired — this emits the
-  // named --rise-delay custom property the CSS reads.
-  const RISE_DELAY: Record<number, string> = {
-    0: "0ms",
-    2: "60ms",
-    3: "135ms",
-    4: "205ms",
-    5: "290ms",
-    6: "375ms",
-    7: "450ms",
-  };
-  const rise = (d: number) => ({ "--rise-delay": RISE_DELAY[d] ?? "0ms" }) as CSSProperties;
-  // v5 nav jumps: smooth-scroll to a home section (instant under
-  // reduced-motion) AND move focus to it — a scroll-only jump strands
-  // keyboard / screen-reader users at the top of the page (WCAG 2.4.3).
-  // Targets carry tabIndex={-1}; preventScroll keeps our scroll as the
-  // only movement. Missing targets are a no-op by construction.
-  const scrollTo = (id: string) => {
-    const el = document.getElementById(id);
-    if (!el) return;
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    el.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
-    el.focus({ preventScroll: true });
-    const next = `#${id}`;
-    if (window.location.hash !== next) history.replaceState(null, "", next);
-  };
-  const scrollTop = () => {
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
-  };
-  // The About card. It stands alone in the pages band at full
-  // width: the Capitals & Flags doorway that rode beside it was
-  // removed from Home entirely (owner's word, Veeresh, 2026-11-05:
-  // "card is not clickable. if its not clickable then there is no
-  // point of putting it on home page."). The pack's only entry is
-  // the deck shelf inside each mode.
-  const aboutSection = (
-    <section id="home-about" tabIndex={-1} className="hv5-card hv5-page" aria-labelledby="about-title">
-      <span className="hv5-label">About</span>
-      <h2 id="about-title">How a round works</h2>
-      <p>
-        A place name, then one pin on an unlabeled map. Right or wrong, the round opens a short
-        story about that place. Pick the globe, a country, or a state. Your score keeps adding
-        up until you end the game, or after 2 minutes with nothing tapped.
-      </p>
-      <p>
-        No account. The run stays in this browser. A coffee for Grandpa is optional and never
-        locks a game.
-      </p>
-    </section>
-  );
-  return (
-    <>
-    <main className="atlas-home home-v5 relative mx-auto flex min-h-dvh w-full max-w-(--page-wide) flex-col px-5 pt-8 md:px-9">
-      {/* Skip link (WCAG 2.4.1): the first focusable element on the home
-          page, visually hidden until focused; jumps to the journal
-          section (scrollTo moves focus there as well as scrolling). */}
-      <a
-        href="#home-journal"
-        className="hv5-skip-link"
-        onClick={(event) => {
-          event.preventDefault();
-          scrollTo("home-journal");
-        }}
-      >
-        Skip to journal
-      </a>
-      <AtlasBackdrop />
-      <svg className="hv5-sprig" viewBox="0 0 120 150" fill="none" stroke="#8FA382" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
-        <path d="M14 148 C20 100 34 60 62 22" strokeOpacity=".7" />
-        <g fill="#A9BCA0" stroke="none" opacity=".8">
-          <ellipse cx="30" cy="118" rx="13" ry="6" transform="rotate(-48 30 118)" /><ellipse cx="42" cy="92" rx="13" ry="6" transform="rotate(-52 42 92)" />
-          <ellipse cx="54" cy="66" rx="12" ry="5.5" transform="rotate(-55 54 66)" /><ellipse cx="66" cy="44" rx="11" ry="5" transform="rotate(-58 66 44)" />
-          <ellipse cx="24" cy="104" rx="11" ry="5" transform="rotate(-16 24 104)" /><ellipse cx="36" cy="78" rx="11" ry="5" transform="rotate(-20 36 78)" />
-          <ellipse cx="48" cy="54" rx="10" ry="4.6" transform="rotate(-24 48 54)" />
-        </g>
-      </svg>
-      {notice}
-      {tutorialInvite}
-      {/* The shared shell header (fix/ui-shared-shell, Round 2
-          adoption): SiteHeader owns the home control (the brand
-          lockup, "Meridian home", top-left) and the row; the five
-          section buttons carry data-nav-section for the header's
-          derived current-section highlight (N1); home's nav mixes scroll buttons with
-          two router Links, so it rides the `nav` node slot with the
-          shared link class. ABOUT and JOURNAL jump to the sections at
-          the bottom of the home page. Home's sound toggle keeps its
-          owner-ordered place in the hero (2026-10-07/08), so the mute
-          slot is an explicit null here; the Join pill is the header's
-          one exit control, in the endGame slot. */}
-      <SiteHeader
-        onHome={scrollTop}
-        className="home-rise"
-        style={rise(0)}
-        exitInMenuOnSmallScreens
-        nav={
-          <>
-            <button type="button" className="site-header-nav-link" data-nav-section="home-editions" onClick={() => scrollTo("home-editions")}>
-              EXPEDITIONS
-              <svg width="9" height="6" viewBox="0 0 9 6" aria-hidden="true"><path d="M1 1l3.5 3.5L8 1" stroke="currentColor" fill="none" strokeWidth="1.5" /></svg>
-            </button>
-            <button type="button" className="site-header-nav-link" data-nav-section="home-cases" onClick={() => scrollTo("home-cases")}>
-              CASES
-              <svg width="9" height="6" viewBox="0 0 9 6" aria-hidden="true"><path d="M1 1l3.5 3.5L8 1" stroke="currentColor" fill="none" strokeWidth="1.5" /></svg>
-            </button>
-            <button type="button" className="site-header-nav-link" data-nav-section="home-about" onClick={() => scrollTo("home-about")}>ABOUT</button>
-            <Link to="/contact" className="site-header-nav-link" data-testid="nav-contact-link">CONTACT</Link>
-            <Link to="/board" className="site-header-nav-link" data-testid="nav-board-link">WHAT&rsquo;S COMING</Link>
-            <button type="button" className="site-header-nav-link" data-nav-section="home-journal" onClick={() => scrollTo("home-journal")}>JOURNAL</button>
-            <button type="button" className="site-header-nav-link" data-nav-section="home-grownups" onClick={() => scrollTo("home-grownups")}>GET INVOLVED</button>
-          </>
-        }
-        status={null}
-        mute={null}
-        endGame={
-          <button
-            type="button"
-            className="hv5-btn hv5-btn-brown"
-            onClick={() => scrollTo("home-cases")}
-          >
-            JOIN THE JOURNEY
-            <svg width="15" height="11" viewBox="0 0 15 11" aria-hidden="true"><path d="M1 5.5h12M9 1l4.5 4.5L9 10" stroke="currentColor" fill="none" strokeWidth="1.7" /></svg>
-          </button>
-        }
-      />
-      {homeToast}
-
-      <div className="hv5-bento">
-        <section className="hv5-hero home-rise" style={rise(2)} aria-label="Welcome to Meridian">
-          {/* Eyebrow cluster preserved from the atlas home: eyebrow →
-              Comet emblem → sound toggle (owner order — Liz's eyebrow
-              call, 2026-10-07/08), with the v5 welcome pill leading
-              the row. */}
-          <div className="hv5-hero-top">
-            <span className="hv5-pill">
-              <span className="hv5-dot">
-                <svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 L14 10 L22 12 L14 14 L12 22 L10 14 L2 12 L10 10 Z" fill="#8A6D2F" /></svg>
-              </span>
-              WELCOME TO MERIDIAN
-            </span>
-            <p className="hv5-label" style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
-              <Compass className="size-4" aria-hidden="true" />
-              Field atlas · {trailDate()} UTC
-            </p>
-            <CometEmblem />
-            <SoundToggle testId="sound-toggle" className="atlas-sound-toggle" />
-            <HighContrastToggle testId="high-contrast-toggle" className="atlas-sound-toggle" />
-            {mapModeControl}
-            {/* Storyteller banner host (owner directive 2026-10-09): the
-                figure sits in the hero beside the branding — always visible,
-                mobile and desktop. The greeting rides in a popover below. */}
-            <span className="hv5-storyteller">
-              <StorytellerBannerBoundary>
-                <Suspense fallback={<StorytellerBannerSkeleton />}>
-                  <StorytellerHomeHost
-                    tutorialInviteVisible={tutorialInviteVisible}
-                    suppressGreeting={suppressGreeting}
-                  />
-                </Suspense>
-              </StorytellerBannerBoundary>
-            </span>
-          </div>
-          {/* The home h1 is a focus landing (tabIndex={-1}): a manual
-              Scout Map switch destroys the switch that had focus when
-              it sends the player home, so GameApp moves focus here via
-              headingRef (Block A cure). It was originally the landing
-              for the boot offer dialog's close; that dialog is gone
-              (docs/scout-offer-policy.md). */}
-          <h1 ref={headingRef} id="home-heading" className="hv5-h1" data-testid="home-heading" tabIndex={-1}>
-            <span className="sr-only">Meridian — </span>
-            Explore. Understand.
-            <br />
-            Make sense of what matters.
-          </h1>
-          <p className="hv5-sub">
-            Pick the globe, a country, or a state. A place name, then one pin. Your score keeps
-            adding up across editions until you choose to end the game, or if you&rsquo;re idle for
-            2 minutes.
-          </p>
-          <div className="home-rise" style={rise(4)} data-testid="tour-stop-difficulty">
-            <p id="difficulty-label" className="hv5-diff-cap">
-              How do you want to grow your map today?
-            </p>
-            <div role="group" aria-labelledby="difficulty-label" className="hv5-diff">
-              {(
-                [
-                  { value: "easy", label: "Easy" },
-                  { value: "medium", label: "Medium" },
-                  { value: "hard", label: "Hard" },
-                ] as const
-              ).map((option) => {
-                const selected = difficultyChoice === option.value;
-                return (
-                  <button
-                    key={option.value}
-                    type="button"
-                    aria-pressed={selected}
-                    onClick={() => {
-                      // SFX audio spec §2.6: the select chirps only on an
-                      // actual change — re-tapping the active band stays silent.
-                      if (option.value !== difficultyChoice) playDifficultySelect();
-                      onDifficultyChoice(option.value);
-                    }}
-                  >
-                    {option.label}
-                  </button>
-                );
-              })}
-            </div>
-            <p className="hv5-hint" aria-live="polite">
-              {DIFFICULTY_HINTS[difficultyChoice]}
-            </p>
-          </div>
-          <div className="hv5-cta-row">
-            <button
-              type="button"
-              className="hv5-btn hv5-btn-brown"
-              style={{ padding: "16px 28px" }}
-              data-testid="begin-exploring"
-              // Primary CTA STARTS PLAYING (review finding P1-5, 2026-10-21):
-              // it used to only scroll to the Cases section, so a child who
-              // pressed the biggest button on the page did not get a game.
-              // It now opens a Globe expedition at the difficulty picked just
-              // above it (Easy = famous places, see easy-curation.ts) — the
-              // same path as the Globe edition card, sound and all. The nav's
-              // EXPEDITIONS / CASES buttons still scroll for browsing.
-              onClick={onBegin}
-            >
-              BEGIN EXPLORING
-              <svg width="15" height="11" viewBox="0 0 15 11" aria-hidden="true"><path d="M1 5.5h12M9 1l4.5 4.5L9 10" stroke="currentColor" fill="none" strokeWidth="1.7" /></svg>
-            </button>
-          </div>
-          {/* The composed hero (owner ship word, 2026-11-04): the
-              painted mountain, the V1b trail overlay (marching dots,
-              climbing pulse, summit flag, drifting clouds) and the
-              trekking-kid overlay stacked on the same sliced box, so
-              both overlays track the art exactly. */}
-          <div className="hv5-mtn-wrap" aria-hidden="true">
-            <img className="hv5-mtn-img" src={heroMountainUrl} alt="" />
-            <HeroTrailOverlay />
-            <HeroTrekkerOverlay />
-          </div>
-        </section>
-        <div className="hv5-rail">
-        <div className="hv5-globe-zone">
-          <Suspense fallback={null}>
-            <HomeGlobe />
-          </Suspense>
-        </div>
-        {/* Choose Your Expedition — the design's dark anchor card hosts the
-            three real edition actions (State / Country / Globe). */}
-        <div
-          className="hv5-card hv5-mapcard home-rise"
-          style={rise(6)}
-          data-testid="tour-stop-editions"
-          id="home-editions"
-          tabIndex={-1}
-        >
-          <div className="hv5-head">
-            <span className="hv5-badge">
-              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><circle cx="12" cy="12" r="8.5" /><path d="M15.5 8.5 L13.2 13.2 L8.5 15.5 L10.8 10.8 Z" fill="currentColor" stroke="none" /></svg>
-            </span>
-            <span className="hv5-label">Choose your expedition</span>
-          </div>
-          <h2>Expeditions Map</h2>
-          <p>Choose your expedition — a single US state, a whole country, or the entire globe.</p>
-          <div className="hv5-editions">
-            <button type="button" className="hv5-edition" onClick={onState} onPointerEnter={prefetchTerritoryData} onPointerDown={prefetchTerritoryData} onFocus={prefetchTerritoryDataOnFocus}>
-              <span className="hv5-idx">N° 01</span>
-              <MapPin className="size-5" aria-hidden="true" />
-              <span className="hv5-etitle">State</span>
-              <span className="hv5-eaction">Choose a state</span>
-            </button>
-            <button type="button" className="hv5-edition" onClick={onCountry} onPointerEnter={prefetchTerritoryData} onPointerDown={prefetchTerritoryData} onFocus={prefetchTerritoryDataOnFocus}>
-              <span className="hv5-idx">N° 02</span>
-              <Flag className="size-5" aria-hidden="true" />
-              <span className="hv5-etitle">Country</span>
-              <span className="hv5-eaction">Choose a country</span>
-            </button>
-            <button type="button" className="hv5-edition" onClick={onGlobe} onPointerEnter={prefetchTerritoryData} onPointerDown={prefetchTerritoryData} onFocus={prefetchTerritoryDataOnFocus}>
-              <span className="hv5-idx">N° 03</span>
-              <Globe2 className="size-5" aria-hidden="true" />
-              <span className="hv5-etitle">Globe</span>
-              <span className="hv5-eaction">Play the globe</span>
-            </button>
-          </div>
-          {challengeEnabled ? (
-            <Button
-              variant="secondary"
-              className="mt-3 w-full"
-              onClick={onChallenge}
-              data-testid="challenge-a-friend"
-            >
-              Challenge a friend
-            </Button>
-          ) : null}
-        </div>
-        {/* The Capitals & Flags doorway no longer renders anywhere
-            on Home: it began under this map card (issue #344), moved
-            beside the About card below (2026-11-04), became a
-            signpost (2026-11-05), and was then removed entirely on
-            the owner's word (Veeresh, 2026-11-05: "card is not
-            clickable. if its not clickable then there is no point
-            of putting it on home page."). */}
-        </div>
-
-      <div className="hv5-grid2" id="home-cases" tabIndex={-1}>
-        {/* GeoDetective leads: the flagship case file, unlimited mysteries.
-            Age-profile: for bands where the loop is locked (no current group locks it), the SAME
-            footprint renders the locked variant in place. */}
-        {isLoopLocked(ageBand, "geodetective") ? (
-          lockedLoop
-        ) : (
-        <article
-          className="hv5-card hv5-split hv5-stack hv5-case home-rise"
-          style={rise(5)}
-          data-testid="tour-stop-geodetective"
-          aria-labelledby="geodetective-title"
-        >
-          {/* Card-redesign Variant A: picture first in DOM order (not CSS
-              order), so scanning, screen-reader, and tab order all start
-              with the image. The card action is the stretched CTA below
-              (Form S): the card itself cannot be the <button> because
-              EarnedBadgeRow renders real badge <button>s inside it. */}
-          {/* Card film (feat/home-card-films): the slot now plays the
-              GeoDetective reshoot film once, governed by CardFilm
-              (reduced-motion / Save-Data / low-memory / error all land
-              on the owner's still image). Media: card-media.ts. */}
-          <CardFilm className="hv5-pic" media={GEODETECTIVE_FILM} testId="card-film-geodetective" band={ageBand} />
-          <div className="hv5-txt">
-            <div className="hv5-head">
-              <span className="hv5-badge">
-                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" aria-hidden="true"><path d="M3 19 L9.5 7.5 L13 13 L15.5 9.5 L21 19 Z" /><circle cx="17.5" cy="5" r="1.6" fill="currentColor" stroke="none" /></svg>
-              </span>
-              <span className="hv5-label">Case file · Unlimited</span>
-            </div>
-            <h2 id="geodetective-title">
-              GeoDetective<span className="hv5-chip">Unlocked</span>
-            </h2>
-            <p>
-              {guessCapWord(geodetectiveConfig(ageBand)?.guessCap ?? 5)} guesses, one mystery place. Each guess unlocks a clue — solve as many cases as
-              you can.
-            </p>
-            {loopProgress.streak > 0 ? (
-              <p className="hv5-streak">🔥 Streak: {loopProgress.streak}</p>
-            ) : null}
-            {/* Owner 2026-10-09: earned badges show on the home page card —
-                no separate Passport page. Clean Round is earned in this loop. */}
-            <EarnedBadgeRow />
-            <button
-              type="button"
-              className="hv5-go hv5-stretch"
-              onClick={onLoop}
-              onPointerEnter={prefetchTerritoryData}
-              onPointerDown={prefetchTerritoryData}
-              onFocus={prefetchTerritoryDataOnFocus}
-              aria-label={loopProgress.inProgress ? "GeoDetective: Resume your case" : "GeoDetective: Solve a mystery"}
-            >
-              {loopProgress.inProgress ? (
-                <><span aria-hidden="true">▶️</span>{" "}Resume your case</>
-              ) : (
-                <><span aria-hidden="true">🔎</span>{" "}Solve a mystery</>
-              )}
-            </button>
-          </div>
-        </article>
-        )}
-        {/* "Why Do We Learn This?" (subjects launch): the door to every
-            subject case (math, science, history). Live for everyone;
-            the button opens the subject picker. Same card markup as
-            GeoDetective, no new styles. Film per age band through
-            whyLearnMediaForBand. Media: card-media.ts. */}
-        {whyLearnEnabled ? (
-        <article
-          className="hv5-card hv5-split hv5-stack hv5-case home-rise"
-          style={rise(5)}
-          data-testid="home-card-why-learn"
-          aria-labelledby="why-learn-title"
-        >
-          <CardFilm className="hv5-pic" media={whyLearnMediaForBand(ageBand)} testId="card-film-why-learn" band={ageBand} />
-          <div className="hv5-txt">
-            <div className="hv5-head">
-              <span className="hv5-badge">
-                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6" /><path d="M15 15 L20.5 20.5" /></svg>
-              </span>
-              <span className="hv5-label">Case file · Why it matters</span>
-            </div>
-            <h2 id="why-learn-title">
-              Why Do We Learn{" "}
-              {/* Keeps "New" with the last word so the tag never sits alone on a phone line. */}
-              <span className="whitespace-nowrap">
-                This?<span className="hv5-chip">New</span>
-              </span>
-            </h2>
-            <p>
-              See where math, science and history show up in everyday life, then use them to crack
-              the case.
-            </p>
-            <button
-              type="button"
-              className="hv5-go hv5-stretch"
-              onClick={onWhyLearn}
-              disabled={!onWhyLearn}
-              aria-disabled={!onWhyLearn ? "true" : undefined}
-              aria-label={
-                onWhyLearn
-                  ? "Why Do We Learn This?: Start exploring"
-                  : "Why Do We Learn This?: Coming soon"
-              }
-            >
-              <span aria-hidden="true">🔍</span>{" "}
-              {onWhyLearn ? "Start exploring" : "Coming soon"}
-            </button>
-          </div>
-        </article>
-        ) : null}
-        {/* Cold Trail vertical slice: 3 sightings, 3 rings, one interception. */}
-        <article
-          className="hv5-card hv5-split hv5-stack hv5-dispatch home-rise"
-          style={rise(5)}
-          aria-labelledby="coldtrail-title"
-        >
-          {/* Variant A, same as GeoDetective: image first in DOM order;
-              whole-card action via the stretched CTA (Form S, shared form
-              so both game cards behave identically). */}
-          {/* Card film, same shared component as GeoDetective: Jolly
-              walks the footprint trail (character motion, not a camera
-              move — the owner's 2026-11-02 correction). Media:
-              card-media.ts. */}
-          <CardFilm className="hv5-pic" media={coldtrailMediaForBand(ageBand)} testId="card-film-coldtrail" band={ageBand} />
-          <div className="hv5-txt">
-            <div className="hv5-head">
-              <span className="hv5-badge">
-                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><circle cx="12" cy="12" r="8.5" /><path d="M15.5 8.5 L13.2 13.2 L8.5 15.5 L10.8 10.8 Z" fill="currentColor" stroke="none" /></svg>
-              </span>
-              <span className="hv5-label">Case file · Triangulation</span>
-            </div>
-            <h2 id="coldtrail-title">
-              Cold Trail<span className="hv5-chip">New</span>
-            </h2>
-            <p>
-              Jolly was spotted in the snow. Three sightings, three rings — tap where
-              they cross to reach Jolly before the trail freezes.
-            </p>
-            <button
-              type="button"
-              className="hv5-go hv5-stretch"
-              onClick={onColdTrail}
-              onPointerEnter={prefetchTerritoryData}
-              onPointerDown={prefetchTerritoryData}
-              onFocus={prefetchTerritoryDataOnFocus}
-              aria-label="Cold Trail: Start the trail"
-            >
-              <span aria-hidden="true">❄️</span>{" "}Start the trail
-            </button>
-          </div>
-        </article>
-      </div>
-      </div>
-
-      <div className="hv5-grid3">
-        {deck.enabled ? (
-          <section
-            aria-labelledby="review-title"
-            className={`hv5-card hv5-spot home-rise${deck.due > 0 ? " hv5-review-due" : " hv5-review-empty"}`}
-            style={rise(7)}
-            data-testid="tour-stop-review"
-            id="home-review"
-          >
-            <CardFilm className="hv5-art" media={reviewMediaForBand(ageBand)} testId="card-film-review" band={ageBand} />
-            <div className="hv5-txt">
-              <div className="hv5-head">
-                <span className="hv5-badge">
-                  <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" aria-hidden="true"><path d="M4 5.5 C7 4 10 4 12 6 C14 4 17 4 20 5.5 V19 C17 17.6 14 17.6 12 19.4 C10 17.6 7 17.6 4 19 Z" /><path d="M12 6 V19.4" /></svg>
-                </span>
-                <span className="hv5-label">Cases</span>
-              </div>
-              <h2 id="review-title">{REVIEW_DECK_COPY.pickerTitle}</h2>
-              {deck.due > 0 ? (
-                <>
-                  <p>{REVIEW_DECK_COPY.pickerDueLine}</p>
-                  <p style={{ fontWeight: 700, color: "var(--hv5-ink)" }} data-testid="deck-due-count">
-                    {deck.due} {deck.due === 1 ? "card" : "cards"} due
-                  </p>
-                  {/* Action stack (action-model manifest 2026-10-29;
-                      redundancy addendum 2026-10-29): the card is NOT
-                      a whole-card button any more. Two explicit
-                      controls in DOM = visual = tab order: the filled
-                      primary, then Start over in the danger footer.
-                      The card's former challenge pill was REMOVED by
-                      the owner's redundancy ruling — it merely
-                      re-opened the generic picker, whose own full
-                      "Challenge a friend" button (above, in the
-                      Expeditions section) is the canonical entry;
-                      the contextual entries (summary route, mid-run,
-                      reveal, review-complete, pass-along) stay. */}
-                  <div className="hv5-review-stack">
-                    <div className="hv5-review-actions">
-                      <button type="button" className="hv5-btn hv5-btn-brown" onClick={onReview} aria-label="Review my misses: Start review">
-                        {REVIEW_DECK_COPY.startReview}
-                      </button>
-                    </div>
-                    {/* "Start over" reset entry (manifest 2026-10-28
-                        D10): renders whenever the deck holds any card
-                        (due OR caught-up). Last on the card, alone in
-                        a hairline-separated danger footer — the
-                        destructive action shares neither a row nor a
-                        look with play/share. */}
-                    <div className="hv5-review-danger">
-                      <ResetHistoryControl onReset={onResetHistory} />
-                    </div>
-                  </div>
-                </>
-              ) : deck.total > 0 ? (
-                <>
-                  <p>{REVIEW_DECK_COPY.pickerCaughtUp}</p>
-                  {/* Caught-up carries no play action; the stack is
-                      the danger footer alone (Start over, D10). The
-                      challenge pill that used to sit above it was
-                      removed with the due state's by the owner's
-                      redundancy ruling (addendum 2026-10-29). */}
-                  <div className="hv5-review-stack">
-                    <div className="hv5-review-danger">
-                      <ResetHistoryControl onReset={onResetHistory} />
-                    </div>
-                  </div>
-                </>
-              ) : (
-                <p>{REVIEW_DECK_COPY.pickerEmpty}</p>
-              )}
-            </div>
-          </section>
-        ) : null}
-        {/* Journal — the card names the currently-rotating entry and
-            jumps to the field note below; the entry rotates every
-            30 minutes, deferred while focus is inside this card or the journal
-            section (spec §6). */}
-        <article className="hv5-card hv5-spot hv5-journal home-rise" style={rise(7)} data-testid="journal-card">
-          <CardFilm className="hv5-art" media={JOURNAL_FILM} testId="card-film-journal" band={ageBand} />
-          <div className="hv5-txt">
-            <div className="hv5-head">
-              <span className="hv5-badge">
-                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true"><path d="M5 19 C5 10 11 4.5 20 4.5 C20 14 14.5 19.5 6.5 19.5" /><path d="M5 19 C8 14 11.5 10.5 16 8" /></svg>
-              </span>
-              <span className="hv5-label">Latest Journal Entry</span>
-            </div>
-            {/* No second title here (item 42): the journal section below
-                carries the one "What the land remembers" heading; this
-                teaser card's label + "Now showing" line name it. */}
-            <p>Short field stories from the places on the map — the tales only landscapes keep.</p>
-            {journalEntry ? (
-              <p className="hv5-journal-now" data-testid="journal-now-showing">
-                {journalEntry.mixed
-                  ? "Now showing: Field Notes"
-                  : `Now showing: ${journalEntry.geography} · ${journalEntry.notes.length === 1 ? "1 field note" : `${journalEntry.notes.length} field notes`}`}
-              </p>
-            ) : null}
-            <button type="button" className="hv5-go hv5-stretch" data-testid="journal-open" onClick={() => scrollTo("home-journal")}>
-              READ THE ENTRY
-            </button>
-          </div>
-        </article>
-        <article id="home-grownups" tabIndex={-1} className="hv5-card hv5-spot hv5-involved home-rise" style={rise(7)} data-testid="grownups-card">
-          <CardFilm className="hv5-art" media={GROWNUPS_FILM} testId="card-film-grownups" band={ageBand} />
-          <div className="hv5-txt">
-            <div className="hv5-head">
-              <span className="hv5-badge">
-                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true"><circle cx="8.5" cy="8" r="3.2" /><circle cx="16.5" cy="9.5" r="2.6" /><path d="M3.5 19.5 C3.5 15.8 5.7 14 8.5 14 C11.3 14 13.5 15.8 13.5 19.5 M14.8 14.6 C17.3 14.9 19 16.4 19 19.5" /></svg>
-              </span>
-              <span className="hv5-label">Get Involved</span>
-            </div>
-            <h2>For grown-ups</h2>
-            <p>
-              How Meridian works, safety notes, and the read-aloud companion for younger explorers.
-              Read our <Link to="/privacy">privacy notice</Link> or{" "}
-              <Link to="/contact">contact us</Link>.
-            </p>
-            <button type="button" className="hv5-btn hv5-btn-brown hv5-stretch" data-testid="grownups-card-open" onClick={onGrownUpOpen}>
-              JOIN US
-              <svg width="14" height="10" viewBox="0 0 15 11" aria-hidden="true"><path d="M1 5.5h12M9 1l4.5 4.5L9 10" stroke="currentColor" fill="none" strokeWidth="1.7" /></svg>
-            </button>
-            <p className="hv5-grownups-board-links">
-              <Link to="/board" data-testid="grownups-board-link">See what we&rsquo;re making next →</Link>{" "}
-              ·{" "}
-              <Link to="/board" search={{ view: "tip" }} data-testid="grownups-tip-link">Ask for something new</Link>
-            </p>
-          </div>
-        </article>
-      </div>
-
-      <div className="hv5-pages">
-        {aboutSection}
-        <section id="home-journal" tabIndex={-1} className="hv5-card hv5-page" aria-labelledby="journal-title" data-testid="journal-section">
-          <span className="hv5-label">Journal</span>
-          <h2 id="journal-title">What the land remembers</h2>
-          {journalEntry ? (
-            <p className="hv5-journal-geography" data-testid="journal-geography">{journalEntry.geography}</p>
-          ) : null}
-          {journalNotes.map((note) => (
-            <article key={note.id} className="hv5-entry" data-testid="journal-note">
-              {note.image && note.imageAlt && (
-                <Suspense fallback={null}>
-                  <JournalBoundary>
-                  <JournalPlayer
-                    noteId={note.id}
-                    place={note.place}
-                    imageSrc={journalImageUrl(note.image)}
-                    imageAlt={note.imageAlt}
-                    open={playingJournalId === note.id}
-                    onOpen={setPlayingJournalId}
-                    onClose={() => setPlayingJournalId(null)}
-                  />
-                  </JournalBoundary>
-                </Suspense>
-              )}
-              <div className="hv5-entry-text">
-                <h3>{note.place}</h3>
-                <p className="hv5-label" style={{ marginTop: 4 }}>{note.where}</p>
-                <p style={{ marginTop: 8 }}>{note.story}</p>
-                <p style={{ marginTop: 8 }}>
-                  <a href={note.sourceHref} target="_blank" rel="noopener noreferrer">
-                    {note.sourceLabel}
-                  </a>
-                  <span className="hv5-journal-confidence">{confidenceText(note)}</span>
-                </p>
-              </div>
-            </article>
-          ))}
-          {journalEntry ? (
-            <p className="hv5-journal-footer" data-testid="journal-footer">
-              Entry {journalEntry.index + 1} of {journalSetCount()} · Next entry in {nextEntryCountdown(journalNowMs)}
-            </p>
-          ) : null}
-        </section>
-      </div>
-
-    </main>
-    {/* Age-profile footer entry (Phase 2 §1a): the COPPA-standard
-        ParentZone placement — low-emphasis, after the review deck.
-        One host per screen: the header hosts brand + sound, so the
-        footer carries this. The shared SiteFooter (fix/ui-shared-shell)
-        renders the shipped set: the read-aloud setting as its lead
-        (owner 2026-10-09: the kid's tool, next to the grown-ups gate,
-        never parent-gated), the grown-ups gate, the tour re-entry
-        (review finding P2-11), the grown-ups info pages (P0-3) and
-        the kids-privacy promise (owner 2026-10-21 — factual
-        statements only; if analytics, ads or accounts are ever added,
-        update SiteFooter's note and /privacy in the same PR).
-        Since the footer standardization (2026-11-18) SiteFooter also
-        owns Grandpa's coffee-run band, so Home renders it here, after
-        </main>, where the band always lived: the band spans the full
-        width under the centred column, carries #home-involved (the
-        v5 nav's GET INVOLVED jump target — the app's get-involved
-        surface, Veeresh 2026-10-07) and runs the full tasting tour.
-        width="wide" gives the links row the column's own width and
-        gutters, so the row sits exactly where it did inside <main>. */}
-    <SiteFooter
-      lead={footerLead}
-      onGrownUps={onGrownUpOpen}
-      onTakeTour={onTakeTour}
-      width="wide"
-      grandpaTour
-      grandpaAnchor
-    />
-    {/* Kid-set read-aloud preference (age-profile B3) renders through
-        the first-visit queue in GameApp (item 9): it is the queue's
-        third prompt, so it never piles up with the Scout notice, the
-        tour banner or the storyteller bubble. */}
-    {/* Comet now hosts from the banner (in the header above) — the fixed
-        bottom-right wrapper is retired. */}
-    </>
-  );
-}
-
-/**
- * Full-viewport chart-room atmosphere behind the home screen: brass
- * graticule, topographic contour lines, vignette. Decorative only.
- */
-function AtlasBackdrop() {
-  return (
-    <div className="atlas-bg" aria-hidden="true">
-      <svg
-        className="atlas-contours"
-        viewBox="0 0 800 600"
-        preserveAspectRatio="xMidYMid slice"
-        focusable="false"
-      >
-        <g fill="none" stroke="currentColor" strokeWidth="1">
-          <path d="M-20,110 C140,80 260,150 420,120 S700,100 830,140" />
-          <path d="M-20,150 C140,120 260,190 420,160 S700,140 830,180" />
-          <path d="M-20,470 C160,440 300,510 470,480 S720,460 830,500" />
-          <path d="M-20,510 C160,480 300,550 470,520 S720,500 830,540" />
-          <path d="M120,300 c40,-55 130,-55 170,0 c40,55 -40,110 -85,80 c-45,-30 -110,-25 -85,-80 Z" />
-          <path d="M150,300 c28,-38 92,-38 120,0 c28,38 -28,76 -60,56 c-32,-20 -78,-18 -60,-56 Z" />
-          <path d="M620,380 c40,-55 130,-55 170,0 c40,55 -40,110 -85,80 c-45,-30 -110,-25 -85,-80 Z" />
-          <path d="M650,380 c28,-38 92,-38 120,0 c28,38 -28,76 -60,56 c-32,-20 -78,-18 -60,-56 Z" />
-          <path d="M540,180 c30,-42 100,-42 130,0 c30,42 -30,84 -65,62 c-35,-22 -85,-20 -65,-62 Z" />
-        </g>
-      </svg>
-    </div>
-  );
-}
-
-/**
  * End of a review session: the due queue is exhausted. Bounded and
  * completable by design (ADHD-friendly). Cards answered correctly come
  * back later — further out every time; missed cards are due again right
@@ -3732,6 +2247,4 @@ function AtlasBackdrop() {
  * One action: Start. The displacement commits on that tap, never on
  * the link's arrival (manifest C6).
  */
-
-
 

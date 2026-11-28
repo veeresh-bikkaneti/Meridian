@@ -33,6 +33,8 @@ const read = (name: string) => readFileSync(join(here, name), "utf8");
 const film = read("card-film.tsx");
 const css = read("home-v5.css");
 const gameApp = read("game-app.tsx");
+// TD-06.16: the CardFilm slots live in Choose (choose.tsx) now.
+const choose = read("choose.tsx");
 const ageProfileHost = read("age-profile/use-age-profile-host.tsx");
 const media = readFileSync(join(here, "../assets/home-v5/card-media.ts"), "utf8");
 const assetBytes = (name: string) =>
@@ -267,30 +269,30 @@ describe("CardFilm — zero CLS: media fills the existing .hv5-pic box", () => {
 describe("home wiring — five cards, one component, nothing else moves", () => {
   it("both .hv5-pic slots render CardFilm with their card-media entries", () => {
     assert.ok(
-      gameApp.includes('<CardFilm className="hv5-pic" media={GEODETECTIVE_FILM} testId="card-film-geodetective" band={ageBand} />'),
+      choose.includes('<CardFilm className="hv5-pic" media={cardMedia.geodetectiveFilm} testId="card-film-geodetective" band={ageBand} />'),
       "GeoDetective slot",
     );
     assert.ok(
-      gameApp.includes('<CardFilm className="hv5-pic" media={coldtrailMediaForBand(ageBand)} testId="card-film-coldtrail" band={ageBand} />'),
+      choose.includes('<CardFilm className="hv5-pic" media={cardMedia.coldtrailMediaForBand(ageBand)} testId="card-film-coldtrail" band={ageBand} />'),
       "Cold Trail slot (band-variant selector, Units 2–3 — the selector returns the standard entry for every band; the 5-7 softer film is no longer selected)",
     );
   });
 
   it("all three .hv5-art slots render CardFilm with their card-media entries", () => {
     assert.ok(
-      gameApp.includes('<CardFilm className="hv5-art" media={reviewMediaForBand(ageBand)} testId="card-film-review" band={ageBand} />'),
+      choose.includes('<CardFilm className="hv5-art" media={cardMedia.reviewMediaForBand(ageBand)} testId="card-film-review" band={ageBand} />'),
       "Review slot (band-variant selector, Units 2–3 — the selector returns the standard entry for every band but 7-10)",
     );
     assert.ok(
-      gameApp.includes('<CardFilm className="hv5-art" media={JOURNAL_FILM} testId="card-film-journal" band={ageBand} />'),
+      choose.includes('<CardFilm className="hv5-art" media={cardMedia.journalFilm} testId="card-film-journal" band={ageBand} />'),
       "Journal slot",
     );
     assert.ok(
-      gameApp.includes('<CardFilm className="hv5-art" media={GROWNUPS_FILM} testId="card-film-grownups" band={ageBand} />'),
+      choose.includes('<CardFilm className="hv5-art" media={cardMedia.grownupsFilm} testId="card-film-grownups" band={ageBand} />'),
       "Grown-ups slot",
     );
-    assert.equal((gameApp.match(/<CardFilm/g) || []).length, 6, "exactly six film slots (five shipped + the flag-gated Why Do We Learn This? card) — one motion system");
-    assert.ok(!gameApp.includes('className="hv5-art" src='), "no .hv5-art slot renders a bare still anymore");
+    assert.equal((choose.match(/<CardFilm/g) || []).length, 6, "exactly six film slots (five shipped + the flag-gated Why Do We Learn This? card) — one motion system");
+    assert.ok(!choose.includes('className="hv5-art" src='), "no .hv5-art slot renders a bare still anymore");
   });
 
   it("the art slots render picture-first: CardFilm before .hv5-txt in each spot card", () => {
@@ -298,10 +300,10 @@ describe("home wiring — five cards, one component, nothing else moves", () => 
     // so the film element precedes the text column in the DOM,
     // as the film cards' .hv5-pic slots already did.
     for (const filmTestId of ["card-film-review", "card-film-journal", "card-film-grownups"]) {
-      const filmAt = gameApp.indexOf(`testId="${filmTestId}"`);
-      const txtAt = gameApp.indexOf('<div className="hv5-txt">', filmAt);
+      const filmAt = choose.indexOf(`testId="${filmTestId}"`);
+      const txtAt = choose.indexOf('<div className="hv5-txt">', filmAt);
       assert.ok(filmAt >= 0 && txtAt > filmAt, `${filmTestId}: a text column follows the film`);
-      const between = gameApp.slice(filmAt, txtAt);
+      const between = choose.slice(filmAt, txtAt);
       assert.ok(
         between.length < 200 && !between.includes("</"),
         `${filmTestId}: film sits immediately before its text column (picture first)`,
@@ -358,7 +360,7 @@ describe("home wiring — five cards, one component, nothing else moves", () => 
       "Start the trail",
       "Jolly was spotted in the snow. Three sightings, three rings — tap where",
     ]) {
-      assert.ok(gameApp.includes(locked), `copy lock missing: ${locked}`);
+      assert.ok(choose.includes(locked), `copy lock missing: ${locked}`);
     }
   });
 

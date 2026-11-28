@@ -19,6 +19,9 @@ import { fileURLToPath } from "node:url";
 const here = dirname(fileURLToPath(import.meta.url));
 const homeJournalSource = readFileSync(join(here, "home-journal.ts"), "utf8");
 const gameAppSource = readFileSync(join(here, "game-app.tsx"), "utf8");
+// TD-06.16: the home screen (Choose) moved to choose.tsx; the loader
+// kick lives in Choose's rotation effect, not in game-app.tsx.
+const chooseSource = readFileSync(join(here, "choose.tsx"), "utf8");
 
 describe("TD-06.17 lazy boundary — no static journal-data import on the entry path", () => {
   it("home-journal.ts imports the dataset types only, never the values", () => {
@@ -51,14 +54,14 @@ describe("TD-06.17 lazy boundary — no static journal-data import on the entry 
     );
   });
 
-  it("game-app never names the dataset module and kicks the loader on mount", () => {
+  it("game-app never names the dataset module and Choose kicks the loader on mount", () => {
     assert.ok(
       !gameAppSource.includes("home-journal.data"),
       "game-app.tsx must not import home-journal.data.ts in any form",
     );
     assert.ok(
-      gameAppSource.includes("loadJournalNotes()"),
-      "game-app must start the journal dataset load (the rotation effect)",
+      chooseSource.includes("loadJournalNotes()"),
+      "Choose must start the journal dataset load (the rotation effect)",
     );
   });
 });

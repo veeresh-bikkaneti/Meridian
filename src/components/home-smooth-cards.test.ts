@@ -51,6 +51,8 @@ const css = read("home-v5.css");
 const lazy = read("lazy-home-image.tsx");
 const film = read("card-film.tsx");
 const gameApp = read("game-app.tsx");
+// TD-06.16: the art-film slots live in Choose (choose.tsx) now.
+const choose = read("choose.tsx");
 
 const maskRuleStart = css.indexOf(".home-v5 .hv5-card-film.hv5-pic > img,");
 const maskRule = css.slice(
@@ -174,13 +176,13 @@ describe("CSS art passes — removed in full (owner ruling, 2026-11-03)", () => 
 describe("art films — the three spot cards joined the CardFilm system", () => {
   it("all three .hv5-art slots render CardFilm, none renders LazyHomeImage", () => {
     for (const site of [
-      '<CardFilm className="hv5-art" media={reviewMediaForBand(ageBand)} testId="card-film-review" band={ageBand} />',
-      '<CardFilm className="hv5-art" media={JOURNAL_FILM} testId="card-film-journal" band={ageBand} />',
-      '<CardFilm className="hv5-art" media={GROWNUPS_FILM} testId="card-film-grownups" band={ageBand} />',
+      '<CardFilm className="hv5-art" media={cardMedia.reviewMediaForBand(ageBand)} testId="card-film-review" band={ageBand} />',
+      '<CardFilm className="hv5-art" media={cardMedia.journalFilm} testId="card-film-journal" band={ageBand} />',
+      '<CardFilm className="hv5-art" media={cardMedia.grownupsFilm} testId="card-film-grownups" band={ageBand} />',
     ]) {
-      assert.ok(gameApp.includes(site), `art film site: ${site}`);
+      assert.ok(choose.includes(site), `art film site: ${site}`);
     }
-    assert.equal((gameApp.match(/<CardFilm/g) || []).length, 6,
+    assert.equal((choose.match(/<CardFilm/g) || []).length, 6,
       "six film slots total (five shipped + the flag-gated Why Do We Learn This? card) — one motion system for every illustrated card");
   });
 

@@ -52,7 +52,9 @@ export type ShellRegistryEntry = {
 
 export const SHELL_REGISTRY: readonly ShellRegistryEntry[] = [
   // Routes
-  { id: "home", file: "src/components/game-app.tsx", header: "SiteHeader", needle: "<SiteHeader", footer: "shell", footerNeedle: "<SiteFooter" },
+  // TD-06.16: the home screen (Choose) lives in choose.tsx now; it
+  // renders the SiteHeader and the SiteFooter.
+  { id: "home", file: "src/components/choose.tsx", header: "SiteHeader", needle: "<SiteHeader", footer: "shell", footerNeedle: "<SiteFooter" },
   { id: "board", file: "src/routes/board.tsx", header: "SiteHeader", needle: "<SiteHeader", footer: "shell", footerNeedle: "<SiteFooter" },
   { id: "kanban", file: "src/routes/kanban.tsx", header: "PageShell", needle: "<PageShell", footer: "shell" },
   { id: "grownups-pages", file: "src/components/grownups/info-page.tsx", header: "PageShell", needle: "<PageShell", footer: "shell" },
@@ -66,7 +68,9 @@ export const SHELL_REGISTRY: readonly ShellRegistryEntry[] = [
   { id: "review-complete", file: "src/components/review-complete.tsx", header: "SiteHeader", needle: "<SiteHeader", footer: "shell", footerNeedle: "<SiteFooter" },
   { id: "challenge-complete", file: "src/components/challenge-complete.tsx", header: "SiteHeader", needle: "<SiteHeader", footer: "none", reason: "End-of-flow screen; its in-flow primary Home button is the sanctioned end surface." },
   { id: "challenge-complete-shell", file: "src/components/challenge-complete-shell.tsx", header: "SiteHeader", needle: "<ChallengeComplete", footer: "none", reason: "End-of-flow shell; renders ChallengeComplete, which carries the SiteHeader and the sanctioned end-of-flow Home button. Moved from the composer in TD-06.15b." },
-  { id: "pool-error", file: "src/components/game-app.tsx", header: "ErrorScreen", needle: "<ErrorScreen", footer: "none", reason: "Failure branch; ErrorScreen frames itself with SiteHeader and its two exits." },
+  // TD-06.15b: the pool-error branch (ErrorScreen) moved to play.tsx
+  // with the Play extraction; the registry row follows the rendering.
+  { id: "pool-error", file: "src/components/play.tsx", header: "ErrorScreen", needle: "<ErrorScreen", footer: "none", reason: "Failure branch; ErrorScreen frames itself with SiteHeader and its two exits." },
   { id: "map-error-boundary", file: "src/components/map-error-boundary.tsx", header: "ErrorScreen", needle: "ErrorScreen", footer: "none", reason: "ErrorScreen in embedded mode: a panel inside a screen that already carries the shell (PR 3 Step 3.9)." },
   // The one sanctioned header exception (owner item 10, 2026-11-17).
   { id: "in-run-hud", file: "src/components/play-loaded.tsx", header: "exception", footer: "none", reason: "The in-run globe HUD is a game overlay, not a page; its Home control was approved in Round 2. Sole sanctioned shell exception. Moved from the composer in TD-06.15b." },

@@ -30,6 +30,26 @@ import {
    aria-hidden. The static fallback image stays aria-hidden since it is
    purely decorative (alt="").
  */
+/**
+ * Chunk-failure fallback for the home globe: when the home-globe chunk
+ * itself fails to load (TD-06.16, the lazy factory in choose.tsx), the
+ * home page shows this static disc instead of taking the page down —
+ * the same fallback HomeGlobe renders for reduced-motion / no-WebGL.
+ */
+export function GlobeChunkFallback() {
+  return (
+    <img
+      data-chunk-fallback="globe"
+      className="hv5-globe-fallback"
+      src={globeFallbackUrl}
+      alt=""
+      aria-hidden="true"
+      width={800}
+      height={800}
+    />
+  );
+}
+
 export function HomeGlobe() {
   const mountRef = useRef<HTMLDivElement | null>(null);
   // Loading-orb state: false until the globe texture uploads. The orb

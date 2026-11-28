@@ -5,7 +5,6 @@
     "src/components/game-app.tsx|./age-profile/use-age-profile-host",
     "src/components/game-app.tsx|./passport/EarnedBadgeRow",
     "src/components/game-app.tsx|@/assets/home-v5/card-media",
-    "src/components/game-app.tsx|@/assets/home-v5/globe-fallback.webp",
     "src/components/game-app.tsx|@/assets/home-v5/hero-mountain.webp",
     "src/components/game-app.tsx|@/assets/verdict/grandpa-media",
     "src/components/game-app.tsx|@/game/coldtrail/ColdTrailHost",

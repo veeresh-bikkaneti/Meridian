@@ -51,6 +51,9 @@ const here = dirname(fileURLToPath(import.meta.url));
 const read = (rel: string) => readFileSync(join(here, rel), "utf8");
 
 const gameApp = read("../../components/game-app.tsx");
+// TD-06.16: the home surfaces (and their ResetHistoryControl renders)
+// live in Choose (choose.tsx) now.
+const choose = read("../../components/choose.tsx");
 const ageHost = read("../../components/age-profile/use-age-profile-host.tsx");
 const resetControl = read("../../components/reset-history-control.tsx");
 const subjectCase = read("./SubjectCase.tsx");
@@ -162,14 +165,14 @@ describe("reset in the Why Learn flow (defect 3)", () => {
     assert.ok(resetControl.includes("export function ResetHistoryControl("), "the control is exported");
   });
 
-  it("GameApp renders the shared control and no longer defines it in place", () => {
+  it("Choose renders the shared control and no longer defines it in place", () => {
     assert.ok(
-      gameApp.includes('import { ResetHistoryControl } from "./reset-history-control";'),
-      "GameApp imports the shared control",
+      choose.includes('import { ResetHistoryControl } from "./reset-history-control";'),
+      "Choose imports the shared control",
     );
-    assert.ok(!gameApp.includes("function ResetHistoryControl("), "no second in-place definition");
+    assert.ok(!choose.includes("function ResetHistoryControl("), "no second in-place definition");
     assert.ok(
-      gameApp.split("<ResetHistoryControl onReset={onResetHistory} />").length - 1 >= 2,
+      choose.split("<ResetHistoryControl onReset={onResetHistory} />").length - 1 >= 2,
       "the home surfaces keep rendering it",
     );
   });
