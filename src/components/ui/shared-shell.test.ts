@@ -179,7 +179,7 @@ describe("SiteHeader", () => {
     assert.match(html, /site-header-menu-button/);
     assert.match(html, /aria-expanded="false"/);
     // Icon button (TD-06.16): named "Open menu", with the Menu glyph
-    // and the "Menu" label both present for the CSS swap below 768px.
+    // and the "Menu" label both present for the CSS swap below 820px.
     assert.match(html, /aria-label="Open menu"/);
     assert.match(html, /site-header-menu-icon/);
     assert.match(html, /site-header-menu-label/);

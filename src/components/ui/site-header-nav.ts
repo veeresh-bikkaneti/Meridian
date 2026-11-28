@@ -1,11 +1,16 @@
 /**
  * SiteHeaderNav: the header's inline nav row with the responsive
- * "More" split (TD-06.16, commit 2). In the 768–1023px band the row
+ * "More" split (TD-06.16, commit 2). In the 820–1023px band the row
  * shows the full nav only if it fits on one line; otherwise the
  * first MORE_VISIBLE_COUNT links stay inline and the rest move
  * behind a "More" button (ChevronDown) that opens the shared drawer
- * panel. At ≥1024px the full row always shows; below 768px the
+ * panel. At ≥1024px the full row always shows; below 820px the
  * whole row is hidden by CSS and the Menu button owns the nav.
+ * (The band starts at 820px, not 768px: at 768px only two links
+ * fit the row, so CONTACT — fourth in Home's nav — fell behind
+ * More with no Menu button to reach it, and the grownups spec
+ * times out on the hidden Menu button. At 820px three links +
+ * More fit, and below that the Menu button is the right pattern.)
  *
  * The fit is a real overflow check, not a width guess: the row
  * renders full, a layout effect compares scrollWidth to clientWidth
@@ -38,7 +43,7 @@ import { SiteHeaderDrawer } from "./site-header-drawer.ts";
  * count until the row fits. */
 export const MORE_VISIBLE_COUNT = 4;
 /** The band where the More split applies. */
-export const MORE_BAND = "(min-width: 768px) and (max-width: 1023.5px)";
+export const MORE_BAND = "(min-width: 820px) and (max-width: 1023.5px)";
 
 export function splitNavItems(items: ReactNode[], visibleCount: number = MORE_VISIBLE_COUNT) {
   return { visible: items.slice(0, visibleCount), rest: items.slice(visibleCount) };

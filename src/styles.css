@@ -2465,13 +2465,15 @@ body:has(> header.site-header) {
   align-items: center;
   justify-content: center;
 }
-/* Below 768px the Menu pill becomes a 44×44 icon button (TD-06.16):
+/* Below 820px the Menu pill becomes a 44×44 icon button (TD-06.16):
  * the label hides, the Menu glyph shows, the pill squares up. The
- * accessible name stays "Open menu" (aria-label on the button). */
+ * accessible name stays "Open menu" (aria-label on the button). The
+ * icon form follows the Menu button's band (below 820px, where the
+ * Menu button owns the nav — the More split takes over at 820px). */
 .site-header-menu-button .site-header-menu-icon {
   display: none;
 }
-@media (max-width: 767.5px) {
+@media (max-width: 819.5px) {
   .site-header-menu-button .site-header-menu-label {
     display: none;
   }
@@ -2521,12 +2523,17 @@ body:has(> header.site-header) {
   background: var(--hv5-card);
   border-color: var(--hv5-line);
 }
-/* The Menu button only exists below 768px (TD-06.16): from 768px the
+/* The Menu button only exists below 820px (TD-06.16): from 820px the
  * nav is inline (full, or first links + More), so there is nothing
- * for Menu to open. If a menu opened below 768px is resized up, the
- * in-flow panel must not linger above the bar — the More panel is
- * not a direct child of the header, so this rule leaves it alone. */
-@media (min-width: 768px) { /* var(--bp-menu) — was 1024px */
+ * for Menu to open. The handoff sits at 820px, not 768px: at 768px
+ * only two links fit the row, so CONTACT — fourth in Home's nav —
+ * fell behind More with no Menu button to reach it (the grownups
+ * spec times out on the hidden Menu button). At 820px three links
+ * + More fit, and below that the Menu button is the right pattern.
+ * If a menu opened below 820px is resized up, the in-flow panel
+ * must not linger above the bar — the More panel is not a direct
+ * child of the header, so this rule leaves it alone. */
+@media (min-width: 820px) { /* var(--bp-menu) — was 1024px, then 768px */
   .site-header[data-nav-mode="inline"] .site-header-menu-button {
     display: none;
   }
@@ -2534,12 +2541,12 @@ body:has(> header.site-header) {
     display: none;
   }
 }
-@media (max-width: 767.5px) { /* var(--bp-menu) */
+@media (max-width: 819.5px) { /* var(--bp-menu) */
   .site-header[data-nav-mode="inline"] .site-header-nav {
     display: none;
   }
   /* The open menu panel is also a .site-header-nav — exempt it from
-     the hide above, or the Menu button opens nothing below 768px. */
+     the hide above, or the Menu button opens nothing below 820px. */
   .site-header[data-nav-mode="inline"] .site-header-panel {
     display: flex;
   }
@@ -2576,7 +2583,7 @@ body:has(> header.site-header) {
    the Phase A mock at 1280×800 shows the same clip). The squeeze
    now covers every width where the full row cannot fit, and the
    full spacing returns at exactly the width where it fits. */
-@media (min-width: 768px) and (max-width: 1364.5px) { /* var(--bp-menu) / fit point, see above — the band starts at 768px now (TD-06.16), where the More split takes over from the Menu button */
+@media (min-width: 820px) and (max-width: 1364.5px) { /* var(--bp-menu) / fit point, see above — the band starts at 820px now (TD-06.16), where the More split takes over from the Menu button */
   .site-header-row {
     gap: 16px;
   }
@@ -2592,9 +2599,10 @@ body:has(> header.site-header) {
  * links + More fit an 820px row. Measured: three links + More is
  * 308px at the 14px gap and the nav only has ~306px at 820px, so
  * the More button landed under the Join pill and never fired. At
- * 10px it is 296px and fits with room to spare; the count still
- * shrinks to two at 768px, where even this cannot fit three. */
-@media (min-width: 768px) and (max-width: 1023.5px) {
+ * 10px it is 296px and fits with room to spare; below 820px the
+ * count would shrink to two, where even this cannot fit three —
+ * so the Menu button owns the nav below 820px instead. */
+@media (min-width: 820px) and (max-width: 1023.5px) {
   .site-header-nav {
     gap: 10px;
   }
