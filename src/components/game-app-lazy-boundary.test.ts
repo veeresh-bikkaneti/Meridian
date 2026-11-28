@@ -45,6 +45,14 @@ const geoDetectiveHostSource = readFileSync(
   join(here, "../game/loop/GeoDetectiveHost.tsx"),
   "utf8",
 );
+// TD-06.15b: the SatelliteMap lazy factory lives in
+// src/map/satellite-map-host.tsx now.
+const satelliteMapHostSource = readFileSync(
+  join(here, "../map/satellite-map-host.tsx"),
+  "utf8",
+);
+// TD-06.16: the home screen (Choose) lives in choose.tsx now.
+const chooseSource = readFileSync(join(here, "choose.tsx"), "utf8");
 // TD-06.14 (review finding 4 on #634): the SubjectPicker lazy
 // factory lives in src/subjects/shared/SubjectsHost.tsx now.
 const subjectsHostSource = readFileSync(
@@ -284,8 +292,8 @@ describe("Core F-4 — no component prefetch; territory-data prefetch kept", () 
   });
 
   it("the home case-card buttons fire the territory-data prefetch on hover, focus, and pointerdown", () => {
-    const loopButton = segment(gameAppSource, "onClick={onLoop}", "</button>");
-    const trailButton = segment(gameAppSource, "onClick={onColdTrail}", "</button>");
+    const loopButton = segment(chooseSource, "onClick={onLoop}", "</button>");
+    const trailButton = segment(chooseSource, "onClick={onColdTrail}", "</button>");
     for (const [name, button] of [
       ["GeoDetective", loopButton],
       ["Cold Trail", trailButton],
@@ -308,7 +316,7 @@ describe("#209 — every gameplay chunk load is timeout-bounded", () => {
   // places+territory await. Removing any wrap reopens the hang.
   it("the lazy factories for Loop, Trail, and the satellite map race withChunkTimeout", () => {
     assert.ok(
-      gameAppSource.includes('withChunkTimeout(import("./home-globe"), "the home globe")'),
+      chooseSource.includes('withChunkTimeout(import("./home-globe"), "the home globe")'),
       "the home globe's lazy load must be timeout-bounded too — a hang lands on its chunk fallback (#209)",
     );
     assert.ok(
@@ -320,7 +328,7 @@ describe("#209 — every gameplay chunk load is timeout-bounded", () => {
       "TrailScreen's lazy load must be timeout-bounded (#209)",
     );
     assert.ok(
-      gameAppSource.includes('withChunkTimeout(import("@/map/satellite-map"), "Satellite map")'),
+      satelliteMapHostSource.includes('withChunkTimeout(import("@/map/satellite-map"), "Satellite map")'),
       "the satellite map's lazy load must be timeout-bounded (#209)",
     );
   });
@@ -352,13 +360,17 @@ describe("arena Phase 2 (PR #532): boundary-less hosts and notice timing", () =>
   });
 
   it("F4: JournalPlayer is wrapped in its fail-closed local boundary, so Home survives its chunk failure", () => {
-    assert.ok(gameAppSource.includes("<JournalBoundary>"), "the journal player must fail closed in place");
-    assert.ok(gameAppSource.includes("</JournalBoundary>"), "the journal boundary must close around the player");
+    assert.ok(chooseSource.includes("<JournalBoundary>"), "the journal player must fail closed in place");
+    assert.ok(chooseSource.includes("</JournalBoundary>"), "the journal boundary must close around the player");
   });
 
   it("F4: GlobeChunkFallback marks itself so the recovery handler stands down", () => {
+    // TD-06.16: the fallback lives in home-globe.tsx now (choose.tsx
+    // only imports the component — a components/root file may not
+    // import @/assets/** directly).
+    const homeGlobeSource = readFileSync(join(here, "home-globe.tsx"), "utf8");
     assert.ok(
-      gameAppSource.includes('data-chunk-fallback="globe"'),
+      homeGlobeSource.includes('data-chunk-fallback="globe"'),
       "the globe's graceful fallback must carry data-chunk-fallback",
     );
   });
@@ -399,13 +411,29 @@ describe("TD-06.14 — SubjectsHost keeps SubjectPicker lazy", () => {
   // only, so it loads through React.lazy behind the composer's
   // Suspense + MapErrorBoundary.
   it("SubjectsHost has no static import of SubjectPicker", () => {
+    // G3 (PR B): the alias path is the same violation as the
+    // relative path — a static import by either spelling drags the
+    // subjects chunk into the preloaded route chunk.
     assert.ok(
-      !/import\s+[^(\n]*from\s+["']\.\/SubjectPicker["']/.test(subjectsHostSource),
+      !/import\s+[^(\n]*from\s+["'](?:\.\/|@\/subjects\/shared\/)SubjectPicker["']/.test(subjectsHostSource),
       "SubjectPicker must not be statically imported (it drags the subjects chunk in)",
     );
     assert.ok(
-      !/import\s+["']\.\/SubjectPicker["']/.test(subjectsHostSource),
+      !/import\s+["'](?:\.\/|@\/subjects\/shared\/)SubjectPicker["']/.test(subjectsHostSource),
       "SubjectPicker must not be side-effect imported either",
+    );
+  });
+
+  it("SubjectPicker is not re-exported, by either spelling", () => {
+    // S1 (review finding on #636): a re-export is the same violation
+    // as a static import — `export … from "./SubjectPicker"` (or the
+    // aliased spelling) statically pulls the subjects chunk into the
+    // preloaded route chunk, so the guard fails on both. A type-only
+    // re-export (`export type { … } from …`) is erased at compile
+    // time and stays allowed.
+    assert.ok(
+      !/export\s+(?:\{[^}]*\}|\*(?:\s+as\s+\w+)?)\s+from\s+["'](?:\.\/|@\/subjects\/shared\/)SubjectPicker["']/.test(subjectsHostSource),
+      "SubjectPicker must not be re-exported (a re-export statically pulls the subjects chunk in)",
     );
   });
 

@@ -26,6 +26,8 @@ const globe = read("home-globe.tsx");
 const css = read("home-v5.css");
 const styles = readFileSync(join(here, "../styles.css"), "utf8");
 const gameApp = read("game-app.tsx");
+// TD-06.16: the journal figures live in Choose (choose.tsx) now.
+const choose = read("choose.tsx");
 
 describe("LazyHomeImage — shared card-image orb", () => {
   it("renders the spinner overlay initially (phase starts loading)", () => {
@@ -105,8 +107,8 @@ describe("home page wiring — journal figures are the player now, nothing else"
   // through LazyHomeImage, with the same attrs the journal site had.
   const site = "<JournalPlayer\n                    noteId={note.id}\n                    place={note.place}\n                    imageSrc={journalImageUrl(note.image)}\n                    imageAlt={note.imageAlt}";
   it("the journal figures go through the player, whose stills use the shared wrapper with exact attrs", () => {
-    assert.ok(gameApp.includes(site), `missing home site: ${site}`);
-    assert.equal((gameApp.match(/<JournalPlayer/g) || []).length, 1,
+    assert.ok(choose.includes(site), `missing home site: ${site}`);
+    assert.equal((choose.match(/<JournalPlayer/g) || []).length, 1,
       "exactly one JournalPlayer site (the journal entry figures)");
     assert.equal(
       (player.match(/<LazyHomeImage src={imageSrc} alt={imageAlt} \/>/g) || []).length,

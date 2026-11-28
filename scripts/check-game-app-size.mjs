@@ -13,13 +13,18 @@
  *
  * The ceiling is the measured count after TD-06.8 (game-app-map step 8:
  * the map-mode hook extracted) on base f5448d85. Later Phase 4 module
- * PRs may only lower it.
+ * PRs may only lower it — except a review-mandated fix that restores
+ * the DOM: the TD-06.16 fix round (B1/B2, PR #636) raised it from
+ * 2,250 to 2,277 because the composer must own the Play `<main>`
+ * props derivation call and the Home SiteFooter placement; the B1
+ * derivation itself lives in use-play-main-props.ts, so the composer
+ * carries only the hook call, the Play props and the footer JSX.
  */
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
-export const GAME_APP_SIZE_CEILING = 6174;
+export const GAME_APP_SIZE_CEILING = 2277;
 export const GAME_APP_PATH = fileURLToPath(
   new URL("../src/components/game-app.tsx", import.meta.url),
 );

@@ -32,6 +32,9 @@ const assetBytes = (name: string) => statSync(join(here, name)).size;
 
 const media = read("card-media.ts");
 const gameApp = readFileSync(join(here, "../../components/game-app.tsx"), "utf8");
+// TD-06.16: the CardFilm slots live in Choose (choose.tsx) now; the
+// composer passes the selectors through as a cardMedia prop.
+const choose = readFileSync(join(here, "../../components/choose.tsx"), "utf8");
 
 type MediaRecord = { videoUrl: string; posterUrl: string; stillUrl: string };
 type CardMediaModule = {
@@ -154,8 +157,9 @@ describe("whyLearnMediaForBand — full matrix (scale-play card)", () => {
     }
   });
 
-  it("game-app reaches the records only through the selector", () => {
-    assert.ok(gameApp.includes('<CardFilm className="hv5-pic" media={whyLearnMediaForBand(ageBand)} testId="card-film-why-learn" band={ageBand} />'));
+  it("Choose reaches the records only through the selector", () => {
+    assert.ok(choose.includes('<CardFilm className="hv5-pic" media={cardMedia.whyLearnMediaForBand(ageBand)} testId="card-film-why-learn" band={ageBand} />'));
+    assert.ok(!/WHY_LEARN_FILM/.test(choose), "no direct record in Choose");
     assert.ok(!/WHY_LEARN_FILM/.test(gameApp), "no direct record in game-app");
   });
 
@@ -189,30 +193,32 @@ describe("band variants — byte caps on the real files", () => {
   });
 });
 
-describe("game-app wiring — the selectors are the only band→media path", () => {
+describe("Choose wiring — the selectors are the only band→media path", () => {
   it("Cold Trail and Review pass through their selectors with the in-scope ageBand", () => {
     assert.ok(
-      gameApp.includes('<CardFilm className="hv5-pic" media={coldtrailMediaForBand(ageBand)} testId="card-film-coldtrail" band={ageBand} />'),
+      choose.includes('<CardFilm className="hv5-pic" media={cardMedia.coldtrailMediaForBand(ageBand)} testId="card-film-coldtrail" band={ageBand} />'),
       "Cold Trail slot goes through coldtrailMediaForBand(ageBand)",
     );
     assert.ok(
-      gameApp.includes('<CardFilm className="hv5-art" media={reviewMediaForBand(ageBand)} testId="card-film-review" band={ageBand} />'),
+      choose.includes('<CardFilm className="hv5-art" media={cardMedia.reviewMediaForBand(ageBand)} testId="card-film-review" band={ageBand} />'),
       "Review slot goes through reviewMediaForBand(ageBand)",
     );
   });
 
-  it("game-app never names a variant record directly", () => {
-    assert.ok(!gameApp.includes("COLDTRAIL_FILM_LITTLE_EXPLORER"), "LE record only reachable via its selector");
-    assert.ok(!gameApp.includes("REVIEW_FILM_TRAIL_SCOUT"), "TS record only reachable via its selector");
-    assert.ok(!gameApp.includes("media={COLDTRAIL_FILM}"), "standard Cold Trail record no longer wired directly");
-    assert.ok(!gameApp.includes("media={REVIEW_FILM}"), "standard Review record no longer wired directly");
+  it("neither file names a variant record directly", () => {
+    for (const [name, src] of [["game-app", gameApp], ["Choose", choose]] as const) {
+      assert.ok(!src.includes("COLDTRAIL_FILM_LITTLE_EXPLORER"), `LE record only reachable via its selector (${name})`);
+      assert.ok(!src.includes("REVIEW_FILM_TRAIL_SCOUT"), `TS record only reachable via its selector (${name})`);
+      assert.ok(!src.includes("media={COLDTRAIL_FILM}"), `standard Cold Trail record no longer wired directly (${name})`);
+      assert.ok(!src.includes("media={REVIEW_FILM}"), `standard Review record no longer wired directly (${name})`);
+    }
   });
 
   it("the other three cards keep their plain records", () => {
-    assert.ok(gameApp.includes('<CardFilm className="hv5-pic" media={GEODETECTIVE_FILM} testId="card-film-geodetective" band={ageBand} />'));
-    assert.ok(gameApp.includes('<CardFilm className="hv5-art" media={JOURNAL_FILM} testId="card-film-journal" band={ageBand} />'));
-    assert.ok(gameApp.includes('<CardFilm className="hv5-art" media={GROWNUPS_FILM} testId="card-film-grownups" band={ageBand} />'));
-    assert.equal((gameApp.match(/<CardFilm/g) || []).length, 6, "five shipped film slots + the flag-gated Why Do We Learn This? card");
+    assert.ok(choose.includes('<CardFilm className="hv5-pic" media={cardMedia.geodetectiveFilm} testId="card-film-geodetective" band={ageBand} />'));
+    assert.ok(choose.includes('<CardFilm className="hv5-art" media={cardMedia.journalFilm} testId="card-film-journal" band={ageBand} />'));
+    assert.ok(choose.includes('<CardFilm className="hv5-art" media={cardMedia.grownupsFilm} testId="card-film-grownups" band={ageBand} />'));
+    assert.equal((choose.match(/<CardFilm/g) || []).length, 6, "five shipped film slots + the flag-gated Why Do We Learn This? card");
   });
 
   it("card-media exports the two variant records and both selectors", () => {

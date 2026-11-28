@@ -21,24 +21,25 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const here = dirname(fileURLToPath(import.meta.url));
-const gameApp = readFileSync(join(here, "game-app.tsx"), "utf8");
+// TD-06.16: the home screen (Choose) moved from game-app.tsx to choose.tsx.
+const choose = readFileSync(join(here, "choose.tsx"), "utf8");
 
 // Anchor on the JSX tags themselves — the bare testids also appear in
 // effect code earlier in the file (the item-42 IntersectionObserver).
-const cardStart = gameApp.indexOf('<article className="hv5-card hv5-spot hv5-journal');
-const cardEnd = gameApp.indexOf('<article id="home-grownups"');
-const teaserCard = gameApp.slice(cardStart, cardEnd);
-const sectionStart = gameApp.indexOf('<section id="home-journal"');
+const cardStart = choose.indexOf('<article className="hv5-card hv5-spot hv5-journal');
+const cardEnd = choose.indexOf('<article id="home-grownups"');
+const teaserCard = choose.slice(cardStart, cardEnd);
+const sectionStart = choose.indexOf('<section id="home-journal"');
 
 describe("journal heading — one title, carried by the section (item 42)", () => {
   it("the whole page renders exactly one \"What the land remembers\" heading", () => {
-    const matches = gameApp.match(/<h2[^>]*>What the land remembers<\/h2>/g) ?? [];
+    const matches = choose.match(/<h2[^>]*>What the land remembers<\/h2>/g) ?? [];
     assert.equal(matches.length, 1, `expected 1 journal heading, found ${matches.length}`);
   });
 
   it("the one heading is the journal section's, wired to its aria-labelledby", () => {
     assert.ok(sectionStart > -1, "journal section exists");
-    const section = gameApp.slice(sectionStart, sectionStart + 400);
+    const section = choose.slice(sectionStart, sectionStart + 400);
     assert.ok(section.includes('aria-labelledby="journal-title"'), "section names its heading");
     assert.ok(
       section.includes('<h2 id="journal-title">What the land remembers</h2>'),

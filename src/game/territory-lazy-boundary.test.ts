@@ -28,6 +28,16 @@ const gameAppSource = readFileSync(
   join(here, "../components/game-app.tsx"),
   "utf8",
 );
+// TD-06.16: the territory prefetch + edition/case cards live in Choose now.
+const chooseSource = readFileSync(
+  join(here, "../components/choose.tsx"),
+  "utf8",
+);
+// TD-06.15b: onReplay lives in PlayLoaded now.
+const playLoadedSource = readFileSync(
+  join(here, "../components/play-loaded.tsx"),
+  "utf8",
+);
 // Step 7 (TD-06.7): openRun lives in use-run-controller.ts now.
 const runControllerSource = readFileSync(
   join(here, "../components/use-run-controller.ts"),
@@ -84,10 +94,10 @@ describe("F2b lazy boundary — territory.ts holds no static atlas import", () =
 });
 
 describe("F2b wiring — gameplay entry points start or await the preload", () => {
-  it("game-app imports preloadTerritory", () => {
+  it("Choose imports preloadTerritory", () => {
     assert.ok(
-      gameAppSource.includes('import { preloadTerritory } from "@/game/territory"'),
-      "game-app must import the territory preload",
+      chooseSource.includes('import { preloadTerritory } from "@/game/territory"'),
+      "Choose must import the territory preload",
     );
   });
 
@@ -109,7 +119,7 @@ describe("F2b wiring — gameplay entry points start or await the preload", () =
       "onPointerDown={prefetchTerritoryData}",
       "onFocus={prefetchTerritoryDataOnFocus}",
     ]) {
-      assert.ok(gameAppSource.includes(hook), `missing edition-card prefetch wiring: ${hook}`);
+      assert.ok(chooseSource.includes(hook), `missing edition-card prefetch wiring: ${hook}`);
     }
   });
 
@@ -119,13 +129,13 @@ describe("F2b wiring — gameplay entry points start or await the preload", () =
     // game-app-lazy-boundary.test.ts), but their intent handlers still
     // fire prefetchTerritoryData, whose body is the territory preload.
     assert.ok(
-      segment(gameAppSource, "function prefetchTerritoryData", "import {").includes(
+      segment(chooseSource, "function prefetchTerritoryData", "function saveDataEnabled").includes(
         "void preloadTerritory();",
       ),
       "prefetchTerritoryData must start the territory load",
     );
     for (const marker of ["onClick={onLoop}", "onClick={onColdTrail}"]) {
-      const button = segment(gameAppSource, marker, "</button>");
+      const button = segment(chooseSource, marker, "</button>");
       assert.ok(
         button.includes("onPointerEnter={prefetchTerritoryData}") &&
           button.includes("onPointerDown={prefetchTerritoryData}") &&
@@ -205,7 +215,7 @@ describe("Core F-2 — every run start crosses an AWAITED territory preload", ()
   });
 
   it("onReplay: the Play-again commit awaits the preload (async funnel like openRun)", () => {
-    const replay = segment(gameAppSource, "async function onReplay()", "// Review sessions replay");
+    const replay = segment(playLoadedSource, "async function onReplay()", "// Review sessions replay");
     assert.ok(
       replay.includes("await preloadTerritory();"),
       "onReplay must await the territory preload",
@@ -276,9 +286,9 @@ describe("Core F-3 — GeoDetective tap names are re-resolved at pick time", () 
 describe("#211 item 1 — the focus-triggered prefetch is Save-Data gated", () => {
   it("the focus variant exists, checks Save-Data first, and every card focus uses it", () => {
     const focusFn = segment(
-      gameAppSource,
+      chooseSource,
       "function prefetchTerritoryDataOnFocus",
-      "import {",
+      "const guessCapWord",
     );
     assert.ok(
       focusFn.includes("if (saveDataEnabled()) return;"),
@@ -289,11 +299,11 @@ describe("#211 item 1 — the focus-triggered prefetch is Save-Data gated", () =
       "without Save-Data the focus prefetch still warms the territory data",
     );
     assert.ok(
-      gameAppSource.includes("connection?.saveData"),
+      chooseSource.includes("connection?.saveData"),
       "the gate must read navigator.connection.saveData (home-globe precedent)",
     );
     assert.ok(
-      !gameAppSource.includes("onFocus={prefetchTerritoryData}"),
+      !chooseSource.includes("onFocus={prefetchTerritoryData}"),
       "no card may wire focus to the UNGATED prefetch (#211 item 1)",
     );
   });

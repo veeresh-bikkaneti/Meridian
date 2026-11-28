@@ -35,6 +35,8 @@ import { fileURLToPath } from "node:url";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const gameAppSource = readFileSync(join(here, "game-app.tsx"), "utf8");
+// TD-06.15b: Play's upgrade handler lives in PlayLoaded now.
+const playLoadedSource = readFileSync(join(here, "play-loaded.tsx"), "utf8");
 // Step 8 (TD-06.8): applyScoutUpgrade and the boot qualification live
 // in the map-mode hook now (src/map/use-map-mode.ts).
 const mapModeHookSource = readFileSync(join(here, "../map/use-map-mode.ts"), "utf8");
@@ -138,7 +140,7 @@ describe("#330 cure: a manual choice after trial boot disarms the upgrade", () =
 
   it("Play's handleScoutUpgrade re-checks for a stored manual record before firing", () => {
     const handler = segment(
-      gameAppSource,
+      playLoadedSource,
       "const handleScoutUpgrade = useCallback(",
       "// The switch viewport is consumed by the remount",
     );

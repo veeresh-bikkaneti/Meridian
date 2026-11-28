@@ -40,9 +40,12 @@
  *   dialect: theme + atlas tokens only — the header never reads the
  *   home-scoped --hv5-* tokens).
  */
-import { useEffect, useRef, useState, type CSSProperties, type MouseEvent, type ReactNode } from "react";
+import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
+import { Menu } from "lucide-react";
 import { BrandHomeButton } from "./home-button.ts";
+import { SiteHeaderDrawer } from "./site-header-drawer.ts";
+import { SiteHeaderNav } from "./site-header-nav.ts";
 import { cn } from "@/lib/cn";
 
 export type SiteNavItem = {
@@ -135,6 +138,11 @@ export function SiteHeader({
    * whose section matches carries aria-current="location" and the
    * data-current hook the filled-tile style keys on. */
   const headerRef = useRef<HTMLElement | null>(null);
+  const menuButtonRef = useRef<HTMLButtonElement | null>(null);
+  const closeMenu = () => {
+    setMenuOpen(false);
+    menuButtonRef.current?.focus();
+  };
   useEffect(() => {
     const update = () => {
       const root = headerRef.current;
@@ -156,12 +164,6 @@ export function SiteHeader({
       window.removeEventListener("click", onClick);
     };
   }, []);
-  /* The menu panel closes after a section pick (N1): a click on a
-   * nav item inside the panel is a pick, so the panel closes. The
-   * inline nav row is not inside the panel and is untouched. */
-  const onPanelClick = (event: MouseEvent<HTMLElement>) => {
-    if ((event.target as HTMLElement).closest(".site-header-nav-link")) setMenuOpen(false);
-  };
   const navNode: ReactNode =
     nav ??
     (navItems ? (
@@ -220,35 +222,34 @@ export function SiteHeader({
       <div className="site-header-row">
         {home.to ? <BrandHomeButton to="/" /> : <BrandHomeButton onHome={home.onHome} />}
         {back}
-        {navMode === "inline" && hasNav ? (
-          <nav className="site-header-nav" aria-label="Site">
-            {navNode}
-          </nav>
-        ) : null}
+        {navMode === "inline" && hasNav ? <SiteHeaderNav navNode={navNode} /> : null}
         <div className="site-header-actions">
           {status}
           {mute}
           {endGame ? <span className="site-header-exit">{endGame}</span> : null}
           {hasNav ? (
             <button
+              ref={menuButtonRef}
               type="button"
               className="site-header-menu-button"
+              aria-label="Open menu"
               aria-expanded={menuOpen}
               data-open={menuOpen ? "true" : "false"}
               onClick={() => setMenuOpen((open) => !open)}
             >
-              Menu
+              <Menu className="site-header-menu-icon size-5" aria-hidden="true" />
+              <span className="site-header-menu-label">Menu</span>
             </button>
           ) : null}
         </div>
       </div>
-      {hasNav && menuOpen ? (
-        <nav className="site-header-nav site-header-panel" aria-label="Site" data-open="true" onClick={onPanelClick}>
+      {hasNav ? (
+        <SiteHeaderDrawer open={menuOpen} onClose={closeMenu}>
           {navNode}
           {exitInMenuOnSmallScreens && endGame ? (
             <div className="site-header-panel-exit">{endGame}</div>
           ) : null}
-        </nav>
+        </SiteHeaderDrawer>
       ) : null}
     </header>
   );

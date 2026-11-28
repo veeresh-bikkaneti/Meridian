@@ -166,14 +166,23 @@ describe("SiteHeader", () => {
     const src = read("src/components/ui/site-header.tsx");
     assert.match(src, /data-nav-section=\{item\.sectionId\}/);
     assert.match(src, /aria-current", "location"/);
-    assert.match(src, /onPanelClick/);
     assert.match(src, /setMenuOpen\(false\)/);
+    // The pick-to-close lives in the drawer now (TD-06.16): a click
+    // on a nav link inside the panel closes it.
+    const drawer = read("src/components/ui/site-header-drawer.ts");
+    assert.match(drawer, /closest\("\.site-header-nav-link"\)/);
+    assert.match(drawer, /onClose\(\)/);
   });
 
   it("menu button is a 44px-class control, collapsed, and the panel (with the slots outside it) is closed", async () => {
     const html = await render("SiteHeader", base);
     assert.match(html, /site-header-menu-button/);
     assert.match(html, /aria-expanded="false"/);
+    // Icon button (TD-06.16): named "Open menu", with the Menu glyph
+    // and the "Menu" label both present for the CSS swap below 820px.
+    assert.match(html, /aria-label="Open menu"/);
+    assert.match(html, /site-header-menu-icon/);
+    assert.match(html, /site-header-menu-label/);
     assert.doesNotMatch(html, /site-header-panel/);
   });
 
@@ -393,7 +402,9 @@ describe("PageShell and PageIntro (PR 3 Step 2)", () => {
       "both end-of-flow screens render the shared header",
     );
     assert.match(review, /data-testid="review-complete"/);
-    assert.match(read("src/components/game-app.tsx"), /testId="challenge-done"/);
+    // TD-06.15b: the challenge-done EndOfFlowHome lives in
+    // PlayLoaded (it hands it to ChallengeCompleteShell as a slot).
+    assert.match(read("src/components/play-loaded.tsx"), /testId="challenge-done"/);
   });
 
   it("the region lists sit on SiteHeader (PR 3 Step 3.6): Home everywhere, Back in the back slot", () => {
@@ -419,7 +430,8 @@ describe("PageShell and PageIntro (PR 3 Step 2)", () => {
   });
 
   it("the pool error is the shared ErrorScreen (PR 3 Step 3.8): failure copy on its props, one recovery door", () => {
-    const src = read("src/components/game-app.tsx");
+    // TD-06.15b: the pool-error branch lives in Play now.
+    const src = read("src/components/play.tsx");
     const branch = src.slice(src.indexOf("if (poolError)"), src.indexOf("if (!places)"));
     assert.match(branch, /<ErrorScreen/);
     assert.match(branch, /title="Couldn't load places\."/);

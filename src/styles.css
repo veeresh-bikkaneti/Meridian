@@ -2171,6 +2171,38 @@ div.first-visit-queue-overlay.first-visit-queue-modal {
   height: 40px;
   flex: none;
 }
+/* Compass loop (TD-06.16): the rings rotate slowly; the star stays
+ * still. Transform-only, so it never triggers layout. The ticks on
+ * the rings group make the rotation visible. */
+.brand-home-rings {
+  animation: brand-ring-spin 24s linear infinite;
+  transform-origin: 50% 50%;
+  transform-box: fill-box;
+}
+@keyframes brand-ring-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+/* Soft star glow, one breath every ~4s (opacity only). */
+.brand-home-star {
+  animation: brand-star-glow 4s ease-in-out infinite;
+}
+@keyframes brand-star-glow {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.75;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .brand-home-rings,
+  .brand-home-star {
+    animation: none;
+  }
+}
 .brand-home-word {
   font-family: var(--font-atlas-display);
   font-size: 24px;
@@ -2211,6 +2243,11 @@ div.first-visit-queue-overlay.first-visit-queue-modal {
   align-items: center;
   flex-wrap: nowrap;
   gap: 34px;
+  /* min-width: 0 (TD-06.16): the row must shrink to the space the
+   * header gives it, so SiteHeaderNav's scrollWidth-vs-clientWidth
+   * overflow check sees the real fit instead of the row overflowing
+   * the page. At widths where the content fits this changes nothing. */
+  min-width: 0;
 }
 .site-header-nav-link {
   /* One inline-flex line for every nav item (PR 3 Step 2): as
@@ -2315,6 +2352,13 @@ html {
   position: sticky;
   top: 0;
   z-index: var(--z-header);
+  /* Cream bar (TD-06.16): the home header rides on the home card
+   * surface, not the page background — in the dark theme the
+   * --hv5-ink nav text sat on the dark --bg at 1.43:1; on the cream
+   * card it reads 12.69:1 in both themes. The global .site-header
+   * background is untouched; other pages stay the same. */
+  background: var(--hv5-card);
+  border-bottom: 1px solid var(--hv5-line);
 }
 /* Sticky is confined to its parent's box (Phase A mechanism 2):
  * PageShell's column grows with the page, so route headers stick
@@ -2415,6 +2459,32 @@ body:has(> header.site-header) {
   background: var(--atlas-card);
   color: var(--fg);
   cursor: pointer;
+  /* Inline-flex so the icon form (<768px) centres the glyph in the
+   * 44px square; the text pill is centred either way. */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+/* Below 820px the Menu pill becomes a 44×44 icon button (TD-06.16):
+ * the label hides, the Menu glyph shows, the pill squares up. The
+ * accessible name stays "Open menu" (aria-label on the button). The
+ * icon form follows the Menu button's band (below 820px, where the
+ * Menu button owns the nav — the More split takes over at 820px). */
+.site-header-menu-button .site-header-menu-icon {
+  display: none;
+}
+@media (max-width: 819.5px) {
+  .site-header-menu-button .site-header-menu-label {
+    display: none;
+  }
+  .site-header-menu-button .site-header-menu-icon {
+    display: inline-flex;
+  }
+  .site-header-menu-button {
+    min-width: 44px;
+    width: 44px;
+    padding: 0;
+  }
 }
 .site-header-panel {
   flex-direction: column;
@@ -2433,17 +2503,50 @@ body:has(> header.site-header) {
   width: 100%;
   text-align: left;
 }
-@media (min-width: 1024px) { /* var(--bp-menu) */
+/* The More panel (TD-06.16): unlike the menu panel it lives inside
+ * the nav row, so it hangs below the header as an overlay instead
+ * of pushing the page down. The header is sticky (a positioned
+ * ancestor), so top: 100% lands it just under the bar. */
+.site-header-more-panel {
+  display: flex;
+  position: absolute;
+  top: 100%;
+  left: 16px;
+  right: 16px;
+  z-index: var(--z-menu);
+  margin-top: 8px;
+}
+/* Cream drawer on Home (TD-06.16): the menu and More panels ride
+ * the home card surface, matching the cream header bar from commit
+ * 1, in both themes (--hv5-card is light-only). */
+.atlas-home .site-header-panel {
+  background: var(--hv5-card);
+  border-color: var(--hv5-line);
+}
+/* The Menu button only exists below 820px (TD-06.16): from 820px the
+ * nav is inline (full, or first links + More), so there is nothing
+ * for Menu to open. The handoff sits at 820px, not 768px: at 768px
+ * only two links fit the row, so CONTACT — fourth in Home's nav —
+ * fell behind More with no Menu button to reach it (the grownups
+ * spec times out on the hidden Menu button). At 820px three links
+ * + More fit, and below that the Menu button is the right pattern.
+ * If a menu opened below 820px is resized up, the in-flow panel
+ * must not linger above the bar — the More panel is not a direct
+ * child of the header, so this rule leaves it alone. */
+@media (min-width: 820px) { /* var(--bp-menu) — was 1024px, then 768px */
   .site-header[data-nav-mode="inline"] .site-header-menu-button {
     display: none;
   }
+  header.site-header > .site-header-panel {
+    display: none;
+  }
 }
-@media (max-width: 1023.5px) { /* var(--bp-menu) */
+@media (max-width: 819.5px) { /* var(--bp-menu) */
   .site-header[data-nav-mode="inline"] .site-header-nav {
     display: none;
   }
   /* The open menu panel is also a .site-header-nav — exempt it from
-     the hide above, or the Menu button opens nothing below 1024px. */
+     the hide above, or the Menu button opens nothing below 820px. */
   .site-header[data-nav-mode="inline"] .site-header-panel {
     display: flex;
   }
@@ -2480,7 +2583,7 @@ body:has(> header.site-header) {
    the Phase A mock at 1280×800 shows the same clip). The squeeze
    now covers every width where the full row cannot fit, and the
    full spacing returns at exactly the width where it fits. */
-@media (min-width: 1024px) and (max-width: 1364.5px) { /* var(--bp-menu) / fit point, see above */
+@media (min-width: 820px) and (max-width: 1364.5px) { /* var(--bp-menu) / fit point, see above — the band starts at 820px now (TD-06.16), where the More split takes over from the Menu button */
   .site-header-row {
     gap: 16px;
   }
@@ -2490,6 +2593,22 @@ body:has(> header.site-header) {
   .site-header-nav-link {
     font-size: 12px;
     letter-spacing: 0.06em;
+  }
+}
+/* More band (TD-06.16): the split row needs a tighter gap so three
+ * links + More fit an 820px row. Measured: three links + More is
+ * 308px at the 14px gap and the nav only has ~306px at 820px, so
+ * the More button landed under the Join pill and never fired. At
+ * 10px it is 296px and fits with room to spare; below 820px the
+ * count would shrink to two, where even this cannot fit three —
+ * so the Menu button owns the nav below 820px instead. The band
+ * runs to 1364px (the compact band's top): the full row needs
+ * 1365px of viewport, so at 1024px the squeezed full nav (613px)
+ * overflows its 510px box and the last link overlaps Join — the
+ * split is what makes it fit there. */
+@media (min-width: 820px) and (max-width: 1364.5px) {
+  .site-header-nav {
+    gap: 10px;
   }
 }
 

@@ -30,8 +30,10 @@ const stylesSource = readFileSync(
   join(dirname(fileURLToPath(import.meta.url)), "../styles.css"),
   "utf8",
 );
-const gameAppSource = readFileSync(
-  join(dirname(fileURLToPath(import.meta.url)), "game-app.tsx"),
+// TD-06.15b: the bubble state, End-game dock and in-game HUD live in
+// PlayLoaded (play-loaded.tsx) now, not in game-app.tsx.
+const playLoadedSource = readFileSync(
+  join(dirname(fileURLToPath(import.meta.url)), "play-loaded.tsx"),
   "utf8",
 );
 
@@ -410,11 +412,11 @@ describe("redesign 2026-10-11 — motion: vendored motionmaxxing curves", () => 
 describe("redesign 2026-10-11 — compact default + End-game dock (game-app.tsx)", () => {
   it("defaultBubbleView: collapsed on narrow viewports, open on desktop", () => {
     assert.ok(
-      /function defaultBubbleView\(\): BubbleViewState/.test(gameAppSource),
+      /function defaultBubbleView\(\): BubbleViewState/.test(playLoadedSource),
       "game-app must define the defaultBubbleView helper",
     );
     const fn = /function defaultBubbleView\(\): BubbleViewState \{([\s\S]*?)\n\}/.exec(
-      gameAppSource,
+      playLoadedSource,
     )?.[1];
     assert.ok(fn, "the helper body must be readable");
     assert.ok(
@@ -429,16 +431,16 @@ describe("redesign 2026-10-11 — compact default + End-game dock (game-app.tsx)
 
   it("the default feeds the initializer, the per-place reset, and replay", () => {
     assert.ok(
-      gameAppSource.includes("useState<BubbleViewState>(defaultBubbleView)"),
+      playLoadedSource.includes("useState<BubbleViewState>(defaultBubbleView)"),
       "the bubble state must initialize from defaultBubbleView",
     );
-    const resets = gameAppSource.match(/setBubble\(defaultBubbleView\(\)\)/g) ?? [];
+    const resets = playLoadedSource.match(/setBubble\(defaultBubbleView\(\)\)/g) ?? [];
     assert.ok(
       resets.length >= 2,
       `per-place reset + replay must use defaultBubbleView (found ${resets.length})`,
     );
     assert.ok(
-      !gameAppSource.includes('setBubble("open")'),
+      !playLoadedSource.includes('setBubble("open")'),
       'no hard-coded setBubble("open") may remain',
     );
   });
@@ -449,16 +451,16 @@ describe("redesign 2026-10-11 — compact default + End-game dock (game-app.tsx)
       "the contract type must be untouched",
     );
     assert.ok(
-      /import \{ QuestionBubble, type BubbleViewState \}/.test(gameAppSource),
+      /import \{ QuestionBubble, type BubbleViewState \}/.test(playLoadedSource),
       "game-app must keep importing the contract",
     );
   });
 
   it("End game docks bottom-right during aim: clear of the card, 44px target", () => {
-    const btn = /<button\b[^>]*onClick=\{onEndGame\}[^>]*>/.exec(gameAppSource)?.[0];
+    const btn = /<button\b[^>]*onClick=\{onEndGame\}[^>]*>/.exec(playLoadedSource)?.[0];
     assert.ok(btn, "an End game button must exist");
     const tags =
-      gameAppSource.match(/<button\b[^>]*onClick=\{onEndGame\}[^>]*>/g) ?? [];
+      playLoadedSource.match(/<button\b[^>]*onClick=\{onEndGame\}[^>]*>/g) ?? [];
     assert.strictEqual(
       tags.length,
       2,
@@ -467,7 +469,7 @@ describe("redesign 2026-10-11 — compact default + End-game dock (game-app.tsx)
     // 2026-10-19: the aim End-game now lives inside the bottom-right dock
     // div (with the hint cluster stacked above it) — the dock carries the
     // absolute positioning, the button keeps the 44px target.
-    const dockDiv = /<div\b[^>]*data-testid="aim-dock"[^>]*>/.exec(gameAppSource)?.[0];
+    const dockDiv = /<div\b[^>]*data-testid="aim-dock"[^>]*>/.exec(playLoadedSource)?.[0];
     assert.ok(dockDiv, "the aim dock div must exist");
     assert.ok(
       dockDiv.includes("absolute right-3"),
@@ -491,7 +493,7 @@ describe("redesign 2026-10-11 — compact default + End-game dock (game-app.tsx)
     );
     assert.ok(
       /\{run\.phase === "aim" \? \(\s*<div\b[^>]*data-testid="aim-dock"/.test(
-        gameAppSource,
+        playLoadedSource,
       ),
       "the dock must render only during the aim phase",
     );
@@ -501,10 +503,10 @@ describe("redesign 2026-10-11 — compact default + End-game dock (game-app.tsx)
     // 2026-10-19: the aim End-game moved into the aim-dock div; match both
     // the dock div and the score-stack button gatings.
     const dockGate = /\{run\.phase === "aim" \? \(\s*<div\b[^>]*data-testid="aim-dock"/.test(
-      gameAppSource,
+      playLoadedSource,
     );
     const pillGates = [
-      ...gameAppSource.matchAll(
+      ...playLoadedSource.matchAll(
         /\{([^}]*run\.phase[^}]*?) \? \(\s*<button\b[^>]*onClick=\{onEndGame\}[^>]*>/g,
       ),
     ].map((m) => m[1]);
@@ -911,24 +913,24 @@ describe("cartographer's plate PR3 — GeoDetective scroll architecture (LoopScr
 describe("globe-overlap fix (2026-10-26) — auto-collapse after round 1, no false scroll cue, compact geometry", () => {
   it("auto-collapses instructions after the first placed pin or manual collapse, and resets on replay", () => {
     assert.ok(
-      gameAppSource.includes("const userCollapsedBubbleRef = useRef(false);"),
+      playLoadedSource.includes("const userCollapsedBubbleRef = useRef(false);"),
       "PlayLoaded must track manual instruction collapse in userCollapsedBubbleRef",
     );
     assert.ok(
       /setBubble\(defaultBubbleView\(\)\);\s*if\s*\(\s*run\.results\.length > 0 \|\|\s*\(session\?\.placesPlayed \?\? 0\) > 0 \|\|\s*userCollapsedBubbleRef\.current\s*\)\s*\{\s*setBubble\("collapsed"\);\s*\}/.test(
-        gameAppSource,
+        playLoadedSource,
       ),
       "advancing to the next place must collapse instructions once 1+ pins are placed or after manual collapse",
     );
     assert.ok(
       /userCollapsedBubbleRef\.current = next !== "open";\s*setBubble\(next\);/.test(
-        gameAppSource,
+        playLoadedSource,
       ),
       "onViewChange must record manual collapse/expand in userCollapsedBubbleRef",
     );
     assert.ok(
       /userCollapsedBubbleRef\.current = false;\s*setBubble\(defaultBubbleView\(\)\);/.test(
-        gameAppSource,
+        playLoadedSource,
       ),
       "onReplay must reset userCollapsedBubbleRef before re-initializing bubble view",
     );
@@ -975,7 +977,7 @@ describe("globe-overlap fix (2026-10-26) — auto-collapse after round 1, no fal
     );
     assert.ok(
       /<div className="flex items-center gap-1\.5">[\s\S]*?data-testid="streak-flame"[\s\S]*?\{session\?\.hits \?\? run\.hits\} placed[\s\S]*?<\/div>/.test(
-        gameAppSource,
+        playLoadedSource,
       ),
       "streak-flame and placed pill must share a horizontal flex row so streak >= 2 never adds a 3rd vertical HUD row",
     );
